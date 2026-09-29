@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/intro/intro_card_view.gd" id="1_view"]
+[ext_resource type="Theme" path="res://themes/intro_theme.tres" id="2_theme"]
+
+[node name="IntroCardView" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+mouse_filter = 2
+theme = ExtResource("2_theme")
+theme_override_constants/separation = 28
+script = ExtResource("1_view")
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IntroTitle"
+text = "TITLE"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BodyLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = "Body"
+horizontal_alignment = 1
+autowrap_mode = 2
