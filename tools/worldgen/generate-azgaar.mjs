@@ -24,8 +24,24 @@ if (!seed || !output || args.includes("--help")) {
 }
 
 const dom = new JSDOM("<!doctype html><html><body></body></html>", {url: "http://localhost/"});
+const exposeDomGlobal = key => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, key);
+  if (!descriptor || descriptor.writable || descriptor.set) {
+    globalThis[key] = dom.window[key];
+    return;
+  }
+  if (descriptor.configurable) {
+    Object.defineProperty(globalThis, key, {
+      value: dom.window[key],
+      configurable: true,
+      writable: true
+    });
+    return;
+  }
+  throw new Error(`Cannot install jsdom global: ${key}`);
+};
 for (const key of ["window", "document", "navigator", "Node", "Range", "DOMRect", "localStorage", "HTMLElement", "SVGElement"]) {
-  globalThis[key] = dom.window[key];
+  exposeDomGlobal(key);
 }
 // Legacy modules publish model services on window and later read them as globals.
 Object.setPrototypeOf(globalThis, dom.window);
