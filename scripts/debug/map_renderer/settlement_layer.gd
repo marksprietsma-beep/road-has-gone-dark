@@ -21,7 +21,7 @@ func _rank(capital: bool, population: float) -> int:
 func _draw_settlement(p: Vector2, rank: int, capital: bool, walled: bool) -> void:
 	var ink := Color("#201916")
 	var parchment := Color("#e2ca91") if rank < 2 else Color("#cbbd98")
-	var radius := [4.5, 3.4, 2.4, 1.5][rank]
+	var radius := float([4.5, 3.4, 2.4, 1.5][rank])
 	if walled: draw_arc(p, radius + 2.0, 0.0, TAU, 12, ink, 1.2)
 	draw_circle(p, radius + 0.9, ink)
 	if capital:
