@@ -12,7 +12,9 @@ tools/worldgen/generate-world.sh --seed example-seed --output /tmp/world.json
 tools/worldgen/verify-worldgen.sh game-11-determinism
 ```
 
-The verifier generates twice, compares canonical JSON byte-for-byte, prints its SHA-256 hash, and checks the required top-level data sets. Generated temporary files are ignored. A generated fixture should be checked in under `tests/worldgen/fixtures/` once the locked dependencies can be installed and the pipeline verified.
+The verifier generates twice, compares canonical JSON byte-for-byte, prints its SHA-256 hash, checks the required top-level data sets, and for the acceptance seed verifies the result against the checked-in canonical fixture.
+
+The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.json`, with metadata in `game-11-determinism.meta.json`. For Azgaar 1.153.1 at the pinned upstream commit, the acceptance seed `game-11-determinism` produces SHA-256 `31ea2e4418bd2841ac66f66e8bf47da462629f5be651e87c63fd5957cff8e5f9`. Generator upgrades require deliberate fixture/hash review.
 
 ## Provenance and licence
 
@@ -26,6 +28,6 @@ The intended production boundary is a packaged standalone helper or equivalent g
 
 ## Limitations and next step
 
-jsdom does not render or perform layout. The harness deliberately supports a built-in procedural template only; imported image heightmaps, map rendering, editor/UI state, and gameplay concepts such as races, factions, secrets, and dungeons are out of scope. Generator upgrades require deliberate fixture/hash review because upstream implementation changes can alter seeded output.
+jsdom does not render or perform layout. The harness deliberately supports a built-in procedural template only; imported image heightmaps, map rendering, editor/UI state, and gameplay concepts such as races, factions, secrets, and dungeons are out of scope.
 
 The next integration step is a Godot `GameWorld` adapter that validates `schemaVersion`, converts canonical records into game-owned resources, assigns stable game identifiers, and reports unsupported schema versions. That adapter should consume only this JSON contract rather than vendored module shapes.
