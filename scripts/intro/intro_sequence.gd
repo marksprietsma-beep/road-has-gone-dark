@@ -18,6 +18,7 @@ var _finished := false
 
 
 func _ready() -> void:
+	_transitioning = true
 	auto_advance_timer.timeout.connect(_on_auto_advance_timeout)
 	_cards = IntroCardLoader.load_cards(CARD_DATA_PATH)
 	card_view.modulate.a = 0.0
@@ -28,6 +29,7 @@ func _ready() -> void:
 
 	card_view.display_card(_cards[0])
 	await _fade_to(1.0)
+	_transitioning = false
 	_start_auto_advance()
 
 
