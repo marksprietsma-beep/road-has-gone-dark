@@ -1,7 +1,6 @@
 extends Node
 
 ## Standalone development tool. It is intentionally not linked from New Game.
-
 const FIXTURE_PATH := "res://tests/worldgen/fixtures/game-11-determinism.json"
 const PAN_SPEED := 520.0
 const MIN_ZOOM := 0.25
@@ -10,104 +9,58 @@ const ZOOM_STEP := 1.2
 
 @onready var map_renderer: WorldFixtureRenderer = $WorldMap
 @onready var camera: Camera2D = $WorldCamera
-@onready var info_label: Label = $DebugOverlay/Panel/Margin/Info
-@onready var help_label: Label = $DebugOverlay/Help
-
-var _world_size := Vector2(1280.0, 800.0)
+@onready var info_label: Label = $DebugOverlay/InfoPanel/Margin/Info
+@onready var selection_label: Label = $DebugOverlay/Selection
+var _world_size := Vector2(1280, 800)
 var _dragging := false
 
-
 func _ready() -> void:
-	var world := _load_fixture()
+	var world := WorldFixtureLoader.new().load_fixture(FIXTURE_PATH)
 	if world.is_empty():
+		info_label.text = "FANTASY MAP VIEWER\nERROR: fixture unavailable"
 		return
-
 	var map_data: Dictionary = world.get("map", {})
 	_world_size = Vector2(float(map_data.get("width", 1280)), float(map_data.get("height", 800)))
 	map_renderer.display_fixture(world)
+	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	info_label.text = _build_info(world)
 	camera.position = _world_size * 0.5
 	_fit_map()
-
+	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
+		button.toggled.connect(_on_layer_toggled.bind(button.name))
 
 func _process(delta: float) -> void:
-	var direction := Vector2.ZERO
-	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		direction.x -= 1.0
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		direction.x += 1.0
-	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		direction.y -= 1.0
-	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		direction.y += 1.0
-	if direction != Vector2.ZERO:
-		camera.position += direction.normalized() * PAN_SPEED * delta / camera.zoom.x
-
+	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if direction != Vector2.ZERO: camera.position += direction * PAN_SPEED * delta / camera.zoom.x
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_MIDDLE:
-			_dragging = event.pressed
-		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_set_zoom(camera.zoom.x * ZOOM_STEP)
-		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_set_zoom(camera.zoom.x / ZOOM_STEP)
-	elif event is InputEventMouseMotion and _dragging:
-		camera.position -= event.relative / camera.zoom.x
+		if event.button_index == MOUSE_BUTTON_MIDDLE: _dragging = event.pressed
+		elif event.pressed and event.button_index == MOUSE_BUTTON_LEFT: map_renderer.select_at(get_viewport().get_canvas_transform().affine_inverse() * event.position)
+		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP: _zoom_about_cursor(camera.zoom.x * ZOOM_STEP, event.position)
+		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN: _zoom_about_cursor(camera.zoom.x / ZOOM_STEP, event.position)
+	elif event is InputEventMouseMotion and _dragging: camera.position -= event.relative / camera.zoom.x
 	elif event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_F:
-			camera.position = _world_size * 0.5
-			_fit_map()
-		elif event.keycode == KEY_ESCAPE:
-			get_tree().quit()
+		if event.keycode == KEY_F: camera.position = _world_size * 0.5; _fit_map()
+		elif event.keycode == KEY_ESCAPE: get_tree().quit()
 
-
-func _load_fixture() -> Dictionary:
-	var file := FileAccess.open(FIXTURE_PATH, FileAccess.READ)
-	if file == null:
-		_show_error("Could not open fixture: %s" % FIXTURE_PATH)
-		return {}
-
-	var parsed: Variant = JSON.parse_string(file.get_as_text())
-	if not parsed is Dictionary:
-		_show_error("Fixture is not a JSON object: %s" % FIXTURE_PATH)
-		return {}
-	return parsed
-
-
-func _build_info(world: Dictionary) -> String:
-	var generator: Dictionary = world.get("generator", {})
-	return "WORLD FIXTURE DEBUG VIEW\nSeed: %s\nGenerator: %s %s\nStates: %d\nSettlements: %d\nRivers: %d\nRoutes: %d" % [
-		str(world.get("seed", "unknown")),
-		str(generator.get("provider", "unknown")),
-		str(generator.get("version", "unknown")),
-		world.get("states", []).size(),
-		_count_records(world.get("settlements", [])),
-		_count_records(world.get("rivers", [])),
-		_count_records(world.get("routes", [])),
-	]
-
-
-func _count_records(collection: Array) -> int:
-	var count := 0
-	for item in collection:
-		if item is Dictionary:
-			count += 1
-	return count
-
-
-func _fit_map() -> void:
-	var viewport_size := get_viewport().get_visible_rect().size
-	var scale := minf(viewport_size.x / _world_size.x, viewport_size.y / _world_size.y) * 0.92
-	_set_zoom(scale)
-
+func _zoom_about_cursor(value: float, cursor: Vector2) -> void:
+	var before := get_viewport().get_canvas_transform().affine_inverse() * cursor
+	_set_zoom(value)
+	var after := get_viewport().get_canvas_transform().affine_inverse() * cursor
+	camera.position += before - after
 
 func _set_zoom(value: float) -> void:
 	var limited := clampf(value, MIN_ZOOM, MAX_ZOOM)
 	camera.zoom = Vector2(limited, limited)
+	map_renderer.set_zoom(limited)
 
+func _fit_map() -> void:
+	var viewport_size := get_viewport().get_visible_rect().size
+	_set_zoom(minf(viewport_size.x / _world_size.x, viewport_size.y / _world_size.y) * 0.92)
 
-func _show_error(message: String) -> void:
-	push_error(message)
-	info_label.text = "WORLD FIXTURE DEBUG VIEW\n\nERROR\n%s" % message
-	help_label.text = "Press Escape to close"
+func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
+	map_renderer.set_layer_enabled(layer_name, enabled)
+
+func _build_info(world: Dictionary) -> String:
+	return "FANTASY MAP • DEV VIEW\nSeed  %s\n%d states  •  %d settlements" % [str(world.get("seed", "unknown")), world.get("states", []).size() - 1, world.get("settlements", []).size() - 1]

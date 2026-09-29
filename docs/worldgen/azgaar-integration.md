@@ -18,13 +18,13 @@ The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.
 
 ## Godot fixture viewer
 
-The development-only scene `res://scenes/debug/world_fixture_viewer.tscn` reads that fixture directly and visualizes its cell heights, land and sea, routes, rivers, and settlements. Run it without changing the game's main scene:
+The development-only scene `res://scenes/debug/world_fixture_viewer.tscn` loads that fixture through a schema boundary and presents a baked pixel-art terrain map with relief, political borders, routes, rivers, settlements, labels, and selection as independent visual layers. Run it without changing the game's main scene:
 
 ```sh
 godot --path . scenes/debug/world_fixture_viewer.tscn
 ```
 
-Use WASD or the arrow keys to pan, the middle mouse button to drag, the mouse wheel to zoom, and `F` to fit the complete map. This is an inspection aid for the current fixture contract, deliberately isolated from New Game and not a canonical `GameWorld` implementation.
+Use the arrow keys to pan, the middle mouse button to drag, the mouse wheel to zoom around the cursor, click to inspect a cell, and `F` to fit the complete map. The layer panel independently toggles relief, political color, rivers, borders, routes, settlements, and labels. This is an inspection aid for the current fixture contract, deliberately isolated from New Game and not a canonical `GameWorld` implementation.
 
 ## Provenance and licence
 

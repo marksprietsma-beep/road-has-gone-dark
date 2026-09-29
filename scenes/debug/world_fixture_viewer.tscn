@@ -1,63 +1,118 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/debug/world_fixture_viewer.gd" id="1_viewer"]
-[ext_resource type="Script" path="res://scripts/debug/world_fixture_renderer.gd" id="2_renderer"]
+[ext_resource type="Script" path="res://scripts/debug/world_fixture_viewer.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/debug/map_renderer/fantasy_map_layers.tscn" id="2"]
 
 [node name="WorldFixtureViewer" type="Node"]
-script = ExtResource("1_viewer")
-
+script = ExtResource("1")
 [node name="Backdrop" type="ColorRect" parent="."]
 offset_right = 1280.0
 offset_bottom = 800.0
-color = Color(0.0352941, 0.0705882, 0.0901961, 1)
+color = Color(0.025, 0.04, 0.045, 1)
 mouse_filter = 2
-
-[node name="WorldMap" type="Node2D" parent="."]
-script = ExtResource("2_renderer")
-
+[node name="WorldMap" parent="." instance=ExtResource("2")]
 [node name="WorldCamera" type="Camera2D" parent="."]
 position = Vector2(640, 400)
-
 [node name="DebugOverlay" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="ColorRect" parent="DebugOverlay"]
+[node name="InfoPanel" type="ColorRect" parent="DebugOverlay"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 220.0
-offset_bottom = 144.0
-color = Color(0.0352941, 0.0313726, 0.027451, 0.901961)
+offset_right = 245.0
+offset_bottom = 82.0
+color = Color(0.055, 0.045, 0.035, 0.92)
 mouse_filter = 2
-
-[node name="Margin" type="MarginContainer" parent="DebugOverlay/Panel"]
+[node name="Margin" type="MarginContainer" parent="DebugOverlay/InfoPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 7
-
-[node name="Info" type="Label" parent="DebugOverlay/Panel/Margin"]
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+[node name="Info" type="Label" parent="DebugOverlay/InfoPanel/Margin"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.941176, 0.843137, 0.592157, 1)
+theme_override_colors/font_color = Color(0.94, 0.84, 0.59, 1)
 theme_override_font_sizes/font_size = 12
-text = "WORLD FIXTURE DEBUG VIEW\nLoading fixture..."
-
-[node name="Help" type="Label" parent="DebugOverlay"]
-anchors_preset = 2
+text = "FANTASY MAP • DEV VIEW\nLoading fixture..."
+[node name="Layers" type="VBoxContainer" parent="DebugOverlay"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -142.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 190.0
+grow_horizontal = 0
+theme_override_constants/separation = 2
+[node name="Title" type="Label" parent="DebugOverlay/Layers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.84, 0.59, 1)
+text = "MAP LAYERS"
+[node name="Relief" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Relief"
+[node name="Political" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Political"
+[node name="Rivers" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Rivers"
+[node name="Borders" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Borders"
+[node name="Routes" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Routes"
+[node name="Settlements" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Settlements"
+[node name="Labels" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Labels"
+[node name="Selection" type="Label" parent="DebugOverlay"]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -28.0
-offset_right = 467.0
-offset_bottom = -8.0
+offset_left = -260.0
+offset_top = -54.0
+offset_right = 260.0
+offset_bottom = -34.0
+grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.831373, 0.796078, 0.701961, 1)
+theme_override_colors/font_color = Color(0.96, 0.9, 0.74, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Click a map cell to inspect it"
+horizontal_alignment = 1
+[node name="Help" type="Label" parent="DebugOverlay"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -28.0
+offset_right = 330.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 12
-text = "WASD / arrows: pan   Middle drag: pan   Wheel: zoom   F: fit   Esc: close"
+text = "Arrows: pan   Middle drag: pan   Wheel: zoom   Click: inspect   F: fit   Esc: close"
+horizontal_alignment = 1

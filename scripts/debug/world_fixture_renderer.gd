@@ -1,92 +1,45 @@
 class_name WorldFixtureRenderer
 extends Node2D
 
-## Development-only renderer for the current generated-world fixture shape.
-## This deliberately consumes fixture dictionaries directly; it is not GameWorld.
+## Layer coordinator for the development-only fantasy map renderer.
+signal cell_selected(cell_id: int, details: String)
 
-const LAND_HEIGHT := 20.0
-const CELL_RADIUS := 6.5
-
-var _world: Dictionary = {}
-var _points: Array = []
-var _heights: Array = []
-
+var model: MapRenderModel
+var package: Dictionary
+@onready var terrain: TerrainMapLayer = $Terrain
+@onready var selection: SelectionMapLayer = $Selection
 
 func display_fixture(world: Dictionary) -> void:
-	_world = world
-	var cells: Dictionary = world.get("cells", {})
-	_points = cells.get("points", [])
-	_heights = cells.get("heights", [])
-	queue_redraw()
+	model = MapRenderModel.new(world)
+	package = MapRenderBaker.new().bake(model)
+	for child in get_children():
+		if child is MapLayer: child.setup(model)
+	terrain.set_package(package)
 
+func set_layer_enabled(layer_name: String, enabled: bool) -> void:
+	var layer := get_node_or_null(NodePath(layer_name))
+	if layer: layer.visible = enabled
 
-func _draw() -> void:
-	if _world.is_empty():
-		return
+func set_zoom(value: float) -> void:
+	var band := 0 if value < 0.7 else (1 if value < 1.65 else 2)
+	for child in get_children():
+		if child is MapLayer: child.set_zoom_band(band)
 
-	_draw_cells()
-	_draw_routes()
-	_draw_rivers()
-	_draw_settlements()
+func select_at(map_position: Vector2) -> void:
+	if package.is_empty() or not Rect2(Vector2.ZERO, Vector2(model.size)).has_point(map_position): return
+	var baked_size: Vector2i = package["baked_size"]
+	var scale: int = package["pixel_scale"]
+	var x := clampi(int(map_position.x / scale), 0, baked_size.x - 1)
+	var y := clampi(int(map_position.y / scale), 0, baked_size.y - 1)
+	var cell_id: int = package["cell_ids"][y * baked_size.x + x]
+	selection.select_cell(cell_id)
+	cell_selected.emit(cell_id, _cell_details(cell_id))
 
-
-func _draw_cells() -> void:
-	for index in mini(_points.size(), _heights.size()):
-		var point := _as_vector(_points[index])
-		var height := float(_heights[index])
-		draw_circle(point, CELL_RADIUS, _height_color(height))
-
-
-func _draw_routes() -> void:
-	for route in _world.get("routes", []):
-		if not route is Dictionary:
-			continue
-		var line := PackedVector2Array()
-		for route_point in route.get("points", []):
-			line.append(_as_vector(route_point))
-		if line.size() > 1:
-			draw_polyline(line, Color("8f7650"), 1.4, false)
-
-
-func _draw_rivers() -> void:
-	for river in _world.get("rivers", []):
-		if not river is Dictionary:
-			continue
-		var line := PackedVector2Array()
-		for cell_id in river.get("cells", []):
-			var index := int(cell_id)
-			if index >= 0 and index < _points.size():
-				line.append(_as_vector(_points[index]))
-		if line.size() > 1:
-			var width := clampf(float(river.get("width", 0.5)) * 2.0, 1.0, 3.0)
-			draw_polyline(line, Color("65b7d8"), width, false)
-
-
-func _draw_settlements() -> void:
-	for settlement in _world.get("settlements", []):
-		if not settlement is Dictionary:
-			continue
-		var position := Vector2(float(settlement.get("x", 0.0)), float(settlement.get("y", 0.0)))
-		var is_capital := int(settlement.get("capital", 0)) == 1
-		var radius := 3.2 if is_capital else 2.0
-		draw_circle(position, radius + 1.0, Color("201b19"))
-		draw_circle(position, radius, Color("ffd166") if is_capital else Color("f2e8cf"))
-
-
-func _height_color(height: float) -> Color:
-	if height < LAND_HEIGHT:
-		var depth := clampf(height / LAND_HEIGHT, 0.0, 1.0)
-		return Color("183a59").lerp(Color("28627c"), depth)
-
-	var elevation := clampf((height - LAND_HEIGHT) / 80.0, 0.0, 1.0)
-	if elevation < 0.45:
-		return Color("577a45").lerp(Color("8d9857"), elevation / 0.45)
-	if elevation < 0.78:
-		return Color("8d9857").lerp(Color("8b6d4f"), (elevation - 0.45) / 0.33)
-	return Color("8b6d4f").lerp(Color("ddd6c2"), (elevation - 0.78) / 0.22)
-
-
-func _as_vector(value: Variant) -> Vector2:
-	if value is Array and value.size() >= 2:
-		return Vector2(float(value[0]), float(value[1]))
-	return Vector2.ZERO
+func _cell_details(cell_id: int) -> String:
+	if not model.valid_cell(cell_id): return ""
+	var height := float(model.heights[cell_id])
+	var biome_id := int(model.biomes[cell_id]) if cell_id < model.biomes.size() else 0
+	var state_id := int(model.states[cell_id]) if cell_id < model.states.size() else 0
+	var biome: Dictionary = model.biome_records.get(biome_id, {})
+	var state: Dictionary = model.state_records.get(state_id, {})
+	return "Cell %d  •  %s  •  elevation %.0f  •  %s" % [cell_id, str(biome.get("name", "Unknown")), height, str(state.get("name", "Unclaimed"))]
