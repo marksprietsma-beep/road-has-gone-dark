@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_script"]
+[ext_resource type="Theme" path="res://themes/menu_theme.tres" id="2_theme"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuContent" type="VBoxContainer" parent="Center"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/MenuContent"]
+layout_mode = 2
+theme_type_variation = &"MenuTitle"
+text = "THE ROAD HAS GONE DARK"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/MenuContent"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NewGameButton" type="Button" parent="Center/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+flat = true
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="Center/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+flat = true
+disabled = true
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="Center/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+flat = true
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="Center/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+flat = true
+text = "Exit"
