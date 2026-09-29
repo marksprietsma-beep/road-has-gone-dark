@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "seed": "game-11-determinism",
+  "fixture": "game-11-determinism.json",
+  "bytes": 5166889,
+  "sha256": "31ea2e4418bd2841ac66f66e8bf47da462629f5be651e87c63fd5957cff8e5f9",
+  "generator": {
+    "provider": "azgaar",
+    "version": "1.153.1",
+    "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6"
+  },
+  "map": {
+    "width": 1280,
+    "height": 800
+  },
+  "counts": {
+    "cells": 5959,
+    "biomes": 13,
+    "states": 19,
+    "provinces": 204,
+    "settlements": 874,
+    "cultures": 16,
+    "religions": 29,
+    "rivers": 256,
+    "routes": 685,
+    "markers": 73
+  }
+}
