@@ -4,6 +4,7 @@ import {mkdir, writeFile} from "node:fs/promises";
 import {createRequire} from "node:module";
 import {dirname, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
+import FlatQueue from "./flatqueue-compat.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -53,6 +54,12 @@ dom.window.$ = globalThis.$;
 // pinned npm dependency without modifying vendored source.
 globalThis.aleaPRNG = aleaModule.default ?? aleaModule;
 dom.window.aleaPRNG = globalThis.aleaPRNG;
+
+// Several non-migrated generators still expect FlatQueue from Azgaar's classic
+// browser bundle in public/libs. The source handoff omits public/, so expose a
+// project-owned compatible queue implementation for headless generation.
+globalThis.FlatQueue = FlatQueue;
+dom.window.FlatQueue = FlatQueue;
 
 const server = await createServer({
   root: vendor,
