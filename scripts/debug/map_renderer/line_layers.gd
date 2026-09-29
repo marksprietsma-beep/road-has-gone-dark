@@ -19,8 +19,8 @@ func _draw_rivers() -> void:
 			var cell_id := int(raw_id)
 			if model.valid_cell(cell_id): line.append(model.point(cell_id))
 		if line.size() > 1:
-			draw_polyline(line, Color("#173f58"), clampf(float(river.get("width", 0.4)) * 2.2, 1.0, 3.2), false)
-			draw_polyline(line, Color("#68b6c8"), clampf(float(river.get("width", 0.4)) * 1.15, 0.7, 2.0), false)
+			draw_polyline(line, Color("#1e3135", 0.9), clampf(float(river.get("width", 0.4)) * 2.6, 1.1, 3.4), false)
+			draw_polyline(line, Color("#63888a", 0.9), clampf(float(river.get("width", 0.4)) * 1.1, 0.65, 1.8), false)
 
 func _draw_routes() -> void:
 	if zoom_band == 0: return
