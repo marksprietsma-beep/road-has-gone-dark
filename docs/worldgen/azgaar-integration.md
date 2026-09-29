@@ -16,6 +16,16 @@ The verifier generates twice, compares canonical JSON byte-for-byte, prints its 
 
 The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.json`, with metadata in `game-11-determinism.meta.json`. For Azgaar 1.153.1 at the pinned upstream commit, the acceptance seed `game-11-determinism` produces SHA-256 `31ea2e4418bd2841ac66f66e8bf47da462629f5be651e87c63fd5957cff8e5f9`. Generator upgrades require deliberate fixture/hash review.
 
+## Godot fixture viewer
+
+The development-only scene `res://scenes/debug/world_fixture_viewer.tscn` reads that fixture directly and visualizes its cell heights, land and sea, routes, rivers, and settlements. Run it without changing the game's main scene:
+
+```sh
+godot --path . scenes/debug/world_fixture_viewer.tscn
+```
+
+Use WASD or the arrow keys to pan, the middle mouse button to drag, the mouse wheel to zoom, and `F` to fit the complete map. This is an inspection aid for the current fixture contract, deliberately isolated from New Game and not a canonical `GameWorld` implementation.
+
 ## Provenance and licence
 
 `vendor/azgaar` is Fantasy Map Generator 1.153.1, from upstream commit `cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6`. It is MIT licensed; the vendored copyright and permission notice remains in `vendor/azgaar/LICENSE` and must accompany distributions containing this source.
