@@ -48,8 +48,9 @@ func _ink_coastline(image: Image, ids: PackedInt32Array, model: MapRenderModel, 
 			var index := y * size.x + x
 			var land := _is_land(model, ids[index])
 			var edge := false
-			for offset in [Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1)]:
-				var other := Vector2i(x, y) + offset
+			var neighbor_offsets: Array[Vector2i] = [Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1)]
+			for offset in neighbor_offsets:
+				var other: Vector2i = Vector2i(x, y) + offset
 				if other.x >= 0 and other.y >= 0 and other.x < size.x and other.y < size.y:
 					edge = edge or land != _is_land(model, ids[other.y * size.x + other.x])
 			if edge:
