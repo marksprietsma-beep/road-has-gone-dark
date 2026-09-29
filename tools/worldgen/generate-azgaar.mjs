@@ -9,9 +9,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
 const vendor = resolve(root, "vendor/azgaar");
 const requireVendor = createRequire(resolve(vendor, "package.json"));
-const [{JSDOM}, {createServer}] = await Promise.all([
+const [{JSDOM}, {createServer}, aleaModule] = await Promise.all([
   import(pathToFileURL(requireVendor.resolve("jsdom")).href),
-  import(pathToFileURL(requireVendor.resolve("vite")).href)
+  import(pathToFileURL(requireVendor.resolve("vite")).href),
+  import(pathToFileURL(requireVendor.resolve("alea")).href)
 ]);
 
 const args = process.argv.slice(2);
@@ -47,6 +48,11 @@ for (const key of ["window", "document", "navigator", "Node", "Range", "DOMRect"
 Object.setPrototypeOf(globalThis, dom.window);
 globalThis.$ = () => ({dialog() {}, selectmenu() {}, slider() {}});
 dom.window.$ = globalThis.$;
+
+// Azgaar's legacy seed component still reads aleaPRNG as a global. Expose the
+// pinned npm dependency without modifying vendored source.
+globalThis.aleaPRNG = aleaModule.default ?? aleaModule;
+dom.window.aleaPRNG = globalThis.aleaPRNG;
 
 const server = await createServer({
   root: vendor,
