@@ -61,6 +61,27 @@ dom.window.aleaPRNG = globalThis.aleaPRNG;
 globalThis.FlatQueue = FlatQueue;
 dom.window.FlatQueue = FlatQueue;
 
+const sanitizeUnicode = value => {
+  let result = "";
+  for (let index = 0; index < value.length; index++) {
+    const code = value.charCodeAt(index);
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const next = index + 1 < value.length ? value.charCodeAt(index + 1) : -1;
+      if (next >= 0xdc00 && next <= 0xdfff) {
+        result += value[index] + value[index + 1];
+        index++;
+      } else {
+        result += "\ufffd";
+      }
+    } else if (code >= 0xdc00 && code <= 0xdfff) {
+      result += "\ufffd";
+    } else {
+      result += value[index];
+    }
+  }
+  return result;
+};
+
 const server = await createServer({
   root: vendor,
   configFile: resolve(vendor, "vite.config.ts"),
@@ -71,11 +92,13 @@ const server = await createServer({
 try {
   const entry = await server.ssrLoadModule(resolve(here, "headless-entry.ts"));
   const world = await entry.generateCanonicalWorld(seed);
-  const canonicalize = value => Array.isArray(value)
-    ? value.map(canonicalize)
-    : value && typeof value === "object"
-      ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonicalize(value[key])]))
-      : value;
+  const canonicalize = value => typeof value === "string"
+    ? sanitizeUnicode(value)
+    : Array.isArray(value)
+      ? value.map(canonicalize)
+      : value && typeof value === "object"
+        ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonicalize(value[key])]))
+        : value;
   const bytes = `${JSON.stringify(canonicalize(world), null, 2)}\n`;
   await mkdir(dirname(resolve(output)), {recursive: true});
   await writeFile(resolve(output), bytes);
