@@ -31,10 +31,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 72
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 72
-theme_override_constants/margin_bottom = 48
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 40
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -43,4 +43,7 @@ mouse_filter = 2
 [node name="IntroCardView" parent="MarginContainer/CenterContainer" instance=ExtResource("2_card")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="AutoAdvanceTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
