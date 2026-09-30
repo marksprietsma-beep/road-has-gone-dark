@@ -11,6 +11,7 @@ var heights: Array
 var biomes: Array
 var states: Array
 var neighbors: Array
+var relief: Array
 var state_records: Dictionary = {}
 var biome_records: Dictionary = {}
 
@@ -24,6 +25,8 @@ func _init(source: Dictionary) -> void:
 	biomes = cells.get("biome", [])
 	states = cells.get("state", [])
 	neighbors = cells.get("neighbors", [])
+	var presentation: Dictionary = fixture.get("presentation", {})
+	relief = presentation.get("relief", [])
 	for record in fixture.get("states", []):
 		if record is Dictionary:
 			state_records[int(record.get("i", 0))] = record
