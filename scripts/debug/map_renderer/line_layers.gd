@@ -50,7 +50,7 @@ func _draw_routes() -> void:
 		if group == "searoutes":
 			# Sea lanes are navigation/trade routes, not roads. Keep them
 			# visually separate from the brown land network.
-			_draw_dashed_polyline(line, Color("#78928f", 0.46), 1.15, 7.0)
+			_draw_dashed_polyline(line, Color("#c6ad78", 0.62), 1.25, 8.0)
 		else:
 			draw_polyline(line, Color("#44372b", 0.72), 1.6, true)
 			draw_polyline(line, Color("#a98d62", 0.5), 0.65, true)
