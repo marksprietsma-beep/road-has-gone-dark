@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import {spawnSync} from "node:child_process";
-import {readFile, writeFile, mkdir, copyFile} from "node:fs/promises";
+import {readFile, writeFile, mkdir} from "node:fs/promises";
 import {resolve, dirname} from "node:path";
 import {fileURLToPath} from "node:url";
 
@@ -18,6 +18,37 @@ const prefix = prefixArg >= 0 ? String(process.argv[prefixArg + 1] || "atlas-sho
 const threshold = 62;
 
 await mkdir(tmpDir, {recursive: true});
+
+
+function sanitizeGodotString(value) {
+  let output = "";
+  for (let i = 0; i < value.length; i++) {
+    const code = value.charCodeAt(i);
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const next = value.charCodeAt(i + 1);
+      if (next >= 0xdc00 && next <= 0xdfff) {
+        output += value[i] + value[i + 1];
+        i++;
+      } else {
+        output += "\uFFFD";
+      }
+    } else if (code >= 0xdc00 && code <= 0xdfff) {
+      output += "\uFFFD";
+    } else {
+      output += value[i];
+    }
+  }
+  return output;
+}
+
+function sanitizeForGodot(value) {
+  if (typeof value === "string") return sanitizeGodotString(value);
+  if (Array.isArray(value)) return value.map(sanitizeForGodot);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, sanitizeForGodot(item)]));
+  }
+  return value;
+}
 
 function mountainScore(world) {
   const heights = world.cells?.heights ?? [];
@@ -77,7 +108,9 @@ for (let index = 1; index <= candidateCount; index++) {
 
 results.sort((a, b) => b.score - a.score);
 const winner = results[0];
-await copyFile(winner.path, output);
+const winnerWorld = JSON.parse(await readFile(winner.path, "utf8"));
+const sanitizedWinner = sanitizeForGodot(winnerWorld);
+await writeFile(output, JSON.stringify(sanitizedWinner, null, 2) + "\n");
 await writeFile(meta, JSON.stringify({
   purpose: "visual atlas review fixture; not the canonical determinism fixture",
   seed: winner.seed,
