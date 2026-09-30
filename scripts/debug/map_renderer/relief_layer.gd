@@ -41,8 +41,7 @@ func _mountain_clusters() -> Array:
 				var neighbor := int(neighbor_value)
 				if _is_mountain(neighbor):
 					adjacent.append(neighbor)
-			for entry: Vector2i in adjacent:
-				var neighbor: int = entry.x
+			for neighbor: int in adjacent:
 				if not visited[neighbor]:
 					visited[neighbor] = 1
 					frontier.append(neighbor)
