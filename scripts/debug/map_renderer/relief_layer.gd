@@ -1,11 +1,13 @@
 class_name ReliefMapLayer
 extends MapLayer
 
-## Cartographic mountain ranges. High cells only decide where a range belongs;
-## the rendered backbone and stamps deliberately do not trace the cell graph.
+## Cartographic mountain ranges. High-elevation cells determine the underlying
+## geography, but the player-facing artwork is sampled along a smoothed range
+## spine so it does not expose cell graphs or stack dozens of mini-ranges.
 
 const MOUNTAIN_HEIGHT := 62.0
 const MIN_RANGE_CELLS := 3
+const SPINE_BIN_SIZE := 28.0
 const STAMPS: Array[Texture2D] = [
 	preload("res://assets/map/mountains/range_01.svg"),
 	preload("res://assets/map/mountains/range_02.svg"),
@@ -22,54 +24,59 @@ const STAMPS: Array[Texture2D] = [
 func _draw() -> void:
 	if not model:
 		return
+
 	var ranges: Array = _mountain_ranges()
 	for range_index in ranges.size():
 		var cells: Array = ranges[range_index]
 		if cells.size() < MIN_RANGE_CELLS:
 			continue
-		var geometry: Dictionary = _range_geometry(cells)
-		_draw_massif(geometry, range_index)
-		_draw_stamps(geometry, range_index)
 
+		var spine := _build_spine(cells)
+		if spine.size() < 2:
+			continue
+
+		_draw_backbone(spine)
+		_draw_stamps(spine, range_index)
 
 func _mountain_ranges() -> Array:
 	var ranges: Array = []
 	var visited: Dictionary = {}
+
 	for start in model.points.size():
 		if visited.has(start) or not _is_mountain(start):
 			continue
+
 		var cells: Array[int] = []
 		var pending: Array[int] = [start]
 		visited[start] = true
+
 		while not pending.is_empty():
 			var cell_id: int = pending.pop_back()
 			cells.append(cell_id)
+
 			if cell_id >= model.neighbors.size() or not model.neighbors[cell_id] is Array:
 				continue
+
 			for value in model.neighbors[cell_id]:
 				var other := int(value)
 				if not visited.has(other) and _is_mountain(other):
 					visited[other] = true
 					pending.append(other)
+
 		ranges.append(cells)
+
 	return ranges
 
-
 func _is_mountain(cell_id: int) -> bool:
-	return model.valid_cell(cell_id) and cell_id < model.heights.size() and float(model.heights[cell_id]) >= MOUNTAIN_HEIGHT
+	return model.valid_cell(cell_id) 		and cell_id < model.heights.size() 		and float(model.heights[cell_id]) >= MOUNTAIN_HEIGHT
 
-
-func _range_geometry(cells: Array) -> Dictionary:
+func _build_spine(cells: Array) -> PackedVector2Array:
 	var center := Vector2.ZERO
-	var average_height := 0.0
 	for value in cells:
-		var cell_id := int(value)
-		center += model.point(cell_id)
-		average_height += float(model.heights[cell_id])
+		center += model.point(int(value))
 	center /= float(cells.size())
-	average_height /= float(cells.size())
 
-	# Principal component gives one smooth atlas axis instead of cell-to-cell links.
+	# Principal direction gives the broad range orientation.
 	var xx := 0.0
 	var xy := 0.0
 	var yy := 0.0
@@ -78,106 +85,111 @@ func _range_geometry(cells: Array) -> Dictionary:
 		xx += delta.x * delta.x
 		xy += delta.x * delta.y
 		yy += delta.y * delta.y
+
 	var angle := 0.5 * atan2(2.0 * xy, xx - yy)
 	var axis := Vector2.from_angle(angle)
-	var normal := Vector2(-axis.y, axis.x)
-	var low := 0.0
-	var high := 0.0
-	var spread := 0.0
+
+	var low := INF
+	var high := -INF
 	for value in cells:
-		var delta := model.point(int(value)) - center
-		var along := delta.dot(axis)
+		var along := (model.point(int(value)) - center).dot(axis)
 		low = minf(low, along)
 		high = maxf(high, along)
-		spread = maxf(spread, absf(delta.dot(normal)))
-	return {
-		"center": center,
-		"axis": axis,
-		"normal": normal,
-		"angle": angle,
-		"start": low - 8.0,
-		"end": high + 8.0,
-		"width": clampf(spread * 0.55 + 8.0, 9.0, 27.0),
-		"height": average_height,
-	}
 
+	var span := maxf(high - low, SPINE_BIN_SIZE)
+	var bin_count := maxi(3, int(ceil(span / SPINE_BIN_SIZE)) + 1)
+	var sums: Array[Vector2] = []
+	var counts: Array[int] = []
+	for _index in bin_count:
+		sums.append(Vector2.ZERO)
+		counts.append(0)
 
-func _draw_massif(geometry: Dictionary, range_index: int) -> void:
-	var center: Vector2 = geometry["center"]
-	var axis: Vector2 = geometry["axis"]
-	var normal: Vector2 = geometry["normal"]
-	var start: float = geometry["start"]
-	var finish: float = geometry["end"]
-	var width: float = geometry["width"]
-	var steps := maxi(8, int((finish - start) / 12.0))
-	var upper := PackedVector2Array()
-	var lower := PackedVector2Array()
-	for step in steps + 1:
-		var t := float(step) / float(steps)
-		var taper := sin(t * PI)
-		var wobble := sin(t * 13.0 + float(range_index) * 1.71) * width * 0.10
-		var half_width := width * (0.16 + taper * 0.84)
-		var spine := center + axis * lerpf(start, finish, t) + normal * wobble
-		upper.append(spine + normal * half_width)
-		lower.append(spine - normal * half_width)
-	var mass: PackedVector2Array = upper.duplicate()
-	for lower_index in range(lower.size() - 1, -1, -1):
-		mass.append(lower[lower_index])
-	var mass_alpha: float = float([0.12, 0.15, 0.18][zoom_band])
-	draw_colored_polygon(mass, Color("#332b25", mass_alpha))
-	# A warmer inner wash makes separate stamps merge into a single landform.
-	var inner := PackedVector2Array()
-	for step in steps + 1:
-		var t := float(step) / float(steps)
-		inner.append(center + axis * lerpf(start, finish, t) + normal * sin(t * 11.0 + range_index) * width * 0.07)
-	draw_polyline(inner, Color("#665747", mass_alpha * 0.58), maxf(2.0, width * 0.30), true)
+	for value in cells:
+		var point := model.point(int(value))
+		var along := (point - center).dot(axis)
+		var normalized := clampf((along - low) / maxf(high - low, 0.001), 0.0, 0.9999)
+		var bin_index := clampi(int(floor(normalized * float(bin_count))), 0, bin_count - 1)
+		sums[bin_index] += point
+		counts[bin_index] += 1
 
+	var raw := PackedVector2Array()
+	for index in bin_count:
+		if counts[index] > 0:
+			raw.append(sums[index] / float(counts[index]))
 
-func _draw_stamps(geometry: Dictionary, range_index: int) -> void:
-	var center: Vector2 = geometry["center"]
-	var axis: Vector2 = geometry["axis"]
-	var normal: Vector2 = geometry["normal"]
-	var start: float = geometry["start"]
-	var finish: float = geometry["end"]
-	var angle: float = geometry["angle"]
-	var length := finish - start
-	var cursor := start
-	var anchor := 0
-	while cursor <= finish:
-		var seed := _hash(range_index * 4099 + anchor * 131)
-		var t := clampf((cursor - start) / maxf(length, 1.0), 0.0, 1.0)
-		var strength := 0.34 + 0.66 * sin(t * PI)
-		var base_scale := (0.46 + float(seed % 17) / 100.0) * (0.92 + strength * 0.18)
-		var side := (float((seed >> 7) % 17) - 8.0) * 0.48 * strength
-		var position := center + axis * cursor + normal * side
-		_draw_stamp(position, angle, base_scale, seed, strength, 1.0)
+	if raw.size() < 3:
+		return raw
 
-		# Strong sections get a rear/side cluster, offset enough to merge silhouettes.
-		if strength > 0.58 and seed % 5 != 0:
-			var rear_seed := _hash(seed + 7919)
-			var rear_position := position - axis * (3.0 + float(rear_seed % 5)) + normal * (4.0 + float(rear_seed % 6))
-			_draw_stamp(rear_position, angle, base_scale * 0.62, rear_seed, strength, 0.68)
+	# Small moving-average pass preserves bends while removing bin-to-bin kinks.
+	var smoothed := PackedVector2Array()
+	smoothed.append(raw[0])
+	for index in range(1, raw.size() - 1):
+		smoothed.append((raw[index - 1] + raw[index] * 2.0 + raw[index + 1]) / 4.0)
+	smoothed.append(raw[raw.size() - 1])
+	return smoothed
 
-		# Irregular overlap: central anchors are denser; ends naturally taper out.
-		var gap := lerpf(17.0, 11.0, strength) + float(seed % 7) - 3.0
-		cursor += maxf(8.0, gap)
-		anchor += 1
+func _draw_backbone(spine: PackedVector2Array) -> void:
+	# A narrow, quiet ridge shadow makes separate range stamps read as one landform
+	# without the large translucent polygon patches from earlier iterations.
+	var outer_alpha: float = float([0.12, 0.10, 0.035][zoom_band])
+	var inner_alpha: float = float([0.10, 0.085, 0.03][zoom_band])
+	draw_polyline(spine, Color("#43382f", outer_alpha), 8.0 if zoom_band == 0 else 6.0, true)
+	draw_polyline(spine, Color("#79664e", inner_alpha), 3.0 if zoom_band == 0 else 2.2, true)
 
+func _draw_stamps(spine: PackedVector2Array, range_index: int) -> void:
+	var spacing: float = float([40.0, 44.0, 52.0][zoom_band])
+	var base_scale: float = float([0.36, 0.33, 0.29][zoom_band])
+	var opacity: float = float([0.96, 0.92, 0.78][zoom_band])
 
-func _draw_stamp(position: Vector2, angle: float, scale_amount: float, seed: int, strength: float, depth: float) -> void:
+	var anchor_index := 0
+	var distance_to_next := spacing * 0.45
+
+	for segment_index in range(spine.size() - 1):
+		var segment_start := spine[segment_index]
+		var segment_end := spine[segment_index + 1]
+		var direction := segment_end - segment_start
+		var segment_length := direction.length()
+		if segment_length <= 0.001:
+			continue
+
+		direction /= segment_length
+		var normal := Vector2(-direction.y, direction.x)
+		var travelled := 0.0
+
+		while travelled + distance_to_next <= segment_length:
+			travelled += distance_to_next
+			var position := segment_start + direction * travelled
+
+			var seed := _hash(range_index * 4099 + anchor_index * 131)
+			var jitter_along := float(posmod(seed, 9) - 4) * 0.65
+			var jitter_across := float(posmod(seed >> 6, 9) - 4) * 0.75
+			position += direction * jitter_along + normal * jitter_across
+
+			var scale_jitter := 0.90 + float(posmod(seed >> 10, 17)) / 100.0
+			_draw_stamp(position, base_scale * scale_jitter, seed, opacity)
+
+			anchor_index += 1
+			var gap_jitter := float(posmod(seed >> 16, 11) - 5) * 1.2
+			distance_to_next = maxf(30.0, spacing + gap_jitter)
+
+		distance_to_next -= maxf(0.0, segment_length - travelled)
+
+func _draw_stamp(position: Vector2, scale_amount: float, seed: int, opacity: float) -> void:
 	var texture: Texture2D = STAMPS[seed % STAMPS.size()]
 	var flip := -1.0 if ((seed >> 5) & 1) == 1 else 1.0
-	var rotation := deg_to_rad(float((seed >> 11) % 5) - 2.0)
-	var zoom_scale: float = float([1.08, 0.96, 0.80][zoom_band])
-	var opacity: float = float([0.98, 0.94, 0.76][zoom_band]) * depth
-	var size: Vector2 = texture.get_size() * scale_amount * zoom_scale
+	var rotation := deg_to_rad(float(posmod(seed >> 11, 5)) - 2.0)
+	var size: Vector2 = texture.get_size() * scale_amount
+
 	draw_set_transform(position, rotation, Vector2(flip, 1.0))
-	draw_texture_rect(texture, Rect2(-size * 0.5, size), false, Color(1.0, 1.0, 1.0, opacity * (0.86 + strength * 0.14)))
+	draw_texture_rect(
+		texture,
+		Rect2(-size * 0.5, size),
+		false,
+		Color(1.0, 1.0, 1.0, opacity)
+	)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
-
 func _hash(value: int) -> int:
-	# Stable integer mixing; independent of frame order and the global RNG.
 	var mixed := value * 1103515245 + 12345
 	mixed = mixed ^ (mixed >> 16)
 	return absi(mixed)
