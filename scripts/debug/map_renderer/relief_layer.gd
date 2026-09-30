@@ -119,9 +119,10 @@ func _draw_massif(geometry: Dictionary, range_index: int) -> void:
 		var half_width := width * (0.16 + taper * 0.84)
 		var spine := center + axis * lerpf(start, finish, t) + normal * wobble
 		upper.append(spine + normal * half_width)
-		lower.push_front(spine - normal * half_width)
+		lower.append(spine - normal * half_width)
 	var mass: PackedVector2Array = upper.duplicate()
-	mass.append_array(lower)
+	for lower_index in range(lower.size() - 1, -1, -1):
+		mass.append(lower[lower_index])
 	var mass_alpha: float = float([0.25, 0.29, 0.32][zoom_band])
 	draw_colored_polygon(mass, Color("#332b25", mass_alpha))
 	# A warmer inner wash makes separate stamps merge into a single landform.
