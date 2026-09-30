@@ -8,7 +8,12 @@ func load_fixture(path: String) -> Dictionary:
 	if file == null:
 		push_error("Could not open fixture: %s" % path)
 		return {}
-	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	var parser := JSON.new()
+	var error := parser.parse(file.get_as_text())
+	if error != OK:
+		push_error("Fixture JSON parse error in %s at line %d: %s" % [path, parser.get_error_line(), parser.get_error_message()])
+		return {}
+	var parsed: Variant = parser.data
 	if not parsed is Dictionary:
 		push_error("Fixture is not a JSON object: %s" % path)
 		return {}

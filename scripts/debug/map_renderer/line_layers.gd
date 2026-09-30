@@ -3,6 +3,11 @@ extends MapLayer
 
 enum Kind { RIVERS, ROUTES, BORDERS }
 @export var kind := Kind.RIVERS
+var border_texture: Texture2D
+
+func set_package(package: Dictionary) -> void:
+	border_texture = package.get("border_texture")
+	queue_redraw()
 
 func _draw() -> void:
 	if not model: return
@@ -17,10 +22,19 @@ func _draw_rivers() -> void:
 		var line := PackedVector2Array()
 		for raw_id in river.get("cells", []):
 			var cell_id := int(raw_id)
-			if model.valid_cell(cell_id): line.append(model.point(cell_id))
+			if not model.valid_cell(cell_id): continue
+			var point := model.point(cell_id)
+			var is_land := cell_id < model.heights.size() and float(model.heights[cell_id]) >= model.LAND_HEIGHT
+			if is_land:
+				line.append(point)
+			elif not line.is_empty():
+				# Stop at an approximate shoreline point instead of carrying the
+				# river through the centre of an offshore water cell.
+				line.append((line[line.size() - 1] + point) * 0.5)
+				break
 		if line.size() > 1:
-			draw_polyline(line, Color("#173f58"), clampf(float(river.get("width", 0.4)) * 2.2, 1.0, 3.2), false)
-			draw_polyline(line, Color("#68b6c8"), clampf(float(river.get("width", 0.4)) * 1.15, 0.7, 2.0), false)
+			draw_polyline(line, Color("#283a3b", 0.86), clampf(float(river.get("width", 0.4)) * 2.0, 1.0, 2.8), true)
+			draw_polyline(line, Color("#657a70", 0.72), clampf(float(river.get("width", 0.4)), 0.6, 1.5), true)
 
 func _draw_routes() -> void:
 	if zoom_band == 0: return
@@ -28,17 +42,38 @@ func _draw_routes() -> void:
 		if not route is Dictionary: continue
 		var line := PackedVector2Array()
 		for value in route.get("points", []):
-			if value is Array and value.size() >= 2: line.append(Vector2(float(value[0]), float(value[1])))
-		if line.size() > 1:
-			draw_polyline(line, Color("#46372b"), 2.2, false)
-			draw_polyline(line, Color("#c39a62"), 1.0, false)
+			if value is Array and value.size() >= 2:
+				line.append(Vector2(float(value[0]), float(value[1])))
+		if line.size() <= 1: continue
+
+		var group := str(route.get("group", "roads"))
+		if group == "searoutes":
+			# Sea lanes are navigation/trade routes, not roads. A faint gold
+			# guide with small navigation dots reads more like an atlas than
+			# chunky dashed road geometry and stays distinct from blue rivers.
+			draw_polyline(line, Color("#bda66f", 0.24), 0.9, true)
+			_draw_dotted_polyline(line, Color("#d1b878", 0.72), 1.35, 9.0)
+		else:
+			draw_polyline(line, Color("#44372b", 0.72), 1.6, true)
+			draw_polyline(line, Color("#a98d62", 0.5), 0.65, true)
+
+func _draw_dotted_polyline(line: PackedVector2Array, color: Color, radius: float, spacing: float) -> void:
+	var carry := 0.0
+	for index in range(line.size() - 1):
+		var start := line[index]
+		var finish := line[index + 1]
+		var delta := finish - start
+		var length := delta.length()
+		if length <= 0.001:
+			continue
+		var direction := delta / length
+		var distance := spacing - carry
+		while distance <= length:
+			draw_circle(start + direction * distance, radius, color)
+			distance += spacing
+		carry = fmod(maxf(0.0, length - distance + spacing), spacing)
 
 func _draw_borders() -> void:
-	for cell_id in model.points.size():
-		if cell_id >= model.states.size() or cell_id >= model.neighbors.size(): continue
-		var state_id := int(model.states[cell_id])
-		if state_id == 0: continue
-		for raw_neighbor in model.neighbors[cell_id]:
-			var neighbor := int(raw_neighbor)
-			if neighbor > cell_id and neighbor < model.states.size() and int(model.states[neighbor]) != state_id:
-				draw_dashed_line(model.point(cell_id), model.point(neighbor), Color("#382b2a"), 1.4, 5.0, false)
+	if not border_texture: return
+	var zoom_alpha := 1.0 if zoom_band == 0 else (0.82 if zoom_band == 1 else 0.28)
+	draw_texture_rect(border_texture, Rect2(Vector2.ZERO, Vector2(model.size)), false, Color(1.0, 1.0, 1.0, zoom_alpha))
