@@ -19,6 +19,21 @@ export async function generateCanonicalWorld(seed: string) {
   options.generation.template = "continents";
   await GenerationPipeline.run({});
 
+  // Azgaar's own relief generator already solves placement density and
+  // overlap ordering. Export a provider-neutral projection of that data
+  // instead of reconstructing mountain ranges from raw cell centres in Godot.
+  const relief = Relief.generate();
+  const reliefItems = relief.map(({icon, x, y, s}) => {
+    const match = icon.match(/^relief-(\w+?)-(\d+)/);
+    return {
+      kind: match?.[1] ?? "unknown",
+      variant: Number(match?.[2] ?? 1),
+      x,
+      y,
+      size: s
+    };
+  });
+
   const cells = pack.cells;
   const array = (value: ArrayLike<unknown> | undefined) => Array.from(value ?? []);
   const plain = (value: unknown): unknown => {
@@ -59,6 +74,7 @@ export async function generateCanonicalWorld(seed: string) {
     biomes: entities(pack.biomes),
     rivers: entities(pack.rivers),
     routes: entities(pack.routes),
-    markers: entities(pack.markers)
+    markers: entities(pack.markers),
+    presentation: {relief: entities(reliefItems)}
   };
 }
