@@ -9,6 +9,9 @@ const SEARCH_RADIUS := 2
 const WATER_DEEP := Color("#17282e")
 const WATER_SHALLOW := Color("#354b4c")
 const PARCHMENT := Color("#a79570")
+const POLITICAL_PARCHMENT := Color("#9b8767")
+const POLITICAL_ALPHA := 0.10
+const BORDER_INK := Color("#302722", 0.78)
 
 # The source biome colours are deliberately not used directly. They are useful
 # data, but their saturated categorical palette reads like a GIS overlay.
@@ -41,7 +44,15 @@ func bake(model: MapRenderModel) -> Dictionary:
 			ids[y * baked_size.x + x] = cell_id
 			image.set_pixel(x, y, _terrain_color(model, terrain_colors, cell_id, x, y))
 	_ink_coastline(image, ids, baked_size, model)
-	return {"texture": ImageTexture.create_from_image(image), "cell_ids": ids, "baked_size": baked_size, "pixel_scale": PIXEL_SCALE}
+	var political_images := _bake_political_images(model, ids, baked_size)
+	return {
+		"texture": ImageTexture.create_from_image(image),
+		"political_texture": ImageTexture.create_from_image(political_images["wash"]),
+		"border_texture": ImageTexture.create_from_image(political_images["borders"]),
+		"cell_ids": ids,
+		"baked_size": baked_size,
+		"pixel_scale": PIXEL_SCALE,
+	}
 
 func _ink_coastline(image: Image, ids: PackedInt32Array, baked_size: Vector2i, model: MapRenderModel) -> void:
 	var coast_ink := Color("#292c27", 0.88)
@@ -54,6 +65,40 @@ func _ink_coastline(image: Image, ids: PackedInt32Array, baked_size: Vector2i, m
 				if not _is_land(model, ids[other.y * baked_size.x + other.x]):
 					image.set_pixel(x, y, image.get_pixel(x, y).lerp(coast_ink, 0.72))
 					break
+
+func _bake_political_images(model: MapRenderModel, ids: PackedInt32Array, baked_size: Vector2i) -> Dictionary:
+	var wash := Image.create(baked_size.x, baked_size.y, false, Image.FORMAT_RGBA8)
+	var borders := Image.create(baked_size.x, baked_size.y, false, Image.FORMAT_RGBA8)
+	wash.fill(Color(0.0, 0.0, 0.0, 0.0))
+	borders.fill(Color(0.0, 0.0, 0.0, 0.0))
+	for y in baked_size.y:
+		for x in baked_size.x:
+			var index := y * baked_size.x + x
+			var state_id := _land_state(model, ids[index])
+			if state_id <= 0: continue
+			var record: Dictionary = model.state_records.get(state_id, {})
+			var state_color := Color(str(record.get("color", "#8f765c")))
+			state_color = state_color.lerp(POLITICAL_PARCHMENT, 0.68)
+			state_color.a = POLITICAL_ALPHA
+			wash.set_pixel(x, y, state_color)
+			if _is_state_edge(model, ids, baked_size, x, y, state_id):
+				borders.set_pixel(x, y, BORDER_INK)
+	return {"wash": wash, "borders": borders}
+
+func _land_state(model: MapRenderModel, cell_id: int) -> int:
+	if not model.valid_cell(cell_id): return 0
+	if cell_id >= model.states.size() or cell_id >= model.heights.size(): return 0
+	if float(model.heights[cell_id]) < model.LAND_HEIGHT: return 0
+	return int(model.states[cell_id])
+
+func _is_state_edge(model: MapRenderModel, ids: PackedInt32Array, baked_size: Vector2i, x: int, y: int, state_id: int) -> bool:
+	const OFFSETS: Array[Vector2i] = [Vector2i.RIGHT, Vector2i.DOWN]
+	for offset: Vector2i in OFFSETS:
+		var other: Vector2i = Vector2i(x, y) + offset
+		if other.x >= baked_size.x or other.y >= baked_size.y: continue
+		var other_state := _land_state(model, ids[other.y * baked_size.x + other.x])
+		if other_state > 0 and other_state != state_id: return true
+	return false
 
 func _is_land(model: MapRenderModel, cell_id: int) -> bool:
 	return model.valid_cell(cell_id) and cell_id < model.heights.size() and float(model.heights[cell_id]) >= model.LAND_HEIGHT
