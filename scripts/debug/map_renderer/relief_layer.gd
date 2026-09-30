@@ -137,12 +137,14 @@ func _draw_backbone(spine: PackedVector2Array) -> void:
 	draw_polyline(spine, Color("#79664e", inner_alpha), 3.0 if zoom_band == 0 else 2.2, true)
 
 func _draw_stamps(spine: PackedVector2Array, range_index: int) -> void:
-	var spacing: float = float([40.0, 44.0, 52.0][zoom_band])
-	var base_scale: float = float([0.36, 0.33, 0.29][zoom_band])
+	var spacing: float = float([30.0, 34.0, 40.0][zoom_band])
+	var base_scale: float = float([0.34, 0.31, 0.27][zoom_band])
 	var opacity: float = float([0.96, 0.92, 0.78][zoom_band])
 
 	var anchor_index := 0
 	var distance_to_next := spacing * 0.45
+	var previous_position := Vector2.ZERO
+	var has_previous := false
 
 	for segment_index in range(spine.size() - 1):
 		var segment_start := spine[segment_index]
@@ -161,16 +163,29 @@ func _draw_stamps(spine: PackedVector2Array, range_index: int) -> void:
 			var position := segment_start + direction * travelled
 
 			var seed := _hash(range_index * 4099 + anchor_index * 131)
-			var jitter_along := float(posmod(seed, 9) - 4) * 0.65
-			var jitter_across := float(posmod(seed >> 6, 9) - 4) * 0.75
+			var jitter_along := float(posmod(seed, 9) - 4) * 0.55
+			var jitter_across := float(posmod(seed >> 6, 9) - 4) * 0.60
 			position += direction * jitter_along + normal * jitter_across
 
 			var scale_jitter := 0.90 + float(posmod(seed >> 10, 17)) / 100.0
 			_draw_stamp(position, base_scale * scale_jitter, seed, opacity)
 
+			# Bridge the gap with a smaller secondary peak-group. This keeps
+			# long ranges visually connected without piling full-size stamps.
+			if has_previous:
+				var bridge_seed := _hash(seed + 7919)
+				var bridge := previous_position.lerp(position, 0.5)
+				var bridge_side := -1.0 if posmod(bridge_seed, 2) == 0 else 1.0
+				bridge += normal * bridge_side * (2.0 + float(posmod(bridge_seed >> 5, 5)))
+				var bridge_scale := base_scale * (0.48 + float(posmod(bridge_seed >> 9, 9)) / 100.0)
+				_draw_stamp(bridge, bridge_scale, bridge_seed, opacity * 0.72)
+
+			previous_position = position
+			has_previous = true
 			anchor_index += 1
-			var gap_jitter := float(posmod(seed >> 16, 11) - 5) * 1.2
-			distance_to_next = maxf(30.0, spacing + gap_jitter)
+
+			var gap_jitter := float(posmod(seed >> 16, 11) - 5) * 1.0
+			distance_to_next = maxf(24.0, spacing + gap_jitter)
 
 		distance_to_next -= maxf(0.0, segment_length - travelled)
 
