@@ -167,7 +167,7 @@ func _draw_stamps(geometry: Dictionary, range_index: int) -> void:
 func _draw_stamp(position: Vector2, angle: float, scale_amount: float, seed: int, strength: float, depth: float) -> void:
 	var texture: Texture2D = STAMPS[seed % STAMPS.size()]
 	var flip := -1.0 if ((seed >> 5) & 1) == 1 else 1.0
-	var rotation := angle + deg_to_rad(float((seed >> 11) % 9) - 4.0)
+	var rotation := deg_to_rad(float((seed >> 11) % 9) - 4.0)
 	var zoom_scale: float = float([1.12, 1.0, 0.82][zoom_band])
 	var opacity: float = float([0.98, 0.94, 0.76][zoom_band]) * depth
 	var size: Vector2 = texture.get_size() * scale_amount * zoom_scale
