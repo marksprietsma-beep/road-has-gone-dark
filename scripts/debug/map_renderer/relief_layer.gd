@@ -123,14 +123,14 @@ func _draw_massif(geometry: Dictionary, range_index: int) -> void:
 	var mass: PackedVector2Array = upper.duplicate()
 	for lower_index in range(lower.size() - 1, -1, -1):
 		mass.append(lower[lower_index])
-	var mass_alpha: float = float([0.25, 0.29, 0.32][zoom_band])
+	var mass_alpha: float = float([0.12, 0.15, 0.18][zoom_band])
 	draw_colored_polygon(mass, Color("#332b25", mass_alpha))
 	# A warmer inner wash makes separate stamps merge into a single landform.
 	var inner := PackedVector2Array()
 	for step in steps + 1:
 		var t := float(step) / float(steps)
 		inner.append(center + axis * lerpf(start, finish, t) + normal * sin(t * 11.0 + range_index) * width * 0.07)
-	draw_polyline(inner, Color("#665747", mass_alpha * 0.82), maxf(3.0, width * 0.42), true)
+	draw_polyline(inner, Color("#665747", mass_alpha * 0.58), maxf(2.0, width * 0.30), true)
 
 
 func _draw_stamps(geometry: Dictionary, range_index: int) -> void:
@@ -147,7 +147,7 @@ func _draw_stamps(geometry: Dictionary, range_index: int) -> void:
 		var seed := _hash(range_index * 4099 + anchor * 131)
 		var t := clampf((cursor - start) / maxf(length, 1.0), 0.0, 1.0)
 		var strength := 0.34 + 0.66 * sin(t * PI)
-		var base_scale := (0.72 + float(seed % 23) / 100.0) * (0.78 + strength * 0.34)
+		var base_scale := (0.46 + float(seed % 17) / 100.0) * (0.92 + strength * 0.18)
 		var side := (float((seed >> 7) % 17) - 8.0) * 0.48 * strength
 		var position := center + axis * cursor + normal * side
 		_draw_stamp(position, angle, base_scale, seed, strength, 1.0)
@@ -155,20 +155,20 @@ func _draw_stamps(geometry: Dictionary, range_index: int) -> void:
 		# Strong sections get a rear/side cluster, offset enough to merge silhouettes.
 		if strength > 0.58 and seed % 5 != 0:
 			var rear_seed := _hash(seed + 7919)
-			var rear_position := position - axis * (5.0 + float(rear_seed % 7)) + normal * (7.0 + float(rear_seed % 8))
-			_draw_stamp(rear_position, angle, base_scale * 0.72, rear_seed, strength, 0.72)
+			var rear_position := position - axis * (3.0 + float(rear_seed % 5)) + normal * (4.0 + float(rear_seed % 6))
+			_draw_stamp(rear_position, angle, base_scale * 0.62, rear_seed, strength, 0.68)
 
 		# Irregular overlap: central anchors are denser; ends naturally taper out.
-		var gap := lerpf(23.0, 14.0, strength) + float(seed % 9) - 4.0
-		cursor += maxf(10.0, gap)
+		var gap := lerpf(17.0, 11.0, strength) + float(seed % 7) - 3.0
+		cursor += maxf(8.0, gap)
 		anchor += 1
 
 
 func _draw_stamp(position: Vector2, angle: float, scale_amount: float, seed: int, strength: float, depth: float) -> void:
 	var texture: Texture2D = STAMPS[seed % STAMPS.size()]
 	var flip := -1.0 if ((seed >> 5) & 1) == 1 else 1.0
-	var rotation := deg_to_rad(float((seed >> 11) % 9) - 4.0)
-	var zoom_scale: float = float([1.12, 1.0, 0.82][zoom_band])
+	var rotation := deg_to_rad(float((seed >> 11) % 5) - 2.0)
+	var zoom_scale: float = float([1.08, 0.96, 0.80][zoom_band])
 	var opacity: float = float([0.98, 0.94, 0.76][zoom_band]) * depth
 	var size: Vector2 = texture.get_size() * scale_amount * zoom_scale
 	draw_set_transform(position, rotation, Vector2(flip, 1.0))
