@@ -1,6 +1,8 @@
 class_name PoliticalMapLayer
 extends MapLayer
 
+const POLITICAL_WASH_ALPHA := 0.20
+
 func _draw() -> void:
 	if not model: return
 	for cell_id in model.points.size():
@@ -8,5 +10,6 @@ func _draw() -> void:
 		var state_id := int(model.states[cell_id])
 		if state_id <= 0 or float(model.heights[cell_id]) < model.LAND_HEIGHT: continue
 		var record: Dictionary = model.state_records.get(state_id, {})
-		var color := Color(str(record.get("color", "#ffffff")), 0.18)
+		# Keep ownership legible without allowing the state palette to overtake terrain.
+		var color := Color(str(record.get("color", "#ffffff")), POLITICAL_WASH_ALPHA)
 		draw_circle(model.point(cell_id), 8.0, color)
