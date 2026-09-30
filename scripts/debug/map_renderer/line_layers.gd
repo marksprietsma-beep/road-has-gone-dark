@@ -19,8 +19,8 @@ func _draw_rivers() -> void:
 			var cell_id := int(raw_id)
 			if model.valid_cell(cell_id): line.append(model.point(cell_id))
 		if line.size() > 1:
-			draw_polyline(line, Color("#1e3135", 0.9), clampf(float(river.get("width", 0.4)) * 2.6, 1.1, 3.4), false)
-			draw_polyline(line, Color("#63888a", 0.9), clampf(float(river.get("width", 0.4)) * 1.1, 0.65, 1.8), false)
+			draw_polyline(line, Color("#283a3b", 0.86), clampf(float(river.get("width", 0.4)) * 2.0, 1.0, 2.8), true)
+			draw_polyline(line, Color("#657a70", 0.72), clampf(float(river.get("width", 0.4)), 0.6, 1.5), true)
 
 func _draw_routes() -> void:
 	if zoom_band == 0: return
@@ -30,8 +30,8 @@ func _draw_routes() -> void:
 		for value in route.get("points", []):
 			if value is Array and value.size() >= 2: line.append(Vector2(float(value[0]), float(value[1])))
 		if line.size() > 1:
-			draw_polyline(line, Color("#46372b"), 2.2, false)
-			draw_polyline(line, Color("#c39a62"), 1.0, false)
+			draw_polyline(line, Color("#44372b", 0.72), 1.6, true)
+			draw_polyline(line, Color("#a98d62", 0.5), 0.65, true)
 
 func _draw_borders() -> void:
 	for cell_id in model.points.size():
@@ -41,4 +41,4 @@ func _draw_borders() -> void:
 		for raw_neighbor in model.neighbors[cell_id]:
 			var neighbor := int(raw_neighbor)
 			if neighbor > cell_id and neighbor < model.states.size() and int(model.states[neighbor]) != state_id:
-				draw_dashed_line(model.point(cell_id), model.point(neighbor), Color("#382b2a"), 1.4, 5.0, false)
+				draw_dashed_line(model.point(cell_id), model.point(neighbor), Color("#40352e", 0.64), 1.0, 6.0, true)
