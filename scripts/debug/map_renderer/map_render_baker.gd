@@ -10,7 +10,7 @@ const WATER_DEEP := Color("#17282e")
 const WATER_SHALLOW := Color("#354b4c")
 const PARCHMENT := Color("#a79570")
 const POLITICAL_PARCHMENT := Color("#9b8767")
-const POLITICAL_ALPHA := 0.16
+const POLITICAL_ALPHA := 0.19
 const BORDER_INK := Color("#302722", 0.64)
 
 # The source biome colours are deliberately not used directly. They are useful
