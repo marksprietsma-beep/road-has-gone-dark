@@ -18,19 +18,19 @@ script = ExtResource("1")
 script = ExtResource("2")
 [node name="Wilderness" type="Node2D" parent="."]
 script = ExtResource("9")
-[node name="Relief" type="Node2D" parent="."]
-script = ExtResource("3")
 [node name="Political" type="Node2D" parent="."]
 script = ExtResource("4")
+[node name="Routes" type="Node2D" parent="."]
+script = ExtResource("5")
+kind = 1
+[node name="Relief" type="Node2D" parent="."]
+script = ExtResource("3")
 [node name="Rivers" type="Node2D" parent="."]
 script = ExtResource("5")
 kind = 0
 [node name="Borders" type="Node2D" parent="."]
 script = ExtResource("5")
 kind = 2
-[node name="Routes" type="Node2D" parent="."]
-script = ExtResource("5")
-kind = 1
 [node name="Settlements" type="Node2D" parent="."]
 script = ExtResource("6")
 [node name="Landmarks" type="Node2D" parent="."]
