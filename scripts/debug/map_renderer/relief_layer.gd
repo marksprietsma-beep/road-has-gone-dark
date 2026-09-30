@@ -19,14 +19,17 @@ func setup(value: MapRenderModel) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	# At close zoom the individual symbols compete with local roads and places.
-	if not model or zoom_band == 2: return
+	if not model: return
+	# Keep mountain ranges visible at every zoom. They are slightly larger at
+	# world scale so they still read as ranges, and slightly reduced up close
+	# so roads and settlements remain dominant without the relief disappearing.
+	var zoom_scale := 1.45 if zoom_band == 0 else (1.0 if zoom_band == 1 else 0.72)
 	for range_data: Dictionary in _ranges:
 		var direction: Vector2 = range_data["direction"]
 		var glyphs: Array = range_data["glyphs"]
 		for glyph_value: Variant in glyphs:
 			var glyph: Dictionary = glyph_value
-			_draw_mountain(glyph["position"], float(glyph["size"]), direction)
+			_draw_mountain(glyph["position"], float(glyph["size"]) * zoom_scale, direction)
 
 func _build_ranges() -> Array[Dictionary]:
 	var ranges: Array[Dictionary] = []
