@@ -158,9 +158,11 @@ func _terrain_color(model: MapRenderModel, terrain_colors: Array[Color], cell_id
 	if not model.valid_cell(cell_id): return WATER_DEEP
 	var height := float(model.heights[cell_id])
 	if height < model.LAND_HEIGHT:
-		var depth := clampf(height / model.LAND_HEIGHT, 0.0, 1.0)
-		var water := WATER_DEEP.lerp(WATER_SHALLOW, depth * depth)
-		return _apply_grain(water, _paper_grain(x, y) * 0.35)
+		# Keep the sea visually quiet. Using each nearest water cell's raw depth
+		# produced large Voronoi-like blotches around coastlines at world zoom.
+		# A restrained common ocean tone leaves coastlines and sea lanes readable.
+		var water := WATER_DEEP.lerp(WATER_SHALLOW, 0.38)
+		return _apply_grain(water, _paper_grain(x, y) * 0.22)
 	var base := terrain_colors[cell_id]
 	base = base.lerp(PARCHMENT, clampf((height - 28.0) / 190.0, 0.0, 0.18))
 	return _apply_grain(base, _paper_grain(x, y))
