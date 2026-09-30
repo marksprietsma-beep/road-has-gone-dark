@@ -13,8 +13,9 @@ func display_fixture(world: Dictionary) -> void:
 	model = MapRenderModel.new(world)
 	package = MapRenderBaker.new().bake(model)
 	for child in get_children():
-		if child is MapLayer: child.setup(model)
-	terrain.set_package(package)
+		if child is MapLayer:
+			child.setup(model)
+			if child.has_method("set_package"): child.set_package(package)
 
 func set_layer_enabled(layer_name: String, enabled: bool) -> void:
 	var layer := get_node_or_null(NodePath(layer_name))

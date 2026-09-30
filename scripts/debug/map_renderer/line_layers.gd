@@ -3,6 +3,11 @@ extends MapLayer
 
 enum Kind { RIVERS, ROUTES, BORDERS }
 @export var kind := Kind.RIVERS
+var border_texture: Texture2D
+
+func set_package(package: Dictionary) -> void:
+	border_texture = package.get("border_texture")
+	queue_redraw()
 
 func _draw() -> void:
 	if not model: return
@@ -34,11 +39,6 @@ func _draw_routes() -> void:
 			draw_polyline(line, Color("#c39a62"), 1.0, false)
 
 func _draw_borders() -> void:
-	for cell_id in model.points.size():
-		if cell_id >= model.states.size() or cell_id >= model.neighbors.size(): continue
-		var state_id := int(model.states[cell_id])
-		if state_id == 0: continue
-		for raw_neighbor in model.neighbors[cell_id]:
-			var neighbor := int(raw_neighbor)
-			if neighbor > cell_id and neighbor < model.states.size() and int(model.states[neighbor]) != state_id:
-				draw_dashed_line(model.point(cell_id), model.point(neighbor), Color("#382b2a"), 1.4, 5.0, false)
+	if not border_texture: return
+	var zoom_alpha := 1.0 if zoom_band == 0 else (0.82 if zoom_band == 1 else 0.28)
+	draw_texture_rect(border_texture, Rect2(Vector2.ZERO, Vector2(model.size)), false, Color(1.0, 1.0, 1.0, zoom_alpha))
