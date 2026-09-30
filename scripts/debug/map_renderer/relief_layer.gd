@@ -1,122 +1,124 @@
 class_name ReliefMapLayer
 extends MapLayer
 
-## Cartographic mountain chains derived from high-elevation clusters. Cell adjacency is
-## used only to discover ranges; none of the fixture's graph edges are drawn.
+## Mountain ranges are derived from high-cell clusters, but drawn as overlapping
+## cartographic stamps so the source cell graph is never visible.
 
 const MOUNTAIN_HEIGHT := 48.0
 const MIN_RANGE_CELLS := 3
-const GLYPH_SPACING := 15.0
-const RIDGE_INK := Color("#4a4034", 0.72)
-const RIDGE_SHADE := Color("#685a45", 0.34)
-const RIDGE_LIGHT := Color("#cbbd91", 0.42)
-
-var _ranges: Array[Dictionary] = []
-
-func setup(value: MapRenderModel) -> void:
-	model = value
-	_ranges = _build_ranges()
-	queue_redraw()
+const ANCHOR_SPACING := 11.0
+const INK := Color("#40382f")
+const REAR_INK := Color("#675c4b")
+const SHADE := Color("#756650")
+const REAR_SHADE := Color("#9a896c")
+const PAPER_LIGHT := Color("#cbbb91")
 
 func _draw() -> void:
-	if not model: return
-	# Keep mountain ranges visible at every zoom. They are slightly larger at
-	# world scale so they still read as ranges, and slightly reduced up close
-	# so roads and settlements remain dominant without the relief disappearing.
-	var zoom_scale := 1.45 if zoom_band == 0 else (1.0 if zoom_band == 1 else 0.72)
-	for range_data: Dictionary in _ranges:
-		var direction: Vector2 = range_data["direction"]
-		var glyphs: Array = range_data["glyphs"]
-		for glyph_value: Variant in glyphs:
-			var glyph: Dictionary = glyph_value
-			_draw_mountain(glyph["position"], float(glyph["size"]) * zoom_scale, direction)
+	if not model:
+		return
+	var zoom_scale: float = float([1.18, 1.0, 0.76][zoom_band])
+	var opacity: float = float([0.9, 0.82, 0.55][zoom_band])
+	for cluster in _mountain_clusters():
+		_draw_range_stamp(cluster, zoom_scale, opacity)
 
-func _build_ranges() -> Array[Dictionary]:
-	var ranges: Array[Dictionary] = []
-	var visited := {}
+func _mountain_clusters() -> Array:
+	var clusters: Array = []
+	var visited := PackedByteArray()
+	visited.resize(model.points.size())
 	for seed in model.points.size():
-		if visited.has(seed) or not _is_high(seed): continue
+		if visited[seed] or not _is_mountain(seed):
+			continue
 		var cluster: Array[int] = []
-		var pending: Array[int] = [seed]
-		visited[seed] = true
-		while not pending.is_empty():
-			var cell_id: int = pending.pop_back()
+		var frontier: Array[int] = [seed]
+		visited[seed] = 1
+		while not frontier.is_empty():
+			var cell_id: int = frontier.pop_back()
 			cluster.append(cell_id)
-			if cell_id >= model.neighbors.size(): continue
-			var adjacent: Variant = model.neighbors[cell_id]
-			if not adjacent is Array: continue
-			for neighbor_value: Variant in adjacent:
+			if cell_id >= model.neighbors.size():
+				continue
+			var adjacent: Array[int] = []
+			for neighbor_value in model.neighbors[cell_id]:
 				var neighbor := int(neighbor_value)
-				if not visited.has(neighbor) and _is_high(neighbor):
-					visited[neighbor] = true
-					pending.append(neighbor)
+				if _is_mountain(neighbor):
+					adjacent.append(neighbor)
+			for entry: Vector2i in adjacent:
+				var neighbor: int = entry.x
+				if not visited[neighbor]:
+					visited[neighbor] = 1
+					frontier.append(neighbor)
 		if cluster.size() >= MIN_RANGE_CELLS:
-			var range_data := _make_range(cluster)
-			if not range_data.is_empty(): ranges.append(range_data)
-	return ranges
+			clusters.append(cluster)
+	return clusters
 
-func _is_high(cell_id: int) -> bool:
-	return model.valid_cell(cell_id) and cell_id < model.heights.size() \
-		and float(model.heights[cell_id]) >= MOUNTAIN_HEIGHT
+func _is_mountain(cell_id: int) -> bool:
+	return model.valid_cell(cell_id) and cell_id < model.heights.size() and float(model.heights[cell_id]) >= MOUNTAIN_HEIGHT
 
-func _make_range(cluster: Array[int]) -> Dictionary:
+func _draw_range_stamp(cluster: Array, zoom_scale: float, opacity: float) -> void:
 	var center := Vector2.ZERO
-	for cell_id in cluster: center += model.point(cell_id)
+	for cell_value in cluster:
+		center += model.point(int(cell_value))
 	center /= float(cluster.size())
+	var axis := _dominant_axis(cluster, center)
+	var normal := Vector2(-axis.y, axis.x)
+	var ordered: Array[Vector3] = []
+	for cell_value in cluster:
+		var cell_id := int(cell_value)
+		var offset := model.point(cell_id) - center
+		ordered.append(Vector3(offset.dot(axis), float(cell_id), offset.dot(normal)))
+	ordered.sort_custom(func(a: Vector3, b: Vector3) -> bool: return a.x < b.x)
 
-	# Principal component analysis gives the range's broad direction without tracing
-	# jagged neighbor-to-neighbor links.
+	var last_projection := -INF
+	for sample: Vector3 in ordered:
+		var cell_id := int(sample.y)
+		var jitter := _signed_hash(cell_id, 17) * 2.2
+		if sample.x - last_projection < ANCHOR_SPACING + jitter:
+			continue
+		last_projection = sample.x
+		var anchor := model.point(cell_id) + normal * _signed_hash(cell_id, 29) * 2.5
+		var elevation := float(model.heights[cell_id])
+		var primary_size := clampf(4.2 + (elevation - MOUNTAIN_HEIGHT) * 0.09, 4.2, 8.2) * zoom_scale
+		_draw_peak_group(anchor, axis, normal, primary_size, cell_id, opacity)
+
+func _dominant_axis(cluster: Array, center: Vector2) -> Vector2:
 	var xx := 0.0
 	var xy := 0.0
 	var yy := 0.0
-	for cell_id in cluster:
-		var offset := model.point(cell_id) - center
+	for cell_value in cluster:
+		var offset := model.point(int(cell_value)) - center
 		xx += offset.x * offset.x
 		xy += offset.x * offset.y
 		yy += offset.y * offset.y
 	var angle := 0.5 * atan2(2.0 * xy, xx - yy)
-	var direction := Vector2(cos(angle), sin(angle)).normalized()
-	var normal := Vector2(-direction.y, direction.x)
+	return Vector2(cos(angle), sin(angle)).normalized()
 
-	var ordered: Array[Dictionary] = []
-	for cell_id in cluster:
-		var offset := model.point(cell_id) - center
-		ordered.append({
-			"cell_id": cell_id,
-			"along": offset.dot(direction),
-			"across": offset.dot(normal),
-		})
-	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return float(a["along"]) < float(b["along"]))
+func _draw_peak_group(anchor: Vector2, axis: Vector2, normal: Vector2, size: float, seed: int, opacity: float) -> void:
+	# Rear peaks are deliberately lighter and are painted first. Their offsets
+	# overlap the dominant foreground peak, forming one broad range silhouette.
+	var secondary_count := 1 + posmod(seed * 13, 3)
+	for index in secondary_count:
+		var side := -1.0 if index % 2 == 0 else 1.0
+		var along := side * size * (0.42 + 0.22 * float(index))
+		var behind := -normal * size * (0.20 + 0.08 * float(index))
+		var secondary_size := size * (0.56 + 0.09 * float(posmod(seed + index, 3)))
+		_draw_peak(anchor + axis * along + behind, secondary_size, opacity * 0.68, true)
+	_draw_peak(anchor, size, opacity, false)
 
-	var glyphs: Array[Dictionary] = []
-	var last_along := -INF
-	for candidate: Dictionary in ordered:
-		var along := float(candidate["along"])
-		if along - last_along < GLYPH_SPACING: continue
-		var cell_id := int(candidate["cell_id"])
-		var height := float(model.heights[cell_id])
-		# Pull symbols gently toward the principal ridge. This preserves the range's
-		# natural breadth while avoiding a dotted copy of cell-centre locations.
-		var across := float(candidate["across"]) * 0.38
-		var position := center + direction * along + normal * across
-		glyphs.append({"position": position, "size": clampf(3.2 + (height - MOUNTAIN_HEIGHT) * 0.075, 3.2, 7.2)})
-		last_along = along
-	return {"direction": direction, "glyphs": glyphs}
+	# Small side peaks bridge adjacent stamps and remove the dotted-glyph rhythm.
+	var bridge_size := size * 0.42
+	_draw_peak(anchor - axis * size * 0.72 + normal * size * 0.08, bridge_size, opacity * 0.78, false)
+	if posmod(seed * 7, 3) != 0:
+		_draw_peak(anchor + axis * size * 0.76 + normal * size * 0.12, bridge_size * 0.86, opacity * 0.72, false)
 
-func _draw_mountain(position: Vector2, size: float, range_direction: Vector2) -> void:
-	# A tiny deterministic drift keeps repeated peaks hand-drawn rather than stamped.
-	var lean := clampf(range_direction.x * 0.16, -0.14, 0.14)
-	var summit := position + Vector2(size * lean, -size)
-	var left := position + Vector2(-size * 0.82, size * 0.55)
-	var right := position + Vector2(size * 0.82, size * 0.55)
-	var silhouette := PackedVector2Array([left, summit, right, left])
-	draw_colored_polygon(PackedVector2Array([left, summit, right]), RIDGE_SHADE)
-	draw_polyline(silhouette, RIDGE_INK, 1.05, true)
-	var shoulder := summit.lerp(left, 0.48)
-	draw_polyline(PackedVector2Array([summit, shoulder, position + Vector2(-size * 0.08, size * 0.1)]), RIDGE_LIGHT, 0.75, true)
-	# A short overlapping foothill makes consecutive glyphs read as one mountain chain.
-	draw_polyline(PackedVector2Array([
-		position + Vector2(size * 0.18, size * 0.5),
-		position + Vector2(size * 0.5, -size * 0.06),
-		position + Vector2(size * 0.92, size * 0.5),
-	]), Color(RIDGE_INK, 0.52), 0.7, true)
+func _draw_peak(base: Vector2, size: float, opacity: float, rear: bool) -> void:
+	var summit := base - Vector2(0.0, size)
+	var left := base + Vector2(-size * 0.78, size * 0.42)
+	var right := base + Vector2(size * 0.82, size * 0.42)
+	var ink := REAR_INK if rear else INK
+	var shade := REAR_SHADE if rear else SHADE
+	draw_colored_polygon(PackedVector2Array([left, summit, right]), Color(shade, opacity * 0.72))
+	draw_polyline(PackedVector2Array([left, summit, right]), Color(ink, opacity), 1.05, true)
+	draw_line(summit, base + Vector2(-size * 0.12, size * 0.2), Color(PAPER_LIGHT, opacity * 0.72), 0.75, true)
+	draw_line(summit, base + Vector2(size * 0.28, size * 0.42), Color(ink, opacity * 0.8), 0.75, true)
+
+func _signed_hash(value: int, salt: int) -> float:
+	return float(posmod(value * 37 + salt * 101, 997)) / 498.0 - 1.0
