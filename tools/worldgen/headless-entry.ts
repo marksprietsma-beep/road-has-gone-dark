@@ -1,4 +1,6 @@
 /** Project-owned adapter around the pinned Azgaar generation model. */
+import {generateSlopeHachures, projectReliefIcons} from "./relief-presentation.mjs";
+
 export async function generateCanonicalWorld(seed: string) {
   await import("@/test-setup");
   await import("@/utils");
@@ -34,11 +36,28 @@ export async function generateCanonicalWorld(seed: string) {
     );
   };
   const entities = (items: unknown[]) => items.map(plain);
+  // Relief is a renderer concern and is intentionally generated after the
+  // canonical world pipeline. The headless adapter has no loaded map style,
+  // so provide only the upstream generator's presentation options.
+  (globalThis as any).styles = {
+    relief: {options: {set: "illustrated", size: 0.72, density: 0.3}}
+  };
+  const relief = Relief.generate();
+  const presentation = {
+    relief: projectReliefIcons(relief),
+    slopeHachures: generateSlopeHachures({
+      seed,
+      points: cells.p,
+      heights: cells.h,
+      neighbors: cells.c
+    })
+  };
 
   return {
     schemaVersion: 1,
     generator: {provider: "azgaar", version: "1.153.1", upstreamCommit: "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6"},
     seed,
+    presentation,
     map: {
       width: options.map.graph.width,
       height: options.map.graph.height,
