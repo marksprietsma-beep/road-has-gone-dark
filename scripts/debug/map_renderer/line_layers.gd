@@ -48,16 +48,30 @@ func _draw_routes() -> void:
 
 		var group := str(route.get("group", "roads"))
 		if group == "searoutes":
-			# Sea lanes are navigation/trade routes, not roads. Keep them
-			# visually separate from the brown land network.
-			_draw_dashed_polyline(line, Color("#c6ad78", 0.62), 1.25, 8.0)
+			# Sea lanes are navigation/trade routes, not roads. A faint gold
+			# guide with small navigation dots reads more like an atlas than
+			# chunky dashed road geometry and stays distinct from blue rivers.
+			draw_polyline(line, Color("#bda66f", 0.24), 0.9, true)
+			_draw_dotted_polyline(line, Color("#d1b878", 0.72), 1.35, 9.0)
 		else:
 			draw_polyline(line, Color("#44372b", 0.72), 1.6, true)
 			draw_polyline(line, Color("#a98d62", 0.5), 0.65, true)
 
-func _draw_dashed_polyline(line: PackedVector2Array, color: Color, width: float, dash_length: float) -> void:
+func _draw_dotted_polyline(line: PackedVector2Array, color: Color, radius: float, spacing: float) -> void:
+	var carry := 0.0
 	for index in range(line.size() - 1):
-		draw_dashed_line(line[index], line[index + 1], color, width, dash_length, true)
+		var start := line[index]
+		var finish := line[index + 1]
+		var delta := finish - start
+		var length := delta.length()
+		if length <= 0.001:
+			continue
+		var direction := delta / length
+		var distance := spacing - carry
+		while distance <= length:
+			draw_circle(start + direction * distance, radius, color)
+			distance += spacing
+		carry = fmod(maxf(0.0, length - distance + spacing), spacing)
 
 func _draw_borders() -> void:
 	if not border_texture: return
