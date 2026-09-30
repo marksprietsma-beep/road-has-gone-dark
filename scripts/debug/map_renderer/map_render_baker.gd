@@ -10,7 +10,7 @@ const WATER_DEEP := Color("#17282e")
 const WATER_SHALLOW := Color("#354b4c")
 const PARCHMENT := Color("#a79570")
 const POLITICAL_PARCHMENT := Color("#9b8767")
-const POLITICAL_ALPHA := 0.10
+const POLITICAL_ALPHA := 0.16
 const BORDER_INK := Color("#302722", 0.64)
 
 # The source biome colours are deliberately not used directly. They are useful
@@ -78,7 +78,7 @@ func _bake_political_images(model: MapRenderModel, ids: PackedInt32Array, baked_
 			if state_id <= 0: continue
 			var record: Dictionary = model.state_records.get(state_id, {})
 			var state_color := Color(str(record.get("color", "#8f765c")))
-			state_color = state_color.lerp(POLITICAL_PARCHMENT, 0.68)
+			state_color = state_color.lerp(POLITICAL_PARCHMENT, 0.50)
 			state_color.a = POLITICAL_ALPHA
 			wash.set_pixel(x, y, state_color)
 			if _is_state_edge(model, ids, baked_size, x, y, state_id):
