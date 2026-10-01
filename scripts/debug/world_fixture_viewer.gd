@@ -16,6 +16,7 @@ var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
 var _fixture_index := 0
+var _fit_zoom: float = 1.0
 
 func _ready() -> void:
 	if FileAccess.file_exists(SHOWCASE_FIXTURE_PATH):
@@ -65,11 +66,12 @@ func _zoom_about_cursor(value: float, cursor: Vector2) -> void:
 func _set_zoom(value: float) -> void:
 	var limited := clampf(value, MIN_ZOOM, MAX_ZOOM)
 	camera.zoom = Vector2(limited, limited)
-	map_renderer.set_zoom(limited)
+	map_renderer.set_zoom(limited / maxf(_fit_zoom, 0.001))
 
 func _fit_map() -> void:
 	var viewport_size := get_viewport().get_visible_rect().size
-	_set_zoom(minf(viewport_size.x / _world_size.x, viewport_size.y / _world_size.y) * 0.92)
+	_fit_zoom = clampf(minf(viewport_size.x / _world_size.x, viewport_size.y / _world_size.y) * 0.92, MIN_ZOOM, MAX_ZOOM)
+	_set_zoom(_fit_zoom)
 
 func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
 	map_renderer.set_layer_enabled(layer_name, enabled)
