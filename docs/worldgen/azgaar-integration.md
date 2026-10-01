@@ -12,13 +12,19 @@ tools/worldgen/generate-world.sh --seed example-seed --output /tmp/world.json
 tools/worldgen/verify-worldgen.sh game-11-determinism
 ```
 
-The verifier generates twice, compares canonical JSON byte-for-byte, prints its SHA-256 hash, checks the required top-level data sets, and for the acceptance seed verifies the result against the checked-in canonical fixture.
+The generator also writes a presentation-only `*.relief.svg` beside the JSON.
+It contains Azgaar's illustrated mountain and hill definitions plus the
+bottom-edge-sorted placements produced by Azgaar's relief generator. Keeping
+this sidecar outside schema version 1 prevents renderer data from becoming
+gameplay state.
+
+The verifier generates twice, compares both canonical JSON and relief SVG byte-for-byte, prints its SHA-256 hash, checks the required top-level data sets, and for the acceptance seed verifies the results against the checked-in fixtures.
 
 The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.json`, with metadata in `game-11-determinism.meta.json`. For Azgaar 1.153.1 at the pinned upstream commit, the acceptance seed `game-11-determinism` produces SHA-256 `2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5`. Generator upgrades require deliberate fixture/hash review.
 
 ## Godot fixture viewer
 
-The development-only scene `res://scenes/debug/world_fixture_viewer.tscn` loads that fixture through a schema boundary and presents a baked pixel-art terrain map with relief, political borders, routes, rivers, settlements, labels, and selection as independent visual layers. Run it without changing the game's main scene:
+The development-only scene `res://scenes/debug/world_fixture_viewer.tscn` loads that fixture through a schema boundary and presents a baked pixel-art terrain map with the generated relief sidecar, political borders, routes, rivers, settlements, labels, and selection as independent visual layers. Run it without changing the game's main scene:
 
 ```sh
 godot --path . scenes/debug/world_fixture_viewer.tscn
@@ -40,6 +46,6 @@ The intended production boundary is a packaged standalone helper or equivalent g
 
 ## Limitations and next step
 
-jsdom does not render or perform layout. The harness deliberately supports a built-in procedural template only; imported image heightmaps, map rendering, editor/UI state, and gameplay concepts such as races, factions, secrets, and dungeons are out of scope.
+jsdom does not render or perform layout. The harness deliberately supports a built-in procedural template only; imported image heightmaps, full-map rendering, editor/UI state, and gameplay concepts such as races, factions, secrets, and dungeons are out of scope. Relief is an exception: its self-contained SVG uses generated placements and bundled vector definitions without needing browser layout.
 
 The next integration step is a Godot `GameWorld` adapter that validates `schemaVersion`, converts canonical records into game-owned resources, assigns stable game identifiers, and reports unsupported schema versions. That adapter should consume only this JSON contract rather than vendored module shapes.

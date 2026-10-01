@@ -1,32 +1,24 @@
 class_name ReliefMapLayer
 extends MapLayer
 
-## Temporary fallback relief.
-## GAME-23 replaces this height-cell placeholder with deterministic relief
-## placement exported from Azgaar plus continuous hachure/slope treatment.
+## Displays the generated Azgaar SVG verbatim. No relief is reconstructed here.
+var _texture: Texture2D
 
 func _draw() -> void:
-	if not model or zoom_band == 0:
+	if _texture:
+		draw_texture_rect(_texture, Rect2(Vector2.ZERO, Vector2(model.size)), false)
+
+func load_sidecar(path: String) -> void:
+	_texture = null
+	if not FileAccess.file_exists(path):
+		push_warning("Relief sidecar unavailable: %s" % path)
+		queue_redraw()
 		return
-	for cell_id in model.points.size():
-		if cell_id >= model.heights.size():
-			continue
-		var height := float(model.heights[cell_id])
-		if height < 48.0 or posmod(cell_id * 37, 11) > 2:
-			continue
-		var p := model.point(cell_id)
-		var size := clampf((height - 38.0) / 22.0, 2.0, 6.0)
-		draw_colored_polygon(
-			PackedVector2Array([
-				p + Vector2(-size, 2),
-				p + Vector2(0, -size),
-				p + Vector2(size, 2),
-			]),
-			Color("#584d3d", 0.62)
-		)
-		draw_line(
-			p + Vector2(0, -size),
-			p + Vector2(size, 2),
-			Color("#d8c89b", 0.52),
-			0.8
-		)
+	var file := FileAccess.open(path, FileAccess.READ)
+	var image := Image.new()
+	var error := image.load_svg_from_string(file.get_as_text(), 4.0)
+	if error != OK:
+		push_warning("Could not decode relief sidecar %s (error %d)" % [path, error])
+	else:
+		_texture = ImageTexture.create_from_image(image)
+	queue_redraw()

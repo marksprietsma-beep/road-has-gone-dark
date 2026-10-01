@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import {createHash} from "node:crypto";
-import {mkdir, writeFile} from "node:fs/promises";
+import {mkdir, readFile, writeFile} from "node:fs/promises";
 import {createRequire} from "node:module";
 import {dirname, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 import FlatQueue from "./flatqueue-compat.mjs";
 import {stringifyCanonical} from "./canonical-json.mjs";
+import {buildReliefSidecar, defaultReliefPath} from "./relief-sidecar.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -18,11 +19,15 @@ const [{JSDOM}, {createServer}, aleaModule] = await Promise.all([
 ]);
 
 const args = process.argv.slice(2);
-const value = flag => args[args.indexOf(flag) + 1];
+const value = flag => {
+  const index = args.indexOf(flag);
+  return index < 0 ? undefined : args[index + 1];
+};
 const seed = value("--seed");
 const output = value("--output");
+const reliefOutput = value("--relief-output") || (output ? defaultReliefPath(output) : null);
 if (!seed || !output || args.includes("--help")) {
-  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json>");
+  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json> [--relief-output <file.svg>]");
   process.exit(args.includes("--help") ? 0 : 2);
 }
 
@@ -71,13 +76,24 @@ const server = await createServer({
 });
 try {
   const entry = await server.ssrLoadModule(resolve(here, "headless-entry.ts"));
-  const world = await entry.generateCanonicalWorld(seed);
+  const {world, relief} = await entry.generateWorldBundle(seed);
   // This project-owned export boundary must emit Unicode accepted by Godot's
   // JSON parser. Upstream provider data remains untouched.
   const bytes = stringifyCanonical(world);
   await mkdir(dirname(resolve(output)), {recursive: true});
   await writeFile(resolve(output), bytes);
   console.log(`${createHash("sha256").update(bytes).digest("hex")}  ${output}`);
+  const sourceHtml = await readFile(resolve(vendor, "src/index.html"), "utf8");
+  const sourceDocument = new JSDOM(sourceHtml).window.document;
+  const svg = buildReliefSidecar({
+    width: world.map.width,
+    height: world.map.height,
+    relief,
+    sourceDocument
+  });
+  await mkdir(dirname(resolve(reliefOutput)), {recursive: true});
+  await writeFile(resolve(reliefOutput), svg);
+  console.log(`${createHash("sha256").update(svg).digest("hex")}  ${reliefOutput}`);
 } finally {
   await server.close();
   dom.window.close();

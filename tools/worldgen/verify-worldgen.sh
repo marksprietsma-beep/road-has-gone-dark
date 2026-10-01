@@ -13,6 +13,7 @@ mkdir -p "$TMP"
 
 # Same seed + pinned provider must be byte-for-byte stable.
 cmp "$TMP/first.json" "$TMP/second.json"
+cmp "$TMP/first.relief.svg" "$TMP/second.relief.svg"
 ACTUAL="$(sha256sum "$TMP/first.json" | awk '{print $1}')"
 echo "$ACTUAL  $TMP/first.json"
 node "$ROOT/tests/worldgen/validate-fixture.mjs" "$TMP/first.json"
@@ -29,6 +30,9 @@ if [[ "$SEED" == "game-11-determinism" ]]; then
   }
 
   cmp "$TMP/first.json" "$FIXTURE"
+  RELIEF_FIXTURE="$FIXTURE_DIR/game-11-determinism.relief.svg"
+  [[ -f "$RELIEF_FIXTURE" ]] || { echo "missing relief fixture: $RELIEF_FIXTURE" >&2; exit 1; }
+  cmp "$TMP/first.relief.svg" "$RELIEF_FIXTURE"
   node "$ROOT/tests/worldgen/validate-fixture.mjs" "$FIXTURE"
   echo "fixture matches generated output: $FIXTURE"
 fi
