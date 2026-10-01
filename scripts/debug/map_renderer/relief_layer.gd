@@ -1,49 +1,52 @@
 class_name ReliefMapLayer
 extends MapLayer
 
-## Draws provider-neutral, generated presentation data. Rivers, routes, borders,
-## settlements and labels are later scene layers so these subdued marks cannot
-## obscure map information.
+const ReliefRules := preload("res://scripts/debug/map_renderer/relief_presentation.gd")
+const SYMBOL_ROOT := "res://assets/map/relief/"
+const RIDGE_INK := Color("#40382f", 0.30)
+const RIDGE_SHADOW := Color("#786d59", 0.18)
+
+var _textures := {}
+
+func _ready() -> void:
+	for kind in ["mount", "mountSnow", "hill"]:
+		for variant in range(1, 4):
+			var key := "%s_%d" % [kind, variant]
+			_textures[key] = load(SYMBOL_ROOT + key + ".svg")
 
 func _draw() -> void:
-	if not model or zoom_band == 0:
+	if not model:
 		return
-	_draw_hachures()
-	for icon in model.relief:
-		if icon is Dictionary:
-			_draw_icon(icon)
+	_draw_ridges(ReliefRules.ridge_segments(model.relief))
+	# Fitted view intentionally has no individual stamps: ridge structure alone
+	# carries the mountain geography without turning clusters into black knots.
+	for icon in ReliefRules.visible_icons(model.relief, zoom_band):
+		_draw_icon(icon)
 
-func _draw_hachures() -> void:
-	for stroke in model.slope_hachures:
-		if not stroke is Dictionary: continue
-		var start := Vector2(float(stroke.get("x", 0)), float(stroke.get("y", 0)))
-		var delta := Vector2(float(stroke.get("dx", 0)), float(stroke.get("dy", 0)))
-		var strength := float(stroke.get("strength", 0.4))
-		draw_line(start - delta * 0.5, start + delta * 0.5, Color("#493f32", 0.12 + strength * 0.16), 0.65, true)
+func _draw_ridges(segments: Array) -> void:
+	for segment in segments:
+		var start: Vector2 = segment[0]
+		var finish: Vector2 = segment[1]
+		var direction := finish - start
+		if direction.length_squared() < 1.0:
+			continue
+		var normal := direction.normalized().orthogonal()
+		draw_line(start, finish, RIDGE_INK, 0.85, true)
+		# Two quiet, broken-looking flank strokes imply mass without per-icon piles.
+		for side in [-1.0, 1.0]:
+			var offset := normal * 2.2 * side
+			draw_line(start.lerp(finish, 0.16) + offset, start.lerp(finish, 0.72) + offset, RIDGE_SHADOW, 0.65, true)
 
 func _draw_icon(icon: Dictionary) -> void:
-	var kind := str(icon.get("kind", "hill"))
-	# Vegetation remains deliberately quieter than terrain emphasis.
-	if kind not in ["mount", "mountSnow", "hill"]:
-		_draw_vegetation(icon, kind)
+	var kind := str(icon.get("kind", "mount"))
+	var variant := clampi(int(icon.get("variant", 1)), 1, 3)
+	var texture: Texture2D = _textures.get("%s_%d" % [kind, variant])
+	if not texture:
 		return
-	var center := Vector2(float(icon.get("x", 0)), float(icon.get("y", 0)))
-	var size := clampf(float(icon.get("size", 4)), 3.0, 15.0)
-	var half := size * 0.5
-	var peak := center + Vector2(0, -half * 0.72)
-	var left := center + Vector2(-half * 0.72, half * 0.55)
-	var right := center + Vector2(half * 0.72, half * 0.55)
-	var ink := Color("#40382e", 0.82 if kind != "hill" else 0.64)
-	draw_colored_polygon(PackedVector2Array([left, peak, right]), Color("#746851", 0.38))
-	draw_polyline(PackedVector2Array([left, peak, right]), ink, 0.9, true)
-	draw_line(peak, center + Vector2(half * 0.17, half * 0.48), Color("#d4c59b", 0.48), 0.7, true)
-	if kind == "mountSnow":
-		draw_polyline(PackedVector2Array([peak + Vector2(-half * 0.2, half * 0.22), peak + Vector2.ZERO, peak + Vector2(half * 0.22, half * 0.24)]), Color("#e3d9ba", 0.8), 0.85, true)
-
-func _draw_vegetation(icon: Dictionary, kind: String) -> void:
-	var center := Vector2(float(icon.get("x", 0)), float(icon.get("y", 0)))
-	var size := clampf(float(icon.get("size", 3)), 2.0, 8.0)
-	var color := Color("#394638", 0.42)
-	if kind in ["dune", "grass"]: color = Color("#746646", 0.34)
-	draw_line(center, center + Vector2(0, size * 0.35), color, 0.7, true)
-	draw_circle(center - Vector2(0, size * 0.12), size * 0.25, color)
+	var size := clampf(float(icon.get("size", 12.0)), 8.0, 26.0)
+	if kind == "hill":
+		size *= 0.72
+	var ratio := float(texture.get_height()) / float(texture.get_width())
+	var dimensions := Vector2(size, size * ratio)
+	var anchor := Vector2(float(icon.get("x", 0.0)), float(icon.get("y", 0.0)))
+	draw_texture_rect(texture, Rect2(anchor - Vector2(dimensions.x * 0.5, dimensions.y), dimensions), false)
