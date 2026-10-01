@@ -22,7 +22,9 @@ func set_layer_enabled(layer_name: String, enabled: bool) -> void:
 	if layer: layer.visible = enabled
 
 func set_zoom(value: float) -> void:
-	var band := 0 if value < 0.7 else (1 if value < 1.65 else 2)
+	# value is relative to the current fixture's fit-to-map zoom:
+	# 1.0 = fitted overview, ~1.4 = medium detail, >=2.5 = close detail.
+	var band := 0 if value < 1.35 else (1 if value < 2.5 else 2)
 	for child in get_children():
 		if child is MapLayer: child.set_zoom_band(band)
 
