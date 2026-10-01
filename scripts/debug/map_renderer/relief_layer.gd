@@ -16,7 +16,7 @@ func load_sidecar(path: String) -> void:
 		return
 	var file := FileAccess.open(path, FileAccess.READ)
 	var image := Image.new()
-	var error := image.load_svg_from_string(file.get_as_text(), 2.0)
+	var error := image.load_svg_from_string(file.get_as_text(), 4.0)
 	if error != OK:
 		push_warning("Could not decode relief sidecar %s (error %d)" % [path, error])
 	else:
