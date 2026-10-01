@@ -15,7 +15,7 @@ function symbolGeometry(symbol) {
 }
 
 /**
- * Build a presentation-only SVG from Azgaar's illustrated mountain/hill assets.
+ * Build a presentation-only SVG from Azgaar's illustrated relief and vegetation assets.
  *
  * The source renderer uses <symbol>/<use>. Godot's ThorVG-based SVG loader has
  * incomplete support for that indirection, so the sidecar expands each placed
