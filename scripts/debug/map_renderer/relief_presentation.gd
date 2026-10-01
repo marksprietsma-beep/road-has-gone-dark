@@ -13,38 +13,56 @@ static func stable_key(icon: Dictionary) -> int:
 	return absi((x * 73856093) ^ (y * 19349663) ^ (variant * 83492791))
 
 static func visible_icons(relief: Array, zoom_band: int) -> Array:
-	if zoom_band <= 0:
-		return []
 	var mountains: Array = []
 	for value in relief:
 		if value is Dictionary and StringName(value.get("kind", "")) in MOUNTAIN_KINDS:
 			mountains.append(value)
+
 	var result: Array = []
 	var occupied: Array[Vector2] = []
-	var modulus := 4 if zoom_band == 1 else 5
-	var keep_below := 1 if zoom_band == 1 else 3
-	var separation := 24.0 if zoom_band == 1 else 14.0
+
+	var modulus: int
+	var keep_below: int
+	var separation: float
+	if zoom_band <= 0:
+		modulus = 12
+		keep_below = 1
+		separation = 56.0
+	elif zoom_band == 1:
+		modulus = 4
+		keep_below = 1
+		separation = 24.0
+	else:
+		modulus = 5
+		keep_below = 3
+		separation = 14.0
+
 	for value in relief:
 		if not value is Dictionary:
 			continue
 		var icon: Dictionary = value
 		var kind := StringName(icon.get("kind", ""))
+
 		if kind in MOUNTAIN_KINDS:
 			if stable_key(icon) % modulus >= keep_below:
 				continue
 		elif kind == &"hill":
-			# Hills are accents, not a repeated fringe around a mountain belt.
+			# Hills do not appear at fitted overview and are sparse elsewhere.
+			if zoom_band <= 0:
+				continue
 			if stable_key(icon) % (10 if zoom_band == 1 else 5) != 0:
 				continue
 			if _near_mountain(icon, mountains, 34.0):
 				continue
 		else:
 			continue
+
 		var point := _point(icon)
 		if _near_any(point, occupied, separation):
 			continue
 		occupied.append(point)
 		result.append(icon)
+
 	return result
 
 static func ridge_segments(relief: Array, maximum_distance := 76.0) -> Array:
@@ -53,6 +71,7 @@ static func ridge_segments(relief: Array, maximum_distance := 76.0) -> Array:
 		if value is Dictionary and StringName(value.get("kind", "")) in MOUNTAIN_KINDS:
 			mountains.append(value)
 	mountains.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return stable_key(a) < stable_key(b))
+
 	var segments: Array = []
 	var used_edges := {}
 	for icon in mountains:
