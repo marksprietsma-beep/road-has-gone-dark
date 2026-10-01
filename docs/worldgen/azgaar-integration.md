@@ -12,9 +12,9 @@ tools/worldgen/generate-world.sh --seed example-seed --output /tmp/world.json
 tools/worldgen/verify-worldgen.sh game-11-determinism
 ```
 
-The verifier generates twice, compares canonical JSON byte-for-byte, prints its SHA-256 hash, checks the required top-level data sets, and for the acceptance seed verifies the result against the checked-in canonical fixture.
+The canonical export boundary sorts object keys and sanitizes malformed UTF-16: valid Unicode (including surrogate pairs) is preserved, while unpaired surrogate code units are deterministically replaced with U+FFFD. The verifier generates twice, compares canonical JSON byte-for-byte, prints its SHA-256 hash, checks the required top-level data sets and Unicode validity, and for the acceptance seed verifies the result against the checked-in canonical fixture.
 
-The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.json`, with metadata in `game-11-determinism.meta.json`. For Azgaar 1.153.1 at the pinned upstream commit, the acceptance seed `game-11-determinism` produces SHA-256 `31ea2e4418bd2841ac66f66e8bf47da462629f5be651e87c63fd5957cff8e5f9`. Generator upgrades require deliberate fixture/hash review.
+The verified regression fixture is `tests/worldgen/fixtures/game-11-determinism.json`, with metadata in `game-11-determinism.meta.json`. For Azgaar 1.153.1 at the pinned upstream commit, the acceptance seed `game-11-determinism` produces SHA-256 `2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5`. Generator upgrades require deliberate fixture/hash review.
 
 ## Godot fixture viewer
 
