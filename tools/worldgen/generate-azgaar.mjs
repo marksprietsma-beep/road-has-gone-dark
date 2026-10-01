@@ -5,6 +5,7 @@ import {createRequire} from "node:module";
 import {dirname, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 import FlatQueue from "./flatqueue-compat.mjs";
+import {stringifyCanonicalJson} from "./canonical-json.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -71,12 +72,7 @@ const server = await createServer({
 try {
   const entry = await server.ssrLoadModule(resolve(here, "headless-entry.ts"));
   const world = await entry.generateCanonicalWorld(seed);
-  const canonicalize = value => Array.isArray(value)
-    ? value.map(canonicalize)
-    : value && typeof value === "object"
-      ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonicalize(value[key])]))
-      : value;
-  const bytes = `${JSON.stringify(canonicalize(world), null, 2)}\n`;
+  const bytes = stringifyCanonicalJson(world);
   await mkdir(dirname(resolve(output)), {recursive: true});
   await writeFile(resolve(output), bytes);
   console.log(`${createHash("sha256").update(bytes).digest("hex")}  ${output}`);
