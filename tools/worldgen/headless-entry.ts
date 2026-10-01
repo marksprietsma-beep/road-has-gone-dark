@@ -7,6 +7,7 @@ export async function generateCanonicalWorld(seed: string) {
   await import("@/data/precreated-heightmaps");
   await import("@/components/globals");
   await import("@/generators");
+  await import("@/generators/styles");
 
   const {setSeed} = await import("@/components/seed");
   const {GenerationPipeline} = await import("@/generators/generation-pipeline");
@@ -18,6 +19,12 @@ export async function generateCanonicalWorld(seed: string) {
   // A source template avoids the optional image/canvas heightmap path.
   options.generation.template = "continents";
   await GenerationPipeline.run({});
+
+  // Relief generation belongs after the canonical provider pipeline. It uses
+  // the seeded provider PRNG and established polygon/Poisson placement.
+  const providerRelief = Relief.generate();
+  const {projectRelief, createSlopeHachures} = await import("./relief-presentation.mjs");
+  const relief = projectRelief(providerRelief);
 
   const cells = pack.cells;
   const array = (value: ArrayLike<unknown> | undefined) => Array.from(value ?? []);
@@ -59,6 +66,10 @@ export async function generateCanonicalWorld(seed: string) {
     biomes: entities(pack.biomes),
     rivers: entities(pack.rivers),
     routes: entities(pack.routes),
-    markers: entities(pack.markers)
+    markers: entities(pack.markers),
+    presentation: {
+      relief,
+      slopeHachures: createSlopeHachures(relief)
+    }
   };
 }
