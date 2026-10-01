@@ -1,11 +1,12 @@
 /** Project-owned adapter around the pinned Azgaar generation model. */
-export async function generateCanonicalWorld(seed: string) {
+export async function generateWorldBundle(seed: string) {
   await import("@/test-setup");
   await import("@/utils");
   await import("@/data/supporters");
   await import("@/data/heightmap-templates");
   await import("@/data/precreated-heightmaps");
   await import("@/components/globals");
+  await import("@/generators/styles");
   await import("@/generators");
 
   const {setSeed} = await import("@/components/seed");
@@ -18,6 +19,11 @@ export async function generateCanonicalWorld(seed: string) {
   // A source template avoids the optional image/canvas heightmap path.
   options.generation.template = "continents";
   await GenerationPipeline.run({});
+
+  // Relief is presentation data. Generate it after the canonical provider
+  // pipeline and use Azgaar's illustrated set without adding it to GameWorld.
+  styles.relief.options.set = "illustrated";
+  const relief = Relief.generate();
 
   const cells = pack.cells;
   const array = (value: ArrayLike<unknown> | undefined) => Array.from(value ?? []);
@@ -35,7 +41,7 @@ export async function generateCanonicalWorld(seed: string) {
   };
   const entities = (items: unknown[]) => items.map(plain);
 
-  return {
+  const world = {
     schemaVersion: 1,
     generator: {provider: "azgaar", version: "1.153.1", upstreamCommit: "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6"},
     seed,
@@ -61,4 +67,9 @@ export async function generateCanonicalWorld(seed: string) {
     routes: entities(pack.routes),
     markers: entities(pack.markers)
   };
+  return {world, relief};
+}
+
+export async function generateCanonicalWorld(seed: string) {
+  return (await generateWorldBundle(seed)).world;
 }

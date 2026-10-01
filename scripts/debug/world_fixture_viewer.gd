@@ -34,7 +34,7 @@ func _load_fixture(index: int) -> void:
 		return
 	var map_data: Dictionary = world.get("map", {})
 	_world_size = Vector2(float(map_data.get("width", 1280)), float(map_data.get("height", 800)))
-	map_renderer.display_fixture(world)
+	map_renderer.display_fixture(world, path.trim_suffix(".json") + ".relief.svg")
 	selection_label.text = "Click a map cell to inspect it"
 	info_label.text = _build_info(world)
 	camera.position = _world_size * 0.5
