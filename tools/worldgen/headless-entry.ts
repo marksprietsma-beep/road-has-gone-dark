@@ -24,7 +24,7 @@ export async function generateWorldBundle(seed: string) {
   // pipeline and use Azgaar's illustrated set without adding it to GameWorld.
   styles.relief.options.set = "illustrated";
   styles.relief.options.size = 0.85;
-  styles.relief.options.density = 0.33;
+  styles.relief.options.density = 0.36;
   const relief = Relief.generate();
 
   const cells = pack.cells;
