@@ -23,6 +23,8 @@ export async function generateWorldBundle(seed: string) {
   // Relief is presentation data. Generate it after the canonical provider
   // pipeline and use Azgaar's illustrated set without adding it to GameWorld.
   styles.relief.options.set = "illustrated";
+  styles.relief.options.size = 0.75;
+  styles.relief.options.density = 0.3;
   const relief = Relief.generate();
 
   const cells = pack.cells;
