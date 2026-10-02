@@ -18,6 +18,8 @@ const ZOOM_STEP := 1.2
 @onready var inspector: PanelContainer = $DebugOverlay/LandmarkInspector
 @onready var inspector_name: Label = $DebugOverlay/LandmarkInspector/Content/HeadingRow/Title
 @onready var inspector_details: RichTextLabel = $DebugOverlay/LandmarkInspector/Content/Details
+@onready var dev_layer_options: VBoxContainer = $DebugOverlay/Layers/Options
+@onready var dev_layer_toggle: Button = $DebugOverlay/Layers/Toggle
 var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
@@ -30,7 +32,13 @@ func _ready() -> void:
 		_fixture_paths.append(LANDMARK_STRESS_PATH)
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	map_renderer.landmark_selected.connect(_show_landmark)
+	map_renderer.settlement_selected.connect(_show_settlement)
 	$DebugOverlay/LandmarkInspector/Content/HeadingRow/Dismiss.pressed.connect(func() -> void: inspector.hide())
+	dev_layer_toggle.pressed.connect(_toggle_dev_layers)
+	map_key.expanded_changed.connect(func(open: bool) -> void:
+		if open:
+			inspector.hide()
+	)
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
 	map_key.set_icon_provider(map_renderer.icon_provider)
@@ -89,17 +97,38 @@ func _fit_map() -> void:
 
 func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
 	map_renderer.set_layer_enabled(layer_name, enabled)
-	if layer_name == "Landmarks" and not enabled:
+	if layer_name in ["Landmarks", "Settlements"] and not enabled:
 		inspector.hide()
 
+func _toggle_dev_layers() -> void:
+	dev_layer_options.visible = not dev_layer_options.visible
+	dev_layer_toggle.text = "DEV LAYERS  ▾" if dev_layer_options.visible else "DEV LAYERS  ▸"
+
+func _present_inspection(title: String, details: String) -> void:
+	if details.is_empty():
+		inspector.hide()
+		return
+	# The glossary and inspector share the left column, never overlap.
+	map_key.collapse()
+	inspector_name.text = MapWorldText.plain(title, 90)
+	inspector_details.text = details
+	inspector_details.scroll_to_line(0)
+	inspector.show()
+
 func _show_landmark(marker: Dictionary, details: String) -> void:
-	if marker.is_empty() or details.is_empty():
+	if marker.is_empty():
 		inspector.hide()
 		return
 	var title := str(marker.get("name", "")).strip_edges()
-	inspector_name.text = title if not title.is_empty() else str(marker.get("type", "Landmark")).replace("-", " ").capitalize()
-	inspector_details.text = details
-	inspector.show()
+	if title.is_empty():
+		title = str(marker.get("type", "Landmark")).replace("-", " ").capitalize()
+	_present_inspection(title, details)
+
+func _show_settlement(settlement: Dictionary, details: String) -> void:
+	if settlement.is_empty():
+		inspector.hide()
+		return
+	_present_inspection(str(settlement.get("name", "Settlement")), details)
 
 func _build_info(world: Dictionary) -> String:
 	var fixture_hint := "\nN: next fixture" if _fixture_paths.size() > 1 else ""
