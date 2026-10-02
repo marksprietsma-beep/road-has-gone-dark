@@ -1,4 +1,5 @@
-const RELIEF_ID = /^relief-(?:mount|mountSnow|hill)-\d+-illustrated$/;
+export const RELIEF_ID = /^relief-(?:mount|mountSnow|hill)-\d+-illustrated$/;
+export const VEGETATION_ID = /^relief-(?:deciduous|conifer|coniferSnow|acacia|palm|swamp|cactus|deadTree|grass|dune)-\d+-illustrated$/;
 
 const escapeAttribute = value =>
   String(value).replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
@@ -22,8 +23,8 @@ function symbolGeometry(symbol) {
  * symbol into direct Azgaar path geometry while preserving the provider's
  * generated order, position, size and artwork.
  */
-export function buildReliefSidecar({width, height, relief, sourceDocument}) {
-  const icons = relief.filter(({icon}) => RELIEF_ID.test(icon));
+function buildSidecar({width, height, relief, sourceDocument, iconFilter}) {
+  const icons = relief.filter(({icon}) => iconFilter.test(icon));
   const geometry = new Map();
 
   const placed = icons.map(({icon, x, y, s}) => {
@@ -59,6 +60,18 @@ export function buildReliefSidecar({width, height, relief, sourceDocument}) {
   ].join("\n");
 }
 
+export function buildReliefSidecar(options) {
+  return buildSidecar({...options, iconFilter: RELIEF_ID});
+}
+
+export function buildVegetationSidecar(options) {
+  return buildSidecar({...options, iconFilter: VEGETATION_ID});
+}
+
 export function defaultReliefPath(worldPath) {
   return worldPath.replace(/\.json$/i, "") + ".relief.svg";
+}
+
+export function defaultVegetationPath(worldPath) {
+  return worldPath.replace(/\.json$/i, "") + ".vegetation.svg";
 }

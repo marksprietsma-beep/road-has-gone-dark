@@ -14,6 +14,19 @@ mkdir -p "$TMP"
 # Same seed + pinned provider must be byte-for-byte stable.
 cmp "$TMP/first.json" "$TMP/second.json"
 cmp "$TMP/first.relief.svg" "$TMP/second.relief.svg"
+cmp "$TMP/first.vegetation.svg" "$TMP/second.vegetation.svg"
+node --input-type=module - "$TMP/first.relief.svg" "$TMP/first.vegetation.svg" <<'NODE'
+import {readFile} from "node:fs/promises";
+
+const [, , reliefPath, vegetationPath] = process.argv;
+const ids = svg => [...svg.matchAll(/data-icon="([^"]+)"/g)].map(match => match[1]);
+const reliefIds = ids(await readFile(reliefPath, "utf8"));
+const vegetationIds = ids(await readFile(vegetationPath, "utf8"));
+const mountain = /^relief-(?:mount|mountSnow|hill)-\d+-illustrated$/;
+const vegetation = /^relief-(?:deciduous|conifer|coniferSnow|acacia|palm|swamp|cactus|deadTree|grass|dune)-\d+-illustrated$/;
+if (!reliefIds.length || reliefIds.some(id => !mountain.test(id))) throw new Error("relief sidecar contains a non-mountain icon");
+if (!vegetationIds.length || vegetationIds.some(id => !vegetation.test(id))) throw new Error("vegetation sidecar contains a non-vegetation icon");
+NODE
 ACTUAL="$(sha256sum "$TMP/first.json" | awk '{print $1}')"
 echo "$ACTUAL  $TMP/first.json"
 node "$ROOT/tests/worldgen/validate-fixture.mjs" "$TMP/first.json"
