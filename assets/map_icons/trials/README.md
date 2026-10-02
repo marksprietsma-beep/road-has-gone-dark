@@ -8,6 +8,16 @@ After testing the atlas viewer, Mark selected **Game-icons by Delapouite (CC BY 
 
 Only `Game-icons` and a developer-only `Procedural` control are active in the viewer. Azgaar macrodata, maps, hidden sites, terrain, mountains, vegetation, roads and zoom rules remain unchanged. We do **not** silently borrow glyphs from other packs.
 
+## Azgaar macro landmarks — GAME-31 (visual review pending)
+
+The original atlas imported only 4 of Azgaar's 36 built-in marker categories, leaving custom volcano cones, crossed-line battlefields and generic POI dots. GAME-31 adds verified Game-icons SVGs for the other **32 official marker classes**, plus a neutral authored `unidentified` pin for unknown/custom future categories (with a warning). All existing placements, zoom-band visibility rules and objective data are preserved. No new POIs or hidden information are created.
+
+- Existing roles reused: `ruins`, `caves`, `lighthouses`, `mines` (the original approved four).
+- All **36 exact `type` names** come from pinned `vendor/azgaar/src/generators/markers-generator.ts`, not a speculative taxonomy. Asset coverage is checked by `node tools/worldgen/verify-landmark-icons.mjs`.
+- New SVGs in `game-icons/<type>.svg` come from [Game-icons](https://github.com/game-icons/icons), pinned source revision `82d948812bfe3f269ef8f731dcdb07b08160edc4`, credited by individual artist in [landmark_sources.json](game-icons/landmark_sources.json). **Delapouite and Lorc, CC BY 3.0**: both artists must be credited if the game is distributed. Only original shapes are used, with the same dark parchment-ink adaptation as our earlier assets.
+- The viewer no longer includes the old style-comparison panel. Confirm volcanoes, battlefields, magical sites, mines, coastal POIs and rare cultural sites visually on both world seeds, at medium and close zoom, with Landmarks toggled on/off. **Do not merge or claim final atlas acceptance before Mark reviews it.**
+- Labeling/inspection remains **GAME-22**, and hidden-site/fog knowledge remains **GAME-10**. Local minor-POI art expansion is separate **GAME-21**.
+
 ## Archived comparison and provenance
 
 A dozen source archives were retrieved and verified during research, with nine families compared. The original evidence is in [AUDIT.md](AUDIT.md), `candidate_manifest.json`, `audit/*-inventory.json` and historical `<pack>/mapping.json` files. Non-selected illustrative PNGs/source samples were removed from the current PR tree to avoid shipping unused Godot assets; all remain recoverable from **Git commit `f12122a96df46a6ac66a512b35d3f7cb2d521b85`**. The complete original external ZIP archives were **not** checked into GitHub, so independently preserve the `Map_Asset_Sources_2026-10-02.zip` bundle where applicable. Historical mapping paths for archived packs refer to that earlier commit, not currently installed runtime assets.
