@@ -7,17 +7,10 @@ const ROLES: Array[String] = [
 	"capital", "city", "town", "village", "hamlet", "fort",
 	"monastery", "trading", "ruins", "cave", "lighthouse", "mine",
 ]
-## Minimum candidate score is 7/10 (period aesthetic + POI coverage).
-## Rejected source assets remain in the repo for traceability, but are not selectable.
-const FAMILIES: Array[String] = [
-	"Procedural", "Game-icons", "Mercator", "de Fer", "Müller", "Janssonius",
-	"Super Rough RPG/HEX", "Vischer", "Ogilby", "Hogenburg",
-]
-const FAMILY_DIRECTORIES := {
-	"Game-icons": "game-icons", "Mercator": "mercator", "de Fer": "de-fer",
-	"Müller": "muller", "Janssonius": "janssonius", "Super Rough RPG/HEX": "super-rough",
-	"Vischer": "vischer", "Ogilby": "ogilby", "Hogenburg": "hogenburg",
-}
+## Art direction selected: Game-icons. Procedural remains a debug-only control.
+## Alternative pack art and mapping research is retained in Git history (f12122a).
+const FAMILIES: Array[String] = ["Procedural", "Game-icons"]
+const FAMILY_DIRECTORIES := {"Game-icons": "game-icons"}
 const ROOT := "res://assets/map_icons/trials/"
 
 ## Only present actual installed samples; never offer nonfunctional trial options.
