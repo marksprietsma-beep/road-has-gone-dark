@@ -36,10 +36,19 @@ func _standalone_texture(role: String) -> Texture2D:
 	return ImageTexture.create_from_image(image) if image else null
 
 func _kenney_texture(role: String) -> Texture2D:
-	# The staged SVG has no element IDs or manifest connecting its 91 cells to
-	# semantic roles. Do not pretend arbitrary cells are verified role crops.
-	_report_error("Kenney role crops are unavailable: source atlas cells are not semantically identified (%s)" % role)
-	return null
+	# Prefer verified named original PNG assets; the single source vector sheet
+	# has no semantic crop identifiers. This path never substitutes other sets.
+	var path := ROOT + "kenney/" + role + ".png"
+	var file := FileAccess.open(path, FileAccess.READ)
+	if not file:
+		_report_error("Cannot open Kenney PNG: %s" % path)
+		return null
+	var image := Image.new()
+	var error := image.load_png_from_buffer(file.get_buffer(file.get_length()))
+	if error != OK:
+		_report_error("Godot PNG decode failed (%s): %s" % [error_string(error), path])
+		return null
+	return ImageTexture.create_from_image(image)
 
 func _load_svg(path: String) -> Image:
 	var file := FileAccess.open(path, FileAccess.READ)
