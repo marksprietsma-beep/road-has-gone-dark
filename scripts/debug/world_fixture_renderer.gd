@@ -26,6 +26,12 @@ func display_fixture(world: Dictionary, relief_path: String = "", vegetation_pat
 func set_layer_enabled(layer_name: String, enabled: bool) -> void:
 	var layer := get_node_or_null(NodePath(layer_name))
 	if layer: layer.visible = enabled
+	# Landmark occupancy depends on the visible civilization/labels.
+	if layer_name in ["Settlements", "Labels"]:
+		$Landmarks.queue_redraw()
+
+func set_landmark_declutter(enabled: bool) -> void:
+	$Landmarks.set_declutter_enabled(enabled)
 
 func set_icon_family(family: String) -> void:
 	icon_provider.set_family(family)
@@ -36,6 +42,8 @@ func set_zoom(value: float) -> void:
 	var band := 0 if value < 0.7 else (1 if value < 1.65 else 2)
 	for child in get_children():
 		if child is MapLayer: child.set_zoom_band(band)
+		# Recalculate icon spacing after every zoom, not just at band edges.
+		if child is LandmarkMapLayer: child.set_display_zoom(value)
 
 func select_at(map_position: Vector2) -> void:
 	if package.is_empty() or not Rect2(Vector2.ZERO, Vector2(model.size)).has_point(map_position): return
