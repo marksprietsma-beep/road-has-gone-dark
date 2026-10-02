@@ -86,4 +86,5 @@ func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
 
 func _build_info(world: Dictionary) -> String:
 	var fixture_hint := "\nN: next fixture" if _fixture_paths.size() > 1 else ""
-	return "FANTASY MAP • DEV VIEW\nSeed  %s\n%d states  •  %d settlements%s" % [str(world.get("seed", "unknown")), world.get("states", []).size() - 1, world.get("settlements", []).size() - 1, fixture_hint]
+	var title := "LANDMARKS ×8 • QA VIEW" if _fixture_paths[_fixture_index] == LANDMARK_STRESS_PATH else "FANTASY MAP • DEV VIEW"
+	return "%s\nSeed  %s\n%d states  •  %d settlements%s" % [title, str(world.get("seed", "unknown")), world.get("states", []).size() - 1, world.get("settlements", []).size() - 1, fixture_hint]
