@@ -30,6 +30,12 @@ const value = flag => {
 };
 const seed = value("--seed");
 const output = value("--output");
+const densityArg = value("--landmark-density") ?? "1";
+const landmarkDensity = Number(densityArg);
+if (!Number.isInteger(landmarkDensity) || landmarkDensity < 1 || landmarkDensity > 12) {
+  console.error("--landmark-density must be an integer from 1 to 12 (preview only)");
+  process.exit(2);
+}
 const reliefOutput = value("--relief-output") || (output ? defaultReliefPath(output) : null);
 const vegetationOutput = value("--vegetation-output") || (output ? defaultVegetationPath(output) : null);
 if (!seed || !output || args.includes("--help")) {
@@ -82,7 +88,12 @@ const server = await createServer({
 });
 try {
   const entry = await server.ssrLoadModule(resolve(here, "headless-entry.ts"));
-  const {world, relief} = await entry.generateWorldBundle(seed);
+  const {world, relief} = await entry.generateWorldBundle(seed, {landmarkDensity});
+  if (landmarkDensity !== 1) {
+    const byType = {};
+    for (const marker of world.markers) byType[marker.type] = (byType[marker.type] || 0) + 1;
+    console.log("LANDMARK STRESS PREVIEW ONLY:", landmarkDensity + "x", world.markers.length, "markers across", Object.keys(byType).length, "types");
+  }
   // This project-owned export boundary must emit Unicode accepted by Godot's
   // JSON parser. Upstream provider data remains untouched.
   const bytes = stringifyCanonical(world);
