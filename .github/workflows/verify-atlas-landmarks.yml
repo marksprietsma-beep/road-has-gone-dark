@@ -17,6 +17,7 @@ on:
       - "scenes/debug/world_fixture_viewer.tscn"
       - "scripts/debug/map_renderer/label_layer.gd"
       - "scripts/debug/map_renderer/settlement_layer.gd"
+      - "tests/worldgen/smoke-landmark-key.gd"
       - ".github/workflows/verify-atlas-landmarks.yml"
   workflow_dispatch:
 
@@ -78,3 +79,6 @@ jobs:
       - name: Launch atlas fixture viewer without graphics
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
+      - name: Test expandable map key and declutter control
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd
