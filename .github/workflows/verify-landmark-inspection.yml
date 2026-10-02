@@ -27,5 +27,11 @@ jobs:
           chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
       - name: Import Godot project
         run: /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit
-      - name: Test landmark inspection, secrecy and zoom behaviour
-        run: /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-inspection.gd
+      - name: Test inspection and reject Unicode parsing warnings
+        run: |
+          set -euo pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-inspection.gd 2>&1 | tee /tmp/inspection.log
+          if grep -Ei 'Unicode parsing error|Unexpected NUL character' /tmp/inspection.log; then
+            echo "Godot emitted an unexpected Unicode parse warning."
+            exit 1
+          fi
