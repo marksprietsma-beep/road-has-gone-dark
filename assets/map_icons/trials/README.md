@@ -8,14 +8,14 @@ After testing the atlas viewer, Mark selected **Game-icons by Delapouite (CC BY 
 
 Only `Game-icons` and a developer-only `Procedural` control are active in the viewer. Azgaar macrodata, maps, hidden sites, terrain, mountains, vegetation, roads and zoom rules remain unchanged. We do **not** silently borrow glyphs from other packs.
 
-## Azgaar macro landmarks — GAME-31 (visual review pending)
+## Azgaar macro landmarks — GAME-31 (visually approved)
 
 The original atlas imported only 4 of Azgaar's 36 built-in marker categories, leaving custom volcano cones, crossed-line battlefields and generic POI dots. GAME-31 adds verified Game-icons SVGs for the other **32 official marker classes**, plus a neutral authored `unidentified` pin for unknown/custom future categories (with a warning). All existing placements, zoom-band visibility rules and objective data are preserved. No new POIs or hidden information are created.
 
 - Existing roles reused: `ruins`, `caves`, `lighthouses`, `mines` (the original approved four).
 - All **36 exact `type` names** come from pinned `vendor/azgaar/src/generators/markers-generator.ts`, not a speculative taxonomy. Asset coverage is checked by `node tools/worldgen/verify-landmark-icons.mjs`.
 - New SVGs in `game-icons/<type>.svg` come from [Game-icons](https://github.com/game-icons/icons), pinned source revision `82d948812bfe3f269ef8f731dcdb07b08160edc4`, credited by individual artist in [landmark_sources.json](game-icons/landmark_sources.json). **Delapouite and Lorc, CC BY 3.0**: both artists must be credited if the game is distributed. Only original shapes are used, with the same dark parchment-ink adaptation as our earlier assets.
-- The viewer no longer includes the old style-comparison panel. Confirm volcanoes, battlefields, magical sites, mines, coastal POIs and rare cultural sites visually on both world seeds, at medium and close zoom, with Landmarks toggled on/off. **Do not merge or claim final atlas acceptance before Mark reviews it.**
+- Mark reviewed the original and ×8 stress fixtures visually and approved the simplified, decluttered result. The obsolete art-comparison panel remains removed. All 36 source categories are covered.
 - Labeling/inspection remains **GAME-22**, and hidden-site/fog knowledge remains **GAME-10**. Local minor-POI art expansion is separate **GAME-21**.
 
 ## Landmark readability and reference key (GAME-31)
@@ -26,6 +26,8 @@ The first ×8 landmark-stress images exposed collisions, especially over named c
 - Reserves the actual settlement-symbol positions and approximate drawn state/burg label bounds, then suppresses marker icons that would cover those positions. Disabling Labels or Settlements releases their protected space on the next redraw. No source data or discovery flags are modified, and source markers marked `hidden` are not drawn.
 - Displays a compact, **default-collapsed Map Key** at the upper left. Expand to browse four themed sections with the actual Game-icons textures and concise explanations for all 36 native Azgaar roles.
 - Provides **Show all overlaps (QA)** inside the key so a reviewer can temporarily see raw crowded markers without changing the saved fixture, then disable it to return to the priority-based display.
+
+The Map Key uses **white text and a legend-only white-alpha shader** to show white versions of the otherwise dark Game-icons shapes. Map-world sprites keep the original dark ink. This white rendering is a UI-only preference; no source SVGs were recoloured for the map.
 
 This is a **readability and icon-meaning preview**, not final POI exploration UI. GAME-22 handles selecting individual landmarks and known/discovered inspection details; this change must not automatically reveal unknown fantasy sites.
 
