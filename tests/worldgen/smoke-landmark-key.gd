@@ -5,13 +5,14 @@ func _initialize() -> void:
 	call_deferred("_check")
 
 func _check() -> void:
-	var scene := load("res://scenes/debug/world_fixture_viewer.tscn").instantiate()
+	var packed: PackedScene = load("res://scenes/debug/world_fixture_viewer.tscn")
+	var scene: Node = packed.instantiate()
 	root.add_child(scene)
 	await process_frame
-	var key := scene.get_node("DebugOverlay/MapKey")
-	var scroll := scene.get_node("DebugOverlay/MapKey/Layout/Scroll")
+	var key := scene.get_node("DebugOverlay/MapKey") as MapLandmarkKey
+	var scroll := scene.get_node("DebugOverlay/MapKey/Layout/Scroll") as ScrollContainer
 	var entries := scene.get_node("DebugOverlay/MapKey/Layout/Scroll/Entries")
-	var landmarks := scene.get_node("WorldMap/Landmarks")
+	var landmarks := scene.get_node("WorldMap/Landmarks") as LandmarkMapLayer
 	assert(not scroll.visible, "Map Key must initially be collapsed")
 	assert(landmarks.declutter_enabled, "Collision avoidance must default to ON")
 	assert(entries.get_child_count() > 36, "Map key must include all 36 icons")
