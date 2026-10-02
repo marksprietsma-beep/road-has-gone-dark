@@ -70,10 +70,14 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 5
 [node name="LandmarkInspector" type="PanelContainer" parent="DebugOverlay"]
 visible = false
-offset_left = 337.0
-offset_top = 95.0
-offset_right = 645.0
-offset_bottom = 262.0
+anchors_preset = 10
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -212.0
+offset_right = 328.0
+offset_bottom = -60.0
+grow_vertical = 0
 mouse_filter = 0
 theme_override_styles/panel = SubResource("InspectorStyle")
 [node name="Content" type="VBoxContainer" parent="DebugOverlay/LandmarkInspector"]
@@ -84,6 +88,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="DebugOverlay/LandmarkInspector/Content/HeadingRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+text_overrun_behavior = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 14
 text = "Landmark"
@@ -94,7 +99,11 @@ text = "×"
 flat = true
 [node name="Details" type="RichTextLabel" parent="DebugOverlay/LandmarkInspector/Content"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+autowrap_mode = 3
+fit_content = false
+clip_contents = true
 bbcode_enabled = false
 scroll_active = true
 theme_override_colors/default_color = Color(0.92, 0.92, 0.90, 1)
@@ -110,43 +119,49 @@ offset_right = -10.0
 offset_bottom = 190.0
 grow_horizontal = 0
 theme_override_constants/separation = 2
-[node name="Title" type="Label" parent="DebugOverlay/Layers"]
+[node name="Toggle" type="Button" parent="DebugOverlay/Layers"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.84, 0.59, 1)
-text = "MAP LAYERS"
-[node name="Relief" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "DEV LAYERS  ▸"
+flat = true
+[node name="Options" type="VBoxContainer" parent="DebugOverlay/Layers"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+[node name="Relief" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Relief"
-[node name="Vegetation" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Vegetation" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Vegetation"
-[node name="Political" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Political" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Political"
-[node name="Rivers" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Rivers" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Rivers"
-[node name="Borders" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Borders" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Borders"
-[node name="Routes" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Routes" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Routes"
-[node name="Settlements" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Settlements" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Settlements"
-[node name="Landmarks" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Landmarks" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Landmarks"
-[node name="Labels" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+[node name="Labels" type="CheckButton" parent="DebugOverlay/Layers/Options" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true
 text = "Labels"
