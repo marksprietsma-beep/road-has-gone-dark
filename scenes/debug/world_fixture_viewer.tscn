@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/debug/world_fixture_viewer.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/debug/map_renderer/fantasy_map_layers.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/debug/map_landmark_key.gd" id="3"]
 
 [node name="WorldFixtureViewer" type="Node"]
 script = ExtResource("1")
@@ -37,6 +38,29 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.94, 0.84, 0.59, 1)
 theme_override_font_sizes/font_size = 12
 text = "FANTASY MAP • DEV VIEW\nLoading fixture..."
+[node name="MapKey" type="PanelContainer" parent="DebugOverlay"]
+offset_left = 10.0
+offset_top = 93.0
+offset_right = 328.0
+offset_bottom = 134.0
+mouse_filter = 0
+script = ExtResource("3")
+[node name="Layout" type="VBoxContainer" parent="DebugOverlay/MapKey"]
+layout_mode = 2
+theme_override_constants/separation = 5
+[node name="Toggle" type="Button" parent="DebugOverlay/MapKey/Layout"]
+layout_mode = 2
+text = "MAP KEY  ▸"
+flat = true
+[node name="Scroll" type="ScrollContainer" parent="DebugOverlay/MapKey/Layout"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Entries" type="VBoxContainer" parent="DebugOverlay/MapKey/Layout/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
 [node name="Layers" type="VBoxContainer" parent="DebugOverlay"]
 anchors_preset = 1
 anchor_left = 1.0

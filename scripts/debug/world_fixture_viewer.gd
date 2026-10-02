@@ -3,6 +3,8 @@ extends Node
 ## Standalone development tool. It is intentionally not linked from New Game.
 const FIXTURE_PATH := "res://tests/worldgen/fixtures/game-11-determinism.json"
 const SHOWCASE_FIXTURE_PATH := "res://tests/worldgen/fixtures/atlas-showcase.json"
+## This optional, ignored fixture can be produced by CLI with --landmark-density.
+const LANDMARK_STRESS_PATH := "res://tools/worldgen/.tmp/landmark-stress.json"
 const PAN_SPEED := 520.0
 const MIN_ZOOM := 0.25
 const MAX_ZOOM := 4.0
@@ -12,6 +14,7 @@ const ZOOM_STEP := 1.2
 @onready var camera: Camera2D = $WorldCamera
 @onready var info_label: Label = $DebugOverlay/InfoPanel/Margin/Info
 @onready var selection_label: Label = $DebugOverlay/Selection
+@onready var map_key: MapLandmarkKey = $DebugOverlay/MapKey
 var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
@@ -20,9 +23,15 @@ var _fixture_index := 0
 func _ready() -> void:
 	if FileAccess.file_exists(SHOWCASE_FIXTURE_PATH):
 		_fixture_paths.append(SHOWCASE_FIXTURE_PATH)
+	if FileAccess.file_exists(LANDMARK_STRESS_PATH):
+		_fixture_paths.append(LANDMARK_STRESS_PATH)
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
+	map_key.set_icon_provider(map_renderer.icon_provider)
+	map_key.show_overlaps_changed.connect(func(show: bool) -> void:
+		map_renderer.set_landmark_declutter(not show)
+	)
 	_load_fixture(_fixture_index)
 
 func _load_fixture(index: int) -> void:
@@ -77,4 +86,5 @@ func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
 
 func _build_info(world: Dictionary) -> String:
 	var fixture_hint := "\nN: next fixture" if _fixture_paths.size() > 1 else ""
-	return "FANTASY MAP • DEV VIEW\nSeed  %s\n%d states  •  %d settlements%s" % [str(world.get("seed", "unknown")), world.get("states", []).size() - 1, world.get("settlements", []).size() - 1, fixture_hint]
+	var title := "LANDMARKS ×8 • QA VIEW" if _fixture_paths[_fixture_index] == LANDMARK_STRESS_PATH else "FANTASY MAP • DEV VIEW"
+	return "%s\nSeed  %s\n%d states  •  %d settlements%s" % [title, str(world.get("seed", "unknown")), world.get("states", []).size() - 1, world.get("settlements", []).size() - 1, fixture_hint]

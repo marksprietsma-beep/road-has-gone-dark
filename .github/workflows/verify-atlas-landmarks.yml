@@ -1,0 +1,85 @@
+name: Verify atlas landmark icons
+on:
+  pull_request:
+    paths:
+      - "assets/map_icons/trials/game-icons/**"
+      - "scripts/debug/map_renderer/map_icon_provider.gd"
+      - "scripts/debug/map_renderer/landmark_layer.gd"
+      - "vendor/azgaar/src/generators/markers-generator.ts"
+      - "tests/worldgen/fixtures/*.json"
+      - "tools/worldgen/verify-landmark-icons.mjs"
+      - "tools/worldgen/check-landmark-stress.mjs"
+      - "tools/worldgen/headless-entry.ts"
+      - "tools/worldgen/generate-azgaar.mjs"
+      - "scripts/debug/world_fixture_viewer.gd"
+      - "scripts/debug/map_landmark_key.gd"
+      - "scripts/debug/map_renderer/legend_icon_white.gdshader"
+      - "scripts/debug/world_fixture_renderer.gd"
+      - "scenes/debug/world_fixture_viewer.tscn"
+      - "scripts/debug/map_renderer/label_layer.gd"
+      - "scripts/debug/map_renderer/settlement_layer.gd"
+      - "tests/worldgen/smoke-landmark-key.gd"
+      - ".github/workflows/verify-atlas-landmarks.yml"
+  workflow_dispatch:
+
+jobs:
+  marker-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Verify Azgaar taxonomy and authored Game-icons
+        run: node tools/worldgen/verify-landmark-icons.mjs
+
+  density-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Azgaar generation dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Generate normal and landmark-heavy previews of identical geography
+        run: |
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/baseline.json
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/landmark-stress.json --landmark-density 8
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/stress-repeated.json --landmark-density 8
+          cmp tools/worldgen/.tmp/landmark-stress.json tools/worldgen/.tmp/stress-repeated.json
+          node tools/worldgen/check-landmark-stress.mjs tools/worldgen/.tmp/baseline.json tools/worldgen/.tmp/landmark-stress.json
+          node tests/worldgen/validate-fixture.mjs tools/worldgen/.tmp/landmark-stress.json
+          mkdir -p artifact
+          cp tools/worldgen/.tmp/landmark-stress.json artifact/
+          cp tools/worldgen/.tmp/landmark-stress.relief.svg artifact/
+          cp tools/worldgen/.tmp/landmark-stress.vegetation.svg artifact/
+      - name: Downloadable landmark-stress Godot fixture
+        uses: actions/upload-artifact@v4
+        with:
+          name: landmark-stress-preview
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6
+
+  godot-preview-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2 headless
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import scripts, scenes, and SVGs
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit
+      - name: Launch atlas fixture viewer without graphics
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
+      - name: Test expandable map key and declutter control
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd
