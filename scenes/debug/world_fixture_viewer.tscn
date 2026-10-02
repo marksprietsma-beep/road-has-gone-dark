@@ -55,6 +55,10 @@ text = "MAP LAYERS"
 layout_mode = 2
 button_pressed = true
 text = "Relief"
+[node name="Vegetation" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
+layout_mode = 2
+button_pressed = true
+text = "Vegetation"
 [node name="Political" type="CheckButton" parent="DebugOverlay/Layers" groups=["map_layer_toggle"]]
 layout_mode = 2
 button_pressed = true

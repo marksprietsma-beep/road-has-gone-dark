@@ -8,12 +8,14 @@ var model: MapRenderModel
 var package: Dictionary
 @onready var terrain: TerrainMapLayer = $Terrain
 @onready var selection: SelectionMapLayer = $Selection
-@onready var relief: ReliefMapLayer = $Relief
+@onready var vegetation: SvgSidecarMapLayer = $Vegetation
+@onready var relief: SvgSidecarMapLayer = $Relief
 
-func display_fixture(world: Dictionary, relief_path: String = "") -> void:
+func display_fixture(world: Dictionary, relief_path: String = "", vegetation_path: String = "") -> void:
 	model = MapRenderModel.new(world)
 	package = MapRenderBaker.new().bake(model)
 	relief.load_sidecar(relief_path)
+	vegetation.load_sidecar(vegetation_path)
 	for child in get_children():
 		if child is MapLayer:
 			child.setup(model)

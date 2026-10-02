@@ -6,7 +6,12 @@ import {dirname, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 import FlatQueue from "./flatqueue-compat.mjs";
 import {stringifyCanonical} from "./canonical-json.mjs";
-import {buildReliefSidecar, defaultReliefPath} from "./relief-sidecar.mjs";
+import {
+  buildReliefSidecar,
+  buildVegetationSidecar,
+  defaultReliefPath,
+  defaultVegetationPath
+} from "./relief-sidecar.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -26,8 +31,9 @@ const value = flag => {
 const seed = value("--seed");
 const output = value("--output");
 const reliefOutput = value("--relief-output") || (output ? defaultReliefPath(output) : null);
+const vegetationOutput = value("--vegetation-output") || (output ? defaultVegetationPath(output) : null);
 if (!seed || !output || args.includes("--help")) {
-  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json> [--relief-output <file.svg>]");
+  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json> [--relief-output <file.svg>] [--vegetation-output <file.svg>]");
   process.exit(args.includes("--help") ? 0 : 2);
 }
 
@@ -94,6 +100,15 @@ try {
   await mkdir(dirname(resolve(reliefOutput)), {recursive: true});
   await writeFile(resolve(reliefOutput), svg);
   console.log(`${createHash("sha256").update(svg).digest("hex")}  ${reliefOutput}`);
+  const vegetationSvg = buildVegetationSidecar({
+    width: world.map.width,
+    height: world.map.height,
+    relief,
+    sourceDocument
+  });
+  await mkdir(dirname(resolve(vegetationOutput)), {recursive: true});
+  await writeFile(resolve(vegetationOutput), vegetationSvg);
+  console.log(`${createHash("sha256").update(vegetationSvg).digest("hex")}  ${vegetationOutput}`);
 } finally {
   await server.close();
   dom.window.close();
