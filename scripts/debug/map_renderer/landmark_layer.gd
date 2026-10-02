@@ -1,6 +1,13 @@
 class_name LandmarkMapLayer
 extends MapLayer
 
+const ROLE_BY_TYPE := {"ruins": "ruins", "caves": "cave", "lighthouses": "lighthouse", "mines": "mine"}
+var icon_provider: MapIconProvider
+
+func set_icon_provider(value: MapIconProvider) -> void:
+	icon_provider = value
+	queue_redraw()
+
 func _draw() -> void:
 	if not model or zoom_band == 0:
 		return
@@ -12,6 +19,17 @@ func _draw() -> void:
 		if zoom_band == 1 and kind not in ["volcanoes", "ruins", "battlefields", "lighthouses"]:
 			continue
 		var p := Vector2(float(marker.get("x", 0.0)), float(marker.get("y", 0.0)))
+		var role := str(ROLE_BY_TYPE.get(kind, ""))
+		var texture := icon_provider.texture_for(role) if icon_provider and not role.is_empty() else null
+		if texture:
+			var source := texture.get_size()
+			var size := source * (7.0 / maxf(source.x, source.y))
+			draw_texture_rect(texture, Rect2(p - size * 0.5, size), false)
+			continue
+		if icon_provider and icon_provider.family != "Procedural" and not role.is_empty():
+			draw_line(p + Vector2(-2, -2), p + Vector2(2, 2), Color("#a8493f"), 1.0)
+			draw_line(p + Vector2(2, -2), p + Vector2(-2, 2), Color("#a8493f"), 1.0)
+			continue
 		_draw_marker(p, kind)
 
 func _draw_marker(p: Vector2, kind: String) -> void:

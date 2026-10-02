@@ -6,6 +6,7 @@ signal cell_selected(cell_id: int, details: String)
 
 var model: MapRenderModel
 var package: Dictionary
+var icon_provider := MapIconProvider.new()
 @onready var terrain: TerrainMapLayer = $Terrain
 @onready var selection: SelectionMapLayer = $Selection
 @onready var vegetation: SvgSidecarMapLayer = $Vegetation
@@ -18,12 +19,18 @@ func display_fixture(world: Dictionary, relief_path: String = "", vegetation_pat
 	vegetation.load_sidecar(vegetation_path)
 	for child in get_children():
 		if child is MapLayer:
+			if child.has_method("set_icon_provider"): child.set_icon_provider(icon_provider)
 			child.setup(model)
 			if child.has_method("set_package"): child.set_package(package)
 
 func set_layer_enabled(layer_name: String, enabled: bool) -> void:
 	var layer := get_node_or_null(NodePath(layer_name))
 	if layer: layer.visible = enabled
+
+func set_icon_family(family: String) -> void:
+	icon_provider.set_family(family)
+	for child in get_children():
+		if child.has_method("set_icon_provider"): child.set_icon_provider(icon_provider)
 
 func set_zoom(value: float) -> void:
 	var band := 0 if value < 0.7 else (1 if value < 1.65 else 2)
