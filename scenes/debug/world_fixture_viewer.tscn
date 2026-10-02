@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/debug/world_fixture_viewer.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/debug/map_renderer/fantasy_map_layers.tscn" id="2"]
-[ext_resource type="Script" path="res://scripts/debug/map_icon_swatch_legend.gd" id="3"]
 
 [node name="WorldFixtureViewer" type="Node"]
 script = ExtResource("1")
@@ -106,28 +105,6 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 text = "Click a map cell to inspect it"
 horizontal_alignment = 1
-[node name="IconTrial" type="PanelContainer" parent="DebugOverlay"]
-offset_left = 10.0
-offset_top = 90.0
-offset_right = 360.0
-offset_bottom = 292.0
-[node name="Layout" type="VBoxContainer" parent="DebugOverlay/IconTrial"]
-layout_mode = 2
-theme_override_constants/separation = 2
-[node name="Title" type="Label" parent="DebugOverlay/IconTrial/Layout"]
-layout_mode = 2
-text = "ICON ART TRIAL"
-[node name="Style" type="OptionButton" parent="DebugOverlay/IconTrial/Layout"]
-layout_mode = 2
-[node name="Swatches" type="Control" parent="DebugOverlay/IconTrial/Layout"]
-custom_minimum_size = Vector2(336, 124)
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("3")
-[node name="CoverageNote" type="Label" parent="DebugOverlay/IconTrial/Layout"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 11
-text = "N/A: absent in this pack; baseline marker on map.\nRed X: an expected asset failed to load."
 [node name="Help" type="Label" parent="DebugOverlay"]
 anchors_preset = 7
 anchor_left = 0.5

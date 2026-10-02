@@ -3,6 +3,7 @@ extends MapLayer
 
 enum Kind { RIVERS, ROUTES, BORDERS }
 @export var kind := Kind.RIVERS
+## Approved GAME-30 river style: quieter blue-green strokes.
 var border_texture: Texture2D
 
 func set_package(package: Dictionary) -> void:
@@ -33,8 +34,11 @@ func _draw_rivers() -> void:
 				line.append((line[line.size() - 1] + point) * 0.5)
 				break
 		if line.size() > 1:
-			draw_polyline(line, Color("#283a3b", 0.86), clampf(float(river.get("width", 0.4)) * 2.0, 1.0, 2.8), true)
-			draw_polyline(line, Color("#657a70", 0.72), clampf(float(river.get("width", 0.4)), 0.6, 1.5), true)
+			var width := float(river.get("width", 0.4))
+			# Preserve the coastline clipping and generated river geometry.
+			# Reduced stroke weight and opacity approved in the GAME-30 A/B.
+			draw_polyline(line, Color("#283a3b", 0.65), clampf(width * 1.4, 0.75, 2.05), true)
+			draw_polyline(line, Color("#657a70", 0.53), clampf(width * 0.75, 0.4, 1.05), true)
 
 func _draw_routes() -> void:
 	if zoom_band == 0: return
