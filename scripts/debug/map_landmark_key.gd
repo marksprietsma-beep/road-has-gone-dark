@@ -6,6 +6,11 @@ extends PanelContainer
 ## quest-discovery screen. Hidden game-world sites must remain a separate model.
 signal show_overlaps_changed(show: bool)
 
+## The map retains its dark ink. Only the reference key recolours icon
+## alpha masks to white, for contrast on the dark translucent panel.
+const LEGEND_WHITE_SHADER: Shader = preload("res://scripts/debug/map_renderer/legend_icon_white.gdshader")
+const LEGEND_TEXT := Color.WHITE
+
 const GROUPS := [
 	{"title": "NATURE & SACRED", "types": ["volcanoes", "hot-springs", "water-sources", "waterfalls", "sacred-mountains", "sacred-forests", "sacred-pineries", "sacred-palm-groves", "mirage"]},
 	{"title": "ROUTES & PLACES", "types": ["mines", "bridges", "inns", "lighthouses", "canoes", "statues", "ruins", "libraries", "caves"]},
@@ -65,22 +70,28 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	scroll.visible = false
 	offset_bottom = CLOSED_BOTTOM
+	toggle_button.add_theme_color_override("font_color", LEGEND_TEXT)
+	toggle_button.add_theme_color_override("font_hover_color", LEGEND_TEXT)
+	toggle_button.add_theme_color_override("font_pressed_color", LEGEND_TEXT)
 	toggle_button.pressed.connect(_toggle)
 
 func set_icon_provider(provider: MapIconProvider) -> void:
 	for child in entries.get_children():
 		child.queue_free()
-	var help := _text("Crowded symbols are filtered, not deleted. Turn off Labels or Settlements to expose obscured sites.", 10, Color("#b9ac92"))
+	var help := _text("Crowded symbols are filtered, not deleted. Turn off Labels or Settlements to expose obscured sites.", 10, LEGEND_TEXT)
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	entries.add_child(help)
 	var all := CheckBox.new()
 	all.text = "Show all overlaps (QA)"
 	all.tooltip_text = "Disable decluttering temporarily to inspect every generated marker."
 	all.add_theme_font_size_override("font_size", 11)
+	all.add_theme_color_override("font_color", LEGEND_TEXT)
+	all.add_theme_color_override("font_hover_color", LEGEND_TEXT)
+	all.add_theme_color_override("font_pressed_color", LEGEND_TEXT)
 	all.toggled.connect(func(on: bool) -> void: show_overlaps_changed.emit(on))
 	entries.add_child(all)
 	for group in GROUPS:
-		var section := _text(str(group["title"]), 12, Color("#ead1a0"))
+		var section := _text(str(group["title"]), 12, LEGEND_TEXT)
 		entries.add_child(HSeparator.new())
 		entries.add_child(section)
 		for kind in group["types"]:
@@ -92,15 +103,18 @@ func set_icon_provider(provider: MapIconProvider) -> void:
 			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			var white_ink := ShaderMaterial.new()
+			white_ink.shader = LEGEND_WHITE_SHADER
+			icon.material = white_ink
 			var role := str(LandmarkMapLayer.EXISTING_ROLE_ALIASES.get(kind, kind))
 			icon.texture = provider.texture_for(role)
 			row.add_child(icon)
 			var text_col := VBoxContainer.new()
 			text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			text_col.add_theme_constant_override("separation", 0)
-			var heading := _text(str(kind).replace("-", " ").capitalize(), 11, Color("#efdfb9"))
+			var heading := _text(str(kind).replace("-", " ").capitalize(), 11, LEGEND_TEXT)
 			text_col.add_child(heading)
-			var note := _text(str(DESCRIPTIONS.get(kind, "")), 10, Color("#b9ac92"))
+			var note := _text(str(DESCRIPTIONS.get(kind, "")), 10, LEGEND_TEXT)
 			note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			text_col.add_child(note)
 			row.add_child(text_col)
