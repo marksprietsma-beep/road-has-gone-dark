@@ -22,10 +22,19 @@ func _check() -> void:
 	assert(qa != null, "Missing Show all overlaps QA checkbox")
 	qa.button_pressed = true
 	assert(not landmarks.declutter_enabled, "QA mode must reveal overlapping markers")
+	# Closing the key also clears an accidentally left-on QA toggle.
+	key._toggle()
+	assert(not scroll.visible, "Map Key must collapse again")
+	assert(landmarks.declutter_enabled, "Closing the key must reset QA mode")
+	assert(not qa.button_pressed, "QA checkbox must be reset on close")
+	key._toggle()
+	assert(scroll.visible, "Map Key must reopen")
+	qa.button_pressed = true
+	assert(not landmarks.declutter_enabled)
 	qa.button_pressed = false
 	assert(landmarks.declutter_enabled, "Normal mode must restore decluttering")
 	key._toggle()
-	assert(not scroll.visible, "Map Key must collapse again")
+	assert(not scroll.visible)
 	print("PASS: Map Key starts collapsed, expands/collapses, and QA overlap switch works")
 	scene.queue_free()
 	quit()
