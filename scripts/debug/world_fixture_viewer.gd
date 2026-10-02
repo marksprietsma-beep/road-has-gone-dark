@@ -20,7 +20,7 @@ var _fixture_paths: Array[String] = [FIXTURE_PATH]
 var _fixture_index := 0
 
 func _ready() -> void:
-	for family in MapIconProvider.FAMILIES:
+	for family in MapIconProvider.available_families():
 		style_selector.add_item(family)
 	style_selector.item_selected.connect(_on_style_selected)
 	if FileAccess.file_exists(SHOWCASE_FIXTURE_PATH):
