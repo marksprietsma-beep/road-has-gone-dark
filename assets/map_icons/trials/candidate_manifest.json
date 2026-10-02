@@ -1,0 +1,366 @@
+{
+  "version": 2,
+  "policy": {
+    "threshold": 7,
+    "range": "0–10",
+    "method": "Subjective project-fit screening: map aesthetic (0–5) + useful settlement/regional/POI breadth (0–5), checked against downloaded files and contact sheets. Counts include variants, not distinct gameplay roles. Godot texture validation is separate from map-scale visual acceptance.",
+    "no_placeholder_candidates": true,
+    "baseline": "Procedural (control, unscored)",
+    "source_retention": "Comparison-only image samples are archived in immutable Git commit f12122a; maps, file inventories, licence/source details and mappings stay checked in as research metadata. Earlier Kenney/Pinhead/Osmic/Lucide sources already on main remain tracked."
+  },
+  "candidates": [
+    {
+      "name": "Game-icons",
+      "directory": "game-icons",
+      "period_style": 3,
+      "fantasy_coverage": 5,
+      "overall": 8,
+      "source_url": "https://github.com/game-icons/icons/tree/master/delapouite",
+      "licence": "CC BY 3.0",
+      "state": "selected/default",
+      "notes": "Extensive RPG fantasy concepts; more interface-symbol than map engraving."
+    },
+    {
+      "name": "Mercator",
+      "directory": "mercator",
+      "period_style": 5,
+      "fantasy_coverage": 2,
+      "overall": 7,
+      "source_url": "https://kmalexander.com/2026/06/30/mercator-settlement-a-free-16th-century-settlement-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital/city use different city drawings. Village/hamlet use small-town drawings as scale proxies. No dedicated supernatural POIs.",
+      "verified_image_count": 238,
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "village",
+        "hamlet"
+      ],
+      "absent_roles": [
+        "fort",
+        "monastery",
+        "trading",
+        "ruins",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "mercator/mapping.json"
+    },
+    {
+      "name": "de Fer",
+      "directory": "de-fer",
+      "period_style": 5,
+      "fantasy_coverage": 3,
+      "overall": 8,
+      "source_url": "https://kmalexander.com/2021/09/22/de-fer-settlement-a-free-18th-century-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital/city use manor-and-village combinations as scale proxies. Castle and ruins are verified individual members inside the Unique folder. No dedicated cave, lighthouse or mine.",
+      "verified_image_count": 303,
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "village",
+        "hamlet",
+        "monastery",
+        "fort",
+        "ruins"
+      ],
+      "absent_roles": [
+        "trading",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "de-fer/mapping.json"
+    },
+    {
+      "name": "Donia",
+      "directory": "donia",
+      "period_style": 5,
+      "fantasy_coverage": 2,
+      "overall": 7,
+      "source_url": "https://kmalexander.com/2019/05/15/donia-a-free-17th-century-cartography-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "archived research (not a full trial family)",
+      "notes": "Church artwork is a religious-site proxy for monastery, not a dedicated monastery. No verified town/rural roles, so retained as a supplementary source rather than a viewer family.",
+      "verified_image_count": 122,
+      "available_roles": [
+        "capital",
+        "city",
+        "fort",
+        "monastery"
+      ],
+      "absent_roles": [
+        "town",
+        "village",
+        "hamlet",
+        "trading",
+        "ruins",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "donia/mapping.json"
+    },
+    {
+      "name": "Müller",
+      "directory": "muller",
+      "period_style": 4,
+      "fantasy_coverage": 4,
+      "overall": 8,
+      "source_url": "https://kmalexander.com/2025/04/16/muller-a-free-18th-century-cartography-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital uses walled city; hamlet uses a village dot. Trading uses a market town, not a caravanserai. Mineral symbols are not mine-entrance drawings, so mine remains absent.",
+      "verified_image_count": 1631,
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "village",
+        "hamlet",
+        "monastery",
+        "trading",
+        "ruins"
+      ],
+      "absent_roles": [
+        "fort",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "muller/mapping.json"
+    },
+    {
+      "name": "Janssonius",
+      "directory": "janssonius",
+      "period_style": 5,
+      "fantasy_coverage": 2,
+      "overall": 7,
+      "source_url": "https://kmalexander.com/2020/04/27/janssonius-a-free-17th-century-cartography-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital/city use separate city variants. Maritime marks include abstract shipwreck symbols, not illustrated wrecked ships. Missing rural and religious roles.",
+      "verified_image_count": 274,
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "fort"
+      ],
+      "absent_roles": [
+        "village",
+        "hamlet",
+        "monastery",
+        "trading",
+        "ruins",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "janssonius/mapping.json"
+    },
+    {
+      "name": "Super Rough RPG/HEX",
+      "directory": "super-rough",
+      "period_style": 4,
+      "fantasy_coverage": 4,
+      "overall": 8,
+      "source_url": "https://bizinbarstome.itch.io/super-rough-rpghex-icons",
+      "licence": "Author grants unrestricted use; verify redistribution",
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital uses castle. Dungeon icon is not a cave and is retained separately. White interior fills are part of source artwork. No dedicated rural, religious, trading or lighthouse roles.",
+      "verified_image_count": 24,
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "fort",
+        "ruins",
+        "mine"
+      ],
+      "absent_roles": [
+        "village",
+        "hamlet",
+        "monastery",
+        "trading",
+        "cave",
+        "lighthouse"
+      ],
+      "mapping_file": "super-rough/mapping.json"
+    },
+    {
+      "name": "Vischer",
+      "directory": "vischer",
+      "licence": "CC0",
+      "period_style": 5,
+      "fantasy_coverage": 4,
+      "overall": 9,
+      "source_url": "https://kmalexander.com/2019/12/16/vischer-a-free-17th-century-cartography-brush-set-for-fantasy-maps/",
+      "verified_image_count": 959,
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital/city use different city drawings; hamlet uses a house, fort a castle. Ruins/monuments is a mixed source category: chosen specimen visually reviewed as ruined structures.",
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "village",
+        "hamlet",
+        "fort",
+        "monastery",
+        "ruins"
+      ],
+      "absent_roles": [
+        "trading",
+        "cave",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "vischer/mapping.json"
+    },
+    {
+      "name": "Ogilby",
+      "directory": "ogilby",
+      "licence": "CC0",
+      "period_style": 5,
+      "fantasy_coverage": 3,
+      "overall": 8,
+      "source_url": "https://kmalexander.com/2019/10/15/ogilby-a-free-17th-century-road-atlas-brush-set-for-fantasy-maps/",
+      "verified_image_count": 907,
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Capital/fort use castles; town uses a large-village road plan. No distinct city sprite. Mine is a historical lead-mine symbol, not an entrance illustration. Two genuine lighthouses were found inside Unique Settlements.",
+      "available_roles": [
+        "capital",
+        "town",
+        "village",
+        "hamlet",
+        "fort",
+        "monastery",
+        "mine",
+        "lighthouse"
+      ],
+      "absent_roles": [
+        "city",
+        "trading",
+        "ruins",
+        "cave"
+      ],
+      "mapping_file": "ogilby/mapping.json"
+    },
+    {
+      "name": "Hogenburg",
+      "directory": "hogenburg",
+      "licence": "CC0",
+      "period_style": 5,
+      "fantasy_coverage": 3,
+      "overall": 8,
+      "source_url": "https://kmalexander.com/2024/08/27/hogenburg-a-free-16th-century-urban-cartography-brush-set-for-fantasy-city-maps/",
+      "verified_image_count": 718,
+      "state": "archived trial artwork in commit f12122a",
+      "notes": "Urban-building kit: capital/fort use castles, city a block, town a building group, village/hamlet individual buildings. These are scale proxies, not prebuilt settlement tiers.",
+      "available_roles": [
+        "capital",
+        "city",
+        "town",
+        "village",
+        "hamlet",
+        "fort",
+        "cave"
+      ],
+      "absent_roles": [
+        "monastery",
+        "trading",
+        "ruins",
+        "lighthouse",
+        "mine"
+      ],
+      "mapping_file": "hogenburg/mapping.json"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Kenney",
+      "period_style": 4,
+      "fantasy_coverage": 2,
+      "overall": 6,
+      "source_url": "https://kenney.nl/assets/cartography-pack"
+    },
+    {
+      "name": "Pinhead",
+      "period_style": 2,
+      "fantasy_coverage": 4,
+      "overall": 6,
+      "source_url": "https://github.com/waysidemapping/pinhead"
+    },
+    {
+      "name": "Osmic",
+      "period_style": 1,
+      "fantasy_coverage": 2,
+      "overall": 3,
+      "source_url": "https://github.com/gmgeo/osmic"
+    },
+    {
+      "name": "Lucide",
+      "period_style": 1,
+      "fantasy_coverage": 2,
+      "overall": 3,
+      "source_url": "https://github.com/lucide-icons/lucide"
+    },
+    {
+      "name": "CoMiGo",
+      "directory": "comigo",
+      "period_style": 4,
+      "fantasy_coverage": 2,
+      "overall": 6,
+      "source_url": "https://comigo.itch.io/fantasy-icons-ink",
+      "licence": "CC0",
+      "state": "excluded after archive audit",
+      "notes": "Downloaded and inspected: 271 SVG designs repeated as black/white PNG. Mostly equipment/UI/skills; only a handful of useful map structures. Earlier 8/10 overstated settlement and POI breadth."
+    },
+    {
+      "name": "Zatta",
+      "directory": "zatta",
+      "period_style": 4,
+      "fantasy_coverage": 2,
+      "overall": 6,
+      "source_url": "https://kmalexander.com/2020/05/26/zatta-a-free-18th-century-cartography-brush-set-for-fantasy-maps/",
+      "licence": "CC0",
+      "state": "excluded after archive audit",
+      "notes": "Downloaded and inspected: 507 PNGs, many hachures and abstract fortification/dot markers. Later flintlock/steampunk emphasis and narrow POI range do not meet this project threshold."
+    }
+  ],
+  "audited_on": "2026-10-02",
+  "additional_research": [
+    {
+      "name": "Miko Map Icons",
+      "overall": 8,
+      "source_url": "https://mikobrzu.itch.io/free-map-icon-asset-pack",
+      "state": "downloaded and visually inspected; not committed as loose artwork",
+      "verified_image_count": 43,
+      "notes": "Good building/POI breadth including cave, lighthouse, mine, ruins. Colour cartoon aesthetic. Page permits free game use but archive has no licence document and public raw-asset redistribution is not explicit. Full source archive retained for personal evaluation."
+    },
+    {
+      "name": "Limofeus Hand Drawn Dungeon Icons",
+      "source_url": "https://limofeus.itch.io/handdrawniconpack",
+      "state": "page verified; not retrieved",
+      "notes": "455 designs including variants; 1820 files means four treatments, not 1820 unique icons. Dungeon props/UI, not a replacement settlement family."
+    }
+  ],
+  "selected_family": "Game-icons",
+  "decision": {
+    "date": "2026-10-02",
+    "by": "Mark",
+    "basis": "Local Godot atlas comparison: appearance and complete fantasy/POI applicability",
+    "active_families": [
+      "Game-icons"
+    ],
+    "development_control": "Procedural",
+    "archived_comparison_commit": "f12122a96df46a6ac66a512b35d3f7cb2d521b85",
+    "archive_rule": "Comparison-only PNGs and source samples were removed from the current branch to avoid importing hundreds of unused images. All mappings and inventories remain, and earlier Git commit retains the source-derived sample images. Original full ZIP bundle was never in this repository."
+  }
+}

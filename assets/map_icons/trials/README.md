@@ -1,6 +1,24 @@
-# Settlement / landmark icon comparison assets (GAME-28)
+# Atlas icon art — Game-icons selected (GAME-28)
 
-These are small curated *source-derived* trial assets, staged separately from implementation so Codex can work **offline**. All are actual external icon artwork; none is a generated drawing. The sets cover settlement levels and future major POIs/local-area maps. **No provider is selected yet**. A Godot test selector should compare them side by side in the same two atlas fixtures before choosing an art direction.
+See [AUDIT.md](AUDIT.md) for the verified shortlist, corrections, coverage and sources. `candidate_manifest.json` is the screening record; each installed family has `mapping.json` with exact source members, checksums, prepared crop boxes, role mappings and declared gaps. `audit/` contains complete downloaded archive inventories and category counts.
+
+## Approved artwork
+
+After testing the atlas viewer, Mark selected **Game-icons by Delapouite (CC BY 3.0)**. The 12 `game-icons/{role}.svg` illustrations are the initial world-scale settlement and macro-POI mappings, not a fixed limit for the later regional game. **Attribution to Delapouite and the game-icons.net CC BY 3.0 licence is required on distribution.** The source SVGs were modified for parchment preview by removing the old square backing and recolouring the original white ink to a dark tone, while retaining icon outlines.
+
+Only `Game-icons` and a developer-only `Procedural` control are active in the viewer. Azgaar macrodata, maps, hidden sites, terrain, mountains, vegetation, roads and zoom rules remain unchanged. We do **not** silently borrow glyphs from other packs.
+
+## Archived comparison and provenance
+
+A dozen source archives were retrieved and verified during research, with nine families compared. The original evidence is in [AUDIT.md](AUDIT.md), `candidate_manifest.json`, `audit/*-inventory.json` and historical `<pack>/mapping.json` files. Non-selected illustrative PNGs/source samples were removed from the current PR tree to avoid shipping unused Godot assets; all remain recoverable from **Git commit `f12122a96df46a6ac66a512b35d3f7cb2d521b85`**. The complete original external ZIP archives were **not** checked into GitHub, so independently preserve the `Map_Asset_Sources_2026-10-02.zip` bundle where applicable. Historical mapping paths for archived packs refer to that earlier commit, not currently installed runtime assets.
+
+## Test selected defaults
+
+Open `scenes/debug/world_fixture_viewer.tscn` in Godot, press **F6**. `Game-icons` should already be selected. Press F to fit; mouse wheel to zoom; N to switch fixtures. Validate the settlement and landmark symbols in both. The artwork choice is approved; runtime regression review and PR merge are separate steps.
+
+## Retained earlier source provenance
+
+Rejected earlier assets stay for rollback/provenance; they are not selectable.
 
 | Key / directory | Upstream source | Licence | Notes |
 | --- | --- | --- | --- |
@@ -8,24 +26,4 @@ These are small curated *source-derived* trial assets, staged separately from im
 | `game-icons/` | [Game-icons.net (Delapouite)](https://github.com/game-icons/icons/tree/master/delapouite) | CC BY 3.0 | Illustrative fantasy silhouettes, especially strong breadth of ruins, caves, shrines, towers etc. Artist: Delapouite (http://delapouite.com). Original square backdrop removed and white ink converted to dark ink for transparent atlas use, retaining shapes. Attribution required if distributed. |
 | `osmic/` | [Osmic](https://github.com/gmgeo/osmic) | CC0 1.0 | Simplified practical map pictograms, including castles, gate, lighthouse, monastery/worship, huts, historical sites. SVG metadata retained. |
 | `lucide/` | [Lucide](https://github.com/lucide-icons/lucide) | ISC; [LICENSE](https://github.com/lucide-icons/lucide/blob/main/LICENSE) | Coherent outline icons, useful in regional UI and POI panels. CurrentColor replaced by dark ink and stroke slightly thickened in this **trial only**. Retain ISC copyright notice if redistributed. |
-| `kenney/` | [Kenney Cartography Pack](https://kenney.nl/assets/cartography-pack), [public redistribution mirror](https://github.com/ETdoFresh/kenney.nl/tree/master/cartographypack) | CC0 1.0 | **Original complete source SVG atlas**, not individual sprites. Original source SVG lacked explicit dimensions; provided 832x448 viewBox. A Godot prototype must isolate actual matching source cells or split/crop icons; **do not treat the entire SVG as an individual symbol**. Broader original pack offers castles, buildings, churches, mills, gates, ruins, lighthouses, mines, towers, trees etc. |
-
-## Standard trial mapping
-Each standalone directory contains the same 12 **role filenames** (all `.svg`):
-`capital`, `city`, `town`, `village`, `hamlet`, `fort`, `monastery`, `trading`, `ruins`, `cave`, `lighthouse`, and `mine`.
-
-The names describe the **intended test role**, not necessarily a claim about a site's underlying Azgaar group or an icon's specificity. E.g. `osmic/cave.svg` uses an entrance symbol; it is a fallback approximation. Do not conflate missing POI art with detected POI type.
-
-Kenney is currently a *single source atlas*; include Kenney in a meaningful comparison only once a correct sprite crop or subset export is verified. Do not fake Kenney by substituting handmade or another library's artwork.
-
-### Godot comparison acceptance
-- Build a development-only asset family selector for these **five** options: **Kenney, Pinhead, Game-icons, Osmic, Lucide**. Also offer **Current (procedural)** as a useful control, but do not count it as one of the five candidate assets.
-- Use a single active family for both Settlement and Landmark **preview** so visual coherence can be compared across a populated coast, mountain belt and islands. Keep independent layer toggles.
-- Preserve the Azgaar `group` lookup/fallback, identical count/filtering, layer order, seed, and fixture data across all candidates. Do not let style change the generated data, terrain or zoom band thresholds.
-- No new world POIs or local generator features: test current **actual** landmark records, and use a small in-view **legend** of the common 12 roles if some POI examples aren't near the current viewport. The preview must not imply that all POIs should be revealed in real gameplay.
-- Cache small textures per style/role; set consistent world-unit target sizes for meaningful comparison. Carefully handle Godot 4 SVG import, transparent backgrounds, pixel density and aspect ratio. If an image can't render, show the error rather than silently replacing it with rectangles.
-- Keep original licences/documentation in project; no fonts or large generated maps.
-- Stage trial code as a **small draft PR**. Mark selects **Publish draft PR** in ChatGPT after Codex completes, then visually tests both seeds and shares screenshots.
-- Later `GAME-21` regional maps can reuse the same source art **through a style provider/manifest**, not by hardcoding source paths in gameplay logic.
-
-See: `docs/design/world-map-worldbuilding-decisions.md`.
+| `kenney/` | [Kenney Cartography Pack](https://kenney.nl/assets/cartography-pack), [public redistribution mirror](https://github.com/ETdoFresh/kenney.nl/tree/master/cartographypack) | CC0 1.0 | Original complete 832×448 SVG vector atlas plus 12 role-named original PNG sprites from the source pack's `PNG/Default/` directory; no unverified vector crops. |

@@ -1,0 +1,162 @@
+{
+  "source": {
+    "name": "Janssonius",
+    "slug": "janssonius",
+    "page": "https://kmalexander.com/2020/04/27/janssonius-a-free-17th-century-cartography-brush-set-for-fantasy-maps/",
+    "download": "https://kmalexander.com/wp-content/uploads/2026/03/janssonius-cartography-brushes-2.0-png-pack.zip",
+    "bytes": 3251333,
+    "sha256": "52af88bfc8c6eee446c97743babd6474ef6a0de2fd7c3870408fbcc3addd6466",
+    "png_count": 274,
+    "corrupt_member": null,
+    "image_file_count": 274,
+    "categories": {
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Grouped Tents": 7,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Individual Tents": 5,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Fort": 6,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Cities": 10,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Towns": 24,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Flora/Trees": 25,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Flora/Forests": 8,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Flora/Palm Tree Groups": 10,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Flora/Palm Trees": 25,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Flora/Fields": 6,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Cartouches/Ships": 6,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Cartouches/Faces and People": 5,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Cartouches/Map Symbols": 3,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Sounding Marks": 30,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Rock Symbols": 20,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shallows with Rocks": 4,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shipwreck Symbols": 2,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shallow Textures": 5,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Small Shallows": 10,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Anchorages": 3,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Landforms/Mountain Ranges": 10,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Landforms/Hills": 20,
+      "Janssonius Cartography Brushes 2.0 PNG Pack/Landforms/Mountains": 30
+    },
+    "archive_integrity": "CRC verified",
+    "inspected_on": "2026-10-02",
+    "pngs_decoded": 274
+  },
+  "licence": "CC0",
+  "notes": "Capital/city use separate city variants. Maritime marks include abstract shipwreck symbols, not illustrated wrecked ships. Missing rural and religious roles.",
+  "processing": "Lossless crop to nontransparent bounding box; no drawing, recolouring, resampling or invented artwork.",
+  "roles": {
+    "capital": {
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Cities/City 001.png",
+      "source_sha256": "723f6bef4ba6a1ed6aaee80c20a09151745bd8d0612723381146299402c94ec8",
+      "crop_bbox": [
+        0,
+        0,
+        65,
+        84
+      ],
+      "prepared_sha256": "8a2f1c79b32152490ce50cfb80dc4c21e80a37b2a0f39028852b479dba4ece30"
+    },
+    "city": {
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Cities/City 002.png",
+      "source_sha256": "9d3735439c6d9cb6109b06d5b594135524ef1f7a812547d4fc07660abc5dc72f",
+      "crop_bbox": [
+        0,
+        0,
+        64,
+        83
+      ],
+      "prepared_sha256": "64532246021f2a91804acd2846210e9f9f6b01ded23bc347fb65f852d718ee3a"
+    },
+    "town": {
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Towns/Town 001.png",
+      "source_sha256": "5984a77e7a830a9f47dc53001063007c5d0397bd72166cb318487b0fbc458ed4",
+      "crop_bbox": [
+        0,
+        0,
+        47,
+        49
+      ],
+      "prepared_sha256": "f0cb8233db96738b18f3694bf4812194fce6e9f737cbce0af05c346f26dc2dfa"
+    },
+    "fort": {
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Fort/Fort 001.png",
+      "source_sha256": "c62f4ef5241dab17fe32375cf45cbd38e269b0b9aa9e6d856dbfd26d6cb4d968",
+      "crop_bbox": [
+        0,
+        0,
+        30,
+        29
+      ],
+      "prepared_sha256": "ee046b276af07ef3fb2f57635f2a8e4f169e99c5e69b3581b298b04cdbd9fd63"
+    }
+  },
+  "absent_roles": [
+    "village",
+    "hamlet",
+    "monastery",
+    "trading",
+    "ruins",
+    "cave",
+    "lighthouse",
+    "mine"
+  ],
+  "source_samples": [
+    {
+      "file": "source_samples/00-anchorages.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Anchorages/Anchorage 001.png",
+      "sha256": "624db1e90ea796843c8f5a92754368adf17ba1a406227bd6298f4ce5d0a7fcc1"
+    },
+    {
+      "file": "source_samples/01-rock-symbols.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Rock Symbols/Rock 001.png",
+      "sha256": "57c492e005fa13a9c38e52a6cf93f8fc8cd0dfb1747c5c4482e009941a82aa47"
+    },
+    {
+      "file": "source_samples/02-shallow-textures.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shallow Textures/Shallow Texture 001.png",
+      "sha256": "169f260ab4c6b9de877fab51b6bc308a2af8854e7700c61e201bb20e242562ae"
+    },
+    {
+      "file": "source_samples/03-shallows-with-rocks.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shallows with Rocks/Shallow with Rocks 003.png",
+      "sha256": "e6feeacbd1cd645fbb692e10b95b53badcd961f4abcd97868a6c476938f9fdd0"
+    },
+    {
+      "file": "source_samples/04-shipwreck-symbols.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Shipwreck Symbols/Shipwreck.png",
+      "sha256": "05edf5958be45e2b15a48fed8117aa60b3a5ccc18d32085bdcf6c732c97f8e3c"
+    },
+    {
+      "file": "source_samples/05-small-shallows.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Small Shallows/Small Shallow 001.png",
+      "sha256": "da2cf9e5dbaecd66cfdc6d8c9cba60fab30748ba07e34cc3fce0bf8503e3fdb4"
+    },
+    {
+      "file": "source_samples/06-sounding-marks.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Nautical Marks/Sounding Marks/Sounding 10 Fathoms.png",
+      "sha256": "96416e11380309fc87729cd2ab875e46f91b1bdb8f5a4787e288c0394ca1da0b"
+    },
+    {
+      "file": "source_samples/07-cities.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Cities/City 001.png",
+      "sha256": "723f6bef4ba6a1ed6aaee80c20a09151745bd8d0612723381146299402c94ec8"
+    },
+    {
+      "file": "source_samples/08-fort.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Fort/Fort 001.png",
+      "sha256": "c62f4ef5241dab17fe32375cf45cbd38e269b0b9aa9e6d856dbfd26d6cb4d968"
+    },
+    {
+      "file": "source_samples/09-grouped-tents.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Grouped Tents/Tent Group 001.png",
+      "sha256": "7548c190f3885a264d349ce4bd02c2d5c40cfd553462b7a552061a62495f81bf"
+    },
+    {
+      "file": "source_samples/10-individual-tents.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Individual Tents/Tent 001.png",
+      "sha256": "0a383561a3432e4e440370adde0653b5b5fcabb1d229952068a72be521433c9b"
+    },
+    {
+      "file": "source_samples/11-towns.png",
+      "archive_member": "Janssonius Cartography Brushes 2.0 PNG Pack/Settlements/Towns/Town 001.png",
+      "sha256": "5984a77e7a830a9f47dc53001063007c5d0397bd72166cb318487b0fbc458ed4"
+    }
+  ]
+}

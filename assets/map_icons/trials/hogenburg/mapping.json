@@ -1,0 +1,706 @@
+{
+  "source": {
+    "name": "Hogenburg",
+    "slug": "hogenburg",
+    "page": "https://kmalexander.com/2024/08/27/hogenburg-a-free-16th-century-urban-cartography-brush-set-for-fantasy-city-maps/",
+    "download": "https://kmalexander.com/wp-content/uploads/2024/08/hogenburg-urban-cartography-png-pack.zip",
+    "bytes": 9390171,
+    "sha256": "80dfd08ca017f1504b816e81c85947f1bc004ae5c6f3d824fef0b23d2ba9d509",
+    "png_count": 718,
+    "corrupt_member": null,
+    "image_file_count": 718,
+    "categories": {
+      "Hogenburg Urban Cartography PNG Pack/Symbols": 14,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Blocks": 24,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Individual Buildings": 12,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Groups of Buildings": 20,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks": 29,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Fountains": 16,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Horizontal Rows of Buildings": 19,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Vertical Rows of Buildings": 15,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Open Blocks": 12,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Castles": 7,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Stairs": 7,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings": 58,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/Animals": 15,
+      "Hogenburg Urban Cartography PNG Pack/Flora/Unique Trees": 15,
+      "Hogenburg Urban Cartography PNG Pack/Flora/Bushes": 5,
+      "Hogenburg Urban Cartography PNG Pack/Flora/Forests": 7,
+      "Hogenburg Urban Cartography PNG Pack/Flora/Individual Trees": 110,
+      "Hogenburg Urban Cartography PNG Pack/Landforms/Ponds": 6,
+      "Hogenburg Urban Cartography PNG Pack/Landforms/Caves": 4,
+      "Hogenburg Urban Cartography PNG Pack/Landforms/Rocks": 6,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Sepulchres": 9,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Shrines": 4,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Monuments": 8,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Horizontal Gates": 21,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Gates": 6,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Fences": 4,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Horizontal Walls": 40,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Unique Walls": 14,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Corners": 3,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Towerless Walls": 20,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Vertical Walls": 40,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Short Walls": 6,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Vertical Towers": 10,
+      "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Towers": 5,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Torture": 5,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Individuals": 46,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Pairs": 8,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Soldiers": 8,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Death": 8,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Objects": 28,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Angels": 8,
+      "Hogenburg Urban Cartography PNG Pack/Fauna/People/Crowds": 16
+    },
+    "archive_integrity": "CRC verified",
+    "inspected_on": "2026-10-02",
+    "pngs_decoded": 718
+  },
+  "licence": "CC0",
+  "notes": "Urban-building kit: capital/fort use castles, city a block, town a building group, village/hamlet individual buildings. These are scale proxies, not prebuilt settlement tiers.",
+  "processing": "Lossless crop to nontransparent bounding box; no drawing, recolouring, resampling or invented artwork.",
+  "roles": {
+    "capital": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Castles/Castles_1.png",
+      "source_sha256": "5f8387d0e6c9f293bf1b3352518db029872c4c943f85d8a450982723b1ae6de7",
+      "crop_bbox": [
+        0,
+        0,
+        345,
+        372
+      ],
+      "prepared_sha256": "47c77d6723d225b168491f1b0ac280829c0a3077625fcad7196da4cbb549941d"
+    },
+    "city": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Blocks/Blocks_1.png",
+      "source_sha256": "7ae6cc12587fd8dc12c7d4608a7522f86267f7e98304d5927c3dd48406680262",
+      "crop_bbox": [
+        0,
+        0,
+        223,
+        210
+      ],
+      "prepared_sha256": "41b28e9afa842a60e76653b71dd1667189fbd319b309d59724c91b3e79760017"
+    },
+    "town": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Groups of Buildings/Groups of Buildings_10.png",
+      "source_sha256": "d6efbd490119e271ab471877c1bd0244114cb9027899cb9470e04f7225c02798",
+      "crop_bbox": [
+        0,
+        0,
+        158,
+        83
+      ],
+      "prepared_sha256": "2a1572bc762eea9f40541690a130d238a2855b811548e52ed05be4a7cb8ada28"
+    },
+    "village": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Individual Buildings/Individual Buildings_8.png",
+      "source_sha256": "2f2b582c8af82923c3735ad995c8f72a5fbd1a9694f2b5b3bb353d3137f3b2fe",
+      "crop_bbox": [
+        0,
+        0,
+        157,
+        85
+      ],
+      "prepared_sha256": "4f04a4e235d53c1d1b57cd2ecb8310a559ef4ced665fdb6285a897daf0eebdd3"
+    },
+    "hamlet": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Individual Buildings/Individual Buildings_12.png",
+      "source_sha256": "07a10da41859e3357d4283ac01f552c4e7689632aeb58fa294194ff1fbfc31de",
+      "crop_bbox": [
+        0,
+        0,
+        59,
+        40
+      ],
+      "prepared_sha256": "c223b02191ff0eb8c5be21874e6d49f8fa80ff654c82498582fd9951b3ec2a11"
+    },
+    "fort": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Castles/Castles_2.png",
+      "source_sha256": "77901b7f62122aff66db7ec536a723dfd1e21f1ad3ddbbfa432db4bccd66ee19",
+      "crop_bbox": [
+        0,
+        0,
+        287,
+        205
+      ],
+      "prepared_sha256": "9546012b832021308dcca66cc85f7b38dcc2d702b69f2e923308393e05e741ae"
+    },
+    "cave": {
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Landforms/Caves/Caves_1.png",
+      "source_sha256": "bd9d6342202792d51c154dcac7088055be296089e4b06419ebebc3c947c9fbde",
+      "crop_bbox": [
+        0,
+        0,
+        460,
+        235
+      ],
+      "prepared_sha256": "35d43035b25ad60cad5c874c3262624546edf59887a9ecd090606b323f8b2f19"
+    }
+  },
+  "absent_roles": [
+    "monastery",
+    "trading",
+    "ruins",
+    "lighthouse",
+    "mine"
+  ],
+  "source_samples": [
+    {
+      "file": "source_samples/00-blocks.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Blocks/Blocks_1.png",
+      "sha256": "7ae6cc12587fd8dc12c7d4608a7522f86267f7e98304d5927c3dd48406680262"
+    },
+    {
+      "file": "source_samples/01-castles.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Castles/Castles_1.png",
+      "sha256": "5f8387d0e6c9f293bf1b3352518db029872c4c943f85d8a450982723b1ae6de7"
+    },
+    {
+      "file": "source_samples/02-fountains.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Fountains/Fountain_1.png",
+      "sha256": "7a4e2dd0dacb36541049160b520b0f5ba0b9ae50e87dad0a3bec1865e6feada7"
+    },
+    {
+      "file": "source_samples/03-groups-of-buildings.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Groups of Buildings/Groups of Buildings_1.png",
+      "sha256": "d878673e5e97449d649f34fd0dbd9e26c6f522d90e1adbfdbf6b434eac861a39"
+    },
+    {
+      "file": "source_samples/04-horizontal-rows-of-buildings.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Horizontal Rows of Buildings/Horizontal Rows of Buildings_1.png",
+      "sha256": "b74f1906510e03e504a0906d904976bcb7c6882bf1674ca948efd082fecc56a9"
+    },
+    {
+      "file": "source_samples/05-individual-buildings.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Individual Buildings/Individual Buildings_1.png",
+      "sha256": "79e5321e4b78a04fb9f9850745711a76237033ef49e6fbbeb5743b88585df8c7"
+    },
+    {
+      "file": "source_samples/06-open-blocks.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Open Blocks/Open Blocks_1.png",
+      "sha256": "4c9b46d8d14db1b8ad4f0d7b3ccbd9253fa8bdf0c65fafc4a81035498913fe7e"
+    },
+    {
+      "file": "source_samples/07-monuments.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Monuments/Monuments_1.png",
+      "sha256": "264ea40bddee236e89bfe9d89df2d072b0a6c7a234c5ed5f35bff44ad9c91e4a"
+    },
+    {
+      "file": "source_samples/08-sepulchres.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Sepulchres/Sepulchres_1.png",
+      "sha256": "8ef1c62e58d41de3410395c4ecf7ad13c6b37c69640431efc6bc56f0e795d6f8"
+    },
+    {
+      "file": "source_samples/09-shrines.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Shrines and Monuments/Shrines/Shrines_1.png",
+      "sha256": "cf8d269aeb1bc08a426229629e8a680c59c8483424ddb7caf64fc82fc98930e9"
+    },
+    {
+      "file": "source_samples/10-stairs.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Stairs/Stairs_1.png",
+      "sha256": "b97a18b7581dda605eefe71e1b82ff1fae520f5fa16cfe72d1928c9a1a01a859"
+    },
+    {
+      "file": "source_samples/11-unique-blocks.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_1.png",
+      "sha256": "cea93766b35dff7eb73c63f7fd36495c73f5fd079fcf0152b02d341903beec2a"
+    },
+    {
+      "file": "source_samples/12-unique-buildings.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_1.png",
+      "sha256": "e5b8300702a3a565704f6e588c5b753de8cf8dd7f12892dc40d7183a9d064ca3"
+    },
+    {
+      "file": "source_samples/13-vertical-rows-of-buildings.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Vertical Rows of Buildings/Vertical Rows of Buildings_1.png",
+      "sha256": "a15a4f2179b0fe41dc401925a453049bcf01260c43576786967a7a6faa9335c7"
+    },
+    {
+      "file": "source_samples/14-corners.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Corners/Corners_1.png",
+      "sha256": "10c345e94dd146942907c97e89c488b7dbacf6b0ab0fabb0e84cf2b07dfadfdd"
+    },
+    {
+      "file": "source_samples/15-fences.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Fences/Fences_1.png",
+      "sha256": "200d6a4cea55a7f46f71aa0c7b16f1ae12e73821b0339f6f84084ca0ceb9875e"
+    },
+    {
+      "file": "source_samples/16-gates.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Gates/Gates_1.png",
+      "sha256": "292279d8aab4ca578c8dab220f4aee17553d2d863b64dd2bdc7036ce2752139d"
+    },
+    {
+      "file": "source_samples/17-horizontal-gates.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Horizontal Gates/Horizontal Gates_1.png",
+      "sha256": "ff3eb2ef1f8c1b8b341592848f576e5047674d607981e68ae45e6fb8db99645e"
+    },
+    {
+      "file": "source_samples/18-horizontal-walls.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Horizontal Walls/Horizontal Walls_1.png",
+      "sha256": "7d80aed4370bb6051be6c4610f81f63ebc5bbe7962f022fc5b8307b0d936fdde"
+    },
+    {
+      "file": "source_samples/19-short-walls.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Short Walls/Short Walls_1.png",
+      "sha256": "ad508239a5907a5b738a4e6b5cc320d9116cd1e72f2dfd1efc885a20dd20d5ce"
+    },
+    {
+      "file": "source_samples/20-towerless-walls.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Towerless Walls/Towerless Walls_1.png",
+      "sha256": "fe0984e69f6cdf6e2e680464a50b3cbd91f12036a6fd8cbaa5c961911f0cccee"
+    },
+    {
+      "file": "source_samples/21-towers.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Towers/Towers_1.png",
+      "sha256": "fe0363d79d5d4a389337dbcea751072bbb730e5719b69a14d7881a5a0461fb53"
+    },
+    {
+      "file": "source_samples/22-unique-walls.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Unique Walls/Unique Walls_1.png",
+      "sha256": "2a9dd982b64ad6cecb9ec91a5579d411ff44d2ea2fd14d82a2e1d69f3df7018f"
+    },
+    {
+      "file": "source_samples/23-vertical-towers.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Vertical Towers/Vertical Gates_1.png",
+      "sha256": "7a8ff96b6638fc125f10a190b66f78cc7b1d4577990da80db216cbbec16874ac"
+    },
+    {
+      "file": "source_samples/24-vertical-walls.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Walls & Gates/Vertical Walls/Vertical Walls_1.png",
+      "sha256": "f12ac36b67d82f372b37c316d6d9c5d28fd0dcb8c8a6cba528babdc5bc0ef47f"
+    },
+    {
+      "file": "source_samples/25-symbols.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Symbols/Symbols_1.png",
+      "sha256": "327136338f97612c365ce23acb00312929195e9219fc36bcb04e1e2b793dc5b9"
+    },
+    {
+      "file": "source_samples/unique-0169.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_10.png",
+      "sha256": "5355ddc046be789fc7cbb270ba84e6f032a6333803a0960a1def168b43de0ba3"
+    },
+    {
+      "file": "source_samples/unique-0170.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_11.png",
+      "sha256": "aa5c62ac9e19530552381577f72f149b8ca35910fa3ac6252ba70e83e10165f3"
+    },
+    {
+      "file": "source_samples/unique-0171.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_12.png",
+      "sha256": "bc72945ab7d5de8138817e1db7a7027f2bff26f82809f05afb1be1b1f7cc0c8c"
+    },
+    {
+      "file": "source_samples/unique-0172.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_13.png",
+      "sha256": "663730c2d722436e8908166ce189ea97fb90e83528c0b76d5db97f0a1a51d787"
+    },
+    {
+      "file": "source_samples/unique-0173.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_14.png",
+      "sha256": "2123f5246af20e45091dc0408e9a4cd1f3dac6b3826d405b04949c22c537b1fc"
+    },
+    {
+      "file": "source_samples/unique-0174.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_15.png",
+      "sha256": "c9f2aacf291490bfcbbc8af4112f93731edb4421b681e368fab3ce2b35ae14d7"
+    },
+    {
+      "file": "source_samples/unique-0175.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_16.png",
+      "sha256": "b208a846b06f9b5bb88eae1e2a29d0547f6ef52e3592f3a578c5f6bc2d141371"
+    },
+    {
+      "file": "source_samples/unique-0176.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_17.png",
+      "sha256": "ed546264d0daa937f279ec6bfe470ed6daf179480ab03474d7665b20cf3992e1"
+    },
+    {
+      "file": "source_samples/unique-0177.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_18.png",
+      "sha256": "a4c3963a1a489d10676e38dfe46eafbd215b3373056fbf7765e2f1b543a932d3"
+    },
+    {
+      "file": "source_samples/unique-0178.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_19.png",
+      "sha256": "7bb7f989def4743c6b7738e4218e0309ec94980a6b9b002a6f4ed0d0f64ad328"
+    },
+    {
+      "file": "source_samples/unique-0179.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_2.png",
+      "sha256": "914b3a3f813b028b7d304f6a947320cf0fa149c7a201bb2e6172ee48a137b236"
+    },
+    {
+      "file": "source_samples/unique-0180.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_20.png",
+      "sha256": "f4774c884541eb6552f981fe6d78990e779754de936f8647df6b3d135fabf9b6"
+    },
+    {
+      "file": "source_samples/unique-0181.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_21.png",
+      "sha256": "80c00bf2010ed6c1bf9cde27c12d0910b651e0f8288cf8d28be0370151cca1e3"
+    },
+    {
+      "file": "source_samples/unique-0182.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_22.png",
+      "sha256": "f0151be402166d900b84f0b004d75250d1797b0a4db99425f165d389c26034da"
+    },
+    {
+      "file": "source_samples/unique-0183.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_23.png",
+      "sha256": "e5b8399039f65f0c20f590c2c8f049ee522d6867088c75d9c5f95662c0d53f07"
+    },
+    {
+      "file": "source_samples/unique-0184.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_24.png",
+      "sha256": "91b88c0d3d6a4ed0d0b7be066b6270554bb22119933f70a024ae1b14bcb0eecb"
+    },
+    {
+      "file": "source_samples/unique-0185.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_25.png",
+      "sha256": "e4d1f9482c8394b61fc217c05dfa51493594279810b4842ad70b3d9b4156b047"
+    },
+    {
+      "file": "source_samples/unique-0186.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_26.png",
+      "sha256": "cd80debe9cca8c4ea647b16c5be1580d118a3c41bac7ce9ce9288d5af2d08102"
+    },
+    {
+      "file": "source_samples/unique-0187.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_27.png",
+      "sha256": "22e3d3bc3eadf7f639bf7add2ddea85c12f44b1374950026258411d5c286190c"
+    },
+    {
+      "file": "source_samples/unique-0188.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_28.png",
+      "sha256": "94d642eddf138f2ac437cbc7201358020cc25086f41c98812fac2be5934c789d"
+    },
+    {
+      "file": "source_samples/unique-0189.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_29.png",
+      "sha256": "95755546e837bcfac1ac4463272092610093432b64790b16eb9d4b695dcf682b"
+    },
+    {
+      "file": "source_samples/unique-0190.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_3.png",
+      "sha256": "f7e1b9435e86d39be794e83c808a39fbf90dececc7e267d0e65b2edea66c2f19"
+    },
+    {
+      "file": "source_samples/unique-0191.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_4.png",
+      "sha256": "7cf2c291533873f7b605697ff72dab8e64d2bf96874948186fc0fce155bffe96"
+    },
+    {
+      "file": "source_samples/unique-0192.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_5.png",
+      "sha256": "397c6d4d0278c7bcdc70ef9938fd132b61c6cd54cc355205ba8b8bdda97734ab"
+    },
+    {
+      "file": "source_samples/unique-0193.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_6.png",
+      "sha256": "25cf7dfae5b1a9acc08bf2f41157d2ba0d699fdefb4a57a16889a257d588ee8e"
+    },
+    {
+      "file": "source_samples/unique-0194.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_7.png",
+      "sha256": "7686b0ef8e37a4e3b7682ab3875044186039bc120a8f08ee0623917d5aff7e82"
+    },
+    {
+      "file": "source_samples/unique-0195.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_8.png",
+      "sha256": "3086178b101d6ccc8440cbb425f28b6b2cdf80bcb0f8f133c80b57a9faf5e4fc"
+    },
+    {
+      "file": "source_samples/unique-0196.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Blocks/Unique Blocks_9.png",
+      "sha256": "5866a56878540e323ff172b3e3c2251201649c5613633ad0599e1f0d0beb01b9"
+    },
+    {
+      "file": "source_samples/unique-0200.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_10.png",
+      "sha256": "12ad2254d44a8561d18f7d3f8c035dbf38a2dc7c1d80f881a0f01c9aed6ca909"
+    },
+    {
+      "file": "source_samples/unique-0201.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_11.png",
+      "sha256": "2c51d8476a1bc3358c23b813f7d42be11c27a8dbcf2b66ad487e65fc5d7cceee"
+    },
+    {
+      "file": "source_samples/unique-0202.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_12.png",
+      "sha256": "f4b25207d62833008c82f574b7aeb58183cad5d70d60a024aec2da48c371e6e0"
+    },
+    {
+      "file": "source_samples/unique-0203.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_13.png",
+      "sha256": "e48f2f5debe08ac6f5b326f6a700b391b868d6de6cbdc8727c9ca126eddc0095"
+    },
+    {
+      "file": "source_samples/unique-0204.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_14.png",
+      "sha256": "4d71df52da2cff51651b16e846f727e264f1c66f4526bdd7a3512fde2fddaa59"
+    },
+    {
+      "file": "source_samples/unique-0205.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_15.png",
+      "sha256": "bb815a2728b136c61827f7517f6a72e8059d39377d36baaa355f9a1630d5a66a"
+    },
+    {
+      "file": "source_samples/unique-0206.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_16.png",
+      "sha256": "0a198500fc6d857b2eaeac38a5057ac354b24a2414eb2327ea81f12791a30b54"
+    },
+    {
+      "file": "source_samples/unique-0207.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_17.png",
+      "sha256": "4bed82b2342fa07641c9d6bff33e0bbd79846a2d295e2d37e677005e7a66f3bd"
+    },
+    {
+      "file": "source_samples/unique-0208.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_18.png",
+      "sha256": "f01db6128c4d01f03fc91d8f372a0392617513de0bd7aa47813e991b94d23111"
+    },
+    {
+      "file": "source_samples/unique-0209.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_19.png",
+      "sha256": "e7dad30eeb35357e30d64a4c34557359787556f40cf14d1c13aa372f5f8b7e93"
+    },
+    {
+      "file": "source_samples/unique-0210.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_2.png",
+      "sha256": "e27cb6eb33ff3ccd1780507d19fd8afdd888a065c687e74f5b9610a5f39a9f29"
+    },
+    {
+      "file": "source_samples/unique-0211.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_20.png",
+      "sha256": "7bcd3b9ba016e5e14f9ba2c78e92654621b1e05cbf6a5bfbc4e489fb00799b46"
+    },
+    {
+      "file": "source_samples/unique-0212.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_21.png",
+      "sha256": "e473f14c89d69e9ae55d94d3c744f8edad8863ad3494321957398cd5eb53b17f"
+    },
+    {
+      "file": "source_samples/unique-0213.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_22.png",
+      "sha256": "5f16664083d16501325a2b631e61f99109f811d08ed94fd6bd6d1c7e3bc6a39c"
+    },
+    {
+      "file": "source_samples/unique-0214.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_23.png",
+      "sha256": "f20920b31130dcc3b36225835edbe00bdbc6420d3e20c7d3746d640abe555c79"
+    },
+    {
+      "file": "source_samples/unique-0215.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_24.png",
+      "sha256": "b82420eb459d3916bce5321e3d35a924e3398112276f0cb2cde770fb17cace25"
+    },
+    {
+      "file": "source_samples/unique-0216.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_25.png",
+      "sha256": "a4d3a26faf35222b96b59fb8e3875dc8b9a80ab5dd445705603199b276c70c20"
+    },
+    {
+      "file": "source_samples/unique-0217.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_26.png",
+      "sha256": "7f50579e9619cb7cfb82642d8dd5010bfca48e4971f0eab181cb7a57d3d1b5e7"
+    },
+    {
+      "file": "source_samples/unique-0218.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_27.png",
+      "sha256": "55e40d2be743cce0ed7c63e28838747283d64c926b8a1d7252a27bded232685b"
+    },
+    {
+      "file": "source_samples/unique-0219.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_28.png",
+      "sha256": "255213db5bdd858f249da9d10a6755967e8155b98c2c778aa2d295a351e2cd38"
+    },
+    {
+      "file": "source_samples/unique-0220.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_29.png",
+      "sha256": "d0785ee9ac445204eef2b13b06faebf9e6c4a30b3285475109c4c04b2c269daf"
+    },
+    {
+      "file": "source_samples/unique-0221.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_3.png",
+      "sha256": "ee46aa4749365e60274b9855a2d9ab0d14a6ec7db39699df70532ac5b538f1c2"
+    },
+    {
+      "file": "source_samples/unique-0222.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_30.png",
+      "sha256": "c82298d6e55711fb6440549cc503f96168f288ebe7bc5403eb5c7bf84588ccd5"
+    },
+    {
+      "file": "source_samples/unique-0223.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_31.png",
+      "sha256": "160b2249fe6a4614ac1b7140dcfc4d01a836bcb48ed1c73866943da3f5cc1f76"
+    },
+    {
+      "file": "source_samples/unique-0224.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_32.png",
+      "sha256": "ff80db132149298e27d6a27ecf5ce0adea95479cb8ce389d88c13750e4316819"
+    },
+    {
+      "file": "source_samples/unique-0225.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_33.png",
+      "sha256": "daddb12b12ec06b7507d06437646ec21c51b92d140a8cad5457e6eb6696a9a9b"
+    },
+    {
+      "file": "source_samples/unique-0226.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_34.png",
+      "sha256": "e53be26fc3cd50ba3586faa6cbd08c3aea4262dc2453f91e99a43064285948b5"
+    },
+    {
+      "file": "source_samples/unique-0227.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_35.png",
+      "sha256": "0b2e6c1f0bb18fe605bcea24cf80a2b9c0176c1e5cc0b475ed08e588fc7f4e56"
+    },
+    {
+      "file": "source_samples/unique-0228.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_36.png",
+      "sha256": "f4530e4e737679cb7956fa1e2d12a3a4023d64192ef0a204c948f903afe1a9ce"
+    },
+    {
+      "file": "source_samples/unique-0229.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_37.png",
+      "sha256": "4df795f9f3c4ebfe07f48cfb6ecedbba9428edabd2dd15c642c5fe0fbb700e1e"
+    },
+    {
+      "file": "source_samples/unique-0230.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_38.png",
+      "sha256": "4aa1202a4df8c40eaa754cf5e706ce7420dc19f15de1a3af87f02e8bfdf7de18"
+    },
+    {
+      "file": "source_samples/unique-0231.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_39.png",
+      "sha256": "98a4ececf66ea953f18eee1c45c29c8e3421ee8759e9c2cb79814f75bfa0352a"
+    },
+    {
+      "file": "source_samples/unique-0232.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_4.png",
+      "sha256": "f0f6ae4c911b45ae5409a7fbf32b6b91c1c3ae76951087e693a6f832e5ccb604"
+    },
+    {
+      "file": "source_samples/unique-0233.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_40.png",
+      "sha256": "72ec9ca0d006af277eed5f7a7cd4e2a149e579879102b5c5e35d949a95140d8b"
+    },
+    {
+      "file": "source_samples/unique-0234.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_41.png",
+      "sha256": "4a42827fbcc5fc9c9fbe7c79cce1b713671656afdf252c0736930db3a23d1d45"
+    },
+    {
+      "file": "source_samples/unique-0235.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_42.png",
+      "sha256": "a054edc27d60a34cda4036d85eba6630dfdd6c1e5f4c8a03341e3aa94f8993be"
+    },
+    {
+      "file": "source_samples/unique-0236.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_43.png",
+      "sha256": "ced0373df04d059385aed7c77c486bffc3dad9da41366161cedff4b58585bd1d"
+    },
+    {
+      "file": "source_samples/unique-0237.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_44.png",
+      "sha256": "5085ec86c4cf3da2d480b23eb3e6e614126c14ee4da24dc15a05fc6ab4c43afd"
+    },
+    {
+      "file": "source_samples/unique-0238.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_45.png",
+      "sha256": "1111bde5bdb9e9ee912d8ee1ee74519dd826ffe8e679adc275eadec711ee0f42"
+    },
+    {
+      "file": "source_samples/unique-0239.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_46.png",
+      "sha256": "b5357c2eb8e62286cd4429d98dd4cb7a670148a18fc0fd96c0912f9456772626"
+    },
+    {
+      "file": "source_samples/unique-0240.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_47.png",
+      "sha256": "9f638a76a15a34e209066463675e2d1623154cbf6624a5768237a143edaac480"
+    },
+    {
+      "file": "source_samples/unique-0241.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_48.png",
+      "sha256": "5e06e22e078dff0905477d8038e40e505dbbce935e57abec4acd10da2de52d5e"
+    },
+    {
+      "file": "source_samples/unique-0242.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_49.png",
+      "sha256": "480d6434a107baec3d094101ece2046d7c5a2406f342bca077e48dda919ed763"
+    },
+    {
+      "file": "source_samples/unique-0243.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_5.png",
+      "sha256": "db7449b75c8fb15aa28f76d40478d9c8d48421b5b9493a476f7835c57af3a0ea"
+    },
+    {
+      "file": "source_samples/unique-0244.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_50.png",
+      "sha256": "468176d7ff1bd7696375c437afba642141cc1c451620a04160f48fa7478cd75f"
+    },
+    {
+      "file": "source_samples/unique-0245.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_51.png",
+      "sha256": "8ae1cea0710abfcf36de5730767e04163fc735f336ded7e58ae6466b9a55ce30"
+    },
+    {
+      "file": "source_samples/unique-0246.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_52.png",
+      "sha256": "cc5bba5f5717e68fd6a9b7b3967de8440e2fd94c48179961f93b72e6d2d8c8a9"
+    },
+    {
+      "file": "source_samples/unique-0247.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_53.png",
+      "sha256": "0e633758629700ea35194ff87350c04267cefdffa518bf5c1fb93b86c587f185"
+    },
+    {
+      "file": "source_samples/unique-0248.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_54.png",
+      "sha256": "64136e71c1796c6fe7025f1b9483cb7d07512c429404cb9ea16aec524ebbf001"
+    },
+    {
+      "file": "source_samples/unique-0249.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_55.png",
+      "sha256": "21ba209aa1c9f11a6d5fe29121595c1b510e2d159a67c2b6c1d69c04f459cba1"
+    },
+    {
+      "file": "source_samples/unique-0250.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_56.png",
+      "sha256": "15d31be821a80d2396dc78a297335307fb5115f22fb9c48aa2eb680c38a6793d"
+    },
+    {
+      "file": "source_samples/unique-0251.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_57.png",
+      "sha256": "4c2232ea21727d5a40dc043268587bc1af1df106c5728b201930026d63bc9de2"
+    },
+    {
+      "file": "source_samples/unique-0252.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_58.png",
+      "sha256": "ba071780eb78ed667ed5a012a73993066a9c633cd836f28cefe0715dfc1cff33"
+    },
+    {
+      "file": "source_samples/unique-0253.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_6.png",
+      "sha256": "3b2da3b334fc0e62b52034f839d4dc0169b90154ddc5e14ca05d93b28682fabc"
+    },
+    {
+      "file": "source_samples/unique-0254.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_7.png",
+      "sha256": "b7268c96fa38fab8cc10a62730b2999a36db0ea7d7f7fe75e79d280a000fd00d"
+    },
+    {
+      "file": "source_samples/unique-0255.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_8.png",
+      "sha256": "90c0fbaa71e9e264d9e8a7fe3fb09193c4e27afa8c7c95acaad0502f1007ffe7"
+    },
+    {
+      "file": "source_samples/unique-0256.png",
+      "archive_member": "Hogenburg Urban Cartography PNG Pack/Buildings/Unique Buildings/Unique Buildings_9.png",
+      "sha256": "66724dbbc3fbf44238c982b2eeca06ae4497052a6b260910173f76fcc0fc0191"
+    }
+  ]
+}

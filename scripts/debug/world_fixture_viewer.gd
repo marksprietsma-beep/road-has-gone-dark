@@ -12,18 +12,30 @@ const ZOOM_STEP := 1.2
 @onready var camera: Camera2D = $WorldCamera
 @onready var info_label: Label = $DebugOverlay/InfoPanel/Margin/Info
 @onready var selection_label: Label = $DebugOverlay/Selection
+@onready var style_selector: OptionButton = $DebugOverlay/IconTrial/Layout/Style
+@onready var swatches: MapIconSwatchLegend = $DebugOverlay/IconTrial/Layout/Swatches
 var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
 var _fixture_index := 0
 
 func _ready() -> void:
+	for family in MapIconProvider.available_families():
+		style_selector.add_item(family)
+		if family == map_renderer.icon_provider.family:
+			style_selector.select(style_selector.item_count - 1)
+	style_selector.item_selected.connect(_on_style_selected)
 	if FileAccess.file_exists(SHOWCASE_FIXTURE_PATH):
 		_fixture_paths.append(SHOWCASE_FIXTURE_PATH)
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
 	_load_fixture(_fixture_index)
+	swatches.set_provider(map_renderer.icon_provider)
+
+func _on_style_selected(index: int) -> void:
+	map_renderer.set_icon_family(style_selector.get_item_text(index))
+	swatches.queue_redraw()
 
 func _load_fixture(index: int) -> void:
 	_fixture_index = clampi(index, 0, _fixture_paths.size() - 1)
