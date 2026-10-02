@@ -51,7 +51,7 @@ func _draw() -> void:
 	var candidates: Array[Dictionary] = []
 	var sequence := 0
 	for marker in model.fixture.get("markers", []):
-		if not marker is Dictionary:
+		if not marker is Dictionary or bool(marker.get("hidden", false)):
 			continue
 		var kind := str(marker.get("type", ""))
 		if zoom_band == 1 and kind not in MEDIUM_ZOOM_TYPES:
