@@ -1,0 +1,46 @@
+# World map and worldbuilding decisions — 2 October 2026
+
+Status: **accepted direction / living roadmap**. This records Mark's decisions for *The Road Has Gone Dark*, not authorization to implement every future feature. Keep this page current whenever we explicitly change direction. The world should feel like dangerous wilderness punctuated by defended islands of civilization and safe roads.
+
+## Current atlas baseline (locked for now)
+- GAME-23 mountain illustration and GAME-26 Azgaar vegetation: accepted after visual QA on both `game-11-determinism` and `atlas-showcase-06`. PR #24 merged. Azgaar illustrated relief parameters remain **size 0.85, density 0.36**.
+- We are **not** doing small vegetation, mountain, or label polish yet. Each change affects the overall visual hierarchy; evaluate the composition again after roads and settlement symbols are complete.
+- Design hierarchy: terrain/biome/relief should read first; important civilization centers next; roads, shipping lanes and incidental infrastructure should be legible but subordinate. Preserve frontier atmosphere.
+
+## Active near-term sequence
+1. **GAME-27 — route styling (now):** thin and desaturate land road/trade route underlays; reduce highly prominent gold dots/sea lanes. This is project-owned **presentation-only Godot code** (not altering route data or Azgaar). User visually tests GAME-11 and showcase before merge.
+2. **GAME-28 — Azgaar burg classes & settlement symbol language (next; Todo):** capitals, major cities, towns, minor burgs, possibly notable fortified/religious settlements where **pinned Azgaar 1.153.1 data actually supports it**. Research available native groups first. Draw distinct readable parchment-style symbols, zoom-aware to avoid clutter, not generic dots. No town-detail generation in this issue.
+3. **After both:** one holistic map readability/polish review, **not** endless isolated tweaking. Terrain vs roads vs towns vs labels vs vegetation considered together.
+
+## World-scale vs regional/local generation: key boundary
+Azgaar is the **strategic persistent world-level authority** for geography, climates/biomes, states/provinces, macro-settlements, major roads/rivers, and selected **important macro POIs**. These might be noteworthy ruins, a legendary battlefield, a significant volcano, sacred site, watchtower, unusual dungeon entrance, or other **rare major landmark/story hook**. They should be seeds for narrative/location detail, not all visible quest pins by default. Important: distinguish **objective generated world truth** from **player knowledge/discovery**; hidden locations must remain hidden until learned/discovered.
+
+The local-area/region generator (**GAME-21; Town Forge candidate**) will later build **minor** roads, streams, caves, small ruins, shrines, hamlets, encounters, watchtowers and other discoverable local sites around those stable macro anchors. Local output must respect Azgaar terrain, nearby major settlements and routes, and never duplicate/contradict a world-level POI. Stable parent world IDs and deterministic versioned seeds anchor persistence.
+
+The detailed town generator (**GAME-19; Settlemaker**) expands an Azgaar burg on demand (seed from world seed + stable burg ID, **not the name**), while (**GAME-20; Python DungeonGen**) expands a known/discovered dungeon site on demand using a stable site ID. No town layout, dungeon map or local encounters need to be generated globally. This scale split is deliberate.
+
+Current follow-up owners: **GAME-10** world peoples/factions/hidden sites and objective-vs-discovery state; **GAME-22** known/discovered world marker labels/details/inspection; **GAME-7** canonical GameWorld/adapter; **GAME-8/GAME-9** player-facing layers and start selection. Do not spawn duplicate tickets for these.
+
+## Optional Azgaar systems — decisions
+| System | Decision | Intended use |
+| --- | --- | --- |
+| **Burg groups / classification** | **Yes, next (GAME-28)** | Better civilization symbols, zoom thresholds, info text; later inputs to settlements. Verify pinned v1.153.1 availability instead of assuming newer editor features exist. |
+| **Markers / points of interest** | **Yes, selectively later (GAME-10/GAME-22)** | Persist major macro-world sites as restrained, possibly undiscovered narrative hooks. Detailed/minor POIs are locally generated later; do not flood map with every marker. |
+| **Cultures** | **Experimental only, not committed** | Inspect existing generated data and run a controlled sample before choosing whether to use as source for naming, flavor, factions, settlement context or identity; avoid untested assumptions, cosmetic overhaul or generator tweaks. |
+| **Religions / cults** | **Yes, background worldbuilding** | Generate and consume for flavor prose, cults, shrines, conflict/background of the place, NPC dialogue/quests, character/state/settlement info. **Not** necessarily an always-visible map overlay. |
+| **Goods, economy, markets, trade** | **Yes, background worldbuilding** | Use if deterministic source data is available and useful for why towns exist, resources, regional professions, caravan stories, scarcity and contextual descriptions; **no** standalone economy simulation/trade UI commitment yet. |
+| **Emblems / heraldry** | **Yes, info/detail display later** | Heraldic images or descriptors in faction/state/region/burg information panels; **not** cluttering permanent atlas by default. Check availability and deterministic asset approach first. |
+| **Zones, military, battles, geographic feature presentation, trade animation, GIS tooling and other Azgaar features** | **No dedicated implementation planned** | Could inform generated lore/worldbuilding text if readily provided in pinned source; do not treat all upstream features as must-build map layers. Revisit only if gameplay needs justify them. |
+
+## Implementation guardrails
+- Azgaar v1.153.1 pinned source; **do not change generator behavior or fixtures casually**. Canonical JSON stays provider-neutral.
+- Existing generated records can drive narrative even when no layer is displayed.
+- World generation and information revelation are separate concerns. Do not expose hidden major POIs via inspection/UI ahead of player discovery.
+- A whole-world burg is **a strategic anchor**, not a pre-generated Settlemaker town. Likewise a global Azgaar marker can imply a future DungeonGen site without constructing that dungeon now.
+- Preserve procedural repeatability: stable IDs + namespace/versioned seeds; no seed-specific visual patches.
+- Avoid giant SVG/JSON fixture commits for presentation-only work. Review small, scoped PRs in Godot at fitted, medium and close zoom.
+
+## Next handoff
+Current active issue **GAME-27**; **GAME-28** intentionally Todo until the route pass is accepted. Then assess known/discovered POIs and start-region/world-interaction roadmap (GAME-7, GAME-8, GAME-9, GAME-10, GAME-17, GAME-22), with culture data a separate small experiment **before** we rely on it in game worldbuilding.
+
+GitHub repository: `marksprietsma-beep/road-has-gone-dark`; Linear project: *The Road Has Gone Dark*.
