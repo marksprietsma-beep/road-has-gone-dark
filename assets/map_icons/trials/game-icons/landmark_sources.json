@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "markerRegistry": "vendor/azgaar/src/generators/markers-generator.ts (pinned Azgaar v1.153.1)",
+  "artFamily": "Game-icons",
+  "upstream": "https://github.com/game-icons/icons",
+  "upstreamCommit": "82d948812bfe3f269ef8f731dcdb07b08160edc4",
+  "licence": "CC BY 3.0. Credit Delapouite and Lorc for source artwork according to per-role source.",
+  "preparation": "Lossless path geometry. Removed source opaque 512x512 background, recoloured original white foreground path(s) to #28221b dark parchment ink, set rendered SVG canvas to 64x64. No AI/redrawn stand-ins.",
+  "alreadySelectedRoles": {
+    "ruins": "ruins.svg (Delapouite, ancient-ruins)",
+    "caves": "cave.svg (Delapouite, cave-entrance)",
+    "lighthouses": "lighthouse.svg (Delapouite, lighthouse)",
+    "mines": "mine.svg (Delapouite, gold-mine)"
+  },
+  "newRoles": {
+    "volcanoes": {
+      "source": "delapouite/smoking-volcano.svg",
+      "author": "delapouite",
+      "prepared": "volcanoes.svg"
+    },
+    "hot-springs": {
+      "source": "delapouite/steam.svg",
+      "author": "delapouite",
+      "prepared": "hot-springs.svg"
+    },
+    "water-sources": {
+      "source": "lorc/droplet-splash.svg",
+      "author": "lorc",
+      "prepared": "water-sources.svg"
+    },
+    "bridges": {
+      "source": "delapouite/stone-bridge.svg",
+      "author": "delapouite",
+      "prepared": "bridges.svg"
+    },
+    "inns": {
+      "source": "delapouite/tavern-sign.svg",
+      "author": "delapouite",
+      "prepared": "inns.svg"
+    },
+    "waterfalls": {
+      "source": "delapouite/waterfall.svg",
+      "author": "delapouite",
+      "prepared": "waterfalls.svg"
+    },
+    "battlefields": {
+      "source": "lorc/crossed-swords.svg",
+      "author": "lorc",
+      "prepared": "battlefields.svg"
+    },
+    "dungeons": {
+      "source": "delapouite/dungeon-gate.svg",
+      "author": "delapouite",
+      "prepared": "dungeons.svg"
+    },
+    "lake-monsters": {
+      "source": "lorc/sea-serpent.svg",
+      "author": "lorc",
+      "prepared": "lake-monsters.svg"
+    },
+    "sea-monsters": {
+      "source": "delapouite/kraken-tentacle.svg",
+      "author": "delapouite",
+      "prepared": "sea-monsters.svg"
+    },
+    "hill-monsters": {
+      "source": "delapouite/ogre.svg",
+      "author": "delapouite",
+      "prepared": "hill-monsters.svg"
+    },
+    "sacred-mountains": {
+      "source": "delapouite/hills.svg",
+      "author": "delapouite",
+      "prepared": "sacred-mountains.svg"
+    },
+    "sacred-forests": {
+      "source": "delapouite/circle-forest.svg",
+      "author": "delapouite",
+      "prepared": "sacred-forests.svg"
+    },
+    "sacred-pineries": {
+      "source": "lorc/pine-tree.svg",
+      "author": "lorc",
+      "prepared": "sacred-pineries.svg"
+    },
+    "sacred-palm-groves": {
+      "source": "delapouite/palm-tree.svg",
+      "author": "delapouite",
+      "prepared": "sacred-palm-groves.svg"
+    },
+    "brigands": {
+      "source": "delapouite/bandit.svg",
+      "author": "delapouite",
+      "prepared": "brigands.svg"
+    },
+    "pirates": {
+      "source": "delapouite/pirate-flag.svg",
+      "author": "delapouite",
+      "prepared": "pirates.svg"
+    },
+    "statues": {
+      "source": "delapouite/colombian-statue.svg",
+      "author": "delapouite",
+      "prepared": "statues.svg"
+    },
+    "libraries": {
+      "source": "delapouite/bookshelf.svg",
+      "author": "delapouite",
+      "prepared": "libraries.svg"
+    },
+    "circuses": {
+      "source": "lorc/juggler.svg",
+      "author": "lorc",
+      "prepared": "circuses.svg"
+    },
+    "jousts": {
+      "source": "delapouite/knight-banner.svg",
+      "author": "delapouite",
+      "prepared": "jousts.svg"
+    },
+    "fairs": {
+      "source": "delapouite/party-flags.svg",
+      "author": "delapouite",
+      "prepared": "fairs.svg"
+    },
+    "canoes": {
+      "source": "delapouite/canoe.svg",
+      "author": "delapouite",
+      "prepared": "canoes.svg"
+    },
+    "migration": {
+      "source": "delapouite/deer-track.svg",
+      "author": "delapouite",
+      "prepared": "migration.svg"
+    },
+    "dances": {
+      "source": "delapouite/musical-notes.svg",
+      "author": "delapouite",
+      "prepared": "dances.svg"
+    },
+    "mirage": {
+      "source": "delapouite/oasis.svg",
+      "author": "delapouite",
+      "prepared": "mirage.svg"
+    },
+    "portals": {
+      "source": "lorc/magic-portal.svg",
+      "author": "lorc",
+      "prepared": "portals.svg"
+    },
+    "rifts": {
+      "source": "lorc/vortex.svg",
+      "author": "lorc",
+      "prepared": "rifts.svg"
+    },
+    "disturbed-burials": {
+      "source": "delapouite/graveyard.svg",
+      "author": "delapouite",
+      "prepared": "disturbed-burials.svg"
+    },
+    "necropolises": {
+      "source": "delapouite/crypt-entrance.svg",
+      "author": "delapouite",
+      "prepared": "necropolises.svg"
+    },
+    "encounters": {
+      "source": "delapouite/wizard-face.svg",
+      "author": "delapouite",
+      "prepared": "encounters.svg"
+    },
+    "party": {
+      "source": "delapouite/flag-objective.svg",
+      "author": "delapouite",
+      "prepared": "party.svg"
+    },
+    "unidentified": {
+      "source": "delapouite/position-marker.svg",
+      "author": "delapouite",
+      "prepared": "unidentified.svg"
+    }
+  },
+  "notes": "Original built-in marker classes have complete coverage. Future unknown custom classes use a neutral, visibly authored pin ('unidentified') and log a warning. No new world or hidden POI generation."
+}
