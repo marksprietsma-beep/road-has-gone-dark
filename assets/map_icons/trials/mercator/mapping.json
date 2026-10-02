@@ -1,0 +1,206 @@
+{
+  "source": {
+    "name": "Mercator Settlement",
+    "slug": "mercator",
+    "page": "https://kmalexander.com/2026/06/30/mercator-settlement-a-free-16th-century-settlement-brush-set-for-fantasy-maps/",
+    "download": "https://kmalexander.com/wp-content/uploads/2026/06/mercator-settlement-png-pack-1.1.zip",
+    "bytes": 4193056,
+    "sha256": "b97e62969bc1ed24c2e90dad269982f020976f33cb24777b03df503822388be8",
+    "png_count": 238,
+    "corrupt_member": null,
+    "image_file_count": 238,
+    "categories": {
+      "Mercator Settlement PNG Pack/Map Components": 2,
+      "Mercator Settlement PNG Pack/Settlements/Small Towns": 12,
+      "Mercator Settlement PNG Pack/Settlements/Cities": 2,
+      "Mercator Settlement PNG Pack/Settlements/Unique Settlements": 17,
+      "Mercator Settlement PNG Pack/Settlements/Towns": 88,
+      "Mercator Settlement PNG Pack/Settlements/Large Towns": 15,
+      "Mercator Settlement PNG Pack/Flora/Trees": 15,
+      "Mercator Settlement PNG Pack/Flora/Small Forest": 13,
+      "Mercator Settlement PNG Pack/Flora/Forests": 18,
+      "Mercator Settlement PNG Pack/Landforms/Multiple Hills": 21,
+      "Mercator Settlement PNG Pack/Landforms/Unique Hills": 2,
+      "Mercator Settlement PNG Pack/Landforms/Single Hills": 33
+    },
+    "archive_integrity": "CRC verified",
+    "inspected_on": "2026-10-02",
+    "pngs_decoded": 238
+  },
+  "licence": "CC0",
+  "notes": "Capital/city use different city drawings. Village/hamlet use small-town drawings as scale proxies. No dedicated supernatural POIs.",
+  "processing": "Lossless crop to nontransparent bounding box; no drawing, recolouring, resampling or invented artwork.",
+  "roles": {
+    "capital": {
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Cities/City 001.png",
+      "source_sha256": "cb4a18a93dcd6173e39700673ffce884c6c524a60c687697176dcef9be7a8058",
+      "crop_bbox": [
+        0,
+        0,
+        232,
+        239
+      ],
+      "prepared_sha256": "d3f8613c2b7eb0e8b57efd73d7f99347f615f3ee0cbf89f6d38f2c3aa4eaab9a"
+    },
+    "city": {
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Cities/City 002.png",
+      "source_sha256": "6b1216adf49862a74eeeafc4c75301bc6788ad376c57656b66fdc677d61a101e",
+      "crop_bbox": [
+        0,
+        0,
+        378,
+        172
+      ],
+      "prepared_sha256": "d0d710a4e7b243939782212439813a5b333d41ee60e3252185b17ef517229df2"
+    },
+    "town": {
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Towns/Town 001.png",
+      "source_sha256": "b791e753f4a648650f1e3a0ac2bd1a15d915eb1bf9901e6d3f6f3bc004776dbb",
+      "crop_bbox": [
+        0,
+        0,
+        78,
+        83
+      ],
+      "prepared_sha256": "e0c5c9515ab017bbd4162ec317ac1b0ce02368a307dfb55cbddc5f4246863390"
+    },
+    "village": {
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Small Towns/Small Town 001.png",
+      "source_sha256": "e9b785c5422c97cba1d2dce743409ef93e8b9e7146a537e8cd58bdbc0607b69e",
+      "crop_bbox": [
+        0,
+        0,
+        84,
+        53
+      ],
+      "prepared_sha256": "aae53c531e208b37a038ffbb2e5592cc0f769f48308216e2b76e525a5aa1f0fb"
+    },
+    "hamlet": {
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Small Towns/Small Town 002.png",
+      "source_sha256": "98c632254b8f9ff93740dcb490979df5c8d38f94e58f77ae9372d331c35794c7",
+      "crop_bbox": [
+        0,
+        0,
+        89,
+        72
+      ],
+      "prepared_sha256": "11a94ff9d12c5ab6d77901ba3b633460ae0947491401e1fc1013d42d6d500c6a"
+    }
+  },
+  "absent_roles": [
+    "fort",
+    "monastery",
+    "trading",
+    "ruins",
+    "cave",
+    "lighthouse",
+    "mine"
+  ],
+  "source_samples": [
+    {
+      "file": "source_samples/00-cities.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Cities/City 001.png",
+      "sha256": "cb4a18a93dcd6173e39700673ffce884c6c524a60c687697176dcef9be7a8058"
+    },
+    {
+      "file": "source_samples/01-large-towns.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Large Towns/Large Town 001.png",
+      "sha256": "3a45c7503e20fbef633688bf40a8b34be1908a4999411759ae574d6788f8ce1c"
+    },
+    {
+      "file": "source_samples/02-small-towns.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Small Towns/Small Town 001.png",
+      "sha256": "e9b785c5422c97cba1d2dce743409ef93e8b9e7146a537e8cd58bdbc0607b69e"
+    },
+    {
+      "file": "source_samples/03-towns.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Towns/Town 001.png",
+      "sha256": "b791e753f4a648650f1e3a0ac2bd1a15d915eb1bf9901e6d3f6f3bc004776dbb"
+    },
+    {
+      "file": "source_samples/04-unique-settlements.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Earthwork 001.png",
+      "sha256": "eb423deee8bb742d047b3417cf89dd6ea226967fe48a1668892a3400815dc9e8"
+    },
+    {
+      "file": "source_samples/unique-0240.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Forest Settlement 001.png",
+      "sha256": "3f87ac026727694c97ab4c159f16844311f09fbd06d391aadb0cfa3c588ac82f"
+    },
+    {
+      "file": "source_samples/unique-0241.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Forest Settlement 002.png",
+      "sha256": "ff7723e1444c7e99f406b533fa8a4055a0c8de31df9b109fe509cec6748683a5"
+    },
+    {
+      "file": "source_samples/unique-0242.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Forest Settlement 003.png",
+      "sha256": "76524eaf0b660064d8b6a7a0c45ce382f9a1775fbfb49e3c18116eef7f844b23"
+    },
+    {
+      "file": "source_samples/unique-0243.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Gallow Hill 001.png",
+      "sha256": "54b1c79496d3bfa317291185c2a7dcd96e2d90a60ee960474f6a9bd29ca8a891"
+    },
+    {
+      "file": "source_samples/unique-0244.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Gallow Hill 002.png",
+      "sha256": "fc2cd859f9c1267925b92c0e7764b601c66ab0bf5d58120d3e43530b81c8df6a"
+    },
+    {
+      "file": "source_samples/unique-0245.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Forest and Hills 001.png",
+      "sha256": "a70c1fa3922ece4c97eb1c4f9b6a34a4892f1d975f4f1d77b85cec1f6bae870d"
+    },
+    {
+      "file": "source_samples/unique-0246.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Forest and Hills 002.png",
+      "sha256": "532792770f2cf85517627db6a8922f35b12eb240852b1d5cc9d7ba2e58f2c709"
+    },
+    {
+      "file": "source_samples/unique-0247.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hill 001.png",
+      "sha256": "664e19d57a4750504852652524b625d88f23eeed76aa2d77caa001ac622b0728"
+    },
+    {
+      "file": "source_samples/unique-0248.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hill 002.png",
+      "sha256": "60d380cd87e1ba1f4641bdb3c877accfd28d384fca74f91490be71d27c544037"
+    },
+    {
+      "file": "source_samples/unique-0249.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hill 003.png",
+      "sha256": "b7322918fadbaf9ac4b81e11cfbdc6c4fd05461369c5c218508a752539dbad92"
+    },
+    {
+      "file": "source_samples/unique-0250.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hills 001.png",
+      "sha256": "9c74e5e140673718bb46beac61311ab3bd44384b82316e2131d34f12b9b5864d"
+    },
+    {
+      "file": "source_samples/unique-0251.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hills 002.png",
+      "sha256": "446d30ff364d6005a911ac4adcb5b5fb24362254de8a93b5d1ac9fd451e36195"
+    },
+    {
+      "file": "source_samples/unique-0252.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hills 003.png",
+      "sha256": "c014e7055c695d8801b5bec765cc6e182f0acac31e0a8f5bbbcb1fd7dc96268d"
+    },
+    {
+      "file": "source_samples/unique-0253.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Hills 004.png",
+      "sha256": "d1464cf12e31768441490084c7fcb95a31be56bb1333eccf4ef36566dfd2aa21"
+    },
+    {
+      "file": "source_samples/unique-0254.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Town w_ Tree 001.png",
+      "sha256": "e185dfe4b5549f6b7443787e627277e910eda7596545556645020be77e35a800"
+    },
+    {
+      "file": "source_samples/unique-0255.png",
+      "archive_member": "Mercator Settlement PNG Pack/Settlements/Unique Settlements/Two Towns w_ Hills 001.png",
+      "sha256": "2f26801ea38ff2d5631c1a81145adcab31fd0c868c09697489c631e4e5926aaf"
+    }
+  ]
+}
