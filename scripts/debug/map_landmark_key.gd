@@ -70,7 +70,7 @@ func _ready() -> void:
 func set_icon_provider(provider: MapIconProvider) -> void:
 	for child in entries.get_children():
 		child.queue_free()
-	var help := _text("POIs remain in the world even when nearby symbols are hidden.", 10, Color("#b9ac92"))
+	var help := _text("Crowded symbols are filtered, not deleted. Turn off Labels or Settlements to expose obscured sites.", 10, Color("#b9ac92"))
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	entries.add_child(help)
 	var all := CheckBox.new()
