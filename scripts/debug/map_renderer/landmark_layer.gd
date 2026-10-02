@@ -121,15 +121,16 @@ func _reserve_civilization(occupied: Dictionary) -> void:
 	var labels_node := get_parent().get_node_or_null("Labels")
 	if not labels_node or not labels_node.visible:
 		return
-	# Match the label renderer's approximate text bounds, including halos.
-	# Avoid masking the principal state and named settlement labels.
+	# Mirror LabelMapLayer._claim_label: labels that lose a collision
+	# with earlier text are not actually drawn, so don't reserve them.
+	var label_claims: Array[Rect2] = []
 	for state_id in model.state_records:
 		if int(state_id) == 0:
 			continue
 		var state: Dictionary = model.state_records[state_id]
 		var center := int(state.get("center", -1))
 		if model.valid_cell(center):
-			_reserve_label(occupied, model.point(center), str(state.get("name", "")).to_upper(), 8)
+			_reserve_label(occupied, label_claims, model.point(center), str(state.get("name", "")).to_upper(), 8)
 	for settlement in model.fixture.get("settlements", []):
 		if not settlement is Dictionary or settlement.is_empty():
 			continue
@@ -140,13 +141,17 @@ func _reserve_civilization(occupied: Dictionary) -> void:
 		if zoom_band == 2 and not capital and population < 4.0:
 			continue
 		var p := Vector2(float(settlement.get("x", 0.0)) + 4.0, float(settlement.get("y", 0.0)) - 2.0)
-		_reserve_label(occupied, p, str(settlement.get("name", "")), 8 if capital else 7)
+		_reserve_label(occupied, label_claims, p, str(settlement.get("name", "")), 8 if capital else 7)
 
-func _reserve_label(occupied: Dictionary, p: Vector2, value: String, size: int) -> void:
+func _reserve_label(occupied: Dictionary, claims: Array[Rect2], p: Vector2, value: String, size: int) -> void:
 	var bounds := Rect2(
 		p + Vector2(-2.0, -float(size)),
 		Vector2(maxf(8.0, value.length() * size * 0.55), size + 3.0)
 	).grow(3.0)
+	for other: Rect2 in claims:
+		if other.intersects(bounds):
+			return
+	claims.append(bounds)
 	_stamp(occupied, bounds)
 
 ## Small spatial hash avoids scanning all settlements and landmarks for
