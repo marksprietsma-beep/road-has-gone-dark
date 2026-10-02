@@ -8,9 +8,9 @@ Status: **accepted direction / living roadmap**. This records Mark's decisions f
 - Design hierarchy: terrain/biome/relief should read first; important civilization centers next; roads, shipping lanes and incidental infrastructure should be legible but subordinate. Preserve frontier atmosphere.
 
 ## Active near-term sequence
-1. **GAME-27 — route styling (now):** thin and desaturate land road/trade route underlays; reduce highly prominent gold dots/sea lanes. This is project-owned **presentation-only Godot code** (not altering route data or Azgaar). User visually tests GAME-11 and showcase before merge.
-2. **GAME-28 — Azgaar burg classes & settlement symbol language (next; Todo):** capitals, major cities, towns, minor burgs, possibly notable fortified/religious settlements where **pinned Azgaar 1.153.1 data actually supports it**. Research available native groups first. Draw distinct readable parchment-style symbols, zoom-aware to avoid clutter, not generic dots. No town-detail generation in this issue.
-3. **After both:** one holistic map readability/polish review, **not** endless isolated tweaking. Terrain vs roads vs towns vs labels vs vegetation considered together.
+1. **GAME-27 — route styling (Done):** Mark approved the thinner, quieter land roads and less prominent sea-lane dots in GAME-11 and showcase screenshots; PR #25 merged (`5f16a7f`). Presentation-only changes, no world-data changes.
+2. **GAME-28 — Azgaar burg classes & settlement symbol language (now In Progress):** the many **solid dark dots** on zoomed maps are existing small-burg dots drawn by `SettlementMapLayer`. Replace anonymous dots with legible but restrained capitals, major cities, towns, minor burgs, and notable fortified/religious places where **pinned Azgaar v1.153.1 data supports them**. Research available native groups first. No town-detail generation.
+3. **After GAME-28:** one holistic atlas readability/polish review, **not** endless isolated tweaking. Mark specifically noted that **rivers are a little too bold/thick at medium/close zoom** (strong dark teal outer stroke and light inner stroke). Keep rivers recognizably blue-green but soften their close-up stroke width/contrast without losing their visibility, after checking against the new settlement symbols. Also reassess terrain vs roads vs towns vs labels vs vegetation together.
 
 ## World-scale vs regional/local generation: key boundary
 Azgaar is the **strategic persistent world-level authority** for geography, climates/biomes, states/provinces, macro-settlements, major roads/rivers, and selected **important macro POIs**. These might be noteworthy ruins, a legendary battlefield, a significant volcano, sacred site, watchtower, unusual dungeon entrance, or other **rare major landmark/story hook**. They should be seeds for narrative/location detail, not all visible quest pins by default. Important: distinguish **objective generated world truth** from **player knowledge/discovery**; hidden locations must remain hidden until learned/discovered.
@@ -41,6 +41,6 @@ Current follow-up owners: **GAME-10** world peoples/factions/hidden sites and ob
 - Avoid giant SVG/JSON fixture commits for presentation-only work. Review small, scoped PRs in Godot at fitted, medium and close zoom.
 
 ## Next handoff
-Current active issue **GAME-27**; **GAME-28** intentionally Todo until the route pass is accepted. Then assess known/discovered POIs and start-region/world-interaction roadmap (GAME-7, GAME-8, GAME-9, GAME-10, GAME-17, GAME-22), with culture data a separate small experiment **before** we rely on it in game worldbuilding.
+Current active issue **GAME-28** after accepted/merged GAME-27. Then assess known/discovered POIs and start-region/world-interaction roadmap (GAME-7, GAME-8, GAME-9, GAME-10, GAME-17, GAME-22), with culture data a separate small experiment **before** we rely on it in game worldbuilding.
 
 GitHub repository: `marksprietsma-beep/road-has-gone-dark`; Linear project: *The Road Has Gone Dark*.
