@@ -18,6 +18,24 @@ The original atlas imported only 4 of Azgaar's 36 built-in marker categories, le
 - The viewer no longer includes the old style-comparison panel. Confirm volcanoes, battlefields, magical sites, mines, coastal POIs and rare cultural sites visually on both world seeds, at medium and close zoom, with Landmarks toggled on/off. **Do not merge or claim final atlas acceptance before Mark reviews it.**
 - Labeling/inspection remains **GAME-22**, and hidden-site/fog knowledge remains **GAME-10**. Local minor-POI art expansion is separate **GAME-21**.
 
+## Dense landmark preview for visual QA (GAME-31)
+
+For icon review, we can ask **Azgaar itself** to regenerate landmarks on the same fixed geography using its native placement criteria at higher density. This is an *optional developer-only test world*, **not** the normal game world's spawn rate, not new fixture data in GitHub, and not a mock set of arbitrary test dots.
+
+Run once with **Node.js 24+** after `npm ci --prefix vendor/azgaar --ignore-scripts`:
+
+```powershell
+cd C:\projects\road-has-gone-dark
+npm ci --prefix vendor/azgaar --ignore-scripts
+node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/landmark-stress.json --landmark-density 8
+```
+
+The generator writes three files in ignored `tools/worldgen/.tmp/`: `landmark-stress.json`, `landmark-stress.relief.svg`, `landmark-stress.vegetation.svg`. Run `node tests/worldgen/validate-fixture.mjs tools/worldgen/.tmp/landmark-stress.json` to validate. **Close Godot before generating the files and reopen the scene afterward** so it discovers the extra optional fixture.
+
+Open `scenes/debug/world_fixture_viewer.tscn`, F6, then press `N` until the extra landmark-stress fixture appears; F to fit, wheel zoom medium/close, toggle **Landmarks**. The same seed means exactly the same terrain, cultures, towns and illustrated mountain/vegetation sidecars, but much more artwork to evaluate. The supported preview density range is 1–12. Density 1 is fully backward-compatible: it must not regenerate markers or change the canonical test hashes. Density 8 is an intentionally crowded stress fixture and should **not** be taken as the planned in-game balance.
+
+A downloadable version is also produced by the **Verify atlas landmark icons** GitHub Actions workflow as the `landmark-stress-preview` artifact, if online generation passes. Unzip its three files into `tools/worldgen/.tmp/`. Do not commit these large JSON/SVG files.
+
 ## Archived comparison and provenance
 
 A dozen source archives were retrieved and verified during research, with nine families compared. The original evidence is in [AUDIT.md](AUDIT.md), `candidate_manifest.json`, `audit/*-inventory.json` and historical `<pack>/mapping.json` files. Non-selected illustrative PNGs/source samples were removed from the current PR tree to avoid shipping unused Godot assets; all remain recoverable from **Git commit `f12122a96df46a6ac66a512b35d3f7cb2d521b85`**. The complete original external ZIP archives were **not** checked into GitHub, so independently preserve the `Map_Asset_Sources_2026-10-02.zip` bundle where applicable. Historical mapping paths for archived packs refer to that earlier commit, not currently installed runtime assets.
