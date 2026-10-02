@@ -8,6 +8,10 @@ on:
       - "vendor/azgaar/src/generators/markers-generator.ts"
       - "tests/worldgen/fixtures/*.json"
       - "tools/worldgen/verify-landmark-icons.mjs"
+      - "tools/worldgen/check-landmark-stress.mjs"
+      - "tools/worldgen/headless-entry.ts"
+      - "tools/worldgen/generate-azgaar.mjs"
+      - "scripts/debug/world_fixture_viewer.gd"
       - ".github/workflows/verify-atlas-landmarks.yml"
   workflow_dispatch:
 
@@ -18,6 +22,36 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
       - name: Verify Azgaar taxonomy and authored Game-icons
         run: node tools/worldgen/verify-landmark-icons.mjs
+
+  density-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Azgaar generation dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Generate normal and landmark-heavy previews of identical geography
+        run: |
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/baseline.json
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/landmark-stress.json --landmark-density 8
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/stress-repeated.json --landmark-density 8
+          cmp tools/worldgen/.tmp/landmark-stress.json tools/worldgen/.tmp/stress-repeated.json
+          node tools/worldgen/check-landmark-stress.mjs tools/worldgen/.tmp/baseline.json tools/worldgen/.tmp/landmark-stress.json
+          node tests/worldgen/validate-fixture.mjs tools/worldgen/.tmp/landmark-stress.json
+          mkdir -p artifact
+          cp tools/worldgen/.tmp/landmark-stress.json artifact/
+          cp tools/worldgen/.tmp/landmark-stress.relief.svg artifact/
+          cp tools/worldgen/.tmp/landmark-stress.vegetation.svg artifact/
+      - name: Downloadable landmark-stress Godot fixture
+        uses: actions/upload-artifact@v4
+        with:
+          name: landmark-stress-preview
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6
