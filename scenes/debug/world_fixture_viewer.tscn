@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/debug/world_fixture_viewer.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/debug/map_renderer/fantasy_map_layers.tscn" id="2"]
 [ext_resource type="Script" path="res://scripts/debug/map_landmark_key.gd" id="3"]
+
+[sub_resource type="StyleBoxFlat" id="InspectorStyle"]
+bg_color = Color(0.055, 0.045, 0.035, 0.94)
+content_margin_left = 9.0
+content_margin_top = 7.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
 
 [node name="WorldFixtureViewer" type="Node"]
 script = ExtResource("1")
@@ -61,6 +68,38 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
+[node name="LandmarkInspector" type="PanelContainer" parent="DebugOverlay"]
+visible = false
+offset_left = 337.0
+offset_top = 95.0
+offset_right = 645.0
+offset_bottom = 262.0
+mouse_filter = 0
+theme_override_styles/panel = SubResource("InspectorStyle")
+[node name="Content" type="VBoxContainer" parent="DebugOverlay/LandmarkInspector"]
+layout_mode = 2
+theme_override_constants/separation = 5
+[node name="HeadingRow" type="HBoxContainer" parent="DebugOverlay/LandmarkInspector/Content"]
+layout_mode = 2
+[node name="Title" type="Label" parent="DebugOverlay/LandmarkInspector/Content/HeadingRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "Landmark"
+clip_text = true
+[node name="Dismiss" type="Button" parent="DebugOverlay/LandmarkInspector/Content/HeadingRow"]
+layout_mode = 2
+text = "×"
+flat = true
+[node name="Details" type="RichTextLabel" parent="DebugOverlay/LandmarkInspector/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = false
+scroll_active = true
+theme_override_colors/default_color = Color(0.92, 0.92, 0.90, 1)
+theme_override_font_sizes/normal_font_size = 11
+text = "Select a landmark"
 [node name="Layers" type="VBoxContainer" parent="DebugOverlay"]
 anchors_preset = 1
 anchor_left = 1.0
