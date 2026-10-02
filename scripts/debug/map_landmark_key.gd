@@ -109,6 +109,12 @@ func set_icon_provider(provider: MapIconProvider) -> void:
 
 func _toggle() -> void:
 	scroll.visible = not scroll.visible
+	# "Show all" is diagnostic: closing the glossary restores the readable
+	# default, so an old QA toggle cannot silently leave the map cluttered.
+	if not scroll.visible and entries.get_child_count() > 1:
+		var qa := entries.get_child(1) as CheckBox
+		if qa:
+			qa.button_pressed = false
 	offset_bottom = OPEN_BOTTOM if scroll.visible else CLOSED_BOTTOM
 	toggle_button.text = "MAP KEY  ▾" if scroll.visible else "MAP KEY  ▸"
 
