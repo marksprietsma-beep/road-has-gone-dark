@@ -109,25 +109,19 @@ horizontal_alignment = 1
 [node name="IconTrial" type="PanelContainer" parent="DebugOverlay"]
 offset_left = 10.0
 offset_top = 90.0
-offset_right = 350.0
-offset_bottom = 248.0
+offset_right = 360.0
+offset_bottom = 292.0
 [node name="Layout" type="VBoxContainer" parent="DebugOverlay/IconTrial"]
 layout_mode = 2
 theme_override_constants/separation = 2
 [node name="Title" type="Label" parent="DebugOverlay/IconTrial/Layout"]
 layout_mode = 2
 text = "ICON ART TRIAL"
-[node name="Style" type="OptionButton" parent="DebugOverlay/IconTrial"]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 2.0
-offset_right = 332.0
-offset_bottom = 32.0
-[node name="Swatches" type="Control" parent="DebugOverlay/IconTrial"]
-layout_mode = 0
-offset_top = 34.0
-offset_right = 340.0
-offset_bottom = 158.0
+[node name="Style" type="OptionButton" parent="DebugOverlay/IconTrial/Layout"]
+layout_mode = 2
+[node name="Swatches" type="Control" parent="DebugOverlay/IconTrial/Layout"]
+custom_minimum_size = Vector2(336, 124)
+layout_mode = 2
 mouse_filter = 2
 script = ExtResource("3")
 [node name="Help" type="Label" parent="DebugOverlay"]
