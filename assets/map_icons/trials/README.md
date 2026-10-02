@@ -18,6 +18,17 @@ The original atlas imported only 4 of Azgaar's 36 built-in marker categories, le
 - The viewer no longer includes the old style-comparison panel. Confirm volcanoes, battlefields, magical sites, mines, coastal POIs and rare cultural sites visually on both world seeds, at medium and close zoom, with Landmarks toggled on/off. **Do not merge or claim final atlas acceptance before Mark reviews it.**
 - Labeling/inspection remains **GAME-22**, and hidden-site/fog knowledge remains **GAME-10**. Local minor-POI art expansion is separate **GAME-21**.
 
+## Landmark readability and reference key (GAME-31)
+
+The first ×8 landmark-stress images exposed collisions, especially over named cities, forests and mountain passes. **This is a stress fixture, not the actual planned game population.** The renderer now:
+- Uses **screen-aware spacing**, rather than painting every nearby icon regardless of zoom; at equal priority, marker source order is deterministic.
+- Gives important persistent locations (volcanoes, ruins, major battles, dungeons, portals, rifts) precedence over routine waypoints. Dangerous encounters outrank minor events.
+- Reserves the actual settlement-symbol positions and approximate drawn state/burg label bounds, then suppresses marker icons that would cover those positions. Disabling Labels or Settlements releases their protected space on the next redraw. No source data or discovery flags are modified, and source markers marked `hidden` are not drawn.
+- Displays a compact, **default-collapsed Map Key** at the upper left. Expand to browse four themed sections with the actual Game-icons textures and concise explanations for all 36 native Azgaar roles.
+- Provides **Show all overlaps (QA)** inside the key so a reviewer can temporarily see raw crowded markers without changing the saved fixture, then disable it to return to the priority-based display.
+
+This is a **readability and icon-meaning preview**, not final POI exploration UI. GAME-22 handles selecting individual landmarks and known/discovered inspection details; this change must not automatically reveal unknown fantasy sites.
+
 ## Dense landmark preview for visual QA (GAME-31)
 
 For icon review, we can ask **Azgaar itself** to regenerate landmarks on the same fixed geography using its native placement criteria at higher density. This is an *optional developer-only test world*, **not** the normal game world's spawn rate, not new fixture data in GitHub, and not a mock set of arbitrary test dots.
