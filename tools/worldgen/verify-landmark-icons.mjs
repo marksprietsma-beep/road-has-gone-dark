@@ -13,6 +13,13 @@ const generator = read("vendor/azgaar/src/generators/markers-generator.ts");
 const provider = read("scripts/debug/map_renderer/map_icon_provider.gd");
 const renderer = read("scripts/debug/map_renderer/landmark_layer.gd");
 const manifest = JSON.parse(read(iconBase + "landmark_sources.json"));
+const key = read("scripts/debug/map_landmark_key.gd");
+const grouping = key.match(/const GROUPS := \[([\s\S]*?)\n\]/);
+const descriptions = key.match(/const DESCRIPTIONS := \{([\s\S]*?)\n\}/);
+assert.ok(grouping && descriptions, "The expandable Map Key is missing its catalogue");
+const legendTypes = [...grouping[1].matchAll(/"types": \[([^\]]+)\]/g)]
+  .flatMap(m => [...m[1].matchAll(/"([^"]+)"/g)].map(t => t[1]));
+const descriptionTypes = [...descriptions[1].matchAll(/^\s*"([^"]+)":/gm)].map(m => m[1]);
 
 const start = generator.indexOf("private getDefaultConfig()");
 const end = generator.indexOf("private generateTypes()", start);
@@ -24,6 +31,9 @@ const providerBlock = provider.match(/const MARKER_TYPES: Array\[String\] = \[([
 assert.ok(providerBlock, "MapIconProvider.MARKER_TYPES is missing");
 const actual = [...providerBlock[1].matchAll(/"([^"]+)"/g)].map(match => match[1]);
 assert.equal(upstream.length, 36, "Unexpected pinned Azgaar marker count");
+assert.deepEqual([...new Set(legendTypes)].sort(), [...new Set(upstream)].sort(), "Map key must explain all 36 marker types");
+assert.deepEqual([...new Set(descriptionTypes)].sort(), [...new Set(upstream)].sort(), "Map key glossary descriptions missing a marker type");
+assert.equal(legendTypes.length, 36, "Map key has duplicate categories");
 assert.deepEqual([...new Set(actual)].sort(), [...new Set(upstream)].sort(), "Marker taxonomy differs from upstream");
 
 const aliasesBlock = renderer.match(/const EXISTING_ROLE_ALIASES := \{([\s\S]*?)\}/);
