@@ -19,8 +19,19 @@ static func plain(value: String, limit: int = 480) -> String:
 		var re := RegEx.new()
 		if re.compile(pattern) == OK:
 			text = re.sub(text, " ", true)
-	text = text.xml_unescape()
-	text = text.replace("\uFFFD", "").replace("\u0000", "").strip_edges()
+	# Invalid XML scalar zero must be stripped *before* entity decoding.
+	# Defining a GDScript string literal with a backslash-u zero escape
+	# itself materialises a NUL, which Godot logs as a Unicode parse error.
+	var zero_entity := RegEx.new()
+	zero_entity.compile("(?i)&#(?:0+|x0+);")
+	text = zero_entity.sub(text, " ", true).xml_unescape()
+	var readable := ""
+	for index in text.length():
+		var codepoint := text.unicode_at(index)
+		if codepoint == 0 or codepoint == 65533:
+			continue
+		readable += text.substr(index, 1)
+	text = readable.strip_edges()
 	# A source link is not clickable after conversion, so don't promise it.
 	text = text.replace("See One page dungeon", "")
 	text = text.replace("See  One page dungeon", "")
