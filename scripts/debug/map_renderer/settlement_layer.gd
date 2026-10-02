@@ -3,20 +3,39 @@ extends MapLayer
 
 var icon_provider: MapIconProvider
 
+## Only icons actually rendered at the current zoom can be inspected.
+## No hidden or zoom-filtered burg becomes an invisible click target.
+var displayed_settlements: Array[Dictionary] = []
+
+func settlement_near(position: Vector2, radius: float) -> Dictionary:
+	if not visible or not is_inside_tree():
+		return {}
+	var nearest: Dictionary = {}
+	var min_squared := radius * radius
+	for settlement in displayed_settlements:
+		var point := Vector2(float(settlement.get("x", 0.0)), float(settlement.get("y", 0.0)))
+		var distance := position.distance_squared_to(point)
+		if distance <= min_squared:
+			min_squared = distance
+			nearest = settlement
+	return nearest
+
 func set_icon_provider(value: MapIconProvider) -> void:
 	icon_provider = value
 	queue_redraw()
 
 func _draw() -> void:
+	displayed_settlements.clear()
 	if not model: return
 	for settlement in model.fixture.get("settlements", []):
-		if not settlement is Dictionary or settlement.is_empty(): continue
+		if not settlement is Dictionary or settlement.is_empty() or bool(settlement.get("hidden", false)): continue
 		var capital := int(settlement.get("capital", 0)) == 1
 		if zoom_band == 0 and not capital: continue
 		var population := float(settlement.get("population", 0.0))
 		if zoom_band == 1 and not capital and population < 4.0: continue
 		if zoom_band == 2 and not capital and population < 1.4: continue
 		var p := Vector2(float(settlement.get("x", 0)), float(settlement.get("y", 0)))
+		displayed_settlements.append(settlement)
 		var major := population >= 7.0
 		var role := _role_for(settlement)
 		var texture := icon_provider.texture_for(role) if icon_provider else null
