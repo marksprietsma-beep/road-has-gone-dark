@@ -5,6 +5,7 @@ extends PanelContainer
 ## It is a reference for the 36 *official* Azgaar marker meanings, not a
 ## quest-discovery screen. Hidden game-world sites must remain a separate model.
 signal show_overlaps_changed(show: bool)
+signal expanded_changed(expanded: bool)
 
 ## The map retains its dark ink. Only the reference key recolours icon
 ## alpha masks to white, for contrast on the dark translucent panel.
@@ -56,7 +57,7 @@ const DESCRIPTIONS := {
 	"party": "The generated party waypoint.",
 }
 const CLOSED_BOTTOM := 134.0
-const OPEN_BOTTOM := 504.0
+const OPEN_BOTTOM := 310.0
 
 @onready var toggle_button: Button = $Layout/Toggle
 @onready var scroll: ScrollContainer = $Layout/Scroll
@@ -121,6 +122,10 @@ func set_icon_provider(provider: MapIconProvider) -> void:
 			row.tooltip_text = str(kind) + ": " + str(DESCRIPTIONS.get(kind, ""))
 			entries.add_child(row)
 
+func collapse() -> void:
+	if scroll.visible:
+		_toggle()
+
 func _toggle() -> void:
 	scroll.visible = not scroll.visible
 	# "Show all" is diagnostic: closing the glossary restores the readable
@@ -131,6 +136,7 @@ func _toggle() -> void:
 			qa.button_pressed = false
 	offset_bottom = OPEN_BOTTOM if scroll.visible else CLOSED_BOTTOM
 	toggle_button.text = "MAP KEY  ▾" if scroll.visible else "MAP KEY  ▸"
+	expanded_changed.emit(scroll.visible)
 
 func _text(value: String, size: int, ink: Color) -> Label:
 	var label := Label.new()
