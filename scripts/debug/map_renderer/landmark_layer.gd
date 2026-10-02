@@ -27,6 +27,22 @@ var icon_provider: MapIconProvider
 var declutter_enabled := true
 var display_zoom := 1.0
 var _warned_unknown_types: Dictionary = {}
+## Only markers actually drawn may be clicked. A marker deliberately hidden
+## by the source, zoom band or the collision filter is not an inspectable icon.
+var displayed_markers: Array[Dictionary] = []
+
+func marker_near(position: Vector2, radius: float) -> Dictionary:
+	if not visible or not is_inside_tree():
+		return {}
+	var nearest: Dictionary = {}
+	var min_dist_sq := radius * radius
+	for marker in displayed_markers:
+		var at := Vector2(float(marker.get("x", 0)), float(marker.get("y", 0)))
+		var distance := position.distance_squared_to(at)
+		if distance <= min_dist_sq:
+			min_dist_sq = distance
+			nearest = marker
+	return nearest
 
 func set_icon_provider(value: MapIconProvider) -> void:
 	icon_provider = value
@@ -45,6 +61,7 @@ func set_declutter_enabled(enabled: bool) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	displayed_markers.clear()
 	if not model or not icon_provider or zoom_band == 0:
 		return
 
@@ -90,6 +107,7 @@ func _draw() -> void:
 				continue
 			_stamp(occupied, bounds)
 		_draw_icon(p, str(entry["role"]))
+		displayed_markers.append(marker)
 
 func _priority(kind: String) -> int:
 	if kind in IMPORTANT_TYPES:
