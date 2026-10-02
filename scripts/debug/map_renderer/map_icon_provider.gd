@@ -10,14 +10,13 @@ const ROLES: Array[String] = [
 ## Minimum candidate score is 7/10 (period aesthetic + POI coverage).
 ## Rejected source assets remain in the repo for traceability, but are not selectable.
 const FAMILIES: Array[String] = [
-	"Procedural", "Game-icons", "Mercator", "de Fer", "Donia",
-	"Zatta", "CoMiGo", "Müller", "Janssonius",
+	"Procedural", "Game-icons", "Mercator", "de Fer", "Müller", "Janssonius",
+	"Super Rough RPG/HEX", "Vischer", "Ogilby", "Hogenburg",
 ]
 const FAMILY_DIRECTORIES := {
-	"Game-icons": "game-icons", "Mercator": "mercator",
-	"de Fer": "de-fer", "Donia": "donia", "Zatta": "zatta",
-	"CoMiGo": "comigo", "Müller": "muller",
-	"Janssonius": "janssonius",
+	"Game-icons": "game-icons", "Mercator": "mercator", "de Fer": "de-fer",
+	"Müller": "muller", "Janssonius": "janssonius", "Super Rough RPG/HEX": "super-rough",
+	"Vischer": "vischer", "Ogilby": "ogilby", "Hogenburg": "hogenburg",
 }
 const ROOT := "res://assets/map_icons/trials/"
 
@@ -37,12 +36,25 @@ static func available_families() -> Array[String]:
 var family := "Procedural"
 var errors: Array[String] = []
 var _cache: Dictionary = {}
+var _role_manifests: Dictionary = {}
 
 func set_family(value: String) -> void:
 	family = value if value in FAMILIES else "Procedural"
 
+## Missing source roles fall back to baseline markers and read N/A in the legend.
+## A declared role whose file fails to load still produces an error and red X.
+func is_declared_absent(role: String) -> bool:
+	if family == "Procedural" or family == "Game-icons":
+		return false
+	if not _role_manifests.has(family):
+		var path := ROOT + str(FAMILY_DIRECTORIES.get(family, "")) + "/mapping.json"
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+		_role_manifests[family] = parsed if parsed is Dictionary else {}
+	var manifest: Dictionary = _role_manifests[family]
+	return role in manifest.get("absent_roles", [])
+
 func texture_for(role: String) -> Texture2D:
-	if family == "Procedural" or role not in ROLES:
+	if family == "Procedural" or role not in ROLES or is_declared_absent(role):
 		return null
 	var key := "%s/%s" % [family, role]
 	if _cache.has(key):

@@ -124,6 +124,10 @@ custom_minimum_size = Vector2(336, 124)
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("3")
+[node name="CoverageNote" type="Label" parent="DebugOverlay/IconTrial/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "N/A: absent in this pack; baseline marker on map.\nRed X: an expected asset failed to load."
 [node name="Help" type="Label" parent="DebugOverlay"]
 anchors_preset = 7
 anchor_left = 0.5

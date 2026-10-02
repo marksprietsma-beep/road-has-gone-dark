@@ -26,7 +26,7 @@ func _draw() -> void:
 			var size := source * (7.0 / maxf(source.x, source.y))
 			draw_texture_rect(texture, Rect2(p - size * 0.5, size), false)
 			continue
-		if icon_provider and icon_provider.family != "Procedural" and not role.is_empty():
+		if icon_provider and icon_provider.family != "Procedural" and not role.is_empty() and not icon_provider.is_declared_absent(role):
 			draw_line(p + Vector2(-2, -2), p + Vector2(2, 2), Color("#a8493f"), 1.0)
 			draw_line(p + Vector2(2, -2), p + Vector2(-2, 2), Color("#a8493f"), 1.0)
 			continue

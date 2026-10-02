@@ -17,8 +17,11 @@ func _draw() -> void:
 		var origin := Vector2(8 + column * 82, 7 + row * 38)
 		var texture := provider.texture_for(MapIconProvider.ROLES[index])
 		if texture:
+			draw_rect(Rect2(origin, Vector2(24, 24)), Color("#dfcfaa"))
 			var size := _fit_size(texture.get_size(), Vector2(24, 24))
 			draw_texture_rect(texture, Rect2(origin + Vector2(12, 0) - size * 0.5 + Vector2(0, 12), size), false)
+		elif provider.is_declared_absent(MapIconProvider.ROLES[index]):
+			draw_string(ThemeDB.fallback_font, origin + Vector2(0, 16), "N/A", HORIZONTAL_ALIGNMENT_LEFT, 24, 9, Color("#d8c9a5"))
 		else:
 			draw_rect(Rect2(origin, Vector2(24, 24)), Color("#a8493f"), false, 1.0)
 		draw_string(ThemeDB.fallback_font, origin + Vector2(28, 16), MapIconProvider.ROLES[index], HORIZONTAL_ALIGNMENT_LEFT, 52, 9, Color("#d8c9a5"))

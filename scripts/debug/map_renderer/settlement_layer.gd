@@ -23,7 +23,7 @@ func _draw() -> void:
 		if texture:
 			_draw_icon(texture, p, 9.0 if capital else (7.5 if major else 6.0))
 			continue
-		if icon_provider and icon_provider.family != "Procedural":
+		if icon_provider and icon_provider.family != "Procedural" and not icon_provider.is_declared_absent(role):
 			_draw_missing_icon(p)
 			continue
 		if capital:

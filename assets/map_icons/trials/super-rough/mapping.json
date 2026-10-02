@@ -1,0 +1,217 @@
+{
+  "source": {
+    "slug": "super-rough",
+    "name": "Super Rough RPG/HEX",
+    "sha256": "75ccd5250a114d05b01047752a36497fb257a655e0e3b1ff9d1fd47dd18a2b2a",
+    "bytes": 501498,
+    "image_file_count": 24,
+    "categories": {
+      "Icons": 24
+    },
+    "archive_integrity": "CRC verified",
+    "inspected_on": "2026-10-02",
+    "pngs_decoded": 24,
+    "page": "https://bizinbarstome.itch.io/super-rough-rpghex-icons"
+  },
+  "licence": "Author explicitly permits use, modification and distribution without restrictions; see source page comments.",
+  "notes": "Capital uses castle. Dungeon icon is not a cave and is retained separately. White interior fills are part of source artwork. No dedicated rural, religious, trading or lighthouse roles.",
+  "processing": "Lossless crop to nontransparent bounding box; no drawing, recolouring, resampling or invented artwork.",
+  "roles": {
+    "capital": {
+      "archive_member": "Icons/I_Castle.png",
+      "source_sha256": "6850cd94f67b65297c0ca291b13a1b6b8bde42d4c908aebc90c9d6908b57db05",
+      "crop_bbox": [
+        36,
+        35,
+        267,
+        232
+      ],
+      "prepared_sha256": "c6b0d49d7f7e2dad0664f03ceabeb4b90b90dc2f55e36252dcde00a1c7e226ae"
+    },
+    "city": {
+      "archive_member": "Icons/I_City.png",
+      "source_sha256": "4aca21d870e627de2f3e6348f38fb7dbb29299d9a77eb16a678c938c7ca582af",
+      "crop_bbox": [
+        26,
+        43,
+        265,
+        230
+      ],
+      "prepared_sha256": "9c6a656af3c6aacd2e97133d0c9e9922a7f70324a6680a77e118e7cac8f6aa00"
+    },
+    "town": {
+      "archive_member": "Icons/I_Town.png",
+      "source_sha256": "9e7c490a4a979889722d83ec603fa9df65f42dbf88a38ff4bfb5d048b73cee3b",
+      "crop_bbox": [
+        31,
+        79,
+        265,
+        212
+      ],
+      "prepared_sha256": "979af5ddf9fad0b0f06f78557e6e2f4ee55ab3671f75fe7084ed03cde9b7c6a2"
+    },
+    "fort": {
+      "archive_member": "Icons/I_Fort.png",
+      "source_sha256": "0b59936fa7ca69c1e7acc55038ccb2b15df528c30c5e4090da6e13d10daceb84",
+      "crop_bbox": [
+        60,
+        49,
+        258,
+        241
+      ],
+      "prepared_sha256": "4ba7232ac1c9cb4f00917fcdb18e6306e15e9d82c8e84a82c07478047ddbed9a"
+    },
+    "ruins": {
+      "archive_member": "Icons/I_Ruins.png",
+      "source_sha256": "a1b89d41117a5ffd687be857ff4a7f49c341dca8538c674b28cfd1033f523f41",
+      "crop_bbox": [
+        34,
+        65,
+        273,
+        228
+      ],
+      "prepared_sha256": "9637ed1bce99bd754abcea78d8d015485b7f6950c33eee096b909a6fcfbef000"
+    },
+    "mine": {
+      "archive_member": "Icons/I_Mine.png",
+      "source_sha256": "c233bc121a2c58df5748c301adbd7539d78886b110b227e4ca5c54348180af1e",
+      "crop_bbox": [
+        28,
+        54,
+        273,
+        277
+      ],
+      "prepared_sha256": "9be4de2731e2a8e18cc1a4e060c36fa5acea5d64384acc336eb0163d693eeb24"
+    }
+  },
+  "absent_roles": [
+    "village",
+    "hamlet",
+    "monastery",
+    "trading",
+    "cave",
+    "lighthouse"
+  ],
+  "source_samples": [
+    {
+      "file": "source_samples/I_Bridge.png",
+      "archive_member": "Icons/I_Bridge.png",
+      "sha256": "ab0348d5e44dbc75287de1282f6186f9f482fef04e079680fc44e3955e7ea260"
+    },
+    {
+      "file": "source_samples/I_Camp.png",
+      "archive_member": "Icons/I_Camp.png",
+      "sha256": "ddb1f6231e49de55714e3162e1d73c0c5eae1b84baad249fcd049644c8b43019"
+    },
+    {
+      "file": "source_samples/I_Castle.png",
+      "archive_member": "Icons/I_Castle.png",
+      "sha256": "6850cd94f67b65297c0ca291b13a1b6b8bde42d4c908aebc90c9d6908b57db05"
+    },
+    {
+      "file": "source_samples/I_City.png",
+      "archive_member": "Icons/I_City.png",
+      "sha256": "4aca21d870e627de2f3e6348f38fb7dbb29299d9a77eb16a678c938c7ca582af"
+    },
+    {
+      "file": "source_samples/I_Dungeon.png",
+      "archive_member": "Icons/I_Dungeon.png",
+      "sha256": "60e77e7c8ba0b9c186a13a9802f500824c91f3b1555a2cdafc8724d40be74547"
+    },
+    {
+      "file": "source_samples/I_Farm.png",
+      "archive_member": "Icons/I_Farm.png",
+      "sha256": "2f016a71ef18c9112186e73cff42899d5057c4789f1acbb008bcdd1e31f463e3"
+    },
+    {
+      "file": "source_samples/I_Fort.png",
+      "archive_member": "Icons/I_Fort.png",
+      "sha256": "0b59936fa7ca69c1e7acc55038ccb2b15df528c30c5e4090da6e13d10daceb84"
+    },
+    {
+      "file": "source_samples/I_Hills.png",
+      "archive_member": "Icons/I_Hills.png",
+      "sha256": "e33123ea481828a68d82c13ac7c124b92bce2d6238526d1767beac8ef606878a"
+    },
+    {
+      "file": "source_samples/I_Lake.png",
+      "archive_member": "Icons/I_Lake.png",
+      "sha256": "4bb0f594272eb8de27a6d4bc436475f3e87bb45d2c2744012ea040d7c39b2275"
+    },
+    {
+      "file": "source_samples/I_Mine.png",
+      "archive_member": "Icons/I_Mine.png",
+      "sha256": "c233bc121a2c58df5748c301adbd7539d78886b110b227e4ca5c54348180af1e"
+    },
+    {
+      "file": "source_samples/I_Monolith.png",
+      "archive_member": "Icons/I_Monolith.png",
+      "sha256": "427a2a31eb2a5c2fdc404f6ea135df8f95493827e1867f2e0a61ba2d7e604724"
+    },
+    {
+      "file": "source_samples/I_Mountains.png",
+      "archive_member": "Icons/I_Mountains.png",
+      "sha256": "2565345d5767a51dc067040e021b094732f4f04a2acc3d708db10160f888d21e"
+    },
+    {
+      "file": "source_samples/I_Oak.png",
+      "archive_member": "Icons/I_Oak.png",
+      "sha256": "1e14198fb0dd506a7f340cd29a268b5a17c0028e3ab11a8529a0f9b782a8a158"
+    },
+    {
+      "file": "source_samples/I_Oaks.png",
+      "archive_member": "Icons/I_Oaks.png",
+      "sha256": "c1ddc6b903129bdd614d3f68e189b40a6932ed1f17f4fbce3516392c205d27a3"
+    },
+    {
+      "file": "source_samples/I_Pine.png",
+      "archive_member": "Icons/I_Pine.png",
+      "sha256": "b920907b70012dab1e3cfb54737067ca041f1b17b55129397b81213e14a75042"
+    },
+    {
+      "file": "source_samples/I_Pines.png",
+      "archive_member": "Icons/I_Pines.png",
+      "sha256": "a6a35737cc0d0b0e3d4914b6dc3c4c2fc44fca5782a234fdd79948320a11136b"
+    },
+    {
+      "file": "source_samples/I_POI.png",
+      "archive_member": "Icons/I_POI.png",
+      "sha256": "88ded81057ca6078d12b70bd8134ce40877db8e595e7aa420fed2855b5be9c42"
+    },
+    {
+      "file": "source_samples/I_Quest.png",
+      "archive_member": "Icons/I_Quest.png",
+      "sha256": "52f4e9f8ad6f5dc87355c8cebfc3afad631abef963f6c69a433898519fe78b76"
+    },
+    {
+      "file": "source_samples/I_Ruins.png",
+      "archive_member": "Icons/I_Ruins.png",
+      "sha256": "a1b89d41117a5ffd687be857ff4a7f49c341dca8538c674b28cfd1033f523f41"
+    },
+    {
+      "file": "source_samples/I_Shipwreck.png",
+      "archive_member": "Icons/I_Shipwreck.png",
+      "sha256": "ba3bef337cfb1cea44137999fec5794307b2f5a8d4d7cc2c339210f5efa54f29"
+    },
+    {
+      "file": "source_samples/I_Skull.png",
+      "archive_member": "Icons/I_Skull.png",
+      "sha256": "e0ff74c2c9cf3004e7c13f035fb7e9ddc77d0ef156dd65073e68e20886ee786d"
+    },
+    {
+      "file": "source_samples/I_Swamp.png",
+      "archive_member": "Icons/I_Swamp.png",
+      "sha256": "10ef9ece4c1d4d185c2a05c9ff6e1b732c65d7e7281086af5cc80ca54299af05"
+    },
+    {
+      "file": "source_samples/I_Tower.png",
+      "archive_member": "Icons/I_Tower.png",
+      "sha256": "78a20503beda70fb490b0633e110ff66fcf746bb9a9d06dbd0544893fb418df8"
+    },
+    {
+      "file": "source_samples/I_Town.png",
+      "archive_member": "Icons/I_Town.png",
+      "sha256": "9e7c490a4a979889722d83ec603fa9df65f42dbf88a38ff4bfb5d048b73cee3b"
+    }
+  ]
+}

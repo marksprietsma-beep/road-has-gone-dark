@@ -1,0 +1,158 @@
+{
+  "source": {
+    "name": "Donia",
+    "slug": "donia",
+    "page": "https://kmalexander.com/2019/05/15/donia-a-free-17th-century-cartography-brush-set-for-fantasy-maps/",
+    "download": "https://kmalexander.com/wp-content/uploads/2026/03/donia-settlement-brushes-2.1-png-pack.zip",
+    "bytes": 1836443,
+    "sha256": "5793f94fe6d276400f3928662e116b46edda6c5ebcc181e1b5f5f09a4ef14f0c",
+    "png_count": 122,
+    "corrupt_member": null,
+    "image_file_count": 122,
+    "categories": {
+      "Donia Settlement Brushes 2.1 PNG Pack/Unique": 9,
+      "Donia Settlement Brushes 2.1 PNG Pack/Mountain Ranges": 10,
+      "Donia Settlement Brushes 2.1 PNG Pack/Villas": 2,
+      "Donia Settlement Brushes 2.1 PNG Pack/Tower": 10,
+      "Donia Settlement Brushes 2.1 PNG Pack/Cartouches": 12,
+      "Donia Settlement Brushes 2.1 PNG Pack/Fort": 7,
+      "Donia Settlement Brushes 2.1 PNG Pack/Cities": 32,
+      "Donia Settlement Brushes 2.1 PNG Pack/Mountains": 20,
+      "Donia Settlement Brushes 2.1 PNG Pack/Churches": 20
+    },
+    "archive_integrity": "CRC verified",
+    "inspected_on": "2026-10-02",
+    "pngs_decoded": 122
+  },
+  "licence": "CC0",
+  "notes": "Church artwork is a religious-site proxy for monastery, not a dedicated monastery. No verified town/rural roles, so retained as a supplementary source rather than a viewer family.",
+  "processing": "Lossless crop to nontransparent bounding box; no drawing, recolouring, resampling or invented artwork.",
+  "roles": {
+    "capital": {
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Cities/City 001.png",
+      "source_sha256": "3ecc1efc30066cd6869eb3532955a74d8f0067fd79c3c0e7987eab67f66fdf68",
+      "crop_bbox": [
+        0,
+        0,
+        189,
+        63
+      ],
+      "prepared_sha256": "486c1ced054599d780af2b87183a4f8b70912c6b62751af20ec851cdf8cf3571"
+    },
+    "city": {
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Cities/City 002.png",
+      "source_sha256": "459dd7ff7b5a06cd341bb7a7c1b9893bd728bfe16a649afcc254d8b5a788bd75",
+      "crop_bbox": [
+        0,
+        0,
+        184,
+        62
+      ],
+      "prepared_sha256": "c24070ea4027f28f2b774c8a8c7a16073a9cd0812b0d2ffbda08ed6ba1233cad"
+    },
+    "fort": {
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Fort/Fort 001.png",
+      "source_sha256": "6632de7bdf010fdc38b69c1094fd9b6a3ccd994c0bef9c577385c108d3a5127f",
+      "crop_bbox": [
+        0,
+        0,
+        61,
+        57
+      ],
+      "prepared_sha256": "97c0d5af6148e67b5cc54a4f0a69fa1bc6101d0fd5d61135e195c0face0d86f8"
+    },
+    "monastery": {
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Churches/Church 001.png",
+      "source_sha256": "92d64d679784bd76033b23f11dd31e5b16151e143b119e625bfbc463903eaa69",
+      "crop_bbox": [
+        0,
+        0,
+        73,
+        53
+      ],
+      "prepared_sha256": "6e33f5f3e9f40357e477d181bc1c05f8caece8a762c9d420ccd331b7924c60b8"
+    }
+  },
+  "absent_roles": [
+    "town",
+    "village",
+    "hamlet",
+    "trading",
+    "ruins",
+    "cave",
+    "lighthouse",
+    "mine"
+  ],
+  "source_samples": [
+    {
+      "file": "source_samples/00-churches.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Churches/Church 001.png",
+      "sha256": "92d64d679784bd76033b23f11dd31e5b16151e143b119e625bfbc463903eaa69"
+    },
+    {
+      "file": "source_samples/01-cities.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Cities/City 001.png",
+      "sha256": "3ecc1efc30066cd6869eb3532955a74d8f0067fd79c3c0e7987eab67f66fdf68"
+    },
+    {
+      "file": "source_samples/02-fort.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Fort/Fort 001.png",
+      "sha256": "6632de7bdf010fdc38b69c1094fd9b6a3ccd994c0bef9c577385c108d3a5127f"
+    },
+    {
+      "file": "source_samples/03-tower.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Tower/Tower 001.png",
+      "sha256": "7de334fca021d19d981f9846cf87abcdf329766a94dfa1e7d3dee1bf7663951e"
+    },
+    {
+      "file": "source_samples/04-unique.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Bush.png",
+      "sha256": "93b9ed1fe92f19bd732e2a67f0ae78a590207776e97e09b9fc39885626e62bf8"
+    },
+    {
+      "file": "source_samples/05-villas.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Villas/Villa 001.png",
+      "sha256": "9fd835ed3e7c4245873116b7d97371fd97f94e77b24be548cd270316e9053716"
+    },
+    {
+      "file": "source_samples/unique-0122.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Church and Tower.png",
+      "sha256": "bc112b3babc3516fb601b52b669b44925a63b3a8fd04009ad0ea12fffd6662b5"
+    },
+    {
+      "file": "source_samples/unique-0123.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/City and Castle.png",
+      "sha256": "1465d75cfa2dc7686651a64328a39ea16a9cb200344da795159859a2fb64c6fe"
+    },
+    {
+      "file": "source_samples/unique-0124.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Elevated Church 001.png",
+      "sha256": "d6d03ab29310de7493ff85bcf6df00f35ae8f41c720d66c2425aa0ea29e10a94"
+    },
+    {
+      "file": "source_samples/unique-0125.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Elevated City 001.png",
+      "sha256": "a82dd1078facff73868ac6ba04b31f3c1b38c32f4149572389d6efe9bfcd31f3"
+    },
+    {
+      "file": "source_samples/unique-0126.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Elevated Tower 001.png",
+      "sha256": "e0f7439cc2225a3587c6b89f36101dd23163de2ff95209fd9366e5abdc74b16d"
+    },
+    {
+      "file": "source_samples/unique-0127.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Fountain.png",
+      "sha256": "3e45fcad560f3c4e3d38a36a959b9eb19384df69ee849658dd9ab6d3f9b8c1ca"
+    },
+    {
+      "file": "source_samples/unique-0128.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Garden.png",
+      "sha256": "c03dc08516d0a864d6f0816144e91c25f7d956a54300f6cdfada763ea4101929"
+    },
+    {
+      "file": "source_samples/unique-0129.png",
+      "archive_member": "Donia Settlement Brushes 2.1 PNG Pack/Unique/Windmill.png",
+      "sha256": "fdb29d24c7e1ac064f4a66c51f6b5ce9d0ce4139f9c393140019dfa0d24755a5"
+    }
+  ]
+}
