@@ -14,7 +14,7 @@ A dozen source archives were retrieved and verified during research, with nine f
 
 ## Test selected defaults
 
-Open `scenes/debug/world_fixture_viewer.tscn` in Godot, press **F6**. `Game-icons` should already be selected. Press F to fit; mouse wheel to zoom; N to switch fixtures. Validate the settlement and landmark symbols in both. The artwork choice is approved; runtime regression review and PR merge are separate steps.
+Open `scenes/debug/world_fixture_viewer.tscn` in Godot, press **F6**. The viewer always uses the selected Game-icons provider and no longer displays the retired Icon Art Trial panel. Press F to fit; mouse wheel to zoom; N to switch fixtures. The approved, softer blue-green rivers are shown by default. Validate map visibility with the layer toggles as usual.
 
 ## Retained earlier source provenance
 
