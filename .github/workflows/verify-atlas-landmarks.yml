@@ -12,6 +12,11 @@ on:
       - "tools/worldgen/headless-entry.ts"
       - "tools/worldgen/generate-azgaar.mjs"
       - "scripts/debug/world_fixture_viewer.gd"
+      - "scripts/debug/map_landmark_key.gd"
+      - "scripts/debug/world_fixture_renderer.gd"
+      - "scenes/debug/world_fixture_viewer.tscn"
+      - "scripts/debug/map_renderer/label_layer.gd"
+      - "scripts/debug/map_renderer/settlement_layer.gd"
       - ".github/workflows/verify-atlas-landmarks.yml"
   workflow_dispatch:
 
@@ -55,3 +60,21 @@ jobs:
           if-no-files-found: error
           retention-days: 14
           compression-level: 6
+
+  godot-preview-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2 headless
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import scripts, scenes, and SVGs
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit
+      - name: Launch atlas fixture viewer without graphics
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
