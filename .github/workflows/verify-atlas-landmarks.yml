@@ -13,6 +13,7 @@ on:
       - "tools/worldgen/generate-azgaar.mjs"
       - "scripts/debug/world_fixture_viewer.gd"
       - "scripts/debug/map_landmark_key.gd"
+      - "scripts/debug/map_renderer/legend_icon_white.gdshader"
       - "scripts/debug/world_fixture_renderer.gd"
       - "scenes/debug/world_fixture_viewer.tscn"
       - "scripts/debug/map_renderer/label_layer.gd"
