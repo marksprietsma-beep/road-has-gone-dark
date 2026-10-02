@@ -25,6 +25,10 @@ func _check() -> void:
 	var effigy := MapWorldText.plain('An ancient effigy. It has an inscription, but no one can translate it: <div style="font-size: 1.8em;">\uFFFD\uFFFD nonsense</div>')
 	assert(effigy == "An ancient effigy. It has an inscription, but no one can translate it:", "Illegible inscription should not be shown")
 	assert(MapWorldText.plain("A &amp; B") == "A & B", "Entities should be decoded")
+	assert(MapWorldText.plain("Hello &#0; traveler") == "Hello traveler", "Decimal NUL entity not removed")
+	assert(MapWorldText.plain("Ancient &#x0000; ruin") == "Ancient ruin", "Hexadecimal NUL entity not removed")
+	var sanitizer_source := FileAccess.get_file_as_string("res://scripts/debug/map_renderer/map_world_text.gd")
+	assert(not sanitizer_source.contains("\\u0000"), "Do not embed a NUL escape in GDScript source")
 	world.set_zoom(2.0)
 	await process_frame
 	await process_frame
