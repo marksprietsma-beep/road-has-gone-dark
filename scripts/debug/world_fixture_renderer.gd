@@ -3,6 +3,7 @@ extends Node2D
 
 ## Layer coordinator for the development-only fantasy map renderer.
 signal cell_selected(cell_id: int, details: String)
+signal landmark_selected(marker: Dictionary, details: String)
 
 var model: MapRenderModel
 var package: Dictionary
@@ -47,6 +48,12 @@ func set_zoom(value: float) -> void:
 
 func select_at(map_position: Vector2) -> void:
 	if package.is_empty() or not Rect2(Vector2.ZERO, Vector2(model.size)).has_point(map_position): return
+	# Inspect only glyphs actually drawn in the active layer/zoom, never
+	# secret, source-hidden or declutter-suppressed objective markers.
+	var landmarks: LandmarkMapLayer = $Landmarks
+	var radius := maxf(4.0, 12.0 / maxf(landmarks.display_zoom, 0.25))
+	var selected := landmarks.marker_near(map_position, radius)
+	landmark_selected.emit(selected, describe_landmark(selected) if not selected.is_empty() else "")
 	var baked_size: Vector2i = package["baked_size"]
 	var scale: int = package["pixel_scale"]
 	var x := clampi(int(map_position.x / scale), 0, baked_size.x - 1)
@@ -63,3 +70,41 @@ func _cell_details(cell_id: int) -> String:
 	var biome: Dictionary = model.biome_records.get(biome_id, {})
 	var state: Dictionary = model.state_records.get(state_id, {})
 	return "Cell %d  •  %s  •  elevation %.0f  •  %s" % [cell_id, str(biome.get("name", "Unknown")), height, str(state.get("name", "Unclaimed"))]
+
+func describe_landmark(marker: Dictionary) -> String:
+	if marker.is_empty() or bool(marker.get("hidden", false)):
+		return ""
+	var pieces: PackedStringArray = []
+	var kind := str(marker.get("type", "site")).replace("-", " ").capitalize()
+	pieces.append("Type: %s" % kind)
+	var note := str(marker.get("note", "")).strip_edges()
+	if not note.is_empty():
+		pieces.append(note)
+	var cell := int(marker.get("cell", -1))
+	if model.valid_cell(cell):
+		var state_id := int(model.states[cell]) if cell < model.states.size() else 0
+		var state: Dictionary = model.state_records.get(state_id, {})
+		if not state.is_empty():
+			pieces.append("State: %s" % str(state.get("name", "Unknown")))
+		var cell_data: Dictionary = model.fixture.get("cells", {})
+		var province_ids: Array = cell_data.get("province", [])
+		if cell < province_ids.size():
+			var province_id := int(province_ids[cell])
+			for province in model.fixture.get("provinces", []):
+				if province is Dictionary and int(province.get("i", -1)) == province_id and province_id != 0:
+					pieces.append("Province: %s" % str(province.get("name", "Unknown")))
+					break
+	var location := Vector2(float(marker.get("x", 0)), float(marker.get("y", 0)))
+	var nearest_name := ""
+	var nearest_sq := 80.0 * 80.0
+	for settlement in model.fixture.get("settlements", []):
+		if not settlement is Dictionary or settlement.is_empty():
+			continue
+		var point := Vector2(float(settlement.get("x", 0)), float(settlement.get("y", 0)))
+		var distance_sq := location.distance_squared_to(point)
+		if distance_sq < nearest_sq:
+			nearest_sq = distance_sq
+			nearest_name = str(settlement.get("name", ""))
+	if not nearest_name.is_empty():
+		pieces.append("Nearby: %s" % nearest_name)
+	return "\n".join(pieces)
