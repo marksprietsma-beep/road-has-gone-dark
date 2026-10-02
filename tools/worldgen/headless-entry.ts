@@ -1,5 +1,5 @@
 /** Project-owned adapter around the pinned Azgaar generation model. */
-export async function generateWorldBundle(seed: string) {
+export async function generateWorldBundle(seed: string, preview: {landmarkDensity?: number} = {}) {
   await import("@/test-setup");
   await import("@/utils");
   await import("@/data/supporters");
@@ -26,6 +26,22 @@ export async function generateWorldBundle(seed: string) {
   styles.relief.options.size = 0.85;
   styles.relief.options.density = 0.36;
   const relief = Relief.generate();
+
+  // DEV PREVIEW ONLY. Keep the complete default pipeline (and illustrated
+  // relief) unchanged, then re-run Azgaar's actual marker rules with larger
+  // quantities on the already-generated geography. Not for canonical worlds:
+  // this is a stress fixture to review the 36 Game-icons categories.
+  const landmarkDensity = preview.landmarkDensity ?? 1;
+  if (landmarkDensity !== 1) {
+    Markers.setConfig(
+      Markers.getConfig().map(rule => ({
+        ...rule,
+        // "party" identifies a unique player party, not a population of POIs.
+        multiplier: rule.type === "party" ? rule.multiplier : Math.max(1, rule.multiplier) * landmarkDensity
+      }))
+    );
+    Markers.regenerate();
+  }
 
   const cells = pack.cells;
   const array = (value: ArrayLike<unknown> | undefined) => Array.from(value ?? []);
