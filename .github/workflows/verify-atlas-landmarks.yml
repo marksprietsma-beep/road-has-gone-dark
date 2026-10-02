@@ -1,0 +1,23 @@
+name: Verify atlas landmark icons
+on:
+  pull_request:
+    paths:
+      - "assets/map_icons/trials/game-icons/**"
+      - "scripts/debug/map_renderer/map_icon_provider.gd"
+      - "scripts/debug/map_renderer/landmark_layer.gd"
+      - "vendor/azgaar/src/generators/markers-generator.ts"
+      - "tests/worldgen/fixtures/*.json"
+      - "tools/worldgen/verify-landmark-icons.mjs"
+      - ".github/workflows/verify-atlas-landmarks.yml"
+  workflow_dispatch:
+
+jobs:
+  marker-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify Azgaar taxonomy and authored Game-icons
+        run: node tools/worldgen/verify-landmark-icons.mjs
