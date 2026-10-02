@@ -7,13 +7,26 @@ const ROLES: Array[String] = [
 	"capital", "city", "town", "village", "hamlet", "fort",
 	"monastery", "trading", "ruins", "cave", "lighthouse", "mine",
 ]
+## Exact marker taxonomy from pinned Azgaar markers-generator.ts, not a guessed subset.
+## Four marker types reuse existing singular role art (ruins, caves, lighthouses, mines).
+const MARKER_TYPES: Array[String] = [
+	"volcanoes", "hot-springs", "water-sources", "mines",
+	"bridges", "inns", "lighthouses", "waterfalls",
+	"battlefields", "dungeons", "lake-monsters", "sea-monsters",
+	"hill-monsters", "sacred-mountains", "sacred-forests", "sacred-pineries",
+	"sacred-palm-groves", "brigands", "pirates", "statues",
+	"ruins", "libraries", "circuses", "jousts",
+	"fairs", "canoes", "migration", "dances",
+	"mirage", "caves", "portals", "rifts",
+	"disturbed-burials", "necropolises", "encounters", "party",
+]
 ## Art direction selected: Game-icons. Procedural remains a debug-only control.
 ## Alternative pack art and mapping research is retained in Git history (f12122a).
 const FAMILIES: Array[String] = ["Procedural", "Game-icons"]
 const FAMILY_DIRECTORIES := {"Game-icons": "game-icons"}
 const ROOT := "res://assets/map_icons/trials/"
 
-## Only present actual installed samples; never offer nonfunctional trial options.
+## Retained for developer checks; the public atlas is locked to Game-icons.
 static func available_families() -> Array[String]:
 	var present: Array[String] = ["Procedural"]
 	for name in FAMILIES:
@@ -35,8 +48,8 @@ var _role_manifests: Dictionary = {}
 func set_family(value: String) -> void:
 	family = value if value in FAMILIES else "Procedural"
 
-## Missing source roles fall back to baseline markers and read N/A in the legend.
-## A declared role whose file fails to load still produces an error and red X.
+## Legacy trial helper. Game-icons maps every built-in marker type to an actual SVG.
+## Expected-asset failures must not silently substitute unrelated icons.
 func is_declared_absent(role: String) -> bool:
 	if family == "Procedural" or family == "Game-icons":
 		return false
@@ -48,7 +61,7 @@ func is_declared_absent(role: String) -> bool:
 	return role in manifest.get("absent_roles", [])
 
 func texture_for(role: String) -> Texture2D:
-	if family == "Procedural" or role not in ROLES or is_declared_absent(role):
+	if family == "Procedural" or (role not in ROLES and role not in MARKER_TYPES and role != "unidentified") or is_declared_absent(role):
 		return null
 	var key := "%s/%s" % [family, role]
 	if _cache.has(key):
