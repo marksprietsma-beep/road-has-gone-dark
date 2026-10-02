@@ -1,7 +1,7 @@
 class_name MapIconProvider
 extends RefCounted
 
-## Shared, data-driven source for the development atlas comparison. The renderer
+## Shared, data-driven semantic icon source for the world and regional atlas. The renderer
 ## asks for semantic roles; it never needs to know asset paths or atlas cells.
 const ROLES: Array[String] = [
 	"capital", "city", "town", "village", "hamlet", "fort",
@@ -33,7 +33,8 @@ static func available_families() -> Array[String]:
 			present.append(name)
 	return present
 
-var family := "Procedural"
+## Approved on 2 October 2026 after Mark tested the comparison viewer.
+var family := "Game-icons"
 var errors: Array[String] = []
 var _cache: Dictionary = {}
 var _role_manifests: Dictionary = {}
