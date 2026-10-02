@@ -48,14 +48,16 @@ func _draw_routes() -> void:
 
 		var group := str(route.get("group", "roads"))
 		if group == "searoutes":
-			# Sea lanes are navigation/trade routes, not roads. A faint gold
-			# guide with small navigation dots reads more like an atlas than
-			# chunky dashed road geometry and stays distinct from blue rivers.
-			draw_polyline(line, Color("#bda66f", 0.24), 0.9, true)
-			_draw_dotted_polyline(line, Color("#d1b878", 0.72), 1.35, 9.0)
+			# Sea lanes should be discoverable, not a bright dotted coastline.
+			# Smaller, fainter, more widely spaced marks preserve navigation
+			# cues while keeping the land and the waterways visually dominant.
+			draw_polyline(line, Color("#aea07c", 0.16), 0.55, true)
+			_draw_dotted_polyline(line, Color("#b8aa84", 0.40), 0.62, 13.0)
 		else:
-			draw_polyline(line, Color("#44372b", 0.72), 1.6, true)
-			draw_polyline(line, Color("#a98d62", 0.5), 0.65, true)
+			# Roads and inland trade links: restrained dark ink and a fine
+			# inner highlight so terrain and settlements remain the focus.
+			draw_polyline(line, Color("#51483a", 0.48), 1.12, true)
+			draw_polyline(line, Color("#ae9f7d", 0.30), 0.42, true)
 
 func _draw_dotted_polyline(line: PackedVector2Array, color: Color, radius: float, spacing: float) -> void:
 	var carry := 0.0
