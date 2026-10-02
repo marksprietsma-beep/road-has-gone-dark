@@ -16,6 +16,18 @@ func _check() -> void:
 	assert(not scroll.visible, "Map Key must initially be collapsed")
 	assert(landmarks.declutter_enabled, "Collision avoidance must default to ON")
 	assert(entries.get_child_count() > 36, "Map key must include all 36 icons")
+	var first_row := entries.get_child(4) as HBoxContainer
+	assert(first_row != null, "No landmark row in glossary")
+	var first_icon := first_row.get_child(0) as TextureRect
+	assert(first_icon.material is ShaderMaterial, "Legend glyph must use the white-only material")
+	var ink_shader := (first_icon.material as ShaderMaterial).shader
+	assert(ink_shader.code.contains("vec4(1.0, 1.0, 1.0, source.a)"), "Icon shader must render pure white")
+	var labels := first_row.get_child(1) as VBoxContainer
+	for label in labels.get_children():
+		assert(label is Label)
+		assert(label.get_theme_color("font_color") == Color.WHITE, "All glossary text must be white")
+	var toggle := scene.get_node("DebugOverlay/MapKey/Layout/Toggle") as Button
+	assert(toggle.get_theme_color("font_color") == Color.WHITE, "Legend header must be white")
 	key._toggle()
 	assert(scroll.visible, "Map Key must expand on demand")
 	var qa := entries.get_child(1) as CheckBox
