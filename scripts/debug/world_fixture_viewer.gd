@@ -3,6 +3,8 @@ extends Node
 ## Standalone development tool. It is intentionally not linked from New Game.
 const FIXTURE_PATH := "res://tests/worldgen/fixtures/game-11-determinism.json"
 const SHOWCASE_FIXTURE_PATH := "res://tests/worldgen/fixtures/atlas-showcase.json"
+## This optional, ignored fixture can be produced by CLI with --landmark-density.
+const LANDMARK_STRESS_PATH := "res://tools/worldgen/.tmp/landmark-stress.json"
 const PAN_SPEED := 520.0
 const MIN_ZOOM := 0.25
 const MAX_ZOOM := 4.0
@@ -20,6 +22,8 @@ var _fixture_index := 0
 func _ready() -> void:
 	if FileAccess.file_exists(SHOWCASE_FIXTURE_PATH):
 		_fixture_paths.append(SHOWCASE_FIXTURE_PATH)
+	if FileAccess.file_exists(LANDMARK_STRESS_PATH):
+		_fixture_paths.append(LANDMARK_STRESS_PATH)
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
