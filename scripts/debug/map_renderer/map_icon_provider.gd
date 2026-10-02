@@ -7,11 +7,32 @@ const ROLES: Array[String] = [
 	"capital", "city", "town", "village", "hamlet", "fort",
 	"monastery", "trading", "ruins", "cave", "lighthouse", "mine",
 ]
-const FAMILIES: Array[String] = ["Procedural", "Kenney", "Pinhead", "Game-icons", "Osmic", "Lucide"]
+## Minimum candidate score is 7/10 (period aesthetic + POI coverage).
+## Rejected source assets remain in the repo for traceability, but are not selectable.
+const FAMILIES: Array[String] = [
+	"Procedural", "Game-icons", "Mercator", "de Fer", "Donia",
+	"Zatta", "CoMiGo", "Müller", "Janssonius",
+]
 const FAMILY_DIRECTORIES := {
-	"Pinhead": "pinhead", "Game-icons": "game-icons", "Osmic": "osmic", "Lucide": "lucide",
+	"Game-icons": "game-icons", "Mercator": "mercator",
+	"de Fer": "de-fer", "Donia": "donia", "Zatta": "zatta",
+	"CoMiGo": "comigo", "Müller": "muller",
+	"Janssonius": "janssonius",
 }
 const ROOT := "res://assets/map_icons/trials/"
+
+## Only present actual installed samples; never offer nonfunctional trial options.
+static func available_families() -> Array[String]:
+	var present: Array[String] = ["Procedural"]
+	for name in FAMILIES:
+		if name == "Procedural":
+			continue
+		var folder: String = ROOT + str(FAMILY_DIRECTORIES.get(name, "")) + "/"
+		var has_capital := FileAccess.file_exists(folder + "capital.svg") or FileAccess.file_exists(folder + "capital.png")
+		var has_town := FileAccess.file_exists(folder + "town.svg") or FileAccess.file_exists(folder + "town.png")
+		if has_capital and has_town:
+			present.append(name)
+	return present
 
 var family := "Procedural"
 var errors: Array[String] = []
@@ -26,29 +47,34 @@ func texture_for(role: String) -> Texture2D:
 	var key := "%s/%s" % [family, role]
 	if _cache.has(key):
 		return _cache[key]
-	var texture: Texture2D = _kenney_texture(role) if family == "Kenney" else _standalone_texture(role)
+	var texture: Texture2D = _standalone_texture(role)
 	_cache[key] = texture
 	return texture
 
 func _standalone_texture(role: String) -> Texture2D:
-	var path := ROOT + str(FAMILY_DIRECTORIES.get(family, "")) + "/" + role + ".svg"
-	var image := _load_svg(path)
-	return ImageTexture.create_from_image(image) if image else null
+	var stem := ROOT + str(FAMILY_DIRECTORIES.get(family, "")) + "/" + role
+	var png_path := stem + ".png"
+	if FileAccess.file_exists(png_path):
+		var png_image := _load_png(png_path)
+		return ImageTexture.create_from_image(png_image) if png_image else null
+	var svg_path := stem + ".svg"
+	if FileAccess.file_exists(svg_path):
+		var svg_image := _load_svg(svg_path)
+		return ImageTexture.create_from_image(svg_image) if svg_image else null
+	_report_error("Unmapped icon role %s for family %s" % [role, family])
+	return null
 
-func _kenney_texture(role: String) -> Texture2D:
-	# Prefer verified named original PNG assets; the single source vector sheet
-	# has no semantic crop identifiers. This path never substitutes other sets.
-	var path := ROOT + "kenney/" + role + ".png"
+func _load_png(path: String) -> Image:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if not file:
-		_report_error("Cannot open Kenney PNG: %s" % path)
+		_report_error("Cannot open PNG: %s" % path)
 		return null
 	var image := Image.new()
 	var error := image.load_png_from_buffer(file.get_buffer(file.get_length()))
 	if error != OK:
 		_report_error("Godot PNG decode failed (%s): %s" % [error_string(error), path])
 		return null
-	return ImageTexture.create_from_image(image)
+	return image
 
 func _load_svg(path: String) -> Image:
 	var file := FileAccess.open(path, FileAccess.READ)
