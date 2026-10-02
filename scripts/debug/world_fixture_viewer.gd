@@ -14,6 +14,7 @@ const ZOOM_STEP := 1.2
 @onready var camera: Camera2D = $WorldCamera
 @onready var info_label: Label = $DebugOverlay/InfoPanel/Margin/Info
 @onready var selection_label: Label = $DebugOverlay/Selection
+@onready var map_key: MapLandmarkKey = $DebugOverlay/MapKey
 var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
@@ -27,6 +28,10 @@ func _ready() -> void:
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
+	map_key.set_icon_provider(map_renderer.icon_provider)
+	map_key.show_overlaps_changed.connect(func(show: bool) -> void:
+		map_renderer.set_landmark_declutter(not show)
+	)
 	_load_fixture(_fixture_index)
 
 func _load_fixture(index: int) -> void:
