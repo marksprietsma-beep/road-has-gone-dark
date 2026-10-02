@@ -3,20 +3,8 @@ extends MapLayer
 
 enum Kind { RIVERS, ROUTES, BORDERS }
 @export var kind := Kind.RIVERS
-## GAME-30 visual comparison only. R toggles a proposed softer blue-green river
-## style against the accepted baseline in the debug atlas viewer.
-var soft_river_trial := false
+## Approved GAME-30 river style: quieter blue-green strokes.
 var border_texture: Texture2D
-
-func _unhandled_input(event: InputEvent) -> void:
-	if kind != Kind.RIVERS:
-		return
-	if event is InputEventKey:
-		if event.pressed and not event.echo and event.keycode == KEY_R:
-			soft_river_trial = not soft_river_trial
-			queue_redraw()
-			print("GAME-30 rivers: %s" % ("soft trial" if soft_river_trial else "original baseline"))
-			get_viewport().set_input_as_handled()
 
 func set_package(package: Dictionary) -> void:
 	border_texture = package.get("border_texture")
@@ -47,15 +35,10 @@ func _draw_rivers() -> void:
 				break
 		if line.size() > 1:
 			var width := float(river.get("width", 0.4))
-			if soft_river_trial:
-				# Candidate: thinner, quieter outlines at medium/close zoom,
-				# retaining both the blue-green hue and the clipped mouth.
-				draw_polyline(line, Color("#283a3b", 0.65), clampf(width * 1.4, 0.75, 2.05), true)
-				draw_polyline(line, Color("#657a70", 0.53), clampf(width * 0.75, 0.4, 1.05), true)
-			else:
-				# Previously accepted rendering, kept for live A/B comparison.
-				draw_polyline(line, Color("#283a3b", 0.86), clampf(width * 2.0, 1.0, 2.8), true)
-				draw_polyline(line, Color("#657a70", 0.72), clampf(width, 0.6, 1.5), true)
+			# Preserve the coastline clipping and generated river geometry.
+			# Reduced stroke weight and opacity approved in the GAME-30 A/B.
+			draw_polyline(line, Color("#283a3b", 0.65), clampf(width * 1.4, 0.75, 2.05), true)
+			draw_polyline(line, Color("#657a70", 0.53), clampf(width * 0.75, 0.4, 1.05), true)
 
 func _draw_routes() -> void:
 	if zoom_band == 0: return
