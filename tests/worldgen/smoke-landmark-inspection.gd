@@ -33,7 +33,7 @@ func _check() -> void:
 		assert(details.text.contains(note), "Inspector must use the actual generated note")
 	world.set_layer_enabled("Landmarks", false)
 	assert(landmarks.marker_near(pos, 100.0).is_empty(), "Hidden landmark layer must not be clickable")
-	scene._on_layer_toggled(false, "Landmarks")
+	scene.call("_on_layer_toggled", false, "Landmarks")
 	assert(not inspector.visible, "Disabling landmark layer must dismiss stale inspect UI")
 	world.set_layer_enabled("Landmarks", true)
 	world.set_zoom(0.2)
