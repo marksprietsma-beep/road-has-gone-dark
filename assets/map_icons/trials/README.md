@@ -1,24 +1,20 @@
-# Settlement and landmark icon trials (GAME-28)
+# Atlas icon art — Game-icons selected (GAME-28)
 
 See [AUDIT.md](AUDIT.md) for the verified shortlist, corrections, coverage and sources. `candidate_manifest.json` is the screening record; each installed family has `mapping.json` with exact source members, checksums, prepared crop boxes, role mappings and declared gaps. `audit/` contains complete downloaded archive inventories and category counts.
 
-## Chosen art direction — 2 October 2026
+## Approved artwork
 
-**Game-icons (Delapouite, CC BY 3.0)** was selected by Mark after reviewing the rendered alternatives in Godot. It is the **default** for both settlement and supported macro-POI symbols. The existing 12 source-derived SVGs are the **initial atlas role mappings**, not the limit of the broader library. Source-specific credit and the CC BY 3.0 attribution requirement remain mandatory if published. Keep future GAME-21 regional landmarks within this coherent icon family where possible; any extensions must have verified semantic meaning, deliberate ink treatment and licensing/attribution.
+After testing the atlas viewer, Mark selected **Game-icons by Delapouite (CC BY 3.0)**. The 12 `game-icons/{role}.svg` illustrations are the initial world-scale settlement and macro-POI mappings, not a fixed limit for the later regional game. **Attribution to Delapouite and the game-icons.net CC BY 3.0 licence is required on distribution.** The source SVGs were modified for parchment preview by removing the old square backing and recolouring the original white ink to a dark tone, while retaining icon outlines.
 
-The other artwork families were evaluated solely for comparison and provenance. The trial harness should not dictate final game asset contracts. Azgaar terrain, vegetation, seed logic, data, zoom thresholds and hidden-POI rules are unaffected by this art decision. The procedural markers remain an explicit development fallback.
+Only `Game-icons` and a developer-only `Procedural` control are active in the viewer. Azgaar macrodata, maps, hidden sites, terrain, mountains, vegetation, roads and zoom rules remain unchanged. We do **not** silently borrow glyphs from other packs.
 
-## Original comparison inventory
+## Archived comparison and provenance
 
-Nine authored families plus Procedural were previously available: Game-icons, Mercator, de Fer, Müller, Janssonius, Vischer, Ogilby, Hogenburg and Super Rough. All pass the minimum 7/10 screening threshold. Donia is retained as supplementary source samples. CoMiGo and Zatta were downgraded to 6 after actual download inspection.
+A dozen source archives were retrieved and verified during research, with nine families compared. The original evidence is in [AUDIT.md](AUDIT.md), `candidate_manifest.json`, `audit/*-inventory.json` and historical `<pack>/mapping.json` files. Non-selected illustrative PNGs/source samples were removed from the current PR tree to avoid shipping unused Godot assets; all remain recoverable from **Git commit `f12122a96df46a6ac66a512b35d3f7cb2d521b85`**. The complete original external ZIP archives were **not** checked into GitHub, so independently preserve the `Map_Asset_Sources_2026-10-02.zip` bundle where applicable. Historical mapping paths for archived packs refer to that earlier commit, not currently installed runtime assets.
 
-Only role-named samples and small representative original source samples are checked in; full ZIP archives are kept out of the game repository. Additional variants can be recovered from the recorded original download URLs and archive hashes. No source artwork is generated. No terrain or world data changes.
+## Test selected defaults
 
-**N/A** in the legend means the source lacks that role; the existing procedural map marker remains visible. **Red X** means an expected asset failed to load. Some settlement-tier drawings are explicitly documented display proxies; never interpret those choices as changes to generated settlement identity.
-
-## Testing
-
-Open `scenes/debug/world_fixture_viewer.tscn` in Godot and press F6. Change Icon Art Trial, press F to fit, zoom with the wheel and press N for the other available fixture. Compare settlements and POIs, including the 12-role legend. Missing source roles are disclosed. Mark has chosen Game-icons in the interactive visual comparison. Confirm the chosen default loads correctly on both fixtures after the selection commit; merge only after the normal PR review and Mark publishes the draft PR.
+Open `scenes/debug/world_fixture_viewer.tscn` in Godot, press **F6**. `Game-icons` should already be selected. Press F to fit; mouse wheel to zoom; N to switch fixtures. Validate the settlement and landmark symbols in both. The artwork choice is approved; runtime regression review and PR merge are separate steps.
 
 ## Retained earlier source provenance
 
