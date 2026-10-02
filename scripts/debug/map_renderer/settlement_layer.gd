@@ -4,10 +4,10 @@ extends MapLayer
 ## World-scale burg glyphs. These are symbolic map marks, not generated town
 ## geometry: detailed towns are owned by the later settlement generator.
 ## Use Azgaar's own `group` assignment wherever available.
-const INK := Color("#3b3026")
-const STONE := Color("#c5b38a")
-const ROOF := Color("#927a56")
-const HIGHLIGHT := Color("#dfc998")
+const INK = Color("#3b3026")
+const STONE = Color("#c5b38a")
+const ROOF = Color("#927a56")
+const HIGHLIGHT = Color("#dfc998")
 
 func _draw() -> void:
 	if not model: return
