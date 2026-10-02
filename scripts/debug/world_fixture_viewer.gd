@@ -15,6 +15,9 @@ const ZOOM_STEP := 1.2
 @onready var info_label: Label = $DebugOverlay/InfoPanel/Margin/Info
 @onready var selection_label: Label = $DebugOverlay/Selection
 @onready var map_key: MapLandmarkKey = $DebugOverlay/MapKey
+@onready var inspector: PanelContainer = $DebugOverlay/LandmarkInspector
+@onready var inspector_name: Label = $DebugOverlay/LandmarkInspector/Content/HeadingRow/Title
+@onready var inspector_details: RichTextLabel = $DebugOverlay/LandmarkInspector/Content/Details
 var _world_size := Vector2(1280, 800)
 var _dragging := false
 var _fixture_paths: Array[String] = [FIXTURE_PATH]
@@ -26,6 +29,8 @@ func _ready() -> void:
 	if FileAccess.file_exists(LANDMARK_STRESS_PATH):
 		_fixture_paths.append(LANDMARK_STRESS_PATH)
 	map_renderer.cell_selected.connect(func(_id: int, details: String) -> void: selection_label.text = details)
+	map_renderer.landmark_selected.connect(_show_landmark)
+	$DebugOverlay/LandmarkInspector/Content/HeadingRow/Dismiss.pressed.connect(func() -> void: inspector.hide())
 	for button in get_tree().get_nodes_in_group("map_layer_toggle"):
 		button.toggled.connect(_on_layer_toggled.bind(button.name))
 	map_key.set_icon_provider(map_renderer.icon_provider)
@@ -46,6 +51,7 @@ func _load_fixture(index: int) -> void:
 	var sidecar_base := path.trim_suffix(".json")
 	map_renderer.display_fixture(world, sidecar_base + ".relief.svg", sidecar_base + ".vegetation.svg")
 	selection_label.text = "Click a map cell to inspect it"
+	inspector.hide()
 	info_label.text = _build_info(world)
 	camera.position = _world_size * 0.5
 	_fit_map()
@@ -83,6 +89,17 @@ func _fit_map() -> void:
 
 func _on_layer_toggled(enabled: bool, layer_name: String) -> void:
 	map_renderer.set_layer_enabled(layer_name, enabled)
+	if layer_name == "Landmarks" and not enabled:
+		inspector.hide()
+
+func _show_landmark(marker: Dictionary, details: String) -> void:
+	if marker.is_empty() or details.is_empty():
+		inspector.hide()
+		return
+	var title := str(marker.get("name", "")).strip_edges()
+	inspector_name.text = title if not title.is_empty() else str(marker.get("type", "Landmark")).replace("-", " ").capitalize()
+	inspector_details.text = details
+	inspector.show()
 
 func _build_info(world: Dictionary) -> String:
 	var fixture_hint := "\nN: next fixture" if _fixture_paths.size() > 1 else ""
