@@ -1,0 +1,50 @@
+name: Verify source authority boundaries
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/source-authority.mjs"
+      - "tools/regiongen/generate-authority-examples.mjs"
+      - "tests/regiongen/verify-source-authority.mjs"
+      - ".github/workflows/verify-source-authority.yml"
+      - "docs/implementation/GAME-49*"
+  workflow_dispatch:
+jobs:
+  macro-vs-fine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Azgaar dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Regenerate canonical source and original polygon vertex sidecars
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p tools/regiongen/.tmp
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/regiongen/.tmp/replay-first-authority.json --geometry-output tools/regiongen/.tmp/geography-game-11-determinism.json
+          node tools/worldgen/generate-azgaar.mjs --seed atlas-showcase-06 --output tools/regiongen/.tmp/replay-second-authority.json --geometry-output tools/regiongen/.tmp/geography-atlas-showcase.json
+          cmp tests/worldgen/fixtures/game-11-determinism.json tools/regiongen/.tmp/replay-first-authority.json
+          cmp tests/worldgen/fixtures/atlas-showcase.json tools/regiongen/.tmp/replay-second-authority.json
+      - name: Generate six original neighbourhoods
+        run: node tools/regiongen/generate-local-examples.mjs
+      - name: Generate six hypothetical 30 km comparisons
+        run: node tools/regiongen/generate-reference-examples.mjs
+      - name: Test source and inferred truth contract against two worlds
+        run: node tests/regiongen/verify-source-authority.mjs
+      - name: Show exactly what source can and cannot establish
+        run: node tools/regiongen/generate-authority-examples.mjs
+      - name: Guard immutable source and vendor files
+        run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
+      - name: Upload six explicit authority JSONs and original-source diagnostic maps
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-49-source-authority-evidence
+          path: |
+            tools/regiongen/.tmp/authority-*.json
+            tools/regiongen/.tmp/authority-*.svg
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
