@@ -7,6 +7,12 @@ on:
       - "tools/regiongen/inferred-fine-terrain.mjs"
       - "tools/regiongen/render-inferred-fine.mjs"
       - "docs/implementation/GAME-53*"
+      - "docs/implementation/GAME-55*"
+      - "scripts/gameplay/expedition_session.gd"
+      - "scripts/gameplay/expedition_preview.gd"
+      - "scenes/gameplay/expedition_prototype.tscn"
+      - "tests/regiongen/smoke-expedition.gd"
+      - "tests/regiongen/capture-expedition.gd"
       - "tools/regiongen/route-consistency.mjs"
       - "tools/regiongen/generate-contextual-region.mjs"
       - "tools/regiongen/generate-contextual-examples.mjs"
@@ -77,11 +83,25 @@ jobs:
           grep -q "PASS: GAME-47 Godot" /tmp/smoke-constrained.log
           timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-contextual-sites.gd 2>&1 | tee /tmp/smoke-contextual.log
           grep -q "PASS: GAME-44 Godot" /tmp/smoke-contextual.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-expedition.gd 2>&1 | tee /tmp/smoke-expedition.log
+          grep -q "PASS: GAME-55" /tmp/smoke-expedition.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-expedition.log; then
+            echo "Godot emitted a gameplay expedition error"; exit 1
+          fi
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-contextual.log; then
             echo "Godot emitted a contextual site privacy or parsing error"; exit 1
           fi
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-constrained.log; then
             echo "Godot emitted a constrained preview error"; exit 1
+          fi
+      - name: Render actual gameplay HUD under a virtual desktop for visual review
+        run: |
+          set -euo pipefail
+          if command -v xvfb-run >/dev/null; then
+            timeout 90s xvfb-run -a -s "-screen 0 1280x720x24" /tmp/Godot_v4.7.2-stable_linux.x86_64 --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-expedition.gd 2>&1 | tee /tmp/expedition-render.log
+            grep -q "PASS: GAME-55 rendered expedition screenshot" /tmp/expedition-render.log
+          else
+            echo "Xvfb unavailable: rendering proof requires a desktop; headless gameplay test already passed"
           fi
       - name: Guard immutable fixtures and pinned vendors
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
@@ -96,6 +116,7 @@ jobs:
             tools/regiongen/.tmp/constrained-*.svg
             tools/regiongen/.tmp/contextual-*.json
             tools/regiongen/.tmp/contextual-*.svg
+            tools/regiongen/.tmp/expedition-prototype.png
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
