@@ -4,6 +4,7 @@ on:
     paths:
       - "tools/regiongen/local-source-context.mjs"
       - "tools/regiongen/contextual-sites-v2.mjs"
+      - "tools/regiongen/route-consistency.mjs"
       - "tools/regiongen/generate-contextual-region.mjs"
       - "tools/regiongen/generate-contextual-examples.mjs"
       - "tools/regiongen/site-icons.mjs"
