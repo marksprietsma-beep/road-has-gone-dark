@@ -85,6 +85,20 @@ func _draw() -> void:
 	if region.is_empty():
 		return
 	var layer: Dictionary = region.get("local_sites_v2", {})
+	# Retain original Azgaar path data; red dashes identify incompatible
+	# source route/shoreline classifications, never invented bridges.
+	for flag in layer.get("route_consistency", {}).get("conflicts", []):
+		var original_id: int = int(flag.get("source_route_id", -1))
+		var segment_id: int = int(flag.get("source_segment", -1))
+		for source_route in region.get("source_context", {}).get("source_routes", []):
+			if int(source_route.get("source_id", -1)) != original_id:
+				continue
+			for edge in source_route.get("segments", []):
+				if int(edge.get("source_segment", -1)) != segment_id:
+					continue
+				var path: PackedVector2Array = _poly(edge.get("local_points", []))
+				if path.size() >= 2:
+					_dash(path[0], path[1], Color("#9d4735", .92), 3.5, 7.0, 5.0)
 	var font: Font = ThemeDB.fallback_font
 	for value in layer.get("sites", []):
 		if not value is Dictionary:
