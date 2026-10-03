@@ -63,6 +63,14 @@ assert(svg.includes('class="azgaar-land"'));
 assert(svg.includes('class="azgaar-lake"'));
 assert(svg.includes('class="azgaar-land_road"'));
 assert(svg.includes('class="azgaar-sea_lane"'));
+// The original Azgaar searoute may overlap its source land polygon at low
+// resolution. Presentation must mask the overland part with land/lake fill,
+// not turn it into an overland connection or modify canonical coordinates.
+assert(svg.indexOf('class="azgaar-sea_lane"')<svg.indexOf('class="azgaar-land"'),
+ "Searoutes must be UNDER authentic source land and lake geometry");
+assert.equal((svg.match(/class="azgaar-sea_lane"/g)||[]).length,
+ c.source_routes.filter(r=>r.classification==="sea_lane").reduce((n,r)=>n+r.segments.length,0),
+ "Searoute source segment count or original semantics changed");
 assert(svg.includes('class="approximate-river"'));
 assert(!svg.includes("FAKE_ROAD"));
 assert(svg.includes("Town Forge vegetation only"));
@@ -87,6 +95,11 @@ for(const [stem,kinds] of [["game-11-determinism",["shore","river","highland"]],
   assert.equal(region.landscape.procedural_roads_used,false);
   const words=await readFile("tools/regiongen/.tmp/constrained-"+stem+"-"+kind+".svg","utf8");
   assert(words.startsWith("<svg")&&words.includes("source-burg"),"Rendered scene missing source burg "+kind);
+  if(ctx.source_routes.some(r=>r.classification==="sea_lane")){
+   assert(words.indexOf('class="azgaar-sea_lane"')>=0,"Original searoutes missing");
+   assert(words.indexOf('class="azgaar-sea_lane"')<words.indexOf('class="azgaar-land"'),
+    "Original sea lane drawn on top of land near "+stem+" "+kind);
+  }
   treeCount+=region.landscape.trees.length;
   counts.push(region.landscape.trees.length);
   assert(region.landscape.trees.length<220,"Uniform cap has obscured terrain variation");
