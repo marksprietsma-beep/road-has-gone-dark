@@ -62,7 +62,8 @@ export function renderConstrainedRegion(region){
  for(const route of context.source_routes)for(const s of route.segments){
   // Sea routes were drawn *behind* source land, and cannot turn into
   // a visual overland route by crossing inconsistent source coast geometry.
-  if(route.classification==="sea_lane")continue;
+  if(!["land_road","trail"].includes(route.classification))continue;
+  // Unknown route groups are source facts, not confirmed overland roads.
   const trail=route.classification==="trail";
   lines.push('<polyline class="azgaar-'+escape(route.classification)+'" points="'+pts(s.local_points)+
     '" fill="none" stroke="#5c503a" stroke-width="'+(trail?3:5)+
