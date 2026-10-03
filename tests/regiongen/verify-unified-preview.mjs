@@ -16,7 +16,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"]){
   const region=JSON.parse(await readFile(tmp+"constrained-"+label+".json"));
   const context=region.source_context;
   const player=JSON.parse(await readFile(tmp+"unified-"+label+".json"));
-  const audit=JSON.parse(await readFile(tmp+"unified-"+label+".developer.json"));
+  const audit=JSON.parse(await readFile(tmp+"developer/unified-"+label+".json"));
   const svg=await readFile(tmp+"unified-"+label+".svg","utf8");
   const fine=audit.inference,originalSource=audit.original,sites=audit.sites;
   assert.equal(context.space.kind,"source_neighbourhood_window");
