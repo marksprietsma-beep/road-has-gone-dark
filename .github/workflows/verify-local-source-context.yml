@@ -12,6 +12,7 @@ on:
       - "scripts/gameplay/expedition_preview.gd"
       - "scenes/gameplay/expedition_prototype.tscn"
       - "tests/regiongen/smoke-expedition.gd"
+      - "tests/regiongen/capture-expedition.gd"
       - "tools/regiongen/route-consistency.mjs"
       - "tools/regiongen/generate-contextual-region.mjs"
       - "tools/regiongen/generate-contextual-examples.mjs"
@@ -93,6 +94,15 @@ jobs:
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-constrained.log; then
             echo "Godot emitted a constrained preview error"; exit 1
           fi
+      - name: Render actual gameplay HUD under a virtual desktop for visual review
+        run: |
+          set -euo pipefail
+          if command -v xvfb-run >/dev/null; then
+            timeout 90s xvfb-run -a -s "-screen 0 1280x720x24" /tmp/Godot_v4.7.2-stable_linux.x86_64 --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-expedition.gd 2>&1 | tee /tmp/expedition-render.log
+            grep -q "PASS: GAME-55 rendered expedition screenshot" /tmp/expedition-render.log
+          else
+            echo "Xvfb unavailable: rendering proof requires a desktop; headless gameplay test already passed"
+          fi
       - name: Guard immutable fixtures and pinned vendors
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Upload six maps and deterministic source JSON
@@ -106,6 +116,7 @@ jobs:
             tools/regiongen/.tmp/constrained-*.svg
             tools/regiongen/.tmp/contextual-*.json
             tools/regiongen/.tmp/contextual-*.svg
+            tools/regiongen/.tmp/expedition-prototype.png
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
