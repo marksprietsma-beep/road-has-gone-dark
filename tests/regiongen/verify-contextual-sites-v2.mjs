@@ -7,7 +7,7 @@ import {auditSourceRoutes} from "../../tools/regiongen/route-consistency.mjs";
 import {generateContextualSites,contextualPlayerSiteView} from "../../tools/regiongen/contextual-sites-v2.mjs";
 const sha=s=>createHash("sha256").update(s).digest("hex");
 const length=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
-const classes=new Set(),counts=[],individual=[],allLayerIds=new Set();
+const classes=new Set(),counts=[],visibleCounts=[],individual=[],allLayerIds=new Set();
 let generated=0,knownGenerated=0,rumours=0,hidden=0,conflicts=0;
 const routeTest={
  constraints:{shorelines:"original_source_features"},
@@ -59,6 +59,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert(new Set(layer.sites.map(s=>s.label.toLowerCase())).size===layer.sites.length);
   assert.equal(display.visible.length,layer.sites.filter(s=>["discovered","visited"].includes(s.knowledge)).length);
   assert.equal(display.rumours.length,layer.sites.filter(s=>s.knowledge==="rumoured").length);
+  visibleCounts.push(display.visible.length);
   assert(display.rumours.every(s=>s.hint && !s.id && !s.label && !s.position));
   assert(!preview.includes("FAKE_ROAD"));
   assert(preview.includes('id="known-game-owned-pois"'));
@@ -75,6 +76,8 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
    assert(layer.sites.filter(x=>x!==s).every(x=>length(x.position,s.position)>=57),"Site overlap");
    assert(base.source_context.source_burgs.every(b=>length(b.local_position,s.position)>=57),"Original burg collision");
    assert(!s.id.includes("site:v1"),"Unmigrated GAME-40 v1 namespace incorrectly reused");
+   assert.equal(s.id,layer.source_context_id+":site:v2:"+s.kind,
+    "Generated site IDs must be independent of other kinds and site ordering");
    assert(["dungeongen","local_event"].includes(s.detail_hook.provider));
    assert(!s.description.includes("protected route"));
    if(s.knowledge!=="discovered"&&s.knowledge!=="visited") {
@@ -106,5 +109,6 @@ assert(generated>5,"Too few contextual POIs across six original neighbourhoods")
 assert(knownGenerated>=2,"No discoverable nearby sites");
 assert(classes.size>=3,"Insufficient variety in site types");
 assert(new Set(counts).size>=2,"All worlds still have the identical fixed checklist size");
+assert(new Set(visibleCounts).size>=3,"All worlds still reveal the same static discovered-site checklist");
 console.log("PASS: GAME-44 six v2 contextual source worlds; "+generated+" unique generated sites, "+knownGenerated+
  " known, "+rumours+" rumours, "+hidden+" hidden, "+conflicts+" classified source-route conflicts; varieties "+[...classes].join(",")+"; by map "+individual.join(" "));
