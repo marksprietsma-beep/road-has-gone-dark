@@ -39,7 +39,8 @@ func _base_info() -> String:
 	for s in sites:
 		if s is Dictionary and int(s.get("source_id", -1)) == home_id:
 			name = str(s.get("name", "?"))
-	return "SOURCE REGION | %s | World geometry by Azgaar; trees by Town Forge\n1–6: examples  F: fit  V: toggle decorative trees  ARROWS: pan  WHEEL: zoom  CLICK: burg\nRoutes not verified safe • River paths approximate • Kilometres uncalibrated" % name
+	var detail: String = "inferred field (visual only)" if region.has("inferred_fine_v1") else "Town Forge decoration"
+	return "SOURCE REGION | %s | Original Azgaar macro geography; %s\n1–6: examples  F: fit  V: toggle inferred/decoration  ARROWS: pan  WHEEL: zoom  CLICK: burg\nRoutes not verified safe • River paths approximate • Kilometres uncalibrated" % [name, detail]
 
 func load_region(path: String) -> bool:
 	region.clear()
