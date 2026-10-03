@@ -78,6 +78,14 @@ func _run() -> void:
 	state_a["player_knowledge"]["discovered_poi_ids"].append(poi_id)
 	state_a["world_deltas"]["test_event"] = {"outcome": "investigated"}
 	state_a["game_clock"]["tick"] = 41
+	# New campaigns start with three, but additional recruits must round-trip
+	# without changing the basic save version or automatically joining the party.
+	var fourth: Dictionary = state_a["characters"][0].duplicate(true)
+	fourth["id"] = str(state_a["playthrough_id"]) + ":adventurer:4"
+	fourth["name"] = "Recruited later"
+	fourth["assignment"] = "resting"
+	state_a["characters"].append(fourth)
+	assert(state_a["party_ids"].size() == 3)
 	assert(store.save_new("first", state_a, world)["ok"], store.error)
 	assert(store.save_new("second", state_b, world)["ok"], store.error)
 	assert(not store.save_new("first", state_a, world)["ok"], "Save unexpectedly overwritten")
@@ -93,6 +101,8 @@ func _run() -> void:
 	assert(load_b["state"]["player_knowledge"]["discovered_poi_ids"].is_empty())
 	assert(load_b["state"]["world_deltas"].is_empty())
 	assert(load_a["state"]["characters"][0]["id"] == state_a["characters"][0]["id"])
+	assert(load_a["state"]["characters"].size() == 4, "Additional recruit did not survive save/load")
+	assert(load_a["state"]["party_ids"].size() == 3, "Inactive recruit unexpectedly joined active party")
 	assert(load_a["state"]["origin"]["home_burg_id"] == candidate["id"])
 	assert(not store.load_save("first", other_world)["ok"], "Cross-world save was loaded")
 	assert(not store.load_save("missing", world)["ok"])
@@ -110,6 +120,15 @@ func _run() -> void:
 	var wrong_province := state_a.duplicate(true)
 	wrong_province["origin"]["province_id"] = -999
 	assert(not store.save_existing("first", wrong_province, world)["ok"], "Invalid province identity accepted")
+	var malformed := state_a.duplicate(true)
+	malformed["world_ref"] = "a string, not a world reference"
+	assert(not store.save_existing("first", malformed, world)["ok"], "Invalid world reference type accepted")
+	malformed = state_a.duplicate(true)
+	malformed["player_knowledge"] = ["wrong structure"]
+	assert(not store.save_existing("first", malformed, world)["ok"], "Invalid knowledge structure accepted")
+	malformed = state_a.duplicate(true)
+	malformed["party_ids"].append(state_a["party_ids"][0])
+	assert(not store.save_existing("first", malformed, world)["ok"], "Duplicate party member accepted")
 	assert(store.load_save("first", world)["ok"], "Invalid save mutated original")
 
 	# Confirm corrupted and unsupported data fail without panics/regeneration.
