@@ -7,6 +7,7 @@
  * carry actual [x,y,cell] points; rivers currently expose only cell IDs,
  * so lines joining their cell centres are explicitly APPROXIMATE.
  */
+import {checkGeographySidecar} from "../worldgen/geography-sidecar.mjs";
 export const PROJECTION_VERSION = 1;
 export const WORLD_UNITS_PER_TILE = 64;
 export const REGION_DISPLAY_UNITS = 1000;
@@ -148,8 +149,67 @@ function segmentIntersections(points,index,bounds,tx,ty) {
  }
  return hits;
 }
-export function buildTileConstraints(world,tx,ty,worldFingerprint) {
+/** Clip a closed original source polygon to one shared global tile.
+ * Render fills from these clipped vertices, not independent tile polygons. */
+export function clipPolygon(points,bounds) {
+ let poly=points.map(normalize);
+ for(const [axis,value,positive] of [
+  [0,bounds.left,true],[0,bounds.right,false],
+  [1,bounds.top,true],[1,bounds.bottom,false]]) {
+  const inside=p=>positive?p[axis]>=value-EPS:p[axis]<=value+EPS;
+  const result=[];
+  for(let i=0;i<poly.length;i++) {
+   const a=poly[i],b=poly[(i+1)%poly.length],ai=inside(a),bi=inside(b);
+   if(ai!==bi){
+    const k=(value-a[axis])/(b[axis]-a[axis]);
+    result.push([fixed(a[0]+k*(b[0]-a[0])),fixed(a[1]+k*(b[1]-a[1]))]);
+   }
+   if(bi)result.push(b);
+  }
+  poly=result;
+  if(!poly.length)break;
+ }
+ const cleaned=[];
+ for(const p of poly)if(!cleaned.length || Math.hypot(p[0]-cleaned.at(-1)[0],p[1]-cleaned.at(-1)[1])>EPS)
+  cleaned.push(p);
+ if(cleaned.length>1&&Math.hypot(cleaned[0][0]-cleaned.at(-1)[0],cleaned[0][1]-cleaned.at(-1)[1])<EPS)cleaned.pop();
+ return cleaned.length>=3?cleaned:[];
+}
+
+function addSourceShorelines(world,vertices,tx,ty,bounds) {
+ const polygons=[],segments=[],crossings=[],seen=new Set();
+ for(const f of world.map.geography) {
+  if(!f?.vertices?.length)continue;
+  const coords=f.vertices.map(id=>vertices[id]);
+  const kind=f.type==="lake"?"source_lake":f.type==="island"?"source_land_boundary":"source_feature_boundary";
+  const clipped=clipPolygon(coords,bounds);
+  if(clipped.length)polygons.push({source_feature:f.i,kind,subtype:f.subtype||null,
+   world_points:clipped,local_points:clipped.map(p=>toLocal(p,tx,ty))});
+  const closed=[...coords,coords[0]];
+  for(let i=0;i<coords.length;i++){
+   const cut=clipSegment(closed[i],closed[i+1],bounds);
+   if(!cut || Math.hypot(cut[0][0]-cut[1][0],cut[0][1]-cut[1][1])<=EPS)continue;
+   segments.push({source_feature:f.i,kind,source_segment:i,world_points:cut,
+     local_points:cut.map(p=>toLocal(p,tx,ty)),geometry:"original_pack_feature_vertex_points"});
+   for(const e of segmentIntersections(closed,i,bounds,tx,ty)){
+    const id="feature:"+f.i+":"+e.boundary+":s"+e.source_segment+":"+e.world_position.join(",");
+    if(seen.has(id))continue;
+    seen.add(id);
+    crossings.push({id,source_feature:f.i,kind,side:e.side,
+      boundary:e.boundary,world_position:e.world_position,
+      local_position:toLocal(e.world_position,tx,ty)});
+   }
+  }
+ }
+ polygons.sort((a,b)=>a.source_feature-b.source_feature);
+ segments.sort((a,b)=>a.source_feature-b.source_feature||a.source_segment-b.source_segment);
+ crossings.sort((a,b)=>a.id.localeCompare(b.id));
+ return {polygons,segments,crossings};
+}
+
+export function buildTileConstraints(world,tx,ty,worldFingerprint,geographySidecar=null) {
  const index=validate(world),bounds=tileBounds(tx,ty);
+ const vertexPositions=geographySidecar?checkGeographySidecar(world,geographySidecar,worldFingerprint):null;
  if(bounds.left>=world.map.width||bounds.top>=world.map.height||bounds.right<=0||bounds.bottom<=0)
   throw Error("Region tile outside the Azgaar map");
  if(!worldFingerprint || typeof worldFingerprint!=="string")throw Error("Need immutable world fingerprint");
@@ -178,6 +238,7 @@ export function buildTileConstraints(world,tx,ty,worldFingerprint) {
  }
  segments.sort((a,b)=>a.source.localeCompare(b.source)||a.source_segment-b.source_segment);
  crossings.sort((a,b)=>a.id.localeCompare(b.id));
+ const shore=vertexPositions?addSourceShorelines(world,vertexPositions,tx,ty,bounds):null;
  return {schema_version:1,projection_version:PROJECTION_VERSION,
   id:"source-tile:v1:"+worldFingerprint+":"+tx+","+ty,
   source_world_sha256:worldFingerprint,source:"azgaar",
@@ -185,8 +246,10 @@ export function buildTileConstraints(world,tx,ty,worldFingerprint) {
     km_mapping:"NOT_CALIBRATED: the 30km Town Forge label cannot be inferred from Azgaar points"},
   tile:{x:tx,y:ty,bounds},
   constraints:{protection:"unknown",provider_interior_alignment:"NOT_IMPLEMENTED",
-    river_geometry:"approximate_from_cell_centres",shoreline:"NOT_PROJECTED"},
-  burgs,segments,crossings};
+    river_geometry:"approximate_from_cell_centres",shoreline:shore?"exact_source_feature_vertices":"NOT_PROJECTED"},
+  burgs,segments,crossings,
+  ...(shore?{source_shoreline:{provenance:"original_pack_feature_vertex_points",
+     polygons:shore.polygons,segments:shore.segments,crossings:shore.crossings}}:{})};
 }
 /** Identical intersection keys and source coordinates on opposite sides.
  * Caller must compare these separately from Town Forge's independent paths.
@@ -195,4 +258,10 @@ export function sideCrossings(tile,side){
  return tile.crossings.filter(e=>e.side===side)
   .map(({id,boundary,world_position,source,kind})=>({id,boundary,world_position,source,kind}))
   .sort((a,b)=>a.id.localeCompare(b.id));
+}
+
+export function sideShorelineCrossings(tile,side) {
+ return (tile.source_shoreline?.crossings||[]).filter(e=>e.side===side)
+ .map(({id,boundary,world_position,source_feature,kind})=>({id,boundary,world_position,source_feature,kind}))
+ .sort((a,b)=>a.id.localeCompare(b.id));
 }
