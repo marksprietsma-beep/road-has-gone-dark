@@ -26,6 +26,22 @@ func _check() -> void:
 		var ctx: Dictionary = viewer.region.get("source_context", {})
 		var layer: Dictionary = viewer.region.get("local_sites_v2", {})
 		assert(int(layer.get("schema_version", 0)) == 2)
+		var inferred: Dictionary = viewer.region.get("inferred_fine_v1", {})
+		assert(int(inferred.get("schema_version", -1)) == 1, "Source-matched inferred landscape missing")
+		assert(str(inferred.get("source_context_id", "")) == str(ctx.get("id", "")))
+		assert(str(inferred.get("source_world_sha256", "")) == str(ctx.get("parent_source_world_sha256", "")))
+		assert(str(inferred.get("truth", "")) == "INFERRED_VISUAL_FIELD_NOT_TRAVERSAL")
+		assert(str(inferred.get("claims", {}).get("walkable", "")) == "UNKNOWN")
+		assert(inferred.get("vertices", []).size() == 1089)
+		assert(viewer.show_decorations)
+		# V is a visual layer switch, not a migration or revealed knowledge change.
+		var visual_key := InputEventKey.new()
+		visual_key.keycode = KEY_V
+		visual_key.pressed = true
+		viewer._unhandled_input(visual_key)
+		assert(not viewer.show_decorations)
+		viewer._unhandled_input(visual_key)
+		assert(viewer.show_decorations)
 		assert(str(layer.get("source_context_id", "")) == str(ctx.get("id", "")))
 		assert(str(layer.get("migration", {}).get("from_site_generation_v1", "")) == "NOT_AUTOMATIC")
 		assert(layer.get("sites", []).size() >= 1, "Original burg not retained")
