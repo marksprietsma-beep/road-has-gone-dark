@@ -1,0 +1,66 @@
+name: Verify unified local site and terrain preview
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/contextual-sites-v2.mjs"
+      - "tools/regiongen/route-consistency.mjs"
+      - "tools/regiongen/site-icons.mjs"
+      - "assets/map/region-site-icons.json"
+      - "tools/regiongen/render-inferred-fine.mjs"
+      - "tools/regiongen/generate-unified-preview.mjs"
+      - "tools/regiongen/generate-unified-examples.mjs"
+      - "tests/regiongen/verify-unified-preview.mjs"
+      - ".github/workflows/verify-unified-preview.yml"
+      - "docs/implementation/GAME-54*"
+  workflow_dispatch:
+jobs:
+  unified:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Azgaar generator dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Regenerate unchanged original world fixtures and geography vertices
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p tools/regiongen/.tmp
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/regiongen/.tmp/replayed-one.json --geometry-output tools/regiongen/.tmp/geography-game-11-determinism.json
+          node tools/worldgen/generate-azgaar.mjs --seed atlas-showcase-06 --output tools/regiongen/.tmp/replayed-two.json --geometry-output tools/regiongen/.tmp/geography-atlas-showcase.json
+          cmp tests/worldgen/fixtures/game-11-determinism.json tools/regiongen/.tmp/replayed-one.json
+          cmp tests/worldgen/fixtures/atlas-showcase.json tools/regiongen/.tmp/replayed-two.json
+      - name: Generate real source windows then Town Forge decorative composites
+        run: |
+          node tools/regiongen/generate-local-examples.mjs
+          node tools/regiongen/generate-constrained-examples.mjs
+      - name: Render six matched world-source and inferred/game site views
+        run: |
+          node tools/regiongen/generate-unified-examples.mjs
+          node tests/regiongen/verify-unified-preview.mjs
+      - name: Verify all six player SVGs parse
+        run: |
+          python3 - <<'PY'
+          import glob
+          from xml.etree import ElementTree as ET
+          files=glob.glob('tools/regiongen/.tmp/unified-*.svg')
+          assert len(files)==6, f'Expected six playable-filtered previews, got {len(files)}'
+          for path in files:
+              ET.parse(path)
+          print('PASS: GAME-54 six XML-valid source-coherent map SVGs')
+          PY
+      - name: Verify canonical and pinned source files were not modified
+        run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
+      - name: Upload only player-filtered previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-54-filtered-map-previews
+          path: |
+            tools/regiongen/.tmp/unified-*.svg
+            tools/regiongen/.tmp/unified-*.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
