@@ -144,7 +144,6 @@ export function generateContextualSites(world,composite) {
   if(fractional(seed+":eligible:"+kind)<(kind==="farmstead"?0.10:kind==="ruins"?0.15:0.28))return false;
   return true;
  });
- let ordinal=0;
  for(const [kind,names] of weighted){
   if(result.length>=9)break;
   let candidate=null;
@@ -153,13 +152,26 @@ export function generateContextualSites(world,composite) {
    if(p&&suitable(kind,p,world,context,composite,used,knownRoads)) {candidate=p;break;}
   }
   if(!candidate)continue;
-  const index=ordinal++;
   used.push(candidate);
+  // At most one location of each kind is generated in this model. Its ID
+  // must not change when another kind is excluded for terrain or density.
   let label=pick(names,seed+":"+kind+":name");
-  if(taken.has(label.toLowerCase()))label+=" "+(index+1);
+  if(taken.has(label.toLowerCase()))label+=" "+kind;
   taken.add(label.toLowerCase());
-  const knowledge=index<2?"discovered":index===2?"rumoured":"hidden";
-  const id=context.id+":site:v2:"+kind+":"+index;
+  // Knowledge varies by place type and immutable context, not by list index.
+  // Civilian infrastructure is more often known; remote ruins, caves and
+  // dangers are usually rumours or hidden until actual exploration.
+  const knowledgeRoll=fractional(seed+":knowledge:"+kind);
+  const [knownThreshold,rumourThreshold]=({
+   farmstead:[0.84,0.95],roadside_inn:[0.80,0.96],
+   watchtower:[0.55,0.88],shrine:[0.48,0.87],
+   ruins:[0.24,0.70],cave:[0.10,0.61],
+   abandoned_camp:[0.16,0.64],ancient_stones:[0.20,0.73],
+   dangerous_woods:[0.11,0.75],old_mine:[0.20,0.72]
+  })[kind];
+  const knowledge=knowledgeRoll<knownThreshold?"discovered":
+   knowledgeRoll<rumourThreshold?"rumoured":"hidden";
+  const id=context.id+":site:v2:"+kind;
   const isDungeon=["cave","old_mine","ruins"].includes(kind);
   result.push({id,kind,label,position:candidate,
    provenance:"game_generated_local_site",source_id:null,knowledge,
