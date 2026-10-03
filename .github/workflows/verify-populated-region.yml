@@ -56,8 +56,8 @@ jobs:
       - name: Import and test populated F6 viewer
         run: |
           set -euo pipefail
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import.log
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-populated-preview.gd 2>&1 | tee /tmp/game40-godot.log
+          timeout 240s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import.log
+          timeout 120s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-populated-preview.gd 2>&1 | tee /tmp/game40-godot.log
           grep -q "PASS: GAME-40" /tmp/game40-godot.log
           if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/game40-godot.log; then
             echo "Godot reported GAME-40 errors"; exit 1
