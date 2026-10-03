@@ -135,8 +135,24 @@ func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
   if above_a != above_b:
    var frac: float = (cutoff - av) / (bv - av)
    polygon.append((a["point"] as Vector2).lerp(b["point"], frac))
- if polygon.size() >= 3:
-  draw_colored_polygon(polygon, shade)
+ # Contour intersections at threshold equality can repeat a vertex or
+ # collapse to a zero-area polygon; Godot's triangulator rejects these.
+ var clean := PackedVector2Array()
+ for v in polygon:
+  if clean.is_empty() or clean[clean.size() - 1].distance_to(v) > .05:
+   clean.append(v)
+ if clean.size() > 2 and clean[0].distance_to(clean[clean.size() - 1]) <= .05:
+  clean.resize(clean.size() - 1)
+ if clean.size() < 3:
+  return
+ var area: float = 0.0
+ for i in clean.size():
+  var a: Vector2 = clean[i]
+  var b: Vector2 = clean[(i + 1) % clean.size()]
+  area += a.x * b.y - b.x * a.y
+ if absf(area) <= 1.0:
+  return
+ draw_colored_polygon(clean, shade)
 
 func _draw_fine_field() -> void:
  if fine_field.is_empty():
