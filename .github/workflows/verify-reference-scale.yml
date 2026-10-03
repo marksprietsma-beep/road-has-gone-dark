@@ -1,0 +1,51 @@
+name: Verify hypothetical Azgaar local scale
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/reference-scale.mjs"
+      - "tools/regiongen/local-source-context.mjs"
+      - "tools/regiongen/preview-local-context.mjs"
+      - "tools/regiongen/generate-reference-examples.mjs"
+      - "tests/regiongen/verify-reference-scale.mjs"
+      - "docs/implementation/GAME-48*"
+      - ".github/workflows/verify-reference-scale.yml"
+  workflow_dispatch:
+jobs:
+  reference-scale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Azgaar dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Recreate only ephemeral original coordinate sidecars
+        run: |
+          set -euo pipefail
+          mkdir -p tools/regiongen/.tmp
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/regiongen/.tmp/ref-replayed-first.json --geometry-output tools/regiongen/.tmp/geography-game-11-determinism.json
+          node tools/worldgen/generate-azgaar.mjs --seed atlas-showcase-06 --output tools/regiongen/.tmp/ref-replayed-second.json --geometry-output tools/regiongen/.tmp/geography-atlas-showcase.json
+          cmp tests/worldgen/fixtures/game-11-determinism.json tools/regiongen/.tmp/ref-replayed-first.json
+          cmp tests/worldgen/fixtures/atlas-showcase.json tools/regiongen/.tmp/ref-replayed-second.json
+      - name: Verify globe assumption isolation and 200 authentic origin contexts
+        run: node tests/regiongen/verify-reference-scale.mjs
+      - name: Generate comparable hypothetical and original maps
+        run: |
+          node tools/regiongen/generate-local-examples.mjs
+          node tools/regiongen/generate-reference-examples.mjs
+      - name: Verify pinned vendor and immutable fixtures unchanged
+        run: git diff --exit-code -- vendor/azgaar vendor/town-forge tests/worldgen/fixtures
+      - name: Publish inspectable geographic scale comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-48-hypothetical-scale-diagnostic
+          path: |
+            tools/regiongen/.tmp/local-*.json
+            tools/regiongen/.tmp/local-*.svg
+            tools/regiongen/.tmp/reference-*.json
+            tools/regiongen/.tmp/reference-*.svg
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
