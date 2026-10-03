@@ -5,13 +5,16 @@ on:
       - "tools/regiongen/source-authority.mjs"
       - "tools/regiongen/generate-authority-examples.mjs"
       - "tests/regiongen/verify-source-authority.mjs"
+      - "scripts/debug/source_authority_preview.gd"
+      - "scenes/debug/source_authority_preview.tscn"
+      - "tests/regiongen/smoke-source-authority.gd"
       - ".github/workflows/verify-source-authority.yml"
       - "docs/implementation/GAME-49*"
   workflow_dispatch:
 jobs:
   macro-vs-fine:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,6 +39,22 @@ jobs:
         run: node tests/regiongen/verify-source-authority.mjs
       - name: Show exactly what source can and cannot establish
         run: node tools/regiongen/generate-authority-examples.mjs
+      - name: Download Godot 4.7.2 for explicit source-authority preview validation
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot-authority.zip
+          unzip -q /tmp/godot-authority.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import and test six actual source-authority Godot maps
+        run: |
+          set -euo pipefail
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import-authority.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-source-authority.gd 2>&1 | tee /tmp/smoke-authority.log
+          grep -q "PASS: GAME-49 Godot" /tmp/smoke-authority.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-authority.log; then
+            echo "Godot emitted a source authority parsing or validation error"; exit 1
+          fi
       - name: Guard immutable source and vendor files
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Upload six explicit authority JSONs and original-source diagnostic maps
