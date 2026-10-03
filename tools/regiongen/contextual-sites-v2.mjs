@@ -6,6 +6,7 @@
  */
 import {createHash} from "node:crypto";
 import {sourceDryLand} from "./compose-local-region.mjs";
+import {auditSourceRoutes} from "./route-consistency.mjs";
 
 export const CONTEXT_SITE_GENERATION_VERSION=2;
 const hash=t=>createHash("sha256").update(t).digest("hex");
@@ -41,14 +42,8 @@ function routeDistance(p,segments){
  }
  return result;
 }
-function routes(context){
- const result=[];
- for(const r of context.source_routes||[]){
-  if(!["land_road","trail"].includes(r.classification))continue;
-  for(const s of r.segments||[])if(point(s.local_points?.[0])&&point(s.local_points?.[1]))
-   result.push([s.local_points[0],s.local_points[1]]);
- }
- return result;
+function routes(audit){
+ return audit.trustedApproaches.map(seg=>seg.local_points);
 }
 function nearOriginalHeight(world,context,p) {
  const bounds=context.space.source_bounds;
@@ -133,7 +128,8 @@ function validate(world,composite) {
 export function generateContextualSites(world,composite) {
  const {context,burg}=validate(world,composite);
  const seed="contextual-sites:v2|"+context.id+"|"+context.parent_source_world_sha256;
- const knownRoads=routes(context);
+ const routeAudit=auditSourceRoutes(context);
+ const knownRoads=routes(routeAudit);
  const home={id:"burg:"+burg.i,kind:"hometown",
   label:String(burg.name||"Unnamed Burg"),position:[...context.space.home_local],
   provenance:"azgaar_burg",source_id:burg.i,knowledge:"discovered",
@@ -189,6 +185,8 @@ export function generateContextualSites(world,composite) {
   placement:"SOURCE_CONSTRAINED_DERIVED_NOT_ORIGINAL_POI",
   source_routes:"actual_Azgaar_overland_route_segments",
   source_water:"original_Azgaar_land_and_lakes",
+  route_consistency:{method:routeAudit.method,status:routeAudit.status,
+   conflicts:routeAudit.conflicts,eligible_approach_segments:knownRoads.length},
   source_km:"UNCALIBRATED",
   migration:{from_site_generation_v1:"NOT_AUTOMATIC",existing_v1_states:"UNCHANGED",new_namespace:"site:v2"},
   sites:result};
