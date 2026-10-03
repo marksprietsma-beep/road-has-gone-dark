@@ -62,6 +62,14 @@ const svg=renderConstrainedRegion(out);
 assert(svg.includes('class="azgaar-land"'));
 assert(svg.includes('class="azgaar-lake"'));
 assert(svg.includes('class="azgaar-land_road"'));
+assert(svg.includes('id="azgaar-source-dry-road-mask"'),
+ "Overland route drawings need an original-source dry-land mask");
+assert(svg.includes('id="source-ground-route-presentation" mask="url(#azgaar-source-dry-road-mask)"'),
+ "Road presentation must hide sea/lake portions, not invent a crossing");
+assert.equal((svg.match(/id="source-ground-route-presentation"/g)||[]).length,1);
+assert(svg.indexOf('<mask id="azgaar-source-dry-road-mask"') <
+ svg.indexOf('class="azgaar-land_road"'),"Source dry land mask not defined before route rendering");
+
 assert(svg.includes('class="azgaar-sea_lane"'));
 // The original Azgaar searoute may overlap its source land polygon at low
 // resolution. Presentation must mask the overland part with land/lake fill,
@@ -95,6 +103,8 @@ for(const [stem,kinds] of [["game-11-determinism",["shore","river","highland"]],
   assert.equal(region.landscape.procedural_roads_used,false);
   const words=await readFile("tools/regiongen/.tmp/constrained-"+stem+"-"+kind+".svg","utf8");
   assert(words.startsWith("<svg")&&words.includes("source-burg"),"Rendered scene missing source burg "+kind);
+  assert(words.includes('id="source-ground-route-presentation" mask="url(#azgaar-source-dry-road-mask)"'),
+   "Real world roads rendered over sea/lake without dry mask: "+stem+" "+kind);
   if(ctx.source_routes.some(r=>r.classification==="sea_lane")){
    assert(words.indexOf('class="azgaar-sea_lane"')>=0,"Original searoutes missing");
    assert(words.indexOf('class="azgaar-sea_lane"')<words.indexOf('class="azgaar-land"'),
