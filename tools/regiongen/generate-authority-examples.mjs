@@ -22,7 +22,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])for(const kind of ["s
   s.push('<polygon points="'+points(f.source_polygon)+'" fill="#8eabb8" stroke="#386e80" stroke-width="2"/>');
  for(const route of model.source_macro.routes)for(const seg of route.segments)
   s.push('<polyline points="'+points(seg.local_points)+'" fill="none" stroke="'+(route.classification==="sea_lane"?"#44818d":"#806448")+
-  '" stroke-width="4"'+(route.classification==="sea_lane"?' stroke-dasharray="9 7"':'')+'"/>');
+  '" stroke-width="4"'+(route.classification==="sea_lane"?' stroke-dasharray="9 7"':'')+'/>');
  for(const river of model.derived_approximate.rivers)for(const seg of river.segments)
   s.push('<polyline points="'+points(seg.local_points)+'" stroke="#3e879f" stroke-width="3" stroke-dasharray="4 8" fill="none"/>');
  for(const t of model.source_macro.towns){
