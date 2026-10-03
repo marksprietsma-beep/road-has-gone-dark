@@ -11,7 +11,7 @@ const root=resolve(here,"../..");
 const vendor=resolve(root,"vendor/town-forge");
 const vendorAzgaar=resolve(root,"vendor/azgaar");
 const buildRequire=createRequire(resolve(vendorAzgaar,"package.json"));
-const {build}=await import(pathToFileURL(buildRequire.resolve("esbuild")).href);
+const ts=buildRequire("typescript");
 const args=process.argv.slice(2);
 const value=flag=>{const i=args.indexOf(flag);return i<0?undefined:args[i+1]};
 const source=value("--world"), output=value("--output"),idText=value("--burg");
@@ -41,9 +41,23 @@ const seed="region:v1|"+world.seed+"|azgaar:"+world.generator.version+"|cell:"+b
 const fixtureSHA=createHash("sha256").update(input).digest("hex");
 const temp=resolve(root,"tools/regiongen/.tmp");
 await mkdir(temp,{recursive:true});
-const bundle=resolve(temp,"townforge-provider-"+process.pid+".mjs");
-await build({entryPoints:[resolve(vendor,"src/generate.ts")],bundle:true,platform:"node",format:"esm",outfile:bundle,logLevel:"error"});
-const {generateFull}=await import(pathToFileURL(bundle).href);
+// Upstream's 1.2.4 source is TypeScript reconstructed from the original
+// Obsidian bundle. Transpile the *unmodified* pinned modules into isolated
+// ignored ESM files with the already-pinned TypeScript compiler. No Obsidian
+// runtime or speculative reimplementation of generateFull is required.
+const dist=resolve(temp,"townforge-dist");
+await mkdir(dist,{recursive:true});
+await writeFile(resolve(dist,"package.json"),'{"type":"module"}\n');
+for(const name of ["types","rng","geometry","roads","mountains","landscape","buildings","generate"]){
+ const original=await readFile(resolve(vendor,"src",name+".ts"),"utf8");
+ const imports=original.replace(/from ["'](\.\/[^"']+)["']/g,(_whole,relative)=>'from "'+relative+'.js"');
+ const code=ts.transpileModule(imports,{compilerOptions:{
+  module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022,
+  moduleResolution:ts.ModuleResolutionKind.Node10
+ }}).outputText;
+ await writeFile(resolve(dist,name+".js"),code);
+}
+const {generateFull}=await import(pathToFileURL(resolve(dist,"generate.js")).href);
 const scene=generateFull(terrain,seed,{mode:"landscape",roughness:0.46,octaves:5,
  overrides:{forestDensity:forestMul},showRoads:true,showForest:true});
 const round=n=>{if(!Number.isFinite(n))throw Error("Town Forge returned nonfinite geometry");return Math.round(n*1000)/1000};
