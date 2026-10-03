@@ -105,6 +105,9 @@ func _run() -> void:
 	var broken := state_a.duplicate(true)
 	broken["save_version"] = 999
 	assert(not store.save_existing("first", broken, world)["ok"])
+	var wrong_province := state_a.duplicate(true)
+	wrong_province["origin"]["province_id"] = -999
+	assert(not store.save_existing("first", wrong_province, world)["ok"], "Invalid province identity accepted")
 	assert(store.load_save("first", world)["ok"], "Invalid save mutated original")
 
 	# Confirm corrupted and unsupported data fail without panics/regeneration.
