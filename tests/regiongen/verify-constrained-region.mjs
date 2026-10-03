@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import {insidePolygon,sourceDryLand,composeLocalRegion} from "../../tools/regiongen/compose-local-region.mjs";
-import {renderConstrainedRegion} from "../../tools/regiongen/render-constrained-region.mjs";
+import {renderConstrainedRegion,visibleDryRouteStrokes} from "../../tools/regiongen/render-constrained-region.mjs";
 const fingerprint=createHash("sha256").update("synthetic-fixture").digest("hex");
 const bounds=[[0,0],[1000,0],[1000,1000],[0,1000]];
 const island=[[100,100],[920,100],[920,920],[100,920]];
@@ -59,6 +59,14 @@ assert.equal(out.constraints.local_sites,"NOT_MIGRATED");
 assert.equal(out.source_context.source_home_burg_id,3);
 assert.deepEqual(out,composeLocalRegion(fixture,c,provider));
 const svg=renderConstrainedRegion(out);
+const crossLake=visibleDryRouteStrokes(c,[[200,500],[800,500]]);
+assert.equal(crossLake.length,2,"One original crossing of a lake must render as two land-only fragments");
+for(const line of crossLake)for(let i=0;i<line.length-1;i++){
+ const midpoint=[(line[i][0]+line[i+1][0])/2,(line[i][1]+line[i+1][1])/2];
+ assert(sourceDryLand(c,midpoint),"Route fragment rendered across a synthetic lake");
+}
+const wetRoute=visibleDryRouteStrokes(c,[[20,20],[50,50]]);
+assert.equal(wetRoute.length,0,"A wholly sea-borne original road must not appear as ground");
 assert(svg.includes('class="azgaar-land"'));
 assert(svg.includes('class="azgaar-lake"'));
 assert(svg.includes('class="azgaar-land_road"'));
@@ -112,6 +120,17 @@ for(const [stem,kinds] of [["game-11-determinism",["shore","river","highland"]],
   assert(words.startsWith("<svg")&&words.includes("source-burg"),"Rendered scene missing source burg "+kind);
   assert(words.includes('id="source-ground-route-presentation" mask="url(#azgaar-source-dry-road-mask)"'),
    "Real world roads rendered over sea/lake without dry mask: "+stem+" "+kind);
+  // Check actual displayed route strokes against original source polygons:
+  // Cairo SVG masks are not consistently honoured in all renderers, so
+  // clipped presentation geometry must itself be dry land.
+  const strokes=[...words.matchAll(/<polyline class="azgaar-(?:land_road|trail)" points="([^"]+)"/g)];
+  for(const match of strokes){
+   const points=match[1].split(" ").map(pair=>pair.split(",").map(Number));
+   for(let i=0;i<points.length-1;i++){
+    const mid=[(points[i][0]+points[i+1][0])/2,(points[i][1]+points[i+1][1])/2];
+    assert(sourceDryLand(ctx,mid),stem+"/"+kind+": visible original road crossed source water");
+   }
+  }
   if(ctx.source_routes.some(r=>r.classification==="sea_lane")){
    assert(words.indexOf('class="azgaar-sea_lane"')>=0,"Original searoutes missing");
    assert(words.indexOf('class="azgaar-sea_lane"')<words.indexOf('class="azgaar-land"'),
