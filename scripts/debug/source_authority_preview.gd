@@ -1,0 +1,151 @@
+extends Node2D
+## GAME-49 source authority debug only. No game-state writes or travel logic.
+const CASES := [
+ "authority-game-11-determinism-shore",
+ "authority-game-11-determinism-river",
+ "authority-game-11-determinism-highland",
+ "authority-atlas-showcase-shore",
+ "authority-atlas-showcase-river",
+ "authority-atlas-showcase-highland"
+]
+var model: Dictionary = {}
+var show_original: bool = true
+var show_approximate: bool = true
+var show_inferred: bool = true
+var show_unknown: bool = true
+@onready var view: Camera2D = $Camera2D
+@onready var title_text: Label = $HUD/Help
+
+func _ready() -> void:
+ fit_map()
+ load_case("res://tools/regiongen/.tmp/" + CASES[0] + ".json")
+
+func fit_map() -> void:
+ view.position = Vector2(500, 500)
+ var size: Vector2 = get_viewport_rect().size
+ var z: float = clampf(minf(size.x / 1100.0, (size.y - 110.0) / 1100.0), .15, 2.0)
+ view.zoom = Vector2(z, z)
+
+func load_case(path: String) -> bool:
+ model.clear()
+ queue_redraw()
+ if not FileAccess.file_exists(path):
+  title_text.text = "GAME-49 | Run authority example generator first."
+  return false
+ var decoded: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+ if not decoded is Dictionary:
+  title_text.text = "GAME-49 | Malformed authority JSON"
+  return false
+ if int(decoded.get("schema_version", -1)) != 1:
+  title_text.text = "GAME-49 | Unsupported authority schema"
+  return false
+ var identity: Dictionary = decoded.get("identity", {})
+ var source: Dictionary = decoded.get("source_macro", {})
+ var derived: Dictionary = decoded.get("derived_approximate", {})
+ var unknown: Dictionary = decoded.get("unknown", {})
+ if str(identity.get("source_world_sha256", "")).length() != 64 or source.is_empty() or derived.is_empty() or unknown.is_empty():
+  title_text.text = "GAME-49 | Missing original source or unknown-field evidence"
+  return false
+ model = decoded
+ _set_header()
+ queue_redraw()
+ return true
+
+func _set_header() -> void:
+ if model.is_empty():
+  return
+ var source: Dictionary = model["source_macro"]
+ var home_name: String = "Unknown"
+ for v in source.get("towns", []):
+  if int(v.get("source_burg_id", -1)) == int(model["identity"]["origin_source_burg_id"]):
+   home_name = str(v.get("name", "Unknown"))
+   break
+ var assumption: Dictionary = model.get("assumption", {})
+ title_text.text = "GAME-49 | %s | Original/S  Approx/A  Inferred/I  Unknown/U  1-6: world  F: fit\n%s | No fine roads, local bridges or safe traversal inferred | Macro cells: %s" % [
+  home_name,str(assumption.get("status", "")),str(assumption.get("source_cell_samples", "?"))]
+
+func _coords(p: Variant) -> Vector2:
+ if p is Array and p.size() >= 2:
+  return Vector2(float(p[0]), float(p[1]))
+ return Vector2.ZERO
+
+func _poly(raw: Variant) -> PackedVector2Array:
+ var p := PackedVector2Array()
+ if raw is Array:
+  for each in raw:
+   if each is Array and each.size() >= 2:
+    p.append(_coords(each))
+ return p
+
+func _dashes(a: Vector2, b: Vector2, shade: Color, width: float) -> void:
+ var distance: float = a.distance_to(b)
+ if distance <= .01:
+  return
+ var dir: Vector2 = (b-a).normalized()
+ var t: float = 0.0
+ while t < distance:
+  draw_line(a+dir*t, a+dir*minf(t+7.0,distance),shade,width,true)
+  t += 13.0
+
+func _unhandled_input(event: InputEvent) -> void:
+ if not event is InputEventKey or not event.pressed or event.echo:
+  return
+ match event.keycode:
+  KEY_S: show_original = not show_original
+  KEY_A: show_approximate = not show_approximate
+  KEY_I: show_inferred = not show_inferred
+  KEY_U: show_unknown = not show_unknown
+  KEY_F: fit_map()
+  _:
+   if event.keycode >= KEY_1 and event.keycode <= KEY_6:
+    load_case("res://tools/regiongen/.tmp/" + CASES[event.keycode - KEY_1] + ".json")
+ queue_redraw()
+
+func _draw() -> void:
+ draw_rect(Rect2(0,0,1000,1000),Color("#8eabb8"))
+ if model.is_empty():
+  return
+ var source: Dictionary = model.get("source_macro", {})
+ if show_original:
+  for f in source.get("feature_polygons", []):
+   if str(f.get("classification","")) != "land_boundary":
+    continue
+   var p: PackedVector2Array = _poly(f.get("source_polygon",[]))
+   if p.size() >= 3:
+    draw_colored_polygon(p,Color("#d9c9a2"))
+  for f in source.get("feature_polygons", []):
+   if str(f.get("classification","")) != "freshwater_lake":
+    continue
+   var p: PackedVector2Array = _poly(f.get("source_polygon",[]))
+   if p.size() >= 3:
+    draw_colored_polygon(p,Color("#8eabb8"))
+  for line in source.get("routes", []):
+   for part in line.get("segments", []):
+    var p: PackedVector2Array = _poly(part.get("local_points",[]))
+    if p.size() >= 2:
+     if str(line.get("classification","")) == "sea_lane":
+      _dashes(p[0],p[1],Color("#457e89"),3.0)
+     else:
+      draw_polyline(p,Color("#775e43"),3.0,true)
+  for t in source.get("towns",[]):
+   draw_circle(_coords(t.get("local_position",[])),10,Color("#8a3328"))
+ if show_approximate:
+  for river in model.get("derived_approximate",{}).get("rivers",[]):
+   for part in river.get("segments",[]):
+    var p: PackedVector2Array = _poly(part.get("local_points",[]))
+    if p.size() >= 2:
+     _dashes(p[0],p[1],Color("#276b95"),2.0)
+ if show_inferred:
+  for tree in model.get("inferred_fine_detail",{}).get("trees",[]):
+   var pos: Vector2 = Vector2(float(tree.get("x",0)),float(tree.get("y",0)))
+   draw_circle(pos,5,Color("#40644b"))
+ if show_unknown:
+  # A small legend instead of inventing a false traversable micro-map.
+  draw_rect(Rect2(12,918,974,66),Color("#ede0bf",.95))
+  draw_rect(Rect2(12,918,974,66),Color("#624c3b"),false,1)
+  var font: Font = ThemeDB.fallback_font
+  draw_string(font,Vector2(24,941),"UNKNOWN: bridges, safe roads, real river meanders, ports, fine dry-land and walkable routes",
+   HORIZONTAL_ALIGNMENT_LEFT,955,17,Color("#824432"))
+  draw_string(font,Vector2(24,969),"EXACT means macro Azgaar source, not a physically accurate 30 km walking surface.",
+   HORIZONTAL_ALIGNMENT_LEFT,955,15,Color("#574838"))
+ draw_rect(Rect2(0,0,1000,1000),Color("#463c30"),false,1)
