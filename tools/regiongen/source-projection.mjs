@@ -140,7 +140,11 @@ function segmentIntersections(points,index,bounds,tx,ty) {
   const min=axis==="x"?bounds.top:bounds.left,max=axis==="x"?bounds.bottom:bounds.right;
   if(other<min-EPS||other>max+EPS)continue;
   // One canonical event on a corner may belong to two physical sides.
-  hits.push({side,boundary:canonicalBoundary(tx,ty,side),world_position:point.map(fixed)});
+  hits.push({side,boundary:canonicalBoundary(tx,ty,side),
+   // A vertex crossing on two consecutive segments has one identity, whereas
+   // genuinely revisiting the same border coordinate on a later segment is
+   // a distinct traversal and must NOT be collapsed.
+   source_segment:t<=EPS?index-1:index,world_position:point.map(fixed)});
  }
  return hits;
 }
@@ -163,7 +167,7 @@ export function buildTileConstraints(world,tx,ty,worldFingerprint) {
     local_points:cut.map(p=>toLocal(p,tx,ty))});
   for(const e of segmentIntersections(path.points,i,bounds,tx,ty)){
    // Normalise "end of segment vs beginning of next" to a single event.
-   const key=path.id+":"+e.boundary+":"+e.world_position.join(",");
+   const key=path.id+":"+e.boundary+":s"+e.source_segment+":"+e.world_position.join(",");
    if(observed.has(key))continue;
    observed.add(key);
    crossings.push({id:key,source:path.id,kind:path.kind,side:e.side,
