@@ -24,6 +24,30 @@ function assertContext(world,ctx,fingerprint){
   Math.hypot(original.world_position[0]-home[0].x,
    original.world_position[1]-home[0].y)>1e-5)
   throw Error("Original burg anchor was moved or renamed");
+ // Derived source view cannot invent additional exact named burgs or
+ // routes. Original line geometry still comes from canonical source records.
+ for(const b of ctx.source_burgs){
+  const found=world.settlements?.filter(x=>x?.i===b.source_id) || [];
+  if(found.length!==1||found[0].removed||found[0].hidden||
+    found[0].name!==b.name||!coord(b.world_position)||
+    Math.hypot(found[0].x-b.world_position[0],found[0].y-b.world_position[1])>1e-5)
+   throw Error("An exact source burg was invented or repositioned");
+ }
+ for(const route of ctx.source_routes){
+  const original=(world.routes||[]).filter(r=>r?.i===route.source_id);
+  if(original.length!==1||!Array.isArray(original[0].points)||
+    route.source_group!==original[0].group||
+    !Array.isArray(route.segments) ||
+    route.segments.some(segment=>!Number.isSafeInteger(segment.source_segment)||
+      segment.source_segment<0||
+      segment.source_segment>=original[0].points.length-1))
+   throw Error("An exact source route did not match canonical Azgaar geometry");
+ }
+ for(const r of ctx.source_rivers)
+  if(!(world.rivers||[]).some(original=>original?.i===r.source_id))
+   throw Error("River-cell approximation has no matching Azgaar river");
+ if(ctx.source_features.some(f=>!["original_azgaar_pack_vertices"].includes(f.provenance)))
+  throw Error("Source feature polygon lacks original pack vertex provenance");
  const ref=ctx.space.angular_reference;
  if(ctx.space.kind==="hypothetical_globe_reference_window" &&
   (!ref||!finite(ref.reference_radius_km)||!finite(ref.hypothetical_square_km)||
