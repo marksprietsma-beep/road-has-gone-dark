@@ -67,9 +67,15 @@ for(const filename of ["game-11-determinism","atlas-showcase"]){
  const w=JSON.parse(bytes.toString("utf8")),fingerprint=hash(bytes);
  const homes=w.settlements.filter(b=>b?.i>0&&!b.hidden&&!b.removed&&Number.isFinite(b.x)&&Number.isFinite(b.y));
  assert(homes.length>10,"Need real towns in "+filename);
- const home=homes[0],tile=tileForBurg(w,home.i),a=buildTileConstraints(w,...tile,fingerprint);
+ const home=homes.find(b=>{
+  const t=tileForBurg(w,b.i);
+  return (t[0]+1)*WORLD_UNITS_PER_TILE<w.map.width &&
+         (t[1]+1)*WORLD_UNITS_PER_TILE<w.map.height;
+ });
+ assert(home,filename+" requires an interior origin");
+ const tile=tileForBurg(w,home.i),a=buildTileConstraints(w,...tile,fingerprint);
  assert(a.burgs.some(b=>b.source_id===home.i),filename+" hometown missing from selected tile");
- assert.deepEqual(a.tile.bounds,[].length?[]:{
+ assert.deepEqual(a.tile.bounds,{
   left:tile[0]*WORLD_UNITS_PER_TILE,right:(tile[0]+1)*WORLD_UNITS_PER_TILE,
   top:tile[1]*WORLD_UNITS_PER_TILE,bottom:(tile[1]+1)*WORLD_UNITS_PER_TILE});
  assert.equal(a.scale.km_mapping.startsWith("NOT_CALIBRATED"),true);
