@@ -54,6 +54,14 @@ function stylisticLandmarkAllowed(context,p){
  if(!dryWithClearance(context,p,10))return false;
  if(context.source_burgs.some(b=>close(b.local_position,p,36)))return false;
  if(nearRoute(context,p,13))return false;
+ // The river centreline is only a source-cell approximation; avoid drawing
+ // tree symbols over its indicated corridor, but never claim a true bank.
+ for(const river of context.source_rivers||[])for(const seg of river.segments||[]){
+  const [a,b]=seg.local_points;
+  const dx=b[0]-a[0],dy=b[1]-a[1];
+  const t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy||1)));
+  if(Math.hypot(p[0]-(a[0]+dx*t),p[1]-(a[1]+dy*t))<13)return false;
+ }
  return true;
 }
 function finitePoly(points) {
