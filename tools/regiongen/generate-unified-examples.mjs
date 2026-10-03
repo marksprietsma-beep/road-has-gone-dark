@@ -16,7 +16,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   const run=spawnSync(process.execPath,["tools/regiongen/generate-unified-preview.mjs",
    "--world",resolve("tests/worldgen/fixtures/"+stem+".json"),
    "--constrained",region,"--output",out,
-   "--audit-output",out.replace(/\.json$/i,".developer.json")],
+   "--audit-output",resolve(tmp,"developer","unified-"+stem+"-"+kind+".json")],
    {encoding:"utf8",timeout:90000,maxBuffer:4*1024*1024});
   if(run.status!==0)throw Error("GAME-54 failed "+stem+"/"+kind+": "+run.stderr+"\n"+run.stdout);
   console.log(stem+"/"+kind+": "+run.stdout.trim());
