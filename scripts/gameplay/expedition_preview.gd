@@ -9,7 +9,7 @@ var expedition: ExpeditionSession = ExpeditionSession.new()
 
 func _ready() -> void:
 	super._ready()
-	_refresh()
+	call_deferred("_refresh")
 
 func _base_info() -> String:
 	return "THE ROAD HAS GONE DARK | EXPLORATION PROTOTYPE\nCLICK known site • T journey • S scout • C cautious / B bold • R return • 1–6 regions\nV terrain • F fit • ESC close scene | Source roads NOT known safe; no verified pathfinding"
