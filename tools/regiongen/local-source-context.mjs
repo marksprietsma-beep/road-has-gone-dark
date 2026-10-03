@@ -158,5 +158,18 @@ export function buildReferenceLocalContext(world,homeId,fingerprint,sidecar,span
   throw Error("Invalid source home for reference neighbourhood");
  const reference=referenceNeighbourhoodBounds(world,[matches[0].x,matches[0].y],
     spanKm,assumedRadiusKm);
- return buildLocalContext(world,homeId,fingerprint,sidecar,reference);
+ const result=buildLocalContext(world,homeId,fingerprint,sidecar,reference);
+ // This is a crop from a *macro* polygon/route dataset. At 30 hypothetical
+ // kilometres a window often covers fewer than four Azgaar cell centres:
+ // never misrepresent it as detailed, walkable or high-resolution geography.
+ const bounds=reference.bounds;
+ const cellsInWindow=(world.cells?.points||[]).filter(p=>validPointForWindow(p,bounds)).length;
+ result.space.source_cell_centres_in_window=cellsInWindow;
+ result.constraints.local_resolution=cellsInWindow<4?
+    "COARSE_MACRO_GEOGRAPHY_NO_WALKABLE_MICRO_DETAIL":"SOURCE_CELL_SAMPLES_ONLY";
+ return result;
+}
+function validPointForWindow(p,b){
+ return Array.isArray(p)&&p.length>=2&&finite(p[0])&&finite(p[1])&&
+    p[0]>=b.left&&p[0]<=b.right&&p[1]>=b.top&&p[1]<=b.bottom;
 }
