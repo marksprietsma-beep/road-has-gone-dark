@@ -1,0 +1,75 @@
+name: Verify Town Forge local region
+on:
+  pull_request:
+    paths:
+      - "vendor/town-forge/**"
+      - "tools/regiongen/**"
+      - "tests/regiongen/**"
+      - "scripts/debug/local_region_preview.gd"
+      - "scenes/debug/local_region_preview.tscn"
+      - "docs/implementation/GAME-21*"
+      - ".github/workflows/verify-local-region.yml"
+  workflow_dispatch:
+
+jobs:
+  region-spike:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Validate pinned MIT vendor source
+        run: |
+          set -euo pipefail
+          cd vendor/town-forge
+          printf '%s  %s\n' \
+            6282b76ee81bb74b9ef921f1679e81606bbbc824 src/types.ts \
+            0cab4d6c614f466df00f86b8d5823eb1d391a14c src/rng.ts \
+            8733bda55c001086cacb2a5a956c21810119d192 src/geometry.ts \
+            e29b3754762614082d8f2bc5c04b5685f78ac434 src/roads.ts \
+            0979303cc3b0aecf78820fe98ad02051e5268456 src/mountains.ts \
+            2ca83a9dff2df6241025e492029d261ace9a9607 src/landscape.ts \
+            3e10b97ca304938c644ef4c0cbfcb065da386110 src/buildings.ts \
+            758273296a7d97135f815ea92145c5dec0135fd6 src/generate.ts \
+            af7fbab408249e2263ad0487f649df5fffef9551 LICENSE | \
+            while read sha path; do
+              test "$(git hash-object "$path")" = "$sha" || exit 1
+            done
+      - name: Install pinned project generator tooling
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Generate regional layouts and prove determinism
+        run: |
+          set -euo pipefail
+          timeout 180s node tests/regiongen/verify-region.mjs 2>&1 | tee /tmp/region.log
+          grep -q "PASS: GAME-21" /tmp/region.log
+      - name: Save visual proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: town-forge-local-region-preview
+          path: |
+            tools/regiongen/.tmp/first.json
+            tools/regiongen/.tmp/first.svg
+            tools/regiongen/.tmp/second-burg.svg
+            tools/regiongen/.tmp/other-tile.svg
+          retention-days: 14
+          if-no-files-found: error
+      - name: Install Godot 4.7.2
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import game and test local-region viewer
+        run: |
+          set -euo pipefail
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import-region.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-preview.gd 2>&1 | tee /tmp/view-region.log
+          grep -q "PASS: GAME-21 Godot" /tmp/view-region.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/view-region.log; then
+            echo "Godot emitted a region preview error"; exit 1
+          fi
+      - name: No changes to canonical Azgaar sources
+        run: git diff --exit-code -- vendor/azgaar tests/worldgen/fixtures
