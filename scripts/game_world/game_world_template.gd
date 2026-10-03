@@ -76,7 +76,7 @@ func entity_id(kind: String, source_id: int) -> String:
 	if not GROUP_KEYS.has(kind) or source_id < 0:
 		return ""
 	if kind == "cell":
-		if not _raw.get("cells", {}).get("ids", []).has(source_id):
+		if get_record("cell", source_id).is_empty():
 			return ""
 	else:
 		if get_record(kind, source_id).is_empty():
@@ -88,7 +88,12 @@ func get_record(kind: String, source_id: int) -> Dictionary:
 		return {}
 	if kind == "cell":
 		var cells: Dictionary = _raw["cells"]
-		var index: int = cells.get("ids", []).find(source_id)
+		var index := -1
+		var ids: Array = cells.get("ids", [])
+		for position in ids.size():
+			if int(ids[position]) == source_id:
+				index = position
+				break
 		if index < 0:
 			return {}
 		var record: Dictionary = {"i": source_id}
