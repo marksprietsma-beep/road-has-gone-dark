@@ -196,14 +196,16 @@ UI must focus on **the current choice and its consequences**, with the map artwo
 
 ## 6. Suggested implementation order *after design acceptance*
 
-1. **GAME-7** GameWorld contract/adapter and a fixture-backed save/load smoke test, with stable IDs and knowledge separation.
-2. **GAME-8** actual player-facing selectable strategic map, only player-known content, small settlement/site panel.
-3. **GAME-9** seed, start-region/settlement commitment and initial party setup (full character creation can follow).
-4. **GAME-10** initial dangerous-wilderness/faction/hidden site enrichment where required by the playable route.
-5. **A future small traversal/job vertical slice:** one road-vs-wilderness choice, travel tick, one encounter, one investigate/report mission, outcome and save/reload. Add an implementation ticket when the gameplay design is approved rather than overloading a design-only issue.
-6. **Then:** GAME-21 local-regions/Town Forge, GAME-19 Settlemaker, GAME-20 DungeonGen and GAME-29 guild lifecycle/contract system, each gated by the observed needs of the playable loop.
+1. **GAME-7** GameWorld contract/adapter and a fixture-backed save/load smoke test, with stable world/party/POI IDs, rules/content pack version references, knowledge separation and persistent outcomes.
+2. **GAME-32** character rules core, multiclass/prestige prerequisites and feature/effect model. This can be designed in parallel with GAME-7 but should share save identity assumptions.
+3. **GAME-33** deterministic square-grid combat state/transitions, turn validation, repeatable random seed, 3v2/3v3 sample battle and headless tests. Both manual and auto must consume this **one engine**.
+4. **GAME-34** manual grid UI/controller and **GAME-35** policy-driven auto-resolve, both based on GAME-33. Deliver a clear results/replay report and test identical command effects.
+5. **GAME-36** curated prestige content packs, prerequisites, unique feature triggers and validation pipeline, extended over time rather than a one-off all-supplements import.
+6. **GAME-8/GAME-9** player-facing world map, random/existing world selection and vulnerable hometown, plus lightweight three-character setup using the rules core. **GAME-10** adds genuine game-specific factions/discovery and risk contexts.
+7. **First combined traversal/combat loop:** leave a village, travel by road/wilderness, encounter a small real tactical battle (manual or auto), investigate/report a site and persist outcomes. Create a separate integration issue once the design and components are mature; don't build all these concurrently in GAME-17.
+8. **Later systems:** GAME-21 regional Town Forge, GAME-19 Settlemaker, GAME-20 DungeonGen and GAME-29 guild lifecycle/independent contracts, each gated by what the playable loop needs.
 
-The above ordering references existing Linear issues; it does not assert that their full backlogs must be completed before **any** playable test—slice scope should stay narrow.
+The above ordering refers to the scoped Linear implementation issues; a narrow early battle/playable test can overlap a thin world layer. Do not hold all playtesting hostage to GAME-36's eventual supplement coverage, or rush to start gameplay code before choosing its underlying rules edition.
 
 ## 7. Decisions for Mark before this design can be accepted
 
