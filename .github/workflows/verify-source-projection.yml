@@ -3,15 +3,19 @@ on:
   pull_request:
     paths:
       - "tools/regiongen/source-projection.mjs"
+      - "tools/worldgen/geography-sidecar.mjs"
+      - "tools/worldgen/generate-azgaar.mjs"
+      - "tools/worldgen/headless-entry.ts"
       - "tools/regiongen/preview-source-tiles.mjs"
       - "tests/regiongen/verify-source-projection.mjs"
+      - "tests/regiongen/verify-geography-sidecar.mjs"
       - "docs/implementation/GAME-39*"
       - ".github/workflows/verify-source-projection.yml"
   workflow_dispatch:
 jobs:
   source-constraints:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,10 +23,22 @@ jobs:
           node-version: "24"
       - name: Test shared world-space data contracts on two actual worlds
         run: node tests/regiongen/verify-source-projection.mjs
+      - name: Install pinned Azgaar generation runtime
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Export original Azgaar vertex sidecars without altering world bytes
+        run: |
+          set -euo pipefail
+          mkdir -p tools/regiongen/.tmp
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/regiongen/.tmp/geography-game-11-determinism.world.json --geometry-output tools/regiongen/.tmp/geography-game-11-determinism.json
+          node tools/worldgen/generate-azgaar.mjs --seed atlas-showcase-06 --output tools/regiongen/.tmp/geography-atlas-showcase.world.json --geometry-output tools/regiongen/.tmp/geography-atlas-showcase.json
+          cmp tests/worldgen/fixtures/game-11-determinism.json tools/regiongen/.tmp/geography-game-11-determinism.world.json
+          cmp tests/worldgen/fixtures/atlas-showcase.json tools/regiongen/.tmp/geography-atlas-showcase.world.json
+      - name: Validate and compare real world shoreline/lake tile edges
+        run: node tests/regiongen/verify-geography-sidecar.mjs
       - name: Produce two two-tile source-projection previews
         run: |
-          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --output tools/regiongen/.tmp/source-constraints-first.json
-          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --output tools/regiongen/.tmp/source-constraints-second.json
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --geography tools/regiongen/.tmp/geography-game-11-determinism.json --output tools/regiongen/.tmp/source-constraints-first.json
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --geography tools/regiongen/.tmp/geography-atlas-showcase.json --output tools/regiongen/.tmp/source-constraints-second.json
       - name: Preserve immutable source and vendor trees
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Publish testable source constraints and diagrams
@@ -34,6 +50,8 @@ jobs:
             tools/regiongen/.tmp/source-constraints-first.svg
             tools/regiongen/.tmp/source-constraints-second.json
             tools/regiongen/.tmp/source-constraints-second.svg
+            tools/regiongen/.tmp/geography-game-11-determinism.json
+            tools/regiongen/.tmp/geography-atlas-showcase.json
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
