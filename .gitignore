@@ -6,3 +6,6 @@ vendor/azgaar/node_modules/
 tools/worldgen/.tmp/
 # Generated on demand; never commit large vegetation presentation sidecars.
 tests/worldgen/fixtures/*.vegetation.svg
+
+# Town Forge landscape previews and ephemeral TypeScript bundle.
+tools/regiongen/.tmp/
