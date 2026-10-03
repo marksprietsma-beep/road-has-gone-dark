@@ -11,6 +11,9 @@ on:
       - "tools/regiongen/generate-constrained-region.mjs"
       - "tools/regiongen/generate-constrained-examples.mjs"
       - "tests/regiongen/verify-constrained-region.mjs"
+      - "scripts/debug/constrained_region_preview.gd"
+      - "scenes/debug/constrained_region_preview.tscn"
+      - "tests/regiongen/smoke-constrained-preview.gd"
       - ".github/workflows/verify-local-source-context.yml"
       - "docs/implementation/GAME-46*"
   workflow_dispatch:
@@ -42,6 +45,22 @@ jobs:
         run: node tools/regiongen/generate-constrained-examples.mjs
       - name: Verify original routes, coastline, dry land and river corridors
         run: node tests/regiongen/verify-constrained-region.mjs
+      - name: Install Godot 4.7.2 for constrained-viewer smoke
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import and inspect six authentic constrained Godot maps
+        run: |
+          set -euo pipefail
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import-constrained.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-constrained-preview.gd 2>&1 | tee /tmp/smoke-constrained.log
+          grep -q "PASS: GAME-47 Godot" /tmp/smoke-constrained.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-constrained.log; then
+            echo "Godot emitted a constrained preview error"; exit 1
+          fi
       - name: Guard immutable fixtures and pinned vendors
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Upload six maps and deterministic source JSON
