@@ -3,6 +3,15 @@ on:
   pull_request:
     paths:
       - "tools/regiongen/local-source-context.mjs"
+      - "tools/regiongen/contextual-sites-v2.mjs"
+      - "tools/regiongen/generate-contextual-region.mjs"
+      - "tools/regiongen/generate-contextual-examples.mjs"
+      - "tools/regiongen/site-icons.mjs"
+      - "assets/map/region-site-icons.json"
+      - "tests/regiongen/verify-contextual-sites-v2.mjs"
+      - "scenes/debug/contextual_region_preview.tscn"
+      - "scripts/debug/contextual_region_preview.gd"
+      - "tests/regiongen/smoke-contextual-sites.gd"
       - "tools/regiongen/preview-local-context.mjs"
       - "tools/regiongen/generate-local-examples.mjs"
       - "tests/regiongen/verify-local-context.mjs"
@@ -45,6 +54,10 @@ jobs:
         run: node tools/regiongen/generate-constrained-examples.mjs
       - name: Verify original routes, coastline, dry land and river corridors
         run: node tests/regiongen/verify-constrained-region.mjs
+      - name: Populate contextual game sites from six genuine Azgaar regions
+        run: |
+          node tools/regiongen/generate-contextual-examples.mjs
+          node tests/regiongen/verify-contextual-sites-v2.mjs
       - name: Install Godot 4.7.2 for constrained-viewer smoke
         run: |
           curl -fL --retry 3 --retry-delay 2 \
@@ -58,6 +71,11 @@ jobs:
           timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import-constrained.log
           timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-constrained-preview.gd 2>&1 | tee /tmp/smoke-constrained.log
           grep -q "PASS: GAME-47 Godot" /tmp/smoke-constrained.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-contextual-sites.gd 2>&1 | tee /tmp/smoke-contextual.log
+          grep -q "PASS: GAME-44 Godot" /tmp/smoke-contextual.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-contextual.log; then
+            echo "Godot emitted a contextual site privacy or parsing error"; exit 1
+          fi
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-constrained.log; then
             echo "Godot emitted a constrained preview error"; exit 1
           fi
@@ -72,6 +90,8 @@ jobs:
             tools/regiongen/.tmp/local-*.json
             tools/regiongen/.tmp/constrained-*.json
             tools/regiongen/.tmp/constrained-*.svg
+            tools/regiongen/.tmp/contextual-*.json
+            tools/regiongen/.tmp/contextual-*.svg
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
