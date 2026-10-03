@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import {buildGeographySidecar,checkGeographySidecar} from "../../tools/worldgen/geography-sidecar.mjs";
-import {clipPolygon,buildTileConstraints,sideShorelineCrossings,tileForPosition,WORLD_UNITS_PER_TILE} from "../../tools/regiongen/source-projection.mjs";
+import {clipPolygon,buildTileConstraints,sideShorelineCrossings,selectSourceShorelineSeam,tileForPosition,WORLD_UNITS_PER_TILE} from "../../tools/regiongen/source-projection.mjs";
 const digest=x=>createHash("sha256").update(x).digest("hex");
 const sample={schemaVersion:1,seed:"synthetic",generator:{provider:"azgaar",version:"1.153.1",upstreamCommit:"example"},
  map:{width:128,height:128,geography:[
@@ -72,6 +72,14 @@ for(const stem of ["game-11-determinism","atlas-showcase"]){
   if(found)break;
  }
  assert(found,stem+": no actual coast/lake segments rendered");
+ const homeland=world.settlements.find(b=>b?.i>0&&!b.removed&&!b.hidden&&Number.isFinite(b.x)&&Number.isFinite(b.y));
+ const chosen=selectSourceShorelineSeam(world,geometry,digest(fixture),[homeland.x,homeland.y]);
+ const tileA=buildTileConstraints(world,chosen.tile_x,chosen.tile_y,digest(fixture),geometry);
+ const tileE=buildTileConstraints(world,chosen.tile_x+1,chosen.tile_y,digest(fixture),geometry);
+ assert(sideShorelineCrossings(tileA,"E").length>0,stem+": no coastline seam visibly demonstrated");
+ assert.deepEqual(sideShorelineCrossings(tileA,"E"),sideShorelineCrossings(tileE,"W"),stem+": chosen shoreline seam differs");
+ assert(sideShorelineCrossings(tileA,"E").some(x=>x.world_position.join(",")===chosen.world_position.join(",")),
+  stem+": actual source polygon seam coordinate missing");
  cases++;
 }
 console.log("PASS: GAME-39 original coastline/lake feature vertices, shared E/W and N/S, immutable replay fingerprints, two seeded worlds ("+cases+")");
