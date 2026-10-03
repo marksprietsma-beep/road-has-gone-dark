@@ -88,17 +88,20 @@ func _dashes(a: Vector2, b: Vector2, shade: Color, width: float) -> void:
   t += 13.0
 
 func _unhandled_input(event: InputEvent) -> void:
- if not event is InputEventKey or not event.pressed or event.echo:
+ if not event is InputEventKey:
   return
- match event.keycode:
+ var key: InputEventKey = event
+ if not key.pressed or key.echo:
+  return
+ match key.keycode:
   KEY_S: show_original = not show_original
   KEY_A: show_approximate = not show_approximate
   KEY_I: show_inferred = not show_inferred
   KEY_U: show_unknown = not show_unknown
   KEY_F: fit_map()
   _:
-   if event.keycode >= KEY_1 and event.keycode <= KEY_6:
-    load_case("res://tools/regiongen/.tmp/" + CASES[event.keycode - KEY_1] + ".json")
+   if key.keycode >= KEY_1 and key.keycode <= KEY_6:
+    load_case("res://tools/regiongen/.tmp/" + CASES[key.keycode - KEY_1] + ".json")
  queue_redraw()
 
 func _draw() -> void:
