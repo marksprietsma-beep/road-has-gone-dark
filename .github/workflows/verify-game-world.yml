@@ -11,6 +11,7 @@ on:
 jobs:
   gameworld-smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - name: Verify pinned canonical fixture hashes
@@ -31,7 +32,7 @@ jobs:
       - name: Run GameWorld smoke
         run: |
           set -euo pipefail
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee /tmp/gameworld.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 240 --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee /tmp/gameworld.log
           grep -q "PASS: GAME-7" /tmp/gameworld.log
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/gameworld.log; then
             echo "Godot reported GAME-7 test errors"
