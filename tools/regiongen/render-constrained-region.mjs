@@ -14,6 +14,17 @@ export function renderConstrainedRegion(region){
  '<pattern id="paper" width="48" height="54" patternUnits="userSpaceOnUse"><path d="M4 10l3 1 M28 48l4 -1 M41 27l2 2" stroke="#776748" stroke-width="0.7" opacity=".2"/></pattern>',
  '</defs><rect width="1000" height="1000" fill="#8babb2"/>',
  '<g clip-path="url(#world)">'];
+ // Renderer-only visibility mask for source overland routes. Azgaar may
+ // report an original road over source sea/lake polygons; masking these wet
+ // stretches avoids depicting an unverified bridge or traversable land road.
+ // Preserve every original route point in context.source_routes for auditing.
+ lines.push('<defs><mask id="azgaar-source-dry-road-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">');
+ lines.push('<rect width="1000" height="1000" fill="black"/>');
+ for(const f of context.source_features.filter(f=>f.classification==="land_boundary"))
+  lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="white"/>');
+ for(const f of context.source_features.filter(f=>f.classification==="freshwater_lake"))
+  lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="black"/>');
+ lines.push('</mask></defs>');
  // Original Azgaar searoutes sometimes cross source land at its coarse
  // resolution. Display them UNDER authentic land/lake polygons so the
  // inland portion is masked, without mutating their original source points
@@ -47,6 +58,7 @@ export function renderConstrainedRegion(region){
   for(const s of river.segments)
    lines.push('<polyline class="approximate-river" points="'+pts(s.local_points)+'" stroke="#4e8498" stroke-width="3" stroke-dasharray="6 4" opacity=".9" fill="none"/>');
  // Route classes from Azgaar are preserved: sea lanes are NOT safe land roads.
+ lines.push('<g id="source-ground-route-presentation" mask="url(#azgaar-source-dry-road-mask)">');
  for(const route of context.source_routes)for(const s of route.segments){
   // Sea routes were drawn *behind* source land, and cannot turn into
   // a visual overland route by crossing inconsistent source coast geometry.
@@ -58,6 +70,7 @@ export function renderConstrainedRegion(region){
   if(!trail)lines.push('<polyline points="'+pts(s.local_points)+
     '" stroke="#cbb98b" stroke-width="2" fill="none" opacity=".9"/>');
  }
+ lines.push('</g>');
  // Source towns are never moved to meet Town Forge's arbitrary paths.
  for(const burg of context.source_burgs){
   const [x,y]=burg.local_position,home=burg.source_id===context.source_home_burg_id;
