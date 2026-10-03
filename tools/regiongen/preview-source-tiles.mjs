@@ -3,7 +3,7 @@
 import {readFile,mkdir,writeFile} from "node:fs/promises";
 import {resolve,dirname} from "node:path";
 import {createHash} from "node:crypto";
-import {buildTileConstraints,tileForBurg,sideCrossings,sideShorelineCrossings,WORLD_UNITS_PER_TILE} from "./source-projection.mjs";
+import {buildTileConstraints,tileForBurg,sideCrossings,sideShorelineCrossings,selectSourceShorelineSeam,WORLD_UNITS_PER_TILE} from "./source-projection.mjs";
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
 const input=get("--world"),output=get("--output"),rawId=get("--burg");
@@ -13,11 +13,20 @@ const hash=createHash("sha256").update(raw).digest("hex");
 const geometryPath=get("--geography");
 const geographySidecar=geometryPath?JSON.parse(await readFile(resolve(geometryPath),"utf8")):null;
 const xy=tileForBurg(world,Number(rawId));
-const tx=get("--tile-x")!==undefined?Number(get("--tile-x")):xy[0],ty=get("--tile-y")!==undefined?Number(get("--tile-y")):xy[1];
+if(args.includes("--focus-shoreline") && (!geographySidecar||get("--tile-x")!==undefined||get("--tile-y")!==undefined))
+ throw Error("--focus-shoreline requires a valid geography sidecar and no explicit tile coordinates");
+const originalBurg=world.settlements.find(b=>b?.i===Number(rawId));
+const seam=args.includes("--focus-shoreline")?
+ selectSourceShorelineSeam(world,geographySidecar,hash,[originalBurg.x,originalBurg.y]):null;
+const tx=seam?seam.tile_x:get("--tile-x")!==undefined?Number(get("--tile-x")):xy[0];
+const ty=seam?seam.tile_y:get("--tile-y")!==undefined?Number(get("--tile-y")):xy[1];
 const first=buildTileConstraints(world,tx,ty,hash,geographySidecar);
 const second=buildTileConstraints(world,tx+1,ty,hash,geographySidecar);
+if(seam && sideShorelineCrossings(first,"E").length===0)
+ throw Error("A selected actual source shoreline crossing was lost during projection");
 const constraints={schema_version:1,diagnostic:true,
   description:"Two adjacent real Azgaar source tiles, not rendered Town Forge interiors",
+  shoreline_focus:seam,
   first,second,shared_boundary_key:"V:"+((tx+1)*WORLD_UNITS_PER_TILE)+":"+ty,
   east_crossings:sideCrossings(first,"E"),west_crossings:sideCrossings(second,"W"),
   shoreline_east:sideShorelineCrossings(first,"E"),shoreline_west:sideShorelineCrossings(second,"W")};
