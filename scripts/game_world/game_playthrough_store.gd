@@ -134,11 +134,21 @@ func load_save(slot: String, world: GameWorldTemplate) -> Dictionary:
 func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 	if int(state.get("save_version", -1)) != SAVE_VERSION:
 		return "Unsupported save schema version"
-	if not world.validate_save_reference(state.get("world_ref", {})):
+	# JSON syntax can be valid while its field types are corrupt. Guard all
+	# typed assignments and the world lookup before attempting a cast.
+	if not state.get("world_ref", null) is Dictionary:
+		return "Invalid world reference structure"
+	if not world.validate_save_reference(state["world_ref"]):
 		return "Missing or mismatched world template/version/fingerprint"
 	if str(state.get("playthrough_id", "")).is_empty():
 		return "Missing playthrough ID"
-	var origin: Dictionary = state.get("origin", {})
+	if not state.get("origin", null) is Dictionary:
+		return "Invalid origin structure"
+	if not state.get("party_ids", null) is Array or not state.get("characters", null) is Array:
+		return "Invalid party roster structure"
+	if not state.get("player_knowledge", null) is Dictionary:
+		return "Invalid knowledge structure"
+	var origin: Dictionary = state["origin"]
 	var sid := int(origin.get("state_id", -1))
 	var bid := int(origin.get("home_burg_id", -1))
 	if not world.validate_origin(sid, bid):
@@ -151,8 +161,10 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 		return "Source hometown stable ID mismatch"
 	var party: Array = state.get("party_ids", [])
 	var characters: Array = state.get("characters", [])
-	if characters.size() != 3 or party.size() != 3:
-		return "First-version playthrough requires three character records"
+	# New campaigns start with exactly three members. Recruitment later adds
+	# roster records without forcing all recruits into the travelling party.
+	if characters.size() < 3 or party.is_empty() or party.size() > characters.size():
+		return "Playthrough requires a valid nonempty party and at least three starting roster records"
 	var member_ids: Dictionary = {}
 	for member in characters:
 		if not member is Dictionary or str(member.get("id", "")).is_empty():
@@ -161,13 +173,23 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 		if member_ids.has(id):
 			return "Duplicate character ID"
 		member_ids[id] = true
+	var party_seen: Dictionary = {}
 	for member_id in party:
 		if not member_ids.has(str(member_id)):
 			return "Party refers to an unknown character"
-	var knowledge: Dictionary = state.get("player_knowledge", {})
+		if party_seen.has(str(member_id)):
+			return "Duplicate active party member"
+		party_seen[str(member_id)] = true
+	var knowledge: Dictionary = state["player_knowledge"]
 	for field in ["known_burg_ids", "rumoured_poi_ids", "discovered_poi_ids", "visited_poi_ids"]:
 		if not knowledge.get(field, null) is Array:
 			return "Invalid player knowledge structure"
+	for burg_id in knowledge["known_burg_ids"]:
+		if not burg_id is String or not str(burg_id).begins_with("burg:"):
+			return "Invalid known settlement reference"
+		var burg_source := str(burg_id).trim_prefix("burg:")
+		if not burg_source.is_valid_int() or world.get_record("burg", int(burg_source)).is_empty():
+			return "Knowledge references a nonexistent settlement"
 	for field in ["rumoured_poi_ids", "discovered_poi_ids", "visited_poi_ids"]:
 		for pid in knowledge[field]:
 			if not pid is String or not str(pid).begins_with("poi:"):
