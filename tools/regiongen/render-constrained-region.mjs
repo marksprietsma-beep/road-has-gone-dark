@@ -1,4 +1,5 @@
 import {sourceDryLand} from "./compose-local-region.mjs";
+import {renderInferredOverlay} from "./render-inferred-fine.mjs";
 /** GAME-47 QA view: actual source-world places/routes/water are top-level.
  * Town Forge supplies ONLY clipped ink/vegetation/ridge decoration.
  */
@@ -32,10 +33,15 @@ export function visibleDryRouteStrokes(context,originalPoints) {
  return strokes;
 }
 
-export function renderConstrainedRegion(region){
+export function renderConstrainedRegion(region,inferred=null){
  const context=region.source_context,landscape=region.landscape;
  if(!context?.source_features || !landscape || region.provider?.mode!=="DECORATIONS_ONLY")
   throw Error("Expected source-authored decorative composite");
+ if(inferred!==null && (inferred.schema_version!==1||
+  inferred.source_context_id!==context.id||
+  inferred.source_world_sha256!==context.parent_source_world_sha256||
+  inferred.truth!=="INFERRED_VISUAL_FIELD_NOT_TRAVERSAL"))
+  throw Error("Cannot overlay inferred art from a different world, source context, or authority");
  const lines=['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">',
  '<title>Source-correct local landscape — decorative Town Forge vegetation</title>',
  '<defs><clipPath id="world"><rect width="1000" height="1000"/></clipPath>',
@@ -68,6 +74,9 @@ export function renderConstrainedRegion(region){
  for(const f of context.source_features.filter(f=>f.classification==="freshwater_lake"))
   lines.push('<polygon class="azgaar-lake" points="'+pts(f.local_polygon)+'" fill="#87b0b9" stroke="#4b7778" stroke-width="1"/>');
  lines.push('<rect width="1000" height="1000" fill="url(#paper)" opacity=".62" pointer-events="none"/>');
+ if(inferred){
+  lines.push(renderInferredOverlay(inferred,context.source_features,"game53-macro-source-land"));
+ }else{
  for(const ridge of landscape.ridges){
   const x=ridge.x,y=ridge.y;
   lines.push('<path d="M'+(x-15)+' '+(y+7)+' L'+x+' '+(y-11)+' L'+(x+15)+' '+(y+7)+
@@ -79,6 +88,7 @@ export function renderConstrainedRegion(region){
    ' M'+(x-s*.65)+' '+(y+s*.5)+' L'+x+' '+(y-s*.9)+' L'+(x+s*.65)+' '+(y+s*.5)+' Z" fill="#4a6550" stroke="#2c4337" stroke-width="1"/>');
   lines.push('<path d="M'+(x-s*.45)+' '+(y-s*.1)+' L'+x+' '+(y-s*.9)+' L'+(x+s*.45)+' '+(y-s*.1)+
    '" fill="none" stroke="#819a70" stroke-width="1" opacity=".67"/>');
+ }
  }
  // River-cell-derived geometry is **approximate**. Dashing explicitly
  // prevents implying a definitive, traversable water channel.
@@ -127,7 +137,8 @@ export function renderConstrainedRegion(region){
  '<rect x="10" y="10" width="635" height="85" rx="3" fill="#ede1c1" fill-opacity=".95" stroke="#5b513e"/>',
  '<text x="23" y="34" font-size="21" font-family="Georgia,serif" fill="#2b2c24">THE ROAD HAS GONE DARK</text>',
  '<text x="23" y="57" font-size="15" font-family="Georgia,serif" fill="#4e493c">Source geography · '+escape(home?.name||"Unknown")+' neighbourhood</text>',
- '<text x="23" y="77" font-size="13" font-family="Georgia,serif" fill="#655845">Town Forge vegetation only — roads and coastlines are Azgaar original</text>',
+ '<text x="23" y="77" font-size="13" font-family="Georgia,serif" fill="#655845">'+
+ (inferred?'Illustrative forest and relief — Azgaar land and roads remain original':'Town Forge vegetation only — roads and coastlines are Azgaar original')+'</text>',
  '<rect x="9" y="939" width="981" height="51" rx="3" fill="#eee1c3" fill-opacity=".94" stroke="#70624b"/>',
  '<text x="20" y="958" font-family="Georgia,serif" font-size="14" fill="#443b2b">Brown: source roads  •  Dashed teal: sea lanes  •  Dashed blue: approximate river  •  Trees: inferred</text>',
  '<text x="20" y="978" font-family="Georgia,serif" font-size="13" fill="#785438">PREVIEW ONLY · distances uncalibrated; safe roads, bridges, river mouths &amp; generated sites unverified</text>',
