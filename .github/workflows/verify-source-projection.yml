@@ -43,6 +43,7 @@ jobs:
         run: |
           node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --geography tools/regiongen/.tmp/geography-game-11-determinism.json --focus-shoreline --output tools/regiongen/.tmp/shoreline-focus-first.json
           node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --geography tools/regiongen/.tmp/geography-atlas-showcase.json --focus-shoreline --output tools/regiongen/.tmp/shoreline-focus-second.json
+          grep -q 'stroke-dasharray="5 4"' tools/regiongen/.tmp/shoreline-focus-first.svg
       - name: Preserve immutable source and vendor trees
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Publish testable source constraints and diagrams
