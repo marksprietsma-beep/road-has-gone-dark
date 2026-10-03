@@ -232,18 +232,26 @@ UI must focus on **the current choice and its consequences**, with the map artwo
 - **Readability:** at normal/dense world zoom, keep map-key/glossary and visual decluttering rules, but design game-specific controls instead of shipping DEV LAYERS.
 - **Narrative tone:** protect the black-magic road-and-fortress premise. A generated map isn't a quest in itself.
 
-## 6. Suggested implementation order *after design acceptance*
+## 6. Implementation priority: a small playable spine plus one visual content track
 
-1. **GAME-7** GameWorld contract/adapter and a fixture-backed save/load smoke test, with stable world/party/POI IDs, rules/content pack version references, knowledge separation and persistent outcomes.
-2. **GAME-32** character rules core, multiclass/prestige prerequisites and feature/effect model. This can be designed in parallel with GAME-7 but should share save identity assumptions.
-3. **GAME-33** deterministic square-grid combat state/transitions, turn validation, repeatable random seed, 3v2/3v3 sample battle and headless tests. Both manual and auto must consume this **one engine**.
-4. **GAME-34** manual grid UI/controller and **GAME-35** policy-driven auto-resolve, both based on GAME-33. Deliver a clear results/replay report and test identical command effects.
-5. **GAME-36** curated prestige content packs, prerequisites, unique feature triggers and validation pipeline, extended over time rather than a one-off all-supplements import.
-6. **GAME-8/GAME-9** player-facing world map, random/existing world selection and vulnerable hometown, plus lightweight three-character setup using the rules core. **GAME-10** adds genuine game-specific factions/discovery and risk contexts.
-7. **First combined traversal/combat loop:** leave a village, travel by road/wilderness, encounter a small real tactical battle (manual or auto), investigate/report a site and persist outcomes. Create a separate integration issue once the design and components are mature; don't build all these concurrently in GAME-17.
-8. **Later systems:** GAME-21 regional Town Forge, GAME-19 Settlemaker, GAME-20 DungeonGen and GAME-29 guild lifecycle/independent contracts, each gated by what the playable loop needs.
+**Next real implementation is GAME-7, not a full town/dungeon generator or an entire character creation screen.** Before starting, accept the scoped action economy/first vertical-slice details in this design PR. Then build these as **separately reviewable, small PRs**:
 
-The above ordering refers to the scoped Linear implementation issues; a narrow early battle/playable test can overlap a thin world layer. Do not hold all playtesting hostage to GAME-36's eventual supplement coverage, or rush to start gameplay code before choosing its underlying rules edition.
+### Track A — playable game and combat foundations (primary)
+
+1. **GAME-7 — small permanent GameWorld/save foundation**: load a pinned Azgaar world, preserve version and stable IDs, choose an actual source-backed state/province/small home burg, initialise a **skeletal party of three**, create **independent saves sharing the same world** and prove reload of player-known sites/other per-save deltas. No massive all-fields schema, finished creator, fake town guilds or combat. First visible result can be a plain functional New Game test screen showing chosen home and party/save state.
+2. **GAME-32 — character rules core**, not finished creation UX: begin with 2–3 representative base classes (martial, scout and illusion/control) plus a class/prestige progression test; feats/skills/unique ability definitions and legal level-up checks in a versioned PF1e-derived rules pack with adapted 3.5 prestige requirements.
+3. **GAME-33 — shared deterministic combat engine**: three starting characters versus 2–3 enemies, a bounded grid, movement, attack, defensive/illusionary control and headless repeatable results. **GAME-34** manual grid controller and **GAME-35** tactical AI/auto-resolve subsequently drive this **same simulation**.
+4. **GAME-8/GAME-9** real player-facing world map and rerollable/new-or-existing world → region → vulnerable small hometown selection. **GAME-10** enriches real factions and player discovery. Connect the one job/travel encounter/return/reload loop and keep it small.
+5. **GAME-36** deeper prestige content grows over time and is validated against the rules/combat system; do not require hundreds of classes before playable tests.
+
+### Track B — visually rewarding generators (parallel only when foundations permit)
+
+1. **GAME-21** one **local-region generation spike** soon **after GAME-7's world/location identity test**. Anchor to existing source world seed and cell/burg ID; open one deterministic region with routes/POI hooks in a small Godot test scene. It can progress while GAME-32 rules work is underway without redefining shared IDs, save format or world physics.
+2. **GAME-19 Settlemaker** on-demand geometry for one source-backed small hometown, persisting local changes separately. Avoid generating or hardcoding guild NPC roster inside vendor code.
+3. **GAME-20 DungeonGen** on-demand one dungeon tied to a stable discovered site ID, with identical revisits and saved outcomes.
+4. Only connect larger town/dungeon catalogues after a single generated local region/town/dungeon can participate in an actual expedition and reload correctly.
+
+**Why this order:** our main engineering risk is interactions between elaborate character abilities, deterministic combat, strong AI and persistent outcomes. More procedural geometry is visually satisfying but easier to add **once the owning world/game/save identities are stable**; doing all the generators first risks another impressive static world with no playable loop. Track B still gives frequent new sights/screenshots while rules-engine work develops.
 
 ## 7. Decisions for Mark before this design can be accepted
 
