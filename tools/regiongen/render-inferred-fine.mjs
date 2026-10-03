@@ -88,3 +88,52 @@ export function renderInferredFineSvg(authority,fine){
   '</svg>');
  return lines.join("\n")+"\n";
 }
+
+
+/**
+ * Reusable inferred illustration layer for GAME-53's populated preview.
+ * Input shapes are EXACT original source feature polygons; inferred bands
+ * are clipped to those shapes but never become collision/walkability data.
+ * Original GAME-51 source-versus-inferred evidence renderer is unchanged.
+ */
+export function renderInferredOverlay(fine,sourceFeatures,maskId="inferred-source-land"){
+ if(fine?.schema_version!==1||
+    fine.truth!=="INFERRED_VISUAL_FIELD_NOT_TRAVERSAL"||
+    !Array.isArray(sourceFeatures) ||
+    !/^[A-Za-z0-9-]+$/.test(maskId))
+  throw Error("Invalid inferred overlay or original polygon mask");
+ const N=fine.grid_steps,values=fine.vertices;
+ if(!Number.isInteger(N)||N<=0||values.length!==(N+1)**2)
+  throw Error("Incomplete inferred vegetation/elevation field");
+ const getPoints=f=>f.local_polygon||f.source_polygon||[];
+ const mask=['<defs><mask id="'+maskId+'" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">',
+  '<rect width="1000" height="1000" fill="black"/>'];
+ for(const f of sourceFeatures.filter(f=>f.classification==="land_boundary"))
+  mask.push('<polygon points="'+pts(getPoints(f))+'" fill="white"/>');
+ for(const f of sourceFeatures.filter(f=>f.classification==="freshwater_lake"))
+  mask.push('<polygon points="'+pts(getPoints(f))+'" fill="black"/>');
+ mask.push('</mask></defs><g mask="url(#'+maskId+')" data-provenance="inferred-only">');
+ const id=(i,j)=>j*(N+1)+i;
+ for(const [key,cut,shade] of [
+  ["h",48,"#c9b58c"],["h",58,"#b5a17e"],["h",69,"#a08e75"],["h",78,"#89816c"],
+  ["f",.49,"#7f946c"],["f",.57,"#5e7655"],["f",.65,"#455c49"]]){
+  const commands=[];
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+   const x=1000*i/N,y=1000*j/N,step=1000/N;
+   const corners=[
+    {p:[x,y],z:values[id(i,j)][key]},
+    {p:[x+step,y],z:values[id(i+1,j)][key]},
+    {p:[x+step,y+step],z:values[id(i+1,j+1)][key]},
+    {p:[x,y+step],z:values[id(i,j+1)][key]}
+   ];
+   for(const shape of [[0,1,2],[0,2,3]]){
+    const ring=thresholdTri(shape.map(k=>corners[k]),cut);
+    if(ring.length)commands.push("M"+ring.map(p=>p.map(x=>+x.toFixed(2)).join(",")).join(" L")+"Z");
+   }
+  }
+  mask.push('<path class="inferred-'+(key==="h"?"relief":"forest")+
+    '" d="'+commands.join(" ")+'" fill="'+shade+'" opacity="'+(key==="h"?.66:.88)+'"/>');
+ }
+ mask.push('</g>');
+ return mask.join("\n");
+}
