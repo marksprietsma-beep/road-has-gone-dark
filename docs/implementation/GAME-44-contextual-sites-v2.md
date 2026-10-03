@@ -25,6 +25,11 @@ These checks are conservative and not a physical crossing/landmask solution: lon
 
 The local view is 16 **Azgaar source-map units**, **NOT a calibrated 30 km**, and river centreline segments still approximate source cell chains. Real crossings, road protection, river mouths, detailed towns/dungeons and complete source land elevation aren't reconstructed. Original sea routes sometimes visually intersect original land polygons at source map resolution (notably near Stormhorn). Preserve classification, flag the limitation and do **not** invent land roads or ferries. This phase adds *generated inferred locations*, not proof that those sites would exist in Azgaar.
 
+
+## GAME-50 — searoute land-overlap display correction
+
+Azgaar's **original sea-lane polylines** occasionally overlap its **original land polygon**, visibly around Stormhorn. This is a genuine mismatch of source geometry at its native coarse scale, **not** evidence of an actual overland maritime passage. The SVG and Godot F6 renderers now draw original sea lanes **before** drawing authoritative source land and lake fills, so land masks the unsupported overland-looking portions. Source route geometry, route group, safe-road state, JSON provenance, saved worlds and site positions remain **unchanged**. This fixes only the appearance: it neither repairs the Azgaar data nor invents ports, ferries, bridges or route connections. CI asserts SVG layer order and all six actual views remain valid.
+
 ## Exact developer testing
 
 The main CI workflow `Verify local source neighbourhoods` regenerates canonical worlds byte-identically, six constrained source-region composites and then six v2 populated previews; it verifies site collision, dry-land eligibility, world identity, variation and unknown-site privacy. It also imports Godot 4.7.2 and checks both the original GAME-47 and new GAME-44 F6 scenes.
