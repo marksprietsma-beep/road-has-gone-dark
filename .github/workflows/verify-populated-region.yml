@@ -2,6 +2,7 @@ name: Verify populated local region
 on:
   pull_request:
     paths:
+      - "assets/map/region-site-icons.json"
       - "tools/regiongen/**"
       - "tests/regiongen/**"
       - "scripts/debug/populated_region_preview.gd"
