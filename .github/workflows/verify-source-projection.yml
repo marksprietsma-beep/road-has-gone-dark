@@ -1,0 +1,39 @@
+name: Verify Azgaar source tile constraints
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/source-projection.mjs"
+      - "tools/regiongen/preview-source-tiles.mjs"
+      - "tests/regiongen/verify-source-projection.mjs"
+      - "docs/implementation/GAME-39*"
+      - ".github/workflows/verify-source-projection.yml"
+  workflow_dispatch:
+jobs:
+  source-constraints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Test shared world-space data contracts on two actual worlds
+        run: node tests/regiongen/verify-source-projection.mjs
+      - name: Produce two two-tile source-projection previews
+        run: |
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --output tools/regiongen/.tmp/source-constraints-first.json
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --output tools/regiongen/.tmp/source-constraints-second.json
+      - name: Preserve immutable source and vendor trees
+        run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
+      - name: Publish testable source constraints and diagrams
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-39-source-world-constraints
+          path: |
+            tools/regiongen/.tmp/source-constraints-first.json
+            tools/regiongen/.tmp/source-constraints-first.svg
+            tools/regiongen/.tmp/source-constraints-second.json
+            tools/regiongen/.tmp/source-constraints-second.svg
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
