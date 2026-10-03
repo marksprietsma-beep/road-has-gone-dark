@@ -152,7 +152,18 @@ func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
   area += a.x * b.y - b.x * a.y
  if absf(area) <= 1.0:
   return
- draw_colored_polygon(clean, shade)
+ # Threshold clipping can produce a valid-looking 4-point contour with
+ # almost-collinear corners; Godot's polygon ear triangulator then rejects
+ # the whole shape. Clip of one triangle is convex, so fan-triangulate
+ # ourselves and reject each degenerate *individual* triangle.
+ for k in range(1, clean.size() - 1):
+  var p: Vector2 = clean[0]
+  var q: Vector2 = clean[k]
+  var r: Vector2 = clean[k + 1]
+  var twice_area: float = absf((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x))
+  if twice_area <= .75:
+   continue
+  draw_colored_polygon(PackedVector2Array([p, q, r]), shade)
 
 func _draw_fine_field() -> void:
  if fine_field.is_empty():
