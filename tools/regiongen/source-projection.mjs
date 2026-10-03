@@ -265,3 +265,36 @@ export function sideShorelineCrossings(tile,side) {
  .map(({id,boundary,world_position,source_feature,kind})=>({id,boundary,world_position,source_feature,kind}))
  .sort((a,b)=>a.id.localeCompare(b.id));
 }
+
+/** Deterministically choose a real original shoreline crossing of a shared
+ * vertical world-tile boundary, preferring one near the selected burg.
+ * This is a DIAGNOSTIC selector, never a generated/fake crossing. */
+export function selectSourceShorelineSeam(world,sidecar,fingerprint,near=[world.map.width/2,world.map.height/2]) {
+ const coordinates=checkGeographySidecar(world,sidecar,fingerprint);
+ if(!valid(near))throw Error("Invalid geography focus position");
+ const choices=[];
+ for(const f of world.map.geography) {
+  if(!f?.vertices?.length)continue;
+  const vertices=f.vertices.map(i=>coordinates[i]);
+  for(let i=0;i<vertices.length;i++) {
+   const a=vertices[i],b=vertices[(i+1)%vertices.length],dx=b[0]-a[0];
+   if(Math.abs(dx)<EPS)continue;
+   const low=Math.min(a[0],b[0]),high=Math.max(a[0],b[0]);
+   for(let n=Math.floor(low/WORLD_UNITS_PER_TILE)+1; n*WORLD_UNITS_PER_TILE<high-EPS;n++) {
+    const x=n*WORLD_UNITS_PER_TILE,t=(x-a[0])/dx;
+    if(t<=EPS||t>=1-EPS || x>=world.map.width-EPS)continue;
+    const y=a[1]+t*(b[1]-a[1]);
+    if(y<0||y>=world.map.height || Math.abs(y/WORLD_UNITS_PER_TILE-Math.round(y/WORLD_UNITS_PER_TILE))<EPS)continue;
+    const tx=n-1,ty=Math.floor(y/WORLD_UNITS_PER_TILE);
+    choices.push({tile_x:tx,tile_y:ty,source_feature:f.i,kind:f.type,
+     source_segment:i,world_position:[fixed(x),fixed(y)],
+     squared_distance:(x-near[0])**2+(y-near[1])**2});
+   }
+  }
+ }
+ if(!choices.length)throw Error("No real vertical source feature shoreline crossing found");
+ choices.sort((a,b)=>a.squared_distance-b.squared_distance||
+  a.source_feature-b.source_feature||a.source_segment-b.source_segment);
+ const {squared_distance,...chosen}=choices[0];
+ return chosen;
+}
