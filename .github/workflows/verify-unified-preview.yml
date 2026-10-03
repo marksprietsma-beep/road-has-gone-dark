@@ -60,7 +60,7 @@ jobs:
           name: game-54-filtered-map-previews
           path: |
             tools/regiongen/.tmp/unified-*.svg
-            tools/regiongen/.tmp/unified-*.json
+            tools/regiongen/.tmp/unified-*.json\n            !tools/regiongen/.tmp/**/*.developer.json\n            !tools/regiongen/.tmp/developer/**
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
