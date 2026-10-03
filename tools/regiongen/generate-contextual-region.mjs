@@ -37,7 +37,7 @@ for(const issue of layer.route_consistency.conflicts){
   segment.local_points.map(([x,y])=>x+","+y).join(" ") +
   '" fill="none" stroke="#9d4735" stroke-width="3.5" stroke-dasharray="7 5" opacity=".85"/>');
 }
-const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,serif" font-size="12">Original route / coast inconsistencies: '+
+const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,serif" font-size="12">Route/coast conflicts: '+
  layer.route_consistency.conflicts.length+' · red dashed = uncertain</text>';
 const image=renderConstrainedRegion(composite).replace("</svg>",
  warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>");
