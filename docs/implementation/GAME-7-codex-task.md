@@ -1,0 +1,42 @@
+# Codex task — GAME-7: canonical GameWorld and save foundation
+
+**Ready for implementation** (3 October 2026). Linear: [GAME-7](https://linear.app/marksprietsma/issue/GAME-7/define-canonical-gameworld-schema-and-azgaar-adapter). Approved gameplay-design baseline: [GAME-17](../design/first-playable-exploration-loop.md) (merged PR #32). Repository: `marksprietsma-beep/road-has-gone-dark`.
+
+## Exact assignment
+
+Build the **smallest lasting, testable Godot 4 GameWorld model + Azgaar adapter + independent per-playthrough save/reload**. Use the existing checked-in **immutable canonical Azgaar fixtures**. This is the FIRST implementation after the atlas and GAME-17 design, **not** a full character creator, runtime world-generator UI, tactical combat module or playable New Game screen.
+
+Start from current `main`. Read `AGENTS.md`, the current `docs/design/first-playable-exploration-loop.md`, `docs/design/world-map-worldbuilding-decisions.md`, `tools/worldgen/headless-entry.ts`, the existing `WorldFixtureLoader` in `scripts/debug/map_renderer/world_fixture_loader.gd`, and the test fixtures. Keep a small, reviewable diff and produce a **draft PR** linked to GAME-7. Do not merge yourself. Once Codex has finished, Mark will select **Publish draft PR** from the Codex task; do not attempt to force the Codex publish step through GitHub.
+
+## Inputs: real source data only
+
+- `tests/worldgen/fixtures/game-11-determinism.json` (source seed `game-11-determinism`, schema v1, generator Azgaar `1.153.1`, 1280x800, ~5959 cells, 19 states, 204 provinces, ~874 burgs, 73 macro landmarks) and `atlas-showcase.json`. Note array index zero or placeholder records where present; never assume the entire array is populated with ordinary entities.
+- Azgaar export fields: `schemaVersion`, `generator.provider/version/upstreamCommit`, `seed`, `map`, `cells.ids/points/neighbors/state/province/settlement/biome/culture/religion/river`, `states`, `provinces`, `settlements`, `cultures`, `religions`, `biomes`, `rivers`, `routes`, `markers`. Validate relationships and actual types instead of guessing.
+- Metadata `tests/worldgen/fixtures/game-11-determinism.meta.json` includes SHA256/provenance; **don't change fixture bytes** or vendored Azgaar sources to make schema tests pass.
+- Existing debug map renderer is presentation-only, not the canonical model or save service. Reuse loaders/utilities when sensible, but never store mutable gameplay state in `MapRenderModel` or redraw scripts.
+
+## Deliverables
+
+1. **Immutable source/world adapter** in a new game-owned module (suggest `scripts/game_world/`). Validate fixture version and expose game-owned stable IDs and basic read-only lookups for cells, state/province, burg, POI/marker and routes. Stable identifiers must include world identity + **source numeric ID** (not editable names/display coordinates), with structured typed data or carefully documented dictionaries. Avoid copying the full 5 MB raw world JSON into every save. Provide an unambiguous versioned world identity/fingerprint: provider, pinned source/version, seed and canonical content SHA/hash; fail safely if a save references a different fixture than expected.
+2. **Region/small-home candidate query** scoped to a selected valid state/province. Return existing Azgaar source-backed smaller burgs, prioritising actual burg group/population and readily verifiable geographic/road/fortification facts. Do not fabricate militia, external protection, guild branches or faction relations, and do not assume every state has 3–5 villages. Return a transparent empty/no-eligible result or documented fallback suggestion when data lacks candidates. `home_burg_id` must identify an existing burg in the chosen region.
+3. **New-game state** from existing world template and selected source-backed small hometown: `save_version`, independent `playthrough_id` or `save_id`, pinned `world_ref`, `origin` (`state_id`, optional `province_id`, `home_burg_id`), three **skeletal persistent character IDs/records** (placeholders, not fake fully rolled 3.5/PF abilities), initial `player_knowledge` (known/rumoured/visited/discovered separately from actual hidden POI existence), limited `world_deltas` and `game_clock` placeholders. Character rules-pack identity can be reserved as a versioned reference; DO NOT implement stats, skills, feats, character classes, spells or combat yet (GAME-32/33).
+4. **Independent save/reload service** using Godot `user://` with a simple documented versioned JSON contract. Prevent path traversal, accidental save overwrite and world-template mutation; use safe/atomic writes where practical (temporary file, guarded rename/check). Error clearly on corrupted JSON, unsupported versions and absent/mismatched referenced world. Keep IDs/referenced fixtures stable on reload. Reroll-preview flow can remain data-only helper; it must never modify existing saves or worlds.
+5. **Runnable proof**: headless Godot SceneTree smoke test in `tests/game_world/` run against the real fixtures. It must create two saves from the **same world**, modify knowledge/deltas in one only, save/reload both and assert isolation, stable world and hometown IDs, party count=3, no hidden-source-site disclosure, and no fixture mutations. Test a second fixture/seed, invalid candidate/foreign ID, missing world/unsupported version/corrupted save handling and guarded filename handling. Print a concise `PASS: GAME-7 ...` message. Add CI workflow (use existing Godot 4.7.2 workflow pattern) that imports the project, runs the test, fails on Godot errors/warnings or nonzero exit and optionally checks `git diff` to confirm no changed canonical fixture.
+6. **Documentation + optional tiny development-only view**: explain schema and exact commands to run the smoke test locally on Windows PowerShell; if simple, a minimal standalone debug view showing current seed, selected existing hometown, three placeholder names and `Save / Reload` proof is welcome. It must be separate from the approved world fixture viewer and is NOT the final New Game interface. Avoid a complex UI if it threatens the task scope.
+
+## Acceptance tests (must pass)
+
+- Re-importing same fixture yields identical stable source IDs and world identity; metadata/generation version mismatch is detected and explained; towns renaming doesn't affect IDs.
+- Start a new game from the same generated world twice: two independent per-save knowledge/delta/party records. No overwriting, no identity collision. Opening a saved world template in a new run is NOT continuing a campaign.
+- Rerolling a temporary preview seed cannot alter committed world templates or existing save files.
+- Hometown exists and is in the chosen state/region, is **small on verified source properties**, and can be found via reproducible selection/candidate query. No fabricated guild/defense claims.
+- An objectively existing `hidden` marker does NOT automatically appear in player-known records or player-facing query results; only an explicit knowledge transition changes that.
+- Same party member IDs after save/load, party size three, no fake fully-developed character class mechanics.
+- Corrupt/missing/unsupported saves fail gracefully with useful diagnostic rather than silently regenerating or mutating data.
+- Godot 4.7.2 headless import and tests succeed with no Unicode/NUL warnings or new failures in existing landmark and map tests. Keep the generated world fixtures, pinned Azgaar source, art/icons, road/rivers, `project.godot` intro main scene unchanged unless absolutely necessary and explained.
+
+## Important boundaries and task completion
+
+No Settlemaker, DungeonGen, Town Forge region, final player map, full class creator, guild lifecycle or tactical battle in this PR. These remain GAME-19/20/21, GAME-8/9/10, GAME-32/33. Do not introduce a parallel field encoding in the map renderer. Avoid one giant omniscient `GameWorld` class. Use small contracts, deterministic pure parsing/lookup, stable versioned save state, and headless tests. Make necessary small corrections to the task design if source data disproves an assumption, document them, and ask for input only when materially blocked.
+
+GitHub output: **draft PR** with changes, tests/result, any limitations and concise exact Godot test steps. **Do not automatically merge or mark Linear Done**—Mark will visually review and we'll do the final merge/status update. Codex must not claim a PR is published until Mark has clicked **Publish draft PR** in ChatGPT.
