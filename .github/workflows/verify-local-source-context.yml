@@ -42,5 +42,6 @@ jobs:
           path: |
             tools/regiongen/.tmp/local-*.svg
             tools/regiongen/.tmp/local-*.json
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
