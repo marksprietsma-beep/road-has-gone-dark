@@ -18,7 +18,7 @@ func _run() -> void:
 	assert(sites.get("sites",[]).size() >= 5)
 	assert(not viewer.reveal_hidden, "Developer-only reveal enabled by default")
 	var first: Dictionary = sites["sites"][0]
-	assert(first.get("id","") == "burg:"+str(viewer.region["source"]["burg_id"]))
+	assert(first.get("id","") == "burg:"+str(int(viewer.region["source"]["burg_id"])), "Numeric JSON ID normalization changed burg identity")
 	assert(first.get("provenance","") == "azgaar_burg")
 	var source := GameWorldTemplate.new()
 	assert(source.load_fixture("res://tests/worldgen/fixtures/game-11-determinism.json"))
