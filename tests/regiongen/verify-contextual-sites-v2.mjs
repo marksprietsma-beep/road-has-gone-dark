@@ -52,6 +52,21 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert.deepEqual(layer.sites[0].position,base.source_context.space.home_local);
   assert.deepEqual(layer,generateContextualSites(world,base),"v2 sites not deterministic");
   assert.deepEqual(final.local_sites_v2,layer);
+  const terrain=final.inferred_fine_v1;
+  assert(terrain&&terrain.schema_version===1&&
+   terrain.source_context_id===base.source_context.id,
+   "Inferred scenery must share the original v2 sites source context");
+  assert(terrain.source_world_sha256===layer.source_world_sha256);
+  assert(terrain.truth==="INFERRED_VISUAL_FIELD_NOT_TRAVERSAL");
+  assert(terrain.migration==="NOT_AUTOMATIC");
+  assert(terrain.claims.safe_routes==="UNKNOWN"&&terrain.claims.walkable==="UNKNOWN");
+  assert(terrain.vertices.length===(terrain.grid_steps+1)**2);
+  assert(preview.includes('data-provenance="inferred-only"'),
+   "Normal player SVG is missing the composed inferred woodland/relief");
+  assert(preview.includes('mask="url(#game53-macro-source-land)"'),
+   "Source land/lakes must clip the inferred terrain layer");
+  assert(!preview.includes('Town Forge vegetation only'),
+   "Inferred terrain must replace the old scattered symbol presentation");
   assert(!JSON.stringify(layer).includes("PROVISIONAL_CONCEPTUAL_NOT_SOURCE_WORLD_COORDINATES"));
   const display=contextualPlayerSiteView(layer);
   const canonicalOther=base.source_context.source_burgs.filter(b=>b.source_id!==base.source_context.source_home_burg_id);
