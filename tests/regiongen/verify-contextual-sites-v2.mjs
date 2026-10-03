@@ -31,6 +31,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   const finalBytes=await readFile("tools/regiongen/.tmp/contextual-"+stem+"-"+kind+".json","utf8");
   const final=JSON.parse(finalBytes),layer=final.local_sites_v2;
   const preview=await readFile("tools/regiongen/.tmp/contextual-"+stem+"-"+kind+".svg","utf8");
+  const auditPreview=await readFile("tools/regiongen/.tmp/contextual-"+stem+"-"+kind+".audit.svg","utf8");
   assert.equal(sha(worldBytes),base.source_context.parent_source_world_sha256);
   assert.equal(layer.region_id,base.id);
   assert.equal(layer.source_context_id,base.source_context.id);
@@ -64,8 +65,14 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert(!preview.includes("FAKE_ROAD"));
   assert(preview.includes('id="known-game-owned-pois"'));
   assert(preview.includes("Known nearby sites"));
-  assert(preview.includes("Route/coast conflicts: "));
-  assert.equal((preview.match(/class="source-geometry-conflict"/g)||[]).length,audit.conflicts.length);
+  assert(!preview.includes("Route/coast conflicts: "), "Developer audit leaked into ordinary map");
+  assert(!preview.includes('class="source-geometry-conflict"'), "Red audit strokes leaked into ordinary map");
+  assert(auditPreview.includes("Route/coast conflicts: "+audit.conflicts.length),
+   "Explicit audit SVG must retain the full source inconsistency count");
+  assert.equal((auditPreview.match(/class="source-geometry-conflict"/g)||[]).length,audit.conflicts.length,
+   "Audit view must preserve every source conflict without hiding or inventing routes");
+  assert(preview.includes("Known nearby sites: ")&&auditPreview.includes("Known nearby sites: "));
+  assert.deepEqual(layer.route_consistency.conflicts,audit.conflicts,"Underlying audit evidence changed");
   for(const s of layer.sites){
    assert(s.patrol_protection==="unverified");
    assert(s.position.every(Number.isFinite));
