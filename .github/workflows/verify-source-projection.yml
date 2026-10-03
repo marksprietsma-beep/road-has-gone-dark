@@ -39,6 +39,10 @@ jobs:
         run: |
           node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --geography tools/regiongen/.tmp/geography-game-11-determinism.json --output tools/regiongen/.tmp/source-constraints-first.json
           node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --geography tools/regiongen/.tmp/geography-atlas-showcase.json --output tools/regiongen/.tmp/source-constraints-second.json
+      - name: Prove non-empty real coastline continuity on two selected seams
+        run: |
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/game-11-determinism.json --burg 1 --geography tools/regiongen/.tmp/geography-game-11-determinism.json --focus-shoreline --output tools/regiongen/.tmp/shoreline-focus-first.json
+          node tools/regiongen/preview-source-tiles.mjs --world tests/worldgen/fixtures/atlas-showcase.json --burg 1 --geography tools/regiongen/.tmp/geography-atlas-showcase.json --focus-shoreline --output tools/regiongen/.tmp/shoreline-focus-second.json
       - name: Preserve immutable source and vendor trees
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Publish testable source constraints and diagrams
@@ -50,6 +54,10 @@ jobs:
             tools/regiongen/.tmp/source-constraints-first.svg
             tools/regiongen/.tmp/source-constraints-second.json
             tools/regiongen/.tmp/source-constraints-second.svg
+            tools/regiongen/.tmp/shoreline-focus-first.json
+            tools/regiongen/.tmp/shoreline-focus-first.svg
+            tools/regiongen/.tmp/shoreline-focus-second.json
+            tools/regiongen/.tmp/shoreline-focus-second.svg
             tools/regiongen/.tmp/geography-game-11-determinism.json
             tools/regiongen/.tmp/geography-atlas-showcase.json
           include-hidden-files: true
