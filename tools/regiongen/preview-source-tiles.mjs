@@ -45,8 +45,11 @@ function renderOne(tile,offset) {
    '<polyline points="'+pts(seg.local_points.map(p=>p.map(v=>+(v*scale).toFixed(3))))+'" stroke="#365c60" stroke-width="1.3" fill="none"/>');
  }
  for(const seg of tile.segments){
-  const color=seg.kind==="azgaar_river"?"#5c8ca0":"#715943",width=seg.kind==="azgaar_river"?2:3;
-  output.push('<polyline points="'+pts(seg.local_points.map(p=>p.map(v=>+(v*scale).toFixed(3))))+'" fill="none" stroke="'+color+'" stroke-width="'+width+'" opacity=".85"/>');
+  const isRiver=seg.kind==="azgaar_river",isSeaLane=seg.group==="searoutes";
+  const color=isRiver?"#5c8ca0":isSeaLane?"#3f7077":"#715943";
+  const width=isRiver?2:isSeaLane?1.5:seg.group==="trails"?2:3;
+  const dash=isSeaLane?' stroke-dasharray="5 4"':'';
+  output.push('<polyline points="'+pts(seg.local_points.map(p=>p.map(v=>+(v*scale).toFixed(3))))+'" fill="none" stroke="'+color+'" stroke-width="'+width+'"'+dash+' opacity=".85"/>');
  }
  for(const burg of tile.burgs){
   const [x,y]=burg.local_position.map(v=>v*scale);
@@ -64,7 +67,7 @@ const svg=['<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" vi
  '<rect width="1080" height="650" fill="#f0e5c8"/>',
  '<text x="40" y="39" font-size="22" font-family="Georgia">Azgaar shared geometry — GAME-39</text>',
  renderOne(first,40),renderOne(second,540),
- '<text x="40" y="592" font-family="Georgia" font-size="14" fill="#463b2c">Brown: original roads | Blue: approximate rivers | Dark cyan: source shorelines | Red: actual burgs</text>',
+ '<text x="40" y="592" font-family="Georgia" font-size="14" fill="#463b2c">Brown: roads/trails | Dashed teal: sea lanes | Blue: approximate rivers | Teal coast | Red: source burg</text>',
  '<text x="40" y="619" font-family="Georgia" font-size="13" fill="#744c34">NOT calibrated to km. Azgaar shorelines '+(geographySidecar?"exact from vertex sidecar":"not supplied")+'; Town Forge terrain is unaligned.</text>',
  '</svg>'].join("\n");
 const dest=resolve(output),visual=resolve(get("--svg")||output.replace(/\.json$/i,".svg"));
