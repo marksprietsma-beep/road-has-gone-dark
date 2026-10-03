@@ -14,6 +14,14 @@ export function renderConstrainedRegion(region){
  '<pattern id="paper" width="48" height="54" patternUnits="userSpaceOnUse"><path d="M4 10l3 1 M28 48l4 -1 M41 27l2 2" stroke="#776748" stroke-width="0.7" opacity=".2"/></pattern>',
  '</defs><rect width="1000" height="1000" fill="#8babb2"/>',
  '<g clip-path="url(#world)">'];
+ // Original Azgaar searoutes sometimes cross source land at its coarse
+ // resolution. Display them UNDER authentic land/lake polygons so the
+ // inland portion is masked, without mutating their original source points
+ // or fabricating harbours, ground access or safe routes.
+ for(const route of context.source_routes.filter(r=>r.classification==="sea_lane"))
+  for(const seg of route.segments)
+   lines.push('<polyline class="azgaar-sea_lane" points="'+pts(seg.local_points)+
+     '" stroke="#4b8392" stroke-width="3" stroke-dasharray="8 8" fill="none"/>');
  // Do not draw Town Forge coastlines or waters. Source land and lake feature
  // boundaries are actual Azgaar indexed-vertex geometry.
  for(const f of context.source_features.filter(f=>f.classification==="land_boundary"))
@@ -40,12 +48,14 @@ export function renderConstrainedRegion(region){
    lines.push('<polyline class="approximate-river" points="'+pts(s.local_points)+'" stroke="#4e8498" stroke-width="3" stroke-dasharray="6 4" opacity=".9" fill="none"/>');
  // Route classes from Azgaar are preserved: sea lanes are NOT safe land roads.
  for(const route of context.source_routes)for(const s of route.segments){
-  const sea=route.classification==="sea_lane",trail=route.classification==="trail";
-  const clr=sea?"#4b8392":"#5c503a";
+  // Sea routes were drawn *behind* source land, and cannot turn into
+  // a visual overland route by crossing inconsistent source coast geometry.
+  if(route.classification==="sea_lane")continue;
+  const trail=route.classification==="trail";
   lines.push('<polyline class="azgaar-'+escape(route.classification)+'" points="'+pts(s.local_points)+
-    '" fill="none" stroke="'+clr+'" stroke-width="'+(sea?3:trail?3:5)+
-    '"'+(sea?' stroke-dasharray="8 8"':'')+' stroke-linejoin="round" stroke-linecap="round"/>');
-  if(!sea&&!trail)lines.push('<polyline points="'+pts(s.local_points)+
+    '" fill="none" stroke="#5c503a" stroke-width="'+(trail?3:5)+
+    '" stroke-linejoin="round" stroke-linecap="round"/>');
+  if(!trail)lines.push('<polyline points="'+pts(s.local_points)+
     '" stroke="#cbb98b" stroke-width="2" fill="none" opacity=".9"/>');
  }
  // Source towns are never moved to meet Town Forge's arbitrary paths.
