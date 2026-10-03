@@ -38,6 +38,14 @@ for(const stem of ["game-11-determinism","atlas-showcase"]){
     v.h>=0&&v.h<=100&&v.f>=0&&v.f<=1&&typeof v.land==="boolean"));
   const land=output.vertices.filter(v=>v.land);
   assert(land.length>0,"Real source town unexpectedly has zero land samples");
+  // Screenshot review regression: forest-macro biomes must not paint the
+  // entire 30 km reference scene dark green, or leave every scene barren.
+  const mixed=land.filter(v=>v.f>=0.49).length/land.length;
+  const veryDense=land.filter(v=>v.f>=0.65).length/land.length;
+  assert(mixed>0.05&&mixed<0.86,
+   "Canopy covers too little/much of the source land; visual review "+stem+"/"+kind+": "+mixed);
+  assert(veryDense<0.25,
+   "Dark-green woodland saturation; visual review "+stem+"/"+kind+": "+veryDense);
   landTotals.push(land.length);
   const hr=Math.max(...land.map(v=>v.h))-Math.min(...land.map(v=>v.h));
   const fr=Math.max(...land.map(v=>v.f))-Math.min(...land.map(v=>v.f));
