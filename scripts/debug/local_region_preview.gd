@@ -80,4 +80,4 @@ func _draw() -> void:
 		if pts.size()>1:
 			draw_polyline(pts,Color("#554b3c"),7.0,true)
 			draw_polyline(pts,Color("#c9b889"),4.0,true)
-	draw_rect(Rect2(0,0,1000,1000),Color("#322e28"),2.0,false)
+	draw_rect(Rect2(0,0,1000,1000),Color("#322e28"),false,2.0)
