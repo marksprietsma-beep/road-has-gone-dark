@@ -46,7 +46,7 @@ jobs:
           python3 - <<'PY'
           import glob
           from xml.etree import ElementTree as ET
-          files=glob.glob('tools/regiongen/.tmp/unified-*.svg')
+          files=glob.glob('tools/regiongen/.tmp/public/unified-*.svg')
           assert len(files)==6, f'Expected six playable-filtered previews, got {len(files)}'
           for path in files:
               ET.parse(path)
@@ -58,9 +58,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: game-54-filtered-map-previews
-          path: |
-            tools/regiongen/.tmp/unified-*.svg
-            tools/regiongen/.tmp/unified-*.json\n            !tools/regiongen/.tmp/**/*.developer.json\n            !tools/regiongen/.tmp/developer/**
+          path: tools/regiongen/.tmp/public/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
