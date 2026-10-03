@@ -71,6 +71,13 @@ func load_region(path: String) -> bool:
 	if ctx.get("source_features", []).is_empty() or ctx.get("source_burgs", []).is_empty():
 		info.text = "GAME-47 | Empty authoritative world geometry"
 		return false
+	if data.has("inferred_fine_v1"):
+		var fine: Dictionary = data.get("inferred_fine_v1", {})
+		if int(fine.get("schema_version", -1)) != 1 or \
+			str(fine.get("source_context_id", "")) != str(ctx.get("id", "")) or \
+			str(fine.get("source_world_sha256", "")) != str(ctx.get("parent_source_world_sha256", "")):
+			info.text = "GAME-53 | Inferred visual field from a different Azgaar world"
+			return false
 	region = data
 	info.text = _base_info()
 	queue_redraw()
@@ -193,6 +200,92 @@ func _draw_dry_source_route(points: PackedVector2Array, features: Array, route_c
 			if route_class == "land_road":
 				draw_line(from_point, to_point, Color("#cbb98b"), 2.0, true)
 
+func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
+	var polygon := PackedVector2Array()
+	for i in 3:
+		var a: Dictionary = triangle[i]
+		var b: Dictionary = triangle[(i + 1) % 3]
+		var av: float = float(a.get("value", 0.0))
+		var bv: float = float(b.get("value", 0.0))
+		var above_a: bool = av >= cutoff
+		var above_b: bool = bv >= cutoff
+		if above_a:
+			polygon.append(a["point"])
+		if above_a != above_b:
+			var frac: float = (cutoff - av) / (bv - av)
+			polygon.append((a["point"] as Vector2).lerp(b["point"], frac))
+	# Contour intersections at threshold equality can repeat a vertex or
+	# collapse to a zero-area polygon; Godot's triangulator rejects these.
+	var clean := PackedVector2Array()
+	for v in polygon:
+		if clean.is_empty() or clean[clean.size() - 1].distance_to(v) > .05:
+			clean.append(v)
+	if clean.size() > 2 and clean[0].distance_to(clean[clean.size() - 1]) <= .05:
+		clean.resize(clean.size() - 1)
+	if clean.size() < 3:
+		return
+	var area: float = 0.0
+	for i in clean.size():
+		var a: Vector2 = clean[i]
+		var b: Vector2 = clean[(i + 1) % clean.size()]
+		area += a.x * b.y - b.x * a.y
+	if absf(area) <= 1.0:
+		return
+	# Threshold clipping can produce a valid-looking 4-point contour with
+	# almost-collinear corners; Godot's polygon ear triangulator then rejects
+	# the whole shape. Clip of one triangle is convex, so fan-triangulate
+	# ourselves and reject each degenerate *individual* triangle.
+	for k in range(1, clean.size() - 1):
+		var p: Vector2 = clean[0]
+		var q: Vector2 = clean[k]
+		var r: Vector2 = clean[k + 1]
+		var twice_area: float = absf((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x))
+		if twice_area <= .75:
+			continue
+		draw_colored_polygon(PackedVector2Array([p, q, r]), shade)
+
+func _draw_fine_field() -> void:
+	var fine_field: Dictionary = region.get("inferred_fine_v1", {})
+	if fine_field.is_empty():
+		return
+	var grid: int = int(fine_field.get("grid_steps", 0))
+	var samples: Array = fine_field.get("vertices", [])
+	if grid <= 0 or samples.size() != (grid + 1) * (grid + 1):
+		return
+	var step: float = 1000.0 / float(grid)
+	# Triangles are only painted if all three sample vertices were classified
+	# as land from ORIGINAL source coast/lake polygon geometry.
+	var layers: Array = [
+		["h", 48.0, Color("#c9b58c", .66)],
+		["h", 58.0, Color("#b5a17e", .66)],
+		["h", 69.0, Color("#a08e75", .66)],
+		["h", 78.0, Color("#89816c", .66)],
+		["f", .49, Color("#7f946c", .88)],
+		["f", .57, Color("#5e7655", .88)],
+		["f", .65, Color("#455c49", .88)]
+	]
+	for layer in layers:
+		var key: String = str(layer[0])
+		var cutoff: float = float(layer[1])
+		var shade: Color = layer[2]
+		for j in grid:
+			for i in grid:
+				var indices := [j * (grid + 1) + i, j * (grid + 1) + i + 1,
+					(j + 1) * (grid + 1) + i + 1, (j + 1) * (grid + 1) + i]
+				var corners := [Vector2(i * step, j * step), Vector2((i + 1) * step, j * step),
+					Vector2((i + 1) * step, (j + 1) * step), Vector2(i * step, (j + 1) * step)]
+				for triangle_indices in [[0, 1, 2], [0, 2, 3]]:
+					var triangle: Array = []
+					var all_land: bool = true
+					for corner_index in triangle_indices:
+						var entry: Dictionary = samples[indices[corner_index]]
+						if not bool(entry.get("land", false)):
+							all_land = false
+						triangle.append({"point": corners[corner_index],
+							"value": float(entry.get(key, 0.0))})
+					if all_land:
+						_draw_fine_triangle(triangle, cutoff, shade)
+
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 1000, 1000), SEA)
 	if region.is_empty():
@@ -228,20 +321,23 @@ func _draw() -> void:
 			draw_colored_polygon(vertices, Color("#87b0b9"))
 	# Godot never takes any road or water from Town Forge provider geometry.
 	if show_decorations:
-		for value in terrain.get("ridges", []):
-			if not value is Dictionary:
-				continue
-			var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
-			draw_polyline(PackedVector2Array([p + Vector2(-12, 7), p + Vector2(0, -9), p + Vector2(12, 7)]), Color("#857556", 0.55), 1.6, true)
-		for value in terrain.get("trees", []):
-			if not value is Dictionary:
-				continue
-			var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
-			var s: float = float(value.get("size", 7.0))
-			draw_colored_polygon(PackedVector2Array([
-				p + Vector2(-s * 0.65, s * 0.5), p + Vector2(0, -s * 0.9),
-				p + Vector2(s * 0.65, s * 0.5)]), Color("#4a6550"))
-			draw_line(p + Vector2(0, s * 0.4), p + Vector2(0, s * 1.1), Color("#2c4337"), 1.0)
+		if not region.get("inferred_fine_v1", {}).is_empty():
+			_draw_fine_field()
+		else:
+			for value in terrain.get("ridges", []):
+				if not value is Dictionary:
+					continue
+				var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
+				draw_polyline(PackedVector2Array([p + Vector2(-12, 7), p + Vector2(0, -9), p + Vector2(12, 7)]), Color("#857556", 0.55), 1.6, true)
+			for value in terrain.get("trees", []):
+				if not value is Dictionary:
+					continue
+				var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
+				var s: float = float(value.get("size", 7.0))
+				draw_colored_polygon(PackedVector2Array([
+					p + Vector2(-s * 0.65, s * 0.5), p + Vector2(0, -s * 0.9),
+					p + Vector2(s * 0.65, s * 0.5)]), Color("#4a6550"))
+				draw_line(p + Vector2(0, s * 0.4), p + Vector2(0, s * 1.1), Color("#2c4337"), 1.0)
 	for river in ctx.get("source_rivers", []):
 		if not river is Dictionary:
 			continue
