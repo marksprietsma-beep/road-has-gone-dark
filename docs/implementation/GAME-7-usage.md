@@ -13,7 +13,7 @@ This is the **first implementation-only slice** of [GAME-17's accepted explorati
 
 ## What a new playthrough stores
 
-\`GamePlaythroughStore.create_playthrough(world, state_id, home_burg_id)\` returns a mutable, versioned **playthrough state** with a random unique ID, stable home burg ID and state/province, three distinct **placeholder** character IDs, party list, world deltas, clock placeholder and four separate player-knowledge collections: known settlements, rumoured POIs, discovered POIs, visited POIs.
+\`GamePlaythroughStore.create_playthrough(world, state_id, home_burg_id)\` returns a mutable, versioned **playthrough state** with a random unique ID, stable home burg ID and state/province, three initial **placeholder** character IDs, an independently sized roster and selected active party list, world deltas, clock placeholder and four separate player-knowledge collections: known settlements, rumoured POIs, discovered POIs, visited POIs.
 
 This is a skeleton contract for future GAME-32/33 rather than a pretend fully formed Pathfinder character. The immutable world snapshot is not duplicated into the save.
 
@@ -37,6 +37,6 @@ Replace the example executable path with your installed Godot executable locatio
 PASS: GAME-7 independent world/save IDs, origin, 3-member party, knowledge, mismatches and immutable fixtures
 \`\`\`
 
-The smoke creates two separate saves in a dedicated test directory using the **same canonical world**, mutates and reloads them separately, checks stable IDs, invalid origins, bad slots, corruption, cross-world mismatch and unsupported version, then deletes test files. It also reads the second atlas showcase world, leaves the original canonical fixture bytes untouched and verifies its checksum.
+The smoke creates two separate saves in a dedicated test directory using the **same canonical world**, recruits a fourth character while leaving the active party at three, mutates and reloads them separately, checks stable IDs, invalid origins, duplicate party references, malformed JSON field types, bad slots, corruption, cross-world mismatch and unsupported version, then deletes test files. It also reads the second atlas showcase world, leaves the original canonical fixture bytes untouched and verifies its checksum.
 
 **GitHub Actions** repeats the run on **Godot 4.7.2** and validates pinned canonical world fixture hashes. Subsequent GAME-8/9 work will introduce a game-facing selection UI; this smoke is not a final interface.
