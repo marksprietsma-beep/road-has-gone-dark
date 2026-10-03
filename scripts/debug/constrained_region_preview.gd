@@ -257,8 +257,8 @@ func _draw() -> void:
 			var line: PackedVector2Array = _poly(segment.get("local_points", []))
 			if line.size() < 2:
 				continue
-			if cls == "sea_lane":
-				continue # Already masked beneath original source land/lakes
+			if cls != "land_road" and cls != "trail":
+				continue # Sea lanes handled separately; unknown is not a road
 			_draw_dry_source_route(line, features, cls)
 	var font: Font = ThemeDB.fallback_font
 	for item in ctx.get("source_burgs", []):
