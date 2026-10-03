@@ -58,6 +58,8 @@ jobs:
             tools/regiongen/.tmp/mountain.*
             tools/regiongen/.tmp/estuary.*
             tools/regiongen/.tmp/second-world.*
+          # Generated proof files live in the deliberately ignored .tmp folder.
+          include-hidden-files: true
           retention-days: 14
           if-no-files-found: error
       - name: Install Godot 4.7.2
