@@ -39,7 +39,8 @@ func _base_info() -> String:
 	for s in sites:
 		if s is Dictionary and int(s.get("source_id", -1)) == home_id:
 			name = str(s.get("name", "?"))
-	return "SOURCE REGION | %s | World geometry by Azgaar; trees by Town Forge\n1–6: examples  F: fit  V: toggle decorative trees  ARROWS: pan  WHEEL: zoom  CLICK: burg\nRoutes not verified safe • River paths approximate • Kilometres uncalibrated" % name
+	var detail: String = "inferred field (visual only)" if region.has("inferred_fine_v1") else "Town Forge decoration"
+	return "SOURCE REGION | %s | Original Azgaar macro geography; %s\n1–6: examples  F: fit  V: toggle inferred/decoration  ARROWS: pan  WHEEL: zoom  CLICK: burg\nRoutes not verified safe • River paths approximate • Kilometres uncalibrated" % [name, detail]
 
 func load_region(path: String) -> bool:
 	region.clear()
@@ -71,6 +72,13 @@ func load_region(path: String) -> bool:
 	if ctx.get("source_features", []).is_empty() or ctx.get("source_burgs", []).is_empty():
 		info.text = "GAME-47 | Empty authoritative world geometry"
 		return false
+	if data.has("inferred_fine_v1"):
+		var fine: Dictionary = data.get("inferred_fine_v1", {})
+		if int(fine.get("schema_version", -1)) != 1 or \
+			str(fine.get("source_context_id", "")) != str(ctx.get("id", "")) or \
+			str(fine.get("source_world_sha256", "")) != str(ctx.get("parent_source_world_sha256", "")):
+			info.text = "GAME-53 | Inferred visual field from a different Azgaar world"
+			return false
 	region = data
 	info.text = _base_info()
 	queue_redraw()
@@ -148,6 +156,137 @@ func _dash(a: Vector2, b: Vector2, colour: Color, width: float, dash: float = 9.
 		draw_line(a + direction * step, a + direction * minf(step + dash, length), colour, width, true)
 		step += dash + gap
 
+# Display-only dry-land mask for original macro Azgaar roads/trails.
+# Source route coordinates still exist unchanged in the region JSON. A source
+# wet crossing is not evidence for a safe ford or bridge.
+func _source_point_is_dry(p: Vector2, features: Array) -> bool:
+	var land: bool = false
+	for value in features:
+		if not value is Dictionary:
+			continue
+		var feature: Dictionary = value
+		if str(feature.get("classification", "")) == "land_boundary":
+			var ring: PackedVector2Array = _poly(feature.get("local_polygon", []))
+			if ring.size() >= 3 and Geometry2D.is_point_in_polygon(p, ring):
+				land = true
+	if not land:
+		return false
+	for value in features:
+		if not value is Dictionary:
+			continue
+		var feature: Dictionary = value
+		if str(feature.get("classification", "")) == "freshwater_lake":
+			var lake: PackedVector2Array = _poly(feature.get("local_polygon", []))
+			if lake.size() >= 3 and Geometry2D.is_point_in_polygon(p, lake):
+				return false
+	return true
+
+func _draw_dry_source_route(points: PackedVector2Array, features: Array, route_class: String) -> void:
+	if points.size() < 2:
+		return
+	for i in range(points.size() - 1):
+		var a: Vector2 = points[i]
+		var b: Vector2 = points[i + 1]
+		var length: float = a.distance_to(b)
+		if length < 0.01:
+			continue
+		var parts: int = maxi(1, int(ceilf(length / 3.0)))
+		for k in range(parts):
+			var from_point: Vector2 = a.lerp(b, float(k) / parts)
+			var to_point: Vector2 = a.lerp(b, float(k + 1) / parts)
+			if not _source_point_is_dry((from_point + to_point) * 0.5, features):
+				continue
+			draw_line(from_point, to_point, Color("#5c503a"),
+				3.0 if route_class == "trail" else 5.0, true)
+			if route_class == "land_road":
+				draw_line(from_point, to_point, Color("#cbb98b"), 2.0, true)
+
+func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
+	var polygon := PackedVector2Array()
+	for i in 3:
+		var a: Dictionary = triangle[i]
+		var b: Dictionary = triangle[(i + 1) % 3]
+		var av: float = float(a.get("value", 0.0))
+		var bv: float = float(b.get("value", 0.0))
+		var above_a: bool = av >= cutoff
+		var above_b: bool = bv >= cutoff
+		if above_a:
+			polygon.append(a["point"])
+		if above_a != above_b:
+			var frac: float = (cutoff - av) / (bv - av)
+			polygon.append((a["point"] as Vector2).lerp(b["point"], frac))
+	# Contour intersections at threshold equality can repeat a vertex or
+	# collapse to a zero-area polygon; Godot's triangulator rejects these.
+	var clean := PackedVector2Array()
+	for v in polygon:
+		if clean.is_empty() or clean[clean.size() - 1].distance_to(v) > .05:
+			clean.append(v)
+	if clean.size() > 2 and clean[0].distance_to(clean[clean.size() - 1]) <= .05:
+		clean.resize(clean.size() - 1)
+	if clean.size() < 3:
+		return
+	var area: float = 0.0
+	for i in clean.size():
+		var a: Vector2 = clean[i]
+		var b: Vector2 = clean[(i + 1) % clean.size()]
+		area += a.x * b.y - b.x * a.y
+	if absf(area) <= 1.0:
+		return
+	# Threshold clipping can produce a valid-looking 4-point contour with
+	# almost-collinear corners; Godot's polygon ear triangulator then rejects
+	# the whole shape. Clip of one triangle is convex, so fan-triangulate
+	# ourselves and reject each degenerate *individual* triangle.
+	for k in range(1, clean.size() - 1):
+		var p: Vector2 = clean[0]
+		var q: Vector2 = clean[k]
+		var r: Vector2 = clean[k + 1]
+		var twice_area: float = absf((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x))
+		if twice_area <= .75:
+			continue
+		draw_colored_polygon(PackedVector2Array([p, q, r]), shade)
+
+func _draw_fine_field() -> void:
+	var fine_field: Dictionary = region.get("inferred_fine_v1", {})
+	if fine_field.is_empty():
+		return
+	var grid: int = int(fine_field.get("grid_steps", 0))
+	var samples: Array = fine_field.get("vertices", [])
+	if grid <= 0 or samples.size() != (grid + 1) * (grid + 1):
+		return
+	var step: float = 1000.0 / float(grid)
+	# Triangles are only painted if all three sample vertices were classified
+	# as land from ORIGINAL source coast/lake polygon geometry.
+	var layers: Array = [
+		["h", 48.0, Color("#c9b58c", .66)],
+		["h", 58.0, Color("#b5a17e", .66)],
+		["h", 69.0, Color("#a08e75", .66)],
+		["h", 78.0, Color("#89816c", .66)],
+		["f", .49, Color("#7f946c", .88)],
+		["f", .57, Color("#5e7655", .88)],
+		["f", .65, Color("#455c49", .88)]
+	]
+	for layer in layers:
+		var key: String = str(layer[0])
+		var cutoff: float = float(layer[1])
+		var shade: Color = layer[2]
+		for j in grid:
+			for i in grid:
+				var indices := [j * (grid + 1) + i, j * (grid + 1) + i + 1,
+					(j + 1) * (grid + 1) + i + 1, (j + 1) * (grid + 1) + i]
+				var corners := [Vector2(i * step, j * step), Vector2((i + 1) * step, j * step),
+					Vector2((i + 1) * step, (j + 1) * step), Vector2(i * step, (j + 1) * step)]
+				for triangle_indices in [[0, 1, 2], [0, 2, 3]]:
+					var triangle: Array = []
+					var all_land: bool = true
+					for corner_index in triangle_indices:
+						var entry: Dictionary = samples[indices[corner_index]]
+						if not bool(entry.get("land", false)):
+							all_land = false
+						triangle.append({"point": corners[corner_index],
+							"value": float(entry.get(key, 0.0))})
+					if all_land:
+						_draw_fine_triangle(triangle, cutoff, shade)
+
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 1000, 1000), SEA)
 	if region.is_empty():
@@ -155,6 +294,19 @@ func _draw() -> void:
 	var ctx: Dictionary = region.get("source_context", {})
 	var terrain: Dictionary = region.get("landscape", {})
 	var features: Array = ctx.get("source_features", [])
+	# Render original Azgaar *sea* lanes beneath genuine source land/lake
+	# polygons, masking the parts which cross land at coarse source resolution.
+	# Original source route records are retained in the input for audit.
+	for route_value in ctx.get("source_routes", []):
+		if not route_value is Dictionary:
+			continue
+		var sea_route: Dictionary = route_value
+		if str(sea_route.get("classification", "")) != "sea_lane":
+			continue
+		for segment in sea_route.get("segments", []):
+			var sea_line: PackedVector2Array = _poly(segment.get("local_points", []))
+			if sea_line.size() >= 2:
+				_dash(sea_line[0], sea_line[1], Color("#4b8392"), 3.0)
 	# Land/ocean/lakes are from original Azgaar indexed source vertices.
 	for feature in features:
 		if not feature is Dictionary or str(feature.get("classification", "")) != "land_boundary":
@@ -170,20 +322,23 @@ func _draw() -> void:
 			draw_colored_polygon(vertices, Color("#87b0b9"))
 	# Godot never takes any road or water from Town Forge provider geometry.
 	if show_decorations:
-		for value in terrain.get("ridges", []):
-			if not value is Dictionary:
-				continue
-			var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
-			draw_polyline(PackedVector2Array([p + Vector2(-12, 7), p + Vector2(0, -9), p + Vector2(12, 7)]), Color("#857556", 0.55), 1.6, true)
-		for value in terrain.get("trees", []):
-			if not value is Dictionary:
-				continue
-			var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
-			var s: float = float(value.get("size", 7.0))
-			draw_colored_polygon(PackedVector2Array([
-				p + Vector2(-s * 0.65, s * 0.5), p + Vector2(0, -s * 0.9),
-				p + Vector2(s * 0.65, s * 0.5)]), Color("#4a6550"))
-			draw_line(p + Vector2(0, s * 0.4), p + Vector2(0, s * 1.1), Color("#2c4337"), 1.0)
+		if not region.get("inferred_fine_v1", {}).is_empty():
+			_draw_fine_field()
+		else:
+			for value in terrain.get("ridges", []):
+				if not value is Dictionary:
+					continue
+				var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
+				draw_polyline(PackedVector2Array([p + Vector2(-12, 7), p + Vector2(0, -9), p + Vector2(12, 7)]), Color("#857556", 0.55), 1.6, true)
+			for value in terrain.get("trees", []):
+				if not value is Dictionary:
+					continue
+				var p: Vector2 = Vector2(float(value.get("x", 0)), float(value.get("y", 0)))
+				var s: float = float(value.get("size", 7.0))
+				draw_colored_polygon(PackedVector2Array([
+					p + Vector2(-s * 0.65, s * 0.5), p + Vector2(0, -s * 0.9),
+					p + Vector2(s * 0.65, s * 0.5)]), Color("#4a6550"))
+				draw_line(p + Vector2(0, s * 0.4), p + Vector2(0, s * 1.1), Color("#2c4337"), 1.0)
 	for river in ctx.get("source_rivers", []):
 		if not river is Dictionary:
 			continue
@@ -199,12 +354,9 @@ func _draw() -> void:
 			var line: PackedVector2Array = _poly(segment.get("local_points", []))
 			if line.size() < 2:
 				continue
-			if cls == "sea_lane":
-				_dash(line[0], line[1], Color("#4b8392"), 3.0)
-			else:
-				draw_polyline(line, Color("#5c503a"), 3.0 if cls == "trail" else 5.0, true)
-				if cls == "land_road":
-					draw_polyline(line, Color("#cbb98b"), 2.0, true)
+			if cls != "land_road" and cls != "trail":
+				continue # Sea lanes handled separately; unknown is not a road
+			_draw_dry_source_route(line, features, cls)
 	var font: Font = ThemeDB.fallback_font
 	for item in ctx.get("source_burgs", []):
 		if not item is Dictionary:

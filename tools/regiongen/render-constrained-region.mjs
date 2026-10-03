@@ -1,19 +1,72 @@
+import {sourceDryLand} from "./compose-local-region.mjs";
+import {renderInferredOverlay} from "./render-inferred-fine.mjs";
 /** GAME-47 QA view: actual source-world places/routes/water are top-level.
  * Town Forge supplies ONLY clipped ink/vegetation/ridge decoration.
  */
 const escape=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
 const pts=poly=>poly.map(p=>p.map(n=>+n.toFixed(2)).join(",")).join(" ");
 const bounded=n=>Math.max(0,Math.min(1000,n));
-export function renderConstrainedRegion(region){
+
+/** Display-only conservative clipping. An original Azgaar road may extend
+ * across source sea/lake; don't depict an unverified bridge. Source records
+ * and source-coordinate line IDs are retained unchanged in the model. */
+export function visibleDryRouteStrokes(context,originalPoints) {
+ const strokes=[];
+ for(let index=0;index<originalPoints.length-1;index++){
+  const a=originalPoints[index],b=originalPoints[index+1];
+  const dist=Math.hypot(b[0]-a[0],b[1]-a[1]);
+  const divisions=Math.max(1,Math.ceil(dist/2));
+  let current=[];
+  const at=t=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+  for(let i=0;i<divisions;i++){
+   const start=at(i/divisions),mid=at((i+.5)/divisions),end=at((i+1)/divisions);
+   if([start,mid,end].every(p=>sourceDryLand(context,p))){
+    if(!current.length)current.push(start);
+    current.push(end);
+   }else{
+    if(current.length>=2)strokes.push(current);
+    current=[];
+   }
+  }
+  if(current.length>=2)strokes.push(current);
+ }
+ return strokes;
+}
+
+export function renderConstrainedRegion(region,inferred=null){
  const context=region.source_context,landscape=region.landscape;
  if(!context?.source_features || !landscape || region.provider?.mode!=="DECORATIONS_ONLY")
   throw Error("Expected source-authored decorative composite");
+ if(inferred!==null && (inferred.schema_version!==1||
+  inferred.source_context_id!==context.id||
+  inferred.source_world_sha256!==context.parent_source_world_sha256||
+  inferred.truth!=="INFERRED_VISUAL_FIELD_NOT_TRAVERSAL"))
+  throw Error("Cannot overlay inferred art from a different world, source context, or authority");
  const lines=['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">',
  '<title>Source-correct local landscape — decorative Town Forge vegetation</title>',
  '<defs><clipPath id="world"><rect width="1000" height="1000"/></clipPath>',
  '<pattern id="paper" width="48" height="54" patternUnits="userSpaceOnUse"><path d="M4 10l3 1 M28 48l4 -1 M41 27l2 2" stroke="#776748" stroke-width="0.7" opacity=".2"/></pattern>',
  '</defs><rect width="1000" height="1000" fill="#8babb2"/>',
  '<g clip-path="url(#world)">'];
+ // Renderer-only visibility mask for source overland routes. Azgaar may
+ // report an original road over source sea/lake polygons; masking these wet
+ // stretches avoids depicting an unverified bridge or traversable land road.
+ // Preserve every original route point in context.source_routes for auditing.
+ lines.push('<defs><mask id="azgaar-source-dry-road-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">');
+ lines.push('<rect width="1000" height="1000" fill="black"/>');
+ for(const f of context.source_features.filter(f=>f.classification==="land_boundary"))
+  lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="white"/>');
+ for(const f of context.source_features.filter(f=>f.classification==="freshwater_lake"))
+  lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="black"/>');
+ lines.push('</mask></defs>');
+ // Original Azgaar searoutes sometimes cross source land at its coarse
+ // resolution. Display them UNDER authentic land/lake polygons so the
+ // inland portion is masked, without mutating their original source points
+ // or fabricating harbours, ground access or safe routes.
+ for(const route of context.source_routes.filter(r=>r.classification==="sea_lane"))
+  for(const seg of route.segments)
+   lines.push('<polyline class="azgaar-sea_lane" points="'+pts(seg.local_points)+
+     '" stroke="#4b8392" stroke-width="3" stroke-dasharray="8 8" fill="none"/>');
  // Do not draw Town Forge coastlines or waters. Source land and lake feature
  // boundaries are actual Azgaar indexed-vertex geometry.
  for(const f of context.source_features.filter(f=>f.classification==="land_boundary"))
@@ -21,6 +74,9 @@ export function renderConstrainedRegion(region){
  for(const f of context.source_features.filter(f=>f.classification==="freshwater_lake"))
   lines.push('<polygon class="azgaar-lake" points="'+pts(f.local_polygon)+'" fill="#87b0b9" stroke="#4b7778" stroke-width="1"/>');
  lines.push('<rect width="1000" height="1000" fill="url(#paper)" opacity=".62" pointer-events="none"/>');
+ if(inferred){
+  lines.push(renderInferredOverlay(inferred,context.source_features,"game53-macro-source-land"));
+ }else{
  for(const ridge of landscape.ridges){
   const x=ridge.x,y=ridge.y;
   lines.push('<path d="M'+(x-15)+' '+(y+7)+' L'+x+' '+(y-11)+' L'+(x+15)+' '+(y+7)+
@@ -33,21 +89,28 @@ export function renderConstrainedRegion(region){
   lines.push('<path d="M'+(x-s*.45)+' '+(y-s*.1)+' L'+x+' '+(y-s*.9)+' L'+(x+s*.45)+' '+(y-s*.1)+
    '" fill="none" stroke="#819a70" stroke-width="1" opacity=".67"/>');
  }
+ }
  // River-cell-derived geometry is **approximate**. Dashing explicitly
  // prevents implying a definitive, traversable water channel.
  for(const river of context.source_rivers)
   for(const s of river.segments)
    lines.push('<polyline class="approximate-river" points="'+pts(s.local_points)+'" stroke="#4e8498" stroke-width="3" stroke-dasharray="6 4" opacity=".9" fill="none"/>');
  // Route classes from Azgaar are preserved: sea lanes are NOT safe land roads.
+ lines.push('<g id="source-ground-route-presentation" mask="url(#azgaar-source-dry-road-mask)">');
  for(const route of context.source_routes)for(const s of route.segments){
-  const sea=route.classification==="sea_lane",trail=route.classification==="trail";
-  const clr=sea?"#4b8392":"#5c503a";
-  lines.push('<polyline class="azgaar-'+escape(route.classification)+'" points="'+pts(s.local_points)+
-    '" fill="none" stroke="'+clr+'" stroke-width="'+(sea?3:trail?3:5)+
-    '"'+(sea?' stroke-dasharray="8 8"':'')+' stroke-linejoin="round" stroke-linecap="round"/>');
-  if(!sea&&!trail)lines.push('<polyline points="'+pts(s.local_points)+
-    '" stroke="#cbb98b" stroke-width="2" fill="none" opacity=".9"/>');
+  // Sea routes are drawn beneath source land. All other unknown classes
+  // are not presented as real ground roads.
+  if(!["land_road","trail"].includes(route.classification))continue;
+  const trail=route.classification==="trail";
+  for(const stroke of visibleDryRouteStrokes(context,s.local_points)){
+   lines.push('<polyline class="azgaar-'+escape(route.classification)+'" points="'+pts(stroke)+
+     '" fill="none" stroke="#5c503a" stroke-width="'+(trail?3:5)+
+     '" stroke-linejoin="round" stroke-linecap="round"/>');
+   if(!trail)lines.push('<polyline points="'+pts(stroke)+
+     '" stroke="#cbb98b" stroke-width="2" fill="none" opacity=".9"/>');
+  }
  }
+ lines.push('</g>');
  // Source towns are never moved to meet Town Forge's arbitrary paths.
  for(const burg of context.source_burgs){
   const [x,y]=burg.local_position,home=burg.source_id===context.source_home_burg_id;
@@ -74,7 +137,8 @@ export function renderConstrainedRegion(region){
  '<rect x="10" y="10" width="635" height="85" rx="3" fill="#ede1c1" fill-opacity=".95" stroke="#5b513e"/>',
  '<text x="23" y="34" font-size="21" font-family="Georgia,serif" fill="#2b2c24">THE ROAD HAS GONE DARK</text>',
  '<text x="23" y="57" font-size="15" font-family="Georgia,serif" fill="#4e493c">Source geography · '+escape(home?.name||"Unknown")+' neighbourhood</text>',
- '<text x="23" y="77" font-size="13" font-family="Georgia,serif" fill="#655845">Town Forge vegetation only — roads and coastlines are Azgaar original</text>',
+ '<text x="23" y="77" font-size="13" font-family="Georgia,serif" fill="#655845">'+
+ (inferred?'Illustrative forest and relief — Azgaar land and roads remain original':'Town Forge vegetation only — roads and coastlines are Azgaar original')+'</text>',
  '<rect x="9" y="939" width="981" height="51" rx="3" fill="#eee1c3" fill-opacity=".94" stroke="#70624b"/>',
  '<text x="20" y="958" font-family="Georgia,serif" font-size="14" fill="#443b2b">Brown: source roads  •  Dashed teal: sea lanes  •  Dashed blue: approximate river  •  Trees: inferred</text>',
  '<text x="20" y="978" font-family="Georgia,serif" font-size="13" fill="#785438">PREVIEW ONLY · distances uncalibrated; safe roads, bridges, river mouths &amp; generated sites unverified</text>',
