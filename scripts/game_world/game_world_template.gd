@@ -168,7 +168,21 @@ func objective_marker_count() -> int:
 	return _raw.get("markers", []).size()
 
 func validate_save_reference(reference: Dictionary) -> bool:
-	return not world_ref.is_empty() and reference == world_ref
+	# JSON serialization may change numeric Variant representations. Validate
+	# canonical fields explicitly rather than requiring Variant-deep-equality.
+	if world_ref.is_empty() or reference.is_empty():
+		return false
+	var expected: Dictionary = world_ref.get("generator", {})
+	var actual: Dictionary = reference.get("generator", {})
+	return (
+		str(reference.get("id", "")) == world_id
+		and str(reference.get("seed", "")) == seed
+		and str(reference.get("sha256", "")) == source_sha256
+		and int(reference.get("schema_version", -1)) == SCHEMA_VERSION
+		and str(actual.get("provider", "")) == str(expected.get("provider", ""))
+		and str(actual.get("version", "")) == AZGAAR_VERSION
+		and str(actual.get("upstreamCommit", "")) == str(expected.get("upstreamCommit", ""))
+	)
 
 func source_metadata() -> Dictionary:
 	return world_ref.duplicate(true)
