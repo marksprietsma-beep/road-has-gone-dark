@@ -93,7 +93,7 @@ func _check() -> void:
 	assert(viewer.show_decorations)
 	assert(not viewer.reveal_hidden_for_developer and not viewer.show_route_audit)
 	assert(viewer.expedition.visible_sites().size() > 0)
-	assert(viewer.party_status.text.contains("PARTY OF THREE"))
+	assert(viewer.party_status.text.contains("THREE TRAVELLERS"))
 	assert(viewer.journal.text.contains("Three travellers gather"))
 	viewer._unhandled_input(_key(KEY_H))
 	viewer._unhandled_input(_key(KEY_A))
