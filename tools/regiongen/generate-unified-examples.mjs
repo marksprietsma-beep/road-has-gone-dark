@@ -12,7 +12,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   const data=JSON.parse(await readFile(region));
   if(data?.source_context?.space?.kind!=="source_neighbourhood_window")
    throw Error("Refusing hypothetical scale or wrong source data");
-  const out=resolve(tmp,"unified-"+stem+"-"+kind+".json");
+  const out=resolve(tmp,"public","unified-"+stem+"-"+kind+".json");
   const run=spawnSync(process.execPath,["tools/regiongen/generate-unified-preview.mjs",
    "--world",resolve("tests/worldgen/fixtures/"+stem+".json"),
    "--constrained",region,"--output",out,
