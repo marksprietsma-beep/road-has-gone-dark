@@ -43,3 +43,17 @@ node tools/regiongen/generate-local-examples.mjs
 ```
 
 The GitHub Actions workflow performs stricter canonical byte comparisons and publishes all six images. Manual local testing is **not requested** until the combined interactive layer exists.
+
+
+## GAME-47 — source-constrained native Town Forge illustration experiment
+
+The separate `tools/regiongen/generate-constrained-region.mjs` runs the **existing pinned** GAME-21 Town Forge generator and `buildLocalContext` for the **same immutable source world and original burg**. The resulting GAME-47 composite is a **separately versioned diagnostic only**, with this deliberate authority order:
+
+1. Azgaar original vertex-indexed land/sea/lake polygons and named burg `x/y` remain authoritative; no generated shoreline, town position or lake is taken from Town Forge.
+2. Source `route.points` are actual Azgaar road, trail or sea-lane geometries. Sea lanes are explicitly dashed separately and no safe-road/bridge status is inferred. `river.cells` remains an **approximation**, not an exact river mouth or meander.
+3. Town Forge provides **decorative forest candidates and highland symbols only**. Forest candidates are sampled from its true original `geometry.forests` polygons, but every displayed candidate must be within the original land polygons, outside original freshwater lakes, away from known real source towns and routes, and away from an approximate river corridor. The source biome reduces or increases forest density; hill/ridge marks appear only where the nearest source cell indicates highland. These symbols remain explicitly *illustrative*, not playable terrain obstacles or a source-exact forest model.
+4. Original Town Forge `geometry.water`, `river_centreline` and `roads` are **never copied into the authoritative region geometry** and not displayed. Their coordinates are independently generated and do not have source-world authority. Site generation, travel protection, legacy cache/ID migration and scale calibration remain absent.
+
+The composited output embeds an immutable `source_context` object and a separate `landscape` block with source provenance and `procedural_roads_used: false` and `procedural_water_used: false`. It carries no generated settlements or GAME-40 sites. The two spatial scales (64 macro-unit tile and 16 source-unit local window) remain separate from the earlier conceptual 30 km Town Forge output. No actual kilometre conversion is claimed.
+
+CI continues to replay two real canonical fixtures **byte-for-byte**, generates six true-source coastline/river/highland settings, runs the old Town Forge/Godot and GameWorld regressions, and asserts that decorative symbols never occupy source water, lake interiors or invalid borders. The six generated `constrained-*.svg` render source coastlines, original routes and Town Forge decoration for personal visual review **before** any appearance sign-off. A new Godot gameplay renderer, physically calibrated zoom, deeper landmask/biome sampling and contextual POI identity/knowledge integration require further separately bounded work.
