@@ -38,6 +38,12 @@ The default `contextual-*.svg` now omits red route/coast diagnostic geometry and
 
 **Not an aesthetic sign-off:** real inferred relief, forest masses, plausible fine routes and truthful geographic zoom are outstanding in GAME-49; this only prevents diagnostics intruding on a normal map.
 
+## Display-only masking of inconsistent source overland segments
+
+A second independent visual check of the now-clean ordinary maps still found an **original Azgaar overland route extending across source-defined open water** around Stormhorn. Do not imply the source data confirms an over-water bridge, safe footpath or traversable road. A versioned data audit already retains this as `OVERLAND_ROUTE_INTERSECTS_SOURCE_WATER`.
+
+The SVG now applies an **original land polygon minus original lake polygons** mask to the *overland road/trail presentation only*, leaving the original route segments untouched in the source JSON and the separate audit preview. The Godot map uses the same original polygons for dry segment sampling at a fine display resolution. Sea lanes remain a distinct original source classification below land; neither player map nor Godot supplies a bridge/ford. This **is not an inferred road network or precise coastline at walking scale**, and is not a physical topology or pathfinding fix. Unknown remains unknown.
+
 ## Exact developer testing
 
 The main CI workflow `Verify local source neighbourhoods` regenerates canonical worlds byte-identically, six constrained source-region composites and then six v2 populated previews; it verifies site collision, dry-land eligibility, world identity, variation and unknown-site privacy. It also imports Godot 4.7.2 and checks both the original GAME-47 and new GAME-44 F6 scenes.
