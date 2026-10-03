@@ -7,6 +7,11 @@ on:
       - "tools/regiongen/inferred-fine-terrain.mjs"
       - "tools/regiongen/render-inferred-fine.mjs"
       - "docs/implementation/GAME-53*"
+      - "docs/implementation/GAME-55*"
+      - "scripts/gameplay/expedition_session.gd"
+      - "scripts/gameplay/expedition_preview.gd"
+      - "scenes/gameplay/expedition_prototype.tscn"
+      - "tests/regiongen/smoke-expedition.gd"
       - "tools/regiongen/route-consistency.mjs"
       - "tools/regiongen/generate-contextual-region.mjs"
       - "tools/regiongen/generate-contextual-examples.mjs"
@@ -77,6 +82,11 @@ jobs:
           grep -q "PASS: GAME-47 Godot" /tmp/smoke-constrained.log
           timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-contextual-sites.gd 2>&1 | tee /tmp/smoke-contextual.log
           grep -q "PASS: GAME-44 Godot" /tmp/smoke-contextual.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-expedition.gd 2>&1 | tee /tmp/smoke-expedition.log
+          grep -q "PASS: GAME-55" /tmp/smoke-expedition.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-expedition.log; then
+            echo "Godot emitted a gameplay expedition error"; exit 1
+          fi
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/smoke-contextual.log; then
             echo "Godot emitted a contextual site privacy or parsing error"; exit 1
           fi
