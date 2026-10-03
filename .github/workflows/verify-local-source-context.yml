@@ -1,0 +1,46 @@
+name: Verify local source neighbourhoods
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/local-source-context.mjs"
+      - "tools/regiongen/preview-local-context.mjs"
+      - "tools/regiongen/generate-local-examples.mjs"
+      - "tests/regiongen/verify-local-context.mjs"
+      - ".github/workflows/verify-local-source-context.yml"
+      - "docs/implementation/GAME-46*"
+  workflow_dispatch:
+jobs:
+  neighbourhood:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned upstream generator dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Rebuild source geometry from unchanged Azgaar seeds
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p tools/regiongen/.tmp
+          node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/regiongen/.tmp/local-replayed-first.json --geometry-output tools/regiongen/.tmp/geography-game-11-determinism.json
+          node tools/worldgen/generate-azgaar.mjs --seed atlas-showcase-06 --output tools/regiongen/.tmp/local-replayed-second.json --geometry-output tools/regiongen/.tmp/geography-atlas-showcase.json
+          cmp tests/worldgen/fixtures/game-11-determinism.json tools/regiongen/.tmp/local-replayed-first.json
+          cmp tests/worldgen/fixtures/atlas-showcase.json tools/regiongen/.tmp/local-replayed-second.json
+      - name: Verify source neighbourhoods, IDs and constraints
+        run: node tests/regiongen/verify-local-context.mjs
+      - name: Generate six real-source local views
+        run: node tools/regiongen/generate-local-examples.mjs
+      - name: Guard immutable fixtures and pinned vendors
+        run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
+      - name: Upload six maps and deterministic source JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-46-authentic-neighbourhoods
+          path: |
+            tools/regiongen/.tmp/local-*.svg
+            tools/regiongen/.tmp/local-*.json
+          if-no-files-found: error
+          retention-days: 14
