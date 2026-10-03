@@ -1,6 +1,6 @@
 # GAME-17 — First playable world exploration loop
 
-**Status:** Direction accepted in principle: party-led role (A), region-first vulnerable hometown (B), **grid-based manual tactical combat + strong auto-resolve (C)**, three initial adventurers and future deeply extensible class/prestige progression (D). Exact base ruleset, combat action economy, skill/progression scope and first-slice content remain **open decisions**. This is a design document, not an implementation directive.  
+**Status:** Direction accepted in principle: party-led role (A), region-first vulnerable hometown (B), **grid-based manual tactical combat + strong auto-resolve (C)**, three initial adventurers and future deeply extensible class/prestige progression (D). Specific simplification choices, action economy and first-slice content remain **open design details**. This is a design document, not an implementation directive.  
 **Date:** 2 October 2026  
 **Dependencies:** GAME-11/12 generation and viewer, GAME-28/30/31 atlas artwork and GAME-22 inspector are complete. GAME-7/8/9/10, GAME-19/20/21 and GAME-29 are not complete.
 
@@ -125,7 +125,7 @@ Start with enough class/ability **diversity** to challenge the model (e.g. marti
 
 ### D&D 3.5 / Pathfinder 1e systems and long-term class depth
 
-**Target:** a deep, expandable d20-like character-building ruleset inspired by **D&D 3.5's supplement-rich prestige class ecosystem and/or Pathfinder 1e's classes and archetypes**. These two systems are related but not identical: their skills, combat manoeuvres, feat trees, spell details, stacking rules and action economies differ. **Select one canonical baseline first**, then add explicitly labelled compatibility packs/adaptations. Don't silently intermingle both tables or let the same ability name mean contradictory mechanics.
+**Confirmed baseline (3 October 2026):** a **somewhat simplified Pathfinder 1e-derived d20 foundation**, keeping PF1e-style consolidated skills, combat manoeuvres, regular feats, customisable class archetypes and multiclassing, and deliberately **adapting** D&D 3.5's large supplement-rich prestige-class catalogue into those consistent mechanics. This is **not** a verbatim dual-rules implementation: convert class entry prerequisites, skill ranks, feats, progression and exceptional actions into explicit PF-derived equivalents, recording the conversion and content version. Pathfinder archetypes and prestige classes must both remain available. The original base books remain references for mechanical intent/flavour, not a second simultaneously active ruleset. Simplifications must be centrally specified and deterministic, not silent changes to individual classes.
 
 **Character identity and progression** should preserve:
 - Race/heritage, chosen background, ability scores/modifiers, alignment or ethos as a system if selected, saving throws, BAB/attack progressions, AC/defences, initiative, hit dice, movement, resistances.
@@ -146,6 +146,44 @@ Start with enough class/ability **diversity** to challenge the model (e.g. marti
 **Content scope:** do not promise verbatim imports of every 3.5 supplement early. Build 2–3 representative classes and at least one prestige-like progression example with a truly distinct triggered mechanic, then expand into dozens/hundreds through independently versioned content packs after the core rules engine is reliable. The architecture should support arbitrary packs without forcing rewrites, but **each rule needs validation**; a very broad but shallow catalogue is not equivalent to the deep 3.5 fantasy Mark wants.
 
 **Copyright / provenance boundary:** underlying generic game mechanics and our own implementation can be modelled without reproducing protected setting text or artwork. Many 3.5 supplements contain material **outside** open SRD/licensed content. A personal-use goal does not establish rights to commit wholesale book text, art or source PDFs into a potentially shared GitHub repository. Track source/edition/licence per content pack; begin from authorised SRD/open material or original paraphrase mechanics. Build internal migration/name aliasing so future original terminology and art can be substituted without breaking saves.
+
+### Perception, illusionists and non-damage tactical specialists (required architectural proof)
+
+The design MUST support **characters who are effective without inflicting direct damage**, especially illusionists and unusual 3.5-derived prestige classes. Equal damage per turn is not the balance objective: effectiveness includes completing a mission with fewer losses, preventing damage, dividing enemy forces, controlling paths, conserving supplies, enabling escape or diplomacy, and reducing time/casualties.
+
+**Essential state split** — the simulator knows objective physical world truth, but **each team or actor has an incomplete perceived battle state** and a saved belief/history of observations:
+
+| Simulation layer | Example: illusory wall or phantom guard |
+| --- | --- |
+| Objective world | The wall has no physical collision. The conjured guard is not an actual armed unit. Real units/doors/terrain exist independently of appearances. |
+| Visual/sensory observation | Enemy observer perceives an obstacle/person/cover, subject to line of sight, illumination, vision modalities, prior observations, magic senses and illusion properties. |
+| Belief and reasoning | Undisbelieving enemies may route around the wall, target phantom guards or avoid a believed threat. Some may investigate or physically interact; others may ignore effects they are immune to or unable to sense. |
+| Resolution and revealed information | Actions, contact, attacks, saving throws or magic sensing can change belief for particular actors; shared observations may influence comrades where communications justify it. Disbelief is neither universal knowledge nor automatically triggered without an appropriate event. |
+| Player/AI controller | Both choose moves, targets, spells and tactics from the **same permitted observations**. No AI access to the simulator's omniscient ground-truth location/illusion flags or concealed enemies when selecting commands. |
+
+**Mechanic distinctions (data-driven, per spell/feature):**
+- **Figments and glamers:** apparently change objects, creatures, visual/aural/sensory conditions; can alter observed routes, perceived presence/cover or targeting without changing physical collision rules unless separately defined.
+- **Patterns and phantasms:** may impose mind-affecting or sensory effects, saves/resistance and fear/confusion according to defined tags and specific target capabilities; immunity depends on tags and senses, not a blanket "mindless ignores all illusion" shortcut.
+- **Shadow/partly-real effects:** later, support declared partial-real damage, interaction and disbelief rules; these must not be treated as ordinary completely nonphysical figments.
+- **Direct defensive illusion effects:** duplicates, invisibility, concealment, false targets, blurred images and misdirection can reduce successful attacks or reposition allies without pretending to cause offensive damage.
+- **Environmental context:** an illusory wall can convince a sight-reliant opponent to go around; it cannot genuinely block a mindless charging creature physically, stop a real projectile or force all creatures to fail disbelief. Different observers can hold different beliefs about the same tile.
+
+**Rules and AI obligations:**
+- Validator/action resolution must distinguish **apparent target availability** from **actual physical/effect resolution**. AI receives a filtered observed state rather than \`BattleState\` truth; spells and revealed clues mutate belief deterministically and generate replayable events.
+- Saves and disbelief/interaction triggers follow the chosen PF-derived mechanic with explicit simplified exceptions. Spell tags specify school/subschool, senses affected, components, range, duration, DC/type, concentration, saving throw, immunity, disbelief trigger, and action/resource cost.
+- Auto-resolve may choose "create false reinforcements", "conceal ally", "distract patrol", "make phantom barrier" or "retreat under cover" because those change positioning, enemy action allocation or victory objectives. Tactical evaluation should measure **avoided enemy actions, safe access, ally preservation, resource cost and objective completion**, not only expected damage.
+- Expensive illusion spells must still spend spell slots/components/duration; observed reality and AI knowledge must carry through manual/auto switch and turn boundaries. Do not grant free auto-disbelief or auto-success to either team.
+- Noncombat actions outside the grid (stealth, misdirection, infiltration, impersonation, escape, scouting, negotiation assistance, protecting a settlement, avoiding unnecessary fights) should be valid world/quest interactions with skill checks, factions, consequences and relevant senses. Contextual uncertainty and occasional resistant opponents are important for balance.
+
+**First proof acceptance (before expanding hundreds of prestige classes):**
+
+A seeded **three adventurers versus 2–3 enemies** combat where an illusionist has two concrete options (e.g., **decoy guard** and **illusory wall or mirror-image-like defence**):
+1. At least one fooled enemy changes position, attack target or route. An enemy that investigates/disbelieves reacts differently. Actual physical collision remains correct.
+2. Run the same encounter manually and via AI policy with controlled commands/RNG; identical commands yield identical state/events. Under auto AI, the illusionist chooses the deceptive feature for rational tactical reasons in relevant conditions instead of being scored as useless.
+3. Demonstrate a resistant or inappropriate target, failure/success of saving/disbelief checks, spell usage tracking and persistent battle logs. AI must not see hidden illusion truth.
+4. Show an early noncombat benefit (avoid patrol, stage distraction or gain safe passage) with a meaningful tradeoff and no universal guaranteed success.
+
+This is an intentionally narrow illusion **slice**, not an automatic promise that all D&D/PF spells and sensory rules already work. A high-fidelity perception-and-belief system is one of the hardest elements of genuinely strong tactical auto-resolve: implement/test it incrementally, avoid per-class exceptions that rewrite the core battle state.
 
 ### Dependencies and deliverables
 
@@ -215,10 +253,10 @@ Directly command and customise an adventuring party; begin with three members (p
 **B. Opening — DIRECTION CONFIRMED**  
 Choose (i) a random rerollable seed, manual seed, or existing generated world; (ii) a preferred region/state/province/political affiliation where supported; and (iii) a **small vulnerable home village/hamlet** in that region, preferably near stronger protection. The **region** is the main geographic choice, not exact town optimisation. Hometown loyalty is emergent, never mandatory. Inciting incidents may vary by local conditions; no universal forced catastrophe. Remaining details—exact protection-distance rules, number of candidates, and how existing-world browsing works—are design parameters, not final thresholds.
 
-**C. Combat direction — CONFIRMED IN PRINCIPLE**  
+**C. Combat direction — CONFIRMED**  
 Mark wants **grid-based Final Fantasy Tactics-style battles** with **manual control or powerful auto-resolve**, not narrative-only conflict. Use a single deterministic battle simulation, with manual commands and AI policy as interchangeable controllers; do not create a fake auto-win-probability shortcut. Build a small, real battle first, then scale ability and class breadth. Exact D&D 3.5 vs Pathfinder 1e baseline and timing/action/initiative/grid conventions remain to be decided.
 
 **D. Party and contract capacity — AGREED IN PRINCIPLE**  
 Initial travelling party of **three**, individually customisable; later recruit a larger roster. **Per-job and per-POI hard participation limits**, independent of roster size, rather than sending everyone to every activity. Exact limits are balancing parameters, not final gameplay rules. A normal travelling formation of up to ~six adventurers is a **working proposal**, not an approved universal limit; exceptional defences/multisquad operations may be larger. Small-team restrictions may reflect space, concealment, escort capacity or logistics. See the assignment-capacity table below.
 
-**Acceptance for GAME-17 design:** A (party perspective), B (frontier-home world selection), C (manual grid tactical + shared-engine auto) and initial three character direction are chosen. Before marking design Done, agree the **primary ruleset baseline** (D&D 3.5 or Pathfinder 1e), minimal combat action economy/level progression, and first small test battle and traversal sequence. Then GAME-7 GameWorld contracts and the new scoped combat/character engine issues can proceed.
+**Acceptance for GAME-17 design:** A (party perspective), B (frontier-home world selection), C (manual grid tactical + shared-engine auto), initial three characters and **the streamlined PF1e-derived baseline with converted 3.5 prestige content** are chosen. Before marking design Done, settle detailed core action economy and a representative illusion/control encounter as part of the minimal battle and travel sequence. Then GAME-7 GameWorld contracts and the new scoped combat/character engine issues can proceed.
