@@ -10,7 +10,8 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   const world=resolve("tests/worldgen/fixtures/"+stem+".json");
   const output=resolve(tmp,"contextual-"+stem+"-"+kind+".json");
   const args=["tools/regiongen/generate-contextual-region.mjs",
-   "--world",world,"--constrained",input,"--output",output];
+   "--world",world,"--constrained",input,"--output",output,
+   "--audit-svg",output.replace(/\.json$/i,".audit.svg")];
   const run=spawnSync(process.execPath,args,{encoding:"utf8",timeout:120000,maxBuffer:3*1024*1024});
   if(run.status!==0)throw Error("Failed genuine source v2 sites "+stem+"/"+kind+": "+run.stderr+"\n"+run.stdout);
   console.log(stem+"/"+kind+" "+run.stdout.trim());
