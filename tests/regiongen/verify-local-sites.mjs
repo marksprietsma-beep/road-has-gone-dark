@@ -5,7 +5,12 @@ import {resolve} from "node:path";
 import {createHash} from "node:crypto";
 import {spawnSync} from "node:child_process";
 import {populateRegion,playerSiteView} from "../../tools/regiongen/local-sites.mjs";
+import {registry} from "../../tools/regiongen/site-icons.mjs";
 const hash=x=>createHash("sha256").update(x).digest("hex");
+assert.equal(registry.schema_version,1);
+for(const kind of ["hometown","farmstead","roadside_inn","watchtower","shrine","ruins","cave","abandoned_camp","ancient_stones","dangerous_woods","old_mine"]){
+ assert(registry.symbols[kind]?.polygons?.length>=2,"Missing illustrated site glyph: "+kind);
+}
 const root=process.cwd(),tmp=resolve(root,"tools/regiongen/.tmp");
 const fixture=resolve(root,"tests/worldgen/fixtures/game-11-determinism.json");
 const secondFixture=resolve(root,"tests/worldgen/fixtures/atlas-showcase.json");
@@ -65,6 +70,13 @@ for(const name of names){
  assert.throws(()=>playerSiteView(layer,{"bogus":"discovered",[layer.sites[0].id]:"wrong_value"}));
  const svg=await readFile(out.replace(/\.json$/,".svg"),"utf8");
  assert(svg.startsWith("<svg")&&svg.includes("FRONTIER REGION")&&svg.includes(data.local_sites.sites[0].label));
+ assert(svg.includes('class="region-site"')&&svg.includes('class="site-label"'),name+": artwork/label hierarchy absent");
+ assert.equal((svg.match(/class="region-site"/g)||[]).length,views.visible.length,name+": site icons must respect discovery state");
+ assert(!svg.includes('fill="#1e2221"'),name+": legacy black POI text boxes survived");
+ for(const secret of layer.sites.filter(x=>x.knowledge==="hidden"||x.knowledge==="rumoured")){
+  assert(!svg.includes(secret.label),name+": unrevealed name leaked into player SVG");
+  assert(!svg.includes(secret.id),name+": unrevealed site ID leaked into player SVG");
+ }
 }
 const region=JSON.parse(await readFile(resolve(tmp,"first.json")));
 const renamed=structuredClone(world);renamed.settlements.find(x=>x&&x.i===region.source.burg_id).name="Renamed Hometown";
