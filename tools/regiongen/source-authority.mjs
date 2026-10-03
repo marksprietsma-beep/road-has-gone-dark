@@ -36,7 +36,7 @@ function assertContext(world,ctx,fingerprint){
  for(const route of ctx.source_routes){
   const original=(world.routes||[]).filter(r=>r?.i===route.source_id);
   if(original.length!==1||!Array.isArray(original[0].points)||
-    route.source_group!==original[0].group||
+    route.source_group!==(original[0].group||"unknown")||
     !Array.isArray(route.segments) ||
     route.segments.some(segment=>!Number.isSafeInteger(segment.source_segment)||
       segment.source_segment<0||
