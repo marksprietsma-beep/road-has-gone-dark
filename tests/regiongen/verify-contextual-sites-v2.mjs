@@ -63,7 +63,7 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert(!preview.includes("FAKE_ROAD"));
   assert(preview.includes('id="known-game-owned-pois"'));
   assert(preview.includes("Known nearby sites"));
-  assert(preview.includes("Original route / coast inconsistencies: "));
+  assert(preview.includes("Route/coast conflicts: "));
   assert.equal((preview.match(/class="source-geometry-conflict"/g)||[]).length,audit.conflicts.length);
   for(const s of layer.sites){
    assert(s.patrol_protection==="unverified");
