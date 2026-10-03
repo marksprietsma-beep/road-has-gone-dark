@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - "tools/regiongen/source-authority.mjs"
+      - "tools/regiongen/inferred-fine-terrain.mjs"
+      - "tools/regiongen/render-inferred-fine.mjs"
+      - "tools/regiongen/generate-inferred-fine-examples.mjs"
+      - "tests/regiongen/verify-inferred-fine.mjs"
       - "tools/regiongen/generate-authority-examples.mjs"
       - "tests/regiongen/verify-source-authority.mjs"
       - "scripts/debug/source_authority_preview.gd"
@@ -39,16 +43,20 @@ jobs:
         run: node tests/regiongen/verify-source-authority.mjs
       - name: Show exactly what source can and cannot establish
         run: node tools/regiongen/generate-authority-examples.mjs
+      - name: Build six optional inferred local relief and forest maps
+        run: |
+          node tools/regiongen/generate-inferred-fine-examples.mjs
+          node tests/regiongen/verify-inferred-fine.mjs
       - name: Parse all six full-size source authority SVGs as real XML
         run: |
           python3 - <<'PY'
           import glob
           import xml.etree.ElementTree as ET
-          paths = glob.glob('tools/regiongen/.tmp/authority-*.svg')
-          assert len(paths) == 6, f'Expected six SVGs, got {len(paths)}'
+          paths = glob.glob('tools/regiongen/.tmp/authority-*.svg') + glob.glob('tools/regiongen/.tmp/fine-*.svg')
+          assert len(paths) == 12, f'Expected twelve source and inference SVGs, got {len(paths)}'
           for path in paths:
               ET.parse(path)
-          print('PASS: GAME-49 six valid SVG source authority images')
+          print('PASS: GAME-49/51 six valid source and six inferred SVG images')
           PY
       - name: Download Godot 4.7.2 for explicit source-authority preview validation
         run: |
@@ -75,6 +83,8 @@ jobs:
           path: |
             tools/regiongen/.tmp/authority-*.json
             tools/regiongen/.tmp/authority-*.svg
+            tools/regiongen/.tmp/fine-*.json
+            tools/regiongen/.tmp/fine-*.svg
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14

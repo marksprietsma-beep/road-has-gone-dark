@@ -9,6 +9,7 @@ const CASES := [
  "authority-atlas-showcase-highland"
 ]
 var model: Dictionary = {}
+var fine_field: Dictionary = {}
 var show_original: bool = true
 var show_approximate: bool = true
 var show_inferred: bool = true
@@ -28,6 +29,7 @@ func fit_map() -> void:
 
 func load_case(path: String) -> bool:
  model.clear()
+ fine_field.clear()
  queue_redraw()
  if not FileAccess.file_exists(path):
   title_text.text = "GAME-49 | Run authority example generator first."
@@ -46,6 +48,21 @@ func load_case(path: String) -> bool:
  if str(identity.get("source_world_sha256", "")).length() != 64 or source.is_empty() or derived.is_empty() or unknown.is_empty():
   title_text.text = "GAME-49 | Missing original source or unknown-field evidence"
   return false
+ # Inference is an optional sidecar, never original Azgaar source.
+ var inferred_path: String = path.replace("authority-", "fine-")
+ if FileAccess.file_exists(inferred_path):
+  var inferred_value: Variant = JSON.parse_string(FileAccess.get_file_as_string(inferred_path))
+  if not inferred_value is Dictionary:
+   title_text.text = "GAME-51 | Malformed optional inferred illustration"
+   return false
+  var possible: Dictionary = inferred_value
+  if int(possible.get("schema_version", -1)) != 1 or \
+     str(possible.get("source_context_id", "")) != str(identity.get("source_context_id", "")) or \
+     str(possible.get("source_world_sha256", "")) != str(identity.get("source_world_sha256", "")) or \
+     str(possible.get("truth", "")) != "INFERRED_VISUAL_FIELD_NOT_TRAVERSAL":
+   title_text.text = "GAME-51 | Inferred field does not match original source"
+   return false
+  fine_field = possible
  model = decoded
  _set_header()
  queue_redraw()
@@ -104,6 +121,91 @@ func _unhandled_input(event: InputEvent) -> void:
     load_case("res://tools/regiongen/.tmp/" + CASES[key.keycode - KEY_1] + ".json")
  queue_redraw()
 
+func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
+ var polygon := PackedVector2Array()
+ for i in 3:
+  var a: Dictionary = triangle[i]
+  var b: Dictionary = triangle[(i + 1) % 3]
+  var av: float = float(a.get("value", 0.0))
+  var bv: float = float(b.get("value", 0.0))
+  var above_a: bool = av >= cutoff
+  var above_b: bool = bv >= cutoff
+  if above_a:
+   polygon.append(a["point"])
+  if above_a != above_b:
+   var frac: float = (cutoff - av) / (bv - av)
+   polygon.append((a["point"] as Vector2).lerp(b["point"], frac))
+ # Contour intersections at threshold equality can repeat a vertex or
+ # collapse to a zero-area polygon; Godot's triangulator rejects these.
+ var clean := PackedVector2Array()
+ for v in polygon:
+  if clean.is_empty() or clean[clean.size() - 1].distance_to(v) > .05:
+   clean.append(v)
+ if clean.size() > 2 and clean[0].distance_to(clean[clean.size() - 1]) <= .05:
+  clean.resize(clean.size() - 1)
+ if clean.size() < 3:
+  return
+ var area: float = 0.0
+ for i in clean.size():
+  var a: Vector2 = clean[i]
+  var b: Vector2 = clean[(i + 1) % clean.size()]
+  area += a.x * b.y - b.x * a.y
+ if absf(area) <= 1.0:
+  return
+ # Threshold clipping can produce a valid-looking 4-point contour with
+ # almost-collinear corners; Godot's polygon ear triangulator then rejects
+ # the whole shape. Clip of one triangle is convex, so fan-triangulate
+ # ourselves and reject each degenerate *individual* triangle.
+ for k in range(1, clean.size() - 1):
+  var p: Vector2 = clean[0]
+  var q: Vector2 = clean[k]
+  var r: Vector2 = clean[k + 1]
+  var twice_area: float = absf((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x))
+  if twice_area <= .75:
+   continue
+  draw_colored_polygon(PackedVector2Array([p, q, r]), shade)
+
+func _draw_fine_field() -> void:
+ if fine_field.is_empty():
+  return
+ var grid: int = int(fine_field.get("grid_steps", 0))
+ var samples: Array = fine_field.get("vertices", [])
+ if grid <= 0 or samples.size() != (grid + 1) * (grid + 1):
+  return
+ var step: float = 1000.0 / float(grid)
+ # Triangles are only painted if all three sample vertices were classified
+ # as land from ORIGINAL source coast/lake polygon geometry.
+ var layers: Array = [
+  ["h", 48.0, Color("#c9b58c", .66)],
+  ["h", 58.0, Color("#b5a17e", .66)],
+  ["h", 69.0, Color("#a08e75", .66)],
+  ["h", 78.0, Color("#89816c", .66)],
+  ["f", .49, Color("#7f946c", .88)],
+  ["f", .57, Color("#5e7655", .88)],
+  ["f", .65, Color("#455c49", .88)]
+ ]
+ for layer in layers:
+  var key: String = str(layer[0])
+  var cutoff: float = float(layer[1])
+  var shade: Color = layer[2]
+  for j in grid:
+   for i in grid:
+    var indices := [j * (grid + 1) + i, j * (grid + 1) + i + 1,
+     (j + 1) * (grid + 1) + i + 1, (j + 1) * (grid + 1) + i]
+    var corners := [Vector2(i * step, j * step), Vector2((i + 1) * step, j * step),
+     Vector2((i + 1) * step, (j + 1) * step), Vector2(i * step, (j + 1) * step)]
+    for triangle_indices in [[0, 1, 2], [0, 2, 3]]:
+     var triangle: Array = []
+     var all_land: bool = true
+     for corner_index in triangle_indices:
+      var entry: Dictionary = samples[indices[corner_index]]
+      if not bool(entry.get("land", false)):
+       all_land = false
+      triangle.append({"point": corners[corner_index],
+       "value": float(entry.get(key, 0.0))})
+     if all_land:
+      _draw_fine_triangle(triangle, cutoff, shade)
+
 func _draw() -> void:
  draw_rect(Rect2(0,0,1000,1000),Color("#8eabb8"))
  if model.is_empty():
@@ -122,6 +224,9 @@ func _draw() -> void:
    var p: PackedVector2Array = _poly(f.get("source_polygon",[]))
    if p.size() >= 3:
     draw_colored_polygon(p,Color("#8eabb8"))
+ if show_inferred:
+  _draw_fine_field()
+ if show_original:
   for line in source.get("routes", []):
    for part in line.get("segments", []):
     var p: PackedVector2Array = _poly(part.get("local_points",[]))
