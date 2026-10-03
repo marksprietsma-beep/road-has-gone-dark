@@ -69,7 +69,9 @@ export function sampleInferredFineTerrain(world,context,fingerprint,worldPoint) 
  const ridge=(1-Math.abs(n2*2-1))*.12 + (n1-.5)*.14;
  const height=Math.max(0,Math.min(100,a.height+ridge*32+(n3-.5)*7));
  const canopy=Math.max(0,Math.min(1,
-  a.forest*.48+n1*.26+n2*.2+n3*.12 -Math.max(0,height-69)*.009));
+  // Offset is a rendering-density calibration, not measured tree cover.
+  // Without it, forest-biome worlds show >80% dark-green saturation.
+  a.forest*.48+n1*.26+n2*.2+n3*.12 -0.22 -Math.max(0,height-69)*.009));
  return {source_position:worldPoint.map(round),inferred_height:round(height),
   inferred_canopy:round(canopy),nearest_macro_cell_index:a.nearest_source_cell,
   authority:"INFERRED_ONLY",walkable:"UNKNOWN"};
