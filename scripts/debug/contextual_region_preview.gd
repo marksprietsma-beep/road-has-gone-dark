@@ -14,6 +14,7 @@ const GLYPHS := "res://assets/map/region-site-icons.json"
 var glyphs: Dictionary = {}
 var selected_local_id: String = ""
 var reveal_hidden_for_developer: bool = false
+var show_route_audit: bool = false
 
 func _ready() -> void:
 	var decoded: Variant = JSON.parse_string(FileAccess.get_file_as_string(GLYPHS))
@@ -23,11 +24,12 @@ func _ready() -> void:
 	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
 
 func _base_info() -> String:
-	return super._base_info() + "\nGAME-44 | Pictograms = game-owned sites | H: developer reveal (no save)"
+	return super._base_info() + "\nGAME-44 | Pictograms = game-owned sites | H: developer reveal | A: route audit (off by default; no save)"
 
 func load_region(path: String) -> bool:
 	selected_local_id = ""
 	reveal_hidden_for_developer = false
+	show_route_audit = false
 	if not super.load_region(path):
 		return false
 	var layer: Dictionary = region.get("local_sites_v2", {})
@@ -85,20 +87,21 @@ func _draw() -> void:
 	if region.is_empty():
 		return
 	var layer: Dictionary = region.get("local_sites_v2", {})
-	# Retain original Azgaar path data; red dashes identify incompatible
-	# source route/shoreline classifications, never invented bridges.
-	for flag in layer.get("route_consistency", {}).get("conflicts", []):
-		var original_id: int = int(flag.get("source_route_id", -1))
-		var segment_id: int = int(flag.get("source_segment", -1))
-		for source_route in region.get("source_context", {}).get("source_routes", []):
-			if int(source_route.get("source_id", -1)) != original_id:
-				continue
-			for edge in source_route.get("segments", []):
-				if int(edge.get("source_segment", -1)) != segment_id:
+	# Original route/shore conflicts remain in source JSON and are visible
+	# ONLY under an explicit no-save developer audit overlay (A key).
+	if show_route_audit:
+		for flag in layer.get("route_consistency", {}).get("conflicts", []):
+			var original_id: int = int(flag.get("source_route_id", -1))
+			var segment_id: int = int(flag.get("source_segment", -1))
+			for source_route in region.get("source_context", {}).get("source_routes", []):
+				if int(source_route.get("source_id", -1)) != original_id:
 					continue
-				var path: PackedVector2Array = _poly(edge.get("local_points", []))
-				if path.size() >= 2:
-					_dash(path[0], path[1], Color("#9d4735", .92), 3.5, 7.0, 5.0)
+				for edge in source_route.get("segments", []):
+					if int(edge.get("source_segment", -1)) != segment_id:
+						continue
+					var path: PackedVector2Array = _poly(edge.get("local_points", []))
+					if path.size() >= 2:
+						_dash(path[0], path[1], Color("#9d4735", .92), 3.5, 7.0, 5.0)
 	var font: Font = ThemeDB.fallback_font
 	for value in layer.get("sites", []):
 		if not value is Dictionary:
@@ -143,6 +146,11 @@ func select_local_site_at(point: Vector2) -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_A:
+			show_route_audit = not show_route_audit
+			info.text = _base_info()
+			queue_redraw()
+			return
 		if event.keycode == KEY_H:
 			reveal_hidden_for_developer = not reveal_hidden_for_developer
 			selected_local_id = ""
