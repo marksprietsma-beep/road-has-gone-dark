@@ -3,11 +3,26 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import {sourceDryLand} from "../../tools/regiongen/compose-local-region.mjs";
+import {auditSourceRoutes} from "../../tools/regiongen/route-consistency.mjs";
 import {generateContextualSites,contextualPlayerSiteView} from "../../tools/regiongen/contextual-sites-v2.mjs";
 const sha=s=>createHash("sha256").update(s).digest("hex");
 const length=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
 const classes=new Set(),counts=[],individual=[],allLayerIds=new Set();
-let generated=0,knownGenerated=0,rumours=0,hidden=0;
+let generated=0,knownGenerated=0,rumours=0,hidden=0,conflicts=0;
+const routeTest={
+ constraints:{shorelines:"original_source_features"},
+ source_features:[{classification:"land_boundary",local_polygon:[[100,100],[900,100],[900,900],[100,900]]}],
+ source_routes:[
+  {source_id:1,classification:"land_road",segments:[{source_segment:0,local_points:[[200,200],[600,200]]}]},
+  {source_id:2,classification:"land_road",segments:[{source_segment:0,local_points:[[0,300],[200,300]]}]},
+  {source_id:3,classification:"sea_lane",segments:[{source_segment:0,local_points:[[300,350],[550,350]]}]},
+  {source_id:4,classification:"sea_lane",segments:[{source_segment:0,local_points:[[10,10],[30,80]]}]}
+ ]};
+const testAudit=auditSourceRoutes(routeTest);
+assert.equal(testAudit.conflicts.length,2,"Wet road and dry sea lane must both be reported");
+assert.equal(testAudit.trustedApproaches.length,1,"Only the wholly dry overland route qualifies for POI siting");
+assert.equal(testAudit.trustedApproaches[0].source_route_id,1);
+
 for(const stem of ["game-11-determinism","atlas-showcase"])
  for(const kind of ["shore","river","highland"]){
   const worldBytes=await readFile("tests/worldgen/fixtures/"+stem+".json");
@@ -22,6 +37,13 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert.equal(layer.migration.from_site_generation_v1,"NOT_AUTOMATIC");
   assert.equal(layer.migration.existing_v1_states,"UNCHANGED");
   assert.equal(layer.source_km,"UNCALIBRATED");
+  const audit=auditSourceRoutes(base.source_context);
+  assert.deepEqual(layer.route_consistency.conflicts,audit.conflicts);
+  assert.equal(layer.route_consistency.eligible_approach_segments,audit.trustedApproaches.length);
+  conflicts+=audit.conflicts.length;
+  if(audit.trustedApproaches.length===0)
+   assert(!layer.sites.some(s=>["farmstead","roadside_inn","watchtower","shrine"].includes(s.kind)),
+    "A local service appeared despite no consistent overland segment");
   assert(layer.site_generation_version===2);
   assert(layer.sites.length>=1);
   assert.equal(layer.sites[0].id,"burg:"+base.source_context.source_home_burg_id);
@@ -41,6 +63,8 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert(!preview.includes("FAKE_ROAD"));
   assert(preview.includes('id="known-game-owned-pois"'));
   assert(preview.includes("Known nearby sites"));
+  assert(preview.includes("Original route / coast inconsistencies: "));
+  assert.equal((preview.match(/class="source-geometry-conflict"/g)||[]).length,audit.conflicts.length);
   for(const s of layer.sites){
    assert(s.patrol_protection==="unverified");
    assert(s.position.every(Number.isFinite));
@@ -77,9 +101,10 @@ for(const stem of ["game-11-determinism","atlas-showcase"])
   assert(!allLayerIds.has(layer.source_context_id),"Two different home contexts share a generated region identity");
   allLayerIds.add(layer.source_context_id);
  }
+assert(conflicts>0,"Actual sample worlds missed all known road/sea inconsistencies");
 assert(generated>5,"Too few contextual POIs across six original neighbourhoods");
 assert(knownGenerated>=2,"No discoverable nearby sites");
 assert(classes.size>=3,"Insufficient variety in site types");
 assert(new Set(counts).size>=2,"All worlds still have the identical fixed checklist size");
 console.log("PASS: GAME-44 six v2 contextual source worlds; "+generated+" unique generated sites, "+knownGenerated+
- " known, "+rumours+" rumours, "+hidden+" hidden; varieties "+[...classes].join(",")+"; by map "+individual.join(" "));
+ " known, "+rumours+" rumours, "+hidden+" hidden, "+conflicts+" classified source-route conflicts; varieties "+[...classes].join(",")+"; by map "+individual.join(" "));
