@@ -11,8 +11,13 @@ func _ready() -> void:
 	super._ready()
 	call_deferred("_refresh")
 
+func fit_map() -> void:
+	# Compact 640×360 logical layout: source map left; journal panel right.
+	camera.position = Vector2(1000.0, 500.0)
+	camera.zoom = Vector2(0.33, 0.33)
+
 func _base_info() -> String:
-	return "THE ROAD HAS GONE DARK | EXPLORATION PROTOTYPE\nCLICK known site • T journey • S scout • C cautious / B bold • R return • 1–6 regions\nV terrain • F fit • ESC close scene | Source roads NOT known safe; no verified pathfinding"
+	return "THE ROAD HAS GONE DARK\nEXPEDITION (PROTOTYPE)\nClick a known site: select\nT: Journey   S: Scout\nC: Cautious   B: Bold\nR: Return   V: Terrain\n1–6: Regions   F: Fit   Esc: Exit"
 
 func load_region(path: String) -> bool:
 	if not super.load_region(path):
@@ -73,11 +78,11 @@ func _refresh() -> void:
 		var choice: Dictionary = expedition._place(expedition.chosen_id)
 		if expedition.site_is_visible(choice):
 			chosen = str(choice.get("label", "none"))
-	party_status.text = "PARTY OF THREE   Supplies %d/%d   Danger %d/%d   Clues %d   Hours %d\nAt: %s | Journey target: %s | Known places: %d" % [
-		expedition.supplies, expedition.MAX_SUPPLIES, expedition.danger,
-		expedition.MAX_DANGER, expedition.clues, expedition.hours,
-		position_name, chosen, expedition.visible_sites().size()]
-	journal.text = "EXPEDITION JOURNAL\n" + "\n".join(expedition.notes)
+	party_status.text = "THREE TRAVELLERS\nSupplies %d/%d  Danger %d/%d\nClues %d   Hours %d\nAt: %s\nTarget: %s" % [
+		expedition.supplies, expedition.MAX_SUPPLIES,
+		expedition.danger, expedition.MAX_DANGER,
+		expedition.clues, expedition.hours, position_name, chosen]
+	journal.text = "RECENT EVENTS\n" + "\n".join(expedition.notes.slice(0, 4))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
