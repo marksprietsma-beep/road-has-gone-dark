@@ -146,15 +146,22 @@ func _draw_symbol(site: Dictionary) -> void:
 func _draw_sparse_labels() -> void:
 	var font: Font = ThemeDB.fallback_font
 	var occupied: Array[Rect2] = []
-	# Only primary locations and selected inspections get map labels.
-	var preferred := ["hometown", "ruins", "roadside_inn", "watchtower"]
+	var displayed: Dictionary = {}
+	# Include only a few key places, then any separately selected site.
+	var preferred := ["hometown", "ruins", "roadside_inn", "watchtower", "__selected__"]
 	for kind in preferred:
 		for value in region.get("local_sites", {}).get("sites", []):
 			if not value is Dictionary or not _visible(value):
 				continue
 			var site: Dictionary = value
-			var is_selected := str(site.get("id", "")) == selected_id
-			if str(site.get("kind", "")) != kind and not is_selected:
+			var site_id := str(site.get("id", ""))
+			if displayed.has(site_id):
+				continue
+			var is_selected := site_id == selected_id
+			if kind == "__selected__":
+				if not is_selected:
+					continue
+			elif str(site.get("kind", "")) != kind:
 				continue
 			var xy: Array = site.get("position", [])
 			if xy.size() != 2:
@@ -178,13 +185,13 @@ func _draw_sparse_labels() -> void:
 				if collision:
 					continue
 				occupied.append(rect)
-				draw_rect(rect, Color("#f1dfae", 0.96) if kind == "hometown" else Color("#e5d8b8", 0.94))
-				draw_rect(rect, Color("#4c4736"), false, 1.6 if kind == "hometown" else 0.8)
+				displayed[site_id] = true
+				var primary := str(site.get("kind", "")) == "hometown"
+				draw_rect(rect, Color("#f1dfae", 0.96) if primary else Color("#e5d8b8", 0.94))
+				draw_rect(rect, Color("#4c4736"), false, 1.6 if primary else 0.8)
 				draw_string(font, corner + Vector2(9.0, 17.0), name,
-						HORIZONTAL_ALIGNMENT_LEFT, width - 12.0, 15 if kind == "hometown" else 13, Color("#292b22"))
+						HORIZONTAL_ALIGNMENT_LEFT, width - 12.0, 15 if primary else 13, Color("#292b22"))
 				break
-			if is_selected and kind != str(site.get("kind", "")):
-				return
 
 
 func _draw() -> void:
