@@ -61,7 +61,9 @@ export function buildSourceAuthority(world,ctx,fingerprint,decorated=null){
  if(decorated!==null &&
    (decorated?.source_context?.id!==ctx.id||
     decorated?.provider?.mode!=="DECORATIONS_ONLY"||
-    decorated?.source_context?.parent_source_world_sha256!==fingerprint))
+    decorated?.source_context?.parent_source_world_sha256!==fingerprint||
+    decorated?.landscape?.procedural_roads_used!==false||
+    decorated?.landscape?.procedural_water_used!==false))
   throw Error("Refusing decorative output from a different source window");
  const original=projections(ctx);
  const cellSamples=ctx.space.source_cell_centres_in_window??null;
