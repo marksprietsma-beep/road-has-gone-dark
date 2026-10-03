@@ -64,7 +64,9 @@ export function renderConstrainedRegion(region){
   const w=Math.min(230,Math.max(70,b.name.length*(major?12:8)));
   const left=bounded(x+17+w>996?x-w-25:x+17);
   const top=Math.max(113,Math.min(930,y-12));
-  lines.push('<text x="'+left+'" y="'+top+'" stroke="#edddbb" stroke-width="4" paint-order="stroke" font-family="Georgia,serif" font-size="'+(major?19:13)+'" fill="#292d25" font-weight="'+(major?"bold":"normal")+'">'+escape(b.name)+'</text>');
+  lines.push('<rect x="'+(left-5)+'" y="'+(top-(major?20:14))+'" width="'+(w+12)+
+    '" height="'+(major?26:20)+'" rx="2" fill="#efe1be" fill-opacity=".91" stroke="#b7a57f" stroke-width=".7"/>');
+  lines.push('<text x="'+left+'" y="'+top+'" font-family="Georgia,serif" font-size="'+(major?19:13)+'" fill="#292d25" font-weight="'+(major?"bold":"normal")+'">'+escape(b.name)+'</text>');
  };
  if(home)label(home,true);
  for(const b of context.source_burgs.filter(b=>b.source_id!==context.source_home_burg_id).slice(0,3))label(b,false);
