@@ -80,6 +80,13 @@ assert.equal((svg.match(/class="azgaar-sea_lane"/g)||[]).length,
  c.source_routes.filter(r=>r.classification==="sea_lane").reduce((n,r)=>n+r.segments.length,0),
  "Searoute source segment count or original semantics changed");
 assert(svg.includes('class="approximate-river"'));
+const unknownSource=structuredClone(out);
+unknownSource.source_context.source_routes.push({
+ classification:"source_route_unknown_type",source_id:9999,
+ segments:[{local_points:[[150,350],[350,350]],source_segment:0}]
+});
+assert(!renderConstrainedRegion(unknownSource).includes('class="azgaar-source_route_unknown_type"'),
+ "An unclassified original source route cannot be presented as a ground road");
 assert(!svg.includes("FAKE_ROAD"));
 assert(svg.includes("Town Forge vegetation only"));
 assert(!svg.includes("30 km"));
