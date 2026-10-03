@@ -39,6 +39,17 @@ jobs:
         run: node tests/regiongen/verify-source-authority.mjs
       - name: Show exactly what source can and cannot establish
         run: node tools/regiongen/generate-authority-examples.mjs
+      - name: Parse all six full-size source authority SVGs as real XML
+        run: |
+          python3 - <<'PY'
+          import glob
+          import xml.etree.ElementTree as ET
+          paths = glob.glob('tools/regiongen/.tmp/authority-*.svg')
+          assert len(paths) == 6, f'Expected six SVGs, got {len(paths)}'
+          for path in paths:
+              ET.parse(path)
+          print('PASS: GAME-49 six valid SVG source authority images')
+          PY
       - name: Download Godot 4.7.2 for explicit source-authority preview validation
         run: |
           curl -fL --retry 3 --retry-delay 2 \
