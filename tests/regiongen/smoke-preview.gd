@@ -24,5 +24,12 @@ func _check() -> void:
 	assert(not world.get_record("burg", int(viewer.region["source"]["burg_id"])).is_empty())
 	assert(viewer.region["source"]["world_sha256"] == world.source_sha256, "GameWorld template and region do not share a world")
 	assert(viewer.info.text.contains("Provisional local routes"))
+	for example in ["coast", "river", "mountain", "estuary", "second-world"]:
+		assert(viewer.load_region("res://tools/regiongen/.tmp/%s.json" % example))
+		await process_frame
+	assert(viewer.load_region("res://tools/regiongen/.tmp/estuary.json"))
+	assert(viewer.info.text.contains("river mouth is not generated"))
+	assert(not viewer.load_region("res://tools/regiongen/.tmp/missing-example.json"))
+	assert(viewer.region.is_empty(), "Failed load must clear previous geometry")
 	print("PASS: GAME-21 Godot preview loads Town Forge geometry against GameWorld IDs")
 	quit(0)

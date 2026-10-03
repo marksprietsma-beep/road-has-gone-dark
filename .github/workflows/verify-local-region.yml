@@ -53,6 +53,11 @@ jobs:
             tools/regiongen/.tmp/first.svg
             tools/regiongen/.tmp/second-burg.svg
             tools/regiongen/.tmp/other-tile.svg
+            tools/regiongen/.tmp/coast.*
+            tools/regiongen/.tmp/river.*
+            tools/regiongen/.tmp/mountain.*
+            tools/regiongen/.tmp/estuary.*
+            tools/regiongen/.tmp/second-world.*
           retention-days: 14
           if-no-files-found: error
       - name: Install Godot 4.7.2

@@ -25,6 +25,10 @@ export function renderSvg(region){
  lines.push('<text x="28" y="84" fill="#cfc8b7" font-size="14">Azgaar cell '+escape(source.cell_id)+' • '+escape(land.side_km)+' km conceptual span</text>');
  lines.push('<rect x="17" y="962" width="240" height="25" rx="4" fill="#191b19" opacity="0.8"/>');
  lines.push('<text x="28" y="980" fill="#e7debf" font-size="13">PREVIEW • roads/seams provisional</text>');
+ if(region.constraints?.rivers==="source_river_not_rendered") {
+  lines.push('<rect x="17" y="921" width="655" height="30" rx="4" fill="#191b19" opacity="0.9"/>');
+  lines.push('<text x="28" y="941" fill="#ffd18a" font-size="15">SOURCE RIVER PRESENT — river mouth not rendered in shoreline preview</text>');
+ }
  lines.push('</g></svg>');
  return lines.join("\n")+"\n";
 }
