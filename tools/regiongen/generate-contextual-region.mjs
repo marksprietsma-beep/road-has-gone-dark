@@ -28,7 +28,19 @@ for(const site of visible)fragments.push(renderSiteSymbol(site));
 fragments.push(renderReadableLabels(visible),'</g>');
 const text='<text x="668" y="111" fill="#333127" font-family="Georgia,serif" font-size="12">Known nearby sites: '+
  preview.visible.length+' · Rumours: '+preview.rumours.length+'</text>';
-const image=renderConstrainedRegion(composite).replace("</svg>",fragments.join("\n")+"\n"+text+"\n</svg>");
+const warnings=[];
+for(const issue of layer.route_consistency.conflicts){
+ const route=composite.source_context.source_routes.find(r=>r.source_id===issue.source_route_id);
+ const segment=route?.segments.find(z=>z.source_segment===issue.source_segment);
+ if(!segment)throw Error("Source route consistency references missing segment");
+ warnings.push('<polyline class="source-geometry-conflict" points="'+
+  segment.local_points.map(([x,y])=>x+","+y).join(" ") +
+  '" fill="none" stroke="#9d4735" stroke-width="3.5" stroke-dasharray="7 5" opacity=".85"/>');
+}
+const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,serif" font-size="12">Original route / coast inconsistencies: '+
+ layer.route_consistency.conflicts.length+' (highlighted red; safety unknown)</text>';
+const image=renderConstrainedRegion(composite).replace("</svg>",
+ warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>");
 await mkdir(dirname(resolve(output)),{recursive:true});
 await mkdir(dirname(resolve(svg)),{recursive:true});
 await writeFile(resolve(output),JSON.stringify(combined,null,2)+"\n");
