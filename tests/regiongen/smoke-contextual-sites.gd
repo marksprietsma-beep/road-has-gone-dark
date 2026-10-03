@@ -34,6 +34,7 @@ func _check() -> void:
 		assert(home["position"] == ctx["space"]["home_local"])
 		assert(viewer.selected_local_id == "")
 		assert(not viewer.reveal_hidden_for_developer)
+		assert(not viewer.show_route_audit, "Route audit must default to OFF")
 		for s in layer["sites"]:
 			if not s is Dictionary or s.get("kind", "") == "hometown":
 				continue
@@ -47,6 +48,16 @@ func _check() -> void:
 				assert(viewer.selected_local_id == str(s["id"]))
 				assert(viewer.info.text.contains(str(s["label"])))
 				inspected += 1
+		# Route/shoreline warning marks are developer-only, off by default.
+		var audit_key := InputEventKey.new()
+		audit_key.keycode = KEY_A
+		audit_key.pressed = true
+		viewer._unhandled_input(audit_key)
+		assert(viewer.show_route_audit, "A must reveal route audit")
+		assert(viewer.region["local_sites_v2"]["route_consistency"].has("conflicts"),
+			"Do not remove source route conflict evidence")
+		viewer._unhandled_input(audit_key)
+		assert(not viewer.show_route_audit, "A must conceal route audit again")
 		# H is strictly a developer preview toggle and never persists.
 		var toggle := InputEventKey.new()
 		toggle.keycode = KEY_H
