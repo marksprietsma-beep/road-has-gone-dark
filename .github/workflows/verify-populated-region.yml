@@ -1,0 +1,66 @@
+name: Verify populated local region
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/**"
+      - "tests/regiongen/**"
+      - "scripts/debug/populated_region_preview.gd"
+      - "scenes/debug/populated_region_preview.tscn"
+      - "docs/implementation/GAME-40*"
+      - ".github/workflows/verify-populated-region.yml"
+  workflow_dispatch:
+
+jobs:
+  populated-region:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Town Forge toolchain
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Generate pinned source-backed landscapes
+        run: |
+          set -euo pipefail
+          node tests/regiongen/verify-region.mjs 2>&1 | tee /tmp/terrain.log
+          grep -q "PASS: GAME-21" /tmp/terrain.log
+      - name: Generate and verify local site examples
+        run: |
+          set -euo pipefail
+          node tests/regiongen/verify-local-sites.mjs 2>&1 | tee /tmp/sites.log
+          grep -q "PASS: GAME-40" /tmp/sites.log
+      - name: Upload six inspectable visual examples
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-40-populated-region-examples
+          path: |
+            tools/regiongen/.tmp/populated-first.svg
+            tools/regiongen/.tmp/populated-coast.svg
+            tools/regiongen/.tmp/populated-river.svg
+            tools/regiongen/.tmp/populated-mountain.svg
+            tools/regiongen/.tmp/populated-estuary.svg
+            tools/regiongen/.tmp/populated-second-world.svg
+            tools/regiongen/.tmp/populated-first.json
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - name: Install Godot 4.7.2
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import and test populated F6 viewer
+        run: |
+          set -euo pipefail
+          timeout 240s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import.log
+          timeout 120s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 600 --script res://tests/regiongen/smoke-populated-preview.gd 2>&1 | tee /tmp/game40-godot.log
+          grep -q "PASS: GAME-40" /tmp/game40-godot.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/game40-godot.log; then
+            echo "Godot reported GAME-40 errors"; exit 1
+          fi
+      - name: Confirm world and vendor sources unchanged
+        run: git diff --exit-code -- vendor/azgaar vendor/town-forge tests/worldgen/fixtures
