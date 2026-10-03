@@ -6,13 +6,18 @@ on:
       - "tools/regiongen/preview-local-context.mjs"
       - "tools/regiongen/generate-local-examples.mjs"
       - "tests/regiongen/verify-local-context.mjs"
+      - "tools/regiongen/compose-local-region.mjs"
+      - "tools/regiongen/render-constrained-region.mjs"
+      - "tools/regiongen/generate-constrained-region.mjs"
+      - "tools/regiongen/generate-constrained-examples.mjs"
+      - "tests/regiongen/verify-constrained-region.mjs"
       - ".github/workflows/verify-local-source-context.yml"
       - "docs/implementation/GAME-46*"
   workflow_dispatch:
 jobs:
   neighbourhood:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,15 +38,21 @@ jobs:
         run: node tests/regiongen/verify-local-context.mjs
       - name: Generate six real-source local views
         run: node tools/regiongen/generate-local-examples.mjs
+      - name: Generate six source-constrained Town Forge vegetation scenes
+        run: node tools/regiongen/generate-constrained-examples.mjs
+      - name: Verify original routes, coastline, dry land and river corridors
+        run: node tests/regiongen/verify-constrained-region.mjs
       - name: Guard immutable fixtures and pinned vendors
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Upload six maps and deterministic source JSON
         uses: actions/upload-artifact@v4
         with:
-          name: game-46-authentic-neighbourhoods
+          name: game-46-source-constrained-neighbourhoods
           path: |
             tools/regiongen/.tmp/local-*.svg
             tools/regiongen/.tmp/local-*.json
+            tools/regiongen/.tmp/constrained-*.json
+            tools/regiongen/.tmp/constrained-*.svg
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
