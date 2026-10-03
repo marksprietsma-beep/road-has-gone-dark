@@ -96,7 +96,8 @@ function sourcePaths(world,idIndex) {
  const result=[];
  for(const route of world.routes) {
   if(!route || !Number.isSafeInteger(route.i) || !Array.isArray(route.points))continue;
-  const points=route.points.filter(valid).map(normalize);
+  if(route.points.some(p=>!valid(p)))throw Error("Invalid Azgaar route points");
+  const points=route.points.map(normalize);
   if(points.length>=2)result.push({id:"route:"+route.i,kind:"azgaar_route",
    source_id:route.i,group:route.group||"unknown",geometry:"original_azgaar_route_points",points});
  }
@@ -105,7 +106,7 @@ function sourcePaths(world,idIndex) {
   const pts=[];
   for(const cellID of river.cells){
    const i=idIndex.get(cellID);
-   if(i===undefined)continue;
+   if(i===undefined)throw Error("Azgaar river references missing source cell "+cellID);
    const p=normalize(world.cells.points[i]);
    if(!pts.length || pts.at(-1)[0]!==p[0]||pts.at(-1)[1]!==p[1])pts.push(p);
   }
@@ -114,7 +115,8 @@ function sourcePaths(world,idIndex) {
  }
  return result.sort((a,b)=>a.id.localeCompare(b.id));
 }
-function segmentIntersections(a,z,bounds,tx,ty) {
+function segmentIntersections(points,index,bounds,tx,ty) {
+ const a=points[index],z=points[index+1];
  const dx=z[0]-a[0],dy=z[1]-a[1],hits=[];
  const edges=[["W",bounds.left,"x"],["E",bounds.right,"x"],
               ["N",bounds.top,"y"],["S",bounds.bottom,"y"]];
@@ -123,6 +125,16 @@ function segmentIntersections(a,z,bounds,tx,ty) {
   if(Math.abs(along)<EPS)continue; // tangent/coincident is not a crossing
   const t=(v-initial)/along;
   if(t < -EPS||t>1+EPS)continue;
+  // A point ending at a border and turning back is a tangent/contact, not
+  // an inter-tile connection. Endpoint crossings require adjacent segments
+  // on genuinely opposite sides of the same source boundary.
+  if(t<=EPS || t>=1-EPS) {
+   const prev=points[t<=EPS?index-1:index],next=points[t<=EPS?index+1:index+2];
+   if(!prev||!next)continue;
+   const before=(axis==="x"?prev[0]:prev[1])-v;
+   const after=(axis==="x"?next[0]:next[1])-v;
+   if(before*after>=-EPS || Math.abs(before)<EPS || Math.abs(after)<EPS)continue;
+  }
   const point=[a[0]+dx*t,a[1]+dy*t];
   const other=axis==="x"?point[1]:point[0];
   const min=axis==="x"?bounds.top:bounds.left,max=axis==="x"?bounds.bottom:bounds.right;
@@ -149,7 +161,7 @@ export function buildTileConstraints(world,tx,ty,worldFingerprint) {
   segments.push({source:path.id,kind:path.kind,group:path.group,
     geometry: path.geometry,source_segment:i,world_points:cut,
     local_points:cut.map(p=>toLocal(p,tx,ty))});
-  for(const e of segmentIntersections(a,z,bounds,tx,ty)){
+  for(const e of segmentIntersections(path.points,i,bounds,tx,ty)){
    // Normalise "end of segment vs beginning of next" to a single event.
    const key=path.id+":"+e.boundary+":"+e.world_position.join(",");
    if(observed.has(key))continue;
