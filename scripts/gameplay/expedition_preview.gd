@@ -17,7 +17,7 @@ func fit_map() -> void:
 	camera.zoom = Vector2(0.33, 0.33)
 
 func _base_info() -> String:
-	return "THE ROAD HAS GONE DARK\nEXPEDITION (PROTOTYPE)\nClick a known site: select\nT: Journey   S: Scout\nC: Cautious   B: Bold\nR: Return   V: Terrain\n1–6: Regions   F: Fit   Esc: Exit"
+	return "THE ROAD HAS GONE DARK\nClick a known site: select\nT: Journey   S: Scout\nC: Cautious   B: Bold\nR: Return   V: Terrain\n1–6: Regions   F: Fit   Esc: Exit"
 
 func load_region(path: String) -> bool:
 	if not super.load_region(path):
