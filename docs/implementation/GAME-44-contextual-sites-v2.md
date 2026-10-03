@@ -15,7 +15,7 @@ This is a **new opt-in site-generation namespace**, not an in-place edit to the 
 
 My six-map review identified an actual **source consistency conflict at Stormhorn**: Azgaar original sea-lane polylines pass across its original feature-defined land and portions of inland-road geometry pass through feature-defined water. This is **not** fixed by painting a road in a new place or presuming a ferry, bridge, navigable inlet or patrol. A distinct versioned `route-consistency.mjs` samples seven interior points along every original source segment against the genuine land/lake mask and reports either `SEA_ROUTE_INTERSECTS_SOURCE_LAND` or `OVERLAND_ROUTE_INTERSECTS_SOURCE_WATER`. It retains original segment indices and route IDs, without editing the original data.
 
-New game-owned farms, inns, watchpoints and shrines can only use **overland approach segments whose samples are all on original dry land**. These are diagnostic *eligible approaches*, not verified roads or proof of protection. Source-coast conflicts are highlighted with **dashed amber-red warning geometry** in both SVG and Godot. The output's public site view still excludes all hidden location names, IDs and coordinates. The warning itself describes original source routes, not new secret POI positions.
+New game-owned farms, inns, watchpoints and shrines can only use **overland approach segments whose samples are all on original dry land**. These are diagnostic *eligible approaches*, not verified roads or proof of protection. Source-coast conflicts are highlighted with **dashed amber-red warning geometry only in explicit developer-audit views**, never by default in player-facing SVG or Godot. The output's public site view still excludes all hidden location names, IDs and coordinates. The warning itself describes original source routes, not new secret POI positions.
 
 These checks are conservative and not a physical crossing/landmask solution: long source route segments may contain narrow wet crossings between samples, source coastlines can be coarse, and true bridges cannot be determined from the present records. Do **not** silently assume consistency, and address the source model at a separate resolution/migration gate before pathfinding.
 
@@ -29,6 +29,14 @@ The local view is 16 **Azgaar source-map units**, **NOT a calibrated 30 km**, an
 ## GAME-50 — searoute land-overlap display correction
 
 Azgaar's **original sea-lane polylines** occasionally overlap its **original land polygon**, visibly around Stormhorn. This is a genuine mismatch of source geometry at its native coarse scale, **not** evidence of an actual overland maritime passage. The SVG and Godot F6 renderers now draw original sea lanes **before** drawing authoritative source land and lake fills, so land masks the unsupported overland-looking portions. Source route geometry, route group, safe-road state, JSON provenance, saved worlds and site positions remain **unchanged**. This fixes only the appearance: it neither repairs the Azgaar data nor invents ports, ferries, bridges or route connections. CI asserts SVG layer order and all six actual views remain valid.
+
+## Independent visual audit and player view (GAME-49 finding)
+
+An independent full-resolution review found prominent **red route-conflict strokes** and source debug counts in the supposedly player-facing previews, notably near Stormhorn/Ris. GAME-50 already masks original sea lanes beneath authentic land, but the separate route-consistency audit drew red markings on top of land afterwards. This was a **presentation defect**, not a new source-geometry problem.
+
+The default `contextual-*.svg` now omits red route/coast diagnostic geometry and count. The generator's **`--audit-svg <file.audit.svg>`** creates a separate, explicit QA illustration with the original source route conflicts and counts. CI generates and checks **both** files for each of the six worlds. The Godot contextual F6 viewer uses **A** to toggle warnings; it defaults **off** and resets on loading any region. Underlying `local_sites_v2.route_consistency.conflicts` is retained in developer JSON and site-placement rules; no source line, hidden discovery record or save was changed.
+
+**Not an aesthetic sign-off:** real inferred relief, forest masses, plausible fine routes and truthful geographic zoom are outstanding in GAME-49; this only prevents diagnostics intruding on a normal map.
 
 ## Exact developer testing
 
@@ -49,6 +57,6 @@ node tools/regiongen/generate-contextual-examples.mjs
 node tests/regiongen/verify-contextual-sites-v2.mjs
 ```
 
-To inspect in Godot, open `scenes/debug/contextual_region_preview.tscn` and press **F6**. Press **1–6** to switch source worlds and shore/river/highland examples, **F** to fit, **V** to toggle illustrative terrain and **H** to reveal developer-only hidden sites. Click a glyph to see source provenance and knowledge. CI does these data and interaction checks in headless mode; Mark need not test personally until user-facing integration is proposed.
+To inspect in Godot, open `scenes/debug/contextual_region_preview.tscn` and press **F6**. Press **1–6** to switch source worlds and shore/river/highland examples, **F** to fit, **V** to toggle illustrative terrain, **H** to reveal developer-only hidden sites and **A** to show/hide route/coast consistency warnings. Both H and A reset on reload, without saving or altering the source data. Click a glyph to see source provenance and knowledge. CI does these data and interaction checks in headless mode; Mark need not test personally until user-facing integration is proposed.
 
 This PR is a **data/preview proof**, not completed playable exploration. The full game screen, pathfinding, quest/spawn rewards, village interiors, DungeonGen instances and save migration remain future tickets. Personally inspect SVGs at normal and full resolution before accepting the artwork.
