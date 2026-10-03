@@ -197,6 +197,9 @@ func _draw() -> void:
    var p: PackedVector2Array = _poly(f.get("source_polygon",[]))
    if p.size() >= 3:
     draw_colored_polygon(p,Color("#8eabb8"))
+ if show_inferred:
+  _draw_fine_field()
+ if show_original:
   for line in source.get("routes", []):
    for part in line.get("segments", []):
     var p: PackedVector2Array = _poly(part.get("local_points",[]))
@@ -214,7 +217,6 @@ func _draw() -> void:
     if p.size() >= 2:
      _dashes(p[0],p[1],Color("#276b95"),2.0)
  if show_inferred:
-  _draw_fine_field()
   for tree in model.get("inferred_fine_detail",{}).get("trees",[]):
    var pos: Vector2 = Vector2(float(tree.get("x",0)),float(tree.get("y",0)))
    draw_circle(pos,5,Color("#40644b"))
