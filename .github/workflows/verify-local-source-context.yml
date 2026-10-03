@@ -4,6 +4,9 @@ on:
     paths:
       - "tools/regiongen/local-source-context.mjs"
       - "tools/regiongen/contextual-sites-v2.mjs"
+      - "tools/regiongen/inferred-fine-terrain.mjs"
+      - "tools/regiongen/render-inferred-fine.mjs"
+      - "docs/implementation/GAME-53*"
       - "tools/regiongen/route-consistency.mjs"
       - "tools/regiongen/generate-contextual-region.mjs"
       - "tools/regiongen/generate-contextual-examples.mjs"
