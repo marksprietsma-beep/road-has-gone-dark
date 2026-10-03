@@ -68,6 +68,7 @@ assert(!svg.includes("FAKE_ROAD"));
 assert(svg.includes("Town Forge vegetation only"));
 assert(!svg.includes("30 km"));
 let examples=0,treeCount=0;
+const counts=[];
 for(const [stem,kinds] of [["game-11-determinism",["shore","river","highland"]],
  ["atlas-showcase",["shore","river","highland"]]]){
  const bytes=await readFile("tests/worldgen/fixtures/"+stem+".json");
@@ -87,9 +88,12 @@ for(const [stem,kinds] of [["game-11-determinism",["shore","river","highland"]],
   const words=await readFile("tools/regiongen/.tmp/constrained-"+stem+"-"+kind+".svg","utf8");
   assert(words.startsWith("<svg")&&words.includes("source-burg"),"Rendered scene missing source burg "+kind);
   treeCount+=region.landscape.trees.length;
+  counts.push(region.landscape.trees.length);
+  assert(region.landscape.trees.length<220,"Uniform cap has obscured terrain variation");
   examples++;
  }
 }
 assert.equal(examples,6);
 assert(treeCount>0,"No Town Forge vegetation survived source land constraints");
+assert(new Set(counts).size>1,"Every world has the same artificial forest density");
 console.log("PASS: GAME-47 dry land, lake/water exclusion, source routes and burgs, filtering and determinism, "+examples+" real constrained maps, "+treeCount+" decorative trees");
