@@ -56,7 +56,7 @@ const svg=['<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" vi
  '<text x="40" y="39" font-size="22" font-family="Georgia">Azgaar shared geometry — GAME-39</text>',
  renderOne(first,40),renderOne(second,540),
  '<text x="40" y="592" font-family="Georgia" font-size="14" fill="#463b2c">Brown: original roads | Blue: approximate rivers | Dark cyan: source shorelines | Red: actual burgs</text>',
- '<text x="40" y="619" font-family="Georgia" font-size="13" fill="#744c34">NOT calibrated to km. Azgaar shorelines ${geographySidecar ? 'exact from vertex sidecar' : 'not supplied'}; Town Forge terrain is unaligned.</text>',
+ '<text x="40" y="619" font-family="Georgia" font-size="13" fill="#744c34">NOT calibrated to km. Azgaar shorelines '+(geographySidecar?"exact from vertex sidecar":"not supplied")+'; Town Forge terrain is unaligned.</text>',
  '</svg>'].join("\n");
 const dest=resolve(output),visual=resolve(get("--svg")||output.replace(/\.json$/i,".svg"));
 if(dest===visual||dest===resolve(input)||visual===resolve(input)|| (geometryPath&&[dest,visual].includes(resolve(geometryPath))))throw Error("Output aliases immutable source");
