@@ -1,0 +1,36 @@
+name: Verify source world-space constraints
+on:
+  pull_request:
+    paths:
+      - "tools/regiongen/world-space.mjs"
+      - "tests/regiongen/verify-world-space.mjs"
+      - "docs/implementation/GAME-39-*"
+      - ".github/workflows/verify-world-space.yml"
+  workflow_dispatch:
+
+jobs:
+  world-space:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Validate source-only projection and two real-world crossing examples
+        run: |
+          set -euo pipefail
+          node tests/regiongen/verify-world-space.mjs | tee /tmp/game39.log
+          grep -q "PASS: GAME-39" /tmp/game39.log
+      - name: Upload two-tile visual constraints proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-39-source-two-tile
+          path: |
+            tools/regiongen/.tmp/game-39-source-two-tile.svg
+            tools/regiongen/.tmp/game-39-source-proof.json
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - name: Verify immutable providers and fixtures unchanged
+        run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
