@@ -130,7 +130,11 @@ export function composeLocalRegion(world,context,townForge) {
     type:"highland_illustration",provenance:"town_forge_shape_nearest_azgaar_cell_height"});
   }
  }
- const trees=treeCandidates.slice(0,220),ridges=hills.slice(0,55);
+ // Use deterministic *spatial thinning*, not the first N scanned points:
+ // a hard cap unfairly filled the top-left first and made every world 220 trees.
+ const trees=treeCandidates.filter(t=>seedFraction(seed,t.x,t.y,7)<0.25)
+   .sort((a,b)=>a.y-b.y||a.x-b.x).slice(0,140);
+ const ridges=hills.slice(0,55);
  // We never expose "townForge.geometry.roads"/water: this is not a road network.
  const digest=createHash("sha256").update(context.id+"|"+townForge.id+"|v1").digest("hex");
  return {schema_version:1,id:"constrained-decorative:v1:"+digest,
