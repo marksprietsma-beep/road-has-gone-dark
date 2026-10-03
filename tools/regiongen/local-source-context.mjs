@@ -9,6 +9,7 @@
 import {createHash} from "node:crypto";
 import {checkGeographySidecar} from "../worldgen/geography-sidecar.mjs";
 import {clipSegment,clipPolygon} from "./source-projection.mjs";
+import {referenceNeighbourhoodBounds,REFERENCE_VERSION} from "./reference-scale.mjs";
 export const LOCAL_CONTEXT_VERSION=1;
 export const LOCAL_SPAN_SOURCE_UNITS=16;
 export const LOCAL_DISPLAY_UNITS=1000;
@@ -60,7 +61,12 @@ export function buildLocalContext(world,homeId,fingerprint,sidecar,span=LOCAL_SP
  const matches=world.settlements.filter(b=>b?.i===homeId);
  if(matches.length!==1 ||matches[0].hidden||matches[0].removed ||
     !finite(matches[0].x)||!finite(matches[0].y))throw Error("Missing/hidden source home burg");
- const home=matches[0],bounds=sourceRect(world,[home.x,home.y],span);
+ const home=matches[0];
+ const reference=typeof span==="object"&&span!==null?span:null;
+ if(reference && (reference.schema_version!==REFERENCE_VERSION||
+    reference.certainty!=="ASSUMED_WORLD_RADIUS_NOT_GAME_CANON"||
+    !reference.bounds))throw Error("Unverified physical projection reference");
+ const bounds=reference?reference.bounds:sourceRect(world,[home.x,home.y],span);
  const validBurg=b=>b&&Number.isSafeInteger(b.i)&&b.i>0&&
     !b.hidden&&!b.removed&&finite(b.x)&&finite(b.y);
  const originalBurgs=world.settlements.filter(validBurg)
@@ -113,13 +119,23 @@ export function buildLocalContext(world,homeId,fingerprint,sidecar,span=LOCAL_SP
   }
  }
  features.sort((a,b)=>a.source_id-b.source_id);
- const sourceHash=createHash("sha256").update(JSON.stringify([fingerprint,homeId,bounds,LOCAL_CONTEXT_VERSION])).digest("hex");
+ const version=reference?REFERENCE_VERSION:LOCAL_CONTEXT_VERSION;
+ const sourceHash=createHash("sha256").update(JSON.stringify([fingerprint,homeId,bounds,version,
+     ...(reference?[reference.hypothetical_square_km,reference.reference_radius_km]:[])])).digest("hex");
  return {
   schema_version:1,
-  id:"local-source:v1:"+sourceHash,
+  id:"local-source:v"+version+":"+sourceHash,
   parent_source_world_sha256:fingerprint,
   source_home_burg_id:homeId,
-  space:{kind:"source_neighbourhood_window",version:LOCAL_CONTEXT_VERSION,
+  space:reference?{
+    kind:"hypothetical_globe_reference_window",version:REFERENCE_VERSION,
+    original_map_units:reference.source_window_units,
+    display_units:LOCAL_DISPLAY_UNITS,physical_km:"ASSUMED_NOT_CANON",
+    angular_reference:reference,
+    global_tile_compatibility:"distinct_from_64_unit_macro_source_tiles",
+    source_bounds:bounds,home_local:toLocalPoint([home.x,home.y],bounds)
+   }:{
+    kind:"source_neighbourhood_window",version:LOCAL_CONTEXT_VERSION,
     original_map_units:span,display_units:LOCAL_DISPLAY_UNITS,
     physical_km:"UNCALIBRATED",global_tile_compatibility:"distinct_from_64_unit_macro_source_tiles",
     source_bounds:bounds,home_local:toLocalPoint([home.x,home.y],bounds)},
@@ -131,4 +147,29 @@ export function buildLocalContext(world,homeId,fingerprint,sidecar,span=LOCAL_SP
   source_features:features,
   generated_sites:[] // GAME-40 site migration is explicitly out of scope
  };
+}
+
+/** Opt-in hypothesis ONLY: requires the caller to choose an assumed globe
+ * radius in kilometres. Does not replace the existing v1 region or saves. */
+export function buildReferenceLocalContext(world,homeId,fingerprint,sidecar,spanKm,assumedRadiusKm){
+ const matches=world?.settlements?.filter(b=>b?.i===homeId)||[];
+ if(matches.length!==1 ||matches[0]?.hidden||matches[0]?.removed ||
+    !finite(matches[0]?.x)||!finite(matches[0]?.y))
+  throw Error("Invalid source home for reference neighbourhood");
+ const reference=referenceNeighbourhoodBounds(world,[matches[0].x,matches[0].y],
+    spanKm,assumedRadiusKm);
+ const result=buildLocalContext(world,homeId,fingerprint,sidecar,reference);
+ // This is a crop from a *macro* polygon/route dataset. At 30 hypothetical
+ // kilometres a window often covers fewer than four Azgaar cell centres:
+ // never misrepresent it as detailed, walkable or high-resolution geography.
+ const bounds=reference.bounds;
+ const cellsInWindow=(world.cells?.points||[]).filter(p=>validPointForWindow(p,bounds)).length;
+ result.space.source_cell_centres_in_window=cellsInWindow;
+ result.constraints.local_resolution=cellsInWindow<4?
+    "COARSE_MACRO_GEOGRAPHY_NO_WALKABLE_MICRO_DETAIL":"SOURCE_CELL_SAMPLES_ONLY";
+ return result;
+}
+function validPointForWindow(p,b){
+ return Array.isArray(p)&&p.length>=2&&finite(p[0])&&finite(p[1])&&
+    p[0]>=b.left&&p[0]<=b.right&&p[1]>=b.top&&p[1]<=b.bottom;
 }
