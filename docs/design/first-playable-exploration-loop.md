@@ -1,6 +1,6 @@
 # GAME-17 — First playable world exploration loop
 
-**Status:** Partial design acceptance: A (party perspective) confirmed, B (world → region/allegiance → vulnerable hometown) chosen in principle, D (three initial adventurers) preferred, and assignment limits/guild progression agreed in principle. C (encounter mechanics) still unresolved. **Not** an implementation directive.  
+**Status:** Direction accepted in principle: party-led role (A), region-first vulnerable hometown (B), **grid-based manual tactical combat + strong auto-resolve (C)**, three initial adventurers and future deeply extensible class/prestige progression (D). Exact base ruleset, combat action economy, skill/progression scope and first-slice content remain **open decisions**. This is a design document, not an implementation directive.  
 **Date:** 2 October 2026  
 **Dependencies:** GAME-11/12 generation and viewer, GAME-28/30/31 atlas artwork and GAME-22 inspector are complete. GAME-7/8/9/10, GAME-19/20/21 and GAME-29 are not complete.
 
@@ -18,7 +18,7 @@ The core promise: **safe haven → choose a reason to travel → take a road or 
 2. **Choose or create starting party:** **three starting adventurers** (initial preferred count, not a permanent party-size cap), directly customisable in race/class and identity. The first slice may use prefilled templates for faster testing but the model must permit freedom of customisation and later recruitment. No mandatory childhood-friends origin until Mark chooses a story start.
 3. **Start in a vulnerable hometown:** the selected **small** hamlet/village is usually too small to host an established guild. Its survival depends on a local militia, defensible roads, a fortified neighbour, external patrons or nearby guild patrols. Show a truthful indication of local protection, roads and nearby threats, and one modest incident/job (e.g., investigate missing patrol supplies), with minimum/maximum adventurer slots. The region is the principal choice; no forced long-term loyalty to the hometown and no invented guild NPCs before GAME-29.
 4. **Choose a destination and route:** display travel **time**, supplies consumption and indicative **danger**. Following patrolled roads is typically longer but less dangerous than cutting across wilderness; never treat roads as perfectly safe or the wild as impassable.
-5. **Travel by advancing world time:** move the party along the selected route, spend rations/time, evaluate one encounter or local discovery. First version uses a concise event with 2–3 outcomes/choices (avoid, negotiate, fight/retreat), **not** a tactical combat system.
+5. **Travel by advancing world time:** move the party along the chosen route and consume supplies/time. Encounters offer retreat, negotiation or battle where appropriate. **Battle means a small grid-based tactical encounter** playable manually or resolved automatically by AI controllers **using the exact same rules engine, RNG and resources**. First vertical slice must prove one limited combat case without requiring the full ability library.
 6. **Arrive and inspect:** record visited site, outcome, clues and rewards/injuries. A site that was only rumoured becomes discovered when justified; do not reveal every objective marker simply because the world JSON contains it.
 7. **Return or continue:** report the job in town and update money, supplies, wounded party members, reputation, discovery journal and permanent location status.
 8. **Save / reload and revisit:** the same party and NPC/contract/site identities, outcome and discovered clues survive. No silent reroll on re-entering the town or clicking a place.
@@ -90,6 +90,67 @@ Store `min_party_size`, `max_party_size`, `recommended_size` (optional), `requir
 
 `participants` and `assignments` are per-save mutable state; the generated site's canonical identity and layout are not. Never reselect random job capacity on revisiting a known contract, and account for casualties, recruits, resignations and hired contractors persistently.
 
+## 2C. Tactical battles with shared manual / auto-resolve engine (chosen direction)
+
+### Feasibility and principle
+
+A classic **FF Tactics-like square grid**, initially drawn in Godot 2D (with future isometric visual projection if desired), is achievable in incremental slices. The expensive part is *not* drawing tiles: it is consistent rules, spell/ability interactions, performance, AI choices and the long-tail of class features. We should **never** maintain separate "manual damage" and opaque "auto combat odds" engines: that would systematically misrepresent specialised builds and make the extensive progression game meaningless.
+
+Use the following architecture, implemented **outside the debug world fixture viewer**:
+
+| Layer | Responsibility | Manual / automatic distinction |
+| --- | --- | --- |
+| **Rules/content data** | Abilities, skill/feat/class progression, save/DC/attack checks, resistances, statuses, resources, costs and legal actions | Identical for all controllers |
+| **Combat state & simulator** | Immutable inputs + mutable battle state: participants, teams, initiative/order, position/facing, occupancy, terrain modifiers, turn/tick, conditions, active resources, RNG state and action/event history | **One authoritative deterministic simulator** |
+| **Command validator** | Legal movement, range, LOS, adjacency/AOE, prerequisites, action economy, resource costs and targeting; rejects invalid AI or user commands the same way | Shared |
+| **Manual controller** | Converts clicked grid choices and character actions into validated commands; UI is a projection of state | Human decisions |
+| **Automatic tactical policy** | Reads identical public battle state and *per-character tactics*: goals, positioning, targets, danger, heals, retreat, spell/resources, teamwork; chooses commands | AI decisions |
+| **Battle presentation** | Highlights, movement/sprites/effects/animations, event log, previews, fast-forward / instant end, results | Manual displays actions; auto can replay or calculate rapidly headlessly |
+
+Both routes run **exactly the same transition** for a command, damage roll and condition trigger. Fixed initial seed + state + policy version + ordered commands reproduces results; user manual decisions may legitimately lead to different outcomes from AI decisions. Save battle result and durable campaign consequences once; reloading should not reroll resolved encounters. Auto must **not** silently use extra resources, ignore prerequisites or make hidden information available to AI.
+
+### Auto-resolve must be a real feature, not a placeholder formula
+
+- **Initial policy:** predictable utility/tactical heuristics for attack target, safe movement, heal/defend, debuff/control, retreat, AoE avoidance, protecting vulnerable party members and conserving limited daily powers.
+- **Player control:** per-adventurer configurable stance/tactics such as aggressive, conservative, support, ranged, protect ally, use consumables only if emergency, hold an expensive spell, retreat below health threshold. Later guild contracts can run autonomous squads with instructions and the same battle engine.
+- **Trust:** preview qualitative tactical risk and likely resource costs where evidence supports it, but don't claim numerical odds without calibrated simulation. Show battle log, roll highlights, injuries, spell use, XP/rewards, casualties and a replay/debug seed so a bad auto result is understandable.
+- **Quality:** replay the same seeded encounter with saved policy settings and compare headless/visible results; verify win/loss invariants, legal action count and resources. Benchmark many seeds and AI policies and examine tactical *regrets*, illegal actions, retreats, healing priorities and specialist class skill usage. More AI strength comes later; simulation quality is an iterative subsystem.
+- **Simulation speed:** fast-forward by skipping animation and rendering only on changes; no per-frame Godot nodes for each simulated turn. Thousands of test battles should run headlessly and produce aggregate *test data*, not become player-facing probabilities by default.
+
+### First combat vertical slice (scope lock proposal)
+
+**Three player units vs two or three enemies**, a small **square-grid 2D** field, obstacles and terrain cover, turn-based initiative/order, movement, melee/ranged attack, one class ability, one condition, one healing or defensive power, limited resources, victory/defeat/retreat, battle summary and **manual/auto switch**. Move to isometric presentation or fancy animations only after validation. This first test is a proof of the simulation and controllers, **not** a complete Pathfinder implementation.
+
+Start with enough class/ability **diversity** to challenge the model (e.g. martial, stealth/mobile and spell/control roles), plus a test feature with an unusual trigger. Test that an AI party's resources, status effects and positioning are never bypassed by automatic results.
+
+### D&D 3.5 / Pathfinder 1e systems and long-term class depth
+
+**Target:** a deep, expandable d20-like character-building ruleset inspired by **D&D 3.5's supplement-rich prestige class ecosystem and/or Pathfinder 1e's classes and archetypes**. These two systems are related but not identical: their skills, combat manoeuvres, feat trees, spell details, stacking rules and action economies differ. **Select one canonical baseline first**, then add explicitly labelled compatibility packs/adaptations. Don't silently intermingle both tables or let the same ability name mean contradictory mechanics.
+
+**Character identity and progression** should preserve:
+- Race/heritage, chosen background, ability scores/modifiers, alignment or ethos as a system if selected, saving throws, BAB/attack progressions, AC/defences, initiative, hit dice, movement, resistances.
+- **Full multiclass level history**, base/prestige class entry prerequisites, class features by level, spellcasting progression, caster level, spell slots/preparation/spontaneous casting, domains/schools, familiar/companion, resources per rest/turn and equipment feats where applicable.
+- Skills/ranks, cross-class or class skills *according to the chosen version*, feats/bonus feats/feat chains, proficiencies, class-specific feats and exceptional feature interactions.
+- Class identity beyond bonuses: distinct ability triggers, optional choices, conditional conversions, auras, reactions, tactical roles, situational drawbacks and narrative/guild/quest hooks that make prestige paths worth pursuing.
+- Stable data IDs/content versions; a saved class progression cannot change just because an icon, name, text or mod pack was edited. Requirements are evaluated by rules, not GUI strings.
+
+**Content-first system architecture (the long-term extensibility hinge):**
+- Class, prestige class, race, feature, feat, spell, item and condition definitions live in **versioned data packs** (JSON/Godot Resources) with stable IDs, tags and shared effect primitives.
+- A **declarative requirement/effect model** describes common mechanics (ability/skill/BAB prerequisites, caster spell level, trained skills, faction memberships, on-hit effect, conditional bonuses, resources, status application, triggers and target selection). Standard stacking policies are explicit.
+- **Event/trigger hooks** (on turn start/end, on attack roll, on hit/critical, on spell cast, movement/enter tile, reaction/interrupt, damage taken, death, rest) and scoped scripts/components implement *genuinely* novel prestige mechanics. Exceptional features must be deterministic, testable, sandboxed and not magical ad-hoc branches in a single combat class.
+- A class can grant abilities of already-defined kinds, yet still use unique combinations; share implementation where mechanics overlap without losing flavour. Later data packs can introduce new mechanics through a vetted API rather than schema rewrites.
+- Validation tool imports and checks content IDs, circular prerequisites, spell references, invalid advancement tables, bonus stacking, missing text/art, tier-level availability and regression examples **before** classes become selectable/recruitable.
+- NPC/world/guild candidate generation chooses *valid* multiclass/prestige paths deterministically with coherent equipment/roles; it cannot simply sample an advanced prestige class without satisfying entry prerequisites.
+- UI requires build planner/level-up, prerequisite explanation (including why locked), class discovery, skills/feats/spells management, equipment and a combat build summary. Keep the playable v1 thin; don't ship hundreds of options in an unusable interface.
+
+**Content scope:** do not promise verbatim imports of every 3.5 supplement early. Build 2–3 representative classes and at least one prestige-like progression example with a truly distinct triggered mechanic, then expand into dozens/hundreds through independently versioned content packs after the core rules engine is reliable. The architecture should support arbitrary packs without forcing rewrites, but **each rule needs validation**; a very broad but shallow catalogue is not equivalent to the deep 3.5 fantasy Mark wants.
+
+**Copyright / provenance boundary:** underlying generic game mechanics and our own implementation can be modelled without reproducing protected setting text or artwork. Many 3.5 supplements contain material **outside** open SRD/licensed content. A personal-use goal does not establish rights to commit wholesale book text, art or source PDFs into a potentially shared GitHub repository. Track source/edition/licence per content pack; begin from authorised SRD/open material or original paraphrase mechanics. Build internal migration/name aliasing so future original terminology and art can be substituted without breaking saves.
+
+### Dependencies and deliverables
+
+Design GAME-17 sets the **policy and data contracts**, not a multi-year exhaustive class feature list. After the world adapter (GAME-7), independently deliver: (1) rules/character engine and advancement, (2) pure deterministic combat core + replay/tests, (3) tactical grid and player controller, (4) auto-controller and headless evaluation, (5) content-pack import/validation and sustained class expansion. Each of those should be a scoped ticket, with the first shared-engine battle blocking a claim of a playable combat vertical slice. Persist world entities separately from rules pack mechanics.
+
 ## 3. Interaction / user-facing screens
 
 The current `world_fixture_viewer.tscn` is **developer-only QA**, and must not be repurposed as the shipped New Game/map UI. Build distinct game presentation from reused renderer/data components.
@@ -99,7 +160,9 @@ The current `world_fixture_viewer.tscn` is **developer-only QA**, and must not b
 | New Game | random seed and reroll, explicit seed, existing-world browser; state/province/region preview and eligible vulnerable hometown; three-character setup | full origin events, world-library sharing, advanced faction relationships, rich full classes/races/portraits |
 | Strategic world | discovered geography, known towns/roads/major sites, select destination | omniscient political/marker display, dense debug panels |
 | Settlement | name, defences/road context, job offer, rest, supplies | Settlemaker interiors, full commerce, complete NPC roster |
-| Travel | route choice, ETA, risk, time progress, 1 event choice | tactical navigation, fully animated units |
+| Travel | route choice, ETA, risk, time progress and combat/event transition | travelling unit animation, fully animated world traversal |
+| Combat | basic deterministic square-grid battle, manual orders or auto-resolve from the same simulation; readable outcomes and costs | advanced 3D elevation, all special action types, full spell catalogue, sophisticated enemy squads |
+| Character | initial three recruits with attributes, class progression and one working cross-class ability/prerequisite example | hundreds of prestige classes, complete spell lists, comprehensive feat/item/class content catalogue |
 | Site / journal | investigate or interact, discoveries and persistent status | full DungeonGen interiors, quests for all 36 marker types |
 | Save/load | party+knowledge+visited/outcomes preserved | dynamic simulated world economy |
 
@@ -109,7 +172,7 @@ UI must focus on **the current choice and its consequences**, with the map artwo
 
 - `world_ref`: immutable world seed, generation version/recipe, world template identity/fingerprint, and stable source IDs for cell, state, province, burg, macro POI; no world identity derived only from editable names. Several independent game saves may reference the same generated world template, each with its own mutable changes. A new random-preview seed must not overwrite either saved world templates or game saves.
 - `origin`: chosen state/province or future political faction affiliation, starting burg ID and optional home relationships. State/culture/province is what Azgaar currently provides; **do not equate those automatically with future guild factions** until GAME-10. A random start still resolves to stable IDs and stores the exact committed choice.
-- `roster`: all persistently recruited adventurers with unique character IDs, class/race roles, health/conditions, availability, membership and current assignment. Recruiting a member must not force them into every expedition; retain who is resting, travelling, hired elsewhere or stationed at a hub.
+- `roster`: all persistently recruited adventurers with unique character IDs, race/background, ability scores, skill ranks, class-level history, feat selections, equipment, class resources, spellbook/preparation (where applicable), health/conditions, availability, guild membership and assignment. Prestige levels and exceptional abilities do not replace earlier classes; **multiclass progressions are first-class save data** and must reconstruct deterministically from pinned rules/content versions. Recruiting a member must not force them into every expedition.
 - `party` / `expedition`: selected **subset** of the roster, distinct from the full roster and later guild membership. Participant count must obey `minimum_slots <= selected_count <= maximum_slots` for a job/POI-specific activity, with independently validated role requirements and situational constraints. No single cap should hard-code roster/guild capacity.
 - `game_clock`: deterministic world time and events processed once, not reset on opening UI; carefully defined travel units.
 - `knowledge`: separate **objective** world POIs from rumoured/discovered/visited/cleared player knowledge. No renderer access that directly reveals un-discovered sites.
@@ -122,7 +185,7 @@ UI must focus on **the current choice and its consequences**, with the map artwo
 
 ## 5. Risks and guardrails
 
-- **Scope inflation:** don't implement full combat, settlements/guilds, economy, party character creator and hidden-site simulation together. Ship a real traversable quest loop before adding detail.
+- **Scope inflation:** the eventual rule/content library may be extremely extensive, but a first playable loop only needs a narrow tactical proof with manual + auto. Do not block first gameplay on hundreds of classes/spells, a complete guild economy, local-region generator or final character-creator UI. Design the contracts extensibly now and populate catalogue in independently tested batches.
 - **Travel authority:** don't equate visual SVG road/rivers with canonical route traversability; use known Azgaar graph/metadata only when verified. Avoid invented exact geographical distances in the MVP.
 - **Reveal control:** GAME-22 debug click inspection is a test facility, **not** permission for the player to click any unknown site.
 - **Determinism:** encounter outcomes must depend on world seed + stable encounter ID + time/visit sequence, then be committed to save state. Reload must not permit rerolling a resolved event by accident.
@@ -150,11 +213,10 @@ Directly command and customise an adventuring party; begin with three members (p
 **B. Opening — DIRECTION CONFIRMED**  
 Choose (i) a random rerollable seed, manual seed, or existing generated world; (ii) a preferred region/state/province/political affiliation where supported; and (iii) a **small vulnerable home village/hamlet** in that region, preferably near stronger protection. The **region** is the main geographic choice, not exact town optimisation. Hometown loyalty is emergent, never mandatory. Inciting incidents may vary by local conditions; no universal forced catastrophe. Remaining details—exact protection-distance rules, number of candidates, and how existing-world browsing works—are design parameters, not final thresholds.
 
-**C. First encounters**  
-- **C1 (proposed):** narrative choices and lightweight deterministic outcomes, tactical combat as a later standalone system.  
-- **C2:** begin with full tactical combat (high early cost).
+**C. Combat direction — CONFIRMED IN PRINCIPLE**  
+Mark wants **grid-based Final Fantasy Tactics-style battles** with **manual control or powerful auto-resolve**, not narrative-only conflict. Use a single deterministic battle simulation, with manual commands and AI policy as interchangeable controllers; do not create a fake auto-win-probability shortcut. Build a small, real battle first, then scale ability and class breadth. Exact D&D 3.5 vs Pathfinder 1e baseline and timing/action/initiative/grid conventions remain to be decided.
 
 **D. Party and contract capacity — AGREED IN PRINCIPLE**  
 Initial travelling party of **three**, individually customisable; later recruit a larger roster. **Per-job and per-POI hard participation limits**, independent of roster size, rather than sending everyone to every activity. Exact limits are balancing parameters, not final gameplay rules. A normal travelling formation of up to ~six adventurers is a **working proposal**, not an approved universal limit; exceptional defences/multisquad operations may be larger. Small-team restrictions may reflect space, concealment, escort capacity or logistics. See the assignment-capacity table below.
 
-**Acceptance for GAME-17 design:** A and the frontier-home opening direction B have been chosen; three initial adventurers and contract participation caps are agreed in principle. Mark still needs to choose **C** encounter/combat resolution and review the first 20-minute experience and exact eligibility rules. Only then mark the design Done and begin GAME-7 implementation.
+**Acceptance for GAME-17 design:** A (party perspective), B (frontier-home world selection), C (manual grid tactical + shared-engine auto) and initial three character direction are chosen. Before marking design Done, agree the **primary ruleset baseline** (D&D 3.5 or Pathfinder 1e), minimal combat action economy/level progression, and first small test battle and traversal sequence. Then GAME-7 GameWorld contracts and the new scoped combat/character engine issues can proceed.
