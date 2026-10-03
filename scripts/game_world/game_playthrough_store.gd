@@ -143,6 +143,10 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 	var bid := int(origin.get("home_burg_id", -1))
 	if not world.validate_origin(sid, bid):
 		return "Origin does not correspond to an eligible source hometown"
+	var home_cell := int(world.get_record("burg", bid).get("cell", -1))
+	var actual_province := int(world.get_record("cell", home_cell).get("province", -1))
+	if int(origin.get("province_id", -1)) != actual_province:
+		return "Origin province does not match the canonical hometown cell"
 	if str(origin.get("home_id", "")) != world.entity_id("burg", bid):
 		return "Source hometown stable ID mismatch"
 	var party: Array = state.get("party_ids", [])
