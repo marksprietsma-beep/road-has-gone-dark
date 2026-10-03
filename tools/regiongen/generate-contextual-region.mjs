@@ -11,7 +11,8 @@ const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
 const source=get("--world"),input=get("--constrained"),output=get("--output");
 if(!source||!input||!output)throw Error("Usage: --world <canonical.json> --constrained <GAME-47.json> --output <GAME-44.json>");
 const svg=get("--svg") || output.replace(/\.json$/i,".svg");
-const names=await Promise.all([source,input,output,svg].map(x=>realpath(resolve(x)).catch(()=>resolve(x))));
+const auditSvg=get("--audit-svg");
+const names=await Promise.all([source,input,output,svg,...(auditSvg?[auditSvg]:[])].map(x=>realpath(resolve(x)).catch(()=>resolve(x))));
 if(new Set(names).size!==names.length)throw Error("Source, constrained, JSON and SVG must differ");
 const bytes=await readFile(resolve(source)),world=JSON.parse(bytes);
 const composite=JSON.parse(await readFile(resolve(input),"utf8"));
@@ -39,12 +40,19 @@ for(const issue of layer.route_consistency.conflicts){
 }
 const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,serif" font-size="12">Route/coast conflicts: '+
  layer.route_consistency.conflicts.length+' · red dashed = uncertain</text>';
-const image=renderConstrainedRegion(composite).replace("</svg>",
- warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>");
+// Normal exploration preview has *no* red diagnostic conflict strokes.
+ // Keep conflicts as original source-backed JSON evidence. Only an explicitly
+ // separate developer SVG displays them, never a default player-facing view.
+const base=renderConstrainedRegion(composite);
+const image=base.replace("</svg>",fragments.join("\n")+"\n"+text+"\n</svg>");
+const auditImage=auditSvg?base.replace("</svg>",
+ warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>"):null;
 await mkdir(dirname(resolve(output)),{recursive:true});
 await mkdir(dirname(resolve(svg)),{recursive:true});
+if(auditSvg)await mkdir(dirname(resolve(auditSvg)),{recursive:true});
 await writeFile(resolve(output),JSON.stringify(combined,null,2)+"\n");
 await writeFile(resolve(svg),image);
+if(auditSvg)await writeFile(resolve(auditSvg),auditImage);
 console.log("PASS: GAME-44 v2 sites "+layer.sites.length+
  " generated/context source, "+preview.visible.length+" known, "+
  preview.rumours.length+" non-positional rumours; prior v1 site records untouched");
