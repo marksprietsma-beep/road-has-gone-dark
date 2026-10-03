@@ -39,3 +39,12 @@ The \`Verify populated local region\` GitHub Actions workflow uploads \`game-40-
 ### Constraints and limitations
 
 These are **first-pass** representative game-generated site types, not fully scripted quests or true wilderness ecology. Their terrain classification uses current Town Forge/authoritative Azgaar context; exact macro-location distribution requires GAME-39. Maps share the 1000-unit Town Forge conceptual square, not a calibrated 30-km-world projection. Further art iterations may draw on the approved Game-icons visual taxonomy, but should preserve POI IDs and knowledge filtering. Detailed named dungeon maps and settlement layouts have intentionally not been generated.
+
+## GAME-42 visual pass (direct GitHub recovery)
+
+GAME-42 replaces diagnostic site dots/black rectangles with identifiable parchment-and-ink site glyphs in both Node SVG and Godot F6. Site coordinates, terrain generation, provenance, stable IDs and per-playthrough knowledge semantics are **unchanged**. These are provisional conceptual regional maps, not a seamlessly world-projected set of tiles (GAME-39 remains outstanding).
+
+- `assets/map/region-site-icons.json` is a **shared decorative symbol registry**, versioned separately from the world model. Both `tools/regiongen/site-icons.mjs` and `scripts/debug/populated_region_preview.gd` read this registry. To replace/expand the artwork, edit the icon registry or presentation code, **never** the canonical site types, IDs, save data or pinned upstream generators.
+- 11 distinguishable silhouettes represent towns, farms, inns, watchtowers, shrines, ruins, caves, abandoned camps, standing stones, dangerous woods and mines. Unseen sites are still filtered out of normal SVG/Godot display; H reveals them only in developer mode.
+- At normal map scale, only the hometown and a few important locations receive labels. Remaining places are identifiable by symbols and the click-to-inspect sidebar. Text labels use a simple overlap/boundary test and restrained parchment background. Forest terrain now receives an illustrated evergreen pattern rather than flat colour alone.
+- Keep the existing exact PowerShell instructions and `scenes/debug/populated_region_preview.tscn` F6 testing procedure above. Run the full generated-world Node suite and Godot 4.7.2 CI and review the six SVGs uploaded to the populated-region workflow. These are a human visual checkpoint, **not** an acceptance claim or production art approval.
