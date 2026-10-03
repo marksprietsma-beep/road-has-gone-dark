@@ -35,3 +35,17 @@ Expected test output begins with `PASS: GAME-39`. Open `tools/regiongen/.tmp/sou
 1. Audit and source-export the underlying packed vertex-world coordinates or approved derived geometry sidecar for **actual shoreline**/lake/ocean extents and rivers, with source version and immutable fixture checks.
 2. Replace GAME-21's parent-cell-seeded conceptual `x/y` tile identity by a **separately versioned, shared source tile selector** that all burg entries use; do not rewrite old generated saves. Use this shared constraint layer to place source burg markers, paths and crossings.
 3. Adapt Town Forge's local terrain **behind our own renderer/provider interface** to agreed source crossings (and document provider limitations). Only then anchor GAME-40 farms/inns/ruins in coherent relative positions and inspect visually.
+
+
+## Second slice: true coastline and lake boundaries (3 October 2026)
+
+The original `world.map.geography[*].vertices` records include indices into the pinned Azgaar `pack.vertices.p` table, which had been excluded from the canonical fixture. Unlike the former directional `water_side` hint, these positions reconstruct exact original coast and inland lake polygon boundaries. Rather than modifying stable fixtures or the upstream vendor, `generate-azgaar.mjs --geometry-output <path>` now exports a **separate versioned, SHA-256-fingerprinted source geometry sidecar** containing only the missing coordinate table. This is opt-in; ordinary world export output bytes and relief remain unchanged.
+
+- Validation rejects a sidecar from the wrong canonical world, seed, provider version, upstream commit, map dimensions, corrupt vertices or invalid indexed features.
+- `buildTileConstraints(world,x,y,sha,sidecar)` now clips the exact feature polygons and boundary segments into the **same global tile frame** used by Azgaar roads. It attaches `source_shoreline.polygons`, `segments` and canonical `crossings` and labels original island/continent boundaries separately from freshwater lake shores. `sideShorelineCrossings` checks E/W and N/S symmetry.
+- The source diagnostic CLI can take `--geography <sidecar.json>` and renders land polygons over the sea background and lake polygons in blue; coastlines use original source geometry rather than Town Forge's illustrative coastline.
+- The CI replays both pinned seeds to a temporary workspace, **compares regenerated canonical world bytes to existing immutable fixtures**, tests feature-sidecar fingerprints, and supplies both sidecar files and neighbouring-tile JSON/SVG diagrams as downloadable evidence.
+
+### Explicit remaining limitations
+
+The border lines/polygons are true **Azgaar source-feature geometry**, but rivers are still labelled **cell-chain approximations** because `river.cells` is not an exact meandered river polyline in the canonical records. Nothing here constrains Town Forge's internal shorelines, rivers, roads or ridge placement. Map scale remains uncalibrated; existing regions and saves are not migrated. The next slice is to incorporate these verified world constraints into the **rendering/provider adapter** while retaining Town Forge only as replaceable interior detail; then relocate GAME-40 locations based on true towns/routes and verified dry-land exclusion. Avoid hiding missing river mouths under decorative shoreline artwork.
