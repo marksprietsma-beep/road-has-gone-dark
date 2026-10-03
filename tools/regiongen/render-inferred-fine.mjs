@@ -78,10 +78,13 @@ export function renderInferredFineSvg(authority,fine){
   lines.push('<circle cx="'+t.local_position[0]+'" cy="'+t.local_position[1]+'" r="'+(t.source_burg_id===home?.source_burg_id?9:5)+'" fill="#9a5141" stroke="#f2e5bd" stroke-width="2"/>');
  }
  const homeName=escape(home?.name||"Unknown");
+ const scaleText=fine.reference_scale==="UNCALIBRATED"?
+  "Scale: original Azgaar source units; no kilometre calibration":
+  "30 km is an ASSUMED Earth-radius reference, not a canonical game distance";
  lines.push('<rect x="8" y="8" width="690" height="91" fill="#efe2c6" fill-opacity=".95" stroke="#74694e"/>',
   '<text x="22" y="35" font-family="Georgia,serif" font-size="21" fill="#292921">'+homeName+' — inferred local relief</text>',
   '<text x="22" y="58" font-family="Georgia,serif" font-size="13" fill="#4f4a3b">Azgaar macro towns/coasts/routes; forests and hills are inferred, not surveyed</text>',
-  '<text x="22" y="78" font-family="Georgia,serif" font-size="12" fill="#83573c">30 km is an ASSUMED Earth-radius reference, not a canonical game distance</text>',
+  '<text x="22" y="78" font-family="Georgia,serif" font-size="12" fill="#83573c">'+scaleText+'</text>',
   '<rect x="8" y="935" width="984" height="56" fill="#efe2c6" fill-opacity=".95" stroke="#74694e"/>',
   '<text x="19" y="958" font-family="Georgia,serif" font-size="14" fill="#473b2c">Source = coast/settlement/route | Approximate = river | Inferred = relief/woods</text>',
   '<text x="19" y="979" font-family="Georgia,serif" font-size="13" fill="#834734">Unknown: crossings, safe roads, walking barriers, precise coast and real mountain passes</text>',
