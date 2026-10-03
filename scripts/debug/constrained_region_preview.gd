@@ -148,6 +148,51 @@ func _dash(a: Vector2, b: Vector2, colour: Color, width: float, dash: float = 9.
 		draw_line(a + direction * step, a + direction * minf(step + dash, length), colour, width, true)
 		step += dash + gap
 
+# Display-only dry-land mask for original macro Azgaar roads/trails.
+# Source route coordinates still exist unchanged in the region JSON. A source
+# wet crossing is not evidence for a safe ford or bridge.
+func _source_point_is_dry(p: Vector2, features: Array) -> bool:
+	var land: bool = false
+	for value in features:
+		if not value is Dictionary:
+			continue
+		var feature: Dictionary = value
+		if str(feature.get("classification", "")) == "land_boundary":
+			var ring: PackedVector2Array = _poly(feature.get("local_polygon", []))
+			if ring.size() >= 3 and Geometry2D.is_point_in_polygon(p, ring):
+				land = true
+	if not land:
+		return false
+	for value in features:
+		if not value is Dictionary:
+			continue
+		var feature: Dictionary = value
+		if str(feature.get("classification", "")) == "freshwater_lake":
+			var lake: PackedVector2Array = _poly(feature.get("local_polygon", []))
+			if lake.size() >= 3 and Geometry2D.is_point_in_polygon(p, lake):
+				return false
+	return true
+
+func _draw_dry_source_route(points: PackedVector2Array, features: Array, route_class: String) -> void:
+	if points.size() < 2:
+		return
+	for i in range(points.size() - 1):
+		var a: Vector2 = points[i]
+		var b: Vector2 = points[i + 1]
+		var length: float = a.distance_to(b)
+		if length < 0.01:
+			continue
+		var parts: int = maxi(1, int(ceilf(length / 3.0)))
+		for k in range(parts):
+			var from_point: Vector2 = a.lerp(b, float(k) / parts)
+			var to_point: Vector2 = a.lerp(b, float(k + 1) / parts)
+			if not _source_point_is_dry((from_point + to_point) * 0.5, features):
+				continue
+			draw_line(from_point, to_point, Color("#5c503a"),
+				3.0 if route_class == "trail" else 5.0, true)
+			if route_class == "land_road":
+				draw_line(from_point, to_point, Color("#cbb98b"), 2.0, true)
+
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 1000, 1000), SEA)
 	if region.is_empty():
@@ -155,6 +200,19 @@ func _draw() -> void:
 	var ctx: Dictionary = region.get("source_context", {})
 	var terrain: Dictionary = region.get("landscape", {})
 	var features: Array = ctx.get("source_features", [])
+	# Render original Azgaar *sea* lanes beneath genuine source land/lake
+	# polygons, masking the parts which cross land at coarse source resolution.
+	# Original source route records are retained in the input for audit.
+	for route_value in ctx.get("source_routes", []):
+		if not route_value is Dictionary:
+			continue
+		var sea_route: Dictionary = route_value
+		if str(sea_route.get("classification", "")) != "sea_lane":
+			continue
+		for segment in sea_route.get("segments", []):
+			var sea_line: PackedVector2Array = _poly(segment.get("local_points", []))
+			if sea_line.size() >= 2:
+				_dash(sea_line[0], sea_line[1], Color("#4b8392"), 3.0)
 	# Land/ocean/lakes are from original Azgaar indexed source vertices.
 	for feature in features:
 		if not feature is Dictionary or str(feature.get("classification", "")) != "land_boundary":
@@ -199,12 +257,9 @@ func _draw() -> void:
 			var line: PackedVector2Array = _poly(segment.get("local_points", []))
 			if line.size() < 2:
 				continue
-			if cls == "sea_lane":
-				_dash(line[0], line[1], Color("#4b8392"), 3.0)
-			else:
-				draw_polyline(line, Color("#5c503a"), 3.0 if cls == "trail" else 5.0, true)
-				if cls == "land_road":
-					draw_polyline(line, Color("#cbb98b"), 2.0, true)
+			if cls != "land_road" and cls != "trail":
+				continue # Sea lanes handled separately; unknown is not a road
+			_draw_dry_source_route(line, features, cls)
 	var font: Font = ThemeDB.fallback_font
 	for item in ctx.get("source_burgs", []):
 		if not item is Dictionary:
