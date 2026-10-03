@@ -10,6 +10,9 @@ on:
       - "tools/regiongen/generate-unified-preview.mjs"
       - "tools/regiongen/generate-unified-examples.mjs"
       - "tests/regiongen/verify-unified-preview.mjs"
+      - "scripts/debug/unified_public_preview.gd"
+      - "scenes/debug/unified_public_preview.tscn"
+      - "tests/regiongen/smoke-unified-public.gd"
       - ".github/workflows/verify-unified-preview.yml"
       - "docs/implementation/GAME-54*"
   workflow_dispatch:
@@ -52,6 +55,22 @@ jobs:
               ET.parse(path)
           print('PASS: GAME-54 six XML-valid source-coherent map SVGs')
           PY
+      - name: Install Godot 4.7.2 for public-map smoke
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o /tmp/godot-unified.zip
+          unzip -q /tmp/godot-unified.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import and verify six filtered player-only Godot maps
+        run: |
+          set -euo pipefail
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import-unified.log
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-unified-public.gd 2>&1 | tee /tmp/smoke-unified.log
+          grep -q 'PASS: GAME-54 Godot' /tmp/smoke-unified.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:|Invalid polygon data' /tmp/smoke-unified.log; then
+            echo 'Godot public map emitted errors or privacy failure'; exit 1
+          fi
       - name: Verify canonical and pinned source files were not modified
         run: git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar vendor/town-forge
       - name: Upload only player-filtered previews
