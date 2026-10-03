@@ -155,6 +155,19 @@ func _draw() -> void:
 	var ctx: Dictionary = region.get("source_context", {})
 	var terrain: Dictionary = region.get("landscape", {})
 	var features: Array = ctx.get("source_features", [])
+	# Render original Azgaar *sea* lanes beneath genuine source land/lake
+	# polygons, masking the parts which cross land at coarse source resolution.
+	# Original source route records are retained in the input for audit.
+	for route_value in ctx.get("source_routes", []):
+		if not route_value is Dictionary:
+			continue
+		var sea_route: Dictionary = route_value
+		if str(sea_route.get("classification", "")) != "sea_lane":
+			continue
+		for segment in sea_route.get("segments", []):
+			var sea_line: PackedVector2Array = _poly(segment.get("local_points", []))
+			if sea_line.size() >= 2:
+				_dash(sea_line[0], sea_line[1], Color("#4b8392"), 3.0)
 	# Land/ocean/lakes are from original Azgaar indexed source vertices.
 	for feature in features:
 		if not feature is Dictionary or str(feature.get("classification", "")) != "land_boundary":
@@ -200,11 +213,10 @@ func _draw() -> void:
 			if line.size() < 2:
 				continue
 			if cls == "sea_lane":
-				_dash(line[0], line[1], Color("#4b8392"), 3.0)
-			else:
-				draw_polyline(line, Color("#5c503a"), 3.0 if cls == "trail" else 5.0, true)
-				if cls == "land_road":
-					draw_polyline(line, Color("#cbb98b"), 2.0, true)
+				continue # Already masked beneath original source land/lakes
+			draw_polyline(line, Color("#5c503a"), 3.0 if cls == "trail" else 5.0, true)
+			if cls == "land_road":
+				draw_polyline(line, Color("#cbb98b"), 2.0, true)
 	var font: Font = ThemeDB.fallback_font
 	for item in ctx.get("source_burgs", []):
 		if not item is Dictionary:
