@@ -26,6 +26,8 @@ func _run() -> void:
 			break
 	assert(region > 0, "No source-backed small hometown found")
 	assert(world.validate_origin(region, int(candidate["id"])))
+	var source_cell: Dictionary = world.get_record("cell", int(candidate["cell_id"]))
+	assert(not source_cell.is_empty() and source_cell.has("province"), "Stable source cell lookup is incomplete")
 	assert(not world.validate_origin(region, -1))
 	assert(world.home_candidates(0).is_empty())
 	assert(world.home_candidates(999999).is_empty())
