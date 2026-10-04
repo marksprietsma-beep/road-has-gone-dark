@@ -2,7 +2,12 @@
 
 Created 4 October 2026 because the original completed Codex commit `a94217b` was never pushed and the prior 37,151,179-byte Codex ZIP artifact link expired. **Do not mistake this placeholder for a recovered implementation or a completed task.**
 
-## Recovery rules
+> Superseded: Mark authorized a fresh research-only rebuild in the uploaded
+> GAME-67 full rebuild instructions. The implementation, tests and evidence now
+> live in this folder; see [README.md](README.md). The historical rules below
+> document the placeholder state and do not govern the authorized rebuild.
+
+## Historical recovery rules
 
 1. **First** try to recover the original commit or ZIP without regeneration. Previous Codex execution claimed archive SHA-256 `0ae417d73acfa54188b22767049dc8b1c4c313a057c8e3fe482eb224f2119c17` and a complete patch, but none is presently reachable via GitHub, Linear attachments, or accessible Project files.
 2. If the original remains inaccessible, request fresh approval for a **clearly labelled reconstruction**, using [GAME-67](https://linear.app/marksprietsma/issue/GAME-67) as the exact original scope and GAME-63 source fixtures from the isolated research handoff. Never assert the reconstruction is byte-identical to `a94217b`.

@@ -50,6 +50,10 @@ try {
   assert(requests.some(u=>u.includes('albanes.developer.json')));assert((await page.locator('#mode').textContent()).includes('DEVELOPER'));
   await page.locator(`.place-row[data-id="${hidden.id}"]`).click();assert((await page.locator('#inspection').textContent()).includes('unknown'));
  });
+ await check('Developer unknown labels are collision free',async()=>{
+  const boxes=await page.locator('.marker-label').evaluateAll(es=>es.map(e=>{const b=e.getBoundingClientRect();return{x:b.x,y:b.y,w:b.width,h:b.height}}));
+  for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y))}
+ });
  await page.screenshot({path:resolve(out,'albanes-developer-hidden.png'),fullPage:true});captures.push('albanes-developer-hidden.png');
  await check('Public download from developer view omits hidden record',async()=>{
   const downloadPromise=page.waitForEvent('download');await page.click('#export');const download=await downloadPromise;const file=await download.path();const data=JSON.parse(await readFile(file));assert.equal(data.audience,'public');assert(!JSON.stringify(data).includes(hidden.id));
