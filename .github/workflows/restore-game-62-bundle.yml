@@ -1,4 +1,4 @@
-name: Publish preserved GAME-62 bundle (handoff only)
+name: Publish preserved GAME-62 original commit (handoff only)
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - handoff/game-62-local-region-upload
     paths:
       - handoffs/GAME-62/GAME-62-source.bundle
+      - handoffs/GAME-62/GAME-62-Complete-Delivery.zip
+      - handoffs/GAME-62/PUBLISH_NOW.md
 
 permissions:
   contents: write
@@ -18,14 +20,22 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-      - name: Verify and publish original Git commit (never merge)
+      - name: Validate original ZIP and publish original commit (no merge)
         shell: bash
         run: |
           set -euo pipefail
           bundle="handoffs/GAME-62/GAME-62-source.bundle"
+          archive="handoffs/GAME-62/GAME-62-Complete-Delivery.zip"
           base="3c06cf81e46c7ce9edd4e9ebf20a9940c0ca6f23"
           expected="0c15fcc77011d5dd1ca5418cbc67be1cee576360"
-          test -s "$bundle"
+          zip_sha="a68b6b69700a02fc597240c46bfe117f01113634"
+          if [ -s "$archive" ]; then
+            test "$(git hash-object "$archive")" = "$zip_sha"
+            bundle="$RUNNER_TEMP/GAME-62-source.bundle"
+            unzip -p "$archive" GAME-62-source.bundle > "$bundle"
+          else
+            test -s "$bundle"
+          fi
           git cat-file -e "$base^{commit}"
           git bundle verify "$bundle"
           git fetch "$bundle" "refs/heads/codex/game-62-local-region-v1"
@@ -33,5 +43,5 @@ jobs:
           test "$actual" = "$expected"
           git merge-base --is-ancestor "$base" "$actual"
           git push origin "$actual:refs/heads/game-62-preserved-original"
-          echo "Published original GAME-62 commit $actual to game-62-preserved-original."
-          echo "No pull request was created and nothing was merged."
+          echo "Published ORIGINAL GAME-62 commit $actual on game-62-preserved-original."
+          echo "No merge, no new game features, no PR in this workflow."
