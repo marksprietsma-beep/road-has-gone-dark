@@ -76,6 +76,24 @@ export function sampleInferredFineTerrain(world,context,fingerprint,worldPoint) 
   inferred_canopy:round(canopy),nearest_macro_cell_index:a.nearest_source_cell,
   authority:"INFERRED_ONLY",walkable:"UNKNOWN"};
 }
+
+/** Separate art sampler. Legacy fine:v1/save/site inputs remain unchanged.
+ * Wavelengths in original WORLD coordinates resolve at local-map zoom instead
+ * of aliasing hundreds of noise cycles into 32 samples. Not terrain physics. */
+export function sampleLandscapeArt(world,context,fingerprint,worldPoint) {
+ if(context?.parent_source_world_sha256!==fingerprint||! /^[a-f0-9]{64}$/.test(fingerprint))
+  throw Error("Landscape art requires the matching source fingerprint");
+ const [x,y]=worldPoint;
+ if(!worldPoint.every(finite)||x<0||y<0||x>world.map.width||y>world.map.height)
+  throw Error("Landscape art outside source world");
+ const macro=coarse(world,x,y);
+ const broad=noise(fingerprint,x,y,5.4,11);
+ const middle=noise(fingerprint,x,y,1.8,12);
+ const detail=noise(fingerprint,x,y,.6,13);
+ const h=Math.max(0,Math.min(100,macro.height+(broad-.5)*8+(middle-.5)*4+(detail-.5)*1.5));
+ const f=Math.max(0,Math.min(1,macro.forest*.42+broad*.32+middle*.23+detail*.09-.19-Math.max(0,h-72)*.013));
+ return {h:round(h),f:round(f)};
+}
 export function buildInferredFineTerrain(world,context,fingerprint){
  if(context?.schema_version!==1||
   !["hypothetical_globe_reference_window","source_neighbourhood_window"].includes(context.space?.kind)||

@@ -5,6 +5,10 @@ on:
       - "tools/regiongen/local-source-context.mjs"
       - "tools/regiongen/contextual-sites-v2.mjs"
       - "tools/regiongen/inferred-fine-terrain.mjs"
+      - "tools/regiongen/landscape-presentation.mjs"
+      - "tests/regiongen/verify-landscape-presentation.mjs"
+      - "tests/regiongen/capture-landscape.gd"
+      - "docs/implementation/GAME-57*"
       - "tools/regiongen/render-inferred-fine.mjs"
       - "docs/implementation/GAME-53*"
       - "docs/implementation/GAME-55*"
@@ -68,6 +72,7 @@ jobs:
         run: |
           node tools/regiongen/generate-contextual-examples.mjs
           node tests/regiongen/verify-contextual-sites-v2.mjs
+          node tests/regiongen/verify-landscape-presentation.mjs
       - name: Install Godot 4.7.2 for constrained-viewer smoke
         run: |
           curl -fL --retry 3 --retry-delay 2 \
@@ -98,6 +103,11 @@ jobs:
         run: |
           set -euo pipefail
           if command -v xvfb-run >/dev/null; then
+            timeout 90s xvfb-run -a -s "-screen 0 1280x1200x24" /tmp/Godot_v4.7.2-stable_linux.x86_64 --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-landscape.gd 2>&1 | tee /tmp/landscape-render.log
+            grep -q "PASS: GAME-57 six actual Godot" /tmp/landscape-render.log
+            if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/landscape-render.log; then
+              echo "Godot emitted a landscape rendering error"; exit 1
+            fi
             timeout 90s xvfb-run -a -s "-screen 0 1280x720x24" /tmp/Godot_v4.7.2-stable_linux.x86_64 --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-expedition.gd 2>&1 | tee /tmp/expedition-render.log
             grep -q "PASS: GAME-55 rendered expedition screenshot" /tmp/expedition-render.log
           else
@@ -116,6 +126,7 @@ jobs:
             tools/regiongen/.tmp/constrained-*.svg
             tools/regiongen/.tmp/contextual-*.json
             tools/regiongen/.tmp/contextual-*.svg
+            tools/regiongen/.tmp/contextual-*.godot.png
             tools/regiongen/.tmp/expedition-prototype.png
           include-hidden-files: true
           if-no-files-found: error

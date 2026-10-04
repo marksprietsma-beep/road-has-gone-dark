@@ -79,6 +79,16 @@ func load_region(path: String) -> bool:
 			str(fine.get("source_world_sha256", "")) != str(ctx.get("parent_source_world_sha256", "")):
 			info.text = "GAME-53 | Inferred visual field from a different Azgaar world"
 			return false
+	if data.has("landscape_presentation_v1"):
+		var art: Dictionary = data.get("landscape_presentation_v1", {})
+		var terrain_art: Dictionary = art.get("terrain", {})
+		if int(art.get("schema_version", -1)) != 1 or str(art.get("truth", "")) != "ILLUSTRATION_ONLY" or \
+			str(art.get("source_context_id", "")) != str(ctx.get("id", "")) or \
+			str(art.get("source_world_sha256", "")) != str(ctx.get("parent_source_world_sha256", "")) or \
+			str(terrain_art.get("source_context_id", "")) != str(ctx.get("id", "")) or \
+			str(terrain_art.get("source_world_sha256", "")) != str(ctx.get("parent_source_world_sha256", "")):
+			info.text = "Landscape art belongs to another source context"
+			return false
 	region = data
 	info.text = _base_info()
 	queue_redraw()
@@ -201,7 +211,7 @@ func _draw_dry_source_route(points: PackedVector2Array, features: Array, route_c
 			if route_class == "land_road":
 				draw_line(from_point, to_point, Color("#cbb98b"), 2.0, true)
 
-func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
+func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color, clip_source: bool = false) -> void:
 	var polygon := PackedVector2Array()
 	for i in 3:
 		var a: Dictionary = triangle[i]
@@ -232,6 +242,17 @@ func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
 		area += a.x * b.y - b.x * a.y
 	if absf(area) <= 1.0:
 		return
+	if clip_source:
+		# Border triangles intersect the actual source coast rather than leaving
+		# a visible staircase along it. Original water is painted above art too.
+		for feature in region.get("source_context", {}).get("source_features", []):
+			if feature.get("classification", "") != "land_boundary":
+				continue
+			for clipped in Geometry2D.intersect_polygons(clean, _poly(feature.get("local_polygon", []))):
+				var indices: PackedInt32Array = Geometry2D.triangulate_polygon(clipped)
+				for k in range(0, indices.size(), 3):
+					draw_colored_polygon(PackedVector2Array([clipped[indices[k]], clipped[indices[k + 1]], clipped[indices[k + 2]]]), shade)
+		return
 	# Threshold clipping can produce a valid-looking 4-point contour with
 	# almost-collinear corners; Godot's polygon ear triangulator then rejects
 	# the whole shape. Clip of one triangle is convex, so fan-triangulate
@@ -246,7 +267,8 @@ func _draw_fine_triangle(triangle: Array, cutoff: float, shade: Color) -> void:
 		draw_colored_polygon(PackedVector2Array([p, q, r]), shade)
 
 func _draw_fine_field() -> void:
-	var fine_field: Dictionary = region.get("inferred_fine_v1", {})
+	var art: Dictionary = region.get("landscape_presentation_v1", {})
+	var fine_field: Dictionary = art.get("terrain", region.get("inferred_fine_v1", {}))
 	if fine_field.is_empty():
 		return
 	var grid: int = int(fine_field.get("grid_steps", 0))
@@ -278,14 +300,33 @@ func _draw_fine_field() -> void:
 				for triangle_indices in [[0, 1, 2], [0, 2, 3]]:
 					var triangle: Array = []
 					var all_land: bool = true
+					var any_land: bool = false
 					for corner_index in triangle_indices:
 						var entry: Dictionary = samples[indices[corner_index]]
 						if not bool(entry.get("land", false)):
 							all_land = false
+						else:
+							any_land = true
 						triangle.append({"point": corners[corner_index],
 							"value": float(entry.get(key, 0.0))})
 					if all_land:
 						_draw_fine_triangle(triangle, cutoff, shade)
+					elif any_land:
+						_draw_fine_triangle(triangle, cutoff, shade, true)
+
+# GAME-57: identical generated illustration geometry to SVG; no POI inputs.
+func _draw_landscape_primitives(values: Array) -> void:
+	for value in values:
+		if not value is Dictionary:
+			continue
+		var shape: PackedVector2Array = _poly(value.get("points", []))
+		var alpha: float = float(value.get("alpha", 1.0))
+		if value.get("fill") != null and shape.size() >= 3:
+			draw_colored_polygon(shape, Color(str(value["fill"]), alpha))
+		if value.get("stroke") != null and shape.size() >= 2:
+			if value.get("fill") != null:
+				shape.append(shape[0])
+			draw_polyline(shape, Color(str(value["stroke"]), alpha), float(value.get("width", 1.0)), true)
 
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 1000, 1000), SEA)
@@ -294,6 +335,9 @@ func _draw() -> void:
 	var ctx: Dictionary = region.get("source_context", {})
 	var terrain: Dictionary = region.get("landscape", {})
 	var features: Array = ctx.get("source_features", [])
+	var landscape_art: Dictionary = region.get("landscape_presentation_v1", {})
+	if show_decorations:
+		_draw_landscape_primitives(landscape_art.get("water", []))
 	# Render original Azgaar *sea* lanes beneath genuine source land/lake
 	# polygons, masking the parts which cross land at coarse source resolution.
 	# Original source route records are retained in the input for audit.
@@ -324,6 +368,9 @@ func _draw() -> void:
 	if show_decorations:
 		if not region.get("inferred_fine_v1", {}).is_empty():
 			_draw_fine_field()
+			var art: Dictionary = region.get("landscape_presentation_v1", {})
+			_draw_landscape_primitives(art.get("ground", []))
+			_draw_landscape_primitives(art.get("objects", []))
 		else:
 			for value in terrain.get("ridges", []):
 				if not value is Dictionary:
@@ -339,6 +386,12 @@ func _draw() -> void:
 					p + Vector2(-s * 0.65, s * 0.5), p + Vector2(0, -s * 0.9),
 					p + Vector2(s * 0.65, s * 0.5)]), Color("#4a6550"))
 				draw_line(p + Vector2(0, s * 0.4), p + Vector2(0, s * 1.1), Color("#2c4337"), 1.0)
+	# Preserve source lake interiors even in triangles enclosing a small lake.
+	for feature in features:
+		if feature.get("classification", "") == "freshwater_lake":
+			var lake: PackedVector2Array = _poly(feature.get("local_polygon", []))
+			if lake.size() >= 3:
+				draw_colored_polygon(lake, Color("#87b0b9"))
 	for river in ctx.get("source_rivers", []):
 		if not river is Dictionary:
 			continue

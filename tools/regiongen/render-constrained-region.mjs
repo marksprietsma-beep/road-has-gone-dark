@@ -1,5 +1,6 @@
 import {sourceDryLand} from "./compose-local-region.mjs";
 import {renderInferredOverlay} from "./render-inferred-fine.mjs";
+import {renderSceneryPrimitives} from "./landscape-presentation.mjs";
 /** GAME-47 QA view: actual source-world places/routes/water are top-level.
  * Town Forge supplies ONLY clipped ink/vegetation/ridge decoration.
  */
@@ -35,6 +36,9 @@ export function visibleDryRouteStrokes(context,originalPoints) {
 
 export function renderConstrainedRegion(region,inferred=null){
  const context=region.source_context,landscape=region.landscape;
+ const art=region.landscape_presentation_v1;
+ if(art && (art.source_context_id!==context.id||art.source_world_sha256!==context.parent_source_world_sha256))
+  throw Error("Landscape art belongs to a different source context");
  if(!context?.source_features || !landscape || region.provider?.mode!=="DECORATIONS_ONLY")
   throw Error("Expected source-authored decorative composite");
  if(inferred!==null && (inferred.schema_version!==1||
@@ -59,6 +63,7 @@ export function renderConstrainedRegion(region,inferred=null){
  for(const f of context.source_features.filter(f=>f.classification==="freshwater_lake"))
   lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="black"/>');
  lines.push('</mask></defs>');
+ if(art)lines.push(renderSceneryPrimitives(art.water));
  // Original Azgaar searoutes sometimes cross source land at its coarse
  // resolution. Display them UNDER authentic land/lake polygons so the
  // inland portion is masked, without mutating their original source points
@@ -75,12 +80,19 @@ export function renderConstrainedRegion(region,inferred=null){
   lines.push('<polygon class="azgaar-lake" points="'+pts(f.local_polygon)+'" fill="#87b0b9" stroke="#4b7778" stroke-width="1"/>');
  lines.push('<rect width="1000" height="1000" fill="url(#paper)" opacity=".62" pointer-events="none"/>');
  if(inferred){
-  lines.push(renderInferredOverlay(inferred,context.source_features,"game53-macro-source-land"));
+  lines.push(renderInferredOverlay(art?.terrain||inferred,context.source_features,"game53-macro-source-land"));
+  if(art)lines.push(renderSceneryPrimitives(art.ground),renderSceneryPrimitives(art.objects));
  }else{
  for(const ridge of landscape.ridges){
   const x=ridge.x,y=ridge.y;
   lines.push('<path d="M'+(x-15)+' '+(y+7)+' L'+x+' '+(y-11)+' L'+(x+15)+' '+(y+7)+
    ' M'+(x-9)+' '+(y+4)+' L'+(x-2)+' '+(y-3)+'" fill="none" stroke="#857556" stroke-width="1.6" opacity=".57"/>');
+ }
+ if(art){
+  for(const f of context.source_features.filter(f=>f.classification==="land_boundary")){
+   lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="none" stroke="#cdbd91" stroke-width="9" mask="url(#azgaar-source-dry-road-mask)"/>');
+   lines.push('<polygon points="'+pts(f.local_polygon)+'" fill="none" stroke="#587e80" stroke-width="1.6"/>');
+  }
  }
  for(const tree of landscape.trees){
   const x=tree.x,y=tree.y,s=tree.size;
@@ -133,6 +145,16 @@ export function renderConstrainedRegion(region,inferred=null){
  };
  if(home)label(home,true);
  for(const b of context.source_burgs.filter(b=>b.source_id!==context.source_home_burg_id).slice(0,3))label(b,false);
+ if(art){
+  lines.push('</g>',
+   '<rect x="18" y="18" width="330" height="70" rx="2" fill="#eee0bd" fill-opacity=".93" stroke="#8f8060"/>',
+   '<text x="32" y="48" font-size="24" font-family="Georgia,serif" fill="#302f25">'+escape(home?.name||"Unknown")+'</text>',
+   '<text x="32" y="70" font-size="12" font-family="Georgia,serif" letter-spacing="2" fill="#73664e">THE ROAD HAS GONE DARK</text>',
+   '<rect x="18" y="950" width="700" height="32" rx="2" fill="#eee0bd" fill-opacity=".92" stroke="#9d8d69"/>',
+   '<text x="30" y="971" font-size="12" font-family="Georgia,serif" fill="#534c39">Road · Trail · Dashed blue: approximate river / sea lane · Landscape illustration</text>',
+   '</svg>');
+  return lines.join("\n")+"\n";
+ }
  lines.push('</g>',
  '<rect x="10" y="10" width="635" height="85" rx="3" fill="#ede1c1" fill-opacity=".95" stroke="#5b513e"/>',
  '<text x="23" y="34" font-size="21" font-family="Georgia,serif" fill="#2b2c24">THE ROAD HAS GONE DARK</text>',

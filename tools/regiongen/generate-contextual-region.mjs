@@ -6,6 +6,7 @@ import {createHash} from "node:crypto";
 import {generateContextualSites,contextualPlayerSiteView} from "./contextual-sites-v2.mjs";
 import {renderConstrainedRegion} from "./render-constrained-region.mjs";
 import {buildInferredFineTerrain} from "./inferred-fine-terrain.mjs";
+import {buildLandscapePresentation} from "./landscape-presentation.mjs";
 import {renderSiteSymbol,renderReadableLabels} from "./site-icons.mjs";
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
@@ -24,7 +25,8 @@ const preview=contextualPlayerSiteView(layer);
 const inferred=buildInferredFineTerrain(world,composite.source_context,
  composite.source_context.parent_source_world_sha256);
 // Debug generation artefact only; never a save schema migration.
-const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred};
+const art=buildLandscapePresentation(world,composite);
+const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,landscape_presentation_v1:art};
 // This SVG is a filtered *player-facing* POI overlay on a source-visual
 // diagnostic; complete debug JSON (including hidden POIs) is NOT player UI.
 const visible=preview.visible.filter(site=>site.kind!=="hometown");
@@ -47,8 +49,10 @@ const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,se
 // Normal exploration preview has *no* red diagnostic conflict strokes.
  // Keep conflicts as original source-backed JSON evidence. Only an explicitly
  // separate developer SVG displays them, never a default player-facing view.
-const base=renderConstrainedRegion(composite,inferred);
-const image=base.replace("</svg>",fragments.join("\n")+"\n"+text+"\n</svg>");
+const base=renderConstrainedRegion(combined,inferred);
+const image=base.replace("</svg>",fragments.join("\n")+
+ '<desc>Known nearby sites: '+preview.visible.length+'; Rumours: '+preview.rumours.length+
+ '; scenery is inferred illustration; distances uncalibrated; river geometry approximate; crossings and safe roads unknown.</desc>\n</svg>');
 const auditImage=auditSvg?base.replace("</svg>",
  warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>"):null;
 await mkdir(dirname(resolve(output)),{recursive:true});
