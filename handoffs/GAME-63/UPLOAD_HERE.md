@@ -1,9 +1,19 @@
-# GAME-63 — Upload holding area
+# GAME-63 — Settlemaker research archive upload
 
-Independent, research-only Settlemaker feasibility outputs; not approved for integration.
+**Research only — no implementation or integration authorised.** This folder accepts the complete original Settlemaker evidence archive. The 36,523,657-byte ZIP exceeds GitHub's browser per-file upload limit. Upload the provided, **already split** files instead:
 
-**Upload here:** Place the preserved source delivery files alongside this document (`handoffs/GAME-63/`). The **original** complete GAME-63 research package: executable scripts, JSON, SVG/PNG maps for three genuine settlements, tests, assessment and licensing/provenance. Keep original filenames.
+- `GAME-63-Settlemaker-Feasibility.zip.001` (20,971,520 bytes)
+- `GAME-63-Settlemaker-Feasibility.zip.002` (15,552,137 bytes)
 
-This is a separate holding branch, forked from `main`. **No changes to game source, no code integration, no pull request, and no merge.** ChatGPT Work will inspect these files later, compare them against the current main, plan the smallest approved incorporation and run verification before proposing a PR.
+Keep exact filenames. Use **Add file → Upload files → Commit changes** on this `handoff/game-63-settlemaker-upload` branch, not `main`.
 
-Linear: https://linear.app/marksprietsma/issue/GAME-63/settlemaker-feasibility-spike-three-real-azgaar-towns-no-integration
+To reconstruct on Linux/macOS or in ChatGPT Work:
+
+```bash
+cat handoffs/GAME-63/GAME-63-Settlemaker-Feasibility.zip.001 handoffs/GAME-63/GAME-63-Settlemaker-Feasibility.zip.002 > /tmp/GAME-63-Settlemaker-Feasibility.zip
+sha256sum /tmp/GAME-63-Settlemaker-Feasibility.zip
+```
+
+Expected SHA-256: `c5f7a3763c5b59545fdd0031f033290824469a120399c6abdd9044d53a50fd21`. Parts were verified against the original archive byte-for-byte before upload. Do not alter, omit or repackage any contents. The archive is for isolated review, visual comparisons, reproducibility, limitations and later approval of a provider-neutral interface; **do not** implement `GAME-19` or merge source automatically.
+
+Linear: https://linear.app/marksprietsma/issue/GAME-63
