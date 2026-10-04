@@ -419,15 +419,7 @@ func _draw() -> void:
 		var site_id: int = int(site.get("source_id", -1))
 		var is_home: bool = site_id == int(ctx.get("source_home_burg_id", -1))
 		var radius: float = 12.0 if is_home else 7.0
-		draw_circle(p, radius, Color("#efe1bd"))
-		draw_arc(p, radius, 0.0, TAU, 32, Color("#382e25"), 2.0)
-		draw_colored_polygon(PackedVector2Array([
-			p + Vector2(-radius * .6, radius * .5),
-			p + Vector2(-radius * .6, -radius * .35),
-			p + Vector2(0, -radius),
-			p + Vector2(radius * .6, -radius * .35),
-			p + Vector2(radius * .6, radius * .5)]),
-			Color("#9b5644") if is_home else Color("#806953"))
+		_draw_burg_icon(site, p, radius, is_home)
 		if is_home or site_id == selected_source_id:
 			var name: String = str(site.get("name", ""))
 			var text_size: int = 18 if is_home else 14
@@ -436,3 +428,11 @@ func _draw() -> void:
 			draw_rect(Rect2(label_position - Vector2(4, 18), Vector2(width, 25)), Color("#efe1be", 0.94))
 			draw_string(font, label_position, name, HORIZONTAL_ALIGNMENT_LEFT, width - 8.0, text_size, INK)
 	draw_rect(Rect2(0, 0, 1000, 1000), INK, false, 1.5)
+
+func _draw_burg_icon(_site: Dictionary, p: Vector2, radius: float, is_home: bool) -> void:
+	draw_circle(p, radius, Color("#efe1bd"))
+	draw_arc(p, radius, 0.0, TAU, 32, Color("#382e25"), 2.0)
+	draw_colored_polygon(PackedVector2Array([
+		p + Vector2(-radius * .6, radius * .5), p + Vector2(-radius * .6, -radius * .35),
+		p + Vector2(0, -radius), p + Vector2(radius * .6, -radius * .35),
+		p + Vector2(radius * .6, radius * .5)]), Color("#9b5644") if is_home else Color("#806953"))

@@ -16,6 +16,21 @@ var selected_local_id: String = ""
 var reveal_hidden_for_developer: bool = false
 var show_route_audit: bool = false
 var show_hex_grid: bool = false
+var shared_icons := MapIconProvider.new()
+
+func _draw_shared_icon(role: String, p: Vector2) -> void:
+	var texture: Texture2D = shared_icons.texture_for(role)
+	draw_circle(p, 16, Color("#efe1bd"))
+	draw_arc(p, 16, 0, TAU, 32, Color("#66583e"), 2)
+	if texture != null:
+		draw_texture_rect(texture, Rect2(p - Vector2(13, 13), Vector2(26, 26)), false)
+
+func _draw_burg_icon(site: Dictionary, p: Vector2, radius: float, is_home: bool) -> void:
+	var icons: Dictionary = region.get("world_icon_roles_v1", {})
+	if icons.is_empty():
+		super._draw_burg_icon(site, p, radius, is_home)
+	else:
+		_draw_shared_icon(str(icons.get("burg_roles", {}).get(str(site.get("source_id")), "town")), p)
 
 func _ready() -> void:
 	var decoded: Variant = JSON.parse_string(FileAccess.get_file_as_string(GLYPHS))
@@ -59,6 +74,11 @@ func _symbol_points(vertices: Variant, point: Vector2, scaling: float) -> Packed
 func _draw_site(site: Dictionary) -> void:
 	var p: Vector2 = _point(site.get("position", []))
 	var kind: String = str(site.get("kind", ""))
+	if region.has("world_icon_roles_v1"):
+		_draw_shared_icon(str(region.world_icon_roles_v1.site_roles.get(kind, "statues")), p)
+		if str(site.get("id", "")) == selected_local_id:
+			draw_arc(p, 19, 0, TAU, 32, Color("#b78943"), 2)
+		return
 	var symbols: Dictionary = glyphs.get("symbols", {})
 	var spec: Dictionary = symbols.get(kind, symbols.get("ancient_stones", {}))
 	var palette: Dictionary = glyphs.get("palette", {})

@@ -1,6 +1,7 @@
 import {sourceDryLand} from "./compose-local-region.mjs";
 import {renderInferredOverlay} from "./render-inferred-fine.mjs";
 import {renderSceneryPrimitives} from "./landscape-presentation.mjs";
+import {renderSharedIcon} from './shared-map-icons.mjs';
 /** GAME-47 QA view: actual source-world places/routes/water are top-level.
  * Town Forge supplies ONLY clipped ink/vegetation/ridge decoration.
  */
@@ -125,6 +126,7 @@ export function renderConstrainedRegion(region,inferred=null){
  lines.push('</g>');
  // Source towns are never moved to meet Town Forge's arbitrary paths.
  for(const burg of context.source_burgs){
+  if(region.world_icon_roles_v1){lines.push(renderSharedIcon(region.world_icon_roles_v1.burg_roles[burg.source_id],burg.local_position));continue;}
   const [x,y]=burg.local_position,home=burg.source_id===context.source_home_burg_id;
   const size=home?12:7;
   lines.push('<circle class="source-burg" cx="'+x+'" cy="'+y+'" r="'+size+'" fill="#efe1bd" stroke="#382e25" stroke-width="2"/>');

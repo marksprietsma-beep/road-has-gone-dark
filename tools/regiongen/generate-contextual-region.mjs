@@ -8,7 +8,8 @@ import {renderConstrainedRegion} from "./render-constrained-region.mjs";
 import {buildInferredFineTerrain} from "./inferred-fine-terrain.mjs";
 import {buildLandscapePresentation} from "./landscape-presentation.mjs";
 import {buildHexOverlay,renderHexOverlay,renderHexRuler,measureHexDistance} from "./hex-overlay.mjs";
-import {renderSiteSymbol,renderReadableLabels} from "./site-icons.mjs";
+import {renderReadableLabels} from "./site-icons.mjs";
+import {buildSharedIcons,renderSharedIcon,buildEncounterDemo,SITE_ROLES} from './shared-map-icons.mjs';
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
 const source=get("--world"),input=get("--constrained"),output=get("--output");
@@ -28,12 +29,14 @@ const inferred=buildInferredFineTerrain(world,composite.source_context,
 // Debug generation artefact only; never a save schema migration.
 const art=buildLandscapePresentation(world,composite);
 const hexes=buildHexOverlay(composite.source_context);
-const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,landscape_presentation_v1:art,hex_overlay_v1:hexes};
+const icons=buildSharedIcons(world,composite.source_context);
+const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,landscape_presentation_v1:art,hex_overlay_v1:hexes,world_icon_roles_v1:icons};
 // This SVG is a filtered *player-facing* POI overlay on a source-visual
 // diagnostic; complete debug JSON (including hidden POIs) is NOT player UI.
 const visible=preview.visible.filter(site=>site.kind!=="hometown");
 const fragments=['<g id="known-game-owned-pois">'];
-for(const site of visible)fragments.push(renderSiteSymbol(site));
+for(const site of visible)fragments.push(renderSharedIcon(SITE_ROLES[site.kind],site.position));
+combined.encounter_demo_v1=buildEncounterDemo(composite.source_context,hexes,visible);
 fragments.push(renderReadableLabels(visible),'</g>');
 const text='<text x="668" y="111" fill="#333127" font-family="Georgia,serif" font-size="12">Known nearby sites: '+
  preview.visible.length+' · Rumours: '+preview.rumours.length+'</text>';
@@ -52,10 +55,10 @@ const conflictText='<text x="668" y="129" fill="#8b4333" font-family="Georgia,se
  // Keep conflicts as original source-backed JSON evidence. Only an explicitly
  // separate developer SVG displays them, never a default player-facing view.
 const base=renderConstrainedRegion(combined,inferred);
-const image=base.replace("</svg>",fragments.join("\n")+
+const image=base.replace(/<\/svg>\s*$/,fragments.join("\n")+
  '<desc>Known nearby sites: '+preview.visible.length+'; Rumours: '+preview.rumours.length+
  '; scenery is inferred illustration; distances uncalibrated; river geometry approximate; crossings and safe roads unknown.</desc>\n</svg>');
-const auditImage=auditSvg?base.replace("</svg>",
+const auditImage=auditSvg?base.replace(/<\/svg>\s*$/,
  warnings.join("\n")+"\n"+fragments.join("\n")+"\n"+text+"\n"+conflictText+"\n</svg>"):null;
 await mkdir(dirname(resolve(output)),{recursive:true});
 await mkdir(dirname(resolve(svg)),{recursive:true});
@@ -63,8 +66,10 @@ if(auditSvg)await mkdir(dirname(resolve(auditSvg)),{recursive:true});
 await writeFile(resolve(output),JSON.stringify(combined,null,2)+"\n");
 await writeFile(resolve(svg),image);
 const measured=visible.slice().sort((a,b)=>measureHexDistance(composite.source_context,b.position)-measureHexDistance(composite.source_context,a.position))[0];
-const hexImage=base.replace('</svg>',renderHexOverlay(hexes)+(measured?renderHexRuler(composite.source_context,hexes,measured):'')+fragments.join('\n')+'</svg>');
+const hexImage=base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+(measured?renderHexRuler(composite.source_context,hexes,measured):'')+fragments.join('\n')+'</svg>');
 await writeFile(resolve(svg.replace(/\.svg$/i,'.hex.svg')),hexImage);
+const demo=combined.encounter_demo_v1.occupants.map(o=>renderSharedIcon(o.role,o.position,{danger:true})+`<text x="${o.position[0]+22}" y="${o.position[1]+5}" font-size="15" fill="#843e30" stroke="#efe1bd" stroke-width="3" paint-order="stroke">${o.label} · mock-up</text>`).join('\n');
+await writeFile(resolve(svg.replace(/\.svg$/i,'.encounter.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+fragments.join('\n')+demo+'<rect x="590" y="20" width="390" height="45" fill="#efe1bd"/><text x="604" y="48" font-size="18" fill="#843e30">HEX OCCUPANTS · MOCK-UP, NOT LIVE</text></svg>'));
 if(auditSvg)await writeFile(resolve(auditSvg),auditImage);
 console.log("PASS: GAME-44 v2 sites "+layer.sites.length+
  " generated/context source, "+preview.visible.length+" known, "+
