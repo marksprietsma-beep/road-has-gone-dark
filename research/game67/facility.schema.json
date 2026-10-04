@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GAME-67 research facility model v1",
+  "type": "object",
+  "required": ["schemaVersion", "audience", "settlement", "layout", "buildings", "establishments", "geometry"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "audience": {"enum": ["public", "developer"]},
+    "settlement": {"type": "object", "required": ["id", "worldIdentity", "burgId", "name"], "properties": {"id": {"type": "string"}, "worldIdentity": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "burgId": {"type": "integer", "minimum": 1}, "name": {"type": "string"}}},
+    "layout": {"type": "object", "required": ["revision", "providerRevision", "units", "bounds"]},
+    "buildings": {"type": "array", "items": {"type": "object", "required": ["id", "polygon", "district"], "properties": {"id": {"type": "string"}, "polygon": {"type": "array", "items": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/point"}}}, "district": {"type": "string"}}}},
+    "establishments": {"type": "array", "items": {"type": "object", "required": ["id", "type", "buildingId", "locationType", "position", "knowledge", "provenance"], "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "buildingId": {"type": ["string", "null"]}, "locationType": {"enum": ["building", "outdoor"]}, "position": {"$ref": "#/$defs/point"}, "knowledge": {"enum": ["unknown", "discovered", "visited"]}, "provenance": {"type": "object"}}}},
+    "geometry": {"type": "object"}
+  },
+  "$defs": {"point": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}}
+}
