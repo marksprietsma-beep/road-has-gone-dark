@@ -11,6 +11,7 @@ import {buildHexOverlay,renderHexOverlay,renderHexRuler,measureHexDistance} from
 import {renderReadableLabels} from "./site-icons.mjs";
 import {buildSharedIcons,renderSharedIcon,buildEncounterDemo,SITE_ROLES} from './shared-map-icons.mjs';
 import {buildHexRoutePreview,renderHexRoutePreview} from './hex-route-preview.mjs';
+import {estimateRouteTime} from './route-time-scenario.mjs';
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
 const source=get("--world"),input=get("--constrained"),output=get("--output");
@@ -74,6 +75,7 @@ const routes=combined.hex_route_preview_v1.routes;
 const route=routes.find(r=>r.site_id===combined.hex_route_preview_v1.default_site_id);
 const routeSite=visible.find(s=>s.id===route?.site_id);
 await writeFile(resolve(svg.replace(/\.svg$/i,'.route.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+renderHexRoutePreview(combined.hex_route_preview_v1,hexes,route,routeSite)+fragments.join('\n')+'</svg>'));
+await writeFile(resolve(svg.replace(/\.svg$/i,'.timing.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+renderHexRoutePreview(combined.hex_route_preview_v1,hexes,route,routeSite,estimateRouteTime(route,30))+fragments.join('\n')+'</svg>'));
 const demo=combined.encounter_demo_v1.occupants.map(o=>{
  const cell=hexes.cells.find(c=>c.axial.join(',')===o.axial.join(',')),label=o.label+' · mock-up';
  return `<polygon points="${cell.points.map(p=>p.join(',')).join(' ')}" fill="#9d4735" fill-opacity=".08"/>`+

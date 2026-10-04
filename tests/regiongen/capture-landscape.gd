@@ -16,6 +16,14 @@ func _capture() -> void:
 		viewer.camera.zoom = Vector2.ONE
 		viewer.info.hide()
 		var suffix: String = ".godot.png"
+		if OS.get_cmdline_user_args().has("--timing-review"):
+			for code in [KEY_P, KEY_BRACKETRIGHT, KEY_BRACKETRIGHT]:
+				var timing_key := InputEventKey.new()
+				timing_key.keycode = code
+				timing_key.pressed = true
+				viewer._unhandled_input(timing_key)
+			assert(viewer.show_route_preview and viewer.timing_preset_index == 2)
+			suffix = ".timing.godot.png"
 		if OS.get_cmdline_user_args().has("--route-review"):
 			var route_key := InputEventKey.new()
 			route_key.keycode = KEY_P

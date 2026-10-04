@@ -109,7 +109,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_R:
 				_action("return")
 				return
-			KEY_H, KEY_A, KEY_E, KEY_P:
+			KEY_H, KEY_A, KEY_E, KEY_P, KEY_BRACKETLEFT, KEY_BRACKETRIGHT, KEY_0:
 				# No god-mode debug reveal in an actual party view.
 				return
 			KEY_ESCAPE:

@@ -19,6 +19,7 @@ var show_hex_grid: bool = false
 var show_encounter_demo: bool = false
 var selected_encounter_demo_id: String = ""
 var show_route_preview: bool = false
+var timing_preset_index: int = 0
 var shared_icons := MapIconProvider.new()
 
 func _draw_shared_icon(role: String, p: Vector2, danger: bool = false) -> void:
@@ -43,7 +44,7 @@ func _ready() -> void:
 	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
 
 func _base_info() -> String:
-	return super._base_info() + "\nX: hex grid | P: route preview | E: mock occupants | H: reveal | A: audit (developer only)"
+	return super._base_info() + "\nX: hexes | P: route | [ / ]: timing scenario | 0: clear timing | E: occupants | H: reveal | A: audit"
 
 func load_region(path: String) -> bool:
 	selected_local_id = ""
@@ -53,6 +54,7 @@ func load_region(path: String) -> bool:
 	show_encounter_demo = false
 	selected_encounter_demo_id = ""
 	show_route_preview = false
+	timing_preset_index = 0
 	if not super.load_region(path):
 		return false
 	var layer: Dictionary = region.get("local_sites_v2", {})
@@ -178,13 +180,24 @@ func _route_summary(route: Dictionary) -> String:
 	if route.is_empty():
 		return "Select a known destination; no preview for hidden or newly revealed sites"
 	if str(route.get("status", "")) == "PREVIEW_ROUTE":
-		return "%d straight | %d routed steps | %s provisional effort\n%d approximate river crossings, unverified; hours undecided" % [int(route.get("geometric_steps", 0)), int(route.get("route_steps", 0)), str(route.get("effort", 0)), route.get("river_crossings", []).size()]
+		return "%d straight | %d routed steps | %s provisional effort\n%d river-line crossings, unverified; hours undecided" % [int(route.get("geometric_steps", 0)), int(route.get("route_steps", 0)), str(route.get("effort", 0)), route.get("river_crossings", []).size()]
 	match str(route.get("status", "")):
 		"HOME_HEX_BLOCKED":
 			return "Coastal home hex needs finer geometry; no route assumed"
 		"TARGET_HEX_BLOCKED":
 			return "Destination hex overlaps source water; no route assumed"
 	return "No connected dry-hex route in this window; walkability unknown"
+
+func route_timing(route: Dictionary) -> Dictionary:
+	return RouteTimeScenario.estimate(route, RouteTimeScenario.PRESETS[timing_preset_index])
+
+func _timing_summary(route: Dictionary) -> String:
+	var timing: Dictionary = route_timing(route)
+	if str(timing.status) == "UNSET":
+		return "] to choose a timing scenario; physical scale undecided"
+	if timing.moving_minutes == null:
+		return "Moving time unavailable; no verified route or within-hex scale"
+	return "%s moving time · scenario\nAssuming %d min per open-hex effort; no rests/crossing delays" % [str(timing.display), int(timing.minutes_per_effort)]
 
 func _draw_route_preview() -> void:
 	var route: Dictionary = _selected_route_preview()
@@ -205,7 +218,11 @@ func _draw_route_preview() -> void:
 	var rows: PackedStringArray = _route_summary(route).split("\n")
 	for i in range(rows.size()):
 		draw_string(ThemeDB.fallback_font, Vector2(535, 68 + 23 * i), rows[i], HORIZONTAL_ALIGNMENT_LEFT, 430, 14, Color("#59451e"))
-	draw_string(ThemeDB.fallback_font, Vector2(535, 114), "Inferred terrain costs · water filtered · not gameplay travel", HORIZONTAL_ALIGNMENT_LEFT, 430, 12, Color("#74674d"))
+	draw_string(ThemeDB.fallback_font, Vector2(535, 114), "Inferred terrain costs · walkability unknown", HORIZONTAL_ALIGNMENT_LEFT, 430, 12, Color("#74674d"))
+	draw_rect(Rect2(18, 878, 960, 60), Color("#efe1bd", .97))
+	var timing_rows: PackedStringArray = _timing_summary(route).split("\n")
+	for i in range(timing_rows.size()):
+		draw_string(ThemeDB.fallback_font, Vector2(32, 903 + 22 * i), timing_rows[i], HORIZONTAL_ALIGNMENT_LEFT, 930, 20 if i == 0 else 14, Color("#59451e"))
 
 func select_encounter_demo_at(point: Vector2) -> bool:
 	if not show_encounter_demo or not _encounter_preview_available():
@@ -271,12 +288,21 @@ func select_local_site_at(point: Vector2) -> bool:
 	if show_hex_grid:
 		info.text += "\nDistance from hometown: %d hex steps (geometric; hours and terrain routing pending)" % hex_steps_to(_point(chosen["position"]))
 	if show_route_preview:
-		info.text += "\nROUTE PREVIEW | " + _route_summary(_selected_route_preview())
+		info.text += "\nROUTE PREVIEW | " + _route_summary(_selected_route_preview()) + "\n" + _timing_summary(_selected_route_preview())
 	queue_redraw()
 	return true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode in [KEY_BRACKETLEFT, KEY_BRACKETRIGHT, KEY_0]:
+			if show_route_preview and _route_preview_available():
+				if event.keycode == KEY_0:
+					timing_preset_index = 0
+				else:
+					timing_preset_index = clampi(timing_preset_index + (1 if event.keycode == KEY_BRACKETRIGHT else -1), 0, RouteTimeScenario.PRESETS.size() - 1)
+				info.text = _base_info() + "\nROUTE PREVIEW | " + _route_summary(_selected_route_preview()) + "\n" + _timing_summary(_selected_route_preview())
+			queue_redraw()
+			return
 		if event.keycode == KEY_P:
 			if _route_preview_available():
 				show_route_preview = not show_route_preview

@@ -82,7 +82,7 @@ export function buildHexRoutePreview(context,hexes,terrain,visible){
   home_axial:start,default_site_id:preferred?.site_id||'',cells,routes};
 }
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-export function renderHexRoutePreview(layer,hexes,route,site){
+export function renderHexRoutePreview(layer,hexes,route,site,timing=null){
  const lines=['<g id="hex-route-preview" clip-path="url(#world)">'];
  if(route?.status==='PREVIEW_ROUTE'){
   for(const axial of route.path){const c=hexes.cells.find(c=>key(c.axial)===key(axial));lines.push(`<polygon points="${c.points.map(p=>p.join(',')).join(' ')}" fill="#d8a749" fill-opacity=".3" stroke="#a47b2d" stroke-width="1.5"/>`);}
@@ -94,6 +94,10 @@ export function renderHexRoutePreview(layer,hexes,route,site){
  if(route?.status==='PREVIEW_ROUTE')lines.push(`<text x="535" y="68" font-size="15" fill="#59451e">${route.geometric_steps} straight · ${route.route_steps} routed steps · ${route.effort} effort</text>`,
   `<text x="535" y="91" font-size="13" fill="#843e30">${route.river_crossings.length} approximate river crossings · unverified</text>`);
  else lines.push(`<text x="535" y="68" font-size="14" fill="#843e30">${!route?'No known destination yet':route.status==='HOME_HEX_BLOCKED'?'Coastal home hex needs finer geometry':route.status==='TARGET_HEX_BLOCKED'?'Destination hex overlaps source water':'No connected dry-hex route in this window'}</text>`);
- lines.push('<text x="535" y="114" font-size="12" fill="#74674d">Provisional terrain costs · hours undecided · walkability unknown</text>');
+ if(timing)lines.push('<text x="535" y="114" font-size="12" fill="#74674d">Provisional terrain costs · scenario timing · walkability unknown</text>',
+  '<rect x="18" y="878" width="960" height="60" fill="#efe1bd" fill-opacity=".97" stroke="#a47b2d"/>',
+  `<text x="32" y="903" font-size="20" font-family="Georgia" fill="#59451e">${timing.moving_minutes===null?'Moving time unavailable':timing.display+' moving time · scenario'}</text>`,
+  `<text x="32" y="925" font-size="14" fill="#74674d">Assuming ${timing.minutes_per_effort} min / open-hex effort · crossing delays and rests excluded · physical scale undecided</text>`);
+ else lines.push('<text x="535" y="114" font-size="12" fill="#74674d">Provisional terrain costs · hours undecided · walkability unknown</text>');
  return lines.join('\n');
 }
