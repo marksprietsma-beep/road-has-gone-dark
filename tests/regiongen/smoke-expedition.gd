@@ -34,6 +34,10 @@ func _check() -> void:
 		var original: Array = (data["local_sites_v2"]["sites"] as Array).duplicate(true)
 		var session := ExpeditionSession.new()
 		assert(session.begin(data), session.error)
+		var control_data: Dictionary = data.duplicate(true)
+		control_data.erase("encounter_demo_v1")
+		var control := ExpeditionSession.new()
+		assert(control.begin(control_data))
 		assert(session.ready)
 		assert(session.supplies == 12 and session.danger == 0 and session.hours == 0)
 		assert(session.visible_sites().size() == original.filter(func(s: Dictionary) -> bool:
@@ -61,6 +65,9 @@ func _check() -> void:
 				continue
 			assert(session.select_site(id))
 			assert(session.travel_to_selected(), session.error)
+			assert(control.select_site(id) and control.travel_to_selected())
+			assert(session.hours == control.hours and session.supplies == control.supplies and session.danger == control.danger,
+				"Presentation-only occupants changed expedition travel")
 			assert(session.current_id == id)
 			var hour_after: int = session.hours
 			assert(session.investigate("careful"), session.error)
@@ -97,6 +104,11 @@ func _check() -> void:
 	assert(viewer.journal.text.contains("Three travellers gather"))
 	viewer._unhandled_input(_key(KEY_H))
 	viewer._unhandled_input(_key(KEY_A))
+	viewer._unhandled_input(_key(KEY_E))
+	assert(not viewer.show_encounter_demo)
+	assert(not viewer._encounter_preview_available())
+	for occupant in viewer.region.get("encounter_demo_v1", {}).get("occupants", []):
+		assert(not viewer.select_encounter_demo_at(Vector2(float(occupant.position[0]), float(occupant.position[1]))))
 	assert(not viewer.reveal_hidden_for_developer)
 	assert(not viewer.show_route_audit)
 	viewer._unhandled_input(_key(KEY_V))

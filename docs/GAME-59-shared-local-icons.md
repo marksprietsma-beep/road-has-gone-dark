@@ -42,6 +42,19 @@ labelled mock-up. They sit at existing, wholly dry hex centres, avoid known
 sites and burgs, and never consult hidden POI positions. The optional JSON layer
 is explicitly MOCKUP_NOT_SIMULATION. No spawns, movement, combat, saves or
 player travel rules change. Normal SVG and Godot maps do not show mock enemies.
+Bandit placements now prefer a dry point on a nearby source road or trail
+(within 65 display units). Monster placements require illustrated canopy of
+at least 0.57 or height of at least 69; these are layout cues, not authoritative
+habitats or traversal facts. Exact boundary intersections and enclosed feature
+checks reject narrow channels and lakes that corner-only tests would miss.
+Unsuitable roles are explicitly omitted (Ris has no suitable bandit placement).
+
+The contextual Godot viewer now offers E to preview mock occupants, off by
+default; click one to inspect its axial address, placement evidence category,
+and geometric steps from home. E does not change the independent X grid
+setting. Region switching clears the layer and selection. Foreign-context
+mock-up data is rejected. The expedition view disables the preview entirely.
+
 An eventual encounter system can associate visible occupant records with the
 world-anchored axial cell and use these symbols as its presentation layer.
 
@@ -54,5 +67,16 @@ nested-SVG overlay insertion and comparison-caption overlap. Native Godot
 asset loading and UI smoke tests pass; fresh full native screenshots were not
 available because display setup was blocked. Earlier native screenshots are
 not represented as evidence of this change.
+
+Additional iteration: six matching-context terrain placement checks,
+hidden/rumoured POI mutation independence, synthetic small-lake, thin-channel
+and coastal-inlet regressions, missing-habitat omission, E/click/reset controls,
+and disabled gameplay overlays are verified. SVG occupant tint and label
+backplates match the native drawing recipe. Capture helper accepts
+`-- --encounter-review` where a display is available.
+
+Next gameplay milestone should establish the chosen distance/time calibration
+and a source-water-aware hex route model before wiring occupant danger into
+travel. The current ruler remains geometric, not a path or travel-time claim.
 
 Work remains local pending explicit approval to publish the stacked branch.

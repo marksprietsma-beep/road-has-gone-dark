@@ -16,12 +16,14 @@ var selected_local_id: String = ""
 var reveal_hidden_for_developer: bool = false
 var show_route_audit: bool = false
 var show_hex_grid: bool = false
+var show_encounter_demo: bool = false
+var selected_encounter_demo_id: String = ""
 var shared_icons := MapIconProvider.new()
 
-func _draw_shared_icon(role: String, p: Vector2) -> void:
+func _draw_shared_icon(role: String, p: Vector2, danger: bool = false) -> void:
 	var texture: Texture2D = shared_icons.texture_for(role)
 	draw_circle(p, 16, Color("#efe1bd"))
-	draw_arc(p, 16, 0, TAU, 32, Color("#66583e"), 2)
+	draw_arc(p, 16, 0, TAU, 32, Color("#9d4735") if danger else Color("#66583e"), 2)
 	if texture != null:
 		draw_texture_rect(texture, Rect2(p - Vector2(13, 13), Vector2(26, 26)), false)
 
@@ -40,13 +42,15 @@ func _ready() -> void:
 	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
 
 func _base_info() -> String:
-	return super._base_info() + "\nX: hex grid | H: developer reveal | A: route audit (off by default; no save)"
+	return super._base_info() + "\nX: hex grid | E: encounter mock-up | H: reveal | A: route audit (developer only; no save)"
 
 func load_region(path: String) -> bool:
 	selected_local_id = ""
 	reveal_hidden_for_developer = false
 	show_route_audit = false
 	show_hex_grid = false
+	show_encounter_demo = false
+	selected_encounter_demo_id = ""
 	if not super.load_region(path):
 		return false
 	var layer: Dictionary = region.get("local_sites_v2", {})
@@ -108,7 +112,7 @@ func _draw() -> void:
 	super._draw()
 	if region.is_empty():
 		return
-	if show_hex_grid:
+	if show_hex_grid or (show_encounter_demo and _encounter_preview_available()):
 		_draw_hex_grid()
 	var layer: Dictionary = region.get("local_sites_v2", {})
 	# Original route/shore conflicts remain in source JSON and are visible
@@ -133,7 +137,7 @@ func _draw() -> void:
 		var site: Dictionary = value
 		if str(site.get("kind", "")) == "hometown" or not _site_is_visible(site):
 			continue
-		_draw_site(site)
+			_draw_site(site)
 		if str(site.get("id", "")) == selected_local_id:
 			var p: Vector2 = _point(site.get("position", []))
 			var text_value: String = str(site.get("label", ""))
@@ -142,10 +146,56 @@ func _draw() -> void:
 			var y: float = clampf(p.y - 8.0, 112.0, 929.0)
 			draw_rect(Rect2(x - 4, y - 18, width, 24), Color("#eee0be", .96))
 			draw_string(font, Vector2(x, y), text_value, HORIZONTAL_ALIGNMENT_LEFT, width - 8.0, 15, Color("#292d25"))
+	if show_encounter_demo and _encounter_preview_available():
+		_draw_encounter_demo()
+
+func _encounter_preview_available() -> bool:
+	var demo: Dictionary = region.get("encounter_demo_v1", {})
+	var ctx: Dictionary = region.get("source_context", {})
+	return int(demo.get("schema_version", -1)) == 1 and str(demo.get("meaning", "")) == "MOCKUP_NOT_SIMULATION" and str(demo.get("source_context_id", "")) == str(ctx.get("id", "")) and str(demo.get("source_world_sha256", "")) == str(ctx.get("parent_source_world_sha256", ""))
+
+func select_encounter_demo_at(point: Vector2) -> bool:
+	if not show_encounter_demo or not _encounter_preview_available():
+		return false
+	for occupant in region.get("encounter_demo_v1", {}).get("occupants", []):
+		if point.distance_to(_point(occupant.get("position", []))) > 24:
+			continue
+		selected_encounter_demo_id = str(occupant.get("id", ""))
+		selected_local_id = ""
+		selected_source_id = -1
+		var axial: Array = occupant.get("axial", [0, 0])
+		info.text = _base_info() + "\nMOCK-UP ONLY | %s | hex (%d, %d)\n%s\n%d geometric hex steps from home; no combat or spawn rules" % [str(occupant.get("label", "")), int(axial[0]), int(axial[1]), str(occupant.get("placement", "")), hex_steps_to(_point(occupant.get("position", [])))]
+		queue_redraw()
+		return true
+	selected_encounter_demo_id = ""
+	return false
+
+func _draw_encounter_demo() -> void:
+	draw_rect(Rect2(590, 20, 390, 45), Color("#efe1bd", .96))
+	draw_string(ThemeDB.fallback_font, Vector2(604, 48), "HEX OCCUPANTS · MOCK-UP, NOT LIVE", HORIZONTAL_ALIGNMENT_LEFT, 370, 18, Color("#843e30"))
+	var demo: Dictionary = region.get("encounter_demo_v1", {})
+	for occupant in demo.get("occupants", []):
+		var p: Vector2 = _point(occupant.get("position", []))
+		var active: bool = str(occupant.get("id", "")) == selected_encounter_demo_id
+		for cell in region.get("hex_overlay_v1", {}).get("cells", []):
+			if cell.get("axial", []) == occupant.get("axial", []):
+				var shape: PackedVector2Array = _poly(cell.get("points", []))
+				if shape.size() == 6:
+					draw_colored_polygon(shape, Color("#9d4735", .16 if active else .08))
+		_draw_shared_icon(str(occupant.get("role", "")), p, true)
+		if active:
+			draw_arc(p, 20, 0, TAU, 32, Color("#9d4735"), 2)
+		var text_value: String = str(occupant.get("label", "")) + " · mock-up"
+		var width: float = text_value.length() * 8.5 + 12
+		draw_rect(Rect2(p + Vector2(21, -15), Vector2(width, 24)), Color("#efe1bd", .94))
+		draw_string(ThemeDB.fallback_font, p + Vector2(25, 3), text_value, HORIZONTAL_ALIGNMENT_LEFT, width - 8, 15, Color("#843e30"))
+	if not demo.get("omitted_roles", []).is_empty():
+		draw_string(ThemeDB.fallback_font, Vector2(604, 84), "Some mock-ups omitted: no suitable dry cell", HORIZONTAL_ALIGNMENT_LEFT, 370, 13, Color("#843e30"))
 
 func select_local_site_at(point: Vector2) -> bool:
 	if region.is_empty():
 		return false
+	selected_encounter_demo_id = ""
 	var best: float = 24.0
 	var chosen: Dictionary = {}
 	for value in region.get("local_sites_v2", {}).get("sites", []):
@@ -172,6 +222,13 @@ func select_local_site_at(point: Vector2) -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_E:
+			if _encounter_preview_available():
+				show_encounter_demo = not show_encounter_demo
+			selected_encounter_demo_id = ""
+			info.text = _base_info()
+			queue_redraw()
+			return
 		if event.keycode == KEY_X:
 			show_hex_grid = not show_hex_grid
 			info.text = _base_info()
@@ -193,6 +250,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			fit_map()
 			return
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if select_encounter_demo_at(get_global_mouse_position()):
+			return
 		if select_local_site_at(get_global_mouse_position()):
 			return
 	super._unhandled_input(event)

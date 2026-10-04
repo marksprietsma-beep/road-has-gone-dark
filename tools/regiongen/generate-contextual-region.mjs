@@ -36,7 +36,7 @@ const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,land
 const visible=preview.visible.filter(site=>site.kind!=="hometown");
 const fragments=['<g id="known-game-owned-pois">'];
 for(const site of visible)fragments.push(renderSharedIcon(SITE_ROLES[site.kind],site.position));
-combined.encounter_demo_v1=buildEncounterDemo(composite.source_context,hexes,visible);
+combined.encounter_demo_v1=buildEncounterDemo(composite.source_context,hexes,visible,art.terrain);
 fragments.push(renderReadableLabels(visible),'</g>');
 const text='<text x="668" y="111" fill="#333127" font-family="Georgia,serif" font-size="12">Known nearby sites: '+
  preview.visible.length+' · Rumours: '+preview.rumours.length+'</text>';
@@ -68,8 +68,13 @@ await writeFile(resolve(svg),image);
 const measured=visible.slice().sort((a,b)=>measureHexDistance(composite.source_context,b.position)-measureHexDistance(composite.source_context,a.position))[0];
 const hexImage=base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+(measured?renderHexRuler(composite.source_context,hexes,measured):'')+fragments.join('\n')+'</svg>');
 await writeFile(resolve(svg.replace(/\.svg$/i,'.hex.svg')),hexImage);
-const demo=combined.encounter_demo_v1.occupants.map(o=>renderSharedIcon(o.role,o.position,{danger:true})+`<text x="${o.position[0]+22}" y="${o.position[1]+5}" font-size="15" fill="#843e30" stroke="#efe1bd" stroke-width="3" paint-order="stroke">${o.label} · mock-up</text>`).join('\n');
-await writeFile(resolve(svg.replace(/\.svg$/i,'.encounter.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+fragments.join('\n')+demo+'<rect x="590" y="20" width="390" height="45" fill="#efe1bd"/><text x="604" y="48" font-size="18" fill="#843e30">HEX OCCUPANTS · MOCK-UP, NOT LIVE</text></svg>'));
+const demo=combined.encounter_demo_v1.occupants.map(o=>{
+ const cell=hexes.cells.find(c=>c.axial.join(',')===o.axial.join(',')),label=o.label+' · mock-up';
+ return `<polygon points="${cell.points.map(p=>p.join(',')).join(' ')}" fill="#9d4735" fill-opacity=".08"/>`+
+  renderSharedIcon(o.role,o.position,{danger:true})+`<rect x="${o.position[0]+21}" y="${o.position[1]-15}" width="${label.length*8.5+12}" height="24" fill="#efe1bd" fill-opacity=".94"/><text x="${o.position[0]+25}" y="${o.position[1]+3}" font-family="Georgia,serif" font-size="15" fill="#843e30">${label}</text>`;
+}).join('\n');
+const omitted=combined.encounter_demo_v1.omitted_roles.length?'<text x="604" y="84" font-size="13" font-family="Georgia,serif" fill="#843e30">Some mock-ups omitted: no suitable dry cell</text>':'';
+await writeFile(resolve(svg.replace(/\.svg$/i,'.encounter.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+fragments.join('\n')+demo+'<rect x="590" y="20" width="390" height="45" fill="#efe1bd"/><text x="604" y="48" font-size="18" fill="#843e30">HEX OCCUPANTS · MOCK-UP, NOT LIVE</text>'+omitted+'</svg>'));
 if(auditSvg)await writeFile(resolve(auditSvg),auditImage);
 console.log("PASS: GAME-44 v2 sites "+layer.sites.length+
  " generated/context source, "+preview.visible.length+" known, "+

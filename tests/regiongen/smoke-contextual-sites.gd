@@ -52,6 +52,36 @@ func _check() -> void:
 		assert(not viewer.reveal_hidden_for_developer)
 		assert(not viewer.show_route_audit, "Route audit must default to OFF")
 		assert(not viewer.show_hex_grid)
+		assert(not viewer.show_encounter_demo)
+		assert(viewer.selected_encounter_demo_id == "")
+		var encounter_key := InputEventKey.new()
+		encounter_key.keycode = KEY_E
+		encounter_key.pressed = true
+		for occupant in viewer.region.get("encounter_demo_v1", {}).get("occupants", []):
+			var mock_point := Vector2(float(occupant.position[0]), float(occupant.position[1]))
+			assert(not viewer.select_encounter_demo_at(mock_point))
+		viewer._unhandled_input(encounter_key)
+		assert(viewer.show_encounter_demo)
+		await process_frame
+		assert(not viewer.show_hex_grid, "E must not change the user's independent X setting")
+		for occupant in viewer.region.get("encounter_demo_v1", {}).get("occupants", []):
+			var mock_point := Vector2(float(occupant.position[0]), float(occupant.position[1]))
+			assert(viewer.select_encounter_demo_at(mock_point))
+			assert(viewer.selected_encounter_demo_id == str(occupant.id))
+			assert(viewer.info.text.contains("MOCK-UP ONLY"))
+			assert(viewer.info.text.contains("no combat or spawn rules"))
+			await process_frame
+		viewer._unhandled_input(encounter_key)
+		assert(not viewer.show_encounter_demo and viewer.selected_encounter_demo_id == "")
+		var good_demo: Dictionary = viewer.region.encounter_demo_v1.duplicate(true)
+		viewer.region.encounter_demo_v1.source_context_id = "wrong-context"
+		viewer._unhandled_input(encounter_key)
+		assert(not viewer.show_encounter_demo, "Foreign-world mock-up displayed")
+		viewer.region.encounter_demo_v1 = good_demo
+		viewer.region.erase("encounter_demo_v1")
+		viewer._unhandled_input(encounter_key)
+		assert(not viewer.show_encounter_demo, "Legacy region without mock-ups must remain usable")
+		viewer.region.encounter_demo_v1 = good_demo
 		assert(viewer.hex_steps_to(Vector2(500, 500)) == 0)
 		var hex_key := InputEventKey.new()
 		hex_key.keycode = KEY_X
@@ -96,6 +126,9 @@ func _check() -> void:
 			assert(viewer.select_local_site_at(p))
 		viewer._unhandled_input(toggle)
 		assert(not viewer.reveal_hidden_for_developer)
+		viewer._unhandled_input(encounter_key)
+		assert(viewer.show_encounter_demo)
+		# Next loop's load_region must reset both the layer and its selection.
 	assert(inspected >= 2, "No generated and inspectable sites across six original worlds")
 	assert(not viewer.load_region("res://tools/regiongen/.tmp/no-such-v2-layer.json"))
 	assert(viewer.region.is_empty())
