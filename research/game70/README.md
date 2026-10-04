@@ -74,7 +74,7 @@ set to Dummy for tests; there is no audio/gameplay requirement.
 
 All final checks passed: **10 new Node tests, 226 native Godot assertions**, and
 18 actual Godot captures plus one composed sheet. Existing GAME-62 generator and
-Godot smoke, accepted world inspection, GAME-67 model (21 tests) and browser
+Godot smoke, accepted world inspection, save/world contract, GAME-67 model (21 tests) and browser
 (23 checks) suites passed again. No final script/loading errors; Xvfb reports
 an expected V-Sync warning.
 
@@ -83,6 +83,7 @@ an expected V-Sync warning.
 [GAME-62 generator](evidence/game62-generator-tests.txt) ·
 [GAME-62 Godot](evidence/game62-godot-tests.txt) ·
 [World Godot](evidence/world-godot-tests.txt) ·
+[Save/world contract](evidence/save-world-tests.txt) ·
 [GAME-67 model](evidence/game67-model-tests.txt) ·
 [GAME-67 browser](evidence/game67-browser-tests.txt).
 
