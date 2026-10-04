@@ -1,0 +1,121 @@
+{
+  "browser": "151.0.7922.173",
+  "viewport": [
+    1360,
+    1000
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "results": [
+    {
+      "name": "Public startup fetches public payload only",
+      "status": "passed"
+    },
+    {
+      "name": "batan: original roofs and meaningful selectable facility",
+      "status": "passed"
+    },
+    {
+      "name": "batan: labels are readable and do not overlap",
+      "status": "passed"
+    },
+    {
+      "name": "batan: fit, wheel zoom and drag pan",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: original roofs and meaningful selectable facility",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: labels are readable and do not overlap",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: fit, wheel zoom and drag pan",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: original roofs and meaningful selectable facility",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: labels are readable and do not overlap",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: fit, wheel zoom and drag pan",
+      "status": "passed"
+    },
+    {
+      "name": "Public map, index and DOM omit hidden facility identity",
+      "status": "passed"
+    },
+    {
+      "name": "Developer opt-in fetches separate privileged data and reveals actual unknown shop",
+      "status": "passed"
+    },
+    {
+      "name": "Public download from developer view omits hidden record",
+      "status": "passed"
+    },
+    {
+      "name": "Hypothetical discovery persists in the exported public snapshot",
+      "status": "passed"
+    },
+    {
+      "name": "Returning to public clears privileged selection and state",
+      "status": "passed"
+    },
+    {
+      "name": "Filter index and markers agree",
+      "status": "passed"
+    },
+    {
+      "name": "batan: mobile selection, detail panel and no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: mobile selection, detail panel and no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: mobile selection, detail panel and no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile two-finger pinch changes the map scale",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile map markers support touch selection",
+      "status": "passed"
+    },
+    {
+      "name": "No browser script errors",
+      "status": "passed"
+    }
+  ],
+  "captures": [
+    "batan-fit.png",
+    "batan-medium.png",
+    "batan-close.png",
+    "albanes-fit.png",
+    "albanes-medium.png",
+    "albanes-close.png",
+    "thilranlena-fit.png",
+    "thilranlena-medium.png",
+    "thilranlena-close.png",
+    "albanes-public.png",
+    "albanes-developer-hidden.png",
+    "batan-mobile-fit.png",
+    "batan-mobile-close.png",
+    "albanes-mobile-fit.png",
+    "albanes-mobile-close.png",
+    "thilranlena-mobile-fit.png",
+    "thilranlena-mobile-close.png"
+  ],
+  "errors": []
+}

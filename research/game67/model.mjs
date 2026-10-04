@@ -60,7 +60,7 @@ export function declutter(items, project, {size=26, labels=true, selectedId=null
   const priority = {guildhall:100,chapel:95,warehouse:90,manor:85,pier:80,inn:75,smithy:70};
   const ordered = [...items].sort((a,b) => (b.id===selectedId)-(a.id===selectedId) || (priority[b.type]||40)-(priority[a.type]||40) || a.id.localeCompare(b.id));
   for (const item of ordered) {
-    const [x,y] = project(item.position), width=labels ? size+Math.max(50,item.label.length*6.5) : size;
+    const [x,y] = project(item.position), width=(typeof labels === "function" ? labels(item) : labels) ? size+8+Math.max(50,item.label.length*7.5) : size;
     const box={x:x-size/2,y:y-size/2,w:width,h:size};
     if (reserved.some(r => box.x < r.x+r.w+5 && box.x+box.w+5 > r.x && box.y < r.y+r.h+5 && box.y+box.h+5 > r.y)) continue;
     visible.push({item,box});reserved.push(box);
