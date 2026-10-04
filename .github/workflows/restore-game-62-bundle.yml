@@ -1,47 +1,38 @@
-name: Publish preserved GAME-62 original commit (handoff only)
+name: Stage preserved GAME-62 original commit (handoff only)
 
 on:
   push:
     branches:
       - handoff/game-62-local-region-upload
     paths:
-      - handoffs/GAME-62/GAME-62-source.bundle
-      - handoffs/GAME-62/GAME-62-Complete-Delivery.zip
-      - handoffs/GAME-62/PUBLISH_NOW.md
+      - handoffs/GAME-62/PUBLISH_TAG.md
 
 permissions:
   contents: write
 
 jobs:
-  restore-exact-commit:
+  stage-original-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: true
-      - name: Validate original ZIP and publish original commit (no merge)
+      - name: Verify immutable archive and stage exact Git commit as temporary tag
         shell: bash
         run: |
           set -euo pipefail
-          bundle="handoffs/GAME-62/GAME-62-source.bundle"
           archive="handoffs/GAME-62/GAME-62-Complete-Delivery.zip"
           base="3c06cf81e46c7ce9edd4e9ebf20a9940c0ca6f23"
           expected="0c15fcc77011d5dd1ca5418cbc67be1cee576360"
-          zip_sha="a68b6b69700a02fc597240c46bfe117f01113634"
-          if [ -s "$archive" ]; then
-            test "$(git hash-object "$archive")" = "$zip_sha"
-            bundle="$RUNNER_TEMP/GAME-62-source.bundle"
-            unzip -p "$archive" GAME-62-source.bundle > "$bundle"
-          else
-            test -s "$bundle"
-          fi
+          test "$(git hash-object "$archive")" = "a68b6b69700a02fc597240c46bfe117f01113634"
+          bundle="$RUNNER_TEMP/GAME-62-source.bundle"
+          unzip -p "$archive" GAME-62-source.bundle > "$bundle"
           git cat-file -e "$base^{commit}"
           git bundle verify "$bundle"
           git fetch "$bundle" "refs/heads/codex/game-62-local-region-v1"
           actual="$(git rev-parse FETCH_HEAD)"
           test "$actual" = "$expected"
           git merge-base --is-ancestor "$base" "$actual"
-          git push origin "$actual:refs/heads/game-62-preserved-original"
-          echo "Published ORIGINAL GAME-62 commit $actual on game-62-preserved-original."
-          echo "No merge, no new game features, no PR in this workflow."
+          git push origin "$actual:refs/tags/game-62-original-transfer"
+          echo "Staged exact ORIGINAL commit as a temporary tag; no merge, no game source changes."
