@@ -35,6 +35,47 @@ func click_map(point: Vector2) -> void:
 	press.pressed = false
 	flow.viewport.push_input(press,true)
 	await process_frame
+func camera_input(tag: String) -> void:
+	var position: Vector2 = flow.camera.position
+	var zoom: Vector2 = flow.camera.zoom
+	var wheel := InputEventMouseButton.new()
+	wheel.button_index = MOUSE_BUTTON_WHEEL_UP
+	wheel.pressed = true
+	wheel.position = Vector2(flow.viewport.size)/2
+	flow.viewport.push_input(wheel,true)
+	await process_frame
+	check(flow.camera.zoom.x > zoom.x,tag+" actual wheel zoom")
+	var down := InputEventMouseButton.new()
+	down.button_index = MOUSE_BUTTON_MIDDLE
+	down.pressed = true
+	down.position = wheel.position
+	flow.viewport.push_input(down,true)
+	await process_frame
+	var before: Vector2 = flow.camera.position
+	var motion := InputEventMouseMotion.new()
+	motion.position = wheel.position+Vector2(24,12)
+	motion.relative = Vector2(24,12)
+	motion.button_mask = MOUSE_BUTTON_MASK_MIDDLE
+	flow.viewport.push_input(motion,true)
+	await process_frame
+	check(flow.camera.position != before,tag+" actual middle drag")
+	down.pressed = false
+	flow.viewport.push_input(down,true)
+	var fit := InputEventKey.new()
+	fit.keycode = KEY_F
+	fit.pressed = true
+	flow.viewport.push_input(fit,true)
+	await process_frame
+	var expected: Vector2 = Vector2(flow.world_data.map.width,flow.world_data.map.height)/2 if flow.level == "world" else (Vector2(500,500) if flow.level == "region" else flow.town_map.frame.get_center())
+	check(flow.camera.zoom.x > 0 and flow.camera.position.distance_to(expected) < .001,tag+" F fit input")
+	fit.pressed = false
+	flow.viewport.push_input(fit,true)
+	flow.camera.position = position
+	flow.camera.zoom = zoom
+	flow.world_map.set_zoom(zoom.x)
+	flow.camera.force_update_scroll()
+	await settle()
+
 func _run() -> void:
 	started = Time.get_ticks_msec()
 	flow = load("res://scenes/debug/world_region_town_flow.tscn").instantiate()
@@ -56,6 +97,7 @@ func _run() -> void:
 		# Real atlas hit/signal path, not just the bookmark helper.
 		await click_map(Vector2(c.worldPosition[0],c.worldPosition[1]))
 		check(int(flow.selected_burg.i) == int(c.burgId),slug+" actual world map click signal")
+		await camera_input(slug+" world")
 		await capture(slug+"-world")
 		var world_position: Vector2 = flow.camera.position
 		var world_zoom: Vector2 = flow.camera.zoom
@@ -68,6 +110,7 @@ func _run() -> void:
 		check(int(flow.region_map.selected_source_id) == int(c.burgId),slug+" local burg highlighted")
 		await click_map(Vector2(c.localPosition[0],c.localPosition[1]))
 		check(int(flow.region_burg.i) == int(c.burgId),slug+" actual regional burg click")
+		await camera_input(slug+" region")
 		await capture(slug+"-region")
 		# Exercise camera context away from the default fit view.
 		flow.camera.position += Vector2(8,-5)
@@ -83,6 +126,7 @@ func _run() -> void:
 		check(flow.town_map.model.audience == "public" and flow.town_map.model.settlement.worldIdentity == c.fixtureSha256 and int(flow.town_map.model.settlement.burgId) == int(c.burgId),slug+" matching original public town model")
 		check(flow.town_map.model.buildings.size() == {"batan":77,"albanes":463,"thilranlena":537}[slug],slug+" original roof count")
 		for e in flow.town_map.model.establishments: check(e.knowledge != "unknown",slug+" known facility "+e.type)
+		await camera_input(slug+" town")
 		await capture(slug+"-town")
 		var type: String = {"batan":"inn","albanes":"guildhall","thilranlena":"warehouse"}[slug]
 		var chosen: Dictionary = {}
@@ -103,6 +147,11 @@ func _run() -> void:
 		if slug == "albanes": check(chosen.provenance.providerBuildingId == "b93","guildhall b93")
 		if slug == "thilranlena": check(chosen.provenance.providerBuildingId == "b223","warehouse b223")
 		check(flow.inspection.text.contains(type) and flow.notice.text.contains("NOT fitted"),slug+" inspection and geography limitation visible")
+		var outdoor: Dictionary = {}
+		for e in flow.town_map.model.establishments:
+			if e.locationType == "outdoor": outdoor = e; break
+		check(flow.town_map.select_facility(outdoor.id) and flow.town_map.selected_polygon().is_empty() and flow.inspection.text.contains("none (outdoor)"),slug+" outdoor feature has no invented roof")
+		check(flow.town_map.select_facility(chosen.id),slug+" restore target facility")
 		await capture(slug+"-facility")
 		var town_position: Vector2 = flow.camera.position
 		var town_zoom: Vector2 = flow.camera.zoom
@@ -128,6 +177,12 @@ func _run() -> void:
 		if b is Dictionary and int(b.get("i",0)) > 0 and not b.get("hidden",false) and not b.get("removed",false) and flow._case_for_burg(int(b.i)).is_empty(): unsupported_id = int(b.i); break
 	check(flow.select_world_burg(unsupported_id),"real unsupported burg inspectable")
 	check(flow.action.disabled and not flow.open_region() and flow.level == "world","unsupported burg has no random region/town fallback")
+	var atlas_renderer: Node = flow.world_map
+	var atlas_camera: Vector2 = flow.camera.position
+	check(flow.switch_world("game-11-determinism"),"switch back to deterministic world")
+	check(flow._case_for_burg(760).is_empty(),"duplicate numeric burg stays bound to active source world")
+	check(flow.switch_world("atlas-showcase") and flow.world_map == atlas_renderer and flow.camera.position == atlas_camera,"cached atlas renderer and camera restored on world switch")
+	check(flow.selected_burg.is_empty(),"explicit world switch clears stale burg selection")
 	var report := {"engine":Engine.get_version_info().string,"rendering":"Compatibility / Xvfb / Mesa llvmpipe","checks":checks,"captures":captures,"loadMsec":flow.load_msec,"elapsedMsec":Time.get_ticks_msec()-started,"viewport":[1440,960]}
 	var out := FileAccess.open("res://research/game70/evidence/godot-results.json",FileAccess.WRITE)
 	out.store_string(JSON.stringify(report,"\t")+"\n")

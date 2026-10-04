@@ -175,7 +175,19 @@ func switch_world(stem: String) -> bool:
 	selected_facility = {}
 	level = "world"
 	world_choice.select(WORLDS.find(stem))
-	world_map.display_fixture(data, path.trim_suffix(".json") + ".relief.svg", ROOT + "world-art/" + stem + ".vegetation.svg")
+	# Keep accepted atlas renderers for both worlds; repeat switches avoid a full bake.
+	if world_cache.has(stem):
+		world_map.hide()
+		world_map = world_cache[stem]
+	else:
+		if not world_cache.is_empty():
+			world_map.hide()
+			world_map = load("res://scenes/debug/map_renderer/fantasy_map_layers.tscn").instantiate()
+			canvas.add_child(world_map)
+			world_map.settlement_selected.connect(_world_selected)
+		world_map.display_fixture(data, path.trim_suffix(".json") + ".relief.svg", ROOT + "world-art/" + stem + ".vegetation.svg")
+		world_cache[stem] = world_map
+	world_map.selection.select_cell(-1)
 	load_msec["world:"+stem] = Time.get_ticks_msec()-started
 	_show_level()
 	_restore_or_fit()
