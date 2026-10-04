@@ -6,6 +6,7 @@ existing research documents supplied the scope.
 
 GAME-69 research is ready for Mark's visual review on a separate stacked draft PR,
 head `research/game-69-settlement-art`, base `review/game-67-facilities-recovery`.
+[Draft PR #52](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/52).
 PR #51 and its GAME-67 files remain unchanged; no merge or production integration.
 
 Original archived Batan/Albanes/Thilranlena artwork now forms an interactive layer

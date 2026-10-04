@@ -5,6 +5,9 @@ models, controls, selection, decluttering and public export while placing genuin
 archived GAME-63 illustrations underneath. No town regeneration, gameplay,
 production integration, permanent art choice or merge.
 
+[Draft PR #52](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/52) ·
+Head `research/game-69-settlement-art` · Base `review/game-67-facilities-recovery`.
+
 Base: GAME-67 `740f1910787cafae172fdf5d74777bbb032b92a0`,
 [upstream draft PR #51](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/51).
 All additions are under `research/game69/`; the 57 GAME-67 files remain unchanged.
@@ -172,3 +175,5 @@ Authenticated Linear access was unavailable. The uploaded GAME-69 specification,
 GAME-67 review documents and original archive were read; GAME-69/GAME-67/GAME-63/
 GAME-19 Linear issue contents/statuses were not independently fetched or updated.
 [Prepared Linear update](LINEAR-UPDATE.md) is provided for review.
+
+[Publication verification](DELIVERY.md) records the remote checks and scope audit.
