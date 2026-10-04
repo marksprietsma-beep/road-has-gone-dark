@@ -6,6 +6,7 @@ import {dirname, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 import FlatQueue from "./flatqueue-compat.mjs";
 import {stringifyCanonical} from "./canonical-json.mjs";
+import {buildGeographySidecar} from "./geography-sidecar.mjs";
 import {
   buildReliefSidecar,
   buildVegetationSidecar,
@@ -36,10 +37,11 @@ if (!Number.isInteger(landmarkDensity) || landmarkDensity < 1 || landmarkDensity
   console.error("--landmark-density must be an integer from 1 to 12 (preview only)");
   process.exit(2);
 }
+const geometryOutput = value("--geometry-output");
 const reliefOutput = value("--relief-output") || (output ? defaultReliefPath(output) : null);
 const vegetationOutput = value("--vegetation-output") || (output ? defaultVegetationPath(output) : null);
 if (!seed || !output || args.includes("--help")) {
-  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json> [--relief-output <file.svg>] [--vegetation-output <file.svg>]");
+  console.error("Usage: generate-azgaar.mjs --seed <seed> --output <file.json> [--relief-output <file.svg>] [--vegetation-output <file.svg>] [--geometry-output <sidecar.json>]");
   process.exit(args.includes("--help") ? 0 : 2);
 }
 
@@ -88,7 +90,7 @@ const server = await createServer({
 });
 try {
   const entry = await server.ssrLoadModule(resolve(here, "headless-entry.ts"));
-  const {world, relief} = await entry.generateWorldBundle(seed, {landmarkDensity});
+  const {world, relief, geographyVertices, geographyCellVertices} = await entry.generateWorldBundle(seed, {landmarkDensity});
   if (landmarkDensity !== 1) {
     const byType = {};
     for (const marker of world.markers) byType[marker.type] = (byType[marker.type] || 0) + 1;
@@ -100,6 +102,17 @@ try {
   await mkdir(dirname(resolve(output)), {recursive: true});
   await writeFile(resolve(output), bytes);
   console.log(`${createHash("sha256").update(bytes).digest("hex")}  ${output}`);
+  if (geometryOutput) {
+    const geometryDestination=resolve(geometryOutput);
+    if ([resolve(output),resolve(reliefOutput),resolve(vegetationOutput)].includes(geometryDestination))
+      throw Error("Geography sidecar output aliases another generated file");
+    if(landmarkDensity!==1)throw Error("Canonical source geography cannot be exported from a stress-only preview");
+    const geometry=buildGeographySidecar(world,geographyVertices,bytes,geographyCellVertices);
+    const source=JSON.stringify(geometry)+"\n";
+    await mkdir(dirname(geometryDestination),{recursive:true});
+    await writeFile(geometryDestination,source);
+    console.log(`${createHash("sha256").update(source).digest("hex")}  ${geometryDestination}`);
+  }
   const sourceHtml = await readFile(resolve(vendor, "src/index.html"), "utf8");
   const sourceDocument = new JSDOM(sourceHtml).window.document;
   const svg = buildReliefSidecar({
