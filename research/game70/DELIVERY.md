@@ -27,8 +27,9 @@ PR #52 remains open/draft at `c90a96be9c1a6546f147e4853d5bdc183a8b24c9`.
 Their titles/heads/statuses remain unchanged. Main remains
 `238045b395ad9e693c71ac6b018442257fe0d6f3`. No force push or merge.
 
-The review-package commit had no GitHub check runs or status contexts (aggregate
-status `pending` with an empty contexts array). Executed validation is the explicit
-local suites in the README; no remote CI pass is claimed. Authenticated Linear
+The existing **Verify Local Region Generator V1** GitHub workflow started for
+the new debug region-scene paths. Its live status is on the PR/Actions page;
+the completion message distinguishes its final status from the executed local
+suites in the README. No CI pass is inferred from an empty status-context array. Authenticated Linear
 access was unavailable, so no issue contents/statuses were independently fetched
 or changed. The uploaded brief and repository documentation supplied the scope.
