@@ -51,6 +51,15 @@ func _check() -> void:
 		assert(viewer.selected_local_id == "")
 		assert(not viewer.reveal_hidden_for_developer)
 		assert(not viewer.show_route_audit, "Route audit must default to OFF")
+		assert(not viewer.show_hex_grid)
+		assert(viewer.hex_steps_to(Vector2(500, 500)) == 0)
+		var hex_key := InputEventKey.new()
+		hex_key.keycode = KEY_X
+		hex_key.pressed = true
+		viewer._unhandled_input(hex_key)
+		assert(viewer.show_hex_grid)
+		viewer._unhandled_input(hex_key)
+		assert(not viewer.show_hex_grid)
 		for s in layer["sites"]:
 			if not s is Dictionary or s.get("kind", "") == "hometown":
 				continue

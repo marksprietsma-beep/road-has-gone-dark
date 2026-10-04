@@ -6,6 +6,9 @@ on:
       - "tools/regiongen/contextual-sites-v2.mjs"
       - "tools/regiongen/inferred-fine-terrain.mjs"
       - "tools/regiongen/landscape-presentation.mjs"
+      - "tools/regiongen/hex-overlay.mjs"
+      - "tests/regiongen/verify-hex-overlay.mjs"
+      - "docs/implementation/GAME-58*"
       - "tests/regiongen/verify-landscape-presentation.mjs"
       - "tests/regiongen/capture-landscape.gd"
       - "docs/implementation/GAME-57*"
@@ -73,6 +76,7 @@ jobs:
           node tools/regiongen/generate-contextual-examples.mjs
           node tests/regiongen/verify-contextual-sites-v2.mjs
           node tests/regiongen/verify-landscape-presentation.mjs
+          node tests/regiongen/verify-hex-overlay.mjs
       - name: Install Godot 4.7.2 for constrained-viewer smoke
         run: |
           curl -fL --retry 3 --retry-delay 2 \

@@ -15,6 +15,7 @@ var glyphs: Dictionary = {}
 var selected_local_id: String = ""
 var reveal_hidden_for_developer: bool = false
 var show_route_audit: bool = false
+var show_hex_grid: bool = false
 
 func _ready() -> void:
 	var decoded: Variant = JSON.parse_string(FileAccess.get_file_as_string(GLYPHS))
@@ -24,12 +25,13 @@ func _ready() -> void:
 	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
 
 func _base_info() -> String:
-	return super._base_info() + "\nGAME-44 | Pictograms = game-owned sites | H: developer reveal | A: route audit (off by default; no save)"
+	return super._base_info() + "\nX: hex grid | H: developer reveal | A: route audit (off by default; no save)"
 
 func load_region(path: String) -> bool:
 	selected_local_id = ""
 	reveal_hidden_for_developer = false
 	show_route_audit = false
+	show_hex_grid = false
 	if not super.load_region(path):
 		return false
 	var layer: Dictionary = region.get("local_sites_v2", {})
@@ -86,6 +88,8 @@ func _draw() -> void:
 	super._draw()
 	if region.is_empty():
 		return
+	if show_hex_grid:
+		_draw_hex_grid()
 	var layer: Dictionary = region.get("local_sites_v2", {})
 	# Original route/shore conflicts remain in source JSON and are visible
 	# ONLY under an explicit no-save developer audit overlay (A key).
@@ -141,11 +145,18 @@ func select_local_site_at(point: Vector2) -> bool:
 	selected_source_id = -1
 	info.text = _base_info() + "\nLOCAL SITE | %s | %s | %s | generated, road protection unverified" % [
 		str(chosen.get("label", "")),str(chosen.get("kind", "")),str(chosen.get("knowledge", ""))]
+	if show_hex_grid:
+		info.text += "\nDistance from hometown: %d hex steps (geometric; hours and terrain routing pending)" % hex_steps_to(_point(chosen["position"]))
 	queue_redraw()
 	return true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_X:
+			show_hex_grid = not show_hex_grid
+			info.text = _base_info()
+			queue_redraw()
+			return
 		if event.keycode == KEY_A:
 			show_route_audit = not show_route_audit
 			info.text = _base_info()
@@ -165,3 +176,61 @@ func _unhandled_input(event: InputEvent) -> void:
 		if select_local_site_at(get_global_mouse_position()):
 			return
 	super._unhandled_input(event)
+
+# GAME-58: display-only world-anchored hex ruler. No travel/save changes.
+func _hex_at_local(point: Vector2) -> Vector2i:
+	var bounds: Dictionary = region.get("source_context", {}).get("space", {}).get("source_bounds", {})
+	var x: float = float(bounds.get("left", 0)) + point.x * (float(bounds.get("right", 1000)) - float(bounds.get("left", 0))) / 1000.0
+	var y: float = float(bounds.get("top", 0)) + point.y * (float(bounds.get("bottom", 1000)) - float(bounds.get("top", 0))) / 1000.0
+	var size: float = 1.0 / sqrt(3.0)
+	var q: float = (sqrt(3.0) / 3.0 * x - y / 3.0) / size
+	var r: float = 2.0 * y / 3.0 / size
+	var s: float = -q - r
+	var a: int = roundi(q)
+	var b: int = roundi(r)
+	var c: int = roundi(s)
+	var da: float = absf(a - q)
+	var db: float = absf(b - r)
+	var dc: float = absf(c - s)
+	if da > db and da > dc:
+		a = -b - c
+	elif db > dc:
+		b = -a - c
+	return Vector2i(a, b)
+
+func hex_steps_to(point: Vector2) -> int:
+	var overlay: Dictionary = region.get("hex_overlay_v1", {})
+	if overlay.is_empty():
+		return -1
+	var h: Array = overlay.get("home_axial", [0, 0])
+	var d: Vector2i = _hex_at_local(point) - Vector2i(int(h[0]), int(h[1]))
+	return maxi(absi(d.x), maxi(absi(d.y), absi(d.x + d.y)))
+
+func _draw_hex_grid() -> void:
+	var overlay: Dictionary = region.get("hex_overlay_v1", {})
+	if overlay.is_empty():
+		return
+	var target := Vector2i(-99999, -99999)
+	var steps: int = -1
+	for site in region.get("local_sites_v2", {}).get("sites", []):
+		if str(site.get("id", "")) == selected_local_id and _site_is_visible(site):
+			target = _hex_at_local(_point(site["position"]))
+			steps = hex_steps_to(_point(site["position"]))
+	for cell in overlay.get("cells", []):
+		var shape: PackedVector2Array = _poly(cell.get("points", []))
+		var axial: Array = cell.get("axial", [0, 0])
+		if shape.size() != 6:
+			continue
+		# Clip edge hexes to the map rectangle; no invented boundary crop.
+		var border := PackedVector2Array([Vector2.ZERO, Vector2(1000, 0), Vector2(1000, 1000), Vector2(0, 1000)])
+		for clipped in Geometry2D.intersect_polygons(shape, border):
+			if Vector2i(int(axial[0]), int(axial[1])) == target:
+				draw_colored_polygon(clipped, Color("#d8a749", .3))
+			var outline := PackedVector2Array(clipped)
+			outline.append(outline[0])
+			draw_polyline(outline, Color("#584b32", .28), .85, true)
+	var message: String = "HEX DISTANCE | 1 source unit spacing; physical scale undecided"
+	if steps >= 0:
+		message = "DISTANCE FROM HOMETOWN: %d hex steps | Terrain routing / hours pending" % steps
+	draw_rect(Rect2(18, 950, 960, 32), Color("#eee0bd", .95))
+	draw_string(ThemeDB.fallback_font, Vector2(30, 972), message, HORIZONTAL_ALIGNMENT_LEFT, 930, 16, Color("#534c39"))

@@ -7,6 +7,7 @@ import {generateContextualSites,contextualPlayerSiteView} from "./contextual-sit
 import {renderConstrainedRegion} from "./render-constrained-region.mjs";
 import {buildInferredFineTerrain} from "./inferred-fine-terrain.mjs";
 import {buildLandscapePresentation} from "./landscape-presentation.mjs";
+import {buildHexOverlay,renderHexOverlay,renderHexRuler,measureHexDistance} from "./hex-overlay.mjs";
 import {renderSiteSymbol,renderReadableLabels} from "./site-icons.mjs";
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
@@ -26,7 +27,8 @@ const inferred=buildInferredFineTerrain(world,composite.source_context,
  composite.source_context.parent_source_world_sha256);
 // Debug generation artefact only; never a save schema migration.
 const art=buildLandscapePresentation(world,composite);
-const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,landscape_presentation_v1:art};
+const hexes=buildHexOverlay(composite.source_context);
+const combined={...composite,local_sites_v2:layer,inferred_fine_v1:inferred,landscape_presentation_v1:art,hex_overlay_v1:hexes};
 // This SVG is a filtered *player-facing* POI overlay on a source-visual
 // diagnostic; complete debug JSON (including hidden POIs) is NOT player UI.
 const visible=preview.visible.filter(site=>site.kind!=="hometown");
@@ -60,6 +62,9 @@ await mkdir(dirname(resolve(svg)),{recursive:true});
 if(auditSvg)await mkdir(dirname(resolve(auditSvg)),{recursive:true});
 await writeFile(resolve(output),JSON.stringify(combined,null,2)+"\n");
 await writeFile(resolve(svg),image);
+const measured=visible.slice().sort((a,b)=>measureHexDistance(composite.source_context,b.position)-measureHexDistance(composite.source_context,a.position))[0];
+const hexImage=base.replace('</svg>',renderHexOverlay(hexes)+(measured?renderHexRuler(composite.source_context,hexes,measured):'')+fragments.join('\n')+'</svg>');
+await writeFile(resolve(svg.replace(/\.svg$/i,'.hex.svg')),hexImage);
 if(auditSvg)await writeFile(resolve(auditSvg),auditImage);
 console.log("PASS: GAME-44 v2 sites "+layer.sites.length+
  " generated/context source, "+preview.visible.length+" known, "+

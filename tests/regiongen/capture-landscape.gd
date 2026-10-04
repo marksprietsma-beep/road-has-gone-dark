@@ -15,10 +15,18 @@ func _capture() -> void:
 		viewer.camera.position = Vector2(500, 500)
 		viewer.camera.zoom = Vector2.ONE
 		viewer.info.hide()
+		var suffix: String = ".godot.png"
+		if OS.get_cmdline_user_args().has("--hex-review"):
+			var key := InputEventKey.new()
+			key.keycode = KEY_X
+			key.pressed = true
+			viewer._unhandled_input(key)
+			assert(viewer.show_hex_grid)
+			suffix = ".hex.godot.png"
 		await process_frame
 		await RenderingServer.frame_post_draw
 		var picture: Image = root.get_texture().get_image()
 		assert(picture != null)
-		assert(picture.save_png(viewer.SAMPLE_FOLDER + name + ".godot.png") == OK)
+		assert(picture.save_png(viewer.SAMPLE_FOLDER + name + suffix) == OK)
 	print("PASS: GAME-57 six actual Godot landscape screenshots")
 	quit(0)
