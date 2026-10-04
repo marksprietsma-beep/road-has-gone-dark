@@ -1,6 +1,8 @@
 # GAME-70 — Godot world → region → town navigation proof
 
 Launch **`scenes/debug/world_region_town_flow.tscn` with F6** in Godot 4.6.
+[Open draft PR #53](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/53),
+head `research/game-70-map-flow`, base `research/game-69-settlement-art`.
 This is a working native Godot debug scene, stacked on GAME-69. It is not linked
 from the main game and does not change gameplay, saves, original fixtures,
 GAME-62, GAME-67 or GAME-69. No source town is regenerated.
@@ -120,3 +122,5 @@ research remains openly present elsewhere in the repository.
 Authenticated Linear access was unavailable; the uploaded brief and repository
 research were used. No Linear issue status was changed. Publication is a new draft
 based on GAME-69; PRs #51/#52 and main remain unchanged. No merge.
+
+[GitHub delivery verification](DELIVERY.md).
