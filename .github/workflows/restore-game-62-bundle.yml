@@ -1,38 +1,46 @@
-name: Stage preserved GAME-62 original commit (handoff only)
+name: Restore GAME-62 preserved source (handoff only)
 
 on:
   push:
     branches:
       - handoff/game-62-local-region-upload
     paths:
-      - handoffs/GAME-62/PUBLISH_TAG.md
+      - handoffs/GAME-62/PUBLISH_SOURCE.md
 
 permissions:
   contents: write
 
 jobs:
-  stage-original-commit:
+  restore-verbatim-source:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: true
-      - name: Verify immutable archive and stage exact Git commit as temporary tag
+      - name: Verify exact bundle and reproduce source without workflow-only permission restriction
         shell: bash
         run: |
           set -euo pipefail
           archive="handoffs/GAME-62/GAME-62-Complete-Delivery.zip"
           base="3c06cf81e46c7ce9edd4e9ebf20a9940c0ca6f23"
-          expected="0c15fcc77011d5dd1ca5418cbc67be1cee576360"
+          original="0c15fcc77011d5dd1ca5418cbc67be1cee576360"
+          workflow=".github/workflows/verify-local-region-v1.yml"
           test "$(git hash-object "$archive")" = "a68b6b69700a02fc597240c46bfe117f01113634"
           bundle="$RUNNER_TEMP/GAME-62-source.bundle"
           unzip -p "$archive" GAME-62-source.bundle > "$bundle"
           git cat-file -e "$base^{commit}"
           git bundle verify "$bundle"
           git fetch "$bundle" "refs/heads/codex/game-62-local-region-v1"
-          actual="$(git rev-parse FETCH_HEAD)"
-          test "$actual" = "$expected"
-          git merge-base --is-ancestor "$base" "$actual"
-          git push origin "$actual:refs/tags/game-62-original-transfer"
-          echo "Staged exact ORIGINAL commit as a temporary tag; no merge, no game source changes."
+          test "$(git rev-parse FETCH_HEAD)" = "$original"
+          git merge-base --is-ancestor "$base" "$original"
+          git checkout -B game-62-recovered-content "$base"
+          git diff --binary "$base" "$original" -- . ":(exclude)$workflow" | git apply --index
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "GAME-62: verbatim preserved source from original 0c15fcc (workflow pending)" -m "Original commit, tree and QA bundle retained unchanged in GitHub holding branch. Workflow will be added via authorised GitHub connector because GitHub Actions token cannot upload workflow files."
+          git diff --exit-code "$original" HEAD -- . ":(exclude)$workflow"
+          test ! -e "$workflow"
+          git push origin HEAD:refs/heads/game-62-recovered-content
+          echo "Restored source is byte-equivalent to $original EXCEPT new workflow ($workflow), which must be published separately."
+          echo "No merge or gameplay changes."
