@@ -1,0 +1,51 @@
+name: Verify Local Region Generator V1
+on:
+  pull_request:
+    paths: ['tools/regiongen/**', 'tools/worldgen/**', 'vendor/town-forge/**', 'scripts/debug/*region*.gd', 'scenes/debug/*region*.tscn', 'tests/regiongen/**', 'docs/implementation/GAME-62*', '.github/workflows/verify-local-region-v1.yml']
+  workflow_dispatch:
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+      - name: Generate immutable-world one-cell proofs
+        run: |
+          node tests/regiongen/verify-pins.mjs
+          node tools/regiongen/prove-generator-v1.mjs
+          node tests/regiongen/verify-v1.mjs
+          node tests/regiongen/verify-source-projection.mjs
+          node tests/regiongen/verify-geography-sidecar.mjs
+          node --test tests/worldgen/canonical-json.test.mjs tests/worldgen/relief-sidecar.test.mjs
+          git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar
+      - name: Install real Godot renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libgl1-mesa-dri
+          curl -fL --retry 3 https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Verify viewer, saves and rendered pixels
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot=/tmp/Godot_v4.7.2-stable_linux.x86_64
+          "$godot" --headless --editor --path . --quit 2>&1 | tee review/local-region-v1/import.log
+          timeout 120s "$godot" --headless --path . --script res://tests/regiongen/smoke-v1.gd 2>&1 | tee review/local-region-v1/smoke.log
+          timeout 120s "$godot" --headless --path . --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee review/local-region-v1/gameworld.log
+          timeout 120s xvfb-run -a -s '-screen 0 1400x1200x24' "$godot" --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd 2>&1 | tee review/local-region-v1/render.log
+          timeout 120s xvfb-run -a -s '-screen 0 1400x1200x24' "$godot" --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd -- --verify-render 2>&1 | tee review/local-region-v1/render-repeat.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' review/local-region-v1/*.log; then exit 1; fi
+          grep -q 'PASS: GAME-62' review/local-region-v1/smoke.log
+          grep -q 'PASS: GAME-7' review/local-region-v1/gameworld.log
+          grep -q 'PASS: GAME-62' review/local-region-v1/render-repeat.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: local-region-v1-developer-review
+          path: review/local-region-v1/
+          if-no-files-found: error
