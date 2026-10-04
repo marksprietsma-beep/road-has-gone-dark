@@ -1,0 +1,272 @@
+{
+  "browser": "151.0.7922.173",
+  "desktop": [
+    1360,
+    1050
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "results": [
+    {
+      "name": "Public initial load uses only public artwork, frames and GAME-67 samples",
+      "status": "passed"
+    },
+    {
+      "name": "batan: exact original facilities and semantic marker asset",
+      "status": "passed"
+    },
+    {
+      "name": "batan medium: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "batan medium: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "batan close: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "batan close: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "batan: full original image is actually loaded, with exact measured frame",
+      "status": "passed"
+    },
+    {
+      "name": "batan: fit, drag and wheel keep original art and markers together",
+      "status": "passed"
+    },
+    {
+      "name": "batan: anonymous-footprint alignment diagnostic toggles",
+      "status": "passed"
+    },
+    {
+      "name": "batan: comparison A loads complete original only in developer context",
+      "status": "passed"
+    },
+    {
+      "name": "batan: comparison B reuses original GAME-67 render and proxy icons",
+      "status": "passed"
+    },
+    {
+      "name": "batan: repeated settled render is pixel-identical",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: exact original facilities and semantic marker asset",
+      "status": "passed"
+    },
+    {
+      "name": "albanes medium: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "albanes medium: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "albanes close: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "albanes close: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: full original image is actually loaded, with exact measured frame",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: fit, drag and wheel keep original art and markers together",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: anonymous-footprint alignment diagnostic toggles",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: comparison A loads complete original only in developer context",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: comparison B reuses original GAME-67 render and proxy icons",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: repeated settled render is pixel-identical",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: exact original facilities and semantic marker asset",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena medium: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena medium: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena close: source artwork anchor and screen marker agree",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena close: readable collision-free labels",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: full original image is actually loaded, with exact measured frame",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: fit, drag and wheel keep original art and markers together",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: anonymous-footprint alignment diagnostic toggles",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: comparison A loads complete original only in developer context",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: comparison B reuses original GAME-67 render and proxy icons",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: repeated settled render is pixel-identical",
+      "status": "passed"
+    },
+    {
+      "name": "Public payload, DOM, art metadata and export exclude hidden binding",
+      "status": "passed"
+    },
+    {
+      "name": "Developer opt-in reveals original source art and unknown facility, public export remains sanitized",
+      "status": "passed"
+    },
+    {
+      "name": "Returning to public removes privileged selection and switches artwork",
+      "status": "passed"
+    },
+    {
+      "name": "Leaving developer context automatically exits complete-art comparison A",
+      "status": "passed"
+    },
+    {
+      "name": "batan: mobile source-art inspection, details and no overflow",
+      "status": "passed"
+    },
+    {
+      "name": "albanes: mobile source-art inspection, details and no overflow",
+      "status": "passed"
+    },
+    {
+      "name": "thilranlena: mobile source-art inspection, details and no overflow",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile pinch zoom retains original-art frame",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile map marker selection works on original art",
+      "status": "passed"
+    },
+    {
+      "name": "No browser script or artwork/icon loading errors",
+      "status": "passed"
+    }
+  ],
+  "captures": [
+    "batan-C-fit.png",
+    "batan-C-map.png",
+    "batan-C-medium.png",
+    "batan-C-close.png",
+    "batan-alignment.png",
+    "batan-A-fit.png",
+    "batan-A-map.png",
+    "batan-B-fit.png",
+    "batan-B-map.png",
+    "albanes-C-fit.png",
+    "albanes-C-map.png",
+    "albanes-C-medium.png",
+    "albanes-C-close.png",
+    "albanes-alignment.png",
+    "albanes-A-fit.png",
+    "albanes-A-map.png",
+    "albanes-B-fit.png",
+    "albanes-B-map.png",
+    "thilranlena-C-fit.png",
+    "thilranlena-C-map.png",
+    "thilranlena-C-medium.png",
+    "thilranlena-C-close.png",
+    "thilranlena-alignment.png",
+    "thilranlena-A-fit.png",
+    "thilranlena-A-map.png",
+    "thilranlena-B-fit.png",
+    "thilranlena-B-map.png",
+    "albanes-public.png",
+    "albanes-developer.png",
+    "batan-mobile-fit.png",
+    "batan-mobile-close.png",
+    "albanes-mobile-fit.png",
+    "albanes-mobile-close.png",
+    "thilranlena-mobile-fit.png",
+    "thilranlena-mobile-close.png"
+  ],
+  "projections": [
+    {
+      "slug": "batan",
+      "level": "medium",
+      "providerId": "bld:landmark:inn:trunk-street-0:R3",
+      "localResidual": 0.0024385517528010734,
+      "screenResidualPx": 0.008220341745853834
+    },
+    {
+      "slug": "batan",
+      "level": "close",
+      "providerId": "bld:landmark:inn:trunk-street-0:R3",
+      "localResidual": 0.0024385517528010734,
+      "screenResidualPx": 0.0246610252375615
+    },
+    {
+      "slug": "albanes",
+      "level": "medium",
+      "providerId": "b93",
+      "localResidual": 0.003972029218754357,
+      "screenResidualPx": 0.03351999633402515
+    },
+    {
+      "slug": "albanes",
+      "level": "close",
+      "providerId": "b93",
+      "localResidual": 0.003972029218754357,
+      "screenResidualPx": 0.10055998900207545
+    },
+    {
+      "slug": "thilranlena",
+      "level": "medium",
+      "providerId": "b223",
+      "localResidual": 0.0025005619105487593,
+      "screenResidualPx": 0.02627721768236928
+    },
+    {
+      "slug": "thilranlena",
+      "level": "close",
+      "providerId": "b223",
+      "localResidual": 0.0025005619105487593,
+      "screenResidualPx": 0.07883165304710785
+    }
+  ],
+  "errors": [],
+  "badResponses": []
+}

@@ -26,7 +26,7 @@ report about 0.5 units of error. The diagnostic explicitly records its reference
 All inn/chapel/manor/guildhall/warehouse source POI anchors measured below 0.005
 local units from their corresponding original artwork anchors. Guildhall `b93`:
 0.003972 units. Warehouse `b223`: 0.002501 units. Projection to screenshot pixels
-is recorded by the browser tests for fit, district and close views.
+is recorded by the browser tests for district and close views; fit placement is also checked interactively.
 
 There are four original city polygons with no individual SVG paint ID:
 Albanes `b60`, `b299`; Thilranlena `b331`, `b414`. Their source polygons and the
