@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const packed = await readFile('assets/demo/kindum-region.json');
+const data = JSON.parse(packed);
+const manifest = JSON.parse(await readFile('assets/demo/manifest.json'));
+assert.equal(manifest.meaning, 'PINNED_SESSION_ONLY_EXPEDITION_DEMO');
+assert.equal(manifest.region_sha256, hash(packed));
+assert.equal(manifest.source_world_sha256, hash(await readFile('tests/worldgen/fixtures/atlas-showcase.json')));
+assert.equal(data.source_context.parent_source_world_sha256, manifest.source_world_sha256);
+assert.equal(data.source_context.id, manifest.source_context_id);
+assert.equal(data.id, manifest.region_id);
+assert.equal(data.source_context.source_home_burg_id, 554);
+assert.equal(data.source_context.space.original_map_units, 16);
+assert.equal(data.source_context.space.physical_km, 'UNCALIBRATED');
+assert.equal(data.local_sites_v2.source_context_id, manifest.source_context_id);
+assert.equal(data.local_sites_v2.source_world_sha256, manifest.source_world_sha256);
+assert.ok(data.landscape_presentation_v1 && data.world_icon_roles_v1 && data.hex_overlay_v1);
+assert.ok(!data.encounter_demo_v1 && !data.hex_route_preview_v1);
+assert.equal(data.constraints.source_water_mask, 'AZGAAR_LAND_MINUS_LAKES');
+assert.ok(data.local_sites_v2.sites.some(s => s.knowledge === 'hidden'));
+console.log('PASS: bundled demo SHA, immutable source fixture, Kindum identity, shared art/hexes, water constraints and gameplay-only layers');

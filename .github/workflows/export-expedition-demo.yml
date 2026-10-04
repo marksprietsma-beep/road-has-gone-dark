@@ -1,0 +1,75 @@
+name: Export pinned expedition demo
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "assets/demo/**"
+      - "assets/map_icons/trials/game-icons/**"
+      - "scripts/gameplay/**"
+      - "scripts/debug/contextual_region_preview.gd"
+      - "scripts/debug/constrained_region_preview.gd"
+      - "scripts/debug/route_time_scenario.gd"
+      - "scripts/debug/map_renderer/map_icon_provider.gd"
+      - "scripts/ui/**"
+      - "scenes/gameplay/**"
+      - "scenes/ui/**"
+      - "export_presets.cfg"
+      - "tests/regiongen/*expedition-demo*"
+      - ".github/workflows/export-expedition-demo.yml"
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Verify pinned demo and immutable fixture identity
+        run: node tests/regiongen/verify-expedition-demo.mjs
+      - name: Install pinned Godot and Windows export templates
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          curl -fL --retry 3 https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz -o /tmp/templates.tpz
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.7.2.stable"
+          unzip -j /tmp/templates.tpz 'templates/windows_release_x86_64.exe' 'templates/windows_debug_x86_64.exe' 'templates/version.txt' -d "$HOME/.local/share/godot/export_templates/4.7.2.stable"
+      - name: Import and exercise main-menu gameplay without generated maps
+        run: |
+          set -euo pipefail
+          godot=/tmp/Godot_v4.7.2-stable_linux.x86_64
+          timeout 90s "$godot" --headless --editor --path . --quit > /tmp/import.log 2>&1
+          timeout 90s "$godot" --headless --path . --script res://tests/regiongen/smoke-expedition-demo.gd 2>&1 | tee /tmp/demo.log
+          grep -q 'PASS: GAME-56' /tmp/demo.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/import.log /tmp/demo.log; then exit 1; fi
+      - name: Capture actual demo gameplay
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          mkdir -p build/expedition-demo
+          timeout 90s xvfb-run -a -s '-screen 0 1280x720x24' /tmp/Godot_v4.7.2-stable_linux.x86_64 --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-expedition-demo.gd 2>&1 | tee /tmp/capture.log
+          grep -q 'PASS: GAME-56 actual gameplay screenshot' /tmp/capture.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/capture.log; then exit 1; fi
+      - name: Export Windows demo and test its packed resources
+        run: |
+          set -euo pipefail
+          godot=/tmp/Godot_v4.7.2-stable_linux.x86_64
+          "$godot" --headless --path . --export-release 'Windows Expedition Demo' build/expedition-demo/RoadHasGoneDark.exe 2>&1 | tee /tmp/export.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|ERROR:' /tmp/export.log; then exit 1; fi
+          timeout 90s "$godot" --headless --main-pack build/expedition-demo/RoadHasGoneDark.pck --script "$PWD/tests/regiongen/smoke-expedition-demo.gd" 2>&1 | tee /tmp/packed.log
+          grep -q 'PASS: GAME-56' /tmp/packed.log
+          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' /tmp/packed.log; then exit 1; fi
+          cp docs/implementation/GAME-56-expedition-demo.md build/expedition-demo/README.md
+          cp assets/map_icons/trials/game-icons/ATTRIBUTION.md build/expedition-demo/Game-icons-Attribution.md
+          cp assets/map_icons/trials/game-icons/landmark_sources.json build/expedition-demo/Game-icons-Sources.json
+          cp vendor/azgaar/LICENSE build/expedition-demo/Azgaar-LICENSE.txt
+          cp vendor/town-forge/LICENSE build/expedition-demo/Town-Forge-LICENSE.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Road-Has-Gone-Dark-Windows-Expedition-Demo
+          path: build/expedition-demo/
+          if-no-files-found: error
+          retention-days: 30

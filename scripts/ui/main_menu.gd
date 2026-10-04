@@ -3,11 +3,13 @@ extends Control
 
 const NEW_GAME_SCENE := "res://scenes/world/new_game_placeholder.tscn"
 const SETTINGS_SCENE := "res://scenes/ui/settings_menu.tscn"
+const EXPEDITION_DEMO_SCENE := "res://scenes/gameplay/expedition_demo.tscn"
 
 @export_range(0.0, 2.0, 0.05) var fade_duration := 0.45
 
 @onready var menu_content: VBoxContainer = %MenuContent
 @onready var new_game_button: Button = %NewGameButton
+@onready var expedition_demo_button: Button = %ExpeditionDemoButton
 @onready var settings_button: Button = %SettingsButton
 @onready var exit_button: Button = %ExitButton
 
@@ -16,6 +18,7 @@ var _transitioning := false
 
 func _ready() -> void:
 	new_game_button.pressed.connect(_on_new_game_pressed)
+	expedition_demo_button.pressed.connect(_on_expedition_demo_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
 
@@ -26,6 +29,10 @@ func _ready() -> void:
 
 func _on_new_game_pressed() -> void:
 	await _change_scene_with_fade(NEW_GAME_SCENE)
+
+
+func _on_expedition_demo_pressed() -> void:
+	await _change_scene_with_fade(EXPEDITION_DEMO_SCENE)
 
 
 func _on_settings_pressed() -> void:

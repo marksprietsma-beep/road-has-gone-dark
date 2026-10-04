@@ -2,6 +2,14 @@ name: Verify local source neighbourhoods
 on:
   pull_request:
     paths:
+      - "assets/demo/**"
+      - "scripts/gameplay/expedition_demo.gd"
+      - "scenes/gameplay/expedition_demo.tscn"
+      - "scripts/ui/main_menu.gd"
+      - "scenes/ui/main_menu.tscn"
+      - "tools/regiongen/package-expedition-demo.mjs"
+      - "tests/regiongen/*expedition-demo*"
+      - "docs/implementation/GAME-56*"
       - "tools/regiongen/shared-map-icons.mjs"
       - "tools/regiongen/hex-route-preview.mjs"
       - "tools/regiongen/route-time-scenario.mjs"
@@ -94,6 +102,9 @@ jobs:
           node tests/regiongen/verify-shared-map-icons.mjs
           node tests/regiongen/verify-hex-route-preview.mjs
           node tests/regiongen/verify-route-time-scenario.mjs
+          node tests/regiongen/verify-expedition-demo.mjs
+          node tools/regiongen/package-expedition-demo.mjs
+          git diff --exit-code -- assets/demo
       - name: Install Godot 4.7.2 for constrained-viewer smoke
         run: |
           curl -fL --retry 3 --retry-delay 2 \
@@ -111,7 +122,7 @@ jobs:
           grep -q "PASS: GAME-44 Godot" /tmp/smoke-contextual.log
           timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/regiongen/smoke-expedition.gd 2>&1 | tee /tmp/smoke-expedition.log
           grep -q "PASS: GAME-55" /tmp/smoke-expedition.log
-          for check in shared-icons hex-route-preview route-time-scenario; do
+          for check in shared-icons hex-route-preview route-time-scenario expedition-demo; do
             timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script "res://tests/regiongen/smoke-${check}.gd" 2>&1 | tee "/tmp/smoke-${check}.log"
             grep -q "PASS:" "/tmp/smoke-${check}.log"
             if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' "/tmp/smoke-${check}.log"; then

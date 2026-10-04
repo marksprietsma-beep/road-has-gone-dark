@@ -41,7 +41,10 @@ func _ready() -> void:
 	if decoded is Dictionary and int(decoded.get("schema_version", -1)) == 1:
 		glyphs = decoded
 	fit_map()
-	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
+	load_region(_initial_region_path())
+
+func _initial_region_path() -> String:
+	return SAMPLE_FOLDER + V2_CASES[0] + ".json"
 
 func _base_info() -> String:
 	return super._base_info() + "\nX: hexes | P: route | [ / ]: timing scenario | 0: clear timing | E: occupants | H: reveal | A: audit"
@@ -143,7 +146,7 @@ func _draw() -> void:
 		var site: Dictionary = value
 		if str(site.get("kind", "")) == "hometown" or not _site_is_visible(site):
 			continue
-			_draw_site(site)
+		_draw_site(site)
 		if str(site.get("id", "")) == selected_local_id:
 			var p: Vector2 = _point(site.get("position", []))
 			var text_value: String = str(site.get("label", ""))
