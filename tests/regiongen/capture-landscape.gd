@@ -16,6 +16,13 @@ func _capture() -> void:
 		viewer.camera.zoom = Vector2.ONE
 		viewer.info.hide()
 		var suffix: String = ".godot.png"
+		if OS.get_cmdline_user_args().has("--route-review"):
+			var route_key := InputEventKey.new()
+			route_key.keycode = KEY_P
+			route_key.pressed = true
+			viewer._unhandled_input(route_key)
+			assert(viewer.show_route_preview)
+			suffix = ".route.godot.png"
 		if OS.get_cmdline_user_args().has("--encounter-review"):
 			var encounter_key := InputEventKey.new()
 			encounter_key.keycode = KEY_E

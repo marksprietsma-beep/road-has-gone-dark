@@ -42,6 +42,9 @@ func _encounter_preview_available() -> bool:
 	# Prototype occupants are not campaign enemies, even if debug data exists.
 	return false
 
+func _route_preview_available() -> bool:
+	return false
+
 func select_local_site_at(point: Vector2) -> bool:
 	if not super.select_local_site_at(point):
 		return false
@@ -106,7 +109,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_R:
 				_action("return")
 				return
-			KEY_H, KEY_A, KEY_E:
+			KEY_H, KEY_A, KEY_E, KEY_P:
 				# No god-mode debug reveal in an actual party view.
 				return
 			KEY_ESCAPE:

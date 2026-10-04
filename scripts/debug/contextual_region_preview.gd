@@ -18,6 +18,7 @@ var show_route_audit: bool = false
 var show_hex_grid: bool = false
 var show_encounter_demo: bool = false
 var selected_encounter_demo_id: String = ""
+var show_route_preview: bool = false
 var shared_icons := MapIconProvider.new()
 
 func _draw_shared_icon(role: String, p: Vector2, danger: bool = false) -> void:
@@ -42,7 +43,7 @@ func _ready() -> void:
 	load_region(SAMPLE_FOLDER + V2_CASES[0] + ".json")
 
 func _base_info() -> String:
-	return super._base_info() + "\nX: hex grid | E: encounter mock-up | H: reveal | A: route audit (developer only; no save)"
+	return super._base_info() + "\nX: hex grid | P: route preview | E: mock occupants | H: reveal | A: audit (developer only)"
 
 func load_region(path: String) -> bool:
 	selected_local_id = ""
@@ -51,6 +52,7 @@ func load_region(path: String) -> bool:
 	show_hex_grid = false
 	show_encounter_demo = false
 	selected_encounter_demo_id = ""
+	show_route_preview = false
 	if not super.load_region(path):
 		return false
 	var layer: Dictionary = region.get("local_sites_v2", {})
@@ -112,8 +114,10 @@ func _draw() -> void:
 	super._draw()
 	if region.is_empty():
 		return
-	if show_hex_grid or (show_encounter_demo and _encounter_preview_available()):
+	if show_hex_grid or (show_encounter_demo and _encounter_preview_available()) or (show_route_preview and _route_preview_available()):
 		_draw_hex_grid()
+	if show_route_preview and _route_preview_available():
+		_draw_route_preview()
 	var layer: Dictionary = region.get("local_sites_v2", {})
 	# Original route/shore conflicts remain in source JSON and are visible
 	# ONLY under an explicit no-save developer audit overlay (A key).
@@ -153,6 +157,55 @@ func _encounter_preview_available() -> bool:
 	var demo: Dictionary = region.get("encounter_demo_v1", {})
 	var ctx: Dictionary = region.get("source_context", {})
 	return int(demo.get("schema_version", -1)) == 1 and str(demo.get("meaning", "")) == "MOCKUP_NOT_SIMULATION" and str(demo.get("source_context_id", "")) == str(ctx.get("id", "")) and str(demo.get("source_world_sha256", "")) == str(ctx.get("parent_source_world_sha256", ""))
+
+func _route_preview_available() -> bool:
+	var layer: Dictionary = region.get("hex_route_preview_v1", {})
+	var ctx: Dictionary = region.get("source_context", {})
+	return int(layer.get("schema_version", -1)) == 1 and str(layer.get("meaning", "")) == "SOURCE_WATER_FILTERED_NOT_VERIFIED_TRAVERSABLE" and str(layer.get("source_context_id", "")) == str(ctx.get("id", "")) and str(layer.get("source_world_sha256", "")) == str(ctx.get("parent_source_world_sha256", ""))
+
+func _selected_route_preview() -> Dictionary:
+	if not _route_preview_available():
+		return {}
+	for site in region.get("local_sites_v2", {}).get("sites", []):
+		if str(site.get("id", "")) != selected_local_id or not _site_is_visible(site):
+			continue
+		for route in region.get("hex_route_preview_v1", {}).get("routes", []):
+			if str(route.get("site_id", "")) == selected_local_id:
+				return route
+	return {}
+
+func _route_summary(route: Dictionary) -> String:
+	if route.is_empty():
+		return "Select a known destination; no preview for hidden or newly revealed sites"
+	if str(route.get("status", "")) == "PREVIEW_ROUTE":
+		return "%d straight | %d routed steps | %s provisional effort\n%d approximate river crossings, unverified; hours undecided" % [int(route.get("geometric_steps", 0)), int(route.get("route_steps", 0)), str(route.get("effort", 0)), route.get("river_crossings", []).size()]
+	match str(route.get("status", "")):
+		"HOME_HEX_BLOCKED":
+			return "Coastal home hex needs finer geometry; no route assumed"
+		"TARGET_HEX_BLOCKED":
+			return "Destination hex overlaps source water; no route assumed"
+	return "No connected dry-hex route in this window; walkability unknown"
+
+func _draw_route_preview() -> void:
+	var route: Dictionary = _selected_route_preview()
+	if str(route.get("status", "")) == "PREVIEW_ROUTE":
+		for cell in region.get("hex_overlay_v1", {}).get("cells", []):
+			if route.get("path", []).has(cell.get("axial", [])):
+				var shape: PackedVector2Array = _poly(cell.get("points", []))
+				draw_colored_polygon(shape, Color("#d8a749", .3))
+		var path: PackedVector2Array = _poly(route.get("points", []))
+		for i in range(1, path.size()):
+			_dash(path[i - 1], path[i], Color("#6f4c16"), 3, 7, 4)
+		for crossing in route.get("river_crossings", []):
+			var p: Vector2 = _point(crossing.get("position", []))
+			draw_circle(p, 6, Color("#efe1bd"))
+			draw_arc(p, 6, 0, TAU, 24, Color("#9d4735"), 2)
+	draw_rect(Rect2(520, 20, 460, 110), Color("#efe1bd", .97))
+	draw_string(ThemeDB.fallback_font, Vector2(535, 45), "ROUTE PREVIEW · WALKABILITY UNKNOWN", HORIZONTAL_ALIGNMENT_LEFT, 430, 18, Color("#59451e"))
+	var rows: PackedStringArray = _route_summary(route).split("\n")
+	for i in range(rows.size()):
+		draw_string(ThemeDB.fallback_font, Vector2(535, 68 + 23 * i), rows[i], HORIZONTAL_ALIGNMENT_LEFT, 430, 14, Color("#59451e"))
+	draw_string(ThemeDB.fallback_font, Vector2(535, 114), "Inferred terrain costs · water filtered · not gameplay travel", HORIZONTAL_ALIGNMENT_LEFT, 430, 12, Color("#74674d"))
 
 func select_encounter_demo_at(point: Vector2) -> bool:
 	if not show_encounter_demo or not _encounter_preview_available():
@@ -217,14 +270,30 @@ func select_local_site_at(point: Vector2) -> bool:
 		str(chosen.get("label", "")),str(chosen.get("kind", "")),str(chosen.get("knowledge", ""))]
 	if show_hex_grid:
 		info.text += "\nDistance from hometown: %d hex steps (geometric; hours and terrain routing pending)" % hex_steps_to(_point(chosen["position"]))
+	if show_route_preview:
+		info.text += "\nROUTE PREVIEW | " + _route_summary(_selected_route_preview())
 	queue_redraw()
 	return true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_P:
+			if _route_preview_available():
+				show_route_preview = not show_route_preview
+				show_encounter_demo = false
+				selected_encounter_demo_id = ""
+				if show_route_preview and selected_local_id.is_empty():
+					var default_id: String = str(region.get("hex_route_preview_v1", {}).get("default_site_id", ""))
+					for site in region.get("local_sites_v2", {}).get("sites", []):
+						if default_id != "" and str(site.get("id", "")) == default_id:
+							select_local_site_at(_point(site.get("position", [])))
+				info.text = _base_info() + ("\nROUTE PREVIEW | " + _route_summary(_selected_route_preview()) if show_route_preview else "")
+			queue_redraw()
+			return
 		if event.keycode == KEY_E:
 			if _encounter_preview_available():
 				show_encounter_demo = not show_encounter_demo
+				show_route_preview = false
 			selected_encounter_demo_id = ""
 			info.text = _base_info()
 			queue_redraw()

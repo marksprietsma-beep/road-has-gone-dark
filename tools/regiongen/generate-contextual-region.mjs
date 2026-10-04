@@ -10,6 +10,7 @@ import {buildLandscapePresentation} from "./landscape-presentation.mjs";
 import {buildHexOverlay,renderHexOverlay,renderHexRuler,measureHexDistance} from "./hex-overlay.mjs";
 import {renderReadableLabels} from "./site-icons.mjs";
 import {buildSharedIcons,renderSharedIcon,buildEncounterDemo,SITE_ROLES} from './shared-map-icons.mjs';
+import {buildHexRoutePreview,renderHexRoutePreview} from './hex-route-preview.mjs';
 const args=process.argv.slice(2);
 const get=k=>{const i=args.indexOf(k);return i<0?undefined:args[i+1]};
 const source=get("--world"),input=get("--constrained"),output=get("--output");
@@ -37,6 +38,7 @@ const visible=preview.visible.filter(site=>site.kind!=="hometown");
 const fragments=['<g id="known-game-owned-pois">'];
 for(const site of visible)fragments.push(renderSharedIcon(SITE_ROLES[site.kind],site.position));
 combined.encounter_demo_v1=buildEncounterDemo(composite.source_context,hexes,visible,art.terrain);
+combined.hex_route_preview_v1=buildHexRoutePreview(composite.source_context,hexes,art.terrain,preview.visible);
 fragments.push(renderReadableLabels(visible),'</g>');
 const text='<text x="668" y="111" fill="#333127" font-family="Georgia,serif" font-size="12">Known nearby sites: '+
  preview.visible.length+' · Rumours: '+preview.rumours.length+'</text>';
@@ -68,6 +70,10 @@ await writeFile(resolve(svg),image);
 const measured=visible.slice().sort((a,b)=>measureHexDistance(composite.source_context,b.position)-measureHexDistance(composite.source_context,a.position))[0];
 const hexImage=base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+(measured?renderHexRuler(composite.source_context,hexes,measured):'')+fragments.join('\n')+'</svg>');
 await writeFile(resolve(svg.replace(/\.svg$/i,'.hex.svg')),hexImage);
+const routes=combined.hex_route_preview_v1.routes;
+const route=routes.find(r=>r.site_id===combined.hex_route_preview_v1.default_site_id);
+const routeSite=visible.find(s=>s.id===route?.site_id);
+await writeFile(resolve(svg.replace(/\.svg$/i,'.route.svg')),base.replace(/<\/svg>\s*$/,renderHexOverlay(hexes)+renderHexRoutePreview(combined.hex_route_preview_v1,hexes,route,routeSite)+fragments.join('\n')+'</svg>'));
 const demo=combined.encounter_demo_v1.occupants.map(o=>{
  const cell=hexes.cells.find(c=>c.axial.join(',')===o.axial.join(',')),label=o.label+' · mock-up';
  return `<polygon points="${cell.points.map(p=>p.join(',')).join(' ')}" fill="#9d4735" fill-opacity=".08"/>`+

@@ -36,6 +36,7 @@ func _check() -> void:
 		assert(session.begin(data), session.error)
 		var control_data: Dictionary = data.duplicate(true)
 		control_data.erase("encounter_demo_v1")
+		control_data.erase("hex_route_preview_v1")
 		var control := ExpeditionSession.new()
 		assert(control.begin(control_data))
 		assert(session.ready)
