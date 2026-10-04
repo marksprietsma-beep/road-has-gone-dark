@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "slug": "albanes",
+      "world": "game-11-determinism",
+      "burgId": 7,
+      "name": "Albanes",
+      "cellId": 917,
+      "fixtureSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "worldSeed": "game-11-determinism",
+      "worldPosition": [
+        985.83,
+        206.36
+      ],
+      "localPosition": [
+        557.00212,
+        473.545188
+      ],
+      "regionId": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:917",
+      "regionFile": "albanes.json"
+    },
+    {
+      "slug": "batan",
+      "world": "atlas-showcase",
+      "burgId": 760,
+      "name": "Batan",
+      "cellId": 4354,
+      "fixtureSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "worldSeed": "atlas-showcase-06",
+      "worldPosition": [
+        848.56,
+        541.05
+      ],
+      "localPosition": [
+        571.547547,
+        480.319655
+      ],
+      "regionId": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:4354",
+      "regionFile": "batan.json"
+    },
+    {
+      "slug": "thilranlena",
+      "world": "atlas-showcase",
+      "burgId": 68,
+      "name": "Thilranlena",
+      "cellId": 1689,
+      "fixtureSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "worldSeed": "atlas-showcase-06",
+      "worldPosition": [
+        390.58,
+        285.67
+      ],
+      "localPosition": [
+        333.089951,
+        339.874772
+      ],
+      "regionId": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:1689",
+      "regionFile": "thilranlena.json"
+    }
+  ]
+}

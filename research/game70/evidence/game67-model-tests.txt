@@ -1,0 +1,29 @@
+✔ batan: original counts, all explicit bindings and interior anchors (30.395922ms)
+✔ batan: replay, seed input, rename independence, burg identity (23.044122ms)
+✔ batan: unique IDs and serialized associations/knowledge (10.964351ms)
+✔ batan: public export removes hidden facility identity, position and provider associations (10.354283ms)
+✔ batan: invalid geometry, duplicate buildings and malformed identity rejected (8.096607ms)
+✔ albanes: original counts, all explicit bindings and interior anchors (63.731517ms)
+✔ albanes: replay, seed input, rename independence, burg identity (137.316112ms)
+✔ albanes: unique IDs and serialized associations/knowledge (55.707417ms)
+✔ albanes: public export removes hidden facility identity, position and provider associations (67.134521ms)
+✔ albanes: invalid geometry, duplicate buildings and malformed identity rejected (56.039848ms)
+✔ thilranlena: original counts, all explicit bindings and interior anchors (50.91311ms)
+✔ thilranlena: replay, seed input, rename independence, burg identity (106.721613ms)
+✔ thilranlena: unique IDs and serialized associations/knowledge (47.812438ms)
+✔ thilranlena: public export removes hidden facility identity, position and provider associations (65.553322ms)
+✔ thilranlena: invalid geometry, duplicate buildings and malformed identity rejected (49.236898ms)
+✔ actual capital guildhall, no village guildhall and real harbour facilities (34.883519ms)
+✔ duplicate POIs, orphan references, invalid point and kind rejected explicitly (125.73918ms)
+✔ point-in-polygon boundary, holes, exterior; explicit-reference fallback (17.807169ms)
+✔ decluttering is deterministic, collision free, zoom-sensitive; landmark wins (26.607434ms)
+✔ committed samples reproduce exactly and carry explicit research knowledge scenario (105.119163ms)
+✔ layout upgrade changes building namespace; unsupported model versions rejected (5.834391ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1190.253686

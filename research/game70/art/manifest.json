@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "batan",
+    "source": "research/game69/art/batan.public.svg",
+    "sourceSha256": "92a0f580ce0c1095bb87c0b25c5e637ba1ecdb38dbc3a80ae5bf78db6dca26ef",
+    "outputSha256": "8d34a269198b9d5bb2fcd390033c6ff4171b5c56164c5ae611801d0d9c4dcece",
+    "pixels": [
+      3709,
+      4096
+    ],
+    "renderer": "rsvg-convert version 2.60.0",
+    "frameSource": "research/game69/art/frames.json",
+    "preparation": "Exact public SVG; preserve aspect ratio, at most 4096px; no crop or coordinate edits"
+  },
+  {
+    "slug": "albanes",
+    "source": "research/game69/art/albanes.public.svg",
+    "sourceSha256": "92dfb0d9507b2d55ea5c53cd106e2af555817fe853a15c2913049aea021ff628",
+    "outputSha256": "a13553cac9cbd29cb087a774f7854bb8824c54032de610537de8081b4c37edad",
+    "pixels": [
+      4096,
+      4096
+    ],
+    "renderer": "rsvg-convert version 2.60.0",
+    "frameSource": "research/game69/art/frames.json",
+    "preparation": "Exact public SVG; preserve aspect ratio, at most 4096px; no crop or coordinate edits"
+  },
+  {
+    "slug": "thilranlena",
+    "source": "research/game69/art/thilranlena.public.svg",
+    "sourceSha256": "4d45fda7f4e813398461cb37b6b79ea6d61e52ed63a17996969ce6b29088b809",
+    "outputSha256": "dceebad570844d618ef4a2bccfa9b02e3021cbb64695ac934e04bba330487f1f",
+    "pixels": [
+      4096,
+      3249
+    ],
+    "renderer": "rsvg-convert version 2.60.0",
+    "frameSource": "research/game69/art/frames.json",
+    "preparation": "Exact public SVG; preserve aspect ratio, at most 4096px; no crop or coordinate edits"
+  }
+]

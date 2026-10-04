@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: Failed loading resource: res://research/game70/art/thilranlena.png.
+   at: _load (core/io/resource_loader.cpp:343)
+   GDScript backtrace (most recent call first):
+       [0] open_town (res://scripts/debug/game70/town_layer.gd:17)
+       [1] open_town (res://scripts/debug/world_region_town_flow.gd:281)
+       [2] _primary_action (res://scripts/debug/world_region_town_flow.gd:347)
+       [3] _run (res://research/game70/tests/capture-flow.gd:80)
+       [4] capture (res://research/game70/tests/capture-flow.gd:25)
+       [5] settle (res://research/game70/tests/capture-flow.gd:19)
+ERROR: FAIL: thilranlena Inspect Settlement UI button
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://research/game70/tests/capture-flow.gd:12)
+       [1] _run (res://research/game70/tests/capture-flow.gd:82)
+       [2] settle (res://research/game70/tests/capture-flow.gd:19)
+SCRIPT ERROR: Assertion failed: thilranlena Inspect Settlement UI button
+          at: check (res://research/game70/tests/capture-flow.gd:14)
+          GDScript backtrace (most recent call first):
+              [0] check (res://research/game70/tests/capture-flow.gd:14)
+              [1] _run (res://research/game70/tests/capture-flow.gd:82)
+              [2] settle (res://research/game70/tests/capture-flow.gd:19)
+SCRIPT ERROR: Invalid access to property or key 'audience' on a base object of type 'Dictionary'.
+          at: _run (res://research/game70/tests/capture-flow.gd:83)
+          GDScript backtrace (most recent call first):
+              [0] _run (res://research/game70/tests/capture-flow.gd:83)
+              [1] settle (res://research/game70/tests/capture-flow.gd:19)
