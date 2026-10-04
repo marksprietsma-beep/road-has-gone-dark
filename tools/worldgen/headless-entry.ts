@@ -85,7 +85,11 @@ export async function generateWorldBundle(seed: string, preview: {landmarkDensit
     routes: entities(pack.routes),
     markers: entities(pack.markers)
   };
-  return {world, relief};
+  // Original pack Voronoi coordinates are not part of canonical GameWorld.
+  // Retain them in a separate opt-in GAME-39 source geometry sidecar.
+  const geographyVertices = array(pack.vertices?.p).map(plain);
+  const geographyCellVertices = array(pack.cells?.v).map(plain);
+  return {world, relief, geographyVertices, geographyCellVertices};
 }
 
 export async function generateCanonicalWorld(seed: string) {
