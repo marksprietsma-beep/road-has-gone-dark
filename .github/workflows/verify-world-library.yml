@@ -81,12 +81,14 @@ jobs:
                       if path.is_file(): z.write(path, path.relative_to(folder))
           PY
           release_tag=game76-world-library-helper-v1-review
-          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$release_tag" > review-release.json 2>/dev/null; then
+          printf 'GAME-76 review helpers built and tested at %s. Extract the platform worldgen-helper folder beside the game executable or project.godot. Includes pinned runtime, generator source, dependencies, licences and checksums. QA archives contain actual platform results. This is a draft review package, not a complete game installer. No merge or acceptance.\n' "$REVIEW_SHA" > review-notes.txt
+          # Draft releases have no published tag ref; tag lookup returns 404.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$release_tag\")" > review-release.json
+          if [ -s review-release.json ]; then
             python -c 'import json; assert json.load(open("review-release.json"))["draft"], "Refuse to modify a published release"'
             release_id=$(python -c 'import json; print(json.load(open("review-release.json"))["id"])')
-            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f target_commitish="$REVIEW_SHA"
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f target_commitish="$REVIEW_SHA" -F body=@review-notes.txt
           else
-            printf 'GAME-76 review helpers built and tested at %s. Extract the platform worldgen-helper folder beside the game executable or project.godot. Includes pinned runtime, generator source, dependencies, licences and checksums. QA archives contain actual platform results. This is a draft review package, not a complete game installer. No merge or acceptance.\n' "$REVIEW_SHA" > review-notes.txt
             gh release create "$release_tag" --repo "$GITHUB_REPOSITORY" --draft --target "$REVIEW_SHA" --title 'GAME-76 native world-generator helpers — review' --notes-file review-notes.txt
           fi
           gh release upload "$release_tag" review-upload/* --repo "$GITHUB_REPOSITORY" --clobber

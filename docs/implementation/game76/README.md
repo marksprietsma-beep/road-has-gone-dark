@@ -102,10 +102,11 @@ Linux Godot **4.6.3**, actual 1280×720 OpenGL/Mesa render/input:
 [Helper evidence](helper-proof.json), [library/save/recovery proof](library-proof.json),
 [actual UI run proof](ui-proof.json), and [exact logs](logs/).
 The virtual Linux driver's unsupported VSync warning is recorded; there are no
-Godot script/runtime errors. Native Windows helper/filesystem CI also passed on the first implementation;
-the final safeguards are rechecked on both platforms before helper publication.
+Godot script/runtime errors. Native Windows helper/filesystem CI passed all 57 lifecycle checks and the
+packaged generator/timeout and GAME-7/74 regressions. Linux CI additionally
+passed both real input/render flows. Atlas and GAME-62 CI also passed.
 Actual platform logs/proofs accompany the native packages in the
-[GitHub draft review release](https://github.com/marksprietsma-beep/road-has-gone-dark/releases).
+[GitHub draft review release](https://github.com/marksprietsma-beep/road-has-gone-dark/releases/tag/untagged-6b0c5f8f617fc4d997d4).
 The release is tagged `game76-world-library-helper-v1-review` and records its exact build SHA; Linux screenshots are not claimed as Windows captures.
 
 Run a built helper's full suite with:
