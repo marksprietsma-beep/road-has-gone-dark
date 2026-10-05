@@ -13,7 +13,7 @@ Facts are decided in staged generation; TextRenderer consumes them with no RNG
 and no access to vendor notes. Original pack data is hashed canonically. No prose
 is authoritative. Text artifacts have a separate renderer version/hash.
 
-Layer C is passed to `project(record, knowledge)`, never written into world
+Layer C is passed to `project(record, knowledge)` with its exact world_id, never written into world
 sidecars: known entity IDs (knowledge of existence, not precise location), heard
 rumour IDs, discovered tokens and optional character playthrough ID. Unknown
 sites return null. Hearing a rumour reveals text plus a “Rumour” label, never the

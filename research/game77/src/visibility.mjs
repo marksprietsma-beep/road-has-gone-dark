@@ -2,6 +2,7 @@ import {render} from './text.mjs';
 // Explicit knowledge is caller-owned Layer C. Verdicts and private facts never
 // ride along with public/rumour payloads. This is projection, not save mutation.
 export function project(record, knowledge = {}) {
+  if (knowledge.world_id !== record.source.world_id) return null;
   const known = new Set(knowledge.known_entities ?? []);
   if (record.type === 'site' && !known.has(record.id)) return null;
   if (record.type === 'character' && knowledge.playthrough_id !== record.scope.slice('playthrough:'.length)) return null;

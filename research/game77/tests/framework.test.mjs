@@ -78,13 +78,14 @@ test('source visibility: hidden/removed sources blocked; dungeon only existence/
 });
 test('knowledge projections: rumours hide verdict, secrets need exact reveal token',()=>{
  const r=make('site');assert.equal(project(r),null);
- const publicView=project(r,{known_entities:[r.id]});assert.deepEqual(publicView.rumours,[]);assert.equal(publicView.discoveries,undefined);
- const rumoured=project(r,{known_entities:[r.id],heard_rumours:[r.rumours[0].id]});assert.equal(rumoured.rumours.length,1);assert.equal(rumoured.rumours[0].verdict,undefined);
+ assert.equal(project(r,{world_id:'other-world',known_entities:[r.id],discovered_tokens:[r.secret.reveal_token]}),null);
+ const publicView=project(r,{world_id:w.base.id,known_entities:[r.id]});assert.deepEqual(publicView.rumours,[]);assert.equal(publicView.discoveries,undefined);
+ const rumoured=project(r,{world_id:w.base.id,known_entities:[r.id],heard_rumours:[r.rumours[0].id]});assert.equal(rumoured.rumours.length,1);assert.equal(rumoured.rumours[0].verdict,undefined);
  assert.equal(rumoured.rumours[0].truth_fields,undefined);
  assert.doesNotMatch(canonical(publicView),/damaged tally|repair materials|lower_room|source_flavour|verdict|underground/);
- const discovered=project(r,{known_entities:[r.id],discovered_tokens:[r.secret.reveal_token]});assert.equal(discovered.discoveries.lower_room,true);
+ const discovered=project(r,{world_id:w.base.id,known_entities:[r.id],discovered_tokens:[r.secret.reveal_token]});assert.equal(discovered.discoveries.lower_room,true);
  assert.equal(project(make('character')),null);
- assert.ok(project(make('character'),{playthrough_id:'qa-playthrough'}));
+ assert.ok(project(make('character'),{world_id:w.base.id,playthrough_id:'qa-playthrough'}));
 });
 test('origin allowlist cannot leak injected secret or hidden POI names',()=>{
  const origin=make('origin'), hidden=make('site');hidden.context.display_name='HIDDEN_POI_SENTINEL';origin.secret={text:'SECRET_SENTINEL'};
