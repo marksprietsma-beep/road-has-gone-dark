@@ -3,7 +3,9 @@
 Independent core branch: `research/game-77-content-enrichment`, production main
 base `3350aed73aa22f2f144ae4613f054ff81ab0ca34`. Initial audit remotely verified
 at `50f32882da8b39c1f9909a2f6e402e9496bf5808`; implementation published incrementally.
-Draft PR link and verified final head are in the final delivery / PR description.
+Core draft PR: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/59.
+Verified implementation/evidence milestone: `a736a4dae23cea95eb7b1a45d8b7acfb25b41414`;
+final remote head and checks are reported in the PR description.
 
 Seven permissive candidates pinned with licence snapshots and runtime/data-risk
 matrix. Actual Lexicon and Rant experiments pass 1,000 equal-fact comparisons.

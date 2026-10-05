@@ -2,6 +2,11 @@ name: Verify Content Enrichment
 permissions:
   contents: read
 on:
+  push:
+    branches: ['research/game-77-content-enrichment']
+    paths:
+      - 'research/game77/**'
+      - '.github/workflows/verify-content-enrichment.yml'
   pull_request:
     paths:
       - 'research/game77/**'
