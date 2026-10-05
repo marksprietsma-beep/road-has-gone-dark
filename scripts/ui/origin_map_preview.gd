@@ -9,15 +9,25 @@ var package: Dictionary = {}
 var overlay: Texture2D
 var burg := Vector2(-1, -1)
 
-func set_world(source: Dictionary, key: String, fingerprint: String) -> void:
+func set_world(source: Dictionary, key: String, fingerprint: String, cache_directory: String = "") -> void:
  model = MapRenderModel.new(source)
  package = {}
  var prefix := "res://assets/onboarding/" + key
- if FileAccess.get_file_as_string(prefix + ".sha256") != fingerprint:
-  queue_redraw()
-  return
- var texture: Texture2D = TEXTURES[key]
- var ids := FileAccess.get_file_as_bytes(prefix + ".cells").to_int32_array()
+ var texture: Texture2D
+ var ids: PackedInt32Array
+ if cache_directory.is_empty():
+  if not TEXTURES.has(key) or FileAccess.get_file_as_string(prefix + ".sha256") != fingerprint:
+   queue_redraw()
+   return
+  texture = TEXTURES[key]
+  ids = FileAccess.get_file_as_bytes(prefix + ".cells").to_int32_array()
+ else:
+  var image := Image.new()
+  if image.load(cache_directory.path_join("preview.png")) != OK:
+   queue_redraw()
+   return
+  texture = ImageTexture.create_from_image(image)
+  ids = FileAccess.get_file_as_bytes(cache_directory.path_join("preview.cells")).to_int32_array()
  if ids.size() != texture.get_width() * texture.get_height():
   queue_redraw()
   return

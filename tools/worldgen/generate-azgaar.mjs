@@ -84,7 +84,7 @@ dom.window.FlatQueue = FlatQueue;
 const server = await createServer({
   root: vendor,
   configFile: resolve(vendor, "vite.config.ts"),
-  server: {middlewareMode: true},
+  server: {middlewareMode: true, hmr: false, watch: null},
   appType: "custom",
   logLevel: "error"
 });

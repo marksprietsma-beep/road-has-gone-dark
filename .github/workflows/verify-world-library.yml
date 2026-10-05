@@ -1,0 +1,53 @@
+name: Verify World Library
+on:
+  pull_request:
+    paths:
+      - 'scripts/ui/**'
+      - 'scripts/world_library/**'
+      - 'scripts/game_world/**'
+      - 'scripts/debug/map_renderer/**'
+      - 'tools/worldgen/**'
+      - 'vendor/azgaar/**'
+      - 'tests/world_library/**'
+      - '.github/workflows/verify-world-library.yml'
+  workflow_dispatch:
+jobs:
+  library:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked build dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Prepare verified Godot and packaged native helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Windows native generator, library and persistence regressions
+        if: runner.os == 'Windows'
+        run: python tests/world_library/run-tests.py
+      - name: Linux regressions and real input/render flow
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/world_library/run-tests.py --visual
+      - name: Upload actual QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game76-qa-${{ runner.os }}
+          path: |
+            docs/implementation/game76/logs
+            docs/implementation/game76/*-proof.json
+            docs/implementation/game76/screenshots
+      - name: Upload review helper package with licences and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: game76-helper-${{ runner.os }}
+          path: ${{ runner.temp }}/review-packages

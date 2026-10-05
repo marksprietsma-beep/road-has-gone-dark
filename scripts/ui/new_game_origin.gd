@@ -27,17 +27,20 @@ var state_picker: OptionButton
 var province_picker: OptionButton
 var message := ""
 var map_world_index := -1
+var library := GameWorldLibrary.new()
+var entries: Array[Dictionary] = []
+var world_titles: Array[String] = []
+var delete_target: Dictionary = {}
+var generation_button: Button
+var deletion_button: Button
+var job_thread: Thread
+var job_mutex := Mutex.new()
+var job_phase := ""
+var working_label: Label
+var job_is_generation := false
 
 func _ready() -> void:
- for key in TEMPLATES:
-  var world := GameWorldTemplate.new()
-  if not world.load_fixture("res://tests/worldgen/fixtures/%s.json" % key):
-   message = "World template unavailable. Return to the menu."
-   worlds.clear()
-   previews.clear()
-   break
-  worlds.append(world)
-  previews.append(WorldFixtureLoader.new().load_fixture("res://tests/worldgen/fixtures/%s.json" % key))
+ _reload_library()
  _build_ui()
  show_page()
 
@@ -148,7 +151,15 @@ func choose_world(index: int) -> void:
   province_id = -1
   burg_id = -1
  if map_world_index != world_index:
-  map.set_world(previews[world_index], TEMPLATES[world_index], worlds[world_index].source_sha256)
+  var entry := entries[world_index]
+  if not entry.preset and not library.preview_valid(entry.directory, entry.world.source_sha256):
+   if message.begins_with("Map preparation could not") or message.begins_with("The map preview could not"):
+    map.package = {}
+    map.queue_redraw()
+   else:
+    _start_preview_rebuild(entry)
+   return
+  map.set_world(previews[world_index], entry.key, worlds[world_index].source_sha256, entry.directory)
   map_world_index = world_index
  _refresh_facts()
 
@@ -170,6 +181,10 @@ func choose_home(index: int) -> void:
  _refresh_facts()
 
 func show_page() -> void:
+ if job_thread != null:
+  _show_working()
+  return
+ map.visible = true
  for child in left.get_children():
   left.remove_child(child)
   child.queue_free()
@@ -184,15 +199,30 @@ func show_page() -> void:
  next_button.text = ("Return to handoff" if not saved_slot.is_empty() else "Confirm origin") if page == 3 else ("Review origin" if page == 4 else "Next")
  next_button.disabled = false
  if page == 0:
-  left.add_child(_label("Begin with an existing world."))
+  if not delete_target.is_empty():
+   title.text = "Delete this world?"
+   left.add_child(_label(str(delete_target.label), 18))
+   left.add_child(_label("This removes the world and its map cache. Saved games will never be deleted."))
+   back_button.text = "Keep world"
+   next_button.text = "Delete world"
+   _refresh_facts()
+   back_button.call_deferred("grab_focus")
+   return
+  left.add_child(_label(message if not message.is_empty() else "Choose a world from your library."))
   options = ItemList.new()
   options.custom_minimum_size.y = 86
   options.add_theme_font_size_override("font_size", 16)
-  for value in TITLES: options.add_item(value)
+  for value in world_titles: options.add_item(value)
   left.add_child(options)
   options.select(world_index)
   options.item_selected.connect(choose_world)
   choose_world(world_index)
+  if job_thread != null: return
+  generation_button = _button("Generate New World", _start_generation)
+  left.add_child(generation_button)
+  deletion_button = _button("Delete World", request_delete)
+  deletion_button.disabled = entries[world_index].preset
+  left.add_child(deletion_button)
  elif page == 1:
   var areas := states()
   if state_id < 0 and not areas.is_empty(): state_id = int(areas[0].i)
@@ -242,7 +272,7 @@ func show_page() -> void:
   var home := world.get_record("burg", burg_id)
   var state := world.get_record("state", state_id)
   var province := world.get_record("province", int(world.get_record("cell", int(home.get("cell", -1))).get("province", 0)))
-  left.add_child(_label(TITLES[world_index], 18))
+  left.add_child(_label(world_titles[world_index], 18))
   left.add_child(_label(str(state.get("name", ""))))
   if not province.is_empty(): left.add_child(_label(str(province.get("name", ""))))
   left.add_child(_label(str(home.get("name", "")), 20))
@@ -257,7 +287,10 @@ func show_page() -> void:
 func _refresh_facts() -> void:
  var world := worlds[world_index]
  if page == 0:
-  facts.text = "An existing world to begin your journey.\n%d states · %d settlements" % [states().size(), world.raw_counts().settlements - 1]
+  var entry := entries[world_index]
+  var kind := "Preset world" if entry.preset else "Generated · " + str(entry.created).left(10)
+  facts.text = "%s\n%d states · %d settlements" % [kind, states().size(), world.raw_counts().settlements - 1]
+  if is_instance_valid(deletion_button): deletion_button.disabled = entry.preset
   map.select_area(-1, -1)
   return
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
@@ -275,6 +308,15 @@ func _refresh_facts() -> void:
   ]
 
 func advance() -> void:
+ if job_thread != null: return
+ if not delete_target.is_empty():
+  library.save_root = store.save_root
+  var result := library.delete_world(delete_target)
+  delete_target = {}
+  message = "World deleted." if result.ok else str(result.error)
+  if result.ok: _reload_library()
+  show_page()
+  return
  if page == 4:
   page = 3
  elif page == 3:
@@ -283,6 +325,12 @@ func advance() -> void:
   else:
    if not _discard_unvalidated_save():
     message = "Unable to clear the unverified save. Please retry."
+    show_page()
+    return
+   library.save_root = store.save_root
+   var guard := library.begin_origin(entries[world_index])
+   if not guard.ok:
+    message = str(guard.error)
     show_page()
     return
    var created := store.create_playthrough(worlds[world_index], state_id, burg_id, province_id)
@@ -304,6 +352,7 @@ func advance() -> void:
       if not _discard_unvalidated_save():
        message = "Unable to clear the unverified save. Please retry."
     else: message = "Unable to save. " + str(result.error)
+   library.end_origin(guard)
  elif page == 2 and burg_id <= 0: return
  else: page += 1
  show_page()
@@ -316,6 +365,11 @@ func _discard_unvalidated_save() -> bool:
  return true
 
 func go_back() -> void:
+ if job_thread != null: return
+ if not delete_target.is_empty():
+  delete_target = {}
+  show_page()
+  return
  if not _discard_unvalidated_save():
   message = "Unable to clear the unverified save. Please retry before going Back."
   show_page()
@@ -334,3 +388,109 @@ func _input(event: InputEvent) -> void:
 func _focus_later(control: Control) -> void:
  await get_tree().process_frame
  if is_instance_valid(control) and control.is_inside_tree(): control.grab_focus()
+
+func _reload_library(selected_id: String = "") -> void:
+ entries = library.discover()
+ worlds.clear()
+ previews.clear()
+ world_titles.clear()
+ world_index = 0
+ for i in entries.size():
+  worlds.append(entries[i].world)
+  previews.append(entries[i].raw)
+  world_titles.append(str(entries[i].label))
+  if entries[i].id == selected_id: world_index = i
+ map_world_index = -1
+ state_id = -1
+ province_id = -1
+ burg_id = -1
+
+func request_delete() -> void:
+ if job_thread != null or page != 0 or entries[world_index].preset: return
+ library.save_root = store.save_root
+ var status := library.reference_status(entries[world_index])
+ if not status.ok:
+  message = str(status.error)
+ elif status.count > 0:
+  message = "This world is used by %d saved game%s.\nIt cannot be deleted." % [status.count, "" if status.count == 1 else "s"]
+ else:
+  message = ""
+  delete_target = entries[world_index]
+ show_page()
+
+func _start_generation(seed: String = "") -> void:
+ if job_thread != null or page != 0 or not delete_target.is_empty(): return
+ if seed.is_empty(): seed = "world-" + Crypto.new().generate_random_bytes(16).hex_encode()
+ job_is_generation = true
+ job_phase = "Building geography and settlements…"
+ job_thread = Thread.new()
+ if job_thread.start(_generate_worker.bind(seed)) != OK:
+  job_thread = null
+  message = "World generation could not be started. Please retry."
+ show_page()
+
+func _start_preview_rebuild(entry: Dictionary) -> void:
+ if job_thread != null: return
+ job_is_generation = false
+ job_phase = "Rebuilding the map preview…"
+ job_thread = Thread.new()
+ if job_thread.start(_preview_worker.bind(entry)) != OK:
+  job_thread = null
+  message = "Map preparation could not be started. Please retry."
+ show_page()
+
+func _set_phase(text: String) -> void:
+ job_mutex.lock()
+ job_phase = text
+ job_mutex.unlock()
+
+func _generate_worker(seed: String) -> Dictionary:
+ var stage := library.create_staging()
+ if not stage.ok: return stage
+ var generated := library.run_generator(stage.directory, seed)
+ if not generated.ok:
+  library._remove_flat_directory(stage.directory)
+  return generated
+ _set_phase("Preparing map…")
+ return library.import_generated(stage.directory)
+
+func _preview_worker(entry: Dictionary) -> Dictionary:
+ if not library.build_preview(entry.directory, entry.raw, entry.world.source_sha256):
+  return {"ok": false, "error": "The map preview could not be rebuilt. Please retry."}
+ return {"ok": true, "entry": entry}
+
+func _show_working() -> void:
+ for child in left.get_children():
+  left.remove_child(child)
+  child.queue_free()
+ title.text = "Generating world…" if job_is_generation else "Preparing map…"
+ working_label = _label(job_phase)
+ left.add_child(working_label)
+ left.add_child(_label("Please wait. Your existing worlds and saves remain available afterward."))
+ back_button.disabled = true
+ next_button.disabled = true
+ map.visible = false
+ facts.text = ""
+
+func _process(_delta: float) -> void:
+ if job_thread == null: return
+ if job_thread.is_alive():
+  job_mutex.lock()
+  var text := job_phase
+  job_mutex.unlock()
+  if is_instance_valid(working_label): working_label.text = text
+  return
+ var result: Dictionary = job_thread.wait_to_finish()
+ job_thread = null
+ back_button.disabled = false
+ message = "World created." if result.ok and job_is_generation else ("" if result.ok else str(result.error))
+ var selected_id: String = str(result.entry.id) if result.ok else str(entries[world_index].id)
+ _reload_library(selected_id)
+ page = 0
+ show_page()
+
+func _exit_tree() -> void:
+ # No unsafe cancellation: helper is bounded to 120s; wait before freeing resources.
+ if job_thread != null:
+  job_thread.wait_to_finish()
+  job_thread = null
