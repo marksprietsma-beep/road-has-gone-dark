@@ -35,3 +35,9 @@ mutation of GAME-75, GAME-10 or previous research PRs. Nothing merged.
 
 No authenticated Linear connector was available; this update is prepared rather
 than falsely reported as posted.
+
+Final source review corrected sea-route/road conflation using distinct actual
+route groups and explicit generator trhgd-staged-2. Published v1 trial bytes
+remain historical, not silently rewritten. Both native CI platforms passed
+corrected code at f34b4ac. Optional public-lore demo is separate draft #60:
+https://github.com/marksprietsma-beep/road-has-gone-dark/pull/60.

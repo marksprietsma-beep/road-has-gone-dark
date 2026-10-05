@@ -63,7 +63,7 @@ GAME-75 branch or earlier draft PRs changed. Existing QA scripts can overwrite
 historic GAME-74/76 evidence during execution; those tracked files are restored,
 and this run's logs/proofs are preserved under GAME-77.
 
-Research `.mjs` module bytes (not a binary/heap measurement): 17997; zero external npm dependencies.
+Research `.mjs` module bytes (not a binary/heap measurement): 19323; zero external npm dependencies.
 
 ## Windows runner correction
 
@@ -79,3 +79,10 @@ v1. Corrected v2 with per-group assertions across both worlds; canonical bytes a
 GAME-75 factual renderer unchanged. Current sample/prose counts are refreshed in
 quality-audit.json after the explicit generator-version change. Historical v1
 sidecars retained, never installed or silently rewritten.
+
+Native Linux and Windows passed on corrected generator-v2 code head
+`f34b4acb5cdaf79604c13704df833d1e76bdd748`: GitHub run
+https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37337162447.
+This includes the per-route-type matrix, pinned-sidecar reader, same accepted
+helper, offline tests and original source/save/library regressions. Final
+documentation-head CI is independently verified in the PR/final delivery.

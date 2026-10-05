@@ -58,6 +58,10 @@ never substituted from another town. [Payload](evidence/public-origins.json) and
 Factual GAME-75 descriptions remain separate from generated **Local memory**.
 No save schema or GAME-76 generation pipeline changes are made by the core spike.
 
+Core draft: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/59.
+Separate three-town public-lore demonstration: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/60.
+Both remain draft; GAME-75 #58 is unchanged.
+
 Re-check GAME-75 only after core validation. Any optional demonstration belongs
 on `integration/game-77-origin-lore`, based on the published stable GAME-75 head,
 with a separate stacked draft PR. Never mutate its branch or take ownership of
