@@ -25,3 +25,16 @@ inherited regressions passed; full logs are committed. No source data, approved
 art/facilities, accepted generators, navigation, saves, gameplay or GAME-19 changed.
 New stacked draft PR targets fix/game-71-72-map-presentation; existing drafts remain
 untouched and unmerged. Recommendations are not automatically implemented.
+
+Published draft: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/55
+
+Direct durable review links:
+
+- [Report](https://github.com/marksprietsma-beep/road-has-gone-dark/blob/research/game-73-geographical-coherence/research/game73/README.md)
+- [Phone overview](https://raw.githubusercontent.com/marksprietsma-beep/road-has-gone-dark/research/game-73-geographical-coherence/research/game73/evidence/contact-sheet.png)
+- [Real neighbouring regions](https://raw.githubusercontent.com/marksprietsma-beep/road-has-gone-dark/research/game-73-geographical-coherence/research/game73/evidence/neighbour-comparison.png)
+- [Measured rotation rejection](https://raw.githubusercontent.com/marksprietsma-beep/road-has-gone-dark/research/game-73-geographical-coherence/research/game73/evidence/rotation-comparison.png)
+- [Explicitly hypothetical scale envelopes](https://raw.githubusercontent.com/marksprietsma-beep/road-has-gone-dark/research/game-73-geographical-coherence/research/game73/evidence/relative-scale.png)
+
+GitHub verification at the implementation milestone confirmed all 111 changed-file
+blob hashes, correct stacked draft base, and protected PRs #51–#54 unchanged/open/unmerged.

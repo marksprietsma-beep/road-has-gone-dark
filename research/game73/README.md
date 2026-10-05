@@ -1,6 +1,7 @@
 # GAME-73 — geographical coherence research
 
-An isolated, source-backed proof stacked on GAME-71/72
+[Draft PR #55](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/55), targeting
+`fix/game-71-72-map-presentation`. An isolated, source-backed proof stacked on GAME-71/72
 `ec6f8b5887826268366a9063f2099b34ae44d297`. All changes are under this directory.
 The [initial critical assessment](ENGINEERING-ASSESSMENT.md) was published and its
 push verified before implementation. Existing PRs #51–#54 are untouched and unmerged.
