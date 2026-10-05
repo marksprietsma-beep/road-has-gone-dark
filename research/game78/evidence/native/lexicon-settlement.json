@@ -1,0 +1,5968 @@
+[
+  {
+    "index": 0,
+    "output": {
+      "name": "Ashby",
+      "kind": "town",
+      "population": 2319,
+      "notableLocations": [
+        "The Raven's Crown",
+        "The Burning Compass"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GukaghGogh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gukagh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gogh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "EilwuRaoru",
+            "translation": "hollow-feather",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Eilwu",
+                "meaning": "hollow"
+              },
+              {
+                "form": "Raoru",
+                "meaning": "feather"
+              }
+            ]
+          },
+          "full": {
+            "form": "GukaghGogh EilwuRaoru",
+            "translation": "strong-stone hollow-feather",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 44,
+        "occupation": "ranger",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cowardly",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 1,
+    "output": {
+      "name": "Bonewick",
+      "kind": "city",
+      "population": 32620,
+      "notableLocations": [
+        "The Drunken Boot",
+        "The Stag's Fiddle",
+        "The Brass Boot",
+        "The Whistling Bear"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PpugPghap",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ppug",
+                "meaning": "strong"
+              },
+              {
+                "form": "Pghap",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KhubDtad",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khub",
+                "meaning": "clay"
+              },
+              {
+                "form": "Dtad",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PpugPghap KhubDtad",
+            "translation": "strong-metal clay-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 79,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "honest",
+          "flaw": "stubborn",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 2,
+    "output": {
+      "name": "Whitehollow",
+      "kind": "village",
+      "population": 104,
+      "notableLocations": [
+        "The Whistling Hammer"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ZichJusshi",
+            "translation": "enchanted-ash",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Zich",
+                "meaning": "enchanted"
+              },
+              {
+                "form": "Jusshi",
+                "meaning": "ash"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TapGhtat",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tap",
+                "meaning": "clay"
+              },
+              {
+                "form": "Ghtat",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "ZichJusshi TapGhtat",
+            "translation": "enchanted-ash clay-stone",
+            "language": "fantasy.draconic"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 18,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "patient",
+          "flaw": "vain",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 3,
+    "output": {
+      "name": "Blackbridge",
+      "kind": "village",
+      "population": 319,
+      "notableLocations": [
+        "The Old Shield"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "MeiomiawMa",
+            "translation": "green-storm",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Meiomiaw",
+                "meaning": "green"
+              },
+              {
+                "form": "Ma",
+                "meaning": "storm"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TtokBugh",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ttok",
+                "meaning": "clay"
+              },
+              {
+                "form": "Bugh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "MeiomiawMa TtokBugh",
+            "translation": "green-storm clay-stone",
+            "language": "fantasy.elvish"
+          },
+          "race": "tiefling",
+          "sex": "female"
+        },
+        "age": 38,
+        "occupation": "hunter",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cruel",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 4,
+    "output": {
+      "name": "Goldford",
+      "kind": "town",
+      "population": 2774,
+      "notableLocations": [
+        "The Sleeping Tiger",
+        "The Sunlit Owl"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhkukhghpokTgapghot",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghkukhghpok",
+                "meaning": "strong"
+              },
+              {
+                "form": "Tgapghot",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ZhichzetsShuch",
+            "translation": "pride-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Zhichzets",
+                "meaning": "pride"
+              },
+              {
+                "form": "Shuch",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhkukhghpokTgapghot ZhichzetsShuch",
+            "translation": "strong-metal pride-immortal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 37,
+        "occupation": "minstrel",
+        "personality": {
+          "trait": "honest",
+          "flaw": "lazy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 5,
+    "output": {
+      "name": "Eastford",
+      "kind": "village",
+      "population": 121,
+      "notableLocations": [
+        "The Brass Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PbagKa",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pbag",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ka",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PaPash",
+            "translation": "elemental-peace",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Pa",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Pash",
+                "meaning": "peace"
+              }
+            ]
+          },
+          "full": {
+            "form": "PbagKa PaPash",
+            "translation": "strong-stone elemental-peace",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dragonborn",
+          "sex": "female"
+        },
+        "age": 21,
+        "occupation": "baker",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "greedy",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 6,
+    "output": {
+      "name": "Silverfen",
+      "kind": "village",
+      "population": 391,
+      "notableLocations": [
+        "The Lazy Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GugtakGhu",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gugtak",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PabGo",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pab",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Go",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GugtakGhu PabGo",
+            "translation": "strong-metal mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 79,
+        "occupation": "alchemist",
+        "personality": {
+          "trait": "honest",
+          "flaw": "boastful",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 7,
+    "output": {
+      "name": "Whitecross",
+      "kind": "village",
+      "population": 388,
+      "notableLocations": [
+        "The Whistling Wolf"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "LaomaeWu",
+            "translation": "verdant-hollow",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Laomae",
+                "meaning": "verdant"
+              },
+              {
+                "form": "Wu",
+                "meaning": "hollow"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TpotDob",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tpot",
+                "meaning": "dust"
+              },
+              {
+                "form": "Dob",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "LaomaeWu TpotDob",
+            "translation": "verdant-hollow dust-stone",
+            "language": "fantasy.elvish"
+          },
+          "race": "halfling",
+          "sex": "male"
+        },
+        "age": 67,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "wise",
+          "flaw": "boastful",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 8,
+    "output": {
+      "name": "Whiteford",
+      "kind": "village",
+      "population": 112,
+      "notableLocations": [
+        "The Lazy Spider"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "YuyueEonmuola",
+            "translation": "fire-taste",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Yuyue",
+                "meaning": "fire"
+              },
+              {
+                "form": "Eonmuola",
+                "meaning": "taste"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DotGag",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dot",
+                "meaning": "clay"
+              },
+              {
+                "form": "Gag",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "YuyueEonmuola DotGag",
+            "translation": "fire-taste clay-metal",
+            "language": "fantasy.plantoid"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 36,
+        "occupation": "minstrel",
+        "personality": {
+          "trait": "honest",
+          "flaw": "vain",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 9,
+    "output": {
+      "name": "Bonecross",
+      "kind": "village",
+      "population": 277,
+      "notableLocations": [
+        "The Sunlit Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhadGguk",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khad",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gguk",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DgagDgag",
+            "translation": "stone-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dgag",
+                "meaning": "stone"
+              },
+              {
+                "form": "Dgag",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhadGguk DgagDgag",
+            "translation": "strong-metal stone-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 66,
+        "occupation": "mercenary",
+        "personality": {
+          "trait": "humble",
+          "flaw": "greedy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 10,
+    "output": {
+      "name": "Newthorpe",
+      "kind": "village",
+      "population": 122,
+      "notableLocations": [
+        "The Roaring Compass"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "IewneWaeer",
+            "translation": "green-stem",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Iewne",
+                "meaning": "green"
+              },
+              {
+                "form": "Waeer",
+                "meaning": "stem"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ShishPash",
+            "translation": "vine-merchant",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Shish",
+                "meaning": "vine"
+              },
+              {
+                "form": "Pash",
+                "meaning": "merchant"
+              }
+            ]
+          },
+          "full": {
+            "form": "IewneWaeer ShishPash",
+            "translation": "green-stem vine-merchant",
+            "language": "fantasy.elvish"
+          },
+          "race": "tiefling",
+          "sex": "female"
+        },
+        "age": 22,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "honest",
+          "flaw": "cowardly",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 11,
+    "output": {
+      "name": "Southbridge",
+      "kind": "village",
+      "population": 374,
+      "notableLocations": [
+        "The Brass Wyvern"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "WuelaRumo",
+            "translation": "mushroom-decay",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Wuela",
+                "meaning": "mushroom"
+              },
+              {
+                "form": "Rumo",
+                "meaning": "decay"
+              }
+            ]
+          },
+          "surname": {
+            "form": "RianAwiy",
+            "translation": "compost-fungal",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Rian",
+                "meaning": "compost"
+              },
+              {
+                "form": "Awiy",
+                "meaning": "fungal"
+              }
+            ]
+          },
+          "full": {
+            "form": "WuelaRumo RianAwiy",
+            "translation": "mushroom-decay compost-fungal",
+            "language": "fantasy.mycanoids"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 78,
+        "occupation": "tax-collector",
+        "personality": {
+          "trait": "kind",
+          "flaw": "vain",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 12,
+    "output": {
+      "name": "Shadowreach",
+      "kind": "town",
+      "population": 1351,
+      "notableLocations": [
+        "The Sleeping Hound",
+        "The Burning Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhutpakDupdop",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghutpak",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dupdop",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TabptudPakkpukh",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tabptud",
+                "meaning": "dust"
+              },
+              {
+                "form": "Pakkpukh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhutpakDupdop TabptudPakkpukh",
+            "translation": "strong-metal dust-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "fey",
+          "sex": "female"
+        },
+        "age": 44,
+        "occupation": "soldier",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cowardly",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 13,
+    "output": {
+      "name": "Blackfen",
+      "kind": "village",
+      "population": 305,
+      "notableLocations": [
+        "The Whistling Hawk"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TutpkhakhDokhpak",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tutpkhakh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dokhpak",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "RiiyeLoro",
+            "translation": "elemental-feather",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Riiye",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Loro",
+                "meaning": "feather"
+              }
+            ]
+          },
+          "full": {
+            "form": "TutpkhakhDokhpak RiiyeLoro",
+            "translation": "strong-metal elemental-feather",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "orc",
+          "sex": "female"
+        },
+        "age": 44,
+        "occupation": "weaver",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "vain",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 14,
+    "output": {
+      "name": "Westmoor",
+      "kind": "village",
+      "population": 370,
+      "notableLocations": [
+        "The Brass Coin"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhutTag",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khut",
+                "meaning": "strong"
+              },
+              {
+                "form": "Tag",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TottpokKhakhtpat",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tottpok",
+                "meaning": "sand"
+              },
+              {
+                "form": "Khakhtpat",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhutTag TottpokKhakhtpat",
+            "translation": "strong-stone sand-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 35,
+        "occupation": "scholar",
+        "personality": {
+          "trait": "kind",
+          "flaw": "boastful",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 15,
+    "output": {
+      "name": "Oakford",
+      "kind": "city",
+      "population": 19606,
+      "notableLocations": [
+        "The Shining Hammer",
+        "The Sunlit Stag",
+        "The Golden Compass",
+        "The Crow's Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TsaozojTseisu",
+            "translation": "elusive-hollow",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Tsaozoj",
+                "meaning": "elusive"
+              },
+              {
+                "form": "Tseisu",
+                "meaning": "hollow"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TikaSi",
+            "translation": "root-folk",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Tika",
+                "meaning": "root"
+              },
+              {
+                "form": "Si",
+                "meaning": "folk"
+              }
+            ]
+          },
+          "full": {
+            "form": "TsaozojTseisu TikaSi",
+            "translation": "elusive-hollow root-folk",
+            "language": "fantasy.fey"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 40,
+        "occupation": "merchant",
+        "personality": {
+          "trait": "patient",
+          "flaw": "lazy",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 16,
+    "output": {
+      "name": "Silvermire",
+      "kind": "town",
+      "population": 2077,
+      "notableLocations": [
+        "The Iron Tankard",
+        "The Silver Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GupPut",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gup",
+                "meaning": "strong"
+              },
+              {
+                "form": "Put",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhopDabkhot",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghop",
+                "meaning": "dust"
+              },
+              {
+                "form": "Dabkhot",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GupPut GhopDabkhot",
+            "translation": "strong-stone dust-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "tiefling",
+          "sex": "male"
+        },
+        "age": 31,
+        "occupation": "baker",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cowardly",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 17,
+    "output": {
+      "name": "Northfield",
+      "kind": "village",
+      "population": 325,
+      "notableLocations": [
+        "The Sunlit Stag"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhbaghKkok",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghbagh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Kkok",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PaghGhokdagh",
+            "translation": "dust-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pagh",
+                "meaning": "dust"
+              },
+              {
+                "form": "Ghokdagh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhbaghKkok PaghGhokdagh",
+            "translation": "strong-metal dust-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 43,
+        "occupation": "thief",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cruel",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 18,
+    "output": {
+      "name": "Old Goldwick",
+      "kind": "city",
+      "population": 39279,
+      "notableLocations": [
+        "The Stormy Mast",
+        "The Copper Lion",
+        "The Falcon's Mermaid",
+        "The Sleeping Serpent"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GghopkkhudDopog",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gghopkkhud",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dopog",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhghadbagGdoghtop",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghghadbag",
+                "meaning": "clay"
+              },
+              {
+                "form": "Gdoghtop",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GghopkkhudDopog GhghadbagGdoghtop",
+            "translation": "strong-stone clay-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 29,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "humble",
+          "flaw": "greedy",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 19,
+    "output": {
+      "name": "Eastcross",
+      "kind": "village",
+      "population": 160,
+      "notableLocations": [
+        "The Wolf's Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GuGhu",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gu",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "LeiyaYawailue",
+            "translation": "stem-sky",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Leiya",
+                "meaning": "stem"
+              },
+              {
+                "form": "Yawailue",
+                "meaning": "sky"
+              }
+            ]
+          },
+          "full": {
+            "form": "GuGhu LeiyaYawailue",
+            "translation": "strong-metal stem-sky",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 33,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "humble",
+          "flaw": "greedy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 20,
+    "output": {
+      "name": "Goldmoor",
+      "kind": "village",
+      "population": 342,
+      "notableLocations": [
+        "The Serpent's Anchor"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "RoayaNayaouen",
+            "translation": "verdant-bloom",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Roaya",
+                "meaning": "verdant"
+              },
+              {
+                "form": "Nayaouen",
+                "meaning": "bloom"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KugghoGhtukhghghakh",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Kuggho",
+                "meaning": "sand"
+              },
+              {
+                "form": "Ghtukhghghakh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "RoayaNayaouen KugghoGhtukhghghakh",
+            "translation": "verdant-bloom sand-stone",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 66,
+        "occupation": "scribe",
+        "personality": {
+          "trait": "wise",
+          "flaw": "vain",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 21,
+    "output": {
+      "name": "Littlethorpe",
+      "kind": "village",
+      "population": 196,
+      "notableLocations": [
+        "The Boar's Wheel"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhotGhakhtot",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khot",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghakhtot",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TupdbakhDtagdu",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tupdbakh",
+                "meaning": "clay"
+              },
+              {
+                "form": "Dtagdu",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhotGhakhtot TupdbakhDtagdu",
+            "translation": "strong-metal clay-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 18,
+        "occupation": "baker",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cruel",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 22,
+    "output": {
+      "name": "Goldshire",
+      "kind": "village",
+      "population": 351,
+      "notableLocations": [
+        "The Hound's Tankard"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhodghaghGhbokghag",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghodghagh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghbokghag",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "AmYaelau",
+            "translation": "cycle-wing",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Am",
+                "meaning": "cycle"
+              },
+              {
+                "form": "Yaelau",
+                "meaning": "wing"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhodghaghGhbokghag AmYaelau",
+            "translation": "strong-metal cycle-wing",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 39,
+        "occupation": "mercenary",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "greedy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 23,
+    "output": {
+      "name": "Westhollow",
+      "kind": "village",
+      "population": 165,
+      "notableLocations": [
+        "The Bear's Lantern"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "LianiWauel",
+            "translation": "rebirth-decay",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Liani",
+                "meaning": "rebirth"
+              },
+              {
+                "form": "Wauel",
+                "meaning": "decay"
+              }
+            ]
+          },
+          "surname": {
+            "form": "RaolWu",
+            "translation": "wind-dawn",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Raol",
+                "meaning": "wind"
+              },
+              {
+                "form": "Wu",
+                "meaning": "dawn"
+              }
+            ]
+          },
+          "full": {
+            "form": "LianiWauel RaolWu",
+            "translation": "rebirth-decay wind-dawn",
+            "language": "fantasy.mycanoids"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 77,
+        "occupation": "tanner",
+        "personality": {
+          "trait": "honest",
+          "flaw": "lazy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 24,
+    "output": {
+      "name": "Moonbridge",
+      "kind": "village",
+      "population": 312,
+      "notableLocations": [
+        "The Lazy Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ShaaSiutsos",
+            "translation": "great-cinder",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Shaa",
+                "meaning": "great"
+              },
+              {
+                "form": "Siutsos",
+                "meaning": "cinder"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DobdagGa",
+            "translation": "dust-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dobdag",
+                "meaning": "dust"
+              },
+              {
+                "form": "Ga",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ShaaSiutsos DobdagGa",
+            "translation": "great-cinder dust-metal",
+            "language": "fantasy.draconic"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 74,
+        "occupation": "miller",
+        "personality": {
+          "trait": "patient",
+          "flaw": "lazy",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 25,
+    "output": {
+      "name": "Sunburgh",
+      "kind": "town",
+      "population": 630,
+      "notableLocations": [
+        "The Shining Torch",
+        "The Stormy Wheel"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PtopKhgudghtugh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ptop",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khgudghtugh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DaghbadGhokpu",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Daghbad",
+                "meaning": "dust"
+              },
+              {
+                "form": "Ghokpu",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PtopKhgudghtugh DaghbadGhokpu",
+            "translation": "strong-metal dust-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 25,
+        "occupation": "baker",
+        "personality": {
+          "trait": "wise",
+          "flaw": "boastful",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 26,
+    "output": {
+      "name": "Highmoor",
+      "kind": "village",
+      "population": 238,
+      "notableLocations": [
+        "The Shining Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ShakchishTi",
+            "translation": "grove-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Shakchish",
+                "meaning": "grove"
+              },
+              {
+                "form": "Ti",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "NoeAyyima",
+            "translation": "spore-sentient",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Noe",
+                "meaning": "spore"
+              },
+              {
+                "form": "Ayyima",
+                "meaning": "sentient"
+              }
+            ]
+          },
+          "full": {
+            "form": "ShakchishTi NoeAyyima",
+            "translation": "grove-halfling spore-sentient",
+            "language": "fantasy.halfling"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 79,
+        "occupation": "ranger",
+        "personality": {
+          "trait": "humble",
+          "flaw": "boastful",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 27,
+    "output": {
+      "name": "Bonemoor",
+      "kind": "village",
+      "population": 316,
+      "notableLocations": [
+        "The Wyvern's Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhoghgughGhpudgab",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghoghgugh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghpudgab",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChaajoShoeji",
+            "translation": "mountain-mist",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Chaajo",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Shoeji",
+                "meaning": "mist"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhoghgughGhpudgab ChaajoShoeji",
+            "translation": "strong-stone mountain-mist",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "fey",
+          "sex": "male"
+        },
+        "age": 73,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cowardly",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 28,
+    "output": {
+      "name": "Sunreach",
+      "kind": "city",
+      "population": 16694,
+      "notableLocations": [
+        "The Glowing Fox",
+        "The Burning Shield",
+        "The Golden Mast",
+        "The Raven's Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TatkhudKop",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tatkhud",
+                "meaning": "strong"
+              },
+              {
+                "form": "Kop",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ToDut",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "To",
+                "meaning": "sand"
+              },
+              {
+                "form": "Dut",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "TatkhudKop ToDut",
+            "translation": "strong-stone sand-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 57,
+        "occupation": "alchemist",
+        "personality": {
+          "trait": "humble",
+          "flaw": "cruel",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 29,
+    "output": {
+      "name": "Starford",
+      "kind": "village",
+      "population": 387,
+      "notableLocations": [
+        "The Wolf's Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "JujsheChaj",
+            "translation": "great-flame",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Jujshe",
+                "meaning": "great"
+              },
+              {
+                "form": "Chaj",
+                "meaning": "flame"
+              }
+            ]
+          },
+          "surname": {
+            "form": "UarEmaimi",
+            "translation": "water-river",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Uar",
+                "meaning": "water"
+              },
+              {
+                "form": "Emaimi",
+                "meaning": "river"
+              }
+            ]
+          },
+          "full": {
+            "form": "JujsheChaj UarEmaimi",
+            "translation": "great-flame water-river",
+            "language": "fantasy.draconic"
+          },
+          "race": "celestial",
+          "sex": "female"
+        },
+        "age": 24,
+        "occupation": "guard",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cowardly",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 30,
+    "output": {
+      "name": "Shadowwick",
+      "kind": "town",
+      "population": 2479,
+      "notableLocations": [
+        "The Glowing Goblet",
+        "The Shining Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KiSap",
+            "translation": "wildwood-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Ki",
+                "meaning": "wildwood"
+              },
+              {
+                "form": "Sap",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhpakhkobKhtakh",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghpakhkob",
+                "meaning": "sand"
+              },
+              {
+                "form": "Khtakh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KiSap GhpakhkobKhtakh",
+            "translation": "wildwood-halfling sand-stone",
+            "language": "fantasy.halfling"
+          },
+          "race": "dragonborn",
+          "sex": "female"
+        },
+        "age": 41,
+        "occupation": "scholar",
+        "personality": {
+          "trait": "humble",
+          "flaw": "vain",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 31,
+    "output": {
+      "name": "Wolfmarch",
+      "kind": "city",
+      "population": 5102,
+      "notableLocations": [
+        "The Wild Mermaid",
+        "The Old Eagle",
+        "The Rolling Mermaid",
+        "The Frozen Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KkhogKutgad",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Kkhog",
+                "meaning": "strong"
+              },
+              {
+                "form": "Kutgad",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ZhchishauZaisau",
+            "translation": "wind-lullaby",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Zhchishau",
+                "meaning": "wind"
+              },
+              {
+                "form": "Zaisau",
+                "meaning": "lullaby"
+              }
+            ]
+          },
+          "full": {
+            "form": "KkhogKutgad ZhchishauZaisau",
+            "translation": "strong-stone wind-lullaby",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 42,
+        "occupation": "thief",
+        "personality": {
+          "trait": "humble",
+          "flaw": "lazy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 32,
+    "output": {
+      "name": "Redfen",
+      "kind": "village",
+      "population": 331,
+      "notableLocations": [
+        "The Gilded Falcon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BatKub",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bat",
+                "meaning": "strong"
+              },
+              {
+                "form": "Kub",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KhtutdghaghBubghud",
+            "translation": "mountain-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khtutdghagh",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Bubghud",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "BatKub KhtutdghaghBubghud",
+            "translation": "strong-stone mountain-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 52,
+        "occupation": "merchant",
+        "personality": {
+          "trait": "humble",
+          "flaw": "vain",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 33,
+    "output": {
+      "name": "Ironford",
+      "kind": "village",
+      "population": 130,
+      "notableLocations": [
+        "The Whistling Torch"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TdughkoDtokh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tdughko",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dtokh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "BughkuDa",
+            "translation": "stone-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bughku",
+                "meaning": "stone"
+              },
+              {
+                "form": "Da",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "TdughkoDtokh BughkuDa",
+            "translation": "strong-stone stone-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 32,
+        "occupation": "soldier",
+        "personality": {
+          "trait": "humble",
+          "flaw": "cowardly",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 34,
+    "output": {
+      "name": "Starcross",
+      "kind": "village",
+      "population": 260,
+      "notableLocations": [
+        "The Crooked Tiger"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ToTodghgog",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "To",
+                "meaning": "strong"
+              },
+              {
+                "form": "Todghgog",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TatakhKhtokh",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tatakh",
+                "meaning": "dust"
+              },
+              {
+                "form": "Khtokh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "ToTodghgog TatakhKhtokh",
+            "translation": "strong-stone dust-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dragonborn",
+          "sex": "female"
+        },
+        "age": 29,
+        "occupation": "guard",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "greedy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 35,
+    "output": {
+      "name": "Silverhollow",
+      "kind": "village",
+      "population": 387,
+      "notableLocations": [
+        "The Crooked Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhoghDubdgakh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghogh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dubdgakh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KhukhkhuDpadkug",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khukhkhu",
+                "meaning": "clay"
+              },
+              {
+                "form": "Dpadkug",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhoghDubdgakh KhukhkhuDpadkug",
+            "translation": "strong-metal clay-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 75,
+        "occupation": "baker",
+        "personality": {
+          "trait": "honest",
+          "flaw": "greedy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 36,
+    "output": {
+      "name": "Lowfield",
+      "kind": "village",
+      "population": 153,
+      "notableLocations": [
+        "The Wild Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GgobghgoghGutpgab",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ggobghgogh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gutpgab",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GdopghgokTadku",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gdopghgok",
+                "meaning": "sand"
+              },
+              {
+                "form": "Tadku",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GgobghgoghGutpgab GdopghgokTadku",
+            "translation": "strong-stone sand-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 64,
+        "occupation": "tanner",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cowardly",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 37,
+    "output": {
+      "name": "Lowfield",
+      "kind": "village",
+      "population": 397,
+      "notableLocations": [
+        "The Brass Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhubKhpaddagh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khub",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khpaddagh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DokdudTuk",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dokdud",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Tuk",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhubKhpaddagh DokdudTuk",
+            "translation": "strong-stone mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "tiefling",
+          "sex": "female"
+        },
+        "age": 68,
+        "occupation": "miller",
+        "personality": {
+          "trait": "kind",
+          "flaw": "greedy",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 38,
+    "output": {
+      "name": "Ashwick",
+      "kind": "town",
+      "population": 2630,
+      "notableLocations": [
+        "The Glowing Wyvern",
+        "The Copper Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TukhPokpop",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tukh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Pokpop",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GghadkhobTuk",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gghadkhob",
+                "meaning": "sand"
+              },
+              {
+                "form": "Tuk",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "TukhPokpop GghadkhobTuk",
+            "translation": "strong-stone sand-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 39,
+        "occupation": "soldier",
+        "personality": {
+          "trait": "humble",
+          "flaw": "stubborn",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 39,
+    "output": {
+      "name": "Lowcross",
+      "kind": "village",
+      "population": 178,
+      "notableLocations": [
+        "The Crooked Unicorn"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "DokhdtudPkhup",
+            "translation": "cruel-dagger",
+            "language": "fantasy.orcish",
+            "parts": [
+              {
+                "form": "Dokhdtud",
+                "meaning": "cruel"
+              },
+              {
+                "form": "Pkhup",
+                "meaning": "dagger"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhghughKhkhatgtug",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghghugh",
+                "meaning": "sand"
+              },
+              {
+                "form": "Khkhatgtug",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "DokhdtudPkhup GhghughKhkhatgtug",
+            "translation": "cruel-dagger sand-stone",
+            "language": "fantasy.orcish"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 68,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "kind",
+          "flaw": "boastful",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 40,
+    "output": {
+      "name": "Wolfvale",
+      "kind": "city",
+      "population": 30725,
+      "notableLocations": [
+        "The Dragon's Shield",
+        "The Sleeping Owl",
+        "The Sunlit Mermaid",
+        "The Wyvern's Goblet"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "DukhbkobGbagh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dukhbkob",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gbagh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ZooSoa",
+            "translation": "fire-dream",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Zoo",
+                "meaning": "fire"
+              },
+              {
+                "form": "Soa",
+                "meaning": "dream"
+              }
+            ]
+          },
+          "full": {
+            "form": "DukhbkobGbagh ZooSoa",
+            "translation": "strong-stone fire-dream",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 80,
+        "occupation": "butcher",
+        "personality": {
+          "trait": "patient",
+          "flaw": "cruel",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 41,
+    "output": {
+      "name": "Eastcross",
+      "kind": "village",
+      "population": 167,
+      "notableLocations": [
+        "The Roaring Boar"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ChakpasCha",
+            "translation": "light-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chakpas",
+                "meaning": "light"
+              },
+              {
+                "form": "Cha",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "JioShuechea",
+            "translation": "dragon-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Jio",
+                "meaning": "dragon"
+              },
+              {
+                "form": "Shuechea",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ChakpasCha JioShuechea",
+            "translation": "light-halfling dragon-immortal",
+            "language": "fantasy.halfling"
+          },
+          "race": "fey",
+          "sex": "female"
+        },
+        "age": 47,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "kind",
+          "flaw": "stubborn",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 42,
+    "output": {
+      "name": "Bonecross",
+      "kind": "village",
+      "population": 129,
+      "notableLocations": [
+        "The Crooked Lion"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhokhgotDgoghbug",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghokhgot",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dgoghbug",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GaghtuTtoghkgup",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gaghtu",
+                "meaning": "sand"
+              },
+              {
+                "form": "Ttoghkgup",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhokhgotDgoghbug GaghtuTtoghkgup",
+            "translation": "strong-stone sand-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 77,
+        "occupation": "priest",
+        "personality": {
+          "trait": "brave",
+          "flaw": "stubborn",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 43,
+    "output": {
+      "name": "Lowhollow",
+      "kind": "village",
+      "population": 377,
+      "notableLocations": [
+        "The Drunken Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ChtsoZotsu",
+            "translation": "elusive-mist",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Chtso",
+                "meaning": "elusive"
+              },
+              {
+                "form": "Zotsu",
+                "meaning": "mist"
+              }
+            ]
+          },
+          "surname": {
+            "form": "RernenguLonirema",
+            "translation": "seraph-grace",
+            "language": "fantasy.celestial",
+            "parts": [
+              {
+                "form": "Rernengu",
+                "meaning": "seraph"
+              },
+              {
+                "form": "Lonirema",
+                "meaning": "grace"
+              }
+            ]
+          },
+          "full": {
+            "form": "ChtsoZotsu RernenguLonirema",
+            "translation": "elusive-mist seraph-grace",
+            "language": "fantasy.fey"
+          },
+          "race": "tiefling",
+          "sex": "female"
+        },
+        "age": 73,
+        "occupation": "merchant",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cowardly",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 44,
+    "output": {
+      "name": "Mistby",
+      "kind": "town",
+      "population": 3035,
+      "notableLocations": [
+        "The Wild Eagle",
+        "The Roaring Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhaghghokGbokhdok",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khaghghok",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gbokhdok",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PboghKu",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pbogh",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Ku",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhaghghokGbokhdok PboghKu",
+            "translation": "strong-metal mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "halfling",
+          "sex": "male"
+        },
+        "age": 33,
+        "occupation": "tax-collector",
+        "personality": {
+          "trait": "kind",
+          "flaw": "cruel",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 45,
+    "output": {
+      "name": "Oldshire",
+      "kind": "village",
+      "population": 124,
+      "notableLocations": [
+        "The Brass Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "MoneoomYuwi",
+            "translation": "thorned-tree",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Moneoom",
+                "meaning": "thorned"
+              },
+              {
+                "form": "Yuwi",
+                "meaning": "tree"
+              }
+            ]
+          },
+          "surname": {
+            "form": "InraoYionieal",
+            "translation": "spore-fungal",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Inrao",
+                "meaning": "spore"
+              },
+              {
+                "form": "Yionieal",
+                "meaning": "fungal"
+              }
+            ]
+          },
+          "full": {
+            "form": "MoneoomYuwi InraoYionieal",
+            "translation": "thorned-tree spore-fungal",
+            "language": "fantasy.elvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 30,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "kind",
+          "flaw": "greedy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 46,
+    "output": {
+      "name": "Oakburgh",
+      "kind": "town",
+      "population": 1328,
+      "notableLocations": [
+        "The Fox's Crown",
+        "The Copper Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BboghKhok",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bbogh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khok",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ZhaiJuz",
+            "translation": "rune-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Zhai",
+                "meaning": "rune"
+              },
+              {
+                "form": "Juz",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "BboghKhok ZhaiJuz",
+            "translation": "strong-stone rune-immortal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 49,
+        "occupation": "scribe",
+        "personality": {
+          "trait": "wise",
+          "flaw": "vain",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 47,
+    "output": {
+      "name": "Whitefield",
+      "kind": "village",
+      "population": 59,
+      "notableLocations": [
+        "The Rolling Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GkhodGhapkdop",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gkhod",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghapkdop",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DpoghDpogh",
+            "translation": "stone-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dpogh",
+                "meaning": "stone"
+              },
+              {
+                "form": "Dpogh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GkhodGhapkdop DpoghDpogh",
+            "translation": "strong-stone stone-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "orc",
+          "sex": "male"
+        },
+        "age": 29,
+        "occupation": "baker",
+        "personality": {
+          "trait": "brave",
+          "flaw": "lazy",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 48,
+    "output": {
+      "name": "Stoneby",
+      "kind": "town",
+      "population": 3878,
+      "notableLocations": [
+        "The Rolling Falcon",
+        "The Bear's Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "SichziChatsiz",
+            "translation": "great-ember",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Sichzi",
+                "meaning": "great"
+              },
+              {
+                "form": "Chatsiz",
+                "meaning": "ember"
+              }
+            ]
+          },
+          "surname": {
+            "form": "JueZojzhi",
+            "translation": "river-hollow",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Jue",
+                "meaning": "river"
+              },
+              {
+                "form": "Zojzhi",
+                "meaning": "hollow"
+              }
+            ]
+          },
+          "full": {
+            "form": "SichziChatsiz JueZojzhi",
+            "translation": "great-ember river-hollow",
+            "language": "fantasy.draconic"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 43,
+        "occupation": "guard",
+        "personality": {
+          "trait": "wise",
+          "flaw": "cowardly",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 49,
+    "output": {
+      "name": "Redford",
+      "kind": "town",
+      "population": 1331,
+      "notableLocations": [
+        "The Brass Wyvern",
+        "The Silver Crow"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhutdkhabKpuk",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghutdkhab",
+                "meaning": "strong"
+              },
+              {
+                "form": "Kpuk",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KhakGhob",
+            "translation": "ash-oath",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Khak",
+                "meaning": "ash"
+              },
+              {
+                "form": "Ghob",
+                "meaning": "oath"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhutdkhabKpuk KhakGhob",
+            "translation": "strong-stone ash-oath",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 40,
+        "occupation": "innkeeper",
+        "personality": {
+          "trait": "honest",
+          "flaw": "stubborn",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 50,
+    "output": {
+      "name": "Blackmoor",
+      "kind": "village",
+      "population": 378,
+      "notableLocations": [
+        "The Eagle's Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TsshozhuShujjuu",
+            "translation": "elusive-sprite",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Tsshozhu",
+                "meaning": "elusive"
+              },
+              {
+                "form": "Shujjuu",
+                "meaning": "sprite"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PatGhbap",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pat",
+                "meaning": "clay"
+              },
+              {
+                "form": "Ghbap",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "TsshozhuShujjuu PatGhbap",
+            "translation": "elusive-sprite clay-stone",
+            "language": "fantasy.fey"
+          },
+          "race": "fey",
+          "sex": "female"
+        },
+        "age": 55,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "wise",
+          "flaw": "lazy",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 51,
+    "output": {
+      "name": "Goldfield",
+      "kind": "village",
+      "population": 262,
+      "notableLocations": [
+        "The Dragon's Compass"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TagdaghPotkob",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tagdagh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Potkob",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "BakKkukda",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bak",
+                "meaning": "clay"
+              },
+              {
+                "form": "Kkukda",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "TagdaghPotkob BakKkukda",
+            "translation": "strong-metal clay-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 80,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cowardly",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 52,
+    "output": {
+      "name": "Starbridge",
+      "kind": "village",
+      "population": 213,
+      "notableLocations": [
+        "The Silver Wheel"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhgodkoBob",
+            "translation": "red-cinder",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Ghgodko",
+                "meaning": "red"
+              },
+              {
+                "form": "Bob",
+                "meaning": "cinder"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PghogbupPudghab",
+            "translation": "stone-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pghogbup",
+                "meaning": "stone"
+              },
+              {
+                "form": "Pudghab",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhgodkoBob PghogbupPudghab",
+            "translation": "red-cinder stone-metal",
+            "language": "fantasy.tiefling"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 29,
+        "occupation": "fisher",
+        "personality": {
+          "trait": "patient",
+          "flaw": "lazy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 53,
+    "output": {
+      "name": "Ironhollow",
+      "kind": "village",
+      "population": 202,
+      "notableLocations": [
+        "The Sunlit Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BudTtop",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bud",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ttop",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GogkukhTdut",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gogkukh",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Tdut",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "BudTtop GogkukhTdut",
+            "translation": "strong-stone mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 36,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "patient",
+          "flaw": "cruel",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 54,
+    "output": {
+      "name": "Wolffall",
+      "kind": "town",
+      "population": 2236,
+      "notableLocations": [
+        "The Brass Goose",
+        "The Sleeping Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PtokhKhogh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ptokh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khogh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhakhkagBgug",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghakhkag",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Bgug",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PtokhKhogh GhakhkagBgug",
+            "translation": "strong-stone mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 20,
+        "occupation": "ranger",
+        "personality": {
+          "trait": "brave",
+          "flaw": "lazy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 55,
+    "output": {
+      "name": "Pinemire",
+      "kind": "town",
+      "population": 3838,
+      "notableLocations": [
+        "The Lion's Torch",
+        "The Iron Lion"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GogKhkok",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gog",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khkok",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TatGhuka",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tat",
+                "meaning": "clay"
+              },
+              {
+                "form": "Ghuka",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GogKhkok TatGhuka",
+            "translation": "strong-metal clay-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 64,
+        "occupation": "tax-collector",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cruel",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 56,
+    "output": {
+      "name": "Oldshire",
+      "kind": "village",
+      "population": 112,
+      "notableLocations": [
+        "The Glowing Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KaSichchik",
+            "translation": "river-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Ka",
+                "meaning": "river"
+              },
+              {
+                "form": "Sichchik",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GaTaghkbob",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ga",
+                "meaning": "sand"
+              },
+              {
+                "form": "Taghkbob",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "KaSichchik GaTaghkbob",
+            "translation": "river-halfling sand-metal",
+            "language": "fantasy.halfling"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 60,
+        "occupation": "tanner",
+        "personality": {
+          "trait": "honest",
+          "flaw": "cruel",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 57,
+    "output": {
+      "name": "Ravenhaven",
+      "kind": "town",
+      "population": 3741,
+      "notableLocations": [
+        "The Brass Owl",
+        "The Iron Hound"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ImloNowoemu",
+            "translation": "thorned-hollow",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Imlo",
+                "meaning": "thorned"
+              },
+              {
+                "form": "Nowoemu",
+                "meaning": "hollow"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DaktubBukhkat",
+            "translation": "flame-oath",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Daktub",
+                "meaning": "flame"
+              },
+              {
+                "form": "Bukhkat",
+                "meaning": "oath"
+              }
+            ]
+          },
+          "full": {
+            "form": "ImloNowoemu DaktubBukhkat",
+            "translation": "thorned-hollow flame-oath",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 30,
+        "occupation": "miller",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cowardly",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 58,
+    "output": {
+      "name": "Stonemarch",
+      "kind": "city",
+      "population": 29944,
+      "notableLocations": [
+        "The Iron Anchor",
+        "The Wild Fiddle",
+        "The Sunlit Lantern",
+        "The Drunken Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PokBotdap",
+            "translation": "cruel-armor",
+            "language": "fantasy.orcish",
+            "parts": [
+              {
+                "form": "Pok",
+                "meaning": "cruel"
+              },
+              {
+                "form": "Botdap",
+                "meaning": "armor"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhukhBupghpud",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghukh",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Bupghpud",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PokBotdap GhukhBupghpud",
+            "translation": "cruel-armor mountain-stone",
+            "language": "fantasy.orcish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 34,
+        "occupation": "hunter",
+        "personality": {
+          "trait": "honest",
+          "flaw": "greedy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 59,
+    "output": {
+      "name": "Goldburgh",
+      "kind": "town",
+      "population": 1248,
+      "notableLocations": [
+        "The Old Goose",
+        "The Verdant Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ChiShisas",
+            "translation": "elemental-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chi",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Shisas",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChiseeTsa",
+            "translation": "king-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Chisee",
+                "meaning": "king"
+              },
+              {
+                "form": "Tsa",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ChiShisas ChiseeTsa",
+            "translation": "elemental-halfling king-immortal",
+            "language": "fantasy.halfling"
+          },
+          "race": "dragonborn",
+          "sex": "female"
+        },
+        "age": 48,
+        "occupation": "miller",
+        "personality": {
+          "trait": "brave",
+          "flaw": "greedy",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 60,
+    "output": {
+      "name": "Sunreach",
+      "kind": "town",
+      "population": 3071,
+      "notableLocations": [
+        "The Glowing Shield",
+        "The Whistling Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ZuzChiozhzha",
+            "translation": "elusive-sprite",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Zuz",
+                "meaning": "elusive"
+              },
+              {
+                "form": "Chiozhzha",
+                "meaning": "sprite"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PkukhPut",
+            "translation": "mountain-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pkukh",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Put",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ZuzChiozhzha PkukhPut",
+            "translation": "elusive-sprite mountain-metal",
+            "language": "fantasy.fey"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 26,
+        "occupation": "baker",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cowardly",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 61,
+    "output": {
+      "name": "Windhaven",
+      "kind": "town",
+      "population": 2796,
+      "notableLocations": [
+        "The Rolling Compass",
+        "The Serpent's Mast"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BotdudTo",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Botdud",
+                "meaning": "strong"
+              },
+              {
+                "form": "To",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhukhdagBukh",
+            "translation": "ash-oath",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Ghukhdag",
+                "meaning": "ash"
+              },
+              {
+                "form": "Bukh",
+                "meaning": "oath"
+              }
+            ]
+          },
+          "full": {
+            "form": "BotdudTo GhukhdagBukh",
+            "translation": "strong-stone ash-oath",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 36,
+        "occupation": "minstrel",
+        "personality": {
+          "trait": "wise",
+          "flaw": "greedy",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 62,
+    "output": {
+      "name": "Raventon",
+      "kind": "town",
+      "population": 969,
+      "notableLocations": [
+        "The Burning Torch",
+        "The Lazy Falcon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "WaeroNeey",
+            "translation": "fierce-mountain",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Waero",
+                "meaning": "fierce"
+              },
+              {
+                "form": "Neey",
+                "meaning": "mountain"
+              }
+            ]
+          },
+          "surname": {
+            "form": "MiyoA",
+            "translation": "elemental-feather",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Miyo",
+                "meaning": "elemental"
+              },
+              {
+                "form": "A",
+                "meaning": "feather"
+              }
+            ]
+          },
+          "full": {
+            "form": "WaeroNeey MiyoA",
+            "translation": "fierce-mountain elemental-feather",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 53,
+        "occupation": "innkeeper",
+        "personality": {
+          "trait": "honest",
+          "flaw": "cruel",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 63,
+    "output": {
+      "name": "Newhollow",
+      "kind": "village",
+      "population": 299,
+      "notableLocations": [
+        "The Crooked Raven"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PugGokgob",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pug",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gokgob",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PpakdaghPpakdagh",
+            "translation": "stone-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ppakdagh",
+                "meaning": "stone"
+              },
+              {
+                "form": "Ppakdagh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PugGokgob PpakdaghPpakdagh",
+            "translation": "strong-stone stone-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 21,
+        "occupation": "mercenary",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "stubborn",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 64,
+    "output": {
+      "name": "Ironcross",
+      "kind": "village",
+      "population": 40,
+      "notableLocations": [
+        "The Silver Hawk"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "RooEmruiy",
+            "translation": "verdant-fire",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Roo",
+                "meaning": "verdant"
+              },
+              {
+                "form": "Emruiy",
+                "meaning": "fire"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KitPik",
+            "translation": "fire-merchant",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Kit",
+                "meaning": "fire"
+              },
+              {
+                "form": "Pik",
+                "meaning": "merchant"
+              }
+            ]
+          },
+          "full": {
+            "form": "RooEmruiy KitPik",
+            "translation": "verdant-fire fire-merchant",
+            "language": "fantasy.elvish"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 32,
+        "occupation": "innkeeper",
+        "personality": {
+          "trait": "patient",
+          "flaw": "greedy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 65,
+    "output": {
+      "name": "Moonford",
+      "kind": "village",
+      "population": 215,
+      "notableLocations": [
+        "The Wolf's Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "RurraNenril",
+            "translation": "ethereal-halo",
+            "language": "fantasy.celestial",
+            "parts": [
+              {
+                "form": "Rurra",
+                "meaning": "ethereal"
+              },
+              {
+                "form": "Nenril",
+                "meaning": "halo"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KhobKhkodga",
+            "translation": "dust-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khob",
+                "meaning": "dust"
+              },
+              {
+                "form": "Khkodga",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "RurraNenril KhobKhkodga",
+            "translation": "ethereal-halo dust-metal",
+            "language": "fantasy.celestial"
+          },
+          "race": "fey",
+          "sex": "female"
+        },
+        "age": 58,
+        "occupation": "innkeeper",
+        "personality": {
+          "trait": "patient",
+          "flaw": "greedy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 66,
+    "output": {
+      "name": "Mistwick",
+      "kind": "town",
+      "population": 1654,
+      "notableLocations": [
+        "The Burning Fiddle",
+        "The Roaring Stag"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "NamiMiu",
+            "translation": "mushroom-decay",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Nami",
+                "meaning": "mushroom"
+              },
+              {
+                "form": "Miu",
+                "meaning": "decay"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TkuggughGhagh",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tkuggugh",
+                "meaning": "sand"
+              },
+              {
+                "form": "Ghagh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "NamiMiu TkuggughGhagh",
+            "translation": "mushroom-decay sand-metal",
+            "language": "fantasy.mycanoids"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 57,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cowardly",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 67,
+    "output": {
+      "name": "Moonmoor",
+      "kind": "village",
+      "population": 41,
+      "notableLocations": [
+        "The Copper Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BokhtaghGhtub",
+            "translation": "red-cinder",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Bokhtagh",
+                "meaning": "red"
+              },
+              {
+                "form": "Ghtub",
+                "meaning": "cinder"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DgobGubkhkot",
+            "translation": "stone-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dgob",
+                "meaning": "stone"
+              },
+              {
+                "form": "Gubkhkot",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "BokhtaghGhtub DgobGubkhkot",
+            "translation": "red-cinder stone-metal",
+            "language": "fantasy.tiefling"
+          },
+          "race": "halfling",
+          "sex": "male"
+        },
+        "age": 53,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "brave",
+          "flaw": "lazy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 68,
+    "output": {
+      "name": "Starford",
+      "kind": "town",
+      "population": 3877,
+      "notableLocations": [
+        "The Brass Shield",
+        "The Verdant Hammer"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "UwniNeawneu",
+            "translation": "verdant-bloom",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Uwni",
+                "meaning": "verdant"
+              },
+              {
+                "form": "Neawneu",
+                "meaning": "bloom"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TisShash",
+            "translation": "grove-folk",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Tis",
+                "meaning": "grove"
+              },
+              {
+                "form": "Shash",
+                "meaning": "folk"
+              }
+            ]
+          },
+          "full": {
+            "form": "UwniNeawneu TisShash",
+            "translation": "verdant-bloom grove-folk",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 66,
+        "occupation": "butcher",
+        "personality": {
+          "trait": "humble",
+          "flaw": "boastful",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 69,
+    "output": {
+      "name": "Lowthorpe",
+      "kind": "village",
+      "population": 225,
+      "notableLocations": [
+        "The Iron Owl"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GtukhpobBupdad",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gtukhpob",
+                "meaning": "strong"
+              },
+              {
+                "form": "Bupdad",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PapkhabPapkhab",
+            "translation": "stone-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Papkhab",
+                "meaning": "stone"
+              },
+              {
+                "form": "Papkhab",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GtukhpobBupdad PapkhabPapkhab",
+            "translation": "strong-stone stone-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "orc",
+          "sex": "female"
+        },
+        "age": 23,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "humble",
+          "flaw": "boastful",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 70,
+    "output": {
+      "name": "Old Oakhollow",
+      "kind": "city",
+      "population": 10161,
+      "notableLocations": [
+        "The Lazy Hammer",
+        "The Frozen Wyvern",
+        "The Frozen Owl",
+        "The Golden Hawk"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "WeYii",
+            "translation": "fierce-tree",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "We",
+                "meaning": "fierce"
+              },
+              {
+                "form": "Yii",
+                "meaning": "tree"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DtakbaGbob",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dtakba",
+                "meaning": "clay"
+              },
+              {
+                "form": "Gbob",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "WeYii DtakbaGbob",
+            "translation": "fierce-tree clay-metal",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 28,
+        "occupation": "innkeeper",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "greedy",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 71,
+    "output": {
+      "name": "Silvershire",
+      "kind": "village",
+      "population": 162,
+      "notableLocations": [
+        "The Misty Mermaid"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PudghaghPabkhghagh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pudghagh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Pabkhghagh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "BudbobGhu",
+            "translation": "mountain-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Budbob",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Ghu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "PudghaghPabkhghagh BudbobGhu",
+            "translation": "strong-metal mountain-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "halfling",
+          "sex": "female"
+        },
+        "age": 76,
+        "occupation": "weaver",
+        "personality": {
+          "trait": "wise",
+          "flaw": "greedy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 72,
+    "output": {
+      "name": "Windburgh",
+      "kind": "town",
+      "population": 2606,
+      "notableLocations": [
+        "The Brass Goblet",
+        "The Spider's Lantern"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ChashTat",
+            "translation": "tree-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chash",
+                "meaning": "tree"
+              },
+              {
+                "form": "Tat",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KuDpatghu",
+            "translation": "stone-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ku",
+                "meaning": "stone"
+              },
+              {
+                "form": "Dpatghu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ChashTat KuDpatghu",
+            "translation": "tree-halfling stone-metal",
+            "language": "fantasy.halfling"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 50,
+        "occupation": "stonecutter",
+        "personality": {
+          "trait": "brave",
+          "flaw": "vain",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 73,
+    "output": {
+      "name": "Ashreach",
+      "kind": "city",
+      "population": 17744,
+      "notableLocations": [
+        "The Shining Eagle",
+        "The Misty Lantern",
+        "The Stormy Eagle",
+        "The Wild Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GaKtakh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ga",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ktakh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhbugBa",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghbug",
+                "meaning": "clay"
+              },
+              {
+                "form": "Ba",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GaKtakh GhbugBa",
+            "translation": "strong-metal clay-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 33,
+        "occupation": "baker",
+        "personality": {
+          "trait": "wise",
+          "flaw": "lazy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 74,
+    "output": {
+      "name": "Stonecross",
+      "kind": "village",
+      "population": 322,
+      "notableLocations": [
+        "The Golden Torch"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "OmelReni",
+            "translation": "elemental-flourish",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Omel",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Reni",
+                "meaning": "flourish"
+              }
+            ]
+          },
+          "surname": {
+            "form": "DotbuGhkhokpu",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dotbu",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Ghkhokpu",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "OmelReni DotbuGhkhokpu",
+            "translation": "elemental-flourish mountain-stone",
+            "language": "fantasy.plantoid"
+          },
+          "race": "mycanoid",
+          "sex": "male"
+        },
+        "age": 51,
+        "occupation": "hunter",
+        "personality": {
+          "trait": "patient",
+          "flaw": "cruel",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 75,
+    "output": {
+      "name": "Ashby",
+      "kind": "town",
+      "population": 3821,
+      "notableLocations": [
+        "The Shining Stag",
+        "The Salty Falcon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ZheChashao",
+            "translation": "elusive-lullaby",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Zhe",
+                "meaning": "elusive"
+              },
+              {
+                "form": "Chashao",
+                "meaning": "lullaby"
+              }
+            ]
+          },
+          "surname": {
+            "form": "MingNgure",
+            "translation": "dawn-grace",
+            "language": "fantasy.celestial",
+            "parts": [
+              {
+                "form": "Ming",
+                "meaning": "dawn"
+              },
+              {
+                "form": "Ngure",
+                "meaning": "grace"
+              }
+            ]
+          },
+          "full": {
+            "form": "ZheChashao MingNgure",
+            "translation": "elusive-lullaby dawn-grace",
+            "language": "fantasy.fey"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 58,
+        "occupation": "farmer",
+        "personality": {
+          "trait": "humble",
+          "flaw": "lazy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 76,
+    "output": {
+      "name": "Highfield",
+      "kind": "village",
+      "population": 258,
+      "notableLocations": [
+        "The Crooked Crown"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "AwunUeymoama",
+            "translation": "fierce-stem",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Awun",
+                "meaning": "fierce"
+              },
+              {
+                "form": "Ueymoama",
+                "meaning": "stem"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChakpachChash",
+            "translation": "fire-merchant",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chakpach",
+                "meaning": "fire"
+              },
+              {
+                "form": "Chash",
+                "meaning": "merchant"
+              }
+            ]
+          },
+          "full": {
+            "form": "AwunUeymoama ChakpachChash",
+            "translation": "fierce-stem fire-merchant",
+            "language": "fantasy.elvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 32,
+        "occupation": "fisher",
+        "personality": {
+          "trait": "patient",
+          "flaw": "greedy",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 77,
+    "output": {
+      "name": "Littlethorpe",
+      "kind": "village",
+      "population": 104,
+      "notableLocations": [
+        "The Frozen Coin"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "YauryaAm",
+            "translation": "spore-decay",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Yaurya",
+                "meaning": "spore"
+              },
+              {
+                "form": "Am",
+                "meaning": "decay"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChoeChocho",
+            "translation": "treasure-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Choe",
+                "meaning": "treasure"
+              },
+              {
+                "form": "Chocho",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "YauryaAm ChoeChocho",
+            "translation": "spore-decay treasure-immortal",
+            "language": "fantasy.mycanoids"
+          },
+          "race": "dragonborn",
+          "sex": "male"
+        },
+        "age": 31,
+        "occupation": "miller",
+        "personality": {
+          "trait": "wise",
+          "flaw": "stubborn",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 78,
+    "output": {
+      "name": "Wolf of the Vale",
+      "kind": "city",
+      "population": 14329,
+      "notableLocations": [
+        "The Verdant Crown",
+        "The Lion's Hammer",
+        "The Drunken Wyvern",
+        "The Silver Tiger"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ShaSisis",
+            "translation": "storm-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Sha",
+                "meaning": "storm"
+              },
+              {
+                "form": "Sisis",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TpudTu",
+            "translation": "sand-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tpud",
+                "meaning": "sand"
+              },
+              {
+                "form": "Tu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ShaSisis TpudTu",
+            "translation": "storm-halfling sand-metal",
+            "language": "fantasy.halfling"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 55,
+        "occupation": "thief",
+        "personality": {
+          "trait": "kind",
+          "flaw": "lazy",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 79,
+    "output": {
+      "name": "Goldfen",
+      "kind": "village",
+      "population": 209,
+      "notableLocations": [
+        "The Iron Boot"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "DokhGghudbukh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dokh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gghudbukh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "LueEoruor",
+            "translation": "mountain-sky",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Lue",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Eoruor",
+                "meaning": "sky"
+              }
+            ]
+          },
+          "full": {
+            "form": "DokhGghudbukh LueEoruor",
+            "translation": "strong-metal mountain-sky",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 74,
+        "occupation": "baker",
+        "personality": {
+          "trait": "honest",
+          "flaw": "greedy",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 80,
+    "output": {
+      "name": "Pinefall",
+      "kind": "town",
+      "population": 1476,
+      "notableLocations": [
+        "The Whistling Hammer",
+        "The Drunken Boot"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhoghpghabKhudga",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khoghpghab",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khudga",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GutGpappghab",
+            "translation": "ash-oath",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Gut",
+                "meaning": "ash"
+              },
+              {
+                "form": "Gpappghab",
+                "meaning": "oath"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhoghpghabKhudga GutGpappghab",
+            "translation": "strong-stone ash-oath",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "halfling",
+          "sex": "male"
+        },
+        "age": 76,
+        "occupation": "weaver",
+        "personality": {
+          "trait": "honest",
+          "flaw": "stubborn",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 81,
+    "output": {
+      "name": "Storm of the Mark",
+      "kind": "city",
+      "population": 39209,
+      "notableLocations": [
+        "The Golden Griffin",
+        "The Frozen Eagle",
+        "The Stormy Owl",
+        "The Old Coin"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PishapTash",
+            "translation": "elemental-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Pishap",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Tash",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GatukGpag",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gatuk",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Gpag",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "PishapTash GatukGpag",
+            "translation": "elemental-halfling mountain-stone",
+            "language": "fantasy.halfling"
+          },
+          "race": "dwarf",
+          "sex": "male"
+        },
+        "age": 55,
+        "occupation": "baker",
+        "personality": {
+          "trait": "humble",
+          "flaw": "lazy",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 82,
+    "output": {
+      "name": "Whiteburgh",
+      "kind": "town",
+      "population": 1242,
+      "notableLocations": [
+        "The Lion's Tankard",
+        "The Whistling Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TudkhdugDotbuk",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tudkhdug",
+                "meaning": "strong"
+              },
+              {
+                "form": "Dotbuk",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TudButkhpag",
+            "translation": "dust-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tud",
+                "meaning": "dust"
+              },
+              {
+                "form": "Butkhpag",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "TudkhdugDotbuk TudButkhpag",
+            "translation": "strong-metal dust-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 45,
+        "occupation": "tanner",
+        "personality": {
+          "trait": "honest",
+          "flaw": "greedy",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 83,
+    "output": {
+      "name": "Starhollow",
+      "kind": "village",
+      "population": 355,
+      "notableLocations": [
+        "The Lazy Fiddle"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GadodGakgok",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gadod",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gakgok",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TogdotKutgak",
+            "translation": "mountain-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Togdot",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Kutgak",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GadodGakgok TogdotKutgak",
+            "translation": "strong-metal mountain-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 37,
+        "occupation": "fisher",
+        "personality": {
+          "trait": "humble",
+          "flaw": "cowardly",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 84,
+    "output": {
+      "name": "Northhollow",
+      "kind": "village",
+      "population": 333,
+      "notableLocations": [
+        "The Hound's Boot"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "WaAin",
+            "translation": "fierce-elf",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Wa",
+                "meaning": "fierce"
+              },
+              {
+                "form": "Ain",
+                "meaning": "elf"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KkakgaGhkhug",
+            "translation": "dust-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Kkakga",
+                "meaning": "dust"
+              },
+              {
+                "form": "Ghkhug",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "WaAin KkakgaGhkhug",
+            "translation": "fierce-elf dust-stone",
+            "language": "fantasy.elvish"
+          },
+          "race": "tiefling",
+          "sex": "male"
+        },
+        "age": 44,
+        "occupation": "priest",
+        "personality": {
+          "trait": "humble",
+          "flaw": "vain",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 85,
+    "output": {
+      "name": "Shadowfall",
+      "kind": "town",
+      "population": 2973,
+      "notableLocations": [
+        "The Lion's Mast",
+        "The Crooked Pony"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TiSasit",
+            "translation": "blossom-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Ti",
+                "meaning": "blossom"
+              },
+              {
+                "form": "Sasit",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "IoyewNeru",
+            "translation": "seed-feather",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Ioyew",
+                "meaning": "seed"
+              },
+              {
+                "form": "Neru",
+                "meaning": "feather"
+              }
+            ]
+          },
+          "full": {
+            "form": "TiSasit IoyewNeru",
+            "translation": "blossom-halfling seed-feather",
+            "language": "fantasy.halfling"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 26,
+        "occupation": "soldier",
+        "personality": {
+          "trait": "honest",
+          "flaw": "vain",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 86,
+    "output": {
+      "name": "Shadowhold",
+      "kind": "town",
+      "population": 2178,
+      "notableLocations": [
+        "The Stormy Compass",
+        "The Iron Raven"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ChapChaki",
+            "translation": "root-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chap",
+                "meaning": "root"
+              },
+              {
+                "form": "Chaki",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GupbobKopdkhak",
+            "translation": "clay-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gupbob",
+                "meaning": "clay"
+              },
+              {
+                "form": "Kopdkhak",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ChapChaki GupbobKopdkhak",
+            "translation": "root-halfling clay-metal",
+            "language": "fantasy.halfling"
+          },
+          "race": "tiefling",
+          "sex": "male"
+        },
+        "age": 58,
+        "occupation": "tanner",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "boastful",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 87,
+    "output": {
+      "name": "Ironford",
+      "kind": "village",
+      "population": 128,
+      "notableLocations": [
+        "The Frozen Bear"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "DkugghopGho",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Dkugghop",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gho",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "JetsshaChzhozhsa",
+            "translation": "tree-wisp",
+            "language": "fantasy.fey",
+            "parts": [
+              {
+                "form": "Jetssha",
+                "meaning": "tree"
+              },
+              {
+                "form": "Chzhozhsa",
+                "meaning": "wisp"
+              }
+            ]
+          },
+          "full": {
+            "form": "DkugghopGho JetsshaChzhozhsa",
+            "translation": "strong-stone tree-wisp",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 71,
+        "occupation": "alchemist",
+        "personality": {
+          "trait": "brave",
+          "flaw": "cruel",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 88,
+    "output": {
+      "name": "Redfen",
+      "kind": "village",
+      "population": 388,
+      "notableLocations": [
+        "The Stormy Hammer"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KhuggughTokhugh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Khuggugh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Tokhugh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChiTish",
+            "translation": "mist-folk",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chi",
+                "meaning": "mist"
+              },
+              {
+                "form": "Tish",
+                "meaning": "folk"
+              }
+            ]
+          },
+          "full": {
+            "form": "KhuggughTokhugh ChiTish",
+            "translation": "strong-stone mist-folk",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 49,
+        "occupation": "miller",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "vain",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 89,
+    "output": {
+      "name": "Moonfield",
+      "kind": "village",
+      "population": 368,
+      "notableLocations": [
+        "The Crooked Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PpughGhakat",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ppugh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghakat",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "EyinoaOilwa",
+            "translation": "river-root",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Eyinoa",
+                "meaning": "river"
+              },
+              {
+                "form": "Oilwa",
+                "meaning": "root"
+              }
+            ]
+          },
+          "full": {
+            "form": "PpughGhakat EyinoaOilwa",
+            "translation": "strong-stone river-root",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "female"
+        },
+        "age": 68,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "kind",
+          "flaw": "cowardly",
+          "quirk": "speaks only in proverbs"
+        }
+      }
+    }
+  },
+  {
+    "index": 90,
+    "output": {
+      "name": "Mistby",
+      "kind": "town",
+      "population": 2953,
+      "notableLocations": [
+        "The Spider's Pony",
+        "The Iron Wyvern"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "MeArwi",
+            "translation": "verdant-cycle",
+            "language": "fantasy.elvish",
+            "parts": [
+              {
+                "form": "Me",
+                "meaning": "verdant"
+              },
+              {
+                "form": "Arwi",
+                "meaning": "cycle"
+              }
+            ]
+          },
+          "surname": {
+            "form": "UlReoel",
+            "translation": "tree-vine",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Ul",
+                "meaning": "tree"
+              },
+              {
+                "form": "Reoel",
+                "meaning": "vine"
+              }
+            ]
+          },
+          "full": {
+            "form": "MeArwi UlReoel",
+            "translation": "verdant-cycle tree-vine",
+            "language": "fantasy.elvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 39,
+        "occupation": "ranger",
+        "personality": {
+          "trait": "kind",
+          "flaw": "cruel",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 91,
+    "output": {
+      "name": "Moonreach",
+      "kind": "town",
+      "population": 1320,
+      "notableLocations": [
+        "The Raven's Fiddle",
+        "The Gilded Bear"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "PokhpakhGhguddghap",
+            "translation": "red-ember",
+            "language": "fantasy.tiefling",
+            "parts": [
+              {
+                "form": "Pokhpakh",
+                "meaning": "red"
+              },
+              {
+                "form": "Ghguddghap",
+                "meaning": "ember"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TszocheoJe",
+            "translation": "throne-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Tszocheo",
+                "meaning": "throne"
+              },
+              {
+                "form": "Je",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "PokhpakhGhguddghap TszocheoJe",
+            "translation": "red-ember throne-immortal",
+            "language": "fantasy.tiefling"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 55,
+        "occupation": "hunter",
+        "personality": {
+          "trait": "patient",
+          "flaw": "greedy",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 92,
+    "output": {
+      "name": "Moonfen",
+      "kind": "village",
+      "population": 158,
+      "notableLocations": [
+        "The Shining Goose"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "BdobTudta",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Bdob",
+                "meaning": "strong"
+              },
+              {
+                "form": "Tudta",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "ChishkachSatat",
+            "translation": "plant-king",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Chishkach",
+                "meaning": "plant"
+              },
+              {
+                "form": "Satat",
+                "meaning": "king"
+              }
+            ]
+          },
+          "full": {
+            "form": "BdobTudta ChishkachSatat",
+            "translation": "strong-metal plant-king",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "halfling",
+          "sex": "female"
+        },
+        "age": 59,
+        "occupation": "merchant",
+        "personality": {
+          "trait": "humble",
+          "flaw": "lazy",
+          "quirk": "fears birds"
+        }
+      }
+    }
+  },
+  {
+    "index": 93,
+    "output": {
+      "name": "Shadowwick",
+      "kind": "city",
+      "population": 10993,
+      "notableLocations": [
+        "The Frozen Coin",
+        "The Silver Bear",
+        "The Old Fiddle",
+        "The Roaring Goblet"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TapaChip",
+            "translation": "stem-halfling",
+            "language": "fantasy.halfling",
+            "parts": [
+              {
+                "form": "Tapa",
+                "meaning": "stem"
+              },
+              {
+                "form": "Chip",
+                "meaning": "halfling"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GukKha",
+            "translation": "sand-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Guk",
+                "meaning": "sand"
+              },
+              {
+                "form": "Kha",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "TapaChip GukKha",
+            "translation": "stem-halfling sand-stone",
+            "language": "fantasy.halfling"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 60,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "cowardly",
+          "quirk": "always whistles"
+        }
+      }
+    }
+  },
+  {
+    "index": 94,
+    "output": {
+      "name": "Silvermarch",
+      "kind": "town",
+      "population": 1536,
+      "notableLocations": [
+        "The Wild Hawk",
+        "The Iron Torch"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "ZheeZhesiu",
+            "translation": "enchanted-ash",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Zhee",
+                "meaning": "enchanted"
+              },
+              {
+                "form": "Zhesiu",
+                "meaning": "ash"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GuDatku",
+            "translation": "dust-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Gu",
+                "meaning": "dust"
+              },
+              {
+                "form": "Datku",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "ZheeZhesiu GuDatku",
+            "translation": "enchanted-ash dust-metal",
+            "language": "fantasy.draconic"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 20,
+        "occupation": "minstrel",
+        "personality": {
+          "trait": "wise",
+          "flaw": "greedy",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 95,
+    "output": {
+      "name": "Northford",
+      "kind": "village",
+      "population": 256,
+      "notableLocations": [
+        "The Lazy Pony"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "KukhkhughGdukh",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Kukhkhugh",
+                "meaning": "strong"
+              },
+              {
+                "form": "Gdukh",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "KghoghGbatgu",
+            "translation": "clay-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Kghogh",
+                "meaning": "clay"
+              },
+              {
+                "form": "Gbatgu",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "KukhkhughGdukh KghoghGbatgu",
+            "translation": "strong-metal clay-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "elf",
+          "sex": "male"
+        },
+        "age": 74,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "humble",
+          "flaw": "boastful",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  },
+  {
+    "index": 96,
+    "output": {
+      "name": "Highfen",
+      "kind": "village",
+      "population": 180,
+      "notableLocations": [
+        "The Crow's Hammer"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "TutbkukKhakpogh",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Tutbkuk",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khakpogh",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "EaloimEmaa",
+            "translation": "rebirth-fungal",
+            "language": "fantasy.mycanoids",
+            "parts": [
+              {
+                "form": "Ealoim",
+                "meaning": "rebirth"
+              },
+              {
+                "form": "Emaa",
+                "meaning": "fungal"
+              }
+            ]
+          },
+          "full": {
+            "form": "TutbkukKhakpogh EaloimEmaa",
+            "translation": "strong-stone rebirth-fungal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 25,
+        "occupation": "scholar",
+        "personality": {
+          "trait": "humble",
+          "flaw": "lazy",
+          "quirk": "never removes their hat"
+        }
+      }
+    }
+  },
+  {
+    "index": 97,
+    "output": {
+      "name": "Eastcross",
+      "kind": "village",
+      "population": 121,
+      "notableLocations": [
+        "The Tiger's Compass"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "LuroreOyae",
+            "translation": "elemental-heal",
+            "language": "fantasy.plantoid",
+            "parts": [
+              {
+                "form": "Lurore",
+                "meaning": "elemental"
+              },
+              {
+                "form": "Oyae",
+                "meaning": "heal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "TsuChzuchuzh",
+            "translation": "dragon-immortal",
+            "language": "fantasy.draconic",
+            "parts": [
+              {
+                "form": "Tsu",
+                "meaning": "dragon"
+              },
+              {
+                "form": "Chzuchuzh",
+                "meaning": "immortal"
+              }
+            ]
+          },
+          "full": {
+            "form": "LuroreOyae TsuChzuchuzh",
+            "translation": "elemental-heal dragon-immortal",
+            "language": "fantasy.plantoid"
+          },
+          "race": "human",
+          "sex": "male"
+        },
+        "age": 24,
+        "occupation": "weaver",
+        "personality": {
+          "trait": "brave",
+          "flaw": "boastful",
+          "quirk": "knows seven languages but speaks only in one"
+        }
+      }
+    }
+  },
+  {
+    "index": 98,
+    "output": {
+      "name": "Whitebridge",
+      "kind": "village",
+      "population": 380,
+      "notableLocations": [
+        "The Old Hammer"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhkokhkhuKhgogbu",
+            "translation": "strong-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghkokhkhu",
+                "meaning": "strong"
+              },
+              {
+                "form": "Khgogbu",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "surname": {
+            "form": "PakhkaGhkod",
+            "translation": "mountain-metal",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Pakhka",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Ghkod",
+                "meaning": "metal"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhkokhkhuKhgogbu PakhkaGhkod",
+            "translation": "strong-metal mountain-metal",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "human",
+          "sex": "female"
+        },
+        "age": 56,
+        "occupation": "fisher",
+        "personality": {
+          "trait": "loyal",
+          "flaw": "lazy",
+          "quirk": "collects buttons"
+        }
+      }
+    }
+  },
+  {
+    "index": 99,
+    "output": {
+      "name": "Shadowmarch",
+      "kind": "town",
+      "population": 961,
+      "notableLocations": [
+        "The Shining Coin",
+        "The Silver Dragon"
+      ],
+      "leader": {
+        "name": {
+          "given": {
+            "form": "GhubtagGhuddad",
+            "translation": "strong-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghubtag",
+                "meaning": "strong"
+              },
+              {
+                "form": "Ghuddad",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "surname": {
+            "form": "GhghubKtobkhab",
+            "translation": "mountain-stone",
+            "language": "fantasy.dwarvish",
+            "parts": [
+              {
+                "form": "Ghghub",
+                "meaning": "mountain"
+              },
+              {
+                "form": "Ktobkhab",
+                "meaning": "stone"
+              }
+            ]
+          },
+          "full": {
+            "form": "GhubtagGhuddad GhghubKtobkhab",
+            "translation": "strong-stone mountain-stone",
+            "language": "fantasy.dwarvish"
+          },
+          "race": "dwarf",
+          "sex": "female"
+        },
+        "age": 20,
+        "occupation": "blacksmith",
+        "personality": {
+          "trait": "humble",
+          "flaw": "stubborn",
+          "quirk": "carries a lucky coin"
+        }
+      }
+    }
+  }
+]

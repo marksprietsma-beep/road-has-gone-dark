@@ -1,0 +1,210 @@
+{
+  "pin": "3e308230f7ca387a23e774c346baa7db5c4f78e6",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "32878d64252a5a8208cd97de753ed41e1f2c5eab513f48f5885a7d77746aea64",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/naming.go",
+      "sha256": "2e14dc954d48ce2e8a564d57bb2767ee849192a67b71cb7f1beea03cf7c084bb",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/generator.go",
+      "sha256": "d7fbeb652c8ae9cdb168488db117a1f5448d6cd25f34dda92661acdb245c9903",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/doc.go",
+      "sha256": "74e2a7b7bac222f8afedab3cb29f7c22db38411f38441dfdd6611a9ed8bcca31",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/audit_registry.go",
+      "sha256": "079b6ccdf4fc49adf841fc5148881f1f08c5d8d55dc7cd5b9a0725ff3e30927f",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/templates.go",
+      "sha256": "a742620fb83e7140779137e5f4846599aea9045e58298f6493d07600813ba8ce",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/queries.go",
+      "sha256": "3c80591fd90e7ddb8df31f20ef69979e8b7d6d06b231e6200dfd701e108a1a89",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/merchant.go",
+      "sha256": "16f49d0549513d739fbb26483d941b1c498aaa41eb11e8467bca41d04ff2ce4f",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/generator.go",
+      "sha256": "534698dec7352d1008c13474c3c074b2db5fa400c56fd7bb30aa4a43229a4cc4",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/enums.go",
+      "sha256": "45492ec6036a3a94fe7b6bc707044cfa20b230eb9b26120e40d6a6a2bc68cdc9",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/entity.go",
+      "sha256": "812a5c7af019dc579ed85793c404934b5d5d85cfd14d22da6f3a6f2f78c32d2f",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/doc.go",
+      "sha256": "ff8b98762bafff74dfdb9ad381a3dfa68af3d2d7e18b137ee588502d00c37fae",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/entity/audit_entry.go",
+      "sha256": "eee8e4d1af69dae804451a824bd32a1d6a93dbd50d504a95619a3077e7f31e97",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/types.go",
+      "sha256": "055716780d28b85bb7dfc73fbc92084c613ddc29812c11677adff9a3bf7a7397",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/templates.go",
+      "sha256": "4cf1e2835e9dbeff799b15892d2ef1467ccaf0ae8e7b7d18689f744052d5c5c1",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/generator.go",
+      "sha256": "29f74027f332ccd986836141b1ae5116cde48218584c5d2da2ad5207c65041a7",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/doc.go",
+      "sha256": "449d55b92301bc3e3c45521504330babc60a2d19f9380e4dedcebfd8b7c99a3a",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/constants.go",
+      "sha256": "f332699ac890290838bfd339577d3c4027ef736b34a87c7bf16f90c6dabab576",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/item/audit_entry.go",
+      "sha256": "b26af996f20ee127c90f4a73681161c8f07c86fc8cec6801e468da3126b68719",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/types.go",
+      "sha256": "df706850705e2b98837c8d718e4ed126dcc363ab53b855c815e27d505b8ca580",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/templates.go",
+      "sha256": "6f8bfb0e249beec69e62213def72f05e7415e3ecdffacd65970169ca8bb52bb5",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/serialization.go",
+      "sha256": "38d4619ded40929b0bae6cab8603b54bacd57793ef05a5dc57a6367fe76d6f65",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/generator.go",
+      "sha256": "98bf9b6d513942e141801a8717230881b639a3bd234bcf4cf02391c6db8e8314",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/doc.go",
+      "sha256": "bd5278629016dcd6fb1d845bcfc5497554275e20a4ca04990f287a07f7d59444",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/quest/audit_entry.go",
+      "sha256": "4a81a7affdddb3bfae245c8ed0beacf49f6f8a00b3c0568d256f0393f35d067e",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/narrative/generator.go",
+      "sha256": "d66e2e0b6409d4cb9478aa054d5f5fb1ad647cad435ffcd7e86d912305f7c408",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/narrative/doc.go",
+      "sha256": "68fb6485e5f0ce4807668d0fd5a20bb82bc7dfefceb41fd1f17b7e56f8895611",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/faction/generator.go",
+      "sha256": "fa4f49a83f2513801cb224b36786eb11268d4ac38f92d7885f6c736edacd58fd",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/faction/doc.go",
+      "sha256": "48e81adaadea34bcfad6bc24b87ae19d0d8712172d3c48cef1ce5331e64dadd5",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/types.go",
+      "sha256": "f551c7e8d46bcfb3c039e43ab0758b25bded3238e90f006e17a8d9f52c54f54f",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/generator.go",
+      "sha256": "1f7e469731b6a80ef4868f5dd2508feaa47010858891087d84ae56fbe65fdbb0",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/doc.go",
+      "sha256": "56135f859827f81f1f8f23b60b2abea6092e9f8800e78cf2452b5f1310e39efe",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/balance.go",
+      "sha256": "c9ec431290b9281f49fa6e198ecb04dd893dda1b1d4ce36c32709f5045a2cb63",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/audit_entry.go",
+      "sha256": "837d10adc3bfff8b5a922a4898197375fa75f35cd054b0266d19cdfcf5a77ed1",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/magic/advanced_templates.go",
+      "sha256": "59f3722eab96ed75e77b783fc80acc8b8fe08faf2fcdca445f7a4d3a223eeb6e",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/dialog/utils.go",
+      "sha256": "c6987dfa06ae1e70bf028d582ca141297351d21a1f42d590556f4b183c299d05",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/dialog/personality.go",
+      "sha256": "c413d3d80dec3a9e5ced3c2256575c8ec7bdab3dbb5817343cd179918c9a5b85",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/dialog/markov.go",
+      "sha256": "fae03ae8ed54fdf821f53148f199948202c543cc16eda4ffce1909352aa8c405",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/dialog/doc.go",
+      "sha256": "d29235fb265de88e997d499dc7f1f79feef3530b68ce6061c8d4bd37c79cbea5",
+      "modified": false
+    },
+    {
+      "path": "pkg/procgen/dialog/corpus.go",
+      "sha256": "726863a6f7343d4efca790b169d4797f73882536d96883524521017e22a3c4d7",
+      "modified": false
+    },
+    {
+      "path": "pkg/engine/faction_component.go",
+      "sha256": "25c00dbc6fa9f42407008f867df310fe438b606441ed42db4416a0ae9e2db42e",
+      "modified": "extract Faction, FactionType and methods; no generator changes"
+    }
+  ]
+}

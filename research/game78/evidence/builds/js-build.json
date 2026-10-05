@@ -1,0 +1,10 @@
+{
+  "pins": {
+    "lexiconlang": "da0a823e275d9642731bdaed1f3006d2c9bfae74",
+    "Rantjs": "c62d5b21b9da9be561c15afdccd5f352cdb91e64",
+    "fantasy-content-generator": "323aca8d0e946420cae59a315fbb2a9ba7958ec8"
+  },
+  "node": "v24.19.0",
+  "typescript": "5.6.3",
+  "transforms": "Node stripTypeScriptTypes + TS CommonJS transpile; native APIs/data unchanged"
+}

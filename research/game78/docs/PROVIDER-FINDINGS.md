@@ -1,0 +1,41 @@
+# Executed provider findings (research, not acceptance)
+
+The native JSON batches and metrics are under `evidence/native/`. They are evaluation outputs, **not adopted production content packs**. Re-run using the pinned sources and the tools below. Unclear contributed tables are excluded from the adopted engines.
+
+## Lexicon
+
+All exported native fantasy generators were executed, 100 seeds per generator, plus 100 names for each of ten explicit fantasy cultures. NPCs, heroes, traits, occupations, settlement populations/leaders/taverns, settlement/landmark names, factions, cults, weapons, armour, quests, dragons and old Markov naming all ran. There is no exported native historical-event generator at this pin. Replaying explicit native generator contexts succeeds. Native convenience `fantasy.withSeed()` shares a counter: generating a quest first changes the next NPC. The lower-level `ctx.child(entity_id)` experiment is independent.
+
+`fullName` separately chooses race for the whole name, given name and surname. 68 of 100 direct full-name samples use different given/surname languages. NPC geography tags/data injection does not condition the native fantasy tables (measured by 100 paired calls). A settlement leader sample combines `brave` and `cowardly`. Thus the **engine is useful; its native fantasy records need constraints and a single explicitly bound culture**. Names such as Bruenor/Thorin in the old training corpora are not imported. Adopted clean core/language/grammar/Markov code is MIT-noticed; all fantasy corpora/cultures/tables stay outside the runtime. Original phonotactic profiles demonstrate culture-ID binding, labelled approximate—not a claim of authentic Azgaar personal naming.
+
+## Fantasy Content Generator
+
+The original Node APIs ran with seedrandom 3.0.5: NPC, relationship, name, story hook, loot, magic item, establishment and settlement outputs. 100 calls per surface; additional 100-per-school magic runs preserve failed branches in metrics. NPC semantic records replay. Family members are derived from role-prefixed seeds and surnames normalised: a useful relationship model, re-expressed in TRHGD stable references. Story-hook output includes double articles (`a a huge plume`) and generic GM/player instructions. Magic output explicitly contains named 5E spells, ability saves, DCs, charges, levels and damage rounds. The school matrix has unsupported branches; failed native calls are recorded, not silently replaced.
+
+Useful transferable architecture: staged typed fields, content-bank separation, seed-derived relatives, relationship-aware names, linked template alternatives. No names/prose/5E effects are adopted. MIT code is a viable donor; its generic linked-choice parsing can inform the renderer, but global seeded state and generated UUID/time defaults should not cross our boundary. This spike uses Rant carriers/synchronizers instead of copying a redundant parser.
+
+## Venture
+
+Native entity/item/quest/narrative/faction/magic/dialog modules each ran 100 explicit seeds, validation and replay. Seven original upstream package test suites also pass. The faction generator alone imports `pkg/engine`; extracting unchanged generator code plus the exact Faction data types removes graphics without substituting generator logic. `tools/extract-venture.py` and `evidence/builds/venture-extraction.json` record the transformation. The minimal helper reaches only Logrus and x/sys outside Go's standard library; exact package closure and binary size are measured in `venture-closure.json`. No full Go application or binary is vendored.
+
+Its entity/item records are strongly mechanical (combat statistics, balance, level/rarity). Three-act narratives provide linked acts/choices but remain generic fantasy story arcs. Factions contain symmetric explicit relationships; dialogue's word-chain can produce fragments rather than reliable immutable propositions. Transfer **typed event/ownership/relationship graph ideas**, not mechanics or a second player runtime. Go would be feasible for a separate helper, but the accepted offline Node boundary already handles these workloads cheaply.
+
+## Rant
+
+The actual ISC parser/interpreter runs original dictionaries through nested/weighted alternatives, names, carriers, unique queries, locked agreement, conditional carrier branches, pronouns and repeated blocks. 7,000 capability outputs include explain traces, same-seed replay and a failing malformed-pattern diagnostic. A shared un-reseeded instance is stateful, so every render uses an explicit digest. The final eight-domain prose renderer uses singleton semantic rows from public structured facts; only wording varies. It refuses unprojected records and unresolved queries. The default Rantionary vocabulary is **never imported**.
+
+This is materially better authoring tooling than scattered fixed paragraphs, particularly for carried names and traceable variant choices. It cannot validate world truth or perform moral/narrative consistency automatically. Keep compatibility and history in TRHGD facts. Frozen Rantjs 3.0 remains pinned; a Skald replacement would be a new renderer version, not an automatic upgrade.
+
+## Secondary results
+
+* **FyefoxxM NPC:** 200 native NPCs with original upstream names, traits, secrets and hooks; replay succeeds. Study bidirectional trait conflict tables, weighted occupation tiers and stage filtering. Adopted compatibility rules are original and context-qualified; no upstream prose tables copied.
+* **Loremaker:** .NET 8 native library built after a Linux `Colors.json`/`colors.json` resource-case workaround. 100 original-context examples run its native `TextTemplate`, substitutions and conditional lines. Branches match on previously emitted text, not typed context: a wording change can change later story facts. Reuse the staged conditional idea, keep our predicates on typed tags instead. Constant substitution replay is proven; full upstream random-generator seed stability is not claimed.
+* **Corpora:** inspect common materials, rooms, occupations, foods/plants, mythology and modern/brand-heavy categories. Adopt only curated common material/room words, with exact path/hash/change commit and CC0 dedication. Exclude fictional materials, brand names, questionable attributed prose, obsolete occupational slurs and modern inappropriate content. No whole corpus import.
+* **Questify:** identified TheWalruzz/godot-questify, pinned separately. Native Godot example imports and launches; shutdown reports resource leaks. It is a graph quest **runtime/editor**, not a procedural lore generator. No new quest runtime or gameplay is adopted. The earlier unspecified “Questify” cannot be assumed to mean this project.
+* **Eigengrau:** current pinned source inspected. `createNPC.ts` stages biological/social/professional data, town-dependent selection, history and relationships, with shared town/entity references. It also relies on SugarCube setup/lib globals and D&D-oriented profession categories. Valuable model: connected stable entities and profession-conditioned histories. Contributed prose provenance remains unresolved; no prose or runtime copied. We have not claimed to execute its full browser application.
+
+## Recommendation
+
+A hybrid research provider is justified by executed results: **TRHGD SHA field seeds and constraints + optional Lexicon alias sampling/phonotactics + Rant fact-bound prose + small CC0 vocabulary + typed graph patterns informed by FCG/Venture**. The two competing fact providers have identical schemas and independent namespaces. The SHA provider is simpler/faster for equal-weight choices; Lexicon is useful where weighted choice/language facilities earn their cost. Keep both for the research comparison rather than force all random choice through a vendor.
+
+Do not ship native fantasy corpora by default, expose vendor objects to saves, or use paragraph text as world state. Broader engine APIs do not excuse weak content. Sequential human review and declarative negative tests remain necessary. Content authoring can expand independently of the provider API.
