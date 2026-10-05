@@ -31,7 +31,9 @@ func _ready() -> void:
   var world := GameWorldTemplate.new()
   if not world.load_fixture("res://tests/worldgen/fixtures/%s.json" % key):
    message = "World template unavailable. Return to the menu."
-   continue
+   worlds.clear()
+   previews.clear()
+   break
   worlds.append(world)
   previews.append(WorldFixtureLoader.new().load_fixture("res://tests/worldgen/fixtures/%s.json" % key))
  _build_ui()
@@ -253,20 +255,17 @@ func show_page() -> void:
 func _refresh_facts() -> void:
  var world := worlds[world_index]
  if page == 0:
-  facts.text = "Seed: %s
-%d states · %d settlements" % [world.seed, states().size(), world.raw_counts().settlements - 1]
+  facts.text = "Seed: %s\n%d states · %d settlements" % [world.seed, states().size(), world.raw_counts().settlements - 1]
   map.select_area(-1, -1)
   return
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
  map.select_area(state_id, province_id, home)
  if home.is_empty():
-  facts.text = "%d eligible small hometowns
-Select from the lists; no map clicks required." % world.home_candidates(state_id, province_id, -1).size()
+  facts.text = "%d eligible small hometowns\nSelect from the lists; no map clicks required." % world.home_candidates(state_id, province_id, -1).size()
  else:
   var cell := world.get_record("cell", int(home.cell))
   var biome := world.get_record("biome", int(cell.get("biome", -1)))
-  facts.text = "%s · Azgaar size %.2f
-%s · %s" % [str(home.get("group", "Settlement")), float(home.get("population", 0)), str(biome.get("name", "Terrain unknown")), "Walls recorded" if home.get("walls", false) else "No walls recorded", "Port recorded" if int(home.get("port", 0)) > 0 else "No port recorded"]
+  facts.text = "%s · Source size %.2f\n%s\n%s · %s" % [str(home.get("group", "Settlement")), float(home.get("population", 0)), str(biome.get("name", "Terrain unknown")), "Walls recorded" if home.get("walls", false) else "No walls recorded", "Port recorded" if int(home.get("port", 0)) > 0 else "No port recorded"]
 
 func advance() -> void:
  if page == 4:

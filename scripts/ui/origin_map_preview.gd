@@ -1,5 +1,9 @@
 extends Control
 ## Read-only atlas wrapper: no POI or settlement layer enters onboarding.
+const TEXTURES := {
+ "game-11-determinism": preload("res://assets/onboarding/game-11-determinism.png"),
+ "atlas-showcase": preload("res://assets/onboarding/atlas-showcase.png")
+}
 var model: MapRenderModel
 var package: Dictionary = {}
 var overlay: Texture2D
@@ -12,12 +16,12 @@ func set_world(source: Dictionary, key: String, fingerprint: String) -> void:
  if FileAccess.get_file_as_string(prefix + ".sha256") != fingerprint:
   queue_redraw()
   return
- var image := Image.load_from_file(prefix + ".png")
+ var texture: Texture2D = TEXTURES[key]
  var ids := FileAccess.get_file_as_bytes(prefix + ".cells").to_int32_array()
- if image == null or ids.size() != image.get_width() * image.get_height():
+ if ids.size() != texture.get_width() * texture.get_height():
   queue_redraw()
   return
- package = {"texture": ImageTexture.create_from_image(image), "cell_ids": ids, "baked_size": image.get_size()}
+ package = {"texture": texture, "cell_ids": ids, "baked_size": Vector2i(texture.get_size())}
  select_area(-1, -1)
 
 func select_area(state_id: int, province_id: int, home: Dictionary = {}) -> void:

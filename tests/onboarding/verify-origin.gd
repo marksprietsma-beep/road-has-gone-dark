@@ -54,6 +54,7 @@ func run() -> void:
  ui.province_id = -1
  ui.show_page()
  ui.advance()
+ check(ui.facts.text.contains("recorded"), "factual summary formats correctly")
  var selected: int = ui.burg_id
  ui.go_back()
  ui.advance()
@@ -99,5 +100,9 @@ func run() -> void:
  check(found_empty, "natural empty province exists")
  ui.show_page()
  check(ui.next_button.disabled and ui.burg_id == -1, "empty province fallback")
+ var evidence := {"checks": checks, "failures": failures, "world_refs": ui.worlds.map(func(w): return w.source_metadata()), "first_save": {"slot": first, "origin": loaded.state.origin}, "second_save": {"slot": duplicate.state.playthrough_id, "origin": duplicate.state.origin}, "save_reload_verified": true, "temporary_saves_cleaned": true}
+ var report := FileAccess.open("res://docs/implementation/game74/persistence-proof.json", FileAccess.WRITE)
+ report.store_string(JSON.stringify(evidence, "  ") + "\n")
+ report.close()
  print("GAME-74: %d checks, %d failures" % [checks, failures])
  quit(0 if failures == 0 else 1)

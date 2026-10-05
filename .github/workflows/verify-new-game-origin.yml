@@ -1,0 +1,36 @@
+name: Verify New Game origin
+on:
+  pull_request:
+    paths:
+      - 'scripts/ui/**'
+      - 'scenes/ui/**'
+      - 'scripts/game_world/**'
+      - 'assets/onboarding/**'
+      - 'tests/onboarding/**'
+      - '.github/workflows/verify-new-game-origin.yml'
+  workflow_dispatch:
+jobs:
+  onboarding:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install verified Godot 4.6.3
+        run: |
+          curl -fL --retry 3 https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip -o /tmp/godot.zip
+          echo 'd0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3  /tmp/godot.zip' | sha256sum -c -
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.6.3-stable_linux.x86_64
+      - name: Verify source, persistence and real rendering
+        env:
+          GODOT_BIN: /tmp/Godot_v4.6.3-stable_linux.x86_64
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python3 tests/onboarding/run-tests.py --visual
+      - name: Upload actual run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game74-godot-evidence
+          path: |
+            docs/implementation/game74/logs
+            docs/implementation/game74/screenshots
+            docs/implementation/game74/persistence-proof.json
