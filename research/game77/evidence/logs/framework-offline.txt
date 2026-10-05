@@ -1,41 +1,18 @@
 {"batch_character_contexts":2565,"fixtures":2}
-✔ hierarchical seeds: no path ambiguity, independent fields and siblings (2.35889ms)
-✔ five domains byte-repeat, order-independent record envelopes (5.822512ms)
-✔ both genuine fixtures and all eligible towns: coherence and stable source IDs (748.3831ms)
-✖ explicit negative contradictions rejected; unknown stays unknown (7.432345ms)
-✔ source visibility: hidden/removed sources blocked; dungeon only existence/provenance (27.984452ms)
-✔ knowledge projections: rumours hide verdict, secrets need exact reveal token (1.082289ms)
-✔ origin allowlist cannot leak injected secret or hidden POI names (0.617514ms)
-✔ version, tamper and immutable sidecar collision boundaries (12.194848ms)
-✔ display-name edits preserve seed paths and structured fictional facts (0.552381ms)
+✔ hierarchical seeds: no path ambiguity, independent fields and siblings (2.010724ms)
+✔ five domains byte-repeat, order-independent record envelopes (7.220542ms)
+✔ both genuine fixtures and all eligible towns: coherence and stable source IDs (1328.78206ms)
+✔ explicit negative contradictions rejected; unknown stays unknown (1.18096ms)
+✔ source visibility: hidden/removed sources blocked; dungeon only existence/provenance (41.89381ms)
+✔ knowledge projections: rumours hide verdict, secrets need exact reveal token (1.145104ms)
+✔ origin allowlist cannot leak injected secret or hidden POI names (0.690181ms)
+✔ version, tamper and immutable sidecar collision boundaries (9.906653ms)
+✔ display-name edits preserve seed paths and structured fictional facts (0.534582ms)
 ℹ tests 9
 ℹ suites 0
-ℹ pass 8
-ℹ fail 1
+ℹ pass 9
+ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 995.173659
-
-✖ failing tests:
-
-test at research/game77/tests/framework.test.mjs:62:1
-✖ explicit negative contradictions rejected; unknown stays unknown (7.432345ms)
-  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
-  
-    assert.ok(port.sea_route_ids.value.length>0)
-  
-      at TestContext.<anonymous> (file:///workspace/game77-content-enrichment/research/game77/tests/framework.test.mjs:67:134)
-      at Test.runInAsyncScope (node:async_hooks:227:14)
-      at Test.run (node:internal/test_runner/test:1382:25)
-      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
-      at Test.postRun (node:internal/test_runner/test:1522:19)
-      at Test.run (node:internal/test_runner/test:1447:12)
-      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
-    generatedMessage: true,
-    code: 'ERR_ASSERTION',
-    actual: false,
-    expected: true,
-    operator: '==',
-    diff: 'simple'
-  }
+ℹ duration_ms 1668.482045

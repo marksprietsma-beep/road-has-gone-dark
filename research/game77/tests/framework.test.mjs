@@ -11,7 +11,7 @@ import {render,renderingArtifact} from '../src/text.mjs';
 import {project,originPayload} from '../src/visibility.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
 const fixture=resolve(root,'tests/worldgen/fixtures/game-11-determinism.json');
-const w=loadWorld(fixture),p=loadPack(resolve(root,'research/game77/packs/trhgd-original-v1.json'));
+const w=loadWorld(fixture),p=loadPack(resolve(root,'research/game77/packs/trhgd-original-v2.json'));
 const c=context(w,'settlements',771),site=context(w,'markers',51);
 const make=(type,instance='0')=>generate(type,type==='site'?site:c,p,{instance,playthrough_id:'qa-playthrough'});
 const snapshot=sha(readFileSync(fixture));
@@ -46,7 +46,7 @@ test('both genuine fixtures and all eligible towns: coherence and stable source 
    for(const n of ['0','1','2']){
     const r=generate('character',ctx,p,{playthrough_id:'batch',instance:n});
     for(const [key,group] of [['road_ids','roads'],['trail_ids','trails'],['sea_route_ids','searoutes']]){for(const id of ctx[key].value)assert.equal(world.record('routes',id).group,group);
-     const expected=world.source.routes.filter(route=>route&&!route.hidden&&!route.removed&&route.group===group&&route.points?.some(point=>point[2]===b.cell&&Math.hypot(point[0]-b.x,point[1]-b.y)<0.02)).map(route=>route.i).sort((a,b)=>a-b);assert.deepEqual(ctx[key].value,expected);}
+     const expected=world.source.routes.filter(route=>route&&!route.hidden&&!route.removed&&route.group===group&&route.points?.some(point=>point[2]===b.cell)).map(route=>route.i).sort((a,b)=>a-b);assert.deepEqual(ctx[key].value,expected);}
     assert.equal(r.source.cell_id,b.cell);assert.equal(r.source.world_id,world.base.id);
     assert.equal(r.facts.birthplace.burg_id,b.i);validateRecord(r);
     assert.equal(render(r).includes('undefined'),false);assert.equal(render(r).includes('null'),false);
@@ -60,11 +60,13 @@ test('both genuine fixtures and all eligible towns: coherence and stable source 
  console.log(JSON.stringify({batch_character_contexts:count,fixtures:2}));assert.ok(count>1000);
 });
 test('explicit negative contradictions rejected; unknown stays unknown',()=>{
+ const incoherent=make('origin');incoherent.facts.local_memory.outcome='not-completed';assert.throws(()=>validateRecord(incoherent));
  const r=make('character');r.facts.formative_role='lifelong dockworker';r.context.port.value=null;assert.throws(()=>validateRecord(r));
  const opposed=make('character');opposed.facts.dominant_trait=['cowardly','fearless'];assert.throws(()=>validateRecord(opposed));
  const item=make('mundane-item');item.facts.material='paper';assert.throws(()=>validateRecord(item));
  const anchored=make('site');anchored.source.cell_id++;assert.throws(()=>validateRecord(anchored));
  const port=context(w,'settlements',25);assert.deepEqual(port.road_ids.value,[2]);assert.deepEqual(port.trail_ids.value,[86]);assert.ok(port.sea_route_ids.value.length>0);
+ assert.equal(c.route_connection.value,null);assert.equal(c.route_connection.status,'unknown');
  assert.equal(c.coast.value,null);assert.equal(c.coast.status,'unknown');
  assert.throws(()=>generate('site',c,p));assert.throws(()=>generate('origin',site,p));
 });

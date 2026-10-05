@@ -95,22 +95,29 @@ later party-creation task. Wire only public projections to UI. Keep the Node 24
 boundary already packaged; no online LLM, second runtime or generator dependency
 is needed. Do not automatically implement any of these production changes here.
 
-## Published trial correction
+## Final source semantics and archived trials
 
-Final source audit found that version 1's research context incorrectly combined
-roads, trails and sea routes under road_ids (60 eligible-town sea-route references
-in game-11). Route-group correction **trhgd-staged-2** filters each actual source group
-into distinct road_ids/trail_ids/sea_route_ids. A follow-up completeness audit found that coastal source roads terminate at
-the canonical burg point, which differs from the cell centre. Current generator
-**trhgd-staged-3** uses actual entity coordinates and preserves source cell IDs.
-Klovskitaue correctly has road 2, trail 86 and source sea routes. Existing GAME-75 factual rules are
-unchanged. All 2,565 matrix cases assert the group of every reported route.
+Current generator is **trhgd-staged-4**, original pack **trhgd-research-2**,
+renderer **trhgd-text-2**. Origin memory is an event/actors/outcome/period record;
+tradition is a practice/participants/occasion record. Sentence wording lives in
+the renderer, never authoritative origin state. Changing wording leaves event
+facts and base geography unchanged.
 
-This deliberately gets a new generator/seed identity, not silent replacement of
-published v1 trial sidecars. Old v1 bytes remain as documented research history;
-current examples/projection use v3. No real campaign referenced either trial.
+Routes use immutable source point **cell IDs**, classified by actual source
+group. IDs report parent-cell membership; direct entrance/approach direction
+remains unknown. Exact coordinate heuristics are unnecessary and can drop real
+coastal routes: burg endpoints and sea geometry differ from cell centres.
+Klovskitaue correctly retains road 2, trail 86, sea routes 552/559. Every eligible
+hometown has its complete raw-source group memberships checked in the matrix.
+GAME-75 factual rules, geometry and source bytes are unchanged.
+
+Published v1/v2/v3 trial sidecars remain historical, not loaded by the current
+projection. Earlier trials exposed sea-as-road classification and coordinate
+filter omissions; the v3 sea-route assertion failed rather than concealing lost
+references. No real campaign used these research snapshots. Current examples
+use v4/pack2, without silently overwriting old bytes.
 
 Persisted readers use `readSidecar(path, expectedWorld, expectedEnrichmentSha)`;
-it requires the pinned digest and rejects even otherwise-valid newer enrichment.
+the pinned digest is mandatory and rejects even otherwise-valid newer output.
 Envelopes reject mixed generator/pack revisions. Creation-time self-verification
 is distinct from loading an established campaign reference.

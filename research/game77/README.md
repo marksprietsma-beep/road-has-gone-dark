@@ -70,3 +70,8 @@ its PR. Core success does not depend on integration.
 Next step is review of tone, schema and lifecycle, then a small approved original
 content-pack expansion and deliberate persisted-reference integration. This PR
 does not implement those production recommendations or GAME-10/factions.
+
+Current source/pack/renderer: trhgd-staged-4 / trhgd-research-2 / trhgd-text-2.
+Origin memory/tradition are typed event/participant facts, not stored paragraphs.
+Routes report source-cell membership; direct approaches stay unknown. Historical
+trial sidecars/packs are preserved, current examples.json selects the current proof.

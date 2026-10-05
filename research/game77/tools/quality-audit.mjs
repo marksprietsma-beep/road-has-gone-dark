@@ -7,7 +7,7 @@ import {generate,validateRecord} from '../src/generator.mjs';
 import {render} from '../src/text.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
 const w=loadWorld(resolve(root,'tests/worldgen/fixtures/game-11-determinism.json'));
-const c=context(w,'settlements',771),s=context(w,'markers',51),p=loadPack(resolve(root,'research/game77/packs/trhgd-original-v1.json'));
+const c=context(w,'settlements',771),s=context(w,'markers',51),p=loadPack(resolve(root,'research/game77/packs/trhgd-original-v2.json'));
 const types=['site','origin','character','mundane-item','rare-item'];
 const evidence=[];const summary={};
 for(const type of types){

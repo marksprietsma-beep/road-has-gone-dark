@@ -35,7 +35,7 @@ hidden records, rumour verdicts or private facts. A public `underground` tag lea
 was caught and excluded with an explicit negative assertion. Starting-character
 private facts now have separate playthrough storage, never world sidecars.
 
-Observed distinct prose over 1,000 IDs: site 36, origin 9, character 399, mundane
+Observed distinct prose over 1,000 IDs: site 36, origin 9, character 389, mundane
 3, rare 3 (machine report is authoritative if pack changes). This is intentionally
 a small original proof pack: **not production-scale variety**. Histories and
 traditions are restrained local craft/family memories rather than grand legends;
@@ -63,7 +63,7 @@ GAME-75 branch or earlier draft PRs changed. Existing QA scripts can overwrite
 historic GAME-74/76 evidence during execution; those tracked files are restored,
 and this run's logs/proofs are preserved under GAME-77.
 
-Research `.mjs` module bytes (not a binary/heap measurement): 19610; zero external npm dependencies.
+Research `.mjs` module bytes (not a binary/heap measurement): 22271; zero external npm dependencies.
 
 ## Windows runner correction
 
@@ -93,3 +93,14 @@ entity coordinates + original cell ID. Klovskitaue explicitly asserts road 2,
 trail 86 and sea-route presence; the complete matrix independently reconstructs
 all three route groups from raw burg coordinates. Neither guessed absence nor
 sea-as-road classification remains. Older v1/v2 trial bytes stay archived.
+
+Final API semantics (v4): road/trail/sea IDs report exact source-parent-cell
+membership, not a geometric doorway connection. Direct approaches remain unknown.
+The v3 sea-route negative test failed because geometry filters dropped genuine
+source references; final implementation eliminates that unnecessary heuristic.
+No failed intermediate test is counted as a passed result.
+
+Current origin facts are structured event/actors/outcome/period and tradition
+practice/participants/occasion, with explicit negative profile-coherence tests.
+Rendering (full or concise) lives in text-2, not authoritative origin state.
+Current pack is trhgd-research-2; exact historical pack1 remains available.

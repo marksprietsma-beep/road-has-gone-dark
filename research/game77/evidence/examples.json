@@ -13,10 +13,10 @@
       }
     },
     "provider": "trhgd-staged",
-    "generator_version": "trhgd-staged-3",
-    "content_pack_version": "trhgd-research-1",
-    "content_pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb",
-    "deterministic_enrichment_seed": "5c4f75f64655df781ee496929b4c1ec92a018eb8fa87d7d4807db3e4eb83a568",
+    "generator_version": "trhgd-staged-4",
+    "content_pack_version": "trhgd-research-2",
+    "content_pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5",
+    "deterministic_enrichment_seed": "074bbf336ad9b32063d0b3965a0c03acebab875dcc70d0eabcc868526e9dacd0",
     "records": [
       {
         "id": "mundane-item:settlements:771:0",
@@ -30,11 +30,11 @@
         },
         "versions": {
           "schema": 1,
-          "generator": "trhgd-staged-3",
-          "pack": "trhgd-research-1",
-          "pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb"
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
         },
-        "seed": "47b906a8c508d961af9f2a2c34aacb62251ed30fc593402126c3fd7d30672daf",
+        "seed": "2147a4e37a24116363e0d87da53ef7aec672a9a6d8e2a085c745ae5714571a09",
         "context": {
           "world": {
             "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
@@ -80,19 +80,24 @@
               0
             ],
             "status": "source-derived",
-            "provenance": "routes.group=roads; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "trail_ids": {
             "value": [
               137
             ],
             "status": "source-derived",
-            "provenance": "routes.group=trails; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "sea_route_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=searoutes; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
           },
           "port": {
             "value": null,
@@ -128,7 +133,7 @@
           "origin_culture": "Soumi",
           "maker": "a household tool workshop",
           "age": "one generation of use",
-          "condition": "serviceable, with a repaired handle",
+          "condition": "well used, with a carefully oiled head",
           "construction": "a plain socket fitted to a replaceable handle",
           "previous_use": "cutting kindling and trimming repair timber",
           "previous_owners": "two related households",
@@ -149,11 +154,11 @@
         },
         "versions": {
           "schema": 1,
-          "generator": "trhgd-staged-3",
-          "pack": "trhgd-research-1",
-          "pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb"
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
         },
-        "seed": "3cf58496e05b217a4c6eef8504103dd163dd50a2bbafc315d851f0274c6400ff",
+        "seed": "4877c6b69e4ac98a96e3f37a69811ee413c64a33b710c6b2a6e49ebae916e45a",
         "context": {
           "world": {
             "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
@@ -199,19 +204,24 @@
               0
             ],
             "status": "source-derived",
-            "provenance": "routes.group=roads; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "trail_ids": {
             "value": [
               137
             ],
             "status": "source-derived",
-            "provenance": "routes.group=trails; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "sea_route_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=searoutes; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
           },
           "port": {
             "value": null,
@@ -240,8 +250,19 @@
           "public-tradition"
         ],
         "facts": {
-          "local_memory": "Several households once shared a single workshop while their own roofs were repaired.",
-          "tradition": "Neighbours exchange small handmade tokens at the year's first gathering.",
+          "local_memory": {
+            "event": "shared-workshop",
+            "actors": [
+              "several-households"
+            ],
+            "reason": "roof-repairs",
+            "period": "local-memory"
+          },
+          "tradition": {
+            "practice": "tool-handoff",
+            "participants": "older-and-younger-relatives",
+            "occasion": "new-household"
+          },
           "scope": "public local memory",
           "culture_id": 10
         },
@@ -260,11 +281,11 @@
         },
         "versions": {
           "schema": 1,
-          "generator": "trhgd-staged-3",
-          "pack": "trhgd-research-1",
-          "pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb"
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
         },
-        "seed": "9ca3c4d7205d73e61a3929859f9e20f882783e8f61a7f516f544306e7880e4a2",
+        "seed": "a15ce25cc60a9b5bb01fa233f5ff64b959ce6cb7e7ab1be3d31729c93ff86df3",
         "context": {
           "world": {
             "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
@@ -310,19 +331,24 @@
               0
             ],
             "status": "source-derived",
-            "provenance": "routes.group=roads; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "trail_ids": {
             "value": [
               137
             ],
             "status": "source-derived",
-            "provenance": "routes.group=trails; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "sea_route_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=searoutes; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
           },
           "port": {
             "value": null,
@@ -394,11 +420,11 @@
         },
         "versions": {
           "schema": 1,
-          "generator": "trhgd-staged-3",
-          "pack": "trhgd-research-1",
-          "pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb"
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
         },
-        "seed": "7d3d92aef913654068cde0b37196d733af8b09ea1d0b09b5d5dd49ccf67c9b11",
+        "seed": "21968f901e99f6dcb912ae3e6e0ef11853a3d8436a0b534ae3e6430afbc43846",
         "context": {
           "world": {
             "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
@@ -442,17 +468,22 @@
           "road_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=roads; points match cell:2651 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=roads; source points reference parent cell:2651; direct entrance alignment unknown"
           },
           "trail_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=trails; points match cell:2651 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=trails; source points reference parent cell:2651; direct entrance alignment unknown"
           },
           "sea_route_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=searoutes; points match cell:2651 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=searoutes; source points reference parent cell:2651; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
           },
           "port": {
             "value": null,
@@ -489,12 +520,12 @@
         ],
         "facts": {
           "subtype": "ruined structure",
-          "original_purpose": "guard station",
-          "period": "beyond living memory",
+          "original_purpose": "watch post",
+          "period": "several generations ago",
           "creator_group": "Slovan",
           "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
           "later_event": "the entrance was repaired and later abandoned",
-          "condition": "weathered masonry",
+          "condition": "a fallen roof",
           "material_theme": "worked stone",
           "encounter_suggestions": [
             "inspection",
@@ -531,7 +562,7 @@
         }
       }
     ],
-    "enrichment_sha": "fa8d7fa090cc561f53d133bfee8de1b03b10b68c778eff1025dfa0cf3db00ec6"
+    "enrichment_sha": "8592cda3b9f5ec3f91d6220e8bf41ed6852b5eec8b2a592aee6696e9214966ba"
   },
   "playthrough_enrichment": {
     "schema_version": 1,
@@ -547,10 +578,10 @@
       }
     },
     "provider": "trhgd-staged",
-    "generator_version": "trhgd-staged-3",
-    "content_pack_version": "trhgd-research-1",
-    "content_pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb",
-    "deterministic_enrichment_seed": "5c4f75f64655df781ee496929b4c1ec92a018eb8fa87d7d4807db3e4eb83a568",
+    "generator_version": "trhgd-staged-4",
+    "content_pack_version": "trhgd-research-2",
+    "content_pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5",
+    "deterministic_enrichment_seed": "074bbf336ad9b32063d0b3965a0c03acebab875dcc70d0eabcc868526e9dacd0",
     "records": [
       {
         "id": "character:settlements:771:starter:1",
@@ -564,11 +595,11 @@
         },
         "versions": {
           "schema": 1,
-          "generator": "trhgd-staged-3",
-          "pack": "trhgd-research-1",
-          "pack_sha": "733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb"
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
         },
-        "seed": "5474ccb5d6d760fa41be577056bb100b68cf4f9520bc0c436f076f98993717d8",
+        "seed": "879fe6d8ede2f44f13e619998a25b411f8db110b30eba9542b882d10c8227b36",
         "context": {
           "world": {
             "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
@@ -614,19 +645,24 @@
               0
             ],
             "status": "source-derived",
-            "provenance": "routes.group=roads; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "trail_ids": {
             "value": [
               137
             ],
             "status": "source-derived",
-            "provenance": "routes.group=trails; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
           },
           "sea_route_ids": {
             "value": [],
             "status": "source-derived",
-            "provenance": "routes.group=searoutes; points match cell:1621 and canonical entity coordinates (cell centre only if entity coordinates unknown)"
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
           },
           "port": {
             "value": null,
@@ -659,11 +695,11 @@
             "burg_id": 771,
             "cell_id": 1621
           },
-          "upbringing": "raised by relatives who repaired household tools",
+          "upbringing": "raised in a household that shared work with neighbours",
           "formative_role": "woodworker apprentice",
           "training": "practical instruction from an older craftsperson",
           "formative_event": "finding an old repair mark beneath a newer fitting",
-          "motivation": "to repay a debt of kindness",
+          "motivation": "to learn a craft beyond familiar work",
           "concern": "being unable to help those left behind",
           "contact": "an older neighbour who taught repairs",
           "local_knowledge": [
@@ -685,6 +721,6 @@
         }
       }
     ],
-    "enrichment_sha": "cbc9aaf07fe7836f6cad56d744381ff20101f4825d85fff750de82e130f3fbe1"
+    "enrichment_sha": "dc977b6ce7a1de7ad230ee4e7511cb629e39c23503d4a0d73c861356abbcf502"
   }
 }

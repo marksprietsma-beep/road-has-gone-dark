@@ -1,5 +1,5 @@
 import {ContentSeed, canonical, seal, sha} from './core.mjs';
-export const GENERATOR_VERSION = 'trhgd-staged-3';
+export const GENERATOR_VERSION = 'trhgd-staged-4';
 const idFor = (type, ctx, instance) => `${type}:${ctx.source_kind}:${ctx.source_id}:${instance}`;
 export function generate(type, ctx, {pack, digest}, {instance = '0', playthrough_id = null} = {}) {
   if (!ctx.world?.id || !Number.isInteger(ctx.source_id) || !Number.isInteger(ctx.cell_id)) throw Error('Missing immutable context');
@@ -39,6 +39,20 @@ export function generate(type, ctx, {pack, digest}, {instance = '0', playthrough
   const record = {...base, facts, rumours, secret}; validateRecord(record); return record;
 }
 export function validateRecord(r) {
+  if (r.type === 'origin') {
+    const m=r.facts.local_memory,t=r.facts.tradition;
+    const profiles={
+      'unfinished-work-completed':{event:'unfinished-work-completed',actors:['departing-craftspeople','neighbours'],outcome:'completed-by-neighbours',period:'a-generation-ago'},
+      'shared-workshop':{event:'shared-workshop',actors:['several-households'],reason:'roof-repairs',period:'local-memory'},
+      'shared-apprenticeship':{event:'shared-apprenticeship',actors:['local-craftsperson','multiple-households'],outcome:'apprentices-trained',period:'local-memory'}
+    };
+    const traditions={
+      'place-for-absent':{practice:'place-for-absent',participants:'families',occasion:'last-gathering-of-year',honoured:'absent-relatives'},
+      'tool-handoff':{practice:'tool-handoff',participants:'older-and-younger-relatives',occasion:'new-household'},
+      'token-exchange':{practice:'token-exchange',participants:'neighbours',occasion:'first-gathering-of-year'}
+    };
+    if(!profiles[m?.event] || canonical(m)!==canonical(profiles[m.event]) || !traditions[t?.practice] || canonical(t)!==canonical(traditions[t.practice])) throw Error('Contradictory stored origin event/tradition');
+  }
   if (r.type === 'character') {
     if (r.context.port.value <= 0 && /harbour|dock|sailor/.test(r.facts.formative_role)) throw Error('Inland maritime contradiction');
     if (Array.isArray(r.facts.dominant_trait) || !['patient','reserved','careful','inquisitive'].includes(r.facts.dominant_trait)) throw Error('Conflicting dominant traits');

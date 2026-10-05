@@ -9,7 +9,7 @@ import {originPayload} from '../src/visibility.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
 const fixture = process.argv[2] ?? resolve(root, 'tests/worldgen/fixtures/game-11-determinism.json');
 const output = resolve(process.argv[3] ?? resolve(root, 'research/game77/evidence'));
-const world = loadWorld(fixture), pack = loadPack(resolve(root, 'research/game77/packs/trhgd-original-v1.json'));
+const world = loadWorld(fixture), pack = loadPack(resolve(root, 'research/game77/packs/trhgd-original-v2.json'));
 const marker = world.source.markers.find(m => m && m.type === 'ruins' && !m.hidden && !m.removed);
 const burg = world.record('settlements', 771) ?? world.source.settlements.find(eligible);
 if (!marker || !eligible(burg)) throw Error('Required real public ruin and eligible hometown unavailable');

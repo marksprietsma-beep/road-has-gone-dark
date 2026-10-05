@@ -35,7 +35,7 @@ await compile(join(rantPath,'src'),join(temp,'rant'));
 await writeFile(join(temp,'rant/package.json'),JSON.stringify({type:'module'}));
 const L={...await import(pathToFileURL(join(temp,'node_modules/@lexiconlang/core/index.js'))),...await import(pathToFileURL(join(temp,'node_modules/@lexiconlang/grammar/index.js')))};
 const R=await import(pathToFileURL(join(temp,'rant/engine.js')));
-const w=loadWorld(join(root,'tests/worldgen/fixtures/game-11-determinism.json')),c=context(w,'markers',51),pack=loadPack(join(root,'research/game77/packs/trhgd-original-v1.json'));
+const w=loadWorld(join(root,'tests/worldgen/fixtures/game-11-determinism.json')),c=context(w,'markers',51),pack=loadPack(join(root,'research/game77/packs/trhgd-original-v2.json'));
 const g=L.grammar({origin:'A #subtype# retains #condition#. Built as a #purpose# #period#, it later changed: #event#.',subtype:x=>x.data.subtype,condition:x=>x.data.condition,purpose:x=>x.data.original_purpose,period:x=>x.data.period,event:x=>x.data.later_event});
 function rantRender(f,seed){
  const tables=Object.fromEntries(Object.entries(f).filter(([,v])=>typeof v==='string').map(([k,v])=>[k,{name:k,subs:[''],entries:[{forms:[v],classes:[]}]}]));
