@@ -141,7 +141,7 @@ func home_candidates(state_id: int, province_id: int = -1, max_count: int = 30) 
 		var population := float(burg.get("population", 0.0))
 		if int(burg.get("capital", 0)) != 0 or population <= 0.0 or population > 5.0:
 			continue
-		if bool(burg.get("hidden", false)):
+		if bool(burg.get("hidden", false)) or bool(burg.get("removed", false)):
 			continue
 		result.append({
 			"id": id, "stable_id": entity_id("burg", id),
