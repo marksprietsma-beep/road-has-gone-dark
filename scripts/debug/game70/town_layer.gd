@@ -9,9 +9,13 @@ var camera: Camera2D
 var selected_id := ""
 var rendered_markers: Array[Dictionary] = []
 var icons: Dictionary = {}
+var marker_groups: Array[Dictionary] = []
+var displayed_labels: Array[Dictionary] = []
+var _marker_key := ""
 
 func open_town(slug: String, data: Dictionary, bounds: Dictionary) -> bool:
 	model = data
+	_marker_key = ""
 	selected_id = ""
 	frame = Rect2(float(bounds.x), float(bounds.y), float(bounds.width), float(bounds.height))
 	var texture := load("res://research/game70/art/%s.png" % slug) as Texture2D
@@ -38,18 +42,21 @@ func select_facility(id: String) -> bool:
 	return false
 
 func inspect_at(point: Vector2) -> bool:
-	# Only drawn markers are clickable; the index also exposes decluttered facilities.
-	for e in rendered_markers:
-		if point.distance_to(Vector2(e.position[0], e.position[1])) <= 15.0 / camera.zoom.x:
-			return select_facility(e.id)
-	# Exact known building footprints can also be clicked, including unlabelled roofs.
+	if not visible: return false
+	# Native roof hit testing keeps known premises accessible even in a cluster.
 	for e in model.get("establishments", []):
-		if e.locationType != "building" or e.knowledge == "unknown":
-			continue
+		if e.locationType != "building" or e.knowledge == "unknown": continue
 		for b in model.buildings:
-			if b.id == e.buildingId and _inside(point, b.polygon):
-				return select_facility(e.id)
-	return false
+			if b.id == e.buildingId and _inside(point,b.polygon): return select_facility(e.id)
+	var ratio: float = get_viewport().get_meta("map_pixel_ratio",1.0)
+	var nearest: Dictionary = {}
+	var best: float = pow(15*ratio/camera.zoom.x,2)
+	for group in marker_groups:
+		if point.distance_to(Vector2(group.representative.position[0],group.representative.position[1])) > 16*ratio/camera.zoom.x: continue
+		for e in group.members:
+			var distance: float = point.distance_squared_to(Vector2(e.position[0],e.position[1]))
+			if distance < best: best = distance; nearest = e
+	return select_facility(nearest.id) if not nearest.is_empty() else false
 
 func _inside(point: Vector2, rings: Array) -> bool:
 	if not Geometry2D.is_point_in_polygon(point, _poly(rings[0])):
@@ -77,53 +84,83 @@ func _process(_delta: float) -> void:
 	if visible:
 		queue_redraw()
 
-func _draw() -> void:
-	if art == null or model.is_empty() or camera == null:
-		return
-	draw_texture_rect(art, frame, false)
-	var inv: float = 1.0 / camera.zoom.x
-	for ring in selected_polygon():
-		var polygon := _poly(ring)
-		# Canonical exterior/interior outlines, no invented roof replacement.
-		polygon.append(polygon[0])
-		draw_polyline(polygon, Color("#9b4427"), 2.4 * inv, true)
-	var priority := {"guildhall":100,"chapel":95,"warehouse":90,"manor":85,"pier":80,"inn":75,"smithy":70}
-	var ordered: Array = model.establishments.duplicate()
-	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		if a.id == selected_id: return true
-		if b.id == selected_id: return false
-		var pa: int = priority.get(a.type, 40)
-		var pb: int = priority.get(b.type, 40)
-		return pa > pb if pa != pb else str(a.id) < str(b.id)
-	)
+func _build_markers(ratio: float) -> void:
+	var key: String = str([model.settlement.id,get_global_transform_with_canvas(),get_viewport_rect(),ratio])
+	if key == _marker_key: return
+	_marker_key = key
+	marker_groups.clear()
 	rendered_markers.clear()
-	var occupied: Array[Rect2] = []
-	var screen: Rect2 = get_viewport_rect()
+	var priority := {"guildhall":100,"chapel":95,"warehouse":90,"manor":85,"pier":80,"inn":75,"smithy":70}
+	var ordered: Array = model.establishments.filter(func(e: Dictionary) -> bool:return e.knowledge != "unknown")
+	ordered.sort_custom(func(a: Dictionary,b: Dictionary) -> bool:
+		var pa: int = priority.get(a.type,40)
+		var pb: int = priority.get(b.type,40)
+		return pa > pb if pa != pb else str(a.id)<str(b.id)
+	)
+	var transform := get_global_transform_with_canvas()
 	for e in ordered:
+		var screen_point: Vector2 = transform*Vector2(e.position[0],e.position[1])
+		if not get_viewport_rect().grow(-15*ratio).has_point(screen_point): continue
+		var box := Rect2(screen_point-Vector2.ONE*14*ratio,Vector2.ONE*28*ratio)
+		var group_index := -1
+		var best := INF
+		for i in marker_groups.size():
+			var group: Dictionary = marker_groups[i]
+			if group.rect.grow(2*ratio).intersects(box):
+				var distance: float = screen_point.distance_squared_to(group.screenPosition)
+				if distance < best: best = distance; group_index = i
+		if group_index >= 0:
+			marker_groups[group_index].members.append(e)
+		else:
+			marker_groups.append({"representative":e,"members":[e],"rect":box,"screenPosition":screen_point})
+			rendered_markers.append(e)
+
+func _draw() -> void:
+	if art == null or model.is_empty() or camera == null: return
+	var ratio: float = get_viewport().get_meta("map_pixel_ratio",1.0)
+	_build_markers(ratio)
+	draw_texture_rect(art,frame,false)
+	var inv: float = ratio/camera.zoom.x
+	for ring in selected_polygon():
+		var polygon := _poly(ring); polygon.append(polygon[0])
+		draw_polyline(polygon,Color("#9b4427"),2.4*inv,true)
+	for group in marker_groups:
+		var e: Dictionary = group.representative
+		var p := Vector2(e.position[0],e.position[1])
+		draw_circle(p,13*inv,Color("#fff2d4"))
+		draw_arc(p,13*inv,0,TAU,32,Color("#795b38"),1.2*inv,true)
+		if icons.has(e.type): draw_texture_rect(icons[e.type],Rect2(p-Vector2(9,9)*inv,Vector2(18,18)*inv),false)
+	# Labels and badges are native pixel draws, independent of marker layout.
+	draw_set_transform_matrix(get_global_transform_with_canvas().affine_inverse())
+	var font := ThemeDB.fallback_font
+	var occupied: Array[Rect2] = []
+	for group in marker_groups:
+		occupied.append(group.rect)
+		if group.members.size()>1:
+			var point: Vector2 = group.screenPosition+Vector2(9,-9)*ratio
+			draw_circle(point,6*ratio,Color("#e7d4a9"))
+			var value := str(group.members.size())
+			var size := roundi(9*ratio)
+			var width: float = font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
+			draw_string(font,point+Vector2(-width/2,3*ratio),value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,Color("#30281d"))
+	displayed_labels.clear()
+	var labels: Array = rendered_markers.duplicate()
+	for e in model.establishments:
+		if e.id == selected_id:
+			labels.erase(e); labels.push_front(e); break
+	for e in labels:
 		if e.knowledge == "unknown": continue
-		var p := Vector2(e.position[0], e.position[1])
-		var s: Vector2 = get_global_transform_with_canvas() * p
-		if not screen.grow(-15).has_point(s): continue
-		var labelled: bool = e.id == selected_id or camera.zoom.x * frame.size.x > 1400 or e.type in ["guildhall", "warehouse", "pier", "chapel"]
-		var text: String = e.label
-		var width: float = ThemeDB.fallback_font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13).x + 6 if labelled else 0
-		var box := Rect2(s - Vector2(15, 15), Vector2(32 + width, 30))
-		if box.end.x > screen.end.x - 5:
-			labelled = false
-			width = 0
-			box.size.x = 30
-		var clear := true
-		for other in occupied:
-			if other.grow(3).intersects(box): clear = false
-		if not clear: continue
-		occupied.append(box)
-		rendered_markers.append(e)
-		draw_circle(p, 13 * inv, Color("#fff2d4"))
-		draw_arc(p, 13 * inv, 0, TAU, 32, Color("#795b38"), 1.2 * inv, true)
-		if icons.has(e.type):
-			draw_texture_rect(icons[e.type], Rect2(p - Vector2(9,9)*inv, Vector2(18,18)*inv), false)
-		if labelled:
-			draw_rect(Rect2(p + Vector2(15,-10)*inv, Vector2(width,20)*inv), Color("#fff2d4", .94))
-			draw_set_transform(Vector2.ZERO, 0, Vector2(inv, inv))
-			draw_string(ThemeDB.fallback_font, p / inv + Vector2(18,5), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("#30281d"))
-			draw_set_transform(Vector2.ZERO)
+		if e.id != selected_id and camera.zoom.x/ratio*frame.size.x <= 1400 and e.type not in ["guildhall","warehouse","pier","chapel"]: continue
+		var point: Vector2 = get_global_transform_with_canvas()*Vector2(e.position[0],e.position[1])
+		var label := ScreenLabelLayout.place(font,e.label,roundi(13*ratio),point,15*ratio,occupied,get_viewport_rect(),ratio)
+		if label.is_empty(): continue
+		label.merge({"id":e.id,"selected":e.id==selected_id})
+		displayed_labels.append(label)
+		draw_style_box(_label_background(),label.rect)
+		draw_string(font,label.baseline,label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,label.size,Color("#30281d"))
+	draw_set_transform_matrix(Transform2D.IDENTITY)
+
+func _label_background() -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color("#fff2d4",.92)
+	return style

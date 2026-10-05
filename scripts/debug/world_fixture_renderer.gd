@@ -46,6 +46,7 @@ func set_zoom(value: float) -> void:
 		if child is MapLayer: child.set_zoom_band(band)
 		# Recalculate icon spacing after every zoom, not just at band edges.
 		if child is LandmarkMapLayer: child.set_display_zoom(value)
+	$Labels.queue_redraw()
 
 func select_at(map_position: Vector2) -> void:
 	if package.is_empty() or not Rect2(Vector2.ZERO, Vector2(model.size)).has_point(map_position): return
@@ -63,6 +64,7 @@ func select_at(map_position: Vector2) -> void:
 		var marker_point := Vector2(float(marker.get("x", 0)), float(marker.get("y", 0)))
 		chosen_burg = map_position.distance_squared_to(town_point) <= map_position.distance_squared_to(marker_point)
 	if chosen_burg:
+		set_selected_burg(int(burg.get("i",-1)))
 		settlement_selected.emit(burg, describe_settlement(burg))
 	else:
 		landmark_selected.emit(marker, describe_landmark(marker) if not marker.is_empty() else "")
@@ -149,3 +151,10 @@ func _nearby_settlement(point: Vector2) -> String:
 			nearest_squared = distance_sq
 			name = MapWorldText.plain(str(settlement.get("name", "")), 90)
 	return name
+
+func set_selected_burg(id: int) -> void:
+	$Settlements.selected_burg_id = id
+	$Labels.selected_burg_id = id
+	$Settlements.queue_redraw()
+	$Landmarks.queue_redraw()
+	$Labels.queue_redraw()

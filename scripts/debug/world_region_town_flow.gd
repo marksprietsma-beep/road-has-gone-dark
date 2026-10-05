@@ -21,6 +21,8 @@ var camera: Camera2D
 var world_map: WorldFixtureRenderer
 var region_map: Node2D
 var town_map: Node2D
+var map_surface: TextureRect
+var pixel_ratio := 1.0
 var viewport: SubViewport
 var canvas: Node2D
 var breadcrumb: Label
@@ -91,8 +93,12 @@ func _build_ui() -> void:
 	var body := HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	layout.add_child(body)
-	var holder := SubViewportContainer.new()
-	holder.stretch = true
+	var holder := TextureRect.new()
+	map_surface = holder
+	holder.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	holder.stretch_mode = TextureRect.STRETCH_SCALE
+	holder.focus_mode = Control.FOCUS_ALL
+	holder.mouse_filter = Control.MOUSE_FILTER_STOP
 	holder.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	holder.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_child(holder)
@@ -100,6 +106,8 @@ func _build_ui() -> void:
 	viewport.size = Vector2i(1080, 760)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	holder.add_child(viewport)
+	holder.texture = viewport.get_texture()
+	holder.gui_input.connect(_surface_input)
 	canvas = MapCanvas.new()
 	canvas.controller = self
 	viewport.add_child(canvas)
@@ -147,17 +155,17 @@ func _key() -> String:
 
 func _remember() -> void:
 	if world_stem.is_empty(): return
-	context_cache[_key()] = {"position":camera.position,"zoom":camera.zoom,"facilityId":selected_facility.get("id","") if level == "town" else ""}
+	context_cache[_key()] = {"position":camera.position,"zoom":camera.zoom/pixel_ratio,"facilityId":selected_facility.get("id","") if level == "town" else ""}
 
 func _restore_or_fit() -> void:
 	if context_cache.has(_key()):
 		camera.position = context_cache[_key()].position
-		camera.zoom = context_cache[_key()].zoom
+		camera.zoom = context_cache[_key()].zoom*pixel_ratio
 		if level == "town" and not str(context_cache[_key()].get("facilityId","")).is_empty():
 			town_map.select_facility(context_cache[_key()].facilityId)
 	else:
 		fit_map()
-	world_map.set_zoom(camera.zoom.x)
+	world_map.set_zoom(camera.zoom.x/pixel_ratio)
 	camera.force_update_scroll()
 
 func switch_world(stem: String) -> bool:
@@ -188,6 +196,7 @@ func switch_world(stem: String) -> bool:
 		world_map.display_fixture(data, path.trim_suffix(".json") + ".relief.svg", ROOT + "world-art/" + stem + ".vegetation.svg")
 		world_cache[stem] = world_map
 	world_map.selection.select_cell(-1)
+	world_map.set_selected_burg(-1)
 	load_msec["world:"+stem] = Time.get_ticks_msec()-started
 	_show_level()
 	_restore_or_fit()
@@ -214,11 +223,12 @@ func select_world_burg(id: int, centre: bool = false) -> bool:
 		_refresh()
 		return _fail("Unknown or unavailable burg ID %d in %s" % [id, world_stem])
 	selected_burg = b
+	world_map.set_selected_burg(id)
 	world_map.selection.select_cell(int(b.cell))
 	if centre:
 		camera.position = Vector2(b.x,b.y)
-		camera.zoom = Vector2(2.6,2.6)
-		world_map.set_zoom(camera.zoom.x)
+		camera.zoom = Vector2(2.6,2.6)*pixel_ratio
+		world_map.set_zoom(camera.zoom.x/pixel_ratio)
 		camera.force_update_scroll()
 	_refresh()
 	return true
@@ -317,7 +327,7 @@ func focus_facility() -> void:
 		var bounds := Rect2(Vector2(p[0][0],p[0][1]),Vector2.ZERO)
 		for point in p: bounds = bounds.expand(Vector2(point[0],point[1]))
 		span = maxf(bounds.size.x,bounds.size.y) * 12.0
-	camera.zoom = Vector2.ONE * minf(50.0, minf(viewport.size.x,viewport.size.y)/maxf(span,12))
+	camera.zoom = Vector2.ONE * minf(50.0*pixel_ratio, minf(viewport.size.x,viewport.size.y)/maxf(span,12))
 	camera.force_update_scroll()
 
 func go_back() -> void:
@@ -385,7 +395,7 @@ func _refresh() -> void:
 		if not selected_facility.is_empty():
 			var e := selected_facility
 			inspection.text += "\n\n%s\nType: %s · %s\nKnowledge: %s\nDistrict: %s\nSource building: %s\nBinding: %s\n%s" % [e.label,e.type,e.locationType,e.knowledge,e.district,str(e.provenance.providerBuildingId) if e.locationType == "building" else "none (outdoor)",e.provenance.binding,e.availability]
-		notice.text = "PROVISIONAL: original Settlemaker-local artwork; coast, streets and extent are NOT fitted to this Azgaar region. No physical travel scale or gameplay. Public known facilities only."
+		notice.text = "PROVISIONAL: Settlemaker coast, streets and extent are NOT fitted to Azgaar. No physical travel scale. Public facilities; numbered markers group nearby premises — use index/zoom."
 	last_error = ""
 
 func _fail(message: String) -> bool:
@@ -405,11 +415,11 @@ func handle_map_input(event: InputEvent) -> void:
 		elif event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
 			var point: Vector2 = viewport.get_canvas_transform().affine_inverse() * event.position
 			var factor: float = 1.15 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1/1.15
-			var maximum: float = 50.0 if level == "town" else 4.0
-			camera.zoom = Vector2.ONE*clampf(camera.zoom.x*factor,.15,maximum)
+			var maximum: float = (50.0 if level == "town" else 4.0)*pixel_ratio
+			camera.zoom = Vector2.ONE*clampf(camera.zoom.x*factor,.15*pixel_ratio,maximum)
 			camera.force_update_scroll()
 			camera.position += point - viewport.get_canvas_transform().affine_inverse()*event.position
-			world_map.set_zoom(camera.zoom.x)
+			world_map.set_zoom(camera.zoom.x/pixel_ratio)
 	elif event is InputEventMouseMotion and dragging:
 		camera.position -= event.relative/camera.zoom
 	elif event is InputEventKey and event.pressed and not event.echo:
@@ -418,5 +428,30 @@ func handle_map_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if camera == null: return
+	_sync_map_resolution()
 	var direction := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	if direction != Vector2.ZERO: camera.position += direction*500*delta/camera.zoom.x
+
+func _sync_map_resolution() -> void:
+	if map_surface == null or map_surface.size.x < 1: return
+	var scale: Vector2 = get_viewport().get_stretch_transform().get_scale()*map_surface.get_global_transform_with_canvas().get_scale()
+	var ratio: float = minf(scale.x,scale.y)
+	var pixels := Vector2i((map_surface.size*scale).round())
+	if pixels == viewport.size and is_equal_approx(ratio,pixel_ratio): return
+	camera.zoom *= ratio/pixel_ratio
+	pixel_ratio = ratio
+	viewport.size = pixels
+	viewport.set_meta("map_pixel_ratio",ratio)
+	world_map.set_zoom(camera.zoom.x/pixel_ratio)
+	camera.force_update_scroll()
+
+func _surface_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed: map_surface.grab_focus()
+	var translated: InputEvent = event.duplicate()
+	var scale: Vector2 = Vector2(viewport.size)/map_surface.size
+	if translated is InputEventMouse:
+		translated.position *= scale
+		translated.global_position = translated.position
+	if translated is InputEventMouseMotion:
+		translated.relative *= scale
+	viewport.push_input(translated,true)
