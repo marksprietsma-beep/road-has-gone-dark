@@ -87,8 +87,16 @@ jobs:
           if [ -s review-release.json ]; then
             python -c 'import json; assert json.load(open("review-release.json"))["draft"], "Refuse to modify a published release"'
             release_id=$(python -c 'import json; print(json.load(open("review-release.json"))["id"])')
-            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f target_commitish="$REVIEW_SHA" -F body=@review-notes.txt
           else
             gh release create "$release_tag" --repo "$GITHUB_REPOSITORY" --draft --target "$REVIEW_SHA" --title 'GAME-76 native world-generator helpers — review' --notes-file review-notes.txt
+            release_id=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$release_tag\") | .id")
           fi
-          gh release upload "$release_tag" review-upload/* --repo "$GITHUB_REPOSITORY" --clobber
+          # Use the immutable release ID, not GitHub's unpublished tag lookup.
+          for asset in review-upload/*; do
+            asset_name=$(basename "$asset")
+            asset_id=$(gh api "repos/$GITHUB_REPOSITORY/releases/$release_id/assets" --jq ".[] | select(.name == \"$asset_name\") | .id")
+            if [ -n "$asset_id" ]; then gh api --method DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$asset_id"; fi
+            gh api --method POST "https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$release_id/assets?name=$asset_name" -H 'Content-Type: application/octet-stream' --input "$asset"
+          done
+          # Advance the build reference only after all matching assets exist.
+          gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f tag_name="$release_tag" -f target_commitish="$REVIEW_SHA" -F body=@review-notes.txt
