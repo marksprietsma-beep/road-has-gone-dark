@@ -1,0 +1,20 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: FAIL selected burg labelled game-11-determinism-selected-2x
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://research/game71-72/tests/render-check.gd:5)
+       [1] capture (res://research/game71-72/tests/render-check.gd:26)
+       [2] settle (res://research/game71-72/scripts/capture-baseline.gd:8)
+SCRIPT ERROR: Assertion failed: selected burg labelled game-11-determinism-selected-2x
+          at: check (res://research/game71-72/tests/render-check.gd:5)
+          GDScript backtrace (most recent call first):
+              [0] check (res://research/game71-72/tests/render-check.gd:5)
+              [1] capture (res://research/game71-72/tests/render-check.gd:26)
+              [2] settle (res://research/game71-72/scripts/capture-baseline.gd:8)
+PASS 11225 presentation assertions; 5 actual after captures
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

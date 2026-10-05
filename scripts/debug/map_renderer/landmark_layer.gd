@@ -120,57 +120,13 @@ func _reserve_civilization(occupied: Dictionary) -> void:
 	var settlements_node := get_parent().get_node_or_null("Settlements")
 	if settlements_node and settlements_node.visible:
 		for settlement in model.fixture.get("settlements", []):
-			if not settlement is Dictionary or settlement.is_empty():
-				continue
-			var capital := int(settlement.get("capital", 0)) == 1
-			var population := float(settlement.get("population", 0.0))
-			if zoom_band == 0 and not capital:
-				continue
-			if zoom_band == 1 and not capital and population < 4.0:
-				continue
-			if zoom_band == 2 and not capital and population < 1.4:
-				continue
+			if not settlement is Dictionary or not settlements_node.should_display(settlement): continue
 			var p := Vector2(float(settlement.get("x", 0.0)), float(settlement.get("y", 0.0)))
-			var major := population >= 7.0
-			var icon_size := 9.0 if capital else (7.5 if major else 6.0)
+			var icon_size: float = settlements_node.icon_size(settlement)
 			var gap := maxf(icon_size + 4.0, 16.0 / maxf(display_zoom, 0.25))
 			_stamp(occupied, Rect2(p - Vector2.ONE * gap * 0.5, Vector2.ONE * gap))
 
-	var labels_node := get_parent().get_node_or_null("Labels")
-	if not labels_node or not labels_node.visible:
-		return
-	# Mirror LabelMapLayer._claim_label: labels that lose a collision
-	# with earlier text are not actually drawn, so don't reserve them.
-	var label_claims: Array[Rect2] = []
-	for state_id in model.state_records:
-		if int(state_id) == 0:
-			continue
-		var state: Dictionary = model.state_records[state_id]
-		var center := int(state.get("center", -1))
-		if model.valid_cell(center):
-			_reserve_label(occupied, label_claims, model.point(center), str(state.get("name", "")).to_upper(), 8)
-	for settlement in model.fixture.get("settlements", []):
-		if not settlement is Dictionary or settlement.is_empty():
-			continue
-		var capital := int(settlement.get("capital", 0)) == 1
-		var population := float(settlement.get("population", 0.0))
-		if zoom_band == 1 and not capital:
-			continue
-		if zoom_band == 2 and not capital and population < 4.0:
-			continue
-		var p := Vector2(float(settlement.get("x", 0.0)) + 4.0, float(settlement.get("y", 0.0)) - 2.0)
-		_reserve_label(occupied, label_claims, p, str(settlement.get("name", "")), 8 if capital else 7)
-
-func _reserve_label(occupied: Dictionary, claims: Array[Rect2], p: Vector2, value: String, size: int) -> void:
-	var bounds := Rect2(
-		p + Vector2(-2.0, -float(size)),
-		Vector2(maxf(8.0, value.length() * size * 0.55), size + 3.0)
-	).grow(3.0)
-	for other: Rect2 in claims:
-		if other.intersects(bounds):
-			return
-	claims.append(bounds)
-	_stamp(occupied, bounds)
+	# Labels now avoid actual drawn icons; no duplicate label estimates or cyclic claims.
 
 ## Small spatial hash avoids scanning all settlements and landmarks for
 ## every marker, even in the deliberately crowded 8x stress fixture.
