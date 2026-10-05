@@ -68,7 +68,7 @@ test('explicit negative contradictions rejected; unknown stays unknown',()=>{
 test('source visibility: hidden/removed sources blocked; dungeon only existence/provenance',()=>{
  const copy=loadWorld(fixture);copy.record('settlements',771).hidden=true;assert.throws(()=>context(copy,'settlements',771));
  copy.record('settlements',771).hidden=false;copy.record('settlements',771).removed=true;assert.throws(()=>context(copy,'settlements',771));
- const d=context(w,'markers',32);assert.equal(d.source_visibility,'hidden');assert.match(d.source_flavour.note,/iframe/);
+ const d=context(w,'markers',32);assert.equal(d.source_visibility,'hidden');assert.match(d.source_flavour.note,/iframe/);assert.equal(d.source_flavour.dungeon_seed,'game-11-determinism5901');
  const r=generate('site',d,p);assert.equal(project(r),null);assert.doesNotMatch(render(r),/https:|iframe|watabou/i);
 });
 test('knowledge projections: rumours hide verdict, secrets need exact reveal token',()=>{
@@ -91,11 +91,13 @@ test('version, tamper and immutable sidecar collision boundaries',()=>{
  const data=envelope(w.base,p,[make('origin')]);verify(data,w.base);
  const altered=structuredClone(data);altered.records[0].facts.local_memory='tampered';assert.throws(()=>verify(altered,w.base));
  assert.throws(()=>verify(data,{...w.base,id:'other-world'}));
+ const crossed=make('origin');crossed.source.world_id='other-world';assert.throws(()=>envelope(w.base,p,[crossed]));
  const newPack={pack:{...p.pack,version:'research-2'},digest:sha(canonical({...p.pack,version:'research-2'}))};
  const upgrade=envelope(w.base,newPack,[generate('origin',c,newPack)]);
  assert.notEqual(data.enrichment_sha,upgrade.enrichment_sha);assert.equal(data.base_world.id,upgrade.base_world.id);
- const prose=renderingArtifact(data);const displayEdit={...prose,renderer_version:'future'};assert.equal(data.base_world.id,w.base.id);assert.equal(data.enrichment_sha,envelope(w.base,p,[make('origin')]).enrichment_sha);assert.notEqual(canonical(prose),canonical(displayEdit));
- const tmp=mkdtempSync(join(tmpdir(),'game77-sidecar-')),path=join(tmp,'enrichment.json');writeImmutable(path,data);writeImmutable(path,data);assert.throws(()=>writeImmutable(path,upgrade));assert.equal(readFileSync(path,'utf8'),canonical(data)+'\n');
+ const beforeRender=canonical(data);const prose=renderingArtifact(data);const displayEdit=renderingArtifact(data,{rendererVersion:'future',renderRecord:r=>'Local memory: '+render(r)});assert.equal(canonical(data),beforeRender);assert.notEqual(prose.rendering_sha,displayEdit.rendering_sha);assert.equal(data.base_world.id,w.base.id);assert.equal(data.enrichment_sha,envelope(w.base,p,[make('origin')]).enrichment_sha);assert.notEqual(canonical(prose),canonical(displayEdit));
+ const badVersion=structuredClone(data);badVersion.generator_version='unknown';const {enrichment_sha,...payload}=badVersion;badVersion.enrichment_sha=sha(canonical(payload));assert.throws(()=>verify(badVersion,w.base));
+ const tmp=mkdtempSync(join(tmpdir(),'game77-sidecar-')),path=join(tmp,'enrichment.json');assert.throws(()=>writeImmutable(path,altered));writeImmutable(path,data);writeImmutable(path,data);assert.throws(()=>writeImmutable(path,upgrade));assert.equal(readFileSync(path,'utf8'),canonical(data)+'\n');
  assert.equal(sha(readFileSync(fixture)),snapshot);
 });
 test('display-name edits preserve seed paths and structured fictional facts',()=>{

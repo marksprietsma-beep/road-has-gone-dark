@@ -1,0 +1,32 @@
+{
+  "site": {
+    "iterations": 1000,
+    "distinct_facts": 36,
+    "distinct_prose": 36,
+    "bad_token_matches": 0
+  },
+  "origin": {
+    "iterations": 1000,
+    "distinct_facts": 9,
+    "distinct_prose": 9,
+    "bad_token_matches": 0
+  },
+  "character": {
+    "iterations": 1000,
+    "distinct_facts": 403,
+    "distinct_prose": 403,
+    "bad_token_matches": 0
+  },
+  "mundane-item": {
+    "iterations": 1000,
+    "distinct_facts": 3,
+    "distinct_prose": 3,
+    "bad_token_matches": 0
+  },
+  "rare-item": {
+    "iterations": 1000,
+    "distinct_facts": 3,
+    "distinct_prose": 3,
+    "bad_token_matches": 0
+  }
+}

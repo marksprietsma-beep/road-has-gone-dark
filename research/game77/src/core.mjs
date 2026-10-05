@@ -36,10 +36,11 @@ export function loadPack(path) {
 export function seal(payload) { return {...payload, enrichment_sha: sha(canonical(payload))}; }
 export function verify(envelope, expectedWorld) {
   const {enrichment_sha, ...payload} = envelope;
-  if (envelope.schema_version !== 1 || envelope.base_world?.id !== expectedWorld.id || envelope.base_world?.sha256 !== expectedWorld.sha256 || sha(canonical(payload)) !== enrichment_sha) throw Error('Invalid sidecar identity or digest');
+  if (envelope.provider !== 'trhgd-staged' || envelope.generator_version !== 'trhgd-staged-1' || !/^[0-9a-f]{64}$/.test(envelope.content_pack_sha ?? '') || !Array.isArray(envelope.records) || envelope.records.some(r => r.source?.world_id !== expectedWorld.id || r.scope !== envelope.scope) || envelope.schema_version !== 1 || envelope.base_world?.id !== expectedWorld.id || envelope.base_world?.sha256 !== expectedWorld.sha256 || sha(canonical(payload)) !== enrichment_sha) throw Error('Invalid sidecar identity or digest');
   return envelope;
 }
 export function writeImmutable(path, envelope) {
+  verify(envelope, envelope.base_world);
   const data = canonical(envelope) + '\n'; mkdirSync(dirname(path), {recursive: true});
   // Exclusive sibling + atomic hard-link publishes complete bytes without clobbering.
   // Crash leftovers are not a committed sidecar and never loaded as one.

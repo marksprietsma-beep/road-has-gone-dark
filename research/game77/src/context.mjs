@@ -38,7 +38,7 @@ export function context(world, kind, id) {
     port: fact(kind === 'settlements' && Object.hasOwn(entity, 'port') ? entity.port : null, `${kind}:${id}.port`),
     walls: fact(kind === 'settlements' && Object.hasOwn(entity, 'walls') ? Boolean(entity.walls) : null, `${kind}:${id}.walls`),
     coast: fact(null, 'Water-body classification not implemented in this research adapter'),
-    source_flavour: kind === 'markers' ? {name: entity.name ?? '', note: entity.note ?? '', visibility: 'developer-only', authoritative_history: false} : null,
+    source_flavour: kind === 'markers' ? {dungeon_seed: (entity.note ?? '').match(/one-page-dungeon\/\?seed=([^"&<>\s]+)/)?.[1] ?? null, name: entity.name ?? '', note: entity.note ?? '', visibility: 'developer-only', authoritative_history: false} : null,
     source_visibility: /undiscovered|<iframe|one-page-dungeon/i.test(entity.note ?? '') ? 'hidden' : 'public'
   };
 }

@@ -50,6 +50,7 @@ export function validateRecord(r) {
   return true;
 }
 export function envelope(world, packInfo, records, {scope = 'world'} = {}) {
+  if (records.some(r => r.source.world_id !== world.id)) throw Error('Cross-world enrichment record');
   if (records.some(r => r.scope !== scope)) throw Error('Mixed world/playthrough enrichment scope');
   const sorted = [...records].sort((a,b) => (a.scope + '/' + a.id) < (b.scope + '/' + b.id) ? -1 : (a.scope + '/' + a.id) > (b.scope + '/' + b.id) ? 1 : 0);
   if (new Set(sorted.map(r => `${r.scope}/${r.id}`)).size !== sorted.length) throw Error('Duplicate content identity');

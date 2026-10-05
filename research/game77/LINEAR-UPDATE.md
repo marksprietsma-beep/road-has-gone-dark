@@ -1,0 +1,35 @@
+# Prepared GAME-77 update — review requested, not accepted
+
+Independent core branch: `research/game-77-content-enrichment`, production main
+base `3350aed73aa22f2f144ae4613f054ff81ab0ca34`. Initial audit remotely verified
+at `50f32882da8b39c1f9909a2f6e402e9496bf5808`; implementation published incrementally.
+Draft PR link and verified final head are in the final delivery / PR description.
+
+Seven permissive candidates pinned with licence snapshots and runtime/data-risk
+matrix. Actual Lexicon and Rant experiments pass 1,000 equal-fact comparisons.
+Recommendation: original small TRHGD staged facts/constraints + SHA-256 hierarchical
+seed model + simple prose renderer, using the already packaged Node 24 boundary.
+No imported fantasy corpus, SRD prose, new runtime or LLM/network calls.
+
+Real ruin marker 51/cell 2651 and Maura burg 771/cell 1621 demonstrate site history,
+two rumour truth labels, hidden room; playthrough-scoped coherent biography;
+ordinary hand-axe provenance; rare survey-weight lore; immutable public hometown
+memory. Source bytes and world IDs remain unchanged. Secret/public projections,
+versioned sidecars and Godot public OriginLore adapter are tested.
+
+Evidence: research/game77/evidence/REVIEW.md, review.html, examples.json,
+provider-comparison.json, quality-audit.json, screenshots/public-origin-1280x720.png;
+exact executed tests/limits: docs/TEST-RESULTS.md and evidence/logs.
+
+Framework regression pass includes 2,565 real-town contexts, 5,000 sequential
+content records, explicit contradictions/leaks/identity/version failures, existing
+GAME-7/74/76 tests and actual Godot render/input checks. Native CI final status
+belongs to the PR head. Small original packs repeat and require authoring expansion;
+no production integration, mechanics or full history/quest/faction systems claimed.
+
+GAME-75 remains its own review-ready draft and is not marked done. Any optional
+public-lore demonstration uses a separate branch/stacked PR; no ownership or
+mutation of GAME-75, GAME-10 or previous research PRs. Nothing merged.
+
+No authenticated Linear connector was available; this update is prepared rather
+than falsely reported as posted.

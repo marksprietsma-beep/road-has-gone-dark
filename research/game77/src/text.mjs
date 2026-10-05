@@ -12,7 +12,7 @@ export function render(r) {
     default: throw Error('Unsupported renderer record');
   }
 }
-export function renderingArtifact(enrichment) {
-  const prose = enrichment.records.map(r => ({id: r.id, scope: r.scope, text: render(r)}));
-  return {renderer_version: RENDERER_VERSION, enrichment_sha: enrichment.enrichment_sha, prose, rendering_sha: sha(canonical([RENDERER_VERSION, prose]))};
+export function renderingArtifact(enrichment, {rendererVersion = RENDERER_VERSION, renderRecord = render} = {}) {
+  const prose = enrichment.records.map(r => ({id: r.id, scope: r.scope, text: renderRecord(r)}));
+  return {renderer_version: rendererVersion, enrichment_sha: enrichment.enrichment_sha, prose, rendering_sha: sha(canonical([rendererVersion, prose]))};
 }

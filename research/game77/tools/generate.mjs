@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
-import {resolve, dirname} from 'node:path';
+import {resolve, dirname, relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadWorld, context, eligible} from '../src/context.mjs';
 import {loadPack, canonical, writeImmutable, verify, sha} from '../src/core.mjs';
@@ -23,6 +23,7 @@ const sidecar = resolve(output,'enrichment/v1',pack.digest,data.enrichment_sha+'
 writeFileSync(resolve(output,'examples.json'),JSON.stringify({world_enrichment:data,playthrough_enrichment:characterData},null,2)+'\n');
 writeImmutable(resolve(output,'playthrough/research-demo-001/enrichment/v1',pack.digest,characterData.enrichment_sha+'.json'),characterData);
 writeFileSync(resolve(output,'rendering.json'),JSON.stringify(renderingArtifact(data),null,2)+'\n');
+writeFileSync(resolve(output,'playthrough-rendering.json'),JSON.stringify(renderingArtifact(characterData),null,2)+'\n');
 const publicOrigins = {schema_version:1,entries:worldRecords.filter(r=>r.type==='origin').map(r=>originPayload(data,r.source.id))};
 writeFileSync(resolve(output,'public-origins.json'),JSON.stringify(publicOrigins,null,2)+'\n');
 const escape = s => String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
@@ -30,4 +31,4 @@ const sections = records.map(r=>`<section><h2>${escape(r.type)}</h2><p>Source: $
 writeFileSync(resolve(output,'review.html'),`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>GAME-77 developer review</title><style>body{background:#151310;color:#d5c29b;font:17px Georgia;max-width:900px;margin:24px auto;padding:12px}section{border-top:1px solid #776449;padding:14px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace}.secret{color:#d9998f}</style><h1>GAME-77 — developer review</h1><p>Genuine source anchors; generated fiction is not Azgaar history. This document deliberately includes secrets and is never loaded by the player UI.</p><p>World ${escape(world.base.seed)}; canonical SHA ${world.base.sha256}. Enrichment SHA ${data.enrichment_sha}.</p>${sections}`);
 writeFileSync(resolve(output,'REVIEW.md'),'# GAME-77 review examples\n\nDeveloper-only review; rumours carry truth labels here, never in player projections.\n\n'+records.map(r=>`## ${r.type}\n\nSource: ${r.context.display_name}, ${r.source.kind}:${r.source.id}, cell ${r.source.cell_id}.\n\n${render(r)}\n\nStructured facts and hidden/private fields: [examples.json](examples.json).\n`).join('\n'));
 if (sha(readFileSync(fixture))!==world.base.sha256) throw Error('Source mutation');
-console.log(JSON.stringify({world_id:world.base.id,burg_id:burg.i,marker_id:marker.i,enrichment_sha:data.enrichment_sha,sidecar,records:records.length,base_unchanged:true},null,2));
+console.log(JSON.stringify({world_id:world.base.id,burg_id:burg.i,marker_id:marker.i,enrichment_sha:data.enrichment_sha,sidecar:relative(output,sidecar),records:records.length,base_unchanged:true},null,2));
