@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "id": "settlement-context:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:burg:7:cell:917",
+  "label": "Albanes",
+  "identity": {
+    "worldSeed": "game-11-determinism",
+    "structuralWorldId": "c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb",
+    "canonicalWorldSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+    "burgId": 7,
+    "parentCellId": 917
+  },
+  "position": {
+    "value": [
+      985.83,
+      206.36
+    ],
+    "kind": "source_exact",
+    "confidence": "high",
+    "provenance": "burg.x/y; canonical source map coordinates, x-right/y-down"
+  },
+  "terrain": {
+    "biome": {
+      "value": {
+        "id": 8,
+        "name": "Temperate rainforest"
+      },
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.biome + canonical biomes"
+    },
+    "height": {
+      "value": 33,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.heights; source elevation index, not metres"
+    },
+    "broadClass": {
+      "value": "inland",
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Source shoreline flag, river ID and >=68 height heuristic; lake/ocean distinguished separately"
+    },
+    "surroundings": {
+      "value": "woodland-biome; local cultivated clearing permitted",
+      "kind": "inferred_visual",
+      "confidence": "low",
+      "provenance": "Existing source-context vegetation families; not exact woodland/crop boundaries"
+    }
+  },
+  "water": {
+    "shorelineEdges": {
+      "value": [],
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "Shared original pack.cells.v edges with neighbouring wet cells"
+    },
+    "wetNeighbourIds": {
+      "value": [],
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.neighbors/heights"
+    },
+    "waterFeatureTypes": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No adjacent wet cell edges"
+    },
+    "orientation": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No unambiguous adjacent-water direction"
+    },
+    "cellCentreOrientation": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No adjacent-water direction"
+    },
+    "shorelineLand": {
+      "value": false,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.terrain === 1"
+    },
+    "portFlag": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "burg.port omitted; do not treat absent as an explicit false"
+    }
+  },
+  "river": {
+    "cellRiver": {
+      "value": 0,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.river"
+    },
+    "orientation": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No river ID in parent cell; nearby rivers may exist"
+    },
+    "width": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No calibrated local river width in canonical export"
+    },
+    "nearbyInWindow": {
+      "value": [
+        {
+          "riverId": 196,
+          "minimumDistanceSourceUnits": 11.01868,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        }
+      ],
+      "kind": "source_derived",
+      "confidence": "low",
+      "provenance": "Distance to clipped exported river-cell chains within this source window; not actual riverbanks or measured metres"
+    }
+  },
+  "roadApproaches": [
+    {
+      "routeId": 15,
+      "group": "roads",
+      "sourceSegment": 0,
+      "worldPoint": [
+        984.535,
+        214.065
+      ],
+      "bearingDegrees": 189.540686,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 410,
+      "group": "trails",
+      "sourceSegment": 3,
+      "worldPoint": [
+        990.08,
+        206.255
+      ],
+      "bearingDegrees": 88.584745,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 410,
+      "group": "trails",
+      "sourceSegment": 2,
+      "worldPoint": [
+        979.28,
+        206.625
+      ],
+      "bearingDegrees": 267.68319,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    }
+  ],
+  "fortifications": {
+    "walls": {
+      "value": 1,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.walls"
+    },
+    "citadel": {
+      "value": 1,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.citadel"
+    },
+    "capital": {
+      "value": 1,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.capital"
+    }
+  },
+  "scale": {
+    "category": {
+      "value": "capital_or_major_fortified",
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+    },
+    "population": {
+      "value": 3.86,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.population in uncalibrated source units"
+    },
+    "populationPercentile": {
+      "value": 0.402062,
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Within the same canonical fixture, inclusive empirical rank"
+    },
+    "cellPolygonArea": {
+      "value": 136.037907,
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Shoelace area of original cell polygon; square source-map units"
+    },
+    "aestheticEnvelope": {
+      "value": {
+        "targetCellAreaFraction": 0.071033,
+        "maximumCellAreaFraction": 0.12,
+        "equivalentDiscRadiusSourceUnits": 1.75382,
+        "physicalKm": "UNCALIBRATED",
+        "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+        "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+      },
+      "kind": "inferred_visual",
+      "confidence": "low",
+      "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+    }
+  },
+  "regional": {
+    "cellPolygon": [
+      [
+        979.5343669653341,
+        212.91218348266364
+      ],
+      [
+        979.119498196288,
+        202.65787994576635
+      ],
+      [
+        982.499602989437,
+        199.5309665228781
+      ],
+      [
+        986.7451368125725,
+        199.8319075637012
+      ],
+      [
+        989.9917378905423,
+        202.6824860464153
+      ],
+      [
+        990.1862020821758,
+        210.55365570682812
+      ],
+      [
+        985.8241402013942,
+        214.28166924864482
+      ],
+      [
+        980.4753763441036,
+        213.3826881720471
+      ]
+    ],
+    "window": {
+      "left": 974.3273582311951,
+      "top": 196.58082597772471,
+      "right": 994.9783420472686,
+      "bottom": 217.23180979379813
+    },
+    "fringe": {
+      "fraction_of_longest_cell_extent": 0.2,
+      "rule": "Square enclosing original cell bounds plus 20% longest extent on each side; shifted at world edges"
+    },
+    "unpaddedCoreBounds": {
+      "left": 977.2774987763485,
+      "right": 992.0282015021153,
+      "top": 199.5309665228781,
+      "bottom": 214.2816692486448
+    },
+    "visibleBurgs": [
+      {
+        "source_id": 7,
+        "source_cell_id": 917,
+        "name": "Albanes",
+        "world_position": [
+          985.83,
+          206.36
+        ],
+        "local_position": [
+          557.00212,
+          473.545188
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "owned",
+        "viewPart": "unpadded_core",
+        "detailedMapAvailable": true
+      }
+    ],
+    "physicalKm": "UNCALIBRATED"
+  },
+  "unsupported": {
+    "gatePositions": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No source town gates"
+    },
+    "coastToTownTransform": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No world-to-provider scale calibration"
+    },
+    "localFarmBoundaries": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "Provider artistic detail; not canonical"
+    },
+    "travelTimes": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No travel/movement research authorised"
+    }
+  }
+}

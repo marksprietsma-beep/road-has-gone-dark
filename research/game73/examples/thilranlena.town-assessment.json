@@ -1,0 +1,434 @@
+{
+  "buildingCount": 537,
+  "providerUnits": "settlement_units",
+  "frame": {
+    "max_x": 131.8129242812085,
+    "max_y": 123.19198226883367,
+    "min_x": -94.43291393323943,
+    "min_y": -56.25415902483027
+  },
+  "scaleEvidence": {
+    "diameter_local": 145.70912035024105,
+    "diameter_meters": 931.3034541717263,
+    "meters_per_unit": 6.391524785361081,
+    "source": "population_heuristic_v1"
+  },
+  "footprintWorldTransform": null,
+  "physicalKm": "UNCALIBRATED",
+  "entrances": [
+    {
+      "id": "g1",
+      "kind": "land",
+      "position": [
+        9.105936825931924,
+        -6.027136544992774
+      ],
+      "bearingDegrees": 63,
+      "routes": [
+        {
+          "id": "azgaar:54",
+          "requestedBearing": 62.7,
+          "reportedDelta": 0.3,
+          "kind": "foot"
+        }
+      ]
+    },
+    {
+      "id": "g25",
+      "kind": "harbour",
+      "position": [
+        -25.544145322344914,
+        8.732530485153578
+      ],
+      "bearingDegrees": 253,
+      "routes": [
+        {
+          "id": "azgaar:54",
+          "requestedBearing": 249.9,
+          "reportedDelta": 3.1,
+          "kind": "foot"
+        }
+      ]
+    },
+    {
+      "id": "g24",
+      "kind": "harbour",
+      "position": [
+        -36.34653530088822,
+        8.056457223104559
+      ],
+      "bearingDegrees": 260.7,
+      "routes": [
+        {
+          "id": null,
+          "requestedBearing": 260.7,
+          "reportedDelta": 0,
+          "kind": "sea"
+        }
+      ]
+    }
+  ],
+  "streetApproaches": [],
+  "waterOrientation": {
+    "visibleSegments": [
+      [
+        [
+          -94.432914,
+          29.564649
+        ],
+        [
+          -94.342427,
+          29.522527
+        ]
+      ],
+      [
+        [
+          -94.342427,
+          29.522527
+        ],
+        [
+          -87.228015,
+          25.336282
+        ]
+      ],
+      [
+        [
+          -87.228015,
+          25.336282
+        ],
+        [
+          -79.266288,
+          23.106664
+        ]
+      ],
+      [
+        [
+          -79.266288,
+          23.106664
+        ],
+        [
+          -71.117101,
+          21.30993
+        ]
+      ],
+      [
+        [
+          -71.117101,
+          21.30993
+        ],
+        [
+          -63.999301,
+          17.131509
+        ]
+      ],
+      [
+        [
+          -63.999301,
+          17.131509
+        ],
+        [
+          -57.036701,
+          12.594697
+        ]
+      ],
+      [
+        [
+          -57.036701,
+          12.594697
+        ],
+        [
+          -49.656485,
+          9.022248
+        ]
+      ],
+      [
+        [
+          -49.656485,
+          9.022248
+        ],
+        [
+          -42.968413,
+          3.851494
+        ]
+      ],
+      [
+        [
+          -42.968413,
+          3.851494
+        ],
+        [
+          -36.696164,
+          -2.279485
+        ]
+      ],
+      [
+        [
+          -36.696164,
+          -2.279485
+        ],
+        [
+          -29.410177,
+          -6.069526
+        ]
+      ],
+      [
+        [
+          -29.410177,
+          -6.069526
+        ],
+        [
+          -21.652249,
+          -8.769759
+        ]
+      ],
+      [
+        [
+          -21.652249,
+          -8.769759
+        ],
+        [
+          -14.335527,
+          -12.488829
+        ]
+      ],
+      [
+        [
+          -14.335527,
+          -12.488829
+        ],
+        [
+          -6.494663,
+          -14.997545
+        ]
+      ],
+      [
+        [
+          -6.494663,
+          -14.997545
+        ],
+        [
+          2.029225,
+          -15.929013
+        ]
+      ],
+      [
+        [
+          2.029225,
+          -15.929013
+        ],
+        [
+          9.771444,
+          -18.66552
+        ]
+      ],
+      [
+        [
+          9.771444,
+          -18.66552
+        ],
+        [
+          16.899986,
+          -22.819139
+        ]
+      ],
+      [
+        [
+          16.899986,
+          -22.819139
+        ],
+        [
+          24.593491,
+          -25.668135
+        ]
+      ],
+      [
+        [
+          24.593491,
+          -25.668135
+        ],
+        [
+          32.167189,
+          -28.793794
+        ]
+      ],
+      [
+        [
+          32.167189,
+          -28.793794
+        ],
+        [
+          39.071038,
+          -33.466274
+        ]
+      ],
+      [
+        [
+          39.071038,
+          -33.466274
+        ],
+        [
+          46.657797,
+          -36.561771
+        ]
+      ],
+      [
+        [
+          46.657797,
+          -36.561771
+        ],
+        [
+          55.14725,
+          -37.572759
+        ]
+      ],
+      [
+        [
+          55.14725,
+          -37.572759
+        ],
+        [
+          63.198437,
+          -39.595794
+        ]
+      ],
+      [
+        [
+          63.198437,
+          -39.595794
+        ],
+        [
+          71.093287,
+          -41.979843
+        ]
+      ],
+      [
+        [
+          71.093287,
+          -41.979843
+        ],
+        [
+          79.653837,
+          -42.826653
+        ]
+      ],
+      [
+        [
+          79.653837,
+          -42.826653
+        ],
+        [
+          87.728869,
+          -44.794626
+        ]
+      ],
+      [
+        [
+          87.728869,
+          -44.794626
+        ],
+        [
+          94.683323,
+          -49.350248
+        ]
+      ],
+      [
+        [
+          94.683323,
+          -49.350248
+        ],
+        [
+          101.833926,
+          -53.452922
+        ]
+      ],
+      [
+        [
+          101.833926,
+          -53.452922
+        ],
+        [
+          108.070233,
+          -56.254159
+        ]
+      ]
+    ],
+    "bearingDegrees": 337.455559,
+    "method": "Length-weighted normal of actual visible source water-ring edges; remote closure edges excluded"
+  },
+  "sourceRoadApproaches": [
+    {
+      "routeId": 54,
+      "group": "trails",
+      "sourceSegment": 7,
+      "worldPoint": [
+        393.910853,
+        283.95005
+      ],
+      "bearingDegrees": 62.689561,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 54,
+      "group": "trails",
+      "sourceSegment": 6,
+      "worldPoint": [
+        390.050935,
+        285.863697
+      ],
+      "bearingDegrees": 249.89172,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    }
+  ],
+  "sourceWater": {
+    "value": {
+      "bearingDegrees": 336.585052,
+      "cardinal": "NW"
+    },
+    "kind": "source_derived",
+    "confidence": "medium",
+    "provenance": "Mean unit vectors from original burg position toward actual wet neighbour centres; broad water side, not shoreline shape"
+  },
+  "artSha256": "4d45fda7f4e813398461cb37b6b79ea6d61e52ed63a17996969ce6b29088b809",
+  "originalArtSha256": "5f47e690b352c7ed7f82f1bb2c0656f847232ddd2353f04524df8717192b88f7",
+  "providerRevision": "d5cf3590cf59e1d382110d25a6910f12507299e2",
+  "rotationExperiment": {
+    "kind": "research_display_transform_only",
+    "target": "Parent-cell-centre approximation, intentionally contrasted with burg-anchor orientation",
+    "clockwiseDegrees": -15.380359,
+    "originalRoadErrors": [
+      {
+        "entranceId": "g1",
+        "routeId": "azgaar:54",
+        "kind": "land",
+        "deltaDegrees": 0.3
+      },
+      {
+        "entranceId": "g25",
+        "routeId": "azgaar:54",
+        "kind": "harbour",
+        "deltaDegrees": 3.1
+      }
+    ],
+    "rotatedRoadErrors": [
+      {
+        "entranceId": "g1",
+        "routeId": "azgaar:54",
+        "kind": "land",
+        "deltaDegrees": 15.080359
+      },
+      {
+        "entranceId": "g25",
+        "routeId": "azgaar:54",
+        "kind": "harbour",
+        "deltaDegrees": 12.280359
+      }
+    ],
+    "originalWaterDifference": 0.870507,
+    "rotatedWaterDifference": 14.509852,
+    "notAppliedToOriginal": true
+  }
+}

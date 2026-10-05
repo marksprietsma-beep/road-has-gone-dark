@@ -1,0 +1,123 @@
+{
+  "buildingCount": 463,
+  "providerUnits": "settlement_units",
+  "frame": {
+    "max_x": 118.57923412654947,
+    "max_y": 122.6496289820601,
+    "min_x": -104.89064635004564,
+    "min_y": -100.80243128790639
+  },
+  "scaleEvidence": {
+    "diameter_local": 91.89027666660547,
+    "diameter_meters": 862.3129683807681,
+    "meters_per_unit": 9.384159017274433,
+    "source": "population_heuristic_v1"
+  },
+  "footprintWorldTransform": null,
+  "physicalKm": "UNCALIBRATED",
+  "entrances": [
+    {
+      "id": "g6",
+      "kind": "land",
+      "position": [
+        35.06303595854765,
+        -6.940738208746142
+      ],
+      "bearingDegrees": 79,
+      "routes": [
+        {
+          "id": "azgaar:410",
+          "requestedBearing": 88.6,
+          "reportedDelta": 10.3,
+          "kind": "foot"
+        }
+      ]
+    },
+    {
+      "id": "g13",
+      "kind": "land",
+      "position": [
+        -4.2682853915508385,
+        39.646383001880885
+      ],
+      "bearingDegrees": 183.4,
+      "routes": [
+        {
+          "id": "azgaar:15",
+          "requestedBearing": 189.5,
+          "reportedDelta": 6.4,
+          "kind": "road"
+        }
+      ]
+    },
+    {
+      "id": "g18",
+      "kind": "land",
+      "position": [
+        -29.995890165809023,
+        11.495270820460517
+      ],
+      "bearingDegrees": 252.8,
+      "routes": [
+        {
+          "id": "azgaar:410",
+          "requestedBearing": 267.7,
+          "reportedDelta": 16.5,
+          "kind": "foot"
+        }
+      ]
+    }
+  ],
+  "streetApproaches": [],
+  "waterOrientation": null,
+  "sourceRoadApproaches": [
+    {
+      "routeId": 15,
+      "group": "roads",
+      "sourceSegment": 0,
+      "worldPoint": [
+        984.535,
+        214.065
+      ],
+      "bearingDegrees": 189.540686,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 410,
+      "group": "trails",
+      "sourceSegment": 3,
+      "worldPoint": [
+        990.08,
+        206.255
+      ],
+      "bearingDegrees": 88.584745,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 410,
+      "group": "trails",
+      "sourceSegment": 2,
+      "worldPoint": [
+        979.28,
+        206.625
+      ],
+      "bearingDegrees": 267.68319,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    }
+  ],
+  "sourceWater": {
+    "value": null,
+    "kind": "unknown",
+    "confidence": "unavailable",
+    "provenance": "No unambiguous adjacent-water direction"
+  },
+  "artSha256": "92dfb0d9507b2d55ea5c53cd106e2af555817fe853a15c2913049aea021ff628",
+  "originalArtSha256": "e7bfbe4f2068a54d975df747ace546d063cfd50e491b82f8c6a5ae4c7135e188",
+  "providerRevision": "d5cf3590cf59e1d382110d25a6910f12507299e2"
+}

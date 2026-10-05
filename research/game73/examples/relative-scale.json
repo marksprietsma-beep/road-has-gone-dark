@@ -1,0 +1,210 @@
+{
+  "physicalKm": "UNCALIBRATED",
+  "interpretation": "Source population and polygon area are measurements in uncalibrated source units; envelopes are bounded aesthetic guidelines. Port is an overlay, not a mandated largest category.",
+  "cases": [
+    {
+      "label": "Batan",
+      "identity": {
+        "worldSeed": "atlas-showcase-06",
+        "structuralWorldId": "af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35",
+        "canonicalWorldSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+        "burgId": 760,
+        "parentCellId": 4354
+      },
+      "scale": {
+        "category": {
+          "value": "village",
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+        },
+        "population": {
+          "value": 0.306,
+          "kind": "source_exact",
+          "confidence": "high",
+          "provenance": "burg.population in uncalibrated source units"
+        },
+        "populationPercentile": {
+          "value": 0.001277,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Within the same canonical fixture, inclusive empirical rank"
+        },
+        "cellPolygonArea": {
+          "value": 131.436752,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Shoelace area of original cell polygon; square source-map units"
+        },
+        "aestheticEnvelope": {
+          "value": {
+            "targetCellAreaFraction": 0.02,
+            "maximumCellAreaFraction": 0.12,
+            "equivalentDiscRadiusSourceUnits": 0.914742,
+            "physicalKm": "UNCALIBRATED",
+            "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+            "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+          },
+          "kind": "inferred_visual",
+          "confidence": "low",
+          "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+        }
+      },
+      "buildingCount": 77,
+      "detailedMapAvailable": true
+    },
+    {
+      "label": "Capja",
+      "identity": {
+        "worldSeed": "atlas-showcase-06",
+        "structuralWorldId": "af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35",
+        "canonicalWorldSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+        "burgId": 297,
+        "parentCellId": 2373
+      },
+      "scale": {
+        "category": {
+          "value": "town",
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+        },
+        "population": {
+          "value": 2.004,
+          "kind": "source_exact",
+          "confidence": "high",
+          "provenance": "burg.population in uncalibrated source units"
+        },
+        "populationPercentile": {
+          "value": 0.274585,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Within the same canonical fixture, inclusive empirical rank"
+        },
+        "cellPolygonArea": {
+          "value": 142.678505,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Shoelace area of original cell polygon; square source-map units"
+        },
+        "aestheticEnvelope": {
+          "value": {
+            "targetCellAreaFraction": 0.051182,
+            "maximumCellAreaFraction": 0.12,
+            "equivalentDiscRadiusSourceUnits": 1.524625,
+            "physicalKm": "UNCALIBRATED",
+            "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+            "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+          },
+          "kind": "inferred_visual",
+          "confidence": "low",
+          "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+        }
+      },
+      "buildingCount": null,
+      "detailedMapAvailable": false
+    },
+    {
+      "label": "Albanes",
+      "identity": {
+        "worldSeed": "game-11-determinism",
+        "structuralWorldId": "c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb",
+        "canonicalWorldSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "burgId": 7,
+        "parentCellId": 917
+      },
+      "scale": {
+        "category": {
+          "value": "capital_or_major_fortified",
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+        },
+        "population": {
+          "value": 3.86,
+          "kind": "source_exact",
+          "confidence": "high",
+          "provenance": "burg.population in uncalibrated source units"
+        },
+        "populationPercentile": {
+          "value": 0.402062,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Within the same canonical fixture, inclusive empirical rank"
+        },
+        "cellPolygonArea": {
+          "value": 136.037907,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Shoelace area of original cell polygon; square source-map units"
+        },
+        "aestheticEnvelope": {
+          "value": {
+            "targetCellAreaFraction": 0.071033,
+            "maximumCellAreaFraction": 0.12,
+            "equivalentDiscRadiusSourceUnits": 1.75382,
+            "physicalKm": "UNCALIBRATED",
+            "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+            "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+          },
+          "kind": "inferred_visual",
+          "confidence": "low",
+          "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+        }
+      },
+      "buildingCount": 463,
+      "detailedMapAvailable": true
+    },
+    {
+      "label": "Thilranlena",
+      "identity": {
+        "worldSeed": "atlas-showcase-06",
+        "structuralWorldId": "af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35",
+        "canonicalWorldSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+        "burgId": 68,
+        "parentCellId": 1689
+      },
+      "scale": {
+        "category": {
+          "value": "coastal_port",
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+        },
+        "population": {
+          "value": 4.679,
+          "kind": "source_exact",
+          "confidence": "high",
+          "provenance": "burg.population in uncalibrated source units"
+        },
+        "populationPercentile": {
+          "value": 0.53129,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Within the same canonical fixture, inclusive empirical rank"
+        },
+        "cellPolygonArea": {
+          "value": 53.479037,
+          "kind": "source_derived",
+          "confidence": "high",
+          "provenance": "Shoelace area of original cell polygon; square source-map units"
+        },
+        "aestheticEnvelope": {
+          "value": {
+            "targetCellAreaFraction": 0.078207,
+            "maximumCellAreaFraction": 0.12,
+            "equivalentDiscRadiusSourceUnits": 1.153824,
+            "physicalKm": "UNCALIBRATED",
+            "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+            "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+          },
+          "kind": "inferred_visual",
+          "confidence": "low",
+          "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+        }
+      },
+      "buildingCount": 537,
+      "detailedMapAvailable": true
+    }
+  ]
+}

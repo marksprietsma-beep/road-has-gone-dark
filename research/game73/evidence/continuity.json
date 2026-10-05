@@ -1,0 +1,1425 @@
+{
+  "overlap": {
+    "left": 905.9243504213271,
+    "right": 919.3895872138095,
+    "top": 416.7590413634685,
+    "bottom": 426.8514224613654
+  },
+  "sourceUnitsOnly": true,
+  "physicalKm": "UNCALIBRATED",
+  "gridSamples": 81,
+  "dryMismatches": 0,
+  "scalarMismatches": 0,
+  "maxRoundTripError": 6.70136948722816e-7,
+  "sharedCells": [
+    {
+      "cellId": 3171,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3310,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3311,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3312,
+      "identicalPolygon": true
+    }
+  ],
+  "routes": {
+    "piecesA": 10,
+    "piecesB": 10,
+    "missing": 0,
+    "maxCoordinateDifference": 9.999999974752427e-7
+  },
+  "rivers": {
+    "piecesA": 5,
+    "piecesB": 5,
+    "missing": 0,
+    "maxCoordinateDifference": 9.999999974752427e-7
+  },
+  "decoration": {
+    "treesInOverlapA": 514,
+    "treesInOverlapB": 480,
+    "matchingCentres": 470,
+    "matchingCentresWithDifferentSourceRadii": 470,
+    "clearingsAndFieldsA": [
+      {
+        "kind": "field",
+        "centre": [
+          917.72328425,
+          421.27172
+        ],
+        "sourceRadius": 0.4400067066653824
+      },
+      {
+        "kind": "field",
+        "centre": [
+          915.5849172500001,
+          419.51578600000005
+        ],
+        "sourceRadius": 0.5332117912058697
+      },
+      {
+        "kind": "field",
+        "centre": [
+          915.9054305000001,
+          421.05330749999996
+        ],
+        "sourceRadius": 0.49586029842527923
+      },
+      {
+        "kind": "field",
+        "centre": [
+          916.791436,
+          421.513233
+        ],
+        "sourceRadius": 0.4666998531615963
+      },
+      {
+        "kind": "field",
+        "centre": [
+          916.0719412499999,
+          418.29685900000004
+        ],
+        "sourceRadius": 0.48964988696686274
+      }
+    ],
+    "clearingsAndFieldsB": [
+      {
+        "kind": "field",
+        "centre": [
+          917.9194745,
+          421.63934175
+        ],
+        "sourceRadius": 0.585507907769716
+      },
+      {
+        "kind": "field",
+        "centre": [
+          915.0739927500001,
+          419.30275574999996
+        ],
+        "sourceRadius": 0.7095344834117882
+      },
+      {
+        "kind": "field",
+        "centre": [
+          915.500484,
+          421.34870424999997
+        ],
+        "sourceRadius": 0.6598386615787459
+      },
+      {
+        "kind": "field",
+        "centre": [
+          916.67948275,
+          421.9607175
+        ],
+        "sourceRadius": 0.6210281346129269
+      }
+    ],
+    "interpretation": "Exact source coordinates and scalar tendency can agree while fixed display-unit clearings/tree sizes and per-view filtered provider decoration differ; these are illustration seams, not altered roads/coasts"
+  },
+  "samples": [
+    {
+      "worldPoint": [
+        906.672419,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 19.72662,
+        "f": 0.4168
+      },
+      "scalarB": {
+        "h": 19.72662,
+        "f": 0.4168
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 18.32576,
+        "f": 0.35541
+      },
+      "scalarB": {
+        "h": 18.32576,
+        "f": 0.35541
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 19.62532,
+        "f": 0.43577
+      },
+      "scalarB": {
+        "h": 19.62532,
+        "f": 0.43577
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.96749,
+        "f": 0.5631
+      },
+      "scalarB": {
+        "h": 21.96749,
+        "f": 0.5631
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 20.33687,
+        "f": 0.45508
+      },
+      "scalarB": {
+        "h": 20.33687,
+        "f": 0.45508
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.50159,
+        "f": 0.495
+      },
+      "scalarB": {
+        "h": 21.50159,
+        "f": 0.495
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.21835,
+        "f": 0.52929
+      },
+      "scalarB": {
+        "h": 22.21835,
+        "f": 0.52929
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        417.319729
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.08348,
+        "f": 0.61973
+      },
+      "scalarB": {
+        "h": 24.08348,
+        "f": 0.61973
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        417.319729
+      ],
+      "dryA": false,
+      "dryB": false,
+      "scalarA": {
+        "h": 23.33716,
+        "f": 0.59864
+      },
+      "scalarB": {
+        "h": 23.33716,
+        "f": 0.59864
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 20.85722,
+        "f": 0.44448
+      },
+      "scalarB": {
+        "h": 20.85722,
+        "f": 0.44448
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 20.0948,
+        "f": 0.43186
+      },
+      "scalarB": {
+        "h": 20.0948,
+        "f": 0.43186
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 20.57592,
+        "f": 0.4834
+      },
+      "scalarB": {
+        "h": 20.57592,
+        "f": 0.4834
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.92351,
+        "f": 0.57005
+      },
+      "scalarB": {
+        "h": 21.92351,
+        "f": 0.57005
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 20.23502,
+        "f": 0.45913
+      },
+      "scalarB": {
+        "h": 20.23502,
+        "f": 0.45913
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.47491,
+        "f": 0.55505
+      },
+      "scalarB": {
+        "h": 22.47491,
+        "f": 0.55505
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.40319,
+        "f": 0.56152
+      },
+      "scalarB": {
+        "h": 23.40319,
+        "f": 0.56152
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        418.441105
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.6544,
+        "f": 0.61763
+      },
+      "scalarB": {
+        "h": 24.6544,
+        "f": 0.61763
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        418.441105
+      ],
+      "dryA": false,
+      "dryB": false,
+      "scalarA": {
+        "h": 24.31483,
+        "f": 0.61439
+      },
+      "scalarB": {
+        "h": 24.31483,
+        "f": 0.61439
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.71588,
+        "f": 0.44877
+      },
+      "scalarB": {
+        "h": 21.71588,
+        "f": 0.44877
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.2891,
+        "f": 0.52588
+      },
+      "scalarB": {
+        "h": 22.2891,
+        "f": 0.52588
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.82203,
+        "f": 0.5363
+      },
+      "scalarB": {
+        "h": 21.82203,
+        "f": 0.5363
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.75259,
+        "f": 0.55519
+      },
+      "scalarB": {
+        "h": 21.75259,
+        "f": 0.55519
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.52429,
+        "f": 0.53437
+      },
+      "scalarB": {
+        "h": 21.52429,
+        "f": 0.53437
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.22154,
+        "f": 0.59415
+      },
+      "scalarB": {
+        "h": 23.22154,
+        "f": 0.59415
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.34136,
+        "f": 0.56004
+      },
+      "scalarB": {
+        "h": 23.34136,
+        "f": 0.56004
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        419.562481
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 25.16933,
+        "f": 0.63783
+      },
+      "scalarB": {
+        "h": 25.16933,
+        "f": 0.63783
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        419.562481
+      ],
+      "dryA": false,
+      "dryB": false,
+      "scalarA": {
+        "h": 25.06549,
+        "f": 0.6246
+      },
+      "scalarB": {
+        "h": 25.06549,
+        "f": 0.6246
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.72342,
+        "f": 0.46534
+      },
+      "scalarB": {
+        "h": 22.72342,
+        "f": 0.46534
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.0352,
+        "f": 0.52098
+      },
+      "scalarB": {
+        "h": 23.0352,
+        "f": 0.52098
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.12735,
+        "f": 0.51646
+      },
+      "scalarB": {
+        "h": 22.12735,
+        "f": 0.51646
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.22649,
+        "f": 0.49268
+      },
+      "scalarB": {
+        "h": 21.22649,
+        "f": 0.49268
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.55703,
+        "f": 0.52085
+      },
+      "scalarB": {
+        "h": 21.55703,
+        "f": 0.52085
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.76098,
+        "f": 0.48815
+      },
+      "scalarB": {
+        "h": 21.76098,
+        "f": 0.48815
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.83896,
+        "f": 0.55041
+      },
+      "scalarB": {
+        "h": 23.83896,
+        "f": 0.55041
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        420.683856
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.75738,
+        "f": 0.66666
+      },
+      "scalarB": {
+        "h": 26.75738,
+        "f": 0.66666
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        420.683856
+      ],
+      "dryA": false,
+      "dryB": false,
+      "scalarA": {
+        "h": 26.48642,
+        "f": 0.67683
+      },
+      "scalarB": {
+        "h": 26.48642,
+        "f": 0.67683
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 25.2292,
+        "f": 0.55471
+      },
+      "scalarB": {
+        "h": 25.2292,
+        "f": 0.55471
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.73108,
+        "f": 0.5401
+      },
+      "scalarB": {
+        "h": 23.73108,
+        "f": 0.5401
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.91809,
+        "f": 0.54262
+      },
+      "scalarB": {
+        "h": 22.91809,
+        "f": 0.54262
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.17709,
+        "f": 0.47175
+      },
+      "scalarB": {
+        "h": 21.17709,
+        "f": 0.47175
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.58896,
+        "f": 0.50116
+      },
+      "scalarB": {
+        "h": 21.58896,
+        "f": 0.50116
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 22.19415,
+        "f": 0.49743
+      },
+      "scalarB": {
+        "h": 22.19415,
+        "f": 0.49743
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.24945,
+        "f": 0.49906
+      },
+      "scalarB": {
+        "h": 23.24945,
+        "f": 0.49906
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.07817,
+        "f": 0.67472
+      },
+      "scalarB": {
+        "h": 27.07817,
+        "f": 0.67472
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        421.805232
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.62506,
+        "f": 0.66362
+      },
+      "scalarB": {
+        "h": 26.62506,
+        "f": 0.66362
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.50154,
+        "f": 0.59786
+      },
+      "scalarB": {
+        "h": 26.50154,
+        "f": 0.59786
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.67444,
+        "f": 0.66394
+      },
+      "scalarB": {
+        "h": 26.67444,
+        "f": 0.66394
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.78624,
+        "f": 0.62713
+      },
+      "scalarB": {
+        "h": 24.78624,
+        "f": 0.62713
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 21.05212,
+        "f": 0.44616
+      },
+      "scalarB": {
+        "h": 21.05212,
+        "f": 0.44616
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 19.45049,
+        "f": 0.35692
+      },
+      "scalarB": {
+        "h": 19.45049,
+        "f": 0.35692
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.57498,
+        "f": 0.60448
+      },
+      "scalarB": {
+        "h": 24.57498,
+        "f": 0.60448
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.14096,
+        "f": 0.64967
+      },
+      "scalarB": {
+        "h": 26.14096,
+        "f": 0.64967
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.46663,
+        "f": 0.63546
+      },
+      "scalarB": {
+        "h": 26.46663,
+        "f": 0.63546
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        422.926608
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 25.89198,
+        "f": 0.61033
+      },
+      "scalarB": {
+        "h": 25.89198,
+        "f": 0.61033
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.45556,
+        "f": 0.62485
+      },
+      "scalarB": {
+        "h": 27.45556,
+        "f": 0.62485
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.67536,
+        "f": 0.66179
+      },
+      "scalarB": {
+        "h": 27.67536,
+        "f": 0.66179
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.71826,
+        "f": 0.67469
+      },
+      "scalarB": {
+        "h": 26.71826,
+        "f": 0.67469
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.23285,
+        "f": 0.59279
+      },
+      "scalarB": {
+        "h": 24.23285,
+        "f": 0.59279
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.84683,
+        "f": 0.56637
+      },
+      "scalarB": {
+        "h": 23.84683,
+        "f": 0.56637
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.03685,
+        "f": 0.63412
+      },
+      "scalarB": {
+        "h": 26.03685,
+        "f": 0.63412
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.61289,
+        "f": 0.6534
+      },
+      "scalarB": {
+        "h": 26.61289,
+        "f": 0.6534
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.11818,
+        "f": 0.67587
+      },
+      "scalarB": {
+        "h": 27.11818,
+        "f": 0.67587
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        424.047983
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.72762,
+        "f": 0.65729
+      },
+      "scalarB": {
+        "h": 26.72762,
+        "f": 0.65729
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.55826,
+        "f": 0.5803
+      },
+      "scalarB": {
+        "h": 27.55826,
+        "f": 0.5803
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 28.49725,
+        "f": 0.66785
+      },
+      "scalarB": {
+        "h": 28.49725,
+        "f": 0.66785
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 28.08104,
+        "f": 0.70178
+      },
+      "scalarB": {
+        "h": 28.08104,
+        "f": 0.70178
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.44094,
+        "f": 0.65774
+      },
+      "scalarB": {
+        "h": 26.44094,
+        "f": 0.65774
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.31043,
+        "f": 0.62502
+      },
+      "scalarB": {
+        "h": 26.31043,
+        "f": 0.62502
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.30702,
+        "f": 0.65262
+      },
+      "scalarB": {
+        "h": 27.30702,
+        "f": 0.65262
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.39084,
+        "f": 0.68227
+      },
+      "scalarB": {
+        "h": 27.39084,
+        "f": 0.68227
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.79669,
+        "f": 0.65373
+      },
+      "scalarB": {
+        "h": 26.79669,
+        "f": 0.65373
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        425.169359
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 27.0412,
+        "f": 0.66593
+      },
+      "scalarB": {
+        "h": 27.0412,
+        "f": 0.66593
+      }
+    },
+    {
+      "worldPoint": [
+        906.672419,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 29.064,
+        "f": 0.62498
+      },
+      "scalarB": {
+        "h": 29.064,
+        "f": 0.62498
+      }
+    },
+    {
+      "worldPoint": [
+        908.168557,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 29.73685,
+        "f": 0.69215
+      },
+      "scalarB": {
+        "h": 29.73685,
+        "f": 0.69215
+      }
+    },
+    {
+      "worldPoint": [
+        909.664694,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 29.35425,
+        "f": 0.72535
+      },
+      "scalarB": {
+        "h": 29.35425,
+        "f": 0.72535
+      }
+    },
+    {
+      "worldPoint": [
+        911.160831,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 26.82771,
+        "f": 0.61643
+      },
+      "scalarB": {
+        "h": 26.82771,
+        "f": 0.61643
+      }
+    },
+    {
+      "worldPoint": [
+        912.656969,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 25.93943,
+        "f": 0.56254
+      },
+      "scalarB": {
+        "h": 25.93943,
+        "f": 0.56254
+      }
+    },
+    {
+      "worldPoint": [
+        914.153106,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 25.9983,
+        "f": 0.56497
+      },
+      "scalarB": {
+        "h": 25.9983,
+        "f": 0.56497
+      }
+    },
+    {
+      "worldPoint": [
+        915.649244,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.5758,
+        "f": 0.51645
+      },
+      "scalarB": {
+        "h": 24.5758,
+        "f": 0.51645
+      }
+    },
+    {
+      "worldPoint": [
+        917.145381,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 24.11216,
+        "f": 0.50544
+      },
+      "scalarB": {
+        "h": 24.11216,
+        "f": 0.50544
+      }
+    },
+    {
+      "worldPoint": [
+        918.641519,
+        426.290735
+      ],
+      "dryA": true,
+      "dryB": true,
+      "scalarA": {
+        "h": 23.53086,
+        "f": 0.46699
+      },
+      "scalarB": {
+        "h": 23.53086,
+        "f": 0.46699
+      }
+    }
+  ]
+}
