@@ -40,6 +40,12 @@ var working_label: Label
 var job_is_generation := false
 var origin_contexts := {}
 var world_status: Label
+# Isolated GAME-77 public-lore demonstration; source-backed GAME-75 facts stay separate.
+const LORE = preload("res://research/game77/src/origin_lore.gd")
+const LORE_PATH := "res://research/game77-integration/data/public-origins.json"
+const LORE_SHA := "103be0828c95a2f262dbc869c2728a55952b9a24bbe6c24e0a14f09d2a8b7530"
+var origin_lore := LORE.new()
+var local_memory: Label
 
 func _origin_context() -> OriginContext:
  var id := worlds[world_index].world_id
@@ -48,6 +54,7 @@ func _origin_context() -> OriginContext:
  return origin_contexts[id]
 
 func _ready() -> void:
+ origin_lore.load_projection(LORE_PATH, LORE_SHA)
  _reload_library()
  _build_ui()
  show_page()
@@ -193,6 +200,7 @@ func show_page() -> void:
   _show_working()
   return
  map.visible = true
+ local_memory = null
  for child in left.get_children():
   left.remove_child(child)
   child.queue_free()
@@ -288,6 +296,11 @@ func show_page() -> void:
   left.add_child(_label(str(home.get("name", "")), 20))
   left.add_child(_label("Party creation is the next step. Your origin has been saved." if page == 4 else "Establish this origin? A new independent playthrough will be saved."))
   if not message.is_empty(): left.add_child(_label(message))
+  var memory := origin_lore.get_public(world.world_id, burg_id)
+  if not memory.is_empty():
+   local_memory = _label("Local memory\n" + str(memory.text))
+   local_memory.name = "LocalMemory"
+   left.add_child(local_memory)
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
  elif page == 1: _focus_later(state_picker)

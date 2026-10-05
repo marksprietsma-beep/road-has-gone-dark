@@ -1,0 +1,39 @@
+{
+  "runtime": "v24.19.0",
+  "helper_runtime_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "worlds": [
+    {
+      "seed": "game75-context-a",
+      "sha256": "2353dffaec6745e40f00617eb5a2bb4d03fdb57a2bc80c82125d9fcfb6feff49",
+      "generator": {
+        "provider": "azgaar",
+        "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+        "version": "1.153.1"
+      },
+      "cells": 5461,
+      "settlements": 749
+    },
+    {
+      "seed": "game75-context-b",
+      "sha256": "ba50c6b69b3cbcefc18e2abac4e6355dd497e13660c9e81cae2dfff28ff658e3",
+      "generator": {
+        "provider": "azgaar",
+        "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+        "version": "1.153.1"
+      },
+      "cells": 5958,
+      "settlements": 840
+    },
+    {
+      "seed": "game75-context-c",
+      "sha256": "ac37036844fa99208530104033d6986b04c9a1bb868d4f1fab864a0c187c699c",
+      "generator": {
+        "provider": "azgaar",
+        "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+        "version": "1.153.1"
+      },
+      "cells": 6575,
+      "settlements": 950
+    }
+  ]
+}
