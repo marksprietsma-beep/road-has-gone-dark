@@ -10,7 +10,7 @@ No character creation, GAME-75 wording, Continue or gameplay was implemented.
 ## Generation and distribution
 
 The helper ships its own Node **24.19.0**, the pinned Azgaar **1.153.1** source
-(`cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6`) and 108 locked runtime packages.
+(`cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6`) and a platform-native locked dependency closure (108 packages on Linux).
 Players install no Node, npm or browser. Godot invokes an absolute bundled
 executable with argv, never a shell or PATH fallback. The helper disables fetch
 and HTTP requests, validates ASCII seeds/output paths and uses a separate supervising process to limit generation to
@@ -33,6 +33,10 @@ tradeoff for reusing the accepted generator rather than maintaining a port or
 new dynamic-module executable bundler. Windows and Linux CI build and test
 separate native packages. macOS packaging is possible but untested; no macOS
 package is claimed.
+
+Native helpers, SHA files and durable platform QA archives are attached to the
+**GAME-76 native world-generator helpers — review** draft release after both
+platform jobs succeed. This avoids relying on expiring Actions artifacts.
 
 Extract the matching review package so **worldgen-helper/** is beside the
 exported game executable, or beside project.godot for editor runs. Preserve Linux
@@ -98,8 +102,11 @@ Linux Godot **4.6.3**, actual 1280×720 OpenGL/Mesa render/input:
 [Helper evidence](helper-proof.json), [library/save/recovery proof](library-proof.json),
 [actual UI run proof](ui-proof.json), and [exact logs](logs/).
 The virtual Linux driver's unsupported VSync warning is recorded; there are no
-Godot script/runtime errors. Native Windows helper/filesystem CI results will
-be recorded separately; Linux screenshots are not claimed as Windows captures.
+Godot script/runtime errors. Native Windows helper/filesystem CI also passed on the first implementation;
+the final safeguards are rechecked on both platforms before helper publication.
+Actual platform logs/proofs accompany the native packages in the
+[GitHub draft review release](https://github.com/marksprietsma-beep/road-has-gone-dark/releases).
+The release is tagged `game76-world-library-helper-v1-review` and records its exact build SHA; Linux screenshots are not claimed as Windows captures.
 
 Run a built helper's full suite with:
 

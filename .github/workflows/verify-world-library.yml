@@ -1,4 +1,6 @@
 name: Verify World Library
+permissions:
+  contents: read
 on:
   pull_request:
     paths:
@@ -51,3 +53,40 @@ jobs:
         with:
           name: game76-helper-${{ runner.os }}
           path: ${{ runner.temp }}/review-packages
+  review-packages:
+    needs: library
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feature/game-76-world-library-v1'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: game76-*
+          path: review-artifacts
+      - name: Attach tested native helpers and durable QA to a draft review release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEW_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir review-upload
+          cp review-artifacts/game76-helper-Linux/* review-upload/
+          cp review-artifacts/game76-helper-Windows/* review-upload/
+          python - <<'PY'
+          import pathlib, zipfile
+          for platform in ['Linux', 'Windows']:
+              folder = pathlib.Path('review-artifacts') / ('game76-qa-' + platform)
+              with zipfile.ZipFile('review-upload/game76-qa-' + platform + '.zip', 'w', zipfile.ZIP_DEFLATED) as z:
+                  for path in folder.rglob('*'):
+                      if path.is_file(): z.write(path, path.relative_to(folder))
+          PY
+          release_tag=game76-world-library-helper-v1-review
+          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$release_tag" > review-release.json 2>/dev/null; then
+            python -c 'import json; assert json.load(open("review-release.json"))["draft"], "Refuse to modify a published release"'
+            release_id=$(python -c 'import json; print(json.load(open("review-release.json"))["id"])')
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f target_commitish="$REVIEW_SHA"
+          else
+            printf 'GAME-76 review helpers built and tested at %s. Extract the platform worldgen-helper folder beside the game executable or project.godot. Includes pinned runtime, generator source, dependencies, licences and checksums. QA archives contain actual platform results. This is a draft review package, not a complete game installer. No merge or acceptance.\n' "$REVIEW_SHA" > review-notes.txt
+            gh release create "$release_tag" --repo "$GITHUB_REPOSITORY" --draft --target "$REVIEW_SHA" --title 'GAME-76 native world-generator helpers — review' --notes-file review-notes.txt
+          fi
+          gh release upload "$release_tag" review-upload/* --repo "$GITHUB_REPOSITORY" --clobber
