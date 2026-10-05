@@ -1,13 +1,13 @@
 {"batch_character_contexts":2565,"fixtures":2}
-✔ hierarchical seeds: no path ambiguity, independent fields and siblings (2.17944ms)
-✔ five domains byte-repeat, order-independent record envelopes (5.904279ms)
-✔ both genuine fixtures and all eligible towns: coherence and stable source IDs (753.299065ms)
-✔ explicit negative contradictions rejected; unknown stays unknown (1.1944ms)
-✔ source visibility: hidden/removed sources blocked; dungeon only existence/provenance (39.067121ms)
-✔ knowledge projections: rumours hide verdict, secrets need exact reveal token (1.190208ms)
-✔ origin allowlist cannot leak injected secret or hidden POI names (0.600698ms)
-✔ version, tamper and immutable sidecar collision boundaries (12.198644ms)
-✔ display-name edits preserve seed paths and structured fictional facts (1.122484ms)
+✔ hierarchical seeds: no path ambiguity, independent fields and siblings (1.750523ms)
+✔ five domains byte-repeat, order-independent record envelopes (5.705356ms)
+✔ both genuine fixtures and all eligible towns: coherence and stable source IDs (705.011591ms)
+✔ explicit negative contradictions rejected; unknown stays unknown (1.901518ms)
+✔ source visibility: hidden/removed sources blocked; dungeon only existence/provenance (36.794711ms)
+✔ knowledge projections: rumours hide verdict, secrets need exact reveal token (0.91835ms)
+✔ origin allowlist cannot leak injected secret or hidden POI names (0.68589ms)
+✔ version, tamper and immutable sidecar collision boundaries (13.430619ms)
+✔ display-name edits preserve seed paths and structured fictional facts (0.642239ms)
 ℹ tests 9
 ℹ suites 0
 ℹ pass 9
@@ -15,4 +15,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 1015.803746
+ℹ duration_ms 958.154737

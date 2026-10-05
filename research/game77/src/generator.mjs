@@ -1,5 +1,5 @@
 import {ContentSeed, canonical, seal, sha} from './core.mjs';
-export const GENERATOR_VERSION = 'trhgd-staged-1';
+export const GENERATOR_VERSION = 'trhgd-staged-2';
 const idFor = (type, ctx, instance) => `${type}:${ctx.source_kind}:${ctx.source_id}:${instance}`;
 export function generate(type, ctx, {pack, digest}, {instance = '0', playthrough_id = null} = {}) {
   if (!ctx.world?.id || !Number.isInteger(ctx.source_id) || !Number.isInteger(ctx.cell_id)) throw Error('Missing immutable context');
@@ -50,6 +50,7 @@ export function validateRecord(r) {
   return true;
 }
 export function envelope(world, packInfo, records, {scope = 'world'} = {}) {
+  if (records.some(r => r.versions.generator !== GENERATOR_VERSION || r.versions.pack_sha !== packInfo.digest || r.versions.pack !== packInfo.pack.version)) throw Error('Mixed generator/content-pack versions');
   if (records.some(r => r.source.world_id !== world.id)) throw Error('Cross-world enrichment record');
   if (records.some(r => r.scope !== scope)) throw Error('Mixed world/playthrough enrichment scope');
   const sorted = [...records].sort((a,b) => (a.scope + '/' + a.id) < (b.scope + '/' + b.id) ? -1 : (a.scope + '/' + a.id) > (b.scope + '/' + b.id) ? 1 : 0);

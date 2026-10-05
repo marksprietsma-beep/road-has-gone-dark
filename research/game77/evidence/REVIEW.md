@@ -6,7 +6,7 @@ Developer-only review; rumours carry truth labels here, never in player projecti
 
 Source: Ruined Stronghold, markers:51, cell 2651.
 
-A ruined structure retains a fallen roof. Built as a garrison storehouse several generations ago, it later changed: the upper rooms were dismantled for stone.
+A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned.
 
 Structured facts and hidden/private fields: [examples.json](examples.json).
 
@@ -14,7 +14,7 @@ Structured facts and hidden/private fields: [examples.json](examples.json).
 
 Source: Maura, settlements:771, cell 1621.
 
-A local craftsperson taught apprentices from more than one household. Families set aside a place at the table for absent relatives at the year's last gathering.
+A local craftsperson taught apprentices from more than one household. Neighbours exchange small handmade tokens at the year's first gathering.
 
 Structured facts and hidden/private fields: [examples.json](examples.json).
 
@@ -22,7 +22,7 @@ Structured facts and hidden/private fields: [examples.json](examples.json).
 
 Source: Maura, settlements:771, cell 1621.
 
-From Maura, they were raised by relatives who repaired household tools. They became a woodworker apprentice, learning through practical instruction from an older craftsperson. After taking responsibility when an older worker fell ill, they chose to repay a debt of kindness. Inquisitive, they worry about promising more than they can deliver.
+From Maura, they were raised in a household that shared work with neighbours. They became a toolmaker apprentice, learning through practical instruction from an older craftsperson. After finishing a difficult repair with a neighbour, they chose to learn a craft beyond familiar work. Reserved, they worry about losing touch with home.
 
 Structured facts and hidden/private fields: [examples.json](examples.json).
 
@@ -30,7 +30,7 @@ Structured facts and hidden/private fields: [examples.json](examples.json).
 
 Source: Maura, settlements:771, cell 1621.
 
-An ordinary hand axe, serviceable, with a repaired handle. With iron head and wooden handle, it served two related households for cutting kindling and trimming repair timber; the handle was replaced while the original head was kept.
+An ordinary hand axe, sound, with a worn grip. With iron head and wooden handle, it served two related households for cutting kindling and trimming repair timber; the handle was replaced while the original head was kept.
 
 Structured facts and hidden/private fields: [examples.json](examples.json).
 

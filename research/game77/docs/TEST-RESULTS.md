@@ -35,7 +35,7 @@ hidden records, rumour verdicts or private facts. A public `underground` tag lea
 was caught and excluded with an explicit negative assertion. Starting-character
 private facts now have separate playthrough storage, never world sidecars.
 
-Observed distinct prose over 1,000 IDs: site 36, origin 9, character 387, mundane
+Observed distinct prose over 1,000 IDs: site 36, origin 9, character 399, mundane
 3, rare 3 (machine report is authoritative if pack changes). This is intentionally
 a small original proof pack: **not production-scale variety**. Histories and
 traditions are restrained local craft/family memories rather than grand legends;
@@ -73,3 +73,9 @@ checkmark after the tests completed. Source/log reads already used UTF-8; stdout
 now explicitly uses UTF-8 too (as GAME-75 already does). The failing reproduction
 and corrected CP1252-environment rerun are retained; final Windows CI must pass
 before handoff. This was a QA reporting bug, not a content/save failure.
+
+Final route-group audit: searoutes/trails were wrongly grouped as roads in trial
+v1. Corrected v2 with per-group assertions across both worlds; canonical bytes and
+GAME-75 factual renderer unchanged. Current sample/prose counts are refreshed in
+quality-audit.json after the explicit generator-version change. Historical v1
+sidecars retained, never installed or silently rewritten.

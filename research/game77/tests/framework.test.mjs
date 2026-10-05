@@ -4,7 +4,7 @@ import {readFileSync, mkdtempSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {resolve, dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {ContentSeed,loadPack,canonical,sha,writeImmutable,verify} from '../src/core.mjs';
+import {ContentSeed,loadPack,canonical,sha,writeImmutable,verify,readSidecar} from '../src/core.mjs';
 import {loadWorld,context,eligible} from '../src/context.mjs';
 import {generate,envelope,validateRecord} from '../src/generator.mjs';
 import {render,renderingArtifact} from '../src/text.mjs';
@@ -45,6 +45,7 @@ test('both genuine fixtures and all eligible towns: coherence and stable source 
    const ctx=context(world,'settlements',b.i);
    for(const n of ['0','1','2']){
     const r=generate('character',ctx,p,{playthrough_id:'batch',instance:n});
+    for(const [key,group] of [['road_ids','roads'],['trail_ids','trails'],['sea_route_ids','searoutes']]){for(const id of ctx[key].value)assert.equal(world.record('routes',id).group,group);}
     assert.equal(r.source.cell_id,b.cell);assert.equal(r.source.world_id,world.base.id);
     assert.equal(r.facts.birthplace.burg_id,b.i);validateRecord(r);
     assert.equal(render(r).includes('undefined'),false);assert.equal(render(r).includes('null'),false);
@@ -62,6 +63,7 @@ test('explicit negative contradictions rejected; unknown stays unknown',()=>{
  const opposed=make('character');opposed.facts.dominant_trait=['cowardly','fearless'];assert.throws(()=>validateRecord(opposed));
  const item=make('mundane-item');item.facts.material='paper';assert.throws(()=>validateRecord(item));
  const anchored=make('site');anchored.source.cell_id++;assert.throws(()=>validateRecord(anchored));
+ const port=context(w,'settlements',25);assert.deepEqual(port.road_ids.value,[]);assert.ok(port.sea_route_ids.value.length>0);
  assert.equal(c.coast.value,null);assert.equal(c.coast.status,'unknown');
  assert.throws(()=>generate('site',c,p));assert.throws(()=>generate('origin',site,p));
 });
@@ -94,10 +96,10 @@ test('version, tamper and immutable sidecar collision boundaries',()=>{
  const crossed=make('origin');crossed.source.world_id='other-world';assert.throws(()=>envelope(w.base,p,[crossed]));
  const newPack={pack:{...p.pack,version:'research-2'},digest:sha(canonical({...p.pack,version:'research-2'}))};
  const upgrade=envelope(w.base,newPack,[generate('origin',c,newPack)]);
- assert.notEqual(data.enrichment_sha,upgrade.enrichment_sha);assert.equal(data.base_world.id,upgrade.base_world.id);
+ assert.notEqual(data.enrichment_sha,upgrade.enrichment_sha);assert.throws(()=>envelope(w.base,p,upgrade.records));assert.throws(()=>verify(upgrade,w.base,data.enrichment_sha));assert.equal(data.base_world.id,upgrade.base_world.id);
  const beforeRender=canonical(data);const prose=renderingArtifact(data);const displayEdit=renderingArtifact(data,{rendererVersion:'future',renderRecord:r=>'Local memory: '+render(r)});assert.equal(canonical(data),beforeRender);assert.notEqual(prose.rendering_sha,displayEdit.rendering_sha);assert.equal(data.base_world.id,w.base.id);assert.equal(data.enrichment_sha,envelope(w.base,p,[make('origin')]).enrichment_sha);assert.notEqual(canonical(prose),canonical(displayEdit));
  const badVersion=structuredClone(data);badVersion.generator_version='unknown';const {enrichment_sha,...payload}=badVersion;badVersion.enrichment_sha=sha(canonical(payload));assert.throws(()=>verify(badVersion,w.base));
- const tmp=mkdtempSync(join(tmpdir(),'game77-sidecar-')),path=join(tmp,'enrichment.json');assert.throws(()=>writeImmutable(path,altered));writeImmutable(path,data);writeImmutable(path,data);assert.throws(()=>writeImmutable(path,upgrade));assert.equal(readFileSync(path,'utf8'),canonical(data)+'\n');
+ const tmp=mkdtempSync(join(tmpdir(),'game77-sidecar-')),path=join(tmp,'enrichment.json');assert.throws(()=>writeImmutable(path,altered));writeImmutable(path,data);writeImmutable(path,data);assert.throws(()=>writeImmutable(path,upgrade));assert.equal(readFileSync(path,'utf8'),canonical(data)+'\n');assert.deepEqual(readSidecar(path,w.base,data.enrichment_sha),data);assert.throws(()=>readSidecar(path,w.base,upgrade.enrichment_sha));assert.throws(()=>readSidecar(path,w.base,null));
  assert.equal(sha(readFileSync(fixture)),snapshot);
 });
 test('display-name edits preserve seed paths and structured fictional facts',()=>{

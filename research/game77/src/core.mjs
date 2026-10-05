@@ -34,10 +34,15 @@ export function loadPack(path) {
   return {pack, digest: sha(canonical(pack))};
 }
 export function seal(payload) { return {...payload, enrichment_sha: sha(canonical(payload))}; }
-export function verify(envelope, expectedWorld) {
+export function verify(envelope, expectedWorld, expectedEnrichmentSha = null) {
+  if (expectedEnrichmentSha !== null && envelope.enrichment_sha !== expectedEnrichmentSha) throw Error('Pinned enrichment reference mismatch');
   const {enrichment_sha, ...payload} = envelope;
-  if (envelope.provider !== 'trhgd-staged' || envelope.generator_version !== 'trhgd-staged-1' || !/^[0-9a-f]{64}$/.test(envelope.content_pack_sha ?? '') || !Array.isArray(envelope.records) || envelope.records.some(r => r.source?.world_id !== expectedWorld.id || r.scope !== envelope.scope) || envelope.schema_version !== 1 || envelope.base_world?.id !== expectedWorld.id || envelope.base_world?.sha256 !== expectedWorld.sha256 || sha(canonical(payload)) !== enrichment_sha) throw Error('Invalid sidecar identity or digest');
+  if (envelope.provider !== 'trhgd-staged' || !['trhgd-staged-1','trhgd-staged-2'].includes(envelope.generator_version) || !/^[0-9a-f]{64}$/.test(envelope.content_pack_sha ?? '') || !Array.isArray(envelope.records) || envelope.records.some(r => r.source?.world_id !== expectedWorld.id || r.scope !== envelope.scope || r.versions?.generator !== envelope.generator_version || r.versions?.pack_sha !== envelope.content_pack_sha || r.versions?.pack !== envelope.content_pack_version) || envelope.schema_version !== 1 || envelope.base_world?.id !== expectedWorld.id || envelope.base_world?.sha256 !== expectedWorld.sha256 || sha(canonical(payload)) !== enrichment_sha) throw Error('Invalid sidecar identity or digest');
   return envelope;
+}
+export function readSidecar(path, expectedWorld, expectedEnrichmentSha) {
+  if (!/^[0-9a-f]{64}$/.test(expectedEnrichmentSha ?? '')) throw Error('Persisted reader requires enrichment digest');
+  return verify(JSON.parse(readFileSync(path,'utf8')),expectedWorld,expectedEnrichmentSha);
 }
 export function writeImmutable(path, envelope) {
   verify(envelope, envelope.base_world);
