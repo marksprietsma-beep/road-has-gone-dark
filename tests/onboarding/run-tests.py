@@ -21,7 +21,7 @@ for key, digest in {
 run('canonical-json', ['node', '--test', 'tests/worldgen/canonical-json.test.mjs'])
 engine = os.environ.get('GODOT_BIN', 'godot')
 run('import', [engine, '--headless', '--audio-driver', 'Dummy', '--editor', '--path', '.', '--quit'])
-for name, script in [('game7', 'tests/game_world/smoke-game-world.gd'), ('game74', 'tests/onboarding/verify-origin.gd'), ('landmark-inspection', 'tests/worldgen/smoke-landmark-inspection.gd')]:
+for name, script in [('game7', 'tests/game_world/smoke-game-world.gd'), ('game74', 'tests/onboarding/verify-origin.gd'), ('reload-failure', 'tests/onboarding/verify-reload-failure.gd'), ('landmark-inspection', 'tests/worldgen/smoke-landmark-inspection.gd')]:
     run(name, [engine, '--headless', '--audio-driver', 'Dummy', '--path', '.', '--script', script])
 if args.visual:
     run('visual', [engine, '--audio-driver', 'Dummy', '--path', '.', '--script', 'tests/onboarding/capture-flow.gd'])

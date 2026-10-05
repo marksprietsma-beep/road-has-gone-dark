@@ -1,7 +1,7 @@
 extends Control
 ## Choices are previews until confirm_origin; GAME-7 owns identity and persistence.
 const TEMPLATES := ["game-11-determinism", "atlas-showcase"]
-const TITLES := ["Deterministic World", "Atlas Showcase"]
+const TITLES := ["World I", "World II"]
 const PREVIEW := preload("res://scripts/ui/origin_map_preview.gd")
 var worlds: Array[GameWorldTemplate] = []
 var previews: Array[Dictionary] = []
@@ -12,6 +12,8 @@ var province_id := -1
 var burg_id := -1
 var page := 0
 var saved_slot := ""
+# Only a slot created by this confirmation can be discarded after failed validation.
+var unvalidated_save_path := ""
 var candidates: Array[Dictionary] = []
 var title: Label
 var steps: Label
@@ -255,7 +257,7 @@ func show_page() -> void:
 func _refresh_facts() -> void:
  var world := worlds[world_index]
  if page == 0:
-  facts.text = "Seed: %s\n%d states · %d settlements" % [world.seed, states().size(), world.raw_counts().settlements - 1]
+  facts.text = "An existing world to begin your journey.\n%d states · %d settlements" % [states().size(), world.raw_counts().settlements - 1]
   map.select_area(-1, -1)
   return
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
@@ -265,7 +267,12 @@ func _refresh_facts() -> void:
  else:
   var cell := world.get_record("cell", int(home.cell))
   var biome := world.get_record("biome", int(cell.get("biome", -1)))
-  facts.text = "%s · Source size %.2f\n%s\n%s · %s" % [str(home.get("group", "Settlement")), float(home.get("population", 0)), str(biome.get("name", "Terrain unknown")), "Walls recorded" if home.get("walls", false) else "No walls recorded", "Port recorded" if int(home.get("port", 0)) > 0 else "No port recorded"]
+  facts.text = "%s\n%s\nWalls: %s · Port: %s" % [
+   str(home.get("group", "Settlement")).capitalize(),
+   str(biome.get("name", "Terrain unknown")),
+   "present" if home.get("walls", false) else "none recorded",
+   "present" if int(home.get("port", 0)) > 0 else "none recorded"
+  ]
 
 func advance() -> void:
  if page == 4:
@@ -274,6 +281,10 @@ func advance() -> void:
   if not saved_slot.is_empty():
    page = 4
   else:
+   if not _discard_unvalidated_save():
+    message = "Unable to clear the unverified save. Please retry."
+    show_page()
+    return
    var created := store.create_playthrough(worlds[world_index], state_id, burg_id, province_id)
    if not created.ok:
     message = str(created.error)
@@ -281,16 +292,34 @@ func advance() -> void:
     var slot: String = created.state.playthrough_id
     var result := store.save_new(slot, created.state, worlds[world_index])
     if result.ok:
-     saved_slot = slot
+     unvalidated_save_path = ProjectSettings.globalize_path(store.save_root.path_join(slot + ".json"))
      var reload := store.load_save(slot, worlds[world_index])
-     message = "" if reload.ok else "Saved, but reload failed: " + str(reload.error)
-     page = 4
+     if reload.ok:
+      saved_slot = slot
+      unvalidated_save_path = ""
+      message = ""
+      page = 4
+     else:
+      message = "Your origin could not be verified. Please try again."
+      if not _discard_unvalidated_save():
+       message = "Unable to clear the unverified save. Please retry."
     else: message = "Unable to save. " + str(result.error)
  elif page == 2 and burg_id <= 0: return
  else: page += 1
  show_page()
 
+func _discard_unvalidated_save() -> bool:
+ if unvalidated_save_path.is_empty(): return true
+ if FileAccess.file_exists(unvalidated_save_path):
+  if DirAccess.remove_absolute(unvalidated_save_path) != OK: return false
+ unvalidated_save_path = ""
+ return true
+
 func go_back() -> void:
+ if not _discard_unvalidated_save():
+  message = "Unable to clear the unverified save. Please retry before going Back."
+  show_page()
+  return
  if page == 0 or page == 4 or not saved_slot.is_empty():
   get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
  else:

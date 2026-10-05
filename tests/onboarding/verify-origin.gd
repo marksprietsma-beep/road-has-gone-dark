@@ -18,6 +18,8 @@ func run() -> void:
   var world: GameWorldTemplate = ui.worlds[index]
   var hash := FileAccess.get_sha256("res://tests/worldgen/fixtures/%s.json" % ui.TEMPLATES[index])
   check(world.source_sha256 == hash, "template fingerprint")
+  check(ui.options.get_item_text(index) == ["World I", "World II"][index], "neutral player world labels")
+  check(not ui.facts.text.contains(world.seed), "seed remains internal rather than primary UI wording")
   check(not ui.map.package.is_empty(), "canonical cache fingerprint accepted")
   check(ui.map.package.cell_ids.size() == ui.map.package.baked_size.x * ui.map.package.baked_size.y, "preview cell index dimensions")
   check(ui.states() == ui.states(), "deterministic states")
@@ -55,6 +57,7 @@ func run() -> void:
  ui.show_page()
  ui.advance()
  check(ui.facts.text.contains("recorded"), "factual summary formats correctly")
+ check(not ui.facts.text.contains("Source size") and ui.facts.text.contains("Walls:") and ui.facts.text.contains("Port:"), "player wording retains factual unknowns without source size")
  var selected: int = ui.burg_id
  ui.go_back()
  ui.advance()
