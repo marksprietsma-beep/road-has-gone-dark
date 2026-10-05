@@ -56,8 +56,9 @@ func select_home(ui: Control, id: int) -> void:
   if int(ui.candidates[i].id)==id: index=i
  check(index>=0,"screenshot uses real offered candidate")
  if index<0: return
- ui.options.select(index)
- ui.options.item_selected.emit(index)
+ ui.options.grab_focus()
+ var current := int(ui.options.get_selected_items()[0])
+ for i in absi(index-current): await key(KEY_DOWN if index>current else KEY_UP)
  await frames()
  check(ui.burg_id==id,"hometown selection updates source identity")
 func run() -> void:
@@ -103,6 +104,11 @@ func run() -> void:
   if not choices.has(kind): continue
   await select_home(ui,choices[kind])
   await capture(ui,"home-"+kind)
+  if kind=="sparse":
+   await click(ui.next_button)
+   await key(KEY_ESCAPE)
+   check(ui.page==2 and ui.burg_id==choices.sparse,"Back preserves selected origin")
+   check(ui.options.get_v_scroll_bar().value>0,"Back reveals selected name below the initial list viewport")
  # Full-state and province summaries, using two genuinely contrasting areas.
  for kind in ["forest","coastal_port"]:
   await select_home(ui,choices[kind])
@@ -138,15 +144,15 @@ func run() -> void:
  await click(ui.next_button)
  check(ui.page==2 and ui.burg_id>0,"generated source reaches real hometown candidates")
  await capture(ui,"generated-hometown")
- var report := {"checks":checks,"failures":failures,"runtime":Engine.get_version_info().string,"choices":choices,"screens":evidence,"genuine_ui_generation":true}
- var file := FileAccess.open("res://docs/implementation/game75/visual-proof.json",FileAccess.WRITE)
- file.store_string(JSON.stringify(report,"  ")+"\n")
- file.close()
  # Remove only this test's own template and save.
  for name in DirAccess.get_files_at(ui.store.save_root): DirAccess.remove_absolute(ProjectSettings.globalize_path(ui.store.save_root.path_join(name)))
  check(ui.library.delete_world(generated).ok,"test-only generated world cleanup")
  DirAccess.remove_absolute(ProjectSettings.globalize_path(ui.store.save_root))
  DirAccess.remove_absolute(ui.library._root())
  DirAccess.remove_absolute(ProjectSettings.globalize_path(directory))
+ var report := {"checks":checks,"failures":failures,"runtime":Engine.get_version_info().string,"choices":choices,"screens":evidence,"genuine_ui_generation":true}
+ var file := FileAccess.open("res://docs/implementation/game75/visual-proof.json",FileAccess.WRITE)
+ file.store_string(JSON.stringify(report,"  ")+"\n")
+ file.close()
  print("GAME-75 actual Godot context/input/render: %d checks, %d failures"%[checks,failures])
  quit(0 if failures==0 else 1)

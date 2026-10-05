@@ -185,8 +185,8 @@ func _concentration(state: int, province: int, facts: Dictionary) -> String:
  facts.peer_densities_source_area = samples.duplicate()
  if samples.size()<3 or facts.land_area<=0: return "Recorded settlements"
  var density: float = float(facts.town_count)/float(facts.land_area)
- if density < float(samples[samples.size()/3]): return "Scattered settlements"
- if density > float(samples[(samples.size()*2)/3]): return "Closely settled"
+ if density < float(samples[samples.size()/3]): return "Sparsely settled"
+ if density > float(samples[(samples.size()*2)/3]): return "Densely settled"
  return "Moderately settled"
 
 func region_summary(state: int, province: int = -1) -> Dictionary:
@@ -240,12 +240,12 @@ func hometown_summary(id: int) -> Dictionary:
   if float(other.population)>maxf(5.0, float(town.population)):
    larger.append(other_id)
    if bool(other.get("walls",false)): fortified.append(other_id)
- var neighbours := "No nearby towns recorded."
+ var neighbours := "No nearby towns on this landmass."
  if radius<0 or _feature(cell)<0: neighbours = "Nearby places unavailable."
  elif not fortified.is_empty(): neighbours = "Cluster; a larger walled neighbour." if nearby.size()>=3 else "Near a larger walled settlement."
  elif not larger.is_empty(): neighbours = "Cluster; larger settlements nearby." if nearby.size()>=3 else "Larger settlements nearby."
  elif nearby.size()>=3: neighbours = "Part of a close settlement cluster."
- elif nearby.size()>0: neighbours = "A few settlements nearby."
+ elif nearby.size()>0: neighbours = "A few neighbours on this landmass."
  var facts := {"burg_id":id,"cell_id":cell,"state_id":int(cells.state[cell]),"province_id":int(cells.province[cell]),"biome_id":int(cells.biome[cell]),"landscape":landscape,"water":water(cell),"walls":town.get("walls",null),"port":town.get("port",null),"river_port":river_port,"river_id":river_id if river_port else -1,"population":town.get("population",null),"road_ids":road_ids,"trail_ids":trail_ids,"nearby_ids":nearby,"nearby_distances_source_units":nearby_distances,"larger_nearby_ids":larger,"walled_larger_nearby_ids":fortified,"nearby_radius_source_units":radius}
  _cache[key] = _output([str(town.get("group","Settlement")).capitalize()+" · "+landscape+" · "+water(cell)," · ".join(tags),neighbours],tags,facts,["burg-cell-biome-v1","ocean-lake-cell-neighbours-v1","public-burg-port-walls-v1","recorded-inland-port-river-cell-v1","route-exact-point-v1","same-feature-median-nearest-radius-v1","source-population-comparison-v1"])
  return _cache[key].duplicate(true)

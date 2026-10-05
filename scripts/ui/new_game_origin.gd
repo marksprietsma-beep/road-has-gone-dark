@@ -391,7 +391,9 @@ func _input(event: InputEvent) -> void:
 
 func _focus_later(control: Control) -> void:
  await get_tree().process_frame
- if is_instance_valid(control) and control.is_inside_tree(): control.grab_focus()
+ if is_instance_valid(control) and control.is_inside_tree():
+  control.grab_focus()
+  if control is ItemList: control.ensure_current_is_visible()
 
 func _reload_library(selected_id: String = "") -> void:
  entries = library.discover()

@@ -51,8 +51,8 @@ func backed_area(raw: Dictionary, context: Dictionary) -> void:
   var peers: Array=f.peer_densities_source_area
   var density: float=f.density_source_area
   if peers.size()>=3 and f.town_count>0:
-   check((f.concentration=="Scattered settlements")== (density<float(peers[peers.size()/3])),"sparse wording follows supported peer distribution")
-   check((f.concentration=="Closely settled")== (density>float(peers[(peers.size()*2)/3])),"dense wording follows supported peer distribution")
+   check((f.concentration=="Sparsely settled")== (density<float(peers[peers.size()/3])),"sparse wording follows supported peer distribution")
+   check((f.concentration=="Densely settled")== (density>float(peers[(peers.size()*2)/3])),"dense wording follows supported peer distribution")
 func verify_negative_cases(world: GameWorldTemplate, raw: Dictionary, id: int) -> void:
  # Mutations are isolated unit-test snapshots, never screenshot/world fixtures.
  var altered := raw.duplicate(true)
@@ -134,6 +134,7 @@ func run() -> void:
       for point in route.points:
        if point.size()>=3 and int(point[2])==int(town.cell) and Vector2(float(point[0]),float(point[1])).distance_to(Vector2(float(town.x),float(town.y)))<=0.02: backed=true
      check(backed, "road/trail matches actual burg position and cell")
+    if facts.nearby_ids.is_empty(): check(context.summary.contains("on this landmass"), "negative proximity statement exposes its geographical scope")
     for other_id in facts.nearby_ids:
      check(visible.has(other_id) and other_id!=id, "nearby original public settlement exists")
      var other: Dictionary = visible[other_id]
@@ -141,7 +142,8 @@ func run() -> void:
      check(Vector2(float(other.x),float(other.y)).distance_to(Vector2(float(town.x),float(town.y)))<=facts.nearby_radius_source_units, "source-relative proximity rule")
     for other_id in facts.walled_larger_nearby_ids:
      check(facts.nearby_ids.has(other_id) and bool(visible[other_id].get("walls",false)) and float(visible[other_id].population)>maxf(5.0,float(town.population)), "larger fortified neighbour is backed")
-    contrasts["coastal" if facts.water=="Coastal" else "inland"].append(id)
+    if facts.water=="Coastal": contrasts.coastal.append(id)
+    elif facts.water=="Inland": contrasts.inland.append(id)
     contrasts["walled" if facts.walls else "unwalled"].append(id)
     contrasts["port" if int(town.get("port",0))>0 else "nonport"].append(id)
     contrasts["clustered" if facts.nearby_ids.size()>=3 else "sparse"].append(id)
