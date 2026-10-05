@@ -21,7 +21,7 @@ sentence to fit the approved 640×360 layout. No UI invents prose dynamically.
 
 `data/manifest.json` pins core source modules, projection digest and renderer
 variant. To reproduce, check out core commit
-`325799cca5d082d6c05d3c589c13c18fc91cd4e1` in a separate directory, then run:
+`c2510d864b841d01d71d6bbd52996a4a0efbd15c` in a separate directory, then run:
 
 ```
 worldgen-helper/node research/game77-integration/generate-demo.mjs /path/to/core-checkout
@@ -33,3 +33,15 @@ vendor experiment/framework or unrelated files are copied into this UI draft.
 Tests and actual screenshots under evidence demonstrate public-only payload,
 wrong identity/digest rejection, unchanged factual context, confirmation/save
 handoff, Back and missing-lore fallback. Prepared Linear update lives below.
+
+Final proof uses corrected core generator trhgd-staged-4. Source-backed roads,
+trails and sea routes are distinct; a sea route is never a road. The active
+immutable sidecars are selected by manifest.world_sidecars; initial v1 trial
+files are retained as research history, not read by the current UI/test.
+Renderer trhgd-text-2/memory-concise shortens the stored memory sentence without adding facts
+to preserve space on the approved screen. No stored fact is rewritten.
+
+Current origin state is typed event/actors/outcome/period plus structured
+tradition. Public wording is rendered by the pinned core renderer; source
+route IDs report parent-cell membership, not claimed direct entrances.
+Draft review: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/60.

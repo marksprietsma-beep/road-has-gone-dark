@@ -1,13 +1,17 @@
 {
-  "core_commit": "325799cca5d082d6c05d3c589c13c18fc91cd4e1",
-  "public_sha256": "103be0828c95a2f262dbc869c2728a55952b9a24bbe6c24e0a14f09d2a8b7530",
-  "renderer": "memory-only-1",
+  "core_commit": "c2510d864b841d01d71d6bbd52996a4a0efbd15c",
+  "public_sha256": "e5e6120cadfcfcb64dcef2032c37003e089d2a5d111ade707a8acd9bad41f154",
+  "renderer": "trhgd-text-2/memory-concise",
+  "world_sidecars": {
+    "game-11-determinism": "game-11-determinism-9f7e135cc285a2709b0238be5bfe96b9bbd7781537fafc704e91ae23faa6b932.json",
+    "atlas-showcase": "atlas-showcase-0f792c63cbe7dace68ee228c2590f9d008f96f3a5073b6018db586ef19de6d49.json"
+  },
   "source_module_sha256": {
-    "core": "39572958d58a92c5264f07d4409111ecfe1f82d408fc847f403240df922e1c07",
-    "context": "e55e799c268795899af841a7f4304a5e142113d4a18dbb2aa661a26b863af404",
-    "generator": "bd9ac00ad8603d97252301f2c930ab943144b319ed9ee28202992865ab4129be",
-    "text": "3bd4a67c3b3d719b196d35fddce11c46ae6af45958ae62b0ad41578fef7d6d1a",
-    "visibility": "6a2268d68384265b992d0c9134917b34ebe1dae401cfc5a60e11140c3566e7f3"
+    "core": "c54a31f45e1b4e391faaaf100e9b130bc8df65f4bf11c51b85e4e78d3a3fc314",
+    "context": "c83a218bde4fabcd594757ca26d5546c369a3c0b05beb8987467da2b3b8ca0e9",
+    "generator": "141ba3abc5e3f78239bd8b48d471668afb6453bd5f1c090cdf42aea55b1d40b3",
+    "text": "43c3e3d0d19e6dc638cc48bad6f06b2936ef77e7f7996078cf54329448189890",
+    "visibility": "816dc4a4a362a67ec3a6c1a9ca32c9eeb55f4cd762b8942b33666e04bebef793"
   },
   "note": "Three actual eligible preset hometowns; other towns/generated worlds deliberately have no demonstration lore."
 }

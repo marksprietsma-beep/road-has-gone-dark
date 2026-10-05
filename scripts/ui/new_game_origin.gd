@@ -43,7 +43,7 @@ var world_status: Label
 # Isolated GAME-77 public-lore demonstration; source-backed GAME-75 facts stay separate.
 const LORE = preload("res://research/game77/src/origin_lore.gd")
 const LORE_PATH := "res://research/game77-integration/data/public-origins.json"
-const LORE_SHA := "103be0828c95a2f262dbc869c2728a55952b9a24bbe6c24e0a14f09d2a8b7530"
+const LORE_SHA := "e5e6120cadfcfcb64dcef2032c37003e089d2a5d111ade707a8acd9bad41f154"
 var origin_lore := LORE.new()
 var local_memory: Label
 
