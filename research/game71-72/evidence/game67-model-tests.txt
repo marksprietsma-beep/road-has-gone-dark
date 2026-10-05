@@ -1,0 +1,29 @@
+✔ batan: original counts, all explicit bindings and interior anchors (70.307477ms)
+✔ batan: replay, seed input, rename independence, burg identity (66.574155ms)
+✔ batan: unique IDs and serialized associations/knowledge (26.560359ms)
+✔ batan: public export removes hidden facility identity, position and provider associations (50.040174ms)
+✔ batan: invalid geometry, duplicate buildings and malformed identity rejected (8.812437ms)
+✔ albanes: original counts, all explicit bindings and interior anchors (149.638249ms)
+✔ albanes: replay, seed input, rename independence, burg identity (360.832412ms)
+✔ albanes: unique IDs and serialized associations/knowledge (126.045179ms)
+✔ albanes: public export removes hidden facility identity, position and provider associations (133.319305ms)
+✔ albanes: invalid geometry, duplicate buildings and malformed identity rejected (130.524625ms)
+✔ thilranlena: original counts, all explicit bindings and interior anchors (231.751296ms)
+✔ thilranlena: replay, seed input, rename independence, burg identity (275.619534ms)
+✔ thilranlena: unique IDs and serialized associations/knowledge (75.226768ms)
+✔ thilranlena: public export removes hidden facility identity, position and provider associations (116.519041ms)
+✔ thilranlena: invalid geometry, duplicate buildings and malformed identity rejected (81.197113ms)
+✔ actual capital guildhall, no village guildhall and real harbour facilities (49.524305ms)
+✔ duplicate POIs, orphan references, invalid point and kind rejected explicitly (113.466003ms)
+✔ point-in-polygon boundary, holes, exterior; explicit-reference fallback (37.682484ms)
+✔ decluttering is deterministic, collision free, zoom-sensitive; landmark wins (15.816953ms)
+✔ committed samples reproduce exactly and carry explicit research knowledge scenario (234.155627ms)
+✔ layout upgrade changes building namespace; unsupported model versions rejected (11.865364ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2702.241874

@@ -30,12 +30,9 @@ func _draw() -> void:
 	displayed_settlements.clear()
 	if not model: return
 	for settlement in model.fixture.get("settlements", []):
-		if not settlement is Dictionary or settlement.is_empty() or bool(settlement.get("hidden", false)): continue
-		var capital := int(settlement.get("capital", 0)) == 1
-		if zoom_band == 0 and not capital and int(settlement.get("i",-1)) != selected_burg_id: continue
-		var population := float(settlement.get("population", 0.0))
-		if zoom_band == 1 and not capital and population < 4.0 and int(settlement.get("i",-1)) != selected_burg_id: continue
-		if zoom_band == 2 and not capital and population < 1.4 and int(settlement.get("i",-1)) != selected_burg_id: continue
+		if not settlement is Dictionary or not should_display(settlement): continue
+		var capital := int(settlement.get("capital",0)) == 1
+		var population := float(settlement.get("population",0))
 		var p := Vector2(float(settlement.get("x", 0)), float(settlement.get("y", 0)))
 		displayed_settlements.append(settlement)
 		var major := population >= 7.0
@@ -78,3 +75,9 @@ func _draw_missing_icon(center: Vector2) -> void:
 
 func icon_size(settlement: Dictionary) -> float:
 	return 9.0 if int(settlement.get("capital",0))==1 else (7.5 if float(settlement.get("population",0))>=7 else 6.0)
+
+func should_display(settlement: Dictionary) -> bool:
+	if settlement.is_empty() or bool(settlement.get("hidden",false)) or bool(settlement.get("removed",false)): return false
+	if int(settlement.get("capital",0))==1 or int(settlement.get("i",-1))==selected_burg_id: return true
+	var population: float = float(settlement.get("population",0))
+	return population >= (4.0 if zoom_band==1 else 1.4) if zoom_band>0 else false

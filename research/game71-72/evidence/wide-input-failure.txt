@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: FAIL actual UI map click at (1920, 1080)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://research/game71-72/tests/input-check.gd:6)
+       [1] run (res://research/game71-72/tests/input-check.gd:32)
+       [2] click_map (res://research/game71-72/tests/input-check.gd:23)
+       [3] click_root (res://research/game71-72/tests/input-check.gd:19)
+       [4] settle (res://research/game71-72/tests/input-check.gd:11)
+SCRIPT ERROR: Assertion failed: actual UI map click at (1920, 1080)
+          at: check (res://research/game71-72/tests/input-check.gd:6)
+          GDScript backtrace (most recent call first):
+              [0] check (res://research/game71-72/tests/input-check.gd:6)
+              [1] run (res://research/game71-72/tests/input-check.gd:32)
+              [2] click_map (res://research/game71-72/tests/input-check.gd:23)
+              [3] click_root (res://research/game71-72/tests/input-check.gd:19)
+              [4] settle (res://research/game71-72/tests/input-check.gd:11)
+ERROR: FAIL selected capital at (1920, 1080)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://research/game71-72/tests/input-check.gd:6)
+       [1] run (res://research/game71-72/tests/input-check.gd:33)
+       [2] click_map (res://research/game71-72/tests/input-check.gd:23)
+       [3] click_root (res://research/game71-72/tests/input-check.gd:19)
+       [4] settle (res://research/game71-72/tests/input-check.gd:11)
+SCRIPT ERROR: Assertion failed: selected capital at (1920, 1080)
+          at: check (res://research/game71-72/tests/input-check.gd:6)
+          GDScript backtrace (most recent call first):
+              [0] check (res://research/game71-72/tests/input-check.gd:6)
+              [1] run (res://research/game71-72/tests/input-check.gd:33)
+              [2] click_map (res://research/game71-72/tests/input-check.gd:23)
+              [3] click_root (res://research/game71-72/tests/input-check.gd:19)
+              [4] settle (res://research/game71-72/tests/input-check.gd:11)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketSmallE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)

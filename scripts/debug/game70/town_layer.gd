@@ -156,11 +156,6 @@ func _draw() -> void:
 		if label.is_empty(): continue
 		label.merge({"id":e.id,"selected":e.id==selected_id})
 		displayed_labels.append(label)
-		draw_style_box(_label_background(),label.rect)
+		draw_rect(label.rect,Color("#fff2d4",.92))
 		draw_string(font,label.baseline,label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,label.size,Color("#30281d"))
 	draw_set_transform_matrix(Transform2D.IDENTITY)
-
-func _label_background() -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color("#fff2d4",.92)
-	return style

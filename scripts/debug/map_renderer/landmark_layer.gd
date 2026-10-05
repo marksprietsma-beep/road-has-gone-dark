@@ -120,20 +120,9 @@ func _reserve_civilization(occupied: Dictionary) -> void:
 	var settlements_node := get_parent().get_node_or_null("Settlements")
 	if settlements_node and settlements_node.visible:
 		for settlement in model.fixture.get("settlements", []):
-			if not settlement is Dictionary or settlement.is_empty() or bool(settlement.get("hidden",false)):
-				continue
-			var capital := int(settlement.get("capital", 0)) == 1
-			var population := float(settlement.get("population", 0.0))
-			var selected: bool = int(settlement.get("i",-1)) == settlements_node.selected_burg_id
-			if zoom_band == 0 and not capital and not selected:
-				continue
-			if zoom_band == 1 and not capital and population < 4.0 and not selected:
-				continue
-			if zoom_band == 2 and not capital and population < 1.4 and not selected:
-				continue
+			if not settlement is Dictionary or not settlements_node.should_display(settlement): continue
 			var p := Vector2(float(settlement.get("x", 0.0)), float(settlement.get("y", 0.0)))
-			var major := population >= 7.0
-			var icon_size := 9.0 if capital else (7.5 if major else 6.0)
+			var icon_size: float = settlements_node.icon_size(settlement)
 			var gap := maxf(icon_size + 4.0, 16.0 / maxf(display_zoom, 0.25))
 			_stamp(occupied, Rect2(p - Vector2.ONE * gap * 0.5, Vector2.ONE * gap))
 

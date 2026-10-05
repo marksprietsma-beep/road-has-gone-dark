@@ -220,6 +220,8 @@ func select_world_burg(id: int, centre: bool = false) -> bool:
 	var b := resolve_burg(id)
 	if b.is_empty():
 		selected_burg = {}
+		world_map.set_selected_burg(-1)
+		world_map.selection.select_cell(-1)
 		_refresh()
 		return _fail("Unknown or unavailable burg ID %d in %s" % [id, world_stem])
 	selected_burg = b
@@ -361,7 +363,7 @@ func fit_map() -> void:
 	camera.position = bounds.get_center()
 	var z: float = minf(viewport.size.x / bounds.size.x,viewport.size.y / bounds.size.y)*.91
 	camera.zoom = Vector2(z,z)
-	world_map.set_zoom(z)
+	world_map.set_zoom(z/pixel_ratio)
 	camera.force_update_scroll()
 
 func _primary_action() -> void:
@@ -430,7 +432,7 @@ func _process(delta: float) -> void:
 	if camera == null: return
 	_sync_map_resolution()
 	var direction := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-	if direction != Vector2.ZERO: camera.position += direction*500*delta/camera.zoom.x
+	if direction != Vector2.ZERO: camera.position += direction*500*delta*pixel_ratio/camera.zoom.x
 
 func _sync_map_resolution() -> void:
 	if map_surface == null or map_surface.size.x < 1: return
