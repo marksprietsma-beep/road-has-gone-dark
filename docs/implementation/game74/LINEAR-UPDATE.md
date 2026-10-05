@@ -37,3 +37,30 @@ gameplay remain out of scope. Existing PRs #51–#55 remain untouched/unmerged.
 
 No authenticated Linear connector was available, so this update was prepared
 for Mark/ChatGPT rather than claiming a ticket write or acceptance.
+
+## Independent-review amendments — PR #56
+
+Reviewed the latest independent GitHub review comment (5990365042) and this
+prepared update before changes. Live Linear access remains unavailable.
+
+Fixed post-save validation: only a successful write AND immediate validated
+reload permit Origin Established. Failed reload stays on confirmation without
+a saved-state claim and discards only that newly written slot. If cleanup fails,
+its exact path remains owned and another write or Back is blocked until cleanup
+completes. GAME-7 validation and save format are unchanged.
+
+Added deliberate on-disk corruption regressions: 26 checks pass for repeated
+validation failures, no handoff/false claims, zero leftover failed slots, one
+valid retry, Back/cancel, cleanup failure blocking and cleanup recovery. The
+source/save suite now has 3,973 passing checks; actual input/render flow has 17
+passing checks. GAME-7 persistence, landmark-inspection and canonical validation
+were rerun successfully. Logs and persistence proof are refreshed.
+
+Primary UI now uses World I / World II and source-backed settlement descriptors,
+with concise Walls/Port notes. Seeds, fixture keys and immutable identities are
+unchanged internally. Layout/style remain approved and unchanged. Only six
+existing screenshots with visibly changed text were updated; menu, region and
+empty-area images were preserved. Native Windows review remains pending.
+
+Continue remains disabled. No gameplay, character creation, generation, GAME-8
+expansion or protected PR changes. PR #56 remains draft for review, not accepted.

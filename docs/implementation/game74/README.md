@@ -18,7 +18,10 @@ source lookups. The sole foundation fix also excludes source `removed` burgs.
 GamePlaythroughStore retains its unchanged state/save schema and three skeletal
 adventurers. Only confirmation creates and atomically writes a save, using the
 unique playthrough ID as slot; the new save is immediately reload-validated.
-Save failures stay on review and may be retried. Reviewing a successfully saved
+Write or immediate reload-validation failures stay on review and may be retried.
+A failed reload never sets the validated saved slot or enters the handoff. The
+newly written invalid slot is removed before retry; failed removal retains its
+exact path and blocks another write or Back until cleanup succeeds. Reviewing a successfully saved
 origin cannot create another save. Default persistence remains
 `user://game_world_saves`; tests use isolated directories and remove their saves.
 
@@ -38,9 +41,10 @@ cell IDs are explicitly binary for Windows checkout safety. Rebuild with:
 godot --headless --audio-driver Dummy --path . --script tests/onboarding/bake-previews.gd
 ```
 
-The two known templates are V1's complete catalogue. Their source seeds and
-relative Azgaar size values remain factual; size values are not people counts.
-Walls/ports are described as recorded or unrecorded, without inventing safety,
+The two known templates are V1's complete catalogue. Player labels are World I and World II; fixture keys, seeds and immutable IDs
+remain unchanged internally and in diagnostics. Hometowns show the source-backed
+settlement type and terrain rather than a raw population/size number. Walls/ports
+are described as present or none recorded, without inventing safety,
 protection, factions, road access or danger. Continue remains disabled: a
 player save browser and the next party-setup task are still required. The
 handoff offers origin review and return to menu, not fake gameplay.
@@ -55,10 +59,15 @@ Draft PRs #51–#55 remain untouched.
 Godot **4.6.3 official Linux**, Mesa llvmpipe/Xvfb; real frames and input events,
 not mocked screenshots. `logs/` contains the actual final run output.
 
-- GAME-74: **3,968 checks, zero failures**: both immutable templates, deterministic
+- GAME-74: **3,973 checks, zero failures**: both immutable templates, deterministic
   states/provinces/homes, ownership, hidden/removed exclusion, unknown facts,
   stable IDs after rename, Back/invalidation, empty area, failed write/retry,
   one save per confirmation, same-origin independent saves and valid reloads.
+- Post-write reload regression: **26 checks, zero failures**. Deliberately
+  corrupts actual written JSON and uses the unchanged GAME-7 validator to reject
+  it. Two failed attempts leave no slots or success claims; the next valid retry
+  leaves exactly one reloadable save. A simulated cleanup error blocks extra
+  writes and Back, then recovery deletes the failed slot and completes one save.
 - Real Godot UI: **17 checks, zero failures**: intro skip, menu Enter, world
   arrows, state popup keyboard selection, mouse Next/hometown selection,
   Escape/Back, confirmation, persisted handoff, review without duplicate save,
@@ -84,7 +93,9 @@ SHA256 before running the same checks.
 
 ## Actual screenshot sequence
 
-These are successive frames from one real Godot run. The 640×360 and
+The flow is exercised end-to-end in a real Godot run. This review pass refreshed
+only screenshots with changed wording (world, hometown, review, handoff and
+scaled handoff). Main-menu, region and empty-area screenshots remain unchanged. The 640×360 and
 2560×1440 shots use the same logical responsive layout, after window resizing.
 All were visually inspected; the focus-style obscuring text found during QA
 was corrected before these final captures.
@@ -120,7 +131,7 @@ was corrected before these final captures.
    `%APPDATA%/Godot/app_userdata/Road Has Gone Dark/game_world_saves`.
 7. Re-run at 640×360, 1280×720 and a larger desktop/window. Use Godot's window
    overrides or resize the game window. Verify controls, text and map placement.
-8. For an empty area, Atlas Showcase → state Ris (ID 1) → province Grorjujen (ID 5) (the
+8. For an empty area, World II → state Ris (ID 1) → province Grorjujen (ID 5) (the
    source-backed empty case shown by the automated diagnostic; inspect the
    selected names if canonical fixtures later change). Verify Back remains usable.
 9. Underlying persistence smoke can be run from PowerShell:
