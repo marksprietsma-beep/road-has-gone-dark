@@ -73,3 +73,11 @@ for(const c of cases){
  console.log('PASS context/region',c.slug,context.label,'burg',c.id,'cell',context.identity.parentCellId,'roads',context.roadApproaches.length);
 }
 await write('examples/cases.json',{schemaVersion:1,cases:results,pair,physicalKm:'UNCALIBRATED'});
+
+const scaleExamples=[];
+for(const slug of ['batan','albanes','thilranlena']){const c=JSON.parse(await readFile(`${base}/examples/${slug}.context.json`));scaleExamples.push({label:c.label,identity:c.identity,scale:c.scale,buildingCount:JSON.parse(await readFile(`${base}/examples/${slug}.town-assessment.json`)).buildingCount,detailedMapAvailable:true})}
+const atlas=worlds['atlas-showcase'],ordinary=atlas.world.settlements.filter(b=>b?.i>0&&!b.hidden&&!b.removed&&!b.port&&!b.capital&&b.group==='town').sort((a,b)=>Math.abs(a.population-1)-Math.abs(b.population-1)||a.i-b.i)[0];
+if(!ordinary)throw Error('No genuine ordinary town');
+const ordinaryContext=settlementContext(atlas.world,atlas.sidecar,atlas.fp,ordinary.i);
+await write('examples/ordinary-town.context.json',ordinaryContext);scaleExamples.splice(1,0,{label:ordinary.name,identity:ordinaryContext.identity,scale:ordinaryContext.scale,buildingCount:null,detailedMapAvailable:false});
+await write('examples/relative-scale.json',{physicalKm:'UNCALIBRATED',interpretation:'Source population and polygon area are measurements in uncalibrated source units; envelopes are bounded aesthetic guidelines. Port is an overlay, not a mandated largest category.',cases:scaleExamples});

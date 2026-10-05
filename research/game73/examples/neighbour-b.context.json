@@ -141,6 +141,28 @@
       "kind": "unknown",
       "confidence": "unavailable",
       "provenance": "No calibrated local river width"
+    },
+    "nearbyInWindow": {
+      "value": [
+        {
+          "riverId": 17,
+          "minimumDistanceSourceUnits": 3.646675,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        },
+        {
+          "riverId": 161,
+          "minimumDistanceSourceUnits": 1.290674,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        },
+        {
+          "riverId": 162,
+          "minimumDistanceSourceUnits": 1.122036,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        }
+      ],
+      "kind": "source_derived",
+      "confidence": "low",
+      "provenance": "Distance to clipped exported river-cell chains within this source window; not actual riverbanks or measured metres"
     }
   },
   "roadApproaches": [
@@ -259,6 +281,12 @@
       "fraction_of_longest_cell_extent": 0.2,
       "rule": "Square enclosing original cell bounds plus 20% longest extent on each side; shifted at world edges"
     },
+    "unpaddedCoreBounds": {
+      "left": 904.7052897628898,
+      "right": 917.5038031600077,
+      "top": 411.49320638482413,
+      "bottom": 424.2917197819419
+    },
     "visibleBurgs": [
       {
         "source_id": 569,
@@ -274,6 +302,7 @@
         ],
         "provenance": "azgaar_burg",
         "ownership": "neighbour_in_view",
+        "viewPart": "unpadded_core",
         "detailedMapAvailable": false
       },
       {
@@ -290,6 +319,7 @@
         ],
         "provenance": "azgaar_burg",
         "ownership": "neighbour_in_view",
+        "viewPart": "unpadded_core",
         "detailedMapAvailable": false
       },
       {
@@ -306,6 +336,7 @@
         ],
         "provenance": "azgaar_burg",
         "ownership": "owned",
+        "viewPart": "unpadded_core",
         "detailedMapAvailable": false
       }
     ],

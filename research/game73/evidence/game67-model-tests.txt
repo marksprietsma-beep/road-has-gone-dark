@@ -1,0 +1,29 @@
+✔ batan: original counts, all explicit bindings and interior anchors (90.300659ms)
+✔ batan: replay, seed input, rename independence, burg identity (141.862602ms)
+✔ batan: unique IDs and serialized associations/knowledge (46.632772ms)
+✔ batan: public export removes hidden facility identity, position and provider associations (42.255724ms)
+✔ batan: invalid geometry, duplicate buildings and malformed identity rejected (25.846548ms)
+✔ albanes: original counts, all explicit bindings and interior anchors (272.799246ms)
+✔ albanes: replay, seed input, rename independence, burg identity (361.495292ms)
+✔ albanes: unique IDs and serialized associations/knowledge (214.03262ms)
+✔ albanes: public export removes hidden facility identity, position and provider associations (238.274585ms)
+✔ albanes: invalid geometry, duplicate buildings and malformed identity rejected (210.971416ms)
+✔ thilranlena: original counts, all explicit bindings and interior anchors (199.202812ms)
+✔ thilranlena: replay, seed input, rename independence, burg identity (220.579082ms)
+✔ thilranlena: unique IDs and serialized associations/knowledge (75.182292ms)
+✔ thilranlena: public export removes hidden facility identity, position and provider associations (148.490795ms)
+✔ thilranlena: invalid geometry, duplicate buildings and malformed identity rejected (467.757342ms)
+✔ actual capital guildhall, no village guildhall and real harbour facilities (233.757408ms)
+✔ duplicate POIs, orphan references, invalid point and kind rejected explicitly (697.330814ms)
+✔ point-in-polygon boundary, holes, exterior; explicit-reference fallback (29.619211ms)
+✔ decluttering is deterministic, collision free, zoom-sensitive; landmark wins (32.916988ms)
+✔ committed samples reproduce exactly and carry explicit research knowledge scenario (314.313857ms)
+✔ layout upgrade changes building namespace; unsupported model versions rejected (19.495164ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4331.041263

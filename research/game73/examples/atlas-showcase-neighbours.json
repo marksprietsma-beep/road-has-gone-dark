@@ -11,6 +11,13 @@
   "pairsMutuallyVisible": 197,
   "windowsWithNeighbourBurg": 395,
   "totalWindowCount": 783,
+  "fringeCoverage": {
+    "windowsWithAddedFringeNeighbours": 308,
+    "windowsWhereFringeAddsFirstNeighbour": 257,
+    "neighbourVisibilityRecordsInCore": 154,
+    "neighbourVisibilityRecordsInFringe": 388,
+    "denominator": "All occupied-cell windows; records count each visible neighbour separately per view"
+  },
   "directRoadPairCount": 75,
   "nearestPairs": [
     {

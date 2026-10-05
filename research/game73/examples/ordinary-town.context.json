@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "settlement-context:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:burg:760:cell:4354",
-  "label": "Batan",
+  "id": "settlement-context:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:burg:297:cell:2373",
+  "label": "Capja",
   "identity": {
     "worldSeed": "atlas-showcase-06",
     "structuralWorldId": "af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35",
     "canonicalWorldSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
-    "burgId": 760,
-    "parentCellId": 4354
+    "burgId": 297,
+    "parentCellId": 2373
   },
   "position": {
     "value": [
-      848.56,
-      541.05
+      1031.7,
+      346.26
     ],
     "kind": "source_exact",
     "confidence": "high",
@@ -21,27 +21,27 @@
   "terrain": {
     "biome": {
       "value": {
-        "id": 4,
-        "name": "Grassland"
+        "id": 6,
+        "name": "Temperate deciduous forest"
       },
       "kind": "source_exact",
       "confidence": "high",
       "provenance": "cells.biome + canonical biomes"
     },
     "height": {
-      "value": 34,
+      "value": 28,
       "kind": "source_exact",
       "confidence": "high",
       "provenance": "cells.heights; source elevation index, not metres"
     },
     "broadClass": {
-      "value": "inland",
+      "value": "river_cell",
       "kind": "source_derived",
       "confidence": "high",
       "provenance": "Source shoreline flag, river ID and >=68 height heuristic; lake/ocean distinguished separately"
     },
     "surroundings": {
-      "value": "mixed open/vegetated landscape",
+      "value": "woodland-biome; local cultivated clearing permitted",
       "kind": "inferred_visual",
       "confidence": "low",
       "provenance": "Existing source-context vegetation families; not exact woodland/crop boundaries"
@@ -93,25 +93,44 @@
   },
   "river": {
     "cellRiver": {
-      "value": 0,
+      "value": 3,
       "kind": "source_exact",
       "confidence": "high",
       "provenance": "cells.river"
     },
     "orientation": {
-      "value": null,
-      "kind": "unknown",
-      "confidence": "unavailable",
-      "provenance": "No river ID in parent cell; nearby rivers may exist"
+      "value": {
+        "bearingDegrees": 43.19158,
+        "riverId": 3
+      },
+      "kind": "source_derived",
+      "confidence": "low",
+      "provenance": "Ordered source river cell centres; approximate chain axis only, not surveyed flow/meanders"
     },
     "width": {
       "value": null,
       "kind": "unknown",
       "confidence": "unavailable",
-      "provenance": "No calibrated local river width in canonical export"
+      "provenance": "No calibrated local river width"
     },
     "nearbyInWindow": {
-      "value": [],
+      "value": [
+        {
+          "riverId": 2,
+          "minimumDistanceSourceUnits": 9.263848,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        },
+        {
+          "riverId": 3,
+          "minimumDistanceSourceUnits": 0.599452,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        },
+        {
+          "riverId": 4,
+          "minimumDistanceSourceUnits": 13.479803,
+          "geometry": "APPROXIMATE_CELL_CHAIN_NOT_ACTUAL_MEANDER"
+        }
+      ],
       "kind": "source_derived",
       "confidence": "low",
       "provenance": "Distance to clipped exported river-cell chains within this source window; not actual riverbanks or measured metres"
@@ -119,27 +138,40 @@
   },
   "roadApproaches": [
     {
-      "routeId": 269,
+      "routeId": 300,
       "group": "trails",
-      "sourceSegment": 1,
+      "sourceSegment": 0,
       "worldPoint": [
-        853.424917,
-        538.746486
+        1027.415816,
+        350.86498
       ],
-      "bearingDegrees": 64.662678,
+      "bearingDegrees": 222.933182,
       "kind": "source_derived",
       "confidence": "medium",
       "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
     },
     {
-      "routeId": 269,
+      "routeId": 320,
       "group": "trails",
-      "sourceSegment": 2,
+      "sourceSegment": 1,
       "worldPoint": [
-        846.44,
-        546.785
+        1035.88902,
+        349.1125
       ],
-      "bearingDegrees": 200.287336,
+      "bearingDegrees": 124.252783,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 341,
+      "group": "trails",
+      "sourceSegment": 0,
+      "worldPoint": [
+        1036.668098,
+        341.306852
+      ],
+      "bearingDegrees": 45.086337,
       "kind": "source_derived",
       "confidence": "medium",
       "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
@@ -167,34 +199,34 @@
   },
   "scale": {
     "category": {
-      "value": "village",
+      "value": "town",
       "kind": "source_derived",
       "confidence": "high",
       "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
     },
     "population": {
-      "value": 0.306,
+      "value": 2.004,
       "kind": "source_exact",
       "confidence": "high",
       "provenance": "burg.population in uncalibrated source units"
     },
     "populationPercentile": {
-      "value": 0.001277,
+      "value": 0.274585,
       "kind": "source_derived",
       "confidence": "high",
       "provenance": "Within the same canonical fixture, inclusive empirical rank"
     },
     "cellPolygonArea": {
-      "value": 131.436752,
+      "value": 142.678505,
       "kind": "source_derived",
       "confidence": "high",
       "provenance": "Shoelace area of original cell polygon; square source-map units"
     },
     "aestheticEnvelope": {
       "value": {
-        "targetCellAreaFraction": 0.02,
+        "targetCellAreaFraction": 0.051182,
         "maximumCellAreaFraction": 0.12,
-        "equivalentDiscRadiusSourceUnits": 0.914742,
+        "equivalentDiscRadiusSourceUnits": 1.524625,
         "physicalKm": "UNCALIBRATED",
         "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
         "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
@@ -207,67 +239,93 @@
   "regional": {
     "cellPolygon": [
       [
-        844.9981928955548,
-        534.4344530840546
+        1024.6958444070674,
+        348.7131554138655
       ],
       [
-        852.3780580952715,
-        534.7255382543282
+        1030.630595230365,
+        336.27074465319606
       ],
       [
-        853.4609291265383,
-        537.0125125575414
+        1032.0435435426543,
+        336.2552663461706
       ],
       [
-        853.2861647025439,
-        545.427419572658
+        1039.3028671677837,
+        344.1849157624917
       ],
       [
-        850.9094205586129,
-        548.4371659257638
-      ],
-      [
-        843.2104511662513,
-        545.5911650344275
-      ],
-      [
-        840.8538635594729,
-        542.066926277974
+        1032.1048693972807,
+        354.5745838622289
       ]
     ],
     "window": {
-      "left": 837.355497353809,
-      "top": 531.6339105157127,
-      "right": 856.9592953322019,
-      "bottom": 551.2377084941056
+      "left": 1019.1758335261846,
+      "top": 332.59140284295887,
+      "right": 1044.8228780486663,
+      "bottom": 358.23844736544055
     },
     "fringe": {
       "fraction_of_longest_cell_extent": 0.2,
       "rule": "Square enclosing original cell bounds plus 20% longest extent on each side; shifted at world edges"
     },
     "unpaddedCoreBounds": {
-      "left": 840.156039922151,
-      "right": 854.1587527638601,
-      "top": 534.4344530840547,
-      "bottom": 548.4371659257638
+      "left": 1022.8396970293962,
+      "right": 1041.1590145454545,
+      "top": 336.2552663461705,
+      "bottom": 354.5745838622289
     },
     "visibleBurgs": [
       {
-        "source_id": 760,
-        "source_cell_id": 4354,
-        "name": "Batan",
+        "source_id": 297,
+        "source_cell_id": 2373,
+        "name": "Capja",
         "world_position": [
-          848.56,
-          541.05
+          1031.7,
+          346.26
         ],
         "local_position": [
-          571.547547,
-          480.319655
+          488.327864,
+          532.950186
         ],
         "provenance": "azgaar_burg",
         "ownership": "owned",
         "viewPart": "unpadded_core",
-        "detailedMapAvailable": true
+        "detailedMapAvailable": false
+      },
+      {
+        "source_id": 315,
+        "source_cell_id": 2482,
+        "name": "Skalluph",
+        "world_position": [
+          1044.27,
+          356.3
+        ],
+        "local_position": [
+          978.442816,
+          924.418295
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "neighbour_in_view",
+        "viewPart": "added_fringe",
+        "detailedMapAvailable": false
+      },
+      {
+        "source_id": 507,
+        "source_cell_id": 2480,
+        "name": "Nazurriz",
+        "world_position": [
+          1023.42,
+          355.16
+        ],
+        "local_position": [
+          165.483647,
+          879.968728
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "neighbour_in_view",
+        "viewPart": "added_fringe",
+        "detailedMapAvailable": false
       }
     ],
     "physicalKm": "UNCALIBRATED"

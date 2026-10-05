@@ -1,0 +1,56 @@
+{
+  "records": [
+    {
+      "entranceId": "g1",
+      "kind": "land",
+      "position": [
+        9.105936825931924,
+        -6.027136544992774
+      ],
+      "sourceRouteMatches": [
+        {
+          "id": "azgaar:54",
+          "requestedBearing": 62.7,
+          "reportedDelta": 0.3,
+          "kind": "foot"
+        }
+      ],
+      "insideFilledSyntheticWater": false
+    },
+    {
+      "entranceId": "g25",
+      "kind": "harbour",
+      "position": [
+        -25.544145322344914,
+        8.732530485153578
+      ],
+      "sourceRouteMatches": [
+        {
+          "id": "azgaar:54",
+          "requestedBearing": 249.9,
+          "reportedDelta": 3.1,
+          "kind": "foot"
+        }
+      ],
+      "insideFilledSyntheticWater": false
+    },
+    {
+      "entranceId": "g24",
+      "kind": "harbour",
+      "position": [
+        -36.34653530088822,
+        8.056457223104559
+      ],
+      "sourceRouteMatches": [
+        {
+          "id": null,
+          "requestedBearing": 260.7,
+          "reportedDelta": 0,
+          "kind": "sea"
+        }
+      ],
+      "insideFilledSyntheticWater": false
+    }
+  ],
+  "interpretation": "g25 is a harbour-tagged foot connection, but its point is not inside filled synthetic water. This is semantic ambiguity, not proof of a water-crossing contradiction."
+}
