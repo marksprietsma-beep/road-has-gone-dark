@@ -8,7 +8,7 @@ GAME-7 independent saves remain unchanged. Transactional discovery/recovery,
 rebuildable previews and conservative dependency-checked confirmed deletion
 are included; ambiguous saves block deletion and saves are never cascaded.
 
-Linux evidence: 6 genuine deterministic helper runs; 56 lifecycle checks;
+Linux evidence: 6 genuine deterministic helper runs; 57 lifecycle checks;
 3,973 GAME-74 source/save assertions; 26 forced reload-failure assertions;
 17 existing + 20 new actual Godot input/render checks; GAME-7 smoke and both
 canonical validators passed. Ten genuine screenshots, JSON evidence and logs:

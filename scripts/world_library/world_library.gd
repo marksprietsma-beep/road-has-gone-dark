@@ -290,6 +290,7 @@ func reference_status(entry: Dictionary) -> Dictionary:
  var path := ProjectSettings.globalize_path(save_root)
  if not DirAccess.dir_exists_absolute(path): return {"ok": true, "count": 0}
  var dir := DirAccess.open(path)
+ if dir != null: dir.include_hidden = true
  if dir == null or not dir.get_directories().is_empty(): return _fail("Saved game dependencies could not be checked safely.")
  var matches := {}
  for name in dir.get_files():

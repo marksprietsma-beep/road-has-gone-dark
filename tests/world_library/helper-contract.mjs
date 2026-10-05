@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {readFile, mkdir, writeFile} from 'node:fs/promises';
+import {readFile, mkdir, writeFile, mkdtemp, rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
 import {resolve, join} from 'node:path';
 import {execFileSync, spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
@@ -36,6 +37,18 @@ assert.notEqual(evidence.worlds[1].sha256,evidence.worlds[2].sha256);
 for(let i=0;i<fixtures.length;i++) assert.equal(digest(await readFile('tests/worldgen/fixtures/'+fixtures[i]+'.json')),fixtureHashes[i]);
 const bad = spawnSync(binary,[entry,'--seed','bad; shell','--output',join(out,'bad.json')],{encoding:'utf8'});
 assert.equal(bad.status,2);
+// Exercise the identical supervisor with a shortened test deadline and a stuck
+// synchronous worker. A timer inside the generator alone could never fire here.
+const probe = await mkdtemp(join(tmpdir(), 'game76-timeout-'));
+try {
+ await writeFile(join(probe,'helper-entry.mjs'), (await readFile(entry,'utf8')).replace('}, 120000);','}, 500);'));
+ await writeFile(join(probe,'offline-generate.mjs'), "console.log('WORKER_STARTED'); while(true) {}\n");
+ const result = spawnSync(binary,[join(probe,'helper-entry.mjs'),'--seed','timeout-test','--output',join(probe,'world.json')],{encoding:'utf8',timeout:5000,env:{...process.env,PATH:'',NODE_PATH:'',NODE_OPTIONS:''}});
+ assert.equal(result.status,124);
+ assert.ok(result.stdout.includes('WORKER_STARTED'));
+ assert.ok(result.stderr.includes('exceeded 120 seconds'));
+ evidence.wall_clock_timeout = true;
+} finally {await rm(probe,{recursive:true,force:true});}
 await writeFile(join(out,'helper-evidence.json'),JSON.stringify(evidence,null,2)+'\n');
 console.log('PASS: packaged offline helper, 6 genuine generations, same-seed determinism, distinct seeds, exact accepted SHA, safe argv, immutable fixtures');
 console.log(JSON.stringify(evidence));

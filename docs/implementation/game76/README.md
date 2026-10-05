@@ -13,8 +13,8 @@ The helper ships its own Node **24.19.0**, the pinned Azgaar **1.153.1** source
 (`cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6`) and 108 locked runtime packages.
 Players install no Node, npm or browser. Godot invokes an absolute bundled
 executable with argv, never a shell or PATH fallback. The helper disables fetch
-and HTTP requests, validates ASCII seeds/output paths and limits generation to
-120 seconds. The existing canonical serializer and generator are reused; the
+and HTTP requests, validates ASCII seeds/output paths and uses a separate supervising process to limit generation to
+120 seconds, including synchronous worker stalls. The existing canonical serializer and generator are reused; the
 only existing generation-tool change disables Vite HMR/watch transport.
 No generator algorithm, source fixture or research PR was modified.
 
@@ -84,10 +84,10 @@ Linux Godot **4.6.3**, actual 1280×720 OpenGL/Mesa render/input:
 
 | Check | Result |
 |---|---|
-| Packaged helper with empty PATH | Six genuine generations passed |
+| Packaged helper with empty PATH | Six genuine generations and forced stalled-worker timeout passed |
 | Same seed twice / different seeds | Byte-identical per seed / distinct worlds |
 | Accepted game-11 seed | Exact canonical SHA 2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5 |
-| Library/restart/cache/failure/deletion/save checks | 56 checks, zero failures |
+| Library/restart/cache/failure/deletion/save checks | 57 checks, zero failures |
 | GAME-7 persistence smoke | Passed |
 | GAME-74 source/save | 3,973 checks, zero failures |
 | GAME-74 post-write reload failure | 26 checks, zero failures |
