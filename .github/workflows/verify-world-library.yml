@@ -1,0 +1,102 @@
+name: Verify World Library
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths:
+      - 'scripts/ui/**'
+      - 'scripts/world_library/**'
+      - 'scripts/game_world/**'
+      - 'scripts/debug/map_renderer/**'
+      - 'tools/worldgen/**'
+      - 'vendor/azgaar/**'
+      - 'tests/world_library/**'
+      - '.github/workflows/verify-world-library.yml'
+  workflow_dispatch:
+jobs:
+  library:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked build dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Prepare verified Godot and packaged native helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Windows native generator, library and persistence regressions
+        if: runner.os == 'Windows'
+        run: python tests/world_library/run-tests.py
+      - name: Linux regressions and real input/render flow
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/world_library/run-tests.py --visual
+      - name: Upload actual QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game76-qa-${{ runner.os }}
+          path: |
+            docs/implementation/game76/logs
+            docs/implementation/game76/*-proof.json
+            docs/implementation/game76/screenshots
+      - name: Upload review helper package with licences and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: game76-helper-${{ runner.os }}
+          path: ${{ runner.temp }}/review-packages
+  review-packages:
+    needs: library
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feature/game-76-world-library-v1'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: game76-*
+          path: review-artifacts
+      - name: Attach tested native helpers and durable QA to a draft review release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEW_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir review-upload
+          cp review-artifacts/game76-helper-Linux/* review-upload/
+          cp review-artifacts/game76-helper-Windows/* review-upload/
+          python - <<'PY'
+          import pathlib, zipfile
+          for platform in ['Linux', 'Windows']:
+              folder = pathlib.Path('review-artifacts') / ('game76-qa-' + platform)
+              with zipfile.ZipFile('review-upload/game76-qa-' + platform + '.zip', 'w', zipfile.ZIP_DEFLATED) as z:
+                  for path in folder.rglob('*'):
+                      if path.is_file(): z.write(path, path.relative_to(folder))
+          PY
+          release_tag=game76-world-library-helper-v1-review
+          printf 'GAME-76 review helpers built and tested at %s. Extract the platform worldgen-helper folder beside the game executable or project.godot. Includes pinned runtime, generator source, dependencies, licences and checksums. QA archives contain actual platform results. This is a draft review package, not a complete game installer. No merge or acceptance.\n' "$REVIEW_SHA" > review-notes.txt
+          # Draft releases have no published tag ref; tag lookup returns 404.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$release_tag\")" > review-release.json
+          if [ -s review-release.json ]; then
+            python -c 'import json; assert json.load(open("review-release.json"))["draft"], "Refuse to modify a published release"'
+            release_id=$(python -c 'import json; print(json.load(open("review-release.json"))["id"])')
+          else
+            gh release create "$release_tag" --repo "$GITHUB_REPOSITORY" --draft --target "$REVIEW_SHA" --title 'GAME-76 native world-generator helpers — review' --notes-file review-notes.txt
+            release_id=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$release_tag\") | .id")
+          fi
+          # Use the immutable release ID, not GitHub's unpublished tag lookup.
+          for asset in review-upload/*; do
+            asset_name=$(basename "$asset")
+            asset_id=$(gh api "repos/$GITHUB_REPOSITORY/releases/$release_id/assets" --jq ".[] | select(.name == \"$asset_name\") | .id")
+            if [ -n "$asset_id" ]; then gh api --method DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$asset_id"; fi
+            gh api --method POST "https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$release_id/assets?name=$asset_name" -H 'Content-Type: application/octet-stream' --input "$asset"
+          done
+          # Advance the build reference only after all matching assets exist.
+          gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$release_id" -f tag_name="$release_tag" -f target_commitish="$REVIEW_SHA" -F body=@review-notes.txt
