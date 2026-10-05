@@ -1,0 +1,53 @@
+{
+  "overlap": {
+    "left": 905.9243504213271,
+    "right": 919.3895872138095,
+    "top": 416.7590413634685,
+    "bottom": 426.8514224613654
+  },
+  "sourceUnitsOnly": true,
+  "physicalKm": "UNCALIBRATED",
+  "gridSamples": 81,
+  "dryMismatches": 0,
+  "scalarMismatches": 0,
+  "maxRoundTripError": 6.70136948722816e-7,
+  "sharedCells": [
+    {
+      "cellId": 3171,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3310,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3311,
+      "identicalPolygon": true
+    },
+    {
+      "cellId": 3312,
+      "identicalPolygon": true
+    }
+  ],
+  "routes": {
+    "piecesA": 10,
+    "piecesB": 10,
+    "missing": 0,
+    "maxCoordinateDifference": 9.999999974752427e-7
+  },
+  "rivers": {
+    "piecesA": 5,
+    "piecesB": 5,
+    "missing": 0,
+    "maxCoordinateDifference": 9.999999974752427e-7
+  },
+  "decoration": {
+    "treesInOverlapA": 514,
+    "treesInOverlapB": 480,
+    "matchingCentres": 470,
+    "matchingCentresWithDifferentSourceRadii": 470,
+    "clearingsAndFieldsA": 5,
+    "clearingsAndFieldsB": 4,
+    "interpretation": "Exact source coordinates and scalar tendency can agree while fixed display-unit clearings/tree sizes and per-view filtered provider decoration differ; these are illustration seams, not altered roads/coasts"
+  }
+}

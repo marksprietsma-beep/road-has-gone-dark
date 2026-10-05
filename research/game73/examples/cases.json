@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "slug": "albanes",
+      "stem": "game-11-determinism",
+      "id": 7,
+      "label": "Albanes",
+      "cellId": 917,
+      "contextId": "settlement-context:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:burg:7:cell:917",
+      "canonicalSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "regionSha256": "39df64b70efd2a1833b9f91be2c377c0d2f0e28bc60b781a5395525a9cf6b24a",
+      "townAvailable": true
+    },
+    {
+      "slug": "batan",
+      "stem": "atlas-showcase",
+      "id": 760,
+      "label": "Batan",
+      "cellId": 4354,
+      "contextId": "settlement-context:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:burg:760:cell:4354",
+      "canonicalSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "regionSha256": "e544d3e644b84b1e5fe1d8717e688f1f4f50e6453b4cfd0d7c51a6a9a3b6428a",
+      "townAvailable": true
+    },
+    {
+      "slug": "thilranlena",
+      "stem": "atlas-showcase",
+      "id": 68,
+      "label": "Thilranlena",
+      "cellId": 1689,
+      "contextId": "settlement-context:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:burg:68:cell:1689",
+      "canonicalSha256": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "regionSha256": "0f6ffd0c3753d239bd5009ba0952a9ff78a16e20062a55a94f73c94143ef657a",
+      "townAvailable": true
+    },
+    {
+      "slug": "neighbour-a",
+      "stem": "game-11-determinism",
+      "id": 569,
+      "label": "Colira",
+      "cellId": 3311,
+      "contextId": "settlement-context:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:burg:569:cell:3311",
+      "canonicalSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "regionSha256": "1b892641179481ef4abd6f0fea2ff350b12fbea8da19c725a8825a6de4d94330",
+      "townAvailable": false
+    },
+    {
+      "slug": "neighbour-b",
+      "stem": "game-11-determinism",
+      "id": 774,
+      "label": "Riveivalfei",
+      "cellId": 3171,
+      "contextId": "settlement-context:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:burg:774:cell:3171",
+      "canonicalSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "regionSha256": "47515514fb30b7508a3d45a2b6a9bd2584558cc83cc079fb124586feb0d9993a",
+      "townAvailable": false
+    }
+  ],
+  "pair": {
+    "burgIds": [
+      569,
+      774
+    ],
+    "names": [
+      "Colira",
+      "Riveivalfei"
+    ],
+    "cellIds": [
+      3311,
+      3171
+    ],
+    "sameCell": false,
+    "adjacent": true,
+    "sourceDistance": 2.9200171232374807,
+    "physicalKm": "UNCALIBRATED",
+    "relativeToSmallerWindow": 0.2168559801984113,
+    "aSeesB": true,
+    "bSeesA": true,
+    "directRoadSegments": [
+      {
+        "routeId": 12,
+        "sourceSegment": 12,
+        "points": [
+          [
+            917.12,
+            417.24,
+            3171
+          ],
+          [
+            917.13,
+            420.16,
+            3311
+          ]
+        ]
+      }
+    ]
+  },
+  "physicalKm": "UNCALIBRATED"
+}

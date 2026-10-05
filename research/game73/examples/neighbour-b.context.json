@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "id": "settlement-context:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:burg:774:cell:3171",
+  "label": "Riveivalfei",
+  "identity": {
+    "worldSeed": "game-11-determinism",
+    "structuralWorldId": "c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb",
+    "canonicalWorldSha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+    "burgId": 774,
+    "parentCellId": 3171
+  },
+  "position": {
+    "value": [
+      917.12,
+      417.24
+    ],
+    "kind": "source_exact",
+    "confidence": "high",
+    "provenance": "burg.x/y; canonical source map coordinates, x-right/y-down"
+  },
+  "terrain": {
+    "biome": {
+      "value": {
+        "id": 7,
+        "name": "Tropical rainforest"
+      },
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.biome + canonical biomes"
+    },
+    "height": {
+      "value": 22,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.heights; source elevation index, not metres"
+    },
+    "broadClass": {
+      "value": "shoreline",
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Source shoreline flag, river ID and >=68 height heuristic; lake/ocean distinguished separately"
+    },
+    "surroundings": {
+      "value": "woodland-biome; local cultivated clearing permitted",
+      "kind": "inferred_visual",
+      "confidence": "low",
+      "provenance": "Existing source-context vegetation families; not exact woodland/crop boundaries"
+    }
+  },
+  "water": {
+    "shorelineEdges": {
+      "value": [
+        {
+          "wetCellId": 3312,
+          "vertexIds": [
+            3971,
+            4052
+          ],
+          "points": [
+            [
+              917.5038031600076,
+              414.52317701109257
+            ],
+            [
+              917.3596725918202,
+              419.86448630296974
+            ]
+          ],
+          "featureId": 1
+        }
+      ],
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "Shared original pack.cells.v edges with neighbouring wet cells"
+    },
+    "wetNeighbourIds": {
+      "value": [
+        3312
+      ],
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.neighbors/heights"
+    },
+    "waterFeatureTypes": {
+      "value": [
+        {
+          "id": 1,
+          "type": "ocean"
+        }
+      ],
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Wet cells.features matched to map.geography; missing feature records stay null"
+    },
+    "orientation": {
+      "value": {
+        "bearingDegrees": 101.175908,
+        "cardinal": "E"
+      },
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Mean unit vectors from original burg position toward actual wet neighbour centres; broad water side, not shoreline shape"
+    },
+    "cellCentreOrientation": {
+      "value": 91.545701,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Parent-cell-centre bearing to wet neighbour centres; contrast with original burg anchor"
+    },
+    "shorelineLand": {
+      "value": true,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.terrain === 1"
+    },
+    "portFlag": {
+      "value": 1,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.port requests maritime significance; does not imply a metric harbour"
+    }
+  },
+  "river": {
+    "cellRiver": {
+      "value": 162,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "cells.river"
+    },
+    "orientation": {
+      "value": {
+        "bearingDegrees": 76.941966,
+        "riverId": 162
+      },
+      "kind": "source_derived",
+      "confidence": "low",
+      "provenance": "Ordered source river cell centres; approximate chain axis only, not surveyed flow/meanders"
+    },
+    "width": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No calibrated local river width"
+    }
+  },
+  "roadApproaches": [
+    {
+      "routeId": 12,
+      "group": "roads",
+      "sourceSegment": 12,
+      "worldPoint": [
+        917.129105,
+        419.898594
+      ],
+      "bearingDegrees": 179.803777,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 12,
+      "group": "roads",
+      "sourceSegment": 11,
+      "worldPoint": [
+        913.965933,
+        415.092253
+      ],
+      "bearingDegrees": 304.252721,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    }
+  ],
+  "fortifications": {
+    "walls": {
+      "value": 0,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.walls"
+    },
+    "citadel": {
+      "value": 0,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.citadel"
+    },
+    "capital": {
+      "value": 0,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.capital"
+    }
+  },
+  "scale": {
+    "category": {
+      "value": "coastal_port",
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "burg.capital/port/group; port is a character overlay, not a mandatory size rank"
+    },
+    "population": {
+      "value": 7.962,
+      "kind": "source_exact",
+      "confidence": "high",
+      "provenance": "burg.population in uncalibrated source units"
+    },
+    "populationPercentile": {
+      "value": 0.720504,
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Within the same canonical fixture, inclusive empirical rank"
+    },
+    "cellPolygonArea": {
+      "value": 58.375853,
+      "kind": "source_derived",
+      "confidence": "high",
+      "provenance": "Shoelace area of original cell polygon; square source-map units"
+    },
+    "aestheticEnvelope": {
+      "value": {
+        "targetCellAreaFraction": 0.102019,
+        "maximumCellAreaFraction": 0.12,
+        "equivalentDiscRadiusSourceUnits": 1.376836,
+        "physicalKm": "UNCALIBRATED",
+        "rule": "0.02*sqrt(population/0.306), bounded 0.008..0.12; hypothesis, not demographic law",
+        "placement": "Do not cross source wet masks or overlap nearby burg envelopes; reduce/clip if the cell cannot contain it"
+      },
+      "kind": "inferred_visual",
+      "confidence": "low",
+      "provenance": "Research-only comparative envelope; not measured town land or a provider conversion"
+    }
+  },
+  "regional": {
+    "cellPolygon": [
+      [
+        904.7052897628898,
+        416.58185261566854
+      ],
+      [
+        917.5038031600076,
+        414.52317701109257
+      ],
+      [
+        917.3596725918202,
+        419.86448630296974
+      ],
+      [
+        907.9141757075852,
+        421.26174915567344
+      ]
+    ],
+    "window": {
+      "left": 902.1455870834664,
+      "top": 408.9335037054006,
+      "right": 920.0635058394312,
+      "bottom": 426.8514224613654
+    },
+    "fringe": {
+      "fraction_of_longest_cell_extent": 0.2,
+      "rule": "Square enclosing original cell bounds plus 20% longest extent on each side; shifted at world edges"
+    },
+    "visibleBurgs": [
+      {
+        "source_id": 569,
+        "source_cell_id": 3311,
+        "name": "Colira",
+        "world_position": [
+          917.13,
+          420.16
+        ],
+        "local_position": [
+          836.280883,
+          626.551356
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "neighbour_in_view",
+        "detailedMapAvailable": false
+      },
+      {
+        "source_id": 731,
+        "source_cell_id": 3170,
+        "name": "Mouroga",
+        "world_position": [
+          910.35,
+          412.63
+        ],
+        "local_position": [
+          457.888722,
+          206.301655
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "neighbour_in_view",
+        "detailedMapAvailable": false
+      },
+      {
+        "source_id": 774,
+        "source_cell_id": 3171,
+        "name": "Riveivalfei",
+        "world_position": [
+          917.12,
+          417.24
+        ],
+        "local_position": [
+          835.722782,
+          463.586001
+        ],
+        "provenance": "azgaar_burg",
+        "ownership": "owned",
+        "detailedMapAvailable": false
+      }
+    ],
+    "physicalKm": "UNCALIBRATED"
+  },
+  "unsupported": {
+    "gatePositions": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No source town gates"
+    },
+    "coastToTownTransform": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No world-to-provider scale calibration"
+    },
+    "localFarmBoundaries": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "Provider artistic detail; not canonical"
+    },
+    "travelTimes": {
+      "value": null,
+      "kind": "unknown",
+      "confidence": "unavailable",
+      "provenance": "No travel/movement research authorised"
+    }
+  }
+}

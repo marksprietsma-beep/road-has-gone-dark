@@ -1,0 +1,127 @@
+{
+  "buildingCount": 77,
+  "providerUnits": "metres",
+  "frame": {
+    "max_x": 235.61677312045367,
+    "max_y": 285.4949915792308,
+    "min_x": -270.8982089628628,
+    "min_y": -273.8992548984095
+  },
+  "scaleEvidence": {
+    "diameter_local": 519.3942464776403,
+    "diameter_meters": 519.3942464776403,
+    "meters_per_unit": 1,
+    "source": "village_metres"
+  },
+  "footprintWorldTransform": null,
+  "physicalKm": "UNCALIBRATED",
+  "entrances": [],
+  "streetApproaches": [
+    {
+      "id": "trunk-trail-azgaar:269",
+      "routeIds": [
+        "azgaar:269"
+      ],
+      "ends": [
+        [
+          51.30667362376462,
+          -21.704582263118432
+        ],
+        [
+          136.22382604898596,
+          -64.50130847063308
+        ]
+      ],
+      "bearingDegrees": 64.662676
+    },
+    {
+      "id": "trunk-trail-azgaar:269~2",
+      "routeIds": [
+        "azgaar:269"
+      ],
+      "ends": [
+        [
+          -20.50991092432016,
+          65.20750546387913
+        ],
+        [
+          -52.25985220025327,
+          141.37276055116075
+        ]
+      ],
+      "bearingDegrees": 200.287336
+    },
+    {
+      "id": "trunk-trail-azgaar:269/a",
+      "routeIds": [
+        "azgaar:269"
+      ],
+      "ends": [
+        [
+          136.22382604898596,
+          -64.50130847063308
+        ],
+        [
+          235.61677312045367,
+          -102.90463025553825
+        ]
+      ],
+      "bearingDegrees": 66.406904
+    },
+    {
+      "id": "trunk-trail-azgaar:269~2/a",
+      "routeIds": [
+        "azgaar:269"
+      ],
+      "ends": [
+        [
+          -52.25985220025327,
+          141.37276055116075
+        ],
+        [
+          -112.39043451437509,
+          285.4949915792308
+        ]
+      ],
+      "bearingDegrees": 201.488006
+    }
+  ],
+  "waterOrientation": null,
+  "sourceRoadApproaches": [
+    {
+      "routeId": 269,
+      "group": "trails",
+      "sourceSegment": 1,
+      "worldPoint": [
+        853.424917,
+        538.746486
+      ],
+      "bearingDegrees": 64.662678,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    },
+    {
+      "routeId": 269,
+      "group": "trails",
+      "sourceSegment": 2,
+      "worldPoint": [
+        846.44,
+        546.785
+      ],
+      "bearingDegrees": 200.287336,
+      "kind": "source_derived",
+      "confidence": "medium",
+      "provenance": "Exact original route/cell-boundary intersection; bearing from burg is a broad approach, not a town gate"
+    }
+  ],
+  "sourceWater": {
+    "value": null,
+    "kind": "unknown",
+    "confidence": "unavailable",
+    "provenance": "No unambiguous adjacent-water direction"
+  },
+  "artSha256": "92a0f580ce0c1095bb87c0b25c5e637ba1ecdb38dbc3a80ae5bf78db6dca26ef",
+  "originalArtSha256": "310247e63db0a60e143fd03e2131c65fc5d99f1eb63c725aaa0ec445ff0ab168",
+  "providerRevision": "d5cf3590cf59e1d382110d25a6910f12507299e2"
+}
