@@ -106,7 +106,7 @@ Godot script/runtime errors. Native Windows helper/filesystem CI passed all 57 l
 packaged generator/timeout and GAME-7/74 regressions. Linux CI additionally
 passed both real input/render flows. Atlas and GAME-62 CI also passed.
 Actual platform logs/proofs accompany the native packages in the
-[GitHub draft review release](https://github.com/marksprietsma-beep/road-has-gone-dark/releases/tag/untagged-6b0c5f8f617fc4d997d4).
+[GitHub draft review release](https://github.com/marksprietsma-beep/road-has-gone-dark/releases).
 The release is tagged `game76-world-library-helper-v1-review` and records its exact build SHA; Linux screenshots are not claimed as Windows captures.
 
 Run a built helper's full suite with:
