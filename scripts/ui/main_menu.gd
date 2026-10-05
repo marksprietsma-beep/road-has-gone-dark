@@ -1,7 +1,7 @@
 class_name MainMenu
 extends Control
 
-const NEW_GAME_SCENE := "res://scenes/world/new_game_placeholder.tscn"
+const NEW_GAME_SCENE := "res://scenes/ui/new_game_origin.tscn"
 const SETTINGS_SCENE := "res://scenes/ui/settings_menu.tscn"
 
 @export_range(0.0, 2.0, 0.05) var fade_duration := 0.45

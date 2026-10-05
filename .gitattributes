@@ -1,2 +1,5 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# Packed atlas cell IDs must retain every byte on Windows and Linux.
+assets/onboarding/*.cells binary
