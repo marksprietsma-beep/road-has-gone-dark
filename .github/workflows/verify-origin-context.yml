@@ -1,0 +1,49 @@
+name: Verify Origin Context
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths:
+      - 'scripts/origin_context/**'
+      - 'scripts/ui/**'
+      - 'scripts/game_world/**'
+      - 'scripts/world_library/**'
+      - 'tests/origin_context/**'
+      - 'tests/onboarding/**'
+      - '.github/workflows/verify-origin-context.yml'
+  workflow_dispatch:
+jobs:
+  context:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked helper build dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Prepare verified Godot 4.6.3 and native offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Windows native context and persistence regressions
+        if: runner.os == 'Windows'
+        run: python tests/origin_context/run-tests.py --regressions
+      - name: Linux source claims, regressions and actual Godot rendering
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/origin_context/run-tests.py --visual --regressions
+      - name: Upload executed platform evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game75-qa-${{ runner.os }}
+          path: |
+            docs/implementation/game75/logs
+            docs/implementation/game75/*-proof.json
+            docs/implementation/game75/screenshots

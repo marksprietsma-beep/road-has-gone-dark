@@ -45,3 +45,15 @@ Capture real Godot screens, inspect them, run GAME-7/74/76 and renderer regressi
 No generator, deletion, canonical fixture, save schema, gameplay, Party Creation,
 Continue, GAME-8 expansion or authored lore changes. Prepare Linear update if
 no authenticated Linear tools are available.
+
+## Implementation audit refinements
+
+The pinned burg generator explicitly promotes inland navigable-river ports.
+A port feature ID can also identify a downstream ocean from a lake outlet.
+Therefore port is never a coastline test. River-port wording additionally
+requires an inland recorded port, a positive cell river ID and matching river
+cells. Ordinary river proximity remains omitted.
+
+Larger nearby settlements must exceed both the selected population and GAME-7's
+existing small-hometown ceiling of 5; tiny differences among small homes do not
+produce a “larger settlement” claim. Neighbour distances remain uncalibrated.
