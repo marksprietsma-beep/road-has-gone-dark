@@ -3,6 +3,7 @@
 import argparse, hashlib, os, pathlib, subprocess, sys
 root = pathlib.Path(__file__).resolve().parents[3]
 os.chdir(root)
+sys.stdout.reconfigure(encoding='utf-8')
 p = argparse.ArgumentParser()
 p.add_argument('--visual', action='store_true')
 p.add_argument('--helper-contract', action='store_true')

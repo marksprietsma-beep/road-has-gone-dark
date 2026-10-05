@@ -1,3 +1,77 @@
+{"batch_character_contexts":2565,"fixtures":2}
+✔ hierarchical seeds: no path ambiguity, independent fields and siblings (2.17944ms)
+✔ five domains byte-repeat, order-independent record envelopes (5.904279ms)
+✔ both genuine fixtures and all eligible towns: coherence and stable source IDs (753.299065ms)
+✔ explicit negative contradictions rejected; unknown stays unknown (1.1944ms)
+✔ source visibility: hidden/removed sources blocked; dungeon only existence/provenance (39.067121ms)
+✔ knowledge projections: rumours hide verdict, secrets need exact reveal token (1.190208ms)
+✔ origin allowlist cannot leak injected secret or hidden POI names (0.600698ms)
+✔ version, tamper and immutable sidecar collision boundaries (12.198644ms)
+✔ display-name edits preserve seed paths and structured fictional facts (1.122484ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1015.803746
+{
+  "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+  "burg_id": 771,
+  "marker_id": 51,
+  "enrichment_sha": "987011c5b7f89a2cc298b0d963bb3cc50b5c8b362a1c3287e29e8f0a49a1fd0f",
+  "sidecar": "enrichment/v1/733f665ced3a53d289b897815dfed379203573eea23a9d5bc5a08ea7ad68a9eb/987011c5b7f89a2cc298b0d963bb3cc50b5c8b362a1c3287e29e8f0a49a1fd0f.json",
+  "records": 5,
+  "base_unchanged": true
+}
+{
+  "site": {
+    "iterations": 1000,
+    "distinct_facts": 36,
+    "distinct_prose": 36,
+    "bad_token_matches": 0
+  },
+  "origin": {
+    "iterations": 1000,
+    "distinct_facts": 9,
+    "distinct_prose": 9,
+    "bad_token_matches": 0
+  },
+  "character": {
+    "iterations": 1000,
+    "distinct_facts": 403,
+    "distinct_prose": 403,
+    "bad_token_matches": 0
+  },
+  "mundane-item": {
+    "iterations": 1000,
+    "distinct_facts": 3,
+    "distinct_prose": 3,
+    "bad_token_matches": 0
+  },
+  "rare-item": {
+    "iterations": 1000,
+    "distinct_facts": 3,
+    "distinct_prose": 3,
+    "bad_token_matches": 0
+  }
+}
+✔ replaces only unpaired UTF-16 surrogates (0.817617ms)
+✔ preserves valid Unicode including astral characters (0.234439ms)
+✔ sanitizes nested values and keys while sorting object keys (0.97676ms)
+✔ rejects object-key collisions caused by sanitization (2.361744ms)
+✔ reports the first malformed UTF-16 offset (4.52425ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237.775367
+validated tests/worldgen/fixtures/game-11-determinism.json
+validated tests/worldgen/fixtures/atlas-showcase.json
 Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
 
 [   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
@@ -56,3 +130,16 @@ Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
 [  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
 [92m[ DONE ][39m [1mloading_editor_layout[22m
 [0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: GAME-77 origin adapter 11 checks
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: GAME-7 independent world/save IDs, origin, 3-member party, knowledge, mismatches and immutable fixtures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-74: 3973 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-74 post-write reload regression: 26 checks, 0 failures
+PASS: GAME-77 requested QA; fixture bytes unchanged; no Godot errors

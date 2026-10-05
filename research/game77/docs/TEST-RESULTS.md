@@ -64,3 +64,12 @@ historic GAME-74/76 evidence during execution; those tracked files are restored,
 and this run's logs/proofs are preserved under GAME-77.
 
 Research `.mjs` module bytes (not a binary/heap measurement): 17997; zero external npm dependencies.
+
+## Windows runner correction
+
+The first native Windows run failed in the new Python QA wrapper. A local
+CP1252 stdout reproduction raised UnicodeEncodeError on Node's U+2714 test
+checkmark after the tests completed. Source/log reads already used UTF-8; stdout
+now explicitly uses UTF-8 too (as GAME-75 already does). The failing reproduction
+and corrected CP1252-environment rerun are retained; final Windows CI must pass
+before handoff. This was a QA reporting bug, not a content/save failure.
