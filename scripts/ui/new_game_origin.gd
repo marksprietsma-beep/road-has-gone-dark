@@ -61,6 +61,7 @@ func _build_ui() -> void:
  style.set_border_width_all(1)
  var focus := style.duplicate()
  focus.border_color = Color("ffdc81")
+ focus.draw_center = false
  theme.set_stylebox("panel", "ItemList", style)
  theme.set_stylebox("focus", "ItemList", focus)
  var selected := StyleBoxFlat.new()
@@ -69,8 +70,13 @@ func _build_ui() -> void:
  theme.set_stylebox("selected_focus", "ItemList", selected)
  theme.set_color("font_color", "ItemList", Color("d9bd7d"))
  theme.set_color("font_selected_color", "ItemList", Color("ffe29b"))
+ theme.set_stylebox("hover", "Button", selected)
+ theme.set_stylebox("pressed", "Button", selected)
+ theme.set_stylebox("disabled", "Button", style)
  theme.set_stylebox("normal", "Button", style)
  theme.set_stylebox("focus", "Button", focus)
+ theme.set_stylebox("hover", "OptionButton", selected)
+ theme.set_stylebox("pressed", "OptionButton", selected)
  theme.set_stylebox("normal", "OptionButton", style)
  theme.set_stylebox("focus", "OptionButton", focus)
  var background := ColorRect.new()
@@ -171,7 +177,7 @@ func show_page() -> void:
  title.text = ["Choose your world", "Choose your region", "Choose your hometown", "Review your origin", "Origin established"][page]
  steps.text = "%d / 4   WORLD  >  REGION  >  HOMETOWN  >  CONFIRM" % (page + 1) if page < 4 else "PARTY CREATION NEXT"
  back_button.text = "Main menu" if page == 0 or page == 4 else "Back"
- next_button.text = "Confirm origin" if page == 3 else ("Review origin" if page == 4 else "Next")
+ next_button.text = ("Return to handoff" if not saved_slot.is_empty() else "Confirm origin") if page == 3 else ("Review origin" if page == 4 else "Next")
  next_button.disabled = false
  if page == 0:
   left.add_child(_label("Begin with an existing world."))
@@ -241,6 +247,7 @@ func show_page() -> void:
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
  elif page == 1: _focus_later(state_picker)
+ elif next_button.disabled: _focus_later(back_button)
  else: _focus_later(next_button)
 
 func _refresh_facts() -> void:
@@ -259,7 +266,7 @@ Select from the lists; no map clicks required." % world.home_candidates(state_id
   var cell := world.get_record("cell", int(home.cell))
   var biome := world.get_record("biome", int(cell.get("biome", -1)))
   facts.text = "%s · Azgaar size %.2f
-%s · %s" % [str(home.get("group", "Settlement")), float(home.get("population", 0)), str(biome.get("name", "Terrain unknown")), "Walls present" if home.get("walls", false) else "Walls not recorded"]
+%s · %s" % [str(home.get("group", "Settlement")), float(home.get("population", 0)), str(biome.get("name", "Terrain unknown")), "Walls recorded" if home.get("walls", false) else "No walls recorded", "Port recorded" if int(home.get("port", 0)) > 0 else "No port recorded"]
 
 func advance() -> void:
  if page == 4:
