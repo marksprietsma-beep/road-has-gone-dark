@@ -99,14 +99,16 @@ is needed. Do not automatically implement any of these production changes here.
 
 Final source audit found that version 1's research context incorrectly combined
 roads, trails and sea routes under road_ids (60 eligible-town sea-route references
-in game-11). Current generator **trhgd-staged-2** filters each actual source group
-into distinct road_ids/trail_ids/sea_route_ids. Klovskitaue has source sea routes,
-not a direct source-cell road in this adapter. Existing GAME-75 factual rules are
+in game-11). Route-group correction **trhgd-staged-2** filters each actual source group
+into distinct road_ids/trail_ids/sea_route_ids. A follow-up completeness audit found that coastal source roads terminate at
+the canonical burg point, which differs from the cell centre. Current generator
+**trhgd-staged-3** uses actual entity coordinates and preserves source cell IDs.
+Klovskitaue correctly has road 2, trail 86 and source sea routes. Existing GAME-75 factual rules are
 unchanged. All 2,565 matrix cases assert the group of every reported route.
 
 This deliberately gets a new generator/seed identity, not silent replacement of
 published v1 trial sidecars. Old v1 bytes remain as documented research history;
-current examples/projection use v2. No real campaign referenced either trial.
+current examples/projection use v3. No real campaign referenced either trial.
 
 Persisted readers use `readSidecar(path, expectedWorld, expectedEnrichmentSha)`;
 it requires the pinned digest and rejects even otherwise-valid newer enrichment.

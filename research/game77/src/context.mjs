@@ -22,7 +22,8 @@ export function context(world, kind, id) {
   const c = world.cell(entity.cell);
   const fact = (value, path, status = 'source-exact') => ({value: value ?? null, status: value == null ? 'unknown' : status, provenance: path});
   const lookup = (group, n) => n > 0 ? world.record(group, n)?.name ?? null : null;
-  const routes = world.source.routes.filter(r => r && !r.hidden && !r.removed && Array.isArray(r.points) && r.points.some(p => p[2] === entity.cell && Math.hypot(p[0] - c.points[0], p[1] - c.points[1]) < 0.02)).map(r => r.i).sort((a,b) => a-b);
+  const anchor = Number.isFinite(entity.x) && Number.isFinite(entity.y) ? [entity.x,entity.y] : c.points;
+  const routes = world.source.routes.filter(r => r && !r.hidden && !r.removed && Array.isArray(r.points) && r.points.some(p => p[2] === entity.cell && Math.hypot(p[0] - anchor[0], p[1] - anchor[1]) < 0.02)).map(r => r.i).sort((a,b) => a-b);
   return {
     world: world.base, source_kind: kind, source_id: id, cell_id: entity.cell,
     state_id: c.state, province_id: c.province,
@@ -33,9 +34,9 @@ export function context(world, kind, id) {
     biome: fact(world.record('biomes', c.biome)?.name ?? null, `cells.biome[${entity.cell}] -> biomes:${c.biome}`),
     culture_id: c.culture, religion_id: c.religion,
     river_id: fact(c.river > 0 ? c.river : null, `cells.river[${entity.cell}]`),
-    road_ids: fact(routes.filter(id => world.record('routes', id).group === 'roads'), `routes.group=roads; points match cell:${entity.cell} and canonical coordinates`, 'source-derived'),
-    trail_ids: fact(routes.filter(id => world.record('routes', id).group === 'trails'), `routes.group=trails; points match cell:${entity.cell} and canonical coordinates`, 'source-derived'),
-    sea_route_ids: fact(routes.filter(id => world.record('routes', id).group === 'searoutes'), `routes.group=searoutes; points match cell:${entity.cell} and canonical coordinates`, 'source-derived'),
+    road_ids: fact(routes.filter(id => world.record('routes', id).group === 'roads'), `routes.group=roads; points match cell:${entity.cell} and canonical entity coordinates (cell centre only if entity coordinates unknown)`, 'source-derived'),
+    trail_ids: fact(routes.filter(id => world.record('routes', id).group === 'trails'), `routes.group=trails; points match cell:${entity.cell} and canonical entity coordinates (cell centre only if entity coordinates unknown)`, 'source-derived'),
+    sea_route_ids: fact(routes.filter(id => world.record('routes', id).group === 'searoutes'), `routes.group=searoutes; points match cell:${entity.cell} and canonical entity coordinates (cell centre only if entity coordinates unknown)`, 'source-derived'),
     // A port flag is not sufficient evidence of ocean coast. Never call it coastal.
     port: fact(kind === 'settlements' && Object.hasOwn(entity, 'port') ? entity.port : null, `${kind}:${id}.port`),
     walls: fact(kind === 'settlements' && Object.hasOwn(entity, 'walls') ? Boolean(entity.walls) : null, `${kind}:${id}.walls`),

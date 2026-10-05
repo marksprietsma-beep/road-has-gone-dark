@@ -2,16 +2,16 @@
   "checked": 1000,
   "protocol": "Same TRHGD staged facts, identical requested prose, real pinned Lexicon grammar/Rant dictionary renderers. Donor-inspired staging is implemented by TRHGD, not imported FCG/Venture runtime.",
   "timings_ms": {
-    "lexicon_ms": 25.63035199999962,
-    "rant_ms": 20.077815999999814,
-    "trhgd_ms": 1.6563359999989302
+    "lexicon_ms": 25.102267000000154,
+    "rant_ms": 19.209122999999465,
+    "trhgd_ms": 0.7835850000002438
   },
   "samples": [
     {
       "instance": 0,
       "structured_facts": {
         "subtype": "ruined structure",
-        "original_purpose": "garrison storehouse",
+        "original_purpose": "guard station",
         "period": "beyond living memory",
         "creator_group": "Slovan",
         "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
@@ -24,20 +24,20 @@
         ],
         "active_occupants": null
       },
-      "lexicon": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned."
+      "lexicon": "A ruined structure retains weathered masonry. Built as a guard station beyond living memory, it later changed: the entrance was repaired and later abandoned.",
+      "rant": "A ruined structure retains weathered masonry. Built as a guard station beyond living memory, it later changed: the entrance was repaired and later abandoned.",
+      "trhgd": "A ruined structure retains weathered masonry. Built as a guard station beyond living memory, it later changed: the entrance was repaired and later abandoned."
     },
     {
       "instance": 1,
       "structured_facts": {
         "subtype": "ruined structure",
-        "original_purpose": "watch post",
-        "period": "several generations ago",
+        "original_purpose": "guard station",
+        "period": "beyond living memory",
         "creator_group": "Slovan",
         "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the entrance was repaired and later abandoned",
-        "condition": "a fallen roof",
+        "later_event": "the upper rooms were dismantled for stone",
+        "condition": "a broken stair",
         "material_theme": "worked stone",
         "encounter_suggestions": [
           "inspection",
@@ -45,36 +45,15 @@
         ],
         "active_occupants": null
       },
-      "lexicon": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned."
+      "lexicon": "A ruined structure retains a broken stair. Built as a guard station beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "rant": "A ruined structure retains a broken stair. Built as a guard station beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "trhgd": "A ruined structure retains a broken stair. Built as a guard station beyond living memory, it later changed: the upper rooms were dismantled for stone."
     },
     {
       "instance": 2,
       "structured_facts": {
         "subtype": "ruined structure",
-        "original_purpose": "garrison storehouse",
-        "period": "beyond living memory",
-        "creator_group": "Slovan",
-        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the entrance was repaired and later abandoned",
-        "condition": "weathered masonry",
-        "material_theme": "worked stone",
-        "encounter_suggestions": [
-          "inspection",
-          "unstable-masonry"
-        ],
-        "active_occupants": null
-      },
-      "lexicon": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains weathered masonry. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned."
-    },
-    {
-      "instance": 3,
-      "structured_facts": {
-        "subtype": "ruined structure",
-        "original_purpose": "garrison storehouse",
+        "original_purpose": "guard station",
         "period": "several generations ago",
         "creator_group": "Slovan",
         "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
@@ -87,12 +66,54 @@
         ],
         "active_occupants": null
       },
-      "lexicon": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned."
+      "lexicon": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "rant": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "trhgd": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the entrance was repaired and later abandoned."
+    },
+    {
+      "instance": 3,
+      "structured_facts": {
+        "subtype": "ruined structure",
+        "original_purpose": "watch post",
+        "period": "several generations ago",
+        "creator_group": "Slovan",
+        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
+        "later_event": "the upper rooms were dismantled for stone",
+        "condition": "weathered masonry",
+        "material_theme": "worked stone",
+        "encounter_suggestions": [
+          "inspection",
+          "unstable-masonry"
+        ],
+        "active_occupants": null
+      },
+      "lexicon": "A ruined structure retains weathered masonry. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone.",
+      "rant": "A ruined structure retains weathered masonry. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone.",
+      "trhgd": "A ruined structure retains weathered masonry. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone."
     },
     {
       "instance": 4,
+      "structured_facts": {
+        "subtype": "ruined structure",
+        "original_purpose": "garrison storehouse",
+        "period": "several generations ago",
+        "creator_group": "Slovan",
+        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
+        "later_event": "the upper rooms were dismantled for stone",
+        "condition": "weathered masonry",
+        "material_theme": "worked stone",
+        "encounter_suggestions": [
+          "inspection",
+          "unstable-masonry"
+        ],
+        "active_occupants": null
+      },
+      "lexicon": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the upper rooms were dismantled for stone.",
+      "rant": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the upper rooms were dismantled for stone.",
+      "trhgd": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the upper rooms were dismantled for stone."
+    },
+    {
+      "instance": 5,
       "structured_facts": {
         "subtype": "ruined structure",
         "original_purpose": "guard station",
@@ -113,15 +134,15 @@
       "trhgd": "A ruined structure retains weathered masonry. Built as a guard station several generations ago, it later changed: the upper rooms were dismantled for stone."
     },
     {
-      "instance": 5,
+      "instance": 6,
       "structured_facts": {
         "subtype": "ruined structure",
         "original_purpose": "watch post",
-        "period": "beyond living memory",
+        "period": "several generations ago",
         "creator_group": "Slovan",
         "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the upper rooms were dismantled for stone",
-        "condition": "weathered masonry",
+        "later_event": "the entrance was repaired and later abandoned",
+        "condition": "a fallen roof",
         "material_theme": "worked stone",
         "encounter_suggestions": [
           "inspection",
@@ -129,12 +150,33 @@
         ],
         "active_occupants": null
       },
-      "lexicon": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
-      "rant": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
-      "trhgd": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone."
+      "lexicon": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "rant": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "trhgd": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the entrance was repaired and later abandoned."
     },
     {
-      "instance": 6,
+      "instance": 7,
+      "structured_facts": {
+        "subtype": "ruined structure",
+        "original_purpose": "watch post",
+        "period": "beyond living memory",
+        "creator_group": "Slovan",
+        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
+        "later_event": "the upper rooms were dismantled for stone",
+        "condition": "a broken stair",
+        "material_theme": "worked stone",
+        "encounter_suggestions": [
+          "inspection",
+          "unstable-masonry"
+        ],
+        "active_occupants": null
+      },
+      "lexicon": "A ruined structure retains a broken stair. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "rant": "A ruined structure retains a broken stair. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "trhgd": "A ruined structure retains a broken stair. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone."
+    },
+    {
+      "instance": 8,
       "structured_facts": {
         "subtype": "ruined structure",
         "original_purpose": "watch post",
@@ -155,70 +197,7 @@
       "trhgd": "A ruined structure retains a fallen roof. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone."
     },
     {
-      "instance": 7,
-      "structured_facts": {
-        "subtype": "ruined structure",
-        "original_purpose": "watch post",
-        "period": "beyond living memory",
-        "creator_group": "Slovan",
-        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the entrance was repaired and later abandoned",
-        "condition": "weathered masonry",
-        "material_theme": "worked stone",
-        "encounter_suggestions": [
-          "inspection",
-          "unstable-masonry"
-        ],
-        "active_occupants": null
-      },
-      "lexicon": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the entrance was repaired and later abandoned."
-    },
-    {
-      "instance": 8,
-      "structured_facts": {
-        "subtype": "ruined structure",
-        "original_purpose": "watch post",
-        "period": "several generations ago",
-        "creator_group": "Slovan",
-        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the upper rooms were dismantled for stone",
-        "condition": "a broken stair",
-        "material_theme": "worked stone",
-        "encounter_suggestions": [
-          "inspection",
-          "unstable-masonry"
-        ],
-        "active_occupants": null
-      },
-      "lexicon": "A ruined structure retains a broken stair. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone.",
-      "rant": "A ruined structure retains a broken stair. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone.",
-      "trhgd": "A ruined structure retains a broken stair. Built as a watch post several generations ago, it later changed: the upper rooms were dismantled for stone."
-    },
-    {
       "instance": 9,
-      "structured_facts": {
-        "subtype": "ruined structure",
-        "original_purpose": "garrison storehouse",
-        "period": "several generations ago",
-        "creator_group": "Slovan",
-        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
-        "later_event": "the entrance was repaired and later abandoned",
-        "condition": "weathered masonry",
-        "material_theme": "worked stone",
-        "encounter_suggestions": [
-          "inspection",
-          "unstable-masonry"
-        ],
-        "active_occupants": null
-      },
-      "lexicon": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "rant": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
-      "trhgd": "A ruined structure retains weathered masonry. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned."
-    },
-    {
-      "instance": 10,
       "structured_facts": {
         "subtype": "ruined structure",
         "original_purpose": "garrison storehouse",
@@ -239,14 +218,35 @@
       "trhgd": "A ruined structure retains a fallen roof. Built as a garrison storehouse beyond living memory, it later changed: the entrance was repaired and later abandoned."
     },
     {
-      "instance": 11,
+      "instance": 10,
       "structured_facts": {
         "subtype": "ruined structure",
-        "original_purpose": "guard station",
-        "period": "several generations ago",
+        "original_purpose": "watch post",
+        "period": "beyond living memory",
         "creator_group": "Slovan",
         "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
         "later_event": "the upper rooms were dismantled for stone",
+        "condition": "weathered masonry",
+        "material_theme": "worked stone",
+        "encounter_suggestions": [
+          "inspection",
+          "unstable-masonry"
+        ],
+        "active_occupants": null
+      },
+      "lexicon": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "rant": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone.",
+      "trhgd": "A ruined structure retains weathered masonry. Built as a watch post beyond living memory, it later changed: the upper rooms were dismantled for stone."
+    },
+    {
+      "instance": 11,
+      "structured_facts": {
+        "subtype": "ruined structure",
+        "original_purpose": "garrison storehouse",
+        "period": "several generations ago",
+        "creator_group": "Slovan",
+        "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
+        "later_event": "the entrance was repaired and later abandoned",
         "condition": "a broken stair",
         "material_theme": "worked stone",
         "encounter_suggestions": [
@@ -255,9 +255,9 @@
         ],
         "active_occupants": null
       },
-      "lexicon": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the upper rooms were dismantled for stone.",
-      "rant": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the upper rooms were dismantled for stone.",
-      "trhgd": "A ruined structure retains a broken stair. Built as a guard station several generations ago, it later changed: the upper rooms were dismantled for stone."
+      "lexicon": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "rant": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned.",
+      "trhgd": "A ruined structure retains a broken stair. Built as a garrison storehouse several generations ago, it later changed: the entrance was repaired and later abandoned."
     }
   ],
   "external_content_imported": false,

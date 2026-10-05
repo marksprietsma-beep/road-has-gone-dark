@@ -1,5 +1,5 @@
 import {ContentSeed, canonical, seal, sha} from './core.mjs';
-export const GENERATOR_VERSION = 'trhgd-staged-2';
+export const GENERATOR_VERSION = 'trhgd-staged-3';
 const idFor = (type, ctx, instance) => `${type}:${ctx.source_kind}:${ctx.source_id}:${instance}`;
 export function generate(type, ctx, {pack, digest}, {instance = '0', playthrough_id = null} = {}) {
   if (!ctx.world?.id || !Number.isInteger(ctx.source_id) || !Number.isInteger(ctx.cell_id)) throw Error('Missing immutable context');

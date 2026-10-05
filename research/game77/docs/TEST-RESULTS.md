@@ -63,7 +63,7 @@ GAME-75 branch or earlier draft PRs changed. Existing QA scripts can overwrite
 historic GAME-74/76 evidence during execution; those tracked files are restored,
 and this run's logs/proofs are preserved under GAME-77.
 
-Research `.mjs` module bytes (not a binary/heap measurement): 19323; zero external npm dependencies.
+Research `.mjs` module bytes (not a binary/heap measurement): 19610; zero external npm dependencies.
 
 ## Windows runner correction
 
@@ -86,3 +86,10 @@ https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/3733716244
 This includes the per-route-type matrix, pinned-sidecar reader, same accepted
 helper, offline tests and original source/save/library regressions. Final
 documentation-head CI is independently verified in the PR/final delivery.
+
+Completeness correction: canonical burg coordinates differ from source-cell
+centres for some coastal towns. Final generator trhgd-staged-3 matches actual
+entity coordinates + original cell ID. Klovskitaue explicitly asserts road 2,
+trail 86 and sea-route presence; the complete matrix independently reconstructs
+all three route groups from raw burg coordinates. Neither guessed absence nor
+sea-as-road classification remains. Older v1/v2 trial bytes stay archived.

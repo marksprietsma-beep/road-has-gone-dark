@@ -45,7 +45,8 @@ test('both genuine fixtures and all eligible towns: coherence and stable source 
    const ctx=context(world,'settlements',b.i);
    for(const n of ['0','1','2']){
     const r=generate('character',ctx,p,{playthrough_id:'batch',instance:n});
-    for(const [key,group] of [['road_ids','roads'],['trail_ids','trails'],['sea_route_ids','searoutes']]){for(const id of ctx[key].value)assert.equal(world.record('routes',id).group,group);}
+    for(const [key,group] of [['road_ids','roads'],['trail_ids','trails'],['sea_route_ids','searoutes']]){for(const id of ctx[key].value)assert.equal(world.record('routes',id).group,group);
+     const expected=world.source.routes.filter(route=>route&&!route.hidden&&!route.removed&&route.group===group&&route.points?.some(point=>point[2]===b.cell&&Math.hypot(point[0]-b.x,point[1]-b.y)<0.02)).map(route=>route.i).sort((a,b)=>a-b);assert.deepEqual(ctx[key].value,expected);}
     assert.equal(r.source.cell_id,b.cell);assert.equal(r.source.world_id,world.base.id);
     assert.equal(r.facts.birthplace.burg_id,b.i);validateRecord(r);
     assert.equal(render(r).includes('undefined'),false);assert.equal(render(r).includes('null'),false);
@@ -63,7 +64,7 @@ test('explicit negative contradictions rejected; unknown stays unknown',()=>{
  const opposed=make('character');opposed.facts.dominant_trait=['cowardly','fearless'];assert.throws(()=>validateRecord(opposed));
  const item=make('mundane-item');item.facts.material='paper';assert.throws(()=>validateRecord(item));
  const anchored=make('site');anchored.source.cell_id++;assert.throws(()=>validateRecord(anchored));
- const port=context(w,'settlements',25);assert.deepEqual(port.road_ids.value,[]);assert.ok(port.sea_route_ids.value.length>0);
+ const port=context(w,'settlements',25);assert.deepEqual(port.road_ids.value,[2]);assert.deepEqual(port.trail_ids.value,[86]);assert.ok(port.sea_route_ids.value.length>0);
  assert.equal(c.coast.value,null);assert.equal(c.coast.status,'unknown');
  assert.throws(()=>generate('site',c,p));assert.throws(()=>generate('origin',site,p));
 });
