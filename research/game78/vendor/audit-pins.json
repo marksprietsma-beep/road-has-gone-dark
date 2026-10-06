@@ -13,8 +13,9 @@
       "vitest": "^4.1.10"
     },
     "license_sha256": "208681846f6fd85cb8497d234c28af06350cf24832b8468ed95fabd07c860252",
-    "vendored": false,
-    "content_imported": false
+    "vendored": true,
+    "content_imported": false,
+    "adoption": "engine-only; no native fantasy prose or naming corpora"
   },
   {
     "repository": "robbestad/Rantjs",
@@ -32,8 +33,9 @@
       "vitest": "^4.1.11"
     },
     "license_sha256": "f8faa5b846ca882bb666244728ed09e9790fab06017a023e911c6d921ee169ef",
-    "vendored": false,
-    "content_imported": false
+    "vendored": true,
+    "content_imported": false,
+    "adoption": "engine-only; no native fantasy prose or naming corpora"
   },
   {
     "repository": "thomascgray/fantasy-content-generator",
@@ -60,7 +62,8 @@
     },
     "license_sha256": "5164c060820ee968bbe95b6bbcdfa26807c3cb29a37e3e444b679902c0c71b18",
     "vendored": false,
-    "content_imported": false
+    "content_imported": false,
+    "adoption": "native evaluation only; no production runtime/content import"
   },
   {
     "repository": "opd-ai/venture",
@@ -70,7 +73,8 @@
     "go_mod_direct": 7,
     "license_sha256": "32878d64252a5a8208cd97de753ed41e1f2c5eab513f48f5885a7d77746aea64",
     "vendored": false,
-    "content_imported": false
+    "content_imported": false,
+    "adoption": "native evaluation only; no production runtime/content import"
   },
   {
     "repository": "dariusk/corpora",
@@ -79,8 +83,9 @@
     "license": "CC0-1.0 (README declaration)",
     "license_sha256": "3bc2433f272c3df57db392aa7ca9d966b0471bff9003ff75874e8ee4ac555a1f",
     "vendored": false,
-    "content_imported": false,
-    "audit_level": "secondary feasibility, not a cleared content pack"
+    "content_imported": true,
+    "audit_level": "secondary feasibility, not a cleared content pack",
+    "adoption": "curated common words only"
   },
   {
     "repository": "kesac/Loremaker",
@@ -90,7 +95,8 @@
     "license_sha256": "39dd0e16a7d1b3fe08ab24247545e5a40c252013fe8eb50f8ab767f5ac52feaa",
     "vendored": false,
     "content_imported": false,
-    "audit_level": "secondary feasibility, not a cleared content pack"
+    "audit_level": "secondary feasibility, not a cleared content pack",
+    "adoption": "native evaluation only; no production runtime/content import"
   },
   {
     "repository": "FyefoxxM/npc-generator",
@@ -100,6 +106,29 @@
     "license_sha256": "08a170f18eddcc80ba0d16f95322fc1cbfcb04a37c66b949571e61013d3c3dbc",
     "vendored": false,
     "content_imported": false,
-    "audit_level": "secondary feasibility, not a cleared content pack"
+    "audit_level": "secondary feasibility, not a cleared content pack",
+    "adoption": "native evaluation only; no production runtime/content import"
+  },
+  {
+    "repository": "TheWalruzz/godot-questify",
+    "commit": "a102ab1bd4f0ee4280d5370d9aab2b49f8843325",
+    "version": "commit-pinned",
+    "license": "MIT",
+    "license_sha256": "7572b129683867eb5a0fc051914fd1abb740554fdc1f44acfef4d89ca46ab469",
+    "vendored": false,
+    "content_imported": false,
+    "adoption": "architecture only; no prose import",
+    "native_execution": "example imported/launched with shutdown leak"
+  },
+  {
+    "repository": "ryceg/Eigengrau-s-Essential-Establishment-Generator",
+    "commit": "c8f5e0d563779a996df860c6b4bbed42a9974621",
+    "version": "commit-pinned",
+    "license": "MIT",
+    "license_sha256": "62cb6b6ff02e8740c5bc0789a5baa622650bc34a4aee1a4c3cefacefee78936b",
+    "vendored": false,
+    "content_imported": false,
+    "adoption": "architecture only; no prose import",
+    "native_execution": "source inspected; full browser app not executed"
   }
 ]

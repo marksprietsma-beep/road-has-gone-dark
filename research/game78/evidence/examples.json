@@ -1,0 +1,5351 @@
+[
+  {
+    "domain": "site",
+    "id": "markers:51/site:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "markers",
+      "source_id": 51,
+      "cell_id": 2651,
+      "state_id": 8,
+      "province_id": 93,
+      "display_name": "Ruined Stronghold",
+      "marker_type": "ruins",
+      "culture": {
+        "value": "Slovan",
+        "status": "source-exact",
+        "provenance": "cells.culture[2651] -> cultures:6"
+      },
+      "religion": {
+        "value": "Slovanism",
+        "status": "source-exact",
+        "provenance": "cells.religion[2651] -> religions:6"
+      },
+      "biome": {
+        "value": "Tropical seasonal forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[2651] -> biomes:5"
+      },
+      "culture_id": 6,
+      "religion_id": 6,
+      "river_id": {
+        "value": 27,
+        "status": "source-exact",
+        "provenance": "cells.river[2651]"
+      },
+      "road_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:2651; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:2651; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:2651; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "markers:51.port"
+      },
+      "walls": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "markers:51.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": {
+        "dungeon_seed": null,
+        "name": "Ruined Stronghold",
+        "note": "Ruins of an ancient stronghold. Untold riches may lie within.",
+        "visibility": "developer-only",
+        "authoritative_history": false
+      },
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "markers:51.group"
+      },
+      "capital": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "markers:51.capital"
+      },
+      "population": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "markers:51.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "markers:51/site:review",
+      "domain": "site",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "markers",
+        "id": 51,
+        "cell_id": 2651,
+        "state_id": 8,
+        "province_id": 93,
+        "culture_id": 6,
+        "religion_id": 6
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "eaa55414a309304c000f23cf019ef2e72622cff6a571522dca9bb88bc773d5c1",
+      "context": {
+        "culture": {
+          "value": "Slovan",
+          "status": "source-exact",
+          "provenance": "cells.culture[2651] -> cultures:6"
+        },
+        "religion": {
+          "value": "Slovanism",
+          "status": "source-exact",
+          "provenance": "cells.religion[2651] -> religions:6"
+        },
+        "biome": {
+          "value": "Tropical seasonal forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[2651] -> biomes:5"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "markers:51.port"
+        },
+        "walls": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "markers:51.walls"
+        },
+        "river": {
+          "value": 27,
+          "status": "source-exact",
+          "provenance": "cells.river[2651]"
+        },
+        "roads": {
+          "value": [],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:2651; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "markers:51.group"
+        },
+        "relative_population": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "markers:51.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "marker_type": "ruins",
+        "source_name": "Ruined Stronghold",
+        "purpose": "border-storehouse",
+        "age_band": "several-generations",
+        "history": [
+          {
+            "index": 0,
+            "event": "foundation-laid",
+            "state": "standing",
+            "actor": "original-workers",
+            "years_before": 150
+          },
+          {
+            "index": 1,
+            "event": "porch-added",
+            "state": "standing",
+            "previous_state": "standing",
+            "actor": "later-keepers",
+            "years_before": 120
+          },
+          {
+            "index": 2,
+            "event": "records-moved",
+            "state": "abandoned",
+            "previous_state": "standing",
+            "actor": "later-keepers",
+            "years_before": 82
+          },
+          {
+            "index": 3,
+            "event": "meeting-reuse",
+            "state": "reused",
+            "previous_state": "abandoned",
+            "actor": "local-workers",
+            "years_before": 37
+          },
+          {
+            "index": 4,
+            "event": "roof-tarred",
+            "state": "reused",
+            "previous_state": "reused",
+            "actor": "later-occupants",
+            "years_before": 19
+          },
+          {
+            "index": 5,
+            "event": "memorial-added",
+            "state": "reused",
+            "previous_state": "reused",
+            "actor": "later-keepers",
+            "years_before": 9
+          }
+        ],
+        "conditions": [
+          "roof-intact",
+          "walls-braced",
+          "entrance-barred",
+          "floor-paved",
+          "surrounds-trees"
+        ],
+        "structural_damage": [],
+        "current_state": "reused",
+        "tags": [
+          "military",
+          "ruins"
+        ]
+      },
+      "rumours": [
+        {
+          "id": "former-store",
+          "claim": "The site once held the belongings of several households.",
+          "truth": "partially-true"
+        },
+        {
+          "id": "untouched-room",
+          "claim": "One sealed room has remained untouched since the first keepers left.",
+          "truth": "false"
+        }
+      ],
+      "secret": {
+        "historical_detail": "misdated-lintel",
+        "enclosed_space": "disused-cellar",
+        "inventory": {
+          "household_goods": true,
+          "wealth": false
+        },
+        "continuous_keepers": false,
+        "repair_account": "missing-page"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "culture",
+          "forest",
+          "religion",
+          "river"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": {
+          "dungeon_seed": null,
+          "name": "Ruined Stronghold",
+          "note": "Ruins of an ancient stronghold. Untold riches may lie within.",
+          "visibility": "developer-only",
+          "authoritative_history": false
+        }
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "markers:51/site:review",
+      "domain": "site",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "markers",
+        "id": 51,
+        "cell_id": 2651,
+        "state_id": 8,
+        "province_id": 93,
+        "culture_id": 6,
+        "religion_id": 6
+      },
+      "public": {
+        "marker_type": "ruins",
+        "source_name": "Ruined Stronghold",
+        "purpose": "border-storehouse",
+        "age_band": "several-generations",
+        "history": [
+          {
+            "index": 0,
+            "event": "foundation-laid",
+            "state": "standing",
+            "actor": "original-workers",
+            "years_before": 150
+          },
+          {
+            "index": 1,
+            "event": "porch-added",
+            "state": "standing",
+            "previous_state": "standing",
+            "actor": "later-keepers",
+            "years_before": 120
+          },
+          {
+            "index": 2,
+            "event": "records-moved",
+            "state": "abandoned",
+            "previous_state": "standing",
+            "actor": "later-keepers",
+            "years_before": 82
+          },
+          {
+            "index": 3,
+            "event": "meeting-reuse",
+            "state": "reused",
+            "previous_state": "abandoned",
+            "actor": "local-workers",
+            "years_before": 37
+          },
+          {
+            "index": 4,
+            "event": "roof-tarred",
+            "state": "reused",
+            "previous_state": "reused",
+            "actor": "later-occupants",
+            "years_before": 19
+          },
+          {
+            "index": 5,
+            "event": "memorial-added",
+            "state": "reused",
+            "previous_state": "reused",
+            "actor": "later-keepers",
+            "years_before": 9
+          }
+        ],
+        "conditions": [
+          "roof-intact",
+          "walls-braced",
+          "entrance-barred",
+          "floor-paved",
+          "surrounds-trees"
+        ],
+        "structural_damage": [],
+        "current_state": "reused",
+        "tags": [
+          "military",
+          "ruins"
+        ]
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": [
+        {
+          "id": "former-store",
+          "label": "Rumour",
+          "claim": "The site once held the belongings of several households."
+        },
+        {
+          "id": "untouched-room",
+          "label": "Rumour",
+          "claim": "One sealed room has remained untouched since the first keepers left."
+        }
+      ]
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "The border storehouse survives with an intact roof, braced masonry, a rusted door bar, worn stone paving, tree roots around the footings. Later accounts say it added a sheltered porch; later, it had its records moved elsewhere; later, it became a meeting place; later, it had the surviving roof weatherproofed; later, it gained a small memorial stone.",
+      "sha256": "633a93b8de96fd7f5cfd796bd311fbe94ea972cdeec4c1d9a94980ef8f374c55"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "The border storehouse survives with an intact roof, braced masonry, a rusted door bar, worn stone paving, tree roots around the footings. Later accounts say it added a sheltered porch; later, it had its records moved elsewhere; later, it became a meeting place; later, it had the surviving roof weatherproofed; later, it gained a small memorial stone.",
+      "sha256": "633a93b8de96fd7f5cfd796bd311fbe94ea972cdeec4c1d9a94980ef8f374c55"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "What remains of the border storehouse has an intact roof, braced masonry, a rusted door bar, worn stone paving, tree roots around the footings. Later accounts say it added a sheltered porch; later, it had its records moved elsewhere; later, it became a meeting place; later, it had the surviving roof weatherproofed; later, it gained a small memorial stone.",
+      "sha256": "8eeb83524e82b804228b9edb236c31b24becc7d468bbe961c25ee1fee3d0f8b5"
+    }
+  },
+  {
+    "domain": "origin",
+    "id": "settlements:771/origin:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/origin:review",
+      "domain": "origin",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "576b766425649f47f2744a885af85ebc07e649eaad2053ce3159da533ab5ace8",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "hometown": "Maura",
+        "memory": {
+          "event": "water-vessel",
+          "actors": "households",
+          "legacy": "a row of old carrying jars",
+          "period": "within-living-memory"
+        },
+        "tradition": {
+          "practice": "first-loaf",
+          "occasion": "oven care",
+          "participants": "local-households"
+        },
+        "public_craft": {
+          "occupation": "book-binder",
+          "visibility": "widely-known-local-practice"
+        },
+        "local_figure": {
+          "role": "keeper-of-shared-tools",
+          "name": "Kosbota",
+          "claim": "generated-local-figure"
+        }
+      },
+      "rumours": [],
+      "secret": {
+        "memory_detail": "The surviving account omits a disagreement over the shared contribution."
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/origin:review",
+      "domain": "origin",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "hometown": "Maura",
+        "memory": {
+          "event": "water-vessel",
+          "actors": "households",
+          "legacy": "a row of old carrying jars",
+          "period": "within-living-memory"
+        },
+        "tradition": {
+          "practice": "first-loaf",
+          "occasion": "oven care",
+          "participants": "local-households"
+        },
+        "public_craft": {
+          "occupation": "book-binder",
+          "visibility": "widely-known-local-practice"
+        },
+        "local_figure": {
+          "role": "keeper-of-shared-tools",
+          "name": "Kosbota",
+          "claim": "generated-local-figure"
+        }
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "People in Maura remember how households collected vessels for carrying water during repairs. That work is still recalled by a row of old carrying jars. Local households share part of the first loaf from a repaired oven.",
+      "sha256": "711c76fa59b9ec8df4e55a980d4df1889f6ceadd8cd94692f52d52a23f3ecc11"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "People in Maura remember how households collected vessels for carrying water during repairs. That work is still recalled by a row of old carrying jars. Local households share part of the first loaf from a repaired oven.",
+      "sha256": "711c76fa59b9ec8df4e55a980d4df1889f6ceadd8cd94692f52d52a23f3ecc11"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "In Maura, households collected vessels for carrying water during repairs. A trace remains: a row of old carrying jars. Local households share part of the first loaf from a repaired oven.",
+      "sha256": "897f1c898279cb242670d13f437dc9e4ef1cebea4646cdfbde8cd751a3d73489"
+    }
+  },
+  {
+    "domain": "character",
+    "id": "settlements:771/character:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/character:review",
+      "domain": "character",
+      "scope": "playthrough:game78-review",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "3577ef599a39bdb4a71657e30c5f407685e7c5ed9c43aa22a1d5d80a247961e6",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Kagra",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "adult",
+        "occupation": "brewer",
+        "training": "a-household-friend",
+        "family": "extended-household",
+        "childhood": "sorting-salvaged-materials",
+        "value": "remembering-absent-neighbours",
+        "habit": "counts-tools-before-leaving",
+        "concern": "forgetting-names-and-obligations",
+        "contact": {
+          "id": "settlements:771/character:review/contact",
+          "name": "Meli",
+          "role": "a-repair-customer",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "reserved",
+          "reckless"
+        ],
+        "keepsake": "a-short-measuring-cord",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "first_failure": "forgot-an-agreed-meeting",
+        "first_success": "taught-a-younger-worker-patiently",
+        "motivation": "learn-unfamiliar-crafts",
+        "hometown_relationship": "leaving-with-unfinished-obligations"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "failed-to-deliver-a-household-message"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/character:review",
+      "domain": "character",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Kagra",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "adult",
+        "occupation": "brewer",
+        "training": "a-household-friend",
+        "family": "extended-household",
+        "childhood": "sorting-salvaged-materials",
+        "value": "remembering-absent-neighbours",
+        "habit": "counts-tools-before-leaving",
+        "concern": "forgetting-names-and-obligations",
+        "contact": {
+          "id": "settlements:771/character:review/contact",
+          "name": "Meli",
+          "role": "a-repair-customer",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "reserved",
+          "reckless"
+        ],
+        "keepsake": "a-short-measuring-cord",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "first_failure": "forgot-an-agreed-meeting",
+        "first_success": "taught-a-younger-worker-patiently",
+        "motivation": "learn-unfamiliar-crafts",
+        "hometown_relationship": "leaving-with-unfinished-obligations"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Kagra grew up in Maura, in an extended household. Early work involved sorting salvaged materials. Kagra learned the work of a brewer from a household friend. Early in that work, they forgot an agreed meeting, but later taught a younger worker patiently. Now they hope to learn unfamiliar crafts.",
+      "sha256": "db93fdafd22c65364ef32b7d9b39b4c4a0687e7f91174e579a85f1006cbe7ef1"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Kagra grew up in Maura, in an extended household. Early work involved sorting salvaged materials. Kagra learned the work of a brewer from a household friend. Early in that work, they forgot an agreed meeting, but later taught a younger worker patiently. Now they hope to learn unfamiliar crafts. They are reserved and reckless and value remembering absent neighbours. They count tools before leaving. Their concern is forgetting names and obligations. They still carry a short measuring cord.",
+      "sha256": "668a9b6cabbfd237d8da2f608bbc8c958a6f4502adade4357fad9577b833fac5"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Kagra grew up in Maura, in an extended household. Childhood included sorting salvaged materials. Kagra learned the work of a brewer from a household friend. They once forgot an agreed meeting, but later taught a younger worker patiently. They hope to learn unfamiliar crafts.",
+      "sha256": "a105441c49405f55d74a5c05c79ccf714d89d59fcf43a71e207f8d77cd539e96"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:review",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "e3829879dc1e6361c4e516bbe2ebb0321a3c0607cc4ab8775ed5404429df92c7",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Dedis",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "metalworker",
+        "training": "a-demanding-workshop-keeper",
+        "family": "two-parent-household",
+        "childhood": "caring-for-younger-children",
+        "value": "patience-with-learners",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "becoming-dependent-on-strangers",
+        "contact": {
+          "id": "settlements:771/npc:review/contact",
+          "name": "Kibna",
+          "role": "a-former-apprentice",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "reckless",
+          "private"
+        ],
+        "keepsake": "a-short-measuring-cord",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "metalworker",
+        "desire": "see-how-other-places-manage-shared-work",
+        "speech_style": "careful",
+        "physical_identifier": "a worn plain ring"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "copied-a-private-letter-without-permission"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:review",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Dedis",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "metalworker",
+        "training": "a-demanding-workshop-keeper",
+        "family": "two-parent-household",
+        "childhood": "caring-for-younger-children",
+        "value": "patience-with-learners",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "becoming-dependent-on-strangers",
+        "contact": {
+          "id": "settlements:771/npc:review/contact",
+          "name": "Kibna",
+          "role": "a-former-apprentice",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "reckless",
+          "private"
+        ],
+        "keepsake": "a-short-measuring-cord",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "metalworker",
+        "desire": "see-how-other-places-manage-shared-work",
+        "speech_style": "careful",
+        "physical_identifier": "a worn plain ring"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Dedis works as a metalworker in Maura. They are known to be reckless and private. Dedis values patience with learners and turns a ring when thinking. One visible detail is a worn plain ring. They hope to see how other places manage shared work.",
+      "sha256": "e96609163e1c16b4e0e42610ab121381c9cdd01083d94ce43ad1bab1d5c1ee72"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Dedis works as a metalworker in Maura. They are known to be reckless and private. Dedis values patience with learners and turns a ring when thinking. One visible detail is a worn plain ring. They hope to see how other places manage shared work.",
+      "sha256": "e96609163e1c16b4e0e42610ab121381c9cdd01083d94ce43ad1bab1d5c1ee72"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Dedis works as a metalworker in Maura. They are reckless and private. Dedis values patience with learners and turns a ring when thinking. They can be recognised by a worn plain ring. They hope to see how other places manage shared work.",
+      "sha256": "af62113dd7352a7a7f61b4138e18e667572efd525af6bdec0f4208cd6a75f6ae"
+    }
+  },
+  {
+    "domain": "mundane",
+    "id": "settlements:771/mundane:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/mundane:review",
+      "domain": "mundane",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "2117c87647eb27d880bd1be277f6cb2b84707078a36b2fa03b9ce3aa51c28cd4",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "base": {
+          "type": "mirror",
+          "category": "household",
+          "material": "bronze",
+          "secondary_material": "wood"
+        },
+        "quality": "compactly-made",
+        "condition": "stained-by-ordinary-work",
+        "maker": {
+          "role": "a-retired-maker-working-at-home",
+          "culture_id": 10,
+          "place": {
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "burg_id": 771
+          },
+          "identity": "settlements:771/mundane:review/maker"
+        },
+        "age_band": "several-generations",
+        "use": "ordinary grooming",
+        "visible_mark": "a-small-stamped-circle",
+        "ownership": [
+          {
+            "owner": "settlements:771/mundane:review/owner:0",
+            "role": "first-household",
+            "event": "created",
+            "index": 0
+          },
+          {
+            "owner": "settlements:771/mundane:review/owner:1",
+            "from": "settlements:771/mundane:review/owner:0",
+            "role": "later-household",
+            "event": "bought-from-a-retired-worker",
+            "index": 1
+          }
+        ],
+        "repair": {
+          "event": "a-storage-cover-was-replaced",
+          "after_owner": "settlements:771/mundane:review/owner:1"
+        },
+        "small_detail": "recorded-in-an-ordinary-account"
+      },
+      "rumours": [],
+      "secret": {},
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/mundane:review",
+      "domain": "mundane",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "base": {
+          "type": "mirror",
+          "category": "household",
+          "material": "bronze",
+          "secondary_material": "wood"
+        },
+        "quality": "compactly-made",
+        "condition": "stained-by-ordinary-work",
+        "maker": {
+          "role": "a-retired-maker-working-at-home",
+          "culture_id": 10,
+          "place": {
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "burg_id": 771
+          },
+          "identity": "settlements:771/mundane:review/maker"
+        },
+        "age_band": "several-generations",
+        "use": "ordinary grooming",
+        "visible_mark": "a-small-stamped-circle",
+        "ownership": [
+          {
+            "owner": "settlements:771/mundane:review/owner:0",
+            "role": "first-household",
+            "event": "created",
+            "index": 0
+          },
+          {
+            "owner": "settlements:771/mundane:review/owner:1",
+            "from": "settlements:771/mundane:review/owner:0",
+            "role": "later-household",
+            "event": "bought-from-a-retired-worker",
+            "index": 1
+          }
+        ],
+        "repair": {
+          "event": "a-storage-cover-was-replaced",
+          "after_owner": "settlements:771/mundane:review/owner:1"
+        },
+        "small_detail": "recorded-in-an-ordinary-account"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Made from bronze, this mirror came from a retired maker working at home. It is compactly made and stained by ordinary work. It was bought from a retired worker; afterward, a storage cover was replaced. It remains an ordinary possession for ordinary grooming.",
+      "sha256": "c1f6c7a78cca21ff26564e45faec83bb6b2ebfef5305fdf86ebb9bcf96705aeb"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Made from bronze, this mirror came from a retired maker working at home. It is compactly made and stained by ordinary work. It was bought from a retired worker; afterward, a storage cover was replaced. It remains an ordinary possession for ordinary grooming.",
+      "sha256": "c1f6c7a78cca21ff26564e45faec83bb6b2ebfef5305fdf86ebb9bcf96705aeb"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "This mirror, made from bronze, came from a retired maker working at home. It is compactly made and stained by ordinary work. It was bought from a retired worker; afterward, a storage cover was replaced. Its purpose is ordinary grooming.",
+      "sha256": "df0158c26cdf7fb75c418f2d50b7e496080b6291823bcc7e4c250ada51d4672a"
+    }
+  },
+  {
+    "domain": "rare",
+    "id": "settlements:771/rare:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/rare:review",
+      "domain": "rare",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "932dd5f0aeb6e6d8218cfb0f2b10ce1e42464135fcd1c8841b4b154184adf5b7",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "base": {
+          "type": "brooch",
+          "category": "jewellery",
+          "material": "bronze",
+          "secondary_material": null
+        },
+        "quality": "compactly-made",
+        "condition": "wrapped-for-careful-storage",
+        "maker": {
+          "role": "a-shared-workroom",
+          "culture_id": 10,
+          "place": {
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "burg_id": 771
+          },
+          "identity": "settlements:771/rare:review/maker"
+        },
+        "age_band": "one-generation",
+        "use": "fastening clothing",
+        "visible_mark": "a-patched-maker-s-label",
+        "ownership": [
+          {
+            "owner": "settlements:771/rare:review/owner:0",
+            "role": "a-person-appointed-to-maintain-shared-equipment",
+            "event": "created",
+            "index": 0
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:1",
+            "from": "settlements:771/rare:review/owner:0",
+            "role": "a-keeper-of-shared-records",
+            "event": "held-in-place-of-a-small-debt",
+            "index": 1
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:2",
+            "from": "settlements:771/rare:review/owner:1",
+            "role": "a-witness-to-communal-agreements",
+            "event": "returned-after-being-lent-for-a-season",
+            "index": 2
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:3",
+            "from": "settlements:771/rare:review/owner:2",
+            "role": "a-former-apprentice-who-became-a-maker",
+            "event": "given-to-someone-who-had-repaired-it",
+            "index": 3
+          }
+        ],
+        "repair": {
+          "event": "a-loose-joint-was-tightened",
+          "after_owner": "settlements:771/rare:review/owner:3"
+        },
+        "reputation": "used-as-a-comparison-piece-by-later-makers"
+      },
+      "rumours": [
+        {
+          "id": "single-owner",
+          "claim": "The object has never left its first household.",
+          "truth": "false"
+        }
+      ],
+      "secret": {
+        "private_history": "an-early-repair-account-omits-a-failed-first-attempt",
+        "exceptional_property": null
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/rare:review",
+      "domain": "rare",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "base": {
+          "type": "brooch",
+          "category": "jewellery",
+          "material": "bronze",
+          "secondary_material": null
+        },
+        "quality": "compactly-made",
+        "condition": "wrapped-for-careful-storage",
+        "maker": {
+          "role": "a-shared-workroom",
+          "culture_id": 10,
+          "place": {
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "burg_id": 771
+          },
+          "identity": "settlements:771/rare:review/maker"
+        },
+        "age_band": "one-generation",
+        "use": "fastening clothing",
+        "visible_mark": "a-patched-maker-s-label",
+        "ownership": [
+          {
+            "owner": "settlements:771/rare:review/owner:0",
+            "role": "a-person-appointed-to-maintain-shared-equipment",
+            "event": "created",
+            "index": 0
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:1",
+            "from": "settlements:771/rare:review/owner:0",
+            "role": "a-keeper-of-shared-records",
+            "event": "held-in-place-of-a-small-debt",
+            "index": 1
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:2",
+            "from": "settlements:771/rare:review/owner:1",
+            "role": "a-witness-to-communal-agreements",
+            "event": "returned-after-being-lent-for-a-season",
+            "index": 2
+          },
+          {
+            "owner": "settlements:771/rare:review/owner:3",
+            "from": "settlements:771/rare:review/owner:2",
+            "role": "a-former-apprentice-who-became-a-maker",
+            "event": "given-to-someone-who-had-repaired-it",
+            "index": 3
+          }
+        ],
+        "repair": {
+          "event": "a-loose-joint-was-tightened",
+          "after_owner": "settlements:771/rare:review/owner:3"
+        },
+        "reputation": "used-as-a-comparison-piece-by-later-makers"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": [
+        {
+          "id": "single-owner",
+          "label": "Rumour",
+          "claim": "The object has never left its first household."
+        }
+      ]
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "This brooch, made from bronze, first belonged to a person appointed to maintain shared equipment. It was held in place of a small debt, then returned after being lent for a season, then given to someone who had repaired it. At a later repair, a loose joint was tightened. It is used as a comparison piece by later makers; its surface bears a patched maker’s label.",
+      "sha256": "8bfc112ed3bb26a0bb0ea642e276fd19ab8a36c77f995202f6abf8ba190e9d8e"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "This brooch, made from bronze, first belonged to a person appointed to maintain shared equipment. It was held in place of a small debt, then returned after being lent for a season, then given to someone who had repaired it. At a later repair, a loose joint was tightened. It is used as a comparison piece by later makers; its surface bears a patched maker’s label.",
+      "sha256": "8bfc112ed3bb26a0bb0ea642e276fd19ab8a36c77f995202f6abf8ba190e9d8e"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "This brooch, made from bronze, first belonged to a person appointed to maintain shared equipment. It was held in place of a small debt, then returned after being lent for a season, then given to someone who had repaired it. During later care, a loose joint was tightened. It is used as a comparison piece by later makers; its surface bears a patched maker’s label.",
+      "sha256": "986cd317ad5689ca15edae3f798d15a56c7528f1b8b18263ad127b5cc9957f8c"
+    }
+  },
+  {
+    "domain": "contract",
+    "id": "settlements:771/contract:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/contract:review",
+      "domain": "contract",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "d71d6a91a6a78e38719d512aaffa0616779624edaf5484ce1865e6591c78c188",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "status": "research-proposal",
+        "issuer": {
+          "id": "settlements:771/contract:review/issuer",
+          "role": "book-binder"
+        },
+        "goal": "check-a-damaged-inventory",
+        "reason": "preserve-or-return-ordinary-property",
+        "known_complication": "the-issuer-lacks-a-complete-inventory",
+        "target": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "burg_id": 771,
+          "kind": "public-document",
+          "identity": "settlements:771/contract:review/target"
+        },
+        "evidence": "a-repair-tally",
+        "alternate_resolution": "compare-accounts-with-a-second-witness",
+        "reward_theme": "a-small-payment",
+        "time_sensitivity": "unspecified",
+        "related_site": {
+          "source_kind": "markers",
+          "source_id": 51,
+          "cell_id": 2651,
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "enrichment_id": "markers:51/site:review"
+        }
+      },
+      "rumours": [],
+      "secret": {
+        "complication": "The issuer has not disclosed an incomplete ownership account."
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/contract:review",
+      "domain": "contract",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "status": "research-proposal",
+        "issuer": {
+          "id": "settlements:771/contract:review/issuer",
+          "role": "book-binder"
+        },
+        "goal": "check-a-damaged-inventory",
+        "reason": "preserve-or-return-ordinary-property",
+        "known_complication": "the-issuer-lacks-a-complete-inventory",
+        "target": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "burg_id": 771,
+          "kind": "public-document",
+          "identity": "settlements:771/contract:review/target"
+        },
+        "evidence": "a-repair-tally",
+        "alternate_resolution": "compare-accounts-with-a-second-witness",
+        "reward_theme": "a-small-payment",
+        "time_sensitivity": "unspecified",
+        "related_site": {
+          "source_kind": "markers",
+          "source_id": 51,
+          "cell_id": 2651,
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "enrichment_id": "markers:51/site:review"
+        }
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "A book binder asks someone to check a damaged inventory. The difficulty is that the issuer lacks a complete inventory. A repair tally may help establish what happened. The proposed reward is a small payment.",
+      "sha256": "748ab00785e84d1502e4b7f8ef4935d4298a3667dbbdfdf343210582e1f2920f"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "A book binder asks someone to check a damaged inventory. The difficulty is that the issuer lacks a complete inventory. A repair tally may help establish what happened. The proposed reward is a small payment.",
+      "sha256": "748ab00785e84d1502e4b7f8ef4935d4298a3667dbbdfdf343210582e1f2920f"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "A book binder asks someone to check a damaged inventory. The difficulty is that the issuer lacks a complete inventory. A repair tally may help establish what happened. The proposed reward is a small payment.",
+      "sha256": "748ab00785e84d1502e4b7f8ef4935d4298a3667dbbdfdf343210582e1f2920f"
+    }
+  },
+  {
+    "domain": "group",
+    "id": "settlements:771/group:review",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/group:review",
+      "domain": "group",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "c6295eabb1a46dd23bac0c30843c580a2e3bc57384f7d6ccaa422ae1239cab1c",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "status": "research-group",
+        "type": "burial-society",
+        "purpose": "keep-contributions-fairly-recorded",
+        "culture_id": 10,
+        "name": "The Bitse Circle",
+        "leader_role": "elected-record-keeper",
+        "resource": "shared-tools-and-contributions",
+        "symbol": "a-plain-measuring-rod",
+        "related_entities": [
+          {
+            "id": "settlements:771/group:review/partner",
+            "kind": "group",
+            "type": "household-workroom",
+            "name": null
+          }
+        ],
+        "relationship": {
+          "other": "settlements:771/group:review/partner",
+          "type": "shared-record-keeping",
+          "canonical": false
+        }
+      },
+      "rumours": [],
+      "secret": {
+        "internal_goal": "resolve-an-undisclosed-contribution-dispute"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/group:review",
+      "domain": "group",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "status": "research-group",
+        "type": "burial-society",
+        "purpose": "keep-contributions-fairly-recorded",
+        "culture_id": 10,
+        "name": "The Bitse Circle",
+        "leader_role": "elected-record-keeper",
+        "resource": "shared-tools-and-contributions",
+        "symbol": "a-plain-measuring-rod",
+        "related_entities": [
+          {
+            "id": "settlements:771/group:review/partner",
+            "kind": "group",
+            "type": "household-workroom",
+            "name": null
+          }
+        ],
+        "relationship": {
+          "other": "settlements:771/group:review/partner",
+          "type": "shared-record-keeping",
+          "canonical": false
+        }
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "The Bitse Circle is a burial society. Its public purpose is to keep contributions fairly recorded. Its members use a plain measuring rod as a sign. The Bitse Circle keeps its shared records in ordinary accounts.",
+      "sha256": "03424a677f908021391873c6724ac29702dc8e76d718229750a7b175320f4ffd"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "The Bitse Circle is a burial society. Its public purpose is to keep contributions fairly recorded. Its members use a plain measuring rod as a sign. The Bitse Circle keeps its shared records in ordinary accounts.",
+      "sha256": "03424a677f908021391873c6724ac29702dc8e76d718229750a7b175320f4ffd"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "The Bitse Circle is a burial society. Its public purpose is to keep contributions fairly recorded. Its members use a plain measuring rod as a sign.",
+      "sha256": "3579e07b31eb26abcac6651c31901b5b13398d7760799721d08da6a2b56dfe80"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:tavern-keeper",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:tavern-keeper",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "b11d98548599fd710a4fc2ef08e783342537a18d57f97a053db426212ec34b72",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Deru",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "tavern-keeper",
+        "training": "a-relative-with-failing-eyesight",
+        "family": "household-of-family-friends",
+        "childhood": "listening-to-older-neighbours",
+        "value": "patience-with-learners",
+        "habit": "notes-who-lent-an-object",
+        "concern": "becoming-dependent-on-strangers",
+        "contact": {
+          "id": "settlements:771/npc:role:tavern-keeper/contact",
+          "name": "Lelir",
+          "role": "a-friend-from-shared-lessons",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "cowardly",
+          "impatient"
+        ],
+        "keepsake": "a-blank-account-leaf",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "tavern-keeper",
+        "desire": "keep-a-promise-to-a-departed-friend",
+        "speech_style": "measured",
+        "physical_identifier": "a carefully folded cloth"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "kept-an-unfinished-practice-piece"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:tavern-keeper",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Deru",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "tavern-keeper",
+        "training": "a-relative-with-failing-eyesight",
+        "family": "household-of-family-friends",
+        "childhood": "listening-to-older-neighbours",
+        "value": "patience-with-learners",
+        "habit": "notes-who-lent-an-object",
+        "concern": "becoming-dependent-on-strangers",
+        "contact": {
+          "id": "settlements:771/npc:role:tavern-keeper/contact",
+          "name": "Lelir",
+          "role": "a-friend-from-shared-lessons",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "cowardly",
+          "impatient"
+        ],
+        "keepsake": "a-blank-account-leaf",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "tavern-keeper",
+        "desire": "keep-a-promise-to-a-departed-friend",
+        "speech_style": "measured",
+        "physical_identifier": "a carefully folded cloth"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Deru works as a tavern keeper in Maura. They are known to be cowardly and impatient. Deru values patience with learners and notes who lent an object. One visible detail is a carefully folded cloth. They hope to keep a promise to a departed friend.",
+      "sha256": "d5d9920719bb823d7e200df1c4ff5ba14a6056e9b665f1bdfcc278880f31e030"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Deru works as a tavern keeper in Maura. They are known to be cowardly and impatient. Deru values patience with learners and notes who lent an object. One visible detail is a carefully folded cloth. They hope to keep a promise to a departed friend.",
+      "sha256": "d5d9920719bb823d7e200df1c4ff5ba14a6056e9b665f1bdfcc278880f31e030"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Deru works as a tavern keeper in Maura. They are cowardly and impatient. Deru values patience with learners and notes who lent an object. They can be recognised by a carefully folded cloth. They hope to keep a promise to a departed friend.",
+      "sha256": "2aef256c8dc76a1e65c9ad39ce7d3c287e694ad2f308ff61cbd7186ce12dc4b7"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:toolmaker",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:toolmaker",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "a16680dbea59760014f9acde4329c41c723e34e3ce390ab969b6b7eaef76d55d",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Kigkirgo",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "toolmaker",
+        "training": "a-demanding-workshop-keeper",
+        "family": "family-of-itinerant-workers",
+        "childhood": "tending-stored-supplies",
+        "value": "sharing-useful-knowledge",
+        "habit": "sets-tools-in-a-fixed-order",
+        "concern": "repeating-a-costly-mistake",
+        "contact": {
+          "id": "settlements:771/npc:role:toolmaker/contact",
+          "name": "Rubbeg",
+          "role": "a-keeper-of-local-records",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "practical",
+          "sceptical"
+        ],
+        "keepsake": "an-old-tally-stick",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "toolmaker",
+        "desire": "earn-enough-to-repair-a-family-home",
+        "speech_style": "brief",
+        "physical_identifier": "a worn plain ring"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "concealed-who-paid-for-their-training"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:toolmaker",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Kigkirgo",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "toolmaker",
+        "training": "a-demanding-workshop-keeper",
+        "family": "family-of-itinerant-workers",
+        "childhood": "tending-stored-supplies",
+        "value": "sharing-useful-knowledge",
+        "habit": "sets-tools-in-a-fixed-order",
+        "concern": "repeating-a-costly-mistake",
+        "contact": {
+          "id": "settlements:771/npc:role:toolmaker/contact",
+          "name": "Rubbeg",
+          "role": "a-keeper-of-local-records",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "practical",
+          "sceptical"
+        ],
+        "keepsake": "an-old-tally-stick",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "toolmaker",
+        "desire": "earn-enough-to-repair-a-family-home",
+        "speech_style": "brief",
+        "physical_identifier": "a worn plain ring"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Kigkirgo works as a toolmaker in Maura. Neighbours describe them as practical and sceptical. Kigkirgo values sharing useful knowledge and sets tools in a fixed order. One visible detail is a worn plain ring. They hope to earn enough to repair a family home.",
+      "sha256": "c253cfcc9e27e279d2eee576b4dc9eec1444ff6775bca205bdc0e8effd9631ea"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Kigkirgo works as a toolmaker in Maura. Neighbours describe them as practical and sceptical. Kigkirgo values sharing useful knowledge and sets tools in a fixed order. One visible detail is a worn plain ring. They hope to earn enough to repair a family home.",
+      "sha256": "c253cfcc9e27e279d2eee576b4dc9eec1444ff6775bca205bdc0e8effd9631ea"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Kigkirgo works as a toolmaker in Maura. They are practical and sceptical. Kigkirgo values sharing useful knowledge and sets tools in a fixed order. They can be recognised by a worn plain ring. They hope to earn enough to repair a family home.",
+      "sha256": "5f72320a6f075f3dd489cbefde36ac336a86b4f0b06ac88569bd421373469303"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:local-clerk",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:local-clerk",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "42648d45501afe30ffa167ac59a13a09648fd93bf13fc814c7a933aa885752ad",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Tetbud",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "local-clerk",
+        "training": "a-household-friend",
+        "family": "family-of-itinerant-workers",
+        "childhood": "caring-for-younger-children",
+        "value": "practical-fairness",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "letting-a-friendship-lapse",
+        "contact": {
+          "id": "settlements:771/npc:role:local-clerk/contact",
+          "name": "Mamno",
+          "role": "a-former-apprentice",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "plain-spoken",
+          "cowardly"
+        ],
+        "keepsake": "a-tiny-box-of-spare-pegs",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "local-clerk",
+        "desire": "prove-that-a-past-failure-need-not-define-them",
+        "speech_style": "measured",
+        "physical_identifier": "a carefully folded cloth"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "hid-a-small-unpaid-debt"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:local-clerk",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Tetbud",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "local-clerk",
+        "training": "a-household-friend",
+        "family": "family-of-itinerant-workers",
+        "childhood": "caring-for-younger-children",
+        "value": "practical-fairness",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "letting-a-friendship-lapse",
+        "contact": {
+          "id": "settlements:771/npc:role:local-clerk/contact",
+          "name": "Mamno",
+          "role": "a-former-apprentice",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "plain-spoken",
+          "cowardly"
+        ],
+        "keepsake": "a-tiny-box-of-spare-pegs",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "local-clerk",
+        "desire": "prove-that-a-past-failure-need-not-define-them",
+        "speech_style": "measured",
+        "physical_identifier": "a carefully folded cloth"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Tetbud works as a local clerk in Maura. They are known to be plain spoken and cowardly. Tetbud values practical fairness and turns a ring when thinking. They can be recognised by a carefully folded cloth. They hope to prove that a past failure need not define them.",
+      "sha256": "9d07d1c026fd13c9f4036c0cb8f4094052821acaa9935e8ad17c1ea714f4acde"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Tetbud works as a local clerk in Maura. They are known to be plain spoken and cowardly. Tetbud values practical fairness and turns a ring when thinking. They can be recognised by a carefully folded cloth. They hope to prove that a past failure need not define them.",
+      "sha256": "9d07d1c026fd13c9f4036c0cb8f4094052821acaa9935e8ad17c1ea714f4acde"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Tetbud works as a local clerk in Maura. They are plain spoken and cowardly. Tetbud values practical fairness and turns a ring when thinking. They can be recognised by a carefully folded cloth. They hope to prove that a past failure need not define them.",
+      "sha256": "dc4ee77bf78cf8c89337402f6f99d8fc75a7fabdfc3ad3b097ab5e904b55590a"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:traveller",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:traveller",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "883d982226e5151e7849bcb02927e3d1e4740caed6d8b28ec499f0d5bf3a07e6",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Buros",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "adult",
+        "occupation": "traveller",
+        "training": "an-older-sibling",
+        "family": "two-connected-households",
+        "childhood": "copying-household-accounts",
+        "value": "remembering-absent-neighbours",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "forgetting-names-and-obligations",
+        "contact": {
+          "id": "settlements:771/npc:role:traveller/contact",
+          "name": "Lata",
+          "role": "a-friend-from-shared-lessons",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "methodical",
+          "cowardly"
+        ],
+        "keepsake": "an-old-tally-stick",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "traveller",
+        "desire": "bring-a-younger-sibling-new-opportunities",
+        "speech_style": "measured",
+        "physical_identifier": "a scuffed carrying bag"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "still-keeps-a-rival-s-discarded-work"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:traveller",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Buros",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "adult",
+        "occupation": "traveller",
+        "training": "an-older-sibling",
+        "family": "two-connected-households",
+        "childhood": "copying-household-accounts",
+        "value": "remembering-absent-neighbours",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "forgetting-names-and-obligations",
+        "contact": {
+          "id": "settlements:771/npc:role:traveller/contact",
+          "name": "Lata",
+          "role": "a-friend-from-shared-lessons",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "methodical",
+          "cowardly"
+        ],
+        "keepsake": "an-old-tally-stick",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "traveller",
+        "desire": "bring-a-younger-sibling-new-opportunities",
+        "speech_style": "measured",
+        "physical_identifier": "a scuffed carrying bag"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Buros works as a traveller in Maura. Neighbours describe them as methodical and cowardly. Buros values remembering absent neighbours and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to bring a younger sibling new opportunities.",
+      "sha256": "41685e74825b7431fc527ddfedcf8571bda9a3039d576d0cbae68dd97f917670"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Buros works as a traveller in Maura. Neighbours describe them as methodical and cowardly. Buros values remembering absent neighbours and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to bring a younger sibling new opportunities.",
+      "sha256": "41685e74825b7431fc527ddfedcf8571bda9a3039d576d0cbae68dd97f917670"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Buros works as a traveller in Maura. They are methodical and cowardly. Buros values remembering absent neighbours and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to bring a younger sibling new opportunities.",
+      "sha256": "6c90c7c95718fd0c7860f94a5e3950e23d92c61f90b001a0826d6d2d27e34f08"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:religious-attendant",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:religious-attendant",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "6e6976f53fa5ffdeae98ae71fcf25811acaacb0b44bd3c83a9efa069b2471c3f",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Bokeb",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "religious-attendant",
+        "training": "a-neighbour-who-taught-evening-lessons",
+        "family": "two-connected-households",
+        "childhood": "mending-ordinary-possessions",
+        "value": "careful-workmanship",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "returning-without-useful-work",
+        "contact": {
+          "id": "settlements:771/npc:role:religious-attendant/contact",
+          "name": "Gonib",
+          "role": "a-person-who-once-lent-tools",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "plain-spoken",
+          "boastful"
+        ],
+        "keepsake": "a-spare-buckle",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "religious-attendant",
+        "desire": "keep-a-promise-to-a-departed-friend",
+        "speech_style": "careful",
+        "physical_identifier": "a scuffed carrying bag"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "failed-to-deliver-a-household-message"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:religious-attendant",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Bokeb",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "older-adult",
+        "occupation": "religious-attendant",
+        "training": "a-neighbour-who-taught-evening-lessons",
+        "family": "two-connected-households",
+        "childhood": "mending-ordinary-possessions",
+        "value": "careful-workmanship",
+        "habit": "turns-a-ring-when-thinking",
+        "concern": "returning-without-useful-work",
+        "contact": {
+          "id": "settlements:771/npc:role:religious-attendant/contact",
+          "name": "Gonib",
+          "role": "a-person-who-once-lent-tools",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "plain-spoken",
+          "boastful"
+        ],
+        "keepsake": "a-spare-buckle",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "religious-attendant",
+        "desire": "keep-a-promise-to-a-departed-friend",
+        "speech_style": "careful",
+        "physical_identifier": "a scuffed carrying bag"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Bokeb works as a religious attendant in Maura. Neighbours describe them as plain spoken and boastful. Bokeb values careful workmanship and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to keep a promise to a departed friend.",
+      "sha256": "9ac3b04c8745dbcd53ae29d5d2afebc18671a2a23cb948f7bdd53ce1bfbe98fc"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Bokeb works as a religious attendant in Maura. Neighbours describe them as plain spoken and boastful. Bokeb values careful workmanship and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to keep a promise to a departed friend.",
+      "sha256": "9ac3b04c8745dbcd53ae29d5d2afebc18671a2a23cb948f7bdd53ce1bfbe98fc"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Bokeb works as a religious attendant in Maura. They are plain spoken and boastful. Bokeb values careful workmanship and turns a ring when thinking. They can be recognised by a scuffed carrying bag. They hope to keep a promise to a departed friend.",
+      "sha256": "ebc2a2bdc3b023dcac40207416e49666ca5b564269a6bdc8c70d4619eb7e7e3a"
+    }
+  },
+  {
+    "domain": "npc",
+    "id": "settlements:771/npc:role:possible-recruit",
+    "context": {
+      "world": {
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        }
+      },
+      "source_kind": "settlements",
+      "source_id": 771,
+      "cell_id": 1621,
+      "state_id": 1,
+      "province_id": 2,
+      "display_name": "Maura",
+      "marker_type": null,
+      "culture": {
+        "value": "Soumi",
+        "status": "source-exact",
+        "provenance": "cells.culture[1621] -> cultures:10"
+      },
+      "religion": {
+        "value": "Ojaksapirt Society",
+        "status": "source-exact",
+        "provenance": "cells.religion[1621] -> religions:26"
+      },
+      "biome": {
+        "value": "Temperate deciduous forest",
+        "status": "source-exact",
+        "provenance": "cells.biome[1621] -> biomes:6"
+      },
+      "culture_id": 10,
+      "religion_id": 26,
+      "river_id": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "cells.river[1621]"
+      },
+      "road_ids": {
+        "value": [
+          0
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "trail_ids": {
+        "value": [
+          137
+        ],
+        "status": "source-derived",
+        "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "sea_route_ids": {
+        "value": [],
+        "status": "source-derived",
+        "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+      },
+      "route_connection": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+      },
+      "port": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "settlements:771.port"
+      },
+      "walls": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.walls"
+      },
+      "coast": {
+        "value": null,
+        "status": "unknown",
+        "provenance": "Water-body classification not implemented in this research adapter"
+      },
+      "source_flavour": null,
+      "source_visibility": "public",
+      "settlement_class": {
+        "value": "village",
+        "status": "source-exact",
+        "provenance": "settlements:771.group"
+      },
+      "capital": {
+        "value": false,
+        "status": "source-exact",
+        "provenance": "settlements:771.capital"
+      },
+      "population": {
+        "value": 1.507,
+        "status": "source-exact",
+        "provenance": "settlements:771.population (uncalibrated source-relative)"
+      },
+      "relative_importance": {
+        "value": "at-or-below-world-median",
+        "status": "source-derived",
+        "provenance": "comparison with visible positive source burg populations; no physical conversion"
+      },
+      "adjacent_settlements": {
+        "value": [
+          {
+            "burg_id": 310,
+            "cell_id": 1492,
+            "name": "Kuhra",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 544,
+            "cell_id": 1736,
+            "name": "Painihi",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          },
+          {
+            "burg_id": 548,
+            "cell_id": 1738,
+            "name": "Tampuri",
+            "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "relationship": "adjacent-source-cell"
+          }
+        ],
+        "status": "source-derived",
+        "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+      }
+    },
+    "record": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:possible-recruit",
+      "domain": "npc",
+      "scope": "world",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "seed": "4e5afa42158f355dbbf0c9976d04a44370225d916c7ff42c175ba9de715a3eaa",
+      "context": {
+        "culture": {
+          "value": "Soumi",
+          "status": "source-exact",
+          "provenance": "cells.culture[1621] -> cultures:10"
+        },
+        "religion": {
+          "value": "Ojaksapirt Society",
+          "status": "source-exact",
+          "provenance": "cells.religion[1621] -> religions:26"
+        },
+        "biome": {
+          "value": "Temperate deciduous forest",
+          "status": "source-exact",
+          "provenance": "cells.biome[1621] -> biomes:6"
+        },
+        "port": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "settlements:771.port"
+        },
+        "walls": {
+          "value": false,
+          "status": "source-exact",
+          "provenance": "settlements:771.walls"
+        },
+        "river": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "cells.river[1621]"
+        },
+        "roads": {
+          "value": [
+            0
+          ],
+          "status": "source-derived",
+          "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+        },
+        "route_connection": {
+          "value": null,
+          "status": "unknown",
+          "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+        },
+        "settlement_class": {
+          "value": "village",
+          "status": "source-exact",
+          "provenance": "settlements:771.group"
+        },
+        "relative_population": {
+          "value": 1.507,
+          "status": "source-exact",
+          "provenance": "settlements:771.population (uncalibrated source-relative)"
+        },
+        "adjacent_settlements": {
+          "value": [
+            {
+              "burg_id": 310,
+              "cell_id": 1492,
+              "name": "Kuhra",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 544,
+              "cell_id": 1736,
+              "name": "Painihi",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            },
+            {
+              "burg_id": 548,
+              "cell_id": 1738,
+              "name": "Tampuri",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+              "relationship": "adjacent-source-cell"
+            }
+          ],
+          "status": "source-derived",
+          "provenance": "actual source cells.neighbors and public original burg membership; not inferred road connectivity"
+        }
+      },
+      "source_visibility": "public",
+      "public": {
+        "name": "Reru",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "possible-recruit",
+        "training": "a-guardian-who-valued-careful-work",
+        "family": "single-parent-household",
+        "childhood": "listening-to-older-neighbours",
+        "value": "repair-before-replacement",
+        "habit": "notes-who-lent-an-object",
+        "concern": "letting-a-friendship-lapse",
+        "contact": {
+          "id": "settlements:771/npc:role:possible-recruit/contact",
+          "name": "Kodo",
+          "role": "a-household-guardian",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "curious",
+          "reserved"
+        ],
+        "keepsake": "a-folded-household-letter",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "possible-recruit",
+        "desire": "bring-a-younger-sibling-new-opportunities",
+        "speech_style": "measured",
+        "physical_identifier": "a repaired sleeve"
+      },
+      "rumours": [],
+      "secret": {
+        "private_fact": "left-a-task-unfinished-and-blamed-poor-materials"
+      },
+      "provenance": {
+        "authorship": "TRHGD immutable generated fiction",
+        "source_context": "GAME-77 canonical context",
+        "context_tags": [
+          "adjacent-town",
+          "culture",
+          "forest",
+          "religion",
+          "road-cell",
+          "settlement:village",
+          "trail-cell"
+        ],
+        "canonical_gameplay": false,
+        "source_flavour": null
+      }
+    },
+    "public": {
+      "schema_version": 2,
+      "id": "settlements:771/npc:role:possible-recruit",
+      "domain": "npc",
+      "source": {
+        "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "kind": "settlements",
+        "id": 771,
+        "cell_id": 1621,
+        "state_id": 1,
+        "province_id": 2,
+        "culture_id": 10,
+        "religion_id": 26
+      },
+      "public": {
+        "name": "Reru",
+        "naming": {
+          "model": "Lexicon native phonotactics with original profiles",
+          "culture_id": 10,
+          "confidence": "research-approximation"
+        },
+        "birthplace": {
+          "id": 771,
+          "name": "Maura",
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "age_band": "young-adult",
+        "occupation": "possible-recruit",
+        "training": "a-guardian-who-valued-careful-work",
+        "family": "single-parent-household",
+        "childhood": "listening-to-older-neighbours",
+        "value": "repair-before-replacement",
+        "habit": "notes-who-lent-an-object",
+        "concern": "letting-a-friendship-lapse",
+        "contact": {
+          "id": "settlements:771/npc:role:possible-recruit/contact",
+          "name": "Kodo",
+          "role": "a-household-guardian",
+          "relationship": "known-person"
+        },
+        "traits": [
+          "curious",
+          "reserved"
+        ],
+        "keepsake": "a-folded-household-letter",
+        "local_knowledge": {
+          "kind": "public-origin",
+          "burg_id": 771,
+          "cell_id": 1621,
+          "hidden_pois": []
+        },
+        "role": "possible-recruit",
+        "desire": "bring-a-younger-sibling-new-opportunities",
+        "speech_style": "measured",
+        "physical_identifier": "a repaired sleeve"
+      },
+      "versions": {
+        "generator": "trhgd-game78-1",
+        "provider": "sha-staged",
+        "pack": "trhgd-game78-1",
+        "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c"
+      },
+      "discoveries": [],
+      "rumours": []
+    },
+    "short": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Reru works as a repair apprentice in Maura. Neighbours describe them as curious and reserved. Reru values repair before replacement and notes who lent an object. One visible detail is a repaired sleeve. They hope to bring a younger sibling new opportunities.",
+      "sha256": "c9c5258611bcbbe18e2104b5bea668a4f09952b897e7720d3975e9b617918cf9"
+    },
+    "extended": {
+      "renderer": "trhgd-game78-rant-1",
+      "style": "rant",
+      "text": "Reru works as a repair apprentice in Maura. Neighbours describe them as curious and reserved. Reru values repair before replacement and notes who lent an object. One visible detail is a repaired sleeve. They hope to bring a younger sibling new opportunities.",
+      "sha256": "c9c5258611bcbbe18e2104b5bea668a4f09952b897e7720d3975e9b617918cf9"
+    },
+    "lexicon": {
+      "renderer": "trhgd-game78-rant-1-lexicon-control",
+      "style": "lexicon",
+      "text": "Reru works as a repair apprentice in Maura. They are curious and reserved. Reru values repair before replacement and notes who lent an object. They can be recognised by a repaired sleeve. They hope to bring a younger sibling new opportunities.",
+      "sha256": "6733db70ee99dcd4967ebffbbef7940e49851a3192e5630a41644760893793d1"
+    }
+  }
+]
