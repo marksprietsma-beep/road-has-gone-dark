@@ -2,8 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import{readFileSync,mkdtempSync,rmSync,writeFileSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
 import{canonical,sha}from'../../tools/world_enrichment/core.mjs';
 import{compileProfileWorld,publishProfiles,verifyProfileDirectory}from'../../tools/world_enrichment/profiles-world.mjs';
-import{profilePack,buildProfiles,validateProfile}from'../../tools/world_enrichment/profile-framework.mjs';
-import{withProfiles,areaContext}from'../../tools/world_enrichment/profile-context.mjs';
+import{profilePack,buildProfiles,validateProfile,profileCompatible}from'../../tools/world_enrichment/profile-framework.mjs';
+import{withProfiles,areaContext,profileIndex}from'../../tools/world_enrichment/profile-context.mjs';
 import{compatible}from'../../tools/world_enrichment/compatibility.mjs';
 import{generate,validateRecord}from'../../tools/world_enrichment/framework.mjs';
 import{context,loadWorld}from'../../tools/world_enrichment/context.mjs';
@@ -45,6 +45,16 @@ test('source context ignores hidden mines and retains unknown religion/culture',
  const unknown=loadWorld(path);unknown.source.cells.culture[b.cell]=999999;unknown.source.cells.religion[b.cell]=0;
  const missing=areaContext(unknown,home.source.state_id,home.source.province_id,unknown.record('settlements',b.i));assert.deepEqual(missing.cultures,[]);assert.deepEqual(missing.religions,[]);
 });
+test('ocean coast and inland port cannot combine into invented maritime commerce',()=>{
+ const a=compileProfileWorld(path),idx=profileIndex(a.world),maritime=profilePack.economies.find(r=>r.id==='maritime-commerce');
+ const tags=new Set(['coast','port']);assert.equal(compatible(maritime,tags),true);assert.equal(profileCompatible(maritime,tags),false);
+ tags.add('coastal-port');assert.equal(profileCompatible(maritime,tags),true);
+ for(const id of [5,14]){
+  const r=a.profiles.states[id];assert(r.source_context.tags.includes('coast')&&r.source_context.tags.includes('port'));
+  assert(!r.source_context.tags.includes('coastal-port'));assert(!r.public.economy.specialisms.includes('maritime-commerce'));
+ }
+ for(const group of Object.values(a.profiles))for(const r of Object.values(group))if(r.public.economy.specialisms.includes('maritime-commerce'))assert(r.source_context.settlement_ids.some(id=>{const b=a.world.record('settlements',id);return b.port>0&&idx.water(b.cell)==='coast';}));
+});
 test('state order, sibling order and unrelated region addition do not reroll existing profiles',()=>{
  const a=compileProfileWorld(path);a.world.source.states.reverse();a.world.source.provinces.reverse();a.world.source.settlements.reverse();
  assert.equal(canonical(buildProfiles(a.world,a.origins)),canonical(a.profiles));
@@ -59,6 +69,7 @@ test('immutable publication and retries never overwrite corrupt or historical pa
 test('all dormant GAME-78 domains remain functional with hierarchical context',()=>{
  const a=compileProfileWorld(path),id=Number(Object.keys(a.profiles.hometowns)[0]),ctx=withProfiles(a.world,id,a.profiles);
  assert(ctx.profile_context.state.economy.specialisms.length);assert(ctx.profile_context.hometown.economy.specialisms.length);
+ assert(ctx.profile_tags.every(t=>/^(state|region|hometown):/.test(t)));assert(!ctx.profile_tags.some(t=>/:(coast|coastal-port|port|mine|river|lake)$/.test(t)),'parent geography is not inherited through profile tags');
  for(const domain of ['origin','character','npc','mundane','rare','contract','group']){
   const r=generate(ctx,domain,'game80-smoke',{playthrough_id:'game80-test'});validateRecord(r,ctx);
   const p={schema_version:r.schema_version,id:r.id,domain:r.domain,source:r.source,public:r.public,versions:r.versions};

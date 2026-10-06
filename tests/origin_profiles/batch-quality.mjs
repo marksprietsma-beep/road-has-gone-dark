@@ -1,10 +1,15 @@
 // Sequential, reproducible cross-world review; no lucky-seed sampling.
 import{readFileSync,writeFileSync,mkdirSync}from'node:fs';import{compileProfileWorld}from'../../tools/world_enrichment/profiles-world.mjs';import{canonical,sha}from'../../tools/world_enrichment/core.mjs';
+import{profileIndex}from'../../tools/world_enrichment/profile-context.mjs';
 const paths=process.argv.slice(2);if(paths.length<7)throw Error('Two presets and five genuine generated paths required');
 const groups={states:[],regions:[],hometowns:[]},metrics=[], worlds=[];
 for(const path of paths){const before=sha(readFileSync(path)),start=performance.now(),out=compileProfileWorld(path),ms=performance.now()-start;
+ const idx=profileIndex(out.world);let maritime=0;
+ for(const group of Object.values(out.profiles))for(const r of Object.values(group))if(r.public.economy.specialisms.includes('maritime-commerce')||r.domain==='state'&&r.public.external_orientation==='maritime'){
+  if(!r.source_context.settlement_ids.some(id=>{const b=out.world.record('settlements',id);return b.port>0&&idx.water(b.cell)==='coast';}))throw Error('No co-located source coastal port: '+r.id);maritime++;
+ }
  for(const key of Object.keys(groups))groups[key].push(Object.values(out.profiles[key]));
- worlds.push({path,world_id:out.world.base.id,descriptor:out.descriptor,milliseconds:ms,storage_bytes:Buffer.byteLength(out.enrichment)+Buffer.byteLength(out.publicBytes)});if(sha(readFileSync(path))!==before)throw Error('Source mutated');}
+ worlds.push({path,world_id:out.world.base.id,descriptor:out.descriptor,milliseconds:ms,storage_bytes:Buffer.byteLength(out.enrichment)+Buffer.byteLength(out.publicBytes),co_located_maritime_profiles_checked:maritime});if(sha(readFileSync(path))!==before)throw Error('Source mutated');}
 function roundRobin(batches){const result=[];for(let n=0;batches.some(a=>a.length>n);n++)for(const a of batches)if(a[n])result.push(a[n]);return result;}
 const review={};
 for(const[key,batches]of Object.entries(groups)){

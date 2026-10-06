@@ -9,8 +9,12 @@ import {renderProfile,PROFILE_RENDERER} from './profile-text.mjs';
 export const PROFILE_VERSION='trhgd-origin-profiles-2';
 export const profilePack=JSON.parse(readFileSync(new URL('../../data/world_enrichment/trhgd-origin-profiles-v2.json',import.meta.url)));
 export const profilePackSha=sha(canonical({pack:profilePack,base_runtime:sha(readFileSync(new URL('../../data/world_enrichment/runtime.json',import.meta.url))),renderer:PROFILE_RENDERER}));
+// Cross-field source relationships supplement table prerequisites. Broad coast
+// plus an unrelated river/lake port is not evidence of a maritime harbour.
+const sourceRelationships={'maritime-commerce':'coastal-port',maritime:'coastal-port'};
+export const profileCompatible=(row,tags,selected=[])=>compatible(row,tags,selected)&&(!sourceRelationships[row.id]||tags.has(sourceRelationships[row.id]));
 function pick(seed,field,rows,tags,selected=[],preferred=[]){
- const candidates=rows.filter(r=>compatible(r,tags,selected)&&!selected.some(x=>x.id===r.id||r.family&&x.family===r.family));
+ const candidates=rows.filter(r=>profileCompatible(r,tags,selected)&&!selected.some(x=>x.id===r.id||r.family&&x.family===r.family));
  if(!candidates.length)throw Error('No compatible profile choices: '+field);
  const g=weightedList(Object.fromEntries(candidates.map(r=>[r.id,(r.weight??1)*(preferred.includes(r.id)?4:1)])));
  return structuredClone(candidates.find(r=>r.id===g.generate(createContext({seed:seed.digest(field)}))));
@@ -37,7 +41,8 @@ function record(domain,id,name,ctx,seed,parents,publicFacts,selected){
 export function validateProfile(r){
  if(r.source.world_id!==r.source_context.world_id||r.generation.generator!==PROFILE_VERSION)throw Error('Profile source/version mismatch');
  const tags=new Set(r.source_context.tags),f=r.public;
- for(const id of f.economy.specialisms){const row=profilePack.economies.find(x=>x.id===id);if(!row||!compatible(row,tags,f.posture?[profilePack.postures.find(x=>x.id===f.posture)]:[]))throw Error('Incompatible economy: '+id);}
+ for(const id of f.economy.specialisms){const row=profilePack.economies.find(x=>x.id===id);if(!row||!profileCompatible(row,tags,f.posture?[profilePack.postures.find(x=>x.id===f.posture)]:[]))throw Error('Incompatible economy: '+id);}
+ if(r.domain==='state'&&f.external_orientation==='maritime'&&!tags.has('coastal-port'))throw Error('Maritime outlook without a coastal port');
  if(r.domain==='region'){const role=profilePack.regions.find(x=>x.id===f.regional_role);if(role?.economies&&!f.economy.specialisms.every(id=>role.economies.includes(id)))throw Error('Region role/economy contradiction');}
  if(f.posture==='isolationist'&&(f.social_character==='cosmopolitan'||['welcoming','maritime'].includes(f.external_orientation)||f.economy.specialisms.includes('maritime-commerce')))throw Error('Isolationist contradiction');
  for(const row of r.source_context.cultures)if(!Number.isInteger(row.id)||row.id<=0||!row.name)throw Error('Invalid cultural source identity');
@@ -67,7 +72,7 @@ export function buildProfiles(world,origins){
   for(const p of members){
    const ctx=areaContext(world,sId,p.i);if(!ctx.land_cells)continue;
    const seed=seeds.get(sId).child('province:'+p.i),tags=new Set([...ctx.tags,state.public.posture]);
-   const viableRoles=profilePack.regions.filter(r=>!r.economies||profilePack.economies.some(e=>r.economies.includes(e.id)&&compatible(e,tags)));
+   const viableRoles=profilePack.regions.filter(r=>!r.economies||profilePack.economies.some(e=>r.economies.includes(e.id)&&profileCompatible(e,tags)));
    const role=pick(seed,'regional-role',viableRoles,tags),economy=pick(seed,'economy',profilePack.economies.filter(e=>!role.economies||role.economies.includes(e.id)),tags,[],state.public.economy.specialisms);
    const shared=state.public.economy.specialisms.includes(economy.id);
    const relationship={id:shared?'shared-specialism':'regional-supply',label:shared?`its ${economy.activity} gives the state’s ${economy.label} a local foundation`:`it contributes ${economy.product} to the state’s broader economy`};
