@@ -145,7 +145,7 @@ const lexiconPatterns = {
 };
 export function render(
   publicProjection,
-  { style = "rant", extended = false, trace = false } = {},
+  { style = "rant", extended = false, trace = false, compact = false } = {},
 ) {
   publicOnly(publicProjection);
   const values = facts(publicProjection);
@@ -182,7 +182,7 @@ export function render(
       sha256: sha(text),
     };
   }
-  let pattern = patterns[publicProjection.domain];
+  let pattern = compact && publicProjection.domain === "origin" ? "[case:first]<actors> <memory>. Local households <practice>." : patterns[publicProjection.domain];
   if (!pattern) throw Error("Unsupported render domain");
   if (extended && publicProjection.domain === "character")
     pattern +=
@@ -205,7 +205,7 @@ export function render(
     ...(trace ? { picks: run.picks } : {}),
   };
 }
-export function originPayload(r, enrichmentSha) {
+export function originPayload(r, enrichmentSha, {compact = false} = {}) {
   if (r.domain !== "origin" || r.scope !== "world")
     throw Error("Not public world origin");
   const p = {
@@ -216,7 +216,7 @@ export function originPayload(r, enrichmentSha) {
     versions: r.versions,
     schema_version: 2,
   };
-  const rendered = render(p);
+  const rendered = render(p, {compact});
   return {
     schema_version: 1,
     world_id: r.source.world_id,
