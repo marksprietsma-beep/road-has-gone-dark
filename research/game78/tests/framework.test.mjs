@@ -379,3 +379,14 @@ test("compact origin uses stored memory/tradition without changing facts", () =>
   assert.ok(a.text.includes(pack.traditions.find(x => x.id === r.public.tradition.practice).practice));
   assert.equal(canonical(r), before);
 });
+
+test("adopted engine files match licence/provenance pins", () => {
+  const rows = JSON.parse(readFileSync("research/game78/vendor/provenance.json", "utf8"));
+  assert.equal(rows.length, 40);
+  for (const row of rows) {
+    assert.equal(sha(readFileSync("research/game78/vendor/" + row.file)), row.compiled_sha256);
+    assert.ok(["MIT", "ISC"].includes(row.license));
+    assert.ok(readFileSync("research/game78/" + row.required_notice, "utf8").includes("Copyright"));
+    assert.ok(row.original_path && row.original_sha256 && row.commit.length === 40);
+  }
+});
