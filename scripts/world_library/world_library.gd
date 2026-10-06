@@ -373,7 +373,8 @@ func _compile_enrichment(entry: Dictionary, target: String) -> Dictionary:
  var refs := reference_status(entry)
  if not refs.ok: return refs
  var pins: Array = []
- for name in DirAccess.get_files_at(save_root):
+ var save_names := DirAccess.get_files_at(save_root) if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(save_root)) else PackedStringArray()
+ for name in save_names:
   if not (name.ends_with(".json") or name.ends_with(".json.bak") or name.ends_with(".json.tmp")): continue
   var save := _json(save_root.path_join(name))
   var reference: Dictionary = save.get("world_ref", {})
