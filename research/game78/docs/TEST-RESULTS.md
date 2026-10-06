@@ -4,7 +4,7 @@ Local Node 24.19.0, Godot **4.6.3**, Linux software OpenGL. No online content se
 
 | Check | Actual result |
 |---|---|
-| Expanded framework under network + `Math.random` guard | **11 tests passed / 0 failed**; identity, all-domain replay/order/siblings, prerequisites/conflicts, source contexts, hidden knowledge, pinned versions/collisions, real linked POI, discoveries, compact adapter and 40 engine-file licence/hash pins |
+| Expanded framework under network + `Math.random` guard | **12 tests passed / 0 failed**; identity, all-domain replay/order/siblings, prerequisites/conflicts, source contexts, hidden knowledge, pinned versions/collisions, real linked POI, discoveries, compact adapter and 40 engine-file licence/hash pins |
 | Source-context sweep | **35,910 records** across all 2,565 eligible hometowns in both fixtures, two instance seeds, seven town domains; correct source anchors and context rules |
 | Existing GAME-77 framework | **9 passed / 0 failed**; unchanged original pack/identity/visibility rules |
 | Existing Godot GAME-77 public adapter | **11 checks passed** |

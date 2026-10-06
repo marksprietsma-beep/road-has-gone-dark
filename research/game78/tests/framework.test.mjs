@@ -393,3 +393,13 @@ test("adopted engine files match licence/provenance pins", () => {
     assert.ok(row.original_path && row.original_sha256 && row.commit.length === 40);
   }
 });
+
+test("renderer refuses incompatible pinned facts instead of rewriting old lore", () => {
+  const r = generate(c, "origin", "render-version");
+  for (const [key, value] of [["pack_sha", "0".repeat(64)], ["pack", "older-pack"], ["generator", "older-generator"], ["provider", "unknown"]]) {
+    const p = project(r, knowledge(r));
+    p.versions[key] = value;
+    assert.throws(() => render(p), /exact pinned/);
+  }
+  assert.throws(() => render(project(r, knowledge(r)), {style:"unknown"}), /Unsupported/);
+});

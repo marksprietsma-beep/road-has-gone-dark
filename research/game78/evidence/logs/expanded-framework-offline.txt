@@ -1,20 +1,21 @@
 Validated source-context records: 11970
-✔ domain/provider replay, order independence, sibling addition and display-name independence (299.698722ms)
-✔ declarative prerequisites, both conflict directions and explicit relationship resolution (0.440232ms)
-✔ all actual eligible hometowns in both fixtures preserve geography and hidden boundaries (10250.615661ms)
-✔ visibility rejects secrets, rumours verdicts, unknown sites and cross-world keys (17.109755ms)
-✔ negative tampering catches source IDs, trait conflicts, materials and disconnected histories (22.136594ms)
-✔ sidecar namespaces, immutable atomic write, pinned identity and prose independence (75.130072ms)
-✔ linked real POI contract accepts only same-world public site references (9.073193ms)
-✔ explicit discoveries require knowledge gates; origin projection remains public-only (2.547001ms)
-✔ sidecar rejects rehashed wrong generator/pack labels and duplicate records (8.684097ms)
-✔ compact origin uses stored memory/tradition without changing facts (0.890261ms)
-✔ adopted engine files match licence/provenance pins (9.278345ms)
-ℹ tests 11
+✔ domain/provider replay, order independence, sibling addition and display-name independence (163.722542ms)
+✔ declarative prerequisites, both conflict directions and explicit relationship resolution (0.846212ms)
+✔ all actual eligible hometowns in both fixtures preserve geography and hidden boundaries (5014.881407ms)
+✔ visibility rejects secrets, rumours verdicts, unknown sites and cross-world keys (14.930319ms)
+✔ negative tampering catches source IDs, trait conflicts, materials and disconnected histories (18.084363ms)
+✔ sidecar namespaces, immutable atomic write, pinned identity and prose independence (70.772726ms)
+✔ linked real POI contract accepts only same-world public site references (3.440104ms)
+✔ explicit discoveries require knowledge gates; origin projection remains public-only (3.623051ms)
+✔ sidecar rejects rehashed wrong generator/pack labels and duplicate records (11.773111ms)
+✔ compact origin uses stored memory/tradition without changing facts (0.892297ms)
+✔ adopted engine files match licence/provenance pins (1.744197ms)
+✔ renderer refuses incompatible pinned facts instead of rewriting old lore (0.781546ms)
+ℹ tests 12
 ℹ suites 0
-ℹ pass 11
+ℹ pass 12
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 11441.063582
+ℹ duration_ms 5725.815688

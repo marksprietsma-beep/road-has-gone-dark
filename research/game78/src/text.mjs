@@ -5,7 +5,7 @@ import { compile, explain } from "../vendor/rant/engine.js";
 import { grammar } from "../vendor/lexicon/grammar/index.js";
 import { createContext } from "../vendor/lexicon/core/index.js";
 import { sha, canonical } from "../../game77/src/core.mjs";
-import { find } from "./framework.mjs";
+import { find, pack, packSha, VERSION, SCHEMA } from "./framework.mjs";
 export const RENDERER = "trhgd-game78-rant-1";
 const table = (name, value) => ({
   name,
@@ -148,6 +148,8 @@ export function render(
   { style = "rant", extended = false, trace = false, compact = false } = {},
 ) {
   publicOnly(publicProjection);
+  if (publicProjection.schema_version !== SCHEMA || publicProjection.versions?.generator !== VERSION || publicProjection.versions?.pack !== pack.version || publicProjection.versions?.pack_sha !== packSha || !["sha-staged", "lexicon-staged"].includes(publicProjection.versions?.provider)) throw Error("Renderer requires its exact pinned fact pack and generator");
+  if (!["rant", "fixed", "lexicon"].includes(style)) throw Error("Unsupported renderer style");
   const values = facts(publicProjection);
   const dictionary = {
     tables: Object.fromEntries(

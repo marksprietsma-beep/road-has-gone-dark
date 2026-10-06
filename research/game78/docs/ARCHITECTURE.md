@@ -12,7 +12,7 @@ Site source anchors are actual public/hidden ruin or dungeon markers. Unsupporte
 
 `project(record, knowledge)` is the only public boundary: same-world and character-playthrough checks; sites require an explicit known entity; heard rumours expose claims without truth labels; discovered fields require explicit per-record knowledge tokens and an allowlist. Private facts and vendor source flavour remain outside normal prose. Hidden marker names are not used in origin content. Knowledge is supplied by the caller; this spike does not implement discovery gameplay.
 
-`text.mjs` accepts projections only. Rant singleton dictionaries contain already-established facts; alternatives vary wording. Names use carriers, article/case agreement and conditional branches. Lexicon grammar and a fixed-branch renderer are comparable controls. No renderer decides history, identity or geography. The renderer digest is separate from base geography and fact-pack identity.
+`text.mjs` accepts projections only and rejects incompatible generator/pack/schema/provider pins rather than reinterpreting an older sidecar through current prose tables. Rant singleton dictionaries contain already-established facts; alternatives vary wording. Names use carriers, article/case agreement and conditional branches. Lexicon grammar and a fixed-branch renderer are comparable controls. No renderer decides history, identity or geography. The renderer digest is separate from base geography and fact-pack identity.
 
 ## API
 
