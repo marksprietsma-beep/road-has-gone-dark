@@ -1,4 +1,5 @@
 extends Control
+signal party_creation_requested(entry: Dictionary, slot: String)
 ## Choices are previews until confirm_origin; GAME-7 owns identity and persistence.
 const TEMPLATES := ["game-11-determinism", "atlas-showcase"]
 const TITLES := ["World I", "World II"]
@@ -77,6 +78,7 @@ func _origin_context() -> OriginContext:
  return origin_contexts[id]
 
 func _ready() -> void:
+ party_creation_requested.connect(_open_party)
  _reload_library()
  _build_ui()
  show_page()
@@ -434,6 +436,7 @@ func advance() -> void:
      unvalidated_save_path = ""
      message = ""
      page = 4
+     call_deferred("_request_party")
     else:
      message = "The saved origin needs its exact local history restored. No duplicate save was created."
     show_page()
@@ -476,6 +479,7 @@ func advance() -> void:
       unvalidated_save_path = ""
       message = ""
       page = 4
+      call_deferred("_request_party")
      else:
       message = "Your origin could not be verified. Please try again."
       if str(reload.error).to_lower().contains("enrichment"):
@@ -496,6 +500,13 @@ func _discard_unvalidated_save() -> bool:
   if DirAccess.remove_absolute(unvalidated_save_path) != OK: return false
  unvalidated_save_path = ""
  return true
+
+func _request_party() -> void:
+ if not saved_slot.is_empty(): party_creation_requested.emit(entries[world_index], saved_slot)
+
+func _open_party(entry: Dictionary, slot: String) -> void:
+ PartyService.handoff = {"entry":entry,"slot":slot,"save_root":store.save_root,"library_root":library.library_root}
+ get_tree().change_scene_to_file("res://scenes/ui/party_creation.tscn")
 
 func go_back() -> void:
  if job_thread != null: return

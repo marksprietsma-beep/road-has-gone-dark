@@ -12,12 +12,25 @@ const SETTINGS_SCENE := "res://scenes/ui/settings_menu.tscn"
 @onready var exit_button: Button = %ExitButton
 
 var _transitioning := false
+var party_resume := {}
 
 
 func _ready() -> void:
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
+	party_resume = PartyService.new().resumable()
+	if not party_resume.is_empty():
+		var button := Button.new()
+		button.name = "ResumePartyButton"
+		button.text = "Resume party setup"
+		button.flat = true
+		menu_content.add_child(button)
+		menu_content.move_child(button, 2)
+		button.pressed.connect(func():
+			PartyService.handoff = party_resume
+			await _change_scene_with_fade("res://scenes/ui/party_creation.tscn")
+		)
 
 	menu_content.modulate.a = 0.0
 	await _fade_menu(1.0)

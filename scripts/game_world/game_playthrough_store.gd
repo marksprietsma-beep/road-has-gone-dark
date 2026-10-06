@@ -165,6 +165,9 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 	if state.has("origin_enrichment"):
 		var why := WorldOriginLore.new().validate_pin(state.origin_enrichment, world, bid, world.enrichment_directory)
 		if not why.is_empty(): return why
+	if state.has("party"):
+		var party_error := PartyRecords.validate(state, world)
+		if not party_error.is_empty(): return party_error
 	var party: Array = state.get("party_ids", [])
 	var characters: Array = state.get("characters", [])
 	# New campaigns start with exactly three members. Recruitment later adds
