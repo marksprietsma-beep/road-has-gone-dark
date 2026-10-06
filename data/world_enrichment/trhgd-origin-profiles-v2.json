@@ -1,0 +1,552 @@
+{
+  "schema_version": 2,
+  "version": "trhgd-origin-profiles-2",
+  "authorship": "TRHGD original content",
+  "economies": [
+    {
+      "id": "forestry",
+      "label": "timber and woodland crafts",
+      "requires": "forest",
+      "activity": "woodland work",
+      "role": "woodland craft community",
+      "product": "timber and worked wood"
+    },
+    {
+      "id": "fishing",
+      "label": "fishing",
+      "requires": {
+        "any": [
+          "coast",
+          "lake",
+          "river"
+        ]
+      },
+      "activity": "fishing",
+      "role": "fishing community",
+      "product": "fish and repaired nets"
+    },
+    {
+      "id": "maritime-commerce",
+      "label": "harbour commerce",
+      "requires": [
+        "port",
+        "coast"
+      ],
+      "activity": "harbour work",
+      "role": "small harbour settlement",
+      "product": "stored cargo and harbour services",
+      "conflicts": [
+        "isolationist"
+      ]
+    },
+    {
+      "id": "shipbuilding",
+      "label": "boatbuilding",
+      "requires": {
+        "all": [
+          "port",
+          "forest",
+          {
+            "any": [
+              "coast",
+              "lake",
+              "river"
+            ]
+          }
+        ]
+      },
+      "activity": "boatbuilding",
+      "role": "boatbuilders’ settlement",
+      "product": "boats and shaped timber"
+    },
+    {
+      "id": "river-crafts",
+      "label": "riverbank crafts",
+      "requires": "river",
+      "activity": "riverbank work",
+      "role": "river craft village",
+      "product": "basketry and river gear"
+    },
+    {
+      "id": "pastoralism",
+      "label": "pastoral husbandry",
+      "requires": "pasture",
+      "activity": "tending grazing animals",
+      "role": "pastoral community",
+      "product": "wool and hides"
+    },
+    {
+      "id": "mixed-farming",
+      "label": "mixed farming",
+      "requires": "farmland",
+      "activity": "field and garden work",
+      "role": "farming village",
+      "product": "produce and seed stores"
+    },
+    {
+      "id": "grain-crafts",
+      "label": "grain growing and milling",
+      "requires": "farmland",
+      "activity": "grain growing and milling",
+      "role": "grain village",
+      "product": "grain and flour"
+    },
+    {
+      "id": "mining",
+      "label": "mineral extraction",
+      "requires": "mine",
+      "activity": "work around recorded mines",
+      "role": "mining settlement",
+      "product": "sorted mineral loads"
+    },
+    {
+      "id": "market-crafts",
+      "label": "roadside crafts",
+      "requires": "road",
+      "activity": "roadside craft work",
+      "role": "roadside craft village",
+      "product": "repairs and household goods"
+    },
+    {
+      "id": "trail-supply",
+      "label": "trail-side provision",
+      "requires": "trail",
+      "activity": "provisioning local paths",
+      "role": "trail-side village",
+      "product": "packed provisions and repaired gear"
+    },
+    {
+      "id": "wetland-crafts",
+      "label": "reed and basket crafts",
+      "requires": "wetland",
+      "activity": "reedwork and basketmaking",
+      "role": "reedworking community",
+      "product": "woven reeds and baskets"
+    },
+    {
+      "id": "household-crafts",
+      "label": "household crafts",
+      "activity": "household craft work",
+      "role": "craft community",
+      "product": "cloth and ordinary tools"
+    },
+    {
+      "id": "record-crafts",
+      "label": "copying and book crafts",
+      "requires": "capital",
+      "activity": "recordkeeping",
+      "role": "recordkeepers’ settlement",
+      "product": "copies and repaired bindings"
+    }
+  ],
+  "postures": [
+    {
+      "id": "isolationist",
+      "label": "inward-looking",
+      "clause": "its councils prefer local obligations to outside influence",
+      "conflicts": [
+        "maritime-commerce",
+        "welcoming",
+        "cosmopolitan"
+      ]
+    },
+    {
+      "id": "defensive",
+      "label": "defensive",
+      "requires": "walls",
+      "clause": "its public institutions emphasise the upkeep of recorded fortifications"
+    },
+    {
+      "id": "outward-looking",
+      "label": "outward-looking",
+      "requires": {
+        "any": [
+          "road",
+          "port"
+        ]
+      },
+      "clause": "its leading households favour connections beyond the state"
+    },
+    {
+      "id": "mercantile",
+      "label": "mercantile",
+      "requires": {
+        "any": [
+          "road",
+          "port"
+        ]
+      },
+      "clause": "commercial agreements carry particular weight in public life",
+      "conflicts": [
+        "isolationist"
+      ]
+    },
+    {
+      "id": "decentralised",
+      "label": "decentralised",
+      "clause": "local councils retain a strong voice in public decisions"
+    },
+    {
+      "id": "centralised",
+      "label": "centralised",
+      "clause": "common records and central offices shape public decisions"
+    },
+    {
+      "id": "traditionalist",
+      "label": "traditionalist",
+      "clause": "inherited custom carries more weight than new proposals"
+    },
+    {
+      "id": "peaceful",
+      "label": "conciliatory",
+      "clause": "public custom values mediation over displays of force"
+    },
+    {
+      "id": "frontier-minded",
+      "label": "frontier-minded",
+      "requires": "border",
+      "clause": "its public identity values self-reliance in boundary communities"
+    },
+    {
+      "id": "expansionist",
+      "label": "ambitious",
+      "requires": [
+        "border",
+        "road"
+      ],
+      "clause": "its leaders speak of extending their influence beyond present boundaries"
+    }
+  ],
+  "social": [
+    {
+      "id": "cosmopolitan",
+      "label": "culturally receptive",
+      "requires": {
+        "any": [
+          "mixed-cultures",
+          "port"
+        ]
+      },
+      "clause": "visitors’ customs find room alongside local practice",
+      "conflicts": [
+        "isolationist"
+      ]
+    },
+    {
+      "id": "communal",
+      "label": "communal",
+      "clause": "shared upkeep is treated as a household duty"
+    },
+    {
+      "id": "formal",
+      "label": "formal",
+      "clause": "written witnesses are valued in public agreements"
+    },
+    {
+      "id": "practical",
+      "label": "practical",
+      "clause": "useful workmanship earns lasting respect"
+    },
+    {
+      "id": "reserved",
+      "label": "reserved",
+      "clause": "trust is built through repeated local dealings"
+    },
+    {
+      "id": "hospitable",
+      "label": "hospitable",
+      "clause": "hosting guests is a matter of household standing"
+    },
+    {
+      "id": "traditional",
+      "label": "custom-bound",
+      "clause": "custom is learned through work with older neighbours"
+    },
+    {
+      "id": "independent",
+      "label": "independent",
+      "clause": "households prize keeping their own obligations"
+    },
+    {
+      "id": "cooperative",
+      "label": "cooperative",
+      "clause": "neighbours organise larger repairs together"
+    },
+    {
+      "id": "meticulous",
+      "label": "meticulous",
+      "clause": "careful accounting is part of a good reputation"
+    }
+  ],
+  "orientation": [
+    {
+      "id": "local",
+      "label": "local ties",
+      "clause": "most public attention turns toward neighbouring communities"
+    },
+    {
+      "id": "welcoming",
+      "label": "outside connections",
+      "requires": {
+        "any": [
+          "port",
+          "road"
+        ]
+      },
+      "clause": "outside connections are valued alongside local ties",
+      "conflicts": [
+        "isolationist"
+      ]
+    },
+    {
+      "id": "guarded",
+      "label": "guarded exchange",
+      "clause": "outside dealings are approached through trusted intermediaries"
+    },
+    {
+      "id": "landward",
+      "label": "landward links",
+      "requires": "road",
+      "clause": "overland links are central to its outward-facing identity"
+    },
+    {
+      "id": "maritime",
+      "label": "maritime links",
+      "requires": [
+        "port",
+        "coast"
+      ],
+      "clause": "recorded ports give its public identity a maritime emphasis",
+      "conflicts": [
+        "isolationist"
+      ]
+    }
+  ],
+  "institutions": [
+    {
+      "id": "repair-councils",
+      "label": "communal repair councils",
+      "known": "communal repair work"
+    },
+    {
+      "id": "craft-witnesses",
+      "label": "craft witnesses",
+      "known": "carefully witnessed workmanship"
+    },
+    {
+      "id": "household-ledgers",
+      "label": "household ledgers",
+      "known": "household recordkeeping"
+    },
+    {
+      "id": "gate-keepers",
+      "label": "gate-keeping traditions",
+      "requires": "walls",
+      "known": "fortified settlement traditions"
+    },
+    {
+      "id": "shore-associations",
+      "label": "shore associations",
+      "requires": {
+        "any": [
+          "coast",
+          "lake"
+        ]
+      },
+      "known": "shared shore work"
+    },
+    {
+      "id": "woodland-stewards",
+      "label": "woodland stewardship",
+      "requires": "forest",
+      "known": "woodland stewardship"
+    },
+    {
+      "id": "path-councils",
+      "label": "path-maintenance councils",
+      "requires": {
+        "any": [
+          "road",
+          "trail"
+        ]
+      },
+      "known": "shared maintenance of paths"
+    },
+    {
+      "id": "seasonal-assemblies",
+      "label": "seasonal assemblies",
+      "known": "seasonal household assemblies"
+    },
+    {
+      "id": "river-work",
+      "label": "riverbank work groups",
+      "requires": "river",
+      "known": "riverbank craft traditions"
+    },
+    {
+      "id": "pasture-agreements",
+      "label": "pasture agreements",
+      "requires": "pasture",
+      "known": "grazing agreements"
+    }
+  ],
+  "regions": [
+    {
+      "id": "forest-district",
+      "label": "woodland district",
+      "requires": "forest"
+    },
+    {
+      "id": "forest-frontier",
+      "label": "woodland borderland",
+      "requires": [
+        "forest",
+        "border"
+      ]
+    },
+    {
+      "id": "port-corridor",
+      "label": "port district",
+      "requires": [
+        "port",
+        "coast"
+      ]
+    },
+    {
+      "id": "lake-district",
+      "label": "lakeside district",
+      "requires": "lake"
+    },
+    {
+      "id": "river-district",
+      "label": "river district",
+      "requires": "river"
+    },
+    {
+      "id": "farming-belt",
+      "label": "cultivated district",
+      "requires": "farmland"
+    },
+    {
+      "id": "pastoral-uplands",
+      "label": "upland pastoral district",
+      "requires": [
+        "upland",
+        "pasture"
+      ]
+    },
+    {
+      "id": "pastoral-district",
+      "label": "grazing district",
+      "requires": "pasture"
+    },
+    {
+      "id": "mine-district",
+      "label": "recorded mine district",
+      "requires": "mine"
+    },
+    {
+      "id": "road-corridor",
+      "label": "road-linked district",
+      "requires": "road"
+    },
+    {
+      "id": "borderland",
+      "label": "border district",
+      "requires": "border"
+    },
+    {
+      "id": "wetland-district",
+      "label": "wetland district",
+      "requires": "wetland"
+    },
+    {
+      "id": "administrative-heartland",
+      "label": "capital district",
+      "requires": "capital"
+    },
+    {
+      "id": "local-hinterland",
+      "label": "local hinterland"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "supply",
+      "label": "its work contributes to the parent state’s household economy"
+    },
+    {
+      "id": "craft",
+      "label": "its local workshops give the state’s broader craft identity a regional form"
+    },
+    {
+      "id": "upkeep",
+      "label": "shared upkeep binds the district to neighbouring communities"
+    },
+    {
+      "id": "custom",
+      "label": "it retains local customs within the state’s broader public tradition"
+    }
+  ],
+  "town-customs": [
+    {
+      "id": "shared-repair",
+      "label": "shared repair days"
+    },
+    {
+      "id": "work-witness",
+      "label": "witnessed handover of finished work"
+    },
+    {
+      "id": "neighbour-help",
+      "label": "neighbourly help during larger household jobs"
+    },
+    {
+      "id": "tool-care",
+      "label": "careful lending and return of tools"
+    },
+    {
+      "id": "records",
+      "label": "household records of shared obligations"
+    },
+    {
+      "id": "seasonal-work",
+      "label": "seasonal gatherings after common work"
+    },
+    {
+      "id": "shore-work",
+      "label": "shared shore cleanup",
+      "requires": {
+        "any": [
+          "coast",
+          "lake"
+        ]
+      }
+    },
+    {
+      "id": "path-work",
+      "label": "shared path maintenance",
+      "requires": {
+        "any": [
+          "road",
+          "trail"
+        ]
+      }
+    },
+    {
+      "id": "wood-care",
+      "label": "careful reuse of worked timber",
+      "requires": "forest"
+    },
+    {
+      "id": "reed-care",
+      "label": "communal reed-drying work",
+      "requires": "wetland"
+    }
+  ],
+  "render_patterns": {
+    "state": "{<placename> has a public identity shaped by|Public life in <placename> centres on} <economy>. <culture> {Its public posture is <posture>:|In public affairs,} <politics>. [case:first]<social>; <orientation>.",
+    "region": "<placename> forms [a] <role> within <parent>. {Local work focuses on|Household livelihoods centre on} <economy>. <relationship>, {with|alongside} <custom>.",
+    "hometown": "<placename> is [a] <role> in <parent>. {Its households work mainly in|Local livelihoods centre on} <activity>. {The settlement is known for|Local standing rests on} <custom>; <social>."
+  }
+}

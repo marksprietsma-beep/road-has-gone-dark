@@ -25,8 +25,8 @@ var map: Control
 var next_button: Button
 var back_button: Button
 var options: ItemList
-var state_picker: OptionButton
-var province_picker: OptionButton
+var state_picker: ItemList
+var province_picker: ItemList
 var message := ""
 var map_world_index := -1
 var library := GameWorldLibrary.new()
@@ -46,6 +46,8 @@ var lore_label: Label
 var lore_scroll: ScrollContainer
 var origin_lore_cache := {}
 var enrichment_upgrade_attempted := {}
+var origin_profile_cache := {}
+var area_view := "state"
 
 func _lore() -> WorldOriginLore:
  var world := worlds[world_index]
@@ -56,6 +58,15 @@ func _lore() -> WorldOriginLore:
    push_warning(reader.error)
   origin_lore_cache[world.world_id] = reader
  return origin_lore_cache[world.world_id]
+
+func _profiles() -> OriginProfiles:
+ var world := worlds[world_index]
+ if not origin_profile_cache.has(world.world_id):
+  var reader := OriginProfiles.new()
+  world.enrichment_directory = library.enrichment_directory(entries[world_index])
+  reader.load_world(world, library.profiles_directory(entries[world_index]))
+  origin_profile_cache[world.world_id] = reader
+ return origin_profile_cache[world.world_id]
 
 func _origin_context() -> OriginContext:
  var id := worlds[world_index].world_id
@@ -182,7 +193,7 @@ func choose_world(index: int) -> void:
   state_id = -1
   province_id = -1
   burg_id = -1
- if not entries[world_index].preset and not DirAccess.dir_exists_absolute(library.enrichment_directory(entries[world_index])) and not enrichment_upgrade_attempted.has(worlds[world_index].world_id):
+ if not entries[world_index].preset and (not DirAccess.dir_exists_absolute(library.enrichment_directory(entries[world_index])) or not DirAccess.dir_exists_absolute(library.profiles_directory(entries[world_index]))) and not enrichment_upgrade_attempted.has(worlds[world_index].world_id):
   enrichment_upgrade_attempted[worlds[world_index].world_id] = true
   _start_preview_rebuild(entries[world_index])
   return
@@ -204,12 +215,13 @@ func choose_state(id: int) -> void:
   state_id = id
   province_id = -1
   burg_id = -1
- show_page()
+ _refresh_facts()
 
 func choose_province(id: int) -> void:
  if province_id != id:
   province_id = id
   burg_id = -1
+ area_view = "region"
  _refresh_facts()
 
 func choose_home(index: int) -> void:
@@ -265,30 +277,34 @@ func show_page() -> void:
  elif page == 1:
   var areas := states()
   if state_id < 0 and not areas.is_empty(): state_id = int(areas[0].i)
-  left.add_child(_label("State"))
-  state_picker = OptionButton.new()
-  state_picker.fit_to_longest_item = false
-  state_picker.clip_text = true
-  state_picker.add_theme_font_size_override("font_size", 16)
-  left.add_child(state_picker)
-  for record in areas:
-   state_picker.add_item(str(record.name), int(record.i))
-   if int(record.i) == state_id: state_picker.select(state_picker.item_count - 1)
-  state_picker.item_selected.connect(func(index: int): choose_state(state_picker.get_item_id(index)))
   var subdivisions := provinces()
-  if not subdivisions.is_empty():
-   left.add_child(_label("Province / region"))
-   province_picker = OptionButton.new()
-   province_picker.fit_to_longest_item = false
-   province_picker.clip_text = true
-   province_picker.add_theme_font_size_override("font_size", 16)
+  if area_view == "state":
+   title.text = "Choose your state"
+   left.add_child(_label("States", 14))
+   state_picker = ItemList.new()
+   state_picker.custom_minimum_size.y = 100
+   state_picker.add_theme_font_size_override("font_size", 15)
+   left.add_child(state_picker)
+   for record in areas:
+    state_picker.add_item(str(record.name))
+    state_picker.set_item_metadata(state_picker.item_count - 1, int(record.i))
+    if int(record.i) == state_id: state_picker.select(state_picker.item_count - 1)
+   state_picker.item_selected.connect(func(index: int): choose_state(int(state_picker.get_item_metadata(index))))
+  else:
+   title.text = "Choose your region"
+   left.add_child(_label(str(worlds[world_index].get_record("state", state_id).get("name", "")), 14))
+   province_picker = ItemList.new()
+   province_picker.custom_minimum_size.y = 100
+   province_picker.add_theme_font_size_override("font_size", 15)
    left.add_child(province_picker)
-   province_picker.add_item("Across this state", -1)
+   province_picker.add_item("Across this state")
+   province_picker.set_item_metadata(0, -1)
+   province_picker.select(0)
    for record in subdivisions:
-    province_picker.add_item(str(record.name), int(record.i))
+    province_picker.add_item(str(record.name))
+    province_picker.set_item_metadata(province_picker.item_count - 1, int(record.i))
     if int(record.i) == province_id: province_picker.select(province_picker.item_count - 1)
-   province_picker.item_selected.connect(func(index: int): choose_province(province_picker.get_item_id(index)))
-  left.add_child(_label("Choose a province, or explore the whole state. The gold wash marks your area."))
+   province_picker.item_selected.connect(func(index: int): choose_province(int(province_picker.get_item_metadata(index))))
  elif page == 2:
   candidates = worlds[world_index].home_candidates(state_id, province_id, 8)
   if candidates.is_empty():
@@ -321,7 +337,7 @@ func show_page() -> void:
  left.move_child(lore_scroll, left.get_child_count() - 1)
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
- elif page == 1: _focus_later(state_picker)
+ elif page == 1: _focus_later(state_picker if area_view == "state" else province_picker)
  elif next_button.disabled: _focus_later(back_button)
  else: _focus_later(next_button)
 
@@ -341,22 +357,32 @@ func _refresh_facts() -> void:
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
  map.select_area(state_id, province_id, home)
  if home.is_empty():
-  facts.text = _origin_context().region_summary(state_id, province_id).summary
+  facts.text = _origin_context().region_summary(state_id, province_id if area_view == "region" else -1).summary
  else:
   facts.text = _origin_context().hometown_summary(burg_id).summary
-  lore_scroll.scroll_vertical = 0
-  var reader := _lore()
-  var row := reader.public_origin(world, burg_id)
-  if not row.is_empty():
-   lore_label.text = "Local memory: " + (str(row.memory) if page == 2 else str(row.text))
-   if page >= 3 and not message.is_empty(): lore_label.text = message + "\n" + lore_label.text
-   lore_scroll.show()
-  else:
-   lore_label.text = "Local history is unavailable. Factual world information remains available."
-   lore_scroll.show()
-   if page == 3:
-    next_button.disabled = true
-    message = "Local history could not be validated. No origin was saved."
+ var reader := _profiles()
+ var group := "states"
+ var key := str(state_id)
+ if not home.is_empty():
+  group = "hometowns"
+  key = str(burg_id)
+ elif area_view == "region" and province_id > 0:
+  group = "regions"
+  key = "%d:%d" % [state_id, province_id]
+ var row := reader.public_profile(group, key)
+ lore_scroll.scroll_vertical = 0
+ if not row.is_empty():
+  lore_label.text = str(row.full_summary)
+  if group == "hometowns":
+   lore_label.text += "\n\nLocal memory: " + str(row.memory) + "\n" + str(row.tradition)
+  if page >= 3 and not message.is_empty(): lore_label.text = message + "\n" + lore_label.text
+  lore_scroll.show()
+ else:
+  lore_label.text = "Origin profiles are unavailable. Factual world information remains available."
+  lore_scroll.show()
+  if page == 3:
+   next_button.disabled = true
+   message = "Origin profiles could not be validated. No origin was saved."
 
 func advance() -> void:
  if job_thread != null: return
@@ -368,7 +394,9 @@ func advance() -> void:
   if result.ok: _reload_library()
   show_page()
   return
- if page == 4:
+ if page == 1 and area_view == "state":
+  area_view = "region"
+ elif page == 4:
   page = 3
  elif page == 3:
   if not saved_slot.is_empty():
@@ -406,7 +434,14 @@ func advance() -> void:
      library.end_origin(guard)
      show_page()
      return
+    var profiles := _profiles()
+    if profiles.descriptor.is_empty():
+     message = "Origin profiles could not be validated. No origin was saved."
+     library.end_origin(guard)
+     show_page()
+     return
     created.state.origin_enrichment = reader.descriptor.duplicate(true)
+    created.state.origin_profiles = profiles.descriptor.duplicate(true)
     var slot: String = created.state.playthrough_id
     var result := store.save_new(slot, created.state, worlds[world_index])
     if result.ok:
@@ -451,7 +486,8 @@ func go_back() -> void:
  if page == 0 or page == 4 or not saved_slot.is_empty():
   get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
  else:
-  page -= 1
+  if page == 1 and area_view == "region": area_view = "state"
+  else: page -= 1
   show_page()
 
 func _input(event: InputEvent) -> void:
@@ -477,6 +513,8 @@ func _reload_library(selected_id: String = "") -> void:
   world_titles.append(str(entries[i].label))
   if entries[i].id == selected_id: world_index = i
  origin_lore_cache.clear()
+ origin_profile_cache.clear()
+ area_view = "state"
  map_world_index = -1
  state_id = -1
  province_id = -1
@@ -497,6 +535,11 @@ func request_delete() -> void:
 
 func _start_generation(seed: String = "") -> void:
  if job_thread != null or page != 0 or not delete_target.is_empty(): return
+ var ready := library.helper_status()
+ if not ready.ok:
+  message = str(ready.error)
+  show_page()
+  return
  if seed.is_empty(): seed = "world-" + Crypto.new().generate_random_bytes(16).hex_encode()
  job_is_generation = true
  job_phase = "Building geography and settlements…"
@@ -536,6 +579,8 @@ func _preview_worker(entry: Dictionary) -> Dictionary:
   return {"ok": false, "error": "The map preview could not be rebuilt. Please retry."}
  var enriched := library.ensure_enrichment(entry)
  if not enriched.ok: return enriched
+ var profiled := library.ensure_profiles(entry)
+ if not profiled.ok: return profiled
  return {"ok": true, "entry": entry}
 
 func _show_working() -> void:
