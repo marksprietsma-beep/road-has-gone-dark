@@ -65,6 +65,20 @@ func run() -> void:
  var pristine: Dictionary=candidates[0]
  var slot: String=pristine.playthrough_id
  var entry: Dictionary=entries.filter(func(e: Dictionary):return e.id==pristine.world_ref.id)[0]
+ root.size=Vector2i(1280,720)
+ PartyService.handoff={"entry":entry,"slot":slot,"save_root":base.path_join("saves"),"library_root":base.path_join("library"),"cache_root":base.path_join("cache")}
+ change_scene_to_file("res://scenes/ui/party_creation.tscn")
+ while current_scene==null or current_scene.scene_file_path!="res://scenes/ui/party_creation.tscn":await process_frame
+ ui=current_scene
+ while ui.thread!=null:await process_frame
+ check(ui.ready_view,"actual persisted party-ready screen")
+ await frames()
+ root.get_texture().get_image().save_png(output.path_join("party-ready-handoff.png"))
+ await click(ui.finish_button)
+ while current_scene==null or current_scene.scene_file_path!="res://scenes/gameplay/expedition.tscn":await process_frame
+ ui=current_scene
+ await wait_job()
+ check(ui.state.party_ids==pristine.party_ids,"Enter hometown button carries the same three adventurers")
  for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
   root.size=resolution
   root.content_scale_size=Vector2i(640,360)
@@ -117,6 +131,9 @@ func run() -> void:
   menu.refresh_party_resume(service)
   check(menu.menu_content.get_node("ResumePartyButton").text=="Resume Expedition","main menu recognises active expedition")
   check(menu.party_resume.slot==slot,"latest validated campaign selected")
+  if resolution==Vector2i(1280,720):
+   await frames()
+   root.get_texture().get_image().save_png(output.path_join("main-menu-resume-expedition.png"))
   await click(menu.menu_content.get_node("ResumePartyButton"))
   while current_scene==null or current_scene.scene_file_path!="res://scenes/gameplay/expedition.tscn": await process_frame
   ui=current_scene

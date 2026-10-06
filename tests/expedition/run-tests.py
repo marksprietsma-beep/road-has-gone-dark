@@ -29,6 +29,7 @@ run('lifecycle-replay',[engine,'--headless','--audio-driver','Dummy','--path','.
 run('cache-integrity',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/cache-integrity.gd'])
 run('failure-safety',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/failures.gd'])
 run('outcome-corpus',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/outcome-corpus.gd'],timeout=1800)
+run('cold-cache-performance',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/benchmark.gd'])
 specs=[]
 for w in worlds:
  sha=digest(w);geo=base/'cache'/sha/(sha+'.geography.json');assert geo.exists();specs.append({'world':str(w),'geometry':str(geo)})
