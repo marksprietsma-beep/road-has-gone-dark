@@ -40,6 +40,20 @@ var working_label: Label
 var job_is_generation := false
 var origin_contexts := {}
 var world_status: Label
+var lore_label: Label
+var lore_scroll: ScrollContainer
+var origin_lore_cache := {}
+var enrichment_upgrade_attempted := {}
+
+func _lore() -> WorldOriginLore:
+ var world := worlds[world_index]
+ if not origin_lore_cache.has(world.world_id):
+  var reader := WorldOriginLore.new()
+  world.enrichment_directory = library.enrichment_directory(entries[world_index])
+  if not reader.load_world(world, world.enrichment_directory):
+   push_warning(reader.error)
+  origin_lore_cache[world.world_id] = reader
+ return origin_lore_cache[world.world_id]
 
 func _origin_context() -> OriginContext:
  var id := worlds[world_index].world_id
@@ -129,6 +143,14 @@ func _build_ui() -> void:
  facts = _label("")
  facts.custom_minimum_size.y = 64
  right.add_child(facts)
+ lore_scroll = ScrollContainer.new()
+ lore_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+ lore_scroll.custom_minimum_size.y = 78
+ left.add_child(lore_scroll)
+ lore_label = _label("")
+ lore_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+ lore_scroll.add_child(lore_label)
+ lore_scroll.hide()
  var footer := HBoxContainer.new()
  column.add_child(footer)
  back_button = _button("Back", go_back)
@@ -158,6 +180,10 @@ func choose_world(index: int) -> void:
   state_id = -1
   province_id = -1
   burg_id = -1
+ if not entries[world_index].preset and not DirAccess.dir_exists_absolute(library.enrichment_directory(entries[world_index])) and not enrichment_upgrade_attempted.has(worlds[world_index].world_id):
+  enrichment_upgrade_attempted[worlds[world_index].world_id] = true
+  _start_preview_rebuild(entries[world_index])
+  return
  if map_world_index != world_index:
   var entry := entries[world_index]
   if not entry.preset and not library.preview_valid(entry.directory, entry.world.source_sha256):
@@ -194,6 +220,7 @@ func show_page() -> void:
   return
  map.visible = true
  for child in left.get_children():
+  if child == lore_scroll: continue
   left.remove_child(child)
   child.queue_free()
  if worlds.is_empty():
@@ -270,7 +297,7 @@ func show_page() -> void:
    if not candidates.any(func(c: Dictionary): return int(c.id) == burg_id): burg_id = int(candidates[0].id)
    left.add_child(_label("Small settlements"))
    options = ItemList.new()
-   options.custom_minimum_size.y = 158
+   options.custom_minimum_size.y = 118
    options.add_theme_font_size_override("font_size", 15)
    left.add_child(options)
    for candidate in candidates:
@@ -286,8 +313,9 @@ func show_page() -> void:
   left.add_child(_label(str(state.get("name", ""))))
   if not province.is_empty(): left.add_child(_label(str(province.get("name", ""))))
   left.add_child(_label(str(home.get("name", "")), 20))
-  left.add_child(_label("Party creation is the next step. Your origin has been saved." if page == 4 else "Establish this origin? A new independent playthrough will be saved."))
+  left.add_child(_label("Your origin has been saved. Party creation is next." if page == 4 else "Confirm to begin a new playthrough."))
   if not message.is_empty(): left.add_child(_label(message))
+ left.move_child(lore_scroll, left.get_child_count() - 1)
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
  elif page == 1: _focus_later(state_picker)
@@ -296,6 +324,9 @@ func show_page() -> void:
 
 func _refresh_facts() -> void:
  var world := worlds[world_index]
+ lore_scroll.hide()
+ lore_label.text = ""
+ map.custom_minimum_size.y = 146
  if page == 0:
   var entry := entries[world_index]
   var kind := "Preset world" if entry.preset else "Generated · " + str(entry.created).left(10)
@@ -310,6 +341,15 @@ func _refresh_facts() -> void:
   facts.text = _origin_context().region_summary(state_id, province_id).summary
  else:
   facts.text = _origin_context().hometown_summary(burg_id).summary
+  lore_scroll.scroll_vertical = 0
+  var reader := _lore()
+  var row := reader.public_origin(world, burg_id)
+  if not row.is_empty():
+   lore_label.text = "Local memory: " + (str(row.memory) if page == 2 else str(row.text))
+   lore_scroll.show()
+  elif page == 3:
+   next_button.disabled = true
+   message = "Local history could not be validated. Your world remains available; no origin was saved."
 
 func advance() -> void:
  if job_thread != null: return
@@ -341,6 +381,13 @@ func advance() -> void:
    if not created.ok:
     message = str(created.error)
    else:
+    var reader := _lore()
+    if reader.public_origin(worlds[world_index], burg_id).is_empty():
+     message = "Local history could not be validated. No origin was saved."
+     library.end_origin(guard)
+     show_page()
+     return
+    created.state.origin_enrichment = reader.descriptor.duplicate(true)
     var slot: String = created.state.playthrough_id
     var result := store.save_new(slot, created.state, worlds[world_index])
     if result.ok:
@@ -406,6 +453,7 @@ func _reload_library(selected_id: String = "") -> void:
   previews.append(entries[i].raw)
   world_titles.append(str(entries[i].label))
   if entries[i].id == selected_id: world_index = i
+ origin_lore_cache.clear()
  map_world_index = -1
  state_id = -1
  province_id = -1
@@ -463,13 +511,17 @@ func _generate_worker(seed: String) -> Dictionary:
 func _preview_worker(entry: Dictionary) -> Dictionary:
  if not library.build_preview(entry.directory, entry.raw, entry.world.source_sha256):
   return {"ok": false, "error": "The map preview could not be rebuilt. Please retry."}
+ var enriched := library.ensure_enrichment(entry)
+ if not enriched.ok: return enriched
  return {"ok": true, "entry": entry}
 
 func _show_working() -> void:
  for child in left.get_children():
+  if child == lore_scroll: continue
   left.remove_child(child)
   child.queue_free()
- title.text = "Generating world…" if job_is_generation else "Preparing map…"
+ title.text = "Generating world…" if job_is_generation else "Preparing world…"
+ lore_scroll.hide()
  working_label = _label(job_phase)
  left.add_child(working_label)
  left.add_child(_label("Please wait. Your existing worlds and saves remain available afterward."))

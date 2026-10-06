@@ -1,0 +1,5344 @@
+{
+  "version": "trhgd-game78-1",
+  "author": "TRHGD project; original research content",
+  "license": "Project-owned original content; third-party vocabulary has separate notices",
+  "purposes": [
+    {
+      "key": "watchtower",
+      "category": "military",
+      "label": "watchtower",
+      "function": "observation post",
+      "id": "watchtower",
+      "requires": []
+    },
+    {
+      "key": "signal station",
+      "category": "communication",
+      "label": "signal station",
+      "function": "message relay",
+      "id": "signal-station",
+      "requires": []
+    },
+    {
+      "key": "border storehouse",
+      "category": "military",
+      "label": "border storehouse",
+      "function": "supply depot",
+      "id": "border-storehouse",
+      "requires": []
+    },
+    {
+      "key": "training yard",
+      "category": "military",
+      "label": "training yard",
+      "function": "instruction ground",
+      "id": "training-yard",
+      "requires": []
+    },
+    {
+      "key": "road shelter",
+      "category": "travel",
+      "label": "road shelter",
+      "function": "traveller refuge",
+      "id": "road-shelter",
+      "requires": []
+    },
+    {
+      "key": "toll house",
+      "category": "administrative",
+      "label": "toll house",
+      "function": "route accounting",
+      "id": "toll-house",
+      "requires": []
+    },
+    {
+      "key": "record hall",
+      "category": "administrative",
+      "label": "record hall",
+      "function": "register archive",
+      "id": "record-hall",
+      "requires": []
+    },
+    {
+      "key": "weigh house",
+      "category": "trade",
+      "label": "weigh house",
+      "function": "measure inspection",
+      "id": "weigh-house",
+      "requires": []
+    },
+    {
+      "key": "market shelter",
+      "category": "trade",
+      "label": "market shelter",
+      "function": "covered exchange",
+      "id": "market-shelter",
+      "requires": []
+    },
+    {
+      "key": "pack animal yard",
+      "category": "trade",
+      "label": "pack-animal yard",
+      "function": "caravan staging",
+      "id": "pack-animal-yard",
+      "requires": []
+    },
+    {
+      "key": "smithy",
+      "category": "industrial",
+      "label": "smithy",
+      "function": "metalworking",
+      "id": "smithy",
+      "requires": []
+    },
+    {
+      "key": "pottery kiln",
+      "category": "industrial",
+      "label": "pottery kiln",
+      "function": "ceramic firing",
+      "id": "pottery-kiln",
+      "requires": []
+    },
+    {
+      "key": "lime kiln",
+      "category": "industrial",
+      "label": "lime kiln",
+      "function": "mortar preparation",
+      "id": "lime-kiln",
+      "requires": []
+    },
+    {
+      "key": "stone cutting yard",
+      "category": "resource",
+      "label": "stone-cutting yard",
+      "function": "masonry preparation",
+      "id": "stone-cutting-yard",
+      "requires": []
+    },
+    {
+      "key": "charcoal shelter",
+      "category": "resource",
+      "label": "charcoal shelter",
+      "function": "fuel storage",
+      "id": "charcoal-shelter",
+      "requires": []
+    },
+    {
+      "key": "ore sorting floor",
+      "category": "resource",
+      "label": "ore-sorting floor",
+      "function": "mineral sorting",
+      "id": "ore-sorting-floor",
+      "requires": []
+    },
+    {
+      "key": "seed store",
+      "category": "agricultural",
+      "label": "seed store",
+      "function": "seed keeping",
+      "id": "seed-store",
+      "requires": []
+    },
+    {
+      "key": "granary",
+      "category": "agricultural",
+      "label": "granary",
+      "function": "grain storage",
+      "id": "granary",
+      "requires": []
+    },
+    {
+      "key": "press house",
+      "category": "agricultural",
+      "label": "press house",
+      "function": "crop processing",
+      "id": "press-house",
+      "requires": []
+    },
+    {
+      "key": "drying barn",
+      "category": "agricultural",
+      "label": "drying barn",
+      "function": "harvest drying",
+      "id": "drying-barn",
+      "requires": []
+    },
+    {
+      "key": "sick house",
+      "category": "refuge",
+      "label": "sick house",
+      "function": "convalescence",
+      "id": "sick-house",
+      "requires": []
+    },
+    {
+      "key": "winter refuge",
+      "category": "refuge",
+      "label": "winter refuge",
+      "function": "seasonal shelter",
+      "id": "winter-refuge",
+      "requires": []
+    },
+    {
+      "key": "common kitchen",
+      "category": "domestic",
+      "label": "common kitchen",
+      "function": "shared cooking",
+      "id": "common-kitchen",
+      "requires": []
+    },
+    {
+      "key": "wash house",
+      "category": "domestic",
+      "label": "wash house",
+      "function": "laundry work",
+      "id": "wash-house",
+      "requires": []
+    },
+    {
+      "key": "manor outbuilding",
+      "category": "domestic",
+      "label": "manor outbuilding",
+      "function": "household storage",
+      "id": "manor-outbuilding",
+      "requires": []
+    },
+    {
+      "key": "burial chapel",
+      "category": "burial",
+      "label": "burial chapel",
+      "function": "funeral observance",
+      "id": "burial-chapel",
+      "requires": []
+    },
+    {
+      "key": "memorial court",
+      "category": "burial",
+      "label": "memorial court",
+      "function": "commemoration",
+      "id": "memorial-court",
+      "requires": []
+    },
+    {
+      "key": "scriptorium",
+      "category": "research",
+      "label": "scriptorium",
+      "function": "manuscript copying",
+      "id": "scriptorium",
+      "requires": []
+    },
+    {
+      "key": "survey lodge",
+      "category": "research",
+      "label": "survey lodge",
+      "function": "boundary records",
+      "id": "survey-lodge",
+      "requires": []
+    },
+    {
+      "key": "small observatory",
+      "category": "research",
+      "label": "small observatory",
+      "function": "sky observation",
+      "id": "small-observatory",
+      "requires": []
+    },
+    {
+      "key": "pilgrim lodge",
+      "category": "religious",
+      "label": "pilgrim lodge",
+      "function": "pilgrim shelter",
+      "id": "pilgrim-lodge",
+      "requires": []
+    },
+    {
+      "key": "votive hall",
+      "category": "religious",
+      "label": "votive hall",
+      "function": "public offerings",
+      "id": "votive-hall",
+      "requires": []
+    },
+    {
+      "key": "ceremonial court",
+      "category": "ritual",
+      "label": "ceremonial court",
+      "function": "communal observance",
+      "id": "ceremonial-court",
+      "requires": []
+    },
+    {
+      "key": "defensive gatehouse",
+      "category": "defensive",
+      "label": "gatehouse",
+      "function": "controlled access",
+      "id": "defensive-gatehouse",
+      "requires": []
+    },
+    {
+      "key": "cistern court",
+      "category": "domestic",
+      "label": "cistern court",
+      "function": "water storage",
+      "id": "cistern-court",
+      "requires": []
+    },
+    {
+      "key": "boat repair shed",
+      "category": "industrial",
+      "label": "boat-repair shed",
+      "function": "hull repairs",
+      "id": "boat-repair-shed",
+      "requires": [
+        "port"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "roof missing",
+      "facet": "roof",
+      "label": "a missing section of roof",
+      "id": "roof-missing",
+      "requires": []
+    },
+    {
+      "key": "roof patched",
+      "facet": "roof",
+      "label": "patched roof timbers",
+      "id": "roof-patched",
+      "requires": []
+    },
+    {
+      "key": "roof intact",
+      "facet": "roof",
+      "label": "an intact roof",
+      "id": "roof-intact",
+      "requires": []
+    },
+    {
+      "key": "roof sagging",
+      "facet": "roof",
+      "label": "sagging roof beams",
+      "id": "roof-sagging",
+      "requires": []
+    },
+    {
+      "key": "roof tiled",
+      "facet": "roof",
+      "label": "uneven surviving tiles",
+      "id": "roof-tiled",
+      "requires": []
+    },
+    {
+      "key": "walls braced",
+      "facet": "walls",
+      "label": "braced masonry",
+      "id": "walls-braced",
+      "requires": []
+    },
+    {
+      "key": "walls weathered",
+      "facet": "walls",
+      "label": "weathered stonework",
+      "id": "walls-weathered",
+      "requires": []
+    },
+    {
+      "key": "walls scorched",
+      "facet": "walls",
+      "label": "smoke-stained walls",
+      "id": "walls-scorched",
+      "requires": []
+    },
+    {
+      "key": "walls cracked",
+      "facet": "walls",
+      "label": "cracked mortar joints",
+      "id": "walls-cracked",
+      "requires": []
+    },
+    {
+      "key": "walls stripped",
+      "facet": "walls",
+      "label": "bare inner walls",
+      "id": "walls-stripped",
+      "requires": []
+    },
+    {
+      "key": "walls repaired",
+      "facet": "walls",
+      "label": "newer masonry among older courses",
+      "id": "walls-repaired",
+      "requires": []
+    },
+    {
+      "key": "walls chalked",
+      "facet": "walls",
+      "label": "faded tally marks",
+      "id": "walls-chalked",
+      "requires": []
+    },
+    {
+      "key": "entrance blocked",
+      "facet": "access",
+      "label": "an entrance blocked by fallen masonry",
+      "id": "entrance-blocked",
+      "requires": []
+    },
+    {
+      "key": "entrance open",
+      "facet": "access",
+      "label": "an open entrance",
+      "id": "entrance-open",
+      "requires": []
+    },
+    {
+      "key": "entrance boarded",
+      "facet": "access",
+      "label": "a boarded doorway",
+      "id": "entrance-boarded",
+      "requires": []
+    },
+    {
+      "key": "entrance widened",
+      "facet": "access",
+      "label": "a widened doorway",
+      "id": "entrance-widened",
+      "requires": []
+    },
+    {
+      "key": "entrance narrowed",
+      "facet": "access",
+      "label": "a later narrow threshold",
+      "id": "entrance-narrowed",
+      "requires": []
+    },
+    {
+      "key": "entrance barred",
+      "facet": "access",
+      "label": "a rusted door bar",
+      "id": "entrance-barred",
+      "requires": []
+    },
+    {
+      "key": "floor uneven",
+      "facet": "floor",
+      "label": "an uneven floor",
+      "id": "floor-uneven",
+      "requires": []
+    },
+    {
+      "key": "floor swept",
+      "facet": "floor",
+      "label": "a swept central floor",
+      "id": "floor-swept",
+      "requires": []
+    },
+    {
+      "key": "floor subsided",
+      "facet": "floor",
+      "label": "a sunken floor corner",
+      "id": "floor-subsided",
+      "requires": []
+    },
+    {
+      "key": "floor paved",
+      "facet": "floor",
+      "label": "worn stone paving",
+      "id": "floor-paved",
+      "requires": []
+    },
+    {
+      "key": "floor gravelled",
+      "facet": "floor",
+      "label": "gravel over the old floor",
+      "id": "floor-gravelled",
+      "requires": []
+    },
+    {
+      "key": "floor stained",
+      "facet": "floor",
+      "label": "dark stains across the floor",
+      "id": "floor-stained",
+      "requires": []
+    },
+    {
+      "key": "surrounds cleared",
+      "facet": "surrounds",
+      "label": "a cleared strip around the walls",
+      "id": "surrounds-cleared",
+      "requires": []
+    },
+    {
+      "key": "surrounds rubble",
+      "facet": "surrounds",
+      "label": "sorted rubble outside",
+      "id": "surrounds-rubble",
+      "requires": []
+    },
+    {
+      "key": "surrounds nettles",
+      "facet": "surrounds",
+      "label": "nettles along the footings",
+      "id": "surrounds-nettles",
+      "requires": []
+    },
+    {
+      "key": "surrounds trees",
+      "facet": "surrounds",
+      "label": "tree roots around the footings",
+      "id": "surrounds-trees",
+      "requires": [
+        "forest"
+      ]
+    },
+    {
+      "key": "surrounds sand",
+      "facet": "surrounds",
+      "label": "windblown sand along the footings",
+      "id": "surrounds-sand",
+      "requires": [
+        "arid"
+      ]
+    },
+    {
+      "key": "surrounds reeds",
+      "facet": "surrounds",
+      "label": "reeds around damp footings",
+      "id": "surrounds-reeds",
+      "requires": [
+        "wetland"
+      ]
+    },
+    {
+      "key": "surrounds stacked",
+      "facet": "surrounds",
+      "label": "stacked salvaged bricks",
+      "id": "surrounds-stacked",
+      "requires": []
+    },
+    {
+      "key": "surrounds trodden",
+      "facet": "surrounds",
+      "label": "a trampled patch by the threshold",
+      "id": "surrounds-trodden",
+      "requires": []
+    }
+  ],
+  "events": [
+    {
+      "key": "foundation laid",
+      "category": "founded",
+      "clause": "laid the first foundations",
+      "state": "standing",
+      "id": "foundation-laid",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "standing"
+    },
+    {
+      "key": "wing added",
+      "category": "expanded",
+      "clause": "added a small wing",
+      "state": "standing",
+      "id": "wing-added",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "store built",
+      "category": "expanded",
+      "clause": "built an adjoining store",
+      "state": "standing",
+      "id": "store-built",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "porch added",
+      "category": "expanded",
+      "clause": "added a sheltered porch",
+      "state": "standing",
+      "id": "porch-added",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "court enclosed",
+      "category": "expanded",
+      "clause": "enclosed the outer court",
+      "state": "standing",
+      "id": "court-enclosed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "upper floor added",
+      "category": "expanded",
+      "clause": "added an upper floor",
+      "state": "standing",
+      "id": "upper-floor-added",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "roof renewed",
+      "category": "repair",
+      "clause": "renewed the roof",
+      "state": "standing",
+      "id": "roof-renewed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "roof",
+      "transition": "preserve"
+    },
+    {
+      "key": "floor relaid",
+      "category": "repair",
+      "clause": "relaid the central floor",
+      "state": "standing",
+      "id": "floor-relaid",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "floor",
+      "transition": "preserve"
+    },
+    {
+      "key": "wall braced",
+      "category": "repair",
+      "clause": "braced a failing wall",
+      "state": "standing",
+      "id": "wall-braced",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "walls",
+      "transition": "preserve"
+    },
+    {
+      "key": "lintel replaced",
+      "category": "repair",
+      "clause": "replaced a cracked lintel",
+      "state": "standing",
+      "id": "lintel-replaced",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "walls",
+      "transition": "preserve"
+    },
+    {
+      "key": "stair repaired",
+      "category": "repair",
+      "clause": "repaired the main stair",
+      "state": "standing",
+      "id": "stair-repaired",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "access",
+      "transition": "preserve"
+    },
+    {
+      "key": "door replaced",
+      "category": "repair",
+      "clause": "fitted a replacement door",
+      "state": "standing",
+      "id": "door-replaced",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "access",
+      "transition": "preserve"
+    },
+    {
+      "key": "fire damaged roof",
+      "category": "damage",
+      "clause": "lost part of the roof to fire",
+      "state": "damaged",
+      "id": "fire-damaged-roof",
+      "requires": [],
+      "damage_component": "roof",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "storm broke roof",
+      "category": "damage",
+      "clause": "lost roof timbers in a storm",
+      "state": "damaged",
+      "id": "storm-broke-roof",
+      "requires": [],
+      "damage_component": "roof",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "beam failed",
+      "category": "damage",
+      "clause": "suffered a beam failure",
+      "state": "damaged",
+      "id": "beam-failed",
+      "requires": [],
+      "damage_component": "roof",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "stair collapsed",
+      "category": "damage",
+      "clause": "lost the inner stair",
+      "state": "damaged",
+      "id": "stair-collapsed",
+      "requires": [],
+      "damage_component": "access",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "wall cracked",
+      "category": "damage",
+      "clause": "developed a crack in the outer wall",
+      "state": "damaged",
+      "id": "wall-cracked",
+      "requires": [],
+      "damage_component": "walls",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "subsidence occurred",
+      "category": "damage",
+      "clause": "suffered subsidence at one corner",
+      "state": "damaged",
+      "id": "subsidence-occurred",
+      "requires": [],
+      "damage_component": "floor",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "stone removed",
+      "category": "salvage",
+      "clause": "had dressed stone removed for reuse",
+      "state": "damaged",
+      "id": "stone-removed",
+      "requires": [],
+      "damage_component": "walls",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "tiles salvaged",
+      "category": "salvage",
+      "clause": "had roof tiles taken for repairs elsewhere",
+      "state": "damaged",
+      "id": "tiles-salvaged",
+      "requires": [],
+      "damage_component": "roof",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "iron stripped",
+      "category": "salvage",
+      "clause": "had its iron fittings stripped",
+      "state": "damaged",
+      "id": "iron-stripped",
+      "requires": [],
+      "damage_component": "access",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "timber salvaged",
+      "category": "salvage",
+      "clause": "had sound timbers taken away",
+      "state": "damaged",
+      "id": "timber-salvaged",
+      "requires": [],
+      "damage_component": "roof",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "paving lifted",
+      "category": "salvage",
+      "clause": "had part of its paving lifted",
+      "state": "damaged",
+      "id": "paving-lifted",
+      "requires": [],
+      "damage_component": "floor",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "door sold",
+      "category": "salvage",
+      "clause": "had its outer door sold",
+      "state": "damaged",
+      "id": "door-sold",
+      "requires": [],
+      "damage_component": "access",
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "storage reuse",
+      "category": "reuse",
+      "clause": "became a temporary store",
+      "state": "standing",
+      "id": "storage-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "meeting reuse",
+      "category": "reuse",
+      "clause": "became a meeting place",
+      "state": "standing",
+      "id": "meeting-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "workshop reuse",
+      "category": "reuse",
+      "clause": "housed a small repair workshop",
+      "state": "standing",
+      "id": "workshop-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "shelter reuse",
+      "category": "reuse",
+      "clause": "sheltered displaced households",
+      "state": "standing",
+      "id": "shelter-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "archive reuse",
+      "category": "reuse",
+      "clause": "held salvaged records",
+      "state": "standing",
+      "id": "archive-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "kitchen reuse",
+      "category": "reuse",
+      "clause": "housed a shared kitchen",
+      "state": "standing",
+      "id": "kitchen-reuse",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    },
+    {
+      "key": "keeper appointed",
+      "category": "care",
+      "clause": "gained a resident keeper",
+      "state": "standing",
+      "id": "keeper-appointed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "threshold cleared",
+      "category": "care",
+      "clause": "had its threshold cleared",
+      "state": "standing",
+      "id": "threshold-cleared",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "access",
+      "transition": "preserve"
+    },
+    {
+      "key": "stones catalogued",
+      "category": "care",
+      "clause": "had its worked stones catalogued",
+      "state": "standing",
+      "id": "stones-catalogued",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "roof tarred",
+      "category": "care",
+      "clause": "had the surviving roof weatherproofed",
+      "state": "standing",
+      "id": "roof-tarred",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": "roof",
+      "transition": "preserve"
+    },
+    {
+      "key": "boundary marked",
+      "category": "care",
+      "clause": "had its boundary marked with stones",
+      "state": "standing",
+      "id": "boundary-marked",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "rubble sorted",
+      "category": "care",
+      "clause": "had the outer rubble sorted",
+      "state": "standing",
+      "id": "rubble-sorted",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "account disputed",
+      "category": "social",
+      "clause": "became the subject of an ownership dispute",
+      "state": "standing",
+      "id": "account-disputed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "keeper departed",
+      "category": "social",
+      "clause": "lost its last resident keeper",
+      "state": "abandoned",
+      "id": "keeper-departed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "lease ended",
+      "category": "social",
+      "clause": "fell out of use when its lease ended",
+      "state": "abandoned",
+      "id": "lease-ended",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "work moved",
+      "category": "social",
+      "clause": "lost its work to another building",
+      "state": "abandoned",
+      "id": "work-moved",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "records moved",
+      "category": "social",
+      "clause": "had its records moved elsewhere",
+      "state": "abandoned",
+      "id": "records-moved",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "funding ceased",
+      "category": "social",
+      "clause": "lost the funds for ordinary repairs",
+      "state": "abandoned",
+      "id": "funding-ceased",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "storage emptied",
+      "category": "abandonment",
+      "clause": "had its last stores removed",
+      "state": "abandoned",
+      "id": "storage-emptied",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "doors sealed",
+      "category": "abandonment",
+      "clause": "had its doors sealed",
+      "state": "abandoned",
+      "id": "doors-sealed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "staff dispersed",
+      "category": "abandonment",
+      "clause": "lost its remaining workers",
+      "state": "abandoned",
+      "id": "staff-dispersed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "keys surrendered",
+      "category": "abandonment",
+      "clause": "had its keys surrendered",
+      "state": "abandoned",
+      "id": "keys-surrendered",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "service ended",
+      "category": "abandonment",
+      "clause": "ceased its original service",
+      "state": "abandoned",
+      "id": "service-ended",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "inventory closed",
+      "category": "abandonment",
+      "clause": "had its last inventory closed",
+      "state": "abandoned",
+      "id": "inventory-closed",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "memorial added",
+      "category": "memory",
+      "clause": "gained a small memorial stone",
+      "state": "standing",
+      "id": "memorial-added",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "name recorded",
+      "category": "memory",
+      "clause": "had its old name entered in local records",
+      "state": "standing",
+      "id": "name-recorded",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "repair marked",
+      "category": "memory",
+      "clause": "had a repair date cut into a lintel",
+      "state": "standing",
+      "id": "repair-marked",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "plan copied",
+      "category": "memory",
+      "clause": "had its floor plan copied",
+      "state": "standing",
+      "id": "plan-copied",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "stone numbered",
+      "category": "memory",
+      "clause": "had its dressed stones numbered",
+      "state": "standing",
+      "id": "stone-numbered",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "story collected",
+      "category": "memory",
+      "clause": "had a keeper's account recorded",
+      "state": "standing",
+      "id": "story-collected",
+      "requires": [],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "river flood",
+      "category": "damage",
+      "clause": "lost stored goods to flooding",
+      "state": "damaged",
+      "id": "river-flood",
+      "requires": [
+        "river"
+      ],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "forest encroached",
+      "category": "abandonment",
+      "clause": "had trees take root against the walls",
+      "state": "abandoned",
+      "id": "forest-encroached",
+      "requires": [
+        "forest"
+      ],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "abandoned"
+    },
+    {
+      "key": "harbour lease",
+      "category": "social",
+      "clause": "received a lease for harbour storage",
+      "state": "standing",
+      "id": "harbour-lease",
+      "requires": [
+        "port"
+      ],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "preserve"
+    },
+    {
+      "key": "watch quartered",
+      "category": "reuse",
+      "clause": "housed a temporary gate watch",
+      "state": "standing",
+      "id": "watch-quartered",
+      "requires": [
+        "walls"
+      ],
+      "damage_component": null,
+      "repair_component": null,
+      "transition": "reused"
+    }
+  ],
+  "memories": [
+    {
+      "key": "shared roof repair",
+      "actors": "households",
+      "action": "pooled spare tiles after several roofs failed",
+      "legacy": "a store of spare tiles",
+      "id": "shared-roof-repair",
+      "requires": []
+    },
+    {
+      "key": "workshop loan",
+      "actors": "craft workers",
+      "action": "lent their benches while a neighbouring workshop was repaired",
+      "legacy": "a shared workbench",
+      "id": "workshop-loan",
+      "requires": []
+    },
+    {
+      "key": "old register",
+      "actors": "clerks",
+      "action": "copied a damaged household register by hand",
+      "legacy": "a duplicate register",
+      "id": "old-register",
+      "requires": []
+    },
+    {
+      "key": "winter kitchen",
+      "actors": "neighbours",
+      "action": "kept a common kitchen through a hard winter",
+      "legacy": "a large cooking pot",
+      "id": "winter-kitchen",
+      "requires": []
+    },
+    {
+      "key": "lost tally",
+      "actors": "traders",
+      "action": "settled a dispute by comparing their own tally sticks",
+      "legacy": "matched tally sticks",
+      "id": "lost-tally",
+      "requires": []
+    },
+    {
+      "key": "water vessel",
+      "actors": "households",
+      "action": "collected vessels for carrying water during repairs",
+      "legacy": "a row of old carrying jars",
+      "id": "water-vessel",
+      "requires": []
+    },
+    {
+      "key": "funeral cloth",
+      "actors": "weavers",
+      "action": "made a shared funeral cloth for families unable to provide one",
+      "legacy": "a carefully patched cloth",
+      "id": "funeral-cloth",
+      "requires": []
+    },
+    {
+      "key": "boundary ledger",
+      "actors": "record keepers",
+      "action": "recorded household boundaries after an old ledger was lost",
+      "legacy": "a replacement ledger",
+      "id": "boundary-ledger",
+      "requires": []
+    },
+    {
+      "key": "school bench",
+      "actors": "parents",
+      "action": "built a bench for the first shared lessons",
+      "legacy": "a worn school bench",
+      "id": "school-bench",
+      "requires": []
+    },
+    {
+      "key": "borrowed tools",
+      "actors": "apprentices",
+      "action": "kept a list of tools lent between workshops",
+      "legacy": "a tool-loan register",
+      "id": "borrowed-tools",
+      "requires": []
+    },
+    {
+      "key": "failed bell",
+      "actors": "metalworkers",
+      "action": "mended the small bell used to call communal meetings",
+      "legacy": "a soldered bell",
+      "id": "failed-bell",
+      "requires": []
+    },
+    {
+      "key": "harvest drying",
+      "actors": "growers",
+      "action": "shared covered space after a wet harvest",
+      "legacy": "a drying rack",
+      "id": "harvest-drying",
+      "requires": []
+    },
+    {
+      "key": "common scales",
+      "actors": "traders",
+      "action": "agreed to keep one set of comparison weights",
+      "legacy": "a boxed set of weights",
+      "id": "common-scales",
+      "requires": []
+    },
+    {
+      "key": "brick collection",
+      "actors": "masons",
+      "action": "saved usable bricks from a dismantled building",
+      "legacy": "a stack of marked bricks",
+      "id": "brick-collection",
+      "requires": []
+    },
+    {
+      "key": "cold cellar",
+      "actors": "households",
+      "action": "shared a cool storage room when several stores spoiled",
+      "legacy": "a set of cellar shelves",
+      "id": "cold-cellar",
+      "requires": []
+    },
+    {
+      "key": "street lamps",
+      "actors": "neighbours",
+      "action": "took turns tending simple lamps on dark evenings",
+      "legacy": "a soot-marked lamp",
+      "id": "street-lamps",
+      "requires": []
+    },
+    {
+      "key": "written debts",
+      "actors": "shopkeepers",
+      "action": "copied old debts before a damaged book fell apart",
+      "legacy": "a bound debt book",
+      "id": "written-debts",
+      "requires": []
+    },
+    {
+      "key": "mended banner",
+      "actors": "needleworkers",
+      "action": "repaired a plain banner used at communal gatherings",
+      "legacy": "a patched banner",
+      "id": "mended-banner",
+      "requires": []
+    },
+    {
+      "key": "orphan apprenticeship",
+      "actors": "craft workers",
+      "action": "arranged apprenticeships for children without a household trade",
+      "legacy": "a training ledger",
+      "id": "orphan-apprenticeship",
+      "requires": []
+    },
+    {
+      "key": "retired keeper",
+      "actors": "neighbours",
+      "action": "maintained a retired keeper's home in return for teaching repairs",
+      "legacy": "a keeper's tool chest",
+      "id": "retired-keeper",
+      "requires": []
+    },
+    {
+      "key": "market awning",
+      "actors": "stall holders",
+      "action": "sewed a common awning after rain spoiled stored wares",
+      "legacy": "a patched awning",
+      "id": "market-awning",
+      "requires": []
+    },
+    {
+      "key": "letter chest",
+      "actors": "clerks",
+      "action": "provided a locked chest for letters awaiting collection",
+      "legacy": "a wooden letter chest",
+      "id": "letter-chest",
+      "requires": []
+    },
+    {
+      "key": "old song",
+      "actors": "elders",
+      "action": "wrote down a work song before its last regular singers died",
+      "legacy": "a sheet of song words",
+      "id": "old-song",
+      "requires": []
+    },
+    {
+      "key": "stone benches",
+      "actors": "masons",
+      "action": "set aside offcuts to make benches for public meetings",
+      "legacy": "a stone bench",
+      "id": "stone-benches",
+      "requires": []
+    },
+    {
+      "key": "wash day",
+      "actors": "households",
+      "action": "agreed on turns at a shared washing place",
+      "legacy": "a washing rota",
+      "id": "wash-day",
+      "requires": []
+    },
+    {
+      "key": "shared oven",
+      "actors": "bakers",
+      "action": "let neighbours use their oven while home hearths were repaired",
+      "legacy": "an oven-use tally",
+      "id": "shared-oven",
+      "requires": []
+    },
+    {
+      "key": "repair lessons",
+      "actors": "craft workers",
+      "action": "held free lessons in mending ordinary tools",
+      "legacy": "a practice tool rack",
+      "id": "repair-lessons",
+      "requires": []
+    },
+    {
+      "key": "blanket stock",
+      "actors": "needleworkers",
+      "action": "put aside blankets for households whose bedding was lost",
+      "legacy": "a blanket chest",
+      "id": "blanket-stock",
+      "requires": []
+    },
+    {
+      "key": "hearth tax",
+      "actors": "clerks",
+      "action": "corrected a levy after several households were counted twice",
+      "legacy": "a corrected account",
+      "id": "hearth-tax",
+      "requires": []
+    },
+    {
+      "key": "lost keys",
+      "actors": "keepers",
+      "action": "commissioned a spare set after keys were mislaid",
+      "legacy": "a spare-key board",
+      "id": "lost-keys",
+      "requires": []
+    },
+    {
+      "key": "measurement mark",
+      "actors": "builders",
+      "action": "cut a common measuring mark into an old workbench",
+      "legacy": "a notched workbench",
+      "id": "measurement-mark",
+      "requires": []
+    },
+    {
+      "key": "burial register",
+      "actors": "record keepers",
+      "action": "copied faded names from an older burial register",
+      "legacy": "a copied name list",
+      "id": "burial-register",
+      "requires": []
+    },
+    {
+      "key": "common cart",
+      "actors": "carters",
+      "action": "shared a cart during repairs to several broken axles",
+      "legacy": "a repaired axle",
+      "id": "common-cart",
+      "requires": []
+    },
+    {
+      "key": "pot repair",
+      "actors": "potters",
+      "action": "gathered broken household vessels for inexpensive repairs",
+      "legacy": "a pot-mending bench",
+      "id": "pot-repair",
+      "requires": []
+    },
+    {
+      "key": "cloth measures",
+      "actors": "weavers",
+      "action": "agreed on comparison lengths for traded cloth",
+      "legacy": "a marked cloth rod",
+      "id": "cloth-measures",
+      "requires": []
+    },
+    {
+      "key": "hearth stones",
+      "actors": "masons",
+      "action": "reused dressed stones from an empty storehouse for hearth repairs",
+      "legacy": "a reused hearth block",
+      "id": "hearth-stones",
+      "requires": []
+    },
+    {
+      "key": "old shutters",
+      "actors": "woodworkers",
+      "action": "reworked discarded shutters into storage boxes",
+      "legacy": "a shutter-board chest",
+      "id": "old-shutters",
+      "requires": []
+    },
+    {
+      "key": "disputed seal",
+      "actors": "clerks",
+      "action": "settled a document dispute by recording who had witnessed it",
+      "legacy": "a witness list",
+      "id": "disputed-seal",
+      "requires": []
+    },
+    {
+      "key": "lost apprentice",
+      "actors": "craft workers",
+      "action": "kept a place for an apprentice who never returned",
+      "legacy": "an unused stool",
+      "id": "lost-apprentice",
+      "requires": []
+    },
+    {
+      "key": "common savings",
+      "actors": "households",
+      "action": "kept small contributions for repairs to shared equipment",
+      "legacy": "a contribution box",
+      "id": "common-savings",
+      "requires": []
+    },
+    {
+      "key": "rain repairs",
+      "actors": "builders",
+      "action": "repaired leaking store roofs before the autumn rains",
+      "legacy": "a patched roof tile",
+      "id": "rain-repairs",
+      "requires": []
+    },
+    {
+      "key": "old measures",
+      "actors": "traders",
+      "action": "preserved obsolete measures beside their replacements",
+      "legacy": "an old measuring cup",
+      "id": "old-measures",
+      "requires": []
+    },
+    {
+      "key": "timber salvage",
+      "actors": "woodworkers",
+      "action": "salvaged sound timber rather than buy newly cut boards",
+      "legacy": "a salvaged beam",
+      "id": "timber-salvage",
+      "requires": []
+    },
+    {
+      "key": "spare handles",
+      "actors": "craft workers",
+      "action": "kept spare handles for neighbours' broken tools",
+      "legacy": "a handle rack",
+      "id": "spare-handles",
+      "requires": []
+    },
+    {
+      "key": "shared stories",
+      "actors": "elders",
+      "action": "recorded ordinary household stories alongside official accounts",
+      "legacy": "a household chronicle",
+      "id": "shared-stories",
+      "requires": []
+    },
+    {
+      "key": "mourning names",
+      "actors": "neighbours",
+      "action": "read the names of absent households at a yearly gathering",
+      "legacy": "a folded name sheet",
+      "id": "mourning-names",
+      "requires": []
+    },
+    {
+      "key": "gate hinges",
+      "actors": "gate workers",
+      "action": "replaced worn hinges without closing the gate for a full day",
+      "legacy": "a discarded hinge",
+      "id": "gate-hinges",
+      "requires": [
+        "walls"
+      ]
+    },
+    {
+      "key": "watch cloak",
+      "actors": "needleworkers",
+      "action": "mended a common cloak used by the gate's night watch",
+      "legacy": "a patched watch cloak",
+      "id": "watch-cloak",
+      "requires": [
+        "walls"
+      ]
+    },
+    {
+      "key": "harbour rope",
+      "actors": "harbour workers",
+      "action": "kept a shared stock of rope for damaged moorings",
+      "legacy": "a rope chest",
+      "id": "harbour-rope",
+      "requires": [
+        "port"
+      ]
+    },
+    {
+      "key": "net lessons",
+      "actors": "net makers",
+      "action": "taught young workers to repair nets before taking harbour work",
+      "legacy": "a sample net",
+      "id": "net-lessons",
+      "requires": [
+        "port"
+      ]
+    },
+    {
+      "key": "woodland tools",
+      "actors": "woodworkers",
+      "action": "marked borrowed woodland tools so they could be returned",
+      "legacy": "a stamped tool handle",
+      "id": "woodland-tools",
+      "requires": [
+        "forest"
+      ]
+    },
+    {
+      "key": "river baskets",
+      "actors": "households",
+      "action": "replaced baskets lost during a river flood",
+      "legacy": "a repaired carrying basket",
+      "id": "river-baskets",
+      "requires": [
+        "river"
+      ]
+    },
+    {
+      "key": "adjacent letter exchange",
+      "actors": "letter carriers",
+      "action": "kept copies of letters exchanged with households in neighbouring settlements",
+      "legacy": "a letter-copy bundle",
+      "id": "adjacent-letter-exchange",
+      "requires": [
+        "adjacent-town"
+      ]
+    },
+    {
+      "key": "neighbour repair agreement",
+      "actors": "craft workers",
+      "action": "recorded which borrowed tools should be returned to neighbouring settlements",
+      "legacy": "a tool-return list",
+      "id": "neighbour-repair-agreement",
+      "requires": [
+        "adjacent-town"
+      ]
+    },
+    {
+      "key": "capital account copying",
+      "actors": "clerks",
+      "action": "copied communal accounts before older volumes were retired",
+      "legacy": "a preserved account volume",
+      "id": "capital-account-copying",
+      "requires": [
+        "capital"
+      ]
+    },
+    {
+      "key": "large store inventory",
+      "actors": "keepers",
+      "action": "reorganised a crowded communal store without discarding older inventories",
+      "legacy": "a shelf inventory",
+      "id": "large-store-inventory",
+      "requires": [
+        "larger-relative"
+      ]
+    },
+    {
+      "key": "village shared bench",
+      "actors": "neighbours",
+      "action": "made a small bench for household meetings instead of a separate meeting hall",
+      "legacy": "a plain wooden bench",
+      "id": "village-shared-bench",
+      "requires": [
+        "settlement:village"
+      ]
+    },
+    {
+      "key": "woodcraft teaching chest",
+      "actors": "woodworkers",
+      "action": "kept sample joints to teach repair rather than decoration",
+      "legacy": "a box of practice joints",
+      "id": "woodcraft-teaching-chest",
+      "requires": [
+        "forest"
+      ]
+    }
+  ],
+  "traditions": [
+    {
+      "key": "tool return",
+      "practice": "return borrowed tools before the year's last gathering",
+      "occasion": "tool lending",
+      "id": "tool-return",
+      "requires": []
+    },
+    {
+      "key": "spare tile",
+      "practice": "bring a spare tile to communal roof repairs",
+      "occasion": "roof repair",
+      "id": "spare-tile",
+      "requires": []
+    },
+    {
+      "key": "first stitch",
+      "practice": "show apprentices the first stitch in an old household cloth",
+      "occasion": "apprentice teaching",
+      "id": "first-stitch",
+      "requires": []
+    },
+    {
+      "key": "empty stool",
+      "practice": "leave one stool for absent neighbours at a gathering",
+      "occasion": "communal memory",
+      "id": "empty-stool",
+      "requires": []
+    },
+    {
+      "key": "shared cup",
+      "practice": "pass a plain cup before discussing shared expenses",
+      "occasion": "meeting etiquette",
+      "id": "shared-cup",
+      "requires": []
+    },
+    {
+      "key": "winter cloth",
+      "practice": "air stored blankets before winter",
+      "occasion": "household care",
+      "id": "winter-cloth",
+      "requires": []
+    },
+    {
+      "key": "measure check",
+      "practice": "compare shop measures at a regular gathering",
+      "occasion": "trade practice",
+      "id": "measure-check",
+      "requires": []
+    },
+    {
+      "key": "work song",
+      "practice": "teach a work song during an apprentice's first week",
+      "occasion": "craft teaching",
+      "id": "work-song",
+      "requires": []
+    },
+    {
+      "key": "lamp cleaning",
+      "practice": "clean shared lamp glass on a fixed evening",
+      "occasion": "lamp care",
+      "id": "lamp-cleaning",
+      "requires": []
+    },
+    {
+      "key": "name reading",
+      "practice": "read old household names before communal accounts",
+      "occasion": "commemoration",
+      "id": "name-reading",
+      "requires": []
+    },
+    {
+      "key": "hearth sweeping",
+      "practice": "sweep a neighbour's hearth when they cannot do it",
+      "occasion": "mutual aid",
+      "id": "hearth-sweeping",
+      "requires": []
+    },
+    {
+      "key": "loan marks",
+      "practice": "mark lent tools with a removable strip of cloth",
+      "occasion": "tool lending",
+      "id": "loan-marks",
+      "requires": []
+    },
+    {
+      "key": "bench repair",
+      "practice": "mend a shared bench before holding a meeting",
+      "occasion": "public care",
+      "id": "bench-repair",
+      "requires": []
+    },
+    {
+      "key": "spare thread",
+      "practice": "keep a skein of thread for other households' repairs",
+      "occasion": "mutual aid",
+      "id": "spare-thread",
+      "requires": []
+    },
+    {
+      "key": "letter handover",
+      "practice": "read a letter's recipient aloud when handing it over",
+      "occasion": "letter practice",
+      "id": "letter-handover",
+      "requires": []
+    },
+    {
+      "key": "old ledger",
+      "practice": "show apprentices a corrected page in an old ledger",
+      "occasion": "clerical teaching",
+      "id": "old-ledger",
+      "requires": []
+    },
+    {
+      "key": "pot lending",
+      "practice": "leave a small marked pot available for borrowing",
+      "occasion": "household lending",
+      "id": "pot-lending",
+      "requires": []
+    },
+    {
+      "key": "first loaf",
+      "practice": "share part of the first loaf from a repaired oven",
+      "occasion": "oven care",
+      "id": "first-loaf",
+      "requires": []
+    },
+    {
+      "key": "stone brushing",
+      "practice": "brush dust from old memorial lettering before a gathering",
+      "occasion": "commemoration",
+      "id": "stone-brushing",
+      "requires": []
+    },
+    {
+      "key": "cloth airing",
+      "practice": "air the communal cloth without displaying household names",
+      "occasion": "cloth care",
+      "id": "cloth-airing",
+      "requires": []
+    },
+    {
+      "key": "key counting",
+      "practice": "count spare keys in front of two witnesses",
+      "occasion": "keeper practice",
+      "id": "key-counting",
+      "requires": []
+    },
+    {
+      "key": "weight wrapping",
+      "practice": "wrap comparison weights in plain cloth after use",
+      "occasion": "trade care",
+      "id": "weight-wrapping",
+      "requires": []
+    },
+    {
+      "key": "quiet pause",
+      "practice": "pause before reading names of neighbours who have died",
+      "occasion": "commemoration",
+      "id": "quiet-pause",
+      "requires": []
+    },
+    {
+      "key": "handle testing",
+      "practice": "test repaired tool handles with the apprentice present",
+      "occasion": "craft practice",
+      "id": "handle-testing",
+      "requires": []
+    },
+    {
+      "key": "repair tally",
+      "practice": "keep old repair tallies beside the tools they concern",
+      "occasion": "record keeping",
+      "id": "repair-tally",
+      "requires": []
+    },
+    {
+      "key": "chest airing",
+      "practice": "open the shared storage chest for airing before filling it",
+      "occasion": "store care",
+      "id": "chest-airing",
+      "requires": []
+    },
+    {
+      "key": "borrower thanks",
+      "practice": "thank the last borrower when a tool returns sound",
+      "occasion": "lending etiquette",
+      "id": "borrower-thanks",
+      "requires": []
+    },
+    {
+      "key": "apprentice meal",
+      "practice": "invite a new apprentice to a modest shared meal",
+      "occasion": "apprentice welcome",
+      "id": "apprentice-meal",
+      "requires": []
+    },
+    {
+      "key": "shelf cleaning",
+      "practice": "clean shared shelves before stored goods are counted",
+      "occasion": "store care",
+      "id": "shelf-cleaning",
+      "requires": []
+    },
+    {
+      "key": "old token",
+      "practice": "pass an old counting token when a meeting changes speaker",
+      "occasion": "meeting etiquette",
+      "id": "old-token",
+      "requires": []
+    },
+    {
+      "key": "new binding",
+      "practice": "bind damaged records before adding another year's entries",
+      "occasion": "clerical care",
+      "id": "new-binding",
+      "requires": []
+    },
+    {
+      "key": "patch showing",
+      "practice": "show a household repair without concealing its patch",
+      "occasion": "repair custom",
+      "id": "patch-showing",
+      "requires": []
+    },
+    {
+      "key": "spare peg",
+      "practice": "leave a spare wooden peg beside the shared tool rack",
+      "occasion": "craft care",
+      "id": "spare-peg",
+      "requires": []
+    },
+    {
+      "key": "cart inspection",
+      "practice": "inspect a borrowed cart with its owner before returning it",
+      "occasion": "lending practice",
+      "id": "cart-inspection",
+      "requires": []
+    },
+    {
+      "key": "recipe copying",
+      "practice": "copy an old household recipe when a child learns to cook",
+      "occasion": "household teaching",
+      "id": "recipe-copying",
+      "requires": []
+    },
+    {
+      "key": "common ink",
+      "practice": "provide a little ink for neighbours recording family matters",
+      "occasion": "mutual aid",
+      "id": "common-ink",
+      "requires": []
+    },
+    {
+      "key": "absent names",
+      "practice": "include absent households when recording communal contributions",
+      "occasion": "accounting practice",
+      "id": "absent-names",
+      "requires": []
+    },
+    {
+      "key": "window cleaning",
+      "practice": "clean a neighbour's high window in exchange for another small task",
+      "occasion": "mutual aid",
+      "id": "window-cleaning",
+      "requires": []
+    },
+    {
+      "key": "first shaving",
+      "practice": "keep the first shaving from an apprentice's finished handle",
+      "occasion": "craft memory",
+      "id": "first-shaving",
+      "requires": []
+    },
+    {
+      "key": "cloth tally",
+      "practice": "record cloth lengths before cutting them for shared repairs",
+      "occasion": "trade practice",
+      "id": "cloth-tally",
+      "requires": []
+    },
+    {
+      "key": "blanket turning",
+      "practice": "turn stored blankets during the cold season",
+      "occasion": "household care",
+      "id": "blanket-turning",
+      "requires": []
+    },
+    {
+      "key": "pot inspection",
+      "practice": "inspect a repaired pot before entrusting it with hot food",
+      "occasion": "craft practice",
+      "id": "pot-inspection",
+      "requires": []
+    },
+    {
+      "key": "spare buckle",
+      "practice": "keep usable buckles from discarded belts for repairs",
+      "occasion": "salvage practice",
+      "id": "spare-buckle",
+      "requires": []
+    },
+    {
+      "key": "quiet work",
+      "practice": "finish a small necessary repair before a commemorative meal",
+      "occasion": "commemoration",
+      "id": "quiet-work",
+      "requires": []
+    },
+    {
+      "key": "story correction",
+      "practice": "invite another witness to correct a household story",
+      "occasion": "local memory",
+      "id": "story-correction",
+      "requires": []
+    },
+    {
+      "key": "seal witness",
+      "practice": "have a second person witness the sealing of a shared chest",
+      "occasion": "keeper practice",
+      "id": "seal-witness",
+      "requires": []
+    },
+    {
+      "key": "gate oil",
+      "practice": "oil the gate hinges before changing the night watch",
+      "occasion": "gate care",
+      "id": "gate-oil",
+      "requires": [
+        "walls"
+      ]
+    },
+    {
+      "key": "watch mending",
+      "practice": "mend shared watch clothing before winter",
+      "occasion": "watch care",
+      "id": "watch-mending",
+      "requires": [
+        "walls"
+      ]
+    },
+    {
+      "key": "rope testing",
+      "practice": "test shared ropes before returning them to harbour storage",
+      "occasion": "harbour care",
+      "id": "rope-testing",
+      "requires": [
+        "port"
+      ]
+    },
+    {
+      "key": "net patch",
+      "practice": "keep a sample patch when teaching net repair",
+      "occasion": "harbour teaching",
+      "id": "net-patch",
+      "requires": [
+        "port"
+      ]
+    },
+    {
+      "key": "wood mark",
+      "practice": "show new apprentices the marks on borrowed woodland tools",
+      "occasion": "woodcraft teaching",
+      "id": "wood-mark",
+      "requires": [
+        "forest"
+      ]
+    },
+    {
+      "key": "river store",
+      "practice": "move shared vessels above the usual river storage level before winter",
+      "occasion": "river care",
+      "id": "river-store",
+      "requires": [
+        "river"
+      ]
+    },
+    {
+      "key": "neighbour parcel check",
+      "practice": "check a parcel's recipient before passing it to carriers visiting neighbouring settlements",
+      "occasion": "letter exchange",
+      "id": "neighbour-parcel-check",
+      "requires": [
+        "adjacent-town"
+      ]
+    },
+    {
+      "key": "neighbour tool marks",
+      "practice": "write the lending household's settlement beside borrowed tool marks",
+      "occasion": "tool return",
+      "id": "neighbour-tool-marks",
+      "requires": [
+        "adjacent-town"
+      ]
+    },
+    {
+      "key": "capital old account",
+      "practice": "display a corrected old account before recording communal contributions",
+      "occasion": "clerical memory",
+      "id": "capital-old-account",
+      "requires": [
+        "capital"
+      ]
+    },
+    {
+      "key": "large store tally",
+      "practice": "compare shelf tallies with a second keeper before moving shared stores",
+      "occasion": "store care",
+      "id": "large-store-tally",
+      "requires": [
+        "larger-relative"
+      ]
+    },
+    {
+      "key": "village borrowed bench",
+      "practice": "lend a meeting bench to a household gathering before storing it away",
+      "occasion": "shared space",
+      "id": "village-borrowed-bench",
+      "requires": [
+        "settlement:village"
+      ]
+    },
+    {
+      "key": "woodcraft sample",
+      "practice": "keep a sound sample joint beside a newly repaired wooden tool",
+      "occasion": "craft teaching",
+      "id": "woodcraft-sample",
+      "requires": [
+        "forest"
+      ]
+    }
+  ],
+  "occupations": [
+    {
+      "key": "toolmaker",
+      "category": "craft",
+      "work": "all-purpose tools",
+      "id": "toolmaker",
+      "requires": [],
+      "provides": [
+        "occupation:toolmaker",
+        "craft"
+      ]
+    },
+    {
+      "key": "potter",
+      "category": "craft",
+      "work": "clay vessels",
+      "id": "potter",
+      "requires": [],
+      "provides": [
+        "occupation:potter",
+        "craft"
+      ]
+    },
+    {
+      "key": "weaver",
+      "category": "craft",
+      "work": "plain cloth",
+      "id": "weaver",
+      "requires": [],
+      "provides": [
+        "occupation:weaver",
+        "craft"
+      ]
+    },
+    {
+      "key": "mason",
+      "category": "craft",
+      "work": "ordinary stonework",
+      "id": "mason",
+      "requires": [],
+      "provides": [
+        "occupation:mason",
+        "craft"
+      ]
+    },
+    {
+      "key": "baker",
+      "category": "household",
+      "work": "bread ovens",
+      "id": "baker",
+      "requires": [],
+      "provides": [
+        "occupation:baker",
+        "household"
+      ]
+    },
+    {
+      "key": "cobbler",
+      "category": "craft",
+      "work": "worn footwear",
+      "id": "cobbler",
+      "requires": [],
+      "provides": [
+        "occupation:cobbler",
+        "craft"
+      ]
+    },
+    {
+      "key": "scribe",
+      "category": "records",
+      "work": "household accounts",
+      "id": "scribe",
+      "requires": [],
+      "provides": [
+        "occupation:scribe",
+        "records"
+      ]
+    },
+    {
+      "key": "carter",
+      "category": "transport",
+      "work": "loads and axles",
+      "id": "carter",
+      "requires": [],
+      "provides": [
+        "occupation:carter",
+        "transport"
+      ]
+    },
+    {
+      "key": "needleworker",
+      "category": "craft",
+      "work": "household clothing",
+      "id": "needleworker",
+      "requires": [],
+      "provides": [
+        "occupation:needleworker",
+        "craft"
+      ]
+    },
+    {
+      "key": "basket maker",
+      "category": "craft",
+      "work": "carrying baskets",
+      "id": "basket-maker",
+      "requires": [],
+      "provides": [
+        "occupation:basket-maker",
+        "craft"
+      ]
+    },
+    {
+      "key": "brewer",
+      "category": "household",
+      "work": "small brewing vessels",
+      "id": "brewer",
+      "requires": [],
+      "provides": [
+        "occupation:brewer",
+        "household"
+      ]
+    },
+    {
+      "key": "herbal preparer",
+      "category": "household",
+      "work": "dried herb stores",
+      "id": "herbal-preparer",
+      "requires": [],
+      "provides": [
+        "occupation:herbal-preparer",
+        "household"
+      ]
+    },
+    {
+      "key": "rope maker",
+      "category": "craft",
+      "work": "cordage",
+      "id": "rope-maker",
+      "requires": [],
+      "provides": [
+        "occupation:rope-maker",
+        "craft"
+      ]
+    },
+    {
+      "key": "lamp keeper",
+      "category": "care",
+      "work": "lamp cleaning",
+      "id": "lamp-keeper",
+      "requires": [],
+      "provides": [
+        "occupation:lamp-keeper",
+        "care"
+      ]
+    },
+    {
+      "key": "porter",
+      "category": "transport",
+      "work": "storage loads",
+      "id": "porter",
+      "requires": [],
+      "provides": [
+        "occupation:porter",
+        "transport"
+      ]
+    },
+    {
+      "key": "repairer",
+      "category": "craft",
+      "work": "household repairs",
+      "id": "repairer",
+      "requires": [],
+      "provides": [
+        "occupation:repairer",
+        "craft"
+      ]
+    },
+    {
+      "key": "book binder",
+      "category": "records",
+      "work": "worn bindings",
+      "id": "book-binder",
+      "requires": [],
+      "provides": [
+        "occupation:book-binder",
+        "records"
+      ]
+    },
+    {
+      "key": "metalworker",
+      "category": "craft",
+      "work": "iron fittings",
+      "id": "metalworker",
+      "requires": [],
+      "provides": [
+        "occupation:metalworker",
+        "craft"
+      ]
+    },
+    {
+      "key": "stall keeper",
+      "category": "trade",
+      "work": "ordinary wares",
+      "id": "stall-keeper",
+      "requires": [],
+      "provides": [
+        "occupation:stall-keeper",
+        "trade"
+      ]
+    },
+    {
+      "key": "tavern keeper",
+      "category": "household",
+      "work": "shared tables",
+      "id": "tavern-keeper",
+      "requires": [],
+      "provides": [
+        "occupation:tavern-keeper",
+        "household"
+      ]
+    },
+    {
+      "key": "local clerk",
+      "category": "records",
+      "work": "local registers",
+      "id": "local-clerk",
+      "requires": [],
+      "provides": [
+        "occupation:local-clerk",
+        "records"
+      ]
+    },
+    {
+      "key": "traveller",
+      "category": "transport",
+      "work": "borrowed equipment",
+      "id": "traveller",
+      "requires": [],
+      "provides": [
+        "occupation:traveller",
+        "transport"
+      ]
+    },
+    {
+      "key": "religious attendant",
+      "category": "religious",
+      "work": "communal observances",
+      "id": "religious-attendant",
+      "requires": [
+        "religion"
+      ],
+      "provides": [
+        "occupation:religious-attendant",
+        "religious"
+      ]
+    },
+    {
+      "key": "repair apprentice",
+      "category": "craft",
+      "work": "practical repairs",
+      "id": "possible-recruit",
+      "requires": [],
+      "provides": [
+        "occupation:possible-recruit",
+        "craft"
+      ]
+    },
+    {
+      "key": "woodworker",
+      "category": "craft",
+      "work": "timber tools",
+      "id": "woodworker",
+      "requires": [
+        "forest"
+      ],
+      "provides": [
+        "occupation:woodworker",
+        "craft"
+      ]
+    },
+    {
+      "key": "charcoal burner",
+      "category": "craft",
+      "work": "fuel baskets",
+      "id": "charcoal-burner",
+      "requires": [
+        "forest"
+      ],
+      "provides": [
+        "occupation:charcoal-burner",
+        "craft"
+      ]
+    },
+    {
+      "key": "harbour worker",
+      "category": "transport",
+      "work": "mooring ropes",
+      "id": "harbour-worker",
+      "requires": [
+        "port"
+      ],
+      "provides": [
+        "occupation:harbour-worker",
+        "transport"
+      ]
+    },
+    {
+      "key": "net maker",
+      "category": "craft",
+      "work": "working nets",
+      "id": "net-maker",
+      "requires": [
+        "port"
+      ],
+      "provides": [
+        "occupation:net-maker",
+        "craft"
+      ]
+    },
+    {
+      "key": "gate keeper",
+      "category": "care",
+      "work": "hinges and bars",
+      "id": "gate-keeper",
+      "requires": [
+        "walls"
+      ],
+      "provides": [
+        "occupation:gate-keeper",
+        "care"
+      ]
+    },
+    {
+      "key": "river carrier",
+      "category": "transport",
+      "work": "carrying vessels",
+      "id": "river-carrier",
+      "requires": [
+        "river"
+      ],
+      "provides": [
+        "occupation:river-carrier",
+        "transport"
+      ]
+    }
+  ],
+  "family": [
+    {
+      "id": "extended-household",
+      "label": "extended household",
+      "requires": []
+    },
+    {
+      "id": "single-parent-household",
+      "label": "single-parent household",
+      "requires": []
+    },
+    {
+      "id": "guardian-household",
+      "label": "guardian household",
+      "requires": []
+    },
+    {
+      "id": "two-parent-household",
+      "label": "two-parent household",
+      "requires": []
+    },
+    {
+      "id": "adoptive-household",
+      "label": "adoptive household",
+      "requires": []
+    },
+    {
+      "id": "grandparent-household",
+      "label": "grandparent household",
+      "requires": []
+    },
+    {
+      "id": "sibling-household",
+      "label": "sibling household",
+      "requires": []
+    },
+    {
+      "id": "household-of-family-friends",
+      "label": "household of family friends",
+      "requires": []
+    },
+    {
+      "id": "widowed-guardian-household",
+      "label": "widowed guardian household",
+      "requires": []
+    },
+    {
+      "id": "two-connected-households",
+      "label": "pair of connected households",
+      "requires": []
+    },
+    {
+      "id": "family-of-itinerant-workers",
+      "label": "family of itinerant workers",
+      "requires": []
+    },
+    {
+      "id": "household-of-retired-craft-workers",
+      "label": "household of retired craft workers",
+      "requires": []
+    }
+  ],
+  "childhood": [
+    {
+      "id": "sharing-a-crowded-workroom",
+      "label": "sharing a crowded workroom",
+      "requires": []
+    },
+    {
+      "id": "caring-for-younger-children",
+      "label": "caring for younger children",
+      "requires": []
+    },
+    {
+      "id": "copying-household-accounts",
+      "label": "copying household accounts",
+      "requires": []
+    },
+    {
+      "id": "mending-ordinary-possessions",
+      "label": "mending ordinary possessions",
+      "requires": []
+    },
+    {
+      "id": "delivering-small-parcels",
+      "label": "delivering small parcels",
+      "requires": []
+    },
+    {
+      "id": "helping-prepare-communal-meals",
+      "label": "helping prepare communal meals",
+      "requires": []
+    },
+    {
+      "id": "watching-experienced-workers",
+      "label": "watching experienced workers",
+      "requires": []
+    },
+    {
+      "id": "sorting-salvaged-materials",
+      "label": "sorting salvaged materials",
+      "requires": []
+    },
+    {
+      "id": "learning-borrowed-tools",
+      "label": "learning borrowed tools",
+      "requires": []
+    },
+    {
+      "id": "tending-stored-supplies",
+      "label": "tending stored supplies",
+      "requires": []
+    },
+    {
+      "id": "taking-turns-at-household-chores",
+      "label": "taking turns at household chores",
+      "requires": []
+    },
+    {
+      "id": "listening-to-older-neighbours",
+      "label": "listening to older neighbours",
+      "requires": []
+    }
+  ],
+  "training": [
+    {
+      "id": "a-patient-older-apprentice",
+      "label": "a patient older apprentice",
+      "requires": []
+    },
+    {
+      "id": "a-demanding-workshop-keeper",
+      "label": "a demanding workshop keeper",
+      "requires": []
+    },
+    {
+      "id": "a-retired-craft-worker",
+      "label": "a retired craft worker",
+      "requires": [
+        "craft"
+      ]
+    },
+    {
+      "id": "a-neighbour-who-taught-evening-lessons",
+      "label": "a neighbour who taught evening lessons",
+      "requires": []
+    },
+    {
+      "id": "a-relative-with-failing-eyesight",
+      "label": "a relative with failing eyesight",
+      "requires": []
+    },
+    {
+      "id": "a-record-keeper-who-exchanged-lessons-for-errands",
+      "label": "a record keeper who exchanged lessons for errands",
+      "requires": [
+        "records"
+      ]
+    },
+    {
+      "id": "a-travelling-repairer-who-stayed-one-season",
+      "label": "a travelling repairer who stayed one season",
+      "requires": [
+        "craft"
+      ]
+    },
+    {
+      "id": "an-older-sibling",
+      "label": "an older sibling",
+      "requires": []
+    },
+    {
+      "id": "a-guardian-who-valued-careful-work",
+      "label": "a guardian who valued careful work",
+      "requires": []
+    },
+    {
+      "id": "a-worker-known-for-correcting-mistakes",
+      "label": "a worker known for correcting mistakes",
+      "requires": []
+    },
+    {
+      "id": "a-household-friend",
+      "label": "a household friend",
+      "requires": []
+    },
+    {
+      "id": "a-former-employer",
+      "label": "a former employer",
+      "requires": []
+    }
+  ],
+  "failure": [
+    {
+      "id": "miscounted-a-borrowed-tool-set",
+      "label": "miscounted a borrowed tool set",
+      "requires": []
+    },
+    {
+      "id": "spoiled-a-first-independent-repair",
+      "label": "spoiled a first independent repair",
+      "requires": []
+    },
+    {
+      "id": "lost-a-carefully-copied-account",
+      "label": "lost a carefully copied account",
+      "requires": []
+    },
+    {
+      "id": "returned-a-parcel-to-the-wrong-household",
+      "label": "returned a parcel to the wrong household",
+      "requires": []
+    },
+    {
+      "id": "promised-more-work-than-could-be-finished",
+      "label": "promised more work than could be finished",
+      "requires": []
+    },
+    {
+      "id": "left-stored-materials-unprotected-from-rain",
+      "label": "left stored materials unprotected from rain",
+      "requires": []
+    },
+    {
+      "id": "failed-to-ask-for-help-soon-enough",
+      "label": "failed to ask for help soon enough",
+      "requires": []
+    },
+    {
+      "id": "mistook-a-worn-measuring-mark",
+      "label": "mistook a worn measuring mark",
+      "requires": []
+    },
+    {
+      "id": "forgot-an-agreed-meeting",
+      "label": "forgot an agreed meeting",
+      "requires": []
+    },
+    {
+      "id": "damaged-a-loaned-vessel",
+      "label": "damaged a loaned vessel",
+      "requires": []
+    },
+    {
+      "id": "kept-quiet-about-a-small-mistake",
+      "label": "kept quiet about a small mistake",
+      "requires": []
+    },
+    {
+      "id": "trusted-an-incomplete-inventory",
+      "label": "trusted an incomplete inventory",
+      "requires": []
+    }
+  ],
+  "success": [
+    {
+      "id": "completed-a-difficult-repair",
+      "label": "completed a difficult repair",
+      "requires": []
+    },
+    {
+      "id": "returned-a-missing-family-possession",
+      "label": "returned a missing family possession",
+      "requires": []
+    },
+    {
+      "id": "settled-a-small-account-dispute",
+      "label": "settled a small account dispute",
+      "requires": []
+    },
+    {
+      "id": "finished-a-task-others-had-abandoned",
+      "label": "finished a task others had abandoned",
+      "requires": []
+    },
+    {
+      "id": "taught-a-younger-worker-patiently",
+      "label": "taught a younger worker patiently",
+      "requires": []
+    },
+    {
+      "id": "saved-usable-material-from-disposal",
+      "label": "saved usable material from disposal",
+      "requires": []
+    },
+    {
+      "id": "kept-a-household-supplied-during-repairs",
+      "label": "kept a household supplied during repairs",
+      "requires": []
+    },
+    {
+      "id": "corrected-an-old-transcription",
+      "label": "corrected an old transcription",
+      "requires": []
+    },
+    {
+      "id": "made-a-replacement-part-that-lasted",
+      "label": "made a replacement part that lasted",
+      "requires": []
+    },
+    {
+      "id": "shared-tools-without-losing-any",
+      "label": "shared tools without losing any",
+      "requires": []
+    },
+    {
+      "id": "helped-complete-a-communal-task",
+      "label": "helped complete a communal task",
+      "requires": []
+    },
+    {
+      "id": "found-an-economical-way-to-reuse-worn-goods",
+      "label": "found an economical way to reuse worn goods",
+      "requires": []
+    }
+  ],
+  "motivation": [
+    {
+      "id": "learn-unfamiliar-crafts",
+      "label": "learn unfamiliar crafts",
+      "requires": []
+    },
+    {
+      "id": "pay-a-modest-family-debt",
+      "label": "pay a modest family debt",
+      "requires": []
+    },
+    {
+      "id": "return-a-borrowed-possession",
+      "label": "return a borrowed possession",
+      "requires": []
+    },
+    {
+      "id": "find-a-former-mentor",
+      "label": "find a former mentor",
+      "requires": []
+    },
+    {
+      "id": "carry-a-household-letter",
+      "label": "carry a household letter",
+      "requires": []
+    },
+    {
+      "id": "prove-that-a-past-failure-need-not-define-them",
+      "label": "prove that a past failure need not define them",
+      "requires": []
+    },
+    {
+      "id": "seek-work-beyond-familiar-workshops",
+      "label": "seek work beyond familiar workshops",
+      "requires": []
+    },
+    {
+      "id": "collect-practical-repair-methods",
+      "label": "collect practical repair methods",
+      "requires": []
+    },
+    {
+      "id": "visit-a-relative-who-moved-away",
+      "label": "visit a relative who moved away",
+      "requires": []
+    },
+    {
+      "id": "make-a-living-without-leaning-on-family",
+      "label": "make a living without leaning on family",
+      "requires": []
+    },
+    {
+      "id": "understand-an-old-family-account",
+      "label": "understand an old family account",
+      "requires": []
+    },
+    {
+      "id": "earn-enough-to-repair-a-family-home",
+      "label": "earn enough to repair a family home",
+      "requires": []
+    },
+    {
+      "id": "keep-a-promise-to-a-departed-friend",
+      "label": "keep a promise to a departed friend",
+      "requires": []
+    },
+    {
+      "id": "find-the-origin-of-an-inherited-tool",
+      "label": "find the origin of an inherited tool",
+      "requires": []
+    },
+    {
+      "id": "bring-a-younger-sibling-new-opportunities",
+      "label": "bring a younger sibling new opportunities",
+      "requires": []
+    },
+    {
+      "id": "see-how-other-places-manage-shared-work",
+      "label": "see how other places manage shared work",
+      "requires": []
+    }
+  ],
+  "concern": [
+    {
+      "id": "losing-borrowed-tools",
+      "label": "losing borrowed tools",
+      "requires": []
+    },
+    {
+      "id": "becoming-dependent-on-strangers",
+      "label": "becoming dependent on strangers",
+      "requires": []
+    },
+    {
+      "id": "leaving-household-duties-unfinished",
+      "label": "leaving household duties unfinished",
+      "requires": []
+    },
+    {
+      "id": "forgetting-names-and-obligations",
+      "label": "forgetting names and obligations",
+      "requires": []
+    },
+    {
+      "id": "repeating-a-costly-mistake",
+      "label": "repeating a costly mistake",
+      "requires": []
+    },
+    {
+      "id": "being-dismissed-as-unskilled",
+      "label": "being dismissed as unskilled",
+      "requires": []
+    },
+    {
+      "id": "failing-someone-who-lent-help",
+      "label": "failing someone who lent help",
+      "requires": []
+    },
+    {
+      "id": "returning-without-useful-work",
+      "label": "returning without useful work",
+      "requires": []
+    },
+    {
+      "id": "mistaking-pride-for-competence",
+      "label": "mistaking pride for competence",
+      "requires": []
+    },
+    {
+      "id": "trusting-an-unreliable-account",
+      "label": "trusting an unreliable account",
+      "requires": []
+    },
+    {
+      "id": "being-unable-to-repay-kindness",
+      "label": "being unable to repay kindness",
+      "requires": []
+    },
+    {
+      "id": "letting-a-friendship-lapse",
+      "label": "letting a friendship lapse",
+      "requires": []
+    }
+  ],
+  "contact": [
+    {
+      "id": "a-former-apprentice",
+      "label": "a former apprentice",
+      "requires": []
+    },
+    {
+      "id": "a-household-neighbour",
+      "label": "a household neighbour",
+      "requires": []
+    },
+    {
+      "id": "a-retired-employer",
+      "label": "a retired employer",
+      "requires": []
+    },
+    {
+      "id": "an-older-cousin",
+      "label": "an older cousin",
+      "requires": []
+    },
+    {
+      "id": "a-sibling-who-stayed-home",
+      "label": "a sibling who stayed home",
+      "requires": []
+    },
+    {
+      "id": "a-keeper-of-local-records",
+      "label": "a keeper of local records",
+      "requires": []
+    },
+    {
+      "id": "a-repair-customer",
+      "label": "a repair customer",
+      "requires": []
+    },
+    {
+      "id": "a-travelling-worker-met-during-training",
+      "label": "a travelling worker met during training",
+      "requires": []
+    },
+    {
+      "id": "a-friend-from-shared-lessons",
+      "label": "a friend from shared lessons",
+      "requires": []
+    },
+    {
+      "id": "a-person-who-once-lent-tools",
+      "label": "a person who once lent tools",
+      "requires": []
+    },
+    {
+      "id": "a-household-guardian",
+      "label": "a household guardian",
+      "requires": []
+    },
+    {
+      "id": "a-clerk-who-remembers-an-old-mistake",
+      "label": "a clerk who remembers an old mistake",
+      "requires": []
+    }
+  ],
+  "secret": [
+    {
+      "id": "kept-an-unfinished-practice-piece",
+      "label": "kept an unfinished practice piece",
+      "requires": []
+    },
+    {
+      "id": "hid-a-small-unpaid-debt",
+      "label": "hid a small unpaid debt",
+      "requires": []
+    },
+    {
+      "id": "copied-a-private-letter-without-permission",
+      "label": "copied a private letter without permission",
+      "requires": []
+    },
+    {
+      "id": "gave-away-a-tool-they-did-not-own",
+      "label": "gave away a tool they did not own",
+      "requires": []
+    },
+    {
+      "id": "misreported-a-damaged-parcel",
+      "label": "misreported a damaged parcel",
+      "requires": []
+    },
+    {
+      "id": "kept-a-token-meant-to-be-returned",
+      "label": "kept a token meant to be returned",
+      "requires": []
+    },
+    {
+      "id": "concealed-who-paid-for-their-training",
+      "label": "concealed who paid for their training",
+      "requires": []
+    },
+    {
+      "id": "left-a-task-unfinished-and-blamed-poor-materials",
+      "label": "left a task unfinished and blamed poor materials",
+      "requires": []
+    },
+    {
+      "id": "failed-to-deliver-a-household-message",
+      "label": "failed to deliver a household message",
+      "requires": []
+    },
+    {
+      "id": "secretly-plans-to-change-their-trade",
+      "label": "secretly plans to change their trade",
+      "requires": []
+    },
+    {
+      "id": "still-keeps-a-rival-s-discarded-work",
+      "label": "still keeps a rival’s discarded work",
+      "requires": []
+    },
+    {
+      "id": "has-not-admitted-a-family-disagreement",
+      "label": "has not admitted a family disagreement",
+      "requires": []
+    }
+  ],
+  "habit": [
+    {
+      "id": "checks-knots-twice",
+      "label": "checks knots twice",
+      "requires": []
+    },
+    {
+      "id": "counts-tools-before-leaving",
+      "label": "counts tools before leaving",
+      "requires": []
+    },
+    {
+      "id": "folds-letters-along-existing-creases",
+      "label": "folds letters along existing creases",
+      "requires": []
+    },
+    {
+      "id": "keeps-small-usable-offcuts",
+      "label": "keeps small usable offcuts",
+      "requires": []
+    },
+    {
+      "id": "cleans-a-cup-before-offering-it",
+      "label": "cleans a cup before offering it",
+      "requires": []
+    },
+    {
+      "id": "notes-who-lent-an-object",
+      "label": "notes who lent an object",
+      "requires": []
+    },
+    {
+      "id": "repairs-worn-bindings",
+      "label": "repairs worn bindings",
+      "requires": []
+    },
+    {
+      "id": "pauses-before-making-promises",
+      "label": "pauses before making promises",
+      "requires": []
+    },
+    {
+      "id": "records-small-expenses",
+      "label": "records small expenses",
+      "requires": []
+    },
+    {
+      "id": "turns-a-ring-when-thinking",
+      "label": "turns a ring when thinking",
+      "requires": []
+    },
+    {
+      "id": "sets-tools-in-a-fixed-order",
+      "label": "sets tools in a fixed order",
+      "requires": []
+    },
+    {
+      "id": "listens-before-giving-an-opinion",
+      "label": "listens before giving an opinion",
+      "requires": []
+    }
+  ],
+  "value": [
+    {
+      "id": "repaying-kindness",
+      "label": "repaying kindness",
+      "requires": []
+    },
+    {
+      "id": "careful-workmanship",
+      "label": "careful workmanship",
+      "requires": []
+    },
+    {
+      "id": "keeping-modest-promises",
+      "label": "keeping modest promises",
+      "requires": []
+    },
+    {
+      "id": "honest-records",
+      "label": "honest records",
+      "requires": []
+    },
+    {
+      "id": "sharing-useful-knowledge",
+      "label": "sharing useful knowledge",
+      "requires": []
+    },
+    {
+      "id": "respect-for-borrowed-goods",
+      "label": "respect for borrowed goods",
+      "requires": []
+    },
+    {
+      "id": "patience-with-learners",
+      "label": "patience with learners",
+      "requires": []
+    },
+    {
+      "id": "remembering-absent-neighbours",
+      "label": "remembering absent neighbours",
+      "requires": []
+    },
+    {
+      "id": "repair-before-replacement",
+      "label": "repair before replacement",
+      "requires": []
+    },
+    {
+      "id": "witnessed-agreements",
+      "label": "witnessed agreements",
+      "requires": []
+    },
+    {
+      "id": "practical-fairness",
+      "label": "practical fairness",
+      "requires": []
+    },
+    {
+      "id": "independence-without-ingratitude",
+      "label": "independence without ingratitude",
+      "requires": []
+    }
+  ],
+  "keepsake": [
+    {
+      "id": "a-repaired-wooden-cup",
+      "label": "a repaired wooden cup",
+      "requires": []
+    },
+    {
+      "id": "a-plain-copper-ring",
+      "label": "a plain copper ring",
+      "requires": []
+    },
+    {
+      "id": "a-folded-household-letter",
+      "label": "a folded household letter",
+      "requires": []
+    },
+    {
+      "id": "a-short-measuring-cord",
+      "label": "a short measuring cord",
+      "requires": []
+    },
+    {
+      "id": "a-worn-tool-handle",
+      "label": "a worn tool handle",
+      "requires": []
+    },
+    {
+      "id": "a-stitched-scrap-of-cloth",
+      "label": "a stitched scrap of cloth",
+      "requires": []
+    },
+    {
+      "id": "an-old-tally-stick",
+      "label": "an old tally stick",
+      "requires": []
+    },
+    {
+      "id": "a-spare-buckle",
+      "label": "a spare buckle",
+      "requires": []
+    },
+    {
+      "id": "a-blank-account-leaf",
+      "label": "a blank account leaf",
+      "requires": []
+    },
+    {
+      "id": "a-smoothed-stone-from-a-workbench",
+      "label": "a smoothed stone from a workbench",
+      "requires": []
+    },
+    {
+      "id": "a-tiny-box-of-spare-pegs",
+      "label": "a tiny box of spare pegs",
+      "requires": []
+    },
+    {
+      "id": "a-bent-practice-nail",
+      "label": "a bent practice nail",
+      "requires": []
+    }
+  ],
+  "traits": [
+    {
+      "key": "cautious",
+      "category": "care",
+      "conflicts": [
+        "reckless",
+        "fearless"
+      ],
+      "id": "cautious",
+      "requires": []
+    },
+    {
+      "key": "patient",
+      "category": "care",
+      "conflicts": [
+        "impatient"
+      ],
+      "id": "patient",
+      "requires": []
+    },
+    {
+      "key": "reserved",
+      "category": "speech",
+      "conflicts": [
+        "boastful"
+      ],
+      "id": "reserved",
+      "requires": []
+    },
+    {
+      "key": "plain spoken",
+      "category": "speech",
+      "conflicts": [
+        "evasive"
+      ],
+      "id": "plain-spoken",
+      "requires": []
+    },
+    {
+      "key": "curious",
+      "category": "learning",
+      "conflicts": [
+        "incurious"
+      ],
+      "id": "curious",
+      "requires": []
+    },
+    {
+      "key": "methodical",
+      "category": "work",
+      "conflicts": [
+        "careless"
+      ],
+      "id": "methodical",
+      "requires": []
+    },
+    {
+      "key": "loyal",
+      "category": "relationships",
+      "conflicts": [
+        "faithless"
+      ],
+      "id": "loyal",
+      "requires": []
+    },
+    {
+      "key": "sceptical",
+      "category": "judgement",
+      "conflicts": [
+        "credulous"
+      ],
+      "id": "sceptical",
+      "requires": []
+    },
+    {
+      "key": "stubborn",
+      "category": "judgement",
+      "conflicts": [
+        "pliant"
+      ],
+      "id": "stubborn",
+      "requires": []
+    },
+    {
+      "key": "generous",
+      "category": "relationships",
+      "conflicts": [
+        "miserly"
+      ],
+      "id": "generous",
+      "requires": []
+    },
+    {
+      "key": "private",
+      "category": "speech",
+      "conflicts": [
+        "indiscreet",
+        "boastful"
+      ],
+      "id": "private",
+      "requires": []
+    },
+    {
+      "key": "self critical",
+      "category": "judgement",
+      "conflicts": [
+        "vain"
+      ],
+      "id": "self-critical",
+      "requires": []
+    },
+    {
+      "key": "reckless",
+      "category": "care",
+      "conflicts": [
+        "cautious",
+        "cowardly"
+      ],
+      "id": "reckless",
+      "requires": []
+    },
+    {
+      "key": "impatient",
+      "category": "care",
+      "conflicts": [
+        "patient"
+      ],
+      "id": "impatient",
+      "requires": []
+    },
+    {
+      "key": "boastful",
+      "category": "speech",
+      "conflicts": [
+        "reserved",
+        "private"
+      ],
+      "id": "boastful",
+      "requires": []
+    },
+    {
+      "key": "fearless",
+      "category": "care",
+      "conflicts": [
+        "cautious",
+        "cowardly"
+      ],
+      "id": "fearless",
+      "requires": []
+    },
+    {
+      "key": "cowardly",
+      "category": "care",
+      "conflicts": [
+        "fearless",
+        "reckless"
+      ],
+      "id": "cowardly",
+      "requires": []
+    },
+    {
+      "key": "practical",
+      "category": "work",
+      "conflicts": [
+        "impractical"
+      ],
+      "id": "practical",
+      "requires": []
+    }
+  ],
+  "items": [
+    {
+      "key": "hand axe",
+      "category": "tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "cutting and splitting",
+      "id": "hand-axe",
+      "requires": []
+    },
+    {
+      "key": "pruning knife",
+      "category": "tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "trimming woody growth",
+      "id": "pruning-knife",
+      "requires": []
+    },
+    {
+      "key": "awl",
+      "category": "craft tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "piercing leather",
+      "id": "awl",
+      "requires": []
+    },
+    {
+      "key": "chisel",
+      "category": "craft tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "shaping workpieces",
+      "id": "chisel",
+      "requires": []
+    },
+    {
+      "key": "plane",
+      "category": "craft tool",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "iron"
+      ],
+      "use": "smoothing boards",
+      "id": "plane",
+      "requires": []
+    },
+    {
+      "key": "small hammer",
+      "category": "craft tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "driving fittings",
+      "id": "small-hammer",
+      "requires": []
+    },
+    {
+      "key": "pair of pliers",
+      "category": "craft tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [],
+      "use": "gripping small fittings",
+      "id": "pliers",
+      "requires": []
+    },
+    {
+      "key": "pair of shears",
+      "category": "craft tool",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [],
+      "use": "cutting cloth",
+      "id": "shears",
+      "requires": []
+    },
+    {
+      "key": "needle case",
+      "category": "container",
+      "materials": [
+        "wood",
+        "bone"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "keeping needles",
+      "id": "needle-case",
+      "requires": []
+    },
+    {
+      "key": "spindle",
+      "category": "craft tool",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "twisting thread",
+      "id": "spindle",
+      "requires": []
+    },
+    {
+      "key": "measuring rod",
+      "category": "survey",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "iron"
+      ],
+      "use": "comparing lengths",
+      "id": "measuring-rod",
+      "requires": []
+    },
+    {
+      "key": "plumb weight",
+      "category": "survey",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "checking vertical work",
+      "id": "plumb-weight",
+      "requires": []
+    },
+    {
+      "key": "pair of compass dividers",
+      "category": "survey",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "copying distances",
+      "id": "compass-dividers",
+      "requires": []
+    },
+    {
+      "key": "balance scale",
+      "category": "trade",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "comparing small weights",
+      "id": "balance-scale",
+      "requires": []
+    },
+    {
+      "key": "weight box",
+      "category": "trade",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "bronze"
+      ],
+      "use": "keeping comparison weights",
+      "id": "weight-box",
+      "requires": []
+    },
+    {
+      "key": "seal stamp",
+      "category": "seal",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "marking documents",
+      "id": "seal-stamp",
+      "requires": []
+    },
+    {
+      "key": "key",
+      "category": "key",
+      "materials": [
+        "iron",
+        "bronze"
+      ],
+      "secondary": [],
+      "use": "opening an ordinary lock",
+      "id": "key",
+      "requires": []
+    },
+    {
+      "key": "belt buckle",
+      "category": "clothing",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "fastening a belt",
+      "id": "belt-buckle",
+      "requires": []
+    },
+    {
+      "key": "cloak",
+      "category": "clothing",
+      "materials": [
+        "wool",
+        "linen"
+      ],
+      "secondary": [],
+      "use": "wearing in poor weather",
+      "id": "cloak",
+      "requires": []
+    },
+    {
+      "key": "hood",
+      "category": "clothing",
+      "materials": [
+        "wool",
+        "linen"
+      ],
+      "secondary": [],
+      "use": "covering the head",
+      "id": "hood",
+      "requires": []
+    },
+    {
+      "key": "work apron",
+      "category": "clothing",
+      "materials": [
+        "linen",
+        "leather"
+      ],
+      "secondary": [],
+      "use": "protecting clothing",
+      "id": "work-apron",
+      "requires": []
+    },
+    {
+      "key": "pair of work gloves",
+      "category": "clothing",
+      "materials": [
+        "leather",
+        "linen"
+      ],
+      "secondary": [],
+      "use": "protecting the hands",
+      "id": "work-gloves",
+      "requires": []
+    },
+    {
+      "key": "cloth cap",
+      "category": "clothing",
+      "materials": [
+        "wool",
+        "linen"
+      ],
+      "secondary": [],
+      "use": "ordinary wear",
+      "id": "cloth-cap",
+      "requires": []
+    },
+    {
+      "key": "shoulder bag",
+      "category": "travel",
+      "materials": [
+        "linen",
+        "leather"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "carrying small possessions",
+      "id": "shoulder-bag",
+      "requires": []
+    },
+    {
+      "key": "water flask",
+      "category": "travel",
+      "materials": [
+        "leather",
+        "ceramic"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "carrying water",
+      "id": "water-flask",
+      "requires": []
+    },
+    {
+      "key": "travelling cup",
+      "category": "vessel",
+      "materials": [
+        "wood",
+        "ceramic"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "drinking away from home",
+      "id": "travelling-cup",
+      "requires": []
+    },
+    {
+      "key": "cooking pot",
+      "category": "household",
+      "materials": [
+        "iron",
+        "ceramic"
+      ],
+      "secondary": [],
+      "use": "cooking modest meals",
+      "id": "cooking-pot",
+      "requires": []
+    },
+    {
+      "key": "ladle",
+      "category": "household",
+      "materials": [
+        "wood",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "serving food",
+      "id": "ladle",
+      "requires": []
+    },
+    {
+      "key": "small bowl",
+      "category": "household",
+      "materials": [
+        "wood",
+        "ceramic"
+      ],
+      "secondary": [],
+      "use": "holding food",
+      "id": "small-bowl",
+      "requires": []
+    },
+    {
+      "key": "storage jar",
+      "category": "container",
+      "materials": [
+        "ceramic"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "storing household goods",
+      "id": "storage-jar",
+      "requires": []
+    },
+    {
+      "key": "wooden chest",
+      "category": "container",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "iron"
+      ],
+      "use": "keeping possessions",
+      "id": "wooden-chest",
+      "requires": []
+    },
+    {
+      "key": "lidded box",
+      "category": "container",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "bronze"
+      ],
+      "use": "keeping small objects",
+      "id": "lidded-box",
+      "requires": []
+    },
+    {
+      "key": "carrying basket",
+      "category": "container",
+      "materials": [
+        "wicker"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "carrying modest loads",
+      "id": "carrying-basket",
+      "requires": []
+    },
+    {
+      "key": "lamp",
+      "category": "household",
+      "materials": [
+        "ceramic",
+        "bronze"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "holding lamp oil",
+      "id": "lamp",
+      "requires": []
+    },
+    {
+      "key": "candlestick",
+      "category": "household",
+      "materials": [
+        "iron",
+        "bronze"
+      ],
+      "secondary": [],
+      "use": "holding a candle",
+      "id": "candlestick",
+      "requires": []
+    },
+    {
+      "key": "mirror",
+      "category": "household",
+      "materials": [
+        "bronze"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "ordinary grooming",
+      "id": "mirror",
+      "requires": []
+    },
+    {
+      "key": "comb",
+      "category": "household",
+      "materials": [
+        "wood",
+        "bone"
+      ],
+      "secondary": [],
+      "use": "ordinary grooming",
+      "id": "comb",
+      "requires": []
+    },
+    {
+      "key": "razor",
+      "category": "tool",
+      "materials": [
+        "steel",
+        "iron"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "shaving",
+      "id": "razor",
+      "requires": []
+    },
+    {
+      "key": "plain ring",
+      "category": "jewellery",
+      "materials": [
+        "bronze",
+        "silver"
+      ],
+      "secondary": [],
+      "use": "personal wear",
+      "id": "plain-ring",
+      "requires": []
+    },
+    {
+      "key": "brooch",
+      "category": "jewellery",
+      "materials": [
+        "bronze",
+        "silver"
+      ],
+      "secondary": [],
+      "use": "fastening clothing",
+      "id": "brooch",
+      "requires": []
+    },
+    {
+      "key": "pendant",
+      "category": "jewellery",
+      "materials": [
+        "wood",
+        "bronze"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "personal commemoration",
+      "id": "pendant",
+      "requires": []
+    },
+    {
+      "key": "bead strand",
+      "category": "jewellery",
+      "materials": [
+        "wood",
+        "bone"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "personal wear",
+      "id": "bead-strand",
+      "requires": []
+    },
+    {
+      "key": "account book",
+      "category": "document",
+      "materials": [
+        "paper"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "recording ordinary accounts",
+      "id": "account-book",
+      "requires": []
+    },
+    {
+      "key": "letter folio",
+      "category": "document",
+      "materials": [
+        "paper"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "protecting letters",
+      "id": "letter-folio",
+      "requires": []
+    },
+    {
+      "key": "wax tablet",
+      "category": "document",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "wax"
+      ],
+      "use": "temporary notes",
+      "id": "wax-tablet",
+      "requires": []
+    },
+    {
+      "key": "copying stylus",
+      "category": "document",
+      "materials": [
+        "bronze",
+        "bone"
+      ],
+      "secondary": [],
+      "use": "writing on wax",
+      "id": "copying-stylus",
+      "requires": []
+    },
+    {
+      "key": "bookmark",
+      "category": "document",
+      "materials": [
+        "linen",
+        "leather"
+      ],
+      "secondary": [],
+      "use": "keeping a reading place",
+      "id": "bookmark",
+      "requires": []
+    },
+    {
+      "key": "prayer board",
+      "category": "religious",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "private observance",
+      "id": "prayer-board",
+      "requires": [
+        "religion"
+      ]
+    },
+    {
+      "key": "offering cup",
+      "category": "religious",
+      "materials": [
+        "ceramic",
+        "bronze"
+      ],
+      "secondary": [],
+      "use": "communal offerings",
+      "id": "offering-cup",
+      "requires": [
+        "religion"
+      ]
+    },
+    {
+      "key": "votive plaque",
+      "category": "religious",
+      "materials": [
+        "wood",
+        "bronze"
+      ],
+      "secondary": [],
+      "use": "commemoration",
+      "id": "votive-plaque",
+      "requires": [
+        "religion"
+      ]
+    },
+    {
+      "key": "bell",
+      "category": "ceremonial",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "calling a gathering",
+      "id": "bell",
+      "requires": []
+    },
+    {
+      "key": "plain banner",
+      "category": "ceremonial",
+      "materials": [
+        "linen",
+        "wool"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "marking a gathering",
+      "id": "plain-banner",
+      "requires": []
+    },
+    {
+      "key": "ceremonial staff",
+      "category": "ceremonial",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "bronze"
+      ],
+      "use": "leading an observance",
+      "id": "ceremonial-staff",
+      "requires": []
+    },
+    {
+      "key": "small drum",
+      "category": "ceremonial",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "keeping a gathering's rhythm",
+      "id": "small-drum",
+      "requires": []
+    },
+    {
+      "key": "walking staff",
+      "category": "travel",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "iron"
+      ],
+      "use": "support while walking",
+      "id": "walking-staff",
+      "requires": []
+    },
+    {
+      "key": "rope coil",
+      "category": "travel",
+      "materials": [
+        "linen"
+      ],
+      "secondary": [],
+      "use": "tying ordinary loads",
+      "id": "rope-coil",
+      "requires": []
+    },
+    {
+      "key": "tent cloth",
+      "category": "travel",
+      "materials": [
+        "linen"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "temporary shelter",
+      "id": "tent-cloth",
+      "requires": []
+    },
+    {
+      "key": "bedroll",
+      "category": "travel",
+      "materials": [
+        "wool"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "sleeping away from home",
+      "id": "bedroll",
+      "requires": []
+    },
+    {
+      "key": "whetstone",
+      "category": "tool",
+      "materials": [
+        "stone"
+      ],
+      "secondary": [],
+      "use": "maintaining cutting edges",
+      "id": "whetstone",
+      "requires": []
+    },
+    {
+      "key": "repair pouch",
+      "category": "medical",
+      "materials": [
+        "linen",
+        "leather"
+      ],
+      "secondary": [],
+      "use": "keeping bandage cloth",
+      "id": "repair-pouch",
+      "requires": []
+    },
+    {
+      "key": "bandage roll",
+      "category": "medical",
+      "materials": [
+        "linen"
+      ],
+      "secondary": [],
+      "use": "wrapping an injury",
+      "id": "bandage-roll",
+      "requires": []
+    },
+    {
+      "key": "herb jar",
+      "category": "medical",
+      "materials": [
+        "ceramic"
+      ],
+      "secondary": [
+        "linen"
+      ],
+      "use": "keeping dried preparations",
+      "id": "herb-jar",
+      "requires": []
+    },
+    {
+      "key": "small mortar",
+      "category": "medical",
+      "materials": [
+        "stone",
+        "ceramic"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "grinding preparations",
+      "id": "small-mortar",
+      "requires": []
+    },
+    {
+      "key": "spear head",
+      "category": "weapon",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "a simple hunting implement",
+      "id": "spear-head",
+      "requires": []
+    },
+    {
+      "key": "short blade",
+      "category": "weapon",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "wood"
+      ],
+      "use": "an ordinary sidearm",
+      "id": "short-blade",
+      "requires": []
+    },
+    {
+      "key": "buckler",
+      "category": "armour",
+      "materials": [
+        "wood",
+        "iron"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "a small protective shield",
+      "id": "buckler",
+      "requires": []
+    },
+    {
+      "key": "helmet",
+      "category": "armour",
+      "materials": [
+        "iron",
+        "steel"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "ordinary head protection",
+      "id": "helmet",
+      "requires": []
+    },
+    {
+      "key": "metal cup",
+      "category": "vessel",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "serving drink",
+      "id": "metal-cup",
+      "requires": []
+    },
+    {
+      "key": "bread tin",
+      "category": "household",
+      "materials": [
+        "iron"
+      ],
+      "secondary": [],
+      "use": "baking bread",
+      "id": "bread-tin",
+      "requires": []
+    },
+    {
+      "key": "folding stool",
+      "category": "travel",
+      "materials": [
+        "wood"
+      ],
+      "secondary": [
+        "leather"
+      ],
+      "use": "resting during work",
+      "id": "folding-stool",
+      "requires": []
+    },
+    {
+      "key": "survey chain",
+      "category": "survey",
+      "materials": [
+        "iron",
+        "bronze"
+      ],
+      "secondary": [],
+      "use": "comparing repeated lengths",
+      "id": "survey-chain",
+      "requires": []
+    },
+    {
+      "key": "ceremonial key",
+      "category": "ceremonial",
+      "materials": [
+        "bronze",
+        "iron"
+      ],
+      "secondary": [],
+      "use": "commemorating a former office",
+      "id": "ceremonial-key",
+      "requires": []
+    }
+  ],
+  "qualities": [
+    {
+      "id": "plain-but-sound",
+      "label": "plain but sound",
+      "requires": []
+    },
+    {
+      "id": "carefully-finished",
+      "label": "carefully finished",
+      "requires": []
+    },
+    {
+      "id": "roughly-finished",
+      "label": "roughly finished",
+      "requires": []
+    },
+    {
+      "id": "well-balanced",
+      "label": "well balanced",
+      "requires": [
+        {
+          "any": [
+            "item:tool",
+            "item:craft-tool",
+            "item:weapon",
+            "item:survey",
+            "item:ceremonial"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "made-for-easy-repair",
+      "label": "made for easy repair",
+      "requires": []
+    },
+    {
+      "id": "compactly-made",
+      "label": "compactly made",
+      "requires": []
+    },
+    {
+      "id": "deliberately-unadorned",
+      "label": "deliberately unadorned",
+      "requires": []
+    },
+    {
+      "id": "made-with-visible-tool-marks",
+      "label": "made with visible tool marks",
+      "requires": []
+    }
+  ],
+  "wear": [
+    {
+      "id": "polished-by-handling",
+      "label": "polished by handling",
+      "requires": []
+    },
+    {
+      "id": "scuffed-along-one-edge",
+      "label": "scuffed along one edge",
+      "requires": []
+    },
+    {
+      "id": "patched-at-a-stress-point",
+      "label": "patched at a stress point",
+      "requires": []
+    },
+    {
+      "id": "marked-by-an-old-repair",
+      "label": "marked by an old repair",
+      "requires": []
+    },
+    {
+      "id": "darkened-with-age",
+      "label": "darkened with age",
+      "requires": []
+    },
+    {
+      "id": "kept-clean-despite-wear",
+      "label": "kept clean despite wear",
+      "requires": []
+    },
+    {
+      "id": "scratched-with-an-ownership-mark",
+      "label": "scratched with an ownership mark",
+      "requires": []
+    },
+    {
+      "id": "worn-where-it-was-often-held",
+      "label": "worn where it was often held",
+      "requires": []
+    },
+    {
+      "id": "wrapped-for-careful-storage",
+      "label": "wrapped for careful storage",
+      "requires": []
+    },
+    {
+      "id": "stained-by-ordinary-work",
+      "label": "stained by ordinary work",
+      "requires": []
+    }
+  ],
+  "makers": [
+    {
+      "id": "a-household-craft-worker",
+      "label": "a household craft worker",
+      "requires": []
+    },
+    {
+      "id": "a-small-local-workshop",
+      "label": "a small local workshop",
+      "requires": []
+    },
+    {
+      "id": "an-itinerant-repairer",
+      "label": "an itinerant repairer",
+      "requires": []
+    },
+    {
+      "id": "an-experienced-apprentice",
+      "label": "an experienced apprentice",
+      "requires": []
+    },
+    {
+      "id": "a-workshop-kept-by-two-relatives",
+      "label": "a workshop kept by two relatives",
+      "requires": []
+    },
+    {
+      "id": "a-retired-maker-working-at-home",
+      "label": "a retired maker working at home",
+      "requires": []
+    },
+    {
+      "id": "a-maker-known-for-plain-practical-work",
+      "label": "a maker known for plain practical work",
+      "requires": []
+    },
+    {
+      "id": "a-former-employer-s-workshop",
+      "label": "a former employer’s workshop",
+      "requires": []
+    },
+    {
+      "id": "a-shared-workroom",
+      "label": "a shared workroom",
+      "requires": []
+    },
+    {
+      "id": "a-craft-worker-who-accepted-salvaged-material",
+      "label": "a craft worker who accepted salvaged material",
+      "requires": []
+    },
+    {
+      "id": "a-workshop-that-repaired-its-own-older-goods",
+      "label": "a workshop that repaired its own older goods",
+      "requires": []
+    },
+    {
+      "id": "a-maker-paid-partly-in-materials",
+      "label": "a maker paid partly in materials",
+      "requires": []
+    }
+  ],
+  "marks": [
+    {
+      "id": "a-row-of-shallow-dots",
+      "label": "a row of shallow dots",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "a-small-crossed-line-mark",
+      "label": "a small crossed-line mark",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "an-uneven-maker-s-initial",
+      "label": "an uneven maker’s initial",
+      "requires": []
+    },
+    {
+      "id": "a-repeated-notch-pattern",
+      "label": "a repeated notch pattern",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "a-faded-inventory-number",
+      "label": "a faded inventory number",
+      "requires": []
+    },
+    {
+      "id": "a-narrow-border-of-incised-lines",
+      "label": "a narrow border of incised lines",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "a-worn-household-sign",
+      "label": "a worn household sign",
+      "requires": []
+    },
+    {
+      "id": "a-carefully-filed-edge",
+      "label": "a carefully filed edge",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "a-small-stamped-circle",
+      "label": "a small stamped circle",
+      "requires": []
+    },
+    {
+      "id": "a-patched-maker-s-label",
+      "label": "a patched maker’s label",
+      "requires": []
+    },
+    {
+      "id": "an-old-tally-mark",
+      "label": "an old tally mark",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "a-newer-mark-beside-an-older-one",
+      "label": "a newer mark beside an older one",
+      "requires": [
+        {
+          "not": "flexible"
+        }
+      ]
+    }
+  ],
+  "item_events": [
+    {
+      "id": "passed-to-a-younger-household-member",
+      "label": "passed to a younger household member",
+      "requires": []
+    },
+    {
+      "id": "sold-when-its-owner-changed-work",
+      "label": "sold when its owner changed work",
+      "requires": []
+    },
+    {
+      "id": "exchanged-for-a-needed-repair",
+      "label": "exchanged for a needed repair",
+      "requires": []
+    },
+    {
+      "id": "given-in-payment-for-several-days-of-work",
+      "label": "given in payment for several days of work",
+      "requires": []
+    },
+    {
+      "id": "kept-when-a-workshop-closed",
+      "label": "kept when a workshop closed",
+      "requires": []
+    },
+    {
+      "id": "returned-after-being-lent-for-a-season",
+      "label": "returned after being lent for a season",
+      "requires": []
+    },
+    {
+      "id": "bought-from-a-retired-worker",
+      "label": "bought from a retired worker",
+      "requires": []
+    },
+    {
+      "id": "shared-between-two-households",
+      "label": "shared between two households",
+      "requires": []
+    },
+    {
+      "id": "carried-away-by-an-apprentice",
+      "label": "carried away by an apprentice",
+      "requires": []
+    },
+    {
+      "id": "recovered-from-a-mislabelled-store",
+      "label": "recovered from a mislabelled store",
+      "requires": []
+    },
+    {
+      "id": "held-in-place-of-a-small-debt",
+      "label": "held in place of a small debt",
+      "requires": []
+    },
+    {
+      "id": "given-to-someone-who-had-repaired-it",
+      "label": "given to someone who had repaired it",
+      "requires": []
+    }
+  ],
+  "repairs": [
+    {
+      "id": "a-worn-fastening-was-replaced",
+      "label": "a worn fastening was replaced",
+      "requires": []
+    },
+    {
+      "id": "a-loose-joint-was-tightened",
+      "label": "a loose joint was tightened",
+      "requires": []
+    },
+    {
+      "id": "a-damaged-edge-was-dressed",
+      "label": "a damaged edge was dressed",
+      "requires": []
+    },
+    {
+      "id": "a-surface-crack-was-secured",
+      "label": "a surface crack was secured",
+      "requires": []
+    },
+    {
+      "id": "an-older-repair-was-cleaned-and-checked",
+      "label": "an older repair was cleaned and checked",
+      "requires": []
+    },
+    {
+      "id": "a-protective-wrapping-was-renewed",
+      "label": "a protective wrapping was renewed",
+      "requires": []
+    },
+    {
+      "id": "a-maker-s-mark-was-recut-beside-the-worn-original",
+      "label": "a maker’s mark was recut beside the worn original",
+      "requires": []
+    },
+    {
+      "id": "a-storage-cover-was-replaced",
+      "label": "a storage cover was replaced",
+      "requires": []
+    }
+  ],
+  "rare_roles": [
+    {
+      "id": "a-keeper-of-shared-records",
+      "label": "a keeper of shared records",
+      "requires": []
+    },
+    {
+      "id": "a-retiring-craft-master",
+      "label": "a retiring craft master",
+      "requires": []
+    },
+    {
+      "id": "a-household-elder",
+      "label": "a household elder",
+      "requires": []
+    },
+    {
+      "id": "a-travelling-surveyor",
+      "label": "a travelling surveyor",
+      "requires": []
+    },
+    {
+      "id": "a-custodian-of-comparison-measures",
+      "label": "a custodian of comparison measures",
+      "requires": []
+    },
+    {
+      "id": "a-witness-to-communal-agreements",
+      "label": "a witness to communal agreements",
+      "requires": []
+    },
+    {
+      "id": "a-keeper-of-ceremonial-goods",
+      "label": "a keeper of ceremonial goods",
+      "requires": []
+    },
+    {
+      "id": "a-former-apprentice-who-became-a-maker",
+      "label": "a former apprentice who became a maker",
+      "requires": []
+    },
+    {
+      "id": "a-collector-of-ordinary-craft-history",
+      "label": "a collector of ordinary craft history",
+      "requires": []
+    },
+    {
+      "id": "a-person-appointed-to-maintain-shared-equipment",
+      "label": "a person appointed to maintain shared equipment",
+      "requires": []
+    },
+    {
+      "id": "a-guardian-of-inherited-household-goods",
+      "label": "a guardian of inherited household goods",
+      "requires": []
+    },
+    {
+      "id": "a-writer-of-local-accounts",
+      "label": "a writer of local accounts",
+      "requires": []
+    }
+  ],
+  "reputations": [
+    {
+      "id": "remembered-for-careful-workmanship",
+      "label": "remembered for careful workmanship",
+      "requires": []
+    },
+    {
+      "id": "kept-as-evidence-of-an-old-agreement",
+      "label": "kept as evidence of an old agreement",
+      "requires": []
+    },
+    {
+      "id": "valued-because-its-repairs-were-documented",
+      "label": "valued because its repairs were documented",
+      "requires": []
+    },
+    {
+      "id": "shown-when-teaching-an-old-craft-method",
+      "label": "shown when teaching an old craft method",
+      "requires": []
+    },
+    {
+      "id": "preserved-after-its-workshop-closed",
+      "label": "preserved after its workshop closed",
+      "requires": []
+    },
+    {
+      "id": "associated-with-a-modest-public-ceremony",
+      "label": "associated with a modest public ceremony",
+      "requires": []
+    },
+    {
+      "id": "used-as-a-comparison-piece-by-later-makers",
+      "label": "used as a comparison piece by later makers",
+      "requires": []
+    },
+    {
+      "id": "kept-beside-its-original-account",
+      "label": "kept beside its original account",
+      "requires": []
+    },
+    {
+      "id": "passed-on-with-instructions-for-its-care",
+      "label": "passed on with instructions for its care",
+      "requires": []
+    },
+    {
+      "id": "remembered-for-an-unusually-patient-repair",
+      "label": "remembered for an unusually patient repair",
+      "requires": []
+    },
+    {
+      "id": "preserved-because-its-owner-refused-a-replacement",
+      "label": "preserved because its owner refused a replacement",
+      "requires": []
+    },
+    {
+      "id": "retained-to-explain-a-disputed-maker-s-mark",
+      "label": "retained to explain a disputed maker’s mark",
+      "requires": []
+    }
+  ],
+  "item_secrets": [
+    {
+      "id": "one-ownership-mark-was-added-by-a-later-keeper",
+      "label": "one ownership mark was added by a later keeper",
+      "requires": []
+    },
+    {
+      "id": "the-oldest-fastening-is-a-later-replacement",
+      "label": "the oldest fastening is a later replacement",
+      "requires": []
+    },
+    {
+      "id": "a-claimed-single-maker-actually-shared-the-work",
+      "label": "a claimed single maker actually shared the work",
+      "requires": []
+    },
+    {
+      "id": "an-early-repair-account-omits-a-failed-first-attempt",
+      "label": "an early repair account omits a failed first attempt",
+      "requires": []
+    },
+    {
+      "id": "the-object-was-exchanged-rather-than-freely-given",
+      "label": "the object was exchanged rather than freely given",
+      "requires": []
+    },
+    {
+      "id": "a-previous-keeper-concealed-a-small-debt",
+      "label": "a previous keeper concealed a small debt",
+      "requires": []
+    },
+    {
+      "id": "the-older-maker-s-mark-was-copied-from-an-account",
+      "label": "the older maker’s mark was copied from an account",
+      "requires": []
+    },
+    {
+      "id": "the-public-chain-of-ownership-leaves-out-one-borrower",
+      "label": "the public chain of ownership leaves out one borrower",
+      "requires": []
+    },
+    {
+      "id": "a-supposed-original-surface-was-refinished",
+      "label": "a supposed original surface was refinished",
+      "requires": []
+    },
+    {
+      "id": "an-inherited-object-was-briefly-sold-and-bought-back",
+      "label": "an inherited object was briefly sold and bought back",
+      "requires": []
+    },
+    {
+      "id": "a-ceremonial-use-began-much-later-than-its-creation",
+      "label": "a ceremonial use began much later than its creation",
+      "requires": []
+    },
+    {
+      "id": "a-family-story-mistakes-a-custodian-for-the-maker",
+      "label": "a family story mistakes a custodian for the maker",
+      "requires": []
+    }
+  ],
+  "contracts": [
+    {
+      "id": "copy-an-exposed-inscription",
+      "label": "copy an exposed inscription",
+      "requires": [],
+      "target_kind": "visible-building-feature"
+    },
+    {
+      "id": "return-a-borrowed-comparison-piece",
+      "label": "return a borrowed comparison piece",
+      "requires": [],
+      "target_kind": "public-object"
+    },
+    {
+      "id": "check-a-damaged-inventory",
+      "label": "check a damaged inventory",
+      "requires": [],
+      "target_kind": "public-document"
+    },
+    {
+      "id": "identify-a-displaced-maker-s-mark",
+      "label": "identify a displaced maker’s mark",
+      "requires": [],
+      "target_kind": "public-object"
+    },
+    {
+      "id": "record-surviving-worked-stones",
+      "label": "record surviving worked stones",
+      "requires": [],
+      "target_kind": "visible-building-feature"
+    },
+    {
+      "id": "deliver-a-sealed-repair-account",
+      "label": "deliver a sealed repair account",
+      "requires": [],
+      "target_kind": "public-document"
+    },
+    {
+      "id": "retrieve-an-openly-stored-tool-chest",
+      "label": "retrieve an openly stored tool chest",
+      "requires": [],
+      "target_kind": "public-object"
+    },
+    {
+      "id": "verify-the-condition-of-an-old-doorway",
+      "label": "verify the condition of an old doorway",
+      "requires": [],
+      "target_kind": "visible-building-feature"
+    },
+    {
+      "id": "compare-a-surviving-plan-with-the-visible-building",
+      "label": "compare a surviving plan with the visible building",
+      "requires": [],
+      "target_kind": "visible-building-feature"
+    },
+    {
+      "id": "recover-a-missing-household-document",
+      "label": "recover a missing household document",
+      "requires": [],
+      "target_kind": "public-document"
+    },
+    {
+      "id": "inspect-a-reported-repair",
+      "label": "inspect a reported repair",
+      "requires": [],
+      "target_kind": "public-object"
+    },
+    {
+      "id": "ask-a-former-keeper-about-an-ownership-entry",
+      "label": "ask a former keeper about an ownership entry",
+      "requires": [],
+      "target_kind": "known-person"
+    },
+    {
+      "id": "find-a-second-witness-to-an-account",
+      "label": "find a second witness to an account",
+      "requires": [],
+      "target_kind": "known-person"
+    },
+    {
+      "id": "record-marks-before-a-stone-is-reused",
+      "label": "record marks before a stone is reused",
+      "requires": [],
+      "target_kind": "public-object"
+    },
+    {
+      "id": "carry-a-replacement-binding",
+      "label": "carry a replacement binding",
+      "requires": [],
+      "target_kind": "public-document"
+    },
+    {
+      "id": "locate-the-owner-of-a-marked-vessel",
+      "label": "locate the owner of a marked vessel",
+      "requires": [],
+      "target_kind": "public-object"
+    }
+  ],
+  "complications": [
+    {
+      "id": "two-accounts-give-different-ownership-dates",
+      "label": "two accounts give different ownership dates",
+      "requires": []
+    },
+    {
+      "id": "one-witness-remembers-the-event-differently",
+      "label": "one witness remembers the event differently",
+      "requires": []
+    },
+    {
+      "id": "the-surviving-copy-is-incomplete",
+      "label": "the surviving copy is incomplete",
+      "requires": []
+    },
+    {
+      "id": "a-repair-has-obscured-an-older-mark",
+      "label": "a repair has obscured an older mark",
+      "requires": []
+    },
+    {
+      "id": "the-requested-object-has-been-moved-to-another-store",
+      "label": "the requested object has been moved to another store",
+      "requires": []
+    },
+    {
+      "id": "the-issuer-lacks-a-complete-inventory",
+      "label": "the issuer lacks a complete inventory",
+      "requires": []
+    },
+    {
+      "id": "a-second-household-also-claims-the-object",
+      "label": "a second household also claims the object",
+      "requires": []
+    },
+    {
+      "id": "the-easiest-route-through-the-building-is-blocked",
+      "label": "the easiest route through the building is blocked",
+      "requires": []
+    }
+  ],
+  "group_types": [
+    {
+      "id": "repair-fellowship",
+      "label": "repair fellowship",
+      "requires": [],
+      "allowed_purposes": [
+        "share-tools-without-losing-them",
+        "repair-objects-that-would-otherwise-be-discarded",
+        "maintain-shared-equipment"
+      ]
+    },
+    {
+      "id": "record-circle",
+      "label": "record circle",
+      "requires": [],
+      "allowed_purposes": [
+        "preserve-household-records",
+        "preserve-accounts-of-ordinary-work",
+        "keep-contributions-fairly-recorded"
+      ]
+    },
+    {
+      "id": "mutual-aid-group",
+      "label": "mutual-aid group",
+      "requires": [],
+      "allowed_purposes": [
+        "share-tools-without-losing-them",
+        "help-absent-households-maintain-their-possessions",
+        "keep-contributions-fairly-recorded"
+      ]
+    },
+    {
+      "id": "workshop-association",
+      "label": "workshop association",
+      "requires": [],
+      "allowed_purposes": [
+        "teach-practical-skills-to-new-workers",
+        "compare-trade-measures-openly",
+        "share-tools-without-losing-them"
+      ]
+    },
+    {
+      "id": "burial-society",
+      "label": "burial society",
+      "requires": [],
+      "allowed_purposes": [
+        "preserve-household-records",
+        "care-for-communal-cloth-and-vessels",
+        "keep-contributions-fairly-recorded"
+      ]
+    },
+    {
+      "id": "teaching-circle",
+      "label": "teaching circle",
+      "requires": [],
+      "allowed_purposes": [
+        "teach-practical-skills-to-new-workers",
+        "preserve-accounts-of-ordinary-work"
+      ]
+    },
+    {
+      "id": "measure-keepers",
+      "label": "circle of measure keepers",
+      "requires": [],
+      "allowed_purposes": [
+        "compare-trade-measures-openly",
+        "settle-disagreements-over-borrowed-goods"
+      ]
+    },
+    {
+      "id": "household-cooperative",
+      "label": "household cooperative",
+      "requires": [],
+      "allowed_purposes": [
+        "help-absent-households-maintain-their-possessions",
+        "share-tools-without-losing-them"
+      ]
+    },
+    {
+      "id": "travellers-correspondence-circle",
+      "label": "travellers’ correspondence circle",
+      "requires": [],
+      "allowed_purposes": [
+        "preserve-household-records",
+        "help-absent-households-maintain-their-possessions"
+      ]
+    },
+    {
+      "id": "salvage-association",
+      "label": "salvage association",
+      "requires": [],
+      "allowed_purposes": [
+        "repair-objects-that-would-otherwise-be-discarded",
+        "share-tools-without-losing-them"
+      ]
+    },
+    {
+      "id": "ceremonial-custodians",
+      "label": "association of ceremonial custodians",
+      "requires": [],
+      "allowed_purposes": [
+        "care-for-communal-cloth-and-vessels",
+        "keep-contributions-fairly-recorded"
+      ]
+    },
+    {
+      "id": "letter-carriers-circle",
+      "label": "letter carriers’ circle",
+      "requires": [],
+      "allowed_purposes": [
+        "preserve-household-records",
+        "help-absent-households-maintain-their-possessions"
+      ]
+    }
+  ],
+  "group_purposes": [
+    {
+      "id": "share-tools-without-losing-them",
+      "label": "share tools without losing them",
+      "requires": []
+    },
+    {
+      "id": "preserve-household-records",
+      "label": "preserve household records",
+      "requires": []
+    },
+    {
+      "id": "teach-practical-skills-to-new-workers",
+      "label": "teach practical skills to new workers",
+      "requires": []
+    },
+    {
+      "id": "maintain-shared-equipment",
+      "label": "maintain shared equipment",
+      "requires": []
+    },
+    {
+      "id": "keep-contributions-fairly-recorded",
+      "label": "keep contributions fairly recorded",
+      "requires": []
+    },
+    {
+      "id": "repair-objects-that-would-otherwise-be-discarded",
+      "label": "repair objects that would otherwise be discarded",
+      "requires": []
+    },
+    {
+      "id": "preserve-accounts-of-ordinary-work",
+      "label": "preserve accounts of ordinary work",
+      "requires": []
+    },
+    {
+      "id": "settle-disagreements-over-borrowed-goods",
+      "label": "settle disagreements over borrowed goods",
+      "requires": []
+    },
+    {
+      "id": "care-for-communal-cloth-and-vessels",
+      "label": "care for communal cloth and vessels",
+      "requires": []
+    },
+    {
+      "id": "record-who-has-taken-responsibility-for-repairs",
+      "label": "record who has taken responsibility for repairs",
+      "requires": []
+    },
+    {
+      "id": "help-absent-households-maintain-their-possessions",
+      "label": "help absent households maintain their possessions",
+      "requires": []
+    },
+    {
+      "id": "compare-trade-measures-openly",
+      "label": "compare trade measures openly",
+      "requires": []
+    }
+  ],
+  "symbols": [
+    {
+      "id": "a-crossed-pair-of-plain-lines",
+      "label": "a crossed pair of plain lines",
+      "requires": []
+    },
+    {
+      "id": "a-ring-around-a-small-square",
+      "label": "a ring around a small square",
+      "requires": []
+    },
+    {
+      "id": "three-shallow-notches",
+      "label": "three shallow notches",
+      "requires": []
+    },
+    {
+      "id": "an-open-hand-beside-a-peg",
+      "label": "an open hand beside a peg",
+      "requires": []
+    },
+    {
+      "id": "a-stitched-circle",
+      "label": "a stitched circle",
+      "requires": []
+    },
+    {
+      "id": "a-single-dark-stripe",
+      "label": "a single dark stripe",
+      "requires": []
+    },
+    {
+      "id": "a-small-hanging-bell",
+      "label": "a small hanging bell",
+      "requires": []
+    },
+    {
+      "id": "a-plain-measuring-rod",
+      "label": "a plain measuring rod",
+      "requires": []
+    }
+  ],
+  "site_secrets": [
+    {
+      "key": "uncredited repair",
+      "detail": "an uncredited apprentice completed a repair assigned to the keeper",
+      "id": "uncredited-repair",
+      "requires": []
+    },
+    {
+      "key": "altered inventory",
+      "detail": "a later keeper altered one inventory entry to conceal a missing tool",
+      "id": "altered-inventory",
+      "requires": []
+    },
+    {
+      "key": "borrowed key",
+      "detail": "a supposedly lost key was lent to another household",
+      "id": "borrowed-key",
+      "requires": []
+    },
+    {
+      "key": "failed first repair",
+      "detail": "the surviving repair account leaves out a failed first attempt",
+      "id": "failed-first-repair",
+      "requires": []
+    },
+    {
+      "key": "misdated lintel",
+      "detail": "the date on a replacement lintel was copied from the older stone",
+      "id": "misdated-lintel",
+      "requires": []
+    },
+    {
+      "key": "shared maker",
+      "detail": "work credited to one maker was completed by two workshops",
+      "id": "shared-maker",
+      "requires": []
+    },
+    {
+      "key": "returned possession",
+      "detail": "a keeper returned a disputed possession without recording the exchange",
+      "id": "returned-possession",
+      "requires": []
+    },
+    {
+      "key": "concealed lease",
+      "detail": "an informal lease continued after the formal account ended",
+      "id": "concealed-lease",
+      "requires": []
+    },
+    {
+      "key": "copied plan",
+      "detail": "the surviving plan was copied from a later survey rather than the original building",
+      "id": "copied-plan",
+      "requires": []
+    },
+    {
+      "key": "unrecorded cupboard",
+      "detail": "a shallow wall cupboard was omitted from an inventory",
+      "id": "unrecorded-cupboard",
+      "requires": []
+    },
+    {
+      "key": "hidden work sample",
+      "detail": "an apprentice hid an unfinished practice piece rather than discard it",
+      "id": "hidden-work-sample",
+      "requires": []
+    },
+    {
+      "key": "changed purpose",
+      "detail": "a keeper changed the use of a side room without changing its label",
+      "id": "changed-purpose",
+      "requires": []
+    },
+    {
+      "key": "missing witness",
+      "detail": "one witness asked to have their name left out of the record",
+      "id": "missing-witness",
+      "requires": []
+    },
+    {
+      "key": "unpaid materials",
+      "detail": "some building materials were supplied against a debt never acknowledged",
+      "id": "unpaid-materials",
+      "requires": []
+    },
+    {
+      "key": "reused inscription",
+      "detail": "an inscribed block was reused with its older face turned inward",
+      "id": "reused-inscription",
+      "requires": []
+    },
+    {
+      "key": "household contribution",
+      "detail": "an ordinary household paid for a repair publicly credited elsewhere",
+      "id": "household-contribution",
+      "requires": []
+    },
+    {
+      "key": "borrowed measure",
+      "detail": "a measuring piece recorded as owned was borrowed for the work",
+      "id": "borrowed-measure",
+      "requires": []
+    },
+    {
+      "key": "incorrect owner",
+      "detail": "an account mistakes a temporary custodian for the owner",
+      "id": "incorrect-owner",
+      "requires": []
+    },
+    {
+      "key": "surrendered tools",
+      "detail": "a departing worker surrendered tools that another keeper later claimed",
+      "id": "surrendered-tools",
+      "requires": []
+    },
+    {
+      "key": "omitted accident",
+      "detail": "a repair entry conceals a small avoidable accident",
+      "id": "omitted-accident",
+      "requires": []
+    }
+  ]
+}

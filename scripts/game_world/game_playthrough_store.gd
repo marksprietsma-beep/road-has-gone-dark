@@ -159,6 +159,9 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 		return "Origin province does not match the canonical hometown cell"
 	if str(origin.get("home_id", "")) != world.entity_id("burg", bid):
 		return "Source hometown stable ID mismatch"
+	if state.has("origin_enrichment"):
+		var why := WorldOriginLore.new().validate_pin(state.origin_enrichment, world, bid, world.enrichment_directory)
+		if not why.is_empty(): return why
 	var party: Array = state.get("party_ids", [])
 	var characters: Array = state.get("characters", [])
 	# New campaigns start with exactly three members. Recruitment later adds
