@@ -78,6 +78,7 @@ func run() -> void:
  while current_scene==null or current_scene.scene_file_path!="res://scenes/gameplay/expedition.tscn":await process_frame
  ui=current_scene
  await wait_job()
+ if ui.state.is_empty():quit(1);return
  check(ui.state.party_ids==pristine.party_ids,"Enter hometown button carries the same three adventurers")
  for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
   root.size=resolution

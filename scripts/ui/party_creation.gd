@@ -9,6 +9,7 @@ var thread: Thread
 var after_save := ""
 var message := ""
 var ready_view := false
+var expedition_cache_root := "user://expedition-content"
 var title: Label
 var origin: Label
 var roster: ItemList
@@ -174,6 +175,7 @@ func _ready() -> void:
   message = "Choose a hometown through New Game before creating a party."
   refresh()
   return
+ expedition_cache_root = str(handoff.get("cache_root", expedition_cache_root))
  entry = handoff.entry
  slot = handoff.slot
  service.store.save_root = str(handoff.get("save_root", service.store.save_root))
@@ -306,6 +308,7 @@ func refresh() -> void:
 func _finish() -> void:
  if thread != null or state.is_empty(): return
  if ready_view:
+  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":expedition_cache_root}
   get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
  elif dirty():
   after_save = "ready"
