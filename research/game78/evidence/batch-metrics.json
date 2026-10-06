@@ -1,0 +1,576 @@
+{
+  "metrics": {
+    "sha-staged/site": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 999,
+      "most_repeated_fingerprints": [
+        [
+          "common-kitchen/foundation-laid/court-enclosed/subsidence-occurred/paving-lifted/stones-catalogued/name-recorded",
+          2
+        ],
+        [
+          "ore-sorting-floor/foundation-laid/porch-added/subsidence-occurred/storage-reuse/boundary-marked/name-recorded",
+          1
+        ],
+        [
+          "watchtower/foundation-laid/porch-added/funding-ceased/tiles-salvaged/keeper-appointed/memorial-added",
+          1
+        ],
+        [
+          "market-shelter/foundation-laid/porch-added/stair-collapsed/door-sold/stones-catalogued/name-recorded",
+          1
+        ],
+        [
+          "road-shelter/foundation-laid/upper-floor-added/river-flood/meeting-reuse/boundary-marked/memorial-added",
+          1
+        ]
+      ],
+      "generation_and_three_render_ms": 900.073341,
+      "serialized_fact_bytes": 3800795,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/origin": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 942,
+      "duplicate_prose": 58,
+      "distinct_template_fingerprints": 827,
+      "most_repeated_fingerprints": [
+        [
+          "repair-lessons/spare-peg",
+          4
+        ],
+        [
+          "woodcraft-teaching-chest/spare-tile",
+          4
+        ],
+        [
+          "disputed-seal/handle-testing",
+          3
+        ],
+        [
+          "lost-apprentice/blanket-turning",
+          3
+        ],
+        [
+          "measurement-mark/quiet-pause",
+          3
+        ]
+      ],
+      "generation_and_three_render_ms": 615.2610149999998,
+      "serialized_fact_bytes": 3397242,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/character": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 871,
+      "most_repeated_fingerprints": [
+        [
+          "porter/household-of-family-friends/a-patient-older-apprentice",
+          4
+        ],
+        [
+          "brewer/sibling-household/a-patient-older-apprentice",
+          3
+        ],
+        [
+          "porter/household-of-family-friends/an-older-sibling",
+          3
+        ],
+        [
+          "tavern-keeper/household-of-retired-craft-workers/a-worker-known-for-correcting-mistakes",
+          3
+        ],
+        [
+          "possible-recruit/household-of-family-friends/a-former-employer",
+          3
+        ]
+      ],
+      "generation_and_three_render_ms": 1124.2460400000002,
+      "serialized_fact_bytes": 4039776,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/npc": {
+      "count": 200,
+      "distinct_semantic_facts": 200,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 197,
+      "most_repeated_fingerprints": [
+        [
+          "baker/adoptive-household/a-worker-known-for-correcting-mistakes",
+          2
+        ],
+        [
+          "stall-keeper/household-of-retired-craft-workers/an-older-sibling",
+          2
+        ],
+        [
+          "basket-maker/sibling-household/a-retired-craft-worker",
+          2
+        ],
+        [
+          "lamp-keeper/adoptive-household/a-patient-older-apprentice",
+          1
+        ],
+        [
+          "scribe/family-of-itinerant-workers/a-record-keeper-who-exchanged-lessons-for-errands",
+          1
+        ]
+      ],
+      "generation_and_three_render_ms": 205.3679000000002,
+      "serialized_fact_bytes": 784917,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/mundane": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 581,
+      "most_repeated_fingerprints": [
+        [
+          "carrying-basket/wicker/roughly-finished",
+          6
+        ],
+        [
+          "pendant/bronze/made-with-visible-tool-marks",
+          6
+        ],
+        [
+          "bedroll/wool/made-for-easy-repair",
+          5
+        ],
+        [
+          "bread-tin/iron/carefully-finished",
+          5
+        ],
+        [
+          "spindle/wood/made-with-visible-tool-marks",
+          5
+        ]
+      ],
+      "generation_and_three_render_ms": 578.5756019999999,
+      "serialized_fact_bytes": 3834908,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/rare": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 572,
+      "most_repeated_fingerprints": [
+        [
+          "wooden-chest/wood/roughly-finished",
+          7
+        ],
+        [
+          "bedroll/wool/deliberately-unadorned",
+          6
+        ],
+        [
+          "bandage-roll/linen/plain-but-sound",
+          5
+        ],
+        [
+          "shoulder-bag/leather/deliberately-unadorned",
+          5
+        ],
+        [
+          "walking-staff/wood/deliberately-unadorned",
+          5
+        ]
+      ],
+      "generation_and_three_render_ms": 784.8743370000002,
+      "serialized_fact_bytes": 4407486,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/contract": {
+      "count": 200,
+      "distinct_semantic_facts": 199,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 16,
+      "most_repeated_fingerprints": [
+        [
+          "contract/locate-the-owner-of-a-marked-vessel",
+          18
+        ],
+        [
+          "contract/ask-a-former-keeper-about-an-ownership-entry",
+          17
+        ],
+        [
+          "contract/identify-a-displaced-maker-s-mark",
+          17
+        ],
+        [
+          "contract/record-surviving-worked-stones",
+          16
+        ],
+        [
+          "contract/retrieve-an-openly-stored-tool-chest",
+          16
+        ]
+      ],
+      "generation_and_three_render_ms": 108.70219300000008,
+      "serialized_fact_bytes": 718957,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "sha-staged/group": {
+      "count": 200,
+      "distinct_semantic_facts": 127,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 12,
+      "most_repeated_fingerprints": [
+        [
+          "group/ceremonial-custodians",
+          27
+        ],
+        [
+          "group/burial-society",
+          19
+        ],
+        [
+          "group/record-circle",
+          19
+        ],
+        [
+          "group/salvage-association",
+          18
+        ],
+        [
+          "group/letter-carriers-circle",
+          18
+        ]
+      ],
+      "generation_and_three_render_ms": 91.60050499999943,
+      "serialized_fact_bytes": 686335,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/site": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 999,
+      "most_repeated_fingerprints": [
+        [
+          "granary/foundation-laid/upper-floor-added/keeper-departed/iron-stripped/stones-catalogued/stone-numbered",
+          2
+        ],
+        [
+          "border-storehouse/foundation-laid/upper-floor-added/storm-broke-roof/inventory-closed/stones-catalogued/plan-copied",
+          1
+        ],
+        [
+          "small-observatory/foundation-laid/upper-floor-added/stair-collapsed/service-ended/rubble-sorted/name-recorded",
+          1
+        ],
+        [
+          "burial-chapel/foundation-laid/court-enclosed/beam-failed/meeting-reuse/roof-tarred/memorial-added",
+          1
+        ],
+        [
+          "pack-animal-yard/foundation-laid/wing-added/stair-collapsed/forest-encroached/roof-tarred/plan-copied",
+          1
+        ]
+      ],
+      "generation_and_three_render_ms": 848.976259,
+      "serialized_fact_bytes": 3804912,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/origin": {
+      "count": 1000,
+      "distinct_semantic_facts": 999,
+      "distinct_prose": 941,
+      "duplicate_prose": 59,
+      "distinct_template_fingerprints": 846,
+      "most_repeated_fingerprints": [
+        [
+          "shared-oven/window-cleaning",
+          4
+        ],
+        [
+          "market-awning/stone-brushing",
+          3
+        ],
+        [
+          "lost-tally/old-ledger",
+          3
+        ],
+        [
+          "old-measures/cart-inspection",
+          3
+        ],
+        [
+          "pot-repair/bench-repair",
+          3
+        ]
+      ],
+      "generation_and_three_render_ms": 564.835916,
+      "serialized_fact_bytes": 3401236,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/character": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 874,
+      "most_repeated_fingerprints": [
+        [
+          "basket-maker/sibling-household/a-neighbour-who-taught-evening-lessons",
+          3
+        ],
+        [
+          "tavern-keeper/sibling-household/a-worker-known-for-correcting-mistakes",
+          3
+        ],
+        [
+          "herbal-preparer/sibling-household/a-patient-older-apprentice",
+          3
+        ],
+        [
+          "scribe/widowed-guardian-household/a-neighbour-who-taught-evening-lessons",
+          3
+        ],
+        [
+          "possible-recruit/guardian-household/a-relative-with-failing-eyesight",
+          3
+        ]
+      ],
+      "generation_and_three_render_ms": 1101.1058650000004,
+      "serialized_fact_bytes": 4044197,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/npc": {
+      "count": 200,
+      "distinct_semantic_facts": 200,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 196,
+      "most_repeated_fingerprints": [
+        [
+          "mason/household-of-retired-craft-workers/a-patient-older-apprentice",
+          2
+        ],
+        [
+          "herbal-preparer/two-parent-household/a-household-friend",
+          2
+        ],
+        [
+          "local-clerk/single-parent-household/a-patient-older-apprentice",
+          2
+        ],
+        [
+          "metalworker/adoptive-household/a-demanding-workshop-keeper",
+          2
+        ],
+        [
+          "religious-attendant/two-parent-household/a-relative-with-failing-eyesight",
+          1
+        ]
+      ],
+      "generation_and_three_render_ms": 236.59894599999916,
+      "serialized_fact_bytes": 785860,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/mundane": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 546,
+      "most_repeated_fingerprints": [
+        [
+          "work-gloves/leather/plain-but-sound",
+          8
+        ],
+        [
+          "mirror/bronze/roughly-finished",
+          6
+        ],
+        [
+          "wax-tablet/wood/roughly-finished",
+          6
+        ],
+        [
+          "wooden-chest/wood/made-with-visible-tool-marks",
+          6
+        ],
+        [
+          "ceremonial-staff/wood/plain-but-sound",
+          5
+        ]
+      ],
+      "generation_and_three_render_ms": 610.5382680000002,
+      "serialized_fact_bytes": 3838862,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/rare": {
+      "count": 1000,
+      "distinct_semantic_facts": 1000,
+      "distinct_prose": 1000,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 560,
+      "most_repeated_fingerprints": [
+        [
+          "bread-tin/iron/made-for-easy-repair",
+          8
+        ],
+        [
+          "bandage-roll/linen/made-for-easy-repair",
+          6
+        ],
+        [
+          "herb-jar/ceramic/made-for-easy-repair",
+          6
+        ],
+        [
+          "bread-tin/iron/made-with-visible-tool-marks",
+          5
+        ],
+        [
+          "prayer-board/wood/carefully-finished",
+          5
+        ]
+      ],
+      "generation_and_three_render_ms": 909.7322029999996,
+      "serialized_fact_bytes": 4412826,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/contract": {
+      "count": 200,
+      "distinct_semantic_facts": 200,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 16,
+      "most_repeated_fingerprints": [
+        [
+          "contract/check-a-damaged-inventory",
+          24
+        ],
+        [
+          "contract/carry-a-replacement-binding",
+          17
+        ],
+        [
+          "contract/record-marks-before-a-stone-is-reused",
+          17
+        ],
+        [
+          "contract/verify-the-condition-of-an-old-doorway",
+          17
+        ],
+        [
+          "contract/copy-an-exposed-inscription",
+          14
+        ]
+      ],
+      "generation_and_three_render_ms": 91.4190180000005,
+      "serialized_fact_bytes": 719864,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    },
+    "lexicon-staged/group": {
+      "count": 200,
+      "distinct_semantic_facts": 137,
+      "distinct_prose": 200,
+      "duplicate_prose": 0,
+      "distinct_template_fingerprints": 12,
+      "most_repeated_fingerprints": [
+        [
+          "group/letter-carriers-circle",
+          26
+        ],
+        [
+          "group/ceremonial-custodians",
+          23
+        ],
+        [
+          "group/record-circle",
+          22
+        ],
+        [
+          "group/salvage-association",
+          19
+        ],
+        [
+          "group/mutual-aid-group",
+          17
+        ]
+      ],
+      "generation_and_three_render_ms": 89.47176500000023,
+      "serialized_fact_bytes": 687353,
+      "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+      "renderer": "trhgd-game78-rant-1"
+    }
+  },
+  "pack_counts": {
+    "purposes": 36,
+    "conditions": 32,
+    "events": 58,
+    "memories": 58,
+    "traditions": 58,
+    "occupations": 30,
+    "family": 12,
+    "childhood": 12,
+    "training": 12,
+    "failure": 12,
+    "success": 12,
+    "motivation": 16,
+    "concern": 12,
+    "contact": 12,
+    "secret": 12,
+    "habit": 12,
+    "value": 12,
+    "keepsake": 12,
+    "traits": 18,
+    "items": 72,
+    "qualities": 8,
+    "wear": 10,
+    "makers": 12,
+    "marks": 12,
+    "item_events": 12,
+    "repairs": 8,
+    "rare_roles": 12,
+    "reputations": 12,
+    "item_secrets": 12,
+    "contracts": 16,
+    "complications": 8,
+    "group_types": 12,
+    "group_purposes": 12,
+    "symbols": 8,
+    "site_secrets": 20
+  },
+  "memory": {
+    "rss": 291209216,
+    "heapTotal": 199016448,
+    "heapUsed": 100638760,
+    "external": 4131241,
+    "arrayBuffers": 1992214
+  }
+}

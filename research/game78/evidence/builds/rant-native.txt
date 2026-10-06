@@ -1,0 +1,11 @@
+{
+  nested: { count: 1000, distinct: 144, failures: 0 },
+  carriers: { count: 1000, distinct: 36, failures: 0 },
+  agreement: { count: 1000, distinct: 3, failures: 0 },
+  conditional: { count: 1000, distinct: 6, failures: 0 },
+  pronouns: { count: 1000, distinct: 6, failures: 0 },
+  weighted: { count: 1000, distinct: 3, failures: 0 },
+  repeater: { count: 1000, distinct: 27, failures: 0 },
+  instance_stateful: true,
+  invalid_pattern: 'ParseError: Unclosed block'
+}

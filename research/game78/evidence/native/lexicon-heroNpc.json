@@ -1,0 +1,5302 @@
+[
+  {
+    "index": 0,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KogtkhagGokhogh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kogtkhag",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gokhogh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "JeochiaTssuchai",
+          "translation": "tree-wisp",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Jeochia",
+              "meaning": "tree"
+            },
+            {
+              "form": "Tssuchai",
+              "meaning": "wisp"
+            }
+          ]
+        },
+        "full": {
+          "form": "KogtkhagGokhogh JeochiaTssuchai",
+          "translation": "strong-metal tree-wisp",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 79,
+      "occupation": "guard",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "cowardly",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Dragon Keeper",
+      "title": "Sage"
+    }
+  },
+  {
+    "index": 1,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TitShich",
+          "translation": "seed-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Tit",
+              "meaning": "seed"
+            },
+            {
+              "form": "Shich",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PiKa",
+          "translation": "blossom-folk",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Pi",
+              "meaning": "blossom"
+            },
+            {
+              "form": "Ka",
+              "meaning": "folk"
+            }
+          ]
+        },
+        "full": {
+          "form": "TitShich PiKa",
+          "translation": "seed-halfling blossom-folk",
+          "language": "fantasy.halfling"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 19,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "kind",
+        "flaw": "vain",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Doom Breaker",
+      "title": "Duchess"
+    }
+  },
+  {
+    "index": 2,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KkhodGag",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kkhod",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gag",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TutpagKhughbgub",
+          "translation": "orc-mountain",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Tutpag",
+              "meaning": "orc"
+            },
+            {
+              "form": "Khughbgub",
+              "meaning": "mountain"
+            }
+          ]
+        },
+        "full": {
+          "form": "KkhodGag TutpagKhughbgub",
+          "translation": "strong-stone orc-mountain",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 70,
+      "occupation": "guard",
+      "personality": {
+        "trait": "wise",
+        "flaw": "boastful",
+        "quirk": "collects buttons"
+      },
+      "epithet": "Eater of the Shadows",
+      "title": "Wizard"
+    }
+  },
+  {
+    "index": 3,
+    "output": {
+      "name": {
+        "given": {
+          "form": "ZhisoshTsichu",
+          "translation": "enchanted-ash",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Zhisosh",
+              "meaning": "enchanted"
+            },
+            {
+              "form": "Tsichu",
+              "meaning": "ash"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TkhobGhupddap",
+          "translation": "mountain-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tkhob",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Ghupddap",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "ZhisoshTsichu TkhobGhupddap",
+          "translation": "enchanted-ash mountain-metal",
+          "language": "fantasy.draconic"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 20,
+      "occupation": "alchemist",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cruel",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Quiet",
+      "title": "Marshal"
+    }
+  },
+  {
+    "index": 4,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KhoptutGhopdad",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khoptut",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghopdad",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TichshakKap",
+          "translation": "elemental-king",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Tichshak",
+              "meaning": "elemental"
+            },
+            {
+              "form": "Kap",
+              "meaning": "king"
+            }
+          ]
+        },
+        "full": {
+          "form": "KhoptutGhopdad TichshakKap",
+          "translation": "strong-metal elemental-king",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 67,
+      "occupation": "innkeeper",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "boastful",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "Bane of the Fates",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 5,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhdapGag",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghdap",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gag",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DkukhGhukda",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dkukh",
+              "meaning": "dust"
+            },
+            {
+              "form": "Ghukda",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhdapGag DkukhGhukda",
+          "translation": "strong-metal dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 66,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "kind",
+        "flaw": "stubborn",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Flame Eater",
+      "title": "General"
+    }
+  },
+  {
+    "index": 6,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GodbakPtakh",
+          "translation": "fierce-dagger",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Godbak",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Ptakh",
+              "meaning": "dagger"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ShatKi",
+          "translation": "cycle-lord",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Shat",
+              "meaning": "cycle"
+            },
+            {
+              "form": "Ki",
+              "meaning": "lord"
+            }
+          ]
+        },
+        "full": {
+          "form": "GodbakPtakh ShatKi",
+          "translation": "fierce-dagger cycle-lord",
+          "language": "fantasy.orcish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 71,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cowardly",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "Singer of the Storms",
+      "title": "Champion"
+    }
+  },
+  {
+    "index": 7,
+    "output": {
+      "name": {
+        "given": {
+          "form": "LeuAuyri",
+          "translation": "fierce-grove",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Leu",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Auyri",
+              "meaning": "grove"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DagpokGbokhghbot",
+          "translation": "ash-oath",
+          "language": "fantasy.tiefling",
+          "parts": [
+            {
+              "form": "Dagpok",
+              "meaning": "ash"
+            },
+            {
+              "form": "Gbokhghbot",
+              "meaning": "oath"
+            }
+          ]
+        },
+        "full": {
+          "form": "LeuAuyri DagpokGbokhghbot",
+          "translation": "fierce-grove ash-oath",
+          "language": "fantasy.elvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 64,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "brave",
+        "flaw": "lazy",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Quiet",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 8,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BoptghokhKhkhagh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Boptghokh",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khkhagh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhieZo",
+          "translation": "storm-briar",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Zhie",
+              "meaning": "storm"
+            },
+            {
+              "form": "Zo",
+              "meaning": "briar"
+            }
+          ]
+        },
+        "full": {
+          "form": "BoptghokhKhkhagh ZhieZo",
+          "translation": "strong-metal storm-briar",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 53,
+      "occupation": "alchemist",
+      "personality": {
+        "trait": "brave",
+        "flaw": "cruel",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Crooked",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 9,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TghatbudKukhkho",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tghatbud",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kukhkho",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "RaolowiU",
+          "translation": "mountain-wing",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Raolowi",
+              "meaning": "mountain"
+            },
+            {
+              "form": "U",
+              "meaning": "wing"
+            }
+          ]
+        },
+        "full": {
+          "form": "TghatbudKukhkho RaolowiU",
+          "translation": "strong-stone mountain-wing",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 70,
+      "occupation": "tanner",
+      "personality": {
+        "trait": "honest",
+        "flaw": "vain",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Cruel",
+      "title": "Commander"
+    }
+  },
+  {
+    "index": 10,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GoGghagh",
+          "translation": "cruel-armor",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Go",
+              "meaning": "cruel"
+            },
+            {
+              "form": "Gghagh",
+              "meaning": "armor"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GhukhboTo",
+          "translation": "mountain-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghukhbo",
+              "meaning": "mountain"
+            },
+            {
+              "form": "To",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GoGghagh GhukhboTo",
+          "translation": "cruel-armor mountain-metal",
+          "language": "fantasy.orcish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 72,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "honest",
+        "flaw": "stubborn",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "Bringer of the Storms",
+      "title": "General"
+    }
+  },
+  {
+    "index": 11,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GtadkpatKdak",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gtadkpat",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kdak",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GukhoBu",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gukho",
+              "meaning": "dust"
+            },
+            {
+              "form": "Bu",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GtadkpatKdak GukhoBu",
+          "translation": "strong-stone dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "celestial",
+        "sex": "male"
+      },
+      "age": 41,
+      "occupation": "baker",
+      "personality": {
+        "trait": "wise",
+        "flaw": "cowardly",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Just",
+      "title": "Countess"
+    }
+  },
+  {
+    "index": 12,
+    "output": {
+      "name": {
+        "given": {
+          "form": "RinolirNelunu",
+          "translation": "bright-seraph",
+          "language": "fantasy.celestial",
+          "parts": [
+            {
+              "form": "Rinolir",
+              "meaning": "bright"
+            },
+            {
+              "form": "Nelunu",
+              "meaning": "seraph"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KiktitKa",
+          "translation": "tree-lord",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Kiktit",
+              "meaning": "tree"
+            },
+            {
+              "form": "Ka",
+              "meaning": "lord"
+            }
+          ]
+        },
+        "full": {
+          "form": "RinolirNelunu KiktitKa",
+          "translation": "bright-seraph tree-lord",
+          "language": "fantasy.celestial"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 63,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "brave",
+        "flaw": "lazy",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Bone Bringer",
+      "title": "Magus"
+    }
+  },
+  {
+    "index": 13,
+    "output": {
+      "name": {
+        "given": {
+          "form": "NuiemWuyua",
+          "translation": "thorned-plant",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Nuiem",
+              "meaning": "thorned"
+            },
+            {
+              "form": "Wuyua",
+              "meaning": "plant"
+            }
+          ]
+        },
+        "surname": {
+          "form": "JzheshtsoZua",
+          "translation": "scepter-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Jzheshtso",
+              "meaning": "scepter"
+            },
+            {
+              "form": "Zua",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "NuiemWuyua JzheshtsoZua",
+          "translation": "thorned-plant scepter-immortal",
+          "language": "fantasy.elvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 45,
+      "occupation": "fisher",
+      "personality": {
+        "trait": "kind",
+        "flaw": "cowardly",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "Hunter of the Dragons",
+      "title": "Sister"
+    }
+  },
+  {
+    "index": 14,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhatuPat",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghatu",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pat",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PtugGhotu",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ptug",
+              "meaning": "dust"
+            },
+            {
+              "form": "Ghotu",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhatuPat PtugGhotu",
+          "translation": "strong-stone dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 43,
+      "occupation": "scribe",
+      "personality": {
+        "trait": "honest",
+        "flaw": "cowardly",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Quiet",
+      "title": "Father"
+    }
+  },
+  {
+    "index": 15,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DadbtopKbak",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dadbtop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kbak",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "InlaweYiwoo",
+          "translation": "hollow-bloom",
+          "language": "fantasy.plantoid",
+          "parts": [
+            {
+              "form": "Inlawe",
+              "meaning": "hollow"
+            },
+            {
+              "form": "Yiwoo",
+              "meaning": "bloom"
+            }
+          ]
+        },
+        "full": {
+          "form": "DadbtopKbak InlaweYiwoo",
+          "translation": "strong-metal hollow-bloom",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 18,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "humble",
+        "flaw": "vain",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Lost",
+      "title": "Magus"
+    }
+  },
+  {
+    "index": 16,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DtubPat",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dtub",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pat",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TsiuZhaazaz",
+          "translation": "mist-briar",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Tsiu",
+              "meaning": "mist"
+            },
+            {
+              "form": "Zhaazaz",
+              "meaning": "briar"
+            }
+          ]
+        },
+        "full": {
+          "form": "DtubPat TsiuZhaazaz",
+          "translation": "strong-metal mist-briar",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 73,
+      "occupation": "baker",
+      "personality": {
+        "trait": "honest",
+        "flaw": "boastful",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Quiet",
+      "title": "Father"
+    }
+  },
+  {
+    "index": 17,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhaghDoghda",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghagh",
+              "meaning": "strong"
+            },
+            {
+              "form": "Doghda",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GgukhdupGgukhdup",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ggukhdup",
+              "meaning": "stone"
+            },
+            {
+              "form": "Ggukhdup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhaghDoghda GgukhdupGgukhdup",
+          "translation": "strong-stone stone-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "fey",
+        "sex": "female"
+      },
+      "age": 22,
+      "occupation": "priest",
+      "personality": {
+        "trait": "kind",
+        "flaw": "cowardly",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Lost",
+      "title": "Mother"
+    }
+  },
+  {
+    "index": 18,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PakhpotGakhbot",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pakhpot",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gakhbot",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DdughtagBpadghput",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ddughtag",
+              "meaning": "sand"
+            },
+            {
+              "form": "Bpadghput",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "PakhpotGakhbot DdughtagBpadghput",
+          "translation": "strong-metal sand-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dragonborn",
+        "sex": "female"
+      },
+      "age": 39,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "wise",
+        "flaw": "vain",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Fate Slayer",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 19,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GugbghotDakhdokh",
+          "translation": "cruel-spear",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Gugbghot",
+              "meaning": "cruel"
+            },
+            {
+              "form": "Dakhdokh",
+              "meaning": "spear"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DuGopgokh",
+          "translation": "champion-fortress",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Du",
+              "meaning": "champion"
+            },
+            {
+              "form": "Gopgokh",
+              "meaning": "fortress"
+            }
+          ]
+        },
+        "full": {
+          "form": "GugbghotDakhdokh DuGopgokh",
+          "translation": "cruel-spear champion-fortress",
+          "language": "fantasy.orcish"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 75,
+      "occupation": "mercenary",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "vain",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Doom Walker",
+      "title": "Baron"
+    }
+  },
+  {
+    "index": 20,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GdakbutBugdop",
+          "translation": "fierce-dagger",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Gdakbut",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Bugdop",
+              "meaning": "dagger"
+            }
+          ]
+        },
+        "surname": {
+          "form": "RarlungNaluno",
+          "translation": "seraph-grace",
+          "language": "fantasy.celestial",
+          "parts": [
+            {
+              "form": "Rarlung",
+              "meaning": "seraph"
+            },
+            {
+              "form": "Naluno",
+              "meaning": "grace"
+            }
+          ]
+        },
+        "full": {
+          "form": "GdakbutBugdop RarlungNaluno",
+          "translation": "fierce-dagger seraph-grace",
+          "language": "fantasy.orcish"
+        },
+        "race": "orc",
+        "sex": "female"
+      },
+      "age": 73,
+      "occupation": "farmer",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "lazy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Shadow Eater",
+      "title": "Countess"
+    }
+  },
+  {
+    "index": 21,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DpodGhotgog",
+          "translation": "red-ember",
+          "language": "fantasy.tiefling",
+          "parts": [
+            {
+              "form": "Dpod",
+              "meaning": "red"
+            },
+            {
+              "form": "Ghotgog",
+              "meaning": "ember"
+            }
+          ]
+        },
+        "surname": {
+          "form": "OelemOw",
+          "translation": "fire-wing",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Oelem",
+              "meaning": "fire"
+            },
+            {
+              "form": "Ow",
+              "meaning": "wing"
+            }
+          ]
+        },
+        "full": {
+          "form": "DpodGhotgog OelemOw",
+          "translation": "red-ember fire-wing",
+          "language": "fantasy.tiefling"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 38,
+      "occupation": "scribe",
+      "personality": {
+        "trait": "honest",
+        "flaw": "vain",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Dragon Bringer",
+      "title": "Father"
+    }
+  },
+  {
+    "index": 22,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DukhghubTat",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dukhghub",
+              "meaning": "strong"
+            },
+            {
+              "form": "Tat",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DgutGopbap",
+          "translation": "clay-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dgut",
+              "meaning": "clay"
+            },
+            {
+              "form": "Gopbap",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "DukhghubTat DgutGopbap",
+          "translation": "strong-metal clay-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 65,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "patient",
+        "flaw": "lazy",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Shadow Bringer",
+      "title": "Prophet"
+    }
+  },
+  {
+    "index": 23,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhghotkhudPub",
+          "translation": "hot-cinder",
+          "language": "fantasy.tiefling",
+          "parts": [
+            {
+              "form": "Ghghotkhud",
+              "meaning": "hot"
+            },
+            {
+              "form": "Pub",
+              "meaning": "cinder"
+            }
+          ]
+        },
+        "surname": {
+          "form": "RouNi",
+          "translation": "mist-dawn",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Rou",
+              "meaning": "mist"
+            },
+            {
+              "form": "Ni",
+              "meaning": "dawn"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhghotkhudPub RouNi",
+          "translation": "hot-cinder mist-dawn",
+          "language": "fantasy.tiefling"
+        },
+        "race": "plantoid",
+        "sex": "male"
+      },
+      "age": 21,
+      "occupation": "thief",
+      "personality": {
+        "trait": "wise",
+        "flaw": "cruel",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Just",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 24,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BagDadug",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bag",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dadug",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DakKghogghub",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dak",
+              "meaning": "stone"
+            },
+            {
+              "form": "Kghogghub",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "BagDadug DakKghogghub",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "female"
+      },
+      "age": 51,
+      "occupation": "weaver",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "boastful",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Doom Walker",
+      "title": "Knight"
+    }
+  },
+  {
+    "index": 25,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KkukgopGudto",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kkukgop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gudto",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhetszhashJeztsits",
+          "translation": "elf-glamour",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Zhetszhash",
+              "meaning": "elf"
+            },
+            {
+              "form": "Jeztsits",
+              "meaning": "glamour"
+            }
+          ]
+        },
+        "full": {
+          "form": "KkukgopGudto ZhetszhashJeztsits",
+          "translation": "strong-stone elf-glamour",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 72,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "lazy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Bold",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 26,
+    "output": {
+      "name": {
+        "given": {
+          "form": "ZhiuTszo",
+          "translation": "great-wrath",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Zhiu",
+              "meaning": "great"
+            },
+            {
+              "form": "Tszo",
+              "meaning": "wrath"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PadbghapGhtug",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Padbghap",
+              "meaning": "clay"
+            },
+            {
+              "form": "Ghtug",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "ZhiuTszo PadbghapGhtug",
+          "translation": "great-wrath clay-metal",
+          "language": "fantasy.draconic"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 53,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "cowardly",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Doom Caller",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 27,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GukhtupTuduk",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gukhtup",
+              "meaning": "strong"
+            },
+            {
+              "form": "Tuduk",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhogkatKhudgut",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khogkat",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Khudgut",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GukhtupTuduk KhogkatKhudgut",
+          "translation": "strong-metal mountain-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 49,
+      "occupation": "miller",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "greedy",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Quiet",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 28,
+    "output": {
+      "name": {
+        "given": {
+          "form": "OlMeourna",
+          "translation": "fierce-mountain",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Ol",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Meourna",
+              "meaning": "mountain"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TbaktubPubpghop",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tbaktub",
+              "meaning": "clay"
+            },
+            {
+              "form": "Pubpghop",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "OlMeourna TbaktubPubpghop",
+          "translation": "fierce-mountain clay-metal",
+          "language": "fantasy.elvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 53,
+      "occupation": "scribe",
+      "personality": {
+        "trait": "kind",
+        "flaw": "lazy",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Fate Walker",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 29,
+    "output": {
+      "name": {
+        "given": {
+          "form": "SoShoe",
+          "translation": "great-ash",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "So",
+              "meaning": "great"
+            },
+            {
+              "form": "Shoe",
+              "meaning": "ash"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DukGho",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Duk",
+              "meaning": "dust"
+            },
+            {
+              "form": "Gho",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "SoShoe DukGho",
+          "translation": "great-ash dust-stone",
+          "language": "fantasy.draconic"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 61,
+      "occupation": "scribe",
+      "personality": {
+        "trait": "patient",
+        "flaw": "stubborn",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Frost Whisperer",
+      "title": "Knight"
+    }
+  },
+  {
+    "index": 30,
+    "output": {
+      "name": {
+        "given": {
+          "form": "ZhoizhuJoz",
+          "translation": "elusive-whisper",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Zhoizhu",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Joz",
+              "meaning": "whisper"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KkhabPkughgpup",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kkhab",
+              "meaning": "sand"
+            },
+            {
+              "form": "Pkughgpup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "ZhoizhuJoz KkhabPkughgpup",
+          "translation": "elusive-whisper sand-stone",
+          "language": "fantasy.fey"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 44,
+      "occupation": "weaver",
+      "personality": {
+        "trait": "patient",
+        "flaw": "greedy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Shadow Eater",
+      "title": "Father"
+    }
+  },
+  {
+    "index": 31,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GtapkhbaghPa",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gtapkhbagh",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pa",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DghutgbubKhkhabdghok",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dghutgbub",
+              "meaning": "stone"
+            },
+            {
+              "form": "Khkhabdghok",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GtapkhbaghPa DghutgbubKhkhabdghok",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 18,
+      "occupation": "fisher",
+      "personality": {
+        "trait": "kind",
+        "flaw": "cowardly",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Wise",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 32,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BadtkobDa",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Badtkob",
+              "meaning": "strong"
+            },
+            {
+              "form": "Da",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DagBtup",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dag",
+              "meaning": "clay"
+            },
+            {
+              "form": "Btup",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "BadtkobDa DagBtup",
+          "translation": "strong-stone clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 36,
+      "occupation": "priest",
+      "personality": {
+        "trait": "humble",
+        "flaw": "stubborn",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "Whisperer of the Ashs",
+      "title": "Magus"
+    }
+  },
+  {
+    "index": 33,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GkhoghkhoghKhtugh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gkhoghkhogh",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khtugh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhdoghKhdogh",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khdogh",
+              "meaning": "stone"
+            },
+            {
+              "form": "Khdogh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GkhoghkhoghKhtugh KhdoghKhdogh",
+          "translation": "strong-metal stone-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 61,
+      "occupation": "scribe",
+      "personality": {
+        "trait": "wise",
+        "flaw": "greedy",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Bold",
+      "title": "Lord"
+    }
+  },
+  {
+    "index": 34,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KhotugBughdob",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khotug",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bughdob",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhaghDobgho",
+          "translation": "sand-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khagh",
+              "meaning": "sand"
+            },
+            {
+              "form": "Dobgho",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "KhotugBughdob KhaghDobgho",
+          "translation": "strong-stone sand-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "orc",
+        "sex": "male"
+      },
+      "age": 42,
+      "occupation": "butcher",
+      "personality": {
+        "trait": "brave",
+        "flaw": "cruel",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Star Singer",
+      "title": "Duke"
+    }
+  },
+  {
+    "index": 35,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DopokBod",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dopok",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bod",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZechouChsishio",
+          "translation": "lord-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Zechou",
+              "meaning": "lord"
+            },
+            {
+              "form": "Chsishio",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "DopokBod ZechouChsishio",
+          "translation": "strong-metal lord-immortal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 30,
+      "occupation": "innkeeper",
+      "personality": {
+        "trait": "patient",
+        "flaw": "greedy",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Ash Whisperer",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 36,
+    "output": {
+      "name": {
+        "given": {
+          "form": "JzezchiSii",
+          "translation": "elusive-hollow",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Jzezchi",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Sii",
+              "meaning": "hollow"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ChashTit",
+          "translation": "tree-peasant",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Chash",
+              "meaning": "tree"
+            },
+            {
+              "form": "Tit",
+              "meaning": "peasant"
+            }
+          ]
+        },
+        "full": {
+          "form": "JzezchiSii ChashTit",
+          "translation": "elusive-hollow tree-peasant",
+          "language": "fantasy.fey"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 42,
+      "occupation": "mercenary",
+      "personality": {
+        "trait": "wise",
+        "flaw": "greedy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Crown Forger",
+      "title": "Captain"
+    }
+  },
+  {
+    "index": 37,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KobGhukghpup",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kob",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghukghpup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "BuBu",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bu",
+              "meaning": "stone"
+            },
+            {
+              "form": "Bu",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "KobGhukghpup BuBu",
+          "translation": "strong-stone stone-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 41,
+      "occupation": "tax-collector",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cowardly",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Crown Eater",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 38,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhoKa",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gho",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ka",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ShshusoJejzhush",
+          "translation": "scepter-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Shshuso",
+              "meaning": "scepter"
+            },
+            {
+              "form": "Jejzhush",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhoKa ShshusoJejzhush",
+          "translation": "strong-stone scepter-immortal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "orc",
+        "sex": "male"
+      },
+      "age": 55,
+      "occupation": "blacksmith",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "vain",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Crooked",
+      "title": "Count"
+    }
+  },
+  {
+    "index": 39,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BopBukhdghut",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bukhdghut",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PotkhgatGubgakh",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Potkhgat",
+              "meaning": "clay"
+            },
+            {
+              "form": "Gubgakh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "BopBukhdghut PotkhgatGubgakh",
+          "translation": "strong-metal clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 25,
+      "occupation": "baker",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cruel",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Ironhearted",
+      "title": "Brother"
+    }
+  },
+  {
+    "index": 40,
+    "output": {
+      "name": {
+        "given": {
+          "form": "EairAya",
+          "translation": "root-wake",
+          "language": "fantasy.plantoid",
+          "parts": [
+            {
+              "form": "Eair",
+              "meaning": "root"
+            },
+            {
+              "form": "Aya",
+              "meaning": "wake"
+            }
+          ]
+        },
+        "surname": {
+          "form": "RialoUlri",
+          "translation": "storm-feather",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Rialo",
+              "meaning": "storm"
+            },
+            {
+              "form": "Ulri",
+              "meaning": "feather"
+            }
+          ]
+        },
+        "full": {
+          "form": "EairAya RialoUlri",
+          "translation": "root-wake storm-feather",
+          "language": "fantasy.plantoid"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 25,
+      "occupation": "alchemist",
+      "personality": {
+        "trait": "kind",
+        "flaw": "cowardly",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "Walker of the Storms",
+      "title": "Sage"
+    }
+  },
+  {
+    "index": 41,
+    "output": {
+      "name": {
+        "given": {
+          "form": "AruunuLeemi",
+          "translation": "fierce-light",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Aruunu",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Leemi",
+              "meaning": "light"
+            }
+          ]
+        },
+        "surname": {
+          "form": "JucheshZoi",
+          "translation": "fire-hollow",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Juchesh",
+              "meaning": "fire"
+            },
+            {
+              "form": "Zoi",
+              "meaning": "hollow"
+            }
+          ]
+        },
+        "full": {
+          "form": "AruunuLeemi JucheshZoi",
+          "translation": "fierce-light fire-hollow",
+          "language": "fantasy.elvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 68,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "brave",
+        "flaw": "boastful",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Shadow Forger",
+      "title": "Lord"
+    }
+  },
+  {
+    "index": 42,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GakkhgoghKhakkhok",
+          "translation": "brave-hate",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Gakkhgogh",
+              "meaning": "brave"
+            },
+            {
+              "form": "Khakkhok",
+              "meaning": "hate"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GhaPop",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gha",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Pop",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GakkhgoghKhakkhok GhaPop",
+          "translation": "brave-hate mountain-stone",
+          "language": "fantasy.orcish"
+        },
+        "race": "fey",
+        "sex": "female"
+      },
+      "age": 68,
+      "occupation": "butcher",
+      "personality": {
+        "trait": "brave",
+        "flaw": "lazy",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Just",
+      "title": "General"
+    }
+  },
+  {
+    "index": 43,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GagkhugKup",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gagkhug",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ReeonuomOoy",
+          "translation": "water-seraph",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Reeonuom",
+              "meaning": "water"
+            },
+            {
+              "form": "Ooy",
+              "meaning": "seraph"
+            }
+          ]
+        },
+        "full": {
+          "form": "GagkhugKup ReeonuomOoy",
+          "translation": "strong-stone water-seraph",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 39,
+      "occupation": "minstrel",
+      "personality": {
+        "trait": "brave",
+        "flaw": "greedy",
+        "quirk": "collects buttons"
+      },
+      "epithet": "Bane of the Frosts",
+      "title": "Marshal"
+    }
+  },
+  {
+    "index": 44,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KapdadGakh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kapdad",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gakh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PdatpadGhpogh",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pdatpad",
+              "meaning": "stone"
+            },
+            {
+              "form": "Ghpogh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "KapdadGakh PdatpadGhpogh",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "fey",
+        "sex": "female"
+      },
+      "age": 52,
+      "occupation": "butcher",
+      "personality": {
+        "trait": "humble",
+        "flaw": "cowardly",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Frost Forger",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 45,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TsooZhie",
+          "translation": "elusive-wisp",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Tsoo",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Zhie",
+              "meaning": "wisp"
+            }
+          ]
+        },
+        "surname": {
+          "form": "LalLomem",
+          "translation": "sky-grace",
+          "language": "fantasy.celestial",
+          "parts": [
+            {
+              "form": "Lal",
+              "meaning": "sky"
+            },
+            {
+              "form": "Lomem",
+              "meaning": "grace"
+            }
+          ]
+        },
+        "full": {
+          "form": "TsooZhie LalLomem",
+          "translation": "elusive-wisp sky-grace",
+          "language": "fantasy.fey"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 18,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "humble",
+        "flaw": "lazy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Star Hunter",
+      "title": "Countess"
+    }
+  },
+  {
+    "index": 46,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PitSi",
+          "translation": "vine-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Pit",
+              "meaning": "vine"
+            },
+            {
+              "form": "Si",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "RuoimNaoloouw",
+          "translation": "wildwood-seraph",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Ruoim",
+              "meaning": "wildwood"
+            },
+            {
+              "form": "Naoloouw",
+              "meaning": "seraph"
+            }
+          ]
+        },
+        "full": {
+          "form": "PitSi RuoimNaoloouw",
+          "translation": "vine-halfling wildwood-seraph",
+          "language": "fantasy.halfling"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 32,
+      "occupation": "weaver",
+      "personality": {
+        "trait": "humble",
+        "flaw": "stubborn",
+        "quirk": "always whistles"
+      },
+      "epithet": "Singer of the Stars",
+      "title": "Baroness"
+    }
+  },
+  {
+    "index": 47,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhdokhdgupGhgugbag",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghdokhdgup",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghgugbag",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KakGhdad",
+          "translation": "mountain-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kak",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Ghdad",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhdokhdgupGhgugbag KakGhdad",
+          "translation": "strong-stone mountain-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 80,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "humble",
+        "flaw": "vain",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Lost",
+      "title": "Sage"
+    }
+  },
+  {
+    "index": 48,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GubkhkhoghButtuk",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gubkhkhogh",
+              "meaning": "strong"
+            },
+            {
+              "form": "Buttuk",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DattaPat",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Datta",
+              "meaning": "stone"
+            },
+            {
+              "form": "Pat",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GubkhkhoghButtuk DattaPat",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "male"
+      },
+      "age": 25,
+      "occupation": "alchemist",
+      "personality": {
+        "trait": "patient",
+        "flaw": "lazy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Doom Bane",
+      "title": "Magus"
+    }
+  },
+  {
+    "index": 49,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TsiacheSishao",
+          "translation": "elusive-hollow",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Tsiache",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Sishao",
+              "meaning": "hollow"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GkakhTogh",
+          "translation": "dust-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gkakh",
+              "meaning": "dust"
+            },
+            {
+              "form": "Togh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "TsiacheSishao GkakhTogh",
+          "translation": "elusive-hollow dust-metal",
+          "language": "fantasy.fey"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 44,
+      "occupation": "thief",
+      "personality": {
+        "trait": "wise",
+        "flaw": "cruel",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Bone Caller",
+      "title": "Captain"
+    }
+  },
+  {
+    "index": 50,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PupGhatgdob",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pup",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghatgdob",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "AerleOolmueew",
+          "translation": "compost-sentient",
+          "language": "fantasy.mycanoids",
+          "parts": [
+            {
+              "form": "Aerle",
+              "meaning": "compost"
+            },
+            {
+              "form": "Oolmueew",
+              "meaning": "sentient"
+            }
+          ]
+        },
+        "full": {
+          "form": "PupGhatgdob AerleOolmueew",
+          "translation": "strong-metal compost-sentient",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "female"
+      },
+      "age": 45,
+      "occupation": "minstrel",
+      "personality": {
+        "trait": "kind",
+        "flaw": "greedy",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Wise",
+      "title": "Lady"
+    }
+  },
+  {
+    "index": 51,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DkapBghug",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dkap",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bghug",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "UnLo",
+          "translation": "wind-sky",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Un",
+              "meaning": "wind"
+            },
+            {
+              "form": "Lo",
+              "meaning": "sky"
+            }
+          ]
+        },
+        "full": {
+          "form": "DkapBghug UnLo",
+          "translation": "strong-stone wind-sky",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "celestial",
+        "sex": "female"
+      },
+      "age": 59,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "honest",
+        "flaw": "greedy",
+        "quirk": "collects buttons"
+      },
+      "epithet": "Singer of the Fates",
+      "title": "Baroness"
+    }
+  },
+  {
+    "index": 52,
+    "output": {
+      "name": {
+        "given": {
+          "form": "SisichPak",
+          "translation": "elemental-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Sisich",
+              "meaning": "elemental"
+            },
+            {
+              "form": "Pak",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DoGho",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Do",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Gho",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "SisichPak DoGho",
+          "translation": "elemental-halfling mountain-stone",
+          "language": "fantasy.halfling"
+        },
+        "race": "orc",
+        "sex": "male"
+      },
+      "age": 41,
+      "occupation": "thief",
+      "personality": {
+        "trait": "humble",
+        "flaw": "cruel",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Crooked",
+      "title": "Sister"
+    }
+  },
+  {
+    "index": 53,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BagGghuk",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bag",
+              "meaning": "strong"
+            },
+            {
+              "form": "Gghuk",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TakhTok",
+          "translation": "ash-oath",
+          "language": "fantasy.tiefling",
+          "parts": [
+            {
+              "form": "Takh",
+              "meaning": "ash"
+            },
+            {
+              "form": "Tok",
+              "meaning": "oath"
+            }
+          ]
+        },
+        "full": {
+          "form": "BagGghuk TakhTok",
+          "translation": "strong-metal ash-oath",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 57,
+      "occupation": "mercenary",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "vain",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Wolf Breaker",
+      "title": "Champion"
+    }
+  },
+  {
+    "index": 54,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KapgaPot",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kapga",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pot",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KapkokhTu",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kapkokh",
+              "meaning": "dust"
+            },
+            {
+              "form": "Tu",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "KapgaPot KapkokhTu",
+          "translation": "strong-stone dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "tiefling",
+        "sex": "female"
+      },
+      "age": 30,
+      "occupation": "tax-collector",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "boastful",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Storm Whisperer",
+      "title": "Sage"
+    }
+  },
+  {
+    "index": 55,
+    "output": {
+      "name": {
+        "given": {
+          "form": "MowaleiRii",
+          "translation": "verdant-root",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Mowalei",
+              "meaning": "verdant"
+            },
+            {
+              "form": "Rii",
+              "meaning": "root"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KopGhakkho",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kop",
+              "meaning": "dust"
+            },
+            {
+              "form": "Ghakkho",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "MowaleiRii KopGhakkho",
+          "translation": "verdant-root dust-stone",
+          "language": "fantasy.elvish"
+        },
+        "race": "elf",
+        "sex": "female"
+      },
+      "age": 38,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "humble",
+        "flaw": "vain",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "Forger of the Irons",
+      "title": "Duke"
+    }
+  },
+  {
+    "index": 56,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DbakPapdu",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dbak",
+              "meaning": "strong"
+            },
+            {
+              "form": "Papdu",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GdaghKkhug",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gdagh",
+              "meaning": "clay"
+            },
+            {
+              "form": "Kkhug",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "DbakPapdu GdaghKkhug",
+          "translation": "strong-metal clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 74,
+      "occupation": "farmer",
+      "personality": {
+        "trait": "kind",
+        "flaw": "greedy",
+        "quirk": "fears birds"
+      },
+      "epithet": "Keeper of the Shadows",
+      "title": "Champion"
+    }
+  },
+  {
+    "index": 57,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KodBaghgbuk",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kod",
+              "meaning": "strong"
+            },
+            {
+              "form": "Baghgbuk",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GughpaKhpad",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gughpa",
+              "meaning": "clay"
+            },
+            {
+              "form": "Khpad",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "KodBaghgbuk GughpaKhpad",
+          "translation": "strong-metal clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 58,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "honest",
+        "flaw": "cowardly",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Bone Whisperer",
+      "title": "Marshal"
+    }
+  },
+  {
+    "index": 58,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PuKhap",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pu",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khap",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhozheeJechue",
+          "translation": "throne-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Zhozhee",
+              "meaning": "throne"
+            },
+            {
+              "form": "Jechue",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "PuKhap ZhozheeJechue",
+          "translation": "strong-stone throne-immortal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 76,
+      "occupation": "blacksmith",
+      "personality": {
+        "trait": "wise",
+        "flaw": "stubborn",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Storm Keeper",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 59,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KkugtaBogh",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kkugta",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bogh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "SakshaChi",
+          "translation": "river-king",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Saksha",
+              "meaning": "river"
+            },
+            {
+              "form": "Chi",
+              "meaning": "king"
+            }
+          ]
+        },
+        "full": {
+          "form": "KkugtaBogh SakshaChi",
+          "translation": "strong-stone river-king",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 22,
+      "occupation": "innkeeper",
+      "personality": {
+        "trait": "kind",
+        "flaw": "stubborn",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Crown Singer",
+      "title": "Baroness"
+    }
+  },
+  {
+    "index": 60,
+    "output": {
+      "name": {
+        "given": {
+          "form": "UuimilRoan",
+          "translation": "green-grove",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Uuimil",
+              "meaning": "green"
+            },
+            {
+              "form": "Roan",
+              "meaning": "grove"
+            }
+          ]
+        },
+        "surname": {
+          "form": "SisZhojo",
+          "translation": "wildwood-glamour",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Sis",
+              "meaning": "wildwood"
+            },
+            {
+              "form": "Zhojo",
+              "meaning": "glamour"
+            }
+          ]
+        },
+        "full": {
+          "form": "UuimilRoan SisZhojo",
+          "translation": "green-grove wildwood-glamour",
+          "language": "fantasy.elvish"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 63,
+      "occupation": "tax-collector",
+      "personality": {
+        "trait": "patient",
+        "flaw": "greedy",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Star Bringer",
+      "title": "General"
+    }
+  },
+  {
+    "index": 61,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GpabdkhudKu",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gpabdkhud",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ku",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GhupbkudGhpat",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghupbkud",
+              "meaning": "sand"
+            },
+            {
+              "form": "Ghpat",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GpabdkhudKu GhupbkudGhpat",
+          "translation": "strong-stone sand-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 51,
+      "occupation": "stonecutter",
+      "personality": {
+        "trait": "humble",
+        "flaw": "lazy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Iron Hunter",
+      "title": "Brother"
+    }
+  },
+  {
+    "index": 62,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DuKabkhag",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Du",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kabkhag",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PapgghobDghok",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Papgghob",
+              "meaning": "clay"
+            },
+            {
+              "form": "Dghok",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "DuKabkhag PapgghobDghok",
+          "translation": "strong-metal clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 30,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "patient",
+        "flaw": "greedy",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Wolf Forger",
+      "title": "Knight"
+    }
+  },
+  {
+    "index": 63,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhghaghkhutPob",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghghaghkhut",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pob",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GkadDdobbogh",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gkad",
+              "meaning": "stone"
+            },
+            {
+              "form": "Ddobbogh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhghaghkhutPob GkadDdobbogh",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 31,
+      "occupation": "scholar",
+      "personality": {
+        "trait": "brave",
+        "flaw": "cruel",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Star Walker",
+      "title": "Adept"
+    }
+  },
+  {
+    "index": 64,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GodKhup",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "God",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "BkhagPakppob",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bkhag",
+              "meaning": "dust"
+            },
+            {
+              "form": "Pakppob",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "GodKhup BkhagPakppob",
+          "translation": "strong-stone dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "orc",
+        "sex": "male"
+      },
+      "age": 22,
+      "occupation": "fisher",
+      "personality": {
+        "trait": "honest",
+        "flaw": "greedy",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Ironhearted",
+      "title": "Sister"
+    }
+  },
+  {
+    "index": 65,
+    "output": {
+      "name": {
+        "given": {
+          "form": "ShishkaTip",
+          "translation": "storm-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Shishka",
+              "meaning": "storm"
+            },
+            {
+              "form": "Tip",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhakhokhGudduk",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khakhokh",
+              "meaning": "stone"
+            },
+            {
+              "form": "Gudduk",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "ShishkaTip KhakhokhGudduk",
+          "translation": "storm-halfling stone-metal",
+          "language": "fantasy.halfling"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 73,
+      "occupation": "scholar",
+      "personality": {
+        "trait": "honest",
+        "flaw": "greedy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Ironhearted",
+      "title": "Prophet"
+    }
+  },
+  {
+    "index": 66,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GatBdukhku",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gat",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bdukhku",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "BopghdutKha",
+          "translation": "clay-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Bopghdut",
+              "meaning": "clay"
+            },
+            {
+              "form": "Kha",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GatBdukhku BopghdutKha",
+          "translation": "strong-stone clay-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 49,
+      "occupation": "priest",
+      "personality": {
+        "trait": "humble",
+        "flaw": "cruel",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Storm Keeper",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 67,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TudggatKagh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tudggat",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kagh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "BtukDdugh",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Btuk",
+              "meaning": "sand"
+            },
+            {
+              "form": "Ddugh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "TudggatKagh BtukDdugh",
+          "translation": "strong-metal sand-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 54,
+      "occupation": "hunter",
+      "personality": {
+        "trait": "brave",
+        "flaw": "lazy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Wolf Eater",
+      "title": "Lord"
+    }
+  },
+  {
+    "index": 68,
+    "output": {
+      "name": {
+        "given": {
+          "form": "EurMiulyi",
+          "translation": "wildwood-taste",
+          "language": "fantasy.plantoid",
+          "parts": [
+            {
+              "form": "Eur",
+              "meaning": "wildwood"
+            },
+            {
+              "form": "Miulyi",
+              "meaning": "taste"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhitsoTsio",
+          "translation": "root-mist",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Zhitso",
+              "meaning": "root"
+            },
+            {
+              "form": "Tsio",
+              "meaning": "mist"
+            }
+          ]
+        },
+        "full": {
+          "form": "EurMiulyi ZhitsoTsio",
+          "translation": "wildwood-taste root-mist",
+          "language": "fantasy.plantoid"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 44,
+      "occupation": "baker",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "stubborn",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Bold",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 69,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KhbakDtap",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khbak",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dtap",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GughtagPabbud",
+          "translation": "dust-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gughtag",
+              "meaning": "dust"
+            },
+            {
+              "form": "Pabbud",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "KhbakDtap GughtagPabbud",
+          "translation": "strong-metal dust-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "fey",
+        "sex": "male"
+      },
+      "age": 71,
+      "occupation": "baker",
+      "personality": {
+        "trait": "brave",
+        "flaw": "lazy",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Lost",
+      "title": "Champion"
+    }
+  },
+  {
+    "index": 70,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KashChasat",
+          "translation": "blossom-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Kash",
+              "meaning": "blossom"
+            },
+            {
+              "form": "Chasat",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "OyriluUl",
+          "translation": "blossom-seraph",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Oyrilu",
+              "meaning": "blossom"
+            },
+            {
+              "form": "Ul",
+              "meaning": "seraph"
+            }
+          ]
+        },
+        "full": {
+          "form": "KashChasat OyriluUl",
+          "translation": "blossom-halfling blossom-seraph",
+          "language": "fantasy.halfling"
+        },
+        "race": "plantoid",
+        "sex": "female"
+      },
+      "age": 41,
+      "occupation": "scholar",
+      "personality": {
+        "trait": "honest",
+        "flaw": "boastful",
+        "quirk": "fears birds"
+      },
+      "epithet": "Walker of the Shadows",
+      "title": "Countess"
+    }
+  },
+  {
+    "index": 71,
+    "output": {
+      "name": {
+        "given": {
+          "form": "NoleEnomwe",
+          "translation": "green-grove",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Nole",
+              "meaning": "green"
+            },
+            {
+              "form": "Enomwe",
+              "meaning": "grove"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhatgodTgughtogh",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khatgod",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Tgughtogh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "NoleEnomwe KhatgodTgughtogh",
+          "translation": "green-grove mountain-stone",
+          "language": "fantasy.elvish"
+        },
+        "race": "orc",
+        "sex": "male"
+      },
+      "age": 19,
+      "occupation": "blacksmith",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "lazy",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Just",
+      "title": "Knight"
+    }
+  },
+  {
+    "index": 72,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TpodDaddog",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tpod",
+              "meaning": "strong"
+            },
+            {
+              "form": "Daddog",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "AellowuNenara",
+          "translation": "stem-seraph",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Aellowu",
+              "meaning": "stem"
+            },
+            {
+              "form": "Nenara",
+              "meaning": "seraph"
+            }
+          ]
+        },
+        "full": {
+          "form": "TpodDaddog AellowuNenara",
+          "translation": "strong-metal stem-seraph",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "celestial",
+        "sex": "male"
+      },
+      "age": 35,
+      "occupation": "baker",
+      "personality": {
+        "trait": "loyal",
+        "flaw": "vain",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Fate Keeper",
+      "title": "General"
+    }
+  },
+  {
+    "index": 73,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DoghghubDtatghghug",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Doghghub",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dtatghghug",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhoazhtseShishtsshu",
+          "translation": "tree-whisper",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Zhoazhtse",
+              "meaning": "tree"
+            },
+            {
+              "form": "Shishtsshu",
+              "meaning": "whisper"
+            }
+          ]
+        },
+        "full": {
+          "form": "DoghghubDtatghghug ZhoazhtseShishtsshu",
+          "translation": "strong-metal tree-whisper",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 42,
+      "occupation": "tanner",
+      "personality": {
+        "trait": "humble",
+        "flaw": "vain",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Crooked",
+      "title": "Adept"
+    }
+  },
+  {
+    "index": 74,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KkhokgopKu",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kkhokgop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ku",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TgopBudkkug",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tgop",
+              "meaning": "sand"
+            },
+            {
+              "form": "Budkkug",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "KkhokgopKu TgopBudkkug",
+          "translation": "strong-metal sand-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 71,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "honest",
+        "flaw": "cruel",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Frost Caller",
+      "title": "Knight"
+    }
+  },
+  {
+    "index": 75,
+    "output": {
+      "name": {
+        "given": {
+          "form": "WaraYe",
+          "translation": "verdant-storm",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Wara",
+              "meaning": "verdant"
+            },
+            {
+              "form": "Ye",
+              "meaning": "storm"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KugPatkhagh",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kug",
+              "meaning": "sand"
+            },
+            {
+              "form": "Patkhagh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "WaraYe KugPatkhagh",
+          "translation": "verdant-storm sand-stone",
+          "language": "fantasy.elvish"
+        },
+        "race": "mycanoid",
+        "sex": "male"
+      },
+      "age": 62,
+      "occupation": "stonecutter",
+      "personality": {
+        "trait": "wise",
+        "flaw": "cruel",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Crown Slayer",
+      "title": "Oracle"
+    }
+  },
+  {
+    "index": 76,
+    "output": {
+      "name": {
+        "given": {
+          "form": "NoOelmiaon",
+          "translation": "verdant-light",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "No",
+              "meaning": "verdant"
+            },
+            {
+              "form": "Oelmiaon",
+              "meaning": "light"
+            }
+          ]
+        },
+        "surname": {
+          "form": "PopkoPopko",
+          "translation": "warrior-warrior",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Popko",
+              "meaning": "warrior"
+            },
+            {
+              "form": "Popko",
+              "meaning": "warrior"
+            }
+          ]
+        },
+        "full": {
+          "form": "NoOelmiaon PopkoPopko",
+          "translation": "verdant-light warrior-warrior",
+          "language": "fantasy.elvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 41,
+      "occupation": "stonecutter",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cruel",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Fate Bane",
+      "title": "Baroness"
+    }
+  },
+  {
+    "index": 77,
+    "output": {
+      "name": {
+        "given": {
+          "form": "LinoOyla",
+          "translation": "root-grow",
+          "language": "fantasy.plantoid",
+          "parts": [
+            {
+              "form": "Lino",
+              "meaning": "root"
+            },
+            {
+              "form": "Oyla",
+              "meaning": "grow"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KtaptpubDoghtud",
+          "translation": "dust-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ktaptpub",
+              "meaning": "dust"
+            },
+            {
+              "form": "Doghtud",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "LinoOyla KtaptpubDoghtud",
+          "translation": "root-grow dust-metal",
+          "language": "fantasy.plantoid"
+        },
+        "race": "plantoid",
+        "sex": "male"
+      },
+      "age": 52,
+      "occupation": "guard",
+      "personality": {
+        "trait": "wise",
+        "flaw": "lazy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Wolf Caller",
+      "title": "Baron"
+    }
+  },
+  {
+    "index": 78,
+    "output": {
+      "name": {
+        "given": {
+          "form": "WaunUlrauiw",
+          "translation": "verdant-wildwood",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Waun",
+              "meaning": "verdant"
+            },
+            {
+              "form": "Ulrauiw",
+              "meaning": "wildwood"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ZhuZueziu",
+          "translation": "pride-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Zhu",
+              "meaning": "pride"
+            },
+            {
+              "form": "Zueziu",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "WaunUlrauiw ZhuZueziu",
+          "translation": "verdant-wildwood pride-immortal",
+          "language": "fantasy.elvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 80,
+      "occupation": "miller",
+      "personality": {
+        "trait": "wise",
+        "flaw": "lazy",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "Forger of the Bones",
+      "title": "Wizard"
+    }
+  },
+  {
+    "index": 79,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KhugghabTutak",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khugghab",
+              "meaning": "strong"
+            },
+            {
+              "form": "Tutak",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhdotbotGbok",
+          "translation": "sand-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khdotbot",
+              "meaning": "sand"
+            },
+            {
+              "form": "Gbok",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "KhugghabTutak KhdotbotGbok",
+          "translation": "strong-metal sand-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 59,
+      "occupation": "thief",
+      "personality": {
+        "trait": "honest",
+        "flaw": "greedy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Dragon Whisperer",
+      "title": "Marshal"
+    }
+  },
+  {
+    "index": 80,
+    "output": {
+      "name": {
+        "given": {
+          "form": "JiezhechSiitsoe",
+          "translation": "elusive-hollow",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Jiezhech",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Siitsoe",
+              "meaning": "hollow"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhokpatKhudppugh",
+          "translation": "dust-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khokpat",
+              "meaning": "dust"
+            },
+            {
+              "form": "Khudppugh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "JiezhechSiitsoe KhokpatKhudppugh",
+          "translation": "elusive-hollow dust-metal",
+          "language": "fantasy.fey"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 43,
+      "occupation": "mercenary",
+      "personality": {
+        "trait": "honest",
+        "flaw": "cruel",
+        "quirk": "never removes their hat"
+      },
+      "epithet": "the Bold",
+      "title": "Wizard"
+    }
+  },
+  {
+    "index": 81,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GabpokGhghotdu",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gabpok",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghghotdu",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KakGuppugh",
+          "translation": "mountain-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Kak",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Guppugh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "GabpokGhghotdu KakGuppugh",
+          "translation": "strong-metal mountain-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 29,
+      "occupation": "blacksmith",
+      "personality": {
+        "trait": "kind",
+        "flaw": "greedy",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Doom Walker",
+      "title": "Commander"
+    }
+  },
+  {
+    "index": 82,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KitKashcha",
+          "translation": "stem-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Kit",
+              "meaning": "stem"
+            },
+            {
+              "form": "Kashcha",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhogpgotKhogpgot",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khogpgot",
+              "meaning": "stone"
+            },
+            {
+              "form": "Khogpgot",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "KitKashcha KhogpgotKhogpgot",
+          "translation": "stem-halfling stone-stone",
+          "language": "fantasy.halfling"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 65,
+      "occupation": "soldier",
+      "personality": {
+        "trait": "humble",
+        "flaw": "vain",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Iron Bane",
+      "title": "Marshal"
+    }
+  },
+  {
+    "index": 83,
+    "output": {
+      "name": {
+        "given": {
+          "form": "ManaoUor",
+          "translation": "fierce-cycle",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Manao",
+              "meaning": "fierce"
+            },
+            {
+              "form": "Uor",
+              "meaning": "cycle"
+            }
+          ]
+        },
+        "surname": {
+          "form": "AyueRaew",
+          "translation": "grove-feather",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Ayue",
+              "meaning": "grove"
+            },
+            {
+              "form": "Raew",
+              "meaning": "feather"
+            }
+          ]
+        },
+        "full": {
+          "form": "ManaoUor AyueRaew",
+          "translation": "fierce-cycle grove-feather",
+          "language": "fantasy.elvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 73,
+      "occupation": "tanner",
+      "personality": {
+        "trait": "kind",
+        "flaw": "vain",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Ash Whisperer",
+      "title": "Commander"
+    }
+  },
+  {
+    "index": 84,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DukhghgutBgokh",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dukhghgut",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bgokh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "JsheZhochu",
+          "translation": "throne-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Jshe",
+              "meaning": "throne"
+            },
+            {
+              "form": "Zhochu",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "DukhghgutBgokh JsheZhochu",
+          "translation": "strong-stone throne-immortal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 47,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "wise",
+        "flaw": "stubborn",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Bold",
+      "title": "Loremaster"
+    }
+  },
+  {
+    "index": 85,
+    "output": {
+      "name": {
+        "given": {
+          "form": "IeyYuwu",
+          "translation": "thorned-vine",
+          "language": "fantasy.elvish",
+          "parts": [
+            {
+              "form": "Iey",
+              "meaning": "thorned"
+            },
+            {
+              "form": "Yuwu",
+              "meaning": "vine"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhatdtaghPgotdo",
+          "translation": "sand-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khatdtagh",
+              "meaning": "sand"
+            },
+            {
+              "form": "Pgotdo",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "IeyYuwu KhatdtaghPgotdo",
+          "translation": "thorned-vine sand-metal",
+          "language": "fantasy.elvish"
+        },
+        "race": "elf",
+        "sex": "male"
+      },
+      "age": 47,
+      "occupation": "tanner",
+      "personality": {
+        "trait": "patient",
+        "flaw": "lazy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Frost Keeper",
+      "title": "Lady"
+    }
+  },
+  {
+    "index": 86,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DbadKhud",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dbad",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khud",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhkabkabGhgagh",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khkabkab",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Ghgagh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "DbadKhud KhkabkabGhgagh",
+          "translation": "strong-stone mountain-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "female"
+      },
+      "age": 25,
+      "occupation": "fisher",
+      "personality": {
+        "trait": "wise",
+        "flaw": "cruel",
+        "quirk": "fears birds"
+      },
+      "epithet": "the Wise",
+      "title": "Brother"
+    }
+  },
+  {
+    "index": 87,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PpopPukhghup",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ppop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pukhghup",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DupGhop",
+          "translation": "mountain-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dup",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Ghop",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "PpopPukhghup DupGhop",
+          "translation": "strong-stone mountain-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 49,
+      "occupation": "priest",
+      "personality": {
+        "trait": "honest",
+        "flaw": "greedy",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "Singer of the Bones",
+      "title": "Captain"
+    }
+  },
+  {
+    "index": 88,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TatSish",
+          "translation": "light-halfling",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Tat",
+              "meaning": "light"
+            },
+            {
+              "form": "Sish",
+              "meaning": "halfling"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ToghoTogho",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Togho",
+              "meaning": "stone"
+            },
+            {
+              "form": "Togho",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "TatSish ToghoTogho",
+          "translation": "light-halfling stone-stone",
+          "language": "fantasy.halfling"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 71,
+      "occupation": "alchemist",
+      "personality": {
+        "trait": "honest",
+        "flaw": "boastful",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Just",
+      "title": "Count"
+    }
+  },
+  {
+    "index": 89,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PobKhgokh",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pob",
+              "meaning": "strong"
+            },
+            {
+              "form": "Khgokh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "NgunNgareme",
+          "translation": "light-grace",
+          "language": "fantasy.celestial",
+          "parts": [
+            {
+              "form": "Ngun",
+              "meaning": "light"
+            },
+            {
+              "form": "Ngareme",
+              "meaning": "grace"
+            }
+          ]
+        },
+        "full": {
+          "form": "PobKhgokh NgunNgareme",
+          "translation": "strong-stone light-grace",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 69,
+      "occupation": "mercenary",
+      "personality": {
+        "trait": "kind",
+        "flaw": "cowardly",
+        "quirk": "collects buttons"
+      },
+      "epithet": "Walker of the Irons",
+      "title": "Commander"
+    }
+  },
+  {
+    "index": 90,
+    "output": {
+      "name": {
+        "given": {
+          "form": "BagaDutat",
+          "translation": "strong-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Baga",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dutat",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "surname": {
+          "form": "SetseeTsatsu",
+          "translation": "scepter-immortal",
+          "language": "fantasy.draconic",
+          "parts": [
+            {
+              "form": "Setsee",
+              "meaning": "scepter"
+            },
+            {
+              "form": "Tsatsu",
+              "meaning": "immortal"
+            }
+          ]
+        },
+        "full": {
+          "form": "BagaDutat SetseeTsatsu",
+          "translation": "strong-stone scepter-immortal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "female"
+      },
+      "age": 21,
+      "occupation": "minstrel",
+      "personality": {
+        "trait": "brave",
+        "flaw": "cowardly",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "Hunter of the Dragons",
+      "title": "Prophet"
+    }
+  },
+  {
+    "index": 91,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PotGhokpugh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pot",
+              "meaning": "strong"
+            },
+            {
+              "form": "Ghokpugh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ChipTi",
+          "translation": "elf-lord",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Chip",
+              "meaning": "elf"
+            },
+            {
+              "form": "Ti",
+              "meaning": "lord"
+            }
+          ]
+        },
+        "full": {
+          "form": "PotGhokpugh ChipTi",
+          "translation": "strong-metal elf-lord",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "elf",
+        "sex": "female"
+      },
+      "age": 37,
+      "occupation": "priest",
+      "personality": {
+        "trait": "humble",
+        "flaw": "greedy",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Ash Keeper",
+      "title": "High Priest"
+    }
+  },
+  {
+    "index": 92,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PoPot",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Po",
+              "meaning": "strong"
+            },
+            {
+              "form": "Pot",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DkhudKhbodpu",
+          "translation": "clay-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dkhud",
+              "meaning": "clay"
+            },
+            {
+              "form": "Khbodpu",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "PoPot DkhudKhbodpu",
+          "translation": "strong-metal clay-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "male"
+      },
+      "age": 60,
+      "occupation": "fisher",
+      "personality": {
+        "trait": "patient",
+        "flaw": "cowardly",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Ironhearted",
+      "title": "Duke"
+    }
+  },
+  {
+    "index": 93,
+    "output": {
+      "name": {
+        "given": {
+          "form": "KhokBup",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khok",
+              "meaning": "strong"
+            },
+            {
+              "form": "Bup",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TukhTakh",
+          "translation": "stone-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Tukh",
+              "meaning": "stone"
+            },
+            {
+              "form": "Takh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "KhokBup TukhTakh",
+          "translation": "strong-metal stone-metal",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 27,
+      "occupation": "baker",
+      "personality": {
+        "trait": "humble",
+        "flaw": "cowardly",
+        "quirk": "knows seven languages but speaks only in one"
+      },
+      "epithet": "the Crooked",
+      "title": "Magus"
+    }
+  },
+  {
+    "index": 94,
+    "output": {
+      "name": {
+        "given": {
+          "form": "UrawleOr",
+          "translation": "mushroom-decay",
+          "language": "fantasy.mycanoids",
+          "parts": [
+            {
+              "form": "Urawle",
+              "meaning": "mushroom"
+            },
+            {
+              "form": "Or",
+              "meaning": "decay"
+            }
+          ]
+        },
+        "surname": {
+          "form": "TkhadbodKdutkkot",
+          "translation": "spear-fortress",
+          "language": "fantasy.orcish",
+          "parts": [
+            {
+              "form": "Tkhadbod",
+              "meaning": "spear"
+            },
+            {
+              "form": "Kdutkkot",
+              "meaning": "fortress"
+            }
+          ]
+        },
+        "full": {
+          "form": "UrawleOr TkhadbodKdutkkot",
+          "translation": "mushroom-decay spear-fortress",
+          "language": "fantasy.mycanoids"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 37,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "kind",
+        "flaw": "stubborn",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Storm Bringer",
+      "title": "Duke"
+    }
+  },
+  {
+    "index": 95,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PkhoghdopDgukh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Pkhoghdop",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dgukh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "KhgukdotKhgukdot",
+          "translation": "stone-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Khgukdot",
+              "meaning": "stone"
+            },
+            {
+              "form": "Khgukdot",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "PkhoghdopDgukh KhgukdotKhgukdot",
+          "translation": "strong-metal stone-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "human",
+        "sex": "male"
+      },
+      "age": 48,
+      "occupation": "blacksmith",
+      "personality": {
+        "trait": "humble",
+        "flaw": "cowardly",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Wise",
+      "title": "Duchess"
+    }
+  },
+  {
+    "index": 96,
+    "output": {
+      "name": {
+        "given": {
+          "form": "DobtoTgakhba",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dobto",
+              "meaning": "strong"
+            },
+            {
+              "form": "Tgakhba",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DopKob",
+          "translation": "sand-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dop",
+              "meaning": "sand"
+            },
+            {
+              "form": "Kob",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "DobtoTgakhba DopKob",
+          "translation": "strong-metal sand-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 79,
+      "occupation": "thief",
+      "personality": {
+        "trait": "wise",
+        "flaw": "vain",
+        "quirk": "speaks only in proverbs"
+      },
+      "epithet": "the Ironhearted",
+      "title": "Loremaster"
+    }
+  },
+  {
+    "index": 97,
+    "output": {
+      "name": {
+        "given": {
+          "form": "PuggokKakh",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Puggok",
+              "meaning": "strong"
+            },
+            {
+              "form": "Kakh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "GpupBghopkhkugh",
+          "translation": "clay-stone",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Gpup",
+              "meaning": "clay"
+            },
+            {
+              "form": "Bghopkhkugh",
+              "meaning": "stone"
+            }
+          ]
+        },
+        "full": {
+          "form": "PuggokKakh GpupBghopkhkugh",
+          "translation": "strong-metal clay-stone",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "halfling",
+        "sex": "female"
+      },
+      "age": 27,
+      "occupation": "ranger",
+      "personality": {
+        "trait": "brave",
+        "flaw": "greedy",
+        "quirk": "carries a lucky coin"
+      },
+      "epithet": "the Iron Forger",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 98,
+    "output": {
+      "name": {
+        "given": {
+          "form": "TsaStsetsa",
+          "translation": "elusive-mist",
+          "language": "fantasy.fey",
+          "parts": [
+            {
+              "form": "Tsa",
+              "meaning": "elusive"
+            },
+            {
+              "form": "Stsetsa",
+              "meaning": "mist"
+            }
+          ]
+        },
+        "surname": {
+          "form": "DutbokhGhokhghukh",
+          "translation": "mountain-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Dutbokh",
+              "meaning": "mountain"
+            },
+            {
+              "form": "Ghokhghukh",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "full": {
+          "form": "TsaStsetsa DutbokhGhokhghukh",
+          "translation": "elusive-mist mountain-metal",
+          "language": "fantasy.fey"
+        },
+        "race": "plantoid",
+        "sex": "male"
+      },
+      "age": 53,
+      "occupation": "baker",
+      "personality": {
+        "trait": "honest",
+        "flaw": "cowardly",
+        "quirk": "collects buttons"
+      },
+      "epithet": "the Quiet",
+      "title": "Archmage"
+    }
+  },
+  {
+    "index": 99,
+    "output": {
+      "name": {
+        "given": {
+          "form": "GhoptugDupdat",
+          "translation": "strong-metal",
+          "language": "fantasy.dwarvish",
+          "parts": [
+            {
+              "form": "Ghoptug",
+              "meaning": "strong"
+            },
+            {
+              "form": "Dupdat",
+              "meaning": "metal"
+            }
+          ]
+        },
+        "surname": {
+          "form": "ChakPish",
+          "translation": "river-hall",
+          "language": "fantasy.halfling",
+          "parts": [
+            {
+              "form": "Chak",
+              "meaning": "river"
+            },
+            {
+              "form": "Pish",
+              "meaning": "hall"
+            }
+          ]
+        },
+        "full": {
+          "form": "GhoptugDupdat ChakPish",
+          "translation": "strong-metal river-hall",
+          "language": "fantasy.dwarvish"
+        },
+        "race": "dwarf",
+        "sex": "female"
+      },
+      "age": 47,
+      "occupation": "merchant",
+      "personality": {
+        "trait": "patient",
+        "flaw": "greedy",
+        "quirk": "always whistles"
+      },
+      "epithet": "the Crooked",
+      "title": "Lord"
+    }
+  }
+]
