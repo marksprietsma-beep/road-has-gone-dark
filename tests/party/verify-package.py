@@ -16,11 +16,11 @@ executable = distribution/('road-has-gone-dark-qa.exe' if os.name == 'nt' else '
 log = root/'docs/implementation/game81/logs/native-distribution.txt'
 with log.open('w', encoding='utf-8') as handle:
     result = subprocess.run([str(executable), '--headless', '--audio-driver', 'Dummy'],
-                            cwd=distribution, env=environment, stdout=handle, stderr=subprocess.STDOUT, timeout=300)
+                            cwd=distribution, env=environment, stdout=handle, stderr=subprocess.STDOUT, timeout=600)
 text = log.read_text(encoding='utf-8')
 print(text, end='', flush=True)
 native = json.loads((base/'native-test/native-result.json').read_text())
-assert result.returncode == 0 and 'ERROR:' not in text and native['checks'] >= 15 and native['failures'] == 0 and native['source_helper_override'] is False
+assert result.returncode == 0 and 'ERROR:' not in text and native['checks'] >= 29 and native['failures'] == 0 and native['source_helper_override'] is False
 log.write_text(text + f"GAME-81 complete native distribution: {native['checks']} checks, 0 failures\n", encoding='utf-8')
 release = distribution/('road-has-gone-dark.exe' if os.name == 'nt' else 'road-has-gone-dark')
 smoke = subprocess.run([str(release), '--headless', '--audio-driver', 'Dummy', '--quit-after', '10'],

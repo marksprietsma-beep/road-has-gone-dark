@@ -101,6 +101,23 @@ func commit(slot: String, candidate: Dictionary, world: GameWorldTemplate) -> Di
  DirAccess.remove_absolute(_journal(slot))
  return validated
 
+func _copy_input(source: String, target: String) -> bool:
+ var bytes := FileAccess.get_file_as_bytes(source)
+ if bytes.is_empty(): return false
+ var file := FileAccess.open(target, FileAccess.WRITE)
+ if file == null: return false
+ file.store_buffer(bytes)
+ file.flush()
+ file.close()
+ return FileAccess.get_sha256(target) == FileAccess.get_sha256(source)
+
+func _discard_job(temp: String) -> void:
+ for name in ["request.json", "result.json", "world.json", "peoples/descriptor.json", "peoples/enrichment.json"]:
+  var path := temp.path_join(name)
+  if FileAccess.file_exists(path): DirAccess.remove_absolute(path)
+ if DirAccess.dir_exists_absolute(temp.path_join("peoples")): DirAccess.remove_absolute(temp.path_join("peoples"))
+ DirAccess.remove_absolute(temp)
+
 func _helper(entry: Dictionary, request: Dictionary) -> Dictionary:
  var ready := library.helper_status()
  if not ready.ok: return ready
@@ -108,17 +125,28 @@ func _helper(entry: Dictionary, request: Dictionary) -> Dictionary:
  if DirAccess.make_dir_recursive_absolute(temp) != OK: return fail("Cannot prepare character generation")
  var input := temp.path_join("request.json")
  var output := temp.path_join("result.json")
+ var world_path := ProjectSettings.globalize_path(entry.path)
+ var people_path := ProjectSettings.globalize_path(WorldPeoples.directory(entry.world))
+ # Node cannot read Godot's packed res:// resources. Materialize only these
+ # already-validated immutable inputs, byte for byte, inside the owned job.
+ if str(entry.path).begins_with("res://"):
+  world_path = temp.path_join("world.json")
+  people_path = temp.path_join("peoples")
+  var packaged := WorldPeoples.directory(entry.world)
+  if DirAccess.make_dir_absolute(people_path) != OK or not _copy_input(entry.path, world_path) or not _copy_input(packaged.path_join("descriptor.json"), people_path.path_join("descriptor.json")) or not _copy_input(packaged.path_join("enrichment.json"), people_path.path_join("enrichment.json")):
+   _discard_job(temp)
+   return fail("Cannot prepare the packed world inputs. The campaign was preserved.")
  var f := FileAccess.open(input, FileAccess.WRITE)
- if f == null: return fail("Cannot write character request")
+ if f == null:
+  _discard_job(temp)
+  return fail("Cannot write character request")
  f.store_string(JSON.stringify(request))
  f.close()
  var helper := library.helper_location()
  var log: Array = []
- var code := OS.execute(helper.path_join("node.exe" if OS.get_name() == "Windows" else "node"), [helper.path_join("tools/party/entry.mjs"), "--world", ProjectSettings.globalize_path(entry.path), "--peoples", ProjectSettings.globalize_path(WorldPeoples.directory(entry.world)), "--request", input, "--output", output], log, true, false)
+ var code := OS.execute(helper.path_join("node.exe" if OS.get_name() == "Windows" else "node"), [helper.path_join("tools/party/entry.mjs"), "--world", world_path, "--peoples", people_path, "--request", input, "--output", output], log, true, false)
  var result := WorldOriginLore.read_json(output)
- for name in [input, output]:
-  if FileAccess.file_exists(name): DirAccess.remove_absolute(name)
- DirAccess.remove_absolute(temp)
+ _discard_job(temp)
  if code != 0 or not result.get("ok", false): return fail("Character generation failed. The campaign was preserved. " + str(log).left(300))
  return result
 

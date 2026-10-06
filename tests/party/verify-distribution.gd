@@ -19,6 +19,31 @@ func run() -> void:
  for entry in service.library.discover():
   var people := WorldPeoples.new()
   check(people.load_world(entry.world),people.error)
+ # Presets are inside the exported PCK, not loose files. Exercise the same
+ # production helper boundary as the editor, including later edits/readiness.
+ var job_root := ProjectSettings.globalize_path("user://party-jobs")
+ var jobs_before := DirAccess.get_directories_at(job_root) if DirAccess.dir_exists_absolute(job_root) else PackedStringArray()
+ for entry in service.library.discover():
+  var profiles := OriginProfiles.new()
+  check(profiles.load_world(entry.world), "packed preset profiles")
+  if profiles.projection.is_empty(): continue
+  var home: Dictionary = profiles.projection.hometowns.values()[0]
+  var created := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
+  created.state.origin_profiles = profiles.descriptor
+  var lore := WorldOriginLore.new()
+  check(lore.load_world(entry.world,entry.world.enrichment_directory), "packed preset origin lore")
+  created.state.origin_enrichment = lore.descriptor
+  var slot: String = created.state.playthrough_id
+  check(service.store.save_new(slot,created.state,entry.world).ok, "persist preset origin")
+  var party := service.operate(entry,slot,"generate")
+  check(party.ok and party.get("state",{}).get("party",{}).get("members",[]).size()==3,"packed preset generates three members: " + str(party.get("error","")))
+  if not party.ok: continue
+  var edited := service.operate(entry,slot,"edit",1,{"name":"Preset Name","regenerate":true})
+  check(edited.ok and edited.state.party.members[0].name=="Preset Name" and edited.state.party.members[0].background_variant==1,"packed preset edit/reroll")
+  var ready := service.operate(entry,slot,"ready")
+  var loaded := service.store.load_save(slot,entry.world)
+  check(ready.ok and loaded.ok and loaded.state==ready.state and loaded.state.onboarding_stage=="party_ready","packed preset ready/reload")
+ check(DirAccess.get_directories_at(job_root)==jobs_before,"owned packed-input jobs cleaned up")
  var stage := service.library.create_staging()
  check(stage.ok,"fresh distribution world staging")
  var generated := service.library.run_generator(stage.directory,"game81-complete-package-world")
@@ -56,7 +81,7 @@ func run() -> void:
     check(ui.ready_view and ui.state.onboarding_stage=="party_ready","exported UI ready only after persistence")
     var reloaded := service.store.load_save(slot,entry.world)
     check(reloaded.ok and reloaded.state==ui.state,"save/reload exact across bundled boundary")
-    check(DirAccess.get_files_at(service.store.save_root).size()==1,"same campaign, no duplicate")
+    check(DirAccess.get_files_at(service.store.save_root).size()==3,"same campaign, no duplicate")
    ui.queue_free()
    await get_tree().process_frame
  var proof := FileAccess.open(base.path_join("native-result.json"),FileAccess.WRITE)

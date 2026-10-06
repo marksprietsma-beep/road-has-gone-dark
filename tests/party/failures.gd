@@ -18,6 +18,12 @@ class FaultStore extends GamePlaythroughStore:
 class FaultGenerator extends PartyService:
  func _helper(_entry: Dictionary, _request: Dictionary) -> Dictionary:
   return fail("Injected generator failure")
+class FaultPackedInput extends PartyService:
+ var copies := 0
+ func _copy_input(source: String, target: String) -> bool:
+  copies += 1
+  if copies == 2: return false
+  return super._copy_input(source,target)
 var failures := 0
 var checks := 0
 func check(ok: bool, why: String) -> void:
@@ -53,6 +59,13 @@ func run() -> void:
  check(service.store.save_new(slot,state,world).ok,"origin written once")
  var path := ProjectSettings.globalize_path(service.store._slot_path(slot))
  var original := FileAccess.get_file_as_string(path)
+ var packed := FaultPackedInput.new()
+ packed.store = service.store
+ var job_root := ProjectSettings.globalize_path("user://party-jobs")
+ var jobs_before := DirAccess.get_directories_at(job_root) if DirAccess.dir_exists_absolute(job_root) else PackedStringArray()
+ check(not packed.operate(entry,slot,"generate").ok,"partial packed-resource preparation failure is controlled")
+ check(FileAccess.get_file_as_string(path)==original,"failed packed inputs preserve exact origin")
+ check(DirAccess.get_directories_at(job_root)==jobs_before,"partial packed inputs leave no owned job orphan")
  var bad := FaultGenerator.new()
  bad.store = service.store
  check(not bad.operate(entry,slot,"generate").ok,"generator failure is controlled")
