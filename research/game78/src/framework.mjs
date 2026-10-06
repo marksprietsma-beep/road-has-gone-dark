@@ -790,6 +790,9 @@ export function verifySidecar(e, base, pinnedSha) {
     e.schema_version !== SCHEMA ||
     e.base_world.id !== base.id ||
     e.base_world.sha256 !== base.sha256 ||
+    canonical(e.base_world) !== canonical(base) ||
+    !["sha-staged", "lexicon-staged"].includes(e.provider) ||
+    !e.records.length ||
     sha(canonical(p)) !== enrichment_sha ||
     e.generator_version !== VERSION ||
     e.content_pack_version !== pack.version ||
@@ -797,6 +800,9 @@ export function verifySidecar(e, base, pinnedSha) {
     new Set(e.records.map((r) => r.id)).size !== e.records.length ||
     e.records.some(
       (r) =>
+        r.schema_version !== SCHEMA ||
+        !domains.includes(r.domain) ||
+        (r.domain === "character" ? !r.scope.startsWith("playthrough:") : r.scope !== "world") ||
         r.source.world_id !== base.id ||
         r.source.world_sha !== base.sha256 ||
         r.scope !== e.scope ||

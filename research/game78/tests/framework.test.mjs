@@ -357,6 +357,9 @@ test("sidecar rejects rehashed wrong generator/pack labels and duplicate records
   const record = generate(c, "origin", "pin-negative");
   for (const mutate of [
     e => { e.content_pack_version = "other-pack"; },
+    e => { e.base_world.seed = "invented-seed"; },
+    e => { e.records[0].schema_version = 99; },
+    e => { e.provider = "unknown"; e.records[0].versions.provider = "unknown"; },
     e => { e.records[0].versions.generator = "other-generator"; },
     e => { e.records[0].versions.pack = "other-pack"; },
     e => { e.records.push(structuredClone(e.records[0])); },
