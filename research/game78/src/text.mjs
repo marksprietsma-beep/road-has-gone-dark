@@ -223,7 +223,7 @@ export function originPayload(r, enrichmentSha, {compact = false} = {}) {
     burg_id: r.source.id,
     enrichment_sha: enrichmentSha,
     content_pack_version: r.versions.pack,
-    logical_id: r.id,
+    record_id: r.id,
     label: "Local memory",
     text: rendered.text,
   };

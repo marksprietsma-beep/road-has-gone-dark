@@ -209,7 +209,7 @@ test("visibility rejects secrets, rumours verdicts, unknown sites and cross-worl
       "burg_id",
       "enrichment_sha",
       "content_pack_version",
-      "logical_id",
+      "record_id",
       "label",
       "text",
     ].sort(),
@@ -367,4 +367,15 @@ test("sidecar rejects rehashed wrong generator/pack labels and duplicate records
     bad.enrichment_sha = sha(canonical(payload));
     assert.throws(() => verifySidecar(bad, w.base, bad.enrichment_sha));
   }
+});
+
+test("compact origin uses stored memory/tradition without changing facts", () => {
+  const r = generate(c, "origin", "compact");
+  const before = canonical(r);
+  const a = originPayload(r, "a".repeat(64), {compact:true});
+  assert.equal(a.record_id, r.id);
+  assert.equal(a.text, originPayload(r, "a".repeat(64), {compact:true}).text);
+  assert.ok(a.text.includes(pack.memories.find(x => x.id === r.public.memory.event).action));
+  assert.ok(a.text.includes(pack.traditions.find(x => x.id === r.public.tradition.practice).practice));
+  assert.equal(canonical(r), before);
 });
