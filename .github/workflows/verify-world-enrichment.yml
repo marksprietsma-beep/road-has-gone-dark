@@ -1,0 +1,47 @@
+name: Verify Production World Enrichment
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tools/world_enrichment/**'
+      - 'tools/worldgen/**'
+      - 'vendor/content/**'
+      - 'data/world_enrichment/**'
+      - 'tests/world_enrichment/**'
+      - 'tests/world_library/**'
+      - '.github/workflows/verify-world-enrichment.yml'
+  workflow_dispatch:
+jobs:
+  enrichment:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen build dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Prepare verified Godot and packaged offline Node helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Linux production lifecycle, replay, input/render and existing regressions
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/world_enrichment/run-tests.py --visual --regressions
+      - name: Windows native generation, lifecycle, replay, saves and existing regressions
+        if: runner.os == 'Windows'
+        run: python tests/world_enrichment/run-tests.py --regressions
+      - name: Upload executed platform evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game79-qa-${{ runner.os }}
+          path: docs/implementation/game79

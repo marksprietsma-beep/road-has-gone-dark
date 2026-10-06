@@ -14,6 +14,8 @@ var page := 0
 var saved_slot := ""
 # Only a slot created by this confirmation can be discarded after failed validation.
 var unvalidated_save_path := ""
+# A validated write whose external lore became unavailable is retained, not deleted.
+var pending_enrichment_slot := ""
 var candidates: Array[Dictionary] = []
 var title: Label
 var steps: Label
@@ -367,6 +369,18 @@ func advance() -> void:
   if not saved_slot.is_empty():
    page = 4
   else:
+   if not pending_enrichment_slot.is_empty():
+    var pending := store.load_save(pending_enrichment_slot, worlds[world_index])
+    if pending.ok:
+     saved_slot = pending_enrichment_slot
+     pending_enrichment_slot = ""
+     unvalidated_save_path = ""
+     message = ""
+     page = 4
+    else:
+     message = "The saved origin needs its exact local history restored. No duplicate save was created."
+    show_page()
+    return
    if not _discard_unvalidated_save():
     message = "Unable to clear the unverified save. Please retry."
     show_page()
@@ -400,7 +414,10 @@ func advance() -> void:
       page = 4
      else:
       message = "Your origin could not be verified. Please try again."
-      if not _discard_unvalidated_save():
+      if str(reload.error).to_lower().contains("enrichment"):
+       pending_enrichment_slot = slot
+       message = "The saved origin needs its exact local history restored. No duplicate save was created."
+      elif not _discard_unvalidated_save():
        message = "Unable to clear the unverified save. Please retry."
     else: message = "Unable to save. " + str(result.error)
    library.end_origin(guard)
@@ -409,6 +426,7 @@ func advance() -> void:
  show_page()
 
 func _discard_unvalidated_save() -> bool:
+ if not pending_enrichment_slot.is_empty(): return false
  if unvalidated_save_path.is_empty(): return true
  if FileAccess.file_exists(unvalidated_save_path):
   if DirAccess.remove_absolute(unvalidated_save_path) != OK: return false
