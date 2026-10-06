@@ -24,7 +24,7 @@ Legacy campaigns lacking a party remain valid with their existing V1/V2 pins. Ex
 
 ## Review and reproduction
 
-[Sequential examples](QUALITY-SAMPLES.md), [all 1,050 records](sequential-backgrounds.json), [batch metrics](batch-metrics.json), [five fresh-world identities](generated-worlds.json), [screenshots](screenshots/), and [native distribution proof](distribution-proof.json).
+[Executed results](QA-RESULTS.md), [sequential examples](QUALITY-SAMPLES.md), [all 1,050 records](sequential-backgrounds.json), [batch metrics](batch-metrics.json), [five fresh-world identities](generated-worlds.json), [screenshots](screenshots/), and [native distribution proof](distribution-proof.json).
 
 Build the single helper with `node tools/worldgen/bootstrap-helper.mjs`, using Node 24.19.0 and Godot 4.6.3. Then run `python tests/party/run-tests.py --visual --regressions` under a real display (Linux CI uses Xvfb). The runner fails on script errors as well as nonzero exit codes. Two independent Godot processes create/edit/ready and then reload/corrupt/restore seven campaigns. Older origin regressions intercept only their new routing signal so their persistence boundary remains testable; GAME-81 exercises the real default menu→origin→party routing and actual keyboard/mouse controls.
 

@@ -1,0 +1,25 @@
+{
+  "platform": "Linux",
+  "native_export_test": "isolated release export full lifecycle; production release export launch passed",
+  "source_helper_override": false,
+  "path_empty": true,
+  "native_result": {
+    "checks": 16,
+    "failures": 0,
+    "source_helper_override": false
+  },
+  "archive": "game81-linux-x64.tar.gz",
+  "archive_sha256": "5d63242e7a25ee3d08e1037911b4508212758214241c21c5cf4ba08a09eec757",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "linux",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e"
+    },
+    "executable_sha256": "4a638a87db154d1798fc0d4bb089601863d8c51c9b021f11001d3a8dbe7360ad"
+  }
+}
