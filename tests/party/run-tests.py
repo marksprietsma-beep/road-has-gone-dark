@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Repeatable native party proof; every script error is a failure."""
-import argparse,hashlib,json,os,pathlib,subprocess,tempfile,time
+import argparse,hashlib,json,os,pathlib,subprocess,tempfile,time,shutil
 p=argparse.ArgumentParser();p.add_argument('--visual',action='store_true');p.add_argument('--regressions',action='store_true');p.add_argument('--work-dir');args=p.parse_args()
 root=pathlib.Path(__file__).resolve().parents[2];os.chdir(root);os.sys.stdout.reconfigure(encoding='utf-8')
 env=os.environ.copy();engine=env.get('GODOT_BIN','godot');helper=pathlib.Path(env.get('GAME76_HELPER_ROOT',root/'worldgen-helper')).resolve();node=helper/('node.exe'if os.name=='nt'else'node')
@@ -32,7 +32,10 @@ run('batch-quality',[node,'tests/party/batch-quality.mjs',*paths],timeout=1200)
 run('import',[engine,'--headless','--audio-driver','Dummy','--editor','--path','.','--quit'])
 for name in ['smoke-party','failures']:
  run(name,[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/party/'+name+'.gd'])
-if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/party/capture-smoke.gd'])
+if (base/'saves').exists():shutil.rmtree(base/'saves') # This runner owns its test root, never the player's save root.
+for phase in ['create','replay']:
+ env['GAME81_PHASE']=phase;run('lifecycle-'+phase,[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/party/lifecycle.gd'])
+if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/party/capture-flow.gd'])
 if args.regressions:run('game80-regressions',[os.sys.executable,'tests/origin_profiles/run-tests.py','--regressions']+(['--visual']if args.visual else[]),timeout=3600)
 assert before=={str(p):hashfile(p)for p in frozen}
 if owned:owned.cleanup()

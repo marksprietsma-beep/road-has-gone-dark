@@ -71,6 +71,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  var ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  check(ui.scene_file_path=="res://scenes/ui/new_game_origin.tscn","real menu enters onboarding")
  var directory := "user://game75-visual-"+Crypto.new().generate_random_bytes(8).hex_encode()
  ui.store.save_root=directory.path_join("saves")

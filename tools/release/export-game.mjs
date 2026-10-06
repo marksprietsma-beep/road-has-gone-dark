@@ -17,12 +17,14 @@ if(!existsSync(executable))throw Error('Export did not produce the game executab
 // Official templates disable scene overrides. Export identical source/resources
 // from an owned temporary project whose entry point is the diagnostic scene.
 // The checkout and production main scene are never changed.
+const qaScene=get('--qa-scene')??'res://tests/origin_profiles/verify-distribution.tscn';
+if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
 if(a.includes('--qa')){
  const stage=mkdtempSync(join(tmpdir(),'trhgd-export-proof-'));
  try{
   for(const dir of ['assets','data','scenes','scripts','tests','themes'])if(existsSync(join(root,dir)))cpSync(join(root,dir),join(stage,dir),{recursive:true});
   cpSync(join(root,'export_presets.cfg'),join(stage,'export_presets.cfg'));
-  writeFileSync(join(stage,'project.godot'),readFileSync(join(root,'project.godot'),'utf8').replace(/run\/main_scene="[^"]+"/,'run/main_scene="res://tests/origin_profiles/verify-distribution.tscn"'));
+  writeFileSync(join(stage,'project.godot'),readFileSync(join(root,'project.godot'),'utf8').replace(/run\/main_scene="[^"]+"/,'run/main_scene="'+qaScene+'"'));
   execFileSync(engine,['--headless','--editor','--path',stage,'--quit'],{stdio:'inherit'});
   execFileSync(engine,['--headless','--path',stage,'--export-release',preset,join(target,process.platform==='win32'?'road-has-gone-dark-qa.exe':'road-has-gone-dark-qa')],{stdio:'inherit'});
  }finally{rmSync(stage,{recursive:true,force:true});}

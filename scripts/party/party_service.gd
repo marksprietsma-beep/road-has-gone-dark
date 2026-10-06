@@ -161,6 +161,7 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, member:
 
 func resumable() -> Dictionary:
  var entries := library.discover()
+ if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(store.save_root)): return {}
  var names := DirAccess.get_files_at(store.save_root)
  var choices: Array = []
  for name in names:

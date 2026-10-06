@@ -16,6 +16,8 @@ test('presence is deterministic, all peoples selectable, culture is independent'
  assert(new Set(cultured.map(r=>canonical(r.peoples.map(p=>[p.people_id,p.status])))).size>1);
  const profiles=structuredClone(out.profiles);for(const group of Object.values(profiles))for(const r of Object.values(group)){r.name='RENAMED';r.source_context.cultures.forEach(c=>c.name='RENAMED');}
  assert.equal(canonical(presence(out.world,profiles)),canonical(out.records));
+ for(const key of Object.keys(profiles))profiles[key]=Object.fromEntries(Object.entries(profiles[key]).reverse());
+ assert.equal(canonical(presence(out.world,profiles)),canonical(out.records));
 });
 test('three stable members, repeated generation, different roles/lives/forms',()=>{
  const c=campaign(),p=createParty(out,c,out.descriptor);
@@ -29,6 +31,7 @@ test('name edits preserve identity; deterministic reroll retains manual name and
  const c=campaign();c.party=createParty(out,c,out.descriptor);
  let p=editParty(out,c,2,{name:'Marked Name'});assert.equal(p.members[1].character_id,c.party.members[1].character_id);assert.equal(p.members[1].background_id,c.party.members[1].background_id);assert(p.members[1].biography.includes('Marked Name'));
  c.party=p;const a=editParty(out,c,2,{regenerate:true}),b=editParty(out,c,2,{regenerate:true});assert.equal(canonical(a),canonical(b));assert.equal(a.members[1].background_variant,1);assert.equal(a.members[1].name,'Marked Name');
+ const ancestry=editParty(out,c,2,{people_id:c.party.members[1].people_id==='human'?'dwarf':'human'});assert.equal(ancestry.members[1].name,'Marked Name');
  assert.equal(canonical(a.members[0]),canonical(c.party.members[0]));assert.equal(canonical(a.members[2]),canonical(c.party.members[2]));
 });
 test('all eight people and four role IDs accepted without rarity restrictions',()=>{

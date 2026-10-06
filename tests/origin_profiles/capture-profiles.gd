@@ -74,6 +74,9 @@ func run() -> void:
  change_scene_to_file("res://scenes/ui/new_game_origin.tscn")
  for n in 20: await process_frame
  var ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var base := OS.get_environment("GAME80_TEST_ROOT")
  ui.library.library_root = base.path_join("library")
  ui.store.save_root = base.path_join("visual-saves-" + Crypto.new().generate_random_bytes(8).hex_encode())

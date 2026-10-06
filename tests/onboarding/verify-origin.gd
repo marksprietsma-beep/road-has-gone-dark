@@ -11,6 +11,9 @@ func _initialize() -> void:
 func run() -> void:
  var ui = load("res://scenes/ui/new_game_origin.tscn").instantiate()
  root.add_child(ui)
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var directory := "user://game74-test-" + Crypto.new().generate_random_bytes(8).hex_encode()
  ui.store.save_root = directory
  for index in 2:

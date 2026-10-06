@@ -55,6 +55,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  var ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var directory := "user://game74-visual-" + Crypto.new().generate_random_bytes(8).hex_encode()
  ui.store.save_root = directory
  await capture("02-world")
@@ -117,6 +120,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  ui.store.save_root = directory.path_join("cancelled")
  await key(KEY_ESCAPE)
  await wait_scene("res://scenes/ui/main_menu.tscn")
@@ -125,6 +131,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  ui.choose_world(1)
  ui.page = 2
  var found := false
