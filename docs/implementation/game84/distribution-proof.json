@@ -1,0 +1,149 @@
+{
+  "implementation_sha": "1c9d00d0744259f8f8d37a03fcd3c6122a534904",
+  "run_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837",
+  "run_conclusion": "success",
+  "jobs": [
+    {
+      "id": 112429494509,
+      "name": "party (windows-latest)",
+      "conclusion": "success",
+      "html_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/job/112429494509",
+      "started_at": "2026-10-06T18:18:49Z",
+      "completed_at": "2026-10-06T18:54:29Z"
+    },
+    {
+      "id": 112429494971,
+      "name": "party (ubuntu-latest)",
+      "conclusion": "success",
+      "html_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/job/112429494971",
+      "started_at": "2026-10-06T18:18:49Z",
+      "completed_at": "2026-10-06T18:43:36Z"
+    }
+  ],
+  "native_proofs": [
+    {
+      "platform": "Windows",
+      "native_export_test": "isolated release export full expedition lifecycle; production release export launch passed",
+      "source_helper_override": false,
+      "path_empty": true,
+      "native_result": {
+        "checks": 60,
+        "failures": 0,
+        "source_helper_override": false,
+        "timings": [
+          {
+            "six_transitions_ms": 7232,
+            "world": "game-11-determinism"
+          },
+          {
+            "six_transitions_ms": 8000,
+            "world": "atlas-showcase-06"
+          },
+          {
+            "six_transitions_ms": 9037,
+            "world": "game84-native-package"
+          }
+        ],
+        "worlds": 3
+      },
+      "archive": "game84-windows-x64.zip",
+      "archive_sha256": "14a3326e5eaf615fa72866ccbd25e1b9e69fed197186e570cd4b3fddf5f923a7",
+      "distribution": {
+        "schema_version": 1,
+        "godot": "4.6.3.stable.official.7d41c59c4",
+        "platform": "win32",
+        "arch": "x64",
+        "enrichmentRuntimes": {
+          "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+          "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+          "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+          "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+        },
+        "executable_sha256": "5d6bead649335c5dd055a649cc79b5fdcac7e0b56f469f90fca82d0c1dcd672b"
+      }
+    },
+    {
+      "platform": "Linux",
+      "native_export_test": "isolated release export full expedition lifecycle; production release export launch passed",
+      "source_helper_override": false,
+      "path_empty": true,
+      "native_result": {
+        "checks": 60,
+        "failures": 0,
+        "source_helper_override": false,
+        "timings": [
+          {
+            "six_transitions_ms": 3486,
+            "world": "game-11-determinism"
+          },
+          {
+            "six_transitions_ms": 3837,
+            "world": "atlas-showcase-06"
+          },
+          {
+            "six_transitions_ms": 4554,
+            "world": "game84-native-package"
+          }
+        ],
+        "worlds": 3
+      },
+      "archive": "game84-linux-x64.tar.gz",
+      "archive_sha256": "2bb4a3c7275cf8b6bff681cfd0b0e928c5b19322d188a3cf5dd775d83cc5552b",
+      "distribution": {
+        "schema_version": 1,
+        "godot": "4.6.3.stable.official.7d41c59c4",
+        "platform": "linux",
+        "arch": "x64",
+        "enrichmentRuntimes": {
+          "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+          "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+          "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+          "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+        },
+        "executable_sha256": "22c60f55e0270664a7c095d3f124d4cbd4e155cf906588317a7f3f6e2911d198"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11436570667,
+      "name": "game84-complete-Linux",
+      "size_in_bytes": 125561138,
+      "digest": "sha256:14dc2e2837475618af7ad48abfb9a63bbcfe13cc851b94572b3cd6abb870233f",
+      "expired": false,
+      "created_at": "2026-10-06T18:43:31Z",
+      "expires_at": "2027-01-04T18:18:47Z",
+      "review_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/artifacts/11436570667"
+    },
+    {
+      "id": 11436272712,
+      "name": "game84-complete-Windows",
+      "size_in_bytes": 114858766,
+      "digest": "sha256:82d0b5faec3d3f39d1dafa609fbd075659984d10aeb595be64404cd82fef6a02",
+      "expired": false,
+      "created_at": "2026-10-06T18:54:23Z",
+      "expires_at": "2027-01-04T18:18:47Z",
+      "review_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/artifacts/11436272712"
+    },
+    {
+      "id": 11436165887,
+      "name": "game84-qa-Linux",
+      "size_in_bytes": 11198093,
+      "digest": "sha256:0123ab0bbcb328976045858e109d3ab95dcf251268d95d4eaee87fe458999607",
+      "expired": false,
+      "created_at": "2026-10-06T18:43:26Z",
+      "expires_at": "2027-01-04T18:18:47Z",
+      "review_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/artifacts/11436165887"
+    },
+    {
+      "id": 11436043031,
+      "name": "game84-qa-Windows",
+      "size_in_bytes": 222639,
+      "digest": "sha256:a5b4ce68309c073c708c6534e8ad0d000bdb658ff3b07186173c629c746d6ced",
+      "expired": false,
+      "created_at": "2026-10-06T18:54:15Z",
+      "expires_at": "2027-01-04T18:18:47Z",
+      "review_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37510326837/artifacts/11436043031"
+    }
+  ]
+}

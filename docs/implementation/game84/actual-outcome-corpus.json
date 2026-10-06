@@ -1,0 +1,5048 @@
+{
+  "cases": 336,
+  "checks": 2822,
+  "developer_seeded_arrival_states": true,
+  "failures": 0,
+  "outputs": [
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 1.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 2.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 1.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 2.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 1.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 2.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 1.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 2.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "burial-chapel",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "burial-chapel",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: burial chapel."
+      },
+      "provisions": 1.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "burial-chapel",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "burial-chapel",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "burial-chapel",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: burial chapel."
+      },
+      "provisions": 2.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "burial-chapel",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 1.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 2.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: smithy."
+      },
+      "provisions": 1.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "smithy",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: smithy."
+      },
+      "provisions": 2.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "smithy",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 1.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 2,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 2.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811",
+      "starting_provisions": 3,
+      "world": "game-11-determinism"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 1.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 2.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:8859d7b688b433779b257ad66d4447cedb267100f64ff3034e717acd46d5f883",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: wash house."
+      },
+      "provisions": 1.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "wash-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: wash house."
+      },
+      "provisions": 2.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "wash-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0900146efcaefddfaea4338a5cfe0312b456506b8e3e6f1dea3a9f8b6495c1b5",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 1.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 2.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:855d0e4fccf76ff41838d90fa5d4c64563a30591507a8658a8acbb466d0458e0",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: smithy."
+      },
+      "provisions": 1.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "smithy",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "smithy",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: smithy."
+      },
+      "provisions": 2.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "smithy",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:f632ac708a915512e301bb145785653574a2a6a39ffdbb9315d76991442a0c3c",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 1.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 2.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:36294b17de9095659caf51e953d9e1f6a3a8368444ba78193fb38ed18ceb1d45",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 1.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 2.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:6a352c18713191f1a5ded28905b399f2e659c1aa9ef0078a643ad33ea65c7bdb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:3aac36ef38585f8b5e3727d7ea9d4fc4a0d0478905f55bd6c0e73e9981d531f3",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 1.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 2,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 2.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:c6f3d6943bd8161ff55c7ac11d3c7e7073f94858e874e15c350978704611cbcb",
+      "starting_provisions": 3,
+      "world": "atlas-showcase-06"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: granary."
+      },
+      "provisions": 1.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "granary",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: granary."
+      },
+      "provisions": 2.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "granary",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:d373a04a0b0974eca5efcf416775a580da0984701c107fac778f05f0fb70516b",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: scriptorium."
+      },
+      "provisions": 1.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "scriptorium",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: scriptorium."
+      },
+      "provisions": 2.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "scriptorium",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:4ed98b1752449424b91e47f931a7fca8d0ff2ef5840b39c212011b1eb5c64921",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 1.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 2.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:19ff4423c12c23a967e7d6380330ff8c3f826a89cf3b7e7061eedcb678c66917",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 1.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 2.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:4538e0e18bd552d9e232f8d48af8a7adc2e45574d43936e3c273c33d83f9da8c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:2733323071fae303b0e8eb686fb7fc29e7e0effddd345ca118a015290c06b7d6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: scriptorium."
+      },
+      "provisions": 1.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "scriptorium",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "scriptorium",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: scriptorium."
+      },
+      "provisions": 2.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "scriptorium",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:baf28654881eefacb9669916af5ca0520e2a95e2ddb8efb817db653fdf90fb40",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 1.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "sick-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: sick house."
+      },
+      "provisions": 2.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "sick-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:92b16a05bdf2069d4f6abe3b0907c6ef08b799a9ce01a4999fe6a380ea305bfb",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 1.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 2,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 2.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:1ab4ea4179e46f0f28d5eebfe0b85aa77f273d4d3e7e76eff64f6a4f516fbdd1",
+      "starting_provisions": 3,
+      "world": "game84-expedition-2"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 1.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 2.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:e7c68c600ed1ef596d41c3609839aea3a20e18d7141b618108368bf68a7c0966",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:f278aa52917ca591c5e63511744cd3bf6f774719658d63eff95105665280b0b9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "survey-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "survey-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: survey lodge."
+      },
+      "provisions": 1.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "survey-lodge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "survey-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "survey-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: survey lodge."
+      },
+      "provisions": 2.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "survey-lodge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:ba5884a2ba532867bdcc9b3d7ea8f522ef2967fbd9174fb3cda75e75c8aa3164",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:01652c96d39953d1b5a94184d87ee6e42bcae544f7bb29f0a75553c4ee7057de",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 1.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 2.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0d9cc9a2e58aa6d392a68d2f3ccc683cc2dd060c5ba45e0bf51b53cdc2f448d3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "ceremonial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "ceremonial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: ceremonial court."
+      },
+      "provisions": 1.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "ceremonial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "ceremonial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "ceremonial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: ceremonial court."
+      },
+      "provisions": 2.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "ceremonial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:cd6e7f97047a76285469e6bea9d14d374046f15f5b04268a1ceb442a19024c86",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pilgrim lodge."
+      },
+      "provisions": 1.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pilgrim lodge."
+      },
+      "provisions": 2.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pilgrim-lodge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:ab7d3142bf5a80e184d07c08bb720b848ca5639eeb8ff26f64936083a9c26d1d",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 1.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 2.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:85e0d7a6d4ee5871348b870bbd924e2dece37f6a3f0531904f724783cee464a9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-0"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 1.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 2.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0faca36bc8a406dac5af6d2035e99ee1ee001d4ceebf5de357d358f730b43071",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 1.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 2.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:6343fd18fbd264c03b3ebbb23070f5f54dcdaa25492b193779fed90e93dc7bec",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 1.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 2.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:7682db51272b422206ef55b19112b5924cd2d70ba9ba854277f997ced055c907",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:88f85da4617fb01609dc22d25355610717d3e79914284d5d688e7e961ac43c91",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "lime-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: lime kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "lime-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:f3b902b5971a2784a2feb122db8d611ea388da381b815722bf8c4e25d5bb451a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "record-hall",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "record-hall",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: record hall."
+      },
+      "provisions": 1.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "record-hall",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "record-hall",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "record-hall",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: record hall."
+      },
+      "provisions": 2.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "record-hall",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:ecbbd6896c8d9b22ad4e9853c712f38df9bddfe1cfe65ee8d30f88bd346ab638",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:30c125a5bef80afac4d4a279db1fdf47506aa5d0c41a3cea886ec207fd140247",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 1.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 2,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "memorial-court",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: memorial court."
+      },
+      "provisions": 2.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "memorial-court",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0e3855f69b16193d6d7b9b96ad72381ccbff346e40194c4ab04844381ceecda0",
+      "starting_provisions": 3,
+      "world": "game84-expedition-4"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 1.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 2.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:a663f68367d0f55c2d7c6619b7cb7431e6a592f03bd7a94277d384ac431e857e",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 1.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 2.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:0c99d572bde49f2f9b228835e68a6e987699a534956fc72f7cf8733a4aadd391",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 1.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "press-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: press house."
+      },
+      "provisions": 2.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "press-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:558198107e75308f4a09bb3d06bac0baa27431c74b82685a1ab95fa66258ddc3",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: granary."
+      },
+      "provisions": 1.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "granary",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "granary",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: granary."
+      },
+      "provisions": 2.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "granary",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:618752fddf2ba6f4e96892d11632176aba6647c17f0a8f640eee4913845a46f9",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: stone cutting yard."
+      },
+      "provisions": 1.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: stone cutting yard."
+      },
+      "provisions": 2.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:6bfea3582f4861c0f872273fd2ea2dab0aa20ff773cfead50445316a67f3dbfa",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 1.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "training-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: training yard."
+      },
+      "provisions": 2.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "training-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:e53b72e8aeb819f97700c959c4cb152b2273fdafe5b72caba6bfe7d4ea24a8f5",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: wash house."
+      },
+      "provisions": 1.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "wash-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "wash-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: wash house."
+      },
+      "provisions": 2.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "wash-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:fe91c32255e96e1361acc4cfda11f5514b6c9b210ef5d88f6710fab9403acdce",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 1.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 2,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "pottery-kiln",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: pottery kiln."
+      },
+      "provisions": 2.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "pottery-kiln",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:5ff24042fd9d509f3ba6a60ae6eaaca0188fd8e13ffa5b9c19ffe435059c2573",
+      "starting_provisions": 3,
+      "world": "game84-expedition-1"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 1.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "small-observatory",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: small observatory."
+      },
+      "provisions": 2.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "small-observatory",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:036e36f2e18f76c2d20f61b0adfe05e51d1371c043fe3d6eabc6751d933451ba",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 1.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: manor outbuilding."
+      },
+      "provisions": 2.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "manor-outbuilding",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:b0cc50a4b71664f3775abbc1736215c2edb0d627be8006fedc3330a35078b23a",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "weigh-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "weigh-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: weigh house."
+      },
+      "provisions": 1.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "weigh-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "weigh-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "weigh-house",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: weigh house."
+      },
+      "provisions": 2.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "weigh-house",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:73ee7fa6858eb8145ee82a877e81406a1f3c2cb7160500ea52b6b0217dbf43e6",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "watchtower",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "watchtower",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: watchtower."
+      },
+      "provisions": 1.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "watchtower",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "watchtower",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "watchtower",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: watchtower."
+      },
+      "provisions": 2.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "watchtower",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:bd987968c2a156a64bee44ac84be25e87a0c0452332764c5d0c6b6a4ea2cfa43",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: stone cutting yard."
+      },
+      "provisions": 1.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: stone cutting yard."
+      },
+      "provisions": 2.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "stone-cutting-yard",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:e0736ac10eca7e81512acce9792d2bcc540986477cf362f3e9d75a0eef625587",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 1.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "signal-station",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: signal station."
+      },
+      "provisions": 2.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "signal-station",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:42bab0bcdf82d1c3eaf3356608f1cd1a870a83967c6105ae32310e7724d0c7af",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 1.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "winter-refuge",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: winter refuge."
+      },
+      "provisions": 2.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "winter-refuge",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:bac39e5e0dfc1beefa3d8c827c897e5cdaad62976b97d6f8ae9609901f213a4c",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 1.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 1.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 2.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 2,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "survey",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "survey",
+        "sequence": 4.0,
+        "text": "The perimeter is recorded. Your notes now distinguish the surrounding work."
+      },
+      "provisions": 2.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "record",
+      "clock": 4.0,
+      "kind": "drying-barn",
+      "knowledge": "investigated",
+      "outcome": {
+        "approach": "record",
+        "sequence": 4.0,
+        "text": "You compare the remaining work with the local account and record its former use: drying barn."
+      },
+      "provisions": 2.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    },
+    {
+      "approach": "leave",
+      "clock": 2.0,
+      "kind": "drying-barn",
+      "knowledge": "visited",
+      "outcome": {
+        "approach": "leave",
+        "sequence": 4.0,
+        "text": "You leave the remains undisturbed. The concern stays unresolved."
+      },
+      "provisions": 3.0,
+      "site": "site:90a1e4bf0826aeca9697b1211cc66aea7cb75b1b753e685e3a034420d05d8698",
+      "starting_provisions": 3,
+      "world": "game84-expedition-3"
+    }
+  ]
+}

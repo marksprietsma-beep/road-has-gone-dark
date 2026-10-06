@@ -1,0 +1,54 @@
+# First 50 actual production transactions
+
+These are unfiltered sequential outputs from deliberately seeded arrived-state developer fixtures. They call the production operation/store/reload path; they are not claimed as 50 fully played journeys. Complete played/restart/input flows are tested separately.
+
+- game-11-determinism / sick-house / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / sick-house / record: You compare the remaining work with the local account and record its former use: sick house. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / sick-house / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / sick-house / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / sick-house / record: You compare the remaining work with the local account and record its former use: sick house. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / sick-house / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / manor-outbuilding / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / manor-outbuilding / record: You compare the remaining work with the local account and record its former use: manor outbuilding. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / manor-outbuilding / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / manor-outbuilding / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / manor-outbuilding / record: You compare the remaining work with the local account and record its former use: manor outbuilding. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / manor-outbuilding / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / sick-house / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / sick-house / record: You compare the remaining work with the local account and record its former use: sick house. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / sick-house / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / sick-house / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / sick-house / record: You compare the remaining work with the local account and record its former use: sick house. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / sick-house / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / winter-refuge / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / winter-refuge / record: You compare the remaining work with the local account and record its former use: winter refuge. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / winter-refuge / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / winter-refuge / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / winter-refuge / record: You compare the remaining work with the local account and record its former use: winter refuge. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / winter-refuge / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / burial-chapel / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / burial-chapel / record: You compare the remaining work with the local account and record its former use: burial chapel. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / burial-chapel / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / burial-chapel / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / burial-chapel / record: You compare the remaining work with the local account and record its former use: burial chapel. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / burial-chapel / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / manor-outbuilding / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / manor-outbuilding / record: You compare the remaining work with the local account and record its former use: manor outbuilding. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / manor-outbuilding / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / manor-outbuilding / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / manor-outbuilding / record: You compare the remaining work with the local account and record its former use: manor outbuilding. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / manor-outbuilding / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / smithy / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / smithy / record: You compare the remaining work with the local account and record its former use: smithy. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / smithy / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / smithy / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / smithy / record: You compare the remaining work with the local account and record its former use: smithy. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / smithy / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- game-11-determinism / signal-station / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / signal-station / record: You compare the remaining work with the local account and record its former use: signal station. Knowledge investigated; provisions 1; clock 4.
+- game-11-determinism / signal-station / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 2; clock 2.
+- game-11-determinism / signal-station / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / signal-station / record: You compare the remaining work with the local account and record its former use: signal station. Knowledge investigated; provisions 2; clock 4.
+- game-11-determinism / signal-station / leave: You leave the remains undisturbed. The concern stays unresolved. Knowledge visited; provisions 3; clock 2.
+- atlas-showcase-06 / memorial-court / survey: The perimeter is recorded. Your notes now distinguish the surrounding work. Knowledge investigated; provisions 1; clock 4.
+- atlas-showcase-06 / memorial-court / record: You compare the remaining work with the local account and record its former use: memorial court. Knowledge investigated; provisions 1; clock 4.
