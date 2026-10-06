@@ -23,6 +23,10 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  if not people.load_world(world): return people.error
  if party.get("peoples_pin") != people.descriptor: return "Pinned people enrichment mismatch"
  if not party.get("members") is Array or party.members.size() != 3 or state.characters.size() != 3 or state.party_ids.size() != 3: return "Exactly three party members required"
+ for identity in state.party_ids:
+  if not identity is String: return "Invalid active party ID type"
+ for character in state.characters:
+  if not character is Dictionary or not character.get("id") is String or not character.get("name") is String: return "Invalid underlying character record"
  var pack := WorldOriginLore.read_json(WorldPeoples.PACK)
  var people_ids: Array = pack.peoples.map(func(r: Dictionary): return r.id)
  var role_ids: Array = pack.roles.map(func(r: Dictionary): return r.id)
@@ -36,6 +40,8 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  for tag in local.source_context.tags: tags[tag] = true
  if int(cell.get("religion", 0)) > 0 and not world.get_record("religion", int(cell.religion)).is_empty(): tags["religion"] = true
  var region: Dictionary = profiles.get("regions", {}).get(str(local.parents.region), {})
+ var parent: Dictionary = profiles.get("states", {}).get(str(int(state.origin.state_id)), {})
+ if parent.is_empty() or region.is_empty(): return "Missing parent profile context"
  if region.get("source_context", {}).get("tags", []).has("mine"): tags["regional-mine"] = true
  for i in 3:
   var m: Variant = party.members[i]
@@ -53,6 +59,13 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
   if not refs is Dictionary or refs.size() != 8 or refs.get("world_id") != world.world_id or refs.get("world_sha") != world.source_sha256 or refs.get("burg_id") != home.i or refs.get("cell_id") != home.cell or refs.get("state_id") != cell.get("state") or refs.get("province_id") != cell.get("province") or refs.get("culture_id") != cell.get("culture") or refs.get("religion_id") != cell.get("religion"): return "Character origin source mismatch"
   var facts: Variant = m.generated_facts
   if not facts is Dictionary or facts.size() != 9 or facts.get("schema_version") != 1 or facts.get("people_id") != m.people_id or facts.has("secret") or not facts.get("background") is Dictionary or not facts.get("origin_identity") is Dictionary or not facts.get("provenance") is Dictionary: return "Invalid structured background"
+  for key in ["schema_version","people_id","occupation_id","foundation_occupation_id","background","origin_identity","public_relationship","biography_form","provenance"]:
+   if not facts.has(key): return "Missing structured background field"
+  if not facts.public_relationship is Dictionary or facts.biography_form != i: return "Invalid public relationship or biography form"
+  var identity := {"state_profile_id":parent.id,"region_profile_id":region.id,"hometown_profile_id":local.id,"posture":parent.public.posture,"livelihood":local.public.prose_facts.activity,"regional_contribution":local.public.regional_dependency.contribution,"local_memory":local.public.local_memory,"tradition":local.public.tradition}
+  if facts.origin_identity != identity: return "Background public profile identity mismatch"
+  var relationships := {"kind":"hometown-neighbours","other_character_ids":state.party_ids.filter(func(other: String): return other != id)}
+  if facts.public_relationship != relationships: return "Invalid party relationship"
   var background: Dictionary = facts.background
   var fields := ["name","naming","birthplace","age_band","occupation","training","family","childhood","value","habit","concern","contact","traits","keepsake","local_knowledge","first_failure","first_success","motivation","hometown_relationship"]
   if background.size() != fields.size(): return "Unsupported background fields"

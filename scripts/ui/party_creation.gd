@@ -81,6 +81,8 @@ func _ready() -> void:
  title = label("Party creation", 24)
  column.add_child(title)
  origin = label("")
+ origin.max_lines_visible = 1
+ origin.clip_text = true
  column.add_child(origin)
  var body := HBoxContainer.new()
  body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -258,6 +260,7 @@ func refresh() -> void:
   var home := world.get_record("burg", int(state.origin.home_burg_id))
   var area := world.get_record("province", int(state.origin.province_id))
   origin.text = "From %s · %s · %s" % [home.name, area.get("name", "Unassigned districts"), world.get_record("state", int(state.origin.state_id)).name]
+ origin.tooltip_text = origin.text
  roster.clear()
  if not state.is_empty():
   for m in state.party.members:

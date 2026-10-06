@@ -57,6 +57,26 @@ func run() -> void:
  bad.store = service.store
  check(not bad.operate(entry,slot,"generate").ok,"generator failure is controlled")
  check(FileAccess.get_file_as_string(path)==original,"failed generation retains exact origin")
+ PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root}
+ var preparation=load("res://scenes/ui/party_creation.tscn").instantiate()
+ preparation.service=bad
+ root.add_child(preparation)
+ await wait_ui(preparation)
+ check(preparation.state.is_empty() and not preparation.ready_view,"failed generation has no party success state")
+ check(preparation.save_button.text=="Retry preparation" and not preparation.save_button.disabled,"failed preparation has explicit retry")
+ preparation.service=service
+ service.store.fail_reload=true
+ preparation._save_changes()
+ await wait_ui(preparation)
+ check(preparation.state.is_empty() and not preparation.message.contains("Party saved"),"failed preparation reload makes no success claim")
+ check(FileAccess.get_file_as_string(path)==original,"failed preparation reload keeps original bytes")
+ service.store.fail_reload=false
+ preparation._save_changes()
+ await wait_ui(preparation)
+ check(not preparation.state.is_empty() and preparation.state.playthrough_id==slot,"preparation retry completes same campaign")
+ preparation.queue_free()
+ await process_frame
+ put(path,original) # Restore the owned origin for the service failure cases.
  service.store.fail_write = true
  check(not service.operate(entry,slot,"generate").ok,"write failure never reports success")
  check(FileAccess.get_file_as_string(path)==original,"write failure keeps old bytes")
@@ -76,7 +96,7 @@ func run() -> void:
  var valid: Dictionary = generated.state
  check(valid==rejected_candidate,"retry regenerates identical candidate in same campaign")
  var raw := FileAccess.get_file_as_string(path)
- for mutation in ["character","background","people","role","incomplete","secret","occupation"]:
+ for mutation in ["character","background","people","role","incomplete","secret","occupation","missing_fact","malformed_character","malformed_party_id","profile_identity","relationship"]:
   var invalid := valid.duplicate(true)
   match mutation:
    "character": invalid.party.members[0].character_id = "bad"
@@ -86,6 +106,13 @@ func run() -> void:
    "incomplete": invalid.party.members.pop_back()
    "secret": invalid.party.members[0].generated_facts.background.local_knowledge.hidden_pois.append("private")
    "occupation": invalid.party.members[0].generated_facts.occupation_id = "bad"
+   "missing_fact":
+    invalid.party.members[0].generated_facts.erase("foundation_occupation_id")
+    invalid.party.members[0].generated_facts.unsupported="bad"
+   "malformed_character": invalid.characters[0]="bad"
+   "malformed_party_id": invalid.party_ids[2]=42
+   "profile_identity": invalid.party.members[0].generated_facts.origin_identity.posture="invented"
+   "relationship": invalid.party.members[0].generated_facts.public_relationship.other_character_ids=[]
   check(not service.commit(slot,invalid,world).ok,"invalid " + mutation + " rejected")
   check(FileAccess.get_file_as_string(path)==raw,"invalid " + mutation + " preserves bytes")
  service.store.fail_reload=true

@@ -30,7 +30,7 @@ for i in range(5):
 (docs/'generated-worlds.json').write_text(json.dumps({'platform':os.name,'worlds':timings,'offline_empty_path':True},indent=2)+'\n')
 run('batch-quality',[node,'tests/party/batch-quality.mjs',*paths],timeout=1200)
 run('import',[engine,'--headless','--audio-driver','Dummy','--editor','--path','.','--quit'])
-for name in ['smoke-party','failures']:
+for name in ['smoke-party','reader-failures','failures']:
  run(name,[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/party/'+name+'.gd'])
 if (base/'saves').exists():shutil.rmtree(base/'saves') # This runner owns its test root, never the player's save root.
 for phase in ['create','replay']:

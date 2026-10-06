@@ -40,21 +40,26 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  var file := path.path_join("enrichment.json")
  if not FileAccess.file_exists(file) or FileAccess.get_sha256(file) != d.enrichment_sha: return fail("package integrity failure")
  var data := WorldOriginLore.read_json(file)
- if data.get("schema_version") != 1 or data.get("base_world", {}).get("id") != world.world_id or not data.get("records") is Dictionary: return fail("invalid presence data")
+ if data.size() != 6 or data.get("schema_version") != 1 or not data.get("base_world") is Dictionary or data.base_world.get("id") != world.world_id or data.base_world.get("sha256") != world.source_sha256 or data.get("generator_version") != d.generator_version or data.get("pack_sha") != d.content_pack_sha or data.get("profile_enrichment_sha") != d.profiles_sha or not data.get("records") is Dictionary or data.records.size() != 4: return fail("invalid presence data")
  var people_ids: Array = WorldOriginLore.read_json(PACK).peoples.map(func(p: Dictionary): return p.id)
  for group in ["world", "states", "regions", "hometowns"]:
   if not data.records.get(group) is Dictionary: return fail("missing hierarchy")
+  if group == "world" and data.records[group].size() != 1: return fail("incomplete world coverage")
   if group != "world" and data.records[group].size() != profiles.projection[group].size(): return fail("incomplete coverage")
   for key in data.records[group]:
    if group == "world" and key != world.world_id or group != "world" and not profiles.projection[group].has(key): return fail("unknown source entity")
    var row: Variant = data.records[group][key]
    if not row is Dictionary or not row.get("source_culture_ids") is Array or not row.get("peoples") is Array or row.peoples.size() != people_ids.size(): return fail("invalid people row")
+   if row.size() != 4 or row.get("status_origin") != "TRHGD-generated qualitative presence, not a census": return fail("unsupported presence fields")
+   var expected_id: String = "world" if group == "world" else str(profiles.projection[group][key].record_id)
+   if row.get("id") != expected_id: return fail("presence source identity mismatch")
    var seen := {}
    for p in row.peoples:
     if not p is Dictionary or not people_ids.has(p.get("people_id")) or seen.has(p.people_id) or not p.get("status") in ["common", "present", "uncommon"] or not (p.get("presence_weight") is int or p.get("presence_weight") is float) or p.presence_weight < 1 or p.presence_weight > 100: return fail("invalid qualitative presence")
+    if p.size() != 4 or p.get("source_culture_ids") != row.source_culture_ids or p.presence_weight != int(p.presence_weight) or p.status != ("common" if p.presence_weight >= 65 else ("present" if p.presence_weight >= 30 else "uncommon")): return fail("invalid presence provenance/status")
     seen[p.people_id] = true
    for culture in row.source_culture_ids:
-    if not (culture is int or culture is float) or culture <= 0 or world.get_record("culture", int(culture)).is_empty(): return fail("invalid culture reference")
+    if not (culture is int or culture is float) or culture <= 0 or culture != int(culture) or world.get_record("culture", int(culture)).is_empty(): return fail("invalid culture reference")
  descriptor = d
  records = data.records
  return true
