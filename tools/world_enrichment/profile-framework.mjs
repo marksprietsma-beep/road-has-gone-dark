@@ -43,6 +43,7 @@ export function validateProfile(r){
  const tags=new Set(r.source_context.tags),f=r.public;
  for(const id of f.economy.specialisms){const row=profilePack.economies.find(x=>x.id===id);if(!row||!profileCompatible(row,tags,f.posture?[profilePack.postures.find(x=>x.id===f.posture)]:[]))throw Error('Incompatible economy: '+id);}
  if(r.domain==='state'&&f.external_orientation==='maritime'&&!tags.has('coastal-port'))throw Error('Maritime outlook without a coastal port');
+ if(r.domain==='hometown'&&/\bvillage\b/.test(f.settlement_role)&&r.source_context.settlement_class!=='village')throw Error('Village role contradicts source settlement class');
  if(r.domain==='region'){const role=profilePack.regions.find(x=>x.id===f.regional_role);if(role?.economies&&!f.economy.specialisms.every(id=>role.economies.includes(id)))throw Error('Region role/economy contradiction');}
  if(f.posture==='isolationist'&&(f.social_character==='cosmopolitan'||['welcoming','maritime'].includes(f.external_orientation)||f.economy.specialisms.includes('maritime-commerce')))throw Error('Isolationist contradiction');
  for(const row of r.source_context.cultures)if(!Number.isInteger(row.id)||row.id<=0||!row.name)throw Error('Invalid cultural source identity');
@@ -89,13 +90,14 @@ export function buildProfiles(world,origins){
   const ctx=areaContext(world,cell.state,cell.province,b),tags=new Set([...ctx.tags,state.public.posture]);
   const seed=seeds.get(cell.state).child('province:'+cell.province).child('burg:'+b.i);
   const economy=pick(seed,'livelihood',profilePack.economies,tags,[],region.public.economy.specialisms),custom=pick(seed,'custom',profilePack['town-customs'],tags);
+  const role=economy.role.replace(/\bvillage\b/g,ctx.settlement_class==='village'?'village':ctx.settlement_class==='town'?'town':'community');
   const social=profilePack.social.find(x=>x.id===state.public.social_character);
   // Parents describe social identity; geography remains local evidence, not inherited water/mines.
   const legacy=origins.projection.origins[b.i];
   homes[b.i]=record('hometown','burg:'+b.i,b.name,ctx,seed,{state:state.id,region:regionKey},
-   {settlement_role:economy.role,posture:state.public.posture,social_character:social.id,external_orientation:state.public.external_orientation,economy:{specialisms:[economy.id]},regional_dependency:{region_id:region.id,contribution:economy.product,status:'TRHGD-generated'},public_custom:custom.id,
+   {settlement_role:role,posture:state.public.posture,social_character:social.id,external_orientation:state.public.external_orientation,economy:{specialisms:[economy.id]},regional_dependency:{region_id:region.id,contribution:economy.product,status:'TRHGD-generated'},public_custom:custom.id,
     local_memory:legacy.memory,tradition:legacy.tradition,legacy_record_id:legacy.record_id,
-    prose_facts:{placename:b.name,parent:region.name,role:economy.role,activity:economy.activity,product:economy.product,custom:custom.label,social:social.clause}},[economy,custom]);
+    prose_facts:{placename:b.name,parent:region.name,role,activity:economy.activity,product:economy.product,custom:custom.label,social:social.clause}},[economy,custom]);
  }
  return {states,regions,hometowns:homes};
 }

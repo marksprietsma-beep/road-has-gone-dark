@@ -8,6 +8,7 @@ for(const path of paths){const before=sha(readFileSync(path)),start=performance.
  for(const group of Object.values(out.profiles))for(const r of Object.values(group))if(r.public.economy.specialisms.includes('maritime-commerce')||r.domain==='state'&&r.public.external_orientation==='maritime'){
   if(!r.source_context.settlement_ids.some(id=>{const b=out.world.record('settlements',id);return b.port>0&&idx.water(b.cell)==='coast';}))throw Error('No co-located source coastal port: '+r.id);maritime++;
  }
+ for(const r of Object.values(out.profiles.hometowns)){const b=out.world.record('settlements',r.source.burg_id);if(r.source_context.settlement_class!==b.group||b.group!=='village'&&/\bvillage\b/.test(r.public.settlement_role))throw Error('Source settlement class mismatch: '+r.id);}
  for(const key of Object.keys(groups))groups[key].push(Object.values(out.profiles[key]));
  worlds.push({path,world_id:out.world.base.id,descriptor:out.descriptor,milliseconds:ms,storage_bytes:Buffer.byteLength(out.enrichment)+Buffer.byteLength(out.publicBytes),co_located_maritime_profiles_checked:maritime});if(sha(readFileSync(path))!==before)throw Error('Source mutated');}
 function roundRobin(batches){const result=[];for(let n=0;batches.some(a=>a.length>n);n++)for(const a of batches)if(a[n])result.push(a[n]);return result;}

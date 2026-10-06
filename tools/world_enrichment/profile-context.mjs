@@ -32,7 +32,7 @@ export function areaContext(world,stateId,provinceId=null,burg=null){
  if(towns.some(b=>b.walls))tags.add('walls');if(towns.some(b=>b.capital))tags.add('capital');
  const cultures=hist('culture'),religions=hist('religion');if(cultures.length>1)tags.add('mixed-cultures');
  return {world_id:world.base.id,state_id:stateId,province_id:provinceId,burg_id:burg?.i??null,cell_id:burg?.cell??null,
-  tags:[...tags].sort(),cultures,religions,dominant_biome:biomes[0]?.[0]??'Unknown',land_cells:ids.length,settlement_ids:towns.map(b=>b.i).sort((a,b)=>a-b),
+  tags:[...tags].sort(),cultures,religions,settlement_class:burg?.group??null,dominant_biome:biomes[0]?.[0]??'Unknown',land_cells:ids.length,settlement_ids:towns.map(b=>b.i).sort((a,b)=>a-b),
   provenance:{cultures:'positive, existing cells.culture IDs; counts of mapped land cells, not population shares or language',religions:'positive existing cells.religion IDs; no religious character inferred from names',geography:'source map.geography types + cells.heights/neighbors/river/biome; coastal-port requires one actual port burg adjoining ocean water',routes:'public source route point cell membership, not proof of a direct settlement entrance',mining:'public explicit mines markers; no ore type or hidden note text',biome:'20% compatible mapped-cell share; suitability supports generated livelihood, not source-exact industry',economy:'TRHGD generated background constrained by evidence; no simulated trade'},
  };
 }

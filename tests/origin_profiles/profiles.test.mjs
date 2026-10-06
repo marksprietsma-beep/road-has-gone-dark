@@ -55,6 +55,17 @@ test('ocean coast and inland port cannot combine into invented maritime commerce
  }
  for(const group of Object.values(a.profiles))for(const r of Object.values(group))if(r.public.economy.specialisms.includes('maritime-commerce'))assert(r.source_context.settlement_ids.some(id=>{const b=a.world.record('settlements',id);return b.port>0&&idx.water(b.cell)==='coast';}));
 });
+test('hometown livelihood wording preserves recorded town, village and fort classes',()=>{
+ const a=compileProfileWorld(path);let towns=0,forts=0;
+ for(const r of Object.values(a.profiles.hometowns)){
+  const b=a.world.record('settlements',r.source.burg_id);assert.equal(r.source_context.settlement_class,b.group);
+  if(b.group!=='village')assert(!/\bvillage\b/.test(r.public.settlement_role));
+  if(b.group==='town')towns++;if(b.group==='fort')forts++;
+ }
+ assert(towns>0&&forts>0);
+ const r=structuredClone(Object.values(a.profiles.hometowns).find(r=>r.source_context.settlement_class==='town'));
+ r.public.settlement_role='farming village';assert.throws(()=>validateProfile(r),/source settlement class/);
+});
 test('state order, sibling order and unrelated region addition do not reroll existing profiles',()=>{
  const a=compileProfileWorld(path);a.world.source.states.reverse();a.world.source.provinces.reverse();a.world.source.settlements.reverse();
  assert.equal(canonical(buildProfiles(a.world,a.origins)),canonical(a.profiles));
