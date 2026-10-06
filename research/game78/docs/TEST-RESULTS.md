@@ -18,6 +18,7 @@ Local Node 24.19.0, Godot **4.6.3**, Linux software OpenGL. No online content se
 | Canonical JSON regression | **5 tests / 0 failures**; both actual fixtures validated |
 | GAME-78 actual public-content Godot renders | **4 rendered pages at 1280×720**, inspected for readability/overflow |
 | Five fresh GAME-76 worlds | **10 actual generations / 5 byte-identical replays**, **197 source-anchored examples** across contrasted towns and actual ruins |
+| Pinned corpus replay under offline guard | **11,200 fact/projection records and 33,600 prose results replay exactly**, including fixed and Lexicon controls; detects silent version-preserving rerolls |
 | Combined sequential batches | **11,200 records**, both fact providers: 1,000 each site/origin/character/mundane/rare and 200 each NPC/contract/group; three deterministic renderer comparisons per row |
 
 [Logs](../evidence/logs/), [byte proof](../evidence/base-byte-proof.json), [fresh world evidence](../evidence/fresh-worlds.json), [metrics](../evidence/batch-metrics.json), [performance](../evidence/performance.json), [same-fact renderer metrics](../evidence/renderer-comparison.json), [screenshots](../evidence/screenshots/), and [historical-system regression proofs](../evidence/regressions/).
