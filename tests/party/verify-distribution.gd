@@ -1,4 +1,11 @@
 extends Node
+class PackageService extends PartyService:
+ var jobs: Array[String] = []
+ func _copy_input(source: String, target: String) -> bool:
+  var directory := target.get_base_dir()
+  if directory.get_file() == "peoples": directory = directory.get_base_dir()
+  if not jobs.has(directory): jobs.append(directory)
+  return super._copy_input(source,target)
 var checks := 0
 var failures := 0
 func check(ok: bool, why: String) -> void:
@@ -10,7 +17,7 @@ func _ready() -> void: call_deferred("run")
 func run() -> void:
  var base := OS.get_environment("GAME81_DISTRIBUTION_TEST_ROOT")
  DirAccess.make_dir_recursive_absolute(base)
- var service := PartyService.new()
+ var service := PackageService.new()
  service.library.library_root=base.path_join("library")
  service.store.save_root=base.path_join("saves")
  service.library.save_root=service.store.save_root
@@ -21,8 +28,6 @@ func run() -> void:
   check(people.load_world(entry.world),people.error)
  # Presets are inside the exported PCK, not loose files. Exercise the same
  # production helper boundary as the editor, including later edits/readiness.
- var job_root := ProjectSettings.globalize_path("user://party-jobs")
- var jobs_before := DirAccess.get_directories_at(job_root) if DirAccess.dir_exists_absolute(job_root) else PackedStringArray()
  for entry in service.library.discover():
   var profiles := OriginProfiles.new()
   check(profiles.load_world(entry.world), "packed preset profiles")
@@ -43,7 +48,7 @@ func run() -> void:
   var ready := service.operate(entry,slot,"ready")
   var loaded := service.store.load_save(slot,entry.world)
   check(ready.ok and loaded.ok and loaded.state==ready.state and loaded.state.onboarding_stage=="party_ready","packed preset ready/reload")
- check(DirAccess.get_directories_at(job_root)==jobs_before,"owned packed-input jobs cleaned up")
+ check(service.jobs.size()==6 and service.jobs.all(func(path: String): return not DirAccess.dir_exists_absolute(path)),"owned packed-input jobs cleaned up")
  var stage := service.library.create_staging()
  check(stage.ok,"fresh distribution world staging")
  var generated := service.library.run_generator(stage.directory,"game81-complete-package-world")

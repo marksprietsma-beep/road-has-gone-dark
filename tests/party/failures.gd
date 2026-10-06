@@ -20,8 +20,10 @@ class FaultGenerator extends PartyService:
   return fail("Injected generator failure")
 class FaultPackedInput extends PartyService:
  var copies := 0
+ var job_directory := ""
  func _copy_input(source: String, target: String) -> bool:
   copies += 1
+  if copies == 1: job_directory = target.get_base_dir()
   if copies == 2: return false
   return super._copy_input(source,target)
 var failures := 0
@@ -61,11 +63,9 @@ func run() -> void:
  var original := FileAccess.get_file_as_string(path)
  var packed := FaultPackedInput.new()
  packed.store = service.store
- var job_root := ProjectSettings.globalize_path("user://party-jobs")
- var jobs_before := DirAccess.get_directories_at(job_root) if DirAccess.dir_exists_absolute(job_root) else PackedStringArray()
  check(not packed.operate(entry,slot,"generate").ok,"partial packed-resource preparation failure is controlled")
  check(FileAccess.get_file_as_string(path)==original,"failed packed inputs preserve exact origin")
- check(DirAccess.get_directories_at(job_root)==jobs_before,"partial packed inputs leave no owned job orphan")
+ check(not packed.job_directory.is_empty() and not DirAccess.dir_exists_absolute(packed.job_directory),"partial packed inputs leave no owned job orphan")
  var bad := FaultGenerator.new()
  bad.store = service.store
  check(not bad.operate(entry,slot,"generate").ok,"generator failure is controlled")
