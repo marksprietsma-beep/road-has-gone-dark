@@ -29,5 +29,6 @@ if(a.includes('--qa')){
 }
 cpSync(helper,join(target,'worldgen-helper'),{recursive:true});
 assertHelper(join(target,'worldgen-helper'));
+execFileSync(engine,['--headless','--path',root,'--script','tools/release/export-notices.gd','--','--output',target],{cwd:root,stdio:'inherit'});
 writeFileSync(join(target,'distribution.json'),JSON.stringify({schema_version:1,godot:version,platform:process.platform,arch:process.arch,enrichmentRuntimes:manifest.enrichmentRuntimes,executable_sha256:createHash('sha256').update(readFileSync(executable)).digest('hex')},null,2)+'\n');
 console.log('Complete native offline distribution:',target);

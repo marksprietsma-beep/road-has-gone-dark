@@ -37,6 +37,11 @@ jobs:
       - name: Windows native profiles, five offline worlds, persistence and regressions
         if: runner.os == 'Windows'
         run: python tests/origin_profiles/run-tests.py --regressions
+      - name: Assemble this Linux run's real frames for review
+        if: runner.os == 'Linux'
+        run: |
+          python -m pip install -r tests/origin_profiles/requirements-visual.txt
+          python tests/origin_profiles/make-contact-sheet.py
       - name: Install checksum-verified native export templates
         run: python tools/release/prepare-templates.py
       - name: Export, test and archive the complete native game and matching helper
