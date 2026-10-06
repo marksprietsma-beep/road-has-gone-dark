@@ -27,6 +27,13 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  projection = {}
  error = ""
  if path.is_empty(): path = directory(world)
+ var cache_key := "scripts/world_enrichment/origin_profiles.gd:" + path
+ var fingerprint := ImmutableValidationCache.fingerprint(world, path, RUNTIME)
+ var cached: Dictionary = world._validation_cache.get(cache_key,{})
+ if cached.get("fingerprint")==fingerprint:
+  descriptor = cached.descriptor.duplicate(true)
+  projection = cached.projection.duplicate(true)
+  return true
  var d := WorldOriginLore.read_json(path.path_join("descriptor.json"))
  if d.size() != KEYS.size(): return _fail("descriptor is missing or corrupt.")
  for key in KEYS:
@@ -104,6 +111,7 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  if p.hometowns.size() != old.origins.size(): return _fail("incomplete hometown coverage.")
  descriptor = d
  projection = p
+ world._validation_cache[cache_key] = {"fingerprint":fingerprint,"descriptor":descriptor.duplicate(true),"projection":projection.duplicate(true)}
  return true
 
 func public_profile(group: String, key: String) -> Dictionary:

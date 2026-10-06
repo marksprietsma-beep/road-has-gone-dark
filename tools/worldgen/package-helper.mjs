@@ -38,7 +38,7 @@ async function include(key, optional = false) {
   for (const name of Object.keys(pkg.dependencies ?? {})) await include(locate(key,name));
   for (const name of Object.keys(pkg.optionalDependencies ?? {})) await include(locate(key,name),true);
 }
-for (const name of [...Object.keys(lock.packages[''].dependencies), 'jsdom', 'vite']) await include(locate('',name));
+for (const name of [...Object.keys(lock.packages[''].dependencies), 'jsdom', 'vite', 'typescript']) await include(locate('',name));
 await mkdir(join(out,'vendor/azgaar'),{recursive:true});
 await writeFile(join(out,'.gdignore'),'');
 for (const name of ['src','biome.json','vite.config.ts','tsconfig.json','package.json','package-lock.json','LICENSE'])
@@ -47,9 +47,9 @@ for (const key of [...included].sort()) await cp(join(vendor,key),join(out,'vend
   recursive:true, filter: path => !path.slice(join(vendor,key).length).split(/[\\/]/).includes('node_modules')
 });
 await cp(join(root,'tools/worldgen'),join(out,'tools/worldgen'),{recursive:true, filter:path => !path.endsWith('package-helper.mjs') && !path.slice(join(root,'tools/worldgen').length).split(/[\\/]/).includes('.tmp')});
-for (const path of ['tools/world_enrichment', 'tools/party', 'vendor/content']) await cp(join(root,path),join(out,path),{recursive:true});
+for (const path of ['tools/world_enrichment', 'tools/party', 'tools/expedition', 'tools/regiongen', 'vendor/town-forge', 'vendor/content', 'assets/map_icons']) await cp(join(root,path),join(out,path),{recursive:true});
 await mkdir(join(out,'data/world_enrichment'),{recursive:true});
-for (const name of ['trhgd-expanded-v1.json','curated-corpora-vocabulary.json','runtime.json','runtime-profiles-v2.json','trhgd-origin-profiles-v2.json','runtime-party-v1.json','trhgd-party-v1.json']) await cp(join(root,'data/world_enrichment',name),join(out,'data/world_enrichment',name));
+for (const name of ['trhgd-expanded-v1.json','curated-corpora-vocabulary.json','runtime.json','runtime-profiles-v2.json','trhgd-origin-profiles-v2.json','runtime-party-v1.json','runtime-expedition-v1.json','trhgd-party-v1.json']) await cp(join(root,'data/world_enrichment',name),join(out,'data/world_enrichment',name));
 const binary = process.platform === 'win32' ? 'node.exe' : 'node';
 await cp(runtime,join(out,binary));
 if (process.platform !== 'win32') await chmod(join(out,binary),0o755);
@@ -57,7 +57,7 @@ await writeFile(join(out,'NODE-LICENSE'),license);
 const manifest = {helperVersion:1,nodeVersion:version,platform:process.platform,arch:process.arch,
  provider:'azgaar',version:'1.153.1',upstreamCommit:'cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6',
  runtimeSha256:createHash('sha256').update(await readFile(runtime)).digest('hex'),
- enrichmentRuntimes:Object.fromEntries(await Promise.all([['origin-v1','runtime.json'],['profiles-v2','runtime-profiles-v2.json'],['party-v1','runtime-party-v1.json']].map(async([key,file])=>[key,createHash('sha256').update(await readFile(join(root,'data/world_enrichment',file))).digest('hex')]))),
+ enrichmentRuntimes:Object.fromEntries(await Promise.all([['origin-v1','runtime.json'],['profiles-v2','runtime-profiles-v2.json'],['party-v1','runtime-party-v1.json'],['expedition-v1','runtime-expedition-v1.json']].map(async([key,file])=>[key,createHash('sha256').update(await readFile(join(root,'data/world_enrichment',file))).digest('hex')]))),
  lockSha256:createHash('sha256').update(await readFile(join(vendor,'package-lock.json'))).digest('hex'),
  packages:[...included].sort().map(key=>({path:key,version:lock.packages[key].version,integrity:lock.packages[key].integrity}))};
 await writeFile(join(out,'runtime.json'),JSON.stringify(manifest,null,2)+'\n');

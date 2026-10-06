@@ -16,6 +16,8 @@ var seed := ""
 var source_sha256 := ""
 var world_ref: Dictionary = {}
 var _raw: Dictionary = {}
+# Successful immutable sidecar validations, scoped to this loaded world instance.
+var _validation_cache := {}
 # Override only for isolated tests/custom library roots; not persisted as a path.
 var enrichment_directory := ""
 var profiles_directory := ""
@@ -25,6 +27,7 @@ func load_fixture(path: String) -> bool:
 	world_id = ""
 	world_ref = {}
 	_raw = {}
+	_validation_cache.clear()
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		return _fail("Fixture unavailable: %s" % path)

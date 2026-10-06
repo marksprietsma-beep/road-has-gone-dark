@@ -7,7 +7,7 @@ const output=resolve(value('--output')??join(root,'worldgen-helper'));
 const known=new Set(['--output','--runtime-license']);for(let i=0;i<args.length;i+=2)if(!known.has(args[i])||!args[i+1])throw Error('Use --output <directory> and optionally --runtime-license <Node LICENSE>');
 if(process.version!=='v24.19.0')throw Error('Development bootstrap requires Node v24.19.0; players use bundled Node only');
 try{assertHelper(output);console.log('Matching helper already provisioned:',output);process.exit(0);}catch{}
-const pin=expectedRuntimes()['party-v1'].slice(0,12),candidate=output+'.pending-'+process.pid,backup=output+'.previous-'+pin;
+const pin=expectedRuntimes()['expedition-v1'].slice(0,12),candidate=output+'.pending-'+process.pid,backup=output+'.previous-'+pin;
 if(existsSync(output)){
  let owned;try{owned=JSON.parse(readFileSync(join(output,'runtime.json'))).helperVersion===1;}catch{}
  if(!owned)throw Error('Existing output is not an owned world helper; nothing was replaced');

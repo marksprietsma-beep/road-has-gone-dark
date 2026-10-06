@@ -199,7 +199,7 @@ func _process(_delta: float) -> void:
   pending_edit = {}
   state = result.state
   ready_view = state.party.status == "ready"
-  message = "Party saved and verified." if not ready_view else "Party setup complete. Expedition gameplay is not available yet."
+  message = "Party saved and verified." if not ready_view else "Party setup complete. Your hometown awaits."
  refresh()
  if not after_save.is_empty() and result.get("ok", false):
   var action := after_save
@@ -298,7 +298,7 @@ func refresh() -> void:
  roster.mouse_filter = Control.MOUSE_FILTER_IGNORE if busy else Control.MOUSE_FILTER_STOP
  back_button.disabled = busy
  finish_button.disabled = busy or state.is_empty()
- finish_button.text = "Review party" if ready_view else "Party ready"
+ finish_button.text = "Enter hometown" if ready_view else "Party ready"
  detail_tabs.visible = not state.is_empty()
  updating = false
  if not state.is_empty(): _presence()
@@ -306,8 +306,7 @@ func refresh() -> void:
 func _finish() -> void:
  if thread != null or state.is_empty(): return
  if ready_view:
-  ready_view = false
-  refresh()
+  get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
  elif dirty():
   after_save = "ready"
   _save_changes()

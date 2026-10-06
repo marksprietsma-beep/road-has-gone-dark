@@ -168,6 +168,8 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 	if state.has("party"):
 		var party_error := PartyRecords.validate(state, world)
 		if not party_error.is_empty(): return party_error
+	var expedition_error := ExpeditionRecords.validate(state, world)
+	if not expedition_error.is_empty(): return expedition_error
 	var party: Array = state.get("party_ids", [])
 	var characters: Array = state.get("characters", [])
 	# New campaigns start with exactly three members. Recruitment later adds

@@ -428,12 +428,12 @@ func helper_status() -> Dictionary:
  var runtime := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
  if manifest.get("nodeVersion") != "v24.19.0" or not FileAccess.file_exists(runtime) or FileAccess.get_sha256(runtime) != manifest.get("runtimeSha256"):
   return _fail("The bundled world generator is unavailable. Install the matching game distribution or run the checkout bootstrap.")
- for pair in [["origin-v1", "runtime.json"], ["profiles-v2", "runtime-profiles-v2.json"], ["party-v1", "runtime-party-v1.json"]]:
+ for pair in [["origin-v1", "runtime.json"], ["profiles-v2", "runtime-profiles-v2.json"], ["party-v1", "runtime-party-v1.json"], ["expedition-v1", "runtime-expedition-v1.json"]]:
   var packaged := helper.path_join("data/world_enrichment/" + pair[1])
   var expected := FileAccess.get_sha256("res://data/world_enrichment/" + pair[1])
   if manifest.get("enrichmentRuntimes", {}).get(pair[0]) != expected or not FileAccess.file_exists(packaged) or FileAccess.get_sha256(packaged) != expected:
    return _fail("The bundled generator does not match this game version. Run the checkout bootstrap or use the complete matching game distribution.")
- var profile_manifest := _json(helper.path_join("data/world_enrichment/runtime-party-v1.json"))
+ var profile_manifest := _json(helper.path_join("data/world_enrichment/runtime-expedition-v1.json"))
  for file in profile_manifest.get("files", {}):
   var path := helper.path_join(str(file))
   if not FileAccess.file_exists(path) or FileAccess.get_sha256(path) != profile_manifest.files[file]: return _fail("The bundled generator failed its content integrity check. Rebuild the matching helper.")

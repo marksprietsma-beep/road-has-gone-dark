@@ -33,16 +33,19 @@ func refresh_party_resume(service: PartyService = null) -> void:
 		existing.queue_free()
 	if service == null: service = PartyService.new()
 	party_resume = service.resumable()
+	menu_content.get_node("ContinueButton").visible = party_resume.is_empty()
 	if not party_resume.is_empty():
 		var button := Button.new()
 		button.name = "ResumePartyButton"
-		button.text = "Resume party setup"
+		var loaded := service.recover(party_resume.slot, party_resume.entry.world)
+		var ready: bool = loaded.get("ok",false) and loaded.state.get("party",{}).get("status")=="ready"
+		button.text = "Resume Expedition" if ready and not loaded.state.get("expedition",{}).get("active",{}).is_empty() else ("Continue" if ready else "Resume party setup")
 		button.flat = true
 		menu_content.add_child(button)
 		menu_content.move_child(button, new_game_button.get_index() + 2)
 		button.pressed.connect(func():
 			PartyService.handoff = {"entry":party_resume.entry,"slot":party_resume.slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
-			await _change_scene_with_fade("res://scenes/ui/party_creation.tscn")
+			await _change_scene_with_fade("res://scenes/gameplay/expedition.tscn" if ready else "res://scenes/ui/party_creation.tscn")
 		)
 
 
