@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "version": "trhgd-party-1",
+  "authorship": "TRHGD original descriptions and adapters; no proprietary ancestry prose",
+  "peoples": [
+    {
+      "id": "human",
+      "name": "Human",
+      "description": "Human households follow many local ways of life. Their traditions are learned from neighbours and family, rather than belonging to a single culture.",
+      "affinity": "road"
+    },
+    {
+      "id": "dwarf",
+      "name": "Dwarf",
+      "description": "Dwarves are a broad-built people whose communities often value the memory of skilled work. Their households belong to many cultures; no craft or calling is inherited as a rule.",
+      "affinity": "upland"
+    },
+    {
+      "id": "wood-elf",
+      "name": "Woodland Elf",
+      "description": "Woodland elves keep varied household traditions shaped by their surroundings. Some live among trees, while others make their homes in ports, fields and towns.",
+      "affinity": "forest"
+    },
+    {
+      "id": "hearth-elf",
+      "name": "Hearth Elf",
+      "description": "Hearth elves are an elven people found in settled communities and travelling households. Shared stories and careful hospitality are common themes, with ample room for individual lives.",
+      "affinity": "settled"
+    },
+    {
+      "id": "smallfolk",
+      "name": "Smallfolk",
+      "description": "Smallfolk are a short-statured people with communities in many landscapes. Household ties often matter to them, but neither ancestry nor birthplace determines a calling.",
+      "affinity": "farming"
+    },
+    {
+      "id": "orc",
+      "name": "Orc",
+      "description": "Orcs are a sturdy people whose households preserve many different customs. Their lives include ordinary work, learning and friendship, rather than one inherited temperament.",
+      "affinity": "pasture"
+    },
+    {
+      "id": "goblin",
+      "name": "Goblin",
+      "description": "Goblins are a small people with varied local communities. Careful repair and practical invention feature in some households; individuals choose their own work and values.",
+      "affinity": "wetland"
+    },
+    {
+      "id": "emberkin",
+      "name": "Emberkin",
+      "description": "Emberkin are a scaled humanoid people with many regional traditions. Their ancestry describes appearance and community ties, not exceptional powers or a promised magical calling.",
+      "affinity": "port"
+    }
+  ],
+  "roles": [
+    {
+      "id": "vanguard",
+      "name": "Vanguard",
+      "description": "An intended front-line presence. This is a provisional party role, not a class or a set of combat abilities."
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "description": "An intended observer and pathfinder. This role grants no movement, skill or perception bonuses."
+    },
+    {
+      "id": "adept",
+      "name": "Adept",
+      "description": "An intended student of unusual knowledge. No spells, magical powers or class levels are assigned."
+    },
+    {
+      "id": "expert",
+      "name": "Expert",
+      "description": "An intended practical problem-solver. This role grants no skills, tools or mechanical advantages."
+    }
+  ],
+  "occupations": [
+    {
+      "id": "fisher",
+      "label": "fisher",
+      "foundation": "river-carrier",
+      "requires": {
+        "any": [
+          "river",
+          "port"
+        ]
+      },
+      "economies": [
+        "fishing"
+      ]
+    },
+    {
+      "id": "ship-carpenter",
+      "label": "ship carpenter",
+      "foundation": "woodworker",
+      "requires": [
+        "port",
+        "forest"
+      ],
+      "economies": [
+        "boatbuilding",
+        "maritime-commerce"
+      ]
+    },
+    {
+      "id": "ore-sorter",
+      "label": "ore sorter",
+      "foundation": "porter",
+      "requires": [
+        "regional-mine"
+      ],
+      "economies": [
+        "mining"
+      ]
+    },
+    {
+      "id": "mine-cart-handler",
+      "label": "mine cart handler",
+      "foundation": "carter",
+      "requires": [
+        "regional-mine"
+      ],
+      "economies": [
+        "mining"
+      ]
+    },
+    {
+      "id": "herder",
+      "label": "herder",
+      "foundation": "carter",
+      "requires": [
+        "pasture"
+      ],
+      "economies": [
+        "pastoral"
+      ]
+    },
+    {
+      "id": "stable-worker",
+      "label": "stable worker",
+      "foundation": "repairer",
+      "requires": [
+        "pasture"
+      ],
+      "economies": [
+        "pastoral"
+      ]
+    },
+    {
+      "id": "cartwright-helper",
+      "label": "cartwright helper",
+      "foundation": "woodworker",
+      "requires": [
+        "forest"
+      ],
+      "economies": [
+        "forestry"
+      ]
+    },
+    {
+      "id": "sailmaker-apprentice",
+      "label": "sailmaker apprentice",
+      "foundation": "weaver",
+      "requires": [
+        "port"
+      ],
+      "economies": [
+        "maritime-commerce"
+      ]
+    }
+  ],
+  "name_shapes": {
+    "human": [
+      "C V",
+      "C V C"
+    ],
+    "dwarf": [
+      "C V C",
+      "C V"
+    ],
+    "wood-elf": [
+      "C V",
+      "V C V"
+    ],
+    "hearth-elf": [
+      "C V",
+      "C V V"
+    ],
+    "smallfolk": [
+      "C V",
+      "C V C"
+    ],
+    "orc": [
+      "C V C",
+      "C V"
+    ],
+    "goblin": [
+      "C V",
+      "V C"
+    ],
+    "emberkin": [
+      "C V C",
+      "V C V"
+    ]
+  },
+  "biography_patterns": [
+    "<person> grew up in <home>, in [a] <family>. <training> taught them the work of [a] <occupation>. {Their household contributed to|Their early work was shaped by} <livelihood>. They hope to <motivation>; they still carry <keepsake>.",
+    "Raised in <home>, <person> learned {practical work|a working trade} as [a] <occupation>, guided by <training>. Their <family> shared in <livelihood>. {Now they want to|Leaving home, they hope to} <motivation>. <keepsake> remains a reminder of that life.",
+    "<person> comes from [a] <family> in <home>. {Before leaving, they worked as|Their former work was that of} [a] <occupation>. In a community centred on <livelihood>, they learned from <training>. They carry <keepsake> and hope to <motivation>."
+  ]
+}
