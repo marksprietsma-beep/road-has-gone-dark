@@ -46,7 +46,7 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
   if m.character_id != id or m.character_id != state.characters[i].id or state.party_ids[i] != id or m.slot != i + 1: return "Invalid immutable character ID or slot"
   if not m.name is String or m.name.strip_edges().is_empty() or m.name.length() > 48 or not m.name_edited is bool or state.characters[i].name != m.name: return "Invalid character name"
   if not people_ids.has(m.people_id) or not role_ids.has(m.role_id): return "Unsupported people or provisional role"
-  if not (m.background_variant is int or m.background_variant is float) or m.background_variant != int(m.background_variant) or m.background_variant < 0 or not m.background_id is String or not m.background_id.begins_with(id + ":background:") or m.background_id.length() != id.length() + 32: return "Invalid background identity"
+  if not (m.background_variant is int or m.background_variant is float) or m.background_variant != int(m.background_variant) or m.background_variant < 0 or m.background_variant > 9007199254740991 or not m.background_id is String or not m.background_id.begins_with(id + ":background:") or m.background_id.length() != id.length() + 32: return "Invalid background identity"
   var expected_background := id + ":background:" + JSON.stringify(["trhgd-party-1", party.content_pack_sha, int(m.background_variant), m.people_id, m.role_id]).sha256_text().left(20)
   if m.background_id != expected_background: return "Background digest mismatch"
   var refs: Variant = m.origin_refs

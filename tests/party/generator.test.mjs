@@ -40,6 +40,6 @@ test('all eight people and four role IDs accepted without rarity restrictions',(
 });
 test('invalid identities, versions, incomplete party, secret leak and unsupported IDs refused',()=>{
  const c=campaign(),p=createParty(out,c,out.descriptor);
- for(const change of [p=>p.members.pop(),p=>p.members[0].character_id='bad',p=>p.members[0].people_id='bad',p=>p.members[0].role_id='bad',p=>p.members[0].generated_facts.background.local_knowledge.hidden_pois.push('secret'),p=>p.members[0].origin_refs.burg_id=99999,p=>p.members[0].biography='wrong',p=>p.peoples_pin.enrichment_sha='bad']){const q=structuredClone(p);change(q);assert.throws(()=>validateParty(q,out,c));}
+ for(const change of [p=>p.members.pop(),p=>p.secret='unsupported',p=>p.members[0].secret='unsupported',p=>p.members[0].origin_refs.world_sha='bad',p=>p.members[0].background_variant=Number.MAX_SAFE_INTEGER+1,p=>p.members[0].character_id='bad',p=>p.members[0].people_id='bad',p=>p.members[0].role_id='bad',p=>p.members[0].generated_facts.background.local_knowledge.hidden_pois.push('secret'),p=>p.members[0].origin_refs.burg_id=99999,p=>p.members[0].biography='wrong',p=>p.peoples_pin.enrichment_sha='bad']){const q=structuredClone(p);change(q);assert.throws(()=>validateParty(q,out,c));}
  assert.equal(sha(readFileSync(file)),before);
 });

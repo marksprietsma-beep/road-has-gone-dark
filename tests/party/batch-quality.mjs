@@ -29,7 +29,7 @@ for(const [wi,file] of files.entries()){
 }
 assert(samples.length>=1000);assert(jobs.size>=20);assert(motives.size>=12);assert(keepsakes.size>=10);
 const counts=field=>{const values=samples.map(field);return{distinct:new Set(values).size,total:values.length,duplicates:values.length-new Set(values).size}};
-const metrics={characters:samples.length,worlds,structured:counts(s=>canonical(s.member.generated_facts)),prose:counts(s=>s.member.biography),occupations:Object.fromEntries(jobs),families:Object.fromEntries(families),motivations:Object.fromEntries(motives),keepsakes:Object.fromEntries(keepsakes),contradictions:0,invalid_source_claims:0,hidden_information_leaks:0,repeat_checks:samples.length,peak_memory:process.memoryUsage().rss};
+const metrics={characters:samples.length,worlds,structured:counts(s=>canonical(s.member.generated_facts)),prose:counts(s=>s.member.biography),story_combinations:counts(s=>canonical([s.member.generated_facts.occupation_id,...['family','childhood','training','motivation','keepsake','value','habit'].map(k=>s.member.generated_facts.background[k])])),biography_forms:Object.fromEntries([0,1,2].map(form=>[form,samples.filter(s=>s.member.generated_facts.biography_form===form).length])),occupations:Object.fromEntries(jobs),families:Object.fromEntries(families),motivations:Object.fromEntries(motives),keepsakes:Object.fromEntries(keepsakes),contradictions:0,invalid_source_claims:0,hidden_information_leaks:0,repeat_checks:samples.length,peak_memory:process.memoryUsage().rss};
 const dir='docs/implementation/game81';mkdirSync(dir,{recursive:true});
 writeFileSync(dir+'/batch-metrics.json',JSON.stringify(metrics,null,2)+'\n');
 writeFileSync(dir+'/sequential-backgrounds.json',JSON.stringify(samples,null,2)+'\n');

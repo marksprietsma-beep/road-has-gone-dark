@@ -19,7 +19,20 @@ func _ready() -> void:
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
-	party_resume = PartyService.new().resumable()
+	refresh_party_resume()
+
+	menu_content.modulate.a = 0.0
+	await _fade_menu(1.0)
+	new_game_button.grab_focus()
+
+
+func refresh_party_resume(service: PartyService = null) -> void:
+	var existing := menu_content.get_node_or_null("ResumePartyButton")
+	if existing != null:
+		menu_content.remove_child(existing)
+		existing.queue_free()
+	if service == null: service = PartyService.new()
+	party_resume = service.resumable()
 	if not party_resume.is_empty():
 		var button := Button.new()
 		button.name = "ResumePartyButton"
@@ -28,13 +41,9 @@ func _ready() -> void:
 		menu_content.add_child(button)
 		menu_content.move_child(button, 2)
 		button.pressed.connect(func():
-			PartyService.handoff = party_resume
+			PartyService.handoff = {"entry":party_resume.entry,"slot":party_resume.slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
 			await _change_scene_with_fade("res://scenes/ui/party_creation.tscn")
 		)
-
-	menu_content.modulate.a = 0.0
-	await _fade_menu(1.0)
-	new_game_button.grab_focus()
 
 
 func _on_new_game_pressed() -> void:

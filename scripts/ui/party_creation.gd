@@ -28,6 +28,7 @@ var back_button: Button
 var pack := WorldOriginLore.read_json(WorldPeoples.PACK)
 var updating := false
 var pending_edit := {}
+var local_people: Array = []
 
 func label(text: String, size: int = 14) -> Label:
  var l := Label.new()
@@ -194,7 +195,7 @@ func _process(_delta: float) -> void:
   pending_edit = {}
   state = result.state
   ready_view = state.party.status == "ready"
-  message = "Party saved and verified." if not ready_view else "Expedition gameplay follows in the next milestone."
+  message = "Party saved and verified." if not ready_view else "Party setup complete. Expedition gameplay is not available yet."
  refresh()
  if not after_save.is_empty() and result.get("ok", false):
   var action := after_save
@@ -211,7 +212,10 @@ func dirty() -> bool:
  return name_edit.text.strip_edges() != m.name or pack.peoples[people_picker.selected].id != m.people_id or pack.roles[role_picker.selected].id != m.role_id
 
 func _save_changes(regenerate: bool = false) -> void:
- if state.is_empty() or thread != null: return
+ if thread != null: return
+ if state.is_empty():
+  _start("generate")
+  return
  var changes := {"people_id":pack.peoples[people_picker.selected].id,"role_id":pack.roles[role_picker.selected].id}
  var m: Dictionary = state.party.members[selected - 1]
  if name_edit.text.strip_edges() != m.name: changes.name = name_edit.text
@@ -230,12 +234,20 @@ func _select_member(index: int) -> void:
 func _presence() -> void:
  if updating or entry.is_empty(): return
  var people: Dictionary = pack.peoples[people_picker.selected]
- var reader := WorldPeoples.new()
- if not reader.load_world(entry.world): return
- var rows: Array = reader.local(int(state.origin.home_burg_id)).peoples
- var row: Dictionary = rows.filter(func(p: Dictionary): return p.people_id == people.id)[0]
+ if local_people.is_empty():
+  var reader := WorldPeoples.new()
+  if not reader.load_world(entry.world): return
+  local_people = reader.local(int(state.origin.home_burg_id)).peoples
+ var row: Dictionary = local_people.filter(func(p: Dictionary): return p.people_id == people.id)[0]
  commonness.text = {"common":"Common locally","present":"Present","uncommon":"Uncommon locally"}[row.status] + " · Always selectable"
  description.text = people.description
+
+func occupation_label(id: String) -> String:
+ var rows: Array = pack.occupations.filter(func(r: Dictionary): return r.id == id)
+ if not rows.is_empty(): return rows[0].label
+ var foundation := WorldOriginLore.read_json("res://data/world_enrichment/trhgd-expanded-v1.json")
+ rows = foundation.occupations.filter(func(r: Dictionary): return r.id == id)
+ return str(rows[0].key) if not rows.is_empty() else id.replace("-", " ")
 
 func refresh() -> void:
  updating = true
@@ -265,7 +277,7 @@ func refresh() -> void:
   for i in pack.roles.size():
    if pack.roles[i].id == member.role_id: role_picker.select(i)
   var f: Dictionary = member.generated_facts
-  biography.text = member.biography + "\n\nUPBRINGING: " + str(f.background.family).replace("-", " ") + "\nFORMER WORK: " + str(f.occupation_id).replace("-", " ") + "\nMOTIVATION: " + str(f.background.motivation).replace("-", " ")
+  biography.text = member.biography + "\n\nUPBRINGING: " + str(f.background.family).replace("-", " ") + "\nFORMER WORK: " + occupation_label(str(f.occupation_id)) + "\nMOTIVATION: " + str(f.background.motivation).replace("-", " ")
  if not state.is_empty() and not pending_edit.is_empty():
   if pending_edit.has("name"): name_edit.text = pending_edit.name
   for i in pack.peoples.size():
@@ -275,7 +287,9 @@ func refresh() -> void:
  message_label.text = message.left(240)
  message_label.tooltip_text = message
  name_edit.editable = not busy and not ready_view and not state.is_empty()
- for control in [people_picker,role_picker,reroll_button,save_button]: control.disabled = busy or state.is_empty() or ready_view
+ for control in [people_picker,role_picker,reroll_button]: control.disabled = busy or state.is_empty() or ready_view
+ save_button.text = "Retry preparation" if state.is_empty() else "Save character"
+ save_button.disabled = busy or ready_view or entry.is_empty()
  roster.mouse_filter = Control.MOUSE_FILTER_IGNORE if busy else Control.MOUSE_FILTER_STOP
  back_button.disabled = busy
  finish_button.disabled = busy or state.is_empty()

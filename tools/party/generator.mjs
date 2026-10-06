@@ -83,13 +83,15 @@ export function editParty(out,campaign,slot,changes){
 }
 export function validateParty(party,out,campaign){
  const {ctx,tags,home}=partyContext(out,campaign);
+ if(Object.keys(party).length!==7)throw Error('Unsupported party fields');
  if(party.schema_version!==1||!['draft','ready'].includes(party.status)||party.generator_version!==VERSION||party.content_pack_sha!==packSha||party.runtime_manifest_sha!==sha(readFileSync(new URL('../../data/world_enrichment/runtime-party-v1.json',import.meta.url)))||party.members?.length!==3||canonical(party.peoples_pin)!==canonical(out.descriptor))throw Error('Invalid party schema or pins');
  const identities=new Set();
  for(const[i,m]of party.members.entries()){
+  if(Object.keys(m).length!==11||Object.keys(m.origin_refs??{}).length!==8)throw Error('Unsupported character fields');
   lookup('peoples',m.people_id);lookup('roles',m.role_id);
-  if(m.slot!==i+1||m.character_id!==campaign.playthrough_id+':adventurer:'+(i+1)||m.character_id!==campaign.characters[i].id||identities.has(m.character_id)||typeof m.name!=='string'||!m.name.trim()||m.name.length>48||/[\x00-\x1f<>]/.test(m.name)||!Number.isInteger(m.background_variant)||m.background_variant<0||typeof m.name_edited!=='boolean')throw Error('Invalid character identity');identities.add(m.character_id);
+  if(m.slot!==i+1||m.character_id!==campaign.playthrough_id+':adventurer:'+(i+1)||m.character_id!==campaign.characters[i].id||identities.has(m.character_id)||typeof m.name!=='string'||!m.name.trim()||m.name.length>48||/[\x00-\x1f<>]/.test(m.name)||!Number.isSafeInteger(m.background_variant)||m.background_variant<0||typeof m.name_edited!=='boolean')throw Error('Invalid character identity');identities.add(m.character_id);
   const expected=m.character_id+':background:'+sha(canonical([VERSION,packSha,m.background_variant,m.people_id,m.role_id])).slice(0,20);if(m.background_id!==expected)throw Error('Invalid background identity');
-  if(m.origin_refs.world_id!==ctx.world.id||m.origin_refs.burg_id!==ctx.source_id||m.origin_refs.cell_id!==ctx.cell_id||m.origin_refs.state_id!==ctx.state_id||m.origin_refs.province_id!==ctx.province_id||m.origin_refs.culture_id!==ctx.culture_id||m.origin_refs.religion_id!==ctx.religion_id)throw Error('Character source mismatch');
+  if(m.origin_refs.world_sha!==ctx.world.sha256||m.origin_refs.world_id!==ctx.world.id||m.origin_refs.burg_id!==ctx.source_id||m.origin_refs.cell_id!==ctx.cell_id||m.origin_refs.state_id!==ctx.state_id||m.origin_refs.province_id!==ctx.province_id||m.origin_refs.culture_id!==ctx.culture_id||m.origin_refs.religion_id!==ctx.religion_id)throw Error('Character source mismatch');
   const f=m.generated_facts,job=lookupOccupation(f.occupation_id);
   const fields=['name','naming','birthplace','age_band','occupation','training','family','childhood','value','habit','concern','contact','traits','keepsake','local_knowledge','first_failure','first_success','motivation','hometown_relationship'];
   if(Object.keys(f).length!==9||Object.keys(f.background).length!==fields.length||fields.some(k=>!Object.hasOwn(f.background,k)))throw Error('Unsupported public background fields');

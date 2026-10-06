@@ -35,7 +35,7 @@ func wait_scene(path: String) -> void:
 func wait_party(ui: Control) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
- check(ui.thread==null and not ui.state.is_empty(),"async generation/save completes")
+ check(ui.thread==null and not ui.state.is_empty(),"async generation/save completes: "+ui.message)
  check(ui.message.begins_with("Party saved") or ui.ready_view,"only verified save succeeds")
  await frames()
 func shot(name: String, ui: Control=null) -> void:
@@ -141,8 +141,10 @@ func run() -> void:
  resume.library.library_root=base.path_join("library")
  var choice := resume.resumable()
  check(choice.slot==slot,"narrow restart resume points to same slot")
- PartyService.handoff={"entry":choice.entry,"slot":slot,"save_root":campaign_root,"library_root":base.path_join("library")}
- change_scene_to_file("res://scenes/ui/party_creation.tscn")
+ current_scene.refresh_party_resume(resume)
+ for n in 60: await process_frame
+ await shot("main-menu-resume-party")
+ await click(current_scene.menu_content.get_node("ResumePartyButton"))
  await wait_scene("res://scenes/ui/party_creation.tscn")
  ui=current_scene
  await wait_party(ui)

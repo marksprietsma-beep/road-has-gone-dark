@@ -34,26 +34,36 @@ func recover(slot: String, world: GameWorldTemplate) -> Dictionary:
  if current == j.after_sha:
   var loaded := store.load_save(slot, world)
   if loaded.ok:
+   _clean_owned_temps(path, j)
    DirAccess.remove_absolute(journal)
    return loaded
  if current != j.after_sha and current != str(j.before).sha256_text(): return fail("Campaign changed outside party setup. Recovery was preserved.")
  if current == str(j.before).sha256_text():
   if FileAccess.file_exists(path + ".tmp") and FileAccess.get_sha256(path + ".tmp") == j.after_sha: DirAccess.remove_absolute(path + ".tmp")
+  _clean_owned_temps(path, j)
   DirAccess.remove_absolute(journal)
   return store.load_save(slot, world)
  if not _restore(slot, j): return fail("Party recovery could not restore the previous draft. The campaign was preserved.")
  return store.load_save(slot, world)
 
+func _clean_owned_temps(path: String, j: Dictionary) -> void:
+ for pair in [[".party-rollback", str(j.before).sha256_text()], [".party-unverified", j.after_sha]]:
+  if FileAccess.file_exists(path + pair[0]) and FileAccess.get_sha256(path + pair[0]) == pair[1]: DirAccess.remove_absolute(path + pair[0])
+
 func _restore(slot: String, j: Dictionary) -> bool:
  var path := ProjectSettings.globalize_path(store._slot_path(slot))
  var temp := path + ".party-rollback"
  var rejected := path + ".party-unverified"
- if FileAccess.file_exists(temp) or FileAccess.file_exists(rejected): return false
- var file := FileAccess.open(temp, FileAccess.WRITE)
- if file == null: return false
- file.store_string(j.before)
- file.flush()
- file.close()
+ if FileAccess.file_exists(rejected): return false
+ if not FileAccess.file_exists(temp):
+  var file := FileAccess.open(temp, FileAccess.WRITE)
+  if file == null: return false
+  file.store_string(j.before)
+  file.flush()
+  file.close()
+ if FileAccess.get_sha256(temp) != str(j.before).sha256_text():
+  DirAccess.remove_absolute(temp)
+  return false
  if DirAccess.rename_absolute(path, rejected) != OK:
   DirAccess.remove_absolute(temp)
   return false
@@ -78,6 +88,8 @@ func commit(slot: String, candidate: Dictionary, world: GameWorldTemplate) -> Di
  file.store_string(JSON.stringify(journal))
  file.flush()
  file.close()
+ if WorldOriginLore.read_json(_journal(slot)) != journal:
+  return fail("Could not verify party recovery snapshot. Existing campaign was preserved.")
  var written := store.save_existing(slot, candidate, world)
  if not written.ok:
   DirAccess.remove_absolute(_journal(slot))
@@ -167,7 +179,7 @@ func resumable() -> Dictionary:
  for name in names:
   if not name.ends_with(".json"): continue
   var raw := WorldOriginLore.read_json(store.save_root.path_join(name))
-  if raw.get("save_version") != 1: continue
+  if raw.get("save_version") != 1 or not raw.get("world_ref") is Dictionary or raw.get("playthrough_id") != name.trim_suffix(".json") or store._slot_path(name.trim_suffix(".json")).is_empty(): continue
   for entry in entries:
    if entry.id == raw.get("world_ref", {}).get("id"):
     choices.append({"entry": entry, "slot": name.trim_suffix(".json"), "modified": FileAccess.get_modified_time(store.save_root.path_join(name))})

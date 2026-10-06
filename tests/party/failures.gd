@@ -3,8 +3,10 @@ class FaultStore extends GamePlaythroughStore:
  var fail_write := false
  var fail_reload := false
  var pending := false
+ var last_candidate := {}
  func save_existing(slot: String, state: Dictionary, world: GameWorldTemplate) -> Dictionary:
   if fail_write: return _fail("Injected write failure")
+  last_candidate = state.duplicate(true)
   var result := super.save_existing(slot,state,world)
   if result.ok and fail_reload: pending = true
   return result
@@ -27,6 +29,10 @@ func put(path: String, text: String) -> void:
  var file := FileAccess.open(path,FileAccess.WRITE)
  file.store_string(text)
  file.close()
+func wait_ui(ui: Control) -> void:
+ var deadline := Time.get_ticks_msec()+90000
+ while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
+ check(ui.thread==null,"UI job completed")
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
  var service := PartyService.new()
@@ -57,6 +63,7 @@ func run() -> void:
  service.store.fail_write = false
  service.store.fail_reload = true
  check(not service.operate(entry,slot,"generate").ok,"post-write reload failure never reports success")
+ var rejected_candidate: Dictionary = service.store.last_candidate.duplicate(true)
  check(FileAccess.get_file_as_string(path)==original,"failed reload restores exact origin")
  check(not service.store.load_save(slot,world).state.has("party"),"no false party handoff/state")
  check(not FileAccess.file_exists(service._journal(slot)),"successful rollback leaves no journal")
@@ -67,6 +74,7 @@ func run() -> void:
   quit(1)
   return
  var valid: Dictionary = generated.state
+ check(valid==rejected_candidate,"retry regenerates identical candidate in same campaign")
  var raw := FileAccess.get_file_as_string(path)
  for mutation in ["character","background","people","role","incomplete","secret","occupation"]:
   var invalid := valid.duplicate(true)
@@ -80,6 +88,30 @@ func run() -> void:
    "occupation": invalid.party.members[0].generated_facts.occupation_id = "bad"
   check(not service.commit(slot,invalid,world).ok,"invalid " + mutation + " rejected")
   check(FileAccess.get_file_as_string(path)==raw,"invalid " + mutation + " preserves bytes")
+ service.store.fail_reload=true
+ check(not service.operate(entry,slot,"ready").ok,"failed ready reload never reports handoff")
+ check(service.store.load_save(slot,world).state.onboarding_stage=="party_creation","failed ready keeps draft stage")
+ check(FileAccess.get_file_as_string(path)==raw,"failed ready restores draft bytes")
+ service.store.fail_reload=false
+ # Exercise the actual production presenter, not just the service result.
+ PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root}
+ var ui=load("res://scenes/ui/party_creation.tscn").instantiate()
+ ui.service=service
+ root.add_child(ui)
+ await wait_ui(ui)
+ service.store.fail_reload=true
+ ui._finish()
+ await wait_ui(ui)
+ check(not ui.ready_view and ui.state.onboarding_stage=="party_creation","UI never hands off after failed reload")
+ check(not ui.message.contains("Party saved") and ui.message.contains("restored"),"UI displays error, no false saved claim")
+ check(FileAccess.get_file_as_string(path)==raw,"UI failed handoff restores exact draft")
+ service.store.fail_reload=false
+ ui._finish()
+ await wait_ui(ui)
+ check(ui.ready_view and ui.state.onboarding_stage=="party_ready","UI deterministic retry validates same campaign")
+ ui.queue_free()
+ await process_frame
+ put(path,raw) # Restore this owned test draft for the crash scenarios below.
  var journals := {"before":raw,"after_sha":raw.sha256_text()}
  put(service._journal(slot),JSON.stringify(journals))
  check(service.recover(slot,world).ok,"restart validates completed same-slot transaction")
@@ -89,6 +121,19 @@ func run() -> void:
  check(DirAccess.rename_absolute(path,path+".bak")==OK,"simulate interrupted existing-slot rename")
  check(service.recover(slot,world).ok,"restart recovers Game-7 backup without new campaign")
  check(FileAccess.get_file_as_string(path)==raw,"interrupted write recovered exact bytes")
+ # Exact crash in the middle of the party rollback, after moving aside
+ # the candidate but before publishing the already-verified previous bytes.
+ var candidate := valid.duplicate(true)
+ candidate.party.status="ready"
+ candidate.onboarding_stage="party_ready"
+ var after := JSON.stringify(candidate,"  ")
+ put(service._journal(slot),JSON.stringify({"before":raw,"after_sha":after.sha256_text()}))
+ put(path+".party-rollback",raw)
+ check(DirAccess.rename_absolute(path,path+".party-unverified")==OK,"simulate interrupted rollback")
+ put(path+".party-unverified",after)
+ check(service.recover(slot,world).ok,"restart finishes exact owned rollback")
+ check(FileAccess.get_file_as_string(path)==raw,"rollback crash restores prior draft")
+ check(not FileAccess.file_exists(path+".party-rollback") and not FileAccess.file_exists(path+".party-unverified"),"owned rollback files cleaned")
  var edited := service.operate(entry,slot,"edit",2,{"regenerate":true})
  check(edited.ok,"deterministic retry succeeds")
  if edited.ok:
