@@ -35,11 +35,22 @@ func wait_job() -> void:
  check(ui.thread==null and not ui.state.is_empty() and ui.message.is_empty(),"real async save/generation: "+ui.message)
  await frames()
 func shot(name: String) -> void:
+ # Allow font-atlas uploads and resized canvas layout to settle on software GL.
+ for i in 60:await process_frame
  await frames()
  check(ui.menu_button.get_global_rect().end.y<=root.get_visible_rect().size.y-4,"footer fits: "+name)
  check(ui.map.size.y>=200,"map has useful space: "+name)
  check(not ui.status.text.contains("ERROR"),"no false-success/error text")
- root.get_texture().get_image().save_png(output.path_join(name+".png"))
+ var picture:=root.get_texture().get_image()
+ var scale:=Vector2(picture.get_size())/root.get_visible_rect().size
+ for heading in [ui.title,ui.reminder,ui.status]:
+  var rect:=Rect2i(Rect2(heading.get_global_rect().position*scale,heading.size*scale))
+  var ink:=0
+  for y in range(rect.position.y,mini(rect.end.y,picture.get_height())):
+   for x in range(rect.position.x,mini(rect.end.x,picture.get_width())):
+    if x>=0 and y>=0 and picture.get_pixel(x,y).r>0.3:ink+=1
+  check(ink>heading.text.length()*5*scale.x*scale.y,"actual header ink after rendering: "+name)
+ picture.save_png(output.path_join(name+".png"))
 func mount(entry: Dictionary,slot: String) -> void:
  PartyService.handoff={"entry":entry,"slot":slot,"save_root":base.path_join("saves"),"library_root":base.path_join("library"),"cache_root":base.path_join("cache")}
  change_scene_to_file("res://scenes/gameplay/expedition.tscn")
@@ -121,6 +132,12 @@ func run() -> void:
   await wait_job()
   check(ui.state.expedition.active.phase=="site","mouse travel reaches site")
   await shot("site-options"+suffix)
+  ui.action_buttons.leave.grab_focus()
+  await frames()
+  var scroll: ScrollContainer=ui.content.get_parent()
+  check(ui.action_buttons.leave.get_global_rect().end.y<=scroll.get_global_rect().end.y,"keyboard focus reveals the fourth/withdrawal option")
+  ui.action_buttons.survey.grab_focus()
+  await frames()
   await click(ui.action_buttons.survey)
   await wait_job()
   check(ui.state.expedition.active.phase=="result" and ui.state.expedition.leads.size()==4,"actual consequence and new rumour")

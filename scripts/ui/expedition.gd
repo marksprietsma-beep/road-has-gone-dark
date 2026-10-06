@@ -64,6 +64,7 @@ func _ready() -> void:
  map.chosen.connect(select_site)
  body.add_child(map)
  var scroll := ScrollContainer.new()
+ scroll.follow_focus=true
  scroll.custom_minimum_size.x=318
  scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
  scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL
