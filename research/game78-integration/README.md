@@ -23,7 +23,7 @@ Changes to production UI are limited to the research projection path/digest and 
 * Actual Godot mouse/render/confirmation/reload/review: **55 checks**, 0 failures; footer containment explicitly checked at 640×360 and 1280×720. Screenshots inspected.
 * Existing GAME-75 actual source context: **105,425 checks**, 0 failures across two fixtures and three fresh generated worlds; five independent source audits passed.
 * Existing GAME-75 input/render: **108 checks**, 0 failures.
-* Existing GAME-7/74/76 regressions are retained under `evidence/regressions` once executed; final native CI status is visible on the draft PR.
+* Existing GAME-7 persistence smoke passed; GAME-74 source/save3,973, reload-failure26 and actual render/input17 checks passed. GAME-76 six genuine helper generations, lifecycle57 and actual render/input20 checks passed; canonical JSON5 passed. Proofs/logs retained under `evidence/regressions`. Final native CI status is visible on the draft PR.
 
 The first longer text pushed a footer outside the viewport. Real click tests exposed it; the secondary line was compacted and the test strengthened, with no truncation or fabricated substitute text. Canonical fixture bytes remain unchanged. Personal names/cultural authenticity and large corpus editorial limits are documented in core GAME-78, not resolved by this UI demonstration.
 
