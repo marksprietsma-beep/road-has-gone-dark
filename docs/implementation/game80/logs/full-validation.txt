@@ -1,0 +1,510 @@
+✔ game-11-determinism: exact replay, hierarchy, visibility and immutable geography (1986.601337ms)
+✔ atlas-showcase: exact replay, hierarchy, visibility and immutable geography (1849.863547ms)
+✔ prerequisites and contradictions refuse unsupported economies and politics (526.568853ms)
+✔ source context ignores hidden mines and retains unknown religion/culture (569.453564ms)
+✔ ocean coast and inland port cannot combine into invented maritime commerce (508.838931ms)
+✔ hometown livelihood wording preserves recorded town, village and fort classes (506.434021ms)
+✔ state order, sibling order and unrelated region addition do not reroll existing profiles (1108.228222ms)
+✔ immutable publication and retries never overwrite corrupt or historical packages (2056.847987ms)
+✔ all dormant GAME-78 domains remain functional with hierarchical context (530.907849ms)
+✔ profile renderer refuses private records and unknown templates (608.808298ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10429.117045
+3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f  /workspace/.runtime/game80/qa-class-final/generated/game80-world-0/world.json
+a75c800b8f88c85fafd33fcad59af24695cdc75a9ed338645ef517f05be2ae3f  /workspace/.runtime/game80/qa-class-final/generated/game80-world-0/world.relief.svg
+2a3f815626c020651a15e2d5e72d8caf22b6f99f3c0a93d2310364a49ddfda3f  /workspace/.runtime/game80/qa-class-final/generated/game80-world-0/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-0:3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","base_world_sha":"3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","enrichment_sha":"14bcf32255ea4e938e3754ba3bbc482b3d5a2a229de95157ff84dae1e3e4d14c","public_projection_sha":"2e26454bca0f665b250011933dbf6867b4bd7868a9b5f798314be389a195777d","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":22,"region_count":267,"origin_count":432,"origin_v1_sha":"1bf395d289f258c44795dc3cf569fabd3693d0850e637e5106955f05258ac23c"}
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-0:3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","base_world_sha":"3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","enrichment_sha":"14bcf32255ea4e938e3754ba3bbc482b3d5a2a229de95157ff84dae1e3e4d14c","public_projection_sha":"2e26454bca0f665b250011933dbf6867b4bd7868a9b5f798314be389a195777d","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":22,"region_count":267,"origin_count":432,"origin_v1_sha":"1bf395d289f258c44795dc3cf569fabd3693d0850e637e5106955f05258ac23c"}
+6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78  /workspace/.runtime/game80/qa-class-final/generated/game80-world-1/world.json
+8262a80391fbee4edf36aaea73c1f91d8bd90a3586de9d71f9b2f4ddea32b7b0  /workspace/.runtime/game80/qa-class-final/generated/game80-world-1/world.relief.svg
+006eebca9968dd67bb2b7af9aeb38834d9dfec8d5e6d3e0c85d9ca15a2ca81db  /workspace/.runtime/game80/qa-class-final/generated/game80-world-1/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-1:6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78","base_world_sha":"6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78","enrichment_sha":"a8e7a212503b1eb9916c97a498c1d86393aa26bb1c650038294bbae6a9453576","public_projection_sha":"051356f091a3d7eb9a19fc0511b98da4675c9a5bfa5832d484cf268426b9e899","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":30,"region_count":250,"origin_count":438,"origin_v1_sha":"1e4ae4df012133408ecc548e2f53f388ce9dc0a1c5b50846ab315baec1260f92"}
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-1:6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78","base_world_sha":"6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78","enrichment_sha":"a8e7a212503b1eb9916c97a498c1d86393aa26bb1c650038294bbae6a9453576","public_projection_sha":"051356f091a3d7eb9a19fc0511b98da4675c9a5bfa5832d484cf268426b9e899","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":30,"region_count":250,"origin_count":438,"origin_v1_sha":"1e4ae4df012133408ecc548e2f53f388ce9dc0a1c5b50846ab315baec1260f92"}
+WebSocket server error: Port 24678 is already in use
+5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565  /workspace/.runtime/game80/qa-class-final/generated/game80-world-2/world.json
+8029ccb154d460d83e5bfaab82242f9b1a9f4fb77204c9c4981582e3de304187  /workspace/.runtime/game80/qa-class-final/generated/game80-world-2/world.relief.svg
+3e024d37d550fda9c761d5b09c4032f85383548f5c7d3d8a83fc484b241e08fc  /workspace/.runtime/game80/qa-class-final/generated/game80-world-2/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-2:5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565","base_world_sha":"5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565","enrichment_sha":"d65bfae93e6c18734175cbd5cb575604351b9f6d5d5cabc5a58272866bd8ab78","public_projection_sha":"cfaf0d556f2fb7250eefed879928d00a701724f3a28c808e11a2e1cd81d26f63","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":21,"region_count":210,"origin_count":478,"origin_v1_sha":"e51f3e553c7491ebf7bdffbce5458ec92e9d16dccf1ce26842efedbf04e466be"}
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-2:5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565","base_world_sha":"5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565","enrichment_sha":"d65bfae93e6c18734175cbd5cb575604351b9f6d5d5cabc5a58272866bd8ab78","public_projection_sha":"cfaf0d556f2fb7250eefed879928d00a701724f3a28c808e11a2e1cd81d26f63","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":21,"region_count":210,"origin_count":478,"origin_v1_sha":"e51f3e553c7491ebf7bdffbce5458ec92e9d16dccf1ce26842efedbf04e466be"}
+c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b  /workspace/.runtime/game80/qa-class-final/generated/game80-world-3/world.json
+40941a65f715e57e4e40a1b22039f01f64612fb0bd0f31b7837909aa594b6657  /workspace/.runtime/game80/qa-class-final/generated/game80-world-3/world.relief.svg
+87b1399fa0836f6ae06b7fe8e4d5b6b545f9a530551c14502949883d30de0081  /workspace/.runtime/game80/qa-class-final/generated/game80-world-3/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-3:c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b","base_world_sha":"c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b","enrichment_sha":"e142610bc01c0011ef2a49adb32f08b53bcd3c738a03463610644fc5c69e1977","public_projection_sha":"b5a4e184406b1821259c38d2a4ed2700ad80419205870e7ee81afd730b22c141","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":16,"region_count":187,"origin_count":392,"origin_v1_sha":"53a34618de2498f8f4329fc06639e3764c46aa69dfe8e1f941a6b76406fac447"}
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-3:c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b","base_world_sha":"c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b","enrichment_sha":"e142610bc01c0011ef2a49adb32f08b53bcd3c738a03463610644fc5c69e1977","public_projection_sha":"b5a4e184406b1821259c38d2a4ed2700ad80419205870e7ee81afd730b22c141","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":16,"region_count":187,"origin_count":392,"origin_v1_sha":"53a34618de2498f8f4329fc06639e3764c46aa69dfe8e1f941a6b76406fac447"}
+a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd  /workspace/.runtime/game80/qa-class-final/generated/game80-world-4/world.json
+90b596628f7af911e4fa45cdc6e9d8465cc25c2a6153bfaaaf5a819afc04cf4c  /workspace/.runtime/game80/qa-class-final/generated/game80-world-4/world.relief.svg
+bfcec3b5f6d00321d8f424688664caaf5848a1a30c302a8e0025371142385b00  /workspace/.runtime/game80/qa-class-final/generated/game80-world-4/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-4:a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd","base_world_sha":"a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd","enrichment_sha":"6e22d5a92cbc716f49801bb6bdb062252467aa4ccc19cb21822ce34cb832a9c7","public_projection_sha":"9c66a1d0cc3ef9134450f733039a1f901d6679d7782fc8e9307a0bd89ad28f3d","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":18,"region_count":189,"origin_count":436,"origin_v1_sha":"899fc9a6af736aee1e3d92baccb4582e13fec0475a4f8f59f737a9cd432139e2"}
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-4:a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd","base_world_sha":"a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd","enrichment_sha":"6e22d5a92cbc716f49801bb6bdb062252467aa4ccc19cb21822ce34cb832a9c7","public_projection_sha":"9c66a1d0cc3ef9134450f733039a1f901d6679d7782fc8e9307a0bd89ad28f3d","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":18,"region_count":189,"origin_count":436,"origin_v1_sha":"899fc9a6af736aee1e3d92baccb4582e13fec0475a4f8f59f737a9cd432139e2"}
+3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f  /workspace/.runtime/game80/qa-class-final/repeat/world.json
+a75c800b8f88c85fafd33fcad59af24695cdc75a9ed338645ef517f05be2ae3f  /workspace/.runtime/game80/qa-class-final/repeat/world.relief.svg
+2a3f815626c020651a15e2d5e72d8caf22b6f99f3c0a93d2310364a49ddfda3f  /workspace/.runtime/game80/qa-class-final/repeat/world.vegetation.svg
+{"schema_version":2,"provider":"trhgd-hierarchical-lexicon","generator_version":"trhgd-origin-profiles-2","content_pack_version":"trhgd-origin-profiles-2","content_pack_sha":"2eec2489a997ccb9685e5cbe6ef5f0b8ac6e2ea6a92896bee97ce7b16fd3f037","renderer_version":"trhgd-profile-rant-2","base_world_id":"azgaar:1.153.1:game80-world-0:3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","base_world_sha":"3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f","enrichment_sha":"14bcf32255ea4e938e3754ba3bbc482b3d5a2a229de95157ff84dae1e3e4d14c","public_projection_sha":"2e26454bca0f665b250011933dbf6867b4bd7868a9b5f798314be389a195777d","runtime_manifest_sha":"18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58","state_count":22,"region_count":267,"origin_count":432,"origin_v1_sha":"1bf395d289f258c44795dc3cf569fabd3693d0850e637e5106955f05258ac23c"}
+::notice title=GAME-80 platform timing::[{"seed":"game80-world-0","seconds":1.734,"origins":432,"states":22,"regions":267,"bytes":2824675},{"seed":"game80-world-1","seconds":1.929,"origins":438,"states":30,"regions":250,"bytes":2847962},{"seed":"game80-world-2","seconds":1.619,"origins":478,"states":21,"regions":210,"bytes":2804929},{"seed":"game80-world-3","seconds":1.478,"origins":392,"states":16,"regions":187,"bytes":2336590},{"seed":"game80-world-4","seconds":1.976,"origins":436,"states":18,"regions":189,"bytes":2549286}]
+{
+  "worlds": [
+    {
+      "world": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "milliseconds": 1173.8284830000002,
+      "bytes": 2579483
+    },
+    {
+      "world": "azgaar:1.153.1:atlas-showcase-06:9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "milliseconds": 967.9952839999999,
+      "bytes": 2494137
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-0:3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f",
+      "milliseconds": 958.9993530000002,
+      "bytes": 2823791
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-1:6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78",
+      "milliseconds": 902.7336329999998,
+      "bytes": 2847078
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-2:5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565",
+      "milliseconds": 867.039691,
+      "bytes": 2804045
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-3:c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b",
+      "milliseconds": 742.3185720000001,
+      "bytes": 2335706
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-4:a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd",
+      "milliseconds": 1071.1308559999998,
+      "bytes": 2548402
+    }
+  ],
+  "metrics": [
+    {
+      "domain": "states",
+      "records": 149,
+      "distinct_fact_signatures": 149,
+      "distinct_prose": 149,
+      "largest_duplicate_signature": 1,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"river-work\",\"economy\":{\"specialisms\":[\"river-crafts\",\"mixed-farming\"]},\"orientation\":\"welcoming\",\"posture\":\"peaceful\",\"role\":null,\"social\":\"hospitable\"}",
+          1
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"river-crafts\",\"grain-crafts\"]},\"orientation\":\"welcoming\",\"posture\":\"frontier-minded\",\"role\":null,\"social\":\"meticulous\"}",
+          1
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"fishing\",\"market-crafts\"]},\"orientation\":\"guarded\",\"posture\":\"outward-looking\",\"role\":null,\"social\":\"reserved\"}",
+          1
+        ]
+      ]
+    },
+    {
+      "domain": "regions",
+      "records": 1482,
+      "distinct_fact_signatures": 1243,
+      "distinct_prose": 883,
+      "largest_duplicate_signature": 6,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"household-ledgers\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"local\",\"posture\":\"isolationist\",\"role\":\"forest-district\",\"social\":null}",
+          6
+        ],
+        [
+          "{\"custom\":\"household-ledgers\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"forest-district\",\"social\":null}",
+          5
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"grain-crafts\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"farming-belt\",\"social\":null}",
+          5
+        ]
+      ]
+    },
+    {
+      "domain": "hometowns",
+      "records": 3031,
+      "distinct_fact_signatures": 2390,
+      "distinct_prose": 1935,
+      "largest_duplicate_signature": 7,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"wood-care\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"local\",\"posture\":\"decentralised\",\"role\":\"woodland craft community\",\"social\":\"formal\"}",
+          7
+        ],
+        [
+          "{\"custom\":\"path-work\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"woodland craft community\",\"social\":\"meticulous\"}",
+          6
+        ],
+        [
+          "{\"custom\":\"tool-care\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"maritime\",\"posture\":\"mercantile\",\"role\":\"woodland craft community\",\"social\":\"communal\"}",
+          6
+        ]
+      ]
+    }
+  ]
+}
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-80 preset/legacy: 2581 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-80 lifecycle create: 2211 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-80 lifecycle replay: 40 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-80 profile post-write: 9 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+GAME-80 real input/render: 2926 checks, 0 failures
+✔ game-11-determinism: exhaustive eligible coverage and immutable preset replay (1101.793231ms)
+✔ atlas-showcase: exhaustive eligible coverage and immutable preset replay (942.725615ms)
+✔ SHA field seeds and origin child generation remain order independent (208.916344ms)
+✔ immutable publication, deterministic retries and corruption refusal (1340.995918ms)
+✔ vendor and production runtime pins are exact (1.64241ms)
+✔ renderer refuses secret records and unsupported pack versions (188.828047ms)
+✔ corrupt vendor, missing renderer and wrong pack are refused before publication (289.85311ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4252.758764
+d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-0/world.json
+e466a55488acb42aaaf2f7d30289b9fbb1d359048ed6016fb0f2c934c8c5377e  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-0/world.relief.svg
+6787eeac7adc5999bfafb36cda8d9d72f8b1ca7cd1a3de142648d300ea9d957b  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-0/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-0:d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","base_world_sha":"d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","enrichment_sha":"6465a26e7107215b6bc09f51d1adee8b2b425ca824f2dd5bc8abded38cb8c484","public_projection_sha":"00da58aa7a451b734c1321e23e2d22268c69bc1a28aca07732b7dc0ce7801f8c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":488}
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-0:d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","base_world_sha":"d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","enrichment_sha":"6465a26e7107215b6bc09f51d1adee8b2b425ca824f2dd5bc8abded38cb8c484","public_projection_sha":"00da58aa7a451b734c1321e23e2d22268c69bc1a28aca07732b7dc0ce7801f8c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":488}
+796f7052e871896b1e759028255de32470bc11ee9647bee3d11780db765218c1  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-1/world.json
+72c92546e5f3371d0b743be2426a0cc3512cd4f213fa8406f48f83158e59dfbc  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-1/world.relief.svg
+24586ccf88300d700c253e4edd44ac7cea47ca0cd64e590c3249665ec2c97120  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-1/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-1:796f7052e871896b1e759028255de32470bc11ee9647bee3d11780db765218c1","base_world_sha":"796f7052e871896b1e759028255de32470bc11ee9647bee3d11780db765218c1","enrichment_sha":"6393abbb351b194f5a4b97270c0bb6c52c867c351c09d049c0c639445db79183","public_projection_sha":"7f4ca16a6fa46ad0d99ca5e0ad2e52e0bd2904054d352574143debb846ff2f01","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":517}
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-1:796f7052e871896b1e759028255de32470bc11ee9647bee3d11780db765218c1","base_world_sha":"796f7052e871896b1e759028255de32470bc11ee9647bee3d11780db765218c1","enrichment_sha":"6393abbb351b194f5a4b97270c0bb6c52c867c351c09d049c0c639445db79183","public_projection_sha":"7f4ca16a6fa46ad0d99ca5e0ad2e52e0bd2904054d352574143debb846ff2f01","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":517}
+2c403e4e22d25eb11f75502a3d6eeee1e0e6b43df55c87b01484803024747f4f  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-2/world.json
+c4f51df62c230337bd2cc05412989394a599e37e019571d9fe5968271d334b1d  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-2/world.relief.svg
+2eebfeec65d63f34f2be5594772e058a9eda40052ebd84bebc89bf303e57f618  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-2/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-2:2c403e4e22d25eb11f75502a3d6eeee1e0e6b43df55c87b01484803024747f4f","base_world_sha":"2c403e4e22d25eb11f75502a3d6eeee1e0e6b43df55c87b01484803024747f4f","enrichment_sha":"68a39822c6dcde3ddd0947b9101cc8a4918e6e505370488fc46aea0ef5c842c8","public_projection_sha":"b709ed48e25b63f74c86fe9d35769e543aa228d1b9bb4cb3f16f4a50aa34d02c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":477}
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-2:2c403e4e22d25eb11f75502a3d6eeee1e0e6b43df55c87b01484803024747f4f","base_world_sha":"2c403e4e22d25eb11f75502a3d6eeee1e0e6b43df55c87b01484803024747f4f","enrichment_sha":"68a39822c6dcde3ddd0947b9101cc8a4918e6e505370488fc46aea0ef5c842c8","public_projection_sha":"b709ed48e25b63f74c86fe9d35769e543aa228d1b9bb4cb3f16f4a50aa34d02c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":477}
+91585ea9d680dda75235b27b626a4f734432691b40de1d8d4f807211de18e518  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-3/world.json
+5c2c89f81daa2ba00cd144316a65f38d9c0489b23e62961bdb19fef08a6f3fbb  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-3/world.relief.svg
+620478a567d1d64a3cd7df910b5ce31293d55a847122f76fd4fdc0fc581b9af9  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-3/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-3:91585ea9d680dda75235b27b626a4f734432691b40de1d8d4f807211de18e518","base_world_sha":"91585ea9d680dda75235b27b626a4f734432691b40de1d8d4f807211de18e518","enrichment_sha":"51cfa10b7ed2c1df88fc4378a38fe16d98403071f8dbb22d8f04dc635b34953f","public_projection_sha":"0acce9acae4f51cc6cb9d99a8d456719fa312dd5e4140c7bdf339c370721eea8","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":351}
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-3:91585ea9d680dda75235b27b626a4f734432691b40de1d8d4f807211de18e518","base_world_sha":"91585ea9d680dda75235b27b626a4f734432691b40de1d8d4f807211de18e518","enrichment_sha":"51cfa10b7ed2c1df88fc4378a38fe16d98403071f8dbb22d8f04dc635b34953f","public_projection_sha":"0acce9acae4f51cc6cb9d99a8d456719fa312dd5e4140c7bdf339c370721eea8","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":351}
+88fbf97dc0792db282ad581ea2593405fd8b8a040e29d3067e810eb1c61dfc5b  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-4/world.json
+86016020a91481cbe6c77b143fa2c0fc7f5af55257d7e343c7e3c03522262e6a  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-4/world.relief.svg
+3ba9e3ccfcc90cb9469f92f87c6f207c05ff10e4b8736e97098c252626c792c6  /tmp/game79 production worlds eqt1ezf5/generated/game79-world-4/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-4:88fbf97dc0792db282ad581ea2593405fd8b8a040e29d3067e810eb1c61dfc5b","base_world_sha":"88fbf97dc0792db282ad581ea2593405fd8b8a040e29d3067e810eb1c61dfc5b","enrichment_sha":"f67f6af139caf7503feb1a703c97c922acc6baac4d01f7947cdac7d4e8313e62","public_projection_sha":"3c0cb386f3ee1b6960c463a9bfb8858a4a167c6ae2875563fa101b24afcf980c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":374}
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-4:88fbf97dc0792db282ad581ea2593405fd8b8a040e29d3067e810eb1c61dfc5b","base_world_sha":"88fbf97dc0792db282ad581ea2593405fd8b8a040e29d3067e810eb1c61dfc5b","enrichment_sha":"f67f6af139caf7503feb1a703c97c922acc6baac4d01f7947cdac7d4e8313e62","public_projection_sha":"3c0cb386f3ee1b6960c463a9bfb8858a4a167c6ae2875563fa101b24afcf980c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":374}
+d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3  /tmp/game79 production worlds eqt1ezf5/repeat/world.json
+e466a55488acb42aaaf2f7d30289b9fbb1d359048ed6016fb0f2c934c8c5377e  /tmp/game79 production worlds eqt1ezf5/repeat/world.relief.svg
+6787eeac7adc5999bfafb36cda8d9d72f8b1ca7cd1a3de142648d300ea9d957b  /tmp/game79 production worlds eqt1ezf5/repeat/world.vegetation.svg
+{"schema_version":1,"provider":"sha-staged","generator_version":"trhgd-game78-1","content_pack_version":"trhgd-game78-1","content_pack_sha":"31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c","renderer_version":"trhgd-game78-rant-1","base_world_id":"azgaar:1.153.1:game79-world-0:d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","base_world_sha":"d88e61af508d71d0cffe0f6d69f600a1c4d0765786da861cb4cd5f7bb0f0dcd3","enrichment_sha":"6465a26e7107215b6bc09f51d1adee8b2b425ca824f2dd5bc8abded38cb8c484","public_projection_sha":"00da58aa7a451b734c1321e23e2d22268c69bc1a28aca07732b7dc0ce7801f8c","runtime_manifest_sha":"1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa","origin_count":488}
+::notice title=GAME-79 platform timing::[{"seed":"game79-world-0","generation_seconds":5.755,"enrichment_seconds":1.125,"origins":488,"storage_bytes":1707962},{"seed":"game79-world-1","generation_seconds":5.353,"enrichment_seconds":0.82,"origins":517,"storage_bytes":1813630},{"seed":"game79-world-2","generation_seconds":5.444,"enrichment_seconds":0.919,"origins":477,"storage_bytes":1680090},{"seed":"game79-world-3","generation_seconds":5.555,"enrichment_seconds":0.717,"origins":351,"storage_bytes":1242655},{"seed":"game79-world-4","generation_seconds":5.258,"enrichment_seconds":0.728,"origins":374,"storage_bytes":1321860}]
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (26 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | confirmation-640x360.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | confirmation-1280x720.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | confirmation-2560x1440.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | hometown-0-640x360.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | hometown-0-1280x720.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | hometown-0-2560x1440.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | hometown-1-640x360.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | hometown-1-1280x720.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | hometown-1-2560x1440.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | hometown-20-640x360.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | hometown-20-1280x720.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | hometown-20-2560x1440.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | origin-established.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | region-1-640x360.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | region-1-1280x720.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | region-1-2560x1440.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | region-3-640x360.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | region-3-1280x720.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | region-3-2560x1440.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | state-0-640x360.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | state-0-1280x720.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | state-0-2560x1440.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | state-5-640x360.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | state-5-1280x720.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | state-5-2560x1440.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | contact-sheet.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-79 lifecycle create: 6163 checks, 0 failures; 3062 eligible hometowns
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-79 lifecycle replay: 6161 checks, 0 failures; 3062 eligible hometowns
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-79 post-write lore regression: 10 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+GAME-79 actual input/render: 1922 checks, 0 failures across 22 towns and three resolutions
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+2353dffaec6745e40f00617eb5a2bb4d03fdb57a2bc80c82125d9fcfb6feff49  /tmp/game75 generated worlds 09i7os3g/game75-context-a/world.json
+74e1d5922963342f1fa11857b083f39497c43352e4822f1aac288f5085d44dca  /tmp/game75 generated worlds 09i7os3g/game75-context-a/world.relief.svg
+8ebbaac5008cef750b9ecb63bb1899aad4c51dae7cd5803937bd27769e74a50c  /tmp/game75 generated worlds 09i7os3g/game75-context-a/world.vegetation.svg
+ba50c6b69b3cbcefc18e2abac4e6355dd497e13660c9e81cae2dfff28ff658e3  /tmp/game75 generated worlds 09i7os3g/game75-context-b/world.json
+a79f611991b462fc7e868dac840a19fca36b4363b22d6a30193001bedfd8a7b7  /tmp/game75 generated worlds 09i7os3g/game75-context-b/world.relief.svg
+667b4cf349961b551e7a25ead4ec7825cc0e537a7297264c691fc1839c06d755  /tmp/game75 generated worlds 09i7os3g/game75-context-b/world.vegetation.svg
+ac37036844fa99208530104033d6986b04c9a1bb868d4f1fab864a0c187c699c  /tmp/game75 generated worlds 09i7os3g/game75-context-c/world.json
+057004067897ab1ea4bb7af9e7cd05005e26bc14a080123cf356e25704f0755a  /tmp/game75 generated worlds 09i7os3g/game75-context-c/world.relief.svg
+a9634267298092443fbd53c65d2d1cfc9aafe53975439dcbd52de0d068f84123  /tmp/game75 generated worlds 09i7os3g/game75-context-c/world.vegetation.svg
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (10 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | confirmation-640x360.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | confirmation-1280x720.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | confirmation-2560x1440.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | hometown-0-640x360.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | hometown-0-1280x720.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | hometown-1-640x360.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | hometown-1-1280x720.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | hometown-20-640x360.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | hometown-20-1280x720.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | origin-established.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (10 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | confirmation-640x360.png[39m[0m
+[   9% ] [90m[1mreimport[22m | confirmation-1280x720.png[39m[0m
+[  18% ] [90m[1mreimport[22m | confirmation-2560x1440.png[39m[0m
+[  27% ] [90m[1mreimport[22m | hometown-0-640x360.png[39m[0m
+[  36% ] [90m[1mreimport[22m | hometown-0-1280x720.png[39m[0m
+[  45% ] [90m[1mreimport[22m | hometown-1-640x360.png[39m[0m
+[  54% ] [90m[1mreimport[22m | hometown-1-1280x720.png[39m[0m
+[  63% ] [90m[1mreimport[22m | hometown-20-640x360.png[39m[0m
+[  72% ] [90m[1mreimport[22m | hometown-20-1280x720.png[39m[0m
+[  81% ] [90m[1mreimport[22m | origin-established.png[39m[0m
+[  90% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (10 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-75 context: 105425 checks, 0 failures
+PASS: 5 independent source audits: exact identity, landmass/biome areas, public counts/coastline, scalar nearest-neighbour median and complete sample neighbourhoods
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+GAME-75 actual Godot context/input/render: 109 checks, 0 failures
+PASS: packaged offline helper, 6 genuine generations, same-seed determinism, distinct seeds, exact accepted SHA, safe argv, immutable fixtures
+{"platform":"linux","runtime":"v24.19.0","packages":108,"worlds":[{"seed":"game-11-determinism","sha256":"2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"},{"seed":"game76-library-a","sha256":"d2d592f5ab0b6114eff00a17b04a7cbcbec54d48f1b8b5a44bac5b342c883790"},{"seed":"game76-library-b","sha256":"ce0e69f5d3fd0621ea550b0997102c539ff036080dac1364c2312230faf57149"}],"wall_clock_timeout":true}
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (19 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | 01-world-i.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | 02-world-ii.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | 03-generated-world.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | confirm-640x360.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | confirm-2560x1440.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | confirm-coastal-port.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | generated-hometown.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | generated-region.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | home-clustered.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | home-coastal_port.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | home-forest.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | home-sparse.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | home-unwalled.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | home-walled.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | origin-established.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | region-coastal_port.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | region-forest.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | state-coastal_port.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | state-forest.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (19 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | state-forest.png[39m[0m
+[   5% ] [90m[1mreimport[22m | state-coastal_port.png[39m[0m
+[  10% ] [90m[1mreimport[22m | region-forest.png[39m[0m
+[  15% ] [90m[1mreimport[22m | region-coastal_port.png[39m[0m
+[  20% ] [90m[1mreimport[22m | origin-established.png[39m[0m
+[  25% ] [90m[1mreimport[22m | home-walled.png[39m[0m
+[  30% ] [90m[1mreimport[22m | home-unwalled.png[39m[0m
+[  35% ] [90m[1mreimport[22m | home-sparse.png[39m[0m
+[  40% ] [90m[1mreimport[22m | home-forest.png[39m[0m
+[  45% ] [90m[1mreimport[22m | home-coastal_port.png[39m[0m
+[  50% ] [90m[1mreimport[22m | home-clustered.png[39m[0m
+[  55% ] [90m[1mreimport[22m | generated-region.png[39m[0m
+[  60% ] [90m[1mreimport[22m | generated-hometown.png[39m[0m
+[  65% ] [90m[1mreimport[22m | confirm-coastal-port.png[39m[0m
+[  70% ] [90m[1mreimport[22m | confirm-2560x1440.png[39m[0m
+[  75% ] [90m[1mreimport[22m | confirm-640x360.png[39m[0m
+[  80% ] [90m[1mreimport[22m | 03-generated-world.png[39m[0m
+[  85% ] [90m[1mreimport[22m | 02-world-ii.png[39m[0m
+[  90% ] [90m[1mreimport[22m | 01-world-i.png[39m[0m
+[  95% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (19 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-76 library lifecycle: 57 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: GAME-7 independent world/save IDs, origin, 3-member party, knowledge, mismatches and immutable fixtures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-74: 3974 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-74 post-write reload regression: 27 checks, 0 failures
+validated tests/worldgen/fixtures/game-11-determinism.json
+validated tests/worldgen/fixtures/atlas-showcase.json
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+GAME-74 real-render/input: 18 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+GAME-76 real Godot library/input/render: 21 checks, 0 failures
+PASS: GAME-76 requested helper/library/regression checks completed without Godot errors
+✔ replaces only unpaired UTF-16 surrogates (0.94274ms)
+✔ preserves valid Unicode including astral characters (0.271442ms)
+✔ sanitizes nested values and keys while sorting object keys (2.243914ms)
+✔ rejects object-key collisions caused by sanitization (0.407816ms)
+✔ reports the first malformed UTF-16 offset (3.406167ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 94.930131
+tests/worldgen/fixtures/game-11-determinism.json: 73 existing markers covered
+tests/worldgen/fixtures/atlas-showcase.json: 79 existing markers covered
+PASS: all 36 Azgaar macro types have sourced SVGs plus neutral fallback
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: Map Key starts collapsed, expands/collapses, and QA overlap switch works
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: safe Azgaar text, bounded shared landmark/settlement inspector, hidden/zoom protection and compact developer controls
+PASS: GAME-75 requested checks; canonical fixture bytes unchanged
+PASS GAME-79: immutable fixtures, five offline generated worlds, exact replay and production lifecycle
+PASS GAME-80: hierarchical profiles, five native worlds, exact replay, legacy pins and unchanged geography

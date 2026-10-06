@@ -4,6 +4,8 @@ New Game presents state, region and hometown choices through persistent public i
 
 Draft [PR #64](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/64) stacks on GAME-79 branch `feature/game-79-production-world-enrichment-v1`, verified base `93951ba46a91219c5e33595dc4693b8c5d08c714`. Earlier PRs are untouched and unmerged.
 
+The final source audit also verifies joint coastal-port evidence and recorded village/town/fort classes; [coastal-port review](coastal-port-review.json) and [settlement-class review](settlement-class-review.json) record the corrections.
+
 Read [assessment](ASSESSMENT.md), [quality review](QUALITY-REVIEW.md), [sequential corpus](SEQUENTIAL-REVIEW.md), [machine-readable batch](batch-quality.json), [generated-world replay](generated-worlds.json), [visual proof](visual-proof.json) and [native distribution proof](distribution-proof.json).
 
 ![Six actual Godot frames with review-only source annotations](contact-sheet.png)
@@ -33,11 +35,11 @@ This is an explicit V2 extension, not a silent V1 migration. Future changes need
 
 `profile-context.mjs` aggregates actual mapped cells, public route membership, authoritative settlement flags and existing culture/religion IDs. Mapped cultural cell counts are not population shares, species ancestry or a demographic census. Unknown affiliations remain unknown. Public explicit mine markers permit mineral extraction; mountains, names and hidden sites do not. No ore type is inferred.
 
-Forestry requires a meaningful forest-biome share; fishing requires actual coast/lake/river evidence; harbour commerce requires both port and ocean coast; boatbuilding requires port, woodland and water. Farming/pastoral/reedwork use compatible terrain. Road provision uses actual public route-point cell membership, not an invented entrance or trade connection. Regional roles constrain livelihoods: a cultivated district cannot select fishing as its defining industry. Defensive posture requires source-backed walls; isolationist identity excludes cosmopolitan/maritime combinations.
+Forestry requires a meaningful forest-biome share; fishing requires actual coast/lake/river evidence; harbour commerce requires an actual port burg adjoining ocean water in the selected area; boatbuilding requires port, woodland and water. Farming/pastoral/reedwork use compatible terrain. Road provision uses actual public route-point cell membership, not an invented entrance or trade connection. Regional roles constrain livelihoods: a cultivated district cannot select fishing as its defining industry. Defensive posture requires source-backed walls; isolationist identity excludes cosmopolitan/maritime combinations.
 
 State identities choose two distinct economic families, a compatible posture, social character and outward orientation. Regions specialise locally eligible parent work where possible, or contribute a concrete complementary product. Towns retain state social character while choosing a locally valid role, product contribution and public custom. A parent port never grants an inland child harbour work.
 
-The original pack contains 14 livelihoods, 10 postures, 10 social characters, five orientations, 10 institutions, 14 region roles and 10 town customs. Rich GAME-78 site/character/NPC/item/contract/group domains remain available. `withProfiles(world, burgId, profiles)` supplies immutable hierarchical context to them; no stat blocks, quest gameplay or faction simulation was added. All eight existing domains have executed smoke assertions.
+The original pack contains 14 livelihoods, 10 postures, 10 social characters, five orientations, 10 institutions, 14 region roles and 10 town customs. Rich GAME-78 site/character/NPC/item/contract/group domains remain available. `withProfiles(world, burgId, profiles)` supplies immutable hierarchical context and scope-prefixed identity tags to them; source prerequisites use the original local geography tags; no stat blocks, quest gameplay or faction simulation was added. All eight existing domains have executed smoke assertions.
 
 ## Player flow
 

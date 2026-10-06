@@ -1,10 +1,10 @@
-✔ game-11-determinism: exhaustive eligible coverage and immutable preset replay (1544.557132ms)
-✔ atlas-showcase: exhaustive eligible coverage and immutable preset replay (1292.232357ms)
-✔ SHA field seeds and origin child generation remain order independent (418.367001ms)
-✔ immutable publication, deterministic retries and corruption refusal (1606.094634ms)
-✔ vendor and production runtime pins are exact (4.194453ms)
-✔ renderer refuses secret records and unsupported pack versions (339.975758ms)
-✔ corrupt vendor, missing renderer and wrong pack are refused before publication (486.101619ms)
+✔ game-11-determinism: exhaustive eligible coverage and immutable preset replay (1101.793231ms)
+✔ atlas-showcase: exhaustive eligible coverage and immutable preset replay (942.725615ms)
+✔ SHA field seeds and origin child generation remain order independent (208.916344ms)
+✔ immutable publication, deterministic retries and corruption refusal (1340.995918ms)
+✔ vendor and production runtime pins are exact (1.64241ms)
+✔ renderer refuses secret records and unsupported pack versions (188.828047ms)
+✔ corrupt vendor, missing renderer and wrong pack are refused before publication (289.85311ms)
 ℹ tests 7
 ℹ suites 0
 ℹ pass 7
@@ -12,4 +12,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 5881.731531
+ℹ duration_ms 4252.758764
