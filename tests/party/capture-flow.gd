@@ -46,7 +46,9 @@ func shot(name: String, ui: Control=null) -> void:
   check(ui.detail_tabs.get_global_rect().end.y<ui.back_button.get_global_rect().position.y,"details above footer")
  if ui!=null:
   var picture := root.get_texture().get_image()
-  var rect: Rect2i = Rect2i(ui.origin.get_global_rect())
+  var pixel_scale := Vector2(picture.get_size()) / root.get_visible_rect().size
+  var logical: Rect2 = ui.origin.get_global_rect()
+  var rect: Rect2i = Rect2i(Rect2(logical.position * pixel_scale, logical.size * pixel_scale))
   var ink := 0
   for y in range(rect.position.y, rect.end.y):
    for x in range(rect.position.x, rect.end.x):
