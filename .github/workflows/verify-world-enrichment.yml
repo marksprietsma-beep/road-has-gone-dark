@@ -45,3 +45,8 @@ jobs:
         with:
           name: game79-qa-${{ runner.os }}
           path: docs/implementation/game79
+      - name: Upload matching native offline helper and archive checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: game79-helper-${{ runner.os }}
+          path: ${{ runner.temp }}/review-packages
