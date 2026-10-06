@@ -217,6 +217,12 @@ func choose_state(id: int) -> void:
   state_id = id
   province_id = -1
   burg_id = -1
+ if page == 1 and area_view == "state" and is_instance_valid(state_picker):
+  for index in state_picker.item_count:
+   if int(state_picker.get_item_metadata(index)) == id:
+    state_picker.select(index)
+    state_picker.ensure_current_is_visible()
+    break
  _refresh_facts()
 
 func choose_province(id: int) -> void:
@@ -224,10 +230,19 @@ func choose_province(id: int) -> void:
   province_id = id
   burg_id = -1
  area_view = "region"
+ if page == 1 and is_instance_valid(province_picker):
+  for index in province_picker.item_count:
+   if int(province_picker.get_item_metadata(index)) == id:
+    province_picker.select(index)
+    province_picker.ensure_current_is_visible()
+    break
  _refresh_facts()
 
 func choose_home(index: int) -> void:
  burg_id = int(candidates[index].id)
+ if page == 2 and is_instance_valid(options):
+  options.select(index)
+  options.ensure_current_is_visible()
  _refresh_facts()
 
 func show_page() -> void:
@@ -299,7 +314,7 @@ func show_page() -> void:
    title.text = "Choose your region"
    left.add_child(_label(str(worlds[world_index].get_record("state", state_id).get("name", "")), 14))
    province_picker = ItemList.new()
-   province_picker.custom_minimum_size.y = 94
+   province_picker.custom_minimum_size.y = 80
    province_picker.add_theme_font_size_override("font_size", 15)
    left.add_child(province_picker)
    province_picker.add_item("Across this state")

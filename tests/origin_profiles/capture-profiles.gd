@@ -67,6 +67,7 @@ func home_check(ui: Control) -> void:
  check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "hometown facts aligned")
  check(ui.map.burg == Vector2(float(home.x),float(home.y)), "exact hometown coordinates highlighted")
  check(row.state_id == ui.state_id and row.world_id == ui.worlds[ui.world_index].world_id, "hometown world and parent source identity")
+ check(ui.candidates[ui.options.get_selected_items()[0]].id == ui.burg_id, "visible list selection agrees with hometown profile and marker")
  check(ui.next_button.get_global_rect().end.y <= root.get_visible_rect().size.y - 8, "live selection preserves footer")
 func run() -> void:
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
@@ -75,7 +76,7 @@ func run() -> void:
  var ui = current_scene
  var base := OS.get_environment("GAME80_TEST_ROOT")
  ui.library.library_root = base.path_join("library")
- ui.store.save_root = base.path_join("visual-saves")
+ ui.store.save_root = base.path_join("visual-saves-" + Crypto.new().generate_random_bytes(8).hex_encode())
  ui.library.save_root = ui.store.save_root
  ui._reload_library()
  var towns: Array = []
@@ -104,6 +105,7 @@ func run() -> void:
   check(ui.state_picker.get_v_scroll_bar().value > 0, "state list scrolls through at least fifteen choices")
   ui.choose_state(int(ui.states()[0].i))
   ui.show_page()
+  await frames()
   await key(KEY_ENTER)
   check(ui.page == 1 and ui.area_view == "region", "Enter advances state to explicit region list")
   var parent: int = ui.state_id

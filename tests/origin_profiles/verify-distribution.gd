@@ -9,6 +9,7 @@ func check(ok: bool, why: String) -> void:
 func _ready() -> void:
  var library := GameWorldLibrary.new()
  var base := OS.get_environment("GAME80_DISTRIBUTION_TEST_ROOT")
+ DirAccess.make_dir_recursive_absolute(base)
  library.library_root = base.path_join("library")
  library.save_root = base.path_join("saves")
  check(OS.get_environment("GAME76_HELPER_ROOT").is_empty(),"uses automatically bundled helper, no source override")
@@ -38,4 +39,7 @@ func _ready() -> void:
     check(store.save_new(created.state.playthrough_id,created.state,imported.entry.world).ok,"standalone new campaign persisted")
     check(store.load_save(created.state.playthrough_id,imported.entry.world).ok,"standalone dual-pin reload")
  print("GAME-80 complete native distribution: %d checks, %d failures" % [checks,failures])
+ var proof := FileAccess.open(base.path_join("native-result.json"),FileAccess.WRITE)
+ proof.store_string(JSON.stringify({"checks":checks,"failures":failures,"source_helper_override":not OS.get_environment("GAME76_HELPER_ROOT").is_empty()}) + "\n")
+ proof.close()
  get_tree().quit(1 if failures else 0)

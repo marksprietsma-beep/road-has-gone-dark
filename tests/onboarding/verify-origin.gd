@@ -56,6 +56,8 @@ func run() -> void:
  ui.province_id = -1
  ui.show_page()
  ui.advance()
+ check(ui.page == 1 and ui.area_view == "region", "state advances to explicit region step")
+ ui.advance()
  check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "factual summary uses validated origin context")
  check(not ui.facts.text.contains("Source size") and ui._origin_context().hometown_summary(ui.burg_id).tags.has("WALLED") == bool(ui.worlds[ui.world_index].get_record("burg", ui.burg_id).get("walls", false)), "player wording retains supported walls without raw source size")
  var selected: int = ui.burg_id
