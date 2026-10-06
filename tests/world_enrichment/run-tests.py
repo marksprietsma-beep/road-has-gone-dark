@@ -36,6 +36,7 @@ with tempfile.TemporaryDirectory(prefix='game79 production worlds ') as temp:
  assert hashfile(repeat)==measurements[0]['world_sha']
  run('same-seed-enrichment',[node,helper/'tools/world_enrichment/origin-world.mjs','--world',repeat,'--output',repeat.parent/'enrichment/origin-v1'],150,locked)
  assert json.loads((repeat.parent/'enrichment/origin-v1/descriptor.json').read_text())==measurements[0]['descriptor']
+ print('::notice title=GAME-79 platform timing::'+json.dumps([{'seed':m['seed'],'generation_seconds':round(m['generation_seconds'],3),'enrichment_seconds':round(m['enrichment_seconds'],3),'origins':m['origins'],'storage_bytes':m['storage_bytes']}for m in measurements],separators=(',',':')),flush=True)
  assert len({m['world_sha']for m in measurements})==5 and len({m['descriptor']['enrichment_sha']for m in measurements})==5
  (evidence/'generated-worlds.json').write_text(json.dumps({'platform':os.name,'node':subprocess.check_output([node,'--version'],text=True).strip(),'worlds':measurements,'same_seed_replay':True,'offline_path_empty':True},indent=2)+'\n')
  run('import',[engine,'--headless','--audio-driver','Dummy','--editor','--path','.','--quit'])

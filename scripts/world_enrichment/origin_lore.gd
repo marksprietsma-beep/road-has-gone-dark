@@ -40,6 +40,12 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  if d.schema_version != 1 or d.provider != "sha-staged" or d.base_world_id != world.world_id or d.base_world_sha != world.source_sha256: return _fail("Origin enrichment belongs to a different world or schema.")
  for key in ["generator_version", "content_pack_version", "content_pack_sha", "renderer_version"]:
   if d[key] != runtime.get(key): return _fail("Unsupported pinned origin enrichment version: " + key)
+ if not runtime.get("files") is Dictionary: return _fail("Origin content runtime manifest is invalid.")
+ var helper := GameWorldLibrary.new().helper_location()
+ for file in runtime.files:
+  var location: String = "res://" + str(file)
+  if not FileAccess.file_exists(location): location = helper.path_join(str(file))
+  if not FileAccess.file_exists(location) or FileAccess.get_sha256(location) != runtime.files[file]: return _fail("Origin enrichment runtime integrity failure: " + str(file))
  if d.runtime_manifest_sha != FileAccess.get_sha256(RUNTIME): return _fail("Origin enrichment runtime pin mismatch.")
  for pair in [["enrichment.json", "enrichment_sha"], ["public.json", "public_projection_sha"]]:
   if not FileAccess.file_exists(path.path_join(pair[0])) or FileAccess.get_sha256(path.path_join(pair[0])) != d[pair[1]]: return _fail("Origin enrichment integrity failure: " + pair[0])

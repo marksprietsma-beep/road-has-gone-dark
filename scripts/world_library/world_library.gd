@@ -244,6 +244,8 @@ func import_generated(stage: String) -> Dictionary:
  for entry in discover(false):
   if entry.id == world.world_id:
    _remove_flat_directory(stage)
+   var enriched := ensure_enrichment(entry)
+   if not enriched.ok: return enriched
    return {"ok": true, "entry": entry, "deduplicated": true}
  if not build_preview(stage, loaded.raw, world.source_sha256):
   _remove_flat_directory(stage)
@@ -359,15 +361,42 @@ func ensure_enrichment(entry: Dictionary) -> Dictionary:
  if entry.get("preset", false) or DirAccess.dir_exists_absolute(target):
   if not lore.load_world(world, target): return _fail(lore.error)
   return {"ok": true, "descriptor": lore.descriptor}
- # Missing-only upgrade. The compiler publishes a complete sibling directory;
- # corrupt or older existing enrichment is never overwritten.
+ # Missing-only upgrade under the existing library lock. Publication follows
+ # validation against every existing campaign pin, including recovery backups.
+ if not _acquire_lock(): return _fail("The world library is busy. Local history was not changed.")
+ var result := _compile_enrichment(entry, target)
+ _release_lock()
+ return result
+
+func _compile_enrichment(entry: Dictionary, target: String) -> Dictionary:
+ var world: GameWorldTemplate = entry.world
+ var refs := reference_status(entry)
+ if not refs.ok: return refs
+ var pins: Array = []
+ for name in DirAccess.get_files_at(save_root):
+  if not (name.ends_with(".json") or name.ends_with(".json.bak") or name.ends_with(".json.tmp")): continue
+  var save := _json(save_root.path_join(name))
+  var reference: Dictionary = save.get("world_ref", {})
+  if (reference.get("id") == world.world_id or reference.get("sha256") == world.source_sha256) and save.has("origin_enrichment"):
+   pins.append(save.origin_enrichment)
  var helper := helper_location()
  var binary := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
  var manifest := _json(helper.path_join("runtime.json"))
  if manifest.get("nodeVersion") != "v24.19.0" or not FileAccess.file_exists(binary) or FileAccess.get_sha256(binary) != manifest.get("runtimeSha256"):
   return _fail("The bundled enrichment runtime is missing or invalid. Factual world data remains available.")
+ var pending := target + ".pending-upgrade-" + Crypto.new().generate_random_bytes(8).hex_encode()
  var log: Array = []
- var exit := OS.execute(binary, [helper.path_join("tools/world_enrichment/origin-world.mjs"), "--world", ProjectSettings.globalize_path(entry.path), "--output", ProjectSettings.globalize_path(target)], log, true, false)
- if exit != 0: return _fail("Origin enrichment failed (code %d). No partial world was added. %s" % [exit, "\n".join(log).left(512)])
- if not lore.load_world(world, target): return _fail(lore.error)
+ var exit := OS.execute(binary, [helper.path_join("tools/world_enrichment/origin-world.mjs"), "--world", ProjectSettings.globalize_path(entry.path), "--output", ProjectSettings.globalize_path(pending)], log, true, false)
+ var lore := WorldOriginLore.new()
+ if exit != 0 or not lore.load_world(world, pending):
+  _remove_flat_directory(pending, true)
+  return _fail("Origin enrichment failed (code %d). No partial world was added. %s %s" % [exit, "\n".join(log).left(512), lore.error])
+ for pin in pins:
+  var why := lore.validate_pin(pin, world, -1, pending)
+  if not why.is_empty():
+   _remove_flat_directory(pending, true)
+   return _fail("Origin enrichment cannot be upgraded without changing a saved campaign: " + why)
+ if DirAccess.dir_exists_absolute(target) or DirAccess.rename_absolute(pending, target) != OK:
+  _remove_flat_directory(pending, true)
+  return _fail("Local history could not be committed. Please retry; existing history was preserved.")
  return {"ok": true, "descriptor": lore.descriptor}

@@ -104,8 +104,30 @@ func run() -> void:
   meta.erase("origin_enrichment")
   json_write(legacy_entry.directory.path_join("metadata.json"), meta)
   check(library.discover().size() == 6, "legacy world lacking lore remains discoverable")
+  var old_reader := WorldOriginLore.new()
+  var legacy_home: Dictionary = {}
+  for state_id in legacy_entry.world.raw_counts().states:
+   var homes: Array = legacy_entry.world.home_candidates(state_id)
+   if not homes.is_empty():
+    legacy_home = homes[0]
+    break
+  # The original complete descriptor was recorded before removal, in this report.
+  var expected_pin: Dictionary = {}
+  for item in proof.worlds:
+   if item.world_id == legacy_entry.id: expected_pin = item.descriptor.duplicate(true)
+  var pin_save := store.create_playthrough(legacy_entry.world, int(legacy_home.state_id), int(legacy_home.id))
+  pin_save.state.origin_enrichment = expected_pin.duplicate(true)
+  pin_save.state.origin_enrichment.enrichment_sha = "0".repeat(64)
+  var pin_path := store.save_root.path_join("legacy-upgrade-pin.json")
+  json_write(pin_path, pin_save.state)
+  var pinned_bytes := FileAccess.get_file_as_bytes(pin_path)
+  check(not library.ensure_enrichment(legacy_entry).ok and not DirAccess.dir_exists_absolute(legacy_path), "legacy upgrade refuses incompatible campaign pins before publication")
+  check(FileAccess.get_file_as_bytes(pin_path) == pinned_bytes, "refused upgrade never rewrites pinned campaign")
+  pin_save.state.origin_enrichment = expected_pin
+  json_write(pin_path, pin_save.state)
   var upgraded := library.ensure_enrichment(legacy_entry)
   check(upgraded.ok and upgraded.descriptor.base_world_sha == legacy_entry.world.source_sha256, "missing-only legacy upgrade preserves base identity")
+  check(store.load_save("legacy-upgrade-pin", legacy_entry.world).ok, "exact pinned legacy enrichment can be restored deterministically")
   var first_sha := FileAccess.get_sha256(legacy_path.path_join("public.json"))
   check(library.ensure_enrichment(legacy_entry).ok and FileAccess.get_sha256(legacy_path.path_join("public.json")) == first_sha, "upgrade retry is deterministic and immutable")
   # Failure before commit leaves no new library entry or orphan staging tree.

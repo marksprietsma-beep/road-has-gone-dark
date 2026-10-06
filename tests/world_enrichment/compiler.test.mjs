@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync,mkdtempSync,rmSync,writeFileSync,cpSync} from 'node:fs';
+import {readFileSync,mkdtempSync,rmSync,writeFileSync,cpSync,existsSync,renameSync} from 'node:fs';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {join,resolve} from 'node:path';
+import {spawnSync} from 'node:child_process';
 import {compileWorld,verifyDirectory,publish,verifyRuntime,hometowns} from '../../tools/world_enrichment/origin-world.mjs';
 import {ContentSeed,canonical,sha} from '../../tools/world_enrichment/core.mjs';
 import {context} from '../../tools/world_enrichment/context.mjs';
@@ -48,4 +49,19 @@ test('renderer refuses secret records and unsupported pack versions',()=>{
  const p={schema_version:2,id:r.id,domain:r.domain,source:r.source,public:r.public,versions:{...r.versions,pack:'future'}};
  assert.throws(()=>render(p),/exact pinned/);
  assert.equal(a.world.base.id,a.descriptor.base_world_id);
+});
+
+test('corrupt vendor, missing renderer and wrong pack are refused before publication',()=>{
+ const root=mkdtempSync(join(tmpdir(),'runtime integrity ')), output=join(root,'output');
+ try {
+  for(const path of ['tools/world_enrichment','vendor/content','data/world_enrichment'])cpSync(path,join(root,path),{recursive:true});
+  const run=()=>spawnSync(process.execPath,[join(root,'tools/world_enrichment/origin-world.mjs'),'--world',resolve('tests/worldgen/fixtures/game-11-determinism.json'),'--output',output],{encoding:'utf8'});
+  const vendor=join(root,'vendor/content/rant/rng.js'),original=readFileSync(vendor);
+  writeFileSync(vendor,Buffer.concat([original,Buffer.from('\n// injected integrity failure\n')]));
+  assert.notEqual(run().status,0);assert(!existsSync(output));writeFileSync(vendor,original);
+  const renderer=join(root,'tools/world_enrichment/text.mjs');renameSync(renderer,renderer+'.missing');
+  assert.notEqual(run().status,0);assert(!existsSync(output));renameSync(renderer+'.missing',renderer);
+  const pack=join(root,'data/world_enrichment/trhgd-expanded-v1.json'),bad=JSON.parse(readFileSync(pack));bad.version='unsupported-pack';writeFileSync(pack,JSON.stringify(bad));
+  assert.notEqual(run().status,0);assert(!existsSync(output));
+ } finally {rmSync(root,{recursive:true,force:true});}
 });

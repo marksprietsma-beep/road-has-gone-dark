@@ -21,12 +21,12 @@ func key(code: int) -> void:
   root.push_input(e)
   await process_frame
  await frames()
-func click(control: Control) -> void:
+func click(control: Control, point: Vector2 = Vector2(-1,-1)) -> void:
  await frames()
  for down in [true, false]:
   var e := InputEventMouseButton.new()
   e.button_index = MOUSE_BUTTON_LEFT
-  e.position = control.get_global_rect().get_center()
+  e.position = control.get_global_rect().get_center() if point.x < 0 else point
   e.pressed = down
   root.push_input(e, true)
  await frames()
@@ -45,14 +45,21 @@ func verify_alignment(ui: Control) -> void:
  check(ui.lore_label.text == "Local memory: " + str(row.memory), "comparison uses stored hometown memory")
  check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "factual summary changes with lore")
  check(ui.map.burg == Vector2(float(home.x), float(home.y)), "map highlights matching source coordinates")
+func wait_scene(path: String) -> void:
+ for n in 300:
+  await process_frame
+  if current_scene != null and current_scene.scene_file_path == path: return
+ check(false, "scene transition: " + path)
+ quit(1)
+
 func run() -> void:
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
  root.size = Vector2i(1280,720)
  change_scene_to_file("res://scenes/ui/main_menu.tscn")
- for n in 10: await process_frame
+ await wait_scene("res://scenes/ui/main_menu.tscn")
  await create_timer(0.6).timeout
  await key(KEY_ENTER)
- for n in 10: await process_frame
+ await wait_scene("res://scenes/ui/new_game_origin.tscn")
  var ui = current_scene
  check(ui.scene_file_path == "res://scenes/ui/new_game_origin.tscn", "main-menu New Game enters onboarding")
  ui.library.library_root = OS.get_environment("GAME79_TEST_ROOT").path_join("library")
@@ -89,6 +96,15 @@ func run() -> void:
    for i in absi(index - current): await key(KEY_DOWN if index > current else KEY_UP)
    check(ui.burg_id == choice.burg, "keyboard selects real hometown")
    verify_alignment(ui)
+   if n == 0 and ui.candidates.size() > 1:
+    await click(ui.options, ui.options.get_global_rect().position + ui.options.get_item_rect(1).get_center())
+    check(ui.burg_id == ui.candidates[1].id, "mouse selects hometown and updates lore")
+    await key(KEY_UP)
+    verify_alignment(ui)
+    var focused: Control = root.gui_get_focus_owner()
+    await key(KEY_TAB)
+    check(root.gui_get_focus_owner() != focused, "Tab advances keyboard focus")
+    ui.options.grab_focus()
    for i in [0,mini(1,ui.candidates.size()-1),mini(2,ui.candidates.size()-1),index]:
     ui.choose_home(i)
     verify_alignment(ui)
@@ -111,7 +127,7 @@ func run() -> void:
    check(DirAccess.get_files_at(ui.store.save_root).size()==1, "exactly one playthrough created")
    await click(ui.next_button)
    await click(ui.back_button)
-   for n in 10: await process_frame
+   await wait_scene("res://scenes/ui/main_menu.tscn")
    check(current_scene.scene_file_path == "res://scenes/ui/main_menu.tscn", "mouse returns main menu")
   else:
    await key(KEY_ESCAPE)

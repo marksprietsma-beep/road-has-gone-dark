@@ -349,9 +349,12 @@ func _refresh_facts() -> void:
   if not row.is_empty():
    lore_label.text = "Local memory: " + (str(row.memory) if page == 2 else str(row.text))
    lore_scroll.show()
-  elif page == 3:
-   next_button.disabled = true
-   message = "Local history could not be validated. Your world remains available; no origin was saved."
+  else:
+   lore_label.text = "Local history is unavailable. Factual world information remains available."
+   lore_scroll.show()
+   if page == 3:
+    next_button.disabled = true
+    message = "Local history could not be validated. No origin was saved."
 
 func advance() -> void:
  if job_thread != null: return
@@ -504,7 +507,7 @@ func _start_generation(seed: String = "") -> void:
 func _start_preview_rebuild(entry: Dictionary) -> void:
  if job_thread != null: return
  job_is_generation = false
- job_phase = "Rebuilding the map preview…"
+ job_phase = "Preparing local history…" if not DirAccess.dir_exists_absolute(library.enrichment_directory(entry)) else "Rebuilding the map preview…"
  job_thread = Thread.new()
  if job_thread.start(_preview_worker.bind(entry)) != OK:
   job_thread = null
@@ -527,7 +530,7 @@ func _generate_worker(seed: String) -> Dictionary:
  return library.import_generated(stage.directory)
 
 func _preview_worker(entry: Dictionary) -> Dictionary:
- if not library.build_preview(entry.directory, entry.raw, entry.world.source_sha256):
+ if not library.preview_valid(entry.directory, entry.world.source_sha256) and not library.build_preview(entry.directory, entry.raw, entry.world.source_sha256):
   return {"ok": false, "error": "The map preview could not be rebuilt. Please retry."}
  var enriched := library.ensure_enrichment(entry)
  if not enriched.ok: return enriched
