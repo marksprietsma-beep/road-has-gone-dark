@@ -64,7 +64,7 @@ func run() -> void:
  var ui = current_scene
  check(ui.scene_file_path == "res://scenes/ui/new_game_origin.tscn", "main-menu New Game enters onboarding")
  ui.library.library_root = OS.get_environment("GAME79_TEST_ROOT").path_join("library")
- ui.store.save_root = OS.get_environment("GAME79_TEST_ROOT").path_join("visual-saves")
+ ui.store.save_root = OS.get_environment("GAME79_TEST_ROOT").path_join("visual-saves-" + Crypto.new().generate_random_bytes(8).hex_encode())
  ui.library.save_root = ui.store.save_root
  ui._reload_library()
  ui.show_page()
@@ -87,6 +87,7 @@ func run() -> void:
    ui.page = 1
    ui.choose_state(choice.state)
    ui.choose_province(-1)
+   ui.show_page()
    await click(ui.next_button)
    var index := -1
    for i in ui.candidates.size():

@@ -50,6 +50,7 @@ func select_home(ui: Control, id: int) -> void:
  ui.page = 1
  ui.choose_state(int(cell.state))
  ui.choose_province(int(cell.province))
+ ui.show_page()
  await click(ui.next_button)
  var index := -1
  for i in ui.candidates.size():

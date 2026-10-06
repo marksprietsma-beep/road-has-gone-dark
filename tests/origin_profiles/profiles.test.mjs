@@ -23,6 +23,7 @@ for(const key of ['game-11-determinism','atlas-showcase'])test(key+': exact repl
  }
  for(const group of Object.values(a.projection).filter(x=>x&&typeof x==='object'))for(const row of Object.values(group)){
   assert(!row.secret&&!row.source_context&&!row.provenance);assert(!/<iframe|https?:|\b(?:km|bonus|discount|travel time)\b/i.test(row.full_summary));
+  assert(!/\ba (?:ambitious|inward-looking|outward-looking)\b/i.test(row.full_summary));
  }
  assert.equal(sha(readFileSync(file)),before);
 });
@@ -33,6 +34,7 @@ test('prerequisites and contradictions refuse unsupported economies and politics
  tags.add('coast');assert.equal(compatible(row('maritime-commerce'),tags,[{id:'isolationist'}]),false);
  const a=compileProfileWorld(path),r=structuredClone(Object.values(a.profiles.hometowns)[0]);r.source_context.tags=[];r.public.economy.specialisms=['mining'];assert.throws(()=>validateProfile(r),/Incompatible economy/);
  r.public.economy.specialisms=['household-crafts'];r.public.posture='isolationist';r.public.social_character='cosmopolitan';assert.throws(()=>validateProfile(r),/Isolationist/);
+ const region=structuredClone(Object.values(a.profiles.regions)[0]);region.source_context.tags=['river','farmland'];region.public.posture='peaceful';region.public.regional_role='farming-belt';region.public.economy.specialisms=['fishing'];assert.throws(()=>validateProfile(region),/Region role\/economy/);
 });
 test('source context ignores hidden mines and retains unknown religion/culture',()=>{
  const a=compileProfileWorld(path),home=Object.values(a.profiles.hometowns)[0],b=a.world.record('settlements',home.source.burg_id);
