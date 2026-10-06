@@ -772,13 +772,13 @@ export function envelope(base, records) {
     throw Error("Mixed or duplicate sidecar");
   const payload = {
     schema_version: SCHEMA,
-    base_world: base,
+    base_world: structuredClone(base),
     scope,
     provider,
     generator_version: VERSION,
     content_pack_version: pack.version,
     content_pack_sha: packSha,
-    records: [...records].sort((a, b) => a.id.localeCompare(b.id, "en")),
+    records: structuredClone(records).sort((a, b) => a.id.localeCompare(b.id, "en")),
   };
   return { ...payload, enrichment_sha: sha(canonical(payload)) };
 }

@@ -1,40 +1,20 @@
 Validated source-context records: 11970
-✔ domain/provider replay, order independence, sibling addition and display-name independence (258.666192ms)
-✔ declarative prerequisites, both conflict directions and explicit relationship resolution (0.557489ms)
-✔ all actual eligible hometowns in both fixtures preserve geography and hidden boundaries (8309.350321ms)
-✔ visibility rejects secrets, rumours verdicts, unknown sites and cross-world keys (6.969056ms)
-✔ negative tampering catches source IDs, trait conflicts, materials and disconnected histories (16.651381ms)
-✔ sidecar namespaces, immutable atomic write, pinned identity and prose independence (66.067077ms)
-✔ linked real POI contract accepts only same-world public site references (2.000435ms)
-✔ explicit discoveries require knowledge gates; origin projection remains public-only (1.321433ms)
-✖ sidecar rejects rehashed wrong generator/pack labels and duplicate records (2.920778ms)
-✔ compact origin uses stored memory/tradition without changing facts (1.868169ms)
-✔ adopted engine files match licence/provenance pins (1.85835ms)
+✔ domain/provider replay, order independence, sibling addition and display-name independence (299.698722ms)
+✔ declarative prerequisites, both conflict directions and explicit relationship resolution (0.440232ms)
+✔ all actual eligible hometowns in both fixtures preserve geography and hidden boundaries (10250.615661ms)
+✔ visibility rejects secrets, rumours verdicts, unknown sites and cross-world keys (17.109755ms)
+✔ negative tampering catches source IDs, trait conflicts, materials and disconnected histories (22.136594ms)
+✔ sidecar namespaces, immutable atomic write, pinned identity and prose independence (75.130072ms)
+✔ linked real POI contract accepts only same-world public site references (9.073193ms)
+✔ explicit discoveries require knowledge gates; origin projection remains public-only (2.547001ms)
+✔ sidecar rejects rehashed wrong generator/pack labels and duplicate records (8.684097ms)
+✔ compact origin uses stored memory/tradition without changing facts (0.890261ms)
+✔ adopted engine files match licence/provenance pins (9.278345ms)
 ℹ tests 11
 ℹ suites 0
-ℹ pass 10
-ℹ fail 1
+ℹ pass 11
+ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 9148.853616
-
-✖ failing tests:
-
-test at research/game78/tests/framework.test.mjs:356:1
-✖ sidecar rejects rehashed wrong generator/pack labels and duplicate records (2.920778ms)
-  AssertionError [ERR_ASSERTION]: Missing expected exception.
-      at TestContext.<anonymous> (file:///workspace/game77-content-enrichment/research/game78/tests/framework.test.mjs:371:12)
-      at Test.runInAsyncScope (node:async_hooks:227:14)
-      at Test.run (node:internal/test_runner/test:1382:25)
-      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
-      at Test.postRun (node:internal/test_runner/test:1522:19)
-      at Test.run (node:internal/test_runner/test:1447:12)
-      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
-    generatedMessage: false,
-    code: 'ERR_ASSERTION',
-    actual: undefined,
-    expected: undefined,
-    operator: 'throws',
-    diff: 'simple'
-  }
+ℹ duration_ms 11441.063582
