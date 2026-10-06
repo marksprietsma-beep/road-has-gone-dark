@@ -4,6 +4,7 @@ permissions:
 on:
   push:
     branches: [feature/game-84-first-production-expedition-v0]
+    paths: ['scripts/**', 'scenes/**', 'tools/**', 'tests/**', 'data/**', 'assets/**', 'themes/**', 'export_presets.cfg', 'project.godot', '.github/workflows/verify-party-creation.yml']
   pull_request:
     paths:
       - 'scripts/**'
