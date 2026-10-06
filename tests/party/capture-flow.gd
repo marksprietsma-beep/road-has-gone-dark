@@ -41,6 +41,7 @@ func wait_party(ui: Control) -> void:
 func shot(name: String, ui: Control=null) -> void:
  await frames()
  if ui!=null:
+  check(ui.origin.is_visible_in_tree() and ui.origin.size.y >= 18 and not ui.origin.text.is_empty(), "origin reminder visible: " + name)
   check(ui.finish_button.get_global_rect().end.y<=root.get_visible_rect().size.y-8,"footer visible: "+name)
   check(ui.detail_tabs.get_global_rect().end.y<ui.back_button.get_global_rect().position.y,"details above footer")
  check(root.get_texture().get_image().save_png(output.path_join(name+".png"))==OK,"real screenshot "+name)
@@ -142,6 +143,7 @@ func run() -> void:
  var choice := resume.resumable()
  check(choice.slot==slot,"narrow restart resume points to same slot")
  current_scene.refresh_party_resume(resume)
+ check(current_scene.menu_content.get_node("ResumePartyButton").get_index()==current_scene.new_game_button.get_index()+2,"resume follows New Game and disabled Continue")
  for n in 60: await process_frame
  await shot("main-menu-resume-party")
  await click(current_scene.menu_content.get_node("ResumePartyButton"))

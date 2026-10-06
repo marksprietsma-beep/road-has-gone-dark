@@ -39,7 +39,7 @@ func refresh_party_resume(service: PartyService = null) -> void:
 		button.text = "Resume party setup"
 		button.flat = true
 		menu_content.add_child(button)
-		menu_content.move_child(button, 2)
+		menu_content.move_child(button, new_game_button.get_index() + 2)
 		button.pressed.connect(func():
 			PartyService.handoff = {"entry":party_resume.entry,"slot":party_resume.slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
 			await _change_scene_with_fade("res://scenes/ui/party_creation.tscn")

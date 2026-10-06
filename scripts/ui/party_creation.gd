@@ -81,6 +81,7 @@ func _ready() -> void:
  title = label("Party creation", 24)
  column.add_child(title)
  origin = label("")
+ origin.custom_minimum_size.y = 18
  origin.max_lines_visible = 1
  origin.clip_text = true
  column.add_child(origin)
