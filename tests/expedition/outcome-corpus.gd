@@ -50,7 +50,7 @@ func run() -> void:
      var seeded:=service.store.save_existing(slot,fixture,entry.world)
      check(seeded.ok,"validated arrived-state fixture")
      var result:=service.operate(entry,slot,action,1,{"revision":fixture.expedition.revision})
-     check(result.ok,action+" actual production transaction")
+     check(result.ok,action+" actual production transaction: "+str(result.get("error","")))
      if not result.ok:continue
      var state: Dictionary=result.state
      check(state.expedition.active.phase=="result","consequence handoff")

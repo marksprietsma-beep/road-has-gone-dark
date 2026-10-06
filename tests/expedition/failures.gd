@@ -92,5 +92,14 @@ func run() -> void:
  var invalid:=state.duplicate(true)
  invalid.expedition.active={"lead_id":"lead:missing","phase":"site","site_id":content.sites[0].id,"party_ids":state.party_ids,"supplies":4}
  check(not service.store._validate(invalid,entry.world).is_empty(),"unknown lead rejected")
+ var malformed:=state.duplicate(true)
+ malformed.expedition.outcomes[content.sites[0].id]={"approach":"record","sequence":999}
+ check(not service.store._validate(malformed,entry.world).is_empty(),"missing consequence text/sequence rejected before UI")
+ malformed=state.duplicate(true)
+ malformed.expedition.log[0].tick=100
+ check(not service.store._validate(malformed,entry.world).is_empty(),"corrupt event clock rejected")
+ malformed=state.duplicate(true)
+ malformed.game_clock.tick+=1
+ check(not service.store._validate(malformed,entry.world).is_empty(),"campaign and structured log clocks must agree")
  print("GAME-84 failure safety: ",checks," checks, ",failures," failures")
  quit(1 if failures else 0)
