@@ -44,6 +44,14 @@ func shot(name: String, ui: Control=null) -> void:
   check(ui.origin.is_visible_in_tree() and ui.origin.size.y >= 18 and not ui.origin.text.is_empty(), "origin reminder visible: " + name)
   check(ui.finish_button.get_global_rect().end.y<=root.get_visible_rect().size.y-8,"footer visible: "+name)
   check(ui.detail_tabs.get_global_rect().end.y<ui.back_button.get_global_rect().position.y,"details above footer")
+ if ui!=null:
+  var picture := root.get_texture().get_image()
+  var rect: Rect2i = Rect2i(ui.origin.get_global_rect())
+  var ink := 0
+  for y in range(rect.position.y, rect.end.y):
+   for x in range(rect.position.x, rect.end.x):
+    if picture.get_pixel(x,y).r > 0.3: ink += 1
+  check(ink > 20, "origin reminder has rendered text: " + name)
  check(root.get_texture().get_image().save_png(output.path_join(name+".png"))==OK,"real screenshot "+name)
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
