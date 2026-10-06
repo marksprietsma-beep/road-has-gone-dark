@@ -316,7 +316,8 @@ func show_page() -> void:
   if not province.is_empty(): left.add_child(_label(str(province.get("name", ""))))
   left.add_child(_label(str(home.get("name", "")), 20))
   left.add_child(_label("Your origin has been saved. Party creation is next." if page == 4 else "Confirm to begin a new playthrough."))
-  if not message.is_empty(): left.add_child(_label(message))
+  # Confirmation feedback belongs in the bounded lore area, never an extra
+  # minimum-height row that can push the actions outside the viewport.
  left.move_child(lore_scroll, left.get_child_count() - 1)
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
@@ -348,6 +349,7 @@ func _refresh_facts() -> void:
   var row := reader.public_origin(world, burg_id)
   if not row.is_empty():
    lore_label.text = "Local memory: " + (str(row.memory) if page == 2 else str(row.text))
+   if page >= 3 and not message.is_empty(): lore_label.text = message + "\n" + lore_label.text
    lore_scroll.show()
   else:
    lore_label.text = "Local history is unavailable. Factual world information remains available."
