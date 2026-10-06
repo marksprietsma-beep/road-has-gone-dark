@@ -2,6 +2,7 @@
 """Production offline contract: five worlds, exact replay, two Godot processes."""
 import argparse,hashlib,json,os,pathlib,subprocess,tempfile,time
 p=argparse.ArgumentParser();p.add_argument('--visual',action='store_true');p.add_argument('--regressions',action='store_true');args=p.parse_args()
+os.sys.stdout.reconfigure(encoding='utf-8')
 root=pathlib.Path(__file__).resolve().parents[2];os.chdir(root)
 env=os.environ.copy();engine=env.get('GODOT_BIN','godot')
 helper=pathlib.Path(env.get('GAME76_HELPER_ROOT',root/'worldgen-helper')).resolve()
@@ -10,7 +11,9 @@ evidence=root/'docs/implementation/game79';logs=evidence/'logs';logs.mkdir(paren
 def run(name,command,timeout=600,custom=None):
  start=time.perf_counter();r=subprocess.run(list(map(str,command)),env=custom or env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',timeout=timeout)
  (logs/(name+'.txt')).write_text(r.stdout,encoding='utf-8');print(r.stdout,end='',flush=True)
- if r.returncode or 'ERROR:' in r.stdout:raise SystemExit(name+' failed')
+ if r.returncode or 'ERROR:' in r.stdout:
+  print('::error::'+(name+' failed: '+r.stdout[-2000:]).replace('\n','%0A').replace('\r',''),flush=True)
+  raise SystemExit(name+' failed')
  return time.perf_counter()-start
 hashfile=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 fixtures=[root/('tests/worldgen/fixtures/'+key+'.json')for key in ['game-11-determinism','atlas-showcase']];before=list(map(hashfile,fixtures))
@@ -39,6 +42,7 @@ with tempfile.TemporaryDirectory(prefix='game79 production worlds ') as temp:
  for phase in ['create','replay']:
   env['GAME79_PHASE']=phase
   run('lifecycle-'+phase,[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/world_enrichment/verify-lifecycle.gd'])
+ run('postwrite-lore',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/world_enrichment/verify-reload.gd'])
  if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/world_enrichment/capture-origin.gd'])
  if args.regressions:run('regressions',[os.sys.executable,'tests/origin_context/run-tests.py','--regressions']+(['--visual']if args.visual else []),1800)
 assert list(map(hashfile,fixtures))==before
