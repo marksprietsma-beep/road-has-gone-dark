@@ -31,7 +31,7 @@ func refresh_party_resume(service: PartyService = null) -> void:
 	if existing != null:
 		menu_content.remove_child(existing)
 		existing.queue_free()
-	if service == null: service = PartyService.new()
+	if service == null: service = ExpeditionService.new()
 	party_resume = service.resumable()
 	menu_content.get_node("ContinueButton").visible = party_resume.is_empty()
 	if not party_resume.is_empty():
@@ -45,6 +45,7 @@ func refresh_party_resume(service: PartyService = null) -> void:
 		menu_content.move_child(button, new_game_button.get_index() + 2)
 		button.pressed.connect(func():
 			PartyService.handoff = {"entry":party_resume.entry,"slot":party_resume.slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
+			if service is ExpeditionService: PartyService.handoff.cache_root = service.cache_root
 			await _change_scene_with_fade("res://scenes/gameplay/expedition.tscn" if ready else "res://scenes/ui/party_creation.tscn")
 		)
 

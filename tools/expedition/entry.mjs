@@ -12,10 +12,12 @@ const a=process.argv.slice(2);if(a.length!==8||a[0]!=='--world'||a[2]!=='--home'
 try{
  const w=loadWorld(a[1]),home=w.record('settlements',Number(a[3]));if(!home||home.hidden||home.removed)throw Error('Invalid hometown');
  const cache=resolve(a[5]);mkdirSync(cache,{recursive:true});const geo=join(cache,w.base.sha256+'.geography.json');
- if(!existsSync(geo)){
+ if(existsSync(geo)){
+  if(!existsSync(geo+'.sha')||readFileSync(geo+'.sha','utf8')!==sha(readFileSync(geo)))throw Error('Unverified/corrupt geography cache; campaign preserved');
+ }else{
   const replay=join(cache,w.base.sha256+'.replay.json');
   execFileSync(process.execPath,['tools/worldgen/offline-generate.mjs','--seed',w.source.seed,'--output',replay,'--geometry-output',geo],{timeout:125000});
-  if(sha(readFileSync(replay))!==w.base.sha256){unlinkSync(geo);throw Error('Original geography replay did not match canonical world');}unlinkSync(replay);
+  if(sha(readFileSync(replay))!==w.base.sha256){unlinkSync(geo);throw Error('Original geography replay did not match canonical world');}unlinkSync(replay);writeFileSync(geo+'.sha',sha(readFileSync(geo)),{flag:'wx'});
  }
  const region=await generateCellRegion(w.source,home.cell,w.base.sha256,JSON.parse(readFileSync(geo)));
  const content=localContent(w,home,region),leads=initialLeads(w,home,content);

@@ -24,11 +24,12 @@ export function localContent(w,home,region){
   if(!p)throw Error('No supported dry-land placement; source geometry preserved');
   const purpose=choose(s,'purpose',safe,tags),condition=choose(s,'condition',pack.conditions.filter(x=>x.facet==='walls'),tags),event=choose(s,'history',pack.events.filter(x=>['reuse','abandonment','repair'].includes(x.category)),tags);
   const id='site:'+sha(canonical([w.base.id,cell,LOCAL_VERSION,slot]));
+  const name=['Ashfold','Greyward','Morrow','Rook','Dunstone','Lowfield','Hallow','Stillward'][slot]+' '+purpose.label;
   const f={purpose:purpose.id,conditions:[condition.id],history:[{index:0,event:'foundation-laid',state:'standing',years_before:150},{index:1,event:event.id,state:event.transition,years_before:40}],age_band:'several-generations',marker_type:'generated-local',source_name:null};
   const projection={schema_version:SCHEMA,id,domain:'site',source:{world_id:w.base.id,culture_id:ctx.culture_id},versions:{generator:VERSION,provider:'sha-staged',pack:pack.version,pack_sha:packSha},public:f};
   const history_description=render(projection,{compact:true}).text;
   const description=history_description.split(/(?<=\.) /)[0];
-  sites.push({id,slot,kind:purpose.id,name:'Old '+purpose.label,position:p,world_position:[region.source_context.space.source_bounds.left+p[0]*(region.source_context.space.source_bounds.right-region.source_context.space.source_bounds.left)/1000,region.source_context.space.source_bounds.top+p[1]*(region.source_context.space.source_bounds.bottom-region.source_context.space.source_bounds.top)/1000],cell_id:cell,origin:'generated-local',source_marker_id:null,facts:f,description,history_description,secret:{record:'A repair tally remains beneath a loose stone.',truth_id:id+':tally'},provenance:{world_sha:w.base.sha256,cell_id:cell,version:LOCAL_VERSION,pack_sha:packSha,authorship:'TRHGD generated fiction; not Azgaar marker/history'}});
+  sites.push({id,slot,kind:purpose.id,name,position:p,world_position:[region.source_context.space.source_bounds.left+p[0]*(region.source_context.space.source_bounds.right-region.source_context.space.source_bounds.left)/1000,region.source_context.space.source_bounds.top+p[1]*(region.source_context.space.source_bounds.bottom-region.source_context.space.source_bounds.top)/1000],cell_id:cell,origin:'generated-local',source_marker_id:null,facts:f,description,history_description,secret:{record:'A repair tally remains beneath a loose stone.',truth_id:id+':tally'},provenance:{world_sha:w.base.sha256,cell_id:cell,version:LOCAL_VERSION,pack_sha:packSha,authorship:'TRHGD generated fiction; not Azgaar marker/history'}});
  }
  const homePosition=toLocalPoint([home.x,home.y],region.source_context.space.source_bounds);
  const body={schema_version:1,version:LOCAL_VERSION,world_id:w.base.id,world_sha:w.base.sha256,cell_id:cell,sites};
@@ -38,8 +39,13 @@ export function initialLeads(w,home,content){
  const ctx=context(w,'settlements',home.i);
  return content.sites.slice(0,3).map((site,i)=>{
   const hook=generate(ctx,'contract','expedition:'+site.id);
-  const goal=['Compare the surviving work with local accounts','Record what remains for the people at home','Look for evidence of its former use'][i];
-  return {id:'lead:'+sha(canonical([content.sha,home.i,site.id])),site_id:site.id,knowledge:i===1?'rumoured':'discovered',goal,issuer:find('occupations',hook.public.issuer.role).key,hook:{generator:hook.versions,issuer:hook.public.issuer,evidence:hook.public.evidence},status:'available',origin:'generated-local'};
+  const seed=new ContentSeed(w.base.id,'world',LOCAL_VERSION,packSha,['cell:'+home.cell,site.id,'lead']);
+  const allowed=['record-surviving-worked-stones'];
+  if(site.facts.history.some(e=>pack.events.find(x=>x.id===e.event)?.category==='repair'))allowed.push('inspect-a-reported-repair');
+  if(site.facts.conditions.includes('walls-chalked'))allowed.push('copy-an-exposed-inscription');
+  const goalRow=seed.pick('compatible-goal',pack.contracts.filter(r=>allowed.includes(r.id)));
+  const goal=goalRow.label[0].toUpperCase()+goalRow.label.slice(1);
+  return {id:'lead:'+sha(canonical([content.sha,home.i,site.id])),site_id:site.id,knowledge:i===1?'rumoured':'discovered',goal,goal_id:goalRow.id,issuer:find('occupations',hook.public.issuer.role).key,hook:{generator:hook.versions,issuer:hook.public.issuer,evidence:hook.public.evidence},status:'available',origin:'generated-local'};
  });
 }
 export function publicView(content,progress){

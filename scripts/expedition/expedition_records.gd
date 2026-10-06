@@ -18,7 +18,7 @@ static func site_id(world: GameWorldTemplate, cell: int, index: int) -> String:
 static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  if not state.has("expedition"): return ""
  var e: Variant = state.expedition
- if not e is Dictionary or e.get("version") != VERSION or not e.get("content_sha") is String or str(e.content_sha).length()!=64: return "Invalid expedition version/pin"
+ if not e is Dictionary or e.size()!=10 or e.get("version") != VERSION or not e.get("content_sha") is String or str(e.content_sha).length()!=64 or not e.get("packet_sha") is String or str(e.packet_sha).length()!=64: return "Invalid expedition version/pin"
  if state.get("party",{}).get("status")!="ready": return "Expedition requires the saved ready party"
  var cell := int(world.get_record("burg",int(state.origin.home_burg_id)).cell)
  if e.get("cell_id")!=cell or not e.get("knowledge") is Dictionary or e.knowledge.size()!=8: return "Invalid local-cell knowledge"
@@ -46,13 +46,13 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
   if e.active.phase!="map" and (e.active.get("site_id")!=lead.site_id or not e.knowledge[lead.site_id] in ["visited","investigated"]): return "Invalid site arrival"
  for id in e.outcomes:
   if not id in allowed or not e.outcomes[id] is Dictionary or not e.outcomes[id].get("approach") in ["survey","record","secure","study","craft","leave"]: return "Invalid site consequence"
- if state.game_clock.get("time_unit")!="expedition-turn" or not state.game_clock.get("tick") is float and not state.game_clock.get("tick") is int or state.game_clock.tick<0: return "Invalid expedition clock"
+ if state.game_clock.get("time_unit")!="expedition-turn" or not state.game_clock.get("tick") is float and not state.game_clock.get("tick") is int or state.game_clock.tick<0 or state.game_clock.tick!=int(state.game_clock.tick): return "Invalid expedition clock"
  return ""
 static func projection(content: Dictionary, e: Dictionary) -> Dictionary:
  var sites: Array = []
  for s in content.sites:
   if e.knowledge[s.id] in ["discovered","visited","investigated"]:
-   sites.append({"id":s.id,"name":s.name,"kind":s.kind,"position":s.position,"description":s.history_description if e.knowledge[s.id]=="investigated" else s.description,"knowledge":e.knowledge[s.id]})
+   sites.append({"id":s.id,"name":s.name,"kind":s.kind,"position":s.position,"description":s.history_description if e.knowledge[s.id]=="investigated" else s.description,"knowledge":e.knowledge[s.id],"has_marks":s.facts.conditions.has("walls-chalked"),"unstable":s.facts.conditions.has("walls-cracked")})
  var leads: Array = []
  for l in e.leads:
   var s: Dictionary = content.sites.filter(func(x: Dictionary): return x.id==l.site_id)[0]

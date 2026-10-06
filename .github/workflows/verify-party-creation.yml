@@ -1,7 +1,9 @@
-name: Verify Party Creation V0 and Native Distribution
+name: Verify Party and Production Expedition Native Distribution
 permissions:
   contents: read
 on:
+  push:
+    branches: [feature/game-84-first-production-expedition-v0]
   pull_request:
     paths:
       - 'scripts/**'
@@ -18,7 +20,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 50
+    timeout-minutes: 100
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,27 +35,27 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Linux party, five fresh worlds, input/render and regressions
         if: runner.os == 'Linux'
-        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/party/run-tests.py --visual --regressions
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/expedition/run-tests.py --visual --regressions
       - name: Windows native party, five fresh worlds, persistence and regressions
         if: runner.os == 'Windows'
-        run: python tests/party/run-tests.py --regressions
+        run: python tests/expedition/run-tests.py --regressions
       - name: Install checksum-verified native export templates
         run: python tools/release/prepare-templates.py
       - name: Export, test and archive the complete native game and matching helper
         env:
-          GAME81_RELEASE_ROOT: ${{ runner.temp }}/game81-distributions
-        run: python tests/party/verify-package.py
+          GAME84_RELEASE_ROOT: ${{ runner.temp }}/game84-distributions
+        run: python tests/expedition/verify-package.py
       - name: Upload executed evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: game81-qa-${{ runner.os }}
-          path: docs/implementation/game81
+          name: game84-qa-${{ runner.os }}
+          path: docs/implementation/game84
       - name: Upload complete native distribution and checksum
         uses: actions/upload-artifact@v4
         with:
-          name: game81-complete-${{ runner.os }}
+          name: game84-complete-${{ runner.os }}
           path: |
-            ${{ runner.temp }}/game81-distributions/*.zip
-            ${{ runner.temp }}/game81-distributions/*.tar.gz
-            ${{ runner.temp }}/game81-distributions/*.sha256
+            ${{ runner.temp }}/game84-distributions/*.zip
+            ${{ runner.temp }}/game84-distributions/*.tar.gz
+            ${{ runner.temp }}/game84-distributions/*.sha256

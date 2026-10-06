@@ -18,7 +18,7 @@ if(!existsSync(executable))throw Error('Export did not produce the game executab
 // from an owned temporary project whose entry point is the diagnostic scene.
 // The checkout and production main scene are never changed.
 const qaScene=get('--qa-scene')??'res://tests/origin_profiles/verify-distribution.tscn';
-if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
+if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn','res://tests/expedition/verify-distribution.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
 if(a.includes('--qa')){
  const stage=mkdtempSync(join(tmpdir(),'trhgd-export-proof-'));
  try{

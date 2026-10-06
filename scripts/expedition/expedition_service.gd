@@ -2,6 +2,7 @@ class_name ExpeditionService
 extends PartyService
 ## Reuses GAME-81 lock, exact-byte journal, guarded world lifecycle and reload.
 var packet := {}
+var packet_digest := ""
 var cache_root := "user://expedition-content"
 func prepare(entry: Dictionary) -> Dictionary:
  var w: GameWorldTemplate = entry.world
@@ -40,6 +41,7 @@ func prepare(entry: Dictionary) -> Dictionary:
   if file==null: return fail("Cannot verify local region cache")
   file.store_string(FileAccess.get_sha256(path))
   file.close()
+ packet_digest=FileAccess.get_sha256(path)
  if packet.get("content",{}).get("world_id")!=w.world_id or packet.content.get("home_id")!=home or packet.content.get("version")!=ExpeditionRecords.VERSION: return fail("Mismatched local content")
  return {"ok":true}
 func _operate_locked(entry: Dictionary, slot: String, operation: String, _member: int, changes: Dictionary) -> Dictionary:
@@ -53,7 +55,7 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
  var prepared := prepare(input)
  if not prepared.ok: return prepared
  var content: Dictionary = packet.content
- if state.has("expedition") and state.expedition.content_sha!=content.sha: return fail("Campaign local content version does not match")
+ if state.has("expedition") and (state.expedition.content_sha!=content.sha or state.expedition.packet_sha!=packet_digest): return fail("Campaign local content version does not match")
  if operation=="resume" and state.has("expedition"): return loaded
  var candidate := state.duplicate(true)
  if not candidate.has("expedition"):
@@ -61,7 +63,8 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
   var knowledge := {}
   for s in content.sites: knowledge[s.id]="unknown"
   for l in packet.leads: knowledge[l.site_id]=l.knowledge
-  candidate.expedition={"version":ExpeditionRecords.VERSION,"content_sha":content.sha,"cell_id":content.cell_id,"knowledge":knowledge,"leads":packet.leads.duplicate(true),"active":{},"revision":0,"log":[],"outcomes":{}}
+  candidate.expedition={"version":ExpeditionRecords.VERSION,"content_sha":content.sha,"packet_sha":packet_digest,"cell_id":content.cell_id,"knowledge":knowledge,"leads":packet.leads.duplicate(true),"active":{},"revision":0,"log":[],"outcomes":{}}
+  if candidate.game_clock.get("time_unit")!="unassigned" or candidate.game_clock.get("tick")!=0: return fail("This campaign uses another clock. It was preserved without conversion.")
   candidate.game_clock={"tick":0,"time_unit":"expedition-turn"}
   _event(candidate,"begin","Local accounts are ready. Your party gathers at home.",0)
   return commit(slot,candidate,world)
@@ -130,8 +133,10 @@ static func choices(state: Dictionary, site: Dictionary) -> Array:
  var options: Array = [{"id":"survey","label":"Survey the perimeter","effect":"Record the site and another local rumour"},{"id":"record","label":"Examine the surviving work","effect":"Learn its former use"}]
  var special := {}
  for m in state.party.members:
-  if m.role_id=="adept": special={"id":"study","label":m.name+": study the markings","effect":"Record the surviving marks"}
-  elif m.role_id=="vanguard" and special.is_empty(): special={"id":"secure","label":m.name+": secure the approach","effect":"Record sections to avoid"}
+  var marked: bool = site.get("has_marks",str(site.get("facts",{}).get("conditions",[])).contains("walls-chalked"))
+  var damaged: bool = site.get("unstable",str(site.get("facts",{}).get("conditions",[])).contains("walls-cracked"))
+  if m.role_id=="adept" and marked: special={"id":"study","label":m.name+": study the markings","effect":"Record the surviving marks"}
+  elif m.role_id=="vanguard" and damaged and special.is_empty(): special={"id":"secure","label":m.name+": secure the approach","effect":"Record sections to avoid"}
   elif m.role_id=="expert" and special.is_empty(): special={"id":"craft","label":m.name+": examine the construction","effect":"Distinguish original work from repairs"}
   elif m.role_id=="scout" and special.is_empty(): options[0].label=m.name+": survey quietly"
   var occupation := str(m.generated_facts.get("occupation_id",""))

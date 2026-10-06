@@ -47,7 +47,7 @@ for (const key of [...included].sort()) await cp(join(vendor,key),join(out,'vend
   recursive:true, filter: path => !path.slice(join(vendor,key).length).split(/[\\/]/).includes('node_modules')
 });
 await cp(join(root,'tools/worldgen'),join(out,'tools/worldgen'),{recursive:true, filter:path => !path.endsWith('package-helper.mjs') && !path.slice(join(root,'tools/worldgen').length).split(/[\\/]/).includes('.tmp')});
-for (const path of ['tools/world_enrichment', 'tools/party', 'tools/expedition', 'tools/regiongen', 'vendor/town-forge', 'vendor/content', 'assets/map_icons']) await cp(join(root,path),join(out,path),{recursive:true});
+for (const path of ['tools/world_enrichment', 'tools/party', 'tools/expedition', 'tools/regiongen', 'vendor/town-forge', 'vendor/content', 'assets/map_icons']) await cp(join(root,path),join(out,path),{recursive:true,filter:p=>!p.slice(join(root,path).length).split(/[\\/]/).includes('.tmp')&&!p.endsWith('.import')});
 await mkdir(join(out,'data/world_enrichment'),{recursive:true});
 for (const name of ['trhgd-expanded-v1.json','curated-corpora-vocabulary.json','runtime.json','runtime-profiles-v2.json','trhgd-origin-profiles-v2.json','runtime-party-v1.json','runtime-expedition-v1.json','trhgd-party-v1.json']) await cp(join(root,'data/world_enrichment',name),join(out,'data/world_enrichment',name));
 const binary = process.platform === 'win32' ? 'node.exe' : 'node';
