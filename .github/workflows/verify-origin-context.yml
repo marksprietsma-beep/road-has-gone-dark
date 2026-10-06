@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - 'research/game77-integration/**'
+      - 'research/game78-integration/**'
       - 'research/game77/src/origin_lore.gd'
       - 'scripts/origin_context/**'
       - 'scripts/ui/**'
@@ -42,17 +43,17 @@ jobs:
         run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/origin_context/run-tests.py --visual --regressions
       - name: Windows public-lore adapter checks
         if: runner.os == 'Windows'
-        run: python research/game77-integration/run-tests.py
+        run: python research/game78-integration/run-tests.py
       - name: Linux actual public-lore input and render proof
         if: runner.os == 'Linux'
-        run: xvfb-run -a -s '-screen 0 1920x1080x24' python research/game77-integration/run-tests.py --visual
+        run: xvfb-run -a -s '-screen 0 1920x1080x24' python research/game78-integration/run-tests.py --visual
       - name: Upload executed platform evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: game75-qa-${{ runner.os }}
           path: |
-            research/game77-integration/evidence
+            research/game78-integration/evidence
             docs/implementation/game75/logs
             docs/implementation/game75/*-proof.json
             docs/implementation/game75/screenshots

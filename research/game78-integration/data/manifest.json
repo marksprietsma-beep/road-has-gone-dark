@@ -1,0 +1,40 @@
+{
+  "core_commit": "746369f278ef009ba6f589e84e508c2bd3ed3e9c",
+  "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+  "public_sha256": "f46f4a15ff656227df6e7fc37fbd83152e0fbab2c0db13c58bfa0bcc48995279",
+  "renderer": "trhgd-game78-rant-1/compact-origin",
+  "world_sidecars": {
+    "game-11-determinism": "game-11-determinism-6e80ba5de7c24dfce9ada43c28806947690c4e3848b7d5eb6da4f99adb66de37.json",
+    "atlas-showcase": "atlas-showcase-0299c7b92701f03259fc420e5f92fdbb6599180a99ec676de2cf7c627f2a94c1.json"
+  },
+  "facts": [
+    {
+      "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "burg_id": 771,
+      "memory_event": "repair-lessons",
+      "tradition": "loan-marks",
+      "expected_text": "Craft workers held free lessons in mending ordinary tools. Local households mark lent tools with a removable strip of cloth."
+    },
+    {
+      "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "burg_id": 25,
+      "memory_event": "repair-lessons",
+      "tradition": "first-stitch",
+      "expected_text": "Craft workers held free lessons in mending ordinary tools. Local households show apprentices the first stitch in an old household cloth."
+    },
+    {
+      "world_id": "azgaar:1.153.1:atlas-showcase-06:9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "burg_id": 760,
+      "memory_event": "common-cart",
+      "tradition": "hearth-sweeping",
+      "expected_text": "Carters shared a cart during repairs to several broken axles. Local households sweep a neighbour's hearth when they cannot do it."
+    }
+  ],
+  "source_module_sha256": {
+    "context": "29a0bc1e662b208e4eec49287de129e299a57f21f92fc62424ff9383300781ed",
+    "compatibility": "d98ca7b9df45685d854c40452f8ad84d9e574874142c08d1b5aa29eb9ca54b64",
+    "framework": "68a47950e2de7a71102a1c7d826880225a287ffc7b19405ad06c021538e3b660",
+    "text": "cffc4ce6b4cd860b9248383210af8f68adfe57421ea66d2d72b461be9ed88a01"
+  },
+  "limits": "Three real preset hometowns. Other towns and generated worlds fall back to unchanged GAME-75 factual context."
+}

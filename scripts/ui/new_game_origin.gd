@@ -40,10 +40,10 @@ var working_label: Label
 var job_is_generation := false
 var origin_contexts := {}
 var world_status: Label
-# Isolated GAME-77 public-lore demonstration; source-backed GAME-75 facts stay separate.
+# Isolated GAME-78 expanded public-lore demonstration; source-backed GAME-75 facts stay separate.
 const LORE = preload("res://research/game77/src/origin_lore.gd")
-const LORE_PATH := "res://research/game77-integration/data/public-origins.json"
-const LORE_SHA := "e5e6120cadfcfcb64dcef2032c37003e089d2a5d111ade707a8acd9bad41f154"
+const LORE_PATH := "res://research/game78-integration/data/public-origins.json"
+const LORE_SHA := "f46f4a15ff656227df6e7fc37fbd83152e0fbab2c0db13c58bfa0bcc48995279"
 var origin_lore := LORE.new()
 var local_memory: Label
 
@@ -298,7 +298,7 @@ func show_page() -> void:
   if not message.is_empty(): left.add_child(_label(message))
   var memory := origin_lore.get_public(world.world_id, burg_id)
   if not memory.is_empty():
-   local_memory = _label("Local memory\n" + str(memory.text))
+   local_memory = _label("Local memory: " + str(memory.text), 12)
    local_memory.name = "LocalMemory"
    left.add_child(local_memory)
  _refresh_facts()
