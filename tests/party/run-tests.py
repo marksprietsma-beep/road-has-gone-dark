@@ -38,5 +38,6 @@ for phase in ['create','replay']:
 if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/party/capture-flow.gd'])
 if args.regressions:run('game80-regressions',[os.sys.executable,'tests/origin_profiles/run-tests.py','--regressions']+(['--visual']if args.visual else[]),timeout=3600)
 assert before=={str(p):hashfile(p)for p in frozen}
+metrics=json.loads((docs/'batch-metrics.json').read_text());print('::notice title=GAME-81 batch proof::'+json.dumps({k:metrics[k]for k in ['characters','structured','prose','story_combinations','biography_forms','contradictions','invalid_source_claims','hidden_information_leaks']},separators=(',',':')),flush=True)
 if owned:owned.cleanup()
 print('PASS GAME-81 party generation, five fresh worlds, 1,050 backgrounds, save and failure recovery; frozen fixtures/packages unchanged')

@@ -42,3 +42,5 @@ proof = {'platform':platform.system(), 'native_export_test':'isolated release ex
          'distribution':json.loads((distribution/'distribution.json').read_text())}
 (root/'docs/implementation/game81/distribution-proof.json').write_text(json.dumps(proof, indent=2)+'\n')
 print('Verified complete game + helper:', archive, flush=True)
+
+print('::notice title=GAME-81 native distribution proof::'+json.dumps(proof,separators=(',',':')),flush=True)
