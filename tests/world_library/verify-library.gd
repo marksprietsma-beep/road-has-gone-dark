@@ -74,7 +74,7 @@ func run() -> void:
  var ready := library.create_staging()
  for name in ["world.json", "metadata.json", "preview.png", "preview.cells", "preview.meta.json"]:
   write_bytes(ready.directory.path_join(name), FileAccess.get_file_as_bytes(b.directory.path_join(name)))
- var enrichment := ready.directory.path_join("enrichment/origin-v1")
+ var enrichment: String = ready.directory.path_join("enrichment/origin-v1")
  DirAccess.make_dir_recursive_absolute(enrichment)
  for name in ["descriptor.json", "enrichment.json", "public.json"]:
   write_bytes(enrichment.path_join(name), FileAccess.get_file_as_bytes(b.directory.path_join("enrichment/origin-v1").path_join(name)))

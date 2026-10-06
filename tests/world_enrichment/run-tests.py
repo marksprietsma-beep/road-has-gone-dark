@@ -9,8 +9,11 @@ helper=pathlib.Path(env.get('GAME76_HELPER_ROOT',root/'worldgen-helper')).resolv
 node=helper/('node.exe' if os.name=='nt' else 'node')
 evidence=root/'docs/implementation/game79';logs=evidence/'logs';logs.mkdir(parents=True,exist_ok=True)
 def run(name,command,timeout=600,custom=None):
- start=time.perf_counter();r=subprocess.run(list(map(str,command)),env=custom or env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',timeout=timeout)
- (logs/(name+'.txt')).write_text(r.stdout,encoding='utf-8');print(r.stdout,end='',flush=True)
+ start=time.perf_counter()
+ log=logs/(name+'.txt')
+ with log.open('w',encoding='utf-8') as stream:
+  r=subprocess.run(list(map(str,command)),env=custom or env,stdout=stream,stderr=subprocess.STDOUT,timeout=timeout)
+ r.stdout=log.read_text(encoding='utf-8');print(r.stdout,end='',flush=True)
  if r.returncode or 'ERROR:' in r.stdout:
   print('::error::'+(name+' failed: '+r.stdout[-2000:]).replace('\n','%0A').replace('\r',''),flush=True)
   raise SystemExit(name+' failed')

@@ -250,7 +250,7 @@ func import_generated(stage: String) -> Dictionary:
  if not build_preview(stage, loaded.raw, world.source_sha256):
   _remove_flat_directory(stage)
   return _fail("The new map preview could not be prepared.")
- var enriched := ensure_enrichment({"world": world, "directory": stage, "path": stage.path_join("world.json"), "preset": false})
+ var enriched := ensure_enrichment({"id": world.world_id, "world": world, "directory": stage, "path": stage.path_join("world.json"), "preset": false})
  if not enriched.ok:
   _remove_flat_directory(stage)
   return enriched
