@@ -79,6 +79,7 @@ func _read_entry(path: String, staged: bool = false) -> Dictionary:
    if staged: return {}
  if meta.has("origin_profiles"):
   world.enrichment_directory = path.path_join("enrichment/origin-v1")
+  world.profiles_directory = path.path_join("enrichment/profiles-v2")
   var profile_error := OriginProfiles.new().validate_pin(meta.origin_profiles, world, path.path_join("enrichment/profiles-v2"))
   if not profile_error.is_empty():
    error = profile_error
@@ -442,6 +443,7 @@ func ensure_profiles(entry: Dictionary) -> Dictionary:
  var world: GameWorldTemplate = entry.world
  world.enrichment_directory = enrichment_directory(entry)
  var target := profiles_directory(entry)
+ world.profiles_directory = target
  var profiles := OriginProfiles.new()
  if entry.get("preset", false) or DirAccess.dir_exists_absolute(target):
   if not profiles.load_world(world, target): return _fail(profiles.error)

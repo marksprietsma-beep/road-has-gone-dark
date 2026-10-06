@@ -10,7 +10,7 @@ export const PROFILE_VERSION='trhgd-origin-profiles-2';
 export const profilePack=JSON.parse(readFileSync(new URL('../../data/world_enrichment/trhgd-origin-profiles-v2.json',import.meta.url)));
 export const profilePackSha=sha(canonical({pack:profilePack,base_runtime:sha(readFileSync(new URL('../../data/world_enrichment/runtime.json',import.meta.url))),renderer:PROFILE_RENDERER}));
 function pick(seed,field,rows,tags,selected=[],preferred=[]){
- const candidates=rows.filter(r=>compatible(r,tags,selected)&&!selected.some(x=>x.id===r.id));
+ const candidates=rows.filter(r=>compatible(r,tags,selected)&&!selected.some(x=>x.id===r.id||r.family&&x.family===r.family));
  if(!candidates.length)throw Error('No compatible profile choices: '+field);
  const g=weightedList(Object.fromEntries(candidates.map(r=>[r.id,(r.weight??1)*(preferred.includes(r.id)?4:1)])));
  return structuredClone(candidates.find(r=>r.id===g.generate(createContext({seed:seed.digest(field)}))));
@@ -38,6 +38,7 @@ export function validateProfile(r){
  if(r.source.world_id!==r.source_context.world_id||r.generation.generator!==PROFILE_VERSION)throw Error('Profile source/version mismatch');
  const tags=new Set(r.source_context.tags),f=r.public;
  for(const id of f.economy.specialisms){const row=profilePack.economies.find(x=>x.id===id);if(!row||!compatible(row,tags,f.posture?[profilePack.postures.find(x=>x.id===f.posture)]:[]))throw Error('Incompatible economy: '+id);}
+ if(r.domain==='region'){const role=profilePack.regions.find(x=>x.id===f.regional_role);if(role?.economies&&!f.economy.specialisms.every(id=>role.economies.includes(id)))throw Error('Region role/economy contradiction');}
  if(f.posture==='isolationist'&&(f.social_character==='cosmopolitan'||['welcoming','maritime'].includes(f.external_orientation)||f.economy.specialisms.includes('maritime-commerce')))throw Error('Isolationist contradiction');
  for(const row of r.source_context.cultures)if(!Number.isInteger(row.id)||row.id<=0||!row.name)throw Error('Invalid cultural source identity');
  if(/\b(?:km|kilometres?|bonus|discount|safe from|travel time)\b|<iframe|https?:/i.test(f.full_summary))throw Error('Mechanical/hidden claim');
@@ -66,8 +67,11 @@ export function buildProfiles(world,origins){
   for(const p of members){
    const ctx=areaContext(world,sId,p.i);if(!ctx.land_cells)continue;
    const seed=seeds.get(sId).child('province:'+p.i),tags=new Set([...ctx.tags,state.public.posture]);
-   const role=pick(seed,'regional-role',profilePack.regions,tags),economy=pick(seed,'economy',profilePack.economies,tags,[],state.public.economy.specialisms);
-   const relationship=pick(seed,'parent-relationship',profilePack.relationships,tags),institution=pick(seed,'institution',profilePack.institutions,tags,[],[state.public.institutional_character]);
+   const viableRoles=profilePack.regions.filter(r=>!r.economies||profilePack.economies.some(e=>r.economies.includes(e.id)&&compatible(e,tags)));
+   const role=pick(seed,'regional-role',viableRoles,tags),economy=pick(seed,'economy',profilePack.economies.filter(e=>!role.economies||role.economies.includes(e.id)),tags,[],state.public.economy.specialisms);
+   const shared=state.public.economy.specialisms.includes(economy.id);
+   const relationship={id:shared?'shared-specialism':'regional-supply',label:shared?`its ${economy.activity} gives the state’s ${economy.label} a local foundation`:`it contributes ${economy.product} to the state’s broader economy`};
+   const institution=pick(seed,'institution',profilePack.institutions,tags,[],[state.public.institutional_character]);
    const regionKey=sId+':'+p.i;
    regions[regionKey]=record('region','province:'+regionKey,p.name,ctx,seed,{state:state.id},
     {regional_role:role.id,posture:state.public.posture,external_orientation:state.public.external_orientation,economy:{specialisms:[economy.id]},parent_relationship:relationship.id,institutional_character:institution.id,
@@ -86,7 +90,7 @@ export function buildProfiles(world,origins){
   homes[b.i]=record('hometown','burg:'+b.i,b.name,ctx,seed,{state:state.id,region:regionKey},
    {settlement_role:economy.role,posture:state.public.posture,social_character:social.id,external_orientation:state.public.external_orientation,economy:{specialisms:[economy.id]},regional_dependency:{region_id:region.id,contribution:economy.product,status:'TRHGD-generated'},public_custom:custom.id,
     local_memory:legacy.memory,tradition:legacy.tradition,legacy_record_id:legacy.record_id,
-    prose_facts:{placename:b.name,parent:region.name,role:economy.role,activity:economy.activity,custom:custom.label,social:social.clause}},[economy,custom]);
+    prose_facts:{placename:b.name,parent:region.name,role:economy.role,activity:economy.activity,product:economy.product,custom:custom.label,social:social.clause}},[economy,custom]);
  }
  return {states,regions,hometowns:homes};
 }

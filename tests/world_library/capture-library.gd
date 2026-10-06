@@ -97,11 +97,11 @@ func run() -> void:
  check(ui.page == 1, "generated world enters accepted region flow")
  var searches := 0
  while ui.worlds[ui.world_index].home_candidates(ui.state_id, -1).is_empty() and searches < ui.state_picker.item_count:
-  await key(KEY_ENTER)
   await key(KEY_DOWN)
-  await key(KEY_ENTER)
   searches += 1
  await capture("09-generated-region")
+ await click(ui.next_button)
+ check(ui.page == 1 and ui.area_view == "region", "explicit region choice for generated world")
  await click(ui.next_button)
  check(ui.page == 2 and ui.burg_id > 0, "eligible real hometowns from generated source")
  await capture("10-generated-hometown")

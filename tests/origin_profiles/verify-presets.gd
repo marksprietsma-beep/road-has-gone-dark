@@ -10,6 +10,10 @@ func _initialize() -> void:
  for key in GameWorldLibrary.PRESETS:
   var world := GameWorldTemplate.new()
   check(world.load_fixture("res://tests/worldgen/fixtures/" + key + ".json"), "source loads")
+  var columns := world.political_columns()
+  var original_state: int = int(columns.state[0])
+  columns.state[0] = -999
+  check(int(world.political_columns().state[0]) == original_state, "read-only political columns cannot mutate source")
   var profiles := OriginProfiles.new()
   check(profiles.load_world(world), profiles.error)
   var old := WorldOriginLore.new()

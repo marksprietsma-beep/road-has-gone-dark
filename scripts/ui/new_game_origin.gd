@@ -48,6 +48,7 @@ var origin_lore_cache := {}
 var enrichment_upgrade_attempted := {}
 var origin_profile_cache := {}
 var area_view := "state"
+var profile_tag_label: Label
 
 func _lore() -> WorldOriginLore:
  var world := worlds[world_index]
@@ -64,7 +65,8 @@ func _profiles() -> OriginProfiles:
  if not origin_profile_cache.has(world.world_id):
   var reader := OriginProfiles.new()
   world.enrichment_directory = library.enrichment_directory(entries[world_index])
-  reader.load_world(world, library.profiles_directory(entries[world_index]))
+  world.profiles_directory = library.profiles_directory(entries[world_index])
+  reader.load_world(world, world.profiles_directory)
   origin_profile_cache[world.world_id] = reader
  return origin_profile_cache[world.world_id]
 
@@ -243,7 +245,8 @@ func show_page() -> void:
   next_button.disabled = true
   return
  title.text = ["Choose your world", "Choose your region", "Choose your hometown", "Review your origin", "Origin established"][page]
- steps.text = "%d / 4   WORLD  >  REGION  >  HOMETOWN  >  CONFIRM" % (page + 1) if page < 4 else "PARTY CREATION NEXT"
+ var step := 1 if page == 0 else (2 if page == 1 and area_view == "state" else page + 2)
+ steps.text = "%d / 5   WORLD > STATE > REGION > HOMETOWN > CONFIRM" % step if page < 4 else "PARTY CREATION NEXT"
  back_button.text = "Main menu" if page == 0 or page == 4 else "Back"
  next_button.text = ("Return to handoff" if not saved_slot.is_empty() else "Confirm origin") if page == 3 else ("Review origin" if page == 4 else "Next")
  next_button.disabled = false
@@ -280,7 +283,7 @@ func show_page() -> void:
   var subdivisions := provinces()
   if area_view == "state":
    title.text = "Choose your state"
-   left.add_child(_label("States", 14))
+   profile_tag_label = _label("", 11)
    state_picker = ItemList.new()
    state_picker.custom_minimum_size.y = 100
    state_picker.add_theme_font_size_override("font_size", 15)
@@ -290,11 +293,13 @@ func show_page() -> void:
     state_picker.set_item_metadata(state_picker.item_count - 1, int(record.i))
     if int(record.i) == state_id: state_picker.select(state_picker.item_count - 1)
    state_picker.item_selected.connect(func(index: int): choose_state(int(state_picker.get_item_metadata(index))))
+   state_picker.item_activated.connect(func(_index: int): advance())
+   left.add_child(profile_tag_label)
   else:
    title.text = "Choose your region"
    left.add_child(_label(str(worlds[world_index].get_record("state", state_id).get("name", "")), 14))
    province_picker = ItemList.new()
-   province_picker.custom_minimum_size.y = 100
+   province_picker.custom_minimum_size.y = 94
    province_picker.add_theme_font_size_override("font_size", 15)
    left.add_child(province_picker)
    province_picker.add_item("Across this state")
@@ -305,6 +310,9 @@ func show_page() -> void:
     province_picker.set_item_metadata(province_picker.item_count - 1, int(record.i))
     if int(record.i) == province_id: province_picker.select(province_picker.item_count - 1)
    province_picker.item_selected.connect(func(index: int): choose_province(int(province_picker.get_item_metadata(index))))
+   province_picker.item_activated.connect(func(_index: int): advance())
+   profile_tag_label = _label("", 11)
+   left.add_child(profile_tag_label)
  elif page == 2:
   candidates = worlds[world_index].home_candidates(state_id, province_id, 8)
   if candidates.is_empty():
@@ -355,7 +363,7 @@ func _refresh_facts() -> void:
   map.select_area(-1, -1)
   return
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
- map.select_area(state_id, province_id, home)
+ map.select_area(state_id, province_id if page != 1 or area_view == "region" else -1, home)
  if home.is_empty():
   facts.text = _origin_context().region_summary(state_id, province_id if area_view == "region" else -1).summary
  else:
@@ -373,6 +381,7 @@ func _refresh_facts() -> void:
  lore_scroll.scroll_vertical = 0
  if not row.is_empty():
   lore_label.text = str(row.full_summary)
+  if page == 1 and is_instance_valid(profile_tag_label): profile_tag_label.text = " · ".join(row.identity_tags).to_upper()
   if group == "hometowns":
    lore_label.text += "\n\nLocal memory: " + str(row.memory) + "\n" + str(row.tradition)
   if page >= 3 and not message.is_empty(): lore_label.text = message + "\n" + lore_label.text

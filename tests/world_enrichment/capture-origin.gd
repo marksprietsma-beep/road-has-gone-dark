@@ -42,7 +42,8 @@ func verify_alignment(ui: Control) -> void:
  var row: Dictionary = ui._lore().public_origin(world, ui.burg_id)
  var home := world.get_record("burg", ui.burg_id)
  check(not row.is_empty() and row.burg_id == ui.burg_id and row.cell_id == home.cell, "lore matches source")
- check(ui.lore_label.text == "Local memory: " + str(row.memory), "comparison uses stored hometown memory")
+ check(ui.lore_label.text.contains("Local memory: " + str(row.memory)), "comparison retains stored hometown memory")
+ check(ui.lore_label.text.begins_with(ui._profiles().public_profile("hometowns", str(ui.burg_id)).full_summary), "profile identity is primary")
  check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "factual summary changes with lore")
  check(ui.map.burg == Vector2(float(home.x), float(home.y)), "map highlights matching source coordinates")
 func wait_scene(path: String) -> void:

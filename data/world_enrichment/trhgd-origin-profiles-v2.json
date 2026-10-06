@@ -9,7 +9,8 @@
       "requires": "forest",
       "activity": "woodland work",
       "role": "woodland craft community",
-      "product": "timber and worked wood"
+      "product": "timber and worked wood",
+      "family": "woodcraft"
     },
     {
       "id": "fishing",
@@ -23,7 +24,8 @@
       },
       "activity": "fishing",
       "role": "fishing community",
-      "product": "fish and repaired nets"
+      "product": "fish and repaired nets",
+      "family": "fishing"
     },
     {
       "id": "maritime-commerce",
@@ -37,7 +39,8 @@
       "product": "stored cargo and harbour services",
       "conflicts": [
         "isolationist"
-      ]
+      ],
+      "family": "commerce"
     },
     {
       "id": "shipbuilding",
@@ -56,8 +59,9 @@
         ]
       },
       "activity": "boatbuilding",
-      "role": "boatbuilders’ settlement",
-      "product": "boats and shaped timber"
+      "role": "boatbuilders\u2019 settlement",
+      "product": "boats and shaped timber",
+      "family": "watercraft"
     },
     {
       "id": "river-crafts",
@@ -65,7 +69,8 @@
       "requires": "river",
       "activity": "riverbank work",
       "role": "river craft village",
-      "product": "basketry and river gear"
+      "product": "basketry and river gear",
+      "family": "rivercraft"
     },
     {
       "id": "pastoralism",
@@ -73,7 +78,8 @@
       "requires": "pasture",
       "activity": "tending grazing animals",
       "role": "pastoral community",
-      "product": "wool and hides"
+      "product": "wool and hides",
+      "family": "husbandry"
     },
     {
       "id": "mixed-farming",
@@ -81,7 +87,8 @@
       "requires": "farmland",
       "activity": "field and garden work",
       "role": "farming village",
-      "product": "produce and seed stores"
+      "product": "produce and seed stores",
+      "family": "agriculture"
     },
     {
       "id": "grain-crafts",
@@ -89,15 +96,17 @@
       "requires": "farmland",
       "activity": "grain growing and milling",
       "role": "grain village",
-      "product": "grain and flour"
+      "product": "grain and flour",
+      "family": "agriculture"
     },
     {
       "id": "mining",
       "label": "mineral extraction",
       "requires": "mine",
-      "activity": "work around recorded mines",
+      "activity": "mine work",
       "role": "mining settlement",
-      "product": "sorted mineral loads"
+      "product": "sorted mineral loads",
+      "family": "minerals"
     },
     {
       "id": "market-crafts",
@@ -105,7 +114,8 @@
       "requires": "road",
       "activity": "roadside craft work",
       "role": "roadside craft village",
-      "product": "repairs and household goods"
+      "product": "repairs and household goods",
+      "family": "roadcraft"
     },
     {
       "id": "trail-supply",
@@ -113,7 +123,8 @@
       "requires": "trail",
       "activity": "provisioning local paths",
       "role": "trail-side village",
-      "product": "packed provisions and repaired gear"
+      "product": "packed provisions and repaired gear",
+      "family": "provision"
     },
     {
       "id": "wetland-crafts",
@@ -121,22 +132,25 @@
       "requires": "wetland",
       "activity": "reedwork and basketmaking",
       "role": "reedworking community",
-      "product": "woven reeds and baskets"
+      "product": "woven reeds and baskets",
+      "family": "reedcraft"
     },
     {
       "id": "household-crafts",
       "label": "household crafts",
       "activity": "household craft work",
       "role": "craft community",
-      "product": "cloth and ordinary tools"
+      "product": "cloth and ordinary tools",
+      "family": "householdcraft"
     },
     {
       "id": "record-crafts",
       "label": "copying and book crafts",
       "requires": "capital",
       "activity": "recordkeeping",
-      "role": "recordkeepers’ settlement",
-      "product": "copies and repaired bindings"
+      "role": "recordkeepers\u2019 settlement",
+      "product": "copies and repaired bindings",
+      "family": "records"
     }
   ],
   "postures": [
@@ -154,7 +168,7 @@
       "id": "defensive",
       "label": "defensive",
       "requires": "walls",
-      "clause": "its public institutions emphasise the upkeep of recorded fortifications"
+      "clause": "its public institutions emphasise the upkeep of town fortifications"
     },
     {
       "id": "outward-looking",
@@ -227,7 +241,7 @@
           "port"
         ]
       },
-      "clause": "visitors’ customs find room alongside local practice",
+      "clause": "visitors\u2019 customs find room alongside local practice",
       "conflicts": [
         "isolationist"
       ]
@@ -307,7 +321,7 @@
       "id": "landward",
       "label": "landward links",
       "requires": "road",
-      "clause": "overland links are central to its outward-facing identity"
+      "clause": "overland links bind its communities"
     },
     {
       "id": "maritime",
@@ -316,7 +330,7 @@
         "port",
         "coast"
       ],
-      "clause": "recorded ports give its public identity a maritime emphasis",
+      "clause": "its ports anchor a maritime outlook",
       "conflicts": [
         "isolationist"
       ]
@@ -394,7 +408,10 @@
     {
       "id": "forest-district",
       "label": "woodland district",
-      "requires": "forest"
+      "requires": "forest",
+      "economies": [
+        "forestry"
+      ]
     },
     {
       "id": "forest-frontier",
@@ -402,6 +419,10 @@
       "requires": [
         "forest",
         "border"
+      ],
+      "economies": [
+        "forestry",
+        "trail-supply"
       ]
     },
     {
@@ -410,22 +431,39 @@
       "requires": [
         "port",
         "coast"
+      ],
+      "economies": [
+        "maritime-commerce",
+        "shipbuilding",
+        "fishing"
       ]
     },
     {
       "id": "lake-district",
       "label": "lakeside district",
-      "requires": "lake"
+      "requires": "lake",
+      "economies": [
+        "fishing",
+        "shipbuilding"
+      ]
     },
     {
       "id": "river-district",
       "label": "river district",
-      "requires": "river"
+      "requires": "river",
+      "economies": [
+        "river-crafts",
+        "fishing"
+      ]
     },
     {
       "id": "farming-belt",
       "label": "cultivated district",
-      "requires": "farmland"
+      "requires": "farmland",
+      "economies": [
+        "mixed-farming",
+        "grain-crafts"
+      ]
     },
     {
       "id": "pastoral-uplands",
@@ -433,22 +471,35 @@
       "requires": [
         "upland",
         "pasture"
+      ],
+      "economies": [
+        "pastoralism"
       ]
     },
     {
       "id": "pastoral-district",
       "label": "grazing district",
-      "requires": "pasture"
+      "requires": "pasture",
+      "economies": [
+        "pastoralism"
+      ]
     },
     {
       "id": "mine-district",
-      "label": "recorded mine district",
-      "requires": "mine"
+      "label": "mining district",
+      "requires": "mine",
+      "economies": [
+        "mining"
+      ]
     },
     {
       "id": "road-corridor",
       "label": "road-linked district",
-      "requires": "road"
+      "requires": "road",
+      "economies": [
+        "market-crafts",
+        "trail-supply"
+      ]
     },
     {
       "id": "borderland",
@@ -458,26 +509,35 @@
     {
       "id": "wetland-district",
       "label": "wetland district",
-      "requires": "wetland"
+      "requires": "wetland",
+      "economies": [
+        "wetland-crafts",
+        "fishing"
+      ]
     },
     {
       "id": "administrative-heartland",
       "label": "capital district",
-      "requires": "capital"
+      "requires": "capital",
+      "economies": [
+        "record-crafts",
+        "household-crafts"
+      ]
     },
     {
       "id": "local-hinterland",
-      "label": "local hinterland"
+      "label": "local hinterland",
+      "weight": 0.3
     }
   ],
   "relationships": [
     {
       "id": "supply",
-      "label": "its work contributes to the parent state’s household economy"
+      "label": "its work contributes to the parent state\u2019s household economy"
     },
     {
       "id": "craft",
-      "label": "its local workshops give the state’s broader craft identity a regional form"
+      "label": "its local workshops give the state\u2019s broader craft identity a regional form"
     },
     {
       "id": "upkeep",
@@ -485,7 +545,7 @@
     },
     {
       "id": "custom",
-      "label": "it retains local customs within the state’s broader public tradition"
+      "label": "it retains local customs within the state\u2019s broader public tradition"
     }
   ],
   "town-customs": [
@@ -545,8 +605,8 @@
     }
   ],
   "render_patterns": {
-    "state": "{<placename> has a public identity shaped by|Public life in <placename> centres on} <economy>. <culture> {Its public posture is <posture>:|In public affairs,} <politics>. [case:first]<social>; <orientation>.",
-    "region": "<placename> forms [a] <role> within <parent>. {Local work focuses on|Household livelihoods centre on} <economy>. <relationship>, {with|alongside} <custom>.",
-    "hometown": "<placename> is [a] <role> in <parent>. {Its households work mainly in|Local livelihoods centre on} <activity>. {The settlement is known for|Local standing rests on} <custom>; <social>."
+    "state": "[case:sentence]{[a] <posture> state, <placename> is known for|<placename> is [a] <posture> state centred on} <economy>. <culture> In public affairs, <politics>. <social>; <orientation>.",
+    "region": "[case:sentence]<placename> forms [a] <role> within <parent>. {Local work focuses on|Household livelihoods centre on} <economy>. <relationship>, {with|alongside} <custom>.",
+    "hometown": "[case:sentence]{<placename> is [a] <role> in <parent>, contributing <product> to its region.|In <parent>, <placename> is [a] <role> whose work provides <product>.} {The settlement is known for|Local standing rests on} <custom>; <social>."
   }
 }

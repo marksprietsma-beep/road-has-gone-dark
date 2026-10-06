@@ -48,6 +48,8 @@ func run() -> void:
  ui.store = store
  ui.advance()
  ui.advance()
+ check(ui.page == 1 and ui.area_view == "region", "state advances to explicit region choice")
+ ui.advance()
  ui.advance()
  ui.advance()
  check(ui.page == 3 and ui.saved_slot.is_empty(), "post-write lore failure never reaches handoff")

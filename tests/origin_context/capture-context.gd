@@ -142,6 +142,8 @@ func run() -> void:
  await click(ui.next_button)
  await capture(ui,"generated-region")
  await click(ui.next_button)
+ check(ui.page==1 and ui.area_view=="region","generated state advances to region")
+ await click(ui.next_button)
  check(ui.page==2 and ui.burg_id>0,"generated source reaches real hometown candidates")
  await capture(ui,"generated-hometown")
  # Remove only this test's own template and save.
