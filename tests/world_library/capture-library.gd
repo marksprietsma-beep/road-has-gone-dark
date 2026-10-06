@@ -126,7 +126,7 @@ func run() -> void:
  ui.library.helper_root = ProjectSettings.globalize_path(directory.path_join("missing-helper"))
  await click(ui.generation_button)
  while ui.job_thread != null: await process_frame
- check(ui.entries.size() == 3 and not ui.next_button.disabled and not ui.back_button.disabled and ui.message.contains("missing"), "helper failure restores UI and registers no partial world")
+ check(ui.entries.size() == 3 and ui.job_thread == null and not ui.next_button.disabled and not ui.back_button.disabled and ui.message.contains("unavailable") and ui.message.contains("bootstrap"), "missing helper fails preflight, restores UI and registers no partial world")
  ui.library.helper_root = helper
  var partial := false
  for name in DirAccess.get_directories_at(ui.library.library_root):
