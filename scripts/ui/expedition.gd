@@ -180,7 +180,7 @@ func refresh() -> void:
   content.add_child(label(l.goal+".\n"+l.clue,13))
   if l.knowledge=="rumoured": button("scout","Scout the rumour · 2 turns / 1 provision",func(): start("scout"))
   else: button("travel","Travel to the site · 1 turn / 1 provision",func(): start("travel"))
-  content.add_child(label("Travel is abstract. Roads and crossings are not verified routes.",12))
+  content.add_child(label("Choose a known destination. Travel costs one turn and one provision.",12))
   button("return","Return home · 1 turn",func(): start("return"))
  else:
   var site: Dictionary = public_view.sites.filter(func(s: Dictionary): return s.id==a.site_id)[0]

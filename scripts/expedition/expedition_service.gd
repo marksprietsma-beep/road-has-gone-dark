@@ -112,7 +112,7 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
    active.site_id=site.id
    active.supplies-=1
    if e.knowledge[site.id]!="investigated": e.knowledge[site.id]="visited"
-   _event(candidate,"travel","Arrived at "+site.name+". Travel was an abstract expedition step, not a verified route.",1)
+   _event(candidate,"travel","Arrived at "+site.name+". The local journey is recorded.",1)
   elif operation in ["survey","record","secure","study","craft","leave"]:
    if active.phase!="site" or e.outcomes.has(site.id) and e.outcomes[site.id].approach!="leave": return fail("This site's choice is already recorded")
    var options := choices(candidate,site)
