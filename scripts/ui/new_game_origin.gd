@@ -315,7 +315,7 @@ func show_page() -> void:
   left.add_child(_label(str(state.get("name", ""))))
   if not province.is_empty(): left.add_child(_label(str(province.get("name", ""))))
   left.add_child(_label(str(home.get("name", "")), 20))
-  left.add_child(_label("Your origin has been saved. Party creation is next." if page == 4 else "Confirm to begin a new playthrough."))
+  left.add_child(_label("Your origin has been saved." if page == 4 else "Confirm to begin a new playthrough."))
   # Confirmation feedback belongs in the bounded lore area, never an extra
   # minimum-height row that can push the actions outside the viewport.
  left.move_child(lore_scroll, left.get_child_count() - 1)
