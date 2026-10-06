@@ -29,6 +29,8 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Enrich and replay five fresh canonical worlds
         run: node research/game78/tools/fresh-worlds.mjs
+      - name: Replay full combined batch with network and unseeded RNG disabled
+        run: node --import ./research/game77/tests/offline-guard.mjs research/game78/tools/batch.mjs
       - name: Windows offline enrichment and existing persistence/library regressions
         if: runner.os == 'Windows'
         run: python research/game78/tools/run-qa.py --helper-contract

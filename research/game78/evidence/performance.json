@@ -4,58 +4,58 @@
   "pack_bytes": 129977,
   "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
   "baseline_memory": {
-    "rss": 47046656,
-    "heapTotal": 30113792,
-    "heapUsed": 11976736,
-    "external": 7353923,
-    "arrayBuffers": 143611
+    "rss": 61837312,
+    "heapTotal": 28803072,
+    "heapUsed": 12734824,
+    "external": 17684981,
+    "arrayBuffers": 5310437
   },
   "trials": [
     {
       "scope": "origin entity",
       "provider": "sha-staged",
       "entities": 10000,
-      "total_ms": 2249.908062
+      "total_ms": 1622.8845549999999
     },
     {
       "scope": "town research bundle (six facts and public descriptions)",
       "provider": "sha-staged",
       "towns": 100,
-      "total_ms": 472.046609,
+      "total_ms": 397.3492190000002,
       "serialized_bytes": 2272692
     },
     {
       "scope": "whole actual world, one public-origin record per visible populated settlement",
       "provider": "sha-staged",
       "towns": 873,
-      "total_ms": 270.49320799999987,
+      "total_ms": 433.5951259999997,
       "sidecar_bytes": 2693848
     },
     {
       "scope": "origin entity",
       "provider": "lexicon-staged",
       "entities": 10000,
-      "total_ms": 2417.158326
+      "total_ms": 2385.11058
     },
     {
       "scope": "town research bundle (six facts and public descriptions)",
       "provider": "lexicon-staged",
       "towns": 100,
-      "total_ms": 650.5170049999997,
+      "total_ms": 794.2974569999997,
       "serialized_bytes": 2275226
     },
     {
       "scope": "whole actual world, one public-origin record per visible populated settlement",
       "provider": "lexicon-staged",
       "towns": 873,
-      "total_ms": 442.7746990000005,
+      "total_ms": 795.610052,
       "sidecar_bytes": 2697629
     }
   ],
   "final_memory": {
-    "rss": 171028480,
-    "heapTotal": 112357376,
-    "heapUsed": 52839256,
+    "rss": 187600896,
+    "heapTotal": 192389120,
+    "heapUsed": 84118840,
     "external": 2247851,
     "arrayBuffers": 143611
   },

@@ -11,3 +11,5 @@ Executed framework/persistence/library/render checks and genuine screenshots are
 Separate expanded-origin demonstration follows stable PR #60 without changing #58/#59/#60. It displays only a precomputed public memory and tradition; source-backed GAME-75 facts remain intact. See linked integration PR in core delivery notes. No character mechanics, active quests, factions, combat or production enrichment installation.
 
 No authenticated Linear connector is available in this environment, so this repository update is prepared for ChatGPT/Mark to post. Do not mark GAME-75, GAME-10 or future integration complete.
+
+Expanded origin demonstration: draft [#62](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/62), based on unchanged #60. Independent integrity48, Godot adapter33, actual input/render55, source-context105425 and GAME-75 render108 checks passed. Final platform CI should be read from the PR, not assumed from these Linux local runs.
