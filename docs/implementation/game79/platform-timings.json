@@ -1,0 +1,79 @@
+{
+  "source_head": "0b5c27af9ffbf43db8be22c623315452628e8451",
+  "platforms": {
+    "enrichment (ubuntu-latest)": [
+      {
+        "seed": "game79-world-0",
+        "generation_seconds": 4.38,
+        "enrichment_seconds": 0.716,
+        "origins": 488,
+        "storage_bytes": 1707962
+      },
+      {
+        "seed": "game79-world-1",
+        "generation_seconds": 3.927,
+        "enrichment_seconds": 0.716,
+        "origins": 517,
+        "storage_bytes": 1813630
+      },
+      {
+        "seed": "game79-world-2",
+        "generation_seconds": 3.827,
+        "enrichment_seconds": 0.666,
+        "origins": 477,
+        "storage_bytes": 1680090
+      },
+      {
+        "seed": "game79-world-3",
+        "generation_seconds": 3.979,
+        "enrichment_seconds": 0.566,
+        "origins": 351,
+        "storage_bytes": 1242655
+      },
+      {
+        "seed": "game79-world-4",
+        "generation_seconds": 3.728,
+        "enrichment_seconds": 0.566,
+        "origins": 374,
+        "storage_bytes": 1321860
+      }
+    ],
+    "enrichment (windows-latest)": [
+      {
+        "seed": "game79-world-0",
+        "generation_seconds": 5.108,
+        "enrichment_seconds": 0.67,
+        "origins": 488,
+        "storage_bytes": 1707962
+      },
+      {
+        "seed": "game79-world-1",
+        "generation_seconds": 4.464,
+        "enrichment_seconds": 0.727,
+        "origins": 517,
+        "storage_bytes": 1813630
+      },
+      {
+        "seed": "game79-world-2",
+        "generation_seconds": 4.396,
+        "enrichment_seconds": 0.69,
+        "origins": 477,
+        "storage_bytes": 1680090
+      },
+      {
+        "seed": "game79-world-3",
+        "generation_seconds": 4.536,
+        "enrichment_seconds": 0.584,
+        "origins": 351,
+        "storage_bytes": 1242655
+      },
+      {
+        "seed": "game79-world-4",
+        "generation_seconds": 4.421,
+        "enrichment_seconds": 0.604,
+        "origins": 374,
+        "storage_bytes": 1321860
+      }
+    ]
+  }
+}
