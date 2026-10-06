@@ -21,7 +21,7 @@ text = log.read_text(encoding='utf-8')
 print(text, end='', flush=True)
 native = json.loads((base/'native-test/native-result.json').read_text())
 assert result.returncode == 0 and 'ERROR:' not in text and native['checks'] >= 15 and native['failures'] == 0 and native['source_helper_override'] is False
-log.write_text(text + 'GAME-81 complete native distribution: 17 checks, 0 failures\n', encoding='utf-8')
+log.write_text(text + f"GAME-81 complete native distribution: {native['checks']} checks, 0 failures\n", encoding='utf-8')
 release = distribution/('road-has-gone-dark.exe' if os.name == 'nt' else 'road-has-gone-dark')
 smoke = subprocess.run([str(release), '--headless', '--audio-driver', 'Dummy', '--quit-after', '10'],
                        cwd=distribution, env=environment, capture_output=True, text=True, timeout=60)

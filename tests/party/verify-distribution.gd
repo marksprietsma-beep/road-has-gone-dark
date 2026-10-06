@@ -6,7 +6,8 @@ func check(ok: bool, why: String) -> void:
  if not ok:
   failures += 1
   push_error(why)
-func _ready() -> void:
+func _ready() -> void: call_deferred("run")
+func run() -> void:
  var base := OS.get_environment("GAME81_DISTRIBUTION_TEST_ROOT")
  DirAccess.make_dir_recursive_absolute(base)
  var service := PartyService.new()

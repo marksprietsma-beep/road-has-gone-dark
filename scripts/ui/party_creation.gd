@@ -303,8 +303,8 @@ func _return_menu() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
  if event.is_action_pressed("ui_cancel"):
-  _return_menu()
   get_viewport().set_input_as_handled()
+  _return_menu()
 
 func _exit_tree() -> void:
  if thread != null: thread.wait_to_finish()
