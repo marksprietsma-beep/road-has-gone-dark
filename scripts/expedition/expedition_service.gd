@@ -42,6 +42,15 @@ func prepare(entry: Dictionary) -> Dictionary:
   file.store_string(FileAccess.get_sha256(path))
   file.close()
  packet_digest=FileAccess.get_sha256(path)
+ if not packet.get("content") is Dictionary or not packet.get("leads") is Array or not packet.get("svg") is String: return fail("Malformed local content cache; campaign preserved.")
+ var c: Dictionary = packet.content
+ if not c.get("sites") is Array or c.sites.size()!=8 or not c.get("sha") is String or c.sha.length()!=64 or not c.get("home_position") is Array or c.home_position.size()!=2: return fail("Malformed local site set; campaign preserved.")
+ var cell: int = int(w.get_record("burg",home).get("cell",-1))
+ for i in c.sites.size():
+  var s: Variant = c.sites[i]
+  if not s is Dictionary or s.get("id")!=ExpeditionRecords.site_id(w,cell,i) or not s.get("name") is String or not s.get("description") is String or not s.get("history_description") is String or not s.get("position") is Array or s.position.size()!=2 or not s.get("facts") is Dictionary or not s.facts.get("conditions") is Array: return fail("Invalid local site record; campaign preserved.")
+  for n in s.position:
+   if not (n is int or n is float) or n<0 or n>1000: return fail("Invalid local position; campaign preserved.")
  if packet.get("content",{}).get("world_id")!=w.world_id or packet.content.get("home_id")!=home or packet.content.get("version")!=ExpeditionRecords.VERSION: return fail("Mismatched local content")
  return {"ok":true}
 func _operate_locked(entry: Dictionary, slot: String, operation: String, _member: int, changes: Dictionary) -> Dictionary:
@@ -109,7 +118,7 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
    var options := choices(candidate,site)
    if not options.any(func(o: Dictionary): return o.id==operation): return fail("This approach is not available to your party")
    if operation!="leave" and active.supplies<1: return fail("Return home to prepare another expedition")
-   var texts := {"survey":"The perimeter is recorded. You note a second patch of old work for later investigation.","record":"You compare the remaining work with the local account and record its former use: "+str(site.facts.purpose).replace("-"," ")+".","secure":"You mark the unstable sections to avoid. The approach is recorded without forcing entry.","study":"Your adept copies the surviving marks. Their arrangement can now be compared with other local work.","craft":"A former craft worker records the joins and repairs, separating later work from the original structure.","leave":"You leave the remains undisturbed. The concern stays unresolved."}
+   var texts := {"survey":"The perimeter is recorded. Your notes now distinguish the surrounding work.","record":"You compare the remaining work with the local account and record its former use: "+str(site.facts.purpose).replace("-"," ")+".","secure":"You mark the unstable sections to avoid. The approach is recorded without forcing entry.","study":"Your adept copies the surviving marks. Their arrangement can now be compared with other local work.","craft":"A former craft worker records the joins and repairs, separating later work from the original structure.","leave":"You leave the remains undisturbed. The concern stays unresolved."}
    e.outcomes[site.id]={"approach":operation,"sequence":e.revision+1,"text":texts[operation]}
    if operation!="leave":
     e.knowledge[site.id]="investigated"
@@ -118,10 +127,11 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
    if operation=="survey":
     var secondary: Dictionary = content.sites[3]
     if e.knowledge[secondary.id]=="unknown":
+     e.outcomes[site.id].text="The perimeter is recorded. You note a second patch of old work for later investigation."
      e.knowledge[secondary.id]="rumoured"
      e.leads.append({"id":"lead:"+ExpeditionRecords.canonical([content.sha,int(candidate.origin.home_burg_id),secondary.id]).sha256_text(),"site_id":secondary.id,"status":"available","goal":"Follow up the newly recorded account","issuer":"your party","origin":"generated-local"})
    active.phase="result"
-   _event(candidate,operation,texts[operation],0 if operation=="leave" else 2)
+   _event(candidate,operation,e.outcomes[site.id].text,0 if operation=="leave" else 2)
   else: return fail("Unknown expedition action")
  return commit(slot,candidate,world)
 func _event(candidate: Dictionary, type: String, text: String, cost: int) -> void:
@@ -130,7 +140,7 @@ func _event(candidate: Dictionary, type: String, text: String, cost: int) -> voi
  candidate.game_clock.tick+=cost
  e.log.append({"sequence":e.revision,"type":type,"text":text,"tick":candidate.game_clock.tick})
 static func choices(state: Dictionary, site: Dictionary) -> Array:
- var options: Array = [{"id":"survey","label":"Survey the perimeter","effect":"Record the site and another local rumour"},{"id":"record","label":"Examine the surviving work","effect":"Learn its former use"}]
+ var options: Array = [{"id":"survey","label":"Survey the perimeter","effect":"Record the site and look for further leads"},{"id":"record","label":"Examine the surviving work","effect":"Learn its former use"}]
  var special := {}
  for m in state.party.members:
   var marked: bool = site.get("has_marks",str(site.get("facts",{}).get("conditions",[])).contains("walls-chalked"))

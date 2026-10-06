@@ -78,6 +78,7 @@ func run() -> void:
   await click(ui.action_buttons[known])
   check(ui.action_buttons.has("accept"),"mouse selection exposes accepted-lead action")
   await shot("lead"+suffix)
+  if resolution==Vector2i(1280,720):await shot("known-site-map")
   await click(ui.action_buttons.leads)
   var rumour: String=ui.public_view.leads[1].id
   await click(ui.action_buttons[rumour])
@@ -132,6 +133,7 @@ func run() -> void:
   var state: Dictionary=fresh[0]
   var e: Dictionary=entries.filter(func(x: Dictionary):return x.id==state.world_ref.id)[0]
   await mount(e,state.playthrough_id)
+  for i in 60:await process_frame
   await shot("fresh-generated-world")
  print("GAME-84 real input/render: ",checks," checks, ",failures," failures")
  quit(1 if failures else 0)

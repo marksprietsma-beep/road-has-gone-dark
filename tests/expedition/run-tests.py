@@ -8,7 +8,10 @@ def run(name,cmd,custom=None,timeout=1800):
  start=time.perf_counter()
  with (logs/(name+'.txt')).open('w',encoding='utf-8')as f:ret=subprocess.run(list(map(str,cmd)),env=custom or env,stdout=f,stderr=subprocess.STDOUT,timeout=timeout)
  text=(logs/(name+'.txt')).read_text(encoding='utf-8');print(text,end='',flush=True)
- if ret.returncode or 'ERROR:'in text:raise SystemExit(name+' failed')
+ if ret.returncode or 'ERROR:'in text:
+  detail=(name+" failed: "+text[-6000:]).replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+  print('::error title=GAME-84 executed failure::'+detail,flush=True)
+  raise SystemExit(name+' failed')
  return time.perf_counter()-start
 owned=tempfile.TemporaryDirectory(prefix='game84-expedition-')if not args.work_dir else None
 base=pathlib.Path(args.work_dir or owned.name).resolve();base.mkdir(parents=True,exist_ok=True);env['GAME84_TEST_ROOT']=str(base)
@@ -25,6 +28,7 @@ run('lifecycle-create',[engine,'--headless','--audio-driver','Dummy','--path','.
 run('lifecycle-replay',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/lifecycle.gd'],dict(env,GAME84_PHASE='replay'))
 run('cache-integrity',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/cache-integrity.gd'])
 run('failure-safety',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/failures.gd'])
+run('outcome-corpus',[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/expedition/outcome-corpus.gd'],timeout=1800)
 specs=[]
 for w in worlds:
  sha=digest(w);geo=base/'cache'/sha/(sha+'.geography.json');assert geo.exists();specs.append({'world':str(w),'geometry':str(geo)})

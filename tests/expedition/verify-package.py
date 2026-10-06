@@ -21,7 +21,7 @@ text = log.read_text(encoding='utf-8')
 print(text, end='', flush=True)
 native = json.loads((base/'native-test/native-result.json').read_text())
 assert result.returncode == 0 and 'ERROR:' not in text and native['checks'] >= 50 and native['failures'] == 0 and native['source_helper_override'] is False
-log.write_text(text + f"GAME-81 complete native distribution: {native['checks']} checks, 0 failures\n", encoding='utf-8')
+log.write_text(text + f"GAME-84 complete native distribution: {native['checks']} checks, 0 failures\n", encoding='utf-8')
 release = distribution/('road-has-gone-dark.exe' if os.name == 'nt' else 'road-has-gone-dark')
 smoke = subprocess.run([str(release), '--headless', '--audio-driver', 'Dummy', '--quit-after', '10'],
                        cwd=distribution, env=environment, capture_output=True, text=True, timeout=60)
@@ -43,4 +43,4 @@ proof = {'platform':platform.system(), 'native_export_test':'isolated release ex
 (root/'docs/implementation/game84/distribution-proof.json').write_text(json.dumps(proof, indent=2)+'\n')
 print('Verified complete game + helper:', archive, flush=True)
 
-print('::notice title=GAME-81 native distribution proof::'+json.dumps(proof,separators=(',',':')),flush=True)
+print('::notice title=GAME-84 native distribution proof::'+json.dumps(proof,separators=(',',':')),flush=True)
