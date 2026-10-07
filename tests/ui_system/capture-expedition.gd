@@ -16,6 +16,8 @@ func shot(name: String) -> void:
  if OS.get_environment("GAME83_STAGE")!="after": return
  check(not ui.status.text.contains("verified"),"routine persistence detail removed from primary text")
  check(ui.footer.text.begins_with("Party at "),"party location uses explicit player wording")
+ if ui.state.expedition.active.get("phase")=="result":
+  check(ui.content.get_parent().scroll_vertical==0,"result opens at its heading rather than previous action scroll")
  var frame: Rect2=ui.map.map_rect()
  for i in ui.map.get_child_count():
   var marker: Control=ui.map.get_child(i)

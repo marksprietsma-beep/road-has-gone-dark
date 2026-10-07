@@ -125,6 +125,9 @@ func refresh() -> void:
  for child in content.get_children():
   content.remove_child(child)
   child.queue_free()
+ # A new lead/phase starts at its heading. Follow-focus may then reveal an
+ # action, but a result must not inherit the previous choices' scroll offset.
+ content.get_parent().scroll_vertical=0
  action_buttons={}
  menu_button.disabled=thread!=null
  home_button.disabled=thread!=null
