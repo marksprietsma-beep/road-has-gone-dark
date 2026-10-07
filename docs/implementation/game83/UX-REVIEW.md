@@ -31,3 +31,7 @@ Tab, Shift+Tab, arrows, Enter, Escape and mouse paths are exercised by the origi
 640×360 is the constrained layout: all three party members, the main map and footer navigation remain usable, while long source profiles and site choices can scroll. At 1280×720 and 2560×1440 the logical canvas grows, rather than quadrupling every control. Map area and political lists gain space, while the party reading width remains bounded. Original full-resolution captures are linked in [SCREENSHOTS.md](SCREENSHOTS.md).
 
 Windows native execution is tested separately from these Linux software-GL captures. Mark should still assess laptop display scaling, reading comfort and the speed of recognising the next action. Existing generated prose can be repetitive; this presentation pass deliberately does not rewrite content generation.
+
+## Final verification
+
+The final pass inspected both before/after sheets and full-resolution examples of Party Ready, state selection, hometown, site choices and consequences at the requested window sizes. All 110 existing capture hashes and recorded raster dimensions were verified against the committed manifest. Footer actions, roster visibility, result headings, map/detail balance and restrained marker size match the completed implementation; no further code change was justified. The known 640×360 scrolling and one-pixel viewport letterbox are documented in [SCREENSHOTS.md](SCREENSHOTS.md). Gameplay source boundaries were checked again and remain unchanged.

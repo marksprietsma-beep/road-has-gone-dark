@@ -48,7 +48,9 @@ for stage in ['before', 'after']:
         captures.append({'path': str(image.relative_to(docs)), 'size': list(size),
                          'sha256': hashlib.sha256(image.read_bytes()).hexdigest()})
 report = {'base_sha': base,
-          'tested_source_sha': subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
+          'tested_source_sha': subprocess.check_output(
+              ['git','log','-1','--format=%H','--','scripts','scenes','themes','tests','tools',
+               '.github/workflows/verify-production-ui.yml'],cwd=root,text=True).strip(),
           'protected_paths_unchanged': protected,
           'complete_save_records_equal': len(baseline),
           'campaigns_exercised_by_capture': played,
