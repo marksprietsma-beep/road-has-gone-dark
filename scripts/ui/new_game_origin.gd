@@ -85,11 +85,14 @@ func _ready() -> void:
  show_page()
 
 func _adapt_lists() -> void:
- # Larger windows show more choices, not just larger versions of four rows.
+ # Political lists can grow. Hometowns retain a compact shortlist alongside
+ # their longer memory/tradition text; every candidate remains keyboard-accessible.
  var height := clampf(100 + (size.y - 360) * 0.8, 100, 280)
  for picker in [options,state_picker,province_picker]:
   if is_instance_valid(picker) and picker.is_inside_tree():
-   picker.custom_minimum_size.y = minf(height, maxf(80, picker.item_count * 25))
+   var available := minf(height,152) if page==2 and picker==options else height
+   picker.custom_minimum_size.y = minf(available, maxf(80, picker.item_count * 25))
+   picker.call_deferred("ensure_current_is_visible")
 
 func _label(text: String, font_size: int = 14) -> Label:
  return GameUI.label(text, font_size)
@@ -508,7 +511,8 @@ func _focus_later(control: Control) -> void:
  await get_tree().process_frame
  if is_instance_valid(control) and control.is_inside_tree():
   control.grab_focus()
-  if control is ItemList: control.ensure_current_is_visible()
+  if control is ItemList:
+   control.ensure_current_is_visible()
 
 func _reload_library(selected_id: String = "") -> void:
  entries = library.discover()

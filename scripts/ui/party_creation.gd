@@ -45,6 +45,7 @@ func _ready() -> void:
  margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  for side in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + side, 12)
  add_child(margin)
+ GameUI.reading_width(margin,self,860)
  var column := VBoxContainer.new()
  column.add_theme_constant_override("separation", 4)
  margin.add_child(column)
@@ -165,8 +166,11 @@ func _process(_delta: float) -> void:
   after_save = ""
  else:
   pending_edit = {}
+  var first_display := state.is_empty()
+  var was_ready := ready_view
   state = result.state
   ready_view = state.party.status == "ready"
+  if ready_view and (first_display or not was_ready): detail_tabs.current_tab=1
   message = "Party saved and verified." if not ready_view else "Party setup complete. Your hometown awaits."
  refresh()
  if not after_save.is_empty() and result.get("ok", false):

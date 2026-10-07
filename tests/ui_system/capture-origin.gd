@@ -24,6 +24,27 @@ func click(control: Control) -> void:
  await settle()
 func shot(name: String) -> void:
  await settle()
+ if OS.get_environment("GAME83_STAGE")=="after":
+  var scene: Control=current_scene
+  var bounds := root.get_visible_rect()
+  if scene.scene_file_path.ends_with("new_game_origin.tscn"):
+   check(scene.next_button.get_global_rect().end.y<=bounds.end.y-8,"origin navigation remains outside content: "+name)
+   check(scene.map.size.y>=146,"origin map retains useful space: "+name)
+   if name.begins_with("state"):
+    scene.state_picker.grab_focus()
+    for down in [true,false]:
+     var key := InputEventKey.new()
+     key.keycode=KEY_TAB
+     key.shift_pressed=true
+     key.pressed=down
+     root.push_input(key)
+     await process_frame
+    check(root.gui_get_focus_owner()!=null and root.gui_get_focus_owner()!=scene.state_picker,"Shift+Tab moves focus backward")
+    scene.state_picker.grab_focus()
+  elif scene.scene_file_path.ends_with("party_creation.tscn"):
+   check(scene.finish_button.get_global_rect().end.y<=bounds.end.y-8,"party primary action remains visible: "+name)
+   check(scene.roster.get_item_rect(2).end.y<=scene.roster.size.y,"all three party members are visible")
+  if root.size.x>640: check(root.content_scale_size.x>640,"desktop layout grows without giant controls: "+name)
  check(root.get_texture().get_image().save_png(output.path_join(name + ".png")) == OK, name)
 func run() -> void:
  run_id = Crypto.new().generate_random_bytes(8).hex_encode()

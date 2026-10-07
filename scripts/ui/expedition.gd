@@ -208,11 +208,14 @@ func refresh() -> void:
   button("return","Return home · 1 turn",func(): start("return"))
  if thread==null:
   if action_buttons.has(old_focus): action_buttons[old_focus].call_deferred("grab_focus")
-  elif focused==null or not is_instance_valid(focused) or focused!=menu_button and focused!=home_button:
+  elif focused==null or not is_instance_valid(focused) or focused!=menu_button and (focused!=home_button or not home_button.visible):
+   var target := ""
    for key in ["accept","depart","scout","travel","survey","return","leads"]:
     if action_buttons.has(key):
-     action_buttons[key].call_deferred("grab_focus")
+     target=key
      break
+   if target.is_empty() and not action_buttons.is_empty(): target=str(action_buttons.keys()[0])
+   if not target.is_empty(): action_buttons[target].call_deferred("grab_focus")
 func select_site(id: String) -> void:
  for l in public_view.leads:
   if l.site==id:

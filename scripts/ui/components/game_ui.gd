@@ -51,6 +51,7 @@ static func shared_theme() -> Theme:
  _theme.set_stylebox("selected_focus", "ItemList", selected)
  _theme.set_constant("v_separation", "ItemList", 4)
  _theme.set_stylebox("tab_selected", "TabContainer", selected)
+ _theme.set_stylebox("panel", "TabContainer", box(Color.TRANSPARENT))
  _theme.set_stylebox("tab_unselected", "TabContainer", quiet)
  _theme.set_stylebox("tab_hovered", "TabContainer", hover)
  _theme.set_color("font_color", "Label", INK)
@@ -75,6 +76,14 @@ static func install(screen: Control) -> void:
  screen.theme = shared_theme()
  var responsive := preload("res://scripts/ui/components/responsive_canvas.gd").new()
  screen.add_child(responsive)
+
+static func reading_width(margin: MarginContainer, screen: Control, maximum: float) -> void:
+ var resize := func():
+  var inset := maxi(MARGIN, floori((screen.size.x-maximum)/2))
+  margin.add_theme_constant_override("margin_left",inset)
+  margin.add_theme_constant_override("margin_right",inset)
+ screen.resized.connect(resize)
+ resize.call()
 
 static func label(text: String, font := BODY) -> Label:
  var result := Label.new()

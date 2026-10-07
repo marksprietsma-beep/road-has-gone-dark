@@ -39,6 +39,7 @@ if args.visual: command.append('--visual')
 if args.regressions: command.append('--regressions')
 run('game84-and-foundations', command)
 if args.visual:
+    run('list-visibility', [engine,'--path','.','--audio-driver','Dummy','--script','tests/ui_system/list-visibility.gd'], 180)
     run('after-origin', [engine,'--path','.','--audio-driver','Dummy','--script','tests/ui_system/capture-origin.gd'], 1200)
     run('after-expedition', [engine,'--path','.','--audio-driver','Dummy','--script','tests/ui_system/capture-expedition.gd'], 1200)
 if owned: owned.cleanup()
