@@ -120,6 +120,7 @@ func _ready() -> void:
  biography.size_flags_horizontal = Control.SIZE_EXPAND_FILL
  scroll.add_child(biography)
  reroll_button = GameUI.action("Another background",func(): _save_changes(true))
+ reroll_button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
  background_tab.add_child(reroll_button)
  message_label = label("", GameUI.META)
  message_label.custom_minimum_size.y = 18
@@ -271,6 +272,7 @@ func refresh() -> void:
  save_button.text = "Retry preparation" if state.is_empty() else "Save character"
  save_button.disabled = busy or ready_view or entry.is_empty()
  save_button.visible = not ready_view
+ reroll_button.visible = not ready_view
  member_heading.visible = ready_view
  name_edit.visible = not ready_view
  people_picker.visible = not ready_view

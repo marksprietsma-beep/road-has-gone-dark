@@ -44,6 +44,7 @@ func shot(name: String) -> void:
   elif scene.scene_file_path.ends_with("party_creation.tscn"):
    check(scene.finish_button.get_global_rect().end.y<=bounds.end.y-8,"party primary action remains visible: "+name)
    check(scene.roster.get_item_rect(2).end.y<=scene.roster.size.y,"all three party members are visible")
+   if scene.ready_view: check(not scene.reroll_button.visible,"ready party hides unavailable background editing")
   if root.size.x>640: check(root.content_scale_size.x>640,"desktop layout grows without giant controls: "+name)
  check(root.get_texture().get_image().save_png(output.path_join(name + ".png")) == OK, name)
 func run() -> void:
