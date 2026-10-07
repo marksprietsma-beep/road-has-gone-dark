@@ -16,44 +16,36 @@ var footer: Label
 var menu_button: Button
 var home_button: Button
 var action_buttons := {}
+var saved_indicator: Label
 func label(text: String, font: int=14) -> Label:
- var l := Label.new()
- l.text=text
- l.add_theme_font_size_override("font_size",font)
- l.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- return l
+ return GameUI.label(text, font)
 func _ready() -> void:
- theme=preload("res://themes/menu_theme.tres").duplicate()
- theme.default_font_size=14
- theme.set_font_size("font_size","Button",14)
- var panel := StyleBoxFlat.new()
- panel.bg_color=Color("#15130e")
- panel.border_color=Color("#796338")
- panel.set_border_width_all(1)
- panel.set_content_margin_all(4)
- var focus := panel.duplicate()
- focus.border_color=Color("#ebc75f")
- theme.set_stylebox("normal","Button",panel)
- theme.set_stylebox("focus","Button",focus)
- theme.set_stylebox("hover","Button",focus)
+ GameUI.install(self)
  var bg := ColorRect.new()
  bg.color=Color.BLACK
  bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  add_child(bg)
  var margin := MarginContainer.new()
  margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
- for s in ["left","right","top","bottom"]: margin.add_theme_constant_override("margin_"+s,10)
+ for s in ["left","right","top","bottom"]: margin.add_theme_constant_override("margin_"+s,GameUI.MARGIN)
  add_child(margin)
  var column := VBoxContainer.new()
  column.add_theme_constant_override("separation",4)
  margin.add_child(column)
- title=label("Hometown",22)
- column.add_child(title)
- reminder=label("")
+ var heading := HBoxContainer.new()
+ column.add_child(heading)
+ title=label("Hometown",GameUI.TITLE)
+ title.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+ heading.add_child(title)
+ saved_indicator=label("",GameUI.META)
+ saved_indicator.autowrap_mode=TextServer.AUTOWRAP_OFF
+ saved_indicator.vertical_alignment=VERTICAL_ALIGNMENT_CENTER
+ heading.add_child(saved_indicator)
+ reminder=label("",GameUI.META)
  reminder.autowrap_mode=TextServer.AUTOWRAP_OFF
  reminder.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
  column.add_child(reminder)
- status=label(message,13)
+ status=label(message,GameUI.META)
  column.add_child(status)
  var body := HBoxContainer.new()
  body.size_flags_vertical=Control.SIZE_EXPAND_FILL
@@ -65,7 +57,7 @@ func _ready() -> void:
  body.add_child(map)
  var scroll := ScrollContainer.new()
  scroll.follow_focus=true
- scroll.custom_minimum_size.x=318
+ scroll.custom_minimum_size.x=292
  scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
  scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL
  body.add_child(scroll)
@@ -73,21 +65,16 @@ func _ready() -> void:
  content.size_flags_horizontal=Control.SIZE_EXPAND_FILL
  content.add_theme_constant_override("separation",4)
  scroll.add_child(content)
- footer=label("Home: gold ring · party: brown ring · numbered sites: known locations",12)
+ footer=label("",GameUI.META)
  column.add_child(footer)
  var controls := HBoxContainer.new()
  column.add_child(controls)
- home_button=Button.new()
- home_button.text="Return home · 1 turn"
- home_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+ menu_button=GameUI.action("Main menu",return_menu)
+ controls.add_child(menu_button)
+ controls.add_child(GameUI.spacer())
+ home_button=GameUI.action("Return to hometown · 1 turn",func(): start("return"),true)
  home_button.visible=false
  controls.add_child(home_button)
- home_button.pressed.connect(func(): start("return"))
- menu_button=Button.new()
- menu_button.text="Main menu (progress saved)"
- menu_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
- controls.add_child(menu_button)
- menu_button.pressed.connect(return_menu)
  var h := PartyService.handoff
  entry=h.get("entry",{})
  slot=h.get("slot","")
@@ -101,7 +88,7 @@ func _ready() -> void:
 func start(operation: String, lead: String="") -> void:
  if thread!=null: return
  var changes := {"lead":lead,"revision":state.get("expedition",{}).get("revision",-1)}
- message="Preparing local map…" if operation=="resume" else "Saving and verifying…"
+ message="Preparing local map…" if operation=="resume" else "Saving…"
  thread=Thread.new()
  thread.start(func(): return service.operate(entry,slot,operation,1,changes))
  refresh()
@@ -121,16 +108,20 @@ func button(id: String, text: String, callback: Callable, effect: String="") -> 
  if id=="return":
   action_buttons[id]=home_button
   return
- var b := Button.new()
- b.text=text
+ var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel"])
+ b.alignment=HORIZONTAL_ALIGNMENT_LEFT
  b.clip_text=true
  b.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
  b.tooltip_text=effect
  b.disabled=thread!=null
  content.add_child(b)
- b.pressed.connect(callback)
+ if not effect.is_empty(): content.add_child(label(effect,GameUI.META))
  action_buttons[id]=b
 func refresh() -> void:
+ var old_focus := ""
+ var focused := get_viewport().gui_get_focus_owner()
+ for key in action_buttons:
+  if action_buttons[key]==focused: old_focus=key
  for child in content.get_children():
   content.remove_child(child)
   child.queue_free()
@@ -138,6 +129,7 @@ func refresh() -> void:
  menu_button.disabled=thread!=null
  home_button.disabled=thread!=null
  home_button.visible=not state.get("expedition",{}).get("active",{}).is_empty()
+ home_button.theme_type_variation="PrimaryAction" if state.get("expedition",{}).get("active",{}).get("phase")=="result" else "QuietAction"
  if state.is_empty():
   status.text=message
   return
@@ -146,55 +138,81 @@ func refresh() -> void:
  var area := w.get_record("province",int(state.origin.province_id))
  var e: Dictionary = state.expedition
  var a: Dictionary = e.active
- title.text=home.name+" · Hometown" if a.is_empty() else "Local expedition"
+ title.text=home.name+" · Hometown" if a.is_empty() else {"map":"Local expedition","site":"At the site","result":"Expedition record"}.get(a.phase,"Local expedition")
  reminder.text=str(area.get("name","Unassigned districts"))+" · "+str(w.get_record("state",int(state.origin.state_id)).name)+" · "+", ".join(state.party.members.map(func(m: Dictionary): return m.name))
  reminder.tooltip_text=reminder.text
- status.text=message if not message.is_empty() else "Expedition turns: %d%s · Progress saved and verified" % [int(state.game_clock.tick)," · Provisions: %d"%int(a.supplies) if not a.is_empty() else ""]
+ status.text=message if not message.is_empty() else "Turn %d%s" % [int(state.game_clock.tick)," · Provisions %d / 4"%int(a.supplies) if not a.is_empty() else " · Local accounts"]
+ status.add_theme_color_override("font_color",GameUI.ERROR if not message.is_empty() and thread==null else GameUI.MUTED)
+ saved_indicator.text="Saved" if thread==null and message.is_empty() else ("Saving…" if thread!=null else "")
  var location: String = str(a.get("site_id",""))
  var markers: Array = public_view.leads.filter(func(l: Dictionary): return l.id==selected)
  var selected_site: String = str(markers[0].site) if not markers.is_empty() else ""
+ if not a.is_empty():
+  var active_leads: Array=public_view.leads.filter(func(l: Dictionary):return l.id==a.lead_id)
+  if not active_leads.is_empty(): selected_site=str(active_leads[0].site)
  map.setup(service.packet.svg,public_view,location,selected_site)
+ footer.text="Party at hometown · "+str(home.name)
+ for s in public_view.sites:
+  if s.id==location: footer.text="Party at "+str(s.name)
  if a.is_empty():
   var chosen: Array = public_view.leads.filter(func(l: Dictionary): return l.id==selected)
   if not chosen.is_empty():
    var l: Dictionary = chosen[0]
    content.add_child(label(l.title,18))
-   content.add_child(label(l.knowledge.capitalize()+" · "+l.status.capitalize(),13))
-   content.add_child(label(l.goal+". An account from a local "+l.issuer+".",13))
-   content.add_child(label(l.clue,13))
+   content.add_child(GameUI.badge(l.status.capitalize()+" · "+l.knowledge.capitalize()))
+   content.add_child(label(l.goal+"."))
+   content.add_child(label("Account from a local "+l.issuer,GameUI.META))
+   content.add_child(label(l.clue))
    if l.status in ["available","withdrawn"]: button("accept","Accept local lead",func(): start("accept",l.id))
-   elif l.status=="accepted": button("depart","Depart / view local map",func(): start("depart",l.id))
+   elif l.status=="accepted": button("depart","Begin expedition",func(): start("depart",l.id))
    button("leads","Back to local leads",func(): selected="";refresh())
   else:
-   content.add_child(label("LOCAL LEADS",16))
+   var leads_section := GameUI.section("Local accounts")
+   content.add_child(leads_section)
    var cell := w.get_record("cell",int(home.cell))
    var biome := w.get_record("biome",int(cell.get("biome",-1)))
-   content.add_child(label("Your home stands in "+str(biome.get("name","the surrounding country"))+". These accounts offer no promise of safety.",13))
+   leads_section.add_child(label(str(biome.get("name","The surrounding country")),GameUI.META))
    for l in public_view.leads:
-    button(l.id,l.title+" · "+l.status.capitalize(),func(): selected=l.id;refresh())
+    var row := GameUI.row(l.title,l.status.capitalize(),func(): selected=l.id;refresh())
+    row.disabled=thread!=null
+    leads_section.add_child(row)
+    action_buttons[l.id]=row
    if not e.log.is_empty():
-    content.add_child(label("RECENT EXPEDITION",14))
-    content.add_child(label(e.log[-1].text,13))
+    var recent := GameUI.section("Recent events")
+    content.add_child(recent)
+    for event in e.log.slice(maxi(0,e.log.size()-3)):
+     recent.add_child(label(event.text,GameUI.META))
  elif a.phase=="map":
   var l: Dictionary = public_view.leads.filter(func(x: Dictionary): return x.id==a.lead_id)[0]
   content.add_child(label(l.title,18))
-  content.add_child(label(l.goal+".\n"+l.clue,13))
+  content.add_child(GameUI.badge("Location unknown" if l.knowledge=="rumoured" else "Location known"))
+  content.add_child(label(l.goal+".\n"+l.clue))
   if l.knowledge=="rumoured": button("scout","Scout the rumour · 2 turns / 1 provision",func(): start("scout"))
   else: button("travel","Travel to the site · 1 turn / 1 provision",func(): start("travel"))
-  content.add_child(label("Choose a known destination. Travel costs one turn and one provision.",12))
+  content.add_child(label("Scout to locate this account." if l.knowledge=="rumoured" else "The marked location is ready to visit.",GameUI.META))
   button("return","Return home · 1 turn",func(): start("return"))
  else:
   var site: Dictionary = public_view.sites.filter(func(s: Dictionary): return s.id==a.site_id)[0]
   content.add_child(label(site.name,18))
-  content.add_child(label(site.description,13))
+  content.add_child(label(site.description))
   if a.phase=="site":
-   content.add_child(label("Choose an approach · investigation costs 2 turns / 1 provision",12))
-   for o in ExpeditionService.choices(state,site): button(o.id,o.label,func(): start(o.id),o.effect)
+   content.add_child(label("Investigate: 2 turns · 1 provision",GameUI.META))
+   for o in ExpeditionService.choices(state,site): button(o.id,o.label,func(): start(o.id))
+   content.add_child(label("Leaving the site costs nothing.",GameUI.META))
   else:
    var out: Dictionary = e.outcomes[site.id]
-   content.add_child(label(out.text,14))
-   content.add_child(label("SITE: "+str(e.knowledge[site.id]).capitalize()+"\nYour choice is recorded in this campaign.",13))
+   content.add_child(GameUI.badge(str(e.knowledge[site.id]).capitalize()))
+   content.add_child(label("What changed",GameUI.SECTION))
+   content.add_child(label(out.text))
+   content.add_child(label("Return to close this account." if out.approach!="leave" else "This account remains unresolved.",GameUI.META))
   button("return","Return home · 1 turn",func(): start("return"))
+ if thread==null:
+  if action_buttons.has(old_focus): action_buttons[old_focus].call_deferred("grab_focus")
+  elif focused==null or not is_instance_valid(focused) or focused!=menu_button and focused!=home_button:
+   for key in ["accept","depart","scout","travel","survey","return","leads"]:
+    if action_buttons.has(key):
+     action_buttons[key].call_deferred("grab_focus")
+     break
 func select_site(id: String) -> void:
  for l in public_view.leads:
   if l.site==id:

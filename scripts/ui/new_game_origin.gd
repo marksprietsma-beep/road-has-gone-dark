@@ -81,50 +81,24 @@ func _ready() -> void:
  party_creation_requested.connect(_open_party)
  _reload_library()
  _build_ui()
+ resized.connect(_adapt_lists)
  show_page()
 
+func _adapt_lists() -> void:
+ # Larger windows show more choices, not just larger versions of four rows.
+ var height := clampf(100 + (size.y - 360) * 0.8, 100, 280)
+ for picker in [options,state_picker,province_picker]:
+  if is_instance_valid(picker) and picker.is_inside_tree():
+   picker.custom_minimum_size.y = minf(height, maxf(80, picker.item_count * 25))
+
 func _label(text: String, font_size: int = 14) -> Label:
- var label := Label.new()
- label.text = text
- label.add_theme_font_size_override("font_size", font_size)
- label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
- return label
+ return GameUI.label(text, font_size)
 
 func _button(text: String, action: Callable) -> Button:
- var button := Button.new()
- button.text = text
- button.add_theme_font_size_override("font_size", 16)
- button.custom_minimum_size.y = 30
- button.pressed.connect(action)
- return button
+ return GameUI.action(text, action)
 
 func _build_ui() -> void:
- theme = preload("res://themes/menu_theme.tres").duplicate()
- theme.default_font_size = 14
- var style := StyleBoxFlat.new()
- style.bg_color = Color("12110d")
- style.border_color = Color("78613b")
- style.set_border_width_all(1)
- var focus := style.duplicate()
- focus.border_color = Color("ffdc81")
- focus.draw_center = false
- theme.set_stylebox("panel", "ItemList", style)
- theme.set_stylebox("focus", "ItemList", focus)
- var selected := StyleBoxFlat.new()
- selected.bg_color = Color("42351e")
- theme.set_stylebox("selected", "ItemList", selected)
- theme.set_stylebox("selected_focus", "ItemList", selected)
- theme.set_color("font_color", "ItemList", Color("d9bd7d"))
- theme.set_color("font_selected_color", "ItemList", Color("ffe29b"))
- theme.set_stylebox("hover", "Button", selected)
- theme.set_stylebox("pressed", "Button", selected)
- theme.set_stylebox("disabled", "Button", style)
- theme.set_stylebox("normal", "Button", style)
- theme.set_stylebox("focus", "Button", focus)
- theme.set_stylebox("hover", "OptionButton", selected)
- theme.set_stylebox("pressed", "OptionButton", selected)
- theme.set_stylebox("normal", "OptionButton", style)
- theme.set_stylebox("focus", "OptionButton", focus)
+ GameUI.install(self)
  var background := ColorRect.new()
  background.color = Color.BLACK
  background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -132,10 +106,10 @@ func _build_ui() -> void:
  add_child(background)
  var margin := MarginContainer.new()
  margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
- for edge in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, 16)
+ for edge in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, GameUI.MARGIN)
  add_child(margin)
  var column := VBoxContainer.new()
- column.add_theme_constant_override("separation", 8)
+ column.add_theme_constant_override("separation", 6)
  margin.add_child(column)
  title = _label("", 22)
  column.add_child(title)
@@ -143,7 +117,7 @@ func _build_ui() -> void:
  column.add_child(steps)
  var body := HBoxContainer.new()
  body.size_flags_vertical = Control.SIZE_EXPAND_FILL
- body.add_theme_constant_override("separation", 16)
+ body.add_theme_constant_override("separation", 12)
  column.add_child(body)
  left = VBoxContainer.new()
  left.custom_minimum_size.x = 236
@@ -157,12 +131,14 @@ func _build_ui() -> void:
  map.custom_minimum_size.y = 146
  map.size_flags_vertical = Control.SIZE_EXPAND_FILL
  right.add_child(map)
- facts = _label("")
+ facts = _label("", GameUI.META)
  facts.custom_minimum_size.y = 64
  right.add_child(facts)
  lore_scroll = ScrollContainer.new()
+ lore_scroll.follow_focus = true
  lore_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
  lore_scroll.custom_minimum_size.y = 78
+ lore_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
  left.add_child(lore_scroll)
  lore_label = _label("")
  lore_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -171,10 +147,11 @@ func _build_ui() -> void:
  var footer := HBoxContainer.new()
  column.add_child(footer)
  back_button = _button("Back", go_back)
- back_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
  footer.add_child(back_button)
+ footer.add_child(GameUI.spacer())
  next_button = _button("Next", advance)
- next_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+ next_button.theme_type_variation = "PrimaryAction"
+ next_button.custom_minimum_size.x = 136
  footer.add_child(next_button)
 
 func states() -> Array[Dictionary]:
@@ -263,7 +240,7 @@ func show_page() -> void:
   return
  title.text = ["Choose your world", "Choose your region", "Choose your hometown", "Review your origin", "Origin established"][page]
  var step := 1 if page == 0 else (2 if page == 1 and area_view == "state" else page + 2)
- steps.text = "%d / 5   WORLD > STATE > REGION > HOMETOWN > CONFIRM" % step if page < 4 else "PARTY CREATION NEXT"
+ steps.text = "%d / 5   World  ›  State  ›  Region  ›  Hometown  ›  Confirm" % step if page < 4 else "Party creation next"
  back_button.text = "Main menu" if page == 0 or page == 4 else "Back"
  next_button.text = ("Return to handoff" if not saved_slot.is_empty() else "Confirm origin") if page == 3 else ("Review origin" if page == 4 else "Next")
  next_button.disabled = false
@@ -278,11 +255,10 @@ func show_page() -> void:
    back_button.call_deferred("grab_focus")
    return
   left.add_child(_label(message if not message.is_empty() else "Choose a world from your library."))
-  world_status = _label("")
+  world_status = _label("",GameUI.META)
   left.add_child(world_status)
   options = ItemList.new()
   options.custom_minimum_size.y = 86
-  options.add_theme_font_size_override("font_size", 16)
   for value in world_titles: options.add_item(value)
   left.add_child(options)
   options.select(world_index)
@@ -300,10 +276,9 @@ func show_page() -> void:
   var subdivisions := provinces()
   if area_view == "state":
    title.text = "Choose your state"
-   profile_tag_label = _label("", 11)
+   profile_tag_label = _label("", GameUI.META)
    state_picker = ItemList.new()
    state_picker.custom_minimum_size.y = 100
-   state_picker.add_theme_font_size_override("font_size", 15)
    left.add_child(state_picker)
    for record in areas:
     state_picker.add_item(str(record.name))
@@ -317,7 +292,6 @@ func show_page() -> void:
    left.add_child(_label(str(worlds[world_index].get_record("state", state_id).get("name", "")), 14))
    province_picker = ItemList.new()
    province_picker.custom_minimum_size.y = 80
-   province_picker.add_theme_font_size_override("font_size", 15)
    left.add_child(province_picker)
    province_picker.add_item("Across this state")
    province_picker.set_item_metadata(0, -1)
@@ -328,7 +302,7 @@ func show_page() -> void:
     if int(record.i) == province_id: province_picker.select(province_picker.item_count - 1)
    province_picker.item_selected.connect(func(index: int): choose_province(int(province_picker.get_item_metadata(index))))
    province_picker.item_activated.connect(func(_index: int): advance())
-   profile_tag_label = _label("", 11)
+   profile_tag_label = _label("", GameUI.META)
    left.add_child(profile_tag_label)
  elif page == 2:
   candidates = worlds[world_index].home_candidates(state_id, province_id, 8)
@@ -338,10 +312,9 @@ func show_page() -> void:
    next_button.disabled = true
   else:
    if not candidates.any(func(c: Dictionary): return int(c.id) == burg_id): burg_id = int(candidates[0].id)
-   left.add_child(_label("Small settlements"))
+   left.add_child(_label("Small settlements",GameUI.META))
    options = ItemList.new()
    options.custom_minimum_size.y = 118
-   options.add_theme_font_size_override("font_size", 15)
    left.add_child(options)
    for candidate in candidates:
     options.add_item(str(candidate.name))
@@ -352,14 +325,15 @@ func show_page() -> void:
   var home := world.get_record("burg", burg_id)
   var state := world.get_record("state", state_id)
   var province := world.get_record("province", int(world.get_record("cell", int(home.get("cell", -1))).get("province", 0)))
-  left.add_child(_label(world_titles[world_index], 18))
-  left.add_child(_label(str(state.get("name", ""))))
-  if not province.is_empty(): left.add_child(_label(str(province.get("name", ""))))
-  left.add_child(_label(str(home.get("name", "")), 20))
+  left.add_child(_label(world_titles[world_index], GameUI.SECTION))
+  left.add_child(_label(str(state.get("name", "")),GameUI.META))
+  if not province.is_empty(): left.add_child(_label(str(province.get("name", "")),GameUI.META))
+  left.add_child(_label(str(home.get("name", "")), GameUI.TITLE))
   left.add_child(_label("Your origin has been saved." if page == 4 else "Confirm to begin a new playthrough."))
   # Confirmation feedback belongs in the bounded lore area, never an extra
   # minimum-height row that can push the actions outside the viewport.
  left.move_child(lore_scroll, left.get_child_count() - 1)
+ _adapt_lists()
  _refresh_facts()
  if page == 0 or page == 2 and not candidates.is_empty(): _focus_later(options)
  elif page == 1: _focus_later(state_picker if area_view == "state" else province_picker)
@@ -398,7 +372,7 @@ func _refresh_facts() -> void:
  lore_scroll.scroll_vertical = 0
  if not row.is_empty():
   lore_label.text = str(row.full_summary)
-  if page == 1 and is_instance_valid(profile_tag_label): profile_tag_label.text = " · ".join(row.identity_tags).to_upper()
+  if page == 1 and is_instance_valid(profile_tag_label): profile_tag_label.text = " · ".join(row.identity_tags)
   if group == "hometowns":
    lore_label.text += "\n\nLocal memory: " + str(row.memory) + "\n" + str(row.tradition)
   if page >= 3 and not message.is_empty(): lore_label.text = message + "\n" + lore_label.text

@@ -16,6 +16,7 @@ var party_resume := {}
 
 
 func _ready() -> void:
+	GameUI.install(self)
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
