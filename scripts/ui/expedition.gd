@@ -1,5 +1,5 @@
 extends Control
-var service := ExpeditionService.new()
+var service := AdventureService.new()
 var entry := {}
 var slot := ""
 var state := {}
@@ -102,6 +102,10 @@ func _process(_delta: float) -> void:
   if was_away and state.expedition.active.is_empty(): selected=""
   public_view=ExpeditionRecords.projection(service.packet.content,state.expedition)
   message=""
+  var battle: Dictionary=state.get("first_adventure",{}).get("battle",{})
+  if not battle.is_empty() and battle.status=="active":
+   get_tree().change_scene_to_file("res://scenes/combat/first_adventure.tscn")
+   return
  else: message=str(result.get("error","The previous campaign state was preserved."))
  refresh()
 func button(id: String, text: String, callback: Callable, effect: String="") -> void:
@@ -170,6 +174,16 @@ func refresh() -> void:
    elif l.status=="accepted": button("depart","Begin expedition",func(): start("depart",l.id))
    button("leads","Back to local leads",func(): selected="";refresh())
   else:
+   if not state.has("first_adventure"):
+    button("prepare_adventure","Meet the party · prepare first adventure",func(): start("prepare_adventure"),"Keep your existing identities and prepare their starting abilities.")
+   else:
+    var party_section := GameUI.section("Your travelling companions")
+    content.add_child(party_section)
+    for member in state.party.members:
+     var life := AdventureRecords.identity(state,member)
+     party_section.add_child(label(life.name+" · "+life.archetype,GameUI.SECTION))
+     party_section.add_child(label(life.background+". Motivation: "+life.motivation+".\n"+life.hook+"\n"+life.relationship,GameUI.META))
+     if not life.history.is_empty(): party_section.add_child(label("Journey XP: %d · %s"%[life.xp,life.history.back().summary],GameUI.META))
    var leads_section := GameUI.section("Local accounts")
    content.add_child(leads_section)
    var cell := w.get_record("cell",int(home.cell))
@@ -199,6 +213,9 @@ func refresh() -> void:
   content.add_child(label(site.name,18))
   content.add_child(label(site.description))
   if a.phase=="site":
+   if state.has("first_adventure") and state.first_adventure.battle.is_empty() and not e.outcomes.has(site.id):
+    content.add_child(label("Armed raiders block this approach. An authored first encounter, attached to this local journey.",GameUI.META))
+    button("begin_battle","Bandits on the Old Road · fight",func(): start("begin_battle"),"Three companions, two raiders. Victory records the site; defeat allows withdrawal.")
    content.add_child(label("Investigate: 2 turns · 1 provision",GameUI.META))
    for o in ExpeditionService.choices(state,site): button(o.id,o.label,func(): start(o.id))
    content.add_child(label("Leaving the site costs nothing.",GameUI.META))
