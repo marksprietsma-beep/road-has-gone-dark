@@ -159,6 +159,15 @@ func run() -> void:
  var skill_character := RulesCharacter.new(skill_registry)
  var skill_record := first.duplicate(true);skill_record.rules_ref=skill_registry.rules_ref()
  check(skill_character.derive_character(skill_record).snapshot.skills.athletics.total==characters.derive_character(first).snapshot.skills.athletics.total+2,"skill modifiers derive through generic stacking")
+ var precision_actor: Dictionary=records.skirmisher
+ var precision_before := RulesJson.canonical(precision_actor)
+ var hit_context := {"trigger":"qualifying_hit","tags":["concealed_opening"],"event_id":"qualified-hit"}
+ var precision := effects.use_ability(precision_actor,precision_actor,"precision",{"move":1,"main":0,"reaction":0},RulesRng.initial("precision"),hit_context)
+ check(precision.ok and precision.events.any(func(e: Dictionary): return e.type=="event_modifier" and e.stat=="damage" and e.value==4 and e.scope=="current_event"),"contextual Precision emits an event-scoped +4 modifier")
+ check(RulesJson.canonical(precision.actor)==precision_before and characters.derive_character(precision.actor).snapshot.stats.damage==0,"Precision cannot leak a permanent damage bonus into saved statistics")
+ var unqualified := effects.use_ability(precision_actor,precision_actor,"precision",{"move":1,"main":0,"reaction":0},RulesRng.initial("precision"),{"trigger":"qualifying_hit","event_id":"unqualified-hit"})
+ check(unqualified.ok and unqualified.events.is_empty(),"unqualified hit gains no Precision bonus")
+ check(precision==effects.use_ability(precision_actor,precision_actor,"precision",{"move":1,"main":0,"reaction":0},RulesRng.initial("precision"),hit_context),"event-scoped modifier resolution is deterministic")
  effect_checks(first,first_adept,records.prestige)
  start=Time.get_ticks_usec()
  for i in 1000: check(characters.derive_character(first_adept).ok,"1000 derivations")

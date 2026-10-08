@@ -119,10 +119,11 @@ static func _amount(value: Variant,tables: Dictionary,path: String,found: Array)
 static func validate_effect(effect: Variant,tables: Dictionary,path: String,found: Array,depth: int = 0) -> void:
  if depth>16 or not effect is Dictionary or not effect.get("op") in EFFECTS: found.append(RulesJson.issue("effect.operator",path,"Unknown, malformed or deep effect"));return
  var op: String = effect.op
- var fields := {"modify_stat":["op","stat","type","value","when"],"modify_save":["op","stat","type","value","when"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"]}
+ var fields := {"modify_stat":["op","stat","type","value","when","scope"],"modify_save":["op","stat","type","value","when","scope"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"]}
  for field in effect:
   if not field in fields[op]: found.append(RulesJson.issue("effect.field",path+"."+str(field),"Unknown effect field"))
  if op in ["modify_stat","modify_save"]:
+  if effect.has("scope") and not effect.scope in ["persistent","current_event"]: found.append(RulesJson.issue("effect.scope",path,"Unknown modifier persistence scope"))
   if not effect.get("stat") in STATS or not effect.get("type") in TYPES: found.append(RulesJson.issue("effect.modifier",path,"Invalid effect statistic/type"))
   _formula(effect.get("value"),tables,path+".value",found)
   if effect.has("when"): _requirement(effect.when,tables,path+".when",found)

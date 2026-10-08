@@ -46,7 +46,7 @@ Standard array: 15/14/13/12/10/8. Narrative roles recommend allocations and init
 | Original path | HP per level | BAB | Good save | Skill points before INT | Identity proof |
 | --- | ---: | --- | --- | ---: | --- |
 | Roadwarden | 6 | full | Fortitude | 2 | Armour/shield, melee training, Guard and frontliner tags |
-| Wayfinder | 4 | floor(3n/4) | Reflex | 4 | +1 stride, skill breadth and contextual +4 Precision descriptor |
+| Wayfinder | 4 | floor(3n/4) | Reflex | 4 | +1 stride, skill breadth and event-scoped contextual +4 Precision descriptor |
 | Lantern Adept | 3 | floor(n/2) | Will | 3 | Focus, healing, Slow, apparent obstacle/false target and delayed burst |
 | Veil Adept | 3 | floor(n/2) | Will | 3 | Original prestige: insight, Veil uses, shared-reaction Echo hook and defensive duplicate |
 
@@ -70,7 +70,7 @@ Focus capacity =2+floor(Lantern level/4), refreshed at an eligible rest, never a
 
 Safe effects cover typed stat/save modifiers, feature/sense grants, spend/restore resource, damage, capped healing, temporary HP, status apply/remove, numeric saves with failure effects, apparent effects/defensive duplicates and trusted hooks. Damage consumes temporary HP before current HP; temporary HP keeps the greater amount rather than stacking. Healing Thread spends a main action and1 Focus for at most6 HP; no unlimited sustain loop. Status instances persist ID/source/remaining/expiry; definitions own duration, stacking, modifiers and immediate effects. Slow removes2 stride (minimum1) through the next target activation end and does not remove the main action. Status expiry only occurs when a caller supplies its explicit boundary.
 
-RNG state is `{version: sha256-counter-v1, seed, counter}`. Hashing `[version,seed,counter]` yields a 32-bit draw, with rejection sampling to avoid modulo bias. State is passed/returned explicitly and never calls Godot global randomness. Structured dice or bounded `NdS±B` syntax are accepted; script strings are rejected. Effect events record actual amounts, save outcomes and consumed resources.
+RNG state is `{version: sha256-counter-v1, seed, counter}`. Hashing `[version,seed,counter]` yields a 32-bit draw, with rejection sampling to avoid modulo bias. State is passed/returned explicitly and never calls Godot global randomness. Structured dice or bounded `NdS±B` syntax are accepted; script strings are rejected. Effect events record actual amounts, save outcomes and consumed resources. Stat/save effects may declare `scope: current_event`; they emit a typed event modifier without changing either durable record. Omitted scope means persistent. Precision uses the event scope: qualifying context yields +4 outgoing damage intent, unqualified hits yield nothing, and the bonus cannot leak into saved statistics. GAME-33 combines that modifier into the qualifying hit and enforces its first-hit-per-activation metadata.
 
 ## Perception and delayed-magic handoff
 

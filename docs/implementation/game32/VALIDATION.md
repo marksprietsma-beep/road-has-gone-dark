@@ -1,19 +1,19 @@
 # GAME-32 executed validation and performance
 
-Fresh Godot4.6.3 local execution after the final audit: **22,176 kernel checks, 235 real-campaign migration checks and 6 process-restart checks; zero failures.** The runner compared actual output to the current committed golden oracle, preserved all immutable world-enrichment input hashes and re-executed migration/restart. Thirty independent level20 HP/BAB/save expectations anchor the generated oracle to the V1 formulas.
+Fresh Godot4.6.3 local execution after the final audit: **22,181 kernel checks, 235 real-campaign migration checks and 6 process-restart checks; zero failures.** The runner compared actual output to the current committed golden oracle, preserved all immutable world-enrichment input hashes and re-executed migration/restart. Thirty independent level20 HP/BAB/save expectations anchor the generated oracle to the V1 formulas.
 
 `python tests/rules/run-tests.py` uses the pinned engine and existing compatible world-generation helper; no new player runtime. Raw logs, `kernel-results.json`, migration summaries and `run-timings.json` are retained beside this report.
 
 | Stage | Operations | Total seconds | Mean ms/op |
 | --- | ---: | ---: | ---: |
-| Registry load | 1 | 0.008338 | 8.3380 |
-| Reference level1–20 progression | 120 | 2.591051 | 21.5921 |
-| Advancement previews | 2,000 | 6.630217 | 3.3151 |
-| Serialization/derivation round trips | 1,000 | 11.959899 | 11.9599 |
-| Compound prerequisites | 5,000 | 0.273314 | 0.0547 |
-| Snapshot derivation | 1,000 | 0.963053 | 0.9631 |
-| Build validation | 1,000 | 0.584590 | 0.5846 |
-| Ability/effect calls | 1,000 | 4.463051 | 4.4631 |
+| Registry load | 1 | 0.007889 | 7.8890 |
+| Reference level1–20 progression | 120 | 2.681751 | 22.3479 |
+| Advancement previews | 2,000 | 7.516505 | 3.7583 |
+| Serialization/derivation round trips | 1,000 | 12.782228 | 12.7822 |
+| Compound prerequisites | 5,000 | 0.270143 | 0.0540 |
+| Snapshot derivation | 1,000 | 0.996796 | 0.9968 |
+| Build validation | 1,000 | 0.677145 | 0.6771 |
+| Ability/effect calls | 1,000 | 4.957873 | 4.9579 |
 
 These are observed single-host timings, not frame-time guarantees. Registry parsing/hashing occurs once per registry/process; no stress loop reloads content. Advancement and validation deliberately replay bounded ordered history rather than trusting persisted totals. No per-build cache is necessary at this measured scale; caching mutable character state would create invalidation risks without evidence of a bottleneck.
 
@@ -28,3 +28,7 @@ The later audit deliberately adds snapshot casting/preparation/current-status/ma
 ## Corrected CI fixture assumption
 
 Run37734198796 passed all22,176 kernel checks on both platforms, then exposed a test assumption: GAME-81 validly generates three of four roles, so an unedited party may have no adept/Focus pool. The Focus-persistence fixture now explicitly selects an adept through the existing GAME-81 party edit API before capturing the old campaign. Production preparation still changes no narrative role or member fact. All migration, byte-preservation, resource-spend and restart assertions remain; no tests or sample counts were removed. Fresh local execution passed235 migration and6 restart checks. Final exact-head CI evidence is linked in the draft PR.
+
+## Event-scoped Precision checkpoint
+
+The final audit gives Precision an explicit generic `current_event` modifier scope: it emits the +4 hit modifier without changing saved character statistics. Qualified, unqualified and repeated seeded calls prove that behavior; an unknown scope is rejected. Omitted scope retains persistent modifier semantics. Values and research coverage are unchanged. This pre-review content correction changes the V1 content hash to `104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098`; final snapshot goldens bind to that pin. Earlier checkpoint evidence remains scoped to its own content and source.

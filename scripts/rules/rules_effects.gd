@@ -144,6 +144,9 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   if effect.has("when") and not RulesExpressions.evaluate_requirements(effect.when,context).ok: return {"ok":true}
   var evaluated := RulesExpressions.evaluate_formula(effect.value,context)
   if not evaluated.ok: return evaluated
+  if effect.get("scope","persistent")=="current_event":
+   state.events.append({"type":"event_modifier","scope":"current_event","stat":effect.stat,"modifier_type":effect.type,"value":int(evaluated.value),"source":str(context.get("source_character_id","effect")),"target":context.get("target_id",""),"event_id":context.get("event_id","")})
+   return {"ok":true}
   target.modifiers.append({"stat":effect.stat,"type":effect.type,"value":int(evaluated.value),"source":str(context.get("source_character_id","effect"))+":"+str(context.get("event_id","primitive"))+":"+effect.stat})
   state.events.append({"type":"modifier_granted","stat":effect.stat,"amount":int(evaluated.value)})
  elif op=="grant_feature":

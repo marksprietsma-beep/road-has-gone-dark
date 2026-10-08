@@ -15,7 +15,7 @@ Audit resumes the existing branch and kernel; no new architecture assessment or 
 | Typed modifier behavior | Greatest typed positive plus worst typed negative; untyped stacks; stable source/content tie ordering; malformed conditions/types reject |
 | Level20 engine and ordered multiclassing | Three pure paths, martial/skirmisher, adept/skirmisher and base/prestige/base paths through every level; level cap and exact historical order checked |
 | Explain options and invalid advancement | Class/partial-choice preview uses the same durable entry facts as replay, excluding temporary qualification; exact point spending, rank/feat/attribute schedule checks; 400 invalid kernel choices and 200 campaign previews preserve sources |
-| Distinct three base paths | Roadwarden guard/armour/threat; Wayfinder stride/skills/contextual precision; Lantern Focus/control/perception/healing/delayed magic |
+| Distinct three base paths | Roadwarden guard/armour/threat; Wayfinder stride/skills/event-scoped contextual precision; Lantern Focus/control/perception/healing/delayed magic |
 | Nontrivial prestige | Veil entry tests every prerequisite failure type; ten prestige levels retain base features; shared-reaction trusted Echo and illusion descriptor proof |
 | GAME-86 economy | Move/main/shared reaction only; Dash/Charge/Disengage descriptors; departure and Echo share one reaction; activation cannot refresh it |
 | Resources and persistence | Encounter/eligible-rest/daily definitions plus short-rest/explicit fixture scopes; current Focus survives save and process restart without refill |
@@ -29,7 +29,7 @@ Audit resumes the existing branch and kernel; no new architecture assessment or 
 | Stress and profile | 5,000 prerequisites, 2,000 advancement previews, 1,000 round trips, 1,000 derivations/validations/effects, hundreds of invalid attempts, all-level paths and 10,000 RNG comparisons; per-stage timings retained |
 | Windows/Linux first checkpoint | Workflow37716987428 fully green on both; downloaded QA artifacts equal on all golden fields and exact pins; `CI-FIRST-CHECKPOINT.json` explicitly scopes evidence to `0aee973` |
 | Native first checkpoint | Both complete distributions passed75 checks with bundled compatible helper, empty PATH, hometown/expedition UI and mechanical preparation; ordinary release launch also passed |
-| Latest audit source verification | Fresh local suite passed22,176 kernel +235 migration +6 restart checks after the audit changes; final exact-head CI/check/package links belong in the draft PR, not inferred from the first checkpoint |
+| Latest audit source verification | Fresh local suite passed22,181 kernel +235 migration +6 restart checks after the audit changes; final exact-head CI/check/package links belong in the draft PR, not inferred from the first checkpoint |
 | Extension sources beyond classes | Generic runtime feature grant gives an adept Light Step/tags/stride; current equipment validation explains an external-feature tag conflict; no character-life feature implemented |
 | Scope boundaries | No tactical grid/pathfinding/LOS/initiative queue/AI/autoresolve/combat renderer/character-builder UI/GAME-87 aspects or injury systems; no merge |
 
