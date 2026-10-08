@@ -1705,6 +1705,66 @@ Whirling Assault
 
 The exact names/numbers are provisional, but the architectural pattern is important: **multiple attack rolls do not require multiple turns**.
 
+### Haste and action-boosting magic
+
+Spell effects are also allowed to modify the action budget explicitly.
+
+Historical note: D&D 3.5 / Pathfinder 1e `haste` does **not** grant a completely unrestricted extra action; it primarily improves speed/defence and adds an extra attack to a full-attack sequence. TRHGD does not need to reproduce that exact tabletop structure.
+
+For TRHGD, a clearer tactical-videogame implementation may be:
+
+```text
+Haste
+duration: short
+effect:
+    + movement/stride bonus
+    + one Restricted Action token each activation
+
+Restricted Action:
+    MoveOnly
+    OR StrikeOnly
+    OR TechniqueOnly
+```
+
+The exact allowed category is a balance decision.
+
+A stronger spell could grant:
+
+```text
+Extra Main Action
+```
+
+but that should be rarer and substantially more expensive because unrestricted extra Main actions multiply the value of every class feature and spell.
+
+Action-boosting magic should therefore be modeled through explicit data such as:
+
+```text
+action_budget_modifier:
+    kind: restricted_action | main_action | movement
+    count: 1
+    allowed_tags: [...]
+    duration
+    source
+    stacking_rule
+```
+
+This lets the engine support:
+
+- haste;
+- slow;
+- action surge-like martial abilities;
+- time magic;
+- transformation powers;
+- monster multi-action traits;
+
+without changing the underlying turn system.
+
+Important balance principle:
+
+> An extra action is not just another attack. It can multiply the value of the best thing the character can already do.
+
+Therefore unrestricted extra Main actions should be much rarer than extra strikes or restricted action tokens.
+
 ### Fighter extra attacks
 
 Fighter progression can increase the number or quality of strikes produced by the normal Attack action.
