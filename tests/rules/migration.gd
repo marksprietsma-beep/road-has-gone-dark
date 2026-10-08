@@ -21,6 +21,7 @@ func run() -> void:
   check(loaded.ok,"prepared save reloads in a new process")
   if loaded.ok:
    check(RulesJson.digest(loaded.state)==metadata.state_hash,"entire campaign stable after process restart")
+   check(loaded.state.mechanics.records.values().any(func(r: Dictionary): return r.runtime.resources.get("focus",-1)==1),"spent Focus survives a new process without refill")
    for id in loaded.state.mechanics.records:
     check(RulesCharacter.new(RulesRecords.registry()).derive_character(loaded.state.mechanics.records[id]).snapshot.snapshot_hash==metadata.snapshots[id],"derived snapshot stable across restart")
  else:
@@ -35,7 +36,7 @@ func run() -> void:
   check(generated.ok,str(generated.get("error")))
   if not generated.ok: finish();return
   var ready := service.operate(entry,slot,"ready")
-  check(ready.ok,"existing four narrative characters ready")
+  check(ready.ok,"existing narrative party ready")
   var expedition := ExpeditionService.new()
   expedition.store=service.store;expedition.library=service.library;expedition.cache_root=base.path_join("cache")
   var resumed := expedition.operate(entry,slot,"resume")
@@ -90,6 +91,19 @@ func run() -> void:
   check(not service.store._validate(bad,world).is_empty(),"missing mechanics identity rejected")
   bad=applied.state.duplicate(true);bad.mechanics.records[identity].runtime.resources["focus"]=10000
   check(not service.store._validate(bad,world).is_empty(),"unowned/out-of-cap resource rejected")
+  var caster: String=""
+  for id in applied.state.mechanics.records:
+   if applied.state.mechanics.records[id].runtime.resources.has("focus"): caster=id
+  check(not caster.is_empty(),"actual narrative adept received a separate mechanical build")
+  if not caster.is_empty():
+   var actor: Dictionary=applied.state.mechanics.records[caster]
+   var effect := RulesEffects.new(RulesRecords.registry()).use_ability(actor,actor,"healing-thread",{"move":1,"main":1,"reaction":1},RulesRng.initial("persistent-focus"))
+   check(effect.ok and effect.actor.runtime.resources.focus==1,"resource spent by validated ability")
+   var runtime_preview := RulesRecords.preview_runtime(applied.state,caster,effect.actor.runtime)
+   check(runtime_preview.ok,"trusted runtime persistence preview")
+   var persisted := service.commit_preview(entry,slot,runtime_preview)
+   check(persisted.ok and persisted.state.mechanics.records[caster].runtime.resources.focus==1,"current Focus persists atomically")
+   if persisted.ok: applied=persisted
   var snapshots := {}
   for id in applied.state.mechanics.records: snapshots[id]=kernel.derive_character(applied.state.mechanics.records[id]).snapshot.snapshot_hash
   var file := FileAccess.open(base.path_join("migration.json"),FileAccess.WRITE)

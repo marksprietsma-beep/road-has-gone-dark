@@ -60,6 +60,10 @@ func run() -> void:
   check(derived.ok and derived.snapshot.is_read_only() and derived.snapshot.stats.is_read_only(),"deep immutable snapshot "+name)
   golden[name]={"snapshot_hash":derived.snapshot.snapshot_hash,"stats":derived.snapshot.stats,"capacities":derived.snapshot.resource_capacities,"classes":derived.snapshot.class_levels}
   check(not characters.available_advancement(records[name]).classes["roadwarden"].ok,"level20 cap "+name)
+ # Independently calculated expectations anchor the golden oracle to the V1 data.
+ var level20_expected := {"martial":{"HP":166,"BAB":20,"fortitude":14,"reflex":7,"will":16},"skirmisher":{"HP":106,"BAB":15,"fortitude":7,"reflex":17,"will":16},"arcane":{"HP":86,"BAB":10,"fortitude":7,"reflex":7,"will":23},"mixed":{"HP":126,"BAB":17,"fortitude":11,"reflex":15,"will":16},"arcane_mixed":{"HP":96,"BAB":12,"fortitude":7,"reflex":11,"will":21},"prestige":{"HP":86,"BAB":10,"fortitude":7,"reflex":7,"will":25}}
+ for name in level20_expected:
+  for stat in level20_expected[name]: check(golden[name].stats[stat]==level20_expected[name][stat],"independent level20 "+name+" "+stat)
  var first := build("vanguard",["roadwarden"])
  var first_adept := build("adept",["lantern-adept"])
  check(characters.derive_character(first).snapshot.stats.HP==14,"independent initial martial HP6+6+CON2")
@@ -72,6 +76,9 @@ func run() -> void:
   var advanced := characters.preview_advancement(first,suggestion.choice)
   check(advanced.ok and advanced.snapshot.class_levels=={"roadwarden":1,"wayfinder":1},"stress pure multiclass progression")
  timings.progression_2000_us=Time.get_ticks_usec()-start
+ var options := characters.preview_choices(first,"wayfinder")
+ check(options.ok and options.level==2 and options.skill_points==4 and options.feat_choices.is_empty(),"partial next-level option preview")
+ check(not characters.preview_choices(first,"veil-adept").ok,"option preview explains invalid prestige entry")
  var before := RulesJson.canonical(first)
  for i in 400:
   var invalid: Dictionary=suggestion.choice.duplicate(true)
@@ -84,6 +91,12 @@ func run() -> void:
   check(not characters.apply_advancement(first,invalid,int(first.revision)).ok,"invalid advancement is rejected")
   check(RulesJson.canonical(first)==before,"invalid progression preserves source bytes")
  check(not characters.apply_advancement(first,suggestion.choice,0).ok,"stale revision")
+ var malformed := first.duplicate(true);malformed.base_attributes.STR=null
+ check(not characters.validate_build(malformed).ok,"malformed attributes reject without sorting invalid values")
+ malformed=first.duplicate(true);malformed.runtime.senses=[42]
+ check(not characters.validate_build(malformed).ok,"malformed senses reject before derivation")
+ malformed=first.duplicate(true);malformed.runtime.granted_features=["steady-study","steady-study"]
+ check(not characters.validate_build(malformed).ok,"duplicate runtime feature cannot multiply untyped grants")
  start=Time.get_ticks_usec()
  for i in 1000:
   var chosen: Dictionary=records.values()[i%6]
@@ -118,6 +131,21 @@ func run() -> void:
  var failed := RulesExpressions.evaluate_requirements(registry.definition("classes","veil-adept").requirements,failures_by_context)
  for code in ["requirement.level","requirement.attribute","requirement.skill","requirement.feat","requirement.casting"]:
   check(failed.errors.any(func(e: Dictionary): return e.code==code),"prestige structured failure "+code)
+ var status_pack := registry.source_data();status_pack.statuses[0].effects=[{"op":"temporary_hp","amount":{"op":"const","value":3}}]
+ var status_registry := RulesRegistry.new();check(status_registry.load_data(status_pack).ok,"noncyclic declarative status effects validate")
+ var status_effect := RulesEffects.new(status_registry).resolve_rules_effect({"op":"apply_status","id":"slowed"},first_adept.runtime,first.runtime,{},RulesRng.initial("status"))
+ check(status_effect.ok and status_effect.target.temporary_hp==3,"status effects execute through generic effect vocabulary")
+ var external_pack := registry.source_data();external_pack.equipment[0].requirements={"op":"not","arg":{"op":"tag","id":"frontliner"}}
+ var external_registry := RulesRegistry.new();check(external_registry.load_data(external_pack).ok,"tag-based equipment requirement validates")
+ var external_character := RulesCharacter.new(external_registry)
+ var external_record := first_adept.duplicate(true);external_record.rules_ref=external_registry.rules_ref();external_record.equipment.append("shortblade")
+ check(external_character.derive_character(external_record).ok,"equipment legal before external feature grant")
+ external_record.runtime.granted_features=["held-ground"]
+ check(not external_character.derive_character(external_record).ok,"external feature tags explain current equipment conflict")
+ var external_grant := effects.resolve_rules_effect({"op":"grant_feature","id":"light-step"},first_adept.runtime,first_adept.runtime,{},RulesRng.initial("external-grant"))
+ var granted_record := first_adept.duplicate(true);granted_record.runtime=external_grant.target
+ var granted := characters.derive_character(granted_record)
+ check(granted.ok and granted.snapshot.stats.stride==5 and granted.snapshot.tags.has("mobile") and granted.snapshot.features.has("light-step"),"non-class feature grants tags and mechanics through existing extensions")
  var skill_pack := registry.source_data();skill_pack.skills[0].modifiers=[{"type":"circumstance","value":{"op":"const","value":2}}]
  var skill_registry := RulesRegistry.new();check(skill_registry.load_data(skill_pack).ok,"data-driven skill modifier validates")
  var skill_character := RulesCharacter.new(skill_registry)
@@ -127,6 +155,11 @@ func run() -> void:
  start=Time.get_ticks_usec()
  for i in 1000: check(characters.derive_character(first_adept).ok,"1000 derivations")
  timings.derive_1000_us=Time.get_ticks_usec()-start
+ start=Time.get_ticks_usec()
+ for i in 1000: check(characters.validate_build(first_adept).ok,"1000 build validations")
+ timings.validation_1000_us=Time.get_ticks_usec()-start
+ check(not RulesModifiers.combine(10,[{"type":"unregistered","value":1,"source":"invalid"}],{}).ok,"unknown modifier type rejected")
+ check(not RulesModifiers.combine(10,[{"type":"untyped","value":1,"source":"invalid","when":{"op":"execute"}}],{}).ok,"malformed conditional modifier rejected")
  check(registry.loads==1,"registry loaded once across stress loops")
  finish()
 func effect_checks(martial: Dictionary,adept: Dictionary,prestige: Dictionary) -> void:
@@ -150,6 +183,9 @@ func effect_checks(martial: Dictionary,adept: Dictionary,prestige: Dictionary) -
  var descriptor: Dictionary=illusion.actor.runtime.apparent_effects[0]
  var visible := RulesEffects.public_appearance(descriptor)
  check(visible.size()==3 and not visible.has("kind") and not visible.has("source_character_id") and visible.apparent_id.begins_with("apparent:"),"public projection hides authority truth")
+ check(not effects.use_ability(martial,adept,"departure-attack",budget,rng).ok,"reaction requires explicit departure trigger")
+ var departure := effects.use_ability(martial,adept,"departure-attack",budget,rng,{"trigger":"leave_melee_threat"})
+ check(departure.ok and departure.budget.reaction==0,"departure uses same shared reaction")
  var second := effects.use_ability(illusion.actor,martial,"false-guard",budget,rng,{"event_id":"wall2"})
  check(second.ok and second.actor.runtime.apparent_effects.size()==1 and second.actor.runtime.apparent_effects[0].apparent_id!=descriptor.apparent_id,"maintained illusion replacement")
  var hook := effects.use_ability(prestige,martial,"veil-echo",budget,rng,{"trigger":"illusion_disbelieved","apparent_id":descriptor.apparent_id,"observer_id":"observer"})
@@ -158,6 +194,14 @@ func effect_checks(martial: Dictionary,adept: Dictionary,prestige: Dictionary) -
  check(effects.activation_budget(0).budget.reaction==0,"activation does not refresh reaction")
  check(not effects.refresh_shared_reaction(hook.budget,"source_activation_start").ok,"activation cannot refresh shared reaction")
  check(effects.refresh_shared_reaction(hook.budget,"global_round_start").budget.reaction==1,"explicit global-round reaction refresh")
+ var encounter_runtime: Dictionary=martial.runtime.duplicate(true);encounter_runtime.resources={"stamina":0}
+ check(effects.refresh_resources(encounter_runtime,{"stamina":2},"encounter").runtime.resources.stamina==2,"generic encounter pool refresh")
+ check(effects.refresh_resources(encounter_runtime,{"stamina":2},"daily").runtime.resources.stamina==0,"refresh scopes do not cross-refill")
+ for scope in ["short_rest","explicit"]:
+  var pack := registry.source_data();pack.resources[1].refresh=scope
+  var source := RulesRegistry.new();check(source.load_data(pack).ok,"generic resource refresh definition "+scope)
+  check(RulesEffects.new(source).refresh_resources(encounter_runtime,{"stamina":2},scope).runtime.resources.stamina==2,"generic resource refresh execution "+scope)
+ check(RulesRng.saving_throw(1000,0,rng).success and not RulesRng.saving_throw(-1000,1000,rng).success,"numeric save outcomes with explicit RNG")
  var refreshed := effects.refresh_resources(drained.runtime,{"focus":2},"encounter")
  check(refreshed.ok and refreshed.runtime.resources.focus==0,"encounter does not refill Focus")
  check(effects.refresh_resources(drained.runtime,{"focus":2},"eligible_rest").runtime.resources.focus==2,"explicit eligible rest refresh")
@@ -171,6 +215,10 @@ func effect_checks(martial: Dictionary,adept: Dictionary,prestige: Dictionary) -
  check(effects.expire_statuses(slowed.runtime,"target_activation_end").runtime.statuses.is_empty(),"caller-driven status expiry")
  var repeat := effects.resolve_rules_effect({"op":"apply_status","id":"slowed"},adept.runtime,slowed.runtime,context,rng)
  check(repeat.target.statuses.size()==1,"status refresh avoids stacking")
+ var denial := effects.resolve_rules_effect({"op":"apply_status","id":"rare-denial"},adept.runtime,runtime,context,rng)
+ check(denial.ok and not effects.resolve_rules_effect({"op":"apply_status","id":"rare-denial"},adept.runtime,denial.target,context,rng).ok,"explicit reject status stacking")
+ var save_effect := effects.resolve_rules_effect({"op":"save","save":"will","dc":{"op":"const","value":1000},"on_failure":[{"op":"apply_status","id":"slowed"}]},adept.runtime,runtime,context,rng)
+ check(save_effect.ok and save_effect.target.statuses[0].id=="slowed" and save_effect.rng.counter==1,"save failure resolves declarative child effect")
  var temporary := effects.resolve_rules_effect({"op":"temporary_hp","amount":{"op":"const","value":4}},adept.runtime,runtime,context,rng)
  var hit := effects.resolve_rules_effect({"op":"damage","amount":{"op":"const","value":6},"damage_type":"physical"},adept.runtime,temporary.target,context,rng)
  check(hit.ok and hit.target.hp==runtime.hp-2 and hit.target.temporary_hp==0,"temporaryHP absorbed before currentHP")

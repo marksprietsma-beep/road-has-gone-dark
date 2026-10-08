@@ -4,15 +4,19 @@ extends RefCounted
 ## Untyped bonuses/penalties stack. Stable source IDs decide equal magnitudes.
 static func combine(base: int, modifiers: Array, context: Dictionary) -> Dictionary:
  for m in modifiers:
-  if not m is Dictionary or not m.get("type") is String or not RulesJson.integer(m.get("value")) or not m.get("source") is String:
+  if not m is Dictionary or not m.get("type") in RulesRegistry.TYPES or not RulesJson.integer(m.get("value")) or not m.get("source") is String:
    return {"ok":false,"errors":[RulesJson.issue("modifier.schema","modifier","Invalid typed modifier")]}
+ for m in modifiers:
+  if m.has("when"):
+   var errors := RulesExpressions.validate_requirement(m.when)
+   if not errors.is_empty(): return RulesJson.result(errors)
  var groups := {}
  var untyped := 0
  var applied: Array = []
  var sorted: Array = modifiers.duplicate(true)
- sorted.sort_custom(func(a: Dictionary,b: Dictionary): return str(a.get("source","")) < str(b.get("source","")))
+ sorted.sort_custom(func(a: Dictionary,b: Dictionary): return RulesJson.canonical(a)<RulesJson.canonical(b) if a.source==b.source else a.source<b.source)
  for m in sorted:
-  if not m is Dictionary or not m.get("type") is String or not RulesJson.integer(m.get("value")) or not m.get("source") is String:
+  if not m is Dictionary or not m.get("type") in RulesRegistry.TYPES or not RulesJson.integer(m.get("value")) or not m.get("source") is String:
    return {"ok":false,"errors":[RulesJson.issue("modifier.schema","modifier","Invalid typed modifier")]}
   if m.has("when"):
    var condition := RulesExpressions.evaluate_requirements(m.when,context)

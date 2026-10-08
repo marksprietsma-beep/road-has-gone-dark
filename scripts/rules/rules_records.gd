@@ -40,7 +40,7 @@ static func preview_preparation(state: Dictionary) -> Dictionary:
  var records := {};var characters := RulesCharacter.new(source)
  for i in state.characters.size():
   var member: Variant=state.party.members[i]
-  if not member is Dictionary or member.get("character_id")!=state.characters[i].get("id") or member.character_id!=state.party_ids[i]: return {"ok":false,"error":"Existing party identity/slot mismatch"}
+  if not member is Dictionary or not state.characters[i] is Dictionary or not state.characters[i].get("id") is String or records.has(state.characters[i].get("id")) or member.get("character_id")!=state.characters[i].get("id") or member.character_id!=state.party_ids[i]: return {"ok":false,"error":"Existing party identity/slot mismatch"}
   var recommendation := source.recommendation(str(member.get("role_id")))
   if recommendation.is_empty(): return {"ok":false,"error":"No reviewed starting recommendation for narrative role"}
   var ancestry := "heritage-"+str(member.get("people_id"))
@@ -71,3 +71,15 @@ static func preview_advancement(state: Dictionary,identity: String,choice: Dicti
  candidate.mechanics.records[identity]=changed.candidate
  candidate.mechanics.revision=int(candidate.mechanics.revision)+1
  return {"ok":true,"operation":"advance","character_id":identity,"choice":choice.duplicate(true),"before_hash":RulesJson.digest(state),"candidate_hash":RulesJson.digest(candidate),"candidate":candidate,"snapshot":changed.snapshot}
+
+static func preview_runtime(state: Dictionary,identity: String,runtime: Dictionary) -> Dictionary:
+ ## Trusted campaign owner submits current mechanics; build/history remain untouched.
+ var why := validate(state)
+ if not state.has("mechanics") or not why.is_empty() or not state.mechanics.records.has(identity): return {"ok":false,"error":"Prepared exact-pinned character required. "+why}
+ var candidate := state.duplicate(true)
+ var record: Dictionary=candidate.mechanics.records[identity]
+ record.runtime=runtime.duplicate(true);record.revision=int(record.revision)+1
+ var valid := RulesCharacter.new(registry()).derive_character(record)
+ if not valid.ok: return valid
+ candidate.mechanics.revision=int(candidate.mechanics.revision)+1
+ return {"ok":true,"operation":"runtime","character_id":identity,"runtime":runtime.duplicate(true),"before_hash":RulesJson.digest(state),"candidate_hash":RulesJson.digest(candidate),"candidate":candidate,"snapshot":valid.snapshot}

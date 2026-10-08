@@ -1,0 +1,123 @@
+{
+  "head": "0aee973b22f108ea2f9e95c908cc9ee6339ccd49",
+  "run_id": 37716987428,
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/37716987428",
+  "scope": "First implementation checkpoint, not later audit changes",
+  "cross_platform_equal": [
+    "rules_ref",
+    "reference derived values",
+    "snapshot hashes",
+    "RNG sequence hash",
+    "negative validation codes"
+  ],
+  "platforms": {
+    "Linux": {
+      "checks": 21115,
+      "failures": 0,
+      "timings": {
+        "derive_1000_us": 900726,
+        "effects_1000_us": 4185506,
+        "progression_2000_us": 6168532,
+        "reference_progression_us": 2382623,
+        "registry_load_us": 6712,
+        "requirements_5000_us": 258906,
+        "serialization_1000_us": 11346067
+      },
+      "native": {
+        "platform": "Linux",
+        "native_export_test": "isolated release export full expedition lifecycle; production release export launch passed",
+        "source_helper_override": false,
+        "path_empty": true,
+        "native_result": {
+          "checks": 75,
+          "failures": 0,
+          "source_helper_override": false,
+          "timings": [
+            {
+              "six_transitions_ms": 4920,
+              "world": "game-11-determinism"
+            },
+            {
+              "six_transitions_ms": 4934,
+              "world": "atlas-showcase-06"
+            },
+            {
+              "six_transitions_ms": 6185,
+              "world": "game84-native-package"
+            }
+          ],
+          "worlds": 3
+        },
+        "archive": "game32-linux-x64.tar.gz",
+        "archive_sha256": "87e64f9ea1ca3ffd3f328ae7eb71dee23f56d64bded36a86c77a38f2931f2e19",
+        "distribution": {
+          "schema_version": 1,
+          "godot": "4.6.3.stable.official.7d41c59c4",
+          "platform": "linux",
+          "arch": "x64",
+          "enrichmentRuntimes": {
+            "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+            "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+            "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+            "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+          },
+          "executable_sha256": "d6e3ebfdeb2fc5b55baf557d3f46d74ca05734ac0795c99a2419ae894b85d42d"
+        }
+      }
+    },
+    "Windows": {
+      "checks": 21115,
+      "failures": 0,
+      "timings": {
+        "derive_1000_us": 1401456,
+        "effects_1000_us": 6578565,
+        "progression_2000_us": 9338577,
+        "reference_progression_us": 3618781,
+        "registry_load_us": 17316,
+        "requirements_5000_us": 386994,
+        "serialization_1000_us": 17373008
+      },
+      "native": {
+        "platform": "Windows",
+        "native_export_test": "isolated release export full expedition lifecycle; production release export launch passed",
+        "source_helper_override": false,
+        "path_empty": true,
+        "native_result": {
+          "checks": 75,
+          "failures": 0,
+          "source_helper_override": false,
+          "timings": [
+            {
+              "six_transitions_ms": 7235,
+              "world": "game-11-determinism"
+            },
+            {
+              "six_transitions_ms": 6908,
+              "world": "atlas-showcase-06"
+            },
+            {
+              "six_transitions_ms": 8039,
+              "world": "game84-native-package"
+            }
+          ],
+          "worlds": 3
+        },
+        "archive": "game32-windows-x64.zip",
+        "archive_sha256": "c654b167c7872381a3fda06885fac54c429bdb96417493caff3540f68e3209f6",
+        "distribution": {
+          "schema_version": 1,
+          "godot": "4.6.3.stable.official.7d41c59c4",
+          "platform": "win32",
+          "arch": "x64",
+          "enrichmentRuntimes": {
+            "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+            "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+            "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+            "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+          },
+          "executable_sha256": "f2a4d52cfad0ad9b4374a53bfefecc36088cdb4ed80b7b0a1750d7328c1896d7"
+        }
+      }
+    }
+  }
+}

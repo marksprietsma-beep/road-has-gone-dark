@@ -159,6 +159,9 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   if definition.stacking in ["refresh","replace"]: target.statuses=target.statuses.filter(func(s: Dictionary): return s.id!=effect.id)
   target.statuses.append({"id":effect.id,"source":str(context.get("source_character_id","effect")),"remaining":int(definition.duration.amount),"expiry":definition.duration.expiry})
   state.events.append({"type":"status_applied","id":effect.id})
+  for child in definition.effects:
+   var resolved := _apply(child,state,context)
+   if not resolved.ok: return resolved
  elif op=="remove_status":
   target.statuses=target.statuses.filter(func(s: Dictionary): return s.id!=effect.id)
   state.events.append({"type":"status_removed","id":effect.id})
@@ -179,7 +182,7 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   var dc := RulesExpressions.evaluate_formula(descriptor.dc,context)
   if not dc.ok: return dc
   descriptor.dc=int(dc.value)
-  descriptor.apparent_id="apparent:"+RulesJson.digest([context.get("source_character_id",""),context.get("event_id",""),descriptor.kind,state.actor.apparent_effects.size()])
+  descriptor.apparent_id="apparent:"+RulesJson.digest([context.get("source_character_id",""),context.get("event_id",""),descriptor.kind,RulesJson.digest(state.actor)])
   descriptor.source_character_id=context.get("source_character_id","")
   if state.actor.apparent_effects.size()>=int(descriptor.maximum_maintained):
    if descriptor.replacement=="reject": return RulesJson.result([RulesJson.issue("effect.maintenance",op,"Maintained effect limit reached")])

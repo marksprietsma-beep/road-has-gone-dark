@@ -14,7 +14,7 @@
       "classes": {
         "lantern-adept": 20
       },
-      "snapshot_hash": "5f45922257cb93de36561f6e6b7452db008287aef209837a27ae9bc92a13135e",
+      "snapshot_hash": "9fc3513240fcb60266eafa452878d2793a4af8d75ba4c6be7c22599b387d706d",
       "stats": {
         "BAB": 10,
         "HP": 86,
@@ -39,7 +39,7 @@
         "lantern-adept": 10,
         "wayfinder": 10
       },
-      "snapshot_hash": "951ee693494119d57ca095ebebd9bbd44d91119084e0a6771c509c257c1b1e2b",
+      "snapshot_hash": "fa69393254a1713c9461753a56b98162969a11a323e9fbe715ba67c9173744c3",
       "stats": {
         "BAB": 12,
         "HP": 96,
@@ -61,7 +61,7 @@
       "classes": {
         "roadwarden": 20
       },
-      "snapshot_hash": "dba2fcbe1b02d86376c13374608e00d79d5191318bc5a004d0ba301f97b44a95",
+      "snapshot_hash": "0626758cd078431c180d407c8410a5ef1275f0a7c9b4ee788baa5b7ccdb93dae",
       "stats": {
         "BAB": 20,
         "HP": 166,
@@ -84,7 +84,7 @@
         "roadwarden": 10,
         "wayfinder": 10
       },
-      "snapshot_hash": "feb723eb7783ea201f4dc49c9d723997ec60dc7280e9e4350bf57d604d00e924",
+      "snapshot_hash": "1e9e4ebccf44e5548bd4fa32cc53da79225aae87d440a114033da5c93ff99597",
       "stats": {
         "BAB": 17,
         "HP": 126,
@@ -110,8 +110,11 @@
     "negative:hook": "hook.unregistered",
     "negative:operator": "requirement.operator",
     "negative:progression": "class.progression",
+    "negative:progression_dependency": "class.formula_dependency",
     "negative:reference": "reference.missing",
     "negative:resource": "resource.refresh",
+    "negative:status_cycle": "reference.cycle",
+    "negative:trigger": "ability.trigger",
     "prestige": {
       "capacities": {
         "focus": 4,
@@ -121,7 +124,7 @@
         "lantern-adept": 10,
         "veil-adept": 10
       },
-      "snapshot_hash": "a92facde0c20f9d8494ef7a4156ebc7fb29042bd71aeb57b200549d51ee18e8a",
+      "snapshot_hash": "839c5b21cf68d732fe3f133b5e548b5abceb98ed89e7affacac57d6f818941cf",
       "stats": {
         "BAB": 10,
         "HP": 86,
@@ -144,7 +147,7 @@
       "classes": {
         "wayfinder": 20
       },
-      "snapshot_hash": "1755fb15bb64540b0bdbb0c3fea658388bafcc34bea73b76a08f1a299288c987",
+      "snapshot_hash": "af3765a6737c6dcc3024df9b5eb5b29c8275789251f82309da15f70222337f15",
       "stats": {
         "BAB": 15,
         "HP": 106,

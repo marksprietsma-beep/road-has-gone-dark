@@ -102,6 +102,8 @@ static func _modifiers(value: Variant,tables: Dictionary,path: String,found: Arr
  for i in value.size():
   var m: Variant = value[i];var at := path+"."+str(i)
   if not m is Dictionary or not m.get("stat") in STATS or not m.get("type") in TYPES: found.append(RulesJson.issue("modifier.schema",at,"Unknown statistic/type"));continue
+  for field in m:
+   if not field in ["stat","type","value","when"]: found.append(RulesJson.issue("modifier.field",at+"."+str(field),"Unknown modifier field"))
   _formula(m.get("value"),tables,at+".value",found)
   if m.has("when"): _requirement(m.when,tables,at+".when",found)
 
@@ -145,6 +147,13 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
   var d: Variant=effect.get("descriptor")
   if not d is Dictionary or not d.get("kind") in ["false_target","defensive_duplicate","apparent_obstacle","glamer","concealment","figment"] or d.get("collision")!=false or not d.get("senses") is Array or d.senses.is_empty() or not d.get("presentation") is Dictionary:
    found.append(RulesJson.issue("effect.appearance",path,"A nonphysical, sense-dependent appearance descriptor is required"));return
+  var appearance_fields := ["senses","investigation_trigger","save","dc","duration","success","failure","bypass_tags","maximum_maintained","replacement","break_conditions","kind","presentation","collision"]
+  for field in d:
+   if not field in appearance_fields: found.append(RulesJson.issue("effect.appearance_field",path+"."+str(field),"Unknown authority appearance field"))
+  for field in d.presentation:
+   if not field in ["visual","audio"] or not d.presentation[field] is String: found.append(RulesJson.issue("effect.presentation",path,"Public presentation contains only visual/audio strings"))
+  for field in ["senses","bypass_tags","break_conditions"]:
+   if d.get(field) is Array and not d[field].all(func(v: Variant): return v is String): found.append(RulesJson.issue("effect.appearance_list",path+"."+field,"Descriptor tags must be strings"))
   _duration(d.get("duration"),path+".duration",found)
   _formula(d.get("dc"),tables,path+".dc",found)
   if not d.get("save") in RulesExpressions.SAVES or not d.get("investigation_trigger") is String or not d.get("bypass_tags") is Array or not RulesJson.integer(d.get("maximum_maintained"),1,10) or not d.get("replacement") in ["cancel_prior","reject"] or not d.get("break_conditions") is Array or not d.get("success") is String or not d.get("failure") is String: found.append(RulesJson.issue("effect.observer",path,"Explicit observer/disbelief/maintenance metadata is required"))
@@ -183,11 +192,15 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
  if category=="classes":
   if not RulesJson.integer(row.get("max_level"),1,20) or not RulesJson.integer(row.get("hp_per_level"),1,30) or not RulesJson.integer(row.get("skill_points"),1,10): found.append(RulesJson.issue("class.progression",path,"Invalid bounded progression"))
   if not row.get("casting_tradition") in ["","arcane"]: found.append(RulesJson.issue("class.casting",path,"Unsupported casting tradition"))
+  for formula in [row.get("bab"),row.get("casting")]:
+   if formula is Dictionary and _contains_stat(formula): found.append(RulesJson.issue("class.formula_dependency",path,"Class progressions cannot depend on derived stats"))
   _formula(row.get("bab"),tables,path+".bab",found)
   _formula(row.get("casting"),tables,path+".casting",found)
   if not row.get("saves") is Dictionary: found.append(RulesJson.issue("class.saves",path,"Save progression required"))
   else:
-   for save in RulesExpressions.SAVES: _formula(row.saves.get(save),tables,path+"."+save,found)
+   for save in RulesExpressions.SAVES:
+    _formula(row.saves.get(save),tables,path+"."+save,found)
+    if row.saves.get(save) is Dictionary and _contains_stat(row.saves[save]): found.append(RulesJson.issue("class.formula_dependency",path,"Save progressions cannot depend on derived stats"))
   if not row.get("features") is Array: found.append(RulesJson.issue("class.features",path,"Tiered features required"))
   else:
    var seen := {}
@@ -221,6 +234,7 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   else:
    for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found)
  elif category=="abilities":
+  if row.has("trigger") and not row.trigger in ["leave_melee_threat","illusion_disbelieved","qualifying_hit"]: found.append(RulesJson.issue("ability.trigger",path,"Unregistered trigger"))
   var cost: Variant=row.get("cost")
   if not cost is Dictionary or cost.size()!=4 or not cost.get("resources") is Dictionary: found.append(RulesJson.issue("ability.cost",path,"Structured move/main/shared-reaction costs required"))
   else:
@@ -233,6 +247,16 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   if not timing is Dictionary or not timing.get("kind") in ["instant","next_activation","after_event"]: found.append(RulesJson.issue("ability.timing",path,"Unknown timing contract"))
   elif timing.kind!="instant" and (not timing.get("interruptible") is bool or timing.get("locked_target")!="tile" or not timing.get("cancel_event") is String): found.append(RulesJson.issue("ability.delayed",path,"Explicit delayed target/cancellation required"))
   if not row.get("targeting") is Dictionary or not row.get("targeting",{}).get("kind") in ["self","creature","ally","tile","tile_or_apparent"]: found.append(RulesJson.issue("ability.targeting",path,"Known targeting descriptor required"))
+  if row.get("targeting") is Dictionary:
+   _known_fields(row.targeting,["kind","reach","range","radius"],path+".targeting",found)
+   for key in ["range","radius"]:
+    if row.targeting.has(key) and not RulesJson.integer(row.targeting[key],0,50): found.append(RulesJson.issue("ability.range",path,"Bounded target range/radius required"))
+   if row.targeting.has("reach") and row.targeting.reach!="equipment": found.append(RulesJson.issue("ability.reach",path,"Only the equipment-derived reach reference is supported"))
+  if timing is Dictionary: _known_fields(timing,["kind","interruptible","locked_target","cancel_event"],path+".timing",found)
+  if row.has("movement"):
+   if not row.movement is Dictionary or row.movement.size()!=2 or not RulesJson.integer(row.movement.get("multiplier"),1,4) or not RulesJson.integer(row.movement.get("bonus"),0,10): found.append(RulesJson.issue("ability.movement",path,"Bounded movement contract required"))
+  if row.has("follow_up"):
+   if not row.follow_up is Dictionary or row.follow_up.size()!=2 or row.follow_up.get("reaction")!=1 or not RulesJson.integer(row.follow_up.get("damage_reduction"),0,100): found.append(RulesJson.issue("ability.follow_up",path,"Follow-up uses the shared reaction contract"))
   if not row.get("effects") is Array: found.append(RulesJson.issue("ability.effects",path,"Effect array required"))
   else:
    for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found)
@@ -286,6 +310,8 @@ static func _validate_rules(pack: Dictionary,tables: Dictionary,found: Array) ->
 static func _check_cycles(tables: Dictionary,found: Array) -> void:
  var visiting := {};var done := {}
  for id in tables.features: _visit_feature(id,tables.features,visiting,done,found)
+ visiting={};done={}
+ for id in tables.statuses: _visit_status(id,tables.statuses,visiting,done,found)
 
 static func _visit_feature(id: String,features: Dictionary,visiting: Dictionary,done: Dictionary,found: Array) -> void:
  if done.has(id) or not features.has(id): return
@@ -298,3 +324,27 @@ static func _unique_count(values: Array) -> int:
  var seen := {}
  for value in values: seen[value]=true
  return seen.size()
+
+static func _contains_stat(node: Dictionary) -> bool:
+ if node.get("op")=="stat": return true
+ for child in node.get("args",[]):
+  if child is Dictionary and _contains_stat(child): return true
+ return false
+
+static func _status_edges(effects: Array) -> Array:
+ var edges: Array=[]
+ for effect in effects:
+  if effect.op=="apply_status": edges.append(effect.id)
+  if effect.op=="save": edges.append_array(_status_edges(effect.on_failure))
+ return edges
+
+static func _visit_status(id: String,statuses: Dictionary,visiting: Dictionary,done: Dictionary,found: Array) -> void:
+ if done.has(id) or not statuses.has(id): return
+ if visiting.has(id): found.append(RulesJson.issue("reference.cycle","statuses."+id,"Status-effect expansion cycle"));return
+ visiting[id]=true
+ for child in _status_edges(statuses[id].effects): _visit_status(child,statuses,visiting,done,found)
+ visiting.erase(id);done[id]=true
+
+static func _known_fields(value: Dictionary,fields: Array,path: String,found: Array) -> void:
+ for field in value:
+  if not field in fields: found.append(RulesJson.issue("definition.field",path+"."+str(field),"Unknown descriptor field"))
