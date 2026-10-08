@@ -10,6 +10,10 @@ from run import cases, canonical, checkpoint_path, experiment_identity, load_che
 
 
 class RunnerTests(unittest.TestCase):
+    def test_unmatched_prefix_exits_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp, self.assertRaisesRegex(SystemExit,"No experiment groups matched"):
+            main(["--output",tmp,"--group","not-an-experiment"])
+
     def test_scope_is_preserved(self):
         design=list(cases())
         self.assertEqual(len(design),209)

@@ -183,7 +183,7 @@ def execute(args, out):
     started = time.perf_counter(); identity = experiment_identity()
     full = list(cases())
     selected = [c for c in full if not args.group or any(c[0].startswith(p) for p in args.group)]
-    if not selected: parser.error("No experiment groups matched")
+    if not selected: raise SystemExit("No experiment groups matched")
     completed = {}; reused = 0
     def accept(result):
         nonlocal reused

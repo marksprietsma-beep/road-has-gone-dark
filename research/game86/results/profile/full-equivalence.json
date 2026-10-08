@@ -1,0 +1,1265 @@
+{
+  "baseline_commit": "4c98a33ee7cf4ea63dddb96c82716242884d49c1",
+  "baseline_source_sha256": "cc21c2f7bc3625dbc5ef37ef7ebfdbdec374835faa9af7ff0ffbe9b26d2751fa",
+  "battles": 19456,
+  "groups": 209,
+  "every_result_and_final_state_equal": true,
+  "workers": 4,
+  "seconds": 150.30713463300003,
+  "group_timings": [
+    {
+      "group": "core/A/fighter_archer/open",
+      "battles": 128,
+      "seconds": 4.5686408169999595,
+      "rows_sha256": "eb78d16a219fe5f032e41cb25578e86074f71496cfd595fb3f02351dbcf7f523"
+    },
+    {
+      "group": "core/A/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 5.60486004400002,
+      "rows_sha256": "f5e5e711b71940603d0d957c6fa5b34c4bd48bbb4eb14c6b013621600a364913"
+    },
+    {
+      "group": "core/A/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 4.313431359999981,
+      "rows_sha256": "f85e558f1f18502faf02fd8a5c8f66aaa536b72deb64d7db89b50bd34aa75056"
+    },
+    {
+      "group": "core/A/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 6.248978485000066,
+      "rows_sha256": "fb7f7448b75f9b86220fcda72c7705dbb9166bfe3edabc4eccb9810cf1408f01"
+    },
+    {
+      "group": "core/A/fighter_rogue/open",
+      "battles": 128,
+      "seconds": 3.418501721000098,
+      "rows_sha256": "8acb9d456faef56ae0cabad130f31b93b3404d7cdcd650183e24cf108dbd75d3"
+    },
+    {
+      "group": "core/A/fighter_rogue/moderate",
+      "battles": 128,
+      "seconds": 3.053365245000009,
+      "rows_sha256": "0cfeac9786addf02cefaf6ce58b159f28f2f94f464d81a7988461c038245a04a"
+    },
+    {
+      "group": "core/A/fighter_rogue/dense",
+      "battles": 128,
+      "seconds": 5.513650381000048,
+      "rows_sha256": "0c3e3eb366e04c90e154b39453ebb3f15965e398865cdea6652cb98827967d81"
+    },
+    {
+      "group": "core/A/fighter_rogue/objective",
+      "battles": 128,
+      "seconds": 5.522577038999998,
+      "rows_sha256": "836191f33f2d84ed4919dfc76181fdf965d965f39760fb2b4080687cdcb77d6d"
+    },
+    {
+      "group": "core/A/rogue_archer/open",
+      "battles": 128,
+      "seconds": 3.2829992329999413,
+      "rows_sha256": "9568537c998d6c02306506f5b37ca8676ac6c1c3f815bd332d4491fce3ae818f"
+    },
+    {
+      "group": "core/A/rogue_archer/moderate",
+      "battles": 128,
+      "seconds": 2.860613251000018,
+      "rows_sha256": "32f34c7fc274744712a0c97bdb6d38357ea06d6614d04a24ca3366c5c82e594b"
+    },
+    {
+      "group": "core/A/rogue_archer/dense",
+      "battles": 128,
+      "seconds": 2.4138495659999535,
+      "rows_sha256": "463bf7dd92e5778c856b2a6a90c69c8fe1c0e704c0aedb1e777bbce6891a83bd"
+    },
+    {
+      "group": "core/A/rogue_archer/objective",
+      "battles": 128,
+      "seconds": 3.220285303999958,
+      "rows_sha256": "5f6ee17ad333b0a4d423955f281e7f3e13a76f8f898552f8fc88e89a0c4ad959"
+    },
+    {
+      "group": "core/A/mage_fighter/open",
+      "battles": 128,
+      "seconds": 4.554886327000077,
+      "rows_sha256": "23afd72e62aa5b50e6b610790e8eeeac79bd1c083a0014bdc00f23bd19cf16ff"
+    },
+    {
+      "group": "core/A/mage_fighter/moderate",
+      "battles": 128,
+      "seconds": 4.326266603000022,
+      "rows_sha256": "74a34114c13db69e0b7e5b040cbba3b7f17fac11f3b385aeedc6e1c7ef9c5ba4"
+    },
+    {
+      "group": "core/A/mage_fighter/dense",
+      "battles": 128,
+      "seconds": 2.0623589620000757,
+      "rows_sha256": "69a46cb94ba8dee4443bfefa0f7977bcd212b9b69ce00ee2c9efda6ddd95e493"
+    },
+    {
+      "group": "core/A/mage_fighter/objective",
+      "battles": 128,
+      "seconds": 2.206371339000043,
+      "rows_sha256": "38482b60090d5ff284313af2697eff601fde9664b360bbddfdca57ddef9af626"
+    },
+    {
+      "group": "core/A/mage_monk/open",
+      "battles": 128,
+      "seconds": 2.9878892339999084,
+      "rows_sha256": "5b1f2ac19c182a46131ef228ab32e4a008bd73dedd4db63f00e3cf3c722021bc"
+    },
+    {
+      "group": "core/A/mage_monk/moderate",
+      "battles": 128,
+      "seconds": 5.874851980000017,
+      "rows_sha256": "5b6a37fa6db887a4c5c04b15d64198dfd3b3b087908ed951d67bc2b9ca22ff5f"
+    },
+    {
+      "group": "core/A/mage_monk/dense",
+      "battles": 128,
+      "seconds": 5.099247251999941,
+      "rows_sha256": "c6459c2e32ffc71cd2779f1da87c1f0af42755ce09b8ed8badaeb66025668cc0"
+    },
+    {
+      "group": "core/A/mage_monk/objective",
+      "battles": 128,
+      "seconds": 2.921524817999966,
+      "rows_sha256": "7ee1aa6cd1cb2bf7ca6629e8961ccf8c879ddc2144f097801ec7bf1f078813d8"
+    },
+    {
+      "group": "core/A/monk_archer/open",
+      "battles": 128,
+      "seconds": 3.1713879110000107,
+      "rows_sha256": "a6ba43c651a52669c2ad9e03cbc0185debecb95a4e78c1a4ab7cee1c28e88757"
+    },
+    {
+      "group": "core/A/monk_archer/moderate",
+      "battles": 128,
+      "seconds": 2.20445332099996,
+      "rows_sha256": "8fd4295389bac6c993c61d4d4d106a5395ea3d107cca30cf8552fb068e2d09a2"
+    },
+    {
+      "group": "core/A/monk_archer/dense",
+      "battles": 128,
+      "seconds": 3.9989877890000116,
+      "rows_sha256": "1834290368e09b5618a6ddb47b5e61d4d41e7a701f664b78872bdd42bcc14bff"
+    },
+    {
+      "group": "core/A/monk_archer/objective",
+      "battles": 128,
+      "seconds": 3.427760989000035,
+      "rows_sha256": "5d365f1659dee75d719db670216c7477109e61e4b763ffd14e7cb2cbe2670a05"
+    },
+    {
+      "group": "core/A/party/open",
+      "battles": 128,
+      "seconds": 9.411185219999993,
+      "rows_sha256": "4945f986967644444c15d274e0e934bd62532520e0b3c3ce85f989c3432c78df"
+    },
+    {
+      "group": "core/A/party/moderate",
+      "battles": 128,
+      "seconds": 17.587317627999937,
+      "rows_sha256": "54240807609d59f204bd193abb051fd3ec1df82558e4cd989ddd0cd6270caac1"
+    },
+    {
+      "group": "core/A/party/dense",
+      "battles": 128,
+      "seconds": 8.722596168999985,
+      "rows_sha256": "143e0587bbc6c834135a35fc95e4f64901f181d396024024b013679270e7c4d0"
+    },
+    {
+      "group": "core/A/party/objective",
+      "battles": 128,
+      "seconds": 17.015332733000037,
+      "rows_sha256": "53622f135b2ea8165936cad8fd33bde33e0c18136ca79313aed00f86fc3d0f84"
+    },
+    {
+      "group": "core/B/fighter_archer/open",
+      "battles": 128,
+      "seconds": 1.7034690130000172,
+      "rows_sha256": "683048cc322d7be957fe461bee587aa384acabbb66f3d161f00203403e337212"
+    },
+    {
+      "group": "core/B/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 1.5808571070000426,
+      "rows_sha256": "2928d545c67d1e8aec738ab0794d974e8c2c899e7c297787be756eafaf4e9cf0"
+    },
+    {
+      "group": "core/B/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 1.8261242580000498,
+      "rows_sha256": "3f7a3c1ef2823db8a9dd5ddd4736a32de2f5d6bbd3dda601294d26deaadff2a3"
+    },
+    {
+      "group": "core/B/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 1.3442919860000302,
+      "rows_sha256": "d35c08788ac3376c19859b09f9f14c5f3278de18a54c7df375669610fbcc479e"
+    },
+    {
+      "group": "core/B/fighter_rogue/open",
+      "battles": 128,
+      "seconds": 1.2571667010000738,
+      "rows_sha256": "e3a0b706209c2f6cb160eb3926e725d7d52e5f9d7c36bbd042c75858bdaf8f2c"
+    },
+    {
+      "group": "core/B/fighter_rogue/moderate",
+      "battles": 128,
+      "seconds": 1.2012293479999698,
+      "rows_sha256": "e41835bd828ae68bbb1d9bf437002a025e2b320b33492789ba86f9bfc3d43aed"
+    },
+    {
+      "group": "core/B/fighter_rogue/dense",
+      "battles": 128,
+      "seconds": 1.3859352769999305,
+      "rows_sha256": "17cf1bd3f59649e627690644f2802d6dc706a48bb207c460bd875b9478d3e0db"
+    },
+    {
+      "group": "core/B/fighter_rogue/objective",
+      "battles": 128,
+      "seconds": 1.2290590420000171,
+      "rows_sha256": "11e771ad4e80b3fb2476d467cd25dc4a07d4697c01ccb65bbd4128bf0dc2b348"
+    },
+    {
+      "group": "core/B/rogue_archer/open",
+      "battles": 128,
+      "seconds": 2.149421592000067,
+      "rows_sha256": "4b74cdb706cf1c765733394c093c31aac40582738f247eafdf33e1730cba9e00"
+    },
+    {
+      "group": "core/B/rogue_archer/moderate",
+      "battles": 128,
+      "seconds": 1.8752133110000386,
+      "rows_sha256": "e1b385e30e60e6f755f81b20a3cd5d0260d61a55e298088af8ca78410220c56e"
+    },
+    {
+      "group": "core/B/rogue_archer/dense",
+      "battles": 128,
+      "seconds": 3.5158086320000166,
+      "rows_sha256": "d8b622d8a05f686c51ac21d1bc6ce1f57509689c1c1dacb629a3f91e4c718421"
+    },
+    {
+      "group": "core/B/rogue_archer/objective",
+      "battles": 128,
+      "seconds": 1.4681249879999996,
+      "rows_sha256": "2e117d173939f64a75429effeb1908a58eb64cba4c19d5eea64e7ac53db5f64b"
+    },
+    {
+      "group": "core/B/mage_fighter/open",
+      "battles": 128,
+      "seconds": 1.3832081759999255,
+      "rows_sha256": "5eff3ac913906047c0ad26bcfb80260b6b18f6671268f731c5e794e948d126d0"
+    },
+    {
+      "group": "core/B/mage_fighter/moderate",
+      "battles": 128,
+      "seconds": 1.3104277070000308,
+      "rows_sha256": "f28f63bbd8600c88e9c2aed9b2e702d08abea282e98bd429a089fca040b11713"
+    },
+    {
+      "group": "core/B/mage_fighter/dense",
+      "battles": 128,
+      "seconds": 1.4043035980000695,
+      "rows_sha256": "4b4584a8a5295ba40ca478e7e4457904b70ef2d6895c334e0c996b729fb67155"
+    },
+    {
+      "group": "core/B/mage_fighter/objective",
+      "battles": 128,
+      "seconds": 2.379264001000024,
+      "rows_sha256": "421ce969d9e9672b5ace9fdff38a33f83de7385df338c8474f67d97f2df230e4"
+    },
+    {
+      "group": "core/B/mage_monk/open",
+      "battles": 128,
+      "seconds": 3.427494194000019,
+      "rows_sha256": "a336eb36d97ced13d31b0988b98e7a71c0a6b4f7456712ba0a12a26f71b229fe"
+    },
+    {
+      "group": "core/B/mage_monk/moderate",
+      "battles": 128,
+      "seconds": 1.7728779289999466,
+      "rows_sha256": "40c990f22e1df180c97349c3ccea4d4c9af65b86bc64d955db5f3e116f6615bc"
+    },
+    {
+      "group": "core/B/mage_monk/dense",
+      "battles": 128,
+      "seconds": 1.7859014819999857,
+      "rows_sha256": "af671a0fb4aba120e8227e3b5f1c021c4842b2bf0632b999fe5057effb4a50a8"
+    },
+    {
+      "group": "core/B/mage_monk/objective",
+      "battles": 128,
+      "seconds": 1.4722717079999939,
+      "rows_sha256": "87affff0e3b18a8e04444a1c3f5c55ba80f7a260c99f5214ab2f85154f90692a"
+    },
+    {
+      "group": "core/B/monk_archer/open",
+      "battles": 128,
+      "seconds": 3.7330986449999273,
+      "rows_sha256": "dec8da5abe635fbf59e751537a68024751a0ff4bcd399abe5e9f98cd22e84011"
+    },
+    {
+      "group": "core/B/monk_archer/moderate",
+      "battles": 128,
+      "seconds": 1.8822510779999675,
+      "rows_sha256": "faf0263e188205ba605d29b7b93d3ddc76cbe529e0ed1df02412bf529f64539d"
+    },
+    {
+      "group": "core/B/monk_archer/dense",
+      "battles": 128,
+      "seconds": 1.7065239340000744,
+      "rows_sha256": "dd63ba8adc673a5eff2e625bae2bcc2c465e19c543af5878eec59b57ed78311b"
+    },
+    {
+      "group": "core/B/monk_archer/objective",
+      "battles": 128,
+      "seconds": 2.977091218999931,
+      "rows_sha256": "beaa5997b20827885c2f2c11d3513d93b9ad7cfdcd43b7c5c33e15e3c126c589"
+    },
+    {
+      "group": "core/B/party/open",
+      "battles": 128,
+      "seconds": 4.743162749000021,
+      "rows_sha256": "2eb5c10a4075b21784c514416643cc574dc7b24a33bffb1f12b0247597b162da"
+    },
+    {
+      "group": "core/B/party/moderate",
+      "battles": 128,
+      "seconds": 4.2372885450000695,
+      "rows_sha256": "6c53286ea0b47a53a78491b2d8408a21b6f1e127d8e83e0a6782b418c26130be"
+    },
+    {
+      "group": "core/B/party/dense",
+      "battles": 128,
+      "seconds": 9.891392341000028,
+      "rows_sha256": "18e57543f256ae8901de72403f4a991f14d033d198422f1f44b789c842c0b49e"
+    },
+    {
+      "group": "core/B/party/objective",
+      "battles": 128,
+      "seconds": 7.062597996000022,
+      "rows_sha256": "84f030600bb1ff49c5e97021985faa9ada1f9f2f63a9cba7307e9eb8a7347b7b"
+    },
+    {
+      "group": "core/C/fighter_archer/open",
+      "battles": 128,
+      "seconds": 1.546628921999968,
+      "rows_sha256": "5d97caf1ed790cb4d64d50cb5f644c7d1afbc9cfba08a290166e727c78bee84f"
+    },
+    {
+      "group": "core/C/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 1.5112349480000375,
+      "rows_sha256": "2608f0d32bc04b9162f62df95161131004472f561a7f7f8738421e5b82c870d3"
+    },
+    {
+      "group": "core/C/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 1.6958980120000433,
+      "rows_sha256": "9c94725f3d0bf5722dc18582794a84a87b09bcc6e79a208b8e41500c887904d3"
+    },
+    {
+      "group": "core/C/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 1.5126239820000364,
+      "rows_sha256": "14359abdeae9146ba7a1af789504d44f8d9e8b766b8b04827053d5efb5699ad9"
+    },
+    {
+      "group": "core/C/fighter_rogue/open",
+      "battles": 128,
+      "seconds": 1.7786136549999583,
+      "rows_sha256": "f4f04586c11ea3d0a7caca50f781fc75a2bd50bb3da6dca459bbeba89b4bbe0b"
+    },
+    {
+      "group": "core/C/fighter_rogue/moderate",
+      "battles": 128,
+      "seconds": 1.6237473910000517,
+      "rows_sha256": "006071974a33ea4880e96d320fb05e009985be8dc928fc215943374b3e83e25b"
+    },
+    {
+      "group": "core/C/fighter_rogue/dense",
+      "battles": 128,
+      "seconds": 1.6048309320000271,
+      "rows_sha256": "2f236bcc64634c731b811a3bbafdb067211ba24e2bf07d709eedd976c3b98c5c"
+    },
+    {
+      "group": "core/C/fighter_rogue/objective",
+      "battles": 128,
+      "seconds": 1.755180940999935,
+      "rows_sha256": "43c7367e8d8867a619134b3c3c0ac8022b5c6c832a86a4faaa540a133045f0fa"
+    },
+    {
+      "group": "core/C/rogue_archer/open",
+      "battles": 128,
+      "seconds": 1.6661246610000262,
+      "rows_sha256": "732d8ce09faf0d70b1ce8dc7345c3a3ed36584ea404a89b2e295243dae27c514"
+    },
+    {
+      "group": "core/C/rogue_archer/moderate",
+      "battles": 128,
+      "seconds": 1.6106124909999835,
+      "rows_sha256": "564859e283fc59c022e4cd68fd44802126984fbc0426759c5ab58b51f5aba456"
+    },
+    {
+      "group": "core/C/rogue_archer/dense",
+      "battles": 128,
+      "seconds": 3.323900099999946,
+      "rows_sha256": "dff983475d4818a6131988ab077d219f440e3efe9fa7884a22f8c445ba743101"
+    },
+    {
+      "group": "core/C/rogue_archer/objective",
+      "battles": 128,
+      "seconds": 1.9393280069999719,
+      "rows_sha256": "89dc280dd281bdc40d7771a74cef72706f97ab5b1a8a65906546eabb520aaf06"
+    },
+    {
+      "group": "core/C/mage_fighter/open",
+      "battles": 128,
+      "seconds": 1.2189980269999978,
+      "rows_sha256": "0b8d5dcfd22f3c9134ee3fedc6380c85071251823d850d99d16fbd91676607eb"
+    },
+    {
+      "group": "core/C/mage_fighter/moderate",
+      "battles": 128,
+      "seconds": 1.2390009460000329,
+      "rows_sha256": "a5747819564cb490480d5783c62500640065ba30a635bac28531e8369bd09b3f"
+    },
+    {
+      "group": "core/C/mage_fighter/dense",
+      "battles": 128,
+      "seconds": 1.2893740840000874,
+      "rows_sha256": "ae87311ce8740d54862999521ca13f079422ce267e520ebce31e0f3cddb0fc36"
+    },
+    {
+      "group": "core/C/mage_fighter/objective",
+      "battles": 128,
+      "seconds": 1.3395517899999732,
+      "rows_sha256": "9785113cade81ab08a538965e89548dccba7e74887595f9c4f10be011d3a163b"
+    },
+    {
+      "group": "core/C/mage_monk/open",
+      "battles": 128,
+      "seconds": 1.5838152520000222,
+      "rows_sha256": "ade56bee2e99e261d0c6d5d44d10314ae9add5d17495c2a3c9dbc8e785b0d07a"
+    },
+    {
+      "group": "core/C/mage_monk/moderate",
+      "battles": 128,
+      "seconds": 1.60898492299998,
+      "rows_sha256": "29fcae93966dd105e17a2c1a85b9b958e39ade0aa36ba2c4dee3c79a940ab913"
+    },
+    {
+      "group": "core/C/mage_monk/dense",
+      "battles": 128,
+      "seconds": 3.2552265900000066,
+      "rows_sha256": "272ead1745f548142361b44a5ea59cbedbc1b7f641b0d8bc98e13f6c0dd71311"
+    },
+    {
+      "group": "core/C/mage_monk/objective",
+      "battles": 128,
+      "seconds": 1.7242119790000743,
+      "rows_sha256": "831a3da6525c3cddc17c9895710f2ae40b053553da3a1bb5053fe32de300fb17"
+    },
+    {
+      "group": "core/C/monk_archer/open",
+      "battles": 128,
+      "seconds": 1.6461712090000447,
+      "rows_sha256": "2484e64be02fc4b55f0004eb2e420852e3045ffbdf07ee006c2cd1a17f80e493"
+    },
+    {
+      "group": "core/C/monk_archer/moderate",
+      "battles": 128,
+      "seconds": 1.6156602379999185,
+      "rows_sha256": "5d178367c8f85a49c271dc9fb8dfe30cce93ea5741ecfc437c9eae16d102f5af"
+    },
+    {
+      "group": "core/C/monk_archer/dense",
+      "battles": 128,
+      "seconds": 1.8102504479999197,
+      "rows_sha256": "ad51382f6b08f6f8ea6fbd727ee2cefd6b9b917f0e8f6442b543f65715bf43dc"
+    },
+    {
+      "group": "core/C/monk_archer/objective",
+      "battles": 128,
+      "seconds": 1.78442884399999,
+      "rows_sha256": "2dbc2c847e5626e4eb5d8b9b9dee9a5f8fe74521d88ebd13f1892c5af1df3f05"
+    },
+    {
+      "group": "core/C/party/open",
+      "battles": 128,
+      "seconds": 4.645373569999947,
+      "rows_sha256": "4677b5ba00de2b1bb833d94561e49e80da523a122614075b6229d9ccee169185"
+    },
+    {
+      "group": "core/C/party/moderate",
+      "battles": 128,
+      "seconds": 9.39491858200006,
+      "rows_sha256": "68944d30ba58ad7f31802c325bcfb23f51f0c4431beaf87d6a4f7d6b334e6459"
+    },
+    {
+      "group": "core/C/party/dense",
+      "battles": 128,
+      "seconds": 5.338965857000062,
+      "rows_sha256": "73ff5aa7fbbdb8b3d505b104bedae0c26136c5b04c6b1f66b4c3cc1c400f3e29"
+    },
+    {
+      "group": "core/C/party/objective",
+      "battles": 128,
+      "seconds": 4.334205000999987,
+      "rows_sha256": "04520405ab71014b81831c684a537855277904875ca638594fe4b2a6d21688a5"
+    },
+    {
+      "group": "ablation/no_charge/fighter_archer/open",
+      "battles": 128,
+      "seconds": 2.911594358000002,
+      "rows_sha256": "f15c1568860d2910a0fb40f035c30c922e0e47b2e1e10a0615e24b1fbd5a3bac"
+    },
+    {
+      "group": "ablation/no_charge/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 2.851879525999948,
+      "rows_sha256": "8dcc0748913848ab3f27e34782363413f5a9f08c5426964c51bda6363df696f0"
+    },
+    {
+      "group": "ablation/no_charge/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 2.65407114300001,
+      "rows_sha256": "e23df2fb9726eed1ef99e08e19587c2e906c45f44893c2f07b832a2a055d90f9"
+    },
+    {
+      "group": "ablation/no_charge/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 4.218555033999905,
+      "rows_sha256": "b88ae08e9b5aa7ecf6917238f38ec88085e510bd6bb6d0f3b2fd6d0000086fd2"
+    },
+    {
+      "group": "ablation/no_dash/fighter_archer/open",
+      "battles": 128,
+      "seconds": 1.4735014020000108,
+      "rows_sha256": "4e9901100dca158bc0e9b556b009e6342bacfe5a52e7e16b3409f503754e6c2e"
+    },
+    {
+      "group": "ablation/no_dash/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 1.9665094140000292,
+      "rows_sha256": "046e90e8ae8736fc4d26cf51d029a065fc03d61ab2e9cd57f6fdab0a077ef005"
+    },
+    {
+      "group": "ablation/no_dash/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 3.2936233650000304,
+      "rows_sha256": "3269d56b9ee4302118a6020a68adf92726ca3d265f898c0d03937628dfc1a1b2"
+    },
+    {
+      "group": "ablation/no_dash/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 1.5675660329999346,
+      "rows_sha256": "3f95e118a1ce9aa20ce5bfaf18d453ade15aeb47b3fab1f2babcd1c538526099"
+    },
+    {
+      "group": "ablation/neither/fighter_archer/open",
+      "battles": 128,
+      "seconds": 1.758919786999968,
+      "rows_sha256": "bbf554f232b9bcd7acf337398f36a507cf89e11b7f721c2170857de8e36b61c7"
+    },
+    {
+      "group": "ablation/neither/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 1.8239115000000083,
+      "rows_sha256": "b01c5a0eeebdaf01d2c61b27ea47ebe522976eec58a6e81b5bea04223c010ff9"
+    },
+    {
+      "group": "ablation/neither/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 1.6268593240000655,
+      "rows_sha256": "59b1be5a39af04320d14101f85c12eacd92892a4de7a33363d1af9398d2c1923"
+    },
+    {
+      "group": "ablation/neither/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 1.802004942999929,
+      "rows_sha256": "a037f093d79704448fdf8ccdfbdd5bbea50bc947fa226f14024fc97d30659860"
+    },
+    {
+      "group": "ablation/no_reactions/fighter_archer/open",
+      "battles": 128,
+      "seconds": 9.537171156,
+      "rows_sha256": "641cdd31368f00c2bceb1c1c790d2e3442d01ad77ab35095f56a2bede3d19ddd"
+    },
+    {
+      "group": "ablation/no_reactions/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 15.726481411000009,
+      "rows_sha256": "0b51157a57e8bda231982b131857d13d63e0266428ee71cc2195cc28005b569e"
+    },
+    {
+      "group": "ablation/no_reactions/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 6.1633716950000235,
+      "rows_sha256": "c0c71e9f06aa5e696fba96769bf3515faa9596213192292deec1916d1a917b03"
+    },
+    {
+      "group": "ablation/no_reactions/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 3.1424920029999157,
+      "rows_sha256": "51e67e77a79685c8a15618417afa424d169cfefb5f6cd445af466d79cbd9c20d"
+    },
+    {
+      "group": "ablation/no_cover/fighter_archer/open",
+      "battles": 128,
+      "seconds": 2.8957473259999915,
+      "rows_sha256": "49fdfd2dc05ef9e2c9fbff7c6d666d2e28e2dbddc8dfa7d321e5ac9991b9159a"
+    },
+    {
+      "group": "ablation/no_cover/fighter_archer/moderate",
+      "battles": 128,
+      "seconds": 2.7595782449999433,
+      "rows_sha256": "5d38f0c27a29dc18c75bd550cb93e7f4a62340d5f54cdc89510a8141bb933d17"
+    },
+    {
+      "group": "ablation/no_cover/fighter_archer/dense",
+      "battles": 128,
+      "seconds": 2.6282665390000375,
+      "rows_sha256": "56a44dcc073f350c45dd2d846e266416ce76e3eeb03aef7d0eff0b5e9c34c35e"
+    },
+    {
+      "group": "ablation/no_cover/fighter_archer/objective",
+      "battles": 128,
+      "seconds": 3.114480458999992,
+      "rows_sha256": "f15928f3770f6f39c0316dcf073a131249c663ef4c90901aa22421c3c1de464b"
+    },
+    {
+      "group": "geometry/10/4/6/4",
+      "battles": 32,
+      "seconds": 1.2590262400000256,
+      "rows_sha256": "62348ada19b3abea6e0e0db02422febf1009b151166a55b18576ebd1eb8553b3"
+    },
+    {
+      "group": "geometry/10/4/6/5",
+      "battles": 32,
+      "seconds": 0.7160022240000217,
+      "rows_sha256": "dbb2538f4c69420c83870898811e3e9331d34d03138c8232900bf5a548b6ea26"
+    },
+    {
+      "group": "geometry/10/4/8/4",
+      "battles": 32,
+      "seconds": 0.6956311709999454,
+      "rows_sha256": "058b12c182ad80551692cdc8aad61febc47f7b09052f47c1ec22829f1449d078"
+    },
+    {
+      "group": "geometry/10/4/8/5",
+      "battles": 32,
+      "seconds": 1.3545996189999414,
+      "rows_sha256": "d5d410d50056605ef6fea4da378ed584f31fbf414670e7194155cdd310bc1a2e"
+    },
+    {
+      "group": "geometry/10/4/10/4",
+      "battles": 32,
+      "seconds": 0.5206903150000244,
+      "rows_sha256": "2f007543fd67bb0297e9d6a188f8699ce2a7af227376d27222797611c211f338"
+    },
+    {
+      "group": "geometry/10/4/10/5",
+      "battles": 32,
+      "seconds": 0.5953356119999853,
+      "rows_sha256": "8488ff48a39eeb00369a93cc9e04d499e0930749344125a5b8c9c0437311f9b5"
+    },
+    {
+      "group": "geometry/10/6/6/4",
+      "battles": 32,
+      "seconds": 1.1259387110000034,
+      "rows_sha256": "321c052a06116a8b970335f43a14fea5e548fed7ecc4b3c4bb6ff0f499029548"
+    },
+    {
+      "group": "geometry/10/6/6/5",
+      "battles": 32,
+      "seconds": 0.6320579130000397,
+      "rows_sha256": "d07465d07ee7c21c093541fc7b9250dfcc39958a349ce6d230291735ebf38efa"
+    },
+    {
+      "group": "geometry/10/6/8/4",
+      "battles": 32,
+      "seconds": 0.6745504739999433,
+      "rows_sha256": "3245d12b2af0dc9fe516eac923136b9ac6043eaf33f0d1cf71d5f2516294205e"
+    },
+    {
+      "group": "geometry/10/6/8/5",
+      "battles": 32,
+      "seconds": 0.667627087000028,
+      "rows_sha256": "be0a8158e8e3c22e056844db37eb35ff0e7d6eb51f4b675ad9efd326d611aa8d"
+    },
+    {
+      "group": "geometry/10/6/10/4",
+      "battles": 32,
+      "seconds": 0.5873228250000011,
+      "rows_sha256": "8e13d54b570d94e66dc077036779289bc1b8dcce108754d5ec15151a5a79c6a0"
+    },
+    {
+      "group": "geometry/10/6/10/5",
+      "battles": 32,
+      "seconds": 1.0763012389999176,
+      "rows_sha256": "1328c44822659fbc3d78636bc8c6739e4423fd4bc728d3833f8a83b258c5c320"
+    },
+    {
+      "group": "geometry/12/4/6/4",
+      "battles": 32,
+      "seconds": 0.6896089800000027,
+      "rows_sha256": "fb63548d16198f0f34b1e9118d2d8862a5416f6aa8d5a1fac54366fb1a4f550a"
+    },
+    {
+      "group": "geometry/12/4/6/5",
+      "battles": 32,
+      "seconds": 0.8143350889999965,
+      "rows_sha256": "59819aaada8841a5d81f10c38be0199b17ba139dca1ffdca3de92dbc93a5352a"
+    },
+    {
+      "group": "geometry/12/4/8/4",
+      "battles": 32,
+      "seconds": 0.7252332340000294,
+      "rows_sha256": "eaf74db8cfb52d7afd9801de2c824eb32462b8bf1ca8a180839fb05e2b236d12"
+    },
+    {
+      "group": "geometry/12/4/8/5",
+      "battles": 32,
+      "seconds": 1.1239337959999602,
+      "rows_sha256": "d78698aaca9ada0f1b3d896ae643f52bcbdb3681ef86da43cccae03c6b9dc937"
+    },
+    {
+      "group": "geometry/12/4/10/4",
+      "battles": 32,
+      "seconds": 0.6731141960000286,
+      "rows_sha256": "ba20fa79adbb13348573a65009498da1fe6b0ed8de754199f5110bf9abae801c"
+    },
+    {
+      "group": "geometry/12/4/10/5",
+      "battles": 32,
+      "seconds": 0.7183475939999653,
+      "rows_sha256": "2e51505ec7a8c7661ef8163ac8321a33450c5aafb96bac5fffa7a5293a13d0fc"
+    },
+    {
+      "group": "geometry/12/6/6/4",
+      "battles": 32,
+      "seconds": 0.6963119400001005,
+      "rows_sha256": "473af04527e491d90bb91fb12e42ef6f206e5e7b68140fea042a29f9b6d95e32"
+    },
+    {
+      "group": "geometry/12/6/6/5",
+      "battles": 32,
+      "seconds": 0.7066082759999972,
+      "rows_sha256": "54f859c87a33340335936204d8844be75a19f2d0cd99f205596e71bd91e02e8a"
+    },
+    {
+      "group": "geometry/12/6/8/4",
+      "battles": 32,
+      "seconds": 0.6906514519999973,
+      "rows_sha256": "c76c7fffb239a2da559432b090b9d1747a26495491f7aab56764460b6a5ce937"
+    },
+    {
+      "group": "geometry/12/6/8/5",
+      "battles": 32,
+      "seconds": 1.5529086390000657,
+      "rows_sha256": "c55c18fd96282c93db658786bb8b0b94261fca8c0ab4bd619023a42caeb47a50"
+    },
+    {
+      "group": "geometry/12/6/10/4",
+      "battles": 32,
+      "seconds": 0.6631095230000028,
+      "rows_sha256": "ec566fc9a3d7d74690799499a7ba6db6f90304b372585651cbe2fde7400c0371"
+    },
+    {
+      "group": "geometry/12/6/10/5",
+      "battles": 32,
+      "seconds": 0.6346235280000201,
+      "rows_sha256": "0eb53f433520d805f097945d2c0aeb7a0c4e0023010e50925c66b7bc62add650"
+    },
+    {
+      "group": "geometry/12/8/6/4",
+      "battles": 32,
+      "seconds": 0.6862812729999632,
+      "rows_sha256": "6e91e10737954af508c7a980906a675818847dd33c4cd18abf3d30d9c7bf4b44"
+    },
+    {
+      "group": "geometry/12/8/6/5",
+      "battles": 32,
+      "seconds": 0.748336528999971,
+      "rows_sha256": "ac62bf4c2fb706e2acb413db8c0dec3e0811631f9059b411e04b376d05b16593"
+    },
+    {
+      "group": "geometry/12/8/8/4",
+      "battles": 32,
+      "seconds": 0.7204104529999995,
+      "rows_sha256": "c11b51838b69fd7cec5c969ca890eb1bf85b9844147134a6553863dd7562090f"
+    },
+    {
+      "group": "geometry/12/8/8/5",
+      "battles": 32,
+      "seconds": 0.6828404530000398,
+      "rows_sha256": "e12bd5b13a14c749c410bb05dbe52d87e02c7bdddce37e408287dc84b5494c75"
+    },
+    {
+      "group": "geometry/12/8/10/4",
+      "battles": 32,
+      "seconds": 1.2197580519999747,
+      "rows_sha256": "3fab69544aaf943b548f75b5805e7d272f3db25e288423077b2fedcfea09e1d1"
+    },
+    {
+      "group": "geometry/12/8/10/5",
+      "battles": 32,
+      "seconds": 0.6304745779999621,
+      "rows_sha256": "64f9e000efa33a615223d79b0e041828bcf8ea63e12d5794428edc3a5cf2c087"
+    },
+    {
+      "group": "geometry/14/4/6/4",
+      "battles": 32,
+      "seconds": 0.7240093090000528,
+      "rows_sha256": "c0263d527b660f8279bf5d6925570a8f8948638f5af2603024049d0c6edb9183"
+    },
+    {
+      "group": "geometry/14/4/6/5",
+      "battles": 32,
+      "seconds": 0.8211551470000131,
+      "rows_sha256": "35aa46be0883d244f56e0a2bc93b73744c967c85114dafa5048d47e05ffca4f3"
+    },
+    {
+      "group": "geometry/14/4/8/4",
+      "battles": 32,
+      "seconds": 0.8207158640000216,
+      "rows_sha256": "27c978531efe3fc57e4a1c4b642364cbb3b607a468095ab7a3b7b82cc11b4804"
+    },
+    {
+      "group": "geometry/14/4/8/5",
+      "battles": 32,
+      "seconds": 0.8104216959999349,
+      "rows_sha256": "ddc4538f544fbb79be0a9261e600c8e4ee830d86532649658b2ef557fd314e38"
+    },
+    {
+      "group": "geometry/14/4/10/4",
+      "battles": 32,
+      "seconds": 1.390559866999979,
+      "rows_sha256": "509bf452050acc371b71fa647fd75f520dd311455c1a10a424c4cf83fc3db723"
+    },
+    {
+      "group": "geometry/14/4/10/5",
+      "battles": 32,
+      "seconds": 0.7701776110000083,
+      "rows_sha256": "4d176875d117949ab8fe1e8ff28bef93b47a39bcb972e5ee9465cc334e86a306"
+    },
+    {
+      "group": "geometry/14/6/6/4",
+      "battles": 32,
+      "seconds": 0.771661698999992,
+      "rows_sha256": "eca3795c3e16da7f474b36aba7b720bb81f3089505644fd6edff36d0bdc7007d"
+    },
+    {
+      "group": "geometry/14/6/6/5",
+      "battles": 32,
+      "seconds": 0.7994596159999219,
+      "rows_sha256": "16f95148cf2db4af63020c7afe9d9b34eb0dc95a020b1efcdc8cb57eb1587946"
+    },
+    {
+      "group": "geometry/14/6/8/4",
+      "battles": 32,
+      "seconds": 0.7777614470001026,
+      "rows_sha256": "2e41dff4ff66479cbc737a0aa6d18a6e48a1b52e8478dd13dcb29289486020da"
+    },
+    {
+      "group": "geometry/14/6/8/5",
+      "battles": 32,
+      "seconds": 0.9049087090000967,
+      "rows_sha256": "d1b132cc5619e2af614a494c0aec419b91e69b720e4aa49ef3e1a04152c50891"
+    },
+    {
+      "group": "geometry/14/6/10/4",
+      "battles": 32,
+      "seconds": 1.4966786659999798,
+      "rows_sha256": "352ada6f4e29e434f88cbc2d3d99b5bf3004dba605a7fd7374e624852b1577d5"
+    },
+    {
+      "group": "geometry/14/6/10/5",
+      "battles": 32,
+      "seconds": 0.7523340860000189,
+      "rows_sha256": "8f35a7fc58e7efc43adfb30987a0759501b41772e4e60e95ddc35b28c0141528"
+    },
+    {
+      "group": "geometry/14/8/6/4",
+      "battles": 32,
+      "seconds": 0.7597377119999464,
+      "rows_sha256": "2f80705a89a1ad7966e708fce544a8a895b441edab09af7522938e53d7b490d1"
+    },
+    {
+      "group": "geometry/14/8/6/5",
+      "battles": 32,
+      "seconds": 0.8377017509999405,
+      "rows_sha256": "bc86d85f7a849f370876ea12f9a94eccb68dc34d574b9fde1afbb4de854f608d"
+    },
+    {
+      "group": "geometry/14/8/8/4",
+      "battles": 32,
+      "seconds": 0.8254411210000399,
+      "rows_sha256": "48fed9cb312d90f5e04395f7005b358126bec442a43acfe33b5b139647cd451a"
+    },
+    {
+      "group": "geometry/14/8/8/5",
+      "battles": 32,
+      "seconds": 0.7747348200000488,
+      "rows_sha256": "de5fe159ed772d715c99b2d4ab0f320b13c6bb938267582930c6703e57c5e511"
+    },
+    {
+      "group": "geometry/14/8/10/4",
+      "battles": 32,
+      "seconds": 1.4370692009999857,
+      "rows_sha256": "1012c0acf5c6ffe22173741425adb42ab616cab76b6d833139ca8b16fea07a26"
+    },
+    {
+      "group": "geometry/14/8/10/5",
+      "battles": 32,
+      "seconds": 0.7768554030000132,
+      "rows_sha256": "950e0e06c16338c7a6fc071d86b66127379c96eada0bd2c6efb852bac053d643"
+    },
+    {
+      "group": "geometry/14/10/6/4",
+      "battles": 32,
+      "seconds": 0.7111970419999807,
+      "rows_sha256": "57172e19ff29085e1230994cba8d6f6cb1803f90261a87c451525fcd645f57a7"
+    },
+    {
+      "group": "geometry/14/10/6/5",
+      "battles": 32,
+      "seconds": 0.8275254440000026,
+      "rows_sha256": "c668639b9c0cc8175e053a6f880926bc3ab3ec8bc4a1b4602a18987ab42d0305"
+    },
+    {
+      "group": "geometry/14/10/8/4",
+      "battles": 32,
+      "seconds": 0.9073775589999968,
+      "rows_sha256": "4403601cfd66fda7726537f8882d47a627f1c0ad650aea7c9fd9e5522a7cb39c"
+    },
+    {
+      "group": "geometry/14/10/8/5",
+      "battles": 32,
+      "seconds": 0.7995795819999785,
+      "rows_sha256": "3b01160180431946fac3c0a7acc94df9630e6ea44c2901b45bbf299f2843dba0"
+    },
+    {
+      "group": "geometry/14/10/10/4",
+      "battles": 32,
+      "seconds": 0.7873149109999531,
+      "rows_sha256": "bc8400f5888b8125d56f02d023f9062462f1d991913ff5849e46899ef2529807"
+    },
+    {
+      "group": "geometry/14/10/10/5",
+      "battles": 32,
+      "seconds": 1.496948755999938,
+      "rows_sha256": "789a9bf89097d6c95fe48916e2be93c18f9fd2e7e039dbb815c6d2b25fb28b1e"
+    },
+    {
+      "group": "geometry/16/4/6/4",
+      "battles": 32,
+      "seconds": 0.7640337879998924,
+      "rows_sha256": "89aa92a78d058419cdf2869298c18fd4e2bcc0c35b84bd49cb438c2e94cd1c8e"
+    },
+    {
+      "group": "geometry/16/4/6/5",
+      "battles": 32,
+      "seconds": 0.9437120889999733,
+      "rows_sha256": "a6c75cc501a10ecb5b180d38031d6940b557c77193bb678d96ca7411e59d32ef"
+    },
+    {
+      "group": "geometry/16/4/8/4",
+      "battles": 32,
+      "seconds": 0.8250750130000597,
+      "rows_sha256": "5d4ac55e9717166a911d455b5e9e70cc2a5f1a12c3466038547f4a659e2f3310"
+    },
+    {
+      "group": "geometry/16/4/8/5",
+      "battles": 32,
+      "seconds": 0.859921454000073,
+      "rows_sha256": "7d100959a870734869653e5f98e4043f3248ab42e0d5d817bfbb7473e483ecf3"
+    },
+    {
+      "group": "geometry/16/4/10/4",
+      "battles": 32,
+      "seconds": 0.7881370449999849,
+      "rows_sha256": "f1b52417a0a31b5037d0f9151658802e367bae78481b4ba5c968fef164b465b9"
+    },
+    {
+      "group": "geometry/16/4/10/5",
+      "battles": 32,
+      "seconds": 0.8411337059999369,
+      "rows_sha256": "a84e339d0c49fe42ad8618a6a788b7b8f9fefb1f0883b051128fff89b7f425ed"
+    },
+    {
+      "group": "geometry/16/6/6/4",
+      "battles": 32,
+      "seconds": 1.4829005459999962,
+      "rows_sha256": "ccb5c833b540240eff91249c86066cca1c299e1f802568eab29a3099feb33c13"
+    },
+    {
+      "group": "geometry/16/6/6/5",
+      "battles": 32,
+      "seconds": 0.8028471199999103,
+      "rows_sha256": "78784671e99445e820e2252589a6a29728fb54e9a95d83ea0de5b4a8680b89f4"
+    },
+    {
+      "group": "geometry/16/6/8/4",
+      "battles": 32,
+      "seconds": 0.8841463100000055,
+      "rows_sha256": "4b504dfc9f3e2080670edc158ee197366c51e2c92a437446e8aa176446d23335"
+    },
+    {
+      "group": "geometry/16/6/8/5",
+      "battles": 32,
+      "seconds": 0.8967686569999387,
+      "rows_sha256": "dba1a1cfe58ade3be71f368b25bb3d76eca0937d9871c1d3c505e855623b7f1d"
+    },
+    {
+      "group": "geometry/16/6/10/4",
+      "battles": 32,
+      "seconds": 0.7289713030000939,
+      "rows_sha256": "66fb0222fb2bf2b3251576b774340c63a03ca3648ad73e581801f5b886f261eb"
+    },
+    {
+      "group": "geometry/16/6/10/5",
+      "battles": 32,
+      "seconds": 0.9453980999999203,
+      "rows_sha256": "d47cfac6a0c242c5aa7bed190a485c23b54fbc425e616b5422ce77095d140704"
+    },
+    {
+      "group": "geometry/16/8/6/4",
+      "battles": 32,
+      "seconds": 0.8019516279999834,
+      "rows_sha256": "ec90a0cb4ba119ecfd5ba0322f26d0e86c935cbd00cc7fdabf8f508a22097fb0"
+    },
+    {
+      "group": "geometry/16/8/6/5",
+      "battles": 32,
+      "seconds": 1.682097429999999,
+      "rows_sha256": "2f97044a8e428b488bc8901a5330e5d83f772cf01debf69ff2e85ed5b1596d00"
+    },
+    {
+      "group": "geometry/16/8/8/4",
+      "battles": 32,
+      "seconds": 0.8836140419999765,
+      "rows_sha256": "897f0bdca9c681bd7049dea7987154af1b4ade26bcb34880a0215a272b66cba6"
+    },
+    {
+      "group": "geometry/16/8/8/5",
+      "battles": 32,
+      "seconds": 0.7996827859999485,
+      "rows_sha256": "d991776b6a17655bddba43bc4aef5fdb973e7b802fd5db50aed88f372fd0b608"
+    },
+    {
+      "group": "geometry/16/8/10/4",
+      "battles": 32,
+      "seconds": 0.8570095960000117,
+      "rows_sha256": "fdc1504cbb130ea7ff1cfde4c06f82ef087c2a7dd8e57312b29983f54c4d0b82"
+    },
+    {
+      "group": "geometry/16/8/10/5",
+      "battles": 32,
+      "seconds": 0.7938606630000322,
+      "rows_sha256": "b21275e3e8da0ecf18096dc7aafabe39a4579f35d3134c3945d3ce1eefb60b1a"
+    },
+    {
+      "group": "geometry/16/10/6/4",
+      "battles": 32,
+      "seconds": 0.7772989690000713,
+      "rows_sha256": "1333ac76da4b5e238a98fc0fd05a765444ac084627c35ba3ae8992d014c5ed80"
+    },
+    {
+      "group": "geometry/16/10/6/5",
+      "battles": 32,
+      "seconds": 1.7141127419999975,
+      "rows_sha256": "cc91d0fbd706d84d0618eedb71017eee4cc406b5dd895f1c7739ccc58372c0cf"
+    },
+    {
+      "group": "geometry/16/10/8/4",
+      "battles": 32,
+      "seconds": 0.9989692780000041,
+      "rows_sha256": "748626d1692148a5bcd3418fe62e96d3b2a04b7ea6c73a0e483a49b4bd09054d"
+    },
+    {
+      "group": "geometry/16/10/8/5",
+      "battles": 32,
+      "seconds": 0.8137354039999991,
+      "rows_sha256": "68485874762f6c32dc6ccbccd7afe56eca24cdb77552f8270855ae76cff6d062"
+    },
+    {
+      "group": "geometry/16/10/10/4",
+      "battles": 32,
+      "seconds": 0.8816578929998968,
+      "rows_sha256": "3112a56a7a5a0c39b49088fafa9ccfd84c007d0274542bdbcce71d38d4bfccc2"
+    },
+    {
+      "group": "geometry/16/10/10/5",
+      "battles": 32,
+      "seconds": 0.856683371000031,
+      "rows_sha256": "ba997ce98451f896ae9331fafe759e91ec44349301e4a5e3c2250c1c487c4fba"
+    },
+    {
+      "group": "initiative/individual",
+      "battles": 256,
+      "seconds": 16.97519101599994,
+      "rows_sha256": "bb5d9b9b4360dd935ee3ce874750f6f123e803606c52b7f3548e2f9a2204416a"
+    },
+    {
+      "group": "initiative/alternating",
+      "battles": 256,
+      "seconds": 17.505119511999965,
+      "rows_sha256": "0139407677b903a183f55aa35337e5ab1dcab164450351193c400596a45f3e02"
+    },
+    {
+      "group": "initiative/team",
+      "battles": 256,
+      "seconds": 27.41222072700009,
+      "rows_sha256": "df779ac610322c8d030f728f40ff5d7e0524b48dd3247f12929144a73b1321dd"
+    },
+    {
+      "group": "control/none",
+      "battles": 256,
+      "seconds": 19.46816989399997,
+      "rows_sha256": "af167a799e48eb9fd6594afb21b3528ba572e22b2722b93a96cc03163ffa8027"
+    },
+    {
+      "group": "control/slow",
+      "battles": 256,
+      "seconds": 14.404666611000039,
+      "rows_sha256": "497cb482dd8dd93d9bac2186bfac46b1686fa2a7cfa2a8efcc9b4c2d1310fa69"
+    },
+    {
+      "group": "control/stun",
+      "battles": 256,
+      "seconds": 17.14796302600007,
+      "rows_sha256": "0b425d5cb4e61ea533815538be16f1d7630fe31722100ced398310d04f39bf21"
+    },
+    {
+      "group": "lethality/A/0.65",
+      "battles": 128,
+      "seconds": 9.606987557000025,
+      "rows_sha256": "da2ec78031f7281cf249ec51b36f9014cb8169f21d6226fa9dcd295c08feb4f8"
+    },
+    {
+      "group": "lethality/B/0.65",
+      "battles": 128,
+      "seconds": 2.601910793000002,
+      "rows_sha256": "f48fc371180dfcbe1954d3221992b21a1972797303989a45e6e1ae44c2d69e6b"
+    },
+    {
+      "group": "lethality/C/0.65",
+      "battles": 128,
+      "seconds": 5.6621980759999815,
+      "rows_sha256": "6e90f3b8e6b60fdce4bba407ca85f94c034f53e4be5319b948e047e3f30a9fd4"
+    },
+    {
+      "group": "lethality/A/1.0",
+      "battles": 128,
+      "seconds": 3.7544170449999683,
+      "rows_sha256": "d884d38405327e8eef57308c344cb771d1e91e84ccb89f5ed9faeb5191a7a8fe"
+    },
+    {
+      "group": "lethality/B/1.0",
+      "battles": 128,
+      "seconds": 1.8997830649999514,
+      "rows_sha256": "656d211a372f74bb3f06c1fc087519c0ccb84876653554e284151919d0e63d1c"
+    },
+    {
+      "group": "lethality/C/1.0",
+      "battles": 128,
+      "seconds": 2.062204950000023,
+      "rows_sha256": "6f8e10f38195a70f4be5f15ad916dd56d4eacaf00994fe779e82b415dbe33a4f"
+    },
+    {
+      "group": "lethality/A/1.4",
+      "battles": 128,
+      "seconds": 3.0392393580000316,
+      "rows_sha256": "f0c3847f59e6014d556683fd2314a8fcd43afbcc8c89fb59c2e02b45f3bfa0ca"
+    },
+    {
+      "group": "lethality/B/1.4",
+      "battles": 128,
+      "seconds": 2.6914676170000575,
+      "rows_sha256": "1e2274dbe92d095c3880d492765fd0cc46781b2f22d0504a4d085e9359b0799c"
+    },
+    {
+      "group": "lethality/C/1.4",
+      "battles": 128,
+      "seconds": 1.5662128380000695,
+      "rows_sha256": "9d7743b838b6acd39e757d47188664649f95c7efa53f21d8f161c725ad445967"
+    },
+    {
+      "group": "rogue/open_duel",
+      "battles": 128,
+      "seconds": 2.7068786300000056,
+      "rows_sha256": "f9c56a4cc00455c4104431f9886f25af299710c4f35fca8b8522649dadc66e08"
+    },
+    {
+      "group": "rogue/concealed_opening",
+      "battles": 128,
+      "seconds": 1.3463925770000742,
+      "rows_sha256": "6b5d9fb8706043b9357babce595bbcb86e85e63f22846fb9ee6d82cdaf2d2601"
+    },
+    {
+      "group": "rogue/broken_ground",
+      "battles": 128,
+      "seconds": 1.123121203000096,
+      "rows_sha256": "a2d28ea9b0b5abe023b51447dc1980d850fe1adf16c01b33cda7a06ad0ef362f"
+    },
+    {
+      "group": "rogue/objective",
+      "battles": 128,
+      "seconds": 2.191629197999987,
+      "rows_sha256": "33bd4b1fdc1e409a08a3c6f21eb09f002934d3f7bcb9e15345aa127ac6fba68f"
+    },
+    {
+      "group": "rogue/ally_flank",
+      "battles": 128,
+      "seconds": 4.9673241769999095,
+      "rows_sha256": "912bee5e2aee740122699ebafa4166f6b3ee6fbc439ef47e2694ec5eb35ac864"
+    },
+    {
+      "group": "rogue/protect_mage",
+      "battles": 128,
+      "seconds": 2.5110216409999566,
+      "rows_sha256": "593d5745e275207d2c132bd7f3d603dcca5cc2d87433de1c065181fa646aefd4"
+    },
+    {
+      "group": "scale6/A/moderate",
+      "battles": 32,
+      "seconds": 2.579381185000102,
+      "rows_sha256": "6c3fedd269863abde8c11847f621e18b7d4897e781fbc7333f706b952423cc34"
+    },
+    {
+      "group": "scale6/A/objective",
+      "battles": 32,
+      "seconds": 3.437120360999984,
+      "rows_sha256": "40afdc336add41913ce10d03560e555fd2efde937be677c23c14130ee1fa6675"
+    },
+    {
+      "group": "scale6/B/moderate",
+      "battles": 32,
+      "seconds": 1.2470770209999955,
+      "rows_sha256": "311acccae1f7fda25641bc3e560f3640bb6ab0f29ea305dc9198d58937be84b7"
+    },
+    {
+      "group": "scale6/B/objective",
+      "battles": 32,
+      "seconds": 1.0264679450000358,
+      "rows_sha256": "dbc96a1fd43a1df2209196fc27b7d3f0a95514654703593374a9a494ce3ae544"
+    },
+    {
+      "group": "scale6/C/moderate",
+      "battles": 32,
+      "seconds": 1.3737620809999953,
+      "rows_sha256": "8365974e468e5ff9754259bc426174764cc0d7753a1f90b17519f4dfcd60c290"
+    },
+    {
+      "group": "scale6/C/objective",
+      "battles": 32,
+      "seconds": 1.139968809999914,
+      "rows_sha256": "40284a1fc65d92e054db6d7dac744aa7ba48170fd363adc32bc34b810afe3c30"
+    }
+  ]
+}

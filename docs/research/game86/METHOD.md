@@ -4,11 +4,11 @@
 
 ```sh
 python -m unittest discover -s research/game86 -v
-python research/game86/run.py
+python research/game86/run.py --workers 4
 python research/game86/report.py
 ```
 
-`report.py` generates diagrams and the results page from the committed batch output. Rerunning `run.py` replaces results; `timing.json` is intentionally machine-dependent. No Godot screenshots are represented as evidence of combat: no combat scene has been implemented. Diagrams are explicitly labelled research diagnostics.
+`report.py` verifies complete raw results and generates the results page, seeded walkthrough and labelled board diagram. `run.py` resumes validated atomic group checkpoints; use a new `--output` directory for an independent fresh run. `timing.json` describes the latest invocation, and `timings/` retains earlier measurements; timing is intentionally machine-dependent. See [runtime evidence and Linux runner requirements](RUNTIME.md). No Godot screenshots are represented as evidence of combat: no combat scene has been implemented. Diagrams are explicitly labelled research diagnostics.
 
 ## Shared test bed
 
