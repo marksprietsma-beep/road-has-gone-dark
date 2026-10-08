@@ -1488,7 +1488,7 @@ The combat foundation remains:
 - deterministic resolution;
 - the same simulator for manual play and autoresolve.
 
-Character Life may change **capabilities, costs, risks, information, resources and consequences**, but it must not create a second action economy.
+Character Life may change **capabilities, costs, risks, information, resources and consequences**, and some features may create explicit bounded exceptions to the baseline action budget. The requirement is not “never grant extra attacks/actions”; it is that every exception must be represented inside the same deterministic action-budget model so manual play, AI and autoresolve all understand it.
 
 ## Allowed integration
 
@@ -1526,10 +1526,10 @@ Examples:
 
 Character Life systems must not casually introduce:
 
-- generic bonus/swift actions;
-- extra full turns;
-- independent reaction pools;
-- uncontrolled extra attacks;
+- an always-on universal bonus/swift-action layer added casually;
+- unbounded or recursive extra full turns;
+- independent hidden reaction pools;
+- uncontrolled extra attacks that bypass declared action costs or feature limits;
 - separate hidden combat formulas;
 - manual-only mechanics that autoresolve cannot reproduce;
 - narrative-only bonuses with no machine-readable rule;
@@ -1649,19 +1649,103 @@ Examples:
 
 Long-term trauma belongs primarily in Character Life and event systems, not as constant hard control.
 
-## Mutations and extra limbs
+## Mutations, extra limbs and additional attacks
 
-Body changes can grant new capabilities, but extra anatomy must not automatically mean extra attacks.
+Extra anatomy **can** justify additional attacks, but only through explicit rules.
 
 An extra limb may enable:
 
-- different equipment;
-- climbing;
-- grappling;
-- carrying;
-- a specific ability.
+- more equipment slots;
+- different weapon combinations;
+- climbing/grappling utility;
+- multiweapon techniques;
+- a dedicated extra-strike rider;
+- a limited additional action token from a named feature.
 
-Any extra attack still consumes the normal action economy unless GAME-86 is deliberately revised later.
+The engine should distinguish:
+
+1. **Extra strikes inside one Main action**  
+   Example: Two-Weapon Attack spends one Main action and resolves a main-hand strike plus an off-hand strike, each with its own accuracy/damage rules.
+
+2. **Attack sequences unlocked by progression**  
+   Example: an advanced fighter feature turns the Attack action into two ordered strikes. This is still one Main action, not two turns.
+
+3. **Conditional action grants**  
+   Example: a rare capstone, haste-like spell or four-armed mutation grants one additional restricted action such as `StrikeOnly`, `MoveOnly` or `TechniqueOnly` for that activation.
+
+4. **Reactions**  
+   These continue to compete for the shared reaction budget unless a feature explicitly and visibly increases that budget.
+
+This means the baseline action economy remains readable while exceptional builds can genuinely bend it.
+
+### Two-weapon fighting
+
+A good V1 structure is:
+
+```text
+Main Action: Twin Strike
+    attack main-hand
+    attack off-hand
+    apply declared dual-wield accuracy/damage rules
+```
+
+Later feats can modify that package:
+
+```text
+Improved Twin Strike
+    reduce penalty
+
+Flowing Blades
+    allow one attack before and one after movement
+
+Whirling Assault
+    spend resource
+    gain third restricted strike
+```
+
+The exact names/numbers are provisional, but the architectural pattern is important: **multiple attack rolls do not require multiple turns**.
+
+### Fighter extra attacks
+
+Fighter progression can increase the number or quality of strikes produced by the normal Attack action.
+
+For example:
+
+```text
+Attack
+    level 1: one strike
+    advanced martial feature: two strikes
+    mastery feature: second strike may target adjacent enemy
+```
+
+This avoids the Pathfinder problem where a character must stand still and perform a complicated full-attack routine, while still letting high-level martials feel faster and more dangerous.
+
+### Extra arms
+
+An extra arm does not automatically equal “+1 unrestricted Main action”.
+
+Instead it can unlock:
+
+- multiweapon attack actions;
+- simultaneous weapon + shield configurations;
+- weapon + focus/tool combinations;
+- grappling while armed;
+- special techniques;
+- possibly a restricted extra strike if the mutation/feature explicitly grants one.
+
+A particularly powerful four-armed transformation could absolutely grant a limited extra action. That is acceptable if it is:
+
+- explicit;
+- data-driven;
+- bounded;
+- visible in the UI;
+- deterministic;
+- available to the AI/autoresolve through the same legal-action model;
+- balanced by opportunity cost, rarity, resource, corruption or other consequence.
+
+The design rule is therefore:
+
+> **The baseline is stable; exceptional features may bend it in declared, machine-readable ways.**
 
 ## Same-engine autoresolve requirement
 
@@ -1701,7 +1785,7 @@ not equal blank-room duel win rates.
 
 ## Final compatibility rule
 
-> Character Life enriches the combatant. It does not replace the combat engine.
+> Character Life enriches the combatant and may bend the baseline action budget through explicit, bounded rules. It does not create a separate combat engine.
 
 Any future feature that violates that rule requires an explicit GAME-86/GAME-33 design review before implementation.
 
