@@ -1467,3 +1467,242 @@ Together, this should create characters the player remembers because of both **w
 - Do not copy proprietary D&D/Warhammer/Wildermyth expression; use structural inspiration and original TRHGD content.
 
 This document is the accepted direction guide until deliberately superseded by a later reviewed design decision.
+
+---
+
+# 41. Combat compatibility contract
+
+All Character Life systems must remain compatible with the accepted GAME-86 / future GAME-33 combat model.
+
+The combat foundation remains:
+
+- one movement allowance;
+- one main action;
+- one shared reaction;
+- fixed individual initiative with stable tie-breaking;
+- compact square-grid combat;
+- explicit LOS / cover / engagement;
+- telegraphed powerful effects;
+- rare hard action denial;
+- objective-based encounters;
+- deterministic resolution;
+- the same simulator for manual play and autoresolve.
+
+Character Life may change **capabilities, costs, risks, information, resources and consequences**, but it must not create a second action economy.
+
+## Allowed integration
+
+Character Life can affect combat through structured GAME-32-compatible outputs such as:
+
+- granted abilities;
+- modifiers;
+- tags;
+- senses;
+- resources;
+- damage/resistance types;
+- movement values;
+- reach;
+- reaction options;
+- targeting restrictions;
+- status resistances;
+- spell/ability availability;
+- equipment/body-slot compatibility;
+- observer knowledge;
+- pre-combat advantages;
+- post-combat consequences.
+
+Examples:
+
+- a prosthetic arm grants a defensive feature;
+- a mutation changes stride or grants climbing;
+- corruption unlocks a new ability with a resource cost;
+- a curse imposes a targeting restriction or occasional condition;
+- a relationship grants a restrained protective reaction;
+- an injury reduces movement until recovered;
+- investigation reveals an enemy weakness or alternate deployment zone;
+- a pact grants a powerful main-action ability with an attached campaign cost.
+
+## Forbidden integration
+
+Character Life systems must not casually introduce:
+
+- generic bonus/swift actions;
+- extra full turns;
+- independent reaction pools;
+- uncontrolled extra attacks;
+- separate hidden combat formulas;
+- manual-only mechanics that autoresolve cannot reproduce;
+- narrative-only bonuses with no machine-readable rule;
+- free actions that bypass GAME-86 costs;
+- random permanent combat rewrites that invalidate the player's build.
+
+If a future feature appears to require one of these, it must be reviewed as a combat-system change rather than smuggled in through Character Life.
+
+## Acquired states feed the same rules engine
+
+A wound, mutation, graft, curse, transformation or pact does not directly alter GAME-33 internals.
+
+Instead:
+
+```text
+Character Life state
+        ↓
+generic tags / features / modifiers / resources
+        ↓
+GAME-32 derived character snapshot
+        ↓
+GAME-33 deterministic combat state
+```
+
+This preserves one source of truth.
+
+GAME-33 should never need code such as:
+
+`if character.is_cursed: ...`
+
+It should consume the resulting structured rule effects.
+
+## Investigation and pre-combat preparation
+
+Investigation fits particularly well because it can alter **encounter inputs** rather than action economy.
+
+Examples:
+
+- alternate deployment zones;
+- known enemy traits;
+- exposed illusion;
+- reduced reinforcement count;
+- pre-identified hazard;
+- prepared resistance;
+- battlefield object revealed;
+- surprise/preparation state.
+
+These are excellent bridges between expedition play and tactical combat.
+
+## Injuries and body changes
+
+Injuries, grafts and mutations can affect:
+
+- movement;
+- reach;
+- equipment;
+- senses;
+- defence;
+- available abilities.
+
+But they must be deterministic and previewable.
+
+A lost arm must not unexpectedly destroy a two-handed build with no adaptation path.
+
+Possible responses include:
+
+- temporary injury first;
+- retraining opportunity;
+- prosthetic;
+- graft;
+- transformation;
+- equipment conversion;
+- compensation feature.
+
+## Corruption and curses
+
+Corruption fits combat best when it creates **new options with costs**, not random turn theft.
+
+Good examples:
+
+- gain a powerful ability that spends a corruption-linked resource;
+- increased resistance paired with recovery penalty;
+- new sense paired with social/campaign consequence;
+- dangerous overchannel option using the normal main action.
+
+Avoid:
+
+- arbitrary skipped turns;
+- random loss of player control every round;
+- unbounded extra actions;
+- hidden damage bonuses outside the standard modifier system.
+
+## Relationships
+
+Relationship mechanics should be small and expressive.
+
+Good examples:
+
+- one protective reaction;
+- recovery bonus;
+- morale/resilience effect;
+- rescue behavior;
+- limited coordinated action.
+
+Avoid large permanent attack/damage multipliers that make relationships into optimization requirements.
+
+## Trauma / fear
+
+Immediate fear effects may alter combat state through normal statuses.
+
+Examples:
+
+- frightened;
+- shaken;
+- retreat pressure;
+- concentration penalty.
+
+Long-term trauma belongs primarily in Character Life and event systems, not as constant hard control.
+
+## Mutations and extra limbs
+
+Body changes can grant new capabilities, but extra anatomy must not automatically mean extra attacks.
+
+An extra limb may enable:
+
+- different equipment;
+- climbing;
+- grappling;
+- carrying;
+- a specific ability.
+
+Any extra attack still consumes the normal action economy unless GAME-86 is deliberately revised later.
+
+## Same-engine autoresolve requirement
+
+Every combat-relevant effect from Character Life must be representable in the same deterministic command/state model used by manual combat.
+
+If the human player can benefit from:
+
+- a graft;
+- a pact;
+- a relationship reaction;
+- corruption ability;
+- mutation;
+- injury;
+- investigation advantage;
+
+the autoresolve AI must receive and evaluate the same legal options and state.
+
+No second shortcut combat model may approximate these systems.
+
+## Combat-balance principle
+
+The goal is not symmetry.
+
+A mutation, injury, pact or prestige path may make one character unusually strong in a particular context.
+
+Balance should focus on:
+
+- meaningful tradeoffs;
+- opportunity cost;
+- role value;
+- resource pressure;
+- counterplay;
+- objective contribution;
+- expedition consequences;
+
+not equal blank-room duel win rates.
+
+## Final compatibility rule
+
+> Character Life enriches the combatant. It does not replace the combat engine.
+
+Any future feature that violates that rule requires an explicit GAME-86/GAME-33 design review before implementation.
+
+
