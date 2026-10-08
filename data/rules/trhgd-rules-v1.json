@@ -1,0 +1,2353 @@
+{
+  "pack_id": "trhgd-rules-v1",
+  "schema_version": 1,
+  "rules_version": "1.0.0",
+  "engine_schema": 1,
+  "provenance": {
+    "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+    "license": "Original project-authored content; no third-party game text/assets imported",
+    "revision": "game32-v1"
+  },
+  "rules": {
+    "max_level": 20,
+    "base_hp": 6,
+    "base_defence": 10,
+    "base_stride": 4,
+    "base_reach": 1,
+    "shared_reaction": 1,
+    "feat_levels": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19
+    ],
+    "attribute_increase_levels": [
+      4,
+      8,
+      12,
+      16,
+      20
+    ],
+    "base_abilities": [
+      "attack",
+      "move",
+      "dash",
+      "charge",
+      "disengage",
+      "departure-attack"
+    ],
+    "standard_array": [
+      15,
+      14,
+      13,
+      12,
+      10,
+      8
+    ],
+    "engaged_ranged": {
+      "stat": "ranged_attack",
+      "type": "circumstance",
+      "value": {
+        "op": "const",
+        "value": -4
+      },
+      "when": {
+        "op": "tag",
+        "id": "engaged_melee"
+      }
+    },
+    "critical": {
+      "natural": 20,
+      "bonus_damage": 4
+    },
+    "save_natural_overrides": false
+  },
+  "classes": [
+    {
+      "id": "roadwarden",
+      "name": "Roadwarden",
+      "max_level": 20,
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "hp_per_level": 6,
+      "skill_points": 2,
+      "bab": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "multiply",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "roadwarden"
+              },
+              {
+                "op": "const",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 1
+          }
+        ]
+      },
+      "saves": {
+        "fortitude": {
+          "op": "sum",
+          "args": [
+            {
+              "op": "const",
+              "value": 2
+            },
+            {
+              "op": "floor_divide",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "roadwarden"
+                },
+                {
+                  "op": "const",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        "reflex": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "roadwarden"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "will": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "roadwarden"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        }
+      },
+      "casting": {
+        "op": "const",
+        "value": 0
+      },
+      "casting_tradition": "",
+      "features": [
+        {
+          "at": 1,
+          "id": "held-ground"
+        },
+        {
+          "at": 3,
+          "id": "sure-blade"
+        }
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "wayfinder",
+      "name": "Wayfinder",
+      "max_level": 20,
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "hp_per_level": 4,
+      "skill_points": 4,
+      "bab": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "multiply",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "wayfinder"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 4
+          }
+        ]
+      },
+      "saves": {
+        "fortitude": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "wayfinder"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "reflex": {
+          "op": "sum",
+          "args": [
+            {
+              "op": "const",
+              "value": 2
+            },
+            {
+              "op": "floor_divide",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "wayfinder"
+                },
+                {
+                  "op": "const",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        "will": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "wayfinder"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        }
+      },
+      "casting": {
+        "op": "const",
+        "value": 0
+      },
+      "casting_tradition": "",
+      "features": [
+        {
+          "at": 1,
+          "id": "light-step"
+        },
+        {
+          "at": 1,
+          "id": "opening-strike"
+        }
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "lantern-adept",
+      "name": "Lantern Adept",
+      "max_level": 20,
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "hp_per_level": 3,
+      "skill_points": 3,
+      "bab": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "multiply",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "lantern-adept"
+              },
+              {
+                "op": "const",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "saves": {
+        "fortitude": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "lantern-adept"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "reflex": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "lantern-adept"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "will": {
+          "op": "sum",
+          "args": [
+            {
+              "op": "const",
+              "value": 2
+            },
+            {
+              "op": "floor_divide",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "lantern-adept"
+                },
+                {
+                  "op": "const",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "casting": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "sum",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "lantern-adept"
+              },
+              {
+                "op": "const",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "casting_tradition": "arcane",
+      "features": [
+        {
+          "at": 1,
+          "id": "arcane-discipline"
+        },
+        {
+          "at": 3,
+          "id": "storm-sign"
+        }
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veil-adept",
+      "name": "Veil Adept",
+      "max_level": 10,
+      "requirements": {
+        "op": "all",
+        "args": [
+          {
+            "op": "level",
+            "min": 4
+          },
+          {
+            "op": "attribute",
+            "id": "INT",
+            "min": 13
+          },
+          {
+            "op": "skill",
+            "id": "arcana",
+            "min": 4
+          },
+          {
+            "op": "feat",
+            "id": "veiled-casting"
+          },
+          {
+            "op": "casting",
+            "id": "arcane",
+            "min": 2
+          }
+        ]
+      },
+      "hp_per_level": 3,
+      "skill_points": 3,
+      "bab": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "multiply",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "veil-adept"
+              },
+              {
+                "op": "const",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "saves": {
+        "fortitude": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "veil-adept"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "reflex": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "veil-adept"
+            },
+            {
+              "op": "const",
+              "value": 3
+            }
+          ]
+        },
+        "will": {
+          "op": "sum",
+          "args": [
+            {
+              "op": "const",
+              "value": 2
+            },
+            {
+              "op": "floor_divide",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "veil-adept"
+                },
+                {
+                  "op": "const",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "casting": {
+        "op": "floor_divide",
+        "args": [
+          {
+            "op": "sum",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "veil-adept"
+              },
+              {
+                "op": "const",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "casting_tradition": "arcane",
+      "features": [
+        {
+          "at": 1,
+          "id": "veil-savant"
+        }
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "features": [
+    {
+      "id": "held-ground",
+      "name": "Held Ground",
+      "modifiers": [],
+      "abilities": [
+        "guard"
+      ],
+      "resources": [],
+      "tags": [
+        "frontliner",
+        "melee_threat"
+      ],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "sure-blade",
+      "name": "Sure Blade",
+      "modifiers": [
+        {
+          "stat": "melee_attack",
+          "type": "training",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "light-step",
+      "name": "Light Step",
+      "modifiers": [
+        {
+          "stat": "stride",
+          "type": "untyped",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [
+        "mobile",
+        "expert"
+      ],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "opening-strike",
+      "name": "Opening Strike",
+      "modifiers": [],
+      "abilities": [
+        "precision"
+      ],
+      "resources": [],
+      "tags": [
+        "precision"
+      ],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "arcane-discipline",
+      "name": "Arcane Discipline",
+      "modifiers": [],
+      "abilities": [
+        "spark",
+        "slow",
+        "apparent-wall",
+        "false-guard",
+        "healing-thread"
+      ],
+      "resources": [
+        "focus"
+      ],
+      "tags": [
+        "arcane",
+        "perception_caster"
+      ],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "storm-sign",
+      "name": "Storm Sign",
+      "modifiers": [],
+      "abilities": [
+        "delayed-burst"
+      ],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veil-savant",
+      "name": "Veil Savant",
+      "modifiers": [
+        {
+          "stat": "will",
+          "type": "insight",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [
+        "veil-echo",
+        "defensive-duplicate"
+      ],
+      "resources": [
+        "veil_uses"
+      ],
+      "tags": [
+        "illusion_specialist"
+      ],
+      "senses": [],
+      "hooks": [
+        "veil_echo_v1"
+      ],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "steady-study",
+      "name": "Steady Study",
+      "modifiers": [
+        {
+          "stat": "will",
+          "type": "untyped",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "sentry-trained",
+      "name": "Sentry Trained",
+      "modifiers": [
+        {
+          "stat": "defence",
+          "type": "training",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "keen-focus",
+      "name": "Keen Focus",
+      "modifiers": [
+        {
+          "stat": "save_dc",
+          "type": "training",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veiled-casting",
+      "name": "Veiled Casting",
+      "modifiers": [],
+      "abilities": [],
+      "resources": [],
+      "tags": [
+        "veiled_casting"
+      ],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "quick-reflex",
+      "name": "Quick Reflex",
+      "modifiers": [
+        {
+          "stat": "initiative",
+          "type": "training",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "abilities": [],
+      "resources": [],
+      "tags": [],
+      "senses": [],
+      "hooks": [],
+      "grants": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "feats": [
+    {
+      "id": "steady-study",
+      "name": "Steady Study",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "features": [
+        "steady-study"
+      ],
+      "repeatable": true,
+      "choice_parameters": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "sentry-trained",
+      "name": "Sentry Trained",
+      "requirements": {
+        "op": "attribute",
+        "id": "STR",
+        "min": 12
+      },
+      "features": [
+        "sentry-trained"
+      ],
+      "repeatable": false,
+      "choice_parameters": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "keen-focus",
+      "name": "Keen Focus",
+      "requirements": {
+        "op": "casting",
+        "id": "arcane",
+        "min": 1
+      },
+      "features": [
+        "keen-focus"
+      ],
+      "repeatable": false,
+      "choice_parameters": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veiled-casting",
+      "name": "Veiled Casting",
+      "requirements": {
+        "op": "all",
+        "args": [
+          {
+            "op": "attribute",
+            "id": "INT",
+            "min": 13
+          },
+          {
+            "op": "skill",
+            "id": "arcana",
+            "min": 2
+          },
+          {
+            "op": "casting",
+            "id": "arcane",
+            "min": 1
+          }
+        ]
+      },
+      "features": [
+        "veiled-casting"
+      ],
+      "repeatable": false,
+      "choice_parameters": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "quick-reflex",
+      "name": "Quick Reflex",
+      "requirements": {
+        "op": "attribute",
+        "id": "DEX",
+        "min": 12
+      },
+      "features": [
+        "quick-reflex"
+      ],
+      "repeatable": false,
+      "choice_parameters": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "athletics",
+      "name": "Athletics",
+      "attribute": "STR",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "physical"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "stealth",
+      "name": "Stealth",
+      "attribute": "DEX",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "concealment"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "perception",
+      "name": "Perception",
+      "attribute": "WIS",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "senses"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "arcana",
+      "name": "Arcana",
+      "attribute": "INT",
+      "trained_only": true,
+      "max_rank": "character_level",
+      "tags": [
+        "arcane"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "craft",
+      "name": "Craft",
+      "attribute": "INT",
+      "trained_only": true,
+      "max_rank": "character_level",
+      "tags": [
+        "expert"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "persuasion",
+      "name": "Persuasion",
+      "attribute": "CHA",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "social"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "survival",
+      "name": "Survival",
+      "attribute": "WIS",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "travel"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    },
+    {
+      "id": "insight",
+      "name": "Insight",
+      "attribute": "WIS",
+      "trained_only": false,
+      "max_rank": "character_level",
+      "tags": [
+        "belief"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "modifiers": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "focus",
+      "name": "Focus",
+      "capacity": {
+        "op": "sum",
+        "args": [
+          {
+            "op": "const",
+            "value": 2
+          },
+          {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "lantern-adept"
+              },
+              {
+                "op": "const",
+                "value": 4
+              }
+            ]
+          }
+        ]
+      },
+      "refresh": "eligible_rest",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "stamina",
+      "name": "Stamina",
+      "capacity": {
+        "op": "const",
+        "value": 2
+      },
+      "refresh": "encounter",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veil_uses",
+      "name": "Veil Uses",
+      "capacity": {
+        "op": "max",
+        "args": [
+          {
+            "op": "const",
+            "value": 1
+          },
+          {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "veil-adept"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "refresh": "daily",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "statuses": [
+    {
+      "id": "slowed",
+      "tags": [
+        "movement_debuff"
+      ],
+      "duration": {
+        "type": "activation",
+        "amount": 1,
+        "expiry": "target_activation_end"
+      },
+      "stacking": "refresh",
+      "modifiers": [
+        {
+          "stat": "stride",
+          "type": "condition",
+          "value": {
+            "op": "const",
+            "value": -2
+          }
+        }
+      ],
+      "effects": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "guarding",
+      "tags": [
+        "guard_ready"
+      ],
+      "duration": {
+        "type": "round",
+        "amount": 1,
+        "expiry": "global_round_start"
+      },
+      "stacking": "replace",
+      "modifiers": [],
+      "effects": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "rare-denial",
+      "tags": [
+        "action_denial"
+      ],
+      "duration": {
+        "type": "activation",
+        "amount": 1,
+        "expiry": "target_activation_end"
+      },
+      "stacking": "reject",
+      "modifiers": [],
+      "effects": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "abilities": [
+    {
+      "id": "attack",
+      "name": "Attack",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "weapon_attack"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "reach": "equipment"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "move",
+      "name": "Stride",
+      "cost": {
+        "main": 0,
+        "move": 1,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "movement"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "dash",
+      "name": "Dash",
+      "cost": {
+        "main": 1,
+        "move": 1,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "movement",
+        "no_attack"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "movement": {
+        "multiplier": 2,
+        "bonus": 0
+      }
+    },
+    {
+      "id": "charge",
+      "name": "Charge",
+      "cost": {
+        "main": 1,
+        "move": 1,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "movement",
+        "straight_lane",
+        "end_adjacent",
+        "one_attack"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "movement": {
+        "multiplier": 1,
+        "bonus": 2
+      }
+    },
+    {
+      "id": "disengage",
+      "name": "Disengage",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "avoid_departure_this_activation"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "departure-attack",
+      "name": "Departure Attack",
+      "cost": {
+        "main": 0,
+        "move": 0,
+        "reaction": 1,
+        "resources": {}
+      },
+      "effects": [],
+      "tags": [
+        "reaction",
+        "melee_threat",
+        "weapon_attack"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "trigger": "leave_melee_threat"
+    },
+    {
+      "id": "guard",
+      "name": "Guard",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "guarding"
+        }
+      ],
+      "tags": [
+        "protect_adjacent_ally"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "follow_up": {
+        "reaction": 1,
+        "damage_reduction": 4
+      }
+    },
+    {
+      "id": "precision",
+      "name": "Opening Strike",
+      "cost": {
+        "main": 0,
+        "move": 0,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [
+        {
+          "op": "modify_stat",
+          "stat": "damage",
+          "type": "untyped",
+          "value": {
+            "op": "const",
+            "value": 4
+          },
+          "when": {
+            "op": "any",
+            "args": [
+              {
+                "op": "tag",
+                "id": "concealed_opening"
+              },
+              {
+                "op": "tag",
+                "id": "allied_melee_threat"
+              }
+            ]
+          }
+        }
+      ],
+      "tags": [
+        "passive",
+        "precision",
+        "first_qualifying_hit"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "spark",
+      "name": "Lantern Spark",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {}
+      },
+      "effects": [
+        {
+          "op": "damage",
+          "amount": {
+            "dice": "1d6",
+            "bonus": {
+              "op": "modifier",
+              "id": "INT"
+            }
+          },
+          "damage_type": "arcane"
+        }
+      ],
+      "tags": [
+        "ranged"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 5
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "slow",
+      "name": "Binding Step",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "will",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 10
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "slowed"
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "control"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 5
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "apparent-wall",
+      "name": "Painted Passage",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apparent_effect",
+          "descriptor": {
+            "senses": [
+              "sight"
+            ],
+            "investigation_trigger": "deliberate_interaction",
+            "save": "will",
+            "dc": {
+              "op": "sum",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 10
+                },
+                {
+                  "op": "modifier",
+                  "id": "INT"
+                },
+                {
+                  "op": "stat",
+                  "id": "save_dc"
+                }
+              ]
+            },
+            "duration": {
+              "type": "round",
+              "amount": 2,
+              "expiry": "source_round_start"
+            },
+            "success": "disbelieved_by_observer",
+            "failure": "belief_retained",
+            "bypass_tags": [
+              "true_sight"
+            ],
+            "maximum_maintained": 1,
+            "replacement": "cancel_prior",
+            "break_conditions": [
+              "source_incapacitated"
+            ],
+            "kind": "apparent_obstacle",
+            "presentation": {
+              "visual": "wall"
+            },
+            "collision": false
+          }
+        }
+      ],
+      "tags": [
+        "perception",
+        "illusion"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "tile_or_apparent",
+        "range": 5
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "false-guard",
+      "name": "Borrowed Sentry",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apparent_effect",
+          "descriptor": {
+            "senses": [
+              "sight"
+            ],
+            "investigation_trigger": "deliberate_interaction",
+            "save": "will",
+            "dc": {
+              "op": "sum",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 10
+                },
+                {
+                  "op": "modifier",
+                  "id": "INT"
+                },
+                {
+                  "op": "stat",
+                  "id": "save_dc"
+                }
+              ]
+            },
+            "duration": {
+              "type": "round",
+              "amount": 2,
+              "expiry": "source_round_start"
+            },
+            "success": "disbelieved_by_observer",
+            "failure": "belief_retained",
+            "bypass_tags": [
+              "true_sight"
+            ],
+            "maximum_maintained": 1,
+            "replacement": "cancel_prior",
+            "break_conditions": [
+              "source_incapacitated"
+            ],
+            "kind": "false_target",
+            "presentation": {
+              "visual": "guard"
+            },
+            "collision": false
+          }
+        }
+      ],
+      "tags": [
+        "perception",
+        "illusion"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "tile_or_apparent",
+        "range": 5
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "defensive-duplicate",
+      "name": "Lantern Double",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apparent_effect",
+          "descriptor": {
+            "senses": [
+              "sight"
+            ],
+            "investigation_trigger": "deliberate_interaction",
+            "save": "will",
+            "dc": {
+              "op": "sum",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 10
+                },
+                {
+                  "op": "modifier",
+                  "id": "INT"
+                },
+                {
+                  "op": "stat",
+                  "id": "save_dc"
+                }
+              ]
+            },
+            "duration": {
+              "type": "round",
+              "amount": 2,
+              "expiry": "source_round_start"
+            },
+            "success": "disbelieved_by_observer",
+            "failure": "belief_retained",
+            "bypass_tags": [
+              "true_sight"
+            ],
+            "maximum_maintained": 1,
+            "replacement": "cancel_prior",
+            "break_conditions": [
+              "source_incapacitated"
+            ],
+            "kind": "defensive_duplicate",
+            "presentation": {
+              "visual": "guard"
+            },
+            "collision": false
+          }
+        }
+      ],
+      "tags": [
+        "perception",
+        "illusion"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "tile_or_apparent",
+        "range": 5
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "delayed-burst",
+      "name": "Storm Sign",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "damage",
+          "amount": {
+            "dice": "2d4+2",
+            "bonus": {
+              "op": "modifier",
+              "id": "INT"
+            }
+          },
+          "damage_type": "arcane"
+        }
+      ],
+      "tags": [
+        "area",
+        "friendly_fire"
+      ],
+      "timing": {
+        "kind": "next_activation",
+        "interruptible": true,
+        "locked_target": "tile",
+        "cancel_event": "pending_cancelled"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "tile",
+        "range": 5,
+        "radius": 1
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "healing-thread",
+      "name": "Mending Thread",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "focus": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "heal",
+          "amount": {
+            "op": "const",
+            "value": 6
+          }
+        }
+      ],
+      "tags": [
+        "healing"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 1
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "veil-echo",
+      "name": "Veil Echo",
+      "cost": {
+        "main": 0,
+        "move": 0,
+        "reaction": 1,
+        "resources": {
+          "veil_uses": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "hook",
+          "id": "veil_echo_v1"
+        }
+      ],
+      "tags": [
+        "perception",
+        "non_damage",
+        "reaction"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "self"
+      },
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      },
+      "trigger": "illusion_disbelieved"
+    }
+  ],
+  "equipment": [
+    {
+      "id": "shortblade",
+      "name": "Travel Blade",
+      "kind": "weapon",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [],
+      "tags": [
+        "melee"
+      ],
+      "reach": 1,
+      "range": 1,
+      "damage": "1d6",
+      "damage_type": "physical",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "bow",
+      "name": "Field Bow",
+      "kind": "weapon",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [],
+      "tags": [
+        "ranged"
+      ],
+      "reach": 1,
+      "range": 7,
+      "damage": "1d6",
+      "damage_type": "physical",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "staff",
+      "name": "Lantern Staff",
+      "kind": "weapon",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [],
+      "tags": [
+        "melee",
+        "arcane_focus"
+      ],
+      "reach": 1,
+      "range": 1,
+      "damage": "1d4",
+      "damage_type": "physical",
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "mail",
+      "name": "Road Mail",
+      "kind": "armor",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [
+        {
+          "stat": "defence",
+          "type": "armor",
+          "value": {
+            "op": "const",
+            "value": 3
+          }
+        }
+      ],
+      "tags": [
+        "armored"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "leathers",
+      "name": "Travel Leathers",
+      "kind": "armor",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [
+        {
+          "stat": "defence",
+          "type": "armor",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "tags": [
+        "light_armor"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "shield",
+      "name": "Road Shield",
+      "kind": "shield",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [
+        {
+          "stat": "defence",
+          "type": "shield",
+          "value": {
+            "op": "const",
+            "value": 1
+          }
+        }
+      ],
+      "tags": [
+        "shield"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "focus-token",
+      "name": "Focus Token",
+      "kind": "utility",
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "modifiers": [],
+      "tags": [
+        "focus_implement"
+      ],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "ancestries": [
+    {
+      "id": "heritage-human",
+      "people_id": "human",
+      "tags": [
+        "mortal",
+        "heritage:human"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-dwarf",
+      "people_id": "dwarf",
+      "tags": [
+        "mortal",
+        "heritage:dwarf"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-wood-elf",
+      "people_id": "wood-elf",
+      "tags": [
+        "mortal",
+        "heritage:wood-elf"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-hearth-elf",
+      "people_id": "hearth-elf",
+      "tags": [
+        "mortal",
+        "heritage:hearth-elf"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-smallfolk",
+      "people_id": "smallfolk",
+      "tags": [
+        "mortal",
+        "heritage:smallfolk"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-orc",
+      "people_id": "orc",
+      "tags": [
+        "mortal",
+        "heritage:orc"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-goblin",
+      "people_id": "goblin",
+      "tags": [
+        "mortal",
+        "heritage:goblin"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    },
+    {
+      "id": "heritage-emberkin",
+      "people_id": "emberkin",
+      "tags": [
+        "mortal",
+        "heritage:emberkin"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "hometown-background",
+      "tags": [
+        "hometown_roots"
+      ],
+      "features": [],
+      "modifiers": [],
+      "provenance": {
+        "origin": "Original TRHGD mechanical definitions; generic d20 inspiration, no reproduced book prose",
+        "license": "Original project-authored content; no third-party game text/assets imported",
+        "revision": "game32-v1"
+      }
+    }
+  ],
+  "role_recommendations": {
+    "vanguard": {
+      "class": "roadwarden",
+      "attributes": {
+        "STR": 15,
+        "CON": 14,
+        "DEX": 13,
+        "WIS": 12,
+        "INT": 10,
+        "CHA": 8
+      },
+      "feat": "sentry-trained",
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ]
+    },
+    "scout": {
+      "class": "wayfinder",
+      "attributes": {
+        "DEX": 15,
+        "INT": 14,
+        "CON": 13,
+        "WIS": 12,
+        "STR": 10,
+        "CHA": 8
+      },
+      "feat": "quick-reflex",
+      "equipment": [
+        "shortblade",
+        "bow",
+        "leathers"
+      ]
+    },
+    "adept": {
+      "class": "lantern-adept",
+      "attributes": {
+        "INT": 15,
+        "WIS": 14,
+        "DEX": 13,
+        "CON": 12,
+        "CHA": 10,
+        "STR": 8
+      },
+      "feat": "keen-focus",
+      "equipment": [
+        "staff",
+        "focus-token"
+      ]
+    },
+    "expert": {
+      "class": "wayfinder",
+      "attributes": {
+        "INT": 15,
+        "DEX": 14,
+        "WIS": 13,
+        "CON": 12,
+        "CHA": 10,
+        "STR": 8
+      },
+      "feat": "steady-study",
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ]
+    }
+  }
+}

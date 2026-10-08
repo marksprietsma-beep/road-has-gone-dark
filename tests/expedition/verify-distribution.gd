@@ -64,6 +64,19 @@ func run() -> void:
   check(ui.state.expedition.active.is_empty() and ui.state.expedition.leads[1].status=="completed","native complete hometown return")
   var loaded:=service.operate(entry,slot,"resume")
   check(loaded.ok and loaded.state==ui.state,"native reload retains exact outcomes/party/clock")
+  var rules := RulesService.new()
+  rules.store=service.store;rules.library=service.library
+  var preview := RulesRecords.preview_preparation(loaded.state)
+  check(preview.ok,"native bundled rules pack and original party migration")
+  if preview.ok:
+   var prepared := rules.commit_preview(entry,slot,preview)
+   check(prepared.ok,"native atomic mechanical preparation")
+   if prepared.ok:
+    check(prepared.state.expedition==loaded.state.expedition and prepared.state.party==loaded.state.party,"native mechanics preserve hometown expedition and biography")
+    var record: Dictionary=prepared.state.mechanics.records.values()[0]
+    var derived := RulesCharacter.new(RulesRecords.registry()).derive_character(record)
+    check(derived.ok and derived.snapshot.is_read_only(),"native combat-ready immutable snapshot")
+    check(service.store.load_save(slot,entry.world).ok,"native prepared save reload")
   check(not service.library.delete_world(entry).ok,"native used world remains protected")
   timings.append({"world":entry.world.seed,"six_transitions_ms":Time.get_ticks_msec()-start})
   ui.queue_free()
