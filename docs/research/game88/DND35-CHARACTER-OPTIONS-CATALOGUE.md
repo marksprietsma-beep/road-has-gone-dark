@@ -1239,6 +1239,387 @@ Unearthed Arcana's racial paragons are short class progressions that intensify r
 
 ---
 
+## 4.10 Corruption / taint as a persistent risk-power system
+
+D&D 3.x contains two especially useful corruption models.
+
+The Unearthed Arcana taint variant treats prolonged exposure to malign places, objects or forces as a persistent condition with escalating severity. Heroes of Horror develops this further by distinguishing **physical corruption** from **mental depravity**, with mild/moderate/severe thresholds and abilities that can explicitly require a certain degree of taint.
+
+This is a strong precedent for TRHGD, but the alignment assumptions should not be copied. TRHGD corruption should represent **exposure and alteration**, not a universal morality meter.
+
+### TRHGD adaptation
+
+Prefer two or more typed corruption channels rather than one generic evil score. A minimal record could contain:
+
+```text
+corruption_state:
+    source_domain
+    bodily_score
+    psychic_score
+    stage
+    symptoms[]
+    granted_features[]
+    compulsions[]
+    exposure_history[]
+    cleansing_options[]
+    irreversible_threshold
+```
+
+Potential source domains:
+
+- abyssal / demonic;
+- undead / necrotic;
+- aberrant / void;
+- fey;
+- elemental;
+- divine;
+- blight / disease;
+- artifact-specific or site-specific corruption.
+
+Suggested stages:
+
+```text
+clean
+trace
+marked
+changed
+consumed
+```
+
+The key design lesson from Heroes of Horror is **temptation through power**. Tainted feats and taint-based prestige classes demonstrate that corruption can unlock capabilities as it becomes more dangerous. TRHGD can use the same structural idea without copying the exact numbers or moral framing:
+
+```text
+higher corruption
+    -> new ability / resistance / sense / prestige eligibility
+    -> visible or hidden symptom
+    -> new event pool
+    -> harder cleansing / greater long-term risk
+```
+
+Examples:
+
+- necrotic corruption grants death-sense but slows natural healing;
+- fey corruption grants glamour resistance but creates binding promises;
+- abyssal corruption grants claws or darkvision but adds intrusive impulses;
+- void corruption improves perception of impossible spaces but creates instability or nightmares.
+
+This gives the player a reason to consider **living with corruption** rather than treating every point as a simple debuff to cleanse immediately.
+
+### What not to copy
+
+The older taint systems often equate corruption with alignment or forcibly push the character toward an evil identity. TRHGD should avoid that. A physically or mentally altered character is not automatically morally worse.
+
+Likewise, the tainted-sorcerer model includes a coercive advancement mechanic in which corruption can effectively drag the character further down that class path. The useful idea is escalating temptation; the literal forced-level mechanic is not appropriate for TRHGD's deliberate build philosophy.
+
+## 4.11 Curses as structured persistent afflictions
+
+Core 3.5 already treats curses as more than temporary debuffs. `bestow curse` is permanent until specifically removed, while cursed items can impose requirements, drawbacks, compulsions, delusions or altered effects. Greater curse variants can require a specific deed to break the curse.
+
+This is highly relevant to TRHGD because a curse can become a **personal problem with a gameplay arc**, not merely a status icon.
+
+### Proposed curse model
+
+```text
+curse:
+    id
+    source
+    bearer
+    attachment
+    revealed_state
+    trigger
+    boon
+    penalty
+    compulsion
+    escalation
+    suppression_rules
+    removal_conditions
+    cure_clues
+    event_tags
+    provenance
+```
+
+Useful attachment types:
+
+- character;
+- item;
+- body part;
+- bloodline / family;
+- location;
+- oath;
+- relationship;
+- faction or supernatural patron.
+
+Useful curse structures:
+
+### Pure burden
+A straightforward persistent penalty with a clear cure route.
+
+### Boon-with-cost
+The curse grants something desirable but extracts a price.
+
+### Requirement curse
+The benefit remains active only while the bearer performs a recurring obligation.
+
+### Escalating curse
+Ignoring or exploiting it advances a stage.
+
+### Conditional curse
+Dormant until the bearer breaks an oath, enters a place, uses an item or performs another trigger.
+
+### Transformative curse
+Gradually changes body, senses, abilities or event eligibility.
+
+### Social curse
+Produces visible marks, reputation effects, fear, mistrust or supernatural recognition.
+
+### TRHGD design rule
+
+Every major curse should answer three questions:
+
+1. **What does the player gain or risk by keeping it?**
+2. **What story/gameplay opportunities does it create?**
+3. **What meaningful route exists to suppress, transform or remove it?**
+
+A good curse should generate decisions. A bad curse is only "-2 until you visit a healer".
+
+The 3.5 cursed-item model is also useful for information design: an item can appear beneficial while its full downside is not yet known. That maps cleanly onto TRHGD's existing distinction between **objective truth** and **observer/player knowledge**.
+
+## 4.12 Mutation / deformity progression
+
+Lords of Madness' aberrant feats are a direct precedent for mutations that visibly reshape the body while granting benefits. The system allows physical changes such as altered eyes, limbs, skin, hands or tails, and later aberrant options build on that altered state.
+
+Fiendish Codex I's Abyssal Heritor feats use a similar progression model: multiple related feats progressively make a character more physically and metaphysically fiendish, often granting a benefit alongside a social, skill or behavioural drawback.
+
+Heroes of Horror also indexes willing deformity feats such as altered skin, stature, teeth and tongue, again demonstrating the 3.5 pattern of **body change as character advancement**.
+
+### TRHGD adaptation
+
+Treat mutation as a staged acquired overlay rather than a new ancestry.
+
+```text
+mutation:
+    id
+    source
+    body_slot
+    stage
+    visible_traits[]
+    granted_tags[]
+    granted_features[]
+    drawbacks[]
+    conflicts[]
+    progression_options[]
+    reversible
+    cure_or_stabilize
+```
+
+Mutation sources might include:
+
+- corruption exposure;
+- alchemy;
+- magical accident;
+- monster wound;
+- graft rejection/integration;
+- curse;
+- symbiont;
+- deliberate ritual;
+- inherited latent heritage becoming active.
+
+### Mutation should have two progression modes
+
+**Involuntary progression**
+
+Exposure or failure advances the mutation.
+
+**Chosen adaptation**
+
+Once mutated, the player can spend later advancement choices to master or exploit it.
+
+This is important because it connects emergent Wildermyth-style history to deliberate D&D-style build planning:
+
+```text
+EVENT:
+character is marked by the void
+
+RESULT:
+gain latent mutation
+
+LATER PLAYER CHOICE:
+suppress it
+stabilize it
+embrace it through a feat/talent
+seek a graft/prosthetic solution
+pursue a prestige path requiring it
+```
+
+The mutation therefore begins as something that happened to the character, but what it **becomes** remains partly under player control.
+
+## 4.13 Corruption-linked prestige and feat eligibility
+
+Heroes of Horror explicitly uses taint severity as a prerequisite for feats and prestige classes. This is one of the clearest precedents for making lived history part of build eligibility.
+
+TRHGD should generalize that idea:
+
+```text
+requirement:
+    has_corruption_domain("void")
+    corruption_stage_at_least("marked")
+    has_aspect("survived_black_mirror")
+    relationship_with("mentor:ashen-seer") >= trusted
+```
+
+Then a prestige path could exist only for characters who have actually experienced the relevant part of the world.
+
+Potential original TRHGD-style examples:
+
+- **Blightbound** — survives and learns to channel a spreading blight;
+- **Hexbearer** — turns a persistent curse into controlled magic;
+- **Fleshweaver** — specializes in grafts and bodily adaptation;
+- **Veil-Touched** — uses a reality/perception mutation as an illusion/control path;
+- **Gravebound** — develops necrotic corruption without fully becoming undead.
+
+These are examples of architecture, not approved content names.
+
+## 4.14 Pacts, possession and patron-linked corruption
+
+Fiendish Codex material provides another useful structural pattern: a character can gain supernatural benefits from a patron, pact or external entity while becoming increasingly marked by that relationship. Possession/exorcism material likewise demonstrates that an outside entity can coexist with the character as an active problem rather than simply replacing them.
+
+TRHGD could represent this through:
+
+```text
+bond:
+    entity_id
+    relationship_type
+    granted_features
+    obligations
+    forbidden_actions
+    escalation
+    breach_consequences
+    severance_method
+```
+
+Possible bond types:
+
+- patron;
+- possessing spirit;
+- bound demon;
+- ancestral ghost;
+- symbiont;
+- cursed sentient item;
+- fey bargain.
+
+This should be modeled as a relationship/aspect layer feeding the rules engine, not as arbitrary scripted possession.
+
+## 4.15 Disease, affliction and corruption overlap
+
+D&D's curse, disease and poison rules are mechanically separate, but they suggest a useful TRHGD umbrella concept: **persistent affliction**.
+
+A generic affliction can have:
+
+```text
+source
+incubation
+stage
+periodic check
+symptoms
+transmission
+treatment
+suppression
+cure
+transformation outcome
+```
+
+This would let one engine represent:
+
+- mundane disease;
+- supernatural plague;
+- lycanthropic infection;
+- fungal mutation;
+- curse sickness;
+- necrotic blight;
+- corruption exposure.
+
+Do not make every affliction a repeated save-until-cured loop. Some should be deterministic once contracted, some should progress through events, and some should offer choices.
+
+## 4.16 Recommended TRHGD corruption / curse / mutation architecture
+
+These systems should share a common **acquired-state layer** rather than becoming three unrelated subsystems.
+
+```text
+ACQUIRED STATE
+    id
+    category
+        corruption
+        curse
+        mutation
+        wound
+        graft
+        transformation
+        symbiont
+        disease
+        pact
+
+    source
+    acquired_at
+    stage
+    visibility
+    body_slots[]
+    tags[]
+    granted_features[]
+    modifiers[]
+    restrictions[]
+    event_tags[]
+    progression
+    suppression
+    cure/removal
+    provenance
+```
+
+The category determines specialized behavior, but GAME-32 should consume only generic outputs such as tags, modifiers, abilities, senses, resources and requirement facts.
+
+This avoids hardcoding "curse logic" or "mutation logic" into class progression.
+
+## 4.17 A stronger Wildermyth-style loop
+
+These systems create a much richer life-history loop:
+
+```text
+EXPEDITION EVENT
+        ↓
+curse / corruption / mutation / graft / wound
+        ↓
+new appearance + mechanics + event eligibility
+        ↓
+player decides suppress / cure / exploit / embrace
+        ↓
+new feat / prestige / personal quest / relationship consequence
+        ↓
+character becomes mechanically and narratively unique
+```
+
+A good test is:
+
+> Can two characters with the same class levels become recognizably different because one carries a curse, another has stabilized a mutation, and a third has replaced an injury with a graft?
+
+If yes, the Wildermyth-like layer is contributing genuine RPG identity rather than cosmetic prose.
+
+## 4.18 Safety rails for player agency
+
+Because these systems can permanently alter a carefully planned character, TRHGD should enforce several rules:
+
+- major irreversible changes are previewed before commitment where player choice is possible;
+- random outcomes should rarely invalidate a core build outright;
+- severe negative outcomes should usually create a compensating route, new opportunity or adaptation path;
+- cures can be difficult without always being binary "pay healer";
+- corruption powers should be tempting but not mathematically mandatory;
+- mutations should not silently overwrite ancestry or class history;
+- body changes must use explicit equipment/body-slot compatibility;
+- removal of a prerequisite-granting mutation/curse must clearly preview which feats/prestige abilities become inactive;
+- save/reload cannot reroll already committed acquired-state outcomes.
+
+This keeps permanent change dramatic without making save-scumming the rational default.
+
+---
+
 # 5. Best 3.5 mechanisms for TRHGD's Wildermyth-like layer
 
 | D&D 3.x concept | TRHGD use | Recommended ownership |
@@ -1254,6 +1635,11 @@ Unearthed Arcana's racial paragons are short class progressions that intensify r
 | Flaw | Lasting consequence | Injury/aspect, but not feat-farming |
 | Substitution level / ACF | Contextual variation without class explosion | GAME-32 feature replacement |
 | Racial paragon | Deliberate investment in ancestry identity | Heritage talent path |
+| Taint / corruption | Persistent risk-power progression | Character-life acquired state + rules tags |
+| Curse | Persistent affliction / personal quest driver | Character-life acquired state |
+| Aberrant / Abyssal mutation | Staged physical transformation | Acquired state + GAME-32 feature choices |
+| Pact / possession | Power tied to an external entity and obligations | Relationship/aspect + rules |
+| Disease / supernatural affliction | Progressive condition that can become story state | Acquired-state engine |
 
 ---
 
@@ -1380,7 +1766,11 @@ Astra should use this catalogue as a **mechanics palette** for the Character Lif
 - bloodline/heritage unlocks;
 - traits as life-event outcomes;
 - prestige eligibility from personal quests;
-- symbionts as relationship/equipment hybrids.
+- symbionts as relationship/equipment hybrids;
+- corruption as a typed risk-power track rather than morality meter;
+- curses as persistent quest-generating afflictions;
+- mutations as staged acquired overlays with optional player investment;
+- patron/possession bonds as relationships with powers and obligations.
 
 ---
 
@@ -1411,6 +1801,13 @@ Key source pages used for this catalogue:
 - [Draconic graft / heritage material](https://srd.dndtools.org/srd/feats/noncore-featsrotd.html)
 - [Dragonborn / Rite of Rebirth](https://srd.dndtools.org/srd/races/racesRotd.html)
 - [Aberrant feat material](https://srd.dndtools.org/srd/feats/noncore-featslom.html)
+- [Unearthed Arcana taint variant](https://srd.dndtools.org/srd/variant/unearthedTaint.html)
+- [Heroes of Horror index / tainted feats](https://srd.dndtools.org/srd/meta/books/3.5/HeroesofHorror.html)
+- [Heroes of Horror feat details](https://srd.dndtools.org/srd/feats/noncore-featshoh.html)
+- [Core bestow/remove curse](https://srd.dndtools.org/srd/magic/spells/spells/spellsAllCore.html)
+- [Core cursed items](https://www.d20srd.org/srd/magicItems/cursedItems.htm)
+- [Fiendish Codex I Abyssal Heritor feats](https://srd.dndtools.org/srd/feats/noncore-featsfc1.html)
+- [Fiendish Codex I transformation/pact spell index](https://srd.dndtools.org/srd/meta/books/3.5/FiendishCodex.html)
 
 ## Research caveats
 
