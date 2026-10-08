@@ -1,19 +1,19 @@
 # GAME-32 executed validation and performance
 
-Fresh Godot4.6.3 local execution after the final audit: **22,172 kernel checks, 233 real-campaign migration checks and 6 process-restart checks; zero failures.** The runner compared actual output to the current committed golden oracle, preserved all immutable world-enrichment input hashes and re-executed migration/restart. Thirty independent level20 HP/BAB/save expectations anchor the generated oracle to the V1 formulas.
+Fresh Godot4.6.3 local execution after the final audit: **22,176 kernel checks, 233 real-campaign migration checks and 6 process-restart checks; zero failures.** The runner compared actual output to the current committed golden oracle, preserved all immutable world-enrichment input hashes and re-executed migration/restart. Thirty independent level20 HP/BAB/save expectations anchor the generated oracle to the V1 formulas.
 
 `python tests/rules/run-tests.py` uses the pinned engine and existing compatible world-generation helper; no new player runtime. Raw logs, `kernel-results.json`, migration summaries and `run-timings.json` are retained beside this report.
 
 | Stage | Operations | Total seconds | Mean ms/op |
 | --- | ---: | ---: | ---: |
-| Registry load | 1 | 0.007544 | 7.5440 |
-| Reference level1–20 progression | 120 | 2.626261 | 21.8855 |
-| Advancement previews | 2,000 | 6.634141 | 3.3171 |
-| Serialization/derivation round trips | 1,000 | 12.768538 | 12.7685 |
-| Compound prerequisites | 5,000 | 0.274302 | 0.0549 |
-| Snapshot derivation | 1,000 | 0.955245 | 0.9552 |
-| Build validation | 1,000 | 0.581492 | 0.5815 |
-| Ability/effect calls | 1,000 | 4.697657 | 4.6977 |
+| Registry load | 1 | 0.007696 | 7.6960 |
+| Reference level1–20 progression | 120 | 2.692428 | 22.4369 |
+| Advancement previews | 2,000 | 7.249815 | 3.6249 |
+| Serialization/derivation round trips | 1,000 | 13.111088 | 13.1111 |
+| Compound prerequisites | 5,000 | 0.287863 | 0.0576 |
+| Snapshot derivation | 1,000 | 0.955934 | 0.9559 |
+| Build validation | 1,000 | 0.621520 | 0.6215 |
+| Ability/effect calls | 1,000 | 4.738800 | 4.7388 |
 
 These are observed single-host timings, not frame-time guarantees. Registry parsing/hashing occurs once per registry/process; no stress loop reloads content. Advancement and validation deliberately replay bounded ordered history rather than trusting persisted totals. No per-build cache is necessary at this measured scale; caching mutable character state would create invalidation risks without evidence of a bottleneck.
 

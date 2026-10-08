@@ -283,10 +283,15 @@ func apply_advancement(record: Dictionary,choice: Dictionary,expected_revision: 
 func available_advancement(record: Dictionary) -> Dictionary:
  var derived := derive_character(record)
  if not derived.ok: return derived
+ # Entry options must use the same durable qualification basis as replay.
+ # Temporary battle/runtime grants do not rewrite historical class entry.
+ var c: Dictionary=derived.context
+ var entry_context := _context(c.attributes,c.classes,c.skills,c.feats,record,false)
+ if not entry_context.errors.is_empty(): return RulesJson.result(entry_context.errors)
  var options := {}
  for id in registry.ids("classes"):
   var definition := registry.definition("classes",id)
-  var result := RulesExpressions.evaluate_requirements(definition.requirements,derived.context)
+  var result := RulesExpressions.evaluate_requirements(definition.requirements,entry_context)
   if int(derived.context.level)>=int(registry.rule("max_level")) or int(derived.context.classes.get(id,0))>=int(definition.max_level): result=RulesJson.result([RulesJson.issue("advancement.level_cap",id,"Progression limit reached")])
   options[id]=result
  return {"ok":true,"classes":options,"next_level":int(derived.context.level)+1}

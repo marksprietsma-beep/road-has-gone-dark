@@ -1,5 +1,5 @@
 {
-  "checks": 22172,
+  "checks": 22176,
   "engine": "4.6.3-stable (official)",
   "failures": 0,
   "golden": {
@@ -175,13 +175,13 @@
     "schema_version": 1
   },
   "timings": {
-    "derive_1000_us": 955245,
-    "effects_1000_us": 4697657,
-    "progression_2000_us": 6634141,
-    "reference_progression_us": 2626261,
-    "registry_load_us": 7544,
-    "requirements_5000_us": 274302,
-    "serialization_1000_us": 12768538,
-    "validation_1000_us": 581492
+    "derive_1000_us": 955934,
+    "effects_1000_us": 4738800,
+    "progression_2000_us": 7249815,
+    "reference_progression_us": 2692428,
+    "registry_load_us": 7696,
+    "requirements_5000_us": 287863,
+    "serialization_1000_us": 13111088,
+    "validation_1000_us": 621520
   }
 }

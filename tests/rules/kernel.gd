@@ -146,6 +146,14 @@ func run() -> void:
  var granted_record := first_adept.duplicate(true);granted_record.runtime=external_grant.target
  var granted := characters.derive_character(granted_record)
  check(granted.ok and granted.snapshot.stats.stride==5 and granted.snapshot.tags.has("mobile") and granted.snapshot.features.has("light-step"),"non-class feature grants tags and mechanics through existing extensions")
+ var entry_pack := registry.source_data();entry_pack.classes[1].requirements={"op":"tag","id":"mobile"}
+ var entry_registry := RulesRegistry.new();check(entry_registry.load_data(entry_pack).ok,"temporary-qualification fixture validates")
+ var entry_character := RulesCharacter.new(entry_registry)
+ var entry_record := first_adept.duplicate(true);entry_record.rules_ref=entry_registry.rules_ref();entry_record.runtime.granted_features=["light-step"]
+ check(entry_character.derive_character(entry_record).snapshot.tags.has("mobile"),"temporary grants remain available to current abilities and snapshots")
+ check(not entry_character.available_advancement(entry_record).classes["wayfinder"].ok and not entry_character.preview_choices(entry_record,"wayfinder").ok,"entry preview agrees with replay rather than using temporary qualification")
+ var entry_choice := entry_character.suggested_choice(entry_record,"wayfinder")
+ check(entry_choice.ok and not entry_character.preview_advancement(entry_record,entry_choice.choice).ok,"unqualified advancement agrees with the rejected option")
  var skill_pack := registry.source_data();skill_pack.skills[0].modifiers=[{"type":"circumstance","value":{"op":"const","value":2}}]
  var skill_registry := RulesRegistry.new();check(skill_registry.load_data(skill_pack).ok,"data-driven skill modifier validates")
  var skill_character := RulesCharacter.new(skill_registry)
