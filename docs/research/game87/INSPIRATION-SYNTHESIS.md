@@ -959,3 +959,21 @@ Accessed 2026-10-08.
 ## Warhammer 40,000: Rogue Trader
 - https://roguetrader.owlcat.games/beta-guide
 - https://roguetrader.owlcat.games/news/en/27
+
+
+---
+
+# Final synthesis follow-up — 8 October 2026
+
+The original pre-study above is preserved as the hypothesis/provenance checkpoint. The completed GAME-87 architecture pass recommends **A: adopt Character Life as a major pillar**, through a small staged causal loop around deliberate builds. See [FINAL-SYNTHESIS](FINAL-SYNTHESIS.md), [PRODUCT-IDENTITY](PRODUCT-IDENTITY.md), [CHARACTER-LIFE-CONTRACT](CHARACTER-LIFE-CONTRACT.md), [EVENT-ENGINE-CONTRACT](EVENT-ENGINE-CONTRACT.md), [GAME32-IMPACT](GAME32-IMPACT.md), [GAME33-IMPACT](GAME33-IMPACT.md), [PROTOTYPE-PLAN](PROTOTYPE-PLAN.md), [ROADMAP](ROADMAP.md) and [SOURCES](SOURCES.md).
+
+Clarifications superseding tentative details above:
+
+- GAME-32 is completed/accepted for review at `5caa55f0ea515d57b75c00b8ccbfac17e41948af`; no production changes were made in this pass. Its generic grants are useful but source-specific removal and life-based historical qualification need future schema support.
+- Movement + Main + shared Reaction is a baseline, not an absolute ceiling. Finite multi-strike actions and explicit bounded grants can support future Haste, fighter sequences and anatomy without a second engine or recursive turns.
+- Mutation never rewrites inherited ancestry or ordered class history. Body capabilities/current tags are acquired overlays. Historical entry, future continuation and current-use requirements are separate.
+- Two initial hooks plus an optional third, sparse social records and campaign-local event memory keep the first slice small. Investigation payoff and a short personal arc move earlier; treatment/access must precede severe injury.
+- The proof corpus has24 designed templates:16 core and8 capability-gated future probes. No Character Life gameplay, simulation or human study is claimed as executed.
+- Source pages were freshly checked; missing/redirected articles and secondary evidence are identified in SOURCES and source-access.json. No proprietary rules prose/assets were imported.
+
+This is research for review. It neither implements GAME-33 nor merges any branch.
