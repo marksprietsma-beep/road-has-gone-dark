@@ -57,6 +57,8 @@ def main():
         for name,profile in profiles.items():
             with (args.output/(name+'.txt')).open('w') as f:
                 pstats.Stats(profile,stream=f).strip_dirs().sort_stats('cumulative').print_stats(35)
+            path = args.output/(name+'.txt')
+            path.write_text(path.read_text().rstrip()+'\n')
         print(json.dumps(report,indent=2))
 
 if __name__=='__main__': main()
