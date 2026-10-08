@@ -1,5 +1,7 @@
 # First Adventure V0
 
+For the combined GAME-83 Windows playtest package, see [Windows review build](WINDOWS-REVIEW.md).
+
 The existing world/origin/town onboarding now leads into a party with personal hooks, one authored tactical encounter, a saved outcome, and return to local expeditions. This is a playable prototype, not completion of GAME-33 or the full GAME-87 architecture.
 
 ## Audit and implementation boundary
@@ -20,7 +22,7 @@ Minimal changes to existing systems: `GamePlaythroughStore` validates the option
 
 ## Character Life V0
 
-The hometown's **Meet the party · prepare first adventure** action explicitly prepares existing characters through GAME-32 and attaches `first_adventure.characters[character_id]`. Already prepared builds are retained. The companion cards show name, class/archetype (Roadwarden, Wayfinder or Lantern), occupation/background, existing motivation, a concern-backed personal hook and the existing neighbour relationship. They do not invent a missing person, faction or settlement fact.
+The hometown's **Prepare first adventure** action explicitly prepares existing characters through GAME-32 and attaches `first_adventure.characters[character_id]`. Already prepared builds are retained. The companion cards show name, class/archetype (Roadwarden, Wayfinder or Lantern), occupation/background, existing motivation, a concern-backed personal hook and the existing neighbour relationship. They do not invent a missing person, faction or settlement fact.
 
 Hooks retain `background_ref`, `concern_ref` and the chosen `home_ref`. A battle marks them *experienced*, not resolved. The original biographies and relationships remain authoritative. Generated parties use three of four narrative roles; expert and scout both start as Wayfinders, and a party without a caster remains playable.
 
@@ -53,13 +55,13 @@ The saved battle contains the authored-content hash, rules-pinned records, board
 Open **`scenes/ui/main_menu.tscn`** in Godot 4.6 and run that scene (F6), or run the project's main intro normally (F5). Do not run the combat scene alone; it needs an existing campaign handoff.
 
 1. **New Game** → select a world (either bundled preset is sufficient), state, region and eligible hometown → **Confirm origin**. Use the existing three-character editor. For the three showcased ability types choose Vanguard, Scout and Adept; any supported generated trio is valid. **Party ready** → **Enter hometown**.
-2. Click **Meet the party · prepare first adventure**. Read the three companion cards, scrolling the right panel. Expect existing names/backgrounds/motivations plus a personal hook and neighbour relationship. Scroll to local accounts and select one.
+2. Click **Prepare first adventure**. Click a compact companion row to read its identity and hook. Expect existing names/backgrounds/motivations plus a personal hook and neighbour relationship. Scroll to local accounts and select one.
 3. **Accept local lead** → **Begin expedition**. If location unknown, **Scout the rumour**; otherwise **Travel to the site**.
 4. At an unresolved site click **Bandits on the Old Road · fight**. Expect a fixed grid, three blue party units, two red raiders, HP on units and a gold border on the current actor. Numbers identify companions in the roster beside the board.
 5. **Move · select a clear tile**, then click a reachable dotted tile. **Attack · select enemy**, then click an enemy in weapon range with a clear line. Hover a unit for its name/HP/weapon. **End turn** hands control onward; enemies act automatically. A second move/main action in the same turn must not apply.
 6. On a Roadwarden turn, **Guard · protect adjacent ally**; on Wayfinder, attack an enemy adjacent to another companion and look for Opening Strike +4 in the log. On Lantern, select **Lantern Spark**, **Binding Step** or **Mending Thread**, then the appropriate target; inspect HP/Focus and save/control messages. The action panel scrolls and follows keyboard focus (Tab/arrows/Enter).
 7. During a player turn use **Main menu** (or Escape), then **Resume Expedition**. Quit/relaunch and resume again. Expect exact positions, turn, HP, action tokens and remaining Focus, not a fresh battle.
-8. Win → **Return to regional play** → expect the named site result, 10 XP per companion, event recorded → **Return to hometown**. Expect companion history, Completed lead and continuing local accounts. Re-entering this encounter must not be offered.
+8. Win → **Return to regional play** → expect the named site result, 10 XP per companion, event recorded → **Return to hometown**. Expect a Completed lead and continuing local accounts; click a companion row to read its history. Re-entering this encounter must not be offered.
 9. In a separate new campaign, choose **Withdraw · defeat**, or deliberately end party turns until enemies win. Return to regional play and home. Expect a clear failure, 0 XP, recorded histories, a Withdrawn lead and HP at least 1. Revisit and investigate that lead normally; battle memory must survive.
 
 Capture screenshots of companion cards, first board, each ability's visible effect/log, paused/resumed board, victory regional result, defeat regional result and returned histories. Include Godot output and describe any unexpected button/target behaviour; compare whether movement, ally protection and ranged positioning create useful decisions. Evaluate readability and encounter feel manually. Passing automation and toy AI victory are not evidence of final class balance or fun.
