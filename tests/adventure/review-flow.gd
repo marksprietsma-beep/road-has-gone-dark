@@ -101,6 +101,7 @@ func run() -> void:
   for size in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
    tree.root.size=size;await frames()
    check(ui.end_button.get_global_rect().end.y<=tree.root.get_visible_rect().size.y,"combat footer fits")
+   check(ui.targeting.get_visible_line_count()>=1,"targeting hint has a visible text line")
    await shot("combat-%dx%d"%[size.x,size.y])
   tree.root.size=Vector2i(1280,720);await frames()
  var paused_hash: String=ui.battle().state_hash

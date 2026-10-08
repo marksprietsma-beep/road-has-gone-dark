@@ -39,7 +39,7 @@ func _ready() -> void:
  var board_column := VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
  grid=GridContainer.new();grid.columns=8;grid.add_theme_constant_override("h_separation",2);grid.add_theme_constant_override("v_separation",2);board_column.add_child(grid)
  board_column.add_child(GameUI.label("Blue: party · Red: raiders · Gold: turn",10))
- targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,16);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
+ targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,22);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
  var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.add_child(scroll)
  var side := VBoxContainer.new();side.size_flags_horizontal=Control.SIZE_EXPAND_FILL;side.add_theme_constant_override("separation",4);scroll.add_child(side)
  detail=GameUI.label("",GameUI.META);side.add_child(detail)
