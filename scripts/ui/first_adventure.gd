@@ -9,6 +9,7 @@ var thread: Thread
 var message := "Loading saved encounter…"
 var ai_delay := 0.0
 var actor_id := ""
+var targeting: Label
 var title: Label
 var status: Label
 var turn_label: Label
@@ -33,11 +34,12 @@ func _ready() -> void:
  var column := VBoxContainer.new();column.add_theme_constant_override("separation",4);margin.add_child(column)
  title=GameUI.label("Bandits on the Old Road",GameUI.TITLE);column.add_child(title)
  status=GameUI.label(message,GameUI.META);column.add_child(status)
- turn_label=GameUI.label("",GameUI.META);column.add_child(turn_label)
+ turn_label=GameUI.label("",GameUI.META);turn_label.autowrap_mode=TextServer.AUTOWRAP_OFF;turn_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(turn_label)
  var body := HBoxContainer.new();body.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(body)
- var board_column := VBoxContainer.new();body.add_child(board_column)
+ var board_column := VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
  grid=GridContainer.new();grid.columns=8;grid.add_theme_constant_override("h_separation",2);grid.add_theme_constant_override("v_separation",2);board_column.add_child(grid)
  board_column.add_child(GameUI.label("Blue: party · Red: raiders · Gold: turn",10))
+ targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,16);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
  var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.add_child(scroll)
  var side := VBoxContainer.new();side.size_flags_horizontal=Control.SIZE_EXPAND_FILL;side.add_theme_constant_override("separation",4);scroll.add_child(side)
  detail=GameUI.label("",GameUI.META);side.add_child(detail)
@@ -113,12 +115,15 @@ func refresh() -> void:
  var actor := engine.current(b)
  title.text=b.board.title
  status.text=message if not message.is_empty() else ("Saved · Round %d · %s's turn"%[b.round,actor.name] if playing else "Saved · "+b.status.capitalize())
- turn_label.text=" → ".join(b.order.filter(func(id: String):return engine.alive(b.units[id])).map(func(id: String):return b.units[id].name))
+ turn_label.text="Order: "+" → ".join(b.order.filter(func(id: String):return engine.alive(b.units[id])).map(func(id: String):return b.units[id].name))
+ turn_label.tooltip_text=turn_label.text
+ targeting.text="Choose a dotted tile." if mode=="move" else "Choose a highlighted target."
+ if not playing: targeting.text="Encounter complete · return to the region."
  var reachable := engine.paths(b,actor) if playing and mode=="move" and int(b.budget.move)>0 else {}
  for y in int(b.board.height):
   for x in int(b.board.width):
    var p := [x,y];var id := engine.occupant(b,p)
-   var button := Button.new();button.custom_minimum_size=Vector2(36,30);button.add_theme_font_size_override("font_size",10)
+   var button := Button.new();button.custom_minimum_size=Vector2(36,26);button.add_theme_font_size_override("font_size",10)
    var color := Color("202d24")
    if b.board.blocked.has(p): color=Color("41433b");button.text="■";button.disabled=true
    elif not id.is_empty():
@@ -127,13 +132,24 @@ func refresh() -> void:
     button.text=(str(state.party_ids.find(id)+1) if u.team=="party" else "B")+"\n"+str(u.record.runtime.hp)
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
    elif reachable.has(str(p)): color=Color("38482e");button.text="·"
-   var border := GameUI.GOLD if actor.position==p and playing else Color("454c3d")
+   var valid_target: bool=playing and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
+   var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
+   if valid_target: color=color.lightened(0.18)
+   var border := GameUI.GOLD if actor.position==p and playing else (Color("afa88f") if valid_target or valid_move else Color("454c3d"))
    var style := GameUI.box(color,border,2 if actor.position==p and playing else 1)
    style.content_margin_top=1;style.content_margin_bottom=1;style.content_margin_left=2;style.content_margin_right=2
    button.add_theme_stylebox_override("normal",style)
    var hover := style.duplicate();hover.bg_color=color.lightened(0.15);hover.border_color=GameUI.GOLD
    button.add_theme_stylebox_override("hover",hover)
    button.disabled=button.disabled or thread!=null or not playing or actor.team!="party"
+   if not valid_target and not valid_move: button.mouse_default_cursor_shape=Control.CURSOR_ARROW
+   else: button.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
+   if button.disabled: button.add_theme_stylebox_override("disabled",style)
+   button.mouse_entered.connect(func():
+    if not id.is_empty(): targeting.text=button.tooltip_text
+    elif valid_move: targeting.text="Move here · %d tiles"%(reachable[str(p)].size()-1)
+    else: targeting.text="Outside movement or target range."
+   )
    button.pressed.connect(func():choose_tile(p));grid.add_child(button);tiles[str(p)]=button
  var summary: Array[String]=[]
  for id in b.order:
@@ -144,7 +160,8 @@ func refresh() -> void:
   var abilities: Array=engine.characters.derive_character(actor.record).snapshot.abilities
   if actor.team=="party":
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
-   detail.text="%s · Move %d / Action %d\n%s"%[actor.name,b.budget.move,b.budget.main,detail.text]
+   detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
+   detail.add_theme_color_override("font_color",GameUI.GOLD)
    add_action("move","Move · select a clear tile")
    add_action("attack","Attack · select enemy")
    if abilities.has("guard"):
@@ -158,7 +175,7 @@ func refresh() -> void:
    actions.add_child(GameUI.label("Mode: "+mode.capitalize()+". Leaving an enemy's adjacent tile can provoke an attack. Ranged attacks while engaged take −4.",GameUI.META))
  else:
   detail.text=state.first_adventure.get("result",{}).get("text","Encounter complete.")+"\n\n"+detail.text
- log_label.text="Battle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
+ log_label.text="Party & raiders\n"+"\n".join(summary)+"\n\nBattle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
 func return_region() -> void:
  if thread==null: get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
 func _unhandled_input(event: InputEvent) -> void:

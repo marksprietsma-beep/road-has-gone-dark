@@ -5,6 +5,7 @@ var slot := ""
 var state := {}
 var public_view := {}
 var selected := ""
+var selected_companion := ""
 var thread: Thread
 var message := "Preparing the local accounts and map…"
 var title: Label
@@ -112,7 +113,7 @@ func button(id: String, text: String, callback: Callable, effect: String="") -> 
  if id=="return":
   action_buttons[id]=home_button
   return
- var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel"])
+ var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel","prepare_adventure","begin_battle"])
  b.alignment=HORIZONTAL_ALIGNMENT_LEFT
  b.clip_text=true
  b.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -174,16 +175,10 @@ func refresh() -> void:
    elif l.status=="accepted": button("depart","Begin expedition",func(): start("depart",l.id))
    button("leads","Back to local leads",func(): selected="";refresh())
   else:
+   content.add_child(label("First adventure" if state.get("first_adventure",{}).get("result",{}).is_empty() else "Continue your journey",GameUI.SECTION))
+   content.add_child(label("Meet your companions, then follow a local account." if not state.has("first_adventure") else "Choose a local account below and begin an expedition.",GameUI.META))
    if not state.has("first_adventure"):
-    button("prepare_adventure","Meet the party · prepare first adventure",func(): start("prepare_adventure"),"Keep your existing identities and prepare their starting abilities.")
-   else:
-    var party_section := GameUI.section("Your travelling companions")
-    content.add_child(party_section)
-    for member in state.party.members:
-     var life := AdventureRecords.identity(state,member)
-     party_section.add_child(label(life.name+" · "+life.archetype,GameUI.SECTION))
-     party_section.add_child(label(life.background+". Motivation: "+life.motivation+".\n"+life.hook+"\n"+life.relationship,GameUI.META))
-     if not life.history.is_empty(): party_section.add_child(label("Journey XP: %d · %s"%[life.xp,life.history.back().summary],GameUI.META))
+    button("prepare_adventure","Prepare first adventure",func(): start("prepare_adventure"),"Keep these companions and prepare their starting abilities.")
    var leads_section := GameUI.section("Local accounts")
    content.add_child(leads_section)
    var cell := w.get_record("cell",int(home.cell))
@@ -194,6 +189,18 @@ func refresh() -> void:
     row.disabled=thread!=null
     leads_section.add_child(row)
     action_buttons[l.id]=row
+   var party_section := GameUI.section("Travelling companions")
+   content.add_child(party_section)
+   for member in state.party.members:
+    var life := AdventureRecords.identity(state,member)
+    var companion_id: String=member.character_id
+    var row := GameUI.row(life.name+" · "+life.archetype,life.background,func(): selected_companion="" if selected_companion==companion_id else companion_id;refresh())
+    row.disabled=thread!=null
+    row.tooltip_text=life.motivation+". "+life.hook
+    party_section.add_child(row);action_buttons["companion:"+companion_id]=row
+    if selected_companion==companion_id:
+     party_section.add_child(label("Motivation: "+life.motivation+".\n"+life.hook+"\n"+life.relationship,GameUI.META))
+     if not life.history.is_empty(): party_section.add_child(label("Journey XP: %d · %s"%[life.xp,life.history.back().summary],GameUI.META))
    if not e.log.is_empty():
     var recent := GameUI.section("Recent events")
     content.add_child(recent)
