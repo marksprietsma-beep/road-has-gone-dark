@@ -1,0 +1,43 @@
+         863226 function calls (793049 primitive calls) in 0.337 seconds
+
+   Ordered by: cumulative time
+   List reduced from 91 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        4    0.004    0.001    0.334    0.083 combat.py:470(run)
+      335    0.039    0.000    0.221    0.001 combat.py:240(choose)
+     3224    0.002    0.000    0.083    0.000 dataclasses.py:1308(asdict)
+     9199    0.017    0.000    0.081    0.000 combat.py:225(position_value)
+71907/3224    0.045    0.000    0.079    0.000 dataclasses.py:1332(_asdict_inner)
+      335    0.002    0.000    0.065    0.000 combat.py:338(observe)
+20520/19962    0.011    0.000    0.059    0.000 {built-in method builtins.any}
+    75023    0.027    0.000    0.040    0.000 combat.py:20(distance)
+    14500    0.010    0.000    0.036    0.000 {built-in method builtins.min}
+      286    0.018    0.000    0.033    0.000 combat.py:93(paths)
+    26292    0.013    0.000    0.032    0.000 combat.py:208(can_attack)
+      335    0.002    0.000    0.030    0.000 combat.py:424(apply)
+    39262    0.010    0.000    0.027    0.000 combat.py:226(<genexpr>)
+    14493    0.004    0.000    0.019    0.000 combat.py:231(<genexpr>)
+     3224    0.012    0.000    0.019    0.000 dataclasses.py:1278(fields)
+   152578    0.014    0.000    0.014    0.000 {built-in method builtins.abs}
+      335    0.002    0.000    0.013    0.000 combat.py:396(legal)
+     6288    0.004    0.000    0.012    0.000 {built-in method builtins.max}
+    37605    0.011    0.000    0.011    0.000 combat.py:88(neighbours)
+      103    0.000    0.000    0.009    0.000 combat.py:453(credible_contact)
+    10729    0.008    0.000    0.008    0.000 <string>:2(__init__)
+    10972    0.005    0.000    0.008    0.000 combat.py:175(can)
+        4    0.000    0.000    0.008    0.002 combat.py:293(__init__)
+      910    0.002    0.000    0.008    0.000 combat.py:16(keyed)
+        4    0.001    0.000    0.008    0.002 combat.py:129(make_board)
+    10729    0.003    0.000    0.008    0.000 combat.py:289(<lambda>)
+    65201    0.007    0.000    0.007    0.000 {built-in method builtins.getattr}
+    65201    0.006    0.000    0.006    0.000 dataclasses.py:1293(<genexpr>)
+      148    0.002    0.000    0.006    0.000 combat.py:346(hit)
+     6942    0.002    0.000    0.006    0.000 combat.py:279(<genexpr>)
+     8513    0.003    0.000    0.005    0.000 {built-in method builtins.sum}
+      914    0.001    0.000    0.005    0.000 __init__.py:183(dumps)
+10573/9637    0.003    0.000    0.005    0.000 dataclasses.py:1373(<genexpr>)
+    10315    0.003    0.000    0.005    0.000 dataclasses.py:1296(_is_dataclass_instance)
+    10755    0.004    0.000    0.004    0.000 {built-in method builtins.round}
+
+

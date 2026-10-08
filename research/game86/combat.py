@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections import deque
 from dataclasses import asdict, dataclass, field
 from functools import lru_cache
+from types import MappingProxyType
 import hashlib
 import json
 
@@ -85,12 +86,18 @@ class Board:
     cover: frozenset = frozenset()
     objective: bool = False
 
+    @lru_cache(maxsize=32768)
     def neighbours(self, p):
-        for q in ((p[0]-1, p[1]), (p[0], p[1]-1), (p[0], p[1]+1), (p[0]+1, p[1])):
-            if 0 <= q[0] < self.size and 0 <= q[1] < self.size and q not in self.walls:
-                yield q
+        # Board is immutable; preserve the original BFS neighbour order.
+        return tuple(q for q in ((p[0]-1, p[1]), (p[0], p[1]-1), (p[0], p[1]+1), (p[0]+1, p[1]))
+                     if 0 <= q[0] < self.size and 0 <= q[1] < self.size and q not in self.walls)
 
     def paths(self, start, budget, occupied=frozenset()):
+        return self._paths(start, budget, frozenset(occupied))
+
+    @lru_cache(maxsize=256)
+    def _paths(self, start, budget, occupied):
+        # Occupancy participates in the key; no stale paths after moves/deaths.
         paths = {start: ()}
         queue = deque([start])
         while queue:
@@ -101,7 +108,7 @@ class Board:
                 if q not in paths and q not in occupied:
                     paths[q] = paths[p] + (q,)
                     queue.append(q)
-        return paths
+        return MappingProxyType(paths)
 
     @lru_cache(maxsize=150000)
     def los(self, a, b):
@@ -246,7 +253,17 @@ def choose(view, board, rules, budget):
     occupied = {u["pos"] for u in view["units"] if u["id"] != actor["id"]}
     hazards = [u["pending"]["tile"] for u in view["units"] if u["pending"]]
     stride = max(1, actor["move"] - (2 if view["slowed"] else 0))
-    current = position_value(board, actor, foes, actor["pos"], hazards)
+    values = {}
+    attackable = {}
+    def value(pos):
+        if pos not in values:
+            values[pos] = position_value(board, actor, foes, pos, hazards)
+        return values[pos]
+    def can_hit(pos):
+        if pos not in attackable:
+            attackable[pos] = any(can_attack(board, actor, e, pos) for e in foes)
+        return attackable[pos]
+    current = value(actor["pos"])
     choices = [(0.05, Command("end"))]
     for foe in foes:
         if budget.can("attack") and can_attack(board, actor, foe):
@@ -258,7 +275,7 @@ def choose(view, board, rules, budget):
         if actor["reach"] == 1 and rules.charge and budget.can("charge"):
             path = charge_path(board, actor, foe, occupied, stride)
             if path:
-                score = actor["damage"]*.7 + position_value(board, actor, foes, path[-1], hazards) - current
+                score = actor["damage"]*.7 + value(path[-1]) - current
                 choices.append((score, Command("charge", foe["id"], path)))
     if actor["kind"] == "mage" and rules.delayed and actor["focus"] and not actor["pending"] and budget.can("cast"):
         for foe in foes:
@@ -267,16 +284,19 @@ def choose(view, board, rules, budget):
                 friends = sum(distance(foe["pos"], u["pos"]) <= 1 for u in view["units"] if u["team"] == actor["team"])
                 if targets >= 2 and not friends:
                     choices.append((7.5, Command("cast", tile=foe["pos"])))
-    for action in ("move", "dash"):
+    actions = [a for a in ("move", "dash") if budget.can(a) and (a != "dash" or rules.dash)]
+    # A longer BFS has exactly the same shortest paths and discovery prefix.
+    reachable = board.paths(actor["pos"], stride * (2 if "dash" in actions else 1), occupied) if actions else {}
+    for action in actions:
         if not budget.can(action) or (action == "dash" and not rules.dash):
             continue
         steps = stride * (2 if action == "dash" else 1)
-        for p, path in board.paths(actor["pos"], steps, occupied).items():
-            if not path:
+        for p, path in reachable.items():
+            if not path or len(path) > steps:
                 continue
-            improvement = position_value(board, actor, foes, p, hazards) - current
+            improvement = value(p) - current
             if action == "move" and budget.can("attack") and (rules.model == "A" or budget.ap > 1):
-                if not any(can_attack(board, actor, e) for e in foes) and any(can_attack(board, actor, e, p) for e in foes):
+                if not can_hit(actor["pos"]) and can_hit(p):
                     improvement += 4
             # Avoid leaving fresh melee reactions unless worthwhile. Known reaction state.
             threats = [e for e in foes if e["reach"] == 1 and e["reaction"] and distance(actor["pos"], e["pos"]) == 1 and distance(path[0], e["pos"]) > 1]
@@ -338,7 +358,7 @@ class Battle:
     def observe(self, actor, slowed=False):
         # No references to mutable Unit/Battle escape this boundary.
         return {"actor": actor.id, "round": self.round, "slowed": slowed,
-                "units": [asdict(u) for u in self.units if u.alive]}
+                "units": [dict(vars(u), pending=dict(u.pending) if u.pending else None) for u in self.units if u.alive]}
 
     def event(self, **data):
         self.log.append({"round": self.round, **data})

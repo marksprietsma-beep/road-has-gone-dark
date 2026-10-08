@@ -1,0 +1,43 @@
+         33020461 function calls (31301517 primitive calls) in 14.598 seconds
+
+   Ordered by: cumulative time
+   List reduced from 97 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      418    0.157    0.000   14.406    0.034 baseline.py:470(run)
+    13542    2.102    0.000   11.130    0.001 baseline.py:240(choose)
+   557572    1.074    0.000    4.024    0.000 baseline.py:225(position_value)
+1108654/1080471    0.508    0.000    2.432    0.000 {built-in method builtins.any}
+    80179    0.055    0.000    2.232    0.000 dataclasses.py:1308(asdict)
+1718782/80179    1.229    0.000    2.130    0.000 dataclasses.py:1332(_asdict_inner)
+    13097    1.065    0.000    1.879    0.000 baseline.py:93(paths)
+    13542    0.040    0.000    1.556    0.000 baseline.py:338(observe)
+  2562399    0.989    0.000    1.479    0.000 baseline.py:20(distance)
+   879200    0.451    0.000    1.435    0.000 {built-in method builtins.min}
+   784088    0.544    0.000    1.411    0.000 baseline.py:208(can_attack)
+    13542    0.083    0.000    1.097    0.000 baseline.py:424(apply)
+   623467    0.179    0.000    0.986    0.000 baseline.py:231(<genexpr>)
+  1523098    0.416    0.000    0.984    0.000 baseline.py:226(<genexpr>)
+      418    0.011    0.000    0.814    0.002 baseline.py:293(__init__)
+      418    0.060    0.000    0.784    0.002 baseline.py:129(make_board)
+   390035    0.237    0.000    0.683    0.000 {built-in method builtins.max}
+    77806    0.133    0.000    0.591    0.000 baseline.py:16(keyed)
+  2448535    0.583    0.000    0.583    0.000 baseline.py:88(neighbours)
+  5183704    0.495    0.000    0.495    0.000 {built-in method builtins.abs}
+    80179    0.268    0.000    0.484    0.000 dataclasses.py:1278(fields)
+   619462    0.196    0.000    0.445    0.000 baseline.py:289(<lambda>)
+    13542    0.083    0.000    0.431    0.000 baseline.py:396(legal)
+   416462    0.189    0.000    0.417    0.000 baseline.py:175(can)
+    78224    0.092    0.000    0.384    0.000 __init__.py:183(dumps)
+   492760    0.235    0.000    0.336    0.000 {built-in method builtins.sum}
+     5056    0.009    0.000    0.301    0.000 baseline.py:453(credible_contact)
+    78224    0.089    0.000    0.273    0.000 encoder.py:183(encode)
+   620642    0.250    0.000    0.250    0.000 {built-in method builtins.round}
+   415484    0.190    0.000    0.233    0.000 baseline.py:170(cost)
+   310487    0.137    0.000    0.196    0.000 <string>:2(__hash__)
+   229697    0.056    0.000    0.194    0.000 baseline.py:279(<genexpr>)
+  1530380    0.186    0.000    0.186    0.000 dataclasses.py:1293(<genexpr>)
+  1530380    0.186    0.000    0.186    0.000 {built-in method builtins.getattr}
+298161/246003    0.086    0.000    0.174    0.000 dataclasses.py:1373(<genexpr>)
+
+

@@ -4,6 +4,11 @@ Reports are deterministic; wall-clock measurements go in a separate timing.json.
 No third-party dependency, network, Godot, canonical fixture or save access.
 """
 from collections import defaultdict
+import argparse
+from concurrent.futures import ProcessPoolExecutor, as_completed
+import fcntl
+import os
+import tempfile
 from dataclasses import asdict, replace
 import csv
 import gzip
@@ -97,30 +102,128 @@ def aggregate(group,rows):
             "burst_damage":sum(r["burst_damage"] for r in rows),"mean_walls":round(statistics.mean(r["wall_count"] for r in rows),2)}
 
 
-def main():
-    OUT.mkdir(exist_ok=True)
-    started=time.perf_counter();summaries=[];count=0;paired={};timing=[]
-    with open(OUT/"battles.jsonl.gz","wb") as raw, gzip.GzipFile(fileobj=raw,mode="wb",filename="",mtime=0) as archive:
-        for group,n,kwargs in cases():
-            now=time.perf_counter();rows=[]
-            for seed in range(n):
-                b=Battle(seed=seed,**kwargs);r=b.run();r["group"]=group
-                archive.write((json.dumps(r,sort_keys=True,separators=(",",":"))+"\n").encode());rows.append(r);count+=1
-            summaries.append(aggregate(group,rows))
-            paired[group]=rows
-            timing.append({"group":group,"battles":n,"seconds":round(time.perf_counter()-now,4)})
-            print(group,n,"rounds",summaries[-1]["mean_rounds"],"timeouts",summaries[-1]["timeouts"],flush=True)
-    with (OUT/"summary.csv").open("w") as f:
-        writer=csv.DictWriter(f,fieldnames=list(summaries[0]));writer.writeheader();writer.writerows(summaries)
-    (OUT/"summary.json").write_text(json.dumps(summaries,indent=2)+"\n")
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+
+
+def atomic_write(path, data):
+    """A checkpoint is visible only after all bytes have been flushed."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(prefix=".partial-", dir=path.parent)
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(data); f.flush(); os.fsync(f.fileno())
+        os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY)
+        try: os.fsync(directory)
+        finally: os.close(directory)
+    finally:
+        if os.path.exists(temporary): os.unlink(temporary)
+
+
+def experiment_identity():
+    root = Path(__file__).parent
+    sources = {name: hashlib.sha256((root/name).read_bytes()).hexdigest()
+               for name in ("combat.py", "run.py", "diagnostics.py")}
+    design = [(g, n, {k: asdict(v) if isinstance(v, Rules) else v for k,v in kw.items()})
+              for g,n,kw in cases()]
+    return hashlib.sha256(canonical(dict(sources=sources, cases=design))).hexdigest()
+
+
+def checkpoint_path(out, group):
+    return Path(out)/"groups"/(group + ".json")
+
+
+def load_checkpoint(path, identity, group, n):
+    data = json.loads(path.read_bytes())
+    assert data["identity"] == identity, f"Stale checkpoint: {path}; use a new --output directory"
+    rows = data["rows"]
+    assert len(rows) == n and all(r["seed"] == i and r["group"] == group for i,r in enumerate(rows)), path
+    assert data["rows_sha256"] == hashlib.sha256(canonical(rows)).hexdigest(), f"Corrupt checkpoint: {path}"
+    assert data["summary"] == aggregate(group, rows), path
+    return data
+
+
+def run_group(out, identity, case):
+    group,n,kwargs = case
+    path = checkpoint_path(out, group)
+    if path.exists():
+        return group, load_checkpoint(path, identity, group, n), True
+    started = time.perf_counter(); rows = []
+    for seed in range(n):
+        row = Battle(seed=seed, **kwargs).run(); row["group"] = group; rows.append(row)
+    data = dict(identity=identity, rows=rows, summary=aggregate(group,rows),
+                rows_sha256=hashlib.sha256(canonical(rows)).hexdigest(),
+                timing=dict(group=group,battles=n,seconds=round(time.perf_counter()-started,4)))
+    atomic_write(path, canonical(data)+b"\n")
+    return group, data, False
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUT)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--group", action="append", help="Run matching group prefixes; default is the COMPLETE suite")
+    args = parser.parse_args(argv)
+    if args.workers < 1: parser.error("--workers must be positive")
+    out = args.output; out.mkdir(parents=True, exist_ok=True)
+    # Kernel releases the lock after interruption; no unsafe stale-PID guessing.
+    lock = (out/".runner.lock").open("w")
+    try: fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        lock.close()
+        raise SystemExit("Another runner owns this output directory")
+    try:
+        execute(args, out)
+    finally:
+        lock.close()
+
+
+def execute(args, out):
+    started = time.perf_counter(); identity = experiment_identity()
+    full = list(cases())
+    selected = [c for c in full if not args.group or any(c[0].startswith(p) for p in args.group)]
+    if not selected: parser.error("No experiment groups matched")
+    completed = {}; reused = 0
+    def accept(result):
+        nonlocal reused
+        group,data,cached = result; completed[group] = data; reused += cached
+        print("RESUMED" if cached else "CHECKPOINT", group, len(data["rows"]), data["timing"]["seconds"], "seconds", flush=True)
+    if args.workers == 1:
+        for case in selected: accept(run_group(out,identity,case))
+    else:
+        with ProcessPoolExecutor(max_workers=args.workers) as pool:
+            futures = [pool.submit(run_group,out,identity,case) for case in selected]
+            for future in as_completed(futures): accept(future.result())
+    # Consolidation always follows the original case order and seed order,
+    # regardless of scheduling, sharding, worker count or interruption history.
+    for group,n,_ in full:
+        path = checkpoint_path(out,group)
+        if group not in completed and path.exists(): completed[group] = load_checkpoint(path,identity,group,n)
+    if len(completed) != len(full):
+        print("PARTIAL", len(completed), "of", len(full), "groups; rerun without --group to finish", flush=True)
+        return
+    summaries = [aggregate(g, completed[g]["rows"]) for g,_,_ in full]
+    paired = {g: completed[g]["rows"] for g,_,_ in full}
+    timing = [completed[g]["timing"] for g,_,_ in full]
+    count = sum(len(rows) for rows in paired.values())
+    raw = b"".join(canonical(r)+b"\n" for rows in paired.values() for r in rows)
+    import io
+    compressed = io.BytesIO()
+    with gzip.GzipFile(fileobj=compressed,mode="wb",filename="",mtime=0) as archive: archive.write(raw)
+    atomic_write(out/"battles.jsonl.gz",compressed.getvalue())
+    csv_text = io.StringIO(newline="")
+    writer = csv.DictWriter(csv_text,fieldnames=list(summaries[0])); writer.writeheader(); writer.writerows(summaries)
+    atomic_write(out/"summary.csv",csv_text.getvalue().encode())
+    atomic_write(out/"summary.json",(json.dumps(summaries,indent=2)+"\n").encode())
     comparisons=[]
     for alternate in ("none","stun"):
         base=paired["control/slow"];other=paired["control/"+alternate]
         diffs=[int(a["outcome"]=="0")-int(b["outcome"]=="0") for a,b in zip(base,other)]
         comparisons.append({"paired":f"left win: slow minus {alternate}","n":len(diffs),"mean":statistics.mean(diffs),
                             "descriptive_se":statistics.stdev(diffs)/(len(diffs)**.5),"discordant_seeds":sum(d!=0 for d in diffs)})
-    (OUT/"paired.json").write_text(json.dumps(comparisons,indent=2)+"\n")
-    (OUT/"diagnostics.json").write_text(json.dumps(all_diagnostics(),indent=2)+"\n")
+    atomic_write(out/"paired.json", (json.dumps(comparisons,indent=2)+"\n").encode())
+    atomic_write(out/"diagnostics.json", (json.dumps(all_diagnostics(),indent=2)+"\n").encode())
     b=Battle(seed=1,left=MATCHUPS["party"][0],right=MATCHUPS["party"][1],terrain="moderate")
     result=b.run()
     replay=Battle(seed=1,left=MATCHUPS["party"][0],right=MATCHUPS["party"][1],terrain="moderate")
@@ -128,10 +231,12 @@ def main():
     trace={"seed":1,"rules":asdict(b.rules),"left":MATCHUPS["party"][0],"right":MATCHUPS["party"][1],"terrain":"moderate","size":12,"separation":8,
            "board":{"walls":sorted(b.board.walls),"cover":sorted(b.board.cover)},"initiative":b.order,"events":b.log,"result":result,
            "command_replay_sha256":replay.state_hash(),"identical":True}
-    (OUT/"walkthrough.json").write_text(json.dumps(trace,indent=2)+"\n")
-    (OUT/"timing.json").write_text(json.dumps({"total_battles":count,"seconds":round(time.perf_counter()-started,3),"groups":timing},indent=2)+"\n")
-    manifest={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.iterdir()) if p.name not in ("timing.json","manifest.json") and p.is_file()}
-    (OUT/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
+    atomic_write(out/"walkthrough.json", (json.dumps(trace,indent=2)+"\n").encode())
+    timing_bytes = (json.dumps({"total_battles":count,"seconds":round(time.perf_counter()-started,3),"workers":args.workers,"resumed_selected_groups":reused,"identity":identity,"group_seconds_sum":round(sum(t["seconds"] for t in timing),4),"groups":timing},indent=2)+"\n").encode()
+    atomic_write(out/"timing.json", timing_bytes)
+    atomic_write(out/"timings"/(str(time.time_ns())+".json"), timing_bytes)
+    manifest={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.name not in ("timing.json","manifest.json",".runner.lock") and p.is_file()}
+    atomic_write(out/"manifest.json", (json.dumps(manifest,indent=2)+"\n").encode())
     print("COMPLETE",count,"battles",round(time.perf_counter()-started,2),"seconds",flush=True)
 
 
