@@ -77,6 +77,8 @@ WARNING: Missing .uid file for path "res://scripts/party/party_service.gd". The 
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://scripts/party/world_peoples.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://scripts/rules/rules_character.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://scripts/rules/rules_effects.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://scripts/rules/rules_expressions.gd". The file was re-created from cache.
@@ -183,7 +185,7 @@ WARNING: Missing .uid file for path "res://tests/regiongen/capture-v1.gd". The f
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://tests/regiongen/smoke-v1.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
-WARNING: Missing .uid file for path "res://tests/rules/migration.gd". The file was re-created from cache.
+WARNING: Missing .uid file for path "res://tests/rules/kernel.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://tests/ui_system/back-navigation.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
@@ -211,11 +213,6 @@ WARNING: Missing .uid file for path "res://tests/world_library/verify-library.gd
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
 WARNING: Missing .uid file for path "res://tools/release/export-notices.gd". The file was re-created from cache.
      at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
-[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (2 steps)[39m[0m
-[   0% ] [90m[1mupdate_scripts_classes[22m | RulesCharacter[39m[0m
-[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
-[92m[ DONE ][39m [1mupdate_scripts_classes[22m
-[0m
 [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
 [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
 [  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m

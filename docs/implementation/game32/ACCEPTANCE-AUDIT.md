@@ -29,7 +29,7 @@ Audit resumes the existing branch and kernel; no new architecture assessment or 
 | Stress and profile | 5,000 prerequisites, 2,000 advancement previews, 1,000 round trips, 1,000 derivations/validations/effects, hundreds of invalid attempts, all-level paths and 10,000 RNG comparisons; per-stage timings retained |
 | Windows/Linux first checkpoint | Workflow37716987428 fully green on both; downloaded QA artifacts equal on all golden fields and exact pins; `CI-FIRST-CHECKPOINT.json` explicitly scopes evidence to `0aee973` |
 | Native first checkpoint | Both complete distributions passed75 checks with bundled compatible helper, empty PATH, hometown/expedition UI and mechanical preparation; ordinary release launch also passed |
-| Latest audit source verification | Fresh local suite passed22,176 kernel +233 migration +6 restart checks after the audit changes; final exact-head CI/check/package links belong in the draft PR, not inferred from the first checkpoint |
+| Latest audit source verification | Fresh local suite passed22,176 kernel +235 migration +6 restart checks after the audit changes; final exact-head CI/check/package links belong in the draft PR, not inferred from the first checkpoint |
 | Extension sources beyond classes | Generic runtime feature grant gives an adept Light Step/tags/stride; current equipment validation explains an external-feature tag conflict; no character-life feature implemented |
 | Scope boundaries | No tactical grid/pathfinding/LOS/initiative queue/AI/autoresolve/combat renderer/character-builder UI/GAME-87 aspects or injury systems; no merge |
 

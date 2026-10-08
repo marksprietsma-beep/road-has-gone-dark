@@ -35,6 +35,13 @@ func run() -> void:
   var generated := service.operate(entry,slot,"generate")
   check(generated.ok,str(generated.get("error")))
   if not generated.ok: finish();return
+  # Generated parties choose three of four roles and may contain no caster.
+  # This owned fixture deliberately selects one through the existing GAME-81
+  # player edit path BEFORE capturing the historical state to migrate.
+  var chosen := service.operate(entry,slot,"edit",3,{"role_id":"adept"})
+  check(chosen.ok,"fixture selects adept through existing narrative party editor")
+  if not chosen.ok: finish();return
+  check(chosen.state.party.members[2].role_id=="adept" and chosen.state.characters[2].id==generated.state.characters[2].id,"fixture edit retains the existing character ID")
   var ready := service.operate(entry,slot,"ready")
   check(ready.ok,"existing narrative party ready")
   var expedition := ExpeditionService.new()
