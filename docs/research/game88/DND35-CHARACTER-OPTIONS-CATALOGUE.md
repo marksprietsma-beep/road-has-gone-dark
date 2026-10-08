@@ -1774,6 +1774,21 @@ Astra should use this catalogue as a **mechanics palette** for the Character Lif
 
 ---
 
+
+## Warhammer RPG companion study
+
+A dedicated companion study now exists at:
+
+- `docs/research/game88/WARHAMMER-RPG-MECHANICS.md`
+
+It adds WFRP / Dark Heresy / Black Crusade / Imperium Maledictum lessons on careers, ambitions, downtime Endeavours, critical injuries, Fate-like survival resources, fear/trauma/corruption separation, pacts, mutation as social consequence, patron boons/liabilities, faction Influence, augmetics/prosthetics, and investigation creating tactical advantage.
+
+The highest-value combined principle is:
+
+> D&D-like deliberate build + Warhammer-like consequence + Wildermyth-like lived history.
+
+This companion research should be included in the GAME-87 Astra synthesis, but it does not reopen GAME-32 or GAME-86.
+
 # 10. Source notes
 
 Key source pages used for this catalogue:
