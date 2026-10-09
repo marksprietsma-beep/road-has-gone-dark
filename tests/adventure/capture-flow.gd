@@ -28,6 +28,8 @@ func wait_scene(path: String) -> void:
 func wait_job() -> void:
  var deadline := Time.get_ticks_msec()+180000
  while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
+ if ui.has_method("is_presenting"):
+  while (ui.is_presenting() or ui.presentation_active) and Time.get_ticks_msec()<deadline:await process_frame
  check(ui.thread==null and not ui.state.is_empty() and ui.message.is_empty(),"real persisted action: "+ui.message)
  await frames()
 func shot(name: String) -> void:
@@ -45,7 +47,7 @@ func run() -> void:
  await shot("site-encounter")
  await click(ui.action_buttons.begin_battle);await wait_scene("res://scenes/combat/first_adventure.tscn")
  # Pause rendering-driven AI by waiting for a player before any input.
- while ui.engine.current(ui.battle()).team=="enemy" or ui.thread!=null: await process_frame
+ while ui.engine.current(ui.battle()).team=="enemy" or ui.thread!=null or ui.is_presenting(): await process_frame
  await frames()
  for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
   root.size=resolution;await frames();await frames()
@@ -68,7 +70,7 @@ func run() -> void:
  # Drive actual attack/ability/end buttons through victory. AI remains live.
  var deadline := Time.get_ticks_msec()+180000
  while ui.battle().status=="active" and Time.get_ticks_msec()<deadline:
-  if ui.thread!=null or engine.current(ui.battle()).team=="enemy": await process_frame;continue
+  if ui.thread!=null or ui.is_presenting() or ui.presentation_active or engine.current(ui.battle()).team=="enemy": await process_frame;continue
   var b: Dictionary=ui.battle();var a := engine.current(b)
   var ability := "spark" if engine.characters.derive_character(a.record).snapshot.abilities.has("spark") else "attack"
   var target_id := ""

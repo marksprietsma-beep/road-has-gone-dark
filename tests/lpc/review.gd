@@ -50,12 +50,20 @@ func capture(name: String, event: Dictionary, clip: String) -> void:
  var actor: String=event.command.actor_id
  var old_pawn: CombatPawn=ui.pawns[actor]
  var before_bytes := RulesJson.canonical(event.before)
- await apply(event.after)
+ ui.state=source.duplicate(true);ui.state.first_adventure={"battle":event.after,"result":{}}
+ ui.start_presentation(event.before);ui.refresh();ui.animate_committed(event.before)
  check(ui.pawns[actor]==old_pawn,"refresh retains actual pawn/timeline")
- ui.animate_committed(event.before);await process_frame;await process_frame
+ if event.command.kind=="move":
+  var a: Array=event.before.units[actor].position;var z: Array=event.after.units[actor].position
+  check(ui.pawns[actor].travel==Vector2(a[0]-z[0],a[1]-z[1])*ui.tile_side,"movement starts at previous tile before any destination draw")
+ check(ui.is_presenting() and ui.end_button.disabled,"bounded presentation pause prevents action cancellation")
+ var serial: int=ui.pawns[actor].serial
+ ui.send("end");check(ui.thread==null and ui.pawns[actor].serial==serial,"rapid command cannot skip current visual beat")
+ await process_frame;await process_frame
  var committed := RulesJson.canonical(ui.battle());var samples := []
  var observed_frames := {};var feedbacks := [];var positions := {}
- for i in 40:
+ var started := Time.get_ticks_msec()
+ for i in 65:
   await create_timer(0.05).timeout
   if visual:await shot("%s-%03d"%[name,i])
   var pawn: CombatPawn=ui.pawns[actor]
@@ -68,11 +76,12 @@ func capture(name: String, event: Dictionary, clip: String) -> void:
    var p: CombatPawn=ui.pawns[id]
    if not p.feedback.is_empty():feedbacks.append(p.feedback)
    reactions[id]={"clip":p.animation,"feedback":p.feedback,"hp":p.display_hp,"down":p.down}
-  samples.append({"index":i,"clip":pawn.animation,"frame":frame,"facing":pawn.facing,"travel":[pawn.travel.x,pawn.travel.y],"targets":reactions})
+  samples.append({"index":i,"elapsed_ms":Time.get_ticks_msec()-started,"clip":pawn.animation,"frame":frame,"facing":pawn.facing,"travel":[pawn.travel.x,pawn.travel.y],"targets":reactions})
  check(observed_frames.size()>=2,"native frames advance in live "+clip)
  check(RulesJson.canonical(ui.battle())==committed,"animation cannot change committed battle/log/RNG")
  check(RulesJson.canonical(event.before)==before_bytes,"animation cannot mutate previous authority")
  check(engine.validate(ui.battle()).is_empty(),"resolved diagnostic battle remains valid")
+ check(not ui.is_presenting(),"presentation deadline expires without a gameplay unlock command")
  if name=="movement":
   check(positions.size()>=3 and ui.pawns[actor].travel==Vector2.ZERO,"actual multi-tile interpolation settles")
   check(ui.pawns[actor].facing==3,"actual route faces east")
@@ -83,6 +92,7 @@ func capture(name: String, event: Dictionary, clip: String) -> void:
   check(target.animation=="down" and target.frame_index(target.recipe.animations.down[0])==5,"native defeat freezes rather than idles")
   check(target.display_hp==0,"defeat HP settles")
  cases.append({"name":name,"command":event.command,"before_hash":event.before.state_hash,"after_hash":event.after.state_hash,"native_frames":observed_frames.keys(),"samples":samples})
+ ui.presentation_active=false;ui.presentation_until=0
 func run() -> void:
  output=OS.get_environment("GAME94_LPC_ROOT")
  if output.is_empty():output=ProjectSettings.globalize_path("user://game94-lpc-proof")

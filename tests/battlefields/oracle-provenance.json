@@ -1,0 +1,8 @@
+{
+  "purpose": "Frozen test-only GAME-94 oracle; never used by game controllers. Creation/validation of new layouts is tested separately. Commands, paths and dice replay new-layout states using this independent unmodified old logic.",
+  "commit": "c4a5b7c7b55aaffff568e940c04ca9bf75eee61f",
+  "path": "scripts/combat/tactical_combat.gd",
+  "original_sha256": "436869e2643369aaf42106d954be43330cc9997782a1d657ce3a1c075eca135c",
+  "test_snapshot_sha256": "1f60aeb4f246e4ebe525a5bc3071922c6bb95317e3e53c98a5594fba7d9e738e",
+  "only_change": "Unique test-only class name"
+}

@@ -1,10 +1,10 @@
-name: GAME-94 LPC V1 Windows Review Build
+name: GAME-95 Party Preview and Old Road Windows Review Build
 permissions:
   contents: read
 on:
   push:
-    branches: [feature/first-adventure-vertical-slice, feature/game-94-lpc-character-presentation]
-    paths: ['assets/combat/**', 'data/art/**', 'export_presets.cfg', 'tests/lpc/**', 'tests/art/**', 'scripts/**', 'scenes/**', 'tests/adventure/**', 'tools/release/**', '.github/workflows/first-adventure-review.yml']
+    branches: [feature/first-adventure-vertical-slice, feature/game-94-lpc-character-presentation, feature/game-95-party-preview-old-road]
+    paths: ['assets/combat/**', 'data/art/**', 'data/combat/**', 'tests/battlefields/**', 'export_presets.cfg', 'tests/lpc/**', 'tests/art/**', 'scripts/**', 'scenes/**', 'tests/adventure/**', 'tools/release/**', '.github/workflows/first-adventure-review.yml']
   workflow_dispatch:
 jobs:
   windows-review:
@@ -25,17 +25,21 @@ jobs:
       - name: Combat and campaign checkpoint regressions
         run: python tests/adventure/run-tests.py --godot "$env:GODOT_BIN" --work-dir "$env:RUNNER_TEMP/adventure-source-tests"
       - name: Original source integrity and separate-process visual preference
-        run: python tests/art/run-tests.py --godot "$env:GODOT_BIN" --output "$env:RUNNER_TEMP/game94-art-tests"
+        run: python tests/art/run-tests.py --godot "$env:GODOT_BIN" --output "$env:RUNNER_TEMP/game95-art-tests"
       - name: GAME-32 frozen deterministic rules and migration regressions
         env:
-          GAME32_EVIDENCE: ${{ runner.temp }}/game94-rules
+          GAME32_EVIDENCE: ${{ runner.temp }}/game95-rules
         run: python tests/rules/run-tests.py
       - name: GAME-83 production presentation contract
         run: '& $env:GODOT_BIN --headless --audio-driver Dummy --path . --script tests/ui_system/presentation.gd'
       - name: Native LPC animation and presentation isolation
         env:
-          GAME94_LPC_ROOT: ${{ runner.temp }}/game94-live-lpc
+          GAME94_LPC_ROOT: ${{ runner.temp }}/game95-live-lpc
         run: '& $env:GODOT_BIN --headless --audio-driver Dummy --path . --script tests/lpc/review.gd'
+      - name: Party preview, registered maps and independent GAME-94 command oracle
+        env:
+          GAME95_REVIEW_ROOT: ${{ runner.temp }}/game95-live-road
+        run: '& $env:GODOT_BIN --headless --audio-driver Dummy --path . --script tests/battlefields/review.gd'
       - name: Verify official release export templates
         run: python tools/release/prepare-templates.py
       - name: Export Windows x64 and verify fresh-profile full player path with empty PATH
@@ -46,19 +50,20 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: game94-windows-evidence
+          name: game95-windows-evidence
           path: |
             ${{ runner.temp }}/first-adventure-review/evidence
             ${{ runner.temp }}/adventure-source-tests/*.log
             ${{ runner.temp }}/adventure-source-tests/results.json
-            ${{ runner.temp }}/game94-art-tests
-            ${{ runner.temp }}/game94-rules
-            ${{ runner.temp }}/game94-live-lpc
+            ${{ runner.temp }}/game95-art-tests
+            ${{ runner.temp }}/game95-rules
+            ${{ runner.temp }}/game95-live-lpc
+            ${{ runner.temp }}/game95-live-road
           if-no-files-found: error
       - name: Playable Windows x64 review package
         uses: actions/upload-artifact@v4
         with:
-          name: game94-windows-x64
+          name: game95-windows-x64
           path: |
             ${{ runner.temp }}/first-adventure-review/*.zip
             ${{ runner.temp }}/first-adventure-review/*.sha256
