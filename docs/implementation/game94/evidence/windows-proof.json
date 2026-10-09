@@ -1,0 +1,41 @@
+{
+  "art": {
+    "recipes": {
+      "0f10799be2bb3fde6be9099fd2e7070f:adventurer:1": "a2927d94e2f797ad17ec51142be1e506c8ea4eae59deeea426515da166732676",
+      "0f10799be2bb3fde6be9099fd2e7070f:adventurer:2": "b6905c9d94a40a08b8542df3dfff0886fd3cf2b0e4987ca27670583da999ca49",
+      "0f10799be2bb3fde6be9099fd2e7070f:adventurer:3": "4747042d7a8639c4105945bf514918ff2ac4586d47e76a5aa8a7ddbe78a77019",
+      "bandit-blade": "3a10eb189763b8384b6fe76c4147c8c6ad6f5e1a7a78d9266579b284d049ee64",
+      "bandit-bow": "7fb980c0a8bd7a7bd71ffc4bd3fec40a032f6bd636473d914522ad895c7cf5c2"
+    },
+    "styles": [
+      "lpc"
+    ],
+    "unchanged_state_hash": "452f95943e48b74e9fcc142d65cae62d16f8b16c960fcade0d8d685d8bc8c93f"
+  },
+  "checks": 180,
+  "empty_path": true,
+  "failures": 0,
+  "platform": "Windows",
+  "source_helper_override": false,
+  "victory_battle_hash": "cb6db22862197fd834af2f2f2d4af9484571446c2017649adbd1ed9d4e6aee2d",
+  "visual": false,
+  "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+  "preference_restart": true,
+  "original_art_files": 291,
+  "production_launch": true,
+  "archive_sha256": "95b06da6f39238791b65123f1540b64a1a6550b918b93a4aa9d8d49de38249ec",
+  "archive": "game94-lpc-v1-windows-x64.zip",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+    },
+    "executable_sha256": "fa34d952d9d84468ecc10e5beee9984406b6322e6fd14fff33ced079ca76c26e"
+  }
+}

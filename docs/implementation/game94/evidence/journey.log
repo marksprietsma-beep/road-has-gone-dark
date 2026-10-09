@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+REVIEW: generated world selected
+REVIEW: origin, party and adventure prepared
+REVIEW: victory achieved
+FIRST ADVENTURE REVIEW PROOF {"art":{"recipes":{"8a681c06fd8d3f24fbe79430d82ab13a:adventurer:1":"56168b191ede57789dfe54b2db96be1eaf3816a1906eadc03f9a1d8e8a660f1a","8a681c06fd8d3f24fbe79430d82ab13a:adventurer:2":"6385c92539c298eeabd230bc0647e81c409eda49bddb40a7f66f732412218f0e","8a681c06fd8d3f24fbe79430d82ab13a:adventurer:3":"231e7612958f28926a6822e883f0c5d477d879fcc33c753c8a07e54be7dc5f85","bandit-blade":"3a10eb189763b8384b6fe76c4147c8c6ad6f5e1a7a78d9266579b284d049ee64","bandit-bow":"7fb980c0a8bd7a7bd71ffc4bd3fec40a032f6bd636473d914522ad895c7cf5c2"},"styles":["lpc"],"unchanged_state_hash":"a10856dc1a567696e23aa2e97654901f51fed175384745b6effc07d10b84c7f2"},"attack_capture":true,"checks":353,"empty_path":false,"failures":0,"move_capture":true,"platform":"Linux","source_helper_override":true,"victory_battle_hash":"ce8d56a709da70ad7f4968429c7d8b5fb3a6a6c3d96635780b6033ca0cdf8495","visual":true,"world_sha":"597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

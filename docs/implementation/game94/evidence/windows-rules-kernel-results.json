@@ -1,0 +1,188 @@
+{
+  "checks": 22181,
+  "engine": "4.6.3-stable (official)",
+  "failures": 0,
+  "golden": {
+    "arcane": {
+      "capacities": {
+        "focus": 7
+      },
+      "classes": {
+        "lantern-adept": 20
+      },
+      "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+      "stats": {
+        "BAB": 10,
+        "HP": 86,
+        "damage": 0,
+        "defence": 11,
+        "fortitude": 7,
+        "initiative": 1,
+        "melee_attack": 9,
+        "ranged_attack": 11,
+        "reach": 1,
+        "reflex": 7,
+        "save_dc": 1,
+        "stride": 4,
+        "will": 23
+      }
+    },
+    "arcane_mixed": {
+      "capacities": {
+        "focus": 4
+      },
+      "classes": {
+        "lantern-adept": 10,
+        "wayfinder": 10
+      },
+      "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+      "stats": {
+        "BAB": 12,
+        "HP": 96,
+        "damage": 0,
+        "defence": 11,
+        "fortitude": 7,
+        "initiative": 1,
+        "melee_attack": 11,
+        "ranged_attack": 13,
+        "reach": 1,
+        "reflex": 11,
+        "save_dc": 1,
+        "stride": 5,
+        "will": 21
+      }
+    },
+    "martial": {
+      "capacities": {
+
+      },
+      "classes": {
+        "roadwarden": 20
+      },
+      "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+      "stats": {
+        "BAB": 20,
+        "HP": 166,
+        "damage": 0,
+        "defence": 16,
+        "fortitude": 14,
+        "initiative": 1,
+        "melee_attack": 26,
+        "ranged_attack": 21,
+        "reach": 1,
+        "reflex": 7,
+        "save_dc": 0,
+        "stride": 4,
+        "will": 16
+      }
+    },
+    "mixed": {
+      "capacities": {
+
+      },
+      "classes": {
+        "roadwarden": 10,
+        "wayfinder": 10
+      },
+      "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+      "stats": {
+        "BAB": 17,
+        "HP": 126,
+        "damage": 0,
+        "defence": 16,
+        "fortitude": 11,
+        "initiative": 6,
+        "melee_attack": 18,
+        "ranged_attack": 22,
+        "reach": 1,
+        "reflex": 15,
+        "save_dc": 0,
+        "stride": 5,
+        "will": 16
+      }
+    },
+    "negative:cycle": "reference.cycle",
+    "negative:dice": "equipment.weapon",
+    "negative:duplicate": "definition.duplicate",
+    "negative:effect": "effect.operator",
+    "negative:extra_effect": "effect.field",
+    "negative:formula": "formula.zero_divisor",
+    "negative:hook": "hook.unregistered",
+    "negative:modifier_scope": "effect.scope",
+    "negative:operator": "requirement.operator",
+    "negative:progression": "class.progression",
+    "negative:progression_dependency": "class.formula_dependency",
+    "negative:reference": "reference.missing",
+    "negative:resource": "resource.refresh",
+    "negative:status_cycle": "reference.cycle",
+    "negative:trigger": "ability.trigger",
+    "prestige": {
+      "capacities": {
+        "focus": 4,
+        "veil_uses": 5
+      },
+      "classes": {
+        "lantern-adept": 10,
+        "veil-adept": 10
+      },
+      "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+      "stats": {
+        "BAB": 10,
+        "HP": 86,
+        "damage": 0,
+        "defence": 11,
+        "fortitude": 7,
+        "initiative": 1,
+        "melee_attack": 9,
+        "ranged_attack": 11,
+        "reach": 1,
+        "reflex": 7,
+        "save_dc": 1,
+        "stride": 4,
+        "will": 25
+      }
+    },
+    "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+    "skirmisher": {
+      "capacities": {
+
+      },
+      "classes": {
+        "wayfinder": 20
+      },
+      "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+      "stats": {
+        "BAB": 15,
+        "HP": 106,
+        "damage": 0,
+        "defence": 16,
+        "fortitude": 7,
+        "initiative": 6,
+        "melee_attack": 15,
+        "ranged_attack": 20,
+        "reach": 1,
+        "reflex": 17,
+        "save_dc": 0,
+        "stride": 5,
+        "will": 16
+      }
+    }
+  },
+  "rules_ref": {
+    "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+    "engine_schema": 1,
+    "pack_id": "trhgd-rules-v1",
+    "rules_version": "1.0.0",
+    "schema_version": 1
+  },
+  "timings": {
+    "derive_1000_us": 1135587,
+    "effects_1000_us": 5239836,
+    "progression_2000_us": 7701416,
+    "reference_progression_us": 2935322,
+    "registry_load_us": 9329,
+    "requirements_5000_us": 317275,
+    "serialization_1000_us": 14070115,
+    "validation_1000_us": 704634
+  }
+}
