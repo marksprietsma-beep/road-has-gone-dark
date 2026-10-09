@@ -49,8 +49,8 @@
     },
     {
       "path": "game95-old-road-windows-x64.zip.sha256",
-      "bytes": 99,
-      "sha256": "d897cfe8b2f56b69bac0a096e027157ee73e587dfb907b605c5ed289cb9c34aa"
+      "bytes": 98,
+      "sha256": "0e26123d018e94e1e63a4caff0c39bca2e3b9414e84eee2cf79a31ab71efe707"
     },
     {
       "path": "game95-proof.json",
@@ -239,23 +239,23 @@
     },
     {
       "path": "windows-adventure-timings.json",
-      "bytes": 426,
-      "sha256": "9bacf7bd9800a26b285a9dd793d27993a7f261cd47e5cc39a63538aa4e1613f5"
+      "bytes": 400,
+      "sha256": "a6d8369c7a7d2ecc8712dc447169669d83774956bf6aea2f8c2f3ef5b55a2f1b"
     },
     {
       "path": "windows-campaign-create.log",
-      "bytes": 139,
-      "sha256": "188bf067f714fb8e857ab46e8067054828791f153f66cc3baa34492954985854"
+      "bytes": 136,
+      "sha256": "dce373a42a31122dd363721381fe496db1976002325e11b30d772a02da089958"
     },
     {
       "path": "windows-campaign-reload.log",
-      "bytes": 139,
-      "sha256": "e4c0b386f03c7d902343b070643e9d435fe426097bbd0cb7d30c056ba3b61b3b"
+      "bytes": 136,
+      "sha256": "db096acc250e2c6f88be0464000207ed7504c75e8d425282d4e9ab756d160c13"
     },
     {
       "path": "windows-combat.log",
-      "bytes": 242,
-      "sha256": "020f3717470c95a3ffffaef03ec3f046db0bd706f0920fd456dd2e1233765791"
+      "bytes": 239,
+      "sha256": "a7305ac5162370567006e19528dda264a15b1347a50f1a7475b410ca99243411"
     },
     {
       "path": "windows-game95-proof.json",
@@ -269,28 +269,28 @@
     },
     {
       "path": "windows-native.log",
-      "bytes": 1304,
-      "sha256": "983e45496e549bab4e0474b00fb8ce26b22a54f1e14d1a2809291cc6ef09642f"
+      "bytes": 1298,
+      "sha256": "eb5ad5f9d7b7e527f41cbd797c3569824cac05a466d91d3ea37c6058f92ef688"
     },
     {
       "path": "windows-preference-read.log",
-      "bytes": 105,
-      "sha256": "d4f63e31a116a96c6c0ce1d07c5f78b6d3265c8316dabe2d8c28833b9e505d3d"
+      "bytes": 102,
+      "sha256": "41998d6f13169c7017d6bda54cf950f9f6a77a3820e8b419108b76f6bffe92cb"
     },
     {
       "path": "windows-preference-write.log",
-      "bytes": 106,
-      "sha256": "dee03a2ff0f84178fb6659cebf31024ec5cb984956b3392a582b12ea72a1e77f"
+      "bytes": 103,
+      "sha256": "f070ddce99c13def981206bb96a3e561481a628d495ecf0094afc4068c586088"
     },
     {
       "path": "windows-production-launch.log",
-      "bytes": 199,
-      "sha256": "42f82127bb15c84c27c0dde798c2495493d99e7e70e07e91ee873e8d0a9cad56"
+      "bytes": 195,
+      "sha256": "a0c906399bdb382ff21ab8ed6298848f904a42b2f14a71d2e28a74a770eceeee"
     },
     {
       "path": "windows-proof.json",
-      "bytes": 2114,
-      "sha256": "5a5c918efc280d7b5194819f77c289c428c89c6e0b989f6511887572866d6597"
+      "bytes": 2069,
+      "sha256": "f8ad23c3638d6b74955469fda9cdcff56fb510b4cc8dafcb29888c14a4a1112d"
     },
     {
       "path": "windows-rules-kernel-results.json",
@@ -299,10 +299,11 @@
     },
     {
       "path": "windows-rules-timings.json",
-      "bytes": 168,
-      "sha256": "a079b99ad97893d2083af14223675dede75ff867a4969a1fcc1c01e217010f54"
+      "bytes": 159,
+      "sha256": "e246dccc7a3c45392c7332e360846e19ea3e67d0d9d8a156d70c516695612af8"
     }
   ],
   "windows_workflow": "37954669406",
-  "windows_rendering": "Headless native Windows validation; screenshots and GIFs from actual Linux Godot viewport renders."
+  "windows_rendering": "Headless native Windows validation; screenshots and GIFs from actual Linux Godot viewport renders.",
+  "hash_basis": "Repository blob bytes; Git normalizes text line endings to LF. Original native CRLF logs are retained in the Windows evidence artifact."
 }
