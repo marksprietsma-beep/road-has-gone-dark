@@ -25,7 +25,6 @@ var action_buttons := {}
 var tiles := {}
 var pawns := {}
 var art_style := CombatArt.preferred()
-var style_selector: OptionButton
 var art_note: Label
 var board_column: VBoxContainer
 var tile_side := 34.0
@@ -40,12 +39,8 @@ func _ready() -> void:
  var column := VBoxContainer.new();column.add_theme_constant_override("separation",4);margin.add_child(column)
  var heading := HBoxContainer.new();column.add_child(heading)
  title=GameUI.label("Bandits on the Old Road",18);title.autowrap_mode=TextServer.AUTOWRAP_OFF;title.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;title.size_flags_horizontal=Control.SIZE_EXPAND_FILL;heading.add_child(title)
- style_selector=OptionButton.new();style_selector.add_theme_font_size_override("font_size",12);style_selector.tooltip_text="Combat artwork · F7 cycles styles. Saved separately from gameplay.";heading.add_child(style_selector)
- for style in CombatArt.styles():
-  style_selector.add_item(style.name+" · F7" if CombatArt.available(style) else style.name+" · unavailable")
-  style_selector.set_item_disabled(style_selector.item_count-1,not CombatArt.available(style))
- style_selector.item_selected.connect(func(index: int):switch_style(CombatArt.styles()[index].id))
- sync_art_selector()
+ var art_label := GameUI.label("Universal LPC",12);art_label.autowrap_mode=TextServer.AUTOWRAP_OFF;heading.add_child(art_label)
+ var credits := GameUI.action("Art credits",show_art_credits);credits.add_theme_font_size_override("font_size",12);heading.add_child(credits)
  resized.connect(layout_board)
  status=GameUI.label(message,GameUI.META);column.add_child(status)
  turn_label=GameUI.label("",GameUI.META);turn_label.autowrap_mode=TextServer.AUTOWRAP_OFF;turn_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(turn_label)
@@ -94,7 +89,7 @@ func _process(delta: float) -> void:
   var result: Dictionary=thread.wait_to_finish();thread=null
   var previous := battle().duplicate(true)
   if result.get("ok",false):
-   state=result.state;message="";ai_delay=0.75
+   state=result.state;message="";ai_delay=1.1
    if not battle().is_empty() and engine.current(battle()).id!=actor_id:
     actor_id=engine.current(battle()).id;mode="attack"
   else: message=str(result.get("error","The previous save was preserved."))
@@ -120,6 +115,9 @@ func add_action(id: String,text: String) -> void:
  button.tooltip_text=text
  actions.add_child(button);action_buttons[id]=button
 func refresh() -> void:
+ var retained: Dictionary=pawns.duplicate()
+ for pawn in retained.values():
+  if is_instance_valid(pawn) and pawn.get_parent()!=null:pawn.get_parent().remove_child(pawn)
  for child in grid.get_children(): grid.remove_child(child);child.queue_free()
  for child in actions.get_children(): actions.remove_child(child);child.queue_free()
  tiles={};pawns={};action_buttons={}
@@ -130,7 +128,6 @@ func refresh() -> void:
  menu_button.disabled=thread!=null
  end_button.disabled=thread!=null or not playing or engine.current(b).team!="party"
  retreat_button.disabled=end_button.disabled;return_button.disabled=thread!=null
- sync_art_selector()
  if b.is_empty(): status.text=message;return
  var actor := engine.current(b)
  title.text=b.board.title
@@ -156,7 +153,7 @@ func refresh() -> void:
     for candidate in state.party.members:
      if candidate.character_id==id: member=candidate;break
     var recipe := CombatArt.recipe(art_style,u,member)
-    var pawn := CombatPawn.new();button.add_child(pawn)
+    var pawn: CombatPawn=retained[id] if retained.has(id) else CombatPawn.new();button.add_child(pawn)
     var badge: String=str(state.party_ids.find(id)+1) if u.team=="party" else "A" if u.weapon=="bow" else "B"
     pawn.present(u,recipe,actor.id==id and playing,int(engine.stats(u).HP),badge)
     pawns[id]=pawn
@@ -182,6 +179,8 @@ func refresh() -> void:
     else: targeting.text="Outside movement or target range."
    )
    button.pressed.connect(func():choose_tile(p));grid.add_child(button);tiles[str(p)]=button
+ for id in retained:
+  if not pawns.has(id):retained[id].queue_free()
  var summary: Array[String]=[]
  for id in b.order:
   var u: Dictionary=b.units[id]
@@ -217,25 +216,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _exit_tree() -> void:
  if thread!=null: thread.wait_to_finish()
 
-func sync_art_selector() -> void:
- if style_selector==null: return
- for index in CombatArt.styles().size():
-  var style: Dictionary=CombatArt.styles()[index]
-  style_selector.set_item_disabled(index,not CombatArt.available(style))
-  style_selector.set_item_text(index,style.name+" · F7" if CombatArt.available(style) else style.name+" · unavailable")
-  if CombatArt.styles()[index].id==art_style: style_selector.select(index)
-
-func switch_style(id: String) -> void:
- for style in CombatArt.styles():
-  if style.id==id:
-   if not CombatArt.available(style):
-    targeting.text="Art unavailable: "+style.name;return
-   art_style=id
-   var saved := CombatArt.remember(id)
-   refresh()
-   if saved!=OK: targeting.text="Style changed; preference could not be saved."
-   return
-
 func layout_board() -> void:
  if grid==null: return
  # At the smallest viewport the order is available in its tooltip and side panel.
@@ -244,38 +224,51 @@ func layout_board() -> void:
  tile_side=maxf(28,tile_side)
  for button in tiles.values(): button.custom_minimum_size=Vector2(tile_side,tile_side)
 
-func _input(event: InputEvent) -> void:
- if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_F7:
-  var styles := CombatArt.styles()
-  var index := 0
-  for i in styles.size():
-   if styles[i].id==art_style: index=i;break
-  for step in range(1,styles.size()+1):
-   var candidate: Dictionary=styles[(index+step)%styles.size()]
-   if CombatArt.available(candidate): switch_style(candidate.id);break
-  get_viewport().set_input_as_handled()
+func show_art_credits() -> void:
+ var dialog := AcceptDialog.new();dialog.title="Universal LPC · artwork credits"
+ var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+ scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);scroll.offset_top=8;scroll.offset_left=8;scroll.offset_right=-8;scroll.offset_bottom=-42
+ dialog.add_child(scroll)
+ var text := RichTextLabel.new();text.fit_content=true;text.scroll_active=false;text.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+ text.add_theme_font_size_override("normal_font_size",14);text.text=FileAccess.get_file_as_string("res://assets/combat/LPC-CREDITS.txt");scroll.add_child(text)
+ add_child(dialog);dialog.popup_centered_ratio(0.8);dialog.confirmed.connect(dialog.queue_free)
 
 func animate_committed(previous: Dictionary) -> void:
  await get_tree().process_frame
  var after := battle()
- if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision): return
- var command: Dictionary=after.commands.back()
- var actor: String=command.actor_id
+ if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision):return
+ var command: Dictionary=after.commands.back();var actor: String=command.actor_id
+ var pitch := Vector2((grid.size.x-14)/8+2,(grid.size.y-10)/6+2)
+ var target: String=str(command.get("target_id",""))
+ var delay := 0.10;var action_serial := -1
  if pawns.has(actor):
-  var pitch := Vector2((grid.size.x-14)/8+2,(grid.size.y-10)/6+2)
-  var offset := Vector2(previous.units[actor].position[0]-after.units[actor].position[0],previous.units[actor].position[1]-after.units[actor].position[1])*pitch
-  pawns[actor].animate(command.kind,Vector2.ZERO if command.kind=="move" else offset)
   if command.kind=="move":
    var final_position: Array=after.units[actor].position
    var route: Array=engine.paths(previous,previous.units[actor]).get(str(final_position),[])
    pawns[actor].animate_route(route.map(func(p: Array):return Vector2(p[0]-final_position[0],p[1]-final_position[1])*pitch))
- var target: String=str(command.get("target_id",""))
- if pawns.has(actor) and pawns.has(target) and (command.kind in ["spark","slow","healing-thread"] or command.kind=="attack" and after.units[actor].weapon=="bow"):
+   delay=minf(0.5,maxf(0.1,(route.size()-1)*0.18))
+  elif command.kind not in ["end","retreat"]:
+   var direction := Vector2.ZERO
+   if after.units.has(target):direction=Vector2(after.units[target].position[0]-after.units[actor].position[0],after.units[target].position[1]-after.units[actor].position[1])
+   action_serial=pawns[actor].play_action(command.kind,direction)
+   delay=float(pawns[actor].recipe.timelines.get(pawns[actor].animation,{}).get("impact",0.1))
+ visual_impact(previous,after.duplicate(true),command,delay,action_serial)
+
+func visual_impact(previous: Dictionary, committed: Dictionary, command: Dictionary, delay: float, action_serial: int) -> void:
+ await get_tree().create_timer(delay).timeout
+ if not is_inside_tree():return
+ var actor: String=command.actor_id;var target: String=str(command.get("target_id",""))
+ if action_serial>=0 and (not pawns.has(actor) or pawns[actor].serial!=action_serial):return
+ if pawns.has(actor) and pawns.has(target) and (command.kind in ["spark","slow","healing-thread"] or command.kind=="attack" and committed.units[actor].weapon=="bow"):
   var effect := CombatEffect.new();effect.from=pawns[actor].get_global_rect().get_center();effect.to=pawns[target].get_global_rect().get_center()
   effect.kind="arrow" if command.kind=="attack" else command.kind;add_child(effect)
- for id in after.order:
-  if not pawns.has(id): continue
-  var change: int=int(after.units[id].record.runtime.hp)-int(previous.units[id].record.runtime.hp)
-  if change!=0: pawns[id].animate("hit" if change<0 else "healing-thread",Vector2.ZERO,str(change))
-  elif command.get("target_id","")==id and command.kind in ["attack","spark"]: pawns[id].animate("hit",Vector2.ZERO,"Miss")
-  if not engine.alive(after.units[id]): pawns[id].down=true
+  await get_tree().create_timer(0.4).timeout
+  if not is_inside_tree():return
+ var added_logs: Array=committed.log.slice(previous.log.size())
+ for id in committed.order:
+  if not pawns.has(id):continue
+  var change: int=int(committed.units[id].record.runtime.hp)-int(previous.units[id].record.runtime.hp)
+  if change!=0:pawns[id].react(change)
+  elif target==id and command.kind in ["attack","spark"]:
+   var missed: bool=added_logs.any(func(line: String):return line.ends_with(", miss."))
+   pawns[id].react(0,"miss" if missed else "resisted" if command.kind=="spark" else "blocked")

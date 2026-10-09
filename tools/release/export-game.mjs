@@ -31,8 +31,10 @@ if(a.includes('--qa')){
 }
 cpSync(helper,join(target,'worldgen-helper'),{recursive:true});
 // Preserve original redistributable source layers and credits outside the PCK.
-cpSync(join(root,'assets/combat'),join(target,'artwork'),{recursive:true,filter:source=>!source.endsWith('.import')});
-cpSync(join(root,'data/art/sources.json'),join(target,'artwork/sources.json'));
+mkdirSync(join(target,'artwork'),{recursive:true});
+for(const dir of ['lpc','licenses'])cpSync(join(root,'assets/combat',dir),join(target,'artwork',dir),{recursive:true,filter:source=>!source.endsWith('.import')});
+cpSync(join(root,'assets/combat/LPC-CREDITS.txt'),join(target,'artwork/ART-CREDITS.txt'));
+cpSync(join(root,'data/art/lpc-sources.json'),join(target,'artwork/sources.json'));
 cpSync(join(root,'data/art/styles.json'),join(target,'artwork/styles.json'));
 assertHelper(join(target,'worldgen-helper'));
 execFileSync(engine,['--headless','--path',root,'--script','tools/release/export-notices.gd','--','--output',target],{cwd:root,stdio:'inherit'});

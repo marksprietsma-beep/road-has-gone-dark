@@ -1,97 +1,121 @@
 class_name CombatArt
 extends RefCounted
-## Presentation only. No combat RNG, save service or ancestry roster dependency.
+## Presentation only: stable identity, real equipment, no tactical RNG/save writer.
 const CATALOG := "res://data/art/styles.json"
 static var preference_path := "user://presentation.cfg"
-static var _catalog: Array = []
+static var _catalog: Array=[]
 static var _textures := {}
-
 static func styles() -> Array:
  if _catalog.is_empty(): _catalog=JSON.parse_string(FileAccess.get_file_as_string(CATALOG)).styles
  return _catalog
-
-static func texture(path: String) -> Texture2D:
- if not _textures.has(path):
-  _textures[path]=load(path) if ResourceLoader.exists(path) else null
- return _textures[path]
-
+static func texture(path: String, palette: Dictionary={}) -> Texture2D:
+ var key := path+JSON.stringify(palette)
+ if _textures.has(key): return _textures[key]
+ var source: Texture2D=load(path) if ResourceLoader.exists(path) else null
+ if source==null or palette.is_empty(): _textures[key]=source;return source
+ # Cache exact six-shade artwork adaptations; preserve original PNG/alpha/eye colours.
+ var image := source.get_image();image.convert(Image.FORMAT_RGBA8)
+ var bytes := image.get_data();var replacements := {}
+ for i in palette.source.size(): replacements[str(palette.source[i]).hex_to_int()]=str(palette.target[i]).hex_to_int()
+ for i in range(0,bytes.size(),4):
+  if bytes[i+3]==0: continue
+  var rgb: int=(int(bytes[i])<<16)|(int(bytes[i+1])<<8)|int(bytes[i+2])
+  if replacements.has(rgb):
+   var target: int=replacements[rgb];bytes[i]=(target>>16)&255;bytes[i+1]=(target>>8)&255;bytes[i+2]=target&255
+ _textures[key]=ImageTexture.create_from_image(Image.create_from_data(image.get_width(),image.get_height(),false,Image.FORMAT_RGBA8,bytes))
+ return _textures[key]
 static func paths_in(value: Variant) -> Array[String]:
  var found: Array[String]=[]
  if value is Dictionary:
   if value.has("path"): found.append(value.path)
-  if value.has("sequence"):
-   for path in value.sequence: found.append("res://assets/combat/"+path)
   for key in value:
    if value[key] is Dictionary or value[key] is Array: found.append_array(paths_in(value[key]))
  elif value is Array:
   for child in value: found.append_array(paths_in(child))
  return found
-
 static func available(style: Dictionary) -> bool:
- return paths_in(style).all(func(path: String):return ResourceLoader.exists(path))
-
+ return not style.is_empty() and paths_in(style).all(func(path: String):return ResourceLoader.exists(path))
 static func preferred() -> String:
- var file := ConfigFile.new()
- if file.load(preference_path)==OK:
-  var id: String=str(file.get_value("combat","art_style","lpc"))
-  if styles().any(func(s: Dictionary):return s.id==id and available(s)): return id
- for style in styles():
-  if available(style): return style.id
- return ""
-
-static func remember(id: String) -> Error:
- var file := ConfigFile.new()
- file.load(preference_path)
- file.set_value("combat","art_style",id)
+ # Retired experiment preferences never select an absent provider or touch campaign saves.
+ return "lpc"
+static func remember(_id: String) -> Error:
+ var file := ConfigFile.new();file.load(preference_path);file.set_value("combat","art_style","lpc")
  return file.save(preference_path)
-
 static func profile(identity: String, member: Dictionary, descriptors: Dictionary={}) -> Dictionary:
- # The prototype people ID is provenance, never a body/skin/race lookup.
+ var refs: Dictionary=member.get("origin_refs",{})
  var value := {"version":1,"identity":identity,"visual_seed":"trhgd-visual-v1:"+identity,
-  "identity_layers":{"ancestry_ref":member.get("people_id",""),"heritage":{},"culture":member.get("origin_refs",{}),"background":member.get("background_id","")},
+  "identity_layers":{"ancestry_ref":member.get("people_id",""),"heritage":{},"culture":{"world_id":refs.get("world_id",""),"culture_id":refs.get("culture_id",-1)},"origin":refs.duplicate(true),"background":member.get("background_id","")},
   "body":{"plan":"humanoid","size":1.0,"proportions":[1.0,1.0],"surface":"unspecified","parts":["head","torso","left_arm","right_arm","left_leg","right_leg"],"features":[]},
   "heritage_layers":[],"acquired_layers":[],"transformation":{},"equipment_layers":[]}
- for key in descriptors: value[key]=descriptors[key].duplicate(true) if descriptors[key] is Dictionary or descriptors[key] is Array else descriptors[key]
- # External equipment/transform descriptors can change without reseeding identity.
- value.identity=identity
+ for key in descriptors:value[key]=descriptors[key].duplicate(true) if descriptors[key] is Dictionary or descriptors[key] is Array else descriptors[key]
+ value.identity=identity;value.visual_seed="trhgd-visual-v1:"+identity
  return value
-
-static func recipe(style_id: String, unit: Dictionary, member: Dictionary={}, descriptors: Dictionary={}) -> Dictionary:
- var p := profile(str(unit.id),member,descriptors)
- var role := "scout" if unit.weapon=="bow" else "adept" if unit.weapon=="staff" else "vanguard"
- if unit.weapon=="shortblade" and member.get("role_id","")=="expert": role="expert"
- var style: Dictionary={}
- for candidate in styles():
-  if candidate.id==style_id: style=candidate;break
- var seed: int=("appearance:"+str(p.visual_seed)).sha256_text().left(7).hex_to_int()
+static func pick(seed: String, domain: String, count: int) -> int:
+ return (domain+":"+seed).sha256_text().left(7).hex_to_int()%count
+static func recipe(_style_id: String, unit: Dictionary, member: Dictionary={}, descriptors: Dictionary={}) -> Dictionary:
+ var style: Dictionary=styles()[0];var p := profile(str(unit.id),member,descriptors)
  var body: Dictionary=p.transformation.get("body",p.body)
  var warnings: Array[String]=[]
- var replacement: Dictionary=body.get("visual_recipes",{}).get(style_id,{})
- var replacement_valid := not replacement.is_empty() and replacement.has("native") and replacement.has("animations") and not paths_in(replacement).is_empty() and paths_in(replacement).all(func(path: String):return path.begins_with("res://assets/combat/"+style_id+"/") and ResourceLoader.exists(path))
- if body.get("plan","humanoid")!="humanoid" and not replacement_valid: warnings.append("Unsupported body plan: neutral humanoid preview")
- if not replacement_valid and (body.get("surface","unspecified")!="unspecified" or not body.get("features",[]).is_empty()): warnings.append("Anatomical features not supplied by this preview")
- if not style.has("roles") or not available(style): return {"available":false,"profile":p,"role":role,"warnings":["Art provider unavailable"],"style_id":style_id}
- var selected: Variant=style.roles[role]
- if selected is Array: selected=selected[seed%selected.size()]
- var result: Dictionary=selected.duplicate(true)
- # A provider-specific full silhouette can replace the inherited body visually.
- # This accepts future authored art; it implements no transformation gameplay.
- if replacement_valid: result=replacement.duplicate(true)
- result.merge({"available":true,"profile":p,"role":role,"style_id":style_id,"provider_version":style.version,"variant":seed,"warnings":warnings,"scale":clampf(float(body.get("size",1.0)),0.6,1.35)})
- if style_id=="lpc" and not replacement_valid:
-  var hair: Dictionary=style.hair[seed%style.hair.size()]
-  for animation in result.animations: result.animations[animation].append_array(hair[animation] if role!="adept" else [])
- if style_id=="kenney" and not replacement_valid:
-  # Original atlas hairstyles, no skin recolouring and no ancestry assumptions.
-  for animation in result.animations: result.animations[animation][3].rect=[(19+seed%5)*17,8*17,16,16]
- if style_id=="navinius" and not replacement_valid:
-  for animation in result.animations: result.animations[animation][1].path="res://assets/combat/navinius/Modular RPG Pixel Art/Customization/blonde"+("" if seed%4==0 else str(seed%4+1))+".png"
+ var equipment: Array=unit.record.get("equipment",[])
+ var weapon: String=unit.weapon
+ var role := "scout" if weapon=="bow" else "adept" if weapon=="staff" else "vanguard" if equipment.has("mail") else "expert"
+ if unit.team=="enemy":role="raider-archer" if weapon=="bow" else "raider-blade"
+ var seed: String=p.visual_seed
+ var family: String=str(body.get("family","female" if pick(seed,"body",2)==1 else "male"))
+ if not family in ["male","female"]:family="male";warnings.append("Unsupported body family: neutral humanoid preview")
+ var head: String="female" if family=="female" else "gaunt" if pick(seed,"head",3)==0 else "male"
+ var hair: String=["plain","curly","ponytail-front"][pick(seed,"hair-shape",3)]
+ var skin: int=pick(seed,"skin",style.palettes.skin.sets.size())
+ var hair_color: int=pick(seed,"hair-colour",style.palettes.hair.sets.size())
+ var cloth: String=["brown","forest","navy"][pick(seed,"clothes",3)]
+ var mage_colour: String="blue" if pick(seed,"mage-clothes",2)==0 else "purple"
+ var components: Array[String]=["body-"+family,"pants-"+family,"boots-"+family,"head-"+head]
+ if hair=="ponytail-front":components.append("ponytail-back")
+ components.append(hair)
+ if family=="male" and (pick(seed,"beard",3)==0 or role=="raider-blade"):components.append("beard")
+ if weapon=="staff":components.append_array(["skirt-"+family,"mage-"+family+"-"+mage_colour,"hat-"+mage_colour])
+ else:components.append("shirt-"+family+"-"+cloth)
+ if equipment.has("mail"):components.append("mail-"+family)
+ elif equipment.has("leathers"):components.append("leather-"+family)
+ if equipment.has("shield"):components.append("shield")
+ if equipment.has("mail") and pick(seed,"headwear",3)==0:components.append("helmet")
+ if role.begins_with("raider"):
+  components.append_array(["cape-back","cape-front"])
+  if weapon=="bow":components.append("hood")
+ if weapon=="bow":components.append_array(["bow-back","bow-front"])
+ elif weapon=="staff":components.append("cane-"+family)
+ else:components.append_array(["blade-back","blade-front"])
+ components.sort_custom(func(a: String,b: String):return float(style.parts[a].z)<float(style.parts[b].z))
+ var animations := {};var fallbacks: Array[String]=[]
+ var source_acts := {"idle":"idle","move":"walk","slash":"slash","shoot":"shoot","thrust":"thrust","spell":"spellcast","down":"hurt","hit":"hurt","guard":"walk"}
+ for clip in source_acts:
+  var layers: Array=[]
+  for part_id in components:
+   var item: Dictionary=style.parts[part_id];var requested: String=source_acts[clip]
+   var is_weapon: bool=part_id.begins_with("blade-") or part_id.begins_with("bow-") or part_id.begins_with("cane-")
+   # Casters free their hands; absent defeat equipment is lowered/stowed, not floating.
+   if clip=="spell" and is_weapon:continue
+   if clip=="down" and not item.actions.has("hurt"):continue
+   var native: bool=item.actions.has(requested)
+   var layer: Dictionary=item.actions[requested if native else "walk"].duplicate(true)
+   layer.part_id=part_id
+   layer.hold=not native or clip=="guard"
+   if not native:fallbacks.append(part_id+" / "+clip+": held walk pose")
+   if part_id.begins_with("body-") or part_id.begins_with("head-"):layer.palette={"source":style.palettes.skin.source,"target":style.palettes.skin.sets[skin]}
+   elif part_id in ["plain","curly","ponytail-front","ponytail-back","beard"]:layer.palette={"source":style.palettes.hair.source,"target":style.palettes.hair.sets[hair_color]}
+   layers.append(layer)
+  animations[clip]=layers
+ var replacement: Dictionary=body.get("visual_recipes",{}).get("lpc",{})
+ var valid: bool=replacement.has_all(["native","animations"]) and replacement.animations is Dictionary and replacement.animations.has_all(source_acts.keys()) and not paths_in(replacement).is_empty() and paths_in(replacement).all(func(path: String):return path.begins_with("res://assets/combat/lpc/") and ResourceLoader.exists(path))
+ if body.get("plan","humanoid")!="humanoid" and not valid:warnings.append("Unsupported body plan: neutral humanoid preview")
+ if not valid and (body.get("surface","unspecified")!="unspecified" or not body.get("features",[]).is_empty()):warnings.append("Anatomical features not supplied by this preview")
+ if valid:animations=replacement.animations.duplicate(true)
+ var proportions: Array=body.get("proportions",[1.0,1.0])
+ var result := {"available":available(style),"profile":p,"role":role,"style_id":"lpc","provider_version":style.version,"native":replacement.get("native",64) if valid else 64,"animations":animations,"timelines":style.timelines.duplicate(true),"variant":pick(seed,"phase",100),"warnings":warnings,"fallbacks":fallbacks,"scale":clampf(float(body.get("size",1.0)),0.7,1.2),"proportions":[clampf(float(proportions[0]),0.8,1.15),clampf(float(proportions[1]),0.8,1.15)],"appearance":{"family":family,"head":head,"hair":hair,"skin":skin,"hair_colour":hair_color},"equipment":equipment.duplicate(),"weapon":weapon}
  for group in [p.heritage_layers,p.acquired_layers,p.equipment_layers,p.transformation.get("layers",[])]:
   for overlay in group:
-   if overlay.get("provider",style_id)!=style_id or not overlay.get("path","").begins_with("res://assets/combat/"+style_id+"/") or not ResourceLoader.exists(overlay.get("path","")):
+   if overlay.get("provider","lpc")!="lpc" or not overlay.get("path","").begins_with("res://assets/combat/lpc/") or not ResourceLoader.exists(overlay.get("path","")):
     result.warnings.append("Unsupported visual overlay: "+str(overlay.get("id","unnamed")));continue
-   for animation in result.animations: result.animations[animation].append(overlay.duplicate(true))
- var proportions: Array=body.get("proportions",[1.0,1.0])
- result.proportions=[clampf(float(proportions[0]),0.6,1.35),clampf(float(proportions[1]),0.6,1.35)]
+   for clip in result.animations:result.animations[clip].append(overlay.duplicate(true))
  result.recipe_hash=RulesJson.digest(result)
  return result
