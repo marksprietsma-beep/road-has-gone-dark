@@ -101,8 +101,8 @@ func run() -> void:
  for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
   root.size=resolution;await settle();await settle()
   check(ui.tiles.size()==48,"8x6 tile hitboxes")
-  check(ui.end_button.get_global_rect().end.y<=root.size.y,"footer fits "+str(resolution))
-  check(ui.grid.get_global_rect().end.x<=root.size.x,"board fits "+str(resolution))
+  check(ui.end_button.get_global_rect().end.y<=root.get_visible_rect().size.y,"footer fits "+str(resolution))
+  check(ui.grid.get_global_rect().end.x<=root.get_visible_rect().size.x,"board fits "+str(resolution))
   for tile in ui.tiles.values():check(tile.get_global_rect().has_point(tile.get_global_rect().get_center()),"accurate tile centre")
   await shot("after-%dx%d"%[resolution.x,resolution.y])
   if visual:
@@ -110,6 +110,8 @@ func run() -> void:
    var image := root.get_texture().get_image()
    for id in ui.pawns:
     var rect: Rect2=ui.pawns[id].get_global_rect()
+    var pixel_scale := Vector2(image.get_width(),image.get_height())/root.get_visible_rect().size
+    rect.position*=pixel_scale;rect.size*=pixel_scale
     image.get_region(Rect2i(rect)).save_png(output.path_join("closeup-%s-%dx%d.png"%[id.replace(":","-"),resolution.x,resolution.y]))
   ui.show_art_credits();await settle()
   for node in ui.get_children():
