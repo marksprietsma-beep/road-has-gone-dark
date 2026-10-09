@@ -1,6 +1,6 @@
 # GAME-95 — Party previews, readable combat and the Old Road
 
-Continues delivered GAME-94 (`3c3343fd14282397c46932417f519df7b526ea40`, tested game `c4a5b7c7b55aaffff568e940c04ca9bf75eee61f`). [Audit before implementation](AUDIT.md) records the reuse decisions and geometry tradeoff. This is a review branch stacked on draft #73; drafts #71–#73 remain unmerged. The uploaded GAME-95 handoff is authoritative.
+Continues delivered GAME-94 (`3c3343fd14282397c46932417f519df7b526ea40`, tested game `c4a5b7c7b55aaffff568e940c04ca9bf75eee61f`). [Audit before implementation](AUDIT.md) records the reuse decisions and geometry tradeoff. This is [draft PR #74](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/74), stacked on draft #73; drafts #71–#73 remain unmerged. The uploaded GAME-95 handoff is authoritative.
 
 ## What changed
 
@@ -68,6 +68,22 @@ The previous [GAME-94 movement capture](../game94/evidence/movement.gif) provide
 Deterministic equivalence is defined **for the same mechanical layout and commands**. The test-only GAME-94 combat snapshot is pinned to `c4a5b7c...`, verified against its recorded SHA, and differs only in its class name. For every registered layout, the new implementation's AI decisions and complete command results, states/logs/RNG/budgets match this independent frozen authority, through a completed encounter. Every intermediate state validates after JSON reload. The original legacy frozen battle/log/RNG hash stays `63763c2fd9326b8a36159e83f7d077ac96c5eb2829c4efa9eec7c55228306732`; the original comparison initial hash stays `8ceb714a7c8fd390e23c3ef1a149ba1cd0f67b0d6d9d3bd96a9a02bbc6b11244`.
 
 Changing board geometry can change paths, AI sequences and outcomes. Larger maps do not promise the same outcome as the smaller board. No action economy, diagonal/melee legality, attacks/damage, classes, dice or world generation was changed. There is no second save writer.
+
+## Validation recorded for the build source
+
+| Linux check | Result |
+| --- | --- |
+| First Adventure combat | 67 checks; deterministic command replay passed |
+| Campaign create / restart | 20 / 86 checks passed |
+| Actual combat mouse controls / menu resume / victory / return | 45 checks passed |
+| Full freshly generated world / origin / party / legacy save / new fight / consequences | 564 rendered checks passed |
+| Registered layouts / previews / hitboxes / movement highlights / seven animation cases | 3,833 rendered checks passed |
+| Legacy native LPC action rig | 235 headless checks passed; all seven old command/before/after hashes unchanged |
+| GAME-32 kernel / migration create / restart | 22,181 / 235 / 6 checks passed; frozen rules hashes unchanged |
+| GAME-83 presentation | 20 checks passed |
+| LPC provenance and separate-process preference | 291 original resource hashes, 938 provider assertions passed |
+
+Timing and raw proof files are retained in `evidence/`. Windows proof is recorded separately in DELIVERY.md. The independent replay covers 52 legacy commands and 53 commands per larger layout; each completed with the same outcome/state hash/RNG as the old authority given that layout. This is a deterministic regression, not a balance or fun assessment.
 
 ## Reproduce and review
 
