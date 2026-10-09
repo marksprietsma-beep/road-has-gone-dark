@@ -23,6 +23,12 @@ var retreat_button: Button
 var menu_button: Button
 var action_buttons := {}
 var tiles := {}
+var pawns := {}
+var art_style := CombatArt.preferred()
+var style_selector: OptionButton
+var art_note: Label
+var board_column: VBoxContainer
+var tile_side := 34.0
 
 func _ready() -> void:
  GameUI.install(self)
@@ -32,13 +38,21 @@ func _ready() -> void:
  for side in ["left","right","top","bottom"]: margin.add_theme_constant_override("margin_"+side,12)
  add_child(margin)
  var column := VBoxContainer.new();column.add_theme_constant_override("separation",4);margin.add_child(column)
- title=GameUI.label("Bandits on the Old Road",GameUI.TITLE);column.add_child(title)
+ var heading := HBoxContainer.new();column.add_child(heading)
+ title=GameUI.label("Bandits on the Old Road",18);title.autowrap_mode=TextServer.AUTOWRAP_OFF;title.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;title.size_flags_horizontal=Control.SIZE_EXPAND_FILL;heading.add_child(title)
+ style_selector=OptionButton.new();style_selector.add_theme_font_size_override("font_size",12);style_selector.tooltip_text="Combat artwork · F7 cycles styles. Saved separately from gameplay.";heading.add_child(style_selector)
+ for style in CombatArt.styles():
+  style_selector.add_item(style.name+" · F7" if CombatArt.available(style) else style.name+" · unavailable")
+  style_selector.set_item_disabled(style_selector.item_count-1,not CombatArt.available(style))
+ style_selector.item_selected.connect(func(index: int):switch_style(CombatArt.styles()[index].id))
+ sync_art_selector()
+ resized.connect(layout_board)
  status=GameUI.label(message,GameUI.META);column.add_child(status)
  turn_label=GameUI.label("",GameUI.META);turn_label.autowrap_mode=TextServer.AUTOWRAP_OFF;turn_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(turn_label)
  var body := HBoxContainer.new();body.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(body)
- var board_column := VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
+ board_column=VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
  grid=GridContainer.new();grid.columns=8;grid.add_theme_constant_override("h_separation",2);grid.add_theme_constant_override("v_separation",2);board_column.add_child(grid)
- board_column.add_child(GameUI.label("Blue: party · Red: raiders · Gold: turn",10))
+ board_column.add_child(GameUI.label("◆ Party · × Raiders · Gold: turn",10))
  targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,22);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
  var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.add_child(scroll)
  var side := VBoxContainer.new();side.size_flags_horizontal=Control.SIZE_EXPAND_FILL;side.add_theme_constant_override("separation",4);scroll.add_child(side)
@@ -51,6 +65,8 @@ func _ready() -> void:
  footer.add_child(GameUI.spacer())
  end_button=GameUI.action("End turn",func(): send("end"),true);footer.add_child(end_button)
  return_button=GameUI.action("Return to regional play",return_region,true);footer.add_child(return_button)
+ art_note=GameUI.label("",10);side.add_child(art_note)
+ layout_board()
  var handoff := PartyService.handoff
  entry=handoff.get("entry",{});slot=handoff.get("slot","")
  service.store.save_root=handoff.get("save_root",service.store.save_root)
@@ -76,12 +92,14 @@ func _process(delta: float) -> void:
  if thread!=null:
   if thread.is_alive(): return
   var result: Dictionary=thread.wait_to_finish();thread=null
+  var previous := battle().duplicate(true)
   if result.get("ok",false):
-   state=result.state;message="";ai_delay=0.45
+   state=result.state;message="";ai_delay=0.75
    if not battle().is_empty() and engine.current(battle()).id!=actor_id:
     actor_id=engine.current(battle()).id;mode="attack"
   else: message=str(result.get("error","The previous save was preserved."))
   refresh()
+  if result.get("ok",false): animate_committed(previous)
  var b := battle()
  if not b.is_empty() and b.status=="active" and engine.current(b).team=="enemy" and message.is_empty():
   ai_delay-=delta
@@ -104,13 +122,15 @@ func add_action(id: String,text: String) -> void:
 func refresh() -> void:
  for child in grid.get_children(): grid.remove_child(child);child.queue_free()
  for child in actions.get_children(): actions.remove_child(child);child.queue_free()
- tiles={};action_buttons={}
+ tiles={};pawns={};action_buttons={}
+ layout_board()
  var b := battle()
  var playing: bool=not b.is_empty() and b.status=="active"
  end_button.visible=playing;retreat_button.visible=playing;return_button.visible=not playing and not b.is_empty()
  menu_button.disabled=thread!=null
  end_button.disabled=thread!=null or not playing or engine.current(b).team!="party"
  retreat_button.disabled=end_button.disabled;return_button.disabled=thread!=null
+ sync_art_selector()
  if b.is_empty(): status.text=message;return
  var actor := engine.current(b)
  title.text=b.board.title
@@ -123,14 +143,25 @@ func refresh() -> void:
  for y in int(b.board.height):
   for x in int(b.board.width):
    var p := [x,y];var id := engine.occupant(b,p)
-   var button := Button.new();button.custom_minimum_size=Vector2(36,26);button.add_theme_font_size_override("font_size",10)
+   if id.is_empty():
+    for candidate in b.order:
+     if b.units[candidate].position==p and not engine.alive(b.units[candidate]): id=candidate;break
+   var button := Button.new();button.custom_minimum_size=Vector2(tile_side,tile_side);button.add_theme_font_size_override("font_size",10)
    var color := Color("202d24")
    if b.board.blocked.has(p): color=Color("41433b");button.text="■";button.disabled=true
    elif not id.is_empty():
     var u: Dictionary=b.units[id]
     color=Color("25465a") if u.team=="party" else Color("623732")
-    button.text=(str(state.party_ids.find(id)+1) if u.team=="party" else "B")+"\n"+str(u.record.runtime.hp)
+    var member := {}
+    for candidate in state.party.members:
+     if candidate.character_id==id: member=candidate;break
+    var recipe := CombatArt.recipe(art_style,u,member)
+    var pawn := CombatPawn.new();button.add_child(pawn)
+    var badge: String=str(state.party_ids.find(id)+1) if u.team=="party" else "A" if u.weapon=="bow" else "B"
+    pawn.present(u,recipe,actor.id==id and playing,int(engine.stats(u).HP),badge)
+    pawns[id]=pawn
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
+    if not recipe.warnings.is_empty(): button.tooltip_text+=" · "+"; ".join(recipe.warnings)
    elif reachable.has(str(p)): color=Color("38482e");button.text="·"
    var valid_target: bool=playing and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
    var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
@@ -175,6 +206,8 @@ func refresh() -> void:
    actions.add_child(GameUI.label("Mode: "+mode.capitalize()+". Leaving an enemy's adjacent tile can provoke an attack. Ranged attacks while engaged take −4.",GameUI.META))
  else:
   detail.text=state.first_adventure.get("result",{}).get("text","Encounter complete.")+"\n\n"+detail.text
+ for style in CombatArt.styles():
+  if style.id==art_style: art_note.text=style.note if CombatArt.available(style) else "Art unavailable: "+style.name+" · neutral tokens shown"
  log_label.text="Party & raiders\n"+"\n".join(summary)+"\n\nBattle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
 func return_region() -> void:
  if thread==null: get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
@@ -183,3 +216,66 @@ func _unhandled_input(event: InputEvent) -> void:
   get_viewport().set_input_as_handled();get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 func _exit_tree() -> void:
  if thread!=null: thread.wait_to_finish()
+
+func sync_art_selector() -> void:
+ if style_selector==null: return
+ for index in CombatArt.styles().size():
+  var style: Dictionary=CombatArt.styles()[index]
+  style_selector.set_item_disabled(index,not CombatArt.available(style))
+  style_selector.set_item_text(index,style.name+" · F7" if CombatArt.available(style) else style.name+" · unavailable")
+  if CombatArt.styles()[index].id==art_style: style_selector.select(index)
+
+func switch_style(id: String) -> void:
+ for style in CombatArt.styles():
+  if style.id==id:
+   if not CombatArt.available(style):
+    targeting.text="Art unavailable: "+style.name;return
+   art_style=id
+   var saved := CombatArt.remember(id)
+   refresh()
+   if saved!=OK: targeting.text="Style changed; preference could not be saved."
+   return
+
+func layout_board() -> void:
+ if grid==null: return
+ # At the smallest viewport the order is available in its tooltip and side panel.
+ turn_label.visible=size.x>700
+ tile_side=floor(minf((size.y-(182 if turn_label.visible else 164))/6.0,(size.x*0.66-24)/8.0))
+ tile_side=maxf(28,tile_side)
+ for button in tiles.values(): button.custom_minimum_size=Vector2(tile_side,tile_side)
+
+func _input(event: InputEvent) -> void:
+ if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_F7:
+  var styles := CombatArt.styles()
+  var index := 0
+  for i in styles.size():
+   if styles[i].id==art_style: index=i;break
+  for step in range(1,styles.size()+1):
+   var candidate: Dictionary=styles[(index+step)%styles.size()]
+   if CombatArt.available(candidate): switch_style(candidate.id);break
+  get_viewport().set_input_as_handled()
+
+func animate_committed(previous: Dictionary) -> void:
+ await get_tree().process_frame
+ var after := battle()
+ if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision): return
+ var command: Dictionary=after.commands.back()
+ var actor: String=command.actor_id
+ if pawns.has(actor):
+  var pitch := Vector2((grid.size.x-14)/8+2,(grid.size.y-10)/6+2)
+  var offset := Vector2(previous.units[actor].position[0]-after.units[actor].position[0],previous.units[actor].position[1]-after.units[actor].position[1])*pitch
+  pawns[actor].animate(command.kind,Vector2.ZERO if command.kind=="move" else offset)
+  if command.kind=="move":
+   var final_position: Array=after.units[actor].position
+   var route: Array=engine.paths(previous,previous.units[actor]).get(str(final_position),[])
+   pawns[actor].animate_route(route.map(func(p: Array):return Vector2(p[0]-final_position[0],p[1]-final_position[1])*pitch))
+ var target: String=str(command.get("target_id",""))
+ if pawns.has(actor) and pawns.has(target) and (command.kind in ["spark","slow","healing-thread"] or command.kind=="attack" and after.units[actor].weapon=="bow"):
+  var effect := CombatEffect.new();effect.from=pawns[actor].get_global_rect().get_center();effect.to=pawns[target].get_global_rect().get_center()
+  effect.kind="arrow" if command.kind=="attack" else command.kind;add_child(effect)
+ for id in after.order:
+  if not pawns.has(id): continue
+  var change: int=int(after.units[id].record.runtime.hp)-int(previous.units[id].record.runtime.hp)
+  if change!=0: pawns[id].animate("hit" if change<0 else "healing-thread",Vector2.ZERO,str(change))
+  elif command.get("target_id","")==id and command.kind in ["attack","spark"]: pawns[id].animate("hit",Vector2.ZERO,"Miss")
+  if not engine.alive(after.units[id]): pawns[id].down=true

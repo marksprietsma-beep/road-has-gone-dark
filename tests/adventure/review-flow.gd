@@ -10,6 +10,14 @@ var engine := TacticalCombat.new()
 var proof := {}
 func _ready() -> void:
  tree=get_tree()
+ var preference_phase := OS.get_environment("GAME93_PREF_ONLY")
+ if not preference_phase.is_empty():
+  var preference_root := OS.get_environment("ADVENTURE_REVIEW_ROOT")
+  DirAccess.make_dir_recursive_absolute(preference_root)
+  CombatArt.preference_path=preference_root.path_join("presentation.cfg")
+  var success: bool=CombatArt.remember("navinius")==OK if preference_phase=="write" else CombatArt.preferred()=="navinius"
+  print("PREFERENCE RESTART ",preference_phase," ",success)
+  tree.quit(0 if success else 1);return
  # Keep this diagnostic driver while production scenes are replaced normally.
  tree.current_scene=null
  call_deferred("run")
@@ -97,6 +105,7 @@ func run() -> void:
  var save_path := service.store._slot_path(slot)
  await click(ui.action_buttons.begin_battle);await wait_scene("res://scenes/combat/first_adventure.tscn")
  while ui.thread!=null or engine.current(ui.battle()).team=="enemy": await tree.process_frame
+ await review_art()
  if visual:
   for size in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
    tree.root.size=size;await frames()
@@ -104,10 +113,15 @@ func run() -> void:
    check(ui.targeting.get_visible_line_count()>=1,"targeting hint has a visible text line")
    await shot("combat-%dx%d"%[size.x,size.y])
   tree.root.size=Vector2i(1280,720);await frames()
+ var paused_art: String=ui.art_style
+ var paused_recipes := {}
+ for id in ui.pawns: paused_recipes[id]=ui.pawns[id].recipe.recipe_hash
  var paused_hash: String=ui.battle().state_hash
  await click(ui.menu_button);await wait_scene("res://scenes/ui/main_menu.tscn")
  ui.refresh_party_resume(service);await click(ui.menu_content.get_node("ResumePartyButton"));await wait_scene("res://scenes/combat/first_adventure.tscn")
  check(ui.battle().state_hash==paused_hash,"exact saved battle resumed through menu")
+ check(ui.art_style==paused_art,"menu reload restores chosen art style")
+ for id in ui.pawns: check(ui.pawns[id].recipe.recipe_hash==paused_recipes[id],"saved generated character appearance restored")
  deadline=Time.get_ticks_msec()+240000
  while ui.battle().status=="active" and Time.get_ticks_msec()<deadline:
   if ui.thread!=null or engine.current(ui.battle()).team=="enemy": await tree.process_frame;continue
@@ -119,9 +133,12 @@ func run() -> void:
     if engine.eligible(b,actor,b.units[id],mode): target=id;break
   if not target.is_empty():
    await click(ui.action_buttons[mode]);await click(ui.tiles[str(b.units[target].position)]);await wait_job()
+   if visual and not proof.has("attack_capture"): await capture_effect("attack");proof.attack_capture=true
   elif int(b.budget.move)>0:
    var command := engine.enemy_command(b)
-   if command.kind=="move": await click(ui.action_buttons.move);await click(ui.tiles[str(command.destination)]);await wait_job()
+   if command.kind=="move":
+    await click(ui.action_buttons.move);await click(ui.tiles[str(command.destination)]);await wait_job()
+    if visual and not proof.has("move_capture"): await capture_effect("move");proof.move_capture=true
    else: await click(ui.end_button);await wait_job()
   else: await click(ui.end_button);await wait_job()
  check(ui.battle().status=="victory","production fight reaches victory")
@@ -156,3 +173,67 @@ func finish() -> void:
  if file!=null: file.store_string(JSON.stringify(proof,"  ")+"\n")
  print("FIRST ADVENTURE REVIEW PROOF "+JSON.stringify(proof))
  tree.quit(1 if failures else 0)
+
+func key(code: Key) -> void:
+ for pressed in [true,false]:
+  var event := InputEventKey.new();event.keycode=code;event.pressed=pressed
+  var receiver: Window=tree.root
+  if "style_selector" in ui and ui.style_selector.get_popup().visible: receiver=ui.style_selector.get_popup()
+  if receiver==tree.root: receiver.push_input(event,true)
+  elif pressed:
+   var native_handle := DisplayServer.window_get_native_handle(DisplayServer.WINDOW_HANDLE,receiver.get_window_id())
+   check(OS.execute("xdotool",["key","--window",str(native_handle),"Down" if code==KEY_DOWN else "Return"],[])==0,"native popup key delivered")
+ await frames()
+
+func review_art() -> void:
+ CombatArt.preference_path=base.path_join("presentation.cfg")
+ var before := RulesJson.canonical(ui.battle())
+ var recipes := {}
+ check(CombatArt.styles().size()==4,"four real art providers")
+ for index in CombatArt.styles().size():
+  var style: Dictionary=CombatArt.styles()[index]
+  check(CombatArt.available(style),"provider resources available: "+style.id)
+  if visual:
+   # Actual OptionButton keyboard interaction opens its visible popup.
+   await click(ui.style_selector)
+   ui.style_selector.get_popup().set_focused_item(-1)
+   for step in index+1: await key(KEY_DOWN)
+   await key(KEY_ENTER)
+  else: ui.style_selector.item_selected.emit(index)
+  check(ui.art_style==style.id and ui.style_selector.selected==index,"visible selector selects "+style.id)
+  check(ui.pawns.size()==5,"three persistent companions and two raiders rendered")
+  check(RulesJson.canonical(ui.battle())==before,"selector leaves battle and RNG byte-identical")
+  for id in ui.battle().order:
+   check(ui.pawns[id].recipe.available and ui.pawns[id].unit.id==id,"correct sprite identity")
+   recipes[style.id+":"+id]=ui.pawns[id].recipe.recipe_hash
+  check(CombatArt.preferred()==style.id,"preference file stores selected provider")
+  if visual:
+   for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
+    tree.root.size=resolution;await frames();await frames()
+    check(ui.grid.get_global_rect().end.x<=tree.root.get_visible_rect().size.x,"sprite board fits width")
+    check(ui.end_button.get_global_rect().end.y<=tree.root.get_visible_rect().size.y,"sprite footer fits height")
+    check(ui.grid.get_global_rect().end.y<=ui.targeting.get_global_rect().position.y,"targeting text below battlefield")
+    for position in ui.tiles:
+     var button: Button=ui.tiles[position]
+     check(button.get_global_rect().has_point(button.get_global_rect().get_center()),"actual tile hitbox")
+    await shot("art-"+style.id+"-%dx%d"%[resolution.x,resolution.y])
+  var next_style: Dictionary=CombatArt.styles()[(index+1)%4]
+  await key(KEY_F7)
+  check(ui.art_style==next_style.id,"F7 cycles to next real provider")
+  check(RulesJson.canonical(ui.battle())==before,"F7 leaves complete combat state identical")
+  ui.switch_style(style.id)
+  for id in ui.battle().order: check(ui.pawns[id].recipe.recipe_hash==recipes[style.id+":"+id],"returning style restores exact recipe")
+ var saved_catalog := CombatArt.styles().duplicate(true)
+ CombatArt.styles()[0].roles.vanguard.animations.idle.append({"path":"res://assets/combat/lpc/unavailable.png"})
+ ui.refresh();ui.switch_style("lpc")
+ check(ui.style_selector.is_item_disabled(0) and ui.targeting.text.begins_with("Art unavailable"),"unavailable provider visibly disabled")
+ check(RulesJson.canonical(ui.battle())==before,"unavailable selection preserves complete battle")
+ CombatArt._catalog=saved_catalog;ui.refresh()
+ proof.art={"styles":CombatArt.styles().map(func(style: Dictionary):return style.id),"recipes":recipes,"unchanged_state_hash":ui.battle().state_hash}
+ tree.root.size=Vector2i(1280,720);await frames()
+
+func capture_effect(kind: String) -> void:
+ for frame in 8:
+  for i in 3: await tree.process_frame
+  await RenderingServer.frame_post_draw
+  tree.root.get_texture().get_image().save_png(base.path_join("effect-%s-%02d.png"%[kind,frame]))

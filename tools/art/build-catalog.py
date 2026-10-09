@@ -27,7 +27,9 @@ def kenney(x,y,offset=(0,0)):
  return layer(pathlib.Path('kenney/Spritesheet/roguelikeChar_transparent.png'),(16,16),offset=offset,rect=[x*17,y*17,16,16])
 kpresets={}
 for role in ['vanguard','scout','adept']:
- layers=[kenney(0,0),kenney(3,2),kenney(6,5 if role=='vanguard' else 7 if role=='scout' else 3),kenney(24,8),kenney(28,0 if role=='vanguard' else 6 if role=='scout' else 7),kenney(42 if role=='vanguard' else 48 if role=='scout' else 45,9 if role=='scout' else 0,(5,0))]
+ layers=[kenney(0,0),kenney(3,2),kenney(10,4) if role=='vanguard' else kenney(6,7),kenney(24,8),kenney(28,0 if role=='vanguard' else 6),kenney(44 if role=='vanguard' else 52,0,(11,0))]
+ if role=='adept':
+  layers=[kenney(0,0),kenney(3,2),kenney(14,2),kenney(24,8),kenney(30,8),kenney(45,8,(11,0))]
  kpresets[role]={'native':16,'animations':{k:layers for k in ['idle','move','attack','spell','hit','down']}}
 xpresets={}
 for role,base in [('vanguard','knight'),('scout','elf'),('adept','wizzard')]:

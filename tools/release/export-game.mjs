@@ -30,6 +30,10 @@ if(a.includes('--qa')){
  }finally{rmSync(stage,{recursive:true,force:true});}
 }
 cpSync(helper,join(target,'worldgen-helper'),{recursive:true});
+// Preserve original redistributable source layers and credits outside the PCK.
+cpSync(join(root,'assets/combat'),join(target,'artwork'),{recursive:true,filter:source=>!source.endsWith('.import')});
+cpSync(join(root,'data/art/sources.json'),join(target,'artwork/sources.json'));
+cpSync(join(root,'data/art/styles.json'),join(target,'artwork/styles.json'));
 assertHelper(join(target,'worldgen-helper'));
 execFileSync(engine,['--headless','--path',root,'--script','tools/release/export-notices.gd','--','--output',target],{cwd:root,stdio:'inherit'});
 writeFileSync(join(target,'REGIONAL-ART-NOTICE.txt'),'Regional illustrations use the pinned MIT Town Forge provider (copyright and licence in worldgen-helper/vendor/town-forge/LICENSE). Selected Game-icons artwork by Delapouite and Lorc, https://game-icons.net/, is licensed CC BY 3.0, https://creativecommons.org/licenses/by/3.0/. Source shapes were recoloured for parchment ink and their old square backings removed. Exact source revisions and artist mappings are retained in worldgen-helper/assets/map_icons/trials/game-icons/landmark_sources.json and the adjacent README.md. No endorsement is implied.\n');
