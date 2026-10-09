@@ -28,6 +28,10 @@ var art_style := CombatArt.preferred()
 var art_note: Label
 var board_column: VBoxContainer
 var tile_side := 34.0
+var presentation_until := 0
+var presentation_active := false
+var presentation_actor := ""
+var presentation_kind := ""
 
 func _ready() -> void:
  GameUI.install(self)
@@ -46,7 +50,7 @@ func _ready() -> void:
  turn_label=GameUI.label("",GameUI.META);turn_label.autowrap_mode=TextServer.AUTOWRAP_OFF;turn_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(turn_label)
  var body := HBoxContainer.new();body.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(body)
  board_column=VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
- grid=GridContainer.new();grid.columns=8;grid.add_theme_constant_override("h_separation",2);grid.add_theme_constant_override("v_separation",2);board_column.add_child(grid)
+ grid=GridContainer.new();grid.columns=8;grid.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN;grid.add_theme_constant_override("h_separation",0);grid.add_theme_constant_override("v_separation",0);board_column.add_child(grid)
  board_column.add_child(GameUI.label("◆ Party · × Raiders · Gold: turn",10))
  targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,22);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
  var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.add_child(scroll)
@@ -71,6 +75,7 @@ func _ready() -> void:
  else: operate("resume")
 
 func battle() -> Dictionary: return state.get("first_adventure",{}).get("battle",{})
+func is_presenting() -> bool:return Time.get_ticks_msec()<presentation_until
 func operate(operation: String,command_input: Dictionary={}) -> void:
  if thread!=null: return
  var changes := {"revision":state.get("expedition",{}).get("revision",-1),"command":command_input}
@@ -78,7 +83,7 @@ func operate(operation: String,command_input: Dictionary={}) -> void:
  message="Saving…";refresh()
 func send(kind: String,target: String="",destination: Array=[]) -> void:
  var b := battle()
- if b.is_empty() or b.status!="active" or engine.current(b).team!="party" or thread!=null: return
+ if b.is_empty() or b.status!="active" or engine.current(b).team!="party" or thread!=null or is_presenting(): return
  var input := {"revision":b.revision,"actor_id":engine.current(b).id,"kind":kind}
  if not target.is_empty(): input.target_id=target
  if not destination.is_empty(): input.destination=destination
@@ -89,12 +94,24 @@ func _process(delta: float) -> void:
   var result: Dictionary=thread.wait_to_finish();thread=null
   var previous := battle().duplicate(true)
   if result.get("ok",false):
-   state=result.state;message="";ai_delay=1.1
+   state=result.state;message="";ai_delay=CombatPacing.AI_PAUSE_SECONDS
+   start_presentation(previous)
    if not battle().is_empty() and engine.current(battle()).id!=actor_id:
     actor_id=engine.current(battle()).id;mode="attack"
   else: message=str(result.get("error","The previous save was preserved."))
   refresh()
   if result.get("ok",false): animate_committed(previous)
+ if is_presenting():return
+ if presentation_active:
+  presentation_active=false;presentation_until=0
+  # The committed board already exists. Unlock it without replacing focused
+  # buttons or cancelling the pawn's final recovery frame.
+  for button in action_buttons.values()+tiles.values()+[end_button,retreat_button,return_button]:
+   button.disabled=bool(button.get_meta("ready_disabled",true))
+  var ready_battle := battle()
+  var playing: bool=ready_battle.status=="active"
+  status.text="Saved · Round %d · %s's turn"%[ready_battle.round,engine.current(ready_battle).name] if playing else "Saved · "+ready_battle.status.capitalize()
+  targeting.text=("Choose a dotted tile." if mode=="move" else "Choose a highlighted target.") if playing else "Encounter complete · return to the region."
  var b := battle()
  if not b.is_empty() and b.status=="active" and engine.current(b).team=="enemy" and message.is_empty():
   ai_delay-=delta
@@ -112,8 +129,12 @@ func add_action(id: String,text: String) -> void:
  var button := GameUI.action(text,func():select_mode(id),mode==id)
  button.disabled=thread!=null or engine.current(battle()).team!="party" or int(battle().budget.move if id=="move" else battle().budget.main)<1
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
+ gate_button(button)
  button.tooltip_text=text
  actions.add_child(button);action_buttons[id]=button
+func gate_button(button: Button) -> void:
+ button.set_meta("ready_disabled",button.disabled)
+ button.disabled=button.disabled or is_presenting()
 func refresh() -> void:
  var retained: Dictionary=pawns.duplicate()
  for pawn in retained.values():
@@ -121,21 +142,26 @@ func refresh() -> void:
  for child in grid.get_children(): grid.remove_child(child);child.queue_free()
  for child in actions.get_children(): actions.remove_child(child);child.queue_free()
  tiles={};pawns={};action_buttons={}
- layout_board()
  var b := battle()
+ grid.columns=int(b.get("board",{}).get("width",8))
+ layout_board()
+ var art := BattlefieldArt.profile(b) if not b.is_empty() else {}
  var playing: bool=not b.is_empty() and b.status=="active"
  end_button.visible=playing;retreat_button.visible=playing;return_button.visible=not playing and not b.is_empty()
  menu_button.disabled=thread!=null
  end_button.disabled=thread!=null or not playing or engine.current(b).team!="party"
  retreat_button.disabled=end_button.disabled;return_button.disabled=thread!=null
+ for button in [end_button,retreat_button,return_button]:gate_button(button)
  if b.is_empty(): status.text=message;return
  var actor := engine.current(b)
  title.text=b.board.title
  status.text=message if not message.is_empty() else ("Saved · Round %d · %s's turn"%[b.round,actor.name] if playing else "Saved · "+b.status.capitalize())
+ if is_presenting():status.text="Saved · %s · %s"%[presentation_actor,presentation_kind.capitalize()]
  turn_label.text="Order: "+" → ".join(b.order.filter(func(id: String):return engine.alive(b.units[id])).map(func(id: String):return b.units[id].name))
  turn_label.tooltip_text=turn_label.text
  targeting.text="Choose a dotted tile." if mode=="move" else "Choose a highlighted target."
  if not playing: targeting.text="Encounter complete · return to the region."
+ if is_presenting():targeting.text="Watching "+presentation_actor+" · "+presentation_kind.capitalize()
  var reachable := engine.paths(b,actor) if playing and mode=="move" and int(b.budget.move)>0 else {}
  for y in int(b.board.height):
   for x in int(b.board.width):
@@ -143,12 +169,14 @@ func refresh() -> void:
    if id.is_empty():
     for candidate in b.order:
      if b.units[candidate].position==p and not engine.alive(b.units[candidate]): id=candidate;break
-   var button := Button.new();button.custom_minimum_size=Vector2(tile_side,tile_side);button.add_theme_font_size_override("font_size",10)
-   var color := Color("202d24")
-   if b.board.blocked.has(p): color=Color("41433b");button.text="■";button.disabled=true
+   var button := BattlefieldTile.new();button.custom_minimum_size=Vector2(tile_side,tile_side);button.add_theme_font_size_override("font_size",10)
+   var cell := BattlefieldArt.cell(art,p)
+   button.ground=cell.ground;button.feature=cell.feature;button.coordinates=Vector2i(x,y)
+   button.terrain_blocked=b.board.blocked.has(p)
+   if button.terrain_blocked:button.disabled=true;button.tooltip_text="Blocked · "+(cell.feature.capitalize() if not cell.feature.is_empty() else "Obstacle")
    elif not id.is_empty():
     var u: Dictionary=b.units[id]
-    color=Color("25465a") if u.team=="party" else Color("623732")
+    button.faction=u.team
     var member := {}
     for candidate in state.party.members:
      if candidate.character_id==id: member=candidate;break
@@ -159,17 +187,14 @@ func refresh() -> void:
     pawns[id]=pawn
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
     if not recipe.warnings.is_empty(): button.tooltip_text+=" · "+"; ".join(recipe.warnings)
-   elif reachable.has(str(p)): color=Color("38482e");button.text="·"
    var valid_target: bool=playing and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
    var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
-   if valid_target: color=color.lightened(0.18)
-   var border := GameUI.GOLD if actor.position==p and playing else (Color("afa88f") if valid_target or valid_move else Color("454c3d"))
-   var style := GameUI.box(color,border,2 if actor.position==p and playing else 1)
+   button.active_tile=actor.position==p and playing;button.target_tile=valid_target;button.move_tile=valid_move
+   var style := GameUI.box(Color.TRANSPARENT)
    style.content_margin_top=1;style.content_margin_bottom=1;style.content_margin_left=2;style.content_margin_right=2
-   button.add_theme_stylebox_override("normal",style)
-   var hover := style.duplicate();hover.bg_color=color.lightened(0.15);hover.border_color=GameUI.GOLD
-   button.add_theme_stylebox_override("hover",hover)
+   for variation in ["normal","hover","pressed","disabled"]:button.add_theme_stylebox_override(variation,style)
    button.disabled=button.disabled or thread!=null or not playing or actor.team!="party"
+   gate_button(button)
    if not valid_target and not valid_move: button.mouse_default_cursor_shape=Control.CURSOR_ARROW
    else: button.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
    if button.disabled: button.add_theme_stylebox_override("disabled",style)
@@ -196,7 +221,7 @@ func refresh() -> void:
    add_action("attack","Attack · select enemy")
    if abilities.has("guard"):
     var guard := GameUI.action("Guard · protect adjacent ally",func():send("guard",actor.id))
-    guard.disabled=thread!=null or int(b.budget.main)<1;actions.add_child(guard);action_buttons.guard=guard
+    guard.disabled=thread!=null or int(b.budget.main)<1;gate_button(guard);actions.add_child(guard);action_buttons.guard=guard
    if abilities.has("precision"): actions.add_child(GameUI.label("Opening Strike: +4 once per round when an ally threatens your target.",GameUI.META))
    if abilities.has("spark"):
     add_action("spark","Lantern Spark · range 5")
@@ -207,6 +232,9 @@ func refresh() -> void:
   detail.text=state.first_adventure.get("result",{}).get("text","Encounter complete.")+"\n\n"+detail.text
  for style in CombatArt.styles():
   if style.id==art_style: art_note.text=style.note if CombatArt.available(style) else "Art unavailable: "+style.name+" · neutral tokens shown"
+ var context := location_context()
+ if not context.is_empty():art_note.text+="\n"+context
+ title.tooltip_text=context
  log_label.text="Party & raiders\n"+"\n".join(summary)+"\n\nBattle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
 func return_region() -> void:
  if thread==null: get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
@@ -220,8 +248,11 @@ func layout_board() -> void:
  if grid==null: return
  # At the smallest viewport the order is available in its tooltip and side panel.
  turn_label.visible=size.x>700
- tile_side=floor(minf((size.y-(182 if turn_label.visible else 164))/6.0,(size.x*0.66-24)/8.0))
- tile_side=maxf(28,tile_side)
+ var board: Dictionary=battle().get("board",{})
+ var columns: int=int(board.get("width",8));var rows: int=int(board.get("height",6))
+ tile_side=floor(minf((size.y-(182 if turn_label.visible else 164))/rows,(size.x*0.66-24)/columns))
+ tile_side=maxf(20,tile_side)
+ if targeting!=null:targeting.custom_minimum_size.x=columns*tile_side
  for button in tiles.values(): button.custom_minimum_size=Vector2(tile_side,tile_side)
 
 func show_art_credits() -> void:
@@ -234,11 +265,11 @@ func show_art_credits() -> void:
  add_child(dialog);dialog.popup_centered_ratio(0.8);dialog.confirmed.connect(dialog.queue_free)
 
 func animate_committed(previous: Dictionary) -> void:
- await get_tree().process_frame
  var after := battle()
  if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision):return
  var command: Dictionary=after.commands.back();var actor: String=command.actor_id
- var pitch := Vector2((grid.size.x-14)/8+2,(grid.size.y-10)/6+2)
+ # Install the starting offset before any draw at the committed destination.
+ var pitch := Vector2(tile_side,tile_side)
  var target: String=str(command.get("target_id",""))
  var delay := 0.10;var action_serial := -1
  if pawns.has(actor):
@@ -246,7 +277,7 @@ func animate_committed(previous: Dictionary) -> void:
    var final_position: Array=after.units[actor].position
    var route: Array=engine.paths(previous,previous.units[actor]).get(str(final_position),[])
    pawns[actor].animate_route(route.map(func(p: Array):return Vector2(p[0]-final_position[0],p[1]-final_position[1])*pitch))
-   delay=minf(0.5,maxf(0.1,(route.size()-1)*0.18))
+   delay=0.20
   elif command.kind not in ["end","retreat"]:
    var direction := Vector2.ZERO
    if after.units.has(target):direction=Vector2(after.units[target].position[0]-after.units[actor].position[0],after.units[target].position[1]-after.units[actor].position[1])
@@ -262,7 +293,7 @@ func visual_impact(previous: Dictionary, committed: Dictionary, command: Diction
  if pawns.has(actor) and pawns.has(target) and (command.kind in ["spark","slow","healing-thread"] or command.kind=="attack" and committed.units[actor].weapon=="bow"):
   var effect := CombatEffect.new();effect.from=pawns[actor].get_global_rect().get_center();effect.to=pawns[target].get_global_rect().get_center()
   effect.kind="arrow" if command.kind=="attack" else command.kind;add_child(effect)
-  await get_tree().create_timer(0.4).timeout
+  await get_tree().create_timer(CombatPacing.PROJECTILE_SECONDS).timeout
   if not is_inside_tree():return
  var added_logs: Array=committed.log.slice(previous.log.size())
  for id in committed.order:
@@ -272,3 +303,38 @@ func visual_impact(previous: Dictionary, committed: Dictionary, command: Diction
   elif target==id and command.kind in ["attack","spark"]:
    var missed: bool=added_logs.any(func(line: String):return line.ends_with(", miss."))
    pawns[id].react(0,"miss" if missed else "resisted" if command.kind=="spark" else "blocked")
+
+func start_presentation(previous: Dictionary) -> void:
+ var seconds := presentation_seconds(previous)
+ if seconds<=0:return
+ presentation_until=Time.get_ticks_msec()+ceili(seconds*1000);presentation_active=true
+ var command: Dictionary=battle().commands.back()
+ presentation_actor=battle().units[command.actor_id].name;presentation_kind=command.kind
+
+func presentation_seconds(previous: Dictionary) -> float:
+ var after := battle()
+ if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision):return 0.0
+ var command: Dictionary=after.commands.back();var actor: String=command.actor_id
+ var kind: String=command.kind
+ if kind in ["end","retreat"]:return CombatPacing.POST_BEAT_SECONDS
+ var downed: bool=after.order.any(func(id: String):return engine.alive(previous.units[id]) and not engine.alive(after.units[id]))
+ var reaction := CombatPacing.clip_seconds(CombatPacing.timelines(CombatArt.styles()[0].timelines),"down") if downed else CombatPacing.REACTION_SECONDS
+ if kind=="move":
+  var route: Array=engine.paths(previous,previous.units[actor]).get(str(after.units[actor].position),[])
+  return minf(CombatPacing.MAX_BEAT_SECONDS,maxf((route.size()-1)*CombatPacing.TILE_SECONDS,0.20+reaction)+CombatPacing.POST_BEAT_SECONDS)
+ var clip := "shoot" if kind=="attack" and after.units[actor].weapon=="bow" else "thrust" if kind=="attack" and after.units[actor].weapon=="staff" else "slash" if kind=="attack" else "spell" if kind in ["spark","slow","healing-thread"] else "guard"
+ var timelines := CombatPacing.timelines(CombatArt.styles()[0].timelines)
+ var projectile: float=CombatPacing.PROJECTILE_SECONDS if clip in ["shoot","spell"] else 0.0
+ var impact: float=float(timelines.get(clip,{}).get("impact",0.10))
+ return minf(CombatPacing.MAX_BEAT_SECONDS,maxf(CombatPacing.clip_seconds(timelines,clip),impact+projectile+reaction)+CombatPacing.POST_BEAT_SECONDS)
+
+func location_context() -> String:
+ var b := battle()
+ if b.is_empty():return ""
+ var text := "Old Road · authored roadside approach"
+ for site in service.packet.get("content",{}).get("sites",[]):
+  if site.id==b.site_id:text="Roadside approach to "+str(site.name);break
+ if not entry.is_empty() and entry.get("world") is GameWorldTemplate:
+  var home: Dictionary=entry.world.get_record("burg",int(state.origin.home_burg_id))
+  if not home.is_empty():text+=" · near "+str(home.name)
+ return text

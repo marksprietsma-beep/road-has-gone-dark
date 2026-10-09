@@ -9,13 +9,14 @@ func _ready() -> void:
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
  var tween := create_tween()
- tween.tween_property(self,"progress",1.0,0.4)
+ tween.tween_property(self,"progress",1.0,CombatPacing.PROJECTILE_SECONDS)
  tween.finished.connect(queue_free)
 func _process(_delta: float) -> void: queue_redraw()
 func _draw() -> void:
  var point := from.lerp(to,progress)
  if kind=="arrow":
   var direction := (to-from).normalized()
+  draw_line(point-direction*14,point,Color("171911"),4)
   draw_line(point-direction*12,point,GameUI.INK,2)
   draw_line(point-direction.rotated(0.5)*5,point,GameUI.INK,2)
   draw_line(point-direction.rotated(-0.5)*5,point,GameUI.INK,2)

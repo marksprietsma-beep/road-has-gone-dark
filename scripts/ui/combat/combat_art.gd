@@ -5,6 +5,43 @@ const CATALOG := "res://data/art/styles.json"
 static var preference_path := "user://presentation.cfg"
 static var _catalog: Array=[]
 static var _textures := {}
+static var _thumbnails := {}
+static var _preview_units := {}
+static var _preview_key := ""
+static func frame_view(layer: Dictionary,index: int,facing: int) -> Dictionary:
+ var frame := Vector2(layer.frame[0],layer.frame[1])
+ var row := 0 if int(layer.get("directions",4))==1 else facing
+ var offset: Array=layer.get("offset",[0,0])
+ return {"texture":texture(layer.path,layer.get("palette",{})),"region":Rect2(Vector2(index*frame.x,row*frame.y),frame),"offset":Vector2(offset[0],offset[1])}
+static func thumbnail(art: Dictionary) -> Texture2D:
+ # Same native idle layers, palettes, facing and offsets as the combat renderer.
+ if not art.get("available",false):return null
+ var key: String=art.recipe_hash
+ if _thumbnails.has(key):return _thumbnails[key]
+ var canvas := Image.create(int(art.native),int(art.native),false,Image.FORMAT_RGBA8)
+ canvas.fill(Color.TRANSPARENT)
+ for layer in art.animations.idle:
+  var view := frame_view(layer,0,2)
+  if view.texture==null:continue
+  var image: Image=view.texture.get_image();image.convert(Image.FORMAT_RGBA8)
+  canvas.blend_rect(image,Rect2i(view.region),Vector2i(view.offset))
+ if _thumbnails.size()>=64:_thumbnails.clear()
+ _thumbnails[key]=ImageTexture.create_from_image(canvas)
+ return _thumbnails[key]
+static func party_units(state: Dictionary) -> Dictionary:
+ # Pure starting-build preview, never a second preparation/save writer.
+ if state.get("party",{}).get("members",[]).is_empty():return {}
+ var key := RulesJson.digest([state.party,state.get("mechanics",{})])
+ if key==_preview_key:return _preview_units.duplicate(true)
+ var candidate: Dictionary=state.duplicate(true);candidate.party.status="ready"
+ var result := RulesRecords.preview_preparation(candidate)
+ if not result.ok:return {}
+ var engine := TacticalCombat.new();var units := {}
+ for member in candidate.party.members:
+  var record: Dictionary=result.candidate.mechanics.records[member.character_id]
+  units[member.character_id]=engine.unit(member.character_id,member.name,"party",[0,0],record,TacticalCombat.weapon_for(record))
+ _preview_key=key;_preview_units=units
+ return units.duplicate(true)
 static func styles() -> Array:
  if _catalog.is_empty(): _catalog=JSON.parse_string(FileAccess.get_file_as_string(CATALOG)).styles
  return _catalog
@@ -111,7 +148,7 @@ static func recipe(_style_id: String, unit: Dictionary, member: Dictionary={}, d
  if not valid and (body.get("surface","unspecified")!="unspecified" or not body.get("features",[]).is_empty()):warnings.append("Anatomical features not supplied by this preview")
  if valid:animations=replacement.animations.duplicate(true)
  var proportions: Array=body.get("proportions",[1.0,1.0])
- var result := {"available":available(style),"profile":p,"role":role,"style_id":"lpc","provider_version":style.version,"native":replacement.get("native",64) if valid else 64,"animations":animations,"timelines":style.timelines.duplicate(true),"variant":pick(seed,"phase",100),"warnings":warnings,"fallbacks":fallbacks,"scale":clampf(float(body.get("size",1.0)),0.7,1.2),"proportions":[clampf(float(proportions[0]),0.8,1.15),clampf(float(proportions[1]),0.8,1.15)],"appearance":{"family":family,"head":head,"hair":hair,"skin":skin,"hair_colour":hair_color},"equipment":equipment.duplicate(),"weapon":weapon}
+ var result := {"available":available(style),"profile":p,"role":role,"style_id":"lpc","provider_version":style.version,"native":replacement.get("native",64) if valid else 64,"animations":animations,"timelines":CombatPacing.timelines(style.timelines),"variant":pick(seed,"phase",100),"warnings":warnings,"fallbacks":fallbacks,"scale":clampf(float(body.get("size",1.0)),0.7,1.2),"proportions":[clampf(float(proportions[0]),0.8,1.15),clampf(float(proportions[1]),0.8,1.15)],"appearance":{"family":family,"head":head,"hair":hair,"skin":skin,"hair_colour":hair_color},"equipment":equipment.duplicate(),"weapon":weapon}
  for group in [p.heritage_layers,p.acquired_layers,p.equipment_layers,p.transformation.get("layers",[])]:
   for overlay in group:
    if overlay.get("provider","lpc")!="lpc" or not overlay.get("path","").begins_with("res://assets/combat/lpc/") or not ResourceLoader.exists(overlay.get("path","")):

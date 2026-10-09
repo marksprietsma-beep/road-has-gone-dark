@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "authorship": "Original TRHGD authored pixel terrain; no procedural battlefield generation. Features do not add tactical costs.",
+  "layouts": {
+    "old-road-10x8-v1": {
+      "ground": [
+        "gggggggggg",
+        "gggggggggg",
+        "gggggggggg",
+        "rrrrrrrrrr",
+        "rrrrrrrrrr",
+        "gggggggggg",
+        "gggggggggg",
+        "gggggggggg"
+      ],
+      "features": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            1,
+            1
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            4,
+            1
+          ],
+          "kind": "rock"
+        },
+        {
+          "at": [
+            8,
+            1
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            9,
+            2
+          ],
+          "kind": "milestone"
+        },
+        {
+          "at": [
+            0,
+            6
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            5,
+            6
+          ],
+          "kind": "cart"
+        },
+        {
+          "at": [
+            8,
+            6
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            9,
+            7
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            7,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            8,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            4,
+            2
+          ],
+          "kind": "scrub"
+        },
+        {
+          "at": [
+            2,
+            5
+          ],
+          "kind": "scrub"
+        },
+        {
+          "at": [
+            7,
+            2
+          ],
+          "kind": "scrub"
+        }
+      ],
+      "caption": "Old Road \u00b7 roadside approach"
+    },
+    "old-road-12x8-v1": {
+      "ground": [
+        "gggggggggggg",
+        "gggggggggggg",
+        "gggggggggggg",
+        "rrrrrrrrrrrr",
+        "rrrrrrrrrrrr",
+        "gggggggggggg",
+        "gggggggggggg",
+        "gggggggggggg"
+      ],
+      "features": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            1,
+            1
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            6,
+            1
+          ],
+          "kind": "rock"
+        },
+        {
+          "at": [
+            10,
+            1
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            11,
+            2
+          ],
+          "kind": "milestone"
+        },
+        {
+          "at": [
+            0,
+            6
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            5,
+            6
+          ],
+          "kind": "cart"
+        },
+        {
+          "at": [
+            10,
+            6
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            11,
+            7
+          ],
+          "kind": "tree"
+        },
+        {
+          "at": [
+            7,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            8,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            9,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            10,
+            5
+          ],
+          "kind": "ditch"
+        },
+        {
+          "at": [
+            4,
+            2
+          ],
+          "kind": "scrub"
+        },
+        {
+          "at": [
+            2,
+            5
+          ],
+          "kind": "scrub"
+        },
+        {
+          "at": [
+            9,
+            2
+          ],
+          "kind": "scrub"
+        }
+      ],
+      "caption": "Old Road \u00b7 roadside approach"
+    },
+    "legacy-8x6-v1": {
+      "ground": [
+        "gggggggg",
+        "gggggggg",
+        "rrrrrrrr",
+        "rrrrrrrr",
+        "gggggggg",
+        "gggggggg"
+      ],
+      "features": [
+        {
+          "at": [
+            3,
+            0
+          ],
+          "kind": "rock"
+        },
+        {
+          "at": [
+            3,
+            1
+          ],
+          "kind": "rock"
+        },
+        {
+          "at": [
+            4,
+            4
+          ],
+          "kind": "rock"
+        },
+        {
+          "at": [
+            4,
+            5
+          ],
+          "kind": "rock"
+        }
+      ],
+      "caption": "Old Road \u00b7 saved 8\u00d76 approach"
+    }
+  }
+}
