@@ -6,18 +6,17 @@ var registry := RulesRecords.registry()
 var characters := RulesCharacter.new(registry)
 var effects := RulesEffects.new(registry)
 
-func create(state: Dictionary, site_id: String) -> Dictionary:
- var definition: Dictionary = RulesJson.normalize(JSON.parse_string(FileAccess.get_file_as_string(ENCOUNTER)))
- var battle := {"version":1,"encounter_sha":FileAccess.get_sha256(ENCOUNTER),"site_id":site_id,"board":definition,"units":{},"order":[],"cursor":0,"round":1,"revision":0,"status":"active","reason":"","budget":{"move":1,"main":1},"rng":RulesRng.initial(RulesJson.digest([state.world_ref,state.origin,site_id,definition.id])),"log":[],"commands":[]}
+func create(state: Dictionary, site_id: String, layout_id: String=CombatBattlefields.LEGACY) -> Dictionary:
+ var definition := CombatBattlefields.definition(layout_id)
+ if not CombatBattlefields.valid_definition(definition):return {}
+ var battle := {"version":1,"encounter_sha":FileAccess.get_sha256(CombatBattlefields.PATHS[layout_id]),"site_id":site_id,"board":definition,"units":{},"order":[],"cursor":0,"round":1,"revision":0,"status":"active","reason":"","budget":{"move":1,"main":1},"rng":RulesRng.initial(RulesJson.digest([state.world_ref,state.origin,site_id,definition.id])),"log":[],"commands":[]}
  for i in state.party_ids.size():
   var id: String = state.party_ids[i]
   var member: Dictionary = state.party.members[i]
   var record: Dictionary = state.mechanics.records[id].duplicate(true)
   # A downed character can join this first encounter only after minimal recovery.
   record.runtime.hp=maxi(1,int(record.runtime.hp))
-  var weapon := "shortblade"
-  if record.equipment.has("bow"): weapon="bow"
-  elif record.equipment.has("staff"): weapon="staff"
+  var weapon := weapon_for(record)
   battle.units[id]=unit(id,member.name,"party",definition.party_positions[i],record,weapon)
   battle.order.append(id)
  for enemy in definition.enemies:
@@ -37,6 +36,9 @@ func create(state: Dictionary, site_id: String) -> Dictionary:
  battle.order.sort_custom(func(a: String,b: String): return initiative[a]>initiative[b] if initiative[a]!=initiative[b] else ranks[a]<ranks[b])
  battle.log.append("The party meets armed raiders on the approach to this local site.")
  return seal(battle)
+
+static func weapon_for(record: Dictionary) -> String:
+ return "bow" if record.equipment.has("bow") else "staff" if record.equipment.has("staff") else "shortblade"
 
 func unit(id: String, title: String, team: String, position: Array, record: Dictionary, weapon: String) -> Dictionary:
  return {"id":id,"name":title,"team":team,"position":position.duplicate(),"record":record,"weapon":weapon,"reaction":1,"precision_used":false}
@@ -231,7 +233,7 @@ func seal(b: Dictionary) -> Dictionary:
 func validate(b: Dictionary) -> String:
  b=RulesJson.normalize(b)
  if not b.has_all(["version","encounter_sha","site_id","board","units","order","cursor","round","revision","status","reason","budget","rng","log","commands","state_hash"]): return "Incomplete battle"
- if b.version!=1 or b.encounter_sha!=FileAccess.get_sha256(ENCOUNTER) or b.board!=RulesJson.normalize(JSON.parse_string(FileAccess.get_file_as_string(ENCOUNTER))): return "Battlefield pin mismatch"
+ if b.version!=1 or CombatBattlefields.identify(b).is_empty(): return "Battlefield pin mismatch"
  var copy := b.duplicate(true);copy.erase("state_hash")
  if RulesJson.digest(copy)!=b.state_hash: return "Battle checksum mismatch"
  if not b.units is Dictionary or not b.order is Array or b.order.size()!=5 or b.units.size()!=5 or not RulesJson.integer(b.cursor,0,4) or not RulesJson.integer(b.round,1,100000) or not RulesJson.integer(b.revision,0,100000) or not b.status in ["active","victory","defeat"] or not RulesRng.valid_state(b.rng): return "Invalid battle state"

@@ -32,7 +32,8 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   if not battle.is_empty() or not adventure.result.is_empty(): return fail("The first encounter is already saved.")
   var active: Dictionary=state.expedition.active
   if active.get("phase")!="site" or int(active.supplies)<1 or state.expedition.outcomes.has(active.get("site_id")): return fail("Visit an unresolved local site with provisions first.")
-  candidate.first_adventure.battle=TacticalCombat.new().create(state,active.site_id)
+  candidate.first_adventure.battle=TacticalCombat.new().create(state,active.site_id,CombatBattlefields.DEFAULT)
+  if candidate.first_adventure.battle.is_empty():return fail("The authored battlefield is unavailable. Campaign preserved.")
   candidate.first_adventure.revision+=1
  elif operation=="battle_command":
   if battle.is_empty() or not adventure.result.is_empty(): return fail("No active encounter.")
