@@ -1,0 +1,426 @@
+{
+  "art": {
+    "recipes": {
+      "8b1963539202de9451c2f9181bff6202:adventurer:1": "a564d37139dd42b636b19075121c8049460778e5be0f515ee45719355a77d728",
+      "8b1963539202de9451c2f9181bff6202:adventurer:2": "a7410d0d3575df9930c32bc7594502357ea423708288c776f6b07d184cef097b",
+      "8b1963539202de9451c2f9181bff6202:adventurer:3": "6638dc109f1761d167139dc46309dd81cce7eed0ea96d01cf80e6fe991678b9b",
+      "bandit-blade": "5e777cbe3d12862b6fe96465fa6804010d1a9b0aa1e8fc6403c265067dfc5023",
+      "bandit-bow": "c811c1df0a7a77fa80782f6434aabea2d7dfab72a747ea3ba868443df39ede39"
+    },
+    "styles": [
+      "lpc"
+    ],
+    "unchanged_state_hash": "9c2a38f476105ab6873f4249b5d578f3b58c83314a95a449065cf7f4a7ad9004"
+  },
+  "checks": 237,
+  "empty_path": true,
+  "failures": 0,
+  "layout": "old-road-12x8-v1",
+  "legacy_move_hash": "53101094752897a2990c35b8de28fd103d1532fb9781e9350a12cb5808af79b3",
+  "legacy_save_restored": true,
+  "party_preview_matches_combat": true,
+  "platform": "Windows",
+  "source_helper_override": false,
+  "victory_battle_hash": "7991f5b5776834753661baac3fcc65368eb201d82277826af6b448061986e43d",
+  "visual": false,
+  "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+  "preference_restart": true,
+  "sandbox": {
+    "base_sha": "c52b2709169e145227b6f748f56039a205a42ead4338393123ac3d5289c7b7c6",
+    "home": 620.0,
+    "party_ids": [
+      "77b9b61fa6cd92bf6f32fb6a21190811:adventurer:1",
+      "77b9b61fa6cd92bf6f32fb6a21190811:adventurer:2",
+      "77b9b61fa6cd92bf6f32fb6a21190811:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:2cc9b4026c21626ba6c1813ab21c0488713643ce4df88eb2e7fbbe0661b455eb": {
+        "battle_hash": "0d27cce097caae5e5847a3b9cf199960fc323b6382745fce7ef764dd4f0bde03",
+        "outcome": "victory",
+        "sequence": 10,
+        "site_id": "sandbox-site:2cc9b4026c21626ba6c1813ab21c0488713643ce4df88eb2e7fbbe0661b455eb",
+        "text": "The armed occupants of Broken work-yard \u00b7 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189": {
+        "battle_hash": "bf502aff3ae357a8772096b7ce019dde4e2f64febd6ca899e6d7c985619ee4a1",
+        "outcome": "defeat",
+        "sequence": 14,
+        "site_id": "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189",
+        "text": "The armed occupants of Hostile clearing \u00b7 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      },
+      "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752": {
+        "battle_hash": "169d50ef4b225bd40a39bcfbb28f1d83839e786cc27d7418d0c6b5b1c73d1af3",
+        "outcome": "victory",
+        "sequence": 5,
+        "site_id": "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752",
+        "text": "The armed occupants of Secluded camp \u00b7 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      }
+    },
+    "scenarios": [
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              4,
+              3
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752:opponent:1",
+              "name": "Hostile lookout",
+              "position": [
+                5,
+                2
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            },
+            {
+              "id": "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                5,
+                3
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 3,
+            "environment": "forest",
+            "kind": "camp",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "3c2d2fd9946394a5db871110b095d1ebacf2f78405988eb13509b38d406b5203",
+            "site_id": "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 6,
+          "id": "encounter:77464e6dd3e3795b0f7deb5646af462d8cdba53c30186d865daaf8bbbc7e5020",
+          "party_positions": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  4,
+                  4
+                ],
+                "kind": "campfire"
+              },
+              {
+                "at": [
+                  4,
+                  3
+                ],
+                "kind": "rock"
+              },
+              {
+                "at": [
+                  0,
+                  5
+                ],
+                "kind": "cart"
+              }
+            ],
+            "ground": [
+              "gggggggg",
+              "gggggggg",
+              "gggggggg",
+              "gggggggg",
+              "gggggggg",
+              "gggggggg"
+            ]
+          },
+          "title": "Skirmish at the camp",
+          "width": 8
+        },
+        "initial_render_hash": "6d9e218157115489992cc39acd80f03eaec5c6fe066af7ad015c31df66fbf556",
+        "kind": "camp",
+        "site_id": "sandbox-site:d4a4f8893052fe616f7c12a812c164e6638ffe2e38bbba7846bdd86fc6573752"
+      },
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              5
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:2cc9b4026c21626ba6c1813ab21c0488713643ce4df88eb2e7fbbe0661b455eb:opponent:1",
+              "name": "Armed scavenger",
+              "position": [
+                7,
+                3
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            }
+          ],
+          "generation": {
+            "composition": 0,
+            "environment": "forest",
+            "kind": "ruins",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "b8e141bdeb89a81da29129a63446b91735a1a63e55af63ff3769b23c958ee873",
+            "site_id": "sandbox-site:2cc9b4026c21626ba6c1813ab21c0488713643ce4df88eb2e7fbbe0661b455eb",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:808c2383cf836d621d693ac110b68a881a3d2a1f411e6da47f2178659ee5d20d",
+          "party_positions": [
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  6,
+                  5
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  5
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  3
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  0,
+                  7
+                ],
+                "kind": "rubble"
+              }
+            ],
+            "ground": [
+              "gggggggggg",
+              "gggggggggg",
+              "gppppppppg",
+              "gppppppppg",
+              "gppppppppg",
+              "gggggggggg",
+              "gggggggggg",
+              "gggggggggg"
+            ]
+          },
+          "title": "Scavengers in the broken yard",
+          "width": 10
+        },
+        "initial_render_hash": "97ca5d7feeee1c2fba53f68321d6abcdf22e8591aeb45af7628c386f074fc7c0",
+        "kind": "ruins",
+        "site_id": "sandbox-site:2cc9b4026c21626ba6c1813ab21c0488713643ce4df88eb2e7fbbe0661b455eb"
+      },
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              6,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5,
+              4
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189:opponent:1",
+              "name": "Armed scavenger",
+              "position": [
+                8,
+                1
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            },
+            {
+              "id": "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                8,
+                2
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 1,
+            "environment": "forest",
+            "kind": "clearing",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "d1decea2c2482d66b93e09b435b73b3001a22d7bede33fcfd5ea5aa0c17df06f",
+            "site_id": "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:997f5feae6b460d7ffe99ac886469ab0052f232da31efe7d45764c53bcfba1ca",
+          "party_positions": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  5,
+                  4
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  3,
+                  4
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  6,
+                  2
+                ],
+                "kind": "rock"
+              },
+              {
+                "at": [
+                  0,
+                  7
+                ],
+                "kind": "scrub"
+              }
+            ],
+            "ground": [
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg"
+            ]
+          },
+          "title": "Lookouts in the clearing",
+          "width": 12
+        },
+        "initial_render_hash": "415222a02b5c353b7ce2093f7bdb689395be55c956fd37249350d9d63cfc4f5e",
+        "kind": "clearing",
+        "site_id": "sandbox-site:77c9fdc05c958e3f8d1df03e82f7246a47059c8bb939804dc875934db1d80189"
+      }
+    ]
+  },
+  "geography_repair": {
+    "helper_hashes": {
+      "tools/worldgen/geography-sidecar.mjs": "b1f4fd6ce0781b2c9d193dca13a2c9c388e6de91012cdda2f241e569b6f87973",
+      "tools/expedition/geography-cache.mjs": "900ec7056ca66c7f36ab24252d91b40d9b845bbc0118b74a579d83b5ec9af2ce",
+      "tools/expedition/entry.mjs": "e2128a5444e08178ae48b919ff60ad7a9a9bd0499d311aa3db37a248c1a2157d",
+      "data/world_enrichment/runtime-expedition-v1.json": "137756e32f9fa190bdbe40a9e15c4a066cd2a1ca1a78f24b3f356c3e6813d891"
+    },
+    "old_campaign": {
+      "base_sha": "9a68f0bf718392e30f6d33f9c565a1a637219d9d7ab5a79d8fec61e43ea6936a",
+      "home": 100.0,
+      "party_ids": [
+        "0e87325cf460a1da2e578eb0187bf4b4:adventurer:1",
+        "0e87325cf460a1da2e578eb0187bf4b4:adventurer:2",
+        "0e87325cf460a1da2e578eb0187bf4b4:adventurer:3"
+      ],
+      "results": {
+        "sandbox-site:c0fd5597c660a57fd75909be9c07e4db5dfa8c3a3405560bdfdc2164c27c8777": {
+          "battle_hash": "f3734cb84e0b7096fb0bec8f850352d510586245a014be629b7778bb0445286d",
+          "outcome": "victory",
+          "sequence": 5,
+          "site_id": "sandbox-site:c0fd5597c660a57fd75909be9c07e4db5dfa8c3a3405560bdfdc2164c27c8777",
+          "text": "The armed occupants of Secluded camp \u00b7 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+          "xp_each": 10
+        }
+      },
+      "slot": "0e87325cf460a1da2e578eb0187bf4b4",
+      "world_sha": "c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1"
+    }
+  },
+  "original_art_files": 291,
+  "production_launch": true,
+  "archive_sha256": "7196ed42e87199efc9499f6f5abd0ceca9dce4e21e59e0bb43cf4fc8e56a115c",
+  "archive": "game99-geography-repaired-windows-x64.zip",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "137756e32f9fa190bdbe40a9e15c4a066cd2a1ca1a78f24b3f356c3e6813d891"
+    },
+    "executable_sha256": "39cef138300e2cfbfe2046883d7793a8b540b2c66845937373a86cacd657541d"
+  }
+}

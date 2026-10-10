@@ -1,0 +1,50 @@
+[
+  {
+    "check": "package-original-helper",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 3.423018705000004
+  },
+  {
+    "check": "import-original",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 33.42789149600003
+  },
+  {
+    "check": "import-repaired",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 28.212095404000024
+  },
+  {
+    "check": "campaign-blocked",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 23.232933924000008
+  },
+  {
+    "check": "campaign-recover",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 10.146931921999908
+  },
+  {
+    "check": "campaign-replay",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 22.979167465000046
+  },
+  {
+    "check": "previously-valid-create",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 18.02121536900006
+  },
+  {
+    "check": "previously-valid-replay",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 36.069618512000034
+  }
+]
