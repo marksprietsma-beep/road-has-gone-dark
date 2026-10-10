@@ -24,6 +24,13 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  records.clear()
  error = ""
  if path.is_empty(): path = directory(world)
+ var cache_key := "scripts/party/world_peoples.gd:" + path
+ var fingerprint := ImmutableValidationCache.fingerprint(world, path, RUNTIME)
+ var cached: Dictionary = world._validation_cache.get(cache_key,{})
+ if cached.get("fingerprint")==fingerprint:
+  descriptor = cached.descriptor.duplicate(true)
+  records = cached.records.duplicate(true)
+  return true
  var d := WorldOriginLore.read_json(path.path_join("descriptor.json"))
  if d.size() != KEYS.size(): return fail("missing or corrupt descriptor")
  for key in KEYS:
@@ -62,6 +69,7 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
     if not (culture is int or culture is float) or culture <= 0 or culture != int(culture) or world.get_record("culture", int(culture)).is_empty(): return fail("invalid culture reference")
  descriptor = d
  records = data.records
+ world._validation_cache[cache_key] = {"fingerprint":fingerprint,"descriptor":descriptor.duplicate(true),"records":records.duplicate(true)}
  return true
 
 func local(burg: int) -> Dictionary:

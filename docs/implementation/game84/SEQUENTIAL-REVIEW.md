@@ -1,0 +1,160 @@
+# Unfiltered sequential review corpus
+
+## First 50 leads
+
+- Aeveva: Ashfold watchtower. Record surviving worked stones. What remains of the watchtower has faded tally marks.
+- Aeveva: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Aeveva: Morrow ceremonial court. Inspect a reported repair. What remains of the ceremonial court has newer masonry among older courses.
+- Milmartuedo: Ashfold weigh house. Record surviving worked stones. What remains of the weigh house has cracked mortar joints.
+- Milmartuedo: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Milmartuedo: Morrow press house. Inspect a reported repair. What remains of the press house has weathered stonework.
+- Klovskitaue: Ashfold smithy. Record surviving worked stones. The smithy survives with bare inner walls.
+- Klovskitaue: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Klovskitaue: Morrow market shelter. Inspect a reported repair. What remains of the market shelter has cracked mortar joints.
+- Mutza: Ashfold pilgrim lodge. Record surviving worked stones. What remains of the pilgrim lodge has braced masonry.
+- Mutza: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Mutza: Morrow survey lodge. Inspect a reported repair. The survey lodge survives with smoke-stained walls.
+- Quareirin: Ashfold small observatory. Record surviving worked stones. What remains of the small observatory has bare inner walls.
+- Quareirin: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Quareirin: Morrow watchtower. Record surviving worked stones. The watchtower survives with newer masonry among older courses.
+- Nimanchiennes: Ashfold market shelter. Inspect a reported repair. What remains of the market shelter has weathered stonework.
+- Nimanchiennes: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Nimanchiennes: Morrow stone-cutting yard. Record surviving worked stones. What remains of the stone-cutting yard has smoke-stained walls.
+- Nucilcavego: Ashfold smithy. Record surviving worked stones. What remains of the smithy has weathered stonework.
+- Nucilcavego: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Nucilcavego: Morrow watchtower. Record surviving worked stones. What remains of the watchtower has faded tally marks.
+- Pueblares: Ashfold sick house. Inspect a reported repair. The sick house survives with weathered stonework.
+- Pueblares: Rumour of old stonework. Copy an exposed inscription. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Pueblares: Morrow record hall. Record surviving worked stones. What remains of the record hall has bare inner walls.
+- Puszentg: Ashfold weigh house. Record surviving worked stones. What remains of the weigh house has bare inner walls.
+- Puszentg: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Puszentg: Morrow manor outbuilding. Record surviving worked stones. The manor outbuilding survives with bare inner walls.
+- Kayaz: Ashfold weigh house. Copy an exposed inscription. What remains of the weigh house has faded tally marks.
+- Kayaz: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Kayaz: Morrow sick house. Inspect a reported repair. The sick house survives with cracked mortar joints.
+- Kjerskar: Ashfold market shelter. Record surviving worked stones. What remains of the market shelter has braced masonry.
+- Kjerskar: Rumour of old stonework. Inspect a reported repair. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Kjerskar: Morrow sick house. Record surviving worked stones. The sick house survives with weathered stonework.
+- Mijostildea: Ashfold sick house. Record surviving worked stones. What remains of the sick house has newer masonry among older courses.
+- Mijostildea: Rumour of old stonework. Copy an exposed inscription. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Mijostildea: Morrow winter refuge. Copy an exposed inscription. The winter refuge survives with faded tally marks.
+- Obnase: Ashfold sick house. Record surviving worked stones. What remains of the sick house has newer masonry among older courses.
+- Obnase: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Obnase: Morrow weigh house. Record surviving worked stones. What remains of the weigh house has cracked mortar joints.
+- Aturonniga: Ashfold watchtower. Record surviving worked stones. What remains of the watchtower has cracked mortar joints.
+- Aturonniga: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Aturonniga: Morrow burial chapel. Copy an exposed inscription. What remains of the burial chapel has faded tally marks.
+- Laillenoy: Ashfold watchtower. Record surviving worked stones. The watchtower survives with newer masonry among older courses.
+- Laillenoy: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Laillenoy: Morrow pottery kiln. Record surviving worked stones. What remains of the pottery kiln has bare inner walls.
+- Vordis: Ashfold manor outbuilding. Record surviving worked stones. The manor outbuilding survives with bare inner walls.
+- Vordis: Rumour of old stonework. Record surviving worked stones. Someone remembers old work somewhere outside the town. Its exact location is not known.
+- Vordis: Morrow survey lodge. Record surviving worked stones. The survey lodge survives with bare inner walls.
+- Markudlaug: Ashfold survey lodge. Record surviving worked stones. The survey lodge survives with faded tally marks.
+- Markudlaug: Rumour of old stonework. Copy an exposed inscription. Someone remembers old work somewhere outside the town. Its exact location is not known.
+
+## First 50 sites
+
+- Ashfold watchtower: What remains of the watchtower has faded tally marks. Its history records that it replaced a cracked lintel.
+- Greyward lime kiln: What remains of the lime kiln has newer masonry among older courses. Its history records that it became a temporary store.
+- Morrow ceremonial court: What remains of the ceremonial court has newer masonry among older courses. Later accounts say it replaced a cracked lintel.
+- Rook scriptorium: What remains of the scriptorium has newer masonry among older courses. Its history records that it had its last stores removed.
+- Dunstone training yard: What remains of the training yard has bare inner walls. Later accounts say it housed a shared kitchen.
+- Lowfield common kitchen: What remains of the common kitchen has newer masonry among older courses. Later accounts say it had its last inventory closed.
+- Hallow votive hall: The votive hall survives with newer masonry among older courses. Later accounts say it braced a failing wall.
+- Stillward weigh house: The weigh house survives with bare inner walls. Its history records that it had its last stores removed.
+- Ashfold weigh house: What remains of the weigh house has cracked mortar joints. Later accounts say it became a meeting place.
+- Greyward smithy: The smithy survives with braced masonry. Its history records that it braced a failing wall.
+- Morrow press house: What remains of the press house has weathered stonework. Later accounts say it fitted a replacement door.
+- Rook pack-animal yard: The pack-animal yard survives with bare inner walls. Later accounts say it housed a shared kitchen.
+- Dunstone burial chapel: What remains of the burial chapel has braced masonry. Its history records that it had trees take root against the walls.
+- Lowfield watchtower: What remains of the watchtower has faded tally marks. Later accounts say it held salvaged records.
+- Hallow ceremonial court: What remains of the ceremonial court has faded tally marks. Its history records that it held salvaged records.
+- Stillward pack-animal yard: The pack-animal yard survives with cracked mortar joints. Its history records that it had its doors sealed.
+- Ashfold smithy: The smithy survives with bare inner walls. Its history records that it replaced a cracked lintel.
+- Greyward pilgrim lodge: The pilgrim lodge survives with bare inner walls. Its history records that it repaired the main stair.
+- Morrow market shelter: What remains of the market shelter has cracked mortar joints. Later accounts say it replaced a cracked lintel.
+- Rook market shelter: What remains of the market shelter has braced masonry. Later accounts say it fitted a replacement door.
+- Dunstone drying barn: The drying barn survives with cracked mortar joints. Its history records that it became a meeting place.
+- Lowfield manor outbuilding: The manor outbuilding survives with cracked mortar joints. Its history records that it braced a failing wall.
+- Hallow small observatory: What remains of the small observatory has faded tally marks. Its history records that it fitted a replacement door.
+- Stillward granary: The granary survives with braced masonry. Its history records that it became a temporary store.
+- Ashfold pilgrim lodge: What remains of the pilgrim lodge has braced masonry. Later accounts say it had trees take root against the walls.
+- Greyward market shelter: What remains of the market shelter has cracked mortar joints. Its history records that it had its last inventory closed.
+- Morrow survey lodge: The survey lodge survives with smoke-stained walls. Its history records that it fitted a replacement door.
+- Rook ceremonial court: What remains of the ceremonial court has smoke-stained walls. Later accounts say it replaced a cracked lintel.
+- Dunstone votive hall: The votive hall survives with newer masonry among older courses. Its history records that it held salvaged records.
+- Lowfield votive hall: The votive hall survives with newer masonry among older courses. Its history records that it lost its remaining workers.
+- Hallow market shelter: What remains of the market shelter has newer masonry among older courses. Later accounts say it fitted a replacement door.
+- Stillward survey lodge: The survey lodge survives with braced masonry. Its history records that it renewed the roof.
+- Ashfold small observatory: What remains of the small observatory has bare inner walls. Later accounts say it had trees take root against the walls.
+- Greyward pack-animal yard: The pack-animal yard survives with smoke-stained walls. Its history records that it became a meeting place.
+- Morrow watchtower: The watchtower survives with newer masonry among older courses. Later accounts say it had trees take root against the walls.
+- Rook ceremonial court: What remains of the ceremonial court has weathered stonework. Later accounts say it fitted a replacement door.
+- Dunstone wash house: What remains of the wash house has newer masonry among older courses. Its history records that it housed a shared kitchen.
+- Lowfield burial chapel: The burial chapel survives with cracked mortar joints. Later accounts say it sheltered displaced households.
+- Hallow smithy: The smithy survives with smoke-stained walls. Its history records that it replaced a cracked lintel.
+- Stillward lime kiln: What remains of the lime kiln has newer masonry among older courses. Later accounts say it relaid the central floor.
+- Ashfold market shelter: What remains of the market shelter has weathered stonework. Later accounts say it replaced a cracked lintel.
+- Greyward sick house: What remains of the sick house has cracked mortar joints. Later accounts say it housed a shared kitchen.
+- Morrow stone-cutting yard: What remains of the stone-cutting yard has smoke-stained walls. Later accounts say it had trees take root against the walls.
+- Rook lime kiln: The lime kiln survives with bare inner walls. Later accounts say it had its doors sealed.
+- Dunstone winter refuge: The winter refuge survives with smoke-stained walls. Later accounts say it fitted a replacement door.
+- Lowfield pilgrim lodge: What remains of the pilgrim lodge has newer masonry among older courses. Its history records that it had its last inventory closed.
+- Hallow survey lodge: The survey lodge survives with smoke-stained walls. Its history records that it fitted a replacement door.
+- Stillward scriptorium: The scriptorium survives with bare inner walls. Later accounts say it lost its remaining workers.
+- Ashfold smithy: What remains of the smithy has weathered stonework. Its history records that it had trees take root against the walls.
+- Greyward scriptorium: What remains of the scriptorium has newer masonry among older courses. Later accounts say it had its last inventory closed.
+
+## First 50 generated expectations (actual transactions are separately recorded)
+
+- site:18118fae0e9d447a85c6f067312be46fec5c3696d77616f9cd875df9c0d33b2e: Survey → investigated; further rumour only if unknown; examine → watchtower; leave → unresolved.
+- site:351855b538914872639a59d4a4ed05f14b195f0f964befb84d688069cd1e15b5: Survey → investigated; further rumour only if unknown; examine → lime-kiln; leave → unresolved.
+- site:13e30d1862adb9ee3fe5aa65cc6ed538c76e490af02b1418799860b12e5ec0ad: Survey → investigated; further rumour only if unknown; examine → ceremonial-court; leave → unresolved.
+- site:379074ecd6e0721d04400ee7febbb3842fcb4fc7a19df846a36c64bc4b3f64d0: Survey → investigated; further rumour only if unknown; examine → scriptorium; leave → unresolved.
+- site:bfea85607ba5911b9b95ae3c554755e8b206fecd23416edbcb55e8e55a05c13e: Survey → investigated; further rumour only if unknown; examine → training-yard; leave → unresolved.
+- site:f790daf3f8f3862f27c6a4f3ee08bd1620f2c40c8dba6b3ea6ca23d7bc624b21: Survey → investigated; further rumour only if unknown; examine → common-kitchen; leave → unresolved.
+- site:5bc1e137a76a1fb66fd868178dc95edfa65c3eee9ce04186cadc992674d83b13: Survey → investigated; further rumour only if unknown; examine → votive-hall; leave → unresolved.
+- site:700df8ac7be9e229acdc23d0a23c22c2605231a5307679debda7f3032f692fcd: Survey → investigated; further rumour only if unknown; examine → weigh-house; leave → unresolved.
+- site:9de6d4626e8c5f6a8ca57d6bb22bb98c4c425147f5e2a7934d35dc13c30b305b: Survey → investigated; further rumour only if unknown; examine → weigh-house; leave → unresolved.
+- site:2a5e142ebe805b1db09bdff04e7879a21ae40d2566cfff961228ca86416ca391: Survey → investigated; further rumour only if unknown; examine → smithy; leave → unresolved.
+- site:5f1858faf20343cee98af93bbca2072d0953b0ca68dc65e6159a894d4f14f9aa: Survey → investigated; further rumour only if unknown; examine → press-house; leave → unresolved.
+- site:45fdb120dc80ff1ea3e2f09b967bca5a79a14e423209aeeee58d950872717b75: Survey → investigated; further rumour only if unknown; examine → pack-animal-yard; leave → unresolved.
+- site:f976286808c9fdc3bf6159e54a7e20efd2c8628a2dda863b899fa223c71a9cbf: Survey → investigated; further rumour only if unknown; examine → burial-chapel; leave → unresolved.
+- site:d4d48d44d59d334e8255d217bb6b640f77b26106b3835bd175a35a9939b5a8db: Survey → investigated; further rumour only if unknown; examine → watchtower; leave → unresolved.
+- site:b582fc893e2331f4ba92286c60916708d022166ed95efaf2ed233d35b28be283: Survey → investigated; further rumour only if unknown; examine → ceremonial-court; leave → unresolved.
+- site:7ba373abccc98dd2f5468a8aa5111f771d074b08d1131a9b00e901e6483cd88b: Survey → investigated; further rumour only if unknown; examine → pack-animal-yard; leave → unresolved.
+- site:717343f08fc804b9b6c4cee850d7b29d04d95a4336ba23445de5332ddeaeaf8a: Survey → investigated; further rumour only if unknown; examine → smithy; leave → unresolved.
+- site:11a4ce9e8117f27be7305ee15ceca513086fbf0073d39005da71c895df1d3f8c: Survey → investigated; further rumour only if unknown; examine → pilgrim-lodge; leave → unresolved.
+- site:40c8413ec43f430346c343a2cba43f98f3d1a6dd96261587b11bee3f90238529: Survey → investigated; further rumour only if unknown; examine → market-shelter; leave → unresolved.
+- site:6c3e006de47b8744a24a0ff6ed6fe4a98dc2b77f3aced81e18cc782180b70db5: Survey → investigated; further rumour only if unknown; examine → market-shelter; leave → unresolved.
+- site:50123a3d4af237a19097d6af67e017e4a31b4a0d6a0d6ce9300912775defc8b0: Survey → investigated; further rumour only if unknown; examine → drying-barn; leave → unresolved.
+- site:62a32d08e596f25f878137bf85502ce0b71861db28000ed453c06b68bcecaccb: Survey → investigated; further rumour only if unknown; examine → manor-outbuilding; leave → unresolved.
+- site:30cd75609254b98c92e4fea5350a838e27f5aa3c8d850aac3a6f3b60fc1232ff: Survey → investigated; further rumour only if unknown; examine → small-observatory; leave → unresolved.
+- site:545af76cd858449d4221d3cdbbeb31a385adf04e1864aa08c4bfe9ccf4fe2bd3: Survey → investigated; further rumour only if unknown; examine → granary; leave → unresolved.
+- site:d189e286d836021613a6f5a14a65fd4e192b41cd037a843f86ba17546bafc7a4: Survey → investigated; further rumour only if unknown; examine → pilgrim-lodge; leave → unresolved.
+- site:1db8cef3fa27b4e8c3daefeff47f4b66d0a6cd2b69e0cddabd719117c4ab389a: Survey → investigated; further rumour only if unknown; examine → market-shelter; leave → unresolved.
+- site:bafad96743ab2d8b28d16963b2bec60eb4952e9ccdd1fdbc65d776b40e5e96ec: Survey → investigated; further rumour only if unknown; examine → survey-lodge; leave → unresolved.
+- site:06089c2adb480e3bbb00e49973e3a6d220f36098815c8540e2453a50a8e35ba8: Survey → investigated; further rumour only if unknown; examine → ceremonial-court; leave → unresolved.
+- site:63941d559bf63a20a42eba25ab5f317ddb372608a0ff08292c0ee12afc2e283c: Survey → investigated; further rumour only if unknown; examine → votive-hall; leave → unresolved.
+- site:e9f10135666255f880d866b36cef7a3eb86dc9edaf8ae7da9a4c8c1b307d6ba0: Survey → investigated; further rumour only if unknown; examine → votive-hall; leave → unresolved.
+- site:32db05617754433a6d9d71101cd783710f66c1f6fab7dd76df9f65ed43f34ad4: Survey → investigated; further rumour only if unknown; examine → market-shelter; leave → unresolved.
+- site:7435fc46a3d093c928bd4a7af3c8aa7f148f9bb503161a883812045fede2b466: Survey → investigated; further rumour only if unknown; examine → survey-lodge; leave → unresolved.
+- site:56f4ed536f9507f5b84f45512d050644feff8ea8d300efd7931d912aaa8e1929: Survey → investigated; further rumour only if unknown; examine → small-observatory; leave → unresolved.
+- site:9420317f9cb0c6ee09890f5cd003098c893360a83975ae22d873ce707e1e7c10: Survey → investigated; further rumour only if unknown; examine → pack-animal-yard; leave → unresolved.
+- site:ba1a44ceb0ca00358e84b1e525cc935734d2169b20263c1f5b6a714996e5cca9: Survey → investigated; further rumour only if unknown; examine → watchtower; leave → unresolved.
+- site:b8dba45bfa1d283b6b78630f3c6d1974304917e9b5fa429a648f321df126a12c: Survey → investigated; further rumour only if unknown; examine → ceremonial-court; leave → unresolved.
+- site:15e5c8fc23fc5a9a2c4a4be9dd65682665153b2bdd34a5fd9e3925197e77d577: Survey → investigated; further rumour only if unknown; examine → wash-house; leave → unresolved.
+- site:9622ff30a9935ac9282a3fd98b35ef6c14197a26ab5c4619ce12a5bf2d467a83: Survey → investigated; further rumour only if unknown; examine → burial-chapel; leave → unresolved.
+- site:cf5c9e64f7566344f7648a48425ae5ab49b0fc973ccf06b7601a8d593db4035a: Survey → investigated; further rumour only if unknown; examine → smithy; leave → unresolved.
+- site:e79b45a66d991a97e61f247108a9d73d8375bb49be2ea5c692579910e32652e4: Survey → investigated; further rumour only if unknown; examine → lime-kiln; leave → unresolved.
+- site:3540ce3cac81c62acd9c94c5d4a520ba45f1e89fab9ac004765a286cabf470eb: Survey → investigated; further rumour only if unknown; examine → market-shelter; leave → unresolved.
+- site:ffa304f0232d163d61daa0d7dfeb22c4d1f2a881241c543a24ae832641051e79: Survey → investigated; further rumour only if unknown; examine → sick-house; leave → unresolved.
+- site:8a1c275e4d5fde0c141fede86a44135c12637d464db48bf60c6b2bc4285b43f8: Survey → investigated; further rumour only if unknown; examine → stone-cutting-yard; leave → unresolved.
+- site:20d8b33396884997381420aea7b7f32e2f6105d9d034b06f7a4ff02425fdae7d: Survey → investigated; further rumour only if unknown; examine → lime-kiln; leave → unresolved.
+- site:456eb67125c27918eadccfde7ad34ecfc26a4db685ad6779b21589426ed35ac7: Survey → investigated; further rumour only if unknown; examine → winter-refuge; leave → unresolved.
+- site:7faa96b9380adf2ca12e336371ddcf06a6bac79d1ef60ddb349f38d4d80f7b1b: Survey → investigated; further rumour only if unknown; examine → pilgrim-lodge; leave → unresolved.
+- site:b8605c4946079b42472cfa7e7bbadd15527051754341e14ec73e4ef93ad40b41: Survey → investigated; further rumour only if unknown; examine → survey-lodge; leave → unresolved.
+- site:e88f55cfa7eba387f44ffa0565c15f96acdd13ba6730c7f7555ff7380df4ff0d: Survey → investigated; further rumour only if unknown; examine → scriptorium; leave → unresolved.
+- site:e573028ce7b4e7edaf64ed5c94138913f8df80408d5b418813c3cb4d382715b5: Survey → investigated; further rumour only if unknown; examine → smithy; leave → unresolved.
+- site:c30965c1a41bb3f74ff35057bbf69d82a89542c29427d3772a653493750f8a9f: Survey → investigated; further rumour only if unknown; examine → scriptorium; leave → unresolved.

@@ -97,7 +97,7 @@ func commit(slot: String, candidate: Dictionary, world: GameWorldTemplate) -> Di
  var validated := store.load_save(slot, world)
  if not validated.ok:
   if not _restore(slot, journal): return fail("Written party could not be verified. Recovery is pending; no success was recorded.")
-  return fail("Party could not be verified. The previous origin/draft was restored; please retry.")
+  return fail("Campaign could not be verified. The previous state was restored; please retry. " + str(validated.get("error", "")))
  DirAccess.remove_absolute(_journal(slot))
  return validated
 
@@ -209,7 +209,9 @@ func resumable() -> Dictionary:
   var raw := WorldOriginLore.read_json(store.save_root.path_join(name))
   if raw.get("save_version") != 1 or not raw.get("world_ref") is Dictionary or raw.get("playthrough_id") != name.trim_suffix(".json") or store._slot_path(name.trim_suffix(".json")).is_empty(): continue
   for entry in entries:
-   if entry.id == raw.get("world_ref", {}).get("id"):
+   if entry.id == raw.get("world_ref", {}).get("id") :
     choices.append({"entry": entry, "slot": name.trim_suffix(".json"), "modified": FileAccess.get_modified_time(store.save_root.path_join(name))})
  choices.sort_custom(func(a: Dictionary, b: Dictionary): return a.modified > b.modified if a.modified != b.modified else a.slot < b.slot)
- return choices[0] if not choices.is_empty() else {}
+ for choice in choices:
+  if recover(choice.slot, choice.entry.world).get("ok",false): return choice
+ return {}

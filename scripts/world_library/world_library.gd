@@ -313,8 +313,19 @@ func _release_lock() -> void:
 func begin_origin(entry: Dictionary) -> Dictionary:
  if entry.preset: return {"ok": true, "locked": false}
  if not _acquire_lock(): return _fail("The world library is busy or its lock needs recovery.")
- var current := _read_entry(entry.directory)
- if current.is_empty() or current.id != entry.id:
+ # Rehash live bytes under the same library lock. Reinterpreting the entire
+ # unchanged world for every gameplay action is redundant: the loaded template
+ # already passed all structural checks. Sidecar readers rehash all dependencies.
+ var world: GameWorldTemplate = entry.world
+ var meta := _json(str(entry.directory).path_join("metadata.json"))
+ var valid: bool = entry.id==world.world_id and str(entry.directory).get_file()==world.source_sha256 and str(entry.path)==str(entry.directory).path_join("world.json") and FileAccess.get_sha256(entry.path)==world.source_sha256 and meta.get("library_version")==1 and meta.get("preset")==false and meta.get("world_ref") is Dictionary
+ if valid:
+  valid=meta.world_ref.get("generator") is Dictionary and _numeric(meta.world_ref.get("schema_version")) and world.validate_save_reference(meta.world_ref)
+ if valid and meta.has("origin_enrichment"):
+  valid=WorldOriginLore.new().validate_pin(meta.origin_enrichment,world,-1,str(entry.directory).path_join("enrichment/origin-v1")).is_empty()
+ if valid and meta.has("origin_profiles"):
+  valid=OriginProfiles.new().validate_pin(meta.origin_profiles,world,str(entry.directory).path_join("enrichment/profiles-v2")).is_empty()
+ if not valid:
   _release_lock()
   return _fail("This world is no longer available. Choose another world.")
  return {"ok": true, "locked": true}
@@ -428,12 +439,12 @@ func helper_status() -> Dictionary:
  var runtime := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
  if manifest.get("nodeVersion") != "v24.19.0" or not FileAccess.file_exists(runtime) or FileAccess.get_sha256(runtime) != manifest.get("runtimeSha256"):
   return _fail("The bundled world generator is unavailable. Install the matching game distribution or run the checkout bootstrap.")
- for pair in [["origin-v1", "runtime.json"], ["profiles-v2", "runtime-profiles-v2.json"], ["party-v1", "runtime-party-v1.json"]]:
+ for pair in [["origin-v1", "runtime.json"], ["profiles-v2", "runtime-profiles-v2.json"], ["party-v1", "runtime-party-v1.json"], ["expedition-v1", "runtime-expedition-v1.json"]]:
   var packaged := helper.path_join("data/world_enrichment/" + pair[1])
   var expected := FileAccess.get_sha256("res://data/world_enrichment/" + pair[1])
   if manifest.get("enrichmentRuntimes", {}).get(pair[0]) != expected or not FileAccess.file_exists(packaged) or FileAccess.get_sha256(packaged) != expected:
    return _fail("The bundled generator does not match this game version. Run the checkout bootstrap or use the complete matching game distribution.")
- var profile_manifest := _json(helper.path_join("data/world_enrichment/runtime-party-v1.json"))
+ var profile_manifest := _json(helper.path_join("data/world_enrichment/runtime-expedition-v1.json"))
  for file in profile_manifest.get("files", {}):
   var path := helper.path_join(str(file))
   if not FileAccess.file_exists(path) or FileAccess.get_sha256(path) != profile_manifest.files[file]: return _fail("The bundled generator failed its content integrity check. Rebuild the matching helper.")

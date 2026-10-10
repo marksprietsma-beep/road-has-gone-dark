@@ -1,0 +1,19 @@
+{
+  "local_platform": "Linux x64; Godot 4.6.3; Node 24.19.0",
+  "ordinary_transitions": {
+    "samples": 77,
+    "min_ms": 705,
+    "median_ms": 981,
+    "max_ms": 2372
+  },
+  "cold_initialization": {
+    "worlds": 7,
+    "min_ms": 10627,
+    "max_ms": 18716
+  },
+  "warm_resume": {
+    "min_ms": 187,
+    "max_ms": 575
+  },
+  "limitations": "Development measurements include shared-host contention. Cold initialization uses a fresh owned cache and exact offline geography replay; warmed action measurements use existing verified geometry. Native CI timings are recorded separately."
+}

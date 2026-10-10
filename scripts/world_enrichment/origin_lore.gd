@@ -32,6 +32,13 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
  origins = {}
  error = ""
  if path.is_empty(): path = directory(world)
+ var cache_key := "origin-v1:"+path
+ var fingerprint := ImmutableValidationCache.fingerprint(world,path,RUNTIME)
+ var cached: Dictionary = world._validation_cache.get(cache_key,{})
+ if cached.get("fingerprint")==fingerprint:
+  descriptor=cached.descriptor.duplicate(true)
+  origins=cached.origins.duplicate(true)
+  return true
  var d := read_json(path.path_join("descriptor.json"))
  if d.size() != DESCRIPTOR_KEYS.size(): return _fail("Origin enrichment descriptor is missing or corrupt.")
  for key in DESCRIPTOR_KEYS:
@@ -70,6 +77,7 @@ func load_world(world: GameWorldTemplate, path: String = "") -> bool:
    if not row[field] is String or row[field].is_empty() or row[field].length() > 2048: return _fail("Invalid public origin text.")
  descriptor = d
  origins = p.origins
+ world._validation_cache[cache_key]={"fingerprint":fingerprint,"descriptor":descriptor.duplicate(true),"origins":origins.duplicate(true)}
  return true
 
 func public_origin(world: GameWorldTemplate, burg_id: int) -> Dictionary:

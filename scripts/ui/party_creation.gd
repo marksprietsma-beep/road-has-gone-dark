@@ -9,6 +9,7 @@ var thread: Thread
 var after_save := ""
 var message := ""
 var ready_view := false
+var expedition_cache_root := "user://expedition-content"
 var title: Label
 var origin: Label
 var roster: ItemList
@@ -174,6 +175,7 @@ func _ready() -> void:
   message = "Choose a hometown through New Game before creating a party."
   refresh()
   return
+ expedition_cache_root = str(handoff.get("cache_root", expedition_cache_root))
  entry = handoff.entry
  slot = handoff.slot
  service.store.save_root = str(handoff.get("save_root", service.store.save_root))
@@ -199,7 +201,7 @@ func _process(_delta: float) -> void:
   pending_edit = {}
   state = result.state
   ready_view = state.party.status == "ready"
-  message = "Party saved and verified." if not ready_view else "Party setup complete. Expedition gameplay is not available yet."
+  message = "Party saved and verified." if not ready_view else "Party setup complete. Your hometown awaits."
  refresh()
  if not after_save.is_empty() and result.get("ok", false):
   var action := after_save
@@ -298,7 +300,7 @@ func refresh() -> void:
  roster.mouse_filter = Control.MOUSE_FILTER_IGNORE if busy else Control.MOUSE_FILTER_STOP
  back_button.disabled = busy
  finish_button.disabled = busy or state.is_empty()
- finish_button.text = "Review party" if ready_view else "Party ready"
+ finish_button.text = "Enter hometown" if ready_view else "Party ready"
  detail_tabs.visible = not state.is_empty()
  updating = false
  if not state.is_empty(): _presence()
@@ -306,8 +308,8 @@ func refresh() -> void:
 func _finish() -> void:
  if thread != null or state.is_empty(): return
  if ready_view:
-  ready_view = false
-  refresh()
+  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":expedition_cache_root}
+  get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
  elif dirty():
   after_save = "ready"
   _save_changes()

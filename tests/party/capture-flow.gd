@@ -147,7 +147,8 @@ func run() -> void:
  var saved: Dictionary=ui.state.duplicate(true)
  await key(KEY_ESCAPE)
  await wait_scene("res://scenes/ui/main_menu.tscn")
- var resume := PartyService.new()
+ var resume := ExpeditionService.new()
+ resume.cache_root=base.path_join("expedition-cache")
  resume.store.save_root=campaign_root
  resume.library.library_root=base.path_join("library")
  var choice := resume.resumable()
@@ -157,11 +158,13 @@ func run() -> void:
  for n in 60: await process_frame
  await shot("main-menu-resume-party")
  await click(current_scene.menu_content.get_node("ResumePartyButton"))
- await wait_scene("res://scenes/ui/party_creation.tscn")
+ await wait_scene("res://scenes/gameplay/expedition.tscn")
  ui=current_scene
- await wait_party(ui)
- check(ui.state==saved,"scene restart reloads exact ready party")
- await shot("resumed-party-ready",ui)
+ var deadline := Time.get_ticks_msec()+180000
+ while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
+ check(ui.thread==null and ui.message.is_empty(),"ready party continues into verified hometown")
+ check(ui.state.get("party")==saved.party and ui.state.get("party_ids")==saved.party_ids and ui.state.get("origin")==saved.origin,"hometown resume retains exact ready party and origin")
+ await shot("resumed-ready-party-hometown")
  var entries := resume.library.discover()
  var generated: Dictionary = entries.filter(func(e: Dictionary): return not e.preset)[0]
  var reader := OriginProfiles.new()
