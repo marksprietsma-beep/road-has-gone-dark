@@ -1,9 +1,9 @@
-name: GAME-96 Procedural Sandbox Windows Review Build
+name: Production Sandbox Windows Review Build
 permissions:
   contents: read
 on:
   push:
-    branches: [feature/first-adventure-vertical-slice, feature/game-94-lpc-character-presentation, feature/game-95-party-preview-old-road, feature/game-96-procedural-sandbox-spine]
+    branches: [main, integration/game-97-production-consolidation, feature/first-adventure-vertical-slice, feature/game-94-lpc-character-presentation, feature/game-95-party-preview-old-road, feature/game-96-procedural-sandbox-spine]
     paths: ['data/sandbox/**', 'tests/sandbox/**', 'assets/combat/**', 'data/art/**', 'data/combat/**', 'tests/battlefields/**', 'export_presets.cfg', 'tests/lpc/**', 'tests/art/**', 'scripts/**', 'scenes/**', 'tests/adventure/**', 'tools/release/**', '.github/workflows/first-adventure-review.yml']
   workflow_dispatch:
 jobs:

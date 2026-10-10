@@ -3,7 +3,7 @@ permissions:
   contents: read
 on:
   push:
-    branches: [feature/game-83-production-ui-system-refactor]
+    branches: [main, feature/game-83-production-ui-system-refactor]
     paths: ['scripts/**', 'scenes/**', 'themes/**', 'tests/**', 'tools/**', '.github/workflows/verify-production-ui.yml']
   pull_request:
     paths: ['scripts/ui/**', 'scripts/expedition/expedition_map.gd', 'scenes/ui/**', 'themes/**', 'tests/ui_system/**', '.github/workflows/verify-production-ui.yml']
