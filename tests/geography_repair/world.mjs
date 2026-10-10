@@ -10,11 +10,15 @@ import {generateCellRegion} from '../../tools/regiongen/generator-v1.mjs';
 import {buildTileConstraints,sideShorelineCrossings,clipPolygon} from '../../tools/regiongen/source-projection.mjs';
 import {localContent} from '../../tools/expedition/content.mjs';
 import {loadWorld,eligible} from '../../tools/world_enrichment/source.mjs';
-const [seed,directory,fixture]=process.argv.slice(2),out=resolve(directory);mkdirSync(out,{recursive:true});
+const [seed,directory,fixture]=process.argv.slice(2).filter(a=>!a.startsWith('--')),out=resolve(directory);mkdirSync(out,{recursive:true});
 const path=join(out,'world.json'),geo=join(out,'geography.json'),hash=b=>createHash('sha256').update(b).digest('hex');
 const started=performance.now();
-execFileSync(process.execPath,['tools/worldgen/offline-generate.mjs','--seed',seed,'--output',path,'--geometry-output',geo],{stdio:'inherit',timeout:150000});
-const generation_seconds=(performance.now()-started)/1000;
+let generation_seconds;
+if(process.argv.includes('--validate-only')){generation_seconds=JSON.parse(readFileSync(join(out,'generation.json'))).seconds;}else{
+ execFileSync(process.execPath,['tools/worldgen/offline-generate.mjs','--seed',seed,'--output',path,'--geometry-output',geo],{stdio:'inherit',timeout:150000});
+ generation_seconds=(performance.now()-started)/1000;writeFileSync(join(out,'generation.json'),JSON.stringify({seed,seconds:generation_seconds})+'\n');
+}
+if(process.argv.includes('--generate-only'))process.exit(0);
 const bytes=readFileSync(path),fingerprint=hash(bytes),w=JSON.parse(bytes),s=JSON.parse(readFileSync(geo));
 if(fixture)assert.equal(fingerprint,hash(readFileSync(fixture)),'immutable preset replay');
 if(seed==='game96-sandbox-review-v2')assert.equal(fingerprint,'c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1');
@@ -71,5 +75,5 @@ for(const type of ['island','lake']){
  assert(found,type+' projected geography');shoreline_seams++;if(type==='lake')lake_seams++;
 }
 assert.equal(hash(readFileSync(path)),fingerprint,'read-only canonical source');
-const report={seed,success:true,source_sha:fingerprint,geography_sha:hash(readFileSync(geo)),generation_seconds,seconds:(performance.now()-started)/1000,cells:w.cells.ids.length,features:w.map.geography.filter(f=>f?.vertices?.length).length,map:{width:w.map.width,height:w.map.height,land_cells:w.cells.heights.filter(h=>h>=20).length,islands:w.map.geography.filter(f=>f?.type==='island').length,lakes:w.map.geography.filter(f=>f?.type==='lake').length},off_canvas,neighbor_edges,shoreline_seams,lake_seams,boundary_cells,categories,regions};
+const report={seed,success:true,source_sha:fingerprint,geography_sha:hash(readFileSync(geo)),generation_seconds,seconds:(performance.now()-started)/1000+(process.argv.includes('--validate-only')?generation_seconds:0),cells:w.cells.ids.length,features:w.map.geography.filter(f=>f?.vertices?.length).length,map:{width:w.map.width,height:w.map.height,land_cells:w.cells.heights.filter(h=>h>=20).length,islands:w.map.geography.filter(f=>f?.type==='island').length,lakes:w.map.geography.filter(f=>f?.type==='lake').length},off_canvas,neighbor_edges,shoreline_seams,lake_seams,boundary_cells,categories,regions};
 writeFileSync(join(out,'result.json'),JSON.stringify(report,null,2)+'\n');console.log('PASS '+seed+' '+regions.length+' hometowns');

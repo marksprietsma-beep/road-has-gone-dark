@@ -7,6 +7,9 @@ old=base/'original-main';old.mkdir();archive=subprocess.check_output(['git','arc
 with tarfile.open(fileobj=io.BytesIO(archive))as t:t.extractall(old,filter='data')
 (old/'tests/geography_repair').mkdir();shutil.copy2(root/'tests/geography_repair/campaign.gd',old/'tests/geography_repair/campaign.gd')
 shutil.copytree(helper/'vendor/azgaar/node_modules',old/'vendor/azgaar/node_modules')
+# These are Node dependencies, never Godot resources. Avoid importing upstream
+# example fonts into either project's cold editor; no game assets are excluded.
+for project in [old,root]:(project/'vendor/azgaar/node_modules/.gdignore').write_text('')
 env=dict(os.environ);rows=[]
 for key,name in [('XDG_DATA_HOME','data'),('XDG_CONFIG_HOME','config'),('XDG_CACHE_HOME','cache')]:env[key]=str(base/name)
 def run(name,cmd,cwd=root,**extra):
@@ -17,8 +20,8 @@ def run(name,cmd,cwd=root,**extra):
  if r.returncode or bad:print(text[-6000:]);raise SystemExit(1)
 legacy=base/'original-helper'
 run('package-original-helper',[node,old/'tools/worldgen/package-helper.mjs','--output',legacy,'--runtime-license',helper/'NODE-LICENSE'],cwd=old)
-run('import-original',[engine,'--headless','--audio-driver','Dummy','--editor','--path',old,'--quit'])
-run('import-repaired',[engine,'--headless','--audio-driver','Dummy','--editor','--path',root,'--quit'])
+run('import-original',[engine,'--headless','--audio-driver','Dummy','--import','--path',old])
+run('import-repaired',[engine,'--headless','--audio-driver','Dummy','--import','--path',root])
 for phase in ['blocked','recover','replay']:
  project=old if phase=='blocked'else root
  run('campaign-'+phase,[engine,'--headless','--audio-driver','Dummy','--path',project,'--script','tests/geography_repair/campaign.gd'],GAME76_HELPER_ROOT=str(legacy if phase=='blocked'else helper),GAME99_CAMPAIGN_ROOT=str(base/'blocked-campaign'),GAME99_CAMPAIGN_PHASE=phase,GAME99_WORLD=str(base.parent/'corpus/game96-sandbox-review-v2/world.json'))
