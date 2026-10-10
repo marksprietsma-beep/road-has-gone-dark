@@ -1,0 +1,45 @@
+{
+  "art": {
+    "recipes": {
+      "4591f7658b19bbe0b33119dbf4b343de:adventurer:1": "63f66894a0b379234eac8c500064bf80df3148ee10113228c82686f4f8c96089",
+      "4591f7658b19bbe0b33119dbf4b343de:adventurer:2": "4a6c159b28cc43f0a512521cefd19fc7bd05cb5f51a1b1e64427cdb730f36a07",
+      "4591f7658b19bbe0b33119dbf4b343de:adventurer:3": "72a216741ca7d98d550dd3de156e2e113b14cdced3dc4daf1bf0fdaeae740561",
+      "bandit-blade": "5e777cbe3d12862b6fe96465fa6804010d1a9b0aa1e8fc6403c265067dfc5023",
+      "bandit-bow": "c811c1df0a7a77fa80782f6434aabea2d7dfab72a747ea3ba868443df39ede39"
+    },
+    "styles": [
+      "lpc"
+    ],
+    "unchanged_state_hash": "604718027492da51094566ef306f7af9e36f957d9051081c2c52c59b6e41bc79"
+  },
+  "checks": 237,
+  "empty_path": true,
+  "failures": 0,
+  "layout": "old-road-12x8-v1",
+  "legacy_move_hash": "2d91e4889beef5d35fc8a94b53b9862239487be9002a16ea594a47218334bab0",
+  "legacy_save_restored": true,
+  "party_preview_matches_combat": true,
+  "platform": "Windows",
+  "source_helper_override": false,
+  "victory_battle_hash": "908462a4d7030ec1ad9b3e68293e42fa08fe61e8bd399db374c994dddad57ec1",
+  "visual": false,
+  "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+  "preference_restart": true,
+  "original_art_files": 291,
+  "production_launch": true,
+  "archive_sha256": "1aee52d5f25f8a268cccc526cdf473bb8929fae15cf150a89075d11088a7a746",
+  "archive": "game95-old-road-windows-x64.zip",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+    },
+    "executable_sha256": "aacab714fefa21bfe49a37606cfae810d8d0eae9e5b15d9040e9d23a0e33dad8"
+  }
+}

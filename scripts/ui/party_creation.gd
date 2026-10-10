@@ -12,7 +12,7 @@ var ready_view := false
 var expedition_cache_root := "user://expedition-content"
 var title: Label
 var origin: Label
-var roster: ItemList
+var roster: PartyRoster
 var name_edit: LineEdit
 var people_picker: OptionButton
 var role_picker: OptionButton
@@ -31,6 +31,7 @@ var updating := false
 var pending_edit := {}
 var local_people: Array = []
 var member_heading: Label
+var preview_recipes := {}
 
 func label(text: String, size: int = 14) -> Label:
  return GameUI.label(text, size)
@@ -62,12 +63,11 @@ func _ready() -> void:
  body.add_theme_constant_override("separation", 12)
  column.add_child(body)
  var left := VBoxContainer.new()
- left.custom_minimum_size.x = 188
+ left.custom_minimum_size.x = 218
  body.add_child(left)
- roster = ItemList.new()
- roster.max_text_lines = 2
- roster.icon_mode = ItemList.ICON_MODE_TOP
- roster.custom_minimum_size.y = 154
+ roster = PartyRoster.new()
+ roster.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+ roster.custom_minimum_size.y = 178
  left.add_child(roster)
  roster.item_selected.connect(_select_member)
  overview = label("Three adventurers", GameUI.META)
@@ -238,12 +238,16 @@ func refresh() -> void:
   origin.text = "From %s · %s · %s" % [home.name, area.get("name", "Unassigned districts"), world.get_record("state", int(state.origin.state_id)).name]
  origin.tooltip_text = origin.text
  roster.clear()
+ preview_recipes={}
  if not state.is_empty():
+  var previews := CombatArt.party_units(state)
   for m in state.party.members:
    var people: Dictionary = pack.peoples.filter(func(p: Dictionary): return p.id == m.people_id)[0]
    var role: Dictionary = pack.roles.filter(func(r: Dictionary): return r.id == m.role_id)[0]
-   roster.add_item("%s\n%s · %s" % [m.name,people.name,role.name])
-   roster.set_item_tooltip(m.slot - 1, people.name + " · " + role.name)
+   var recipe := CombatArt.recipe("lpc",previews[m.character_id],m) if previews.has(m.character_id) else {}
+   if not recipe.is_empty():preview_recipes[m.character_id]=recipe.recipe_hash
+   roster.add_item("%s\n%s · %s" % [m.name,people.name,role.name],CombatArt.thumbnail(recipe))
+   roster.set_item_tooltip(m.slot - 1, people.name + " · " + role.name+" · Saved starting equipment preview"+(" · Art unavailable" if recipe.is_empty() or not recipe.available else ""))
   roster.select(selected - 1)
   var member: Dictionary = state.party.members[selected - 1]
   var ancestry: Dictionary = pack.peoples.filter(func(p: Dictionary): return p.id == member.people_id)[0]
@@ -279,6 +283,7 @@ func refresh() -> void:
  role_picker.visible = not ready_view
  commonness.visible = not ready_view
  roster.mouse_filter = Control.MOUSE_FILTER_IGNORE if busy else Control.MOUSE_FILTER_STOP
+ roster.set_enabled(not busy)
  back_button.disabled = busy
  finish_button.disabled = busy or state.is_empty()
  finish_button.text = "Enter hometown" if ready_view else "Party ready"

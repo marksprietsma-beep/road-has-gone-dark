@@ -1,0 +1,12 @@
+{
+  "id": "first-road-v1",
+  "title": "Bandits on the Old Road",
+  "width": 8,
+  "height": 6,
+  "blocked": [[3,0],[3,1],[4,4],[4,5]],
+  "party_positions": [[1,1],[1,2],[1,3]],
+  "enemies": [
+    {"id":"bandit-blade","name":"Road raider","role":"vanguard","weapon":"shortblade","position":[6,2]},
+    {"id":"bandit-bow","name":"Raider archer","role":"scout","weapon":"bow","position":[6,3]}
+  ]
+}

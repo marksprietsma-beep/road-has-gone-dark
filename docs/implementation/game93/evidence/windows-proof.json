@@ -1,0 +1,59 @@
+{
+  "art": {
+    "recipes": {
+      "0x72:28e29e9c67032e5e3cd89cb3504a3042:adventurer:1": "218737fb591768cc7ad4b10670736508f18a1a13ec41295052e2ae6bf28f84a2",
+      "0x72:28e29e9c67032e5e3cd89cb3504a3042:adventurer:2": "be76e0554b4968d7859b0750f14f0afd5eb6570dd9f672784a7b8ab6d2b880e1",
+      "0x72:28e29e9c67032e5e3cd89cb3504a3042:adventurer:3": "b2a8d2ac0008226959179af558fc3065c2ac92a8aa77ea75ea46d03cce8b45df",
+      "0x72:bandit-blade": "fc7cc5aa994721d2656940433b9a80cad487ee17226954b4f9594eedb0481bb9",
+      "0x72:bandit-bow": "f6cde71fe2f5fe7586d12baaca9fdcf54cd48b3075954202bf1973c394ab6b1a",
+      "kenney:28e29e9c67032e5e3cd89cb3504a3042:adventurer:1": "4b9f0ad2b90919ad6ab5ce3f4d47eb82ae836f0f2c28be1647161db813b0874f",
+      "kenney:28e29e9c67032e5e3cd89cb3504a3042:adventurer:2": "153b8f9ad65e6582245dcff0d81ea4e2aadc2897f0123165dfef6bf67218fcf7",
+      "kenney:28e29e9c67032e5e3cd89cb3504a3042:adventurer:3": "2e08af71f2d61a45d56a643ed3c05b9c1dbdaf6503c31ed6d4cb2607c061f76d",
+      "kenney:bandit-blade": "ee1b106c7e39a4cd8f8a0150401baed8036ae27e4bb4ed5a0a51f001bbc1e7e0",
+      "kenney:bandit-bow": "27495d257388b5d62d0dc6ba171e0551319993cf97630886841610a2944c3d93",
+      "lpc:28e29e9c67032e5e3cd89cb3504a3042:adventurer:1": "004fd18688aaa4f6ca3d7ed37c50169f69d6f5e732c50e49ce7122b57511e929",
+      "lpc:28e29e9c67032e5e3cd89cb3504a3042:adventurer:2": "319196b24cf34861a69d8a92cb871a2ca16f52e5f81846cd20c1fb92b742594e",
+      "lpc:28e29e9c67032e5e3cd89cb3504a3042:adventurer:3": "b1a2cab5234a244608aa783eeb6e2d048868770e829249ce79f169340dbb126e",
+      "lpc:bandit-blade": "082ffc32bdd67a32d42522b44101882b0e2b644d4200c00520c334a5475b4b13",
+      "lpc:bandit-bow": "861c2f6c44e69bdb42dd7fa5fc6315726949b5ec88a9f0316220184013eecc6f",
+      "navinius:28e29e9c67032e5e3cd89cb3504a3042:adventurer:1": "183f26cf7d916e6220343530a91b1ea09cb0747d1b246c5a42363d6426e05e6a",
+      "navinius:28e29e9c67032e5e3cd89cb3504a3042:adventurer:2": "688e753c90ac48d6bfc4728b7a7b4234ba2a2804e99c5602a528507a764dabfc",
+      "navinius:28e29e9c67032e5e3cd89cb3504a3042:adventurer:3": "d7614043c3656ab9472d912b617fd230336eea5b4b0959e906ea249ea88a63cf",
+      "navinius:bandit-blade": "fc49a0e105565d3b086a1d8d36c0ff84b9e8c9aaacf336a1d7b8455ec7ce206e",
+      "navinius:bandit-bow": "3551e3e836b9233d60dc4c9d01c747d59aff4ec8a05bb3120d0a0366380042a9"
+    },
+    "styles": [
+      "lpc",
+      "kenney",
+      "0x72",
+      "navinius"
+    ],
+    "unchanged_state_hash": "1aff29c8641f9e7b0fa2785b62e2684b385a468cc892a41f3bdb02d998796893"
+  },
+  "checks": 237,
+  "empty_path": true,
+  "failures": 0,
+  "platform": "Windows",
+  "source_helper_override": false,
+  "victory_battle_hash": "d2816107c21fd56d93d4e7816a374260285d6ee5675d151675a7d379b0b16871",
+  "visual": false,
+  "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+  "preference_restart": true,
+  "original_art_files": 481,
+  "production_launch": true,
+  "archive_sha256": "ac96799344975cee3bc0518bdd1a5479cb48a553fcb960373c7e9bdf1a968714",
+  "archive": "game93-four-art-styles-windows-x64.zip",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+    },
+    "executable_sha256": "0d861c0cf0f0aeb0d862b25fa0e34be704458c418fad35e67df50b5382a87045"
+  }
+}

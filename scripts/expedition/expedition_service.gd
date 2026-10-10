@@ -123,7 +123,8 @@ func _operate_locked(entry: Dictionary, slot: String, operation: String, _member
    if operation!="leave":
     e.knowledge[site.id]="investigated"
     active.supplies-=1
-    candidate.world_deltas[site.id]={"investigated":true,"approach":operation}
+    if not candidate.world_deltas.has(site.id): candidate.world_deltas[site.id]={}
+    candidate.world_deltas[site.id].merge({"investigated":true,"approach":operation},true)
    if operation=="survey":
     var secondary: Dictionary = content.sites[3]
     if e.knowledge[secondary.id]=="unknown":

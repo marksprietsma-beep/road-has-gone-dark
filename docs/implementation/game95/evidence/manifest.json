@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "capture_engine": "Godot 4.6.3 official",
+  "platform": "Linux / Mesa llvmpipe compatibility renderer",
+  "baseline_commit": "3c3343fd14282397c46932417f519df7b526ea40",
+  "tested_source_commit": "4b430aef7638dcfbd54a971b393353761e5106fc",
+  "screenshots": "Original Godot viewport pixels; party comparison uses identical review fixture identities. New layouts retain the same identities but deliberately change geometry.",
+  "gifs": "Original viewport frames with measured intervals rounded to 10 milliseconds; no invented/retouched artwork.",
+  "files": [
+    {
+      "path": "adventure-timings.json",
+      "bytes": 495,
+      "sha256": "845f079571e1edb8d0ff09160b1f1d0fcf0333ed8cd566efa95f2a894f12ace4"
+    },
+    {
+      "path": "archive-audit.json",
+      "bytes": 672,
+      "sha256": "646392946c47c335de5b89bc46e0fc35f8d4d8e29e5be0cd8fef91f552499a84"
+    },
+    {
+      "path": "art.log",
+      "bytes": 104,
+      "sha256": "aaa734c1098ee725e28b25ffe2603f70e6b9bde75e522f2a78eb422836cc9aef"
+    },
+    {
+      "path": "campaign-create.log",
+      "bytes": 136,
+      "sha256": "dce373a42a31122dd363721381fe496db1976002325e11b30d772a02da089958"
+    },
+    {
+      "path": "campaign-reload.log",
+      "bytes": 136,
+      "sha256": "db096acc250e2c6f88be0464000207ed7504c75e8d425282d4e9ab756d160c13"
+    },
+    {
+      "path": "combat.log",
+      "bytes": 239,
+      "sha256": "a7305ac5162370567006e19528dda264a15b1347a50f1a7475b410ca99243411"
+    },
+    {
+      "path": "controls.log",
+      "bytes": 412,
+      "sha256": "b6aa0645a090fe9eb1a304b3305f0429d97b1650439ed643f719266b929035d6"
+    },
+    {
+      "path": "defeat.gif",
+      "bytes": 294533,
+      "sha256": "6265cc4474f7c7ac9221bd367390143cd99049d404345471459d54f7fa0c15aa"
+    },
+    {
+      "path": "game95-old-road-windows-x64.zip.sha256",
+      "bytes": 98,
+      "sha256": "0e26123d018e94e1e63a4caff0c39bca2e3b9414e84eee2cf79a31ab71efe707"
+    },
+    {
+      "path": "game95-proof.json",
+      "bytes": 523814,
+      "sha256": "037696c6bcc8149ba048c20195f34df0832bfb54c0eb199d749d404c367a3e6a"
+    },
+    {
+      "path": "game95-render.log",
+      "bytes": 497,
+      "sha256": "cb6e6a5806816c7405144c7fb1c5c203f8ad114aeb1bd7a7abd981c8aa7117e3"
+    },
+    {
+      "path": "journey-defeat-results.png",
+      "bytes": 417575,
+      "sha256": "d1965a7397007971c5048700ffb763e44b519fc25d2e9d7e7a1629dea3fa1317"
+    },
+    {
+      "path": "journey-expedition.png",
+      "bytes": 396562,
+      "sha256": "0fe43475e0227c6ee8c93993f28e54560a4a8e517f94c559ba6a6643f8f8868f"
+    },
+    {
+      "path": "journey-legacy-resumed.png",
+      "bytes": 179134,
+      "sha256": "b576ab1c00d934028c4df9906f3e44f13d5e28fd9d303e0bc315daa46dabe0ed"
+    },
+    {
+      "path": "journey-party.png",
+      "bytes": 112742,
+      "sha256": "2d2c8941baa702f141308f635a0695cb2ff80dfdff63c68e76efd434518ccb1c"
+    },
+    {
+      "path": "journey-proof.json",
+      "bytes": 1221,
+      "sha256": "3c9415bca64590f80eb02df49eb9e6f177e450c5b9794f3a81e95ec12cac63e0"
+    },
+    {
+      "path": "journey-results.png",
+      "bytes": 431480,
+      "sha256": "6622988264526070289128e176b28d3dc620bdec7b8df6e7eb83030d09d957a8"
+    },
+    {
+      "path": "journey-returned-home.png",
+      "bytes": 454033,
+      "sha256": "1eadafb07317a5aa3a15c1c63819340e4482a2b19cb0e2fcf505cabb875a809e"
+    },
+    {
+      "path": "journey-site.png",
+      "bytes": 440132,
+      "sha256": "a8ef48ce5dd8ea9d72473568b5141dd80a0d95ea5282a55385da267c75af7ffe"
+    },
+    {
+      "path": "journey.log",
+      "bytes": 1590,
+      "sha256": "80a4e381629e4ab327f8706aeede3f76d471dc7dd1741bbc6f833c3b7b7a7b6e"
+    },
+    {
+      "path": "legacy-8x6-v1-1280x720.png",
+      "bytes": 185393,
+      "sha256": "cae5b6e1772b8f047650a7d2860738ddd80910edb4ae0c9bde35e3a05a30068f"
+    },
+    {
+      "path": "legacy-8x6-v1-2560x1440.png",
+      "bytes": 266214,
+      "sha256": "a753d69a103f6571a0aeee7d381e833b0e32998ffe50cae71c45c5150582ca34"
+    },
+    {
+      "path": "legacy-8x6-v1-640x360.png",
+      "bytes": 57972,
+      "sha256": "c8c098c73c8680fbb883f2d9e4b07f0075d53a03b4ad74414e5c31cf0f00b5b8"
+    },
+    {
+      "path": "legacy-lpc-proof.json",
+      "bytes": 523460,
+      "sha256": "26107533a6129d7fbd26230b892855959afe74a9dc64ec60d955ea666a33577c"
+    },
+    {
+      "path": "legacy-lpc.log",
+      "bytes": 132,
+      "sha256": "2dee89c0e3abb45753641d140e57496c88400b1f80c44c12b6e554061dfaee3d"
+    },
+    {
+      "path": "melee.gif",
+      "bytes": 256404,
+      "sha256": "f56b1b3c19769cc3aeeee4767130c5e99cf3dbb347f551d92466778fd5a5139e"
+    },
+    {
+      "path": "miss.gif",
+      "bytes": 264174,
+      "sha256": "2cc4e773fc2d90fb057c5d9eaee851420b2147bae99a9456bf9aa666550720d3"
+    },
+    {
+      "path": "movement.gif",
+      "bytes": 242020,
+      "sha256": "ccf8412c3c13cdd71fb5cf795b350ef9a31678474f07d63c6155bac896e259f0"
+    },
+    {
+      "path": "old-road-10x8-v1-1280x720.png",
+      "bytes": 183958,
+      "sha256": "22cc3e2060c1dabf42fb93c4d5a3bd58cfbca5b7f4798571e406804e3a00226c"
+    },
+    {
+      "path": "old-road-10x8-v1-2560x1440.png",
+      "bytes": 271701,
+      "sha256": "a032eaa72b89e7821c94becff8e1fdb6a375b93015a7a8e5125ef619025c58da"
+    },
+    {
+      "path": "old-road-10x8-v1-640x360.png",
+      "bytes": 59374,
+      "sha256": "e76b5f8586c3dbdab92a11529d213fe0cb464ccf500b06b9aeeb36947edde39f"
+    },
+    {
+      "path": "old-road-12x8-v1-1280x720.png",
+      "bytes": 177641,
+      "sha256": "44303dda073641f325d6f3ecf44fbb0f42a45fe6c2f1b2ee3ea74f433205fc3c"
+    },
+    {
+      "path": "old-road-12x8-v1-2560x1440.png",
+      "bytes": 274241,
+      "sha256": "b0d149b71160202282ab9582c261ef2e11c50b8b154716bb82da8e10dae3c78e"
+    },
+    {
+      "path": "old-road-12x8-v1-640x360.png",
+      "bytes": 59408,
+      "sha256": "238ac1c131e0620e2eff57ee6f0bd12702b609eafe0aa07cd359d66c91e5d886"
+    },
+    {
+      "path": "party-after-1280x720.png",
+      "bytes": 81824,
+      "sha256": "67032b345af5b8ff9a54a7d32a30e296cf9825deb550dd5db6a126bd1665c354"
+    },
+    {
+      "path": "party-after-2560x1440.png",
+      "bytes": 116828,
+      "sha256": "499305b64a91e8f238613befb43ffb4dc14b6b5efcab3db601f5e924072c4f78"
+    },
+    {
+      "path": "party-after-640x360.png",
+      "bytes": 39840,
+      "sha256": "f5a842c4a6dae6dcac38ae9516a09b4c18cb6c278cc141f6ccee3cb01616caa9"
+    },
+    {
+      "path": "party-before-1280x720.png",
+      "bytes": 84921,
+      "sha256": "a1c30b7c7889439df6e9d8320d1b51570a9aee49a88d9b73896df8709a4f2618"
+    },
+    {
+      "path": "party-before-2560x1440.png",
+      "bytes": 120363,
+      "sha256": "c17c57c56ac2458f5072d22e63b27074f4591ec22019f2868040ba303f94c0b7"
+    },
+    {
+      "path": "party-before-640x360.png",
+      "bytes": 35285,
+      "sha256": "5834a34ae67edd42fa8476bf29a132b14961ecc4265280d088a696ac9312894b"
+    },
+    {
+      "path": "ranged.gif",
+      "bytes": 289279,
+      "sha256": "dd2d80b62e6ca2e0434df7af1bf08c98478c58c79ddcf8c0058e08ff9843830b"
+    },
+    {
+      "path": "rules-timings.json",
+      "bytes": 163,
+      "sha256": "2d341685d1fc8511855f31c39d55784461dea3a981d0dfeac5ee1433711e3da8"
+    },
+    {
+      "path": "rules.log",
+      "bytes": 1471,
+      "sha256": "a74a579b8f0c849dfe7be11c847a476a33f837d6e4e0d349ee317ede2b70dfd8"
+    },
+    {
+      "path": "spell.gif",
+      "bytes": 356984,
+      "sha256": "15520957e6ab692815db10792a0af103f9c98351f7a95bd2c186fa38f97688bb"
+    },
+    {
+      "path": "staff.gif",
+      "bytes": 274646,
+      "sha256": "192731bbb48fbaf10f300536b11e78af0b70d08378185f8a1d8d23b7e3ea3bfe"
+    },
+    {
+      "path": "ui83.log",
+      "bytes": 117,
+      "sha256": "74d98f0384a3122aff8119c595ccdff66687f371fe73441acf1c0e8e968e5c81"
+    },
+    {
+      "path": "windows-adventure-timings.json",
+      "bytes": 400,
+      "sha256": "a6d8369c7a7d2ecc8712dc447169669d83774956bf6aea2f8c2f3ef5b55a2f1b"
+    },
+    {
+      "path": "windows-campaign-create.log",
+      "bytes": 136,
+      "sha256": "dce373a42a31122dd363721381fe496db1976002325e11b30d772a02da089958"
+    },
+    {
+      "path": "windows-campaign-reload.log",
+      "bytes": 136,
+      "sha256": "db096acc250e2c6f88be0464000207ed7504c75e8d425282d4e9ab756d160c13"
+    },
+    {
+      "path": "windows-combat.log",
+      "bytes": 239,
+      "sha256": "a7305ac5162370567006e19528dda264a15b1347a50f1a7475b410ca99243411"
+    },
+    {
+      "path": "windows-game95-proof.json",
+      "bytes": 524417,
+      "sha256": "a05ed0050ebeea8fc87ba719eb70cbdb53937d093a64828101cf5cb153316868"
+    },
+    {
+      "path": "windows-legacy-lpc-proof.json",
+      "bytes": 523468,
+      "sha256": "b81964af6327d4025b1868fd97bee6ba01241424ea8006635c127ff931809274"
+    },
+    {
+      "path": "windows-native.log",
+      "bytes": 1298,
+      "sha256": "eb5ad5f9d7b7e527f41cbd797c3569824cac05a466d91d3ea37c6058f92ef688"
+    },
+    {
+      "path": "windows-preference-read.log",
+      "bytes": 102,
+      "sha256": "41998d6f13169c7017d6bda54cf950f9f6a77a3820e8b419108b76f6bffe92cb"
+    },
+    {
+      "path": "windows-preference-write.log",
+      "bytes": 103,
+      "sha256": "f070ddce99c13def981206bb96a3e561481a628d495ecf0094afc4068c586088"
+    },
+    {
+      "path": "windows-production-launch.log",
+      "bytes": 195,
+      "sha256": "a0c906399bdb382ff21ab8ed6298848f904a42b2f14a71d2e28a74a770eceeee"
+    },
+    {
+      "path": "windows-proof.json",
+      "bytes": 2069,
+      "sha256": "f8ad23c3638d6b74955469fda9cdcff56fb510b4cc8dafcb29888c14a4a1112d"
+    },
+    {
+      "path": "windows-rules-kernel-results.json",
+      "bytes": 4669,
+      "sha256": "ce205e924d533af174c16fcfd8ecf9e37260c62911ed075b0dfd24df62f8a4f6"
+    },
+    {
+      "path": "windows-rules-timings.json",
+      "bytes": 159,
+      "sha256": "e246dccc7a3c45392c7332e360846e19ea3e67d0d9d8a156d70c516695612af8"
+    }
+  ],
+  "windows_workflow": "37954669406",
+  "windows_rendering": "Headless native Windows validation; screenshots and GIFs from actual Linux Godot viewport renders.",
+  "hash_basis": "Repository blob bytes; Git normalizes text line endings to LF. Original native CRLF logs are retained in the Windows evidence artifact."
+}

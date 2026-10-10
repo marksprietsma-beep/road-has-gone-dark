@@ -1,0 +1,552 @@
+{
+  "party": {
+    "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+    "generator_version": "trhgd-party-1",
+    "members": [
+      {
+        "background_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:1:background:7593ac4045e3bdf2fc2c",
+        "background_variant": 1.0,
+        "biography": "Gaabuba grew up in Kharundrel, in a single-parent household. A patient older apprentice taught them the work of a potter. Their early work was shaped by household craft work. They hope to bring a younger sibling new opportunities; they still carry a repaired wooden cup.",
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:1",
+        "generated_facts": {
+          "background": {
+            "age_band": "older-adult",
+            "birthplace": {
+              "id": 633.0,
+              "name": "Kharundrel",
+              "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+            },
+            "childhood": "caring-for-younger-children",
+            "concern": "losing-borrowed-tools",
+            "contact": {
+              "id": "settlements:633/character:party:slot:1:variant:1:people:wood-elf:role:vanguard/contact",
+              "name": "Gaino",
+              "relationship": "known-person",
+              "role": "a-travelling-worker-met-during-training"
+            },
+            "family": "single-parent-household",
+            "first_failure": "lost-a-carefully-copied-account",
+            "first_success": "made-a-replacement-part-that-lasted",
+            "habit": "records-small-expenses",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-repaired-wooden-cup",
+            "local_knowledge": {
+              "burg_id": 633.0,
+              "cell_id": 3728.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "bring-a-younger-sibling-new-opportunities",
+            "name": "Gaabuba",
+            "naming": {
+              "culture_id": 7.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "wood-elf"
+            },
+            "occupation": "potter",
+            "training": "a-patient-older-apprentice",
+            "traits": [
+              "plain-spoken",
+              "loyal"
+            ],
+            "value": "sharing-useful-knowledge"
+          },
+          "biography_form": 0.0,
+          "foundation_occupation_id": "potter",
+          "occupation_id": "potter",
+          "origin_identity": {
+            "hometown_profile_id": "burg:633",
+            "livelihood": "household craft work",
+            "local_memory": "Households agreed on turns at a shared washing place.",
+            "posture": "traditionalist",
+            "region_profile_id": "province:1:3",
+            "regional_contribution": "cloth and ordinary tools",
+            "state_profile_id": "state:1",
+            "tradition": "Local households air stored blankets before winter."
+          },
+          "people_id": "wood-elf",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "culture",
+              "farmland",
+              "forest",
+              "religion",
+              "settlement:village",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:2",
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:3"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Gaabuba",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 633.0,
+          "cell_id": 3728.0,
+          "culture_id": 7.0,
+          "province_id": 3.0,
+          "religion_id": 19.0,
+          "state_id": 1.0,
+          "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+          "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+        },
+        "people_id": "wood-elf",
+        "role_id": "vanguard",
+        "slot": 1.0
+      },
+      {
+        "background_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:2:background:cc72556657b65d0c62b6",
+        "background_variant": 1.0,
+        "biography": "Raised in Kharundrel, Luke learned practical work as a baker, guided by a patient older apprentice. Their guardian household shared in household craft work. Now they want to find the origin of an inherited tool. A folded household letter remains a reminder of that life.",
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:2",
+        "generated_facts": {
+          "background": {
+            "age_band": "adult",
+            "birthplace": {
+              "id": 633.0,
+              "name": "Kharundrel",
+              "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+            },
+            "childhood": "sharing-a-crowded-workroom",
+            "concern": "forgetting-names-and-obligations",
+            "contact": {
+              "id": "settlements:633/character:party:slot:2:variant:1:people:wood-elf:role:scout/contact",
+              "name": "Maishzud",
+              "relationship": "known-person",
+              "role": "a-household-guardian"
+            },
+            "family": "guardian-household",
+            "first_failure": "left-stored-materials-unprotected-from-rain",
+            "first_success": "completed-a-difficult-repair",
+            "habit": "pauses-before-making-promises",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-folded-household-letter",
+            "local_knowledge": {
+              "burg_id": 633.0,
+              "cell_id": 3728.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "find-the-origin-of-an-inherited-tool",
+            "name": "Luke",
+            "naming": {
+              "culture_id": 7.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "wood-elf"
+            },
+            "occupation": "baker",
+            "training": "a-patient-older-apprentice",
+            "traits": [
+              "sceptical",
+              "fearless"
+            ],
+            "value": "keeping-modest-promises"
+          },
+          "biography_form": 1.0,
+          "foundation_occupation_id": "baker",
+          "occupation_id": "baker",
+          "origin_identity": {
+            "hometown_profile_id": "burg:633",
+            "livelihood": "household craft work",
+            "local_memory": "Households agreed on turns at a shared washing place.",
+            "posture": "traditionalist",
+            "region_profile_id": "province:1:3",
+            "regional_contribution": "cloth and ordinary tools",
+            "state_profile_id": "state:1",
+            "tradition": "Local households air stored blankets before winter."
+          },
+          "people_id": "wood-elf",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "culture",
+              "farmland",
+              "forest",
+              "religion",
+              "settlement:village",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:1",
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:3"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Luke",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 633.0,
+          "cell_id": 3728.0,
+          "culture_id": 7.0,
+          "province_id": 3.0,
+          "religion_id": 19.0,
+          "state_id": 1.0,
+          "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+          "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+        },
+        "people_id": "wood-elf",
+        "role_id": "scout",
+        "slot": 2.0
+      },
+      {
+        "background_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:3:background:8b2e8b6964b1e5942af1",
+        "background_variant": 1.0,
+        "biography": "Hodbruth comes from a household of family friends in Kharundrel. Their former work was that of a herbal preparer. In a community centred on household craft work, they learned from a relative with failing eyesight. They carry a worn tool handle and hope to learn unfamiliar crafts.",
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:3",
+        "generated_facts": {
+          "background": {
+            "age_band": "older-adult",
+            "birthplace": {
+              "id": 633.0,
+              "name": "Kharundrel",
+              "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+            },
+            "childhood": "mending-ordinary-possessions",
+            "concern": "letting-a-friendship-lapse",
+            "contact": {
+              "id": "settlements:633/character:party:slot:3:variant:1:people:smallfolk:role:adept/contact",
+              "name": "Laigu",
+              "relationship": "known-person",
+              "role": "a-keeper-of-local-records"
+            },
+            "family": "household-of-family-friends",
+            "first_failure": "lost-a-carefully-copied-account",
+            "first_success": "settled-a-small-account-dispute",
+            "habit": "sets-tools-in-a-fixed-order",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-worn-tool-handle",
+            "local_knowledge": {
+              "burg_id": 633.0,
+              "cell_id": 3728.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "learn-unfamiliar-crafts",
+            "name": "Hodbruth",
+            "naming": {
+              "culture_id": 7.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "smallfolk"
+            },
+            "occupation": "herbal-preparer",
+            "training": "a-relative-with-failing-eyesight",
+            "traits": [
+              "practical",
+              "cowardly"
+            ],
+            "value": "sharing-useful-knowledge"
+          },
+          "biography_form": 2.0,
+          "foundation_occupation_id": "herbal-preparer",
+          "occupation_id": "herbal-preparer",
+          "origin_identity": {
+            "hometown_profile_id": "burg:633",
+            "livelihood": "household craft work",
+            "local_memory": "Households agreed on turns at a shared washing place.",
+            "posture": "traditionalist",
+            "region_profile_id": "province:1:3",
+            "regional_contribution": "cloth and ordinary tools",
+            "state_profile_id": "state:1",
+            "tradition": "Local households air stored blankets before winter."
+          },
+          "people_id": "smallfolk",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "culture",
+              "farmland",
+              "forest",
+              "religion",
+              "settlement:village",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:1",
+              "6421f89b8ef143a21546c191dba0e2eb:adventurer:2"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Hodbruth",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 633.0,
+          "cell_id": 3728.0,
+          "culture_id": 7.0,
+          "province_id": 3.0,
+          "religion_id": 19.0,
+          "state_id": 1.0,
+          "world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+          "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+        },
+        "people_id": "smallfolk",
+        "role_id": "adept",
+        "slot": 3.0
+      }
+    ],
+    "peoples_pin": {
+      "base_world_id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+      "base_world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+      "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+      "content_pack_version": "trhgd-party-1",
+      "enrichment_sha": "72d8f95b7c5f303a69a8d580408b282a86b3e0fca434f0b275dafbd6c5c47784",
+      "generator_version": "trhgd-party-1",
+      "profiles_sha": "cbd5d6e390a41b224ade5e1729b92652f9974284a41c3e2ccbf16ac617f2fe46",
+      "provider": "trhgd-peoples",
+      "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "schema_version": 1.0
+    },
+    "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+    "schema_version": 1.0,
+    "status": "ready"
+  },
+  "party_ids": [
+    "6421f89b8ef143a21546c191dba0e2eb:adventurer:1",
+    "6421f89b8ef143a21546c191dba0e2eb:adventurer:2",
+    "6421f89b8ef143a21546c191dba0e2eb:adventurer:3"
+  ],
+  "world_ref": {
+    "generator": {
+      "provider": "azgaar",
+      "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+      "version": "1.153.1"
+    },
+    "id": "azgaar:1.153.1:first-adventure-review-v1:597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+    "schema_version": 1.0,
+    "seed": "first-adventure-review-v1",
+    "sha256": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099"
+  },
+  "origin": {
+    "home_burg_id": 633.0,
+    "home_id": "burg:633",
+    "province_id": 3.0,
+    "state_id": 1.0
+  },
+  "mechanics": {
+    "records": {
+      "6421f89b8ef143a21546c191dba0e2eb:adventurer:1": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "roadwarden",
+            "feat_id": "sentry-trained",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-wood-elf",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 10.0,
+          "STR": 15.0,
+          "WIS": 12.0
+        },
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:1",
+        "choices": {
+          "prepared_abilities": []
+        },
+        "equipment": [
+          "shortblade",
+          "mail",
+          "shield"
+        ],
+        "revision": 2.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 14.0,
+          "modifiers": [],
+          "resources": {},
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "6421f89b8ef143a21546c191dba0e2eb:adventurer:2": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "wayfinder",
+            "feat_id": "quick-reflex",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0,
+              "craft": 1.0,
+              "insight": 1.0,
+              "perception": 1.0,
+              "persuasion": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-wood-elf",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 13.0,
+          "DEX": 15.0,
+          "INT": 14.0,
+          "STR": 10.0,
+          "WIS": 12.0
+        },
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:2",
+        "choices": {
+          "prepared_abilities": []
+        },
+        "equipment": [
+          "shortblade",
+          "bow",
+          "leathers"
+        ],
+        "revision": 2.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 1.0,
+          "modifiers": [],
+          "resources": {},
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "6421f89b8ef143a21546c191dba0e2eb:adventurer:3": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "lantern-adept",
+            "feat_id": "keen-focus",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0,
+              "craft": 1.0,
+              "insight": 1.0,
+              "perception": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-smallfolk",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 10.0,
+          "CON": 12.0,
+          "DEX": 13.0,
+          "INT": 15.0,
+          "STR": 8.0,
+          "WIS": 14.0
+        },
+        "character_id": "6421f89b8ef143a21546c191dba0e2eb:adventurer:3",
+        "choices": {
+          "prepared_abilities": [
+            "apparent-wall",
+            "false-guard",
+            "slow"
+          ]
+        },
+        "equipment": [
+          "staff",
+          "focus-token"
+        ],
+        "revision": 2.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 10.0,
+          "modifiers": [],
+          "resources": {
+            "focus": 2.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      }
+    },
+    "revision": 2.0,
+    "rules_ref": {
+      "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+      "engine_schema": 1.0,
+      "pack_id": "trhgd-rules-v1",
+      "rules_version": "1.0.0",
+      "schema_version": 1.0
+    },
+    "schema_version": 1.0,
+    "source_party_sha": "b48775993ad7366344691e8e5e24d805a420bb0df5ea01f08cb517137a39f1c2"
+  },
+  "site_id": "site:c971d2dfa0f1e1a799f26145b55ae3d36c5c5ad288d8343e7b0ba0871750ecd3"
+}

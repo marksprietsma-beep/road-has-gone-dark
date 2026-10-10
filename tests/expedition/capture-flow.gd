@@ -21,6 +21,7 @@ func key(code: int) -> void:
   await process_frame
  await frames()
 func click(control: Control) -> void:
+ control.grab_focus() # Reveal the real target in the production follow-focus scroll.
  await frames()
  for down in [true,false]:
   var e:=InputEventMouseButton.new()
@@ -58,6 +59,7 @@ func mount(entry: Dictionary,slot: String) -> void:
  ui=current_scene
  await wait_job()
 func run() -> void:
+ AdventureService.legacy_review=true # Preserve the authored GAME84/83 diagnostic.
  base=OS.get_environment("GAME84_TEST_ROOT")
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
  var service:=ExpeditionService.new()
