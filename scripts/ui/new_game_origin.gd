@@ -38,6 +38,14 @@ var job_mutex := Mutex.new()
 var job_phase := ""
 var working_label: Label
 var job_is_generation := false
+var origin_contexts := {}
+var world_status: Label
+
+func _origin_context() -> OriginContext:
+ var id := worlds[world_index].world_id
+ if not origin_contexts.has(id):
+  origin_contexts[id] = OriginContext.new(worlds[world_index], previews[world_index])
+ return origin_contexts[id]
 
 func _ready() -> void:
  _reload_library()
@@ -209,6 +217,8 @@ func show_page() -> void:
    back_button.call_deferred("grab_focus")
    return
   left.add_child(_label(message if not message.is_empty() else "Choose a world from your library."))
+  world_status = _label("")
+  left.add_child(world_status)
   options = ItemList.new()
   options.custom_minimum_size.y = 86
   options.add_theme_font_size_override("font_size", 16)
@@ -258,7 +268,7 @@ func show_page() -> void:
    next_button.disabled = true
   else:
    if not candidates.any(func(c: Dictionary): return int(c.id) == burg_id): burg_id = int(candidates[0].id)
-   left.add_child(_label("Small settlements · suggested first"))
+   left.add_child(_label("Small settlements"))
    options = ItemList.new()
    options.custom_minimum_size.y = 158
    options.add_theme_font_size_override("font_size", 15)
@@ -289,23 +299,17 @@ func _refresh_facts() -> void:
  if page == 0:
   var entry := entries[world_index]
   var kind := "Preset world" if entry.preset else "Generated · " + str(entry.created).left(10)
-  facts.text = "%s\n%d states · %d settlements" % [kind, states().size(), world.raw_counts().settlements - 1]
+  facts.text = _origin_context().world_summary().summary
+  if is_instance_valid(world_status): world_status.text = kind
   if is_instance_valid(deletion_button): deletion_button.disabled = entry.preset
   map.select_area(-1, -1)
   return
  var home := world.get_record("burg", burg_id) if page >= 2 and burg_id > 0 else {}
  map.select_area(state_id, province_id, home)
  if home.is_empty():
-  facts.text = "%d eligible small hometowns\nSelect from the lists; no map clicks required." % world.home_candidates(state_id, province_id, -1).size()
+  facts.text = _origin_context().region_summary(state_id, province_id).summary
  else:
-  var cell := world.get_record("cell", int(home.cell))
-  var biome := world.get_record("biome", int(cell.get("biome", -1)))
-  facts.text = "%s\n%s\nWalls: %s · Port: %s" % [
-   str(home.get("group", "Settlement")).capitalize(),
-   str(biome.get("name", "Terrain unknown")),
-   "present" if home.get("walls", false) else "none recorded",
-   "present" if int(home.get("port", 0)) > 0 else "none recorded"
-  ]
+  facts.text = _origin_context().hometown_summary(burg_id).summary
 
 func advance() -> void:
  if job_thread != null: return
@@ -387,7 +391,9 @@ func _input(event: InputEvent) -> void:
 
 func _focus_later(control: Control) -> void:
  await get_tree().process_frame
- if is_instance_valid(control) and control.is_inside_tree(): control.grab_focus()
+ if is_instance_valid(control) and control.is_inside_tree():
+  control.grab_focus()
+  if control is ItemList: control.ensure_current_is_visible()
 
 func _reload_library(selected_id: String = "") -> void:
  entries = library.discover()

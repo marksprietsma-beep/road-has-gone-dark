@@ -56,8 +56,8 @@ func run() -> void:
  ui.province_id = -1
  ui.show_page()
  ui.advance()
- check(ui.facts.text.contains("recorded"), "factual summary formats correctly")
- check(not ui.facts.text.contains("Source size") and ui.facts.text.contains("Walls:") and ui.facts.text.contains("Port:"), "player wording retains factual unknowns without source size")
+ check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "factual summary uses validated origin context")
+ check(not ui.facts.text.contains("Source size") and ui._origin_context().hometown_summary(ui.burg_id).tags.has("WALLED") == bool(ui.worlds[ui.world_index].get_record("burg", ui.burg_id).get("walls", false)), "player wording retains supported walls without raw source size")
  var selected: int = ui.burg_id
  ui.go_back()
  ui.advance()
