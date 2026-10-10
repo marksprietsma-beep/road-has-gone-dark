@@ -1,0 +1,122 @@
+[
+  {
+    "pr": 35,
+    "action": "closed_superseded",
+    "reason": "The Town Forge landscape-only baseline was replaced by accepted GAME-62 one-cell source-owned local-region V1 (#50). It is not a second production region generator.",
+    "preserved_head": "9d4f66d6ae88f3c126f9df50a0708dd14f030f76",
+    "branch": "game-21-town-forge-region-spike",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/35#issuecomment-6095659923"
+  },
+  {
+    "pr": 36,
+    "action": "closed_superseded",
+    "reason": "The conceptual provisional local-site prototype was replaced by source-owned GAME-62 regions (#50), persistent GAME-84 expeditions (#66) and GAME-96 contextual opportunities in #75.",
+    "preserved_head": "c7ec7576bca652efff5fd978992ab8b88642486f",
+    "branch": "game-40-direct-populated-region",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/36#issuecomment-6095660170"
+  },
+  {
+    "pr": 37,
+    "action": "closed_superseded",
+    "reason": "The early illustrated provisional region POIs belong to the retired GAME-40 preview, while production now uses the GAME-62/83/84 presentation. The artwork/reference remains available for future GAME-98 review.",
+    "preserved_head": "bee327aec072ea5c09ad70975e31f17dcf33513d",
+    "branch": "game-42-illustrated-region-direct",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/37#issuecomment-6095660509"
+  },
+  {
+    "pr": 38,
+    "action": "closed_superseded",
+    "reason": "This earlier 60-source-unit projection experiment is superseded by the later source-projection/geography contracts used in accepted GAME-62 (#50); it must not introduce a competing map coordinate authority.",
+    "preserved_head": "76a9b4815a857ff3233c285b170bb98c53346ca6",
+    "branch": "game-39-source-spatial-constraints",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/38#issuecomment-6095660905"
+  },
+  {
+    "pr": 39,
+    "action": "closed_superseded",
+    "reason": "The source-projection and geography-sidecar direction is incorporated in accepted GAME-62 (#50), with later corrected one-cell ownership. The older fixed-grid preview must not replace production.",
+    "preserved_head": "f9b09b80c4d2f2655df8a5672c5209bed7c87190",
+    "branch": "game-39-world-space-constraints-v1",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/39#issuecomment-6095661177"
+  },
+  {
+    "pr": 40,
+    "action": "closed_superseded",
+    "reason": "The source-neighbourhood prototype predates GAME-62 source-owned one-cell local regions (#50), which production GAME-84/96 reuses.",
+    "preserved_head": "a17bc38368ee7f104d7a87d52738b42c4944351e",
+    "branch": "game-46-local-world-context-v1",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/40#issuecomment-6095661424"
+  },
+  {
+    "pr": 41,
+    "action": "closed_superseded",
+    "reason": "The assumed-radius scale diagnostic is superseded by the accepted GAME-62 one-source-cell contract (#50). Its scale caveats remain research, not physical-distance gameplay guarantees.",
+    "preserved_head": "3aeb3673998aeb061d7225841ea01d2bbaffd9bb",
+    "branch": "game-48-reference-scale-diagnostic",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/41#issuecomment-6095661700"
+  },
+  {
+    "pr": 42,
+    "action": "closed_superseded",
+    "reason": "The contextual-source-site debug viewer is superseded by GAME-62 source-owned regions (#50) and GAME-84/96 persisted player opportunities; its earlier provisional placement is not production.",
+    "preserved_head": "fa2ef6b867d2ef8c7f93f2af80fe1f5a567acaed",
+    "branch": "game-44-contextual-source-sites-v2",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/42#issuecomment-6095661949"
+  },
+  {
+    "pr": 43,
+    "action": "closed_superseded",
+    "reason": "The source-exact/inferred/unknown distinction survives in GAME-62 (#50) and GAME-96 generation; this older preview is not another production authority.",
+    "preserved_head": "45163d4eab5d1f5f440557c847b30685e3212fc8",
+    "branch": "game-49-source-authority-v1",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/43#issuecomment-6095662234"
+  },
+  {
+    "pr": 44,
+    "action": "closed_superseded",
+    "reason": "The fine woodland/relief inference experiment is superseded by accepted GAME-62 (#50). Preserve the inference study without merging its obsolete debug pipeline.",
+    "preserved_head": "4464bf9abf3aac7a671fdebeeed9199465f94ad6",
+    "branch": "game-49-fine-inference-v2",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/44#issuecomment-6095662482"
+  },
+  {
+    "pr": 45,
+    "action": "closed_superseded",
+    "reason": "The coherent-site-terrain public preview predates accepted GAME-62 (#50) and GAME-83/84 presentation. Its unique diagrams and route-consistency experiments remain on this branch.",
+    "preserved_head": "2f409d502c47b2a5056467932fec47f38e58b408",
+    "branch": "game-54-coherent-site-terrain-preview",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/45#issuecomment-6095662726"
+  },
+  {
+    "pr": 46,
+    "action": "closed_superseded",
+    "reason": "The integrated terrain/discoverable-site preview is superseded by accepted GAME-62 (#50) and GAME-84/96 gameplay; no second inference or region generator is being merged.",
+    "preserved_head": "3b90f872397585434c11d6f89ba45ce371e88887",
+    "branch": "game-53-integrated-terrain-preview",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/46#issuecomment-6095662966"
+  },
+  {
+    "pr": 47,
+    "action": "closed_superseded",
+    "reason": "The prototype party/expedition session was replaced by the three persistent adventurers and authoritative GAME-84 campaign/expedition service (#66), extended by First Adventure/GAME-96 in #75. Merging it would introduce a duplicate session path.",
+    "preserved_head": "dbd4259b00571597532fa60395bc6154c01c2945",
+    "branch": "game-55-first-expedition-loop",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/47#issuecomment-6095663230"
+  },
+  {
+    "pr": 60,
+    "action": "closed_superseded",
+    "reason": "The isolated three-hometown GAME-77 origin-memory demonstration is superseded by GAME-79 immutable origin enrichment across preset/generated worlds (#63) and GAME-80/81 origin/party flow. Its research-only preloads and hardcoded three-town projection must not replace production.",
+    "preserved_head": "66b88b9a9fbdca517fc5f396b3561d3b003b1c9c",
+    "branch": "integration/game-77-origin-lore",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/60#issuecomment-6095663466"
+  },
+  {
+    "pr": 62,
+    "action": "closed_superseded",
+    "reason": "The isolated three-hometown GAME-78 memory/tradition demonstration is superseded as production UI by GAME-79/80/81 (#63\u201365). The broader unique GAME-78 generator research remains open in #61 for future evaluation; closing this demo does not discard that work.",
+    "preserved_head": "f591720d31baae65b6ad716c9c618f5a8637e276",
+    "branch": "integration/game-78-expanded-origin-lore",
+    "comment_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/62#issuecomment-6095663739"
+  }
+]

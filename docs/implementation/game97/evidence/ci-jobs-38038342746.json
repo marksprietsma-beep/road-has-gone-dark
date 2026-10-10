@@ -1,0 +1,185 @@
+{
+  "conclusion": "success",
+  "headSha": "61eaa5bc31857dae4dd3811e2d85d4019ff47627",
+  "jobs": [
+    {
+      "completedAt": "2026-10-10T08:34:57Z",
+      "conclusion": "success",
+      "databaseId": 114173401331,
+      "name": "density-preview",
+      "startedAt": "2026-10-10T08:34:24Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install pinned Azgaar generation dependencies",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Generate normal and landmark-heavy previews of identical geography",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Downloadable landmark-stress Godot fixture",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342746/job/114173401331"
+    },
+    {
+      "completedAt": "2026-10-10T08:36:17Z",
+      "conclusion": "success",
+      "databaseId": 114173401574,
+      "name": "godot-preview-smoke",
+      "startedAt": "2026-10-10T08:35:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Godot 4.6.3 headless",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Import scripts, scenes, and SVGs",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Launch atlas fixture viewer without graphics",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Test expandable map key and declutter control",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342746/job/114173401574"
+    },
+    {
+      "completedAt": "2026-10-10T08:39:34Z",
+      "conclusion": "success",
+      "databaseId": 114173401665,
+      "name": "marker-coverage",
+      "startedAt": "2026-10-10T08:39:25Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify Azgaar taxonomy and authored Game-icons",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 9,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342746/job/114173401665"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342746"
+}

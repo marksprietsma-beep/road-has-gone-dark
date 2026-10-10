@@ -1,0 +1,61 @@
+{
+  "conclusion": "success",
+  "headSha": "61eaa5bc31857dae4dd3811e2d85d4019ff47627",
+  "jobs": [
+    {
+      "completedAt": "2026-10-10T08:35:30Z",
+      "conclusion": "success",
+      "databaseId": 114173401278,
+      "name": "inspection-smoke",
+      "startedAt": "2026-10-10T08:34:24Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Godot 4.6.3",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Import Godot project",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Test inspection and reject Unicode parsing warnings",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342726/job/114173401278"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342726"
+}

@@ -1,0 +1,9 @@
+{
+  "reason": "Cold import failure fixed at 61eaa5b. Cancel superseded running f8e3d41 jobs to free runners for the complete final-head suite; completed original artifacts and failure evidence preserved. Keep ae9c10e native Windows production package job.",
+  "cancelled": [
+    38038005699,
+    38038005680,
+    38038005744,
+    38038005688
+  ]
+}

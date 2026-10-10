@@ -1,0 +1,618 @@
+{
+  "art": {
+    "recipes": {
+      "92525fde1f4f9aa8188c429e0403a12c:adventurer:1": "80cbb904e8962e4a7232980c581d77e4d2eb0cdaa768389149836dc4a2bc9d0b",
+      "92525fde1f4f9aa8188c429e0403a12c:adventurer:2": "20500f528b9627378a8e08c8b9f328400e0255b7cb5eb5253e53042400f4a2bb",
+      "92525fde1f4f9aa8188c429e0403a12c:adventurer:3": "4fcb823fde162e7e8e5953d9baf4caa0c72746df645ef5b793bae9dca70848e7",
+      "bandit-blade": "5e777cbe3d12862b6fe96465fa6804010d1a9b0aa1e8fc6403c265067dfc5023",
+      "bandit-bow": "c811c1df0a7a77fa80782f6434aabea2d7dfab72a747ea3ba868443df39ede39"
+    },
+    "styles": [
+      "lpc"
+    ],
+    "unchanged_state_hash": "03cb3b16ff85c860cf6f376fe9e4d3e01b610fa810c6e050aed87aa435839091"
+  },
+  "checks": 237,
+  "empty_path": true,
+  "failures": 0,
+  "layout": "old-road-12x8-v1",
+  "legacy_move_hash": "cc990579d66af713c05af4bc48be3c33f5e9d6462c3612cb33315ded1afda272",
+  "legacy_save_restored": true,
+  "party_preview_matches_combat": true,
+  "platform": "Windows",
+  "source_helper_override": false,
+  "victory_battle_hash": "4764ec2ee49bd5be8c2263a62a18f826a9a1db8232a8c52f0053b1039e25321d",
+  "visual": false,
+  "world_sha": "597c79854050cd9268d24fbef6345b3d7f90666fe5d8f3c2cac6afe60443f099",
+  "preference_restart": true,
+  "sandbox": {
+    "base_sha": "a21ed565612f2b316ff73b60243ed8fe98c110ac9c39079707b70d3cf20f1c0b",
+    "home": 81.0,
+    "party_ids": [
+      "f4aaeb281d5727665bda523a80c41914:adventurer:1",
+      "f4aaeb281d5727665bda523a80c41914:adventurer:2",
+      "f4aaeb281d5727665bda523a80c41914:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8": {
+        "battle_hash": "a5fd21720acb395af4ef55f926e063c6b526dab6b3d7ac5417e8f782ec656ae3",
+        "outcome": "defeat",
+        "sequence": 14,
+        "site_id": "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8",
+        "text": "The armed occupants of Hostile clearing \u00b7 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      },
+      "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb": {
+        "battle_hash": "f8e5b27c89ced7d041861b65c58de2d8167bfd5d0ce9e84bc226435ef68af664",
+        "outcome": "victory",
+        "sequence": 5,
+        "site_id": "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb",
+        "text": "The armed occupants of Secluded camp \u00b7 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2": {
+        "battle_hash": "e023324ec813f6645c75140b46fd39ba968f82ec37e2bf02594e1f468e3dba9d",
+        "outcome": "victory",
+        "sequence": 10,
+        "site_id": "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2",
+        "text": "The armed occupants of Broken work-yard \u00b7 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      }
+    },
+    "scenarios": [
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              5,
+              3
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              9,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              7
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb:opponent:1",
+              "name": "Hostile lookout",
+              "position": [
+                3,
+                4
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            },
+            {
+              "id": "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                3,
+                3
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 3,
+            "environment": "forest",
+            "kind": "camp",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "4943324955fe1680d2f4686c42c00157d4be158cde9723241fc7ae99b87033b7",
+            "site_id": "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:832c20e4f6aef889ef199041211e9fd2a70e4a8a8d3d007e5f2708aebbd13b45",
+          "party_positions": [
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              9,
+              2
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  5,
+                  2
+                ],
+                "kind": "campfire"
+              },
+              {
+                "at": [
+                  2,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  1,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  2,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  9,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  8,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  9,
+                  5
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  8,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  7,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  5,
+                  3
+                ],
+                "kind": "rock"
+              },
+              {
+                "at": [
+                  11,
+                  0
+                ],
+                "kind": "cart"
+              }
+            ],
+            "ground": [
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg"
+            ]
+          },
+          "title": "Skirmish at the camp",
+          "width": 12
+        },
+        "initial_render_hash": "e4542c23413a43f7a61decca21fcc6e647bbc1388c1b6b74da9cda7451dabee9",
+        "kind": "camp",
+        "site_id": "sandbox-site:d8feb6645df343d41b84af2e41a725f0917207270480085c14b2160197c7aceb"
+      },
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2:opponent:1",
+              "name": "Armed scavenger",
+              "position": [
+                2,
+                3
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            },
+            {
+              "id": "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                2,
+                2
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 1,
+            "environment": "forest",
+            "kind": "ruins",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "dc41e993ad6956bd3a1088721f9664a1f5e26ea8fbbf55f34931845be3534320",
+            "site_id": "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:633e8877632fca2e8579fc69396389bca6944c5a2775ee2a31308e6c32fb0d54",
+          "party_positions": [
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              8,
+              1
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  4,
+                  6
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  3,
+                  6
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  2,
+                  6
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  5
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  7,
+                  4
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  6,
+                  4
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  5,
+                  4
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  6,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  5,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  6,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  4,
+                  2
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  9,
+                  0
+                ],
+                "kind": "rubble"
+              }
+            ],
+            "ground": [
+              "gggggggggg",
+              "gppppppppg",
+              "gppppppppg",
+              "gppppppppg",
+              "gggggggggg",
+              "gggggggggg",
+              "gggggggggg",
+              "gggggggggg"
+            ]
+          },
+          "title": "Scavengers in the broken yard",
+          "width": 10
+        },
+        "initial_render_hash": "3257b0dc61954fc5bb45b890348b51da657a3d3e0ef814cc27140862370845a2",
+        "kind": "ruins",
+        "site_id": "sandbox-site:e00894082a568e67822890e1bb75f60abd3385eaf1f7139ad26e84a4ca1ae2c2"
+      },
+      {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              8,
+              4
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8:opponent:1",
+              "name": "Hostile lookout",
+              "position": [
+                3,
+                3
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            },
+            {
+              "id": "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                3,
+                2
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 3,
+            "environment": "forest",
+            "kind": "clearing",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "6d97b712d3aac3b19692930e9a1e96ca88af9ea24be39a9968dbd97241dc808b",
+            "site_id": "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:e04db04905a8b46cdb561655e61a977dd454df268ffffa912134a21a6d5d9f4a",
+          "party_positions": [
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              1
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  2,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  1,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  2,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  8,
+                  5
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  7,
+                  5
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  8,
+                  4
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  11,
+                  0
+                ],
+                "kind": "scrub"
+              }
+            ],
+            "ground": [
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg"
+            ]
+          },
+          "title": "Lookouts in the clearing",
+          "width": 12
+        },
+        "initial_render_hash": "adef3aa9687b0c41639c01d70ddb51b15215845148b7e69534d320126d4bb861",
+        "kind": "clearing",
+        "site_id": "sandbox-site:22f1226bbdd9e02a0c8fb6cc116103224e55bf0ed5ac503ef896618b6012c5c8"
+      }
+    ]
+  },
+  "original_art_files": 291,
+  "production_launch": true,
+  "archive_sha256": "5042edbacd2269cccda59efad4a38a2f73ffc2ea77e62d728c9875d6e281195b",
+  "archive": "game96-sandbox-windows-x64.zip",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+    },
+    "executable_sha256": "7662ff0bdbdfea6f0ddceb08026b0d77e3858bba125380bc9ef6a40a5076fc24"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "conclusion": "success",
+  "headSha": "61eaa5bc31857dae4dd3811e2d85d4019ff47627",
+  "jobs": [
+    {
+      "completedAt": "2026-10-10T08:35:28Z",
+      "conclusion": "success",
+      "databaseId": 114173401557,
+      "name": "gameworld-smoke",
+      "startedAt": "2026-10-10T08:34:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify pinned canonical fixture hashes",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install pinned Godot 4.6.3",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Import project",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run GameWorld smoke",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Confirm fixtures remain unchanged",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342766/job/114173401557"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38038342766"
+}
