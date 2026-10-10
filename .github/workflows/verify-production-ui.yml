@@ -30,6 +30,8 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Linux input, rendering and complete foundation regressions
         if: runner.os == 'Linux'
+        env:
+          GAME97_EVIDENCE_ROOT: docs/implementation/game83/logs/capture-failures
         run: |
           xvfb-run -a python tests/expedition/verify-capture-failures.py
           xvfb-run -a -s '-screen 0 3840x2160x24' python tests/ui_system/run-tests.py --visual --regressions
