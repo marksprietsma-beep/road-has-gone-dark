@@ -12,7 +12,8 @@ static func identity(state: Dictionary,member: Dictionary) -> Dictionary:
  var record: Dictionary=state.get("first_adventure",{}).get("characters",{}).get(member.character_id,{})
  var recommendation := RulesRecords.registry().recommendation(member.role_id)
  var role: String=str(RulesRecords.registry().definition("classes",recommendation["class"]).name)
- return {"name":member.name,"archetype":role,"background":foundation_label("occupations",str(member.generated_facts.occupation_id)),"motivation":foundation_label("motivation",str(background.motivation)),"hook":str(record.get("hook",{}).get("summary","Worries about "+foundation_label("concern",str(background.concern)).to_lower()+"; this journey is a chance to address it.")),"relationship":"Grew up near "+", ".join(state.party.members.filter(func(m: Dictionary):return m.character_id!=member.character_id).map(func(m: Dictionary):return m.name))+".","xp":int(record.get("xp",0)),"history":record.get("history",[])}
+ var sandbox_life: Dictionary=state.get("sandbox",{}).get("characters",{}).get(member.character_id,{})
+ return {"name":member.name,"archetype":role,"background":foundation_label("occupations",str(member.generated_facts.occupation_id)),"motivation":foundation_label("motivation",str(background.motivation)),"hook":str(record.get("hook",{}).get("summary","Worries about "+foundation_label("concern",str(background.concern)).to_lower()+"; this journey is a chance to address it.")),"relationship":"Grew up near "+", ".join(state.party.members.filter(func(m: Dictionary):return m.character_id!=member.character_id).map(func(m: Dictionary):return m.name))+".","xp":int(record.get("xp",0))+int(sandbox_life.get("xp",0)),"history":record.get("history",[])+sandbox_life.get("history",[])}
 static func create(state: Dictionary) -> Dictionary:
  var records := {}
  for m in state.party.members:

@@ -1,6 +1,6 @@
 class_name TacticalCombat
 extends RefCounted
-## One authored encounter. Commands are pure; campaign authority persists them.
+## One tactical authority for authored and generated specs; commands are pure.
 const ENCOUNTER := "res://data/combat/first-road-encounter.json"
 var registry := RulesRecords.registry()
 var characters := RulesCharacter.new(registry)
@@ -9,7 +9,14 @@ var effects := RulesEffects.new(registry)
 func create(state: Dictionary, site_id: String, layout_id: String=CombatBattlefields.LEGACY) -> Dictionary:
  var definition := CombatBattlefields.definition(layout_id)
  if not CombatBattlefields.valid_definition(definition):return {}
- var battle := {"version":1,"encounter_sha":FileAccess.get_sha256(CombatBattlefields.PATHS[layout_id]),"site_id":site_id,"board":definition,"units":{},"order":[],"cursor":0,"round":1,"revision":0,"status":"active","reason":"","budget":{"move":1,"main":1},"rng":RulesRng.initial(RulesJson.digest([state.world_ref,state.origin,site_id,definition.id])),"log":[],"commands":[]}
+ return create_definition(state,site_id,definition,FileAccess.get_sha256(CombatBattlefields.PATHS[layout_id]))
+
+func create_generated(state: Dictionary,site_id: String,definition: Dictionary) -> Dictionary:
+ if not SandboxGenerator.valid_board(definition) or definition.generation.site_id!=site_id:return {}
+ return create_definition(state,site_id,definition,RulesJson.digest(definition))
+
+func create_definition(state: Dictionary,site_id: String,definition: Dictionary,pin: String) -> Dictionary:
+ var battle := {"version":1,"encounter_sha":pin,"site_id":site_id,"board":definition.duplicate(true),"units":{},"order":[],"cursor":0,"round":1,"revision":0,"status":"active","reason":"","budget":{"move":1,"main":1},"rng":RulesRng.initial(RulesJson.digest([state.world_ref,state.origin,site_id,definition.id])),"log":[],"commands":[]}
  for i in state.party_ids.size():
   var id: String = state.party_ids[i]
   var member: Dictionary = state.party.members[i]
@@ -34,7 +41,7 @@ func create(state: Dictionary, site_id: String, layout_id: String=CombatBattlefi
   var id: String=battle.order[i]
   ranks[id]=i;initiative[id]=int(stats(battle.units[id]).initiative)
  battle.order.sort_custom(func(a: String,b: String): return initiative[a]>initiative[b] if initiative[a]!=initiative[b] else ranks[a]<ranks[b])
- battle.log.append("The party meets armed raiders on the approach to this local site.")
+ battle.log.append("The party meets armed raiders on the approach to this local site." if not definition.has("generation") else "The party approaches the generated site: "+str(definition.title)+".")
  return seal(battle)
 
 static func weapon_for(record: Dictionary) -> String:
@@ -233,10 +240,12 @@ func seal(b: Dictionary) -> Dictionary:
 func validate(b: Dictionary) -> String:
  b=RulesJson.normalize(b)
  if not b.has_all(["version","encounter_sha","site_id","board","units","order","cursor","round","revision","status","reason","budget","rng","log","commands","state_hash"]): return "Incomplete battle"
- if b.version!=1 or CombatBattlefields.identify(b).is_empty(): return "Battlefield pin mismatch"
+ var generated: bool=b.board is Dictionary and b.board.has("generation")
+ if b.version!=1 or (not generated and CombatBattlefields.identify(b).is_empty()) or (generated and (not SandboxGenerator.valid_board(b.board) or b.encounter_sha!=RulesJson.digest(b.board) or b.board.generation.site_id!=b.site_id)): return "Battlefield pin mismatch"
  var copy := b.duplicate(true);copy.erase("state_hash")
  if RulesJson.digest(copy)!=b.state_hash: return "Battle checksum mismatch"
- if not b.units is Dictionary or not b.order is Array or b.order.size()!=5 or b.units.size()!=5 or not RulesJson.integer(b.cursor,0,4) or not RulesJson.integer(b.round,1,100000) or not RulesJson.integer(b.revision,0,100000) or not b.status in ["active","victory","defeat"] or not RulesRng.valid_state(b.rng): return "Invalid battle state"
+ var count: int=3+b.board.enemies.size()
+ if not b.units is Dictionary or not b.order is Array or b.order.size()!=count or b.units.size()!=count or not RulesJson.integer(b.cursor,0,count-1) or not RulesJson.integer(b.round,1,100000) or not RulesJson.integer(b.revision,0,100000) or not b.status in ["active","victory","defeat"] or not RulesRng.valid_state(b.rng): return "Invalid battle state"
  if not b.budget is Dictionary or b.budget.size()!=2 or not RulesJson.integer(b.budget.get("move"),0,1) or not RulesJson.integer(b.budget.get("main"),0,1) or not b.log is Array or not b.commands is Array or b.commands.size()!=int(b.revision): return "Invalid action history"
  var occupied := {};var seen := {}
  for id in b.order:

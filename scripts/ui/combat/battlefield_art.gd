@@ -4,6 +4,7 @@ extends RefCounted
 const SOURCE := "res://data/combat/battlefields/old-road-presentation-v1.json"
 static var _layouts := {}
 static func profile(battle: Dictionary) -> Dictionary:
+ if battle.get("board",{}).has("generation"):return battle.board.presentation.duplicate(true)
  if _layouts.is_empty():_layouts=JSON.parse_string(FileAccess.get_file_as_string(SOURCE)).layouts
  return _layouts.get(CombatBattlefields.identify(battle),{}).duplicate(true)
 static func cell(profile: Dictionary,p: Array) -> Dictionary:

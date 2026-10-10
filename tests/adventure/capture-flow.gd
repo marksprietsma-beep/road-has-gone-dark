@@ -36,6 +36,7 @@ func shot(name: String) -> void:
  await frames()
  root.get_texture().get_image().save_png(output.path_join(name+".png"))
 func run() -> void:
+ AdventureService.legacy_review=true
  base=OS.get_environment("ADVENTURE_TEST_ROOT");output=base.path_join("screenshots");DirAccess.make_dir_recursive_absolute(output)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0]

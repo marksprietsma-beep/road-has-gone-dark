@@ -73,7 +73,7 @@ func _ready() -> void:
  menu_button=GameUI.action("Main menu",return_menu)
  controls.add_child(menu_button)
  controls.add_child(GameUI.spacer())
- home_button=GameUI.action("Return to hometown · 1 turn",func(): start("return"),true)
+ home_button=GameUI.action("Return to hometown · 1 turn",func(): start("sandbox_return" if state.has("sandbox") and not state.sandbox.active.is_empty() else "return"),true)
  home_button.visible=false
  controls.add_child(home_button)
  var h := PartyService.handoff
@@ -98,12 +98,12 @@ func _process(_delta: float) -> void:
  var result: Dictionary = thread.wait_to_finish()
  thread=null
  if result.get("ok",false):
-  var was_away: bool = not state.get("expedition",{}).get("active",{}).is_empty()
+  var was_away: bool = AdventureService.away(state)
   state=result.state
-  if was_away and state.expedition.active.is_empty(): selected=""
-  public_view=ExpeditionRecords.projection(service.packet.content,state.expedition)
+  if was_away and not AdventureService.away(state): selected=""
+  public_view=SandboxRecords.projection(state.sandbox) if state.has("sandbox") else ExpeditionRecords.projection(service.packet.content,state.expedition)
   message=""
-  var battle: Dictionary=state.get("first_adventure",{}).get("battle",{})
+  var battle: Dictionary=AdventureService.active_battle(state)
   if not battle.is_empty() and battle.status=="active":
    get_tree().change_scene_to_file("res://scenes/combat/first_adventure.tscn")
    return
@@ -113,7 +113,7 @@ func button(id: String, text: String, callback: Callable, effect: String="") -> 
  if id=="return":
   action_buttons[id]=home_button
   return
- var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel","prepare_adventure","begin_battle"])
+ var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel","prepare_adventure","begin_battle","sandbox_begin","sandbox_accept","sandbox_scout","sandbox_travel","sandbox_fight"])
  b.alignment=HORIZONTAL_ALIGNMENT_LEFT
  b.clip_text=true
  b.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -141,6 +141,9 @@ func refresh() -> void:
  if state.is_empty():
   status.text=message
   return
+ if state.has("sandbox"):
+  refresh_sandbox()
+  return
  var w: GameWorldTemplate = entry.world
  var home := w.get_record("burg",int(state.origin.home_burg_id))
  var area := w.get_record("province",int(state.origin.province_id))
@@ -162,6 +165,16 @@ func refresh() -> void:
  footer.text="Party at hometown · "+str(home.name)
  for s in public_view.sites:
   if s.id==location: footer.text="Party at "+str(s.name)
+ if a.is_empty() and not AdventureService.legacy_review:
+  title.text=str(home.name)+" · Local opportunities"
+  map.setup(service.packet.svg,{"sites":[],"leads":[],"home_position":service.packet.content.home_position},"","")
+  content.add_child(label("Choose your own expedition",GameUI.SECTION))
+  content.add_child(label("Record several local opportunities from this region, then decide where your party will go. There is no compulsory opening quest.",GameUI.META))
+  button("sandbox_begin","Explore local opportunities",func():start("sandbox_begin"),"Keep your existing companions and prepare their starting rules. Sites and encounters remain saved after discovery.")
+  for member in state.party.members:
+   var identity := AdventureRecords.identity(state,member)
+   content.add_child(label(identity.name+" · "+identity.archetype+"\n"+identity.background,GameUI.META))
+  return
  if a.is_empty():
   var chosen: Array = public_view.leads.filter(func(l: Dictionary): return l.id==selected)
   if not chosen.is_empty():
@@ -246,7 +259,7 @@ func refresh() -> void:
 func select_site(id: String) -> void:
  for l in public_view.leads:
   if l.site==id:
-   if not state.expedition.active.is_empty() and state.expedition.active.lead_id!=l.id:
+   if AdventureService.away(state) and (state.sandbox.active.site_id!=l.id if state.has("sandbox") else state.expedition.active.lead_id!=l.id):
     message="This expedition follows another account. Return home to choose this lead."
    else:
     message=""
@@ -258,9 +271,65 @@ func return_menu() -> void:
 func _unhandled_input(event: InputEvent) -> void:
  if event.is_action_pressed("ui_cancel"):
   get_viewport().set_input_as_handled()
-  if not state.is_empty() and state.expedition.active.is_empty() and not selected.is_empty():
+  if not state.is_empty() and not AdventureService.away(state) and not selected.is_empty():
    selected=""
    refresh()
   else: return_menu()
 func _exit_tree() -> void:
  if thread!=null: thread.wait_to_finish()
+
+func refresh_sandbox() -> void:
+ var s: Dictionary=state.sandbox;var a: Dictionary=s.active
+ var home: Dictionary=entry.world.get_record("burg",int(state.origin.home_burg_id))
+ public_view=SandboxRecords.projection(s)
+ title.text=str(home.name)+" · Local opportunities" if a.is_empty() else {"map":"Local expedition","site":"At the generated site","result":"Expedition record"}.get(a.phase,"Local expedition")
+ reminder.text=", ".join(state.party.members.map(func(m: Dictionary):return m.name))+" · "+str(s.base.sites[0].context.biome)
+ reminder.tooltip_text="Source hometown and parent-cell biome; fine local features are generated/inferred."
+ status.text=message if not message.is_empty() else "Turn %d%s"%[state.game_clock.tick," · Provisions %d/4"%a.supplies if not a.is_empty() else " · Choose your own route"]
+ saved_indicator.text="Saved" if thread==null and message.is_empty() else "Saving…" if thread!=null else ""
+ home_button.visible=not a.is_empty();home_button.theme_type_variation="PrimaryAction" if a.get("phase")=="result" else "QuietAction"
+ home_button.text="Return home & rest · 1 turn"
+ var selected_site: String=str(a.get("site_id",selected))
+ var visible_selection: bool=public_view.sites.any(func(row: Dictionary):return row.id==selected_site)
+ map.setup(service.packet.svg,public_view,str(a.get("site_id","")) if a.get("phase")!="map" else "",selected_site if visible_selection else "")
+ footer.text="Party at hometown · "+str(home.name) if a.is_empty() else "Party approaching a rumoured location" if s.knowledge[a.site_id]=="rumoured" else "Party near "+str(SandboxRecords.site(s,a.site_id).name)
+ if a.is_empty():
+  if not selected.is_empty():
+   var lead: Dictionary=public_view.leads.filter(func(row: Dictionary):return row.id==selected)[0]
+   content.add_child(label(lead.title,GameUI.SECTION));content.add_child(GameUI.badge(lead.status.capitalize()+" · "+lead.knowledge.capitalize()))
+   content.add_child(label(lead.clue));content.add_child(label("Assess a local threat. Victory records the site and grants 10 journey XP per companion.",GameUI.META))
+   if lead.status=="available":button("sandbox_accept","Set out for this opportunity",func():start("sandbox_accept",lead.id))
+   else:content.add_child(label(s.results[lead.id].text,GameUI.META))
+   button("leads","Back to opportunities",func():selected="";refresh())
+  else:
+   content.add_child(label("Local opportunities",GameUI.SECTION))
+   content.add_child(label("Generated from this region · discovered sites, opponents and results stay recorded.",GameUI.META))
+   for lead in public_view.leads:
+    var row := GameUI.row(lead.title,lead.status.capitalize()+" · "+lead.knowledge.capitalize(),func():selected=lead.id;refresh())
+    row.disabled=thread!=null;content.add_child(row);action_buttons[lead.id]=row
+   content.add_child(label("Travelling companions",GameUI.SECTION))
+   for member in state.party.members:
+    var identity := AdventureRecords.identity(state,member)
+    content.add_child(label(identity.name+" · "+identity.archetype+" · Journey XP %d"%identity.xp,GameUI.META))
+    if not identity.history.is_empty():content.add_child(label(identity.history.back().summary,GameUI.META))
+ else:
+  var site := SandboxRecords.site(s,a.site_id)
+  var known: bool=s.knowledge[site.id]!="rumoured"
+  content.add_child(label(site.name if known else "Rumoured occupied site",GameUI.SECTION))
+  content.add_child(label(site.description if known else "Scout to establish the position of this local report."))
+  if a.phase=="map":
+   if not known:button("sandbox_scout","Scout the report · 2 turns / 1 provision",func():start("sandbox_scout"))
+   else:button("sandbox_travel","Travel to the site · 1 turn / 1 provision",func():start("sandbox_travel"))
+  elif a.phase=="site":
+   var weapons: Array=site.board.enemies.map(func(e: Dictionary):return "bow" if e.weapon=="bow" else "blade")
+   content.add_child(label("%d armed occupants · %s\nBattlefield: %d×%d · %s"%[weapons.size(),", ".join(weapons),site.board.width,site.board.height,site.context.biome],GameUI.META))
+   content.add_child(label("Their presence and fine terrain are generated local content; the source world supplies the anchor.",GameUI.META))
+   button("sandbox_fight","Engage the occupants",func():start("sandbox_fight"),"The encounter is saved before combat. You can also return home without starting it.")
+  elif a.phase=="result":
+   content.add_child(GameUI.badge(s.results[site.id].outcome.capitalize()))
+   content.add_child(label("What changed",GameUI.SECTION));content.add_child(label(s.results[site.id].text))
+   content.add_child(label("Return home to rest and choose another opportunity. This encounter will not reroll.",GameUI.META))
+ if thread==null:
+  for key in ["sandbox_accept","sandbox_scout","sandbox_travel","sandbox_fight","leads"]:
+   if action_buttons.has(key):action_buttons[key].call_deferred("grab_focus");return
+  if a.is_empty() and not public_view.leads.is_empty() and action_buttons.has(public_view.leads[0].id):action_buttons[public_view.leads[0].id].call_deferred("grab_focus")

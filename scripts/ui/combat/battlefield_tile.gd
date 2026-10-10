@@ -20,22 +20,33 @@ func _draw() -> void:
  if size.x<=0 or size.y<=0:return
  draw_set_transform(Vector2.ZERO,0,size/32.0)
  var road := ground=="r"
- pixel(Rect2(0,0,32,32),"756347" if road else "34482e")
+ pixel(Rect2(0,0,32,32),"756347" if road else "776b4e" if ground=="d" else "545b4d" if ground=="u" else "655f50" if ground=="p" else "34482e")
  # Sparse fixed-coordinate flecks: visual variation, never a new layout.
  var pattern: int=("terrain:%d:%d"%[coordinates.x,coordinates.y]).sha256_text().left(6).hex_to_int()
  for i in 12:
   var x := (pattern+i*11)%30;var y := (pattern/13+i*7)%30
-  pixel(Rect2(x,y,2,1),"8c7855" if road else "42583a")
-  if not road and i%3==0:pixel(Rect2(x,y-2,1,3),"52663e")
+  pixel(Rect2(x,y,2,1),"8c7855" if road else "928265" if ground=="d" else "677062" if ground=="u" else "817b68" if ground=="p" else "42583a")
+  if ground=="g" and i%3==0:pixel(Rect2(x,y-2,1,3),"52663e")
  if road:
   var rut := 15 if coordinates.y%2==1 else 17
   pixel(Rect2(0,rut,32,2),"665339");pixel(Rect2(0,rut+3,32,1),"a0885c")
   pixel(Rect2(3+(coordinates.x%3)*7,16,6,1),"b0986b")
- elif coordinates.y in [2,5]:
+ elif ground=="g" and coordinates.y in [2,5]:
   # Broken verge avoids a solid geometric road edge.
   pixel(Rect2(0,27 if coordinates.y==2 else 0,32,5),"536042")
   pixel(Rect2(4,29 if coordinates.y==2 else 0,18,3),"736348")
  match feature:
+  "wall":
+   pixel(Rect2(2,6,28,22),"333a32");pixel(Rect2(3,5,26,19),"80816e")
+   for y in [6,12,18]:
+    pixel(Rect2(3,y+5,26,1),"555d4c")
+    for x in [4,14,24]:pixel(Rect2(x+(3 if y==12 else 0),y,1,5),"525a49")
+   pixel(Rect2(7,3,8,3),"a6a48a");pixel(Rect2(18,19,9,6),"424c3b")
+  "rubble":
+   for r in [Rect2(4,17,8,6),Rect2(14,12,9,7),Rect2(19,22,9,5)]:pixel(r,"96957d")
+  "campfire":
+   pixel(Rect2(8,18,18,8),"282c24");pixel(Rect2(10,20,13,3),"857056")
+   pixel(Rect2(14,12,6,10),"b98141");pixel(Rect2(16,15,3,7),"e1ba65")
   "tree":
    pixel(Rect2(5,23,23,5),"253727");pixel(Rect2(14,17,4,11),"66503a")
    pixel(Rect2(7,4,18,18),"1d3028");pixel(Rect2(4,9,25,9),"243e2d")

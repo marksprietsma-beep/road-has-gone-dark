@@ -51,7 +51,7 @@ func _ready() -> void:
  var body := HBoxContainer.new();body.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(body)
  board_column=VBoxContainer.new();board_column.add_theme_constant_override("separation",4);body.add_child(board_column)
  grid=GridContainer.new();grid.columns=8;grid.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN;grid.add_theme_constant_override("h_separation",0);grid.add_theme_constant_override("v_separation",0);board_column.add_child(grid)
- board_column.add_child(GameUI.label("◆ Party · × Raiders · Gold: turn",10))
+ board_column.add_child(GameUI.label("◆ Party · × Opponents · Gold: turn",10))
  targeting=GameUI.label("",GameUI.META);targeting.custom_minimum_size=Vector2(302,22);targeting.max_lines_visible=1;targeting.clip_text=true;board_column.add_child(targeting)
  var scroll := ScrollContainer.new();scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.add_child(scroll)
  var side := VBoxContainer.new();side.size_flags_horizontal=Control.SIZE_EXPAND_FILL;side.add_theme_constant_override("separation",4);scroll.add_child(side)
@@ -74,7 +74,7 @@ func _ready() -> void:
  if entry.is_empty() or slot.is_empty(): message="No campaign selected. Return to the main menu.";refresh()
  else: operate("resume")
 
-func battle() -> Dictionary: return state.get("first_adventure",{}).get("battle",{})
+func battle() -> Dictionary: return AdventureService.active_battle(state)
 func is_presenting() -> bool:return Time.get_ticks_msec()<presentation_until
 func operate(operation: String,command_input: Dictionary={}) -> void:
  if thread!=null: return
@@ -87,7 +87,7 @@ func send(kind: String,target: String="",destination: Array=[]) -> void:
  var input := {"revision":b.revision,"actor_id":engine.current(b).id,"kind":kind}
  if not target.is_empty(): input.target_id=target
  if not destination.is_empty(): input.destination=destination
- operate("battle_command",input)
+ operate("sandbox_command" if state.has("sandbox") and not state.sandbox.active.is_empty() else "battle_command",input)
 func _process(delta: float) -> void:
  if thread!=null:
   if thread.is_alive(): return
@@ -115,7 +115,7 @@ func _process(delta: float) -> void:
  var b := battle()
  if not b.is_empty() and b.status=="active" and engine.current(b).team=="enemy" and message.is_empty():
   ai_delay-=delta
-  if ai_delay<=0: operate("battle_command",engine.enemy_command(b))
+  if ai_delay<=0: operate("sandbox_command" if state.has("sandbox") and not state.sandbox.active.is_empty() else "battle_command",engine.enemy_command(b))
 func choose_tile(p: Array) -> void:
  var b := battle()
  if b.is_empty() or b.status!="active": return
@@ -229,13 +229,13 @@ func refresh() -> void:
     add_action("healing-thread","Mending Thread · 1 Focus / adjacent ally")
    actions.add_child(GameUI.label("Mode: "+mode.capitalize()+". Leaving an enemy's adjacent tile can provoke an attack. Ranged attacks while engaged take −4.",GameUI.META))
  else:
-  detail.text=state.first_adventure.get("result",{}).get("text","Encounter complete.")+"\n\n"+detail.text
+  detail.text=AdventureService.active_result(state).get("text","Encounter complete.")+"\n\n"+detail.text
  for style in CombatArt.styles():
   if style.id==art_style: art_note.text=style.note if CombatArt.available(style) else "Art unavailable: "+style.name+" · neutral tokens shown"
  var context := location_context()
  if not context.is_empty():art_note.text+="\n"+context
  title.tooltip_text=context
- log_label.text="Party & raiders\n"+"\n".join(summary)+"\n\nBattle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
+ log_label.text="Party & opponents\n"+"\n".join(summary)+"\n\nBattle record\n"+"\n".join(b.log.slice(maxi(0,b.log.size()-7)))
 func return_region() -> void:
  if thread==null: get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
 func _unhandled_input(event: InputEvent) -> void:
@@ -332,6 +332,9 @@ func location_context() -> String:
  var b := battle()
  if b.is_empty():return ""
  var text := "Old Road · authored roadside approach"
+ if b.board.has("generation"):
+  var site := SandboxRecords.site(state.sandbox,b.site_id)
+  return str(site.name)+" · "+str(site.context.biome)+" · inferred/generated local terrain"
  for site in service.packet.get("content",{}).get("sites",[]):
   if site.id==b.site_id:text="Roadside approach to "+str(site.name);break
  if not entry.is_empty() and entry.get("world") is GameWorldTemplate:

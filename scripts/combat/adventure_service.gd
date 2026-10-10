@@ -1,11 +1,36 @@
 class_name AdventureService
 extends ExpeditionService
+static var legacy_review := false # Diagnostic drivers only; never saved.
+static func active_battle(state: Dictionary) -> Dictionary:
+ var generated := SandboxRecords.battle(state)
+ return generated if not generated.is_empty() else state.get("first_adventure",{}).get("battle",{})
+static func active_result(state: Dictionary) -> Dictionary:
+ var s: Dictionary=state.get("sandbox",{})
+ if not s.get("active",{}).is_empty():return s.results.get(s.active.site_id,{})
+ return state.get("first_adventure",{}).get("result",{})
+static func away(state: Dictionary) -> bool:
+ return not state.get("sandbox",{}).get("active",{}).is_empty() or not state.get("expedition",{}).get("active",{}).is_empty()
 ## Existing party lock/journal is the only writer, including individual turns.
 func _operate_locked(entry: Dictionary,slot: String,operation: String,member: int,changes: Dictionary) -> Dictionary:
  var world: GameWorldTemplate=entry.world
  var loaded := recover(slot,world)
  if not loaded.ok: return loaded
  var state: Dictionary=loaded.state
+ if operation.begins_with("sandbox_"):
+  var transition := SandboxAdventure.transition(self,entry,state,operation,changes)
+  if not transition.get("ok",false):return transition
+  var committed := commit(slot,transition.candidate,world)
+  if committed.get("ok",false):committed.state.sandbox=RulesJson.normalize(committed.state.sandbox)
+  return committed
+ if state.has("sandbox"):
+  if operation=="resume":
+   var resumed := super._operate_locked(entry,slot,operation,member,changes)
+   if not resumed.get("ok",false):return resumed
+   var original := SandboxGenerator.generate(world,int(state.origin.home_burg_id),packet.content)
+   if RulesJson.digest(original)!=state.sandbox.base_sha:return fail("Saved sandbox source/version changed. Nothing was regenerated.")
+   resumed.state.sandbox=RulesJson.normalize(resumed.state.sandbox)
+   return resumed
+  if not state.sandbox.active.is_empty():return fail("Return from the generated opportunity before another regional action.")
  var adventure: Dictionary=state.get("first_adventure",{})
  var battle: Dictionary=RulesJson.normalize(adventure.get("battle",{}))
  if not operation in ["prepare_adventure","begin_battle","battle_command","resolve_battle"]:

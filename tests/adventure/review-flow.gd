@@ -58,6 +58,7 @@ func shot(name: String) -> void:
  await frames()
  check(tree.root.get_texture().get_image().save_png(base.path_join(name+".png"))==OK,"captured "+name)
 func run() -> void:
+ AdventureService.legacy_review=true
  base=OS.get_environment("ADVENTURE_REVIEW_ROOT")
  if base.is_empty(): base=ProjectSettings.globalize_path("user://first-adventure-review-proof")
  DirAccess.make_dir_recursive_absolute(base)
