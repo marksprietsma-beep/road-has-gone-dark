@@ -1,0 +1,61 @@
+[
+  {
+    "repository": "dariusk/corpora",
+    "commit": "2e7adec11a0561696c236ae1fca82e88be173d42",
+    "path": "data/materials/metals.json",
+    "license": "CC0-1.0 (README dedication)",
+    "file_sha256": "7f3a6a1d3c7c764c438f3b21d2bf1905c60a69cc229ae6fbc3df9c768b856b16",
+    "last_change": "96748e96075d6cdf4e6ecd92e4034bc68de3c571",
+    "values": [
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "tin"
+    ],
+    "selection": "Only common material/room words; excluded brands, modern polymers, fictional materials and attributed literary prose."
+  },
+  {
+    "repository": "dariusk/corpora",
+    "commit": "2e7adec11a0561696c236ae1fca82e88be173d42",
+    "path": "data/materials/layperson-metals.json",
+    "license": "CC0-1.0 (README dedication)",
+    "file_sha256": "29fb9be852b5f7d9cc4b3f22491439703f7187a8ac041981c694912891115636",
+    "last_change": "96748e96075d6cdf4e6ecd92e4034bc68de3c571",
+    "values": [
+      "steel",
+      "bronze"
+    ],
+    "selection": "Only common material/room words; excluded brands, modern polymers, fictional materials and attributed literary prose."
+  },
+  {
+    "repository": "dariusk/corpora",
+    "commit": "2e7adec11a0561696c236ae1fca82e88be173d42",
+    "path": "data/materials/fabrics.json",
+    "license": "CC0-1.0 (README dedication)",
+    "file_sha256": "6f4314342350c91f1457f3c20c0f37cf0c2149c12306c556302798a3ccae9684",
+    "last_change": "43408850874fcfb2f4d170a043c9eb23ad344df2",
+    "values": [
+      "canvas",
+      "cotton",
+      "felt",
+      "linen",
+      "wool"
+    ],
+    "selection": "Only common material/room words; excluded brands, modern polymers, fictional materials and attributed literary prose."
+  },
+  {
+    "repository": "dariusk/corpora",
+    "commit": "2e7adec11a0561696c236ae1fca82e88be173d42",
+    "path": "data/architecture/rooms.json",
+    "license": "CC0-1.0 (README dedication)",
+    "file_sha256": "45c7dc96c7a43ba2c47611b2a55dd139f6713c583e382bdf7f1e42fcfed2bec8",
+    "last_change": "dbc6b9cbaaa81410d4660dd9a63be9569c9bc7ef",
+    "values": [
+      "cellar",
+      "kitchen",
+      "workshop"
+    ],
+    "selection": "Only common material/room words; excluded brands, modern polymers, fictional materials and attributed literary prose."
+  }
+]

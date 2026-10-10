@@ -74,6 +74,10 @@ func run() -> void:
  var ready := library.create_staging()
  for name in ["world.json", "metadata.json", "preview.png", "preview.cells", "preview.meta.json"]:
   write_bytes(ready.directory.path_join(name), FileAccess.get_file_as_bytes(b.directory.path_join(name)))
+ var enrichment: String = ready.directory.path_join("enrichment/origin-v1")
+ DirAccess.make_dir_recursive_absolute(enrichment)
+ for name in ["descriptor.json", "enrichment.json", "public.json"]:
+  write_bytes(enrichment.path_join(name), FileAccess.get_file_as_bytes(b.directory.path_join("enrichment/origin-v1").path_join(name)))
  library._write_json(ready.directory.path_join("owner.json"), {"pid": 2147483647})
  check(library.delete_world(b).ok and not DirAccess.dir_exists_absolute(b.directory), "unreferenced world/cache removed")
  check(FileAccess.get_sha256(a.path) == a.world.source_sha256, "unrelated world intact")

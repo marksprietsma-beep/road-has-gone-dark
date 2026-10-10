@@ -1,0 +1,15 @@
+✔ game-11-determinism: exhaustive eligible coverage and immutable preset replay (970.478556ms)
+✔ atlas-showcase: exhaustive eligible coverage and immutable preset replay (833.184903ms)
+✔ SHA field seeds and origin child generation remain order independent (231.789993ms)
+✔ immutable publication, deterministic retries and corruption refusal (947.091344ms)
+✔ vendor and production runtime pins are exact (1.892441ms)
+✔ renderer refuses secret records and unsupported pack versions (240.59146ms)
+✔ corrupt vendor, missing renderer and wrong pack are refused before publication (222.568763ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3575.491354

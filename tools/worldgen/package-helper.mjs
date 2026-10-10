@@ -47,6 +47,9 @@ for (const key of [...included].sort()) await cp(join(vendor,key),join(out,'vend
   recursive:true, filter: path => !path.slice(join(vendor,key).length).split(/[\\/]/).includes('node_modules')
 });
 await cp(join(root,'tools/worldgen'),join(out,'tools/worldgen'),{recursive:true, filter:path => !path.endsWith('package-helper.mjs') && !path.slice(join(root,'tools/worldgen').length).split(/[\\/]/).includes('.tmp')});
+for (const path of ['tools/world_enrichment', 'vendor/content']) await cp(join(root,path),join(out,path),{recursive:true});
+await mkdir(join(out,'data/world_enrichment'),{recursive:true});
+for (const name of ['trhgd-expanded-v1.json','curated-corpora-vocabulary.json','runtime.json']) await cp(join(root,'data/world_enrichment',name),join(out,'data/world_enrichment',name));
 const binary = process.platform === 'win32' ? 'node.exe' : 'node';
 await cp(runtime,join(out,binary));
 if (process.platform !== 'win32') await chmod(join(out,binary),0o755);

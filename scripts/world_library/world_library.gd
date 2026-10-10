@@ -71,19 +71,31 @@ func _read_entry(path: String, staged: bool = false) -> Dictionary:
  if loaded.is_empty(): return {}
  var world: GameWorldTemplate = loaded.world
  if not meta.get("world_ref") is Dictionary or not meta.world_ref.get("generator") is Dictionary or not _numeric(meta.world_ref.get("schema_version")) or not world.validate_save_reference(meta.world_ref): return {}
+ if meta.has("origin_enrichment"):
+  var lore := WorldOriginLore.new()
+  var why := lore.validate_pin(meta.origin_enrichment, world, -1, path.path_join("enrichment/origin-v1"))
+  if not why.is_empty():
+   error = why
+   if staged: return {}
+ world.enrichment_directory = path.path_join("enrichment/origin-v1")
  if not staged and path.get_file() != world.source_sha256: return {}
  return {"id": world.world_id, "preset": false, "label": str(meta.get("label", "Generated World")).left(80),
   "created": str(meta.get("created", "")), "world": world, "raw": loaded.raw, "directory": path,
   "key": "", "path": path.path_join("world.json"), "cache_ok": preview_valid(path, world.source_sha256)}
 
-func _remove_flat_directory(path: String) -> bool:
+func _remove_flat_directory(path: String, enrichment_child: bool = false) -> bool:
  var parent := DirAccess.open(path.get_base_dir())
  if parent == null or parent.is_link(path): return false
  var dir := DirAccess.open(path)
  if dir != null: dir.include_hidden = true
  if dir == null: return not DirAccess.dir_exists_absolute(path)
- # Our world directories are flat. Never follow unknown directories/symlinks.
- if not dir.get_directories().is_empty(): return false
+ # Follow only the owned enrichment tree, never arbitrary nested data or links.
+ for name in dir.get_directories():
+  var child := path.path_join(name)
+  if dir.is_link(child): return false
+  if not enrichment_child and name != "enrichment": return false
+  if enrichment_child and not (name == "origin-v1" or name.begins_with("origin-v1.pending-")): return false
+  if not _remove_flat_directory(child, true): return false
  for file in dir.get_files():
   if DirAccess.remove_absolute(path.path_join(file)) != OK: return false
  return DirAccess.remove_absolute(path) == OK
@@ -232,11 +244,19 @@ func import_generated(stage: String) -> Dictionary:
  for entry in discover(false):
   if entry.id == world.world_id:
    _remove_flat_directory(stage)
+   var enriched := ensure_enrichment(entry)
+   if not enriched.ok: return enriched
    return {"ok": true, "entry": entry, "deduplicated": true}
  if not build_preview(stage, loaded.raw, world.source_sha256):
   _remove_flat_directory(stage)
   return _fail("The new map preview could not be prepared.")
- if not _acquire_lock(): return _fail("The world library is busy. No world was added; please retry.")
+ var enriched := ensure_enrichment({"id": world.world_id, "world": world, "directory": stage, "path": stage.path_join("world.json"), "preset": false})
+ if not enriched.ok:
+  _remove_flat_directory(stage)
+  return enriched
+ if not _acquire_lock():
+  _remove_flat_directory(stage)
+  return _fail("The world library is busy. No world was added; please retry.")
  var target := _root().path_join(world.source_sha256)
  if DirAccess.dir_exists_absolute(target):
   var existing := _read_entry(target)
@@ -248,7 +268,8 @@ func import_generated(stage: String) -> Dictionary:
  var number := 1
  while labels.has("Generated World %d" % number): number += 1
  var meta := {"library_version": 1, "preset": false, "world_ref": world.source_metadata(),
-  "created": Time.get_datetime_string_from_system(true), "label": "Generated World %d" % number}
+  "created": Time.get_datetime_string_from_system(true), "label": "Generated World %d" % number,
+  "origin_enrichment": enriched.descriptor}
  if not _write_json(stage.path_join("metadata.json"), meta):
   _release_lock()
   _remove_flat_directory(stage)
@@ -327,3 +348,56 @@ func delete_world(entry: Dictionary) -> Dictionary:
  # Once in trash, it is unavailable. A later scan completes interrupted cleanup.
  _remove_flat_directory(trash)
  return {"ok": true}
+
+
+func enrichment_directory(entry: Dictionary) -> String:
+ if entry.get("preset", false): return "res://data/world_enrichment/presets/" + str(entry.key)
+ return str(entry.directory).path_join("enrichment/origin-v1")
+
+func ensure_enrichment(entry: Dictionary) -> Dictionary:
+ var world: GameWorldTemplate = entry.world
+ var target := enrichment_directory(entry)
+ var lore := WorldOriginLore.new()
+ if entry.get("preset", false) or DirAccess.dir_exists_absolute(target):
+  if not lore.load_world(world, target): return _fail(lore.error)
+  return {"ok": true, "descriptor": lore.descriptor}
+ # Missing-only upgrade under the existing library lock. Publication follows
+ # validation against every existing campaign pin, including recovery backups.
+ if not _acquire_lock(): return _fail("The world library is busy. Local history was not changed.")
+ var result := _compile_enrichment(entry, target)
+ _release_lock()
+ return result
+
+func _compile_enrichment(entry: Dictionary, target: String) -> Dictionary:
+ var world: GameWorldTemplate = entry.world
+ var refs := reference_status(entry)
+ if not refs.ok: return refs
+ var pins: Array = []
+ var save_names := DirAccess.get_files_at(save_root) if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(save_root)) else PackedStringArray()
+ for name in save_names:
+  if not (name.ends_with(".json") or name.ends_with(".json.bak") or name.ends_with(".json.tmp")): continue
+  var save := _json(save_root.path_join(name))
+  var reference: Dictionary = save.get("world_ref", {})
+  if (reference.get("id") == world.world_id or reference.get("sha256") == world.source_sha256) and save.has("origin_enrichment"):
+   pins.append(save.origin_enrichment)
+ var helper := helper_location()
+ var binary := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
+ var manifest := _json(helper.path_join("runtime.json"))
+ if manifest.get("nodeVersion") != "v24.19.0" or not FileAccess.file_exists(binary) or FileAccess.get_sha256(binary) != manifest.get("runtimeSha256"):
+  return _fail("The bundled enrichment runtime is missing or invalid. Factual world data remains available.")
+ var pending := target + ".pending-upgrade-" + Crypto.new().generate_random_bytes(8).hex_encode()
+ var log: Array = []
+ var exit := OS.execute(binary, [helper.path_join("tools/world_enrichment/origin-world.mjs"), "--world", ProjectSettings.globalize_path(entry.path), "--output", ProjectSettings.globalize_path(pending)], log, true, false)
+ var lore := WorldOriginLore.new()
+ if exit != 0 or not lore.load_world(world, pending):
+  _remove_flat_directory(pending, true)
+  return _fail("Origin enrichment failed (code %d). No partial world was added. %s %s" % [exit, "\n".join(log).left(512), lore.error])
+ for pin in pins:
+  var why := lore.validate_pin(pin, world, -1, pending)
+  if not why.is_empty():
+   _remove_flat_directory(pending, true)
+   return _fail("Origin enrichment cannot be upgraded without changing a saved campaign: " + why)
+ if DirAccess.dir_exists_absolute(target) or DirAccess.rename_absolute(pending, target) != OK:
+  _remove_flat_directory(pending, true)
+  return _fail("Local history could not be committed. Please retry; existing history was preserved.")
+ return {"ok": true, "descriptor": lore.descriptor}

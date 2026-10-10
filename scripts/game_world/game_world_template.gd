@@ -16,6 +16,8 @@ var seed := ""
 var source_sha256 := ""
 var world_ref: Dictionary = {}
 var _raw: Dictionary = {}
+# Override only for isolated tests/custom library roots; not persisted as a path.
+var enrichment_directory := ""
 
 func load_fixture(path: String) -> bool:
 	error = ""
