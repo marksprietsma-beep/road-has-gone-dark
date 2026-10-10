@@ -1,0 +1,49 @@
+name: Verify GAME-99 Geometry and Campaign Recovery
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths: ['tools/worldgen/**', 'tools/expedition/**', 'tests/geography_repair/**', 'data/world_enrichment/runtime-expedition-v1.json', '.github/workflows/verify-geography-repair.yml']
+  workflow_dispatch:
+jobs:
+  geography:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and corrected offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Known failure, exact preset replays and 30 independent fresh seeds
+        run: python tests/geography_repair/run-corpus.py --output "${{ runner.temp }}/game99/corpus" --workers 3
+      - name: Shared geometry validation, malformed inputs and interruption-safe cache
+        env:
+          GAME99_REPRO_ROOT: ${{ runner.temp }}/game99/corpus/game96-sandbox-review-v2
+        run: node --test tests/geography_repair/geometry.test.mjs tests/geography_repair/cache.test.mjs
+      - name: Original main creates failed and valid campaigns; repaired main resumes both
+        run: python tests/geography_repair/run-recovery.py --output "${{ runner.temp }}/game99/recovery"
+      - name: Preserve all completed seeds, failures and recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game99-geography-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game99/corpus
+            ${{ runner.temp }}/game99/recovery/*.log
+            ${{ runner.temp }}/game99/recovery/results.json
+            ${{ runner.temp }}/game99/recovery/blocked-campaign
+            ${{ runner.temp }}/game99/recovery/valid-campaign
+          if-no-files-found: error
+          retention-days: 90
