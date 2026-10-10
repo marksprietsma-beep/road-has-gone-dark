@@ -1,0 +1,13 @@
+import net from 'node:net';
+import http from 'node:http';
+import https from 'node:https';
+import tls from 'node:tls';
+import dns from 'node:dns';
+const blocked = () => { throw Error('Network is forbidden in enrichment runtime'); };
+globalThis.fetch = blocked;
+net.connect = net.createConnection = blocked;
+net.Socket.prototype.connect = blocked;
+http.request = http.get = https.request = https.get = blocked;
+tls.connect = blocked;
+dns.lookup = dns.resolve = blocked;
+Math.random = () => {throw Error('Uncontrolled randomness forbidden');};

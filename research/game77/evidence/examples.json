@@ -1,0 +1,726 @@
+{
+  "world_enrichment": {
+    "schema_version": 1,
+    "scope": "world",
+    "base_world": {
+      "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "seed": "game-11-determinism",
+      "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "generator": {
+        "provider": "azgaar",
+        "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+        "version": "1.153.1"
+      }
+    },
+    "provider": "trhgd-staged",
+    "generator_version": "trhgd-staged-4",
+    "content_pack_version": "trhgd-research-2",
+    "content_pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5",
+    "deterministic_enrichment_seed": "074bbf336ad9b32063d0b3965a0c03acebab875dcc70d0eabcc868526e9dacd0",
+    "records": [
+      {
+        "id": "mundane-item:settlements:771:0",
+        "type": "mundane-item",
+        "scope": "world",
+        "source": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "cell_id": 1621,
+          "kind": "settlements",
+          "id": 771
+        },
+        "versions": {
+          "schema": 1,
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
+        },
+        "seed": "2147a4e37a24116363e0d87da53ef7aec672a9a6d8e2a085c745ae5714571a09",
+        "context": {
+          "world": {
+            "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "seed": "game-11-determinism",
+            "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "generator": {
+              "provider": "azgaar",
+              "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+              "version": "1.153.1"
+            }
+          },
+          "source_kind": "settlements",
+          "source_id": 771,
+          "cell_id": 1621,
+          "state_id": 1,
+          "province_id": 2,
+          "display_name": "Maura",
+          "marker_type": null,
+          "culture": {
+            "value": "Soumi",
+            "status": "source-exact",
+            "provenance": "cells.culture[1621] -> cultures:10"
+          },
+          "religion": {
+            "value": "Ojaksapirt Society",
+            "status": "source-exact",
+            "provenance": "cells.religion[1621] -> religions:26"
+          },
+          "biome": {
+            "value": "Temperate deciduous forest",
+            "status": "source-exact",
+            "provenance": "cells.biome[1621] -> biomes:6"
+          },
+          "culture_id": 10,
+          "religion_id": 26,
+          "river_id": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "cells.river[1621]"
+          },
+          "road_ids": {
+            "value": [
+              0
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "trail_ids": {
+            "value": [
+              137
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "sea_route_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+          },
+          "port": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "settlements:771.port"
+          },
+          "walls": {
+            "value": false,
+            "status": "source-exact",
+            "provenance": "settlements:771.walls"
+          },
+          "coast": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Water-body classification not implemented in this research adapter"
+          },
+          "source_flavour": null,
+          "source_visibility": "public"
+        },
+        "provenance": {
+          "facts": "TRHGD generated immutable fiction; not Azgaar history",
+          "pack_authorship": "TRHGD original research content"
+        },
+        "tags": [
+          "mundane",
+          "household-tool",
+          "mechanics-neutral"
+        ],
+        "facts": {
+          "base_type": "hand axe",
+          "material": "iron head and wooden handle",
+          "quality": "ordinary",
+          "origin_culture": "Soumi",
+          "maker": "a household tool workshop",
+          "age": "one generation of use",
+          "condition": "well used, with a carefully oiled head",
+          "construction": "a plain socket fitted to a replaceable handle",
+          "previous_use": "cutting kindling and trimming repair timber",
+          "previous_owners": "two related households",
+          "small_history": "the handle was replaced while the original head was kept"
+        },
+        "rumours": [],
+        "secret": null
+      },
+      {
+        "id": "origin:settlements:771:0",
+        "type": "origin",
+        "scope": "world",
+        "source": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "cell_id": 1621,
+          "kind": "settlements",
+          "id": 771
+        },
+        "versions": {
+          "schema": 1,
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
+        },
+        "seed": "4877c6b69e4ac98a96e3f37a69811ee413c64a33b710c6b2a6e49ebae916e45a",
+        "context": {
+          "world": {
+            "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "seed": "game-11-determinism",
+            "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "generator": {
+              "provider": "azgaar",
+              "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+              "version": "1.153.1"
+            }
+          },
+          "source_kind": "settlements",
+          "source_id": 771,
+          "cell_id": 1621,
+          "state_id": 1,
+          "province_id": 2,
+          "display_name": "Maura",
+          "marker_type": null,
+          "culture": {
+            "value": "Soumi",
+            "status": "source-exact",
+            "provenance": "cells.culture[1621] -> cultures:10"
+          },
+          "religion": {
+            "value": "Ojaksapirt Society",
+            "status": "source-exact",
+            "provenance": "cells.religion[1621] -> religions:26"
+          },
+          "biome": {
+            "value": "Temperate deciduous forest",
+            "status": "source-exact",
+            "provenance": "cells.biome[1621] -> biomes:6"
+          },
+          "culture_id": 10,
+          "religion_id": 26,
+          "river_id": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "cells.river[1621]"
+          },
+          "road_ids": {
+            "value": [
+              0
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "trail_ids": {
+            "value": [
+              137
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "sea_route_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+          },
+          "port": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "settlements:771.port"
+          },
+          "walls": {
+            "value": false,
+            "status": "source-exact",
+            "provenance": "settlements:771.walls"
+          },
+          "coast": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Water-body classification not implemented in this research adapter"
+          },
+          "source_flavour": null,
+          "source_visibility": "public"
+        },
+        "provenance": {
+          "facts": "TRHGD generated immutable fiction; not Azgaar history",
+          "pack_authorship": "TRHGD original research content"
+        },
+        "tags": [
+          "local-memory",
+          "public-tradition"
+        ],
+        "facts": {
+          "local_memory": {
+            "event": "shared-workshop",
+            "actors": [
+              "several-households"
+            ],
+            "reason": "roof-repairs",
+            "period": "local-memory"
+          },
+          "tradition": {
+            "practice": "tool-handoff",
+            "participants": "older-and-younger-relatives",
+            "occasion": "new-household"
+          },
+          "scope": "public local memory",
+          "culture_id": 10
+        },
+        "rumours": [],
+        "secret": null
+      },
+      {
+        "id": "rare-item:settlements:771:0",
+        "type": "rare-item",
+        "scope": "world",
+        "source": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "cell_id": 1621,
+          "kind": "settlements",
+          "id": 771
+        },
+        "versions": {
+          "schema": 1,
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
+        },
+        "seed": "a15ce25cc60a9b5bb01fa233f5ff64b959ce6cb7e7ab1be3d31729c93ff86df3",
+        "context": {
+          "world": {
+            "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "seed": "game-11-determinism",
+            "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "generator": {
+              "provider": "azgaar",
+              "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+              "version": "1.153.1"
+            }
+          },
+          "source_kind": "settlements",
+          "source_id": 771,
+          "cell_id": 1621,
+          "state_id": 1,
+          "province_id": 2,
+          "display_name": "Maura",
+          "marker_type": null,
+          "culture": {
+            "value": "Soumi",
+            "status": "source-exact",
+            "provenance": "cells.culture[1621] -> cultures:10"
+          },
+          "religion": {
+            "value": "Ojaksapirt Society",
+            "status": "source-exact",
+            "provenance": "cells.religion[1621] -> religions:26"
+          },
+          "biome": {
+            "value": "Temperate deciduous forest",
+            "status": "source-exact",
+            "provenance": "cells.biome[1621] -> biomes:6"
+          },
+          "culture_id": 10,
+          "religion_id": 26,
+          "river_id": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "cells.river[1621]"
+          },
+          "road_ids": {
+            "value": [
+              0
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "trail_ids": {
+            "value": [
+              137
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "sea_route_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+          },
+          "port": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "settlements:771.port"
+          },
+          "walls": {
+            "value": false,
+            "status": "source-exact",
+            "provenance": "settlements:771.walls"
+          },
+          "coast": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Water-body classification not implemented in this research adapter"
+          },
+          "source_flavour": null,
+          "source_visibility": "public"
+        },
+        "provenance": {
+          "facts": "TRHGD generated immutable fiction; not Azgaar history",
+          "pack_authorship": "TRHGD original research content"
+        },
+        "tags": [
+          "rare-craft",
+          "provenance",
+          "mechanics-neutral"
+        ],
+        "facts": {
+          "base_type": "survey weight",
+          "material": "bronze",
+          "maker": "a small measuring-tool workshop",
+          "origin_culture": "Soumi",
+          "age": "several generations",
+          "original_purpose": "checking workshop balances",
+          "owners_events": [
+            "used by successive craftspeople",
+            "kept after newer weights replaced it"
+          ],
+          "physical_marking": "a line of small punched dots",
+          "reputation": "remembered by a few local craftspeople for its careful finish",
+          "exceptional_descriptor": "unusually precise workmanship; no magical or numerical effect asserted"
+        },
+        "rumours": [
+          {
+            "id": "rare-item:settlements:771:0:rumour:0",
+            "text": "It is said never to have needed adjustment.",
+            "verdict": "false",
+            "truth_fields": [],
+            "false_fields": [
+              "never-adjusted"
+            ]
+          }
+        ],
+        "secret": {
+          "hidden_fact": "a later owner filed one edge to correct a worn balance",
+          "reveal_token": "rare-item:settlements:771:0:edge"
+        }
+      },
+      {
+        "id": "site:markers:51:0",
+        "type": "site",
+        "scope": "world",
+        "source": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "cell_id": 2651,
+          "kind": "markers",
+          "id": 51
+        },
+        "versions": {
+          "schema": 1,
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
+        },
+        "seed": "21968f901e99f6dcb912ae3e6e0ef11853a3d8436a0b534ae3e6430afbc43846",
+        "context": {
+          "world": {
+            "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "seed": "game-11-determinism",
+            "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "generator": {
+              "provider": "azgaar",
+              "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+              "version": "1.153.1"
+            }
+          },
+          "source_kind": "markers",
+          "source_id": 51,
+          "cell_id": 2651,
+          "state_id": 8,
+          "province_id": 93,
+          "display_name": "Ruined Stronghold",
+          "marker_type": "ruins",
+          "culture": {
+            "value": "Slovan",
+            "status": "source-exact",
+            "provenance": "cells.culture[2651] -> cultures:6"
+          },
+          "religion": {
+            "value": "Slovanism",
+            "status": "source-exact",
+            "provenance": "cells.religion[2651] -> religions:6"
+          },
+          "biome": {
+            "value": "Tropical seasonal forest",
+            "status": "source-exact",
+            "provenance": "cells.biome[2651] -> biomes:5"
+          },
+          "culture_id": 6,
+          "religion_id": 6,
+          "river_id": {
+            "value": 27,
+            "status": "source-exact",
+            "provenance": "cells.river[2651]"
+          },
+          "road_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=roads; source points reference parent cell:2651; direct entrance alignment unknown"
+          },
+          "trail_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=trails; source points reference parent cell:2651; direct entrance alignment unknown"
+          },
+          "sea_route_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=searoutes; source points reference parent cell:2651; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+          },
+          "port": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "markers:51.port"
+          },
+          "walls": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "markers:51.walls"
+          },
+          "coast": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Water-body classification not implemented in this research adapter"
+          },
+          "source_flavour": {
+            "dungeon_seed": null,
+            "name": "Ruined Stronghold",
+            "note": "Ruins of an ancient stronghold. Untold riches may lie within.",
+            "visibility": "developer-only",
+            "authoritative_history": false
+          },
+          "source_visibility": "public"
+        },
+        "provenance": {
+          "facts": "TRHGD generated immutable fiction; not Azgaar history",
+          "pack_authorship": "TRHGD original research content"
+        },
+        "tags": [
+          "ruin",
+          "stonework",
+          "underground"
+        ],
+        "facts": {
+          "subtype": "ruined structure",
+          "original_purpose": "watch post",
+          "period": "several generations ago",
+          "creator_group": "Slovan",
+          "creator_identity_status": "TRHGD assigned from current source culture; not historical proof",
+          "later_event": "the entrance was repaired and later abandoned",
+          "condition": "a fallen roof",
+          "material_theme": "worked stone",
+          "encounter_suggestions": [
+            "inspection",
+            "unstable-masonry"
+          ],
+          "active_occupants": null
+        },
+        "rumours": [
+          {
+            "id": "site:markers:51:0:rumour:0",
+            "text": "A sealed lower room is said to hold a hoard of coins.",
+            "verdict": "partially-true",
+            "truth_fields": [
+              "lower_room"
+            ],
+            "false_fields": [
+              "coins"
+            ]
+          },
+          {
+            "id": "site:markers:51:0:rumour:1",
+            "text": "Some say the surviving stones were brought from a distant royal palace.",
+            "verdict": "false",
+            "truth_fields": [],
+            "false_fields": [
+              "royal-palace-origin"
+            ]
+          }
+        ],
+        "secret": {
+          "lower_room": true,
+          "contents": "a damaged tally of repair materials",
+          "reveal_token": "site:markers:51:0:lower-room"
+        }
+      }
+    ],
+    "enrichment_sha": "8592cda3b9f5ec3f91d6220e8bf41ed6852b5eec8b2a592aee6696e9214966ba"
+  },
+  "playthrough_enrichment": {
+    "schema_version": 1,
+    "scope": "playthrough:research-demo-001",
+    "base_world": {
+      "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "seed": "game-11-determinism",
+      "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "generator": {
+        "provider": "azgaar",
+        "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+        "version": "1.153.1"
+      }
+    },
+    "provider": "trhgd-staged",
+    "generator_version": "trhgd-staged-4",
+    "content_pack_version": "trhgd-research-2",
+    "content_pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5",
+    "deterministic_enrichment_seed": "074bbf336ad9b32063d0b3965a0c03acebab875dcc70d0eabcc868526e9dacd0",
+    "records": [
+      {
+        "id": "character:settlements:771:starter:1",
+        "type": "character",
+        "scope": "playthrough:research-demo-001",
+        "source": {
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "cell_id": 1621,
+          "kind": "settlements",
+          "id": 771
+        },
+        "versions": {
+          "schema": 1,
+          "generator": "trhgd-staged-4",
+          "pack": "trhgd-research-2",
+          "pack_sha": "07f621a3866efbe39ef4b764b8a1bdd5bfb32ddb46d41553ca1ecdb767de52a5"
+        },
+        "seed": "879fe6d8ede2f44f13e619998a25b411f8db110b30eba9542b882d10c8227b36",
+        "context": {
+          "world": {
+            "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "seed": "game-11-determinism",
+            "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+            "generator": {
+              "provider": "azgaar",
+              "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+              "version": "1.153.1"
+            }
+          },
+          "source_kind": "settlements",
+          "source_id": 771,
+          "cell_id": 1621,
+          "state_id": 1,
+          "province_id": 2,
+          "display_name": "Maura",
+          "marker_type": null,
+          "culture": {
+            "value": "Soumi",
+            "status": "source-exact",
+            "provenance": "cells.culture[1621] -> cultures:10"
+          },
+          "religion": {
+            "value": "Ojaksapirt Society",
+            "status": "source-exact",
+            "provenance": "cells.religion[1621] -> religions:26"
+          },
+          "biome": {
+            "value": "Temperate deciduous forest",
+            "status": "source-exact",
+            "provenance": "cells.biome[1621] -> biomes:6"
+          },
+          "culture_id": 10,
+          "religion_id": 26,
+          "river_id": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "cells.river[1621]"
+          },
+          "road_ids": {
+            "value": [
+              0
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=roads; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "trail_ids": {
+            "value": [
+              137
+            ],
+            "status": "source-derived",
+            "provenance": "routes.group=trails; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "sea_route_ids": {
+            "value": [],
+            "status": "source-derived",
+            "provenance": "routes.group=searoutes; source points reference parent cell:1621; direct entrance alignment unknown"
+          },
+          "route_connection": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Parent-cell route membership does not prove a direct settlement entrance or approach direction"
+          },
+          "port": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "settlements:771.port"
+          },
+          "walls": {
+            "value": false,
+            "status": "source-exact",
+            "provenance": "settlements:771.walls"
+          },
+          "coast": {
+            "value": null,
+            "status": "unknown",
+            "provenance": "Water-body classification not implemented in this research adapter"
+          },
+          "source_flavour": null,
+          "source_visibility": "public"
+        },
+        "provenance": {
+          "facts": "TRHGD generated immutable fiction; not Azgaar history",
+          "pack_authorship": "TRHGD original research content"
+        },
+        "tags": [
+          "former-apprentice",
+          "practical-upbringing"
+        ],
+        "facts": {
+          "birthplace": {
+            "burg_id": 771,
+            "cell_id": 1621
+          },
+          "upbringing": "raised in a household that shared work with neighbours",
+          "formative_role": "woodworker apprentice",
+          "training": "practical instruction from an older craftsperson",
+          "formative_event": "finding an old repair mark beneath a newer fitting",
+          "motivation": "to learn a craft beyond familiar work",
+          "concern": "being unable to help those left behind",
+          "contact": "an older neighbour who taught repairs",
+          "local_knowledge": [
+            "household repair customs"
+          ],
+          "cultural_influence": "Soumi",
+          "dominant_trait": "inquisitive",
+          "exclusions": [
+            "no unexplained ocean career",
+            "no opposed dominant traits",
+            "no unsupported inheritance"
+          ],
+          "mechanics": null
+        },
+        "rumours": [],
+        "secret": {
+          "private_fact": "kept an unfinished practice piece instead of admitting a mistake",
+          "reveal_token": "character:settlements:771:starter:1:private"
+        }
+      }
+    ],
+    "enrichment_sha": "dc977b6ce7a1de7ad230ee4e7511cb629e39c23503d4a0d73c861356abbcf502"
+  }
+}

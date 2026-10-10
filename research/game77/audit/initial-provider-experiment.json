@@ -1,0 +1,51 @@
+{
+  "samples": [
+    {
+      "seed": "world-a",
+      "lexicon": "An old watchtower retains weathered masonry.",
+      "rant": "An old watchtower retains a broken stair. The watchtower is still recognisable."
+    },
+    {
+      "seed": "world-b",
+      "lexicon": "An old watchtower retains weathered masonry.",
+      "rant": "An old signal post retains a broken stair. The signal post is still recognisable."
+    },
+    {
+      "seed": "world-c",
+      "lexicon": "An old watchtower retains a broken stair.",
+      "rant": "An old watchtower retains a broken stair. The watchtower is still recognisable."
+    },
+    {
+      "seed": "world-d",
+      "lexicon": "An old watchtower retains a broken stair.",
+      "rant": "An old signal post retains weathered masonry. The signal post is still recognisable."
+    },
+    {
+      "seed": "world-e",
+      "lexicon": "An old watchtower retains a broken stair.",
+      "rant": "An old watchtower retains weathered masonry. The watchtower is still recognisable."
+    }
+  ],
+  "timings": {
+    "lexicon": {
+      "iterations": 1000,
+      "milliseconds": 44.78617200000001,
+      "transformed_source_bytes": 22650,
+      "engine_closure": {
+        "bytes": 22650,
+        "modules": 13
+      }
+    },
+    "rant": {
+      "iterations": 1000,
+      "milliseconds": 32.85539800000001,
+      "transformed_source_bytes": 970170,
+      "engine_closure": {
+        "bytes": 40147,
+        "modules": 15
+      }
+    }
+  },
+  "imported_fantasy_data": false,
+  "dictionary": "TRHGD-authored two-entry experiment"
+}

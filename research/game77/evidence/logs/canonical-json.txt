@@ -1,0 +1,13 @@
+✔ replaces only unpaired UTF-16 surrogates (1.01252ms)
+✔ preserves valid Unicode including astral characters (0.880976ms)
+✔ sanitizes nested values and keys while sorting object keys (1.48674ms)
+✔ rejects object-key collisions caused by sanitization (0.536674ms)
+✔ reports the first malformed UTF-16 offset (1.623522ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.760329

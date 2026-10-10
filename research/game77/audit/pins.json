@@ -1,0 +1,105 @@
+[
+  {
+    "repository": "ianlintner/lexiconlang",
+    "commit": "da0a823e275d9642731bdaed1f3006d2c9bfae74",
+    "version": "0.2.0",
+    "license": "MIT",
+    "runtime_dependencies": {},
+    "dev_dependencies": {
+      "@changesets/cli": "^2.31.1",
+      "@types/node": "^26.1.2",
+      "typescript": "^7.0.2",
+      "vite": "^8.2.0",
+      "vitest": "^4.1.10"
+    },
+    "license_sha256": "208681846f6fd85cb8497d234c28af06350cf24832b8468ed95fabd07c860252",
+    "vendored": false,
+    "content_imported": false
+  },
+  {
+    "repository": "robbestad/Rantjs",
+    "commit": "c62d5b21b9da9be561c15afdccd5f352cdb91e64",
+    "version": "3.0.0",
+    "license": "ISC",
+    "runtime_dependencies": {},
+    "dev_dependencies": {
+      "@types/node": "^26.4.0",
+      "svenjs": "^3.2.1",
+      "tsup": "^8.5.1",
+      "tsx": "^4.23.13",
+      "typescript": "~5.6.3",
+      "vite": "^8.2.2",
+      "vitest": "^4.1.11"
+    },
+    "license_sha256": "f8faa5b846ca882bb666244728ed09e9790fab06017a023e911c6d921ee169ef",
+    "vendored": false,
+    "content_imported": false
+  },
+  {
+    "repository": "thomascgray/fantasy-content-generator",
+    "commit": "323aca8d0e946420cae59a315fbb2a9ba7958ec8",
+    "version": "4.9.1",
+    "license": "MIT",
+    "runtime_dependencies": {
+      "seedrandom": "^3.0.5"
+    },
+    "dev_dependencies": {
+      "@types/jest": "^24.0.23",
+      "@types/node": "^12.12.14",
+      "cross-env": "^7.0.0",
+      "eslint": "^6.6.0",
+      "jest": "^24.9.0",
+      "lodash": "^4.17.14",
+      "parcel-bundler": "^1.12.4",
+      "release-it": "^12.3.3",
+      "require-globify": "^1.4.1",
+      "terser": "^4.8.1",
+      "ts-jest": "^24.2.0",
+      "typescript": "^3.7.3",
+      "uglify-js": "^3.4.9"
+    },
+    "license_sha256": "5164c060820ee968bbe95b6bbcdfa26807c3cb29a37e3e444b679902c0c71b18",
+    "vendored": false,
+    "content_imported": false
+  },
+  {
+    "repository": "opd-ai/venture",
+    "commit": "3e308230f7ca387a23e774c346baa7db5c4f78e6",
+    "version": "commit snapshot / Go 1.24.5",
+    "license": "MIT",
+    "go_mod_direct": 7,
+    "license_sha256": "32878d64252a5a8208cd97de753ed41e1f2c5eab513f48f5885a7d77746aea64",
+    "vendored": false,
+    "content_imported": false
+  },
+  {
+    "repository": "dariusk/corpora",
+    "commit": "2e7adec11a0561696c236ae1fca82e88be173d42",
+    "version": "commit snapshot",
+    "license": "CC0-1.0 (README declaration)",
+    "license_sha256": "3bc2433f272c3df57db392aa7ca9d966b0471bff9003ff75874e8ee4ac555a1f",
+    "vendored": false,
+    "content_imported": false,
+    "audit_level": "secondary feasibility, not a cleared content pack"
+  },
+  {
+    "repository": "kesac/Loremaker",
+    "commit": "fe18b6e95bfffe9adfb149c3388d1a61e6860753",
+    "version": "commit snapshot",
+    "license": "MIT",
+    "license_sha256": "39dd0e16a7d1b3fe08ab24247545e5a40c252013fe8eb50f8ab767f5ac52feaa",
+    "vendored": false,
+    "content_imported": false,
+    "audit_level": "secondary feasibility, not a cleared content pack"
+  },
+  {
+    "repository": "FyefoxxM/npc-generator",
+    "commit": "b2a16ceb7f12a4467fe91444d488ff9199c64434",
+    "version": "commit snapshot",
+    "license": "MIT",
+    "license_sha256": "08a170f18eddcc80ba0d16f95322fc1cbfcb04a37c66b949571e61013d3c3dbc",
+    "vendored": false,
+    "content_imported": false,
+    "audit_level": "secondary feasibility, not a cleared content pack"
+  }
+]
