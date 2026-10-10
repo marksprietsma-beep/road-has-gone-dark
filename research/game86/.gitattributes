@@ -1,0 +1,2 @@
+# Keep the deterministic CSV bytes identical to the artifact manifest on checkout.
+results/summary.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

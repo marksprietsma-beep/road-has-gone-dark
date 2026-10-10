@@ -1,0 +1,29 @@
+test_all_spawn_routes_connect (test_combat.CombatTests.test_all_spawn_routes_connect) ... ok
+test_charge_needs_clear_straight_occupied_free_lane (test_combat.CombatTests.test_charge_needs_clear_straight_occupied_free_lane) ... ok
+test_contact_is_opportunity_not_successful_hit (test_combat.CombatTests.test_contact_is_opportunity_not_successful_hit) ... ok
+test_cover_and_engagement_penalties_are_additive (test_combat.CombatTests.test_cover_and_engagement_penalties_are_additive) ... ok
+test_delayed_spell_not_immediate_and_hits_friends (test_combat.CombatTests.test_delayed_spell_not_immediate_and_hits_friends) ... ok
+test_deterministic_result_and_full_command_replay (test_combat.CombatTests.test_deterministic_result_and_full_command_replay) ... ok
+test_disengage_costs_main_action_and_prevents_reaction (test_combat.CombatTests.test_disengage_costs_main_action_and_prevents_reaction) ... ok
+test_guard_reduces_one_adjacent_ally_hit (test_combat.CombatTests.test_guard_reduces_one_adjacent_ally_hit) ... ok
+test_leaving_threat_uses_one_reaction (test_combat.CombatTests.test_leaving_threat_uses_one_reaction) ... ok
+test_los_symmetric_and_blocked_corner (test_combat.CombatTests.test_los_symmetric_and_blocked_corner) ... ok
+test_melee_hit_can_interrupt_only_with_reaction (test_combat.CombatTests.test_melee_hit_can_interrupt_only_with_reaction) ... ok
+test_no_damage_action_after_dash (test_combat.CombatTests.test_no_damage_action_after_dash) ... ok
+test_observation_is_detached_and_policy_deterministic (test_combat.CombatTests.test_observation_is_detached_and_policy_deterministic) ... ok
+test_three_action_attack_penalty_and_cap (test_combat.CombatTests.test_three_action_attack_penalty_and_cap) ... ok
+test_timeout_is_not_a_win (test_combat.CombatTests.test_timeout_is_not_a_win) ... ok
+test_accuracy_enumeration (test_diagnostics.DiagnosticTests.test_accuracy_enumeration) ... ok
+test_illusion_truth_does_not_leak_to_policy (test_diagnostics.DiagnosticTests.test_illusion_truth_does_not_leak_to_policy) ... ok
+test_unbounded_kite_and_bounded_false_reassurance (test_diagnostics.DiagnosticTests.test_unbounded_kite_and_bounded_false_reassurance) ... ok
+test_cached_paths_occupancy_and_immutability (test_runner.RunnerTests.test_cached_paths_occupancy_and_immutability) ... ok
+test_pending_observation_is_detached (test_runner.RunnerTests.test_pending_observation_is_detached) ... ok
+test_resume_and_corruption_rejection (test_runner.RunnerTests.test_resume_and_corruption_rejection) ... ok
+test_scope_is_preserved (test_runner.RunnerTests.test_scope_is_preserved) ... ok
+test_serial_parallel_and_interrupted_group_resume_equivalent (test_runner.RunnerTests.test_serial_parallel_and_interrupted_group_resume_equivalent) ... ok
+test_unmatched_prefix_exits_cleanly (test_runner.RunnerTests.test_unmatched_prefix_exits_cleanly) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 3.944s
+
+OK

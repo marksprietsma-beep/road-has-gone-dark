@@ -1,0 +1,873 @@
+{
+  "lane": {
+    "unbounded_no_tools": {
+      "contact_turn": null,
+      "shots_before_contact": 39,
+      "trace": [
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "phase": "wait"
+        },
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "contact": false
+        },
+        {
+          "turn": 2,
+          "fighter": 4,
+          "archer": 14,
+          "shots": 1,
+          "contact": false
+        },
+        {
+          "turn": 3,
+          "fighter": 8,
+          "archer": 18,
+          "shots": 2,
+          "contact": false
+        },
+        {
+          "turn": 4,
+          "fighter": 12,
+          "archer": 22,
+          "shots": 3,
+          "contact": false
+        },
+        {
+          "turn": 5,
+          "fighter": 16,
+          "archer": 26,
+          "shots": 4,
+          "contact": false
+        },
+        {
+          "turn": 6,
+          "fighter": 20,
+          "archer": 30,
+          "shots": 5,
+          "contact": false
+        },
+        {
+          "turn": 7,
+          "fighter": 24,
+          "archer": 34,
+          "shots": 6,
+          "contact": false
+        },
+        {
+          "turn": 8,
+          "fighter": 28,
+          "archer": 38,
+          "shots": 7,
+          "contact": false
+        },
+        {
+          "turn": 9,
+          "fighter": 32,
+          "archer": 42,
+          "shots": 8,
+          "contact": false
+        },
+        {
+          "turn": 10,
+          "fighter": 36,
+          "archer": 46,
+          "shots": 9,
+          "contact": false
+        },
+        {
+          "turn": 11,
+          "fighter": 40,
+          "archer": 50,
+          "shots": 10,
+          "contact": false
+        },
+        {
+          "turn": 12,
+          "fighter": 44,
+          "archer": 54,
+          "shots": 11,
+          "contact": false
+        },
+        {
+          "turn": 13,
+          "fighter": 48,
+          "archer": 58,
+          "shots": 12,
+          "contact": false
+        },
+        {
+          "turn": 14,
+          "fighter": 52,
+          "archer": 62,
+          "shots": 13,
+          "contact": false
+        },
+        {
+          "turn": 15,
+          "fighter": 56,
+          "archer": 66,
+          "shots": 14,
+          "contact": false
+        },
+        {
+          "turn": 16,
+          "fighter": 60,
+          "archer": 70,
+          "shots": 15,
+          "contact": false
+        },
+        {
+          "turn": 17,
+          "fighter": 64,
+          "archer": 74,
+          "shots": 16,
+          "contact": false
+        },
+        {
+          "turn": 18,
+          "fighter": 68,
+          "archer": 78,
+          "shots": 17,
+          "contact": false
+        },
+        {
+          "turn": 19,
+          "fighter": 72,
+          "archer": 82,
+          "shots": 18,
+          "contact": false
+        },
+        {
+          "turn": 20,
+          "fighter": 76,
+          "archer": 86,
+          "shots": 19,
+          "contact": false
+        },
+        {
+          "turn": 21,
+          "fighter": 80,
+          "archer": 90,
+          "shots": 20,
+          "contact": false
+        },
+        {
+          "turn": 22,
+          "fighter": 84,
+          "archer": 94,
+          "shots": 21,
+          "contact": false
+        },
+        {
+          "turn": 23,
+          "fighter": 88,
+          "archer": 98,
+          "shots": 22,
+          "contact": false
+        },
+        {
+          "turn": 24,
+          "fighter": 92,
+          "archer": 102,
+          "shots": 23,
+          "contact": false
+        },
+        {
+          "turn": 25,
+          "fighter": 96,
+          "archer": 106,
+          "shots": 24,
+          "contact": false
+        },
+        {
+          "turn": 26,
+          "fighter": 100,
+          "archer": 110,
+          "shots": 25,
+          "contact": false
+        },
+        {
+          "turn": 27,
+          "fighter": 104,
+          "archer": 114,
+          "shots": 26,
+          "contact": false
+        },
+        {
+          "turn": 28,
+          "fighter": 108,
+          "archer": 118,
+          "shots": 27,
+          "contact": false
+        },
+        {
+          "turn": 29,
+          "fighter": 112,
+          "archer": 122,
+          "shots": 28,
+          "contact": false
+        },
+        {
+          "turn": 30,
+          "fighter": 116,
+          "archer": 126,
+          "shots": 29,
+          "contact": false
+        },
+        {
+          "turn": 31,
+          "fighter": 120,
+          "archer": 130,
+          "shots": 30,
+          "contact": false
+        },
+        {
+          "turn": 32,
+          "fighter": 124,
+          "archer": 134,
+          "shots": 31,
+          "contact": false
+        },
+        {
+          "turn": 33,
+          "fighter": 128,
+          "archer": 138,
+          "shots": 32,
+          "contact": false
+        },
+        {
+          "turn": 34,
+          "fighter": 132,
+          "archer": 142,
+          "shots": 33,
+          "contact": false
+        },
+        {
+          "turn": 35,
+          "fighter": 136,
+          "archer": 146,
+          "shots": 34,
+          "contact": false
+        },
+        {
+          "turn": 36,
+          "fighter": 140,
+          "archer": 150,
+          "shots": 35,
+          "contact": false
+        },
+        {
+          "turn": 37,
+          "fighter": 144,
+          "archer": 154,
+          "shots": 36,
+          "contact": false
+        },
+        {
+          "turn": 38,
+          "fighter": 148,
+          "archer": 158,
+          "shots": 37,
+          "contact": false
+        },
+        {
+          "turn": 39,
+          "fighter": 152,
+          "archer": 162,
+          "shots": 38,
+          "contact": false
+        },
+        {
+          "turn": 40,
+          "fighter": 156,
+          "archer": 166,
+          "shots": 39,
+          "contact": false
+        }
+      ]
+    },
+    "bounded_no_tools": {
+      "contact_turn": 4,
+      "shots_before_contact": 3,
+      "trace": [
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "phase": "wait"
+        },
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "contact": false
+        },
+        {
+          "turn": 2,
+          "fighter": 4,
+          "archer": 14,
+          "shots": 1,
+          "contact": false
+        },
+        {
+          "turn": 3,
+          "fighter": 8,
+          "archer": 15,
+          "shots": 2,
+          "contact": false
+        },
+        {
+          "turn": 4,
+          "fighter": 12,
+          "archer": 15,
+          "shots": 3,
+          "contact": true
+        }
+      ]
+    },
+    "unbounded_dash": {
+      "contact_turn": 3,
+      "shots_before_contact": 2,
+      "trace": [
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "phase": "wait"
+        },
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "contact": false
+        },
+        {
+          "turn": 2,
+          "fighter": 8,
+          "archer": 14,
+          "shots": 1,
+          "contact": false
+        },
+        {
+          "turn": 3,
+          "fighter": 16,
+          "archer": 18,
+          "shots": 2,
+          "contact": true
+        }
+      ]
+    },
+    "unbounded_charge": {
+      "contact_turn": null,
+      "shots_before_contact": 39,
+      "trace": [
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "phase": "wait"
+        },
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "contact": false
+        },
+        {
+          "turn": 2,
+          "fighter": 4,
+          "archer": 14,
+          "shots": 1,
+          "contact": false
+        },
+        {
+          "turn": 3,
+          "fighter": 8,
+          "archer": 18,
+          "shots": 2,
+          "contact": false
+        },
+        {
+          "turn": 4,
+          "fighter": 12,
+          "archer": 22,
+          "shots": 3,
+          "contact": false
+        },
+        {
+          "turn": 5,
+          "fighter": 16,
+          "archer": 26,
+          "shots": 4,
+          "contact": false
+        },
+        {
+          "turn": 6,
+          "fighter": 20,
+          "archer": 30,
+          "shots": 5,
+          "contact": false
+        },
+        {
+          "turn": 7,
+          "fighter": 24,
+          "archer": 34,
+          "shots": 6,
+          "contact": false
+        },
+        {
+          "turn": 8,
+          "fighter": 28,
+          "archer": 38,
+          "shots": 7,
+          "contact": false
+        },
+        {
+          "turn": 9,
+          "fighter": 32,
+          "archer": 42,
+          "shots": 8,
+          "contact": false
+        },
+        {
+          "turn": 10,
+          "fighter": 36,
+          "archer": 46,
+          "shots": 9,
+          "contact": false
+        },
+        {
+          "turn": 11,
+          "fighter": 40,
+          "archer": 50,
+          "shots": 10,
+          "contact": false
+        },
+        {
+          "turn": 12,
+          "fighter": 44,
+          "archer": 54,
+          "shots": 11,
+          "contact": false
+        },
+        {
+          "turn": 13,
+          "fighter": 48,
+          "archer": 58,
+          "shots": 12,
+          "contact": false
+        },
+        {
+          "turn": 14,
+          "fighter": 52,
+          "archer": 62,
+          "shots": 13,
+          "contact": false
+        },
+        {
+          "turn": 15,
+          "fighter": 56,
+          "archer": 66,
+          "shots": 14,
+          "contact": false
+        },
+        {
+          "turn": 16,
+          "fighter": 60,
+          "archer": 70,
+          "shots": 15,
+          "contact": false
+        },
+        {
+          "turn": 17,
+          "fighter": 64,
+          "archer": 74,
+          "shots": 16,
+          "contact": false
+        },
+        {
+          "turn": 18,
+          "fighter": 68,
+          "archer": 78,
+          "shots": 17,
+          "contact": false
+        },
+        {
+          "turn": 19,
+          "fighter": 72,
+          "archer": 82,
+          "shots": 18,
+          "contact": false
+        },
+        {
+          "turn": 20,
+          "fighter": 76,
+          "archer": 86,
+          "shots": 19,
+          "contact": false
+        },
+        {
+          "turn": 21,
+          "fighter": 80,
+          "archer": 90,
+          "shots": 20,
+          "contact": false
+        },
+        {
+          "turn": 22,
+          "fighter": 84,
+          "archer": 94,
+          "shots": 21,
+          "contact": false
+        },
+        {
+          "turn": 23,
+          "fighter": 88,
+          "archer": 98,
+          "shots": 22,
+          "contact": false
+        },
+        {
+          "turn": 24,
+          "fighter": 92,
+          "archer": 102,
+          "shots": 23,
+          "contact": false
+        },
+        {
+          "turn": 25,
+          "fighter": 96,
+          "archer": 106,
+          "shots": 24,
+          "contact": false
+        },
+        {
+          "turn": 26,
+          "fighter": 100,
+          "archer": 110,
+          "shots": 25,
+          "contact": false
+        },
+        {
+          "turn": 27,
+          "fighter": 104,
+          "archer": 114,
+          "shots": 26,
+          "contact": false
+        },
+        {
+          "turn": 28,
+          "fighter": 108,
+          "archer": 118,
+          "shots": 27,
+          "contact": false
+        },
+        {
+          "turn": 29,
+          "fighter": 112,
+          "archer": 122,
+          "shots": 28,
+          "contact": false
+        },
+        {
+          "turn": 30,
+          "fighter": 116,
+          "archer": 126,
+          "shots": 29,
+          "contact": false
+        },
+        {
+          "turn": 31,
+          "fighter": 120,
+          "archer": 130,
+          "shots": 30,
+          "contact": false
+        },
+        {
+          "turn": 32,
+          "fighter": 124,
+          "archer": 134,
+          "shots": 31,
+          "contact": false
+        },
+        {
+          "turn": 33,
+          "fighter": 128,
+          "archer": 138,
+          "shots": 32,
+          "contact": false
+        },
+        {
+          "turn": 34,
+          "fighter": 132,
+          "archer": 142,
+          "shots": 33,
+          "contact": false
+        },
+        {
+          "turn": 35,
+          "fighter": 136,
+          "archer": 146,
+          "shots": 34,
+          "contact": false
+        },
+        {
+          "turn": 36,
+          "fighter": 140,
+          "archer": 150,
+          "shots": 35,
+          "contact": false
+        },
+        {
+          "turn": 37,
+          "fighter": 144,
+          "archer": 154,
+          "shots": 36,
+          "contact": false
+        },
+        {
+          "turn": 38,
+          "fighter": 148,
+          "archer": 158,
+          "shots": 37,
+          "contact": false
+        },
+        {
+          "turn": 39,
+          "fighter": 152,
+          "archer": 162,
+          "shots": 38,
+          "contact": false
+        },
+        {
+          "turn": 40,
+          "fighter": 156,
+          "archer": 166,
+          "shots": 39,
+          "contact": false
+        }
+      ]
+    },
+    "unbounded_both": {
+      "contact_turn": 2,
+      "shots_before_contact": 1,
+      "trace": [
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "phase": "wait"
+        },
+        {
+          "turn": 1,
+          "fighter": 0,
+          "archer": 10,
+          "shots": 0,
+          "contact": false
+        },
+        {
+          "turn": 2,
+          "fighter": 8,
+          "archer": 14,
+          "shots": 1,
+          "contact": true
+        }
+      ]
+    }
+  },
+  "illusion": {
+    "equal_precontact_observations": true,
+    "detour_steps": 10,
+    "direct_steps": 6,
+    "redirected_steps": 4,
+    "disbelief_probe_actions": 1,
+    "other_observer_still_believes": true,
+    "route_before": [
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ]
+    ],
+    "route_after": [
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        7,
+        4
+      ]
+    ],
+    "decoy_attack_before": {
+      "actions": 1,
+      "known_false": []
+    },
+    "decoy_attack_after": {
+      "actions": 0,
+      "known_false": [
+        "apparent:1"
+      ]
+    },
+    "limit": "BFS belief/command-boundary proof, not measured expert combat effectiveness or actual damage prevented"
+  },
+  "accuracy": [
+    {
+      "attack": 5,
+      "ac": 12,
+      "hit_probability": 0.7,
+      "expected_damage": 5.8,
+      "two_independent_misses": 0.09,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 5,
+      "ac": 15,
+      "hit_probability": 0.55,
+      "expected_damage": 4.6,
+      "two_independent_misses": 0.2025,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 5,
+      "ac": 18,
+      "hit_probability": 0.4,
+      "expected_damage": 3.4,
+      "two_independent_misses": 0.36,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 7,
+      "ac": 12,
+      "hit_probability": 0.8,
+      "expected_damage": 6.6,
+      "two_independent_misses": 0.04000000000000001,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 7,
+      "ac": 15,
+      "hit_probability": 0.65,
+      "expected_damage": 5.4,
+      "two_independent_misses": 0.12249999999999998,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 7,
+      "ac": 18,
+      "hit_probability": 0.5,
+      "expected_damage": 4.2,
+      "two_independent_misses": 0.25,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 9,
+      "ac": 12,
+      "hit_probability": 0.9,
+      "expected_damage": 7.4,
+      "two_independent_misses": 0.010000000000000002,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 9,
+      "ac": 15,
+      "hit_probability": 0.75,
+      "expected_damage": 6.2,
+      "two_independent_misses": 0.0625,
+      "max_single_damage": 12
+    },
+    {
+      "attack": 9,
+      "ac": 18,
+      "hit_probability": 0.6,
+      "expected_damage": 5.0,
+      "two_independent_misses": 0.16000000000000003,
+      "max_single_damage": 12
+    }
+  ],
+  "resources": {
+    "battles": 3,
+    "focus_without_restock": 2,
+    "maximum_power_casts": 2,
+    "if_focus_refills_each_battle": 6,
+    "healing_example": {
+      "action_cost": 1,
+      "healed": 10,
+      "enemy_hit_damage": 8,
+      "enemy_hit_probability": 0.65,
+      "expected_two_attacker_damage": 10.4,
+      "net_hp_if_two_attacks_arrive": -0.4
+    },
+    "hard_stun_team_action_loss_one_round": {
+      "party3": 0.3333333333333333,
+      "party6": 0.16666666666666666
+    },
+    "ct_speed_ratio": 1.5,
+    "ct_plus_stride_distance_ratio": 2.25
+  }
+}

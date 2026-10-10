@@ -1,0 +1,41 @@
+         24351902 function calls (23862369 primitive calls) in 11.706 seconds
+
+   Ordered by: cumulative time
+   List reduced from 103 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      418    0.152    0.000   11.634    0.028 combat.py:490(run)
+    13542    2.082    0.000    9.761    0.001 combat.py:247(choose)
+   557572    0.342    0.000    3.741    0.000 combat.py:258(value)
+   455244    0.897    0.000    3.400    0.000 combat.py:232(position_value)
+795323/767140    0.360    0.000    1.692    0.000 {built-in method builtins.any}
+  2090783    0.821    0.000    1.221    0.000 combat.py:21(distance)
+   734887    0.368    0.000    1.202    0.000 {built-in method builtins.min}
+    13542    0.086    0.000    1.150    0.000 combat.py:444(apply)
+   483337    0.366    0.000    0.929    0.000 combat.py:215(can_attack)
+     9852    0.048    0.000    0.926    0.000 combat.py:95(paths)
+     5441    0.503    0.000    0.868    0.000 combat.py:98(_paths)
+   523497    0.151    0.000    0.856    0.000 combat.py:238(<genexpr>)
+  1261463    0.358    0.000    0.834    0.000 combat.py:233(<genexpr>)
+    26870    0.022    0.000    0.772    0.000 dataclasses.py:1308(asdict)
+   339006    0.225    0.000    0.743    0.000 {built-in method builtins.max}
+436062/26870    0.415    0.000    0.731    0.000 dataclasses.py:1332(_asdict_inner)
+      418    0.010    0.000    0.650    0.002 combat.py:313(__init__)
+      418    0.061    0.000    0.622    0.001 combat.py:136(make_board)
+    77806    0.124    0.000    0.570    0.000 combat.py:17(keyed)
+   619462    0.193    0.000    0.518    0.000 combat.py:309(<lambda>)
+    13542    0.080    0.000    0.442    0.000 combat.py:416(legal)
+   428181    0.183    0.000    0.411    0.000 combat.py:182(can)
+  4240472    0.407    0.000    0.407    0.000 {built-in method builtins.abs}
+   262370    0.103    0.000    0.389    0.000 combat.py:262(can_hit)
+    78224    0.094    0.000    0.377    0.000 __init__.py:183(dumps)
+   620642    0.326    0.000    0.326    0.000 {built-in method builtins.round}
+   492760    0.215    0.000    0.314    0.000 {built-in method builtins.sum}
+     5056    0.010    0.000    0.305    0.000 combat.py:473(credible_contact)
+    78224    0.083    0.000    0.261    0.000 encoder.py:183(encode)
+   455035    0.179    0.000    0.252    0.000 <string>:2(__hash__)
+   343590    0.247    0.000    0.247    0.000 <string>:2(__eq__)
+   427203    0.191    0.000    0.233    0.000 combat.py:177(cost)
+   243556    0.066    0.000    0.232    0.000 combat.py:264(<genexpr>)
+  1603556    0.213    0.000    0.213    0.000 {built-in method builtins.len}
+     4360    0.038    0.000    0.169    0.000 combat.py:366(hit)
