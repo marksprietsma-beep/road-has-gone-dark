@@ -9,7 +9,14 @@ func check(ok: bool,why: String) -> void:
  if not ok:
   failures+=1
   push_error(why)
-func _initialize() -> void: call_deferred("run")
+  quit(1) # A failed UI assertion must not leave a live, suspended SceneTree.
+func _initialize() -> void:
+ # Bound scene/signal waits too: a GDScript error otherwise abandons run()
+ # while the rendering process remains alive until the Python timeout.
+ create_timer(300.0).timeout.connect(func():
+  push_error("GAME-84 input/render watchdog: scene or signal did not complete")
+  quit(1))
+ call_deferred("run")
 func frames() -> void:
  for i in 5: await process_frame
  await RenderingServer.frame_post_draw
@@ -21,7 +28,14 @@ func key(code: int) -> void:
   await process_frame
  await frames()
 func click(control: Control) -> void:
+ if not is_instance_valid(control):
+  check(false,"mouse target no longer exists")
+  return
+ control.grab_focus() # Reveal the real target in the production follow-focus scroll.
  await frames()
+ if not control.is_visible_in_tree() or not root.get_visible_rect().encloses(control.get_global_rect()):
+  check(false,"mouse target outside viewport after follow-focus: "+str(control.name))
+  return
  for down in [true,false]:
   var e:=InputEventMouseButton.new()
   e.button_index=MOUSE_BUTTON_LEFT
@@ -58,6 +72,7 @@ func mount(entry: Dictionary,slot: String) -> void:
  ui=current_scene
  await wait_job()
 func run() -> void:
+ AdventureService.legacy_review=true # Preserve the authored GAME84/83 diagnostic.
  base=OS.get_environment("GAME84_TEST_ROOT")
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
  var service:=ExpeditionService.new()

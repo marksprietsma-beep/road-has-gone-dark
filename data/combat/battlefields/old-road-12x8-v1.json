@@ -1,0 +1,80 @@
+{
+  "id": "first-road-v1",
+  "title": "Bandits on the Old Road",
+  "width": 12,
+  "height": 8,
+  "blocked": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      10,
+      6
+    ],
+    [
+      11,
+      7
+    ]
+  ],
+  "party_positions": [
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "enemies": [
+    {
+      "id": "bandit-blade",
+      "name": "Road raider",
+      "role": "vanguard",
+      "weapon": "shortblade",
+      "position": [
+        8,
+        3
+      ]
+    },
+    {
+      "id": "bandit-bow",
+      "name": "Raider archer",
+      "role": "scout",
+      "weapon": "bow",
+      "position": [
+        8,
+        4
+      ]
+    }
+  ]
+}

@@ -3,3 +3,11 @@
 
 # Packed atlas cell IDs must retain every byte on Windows and Linux.
 assets/onboarding/*.cells binary
+
+# Preserve original third-party artwork/credits byte-for-byte on every platform.
+# Their whitespace is upstream content, verified by data/art/sources.json.
+assets/combat/kenney/** -text -diff
+assets/combat/0x72/** -text -diff
+assets/combat/navinius/** -text -diff
+assets/combat/lpc/** -text -diff
+assets/combat/licenses/** -text -diff

@@ -1,0 +1,38 @@
+{
+  "base_sha": "7829b4e92d42351c6bd3b8ded5ac52f58188f1eedb567f90d683b71ff31fcdf2",
+  "checks": 123,
+  "failures": 0,
+  "party_ids": [
+    "0c1c00a5b43432fc33d4a7054a9b6f11:adventurer:1",
+    "0c1c00a5b43432fc33d4a7054a9b6f11:adventurer:2",
+    "0c1c00a5b43432fc33d4a7054a9b6f11:adventurer:3"
+  ],
+  "phase": "replay",
+  "results": {
+    "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+      "battle_hash": "d4ab7ea792db621a3bfd7aa0bc35b18cde861d8138004ebe58d47cd7dbc3ae6b",
+      "outcome": "victory",
+      "sequence": 8,
+      "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+      "text": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+      "xp_each": 10
+    },
+    "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+      "battle_hash": "a3a21383b1ecfd55dce2488a0b7fb474f92bb8536d696db38f6a54781cef4568",
+      "outcome": "victory",
+      "sequence": 13,
+      "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+      "text": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+      "xp_each": 10
+    },
+    "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+      "battle_hash": "860402ef2c2e6ee27bc84fcb56414d928e04206ee6f8a40f9cd4ed11dbca553b",
+      "outcome": "defeat",
+      "sequence": 17,
+      "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+      "text": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+      "xp_each": 0
+    }
+  },
+  "slot": "0c1c00a5b43432fc33d4a7054a9b6f11"
+}

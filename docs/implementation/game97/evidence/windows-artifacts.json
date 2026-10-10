@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 11665465069,
+      "node_id": "MDg6QXJ0aWZhY3QxMTY2NTQ2NTA2OQ==",
+      "name": "game96-windows-x64",
+      "size_in_bytes": 117868042,
+      "url": "https://api.github.com/repos/marksprietsma-beep/road-has-gone-dark/actions/artifacts/11665465069",
+      "archive_download_url": "https://api.github.com/repos/marksprietsma-beep/road-has-gone-dark/actions/artifacts/11665465069/zip",
+      "expired": false,
+      "digest": "sha256:343cc4229783506e4ee38e84e8824698d3f5bd1b4136a788c74adef22e47ab81",
+      "created_at": "2026-10-10T08:44:33Z",
+      "updated_at": "2026-10-10T08:44:33Z",
+      "expires_at": "2026-11-09T08:44:28Z",
+      "workflow_run": {
+        "id": 38037735342,
+        "repository_id": 1393964713,
+        "head_repository_id": 1393964713,
+        "head_branch": "integration/game-97-production-consolidation",
+        "head_sha": "ae9c10ecde2c6bb23250ffbc57b3c0073e01c7d4"
+      }
+    },
+    {
+      "id": 11664544619,
+      "node_id": "MDg6QXJ0aWZhY3QxMTY2NDU0NDYxOQ==",
+      "name": "game96-windows-evidence",
+      "size_in_bytes": 5144152,
+      "url": "https://api.github.com/repos/marksprietsma-beep/road-has-gone-dark/actions/artifacts/11664544619",
+      "archive_download_url": "https://api.github.com/repos/marksprietsma-beep/road-has-gone-dark/actions/artifacts/11664544619/zip",
+      "expired": false,
+      "digest": "sha256:59f510596768139c934620abcc83d72a4d8addc56d82f1a61538af601c295210",
+      "created_at": "2026-10-10T08:44:27Z",
+      "updated_at": "2026-10-10T08:44:27Z",
+      "expires_at": "2027-01-08T08:23:57Z",
+      "workflow_run": {
+        "id": 38037735342,
+        "repository_id": 1393964713,
+        "head_repository_id": 1393964713,
+        "head_branch": "integration/game-97-production-consolidation",
+        "head_sha": "ae9c10ecde2c6bb23250ffbc57b3c0073e01c7d4"
+      }
+    }
+  ]
+}

@@ -19,20 +19,21 @@ jobs:
           printf '%s  %s\n' \
             2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5 tests/worldgen/fixtures/game-11-determinism.json \
             9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3 tests/worldgen/fixtures/atlas-showcase.json | sha256sum -c -
-      - name: Install pinned Godot 4.7.2
+      - name: Install pinned Godot 4.6.3
         run: |
           curl -fL --retry 3 --retry-delay 2 \
-            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip \
             -o /tmp/godot.zip
+          echo 'd0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3  /tmp/godot.zip' | sha256sum -c -
           unzip -q /tmp/godot.zip -d /tmp
-          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          chmod +x /tmp/Godot_v4.6.3-stable_linux.x86_64
       - name: Import project
         run: |
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import.log
+          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --editor --path . --quit 2>&1 | tee /tmp/import.log
       - name: Run GameWorld smoke
         run: |
           set -euo pipefail
-          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 240 --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee /tmp/gameworld.log
+          timeout 90s /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --path . --quit-after 240 --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee /tmp/gameworld.log
           grep -q "PASS: GAME-7" /tmp/gameworld.log
           if grep -Ei 'SCRIPT ERROR|Parse Error|Unicode parsing error|Unexpected NUL character|Assertion failed|ERROR:' /tmp/gameworld.log; then
             echo "Godot reported GAME-7 test errors"

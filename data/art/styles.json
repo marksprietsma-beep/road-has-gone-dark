@@ -1,0 +1,4126 @@
+{
+  "schema_version": 2,
+  "styles": [
+    {
+      "id": "lpc",
+      "name": "Universal LPC",
+      "version": "58ce1aa479e4df32845a73a5d0afc221c3a893c2",
+      "note": "LPC V1 \u00b7 native directional character animation",
+      "native": 64,
+      "parts": {
+        "body-male": {
+          "z": 10,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/body/body.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "pants-male": {
+          "z": 20,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/legs/pants/legs_pants.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "boots-male": {
+          "z": 25,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/feet/boots/feet_boots_basic.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 9,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mail-male": {
+          "z": 50,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/torso_chainmail.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "leather-male": {
+          "z": 60,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/armour/torso_armour_leather.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "skirt-male": {
+          "z": 20,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/legs/skirts/legs_skirts_plain.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-male-brown": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve_laced.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/walk/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/slash/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/shoot/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/thrust/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/spellcast/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/hurt/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-male-forest": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve_laced.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/walk/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/slash/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/shoot/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/thrust/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/spellcast/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/hurt/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-male-navy": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve_laced.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/walk/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/slash/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/shoot/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/thrust/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/spellcast/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/hurt/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mage-male-purple": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve_laced.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/walk/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/slash/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/shoot/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/thrust/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/spellcast/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/hurt/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mage-male-blue": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve_laced.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/walk/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/slash/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/shoot/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/thrust/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/spellcast/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/longsleeve/laced/male/hurt/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "cane-male": {
+          "z": 140,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/polearm/weapon_polearm_cane.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/polearm/cane/male/walk/cane.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/polearm/cane/male/thrust/cane.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            }
+          }
+        },
+        "body-female": {
+          "z": 10,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/body/body.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/body/bodies/female/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "pants-female": {
+          "z": 20,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/legs/pants/legs_pants.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/pants/thin/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "boots-female": {
+          "z": 25,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/feet/boots/feet_boots_basic.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/feet/boots/basic/thin/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mail-female": {
+          "z": 50,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/torso_chainmail.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/chainmail/female/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "leather-female": {
+          "z": 60,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/armour/torso_armour_leather.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/armour/leather/female/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "skirt-female": {
+          "z": 20,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/legs/skirts/legs_skirts_plain.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/legs/skirts/plain/thin/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-female-brown": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/torso_clothes_tunic.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/walk/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/slash/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/shoot/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/thrust/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/spellcast/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/hurt/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-female-forest": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/torso_clothes_tunic.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/walk/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/slash/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/shoot/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/thrust/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/spellcast/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/hurt/forest.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shirt-female-navy": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/torso_clothes_tunic.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/walk/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/slash/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/shoot/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/thrust/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/spellcast/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/hurt/navy.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mage-female-purple": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/torso_clothes_tunic.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/walk/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/slash/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/shoot/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/thrust/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/spellcast/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/hurt/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "mage-female-blue": {
+          "z": 35,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/shirts/torso_clothes_tunic.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/walk/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/slash/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/shoot/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/thrust/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/spellcast/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/torso/clothes/tunic/female/hurt/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "cane-female": {
+          "z": 140,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/polearm/weapon_polearm_cane.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/polearm/cane/female/walk/cane.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/polearm/cane/female/thrust/cane.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            }
+          }
+        },
+        "head-male": {
+          "z": 100,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/head/heads/human/heads_human_male.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "head-female": {
+          "z": 100,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/head/heads/human/heads_human_female.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/female/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "head-gaunt": {
+          "z": 100,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/head/heads/human/heads_human_male_gaunt.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/head/heads/human/male_gaunt/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "plain": {
+          "z": 120,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/hair/short/hair_plain.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/plain/adult/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "curly": {
+          "z": 120,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/hair/curly/hair_curly_short2.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/curly_short2/adult/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "ponytail-front": {
+          "z": 120,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/hair/braids/hair_ponytail.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/fg/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "ponytail-back": {
+          "z": 9,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/hair/braids/hair_ponytail.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hair/ponytail/adult/bg/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "beard": {
+          "z": 110,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/hair/beards/beards_trimmed.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/beards/beard/trimmed/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "cape-front": {
+          "z": 85,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/cape/cape_tattered.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/fg/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "cape-back": {
+          "z": 5,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/torso/cape/cape_tattered.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/cape/tattered/bg/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "hood": {
+          "z": 130,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/headwear/coverings/hoods/hat_hood_sack_cloth.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/cloth/hood_sack/adult/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "helmet": {
+          "z": 130,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/headwear/helmets/helmets/hat_helmet_bascinet_round.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/idle.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/walk.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/slash.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/thrust.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/spellcast.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/helmet/bascinet_round/adult/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "hat-purple": {
+          "z": 130,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/headwear/hats/magic/hat_magic_wizard.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/idle/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/walk/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/slash/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/shoot/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/thrust/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/spellcast/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/hurt/purple.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "hat-blue": {
+          "z": 130,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/headwear/hats/magic/hat_magic_wizard.json",
+          "actions": {
+            "idle": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/idle/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "idle",
+              "columns": 2,
+              "directions": 4
+            },
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/walk/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/slash/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/shoot/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/thrust/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "spellcast": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/spellcast/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "spellcast",
+              "columns": 7,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/hat/magic/wizard/base/adult/hurt/blue.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "blade-front": {
+          "z": 140,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/sword/weapon_sword_dagger.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/walk/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/slash/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/thrust/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/hurt/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "blade-back": {
+          "z": 9,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/sword/weapon_sword_dagger.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/behind/walk/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/sword/dagger/behind/slash/dagger.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            }
+          }
+        },
+        "bow-front": {
+          "z": 140,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/ranged/bow/weapon_ranged_bow_normal.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/walk/foreground/medium.png",
+              "frame": [
+                128,
+                128
+              ],
+              "offset": [
+                -32,
+                -32
+              ],
+              "source_animation": "walk",
+              "columns": 13,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/universal/foreground/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/universal/foreground/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "bow-back": {
+          "z": -1,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/ranged/bow/weapon_ranged_bow_normal.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/walk/background/medium.png",
+              "frame": [
+                128,
+                128
+              ],
+              "offset": [
+                -32,
+                -32
+              ],
+              "source_animation": "walk",
+              "columns": 13,
+              "directions": 4
+            },
+            "shoot": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/universal/background/shoot.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "shoot",
+              "columns": 13,
+              "directions": 4
+            },
+            "hurt": {
+              "path": "res://assets/combat/lpc/spritesheets/weapon/ranged/bow/normal/universal/background/hurt.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "hurt",
+              "columns": 6,
+              "directions": 1
+            }
+          }
+        },
+        "shield": {
+          "z": 110,
+          "source_definition": "res://assets/combat/lpc/sheet_definitions/weapons/shields/shield_round.json",
+          "actions": {
+            "walk": {
+              "path": "res://assets/combat/lpc/spritesheets/shield/round/walk/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "walk",
+              "columns": 9,
+              "directions": 4
+            },
+            "slash": {
+              "path": "res://assets/combat/lpc/spritesheets/shield/round/slash/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "slash",
+              "columns": 6,
+              "directions": 4
+            },
+            "thrust": {
+              "path": "res://assets/combat/lpc/spritesheets/shield/round/thrust/brown.png",
+              "frame": [
+                64,
+                64
+              ],
+              "offset": [
+                0,
+                0
+              ],
+              "source_animation": "thrust",
+              "columns": 8,
+              "directions": 4
+            }
+          }
+        }
+      },
+      "palettes": {
+        "skin": {
+          "source": [
+            "271920",
+            "99423c",
+            "cc8665",
+            "e4a47c",
+            "f9d5ba",
+            "faece7"
+          ],
+          "sets": [
+            [
+              "271920",
+              "854d46",
+              "b67d61",
+              "d9a47e",
+              "f0c5a2",
+              "f9deca"
+            ],
+            [
+              "211923",
+              "523835",
+              "815845",
+              "a97858",
+              "c6976e",
+              "dfb990"
+            ],
+            [
+              "1d1820",
+              "342a2b",
+              "514037",
+              "735342",
+              "986f54",
+              "ba9273"
+            ],
+            [
+              "231c25",
+              "604b43",
+              "96735b",
+              "b9906c",
+              "d8b084",
+              "ebcda5"
+            ]
+          ]
+        },
+        "hair": {
+          "source": [
+            "260d14",
+            "6a1108",
+            "a42600",
+            "bf4000",
+            "e55600",
+            "ff8a00"
+          ],
+          "sets": [
+            [
+              "171820",
+              "24232b",
+              "35313b",
+              "4d414a",
+              "645354",
+              "816b61"
+            ],
+            [
+              "251820",
+              "4f302a",
+              "754636",
+              "976449",
+              "bd875f",
+              "d5a476"
+            ],
+            [
+              "2c2025",
+              "66513d",
+              "91714b",
+              "b99861",
+              "debc7e",
+              "f1d8a0"
+            ],
+            [
+              "20202a",
+              "454652",
+              "767680",
+              "a4a3aa",
+              "cfccd1",
+              "f1e9e1"
+            ],
+            [
+              "2c1520",
+              "67322c",
+              "93462f",
+              "b9693b",
+              "d79050",
+              "eeb577"
+            ]
+          ]
+        }
+      },
+      "timelines": {
+        "idle": {
+          "frames": [
+            0,
+            0,
+            1
+          ],
+          "fps": 2,
+          "loop": true
+        },
+        "move": {
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "fps": 12,
+          "loop": true
+        },
+        "slash": {
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "fps": 9,
+          "impact": 0.34
+        },
+        "shoot": {
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "fps": 16,
+          "impact": 0.58
+        },
+        "thrust": {
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "fps": 11,
+          "impact": 0.38
+        },
+        "spell": {
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "fps": 9,
+          "impact": 0.46
+        },
+        "down": {
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "fps": 9
+        },
+        "hit": {
+          "frames": [
+            0,
+            1,
+            0
+          ],
+          "fps": 12
+        }
+      }
+    }
+  ]
+}

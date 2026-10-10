@@ -34,7 +34,7 @@ specs=[]
 for w in worlds:
  sha=digest(w);geo=base/'cache'/sha/(sha+'.geography.json');assert geo.exists();specs.append({'world':str(w),'geometry':str(geo)})
 spec=base/'world-specs.json';spec.write_text(json.dumps(specs));run('batch',[node,'tests/expedition/batch.mjs',spec],timeout=1800)
-if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/expedition/capture-flow.gd'])
+if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/expedition/capture-flow.gd'],timeout=360)
 if args.regressions:
  run('game81-regressions',[os.sys.executable,'tests/party/run-tests.py','--regressions']+(['--visual']if args.visual else[]),timeout=5400)
  run('game62-source-projection',[node,'tests/regiongen/verify-source-projection.mjs'])

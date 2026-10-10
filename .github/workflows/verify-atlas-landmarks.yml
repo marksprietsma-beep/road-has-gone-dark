@@ -67,19 +67,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Godot 4.7.2 headless
+      - name: Install Godot 4.6.3 headless
         run: |
           curl -fL --retry 3 --retry-delay 2 \
-            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip \
             -o /tmp/godot.zip
+          echo 'd0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3  /tmp/godot.zip' | sha256sum -c -
           unzip -q /tmp/godot.zip -d /tmp
-          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          chmod +x /tmp/Godot_v4.6.3-stable_linux.x86_64
       - name: Import scripts, scenes, and SVGs
         run: |
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path . --quit
+          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --editor --path . --quit
       - name: Launch atlas fixture viewer without graphics
         run: |
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
+          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
       - name: Test expandable map key and declutter control
         run: |
-          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd
+          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd

@@ -1,0 +1,15 @@
+{
+  "version":"sandbox-spine-v1",
+  "sizes":[[8,6],[10,8],[12,8]],
+  "max_attempts":8,
+  "opportunity_count":4,
+  "compositions":[["blade"],["blade","bow"],["blade","blade"],["bow","bow"]],
+  "pieces":{
+    "grove":[[0,0],[1,0],[0,1]],
+    "boulder":[[0,0],[0,1]],
+    "broken_wall":[[0,0],[1,0],[2,0],[0,1]],
+    "wall_edge":[[0,0],[0,1],[0,2]],
+    "scrub_bank":[[0,0],[1,0]]
+  },
+  "authorship":"Original TRHGD constrained generation and pixel terrain; source placement remains GAME-62/84"
+}
