@@ -31,6 +31,7 @@ func run() -> void:
    check(not seen_ids.has(site.id),"unique world/home/site identity");seen_ids[site.id]=true
    check(site.position==content.sites[int(site.context.placement_slot)].position and site.world_position==content.sites[int(site.context.placement_slot)].world_position and spec.source_owned_dry_land,"actual verified owned placement")
    if site.kind=="roadside":check(float(SandboxGenerator.nearest_route(world,site.world_position,int(base.cell_id)).distance)<=2,"actual source-route proximity")
+   if "forest" in spec.biome.to_lower() or spec.biome.to_lower()=="taiga":check(site.context.environment=="forest","source woodland includes taiga")
    var board: Dictionary=site.board
    check(SandboxGenerator.geometry_error(board).is_empty(),"valid connectivity/spawns/engagement")
    check(board.attempt<int(SandboxGenerator.rules().max_attempts),"bounded attempts")

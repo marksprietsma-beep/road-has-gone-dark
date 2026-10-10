@@ -27,6 +27,7 @@ def run(label, command, **extra):
         print(text[-10000:]);raise SystemExit(1)
 run('prepare-real-worlds',['node','tests/sandbox/prepare-corpus.mjs'])
 run('import',[a.godot,'--headless','--audio-driver','Dummy','--editor','--path','.','--quit'])
+run('generation-constraints',[a.godot,'--headless','--audio-driver','Dummy','--path','.','--script','tests/sandbox/constraints.gd'])
 run('generated-corpus',[a.godot,'--headless','--audio-driver','Dummy','--path','.','--script','tests/sandbox/corpus.gd'])
 for phase in ['create','replay']:
     run('multi-opportunity-'+phase,[a.godot,'--headless','--audio-driver','Dummy','--path','.','--script','tests/sandbox/lifecycle.gd'],GAME96_TEST_ROOT=str(base/'lifecycle'),GAME96_PHASE=phase)

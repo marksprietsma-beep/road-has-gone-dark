@@ -23,7 +23,7 @@ static func nearest_route(world: GameWorldTemplate,point: Array,cell: int) -> Di
 static func generate(world: GameWorldTemplate,home_id: int,content: Dictionary) -> Dictionary:
  var home := world.get_record("burg",home_id);var cell := world.get_record("cell",int(home.cell))
  var biome := str(world.get_record("biome",int(cell.biome)).get("name","Unclassified land"))
- var environment := "forest" if "forest" in biome.to_lower() else "dry" if "desert" in biome.to_lower() or "savanna" in biome.to_lower() else "upland" if int(cell.get("heights",20))>=60 else "grass"
+ var environment := "forest" if ("forest" in biome.to_lower() or biome.to_lower()=="taiga") else "dry" if "desert" in biome.to_lower() or "savanna" in biome.to_lower() else "upland" if int(cell.get("heights",20))>=60 else "grass"
  var seed := RulesJson.digest([VERSION,FileAccess.get_sha256(SOURCE),world.source_sha256,home_id,int(home.cell),content.sha])
  var sites: Array=[]
  for i in int(rules().opportunity_count):
