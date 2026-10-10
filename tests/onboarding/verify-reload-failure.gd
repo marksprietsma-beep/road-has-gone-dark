@@ -43,6 +43,9 @@ func _initialize() -> void:
 func run() -> void:
  var ui = load("res://scenes/ui/new_game_origin.tscn").instantiate()
  root.add_child(ui)
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var store := CorruptingStore.new()
  store.save_root = "user://game74-reload-failure-" + Crypto.new().generate_random_bytes(8).hex_encode()
  ui.store = store
@@ -84,6 +87,9 @@ func run() -> void:
  # A failed removal must retain ownership and block duplicate writes or Back.
  var blocked_ui := CleanupBlockedOrigin.new()
  root.add_child(blocked_ui)
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ blocked_ui.party_creation_requested.disconnect(blocked_ui._open_party)
  var blocked_store := CorruptingStore.new()
  blocked_store.save_root = store.save_root + "-cleanup"
  blocked_store.corrupt_reloads = 1

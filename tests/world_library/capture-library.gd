@@ -60,6 +60,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  var ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var directory := "user://game76-ui-test-" + Crypto.new().generate_random_bytes(8).hex_encode()
  configure(ui, directory)
  check(ui.entries.size() == 2 and ui.deletion_button.disabled, "preset worlds visible and deletion disabled")
@@ -116,6 +119,9 @@ func run() -> void:
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/new_game_origin.tscn")
  ui = current_scene
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  configure(ui, directory, second.id)
  check(ui.entries.size() == 3 and ui.entries[ui.world_index].id == second.id, "new onboarding instance retains generated template")
  await click(ui.deletion_button)

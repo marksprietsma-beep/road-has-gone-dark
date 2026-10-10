@@ -35,6 +35,9 @@ func run() -> void:
  var original := FileAccess.get_file_as_bytes(path.path_join("descriptor.json"))
  var ui = load("res://scenes/ui/new_game_origin.tscn").instantiate()
  root.add_child(ui)
+ # Keep this origin regression at its persistence boundary; GAME-81
+ # capture-flow exercises the real default party scene routing.
+ ui.party_creation_requested.disconnect(ui._open_party)
  var library := AlternateLibrary.new()
  library.profile_path = path
  ui.library = library
