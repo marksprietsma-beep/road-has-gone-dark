@@ -1,0 +1,104 @@
+{
+  "worlds": [
+    {
+      "world": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "milliseconds": 1173.8284830000002,
+      "bytes": 2579483
+    },
+    {
+      "world": "azgaar:1.153.1:atlas-showcase-06:9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "milliseconds": 967.9952839999999,
+      "bytes": 2494137
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-0:3cc84573c5619bcf43d6bd844bb8c677fab5212e367355df5ed4eba4102d4b0f",
+      "milliseconds": 958.9993530000002,
+      "bytes": 2823791
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-1:6fdfd1d048bb18a526e68b46ea6cd0c4d3b6b9178f31b863c64e4ff248a1fc78",
+      "milliseconds": 902.7336329999998,
+      "bytes": 2847078
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-2:5145d99d70ac53308b425dde00806711484f9712f4437c2e73376231b11f3565",
+      "milliseconds": 867.039691,
+      "bytes": 2804045
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-3:c440ed5c5678a2de56969149a1639048b2ededb396f0be5378a180dd42b8071b",
+      "milliseconds": 742.3185720000001,
+      "bytes": 2335706
+    },
+    {
+      "world": "azgaar:1.153.1:game80-world-4:a9740eae663d4eaaa08e66222862c2ce816713db1678f098700e2e8338a1a0fd",
+      "milliseconds": 1071.1308559999998,
+      "bytes": 2548402
+    }
+  ],
+  "metrics": [
+    {
+      "domain": "states",
+      "records": 149,
+      "distinct_fact_signatures": 149,
+      "distinct_prose": 149,
+      "largest_duplicate_signature": 1,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"river-work\",\"economy\":{\"specialisms\":[\"river-crafts\",\"mixed-farming\"]},\"orientation\":\"welcoming\",\"posture\":\"peaceful\",\"role\":null,\"social\":\"hospitable\"}",
+          1
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"river-crafts\",\"grain-crafts\"]},\"orientation\":\"welcoming\",\"posture\":\"frontier-minded\",\"role\":null,\"social\":\"meticulous\"}",
+          1
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"fishing\",\"market-crafts\"]},\"orientation\":\"guarded\",\"posture\":\"outward-looking\",\"role\":null,\"social\":\"reserved\"}",
+          1
+        ]
+      ]
+    },
+    {
+      "domain": "regions",
+      "records": 1482,
+      "distinct_fact_signatures": 1243,
+      "distinct_prose": 883,
+      "largest_duplicate_signature": 6,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"household-ledgers\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"local\",\"posture\":\"isolationist\",\"role\":\"forest-district\",\"social\":null}",
+          6
+        ],
+        [
+          "{\"custom\":\"household-ledgers\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"forest-district\",\"social\":null}",
+          5
+        ],
+        [
+          "{\"custom\":\"seasonal-assemblies\",\"economy\":{\"specialisms\":[\"grain-crafts\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"farming-belt\",\"social\":null}",
+          5
+        ]
+      ]
+    },
+    {
+      "domain": "hometowns",
+      "records": 3031,
+      "distinct_fact_signatures": 2390,
+      "distinct_prose": 1935,
+      "largest_duplicate_signature": 7,
+      "top_repeated_signature": [
+        [
+          "{\"custom\":\"wood-care\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"local\",\"posture\":\"decentralised\",\"role\":\"woodland craft community\",\"social\":\"formal\"}",
+          7
+        ],
+        [
+          "{\"custom\":\"path-work\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"guarded\",\"posture\":\"isolationist\",\"role\":\"woodland craft community\",\"social\":\"meticulous\"}",
+          6
+        ],
+        [
+          "{\"custom\":\"tool-care\",\"economy\":{\"specialisms\":[\"forestry\"]},\"orientation\":\"maritime\",\"posture\":\"mercantile\",\"role\":\"woodland craft community\",\"social\":\"communal\"}",
+          6
+        ]
+      ]
+    }
+  ]
+}

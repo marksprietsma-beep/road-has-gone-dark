@@ -97,11 +97,11 @@ func run() -> void:
  check(ui.page == 1, "generated world enters accepted region flow")
  var searches := 0
  while ui.worlds[ui.world_index].home_candidates(ui.state_id, -1).is_empty() and searches < ui.state_picker.item_count:
-  await key(KEY_ENTER)
   await key(KEY_DOWN)
-  await key(KEY_ENTER)
   searches += 1
  await capture("09-generated-region")
+ await click(ui.next_button)
+ check(ui.page == 1 and ui.area_view == "region", "explicit region choice for generated world")
  await click(ui.next_button)
  check(ui.page == 2 and ui.burg_id > 0, "eligible real hometowns from generated source")
  await capture("10-generated-hometown")
@@ -126,7 +126,7 @@ func run() -> void:
  ui.library.helper_root = ProjectSettings.globalize_path(directory.path_join("missing-helper"))
  await click(ui.generation_button)
  while ui.job_thread != null: await process_frame
- check(ui.entries.size() == 3 and not ui.next_button.disabled and not ui.back_button.disabled and ui.message.contains("missing"), "helper failure restores UI and registers no partial world")
+ check(ui.entries.size() == 3 and ui.job_thread == null and not ui.next_button.disabled and not ui.back_button.disabled and ui.message.contains("unavailable") and ui.message.contains("bootstrap"), "missing helper fails preflight, restores UI and registers no partial world")
  ui.library.helper_root = helper
  var partial := false
  for name in DirAccess.get_directories_at(ui.library.library_root):

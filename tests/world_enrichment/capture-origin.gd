@@ -42,7 +42,8 @@ func verify_alignment(ui: Control) -> void:
  var row: Dictionary = ui._lore().public_origin(world, ui.burg_id)
  var home := world.get_record("burg", ui.burg_id)
  check(not row.is_empty() and row.burg_id == ui.burg_id and row.cell_id == home.cell, "lore matches source")
- check(ui.lore_label.text == "Local memory: " + str(row.memory), "comparison uses stored hometown memory")
+ check(ui.lore_label.text.contains("Local memory: " + str(row.memory)), "comparison retains stored hometown memory")
+ check(ui.lore_label.text.begins_with(ui._profiles().public_profile("hometowns", str(ui.burg_id)).full_summary), "profile identity is primary")
  check(ui.facts.text == ui._origin_context().hometown_summary(ui.burg_id).summary, "factual summary changes with lore")
  check(ui.map.burg == Vector2(float(home.x), float(home.y)), "map highlights matching source coordinates")
 func wait_scene(path: String) -> void:
@@ -63,7 +64,7 @@ func run() -> void:
  var ui = current_scene
  check(ui.scene_file_path == "res://scenes/ui/new_game_origin.tscn", "main-menu New Game enters onboarding")
  ui.library.library_root = OS.get_environment("GAME79_TEST_ROOT").path_join("library")
- ui.store.save_root = OS.get_environment("GAME79_TEST_ROOT").path_join("visual-saves")
+ ui.store.save_root = OS.get_environment("GAME79_TEST_ROOT").path_join("visual-saves-" + Crypto.new().generate_random_bytes(8).hex_encode())
  ui.library.save_root = ui.store.save_root
  ui._reload_library()
  ui.show_page()
@@ -86,6 +87,7 @@ func run() -> void:
    ui.page = 1
    ui.choose_state(choice.state)
    ui.choose_province(-1)
+   ui.show_page()
    await click(ui.next_button)
    var index := -1
    for i in ui.candidates.size():

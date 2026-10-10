@@ -48,6 +48,8 @@ func run() -> void:
  ui.store = store
  ui.advance()
  ui.advance()
+ check(ui.page == 1 and ui.area_view == "region", "state advances to explicit region choice")
+ ui.advance()
  ui.advance()
  var home: int = ui.burg_id
  check(ui.page == 3, "starts at confirmation")
@@ -86,6 +88,7 @@ func run() -> void:
  blocked_store.save_root = store.save_root + "-cleanup"
  blocked_store.corrupt_reloads = 1
  blocked_ui.store = blocked_store
+ blocked_ui.advance()
  blocked_ui.advance()
  blocked_ui.advance()
  blocked_ui.advance()

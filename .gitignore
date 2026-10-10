@@ -11,3 +11,7 @@ tests/worldgen/fixtures/*.vegetation.svg
 /review/local-region-v1/
 
 /worldgen-helper
+# Versioned local bootstrap/build output; native binaries remain out of Git.
+/.local/
+/worldgen-helper.pending-*
+/worldgen-helper.previous-*

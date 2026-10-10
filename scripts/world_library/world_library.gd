@@ -77,6 +77,13 @@ func _read_entry(path: String, staged: bool = false) -> Dictionary:
   if not why.is_empty():
    error = why
    if staged: return {}
+ if meta.has("origin_profiles"):
+  world.enrichment_directory = path.path_join("enrichment/origin-v1")
+  world.profiles_directory = path.path_join("enrichment/profiles-v2")
+  var profile_error := OriginProfiles.new().validate_pin(meta.origin_profiles, world, path.path_join("enrichment/profiles-v2"))
+  if not profile_error.is_empty():
+   error = profile_error
+   if staged: return {}
  world.enrichment_directory = path.path_join("enrichment/origin-v1")
  if not staged and path.get_file() != world.source_sha256: return {}
  return {"id": world.world_id, "preset": false, "label": str(meta.get("label", "Generated World")).left(80),
@@ -94,7 +101,7 @@ func _remove_flat_directory(path: String, enrichment_child: bool = false) -> boo
   var child := path.path_join(name)
   if dir.is_link(child): return false
   if not enrichment_child and name != "enrichment": return false
-  if enrichment_child and not (name == "origin-v1" or name.begins_with("origin-v1.pending-")): return false
+  if enrichment_child and not (name == "origin-v1" or name.begins_with("origin-v1.pending-") or name == "profiles-v2" or name.begins_with("profiles-v2.pending-")): return false
   if not _remove_flat_directory(child, true): return false
  for file in dir.get_files():
   if DirAccess.remove_absolute(path.path_join(file)) != OK: return false
@@ -225,6 +232,8 @@ func run_generator(stage: String, seed: String) -> Dictionary:
   return _fail("The bundled world generator is missing or unsupported.")
  if not FileAccess.file_exists(binary) or FileAccess.get_sha256(binary) != manifest.get("runtimeSha256"):
   return _fail("The bundled world generator failed its integrity check.")
+ var ready := helper_status()
+ if not ready.ok: return ready
  var log: Array = []
  var exit := OS.execute(binary, [helper.path_join("tools/worldgen/helper-entry.mjs"), "--seed", seed, "--output", stage.path_join("world.json")], log, true, false)
  var diagnostic := FileAccess.open(_root().path_join("generation-last.log"), FileAccess.WRITE)
@@ -246,6 +255,8 @@ func import_generated(stage: String) -> Dictionary:
    _remove_flat_directory(stage)
    var enriched := ensure_enrichment(entry)
    if not enriched.ok: return enriched
+   var profiled := ensure_profiles(entry)
+   if not profiled.ok: return profiled
    return {"ok": true, "entry": entry, "deduplicated": true}
  if not build_preview(stage, loaded.raw, world.source_sha256):
   _remove_flat_directory(stage)
@@ -254,6 +265,10 @@ func import_generated(stage: String) -> Dictionary:
  if not enriched.ok:
   _remove_flat_directory(stage)
   return enriched
+ var profiled := ensure_profiles({"id": world.world_id, "world": world, "directory": stage, "path": stage.path_join("world.json"), "preset": false})
+ if not profiled.ok:
+  _remove_flat_directory(stage)
+  return profiled
  if not _acquire_lock():
   _remove_flat_directory(stage)
   return _fail("The world library is busy. No world was added; please retry.")
@@ -269,7 +284,7 @@ func import_generated(stage: String) -> Dictionary:
  while labels.has("Generated World %d" % number): number += 1
  var meta := {"library_version": 1, "preset": false, "world_ref": world.source_metadata(),
   "created": Time.get_datetime_string_from_system(true), "label": "Generated World %d" % number,
-  "origin_enrichment": enriched.descriptor}
+  "origin_enrichment": enriched.descriptor, "origin_profiles": profiled.descriptor}
  if not _write_json(stage.path_join("metadata.json"), meta):
   _release_lock()
   _remove_flat_directory(stage)
@@ -401,3 +416,69 @@ func _compile_enrichment(entry: Dictionary, target: String) -> Dictionary:
   _remove_flat_directory(pending, true)
   return _fail("Local history could not be committed. Please retry; existing history was preserved.")
  return {"ok": true, "descriptor": lore.descriptor}
+
+
+func profiles_directory(entry: Dictionary) -> String:
+ if entry.get("preset", false): return "res://data/world_enrichment/presets-profiles-v2/" + str(entry.key)
+ return str(entry.directory).path_join("enrichment/profiles-v2")
+
+func helper_status() -> Dictionary:
+ var helper := helper_location()
+ var manifest := _json(helper.path_join("runtime.json"))
+ var runtime := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
+ if manifest.get("nodeVersion") != "v24.19.0" or not FileAccess.file_exists(runtime) or FileAccess.get_sha256(runtime) != manifest.get("runtimeSha256"):
+  return _fail("The bundled world generator is unavailable. Install the matching game distribution or run the checkout bootstrap.")
+ for pair in [["origin-v1", "runtime.json"], ["profiles-v2", "runtime-profiles-v2.json"]]:
+  var packaged := helper.path_join("data/world_enrichment/" + pair[1])
+  var expected := FileAccess.get_sha256("res://data/world_enrichment/" + pair[1])
+  if manifest.get("enrichmentRuntimes", {}).get(pair[0]) != expected or not FileAccess.file_exists(packaged) or FileAccess.get_sha256(packaged) != expected:
+   return _fail("The bundled generator does not match this game version. Run the checkout bootstrap or use the complete matching game distribution.")
+ var profile_manifest := _json(helper.path_join("data/world_enrichment/runtime-profiles-v2.json"))
+ for file in profile_manifest.get("files", {}):
+  var path := helper.path_join(str(file))
+  if not FileAccess.file_exists(path) or FileAccess.get_sha256(path) != profile_manifest.files[file]: return _fail("The bundled generator failed its content integrity check. Rebuild the matching helper.")
+ return {"ok": true}
+
+func ensure_profiles(entry: Dictionary) -> Dictionary:
+ var world: GameWorldTemplate = entry.world
+ world.enrichment_directory = enrichment_directory(entry)
+ var target := profiles_directory(entry)
+ world.profiles_directory = target
+ var profiles := OriginProfiles.new()
+ if entry.get("preset", false) or DirAccess.dir_exists_absolute(target):
+  if not profiles.load_world(world, target): return _fail(profiles.error)
+  return {"ok": true, "descriptor": profiles.descriptor}
+ var ready := helper_status()
+ if not ready.ok: return ready
+ if not _acquire_lock(): return _fail("The world library is busy. Origin profiles were not changed.")
+ var refs := reference_status(entry)
+ if not refs.ok:
+  _release_lock()
+  return refs
+ var pins: Array = []
+ var save_names := DirAccess.get_files_at(save_root) if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(save_root)) else PackedStringArray()
+ for name in save_names:
+  if not (name.ends_with(".json") or name.ends_with(".json.bak") or name.ends_with(".json.tmp")): continue
+  var save := _json(save_root.path_join(name))
+  var ref: Dictionary = save.get("world_ref", {})
+  if (ref.get("id") == world.world_id or ref.get("sha256") == world.source_sha256) and save.has("origin_profiles"): pins.append(save.origin_profiles)
+ var pending := target + ".pending-" + Crypto.new().generate_random_bytes(8).hex_encode()
+ var helper := helper_location()
+ var binary := helper.path_join("node.exe" if OS.get_name() == "Windows" else "node")
+ var log: Array = []
+ var code := OS.execute(binary, [helper.path_join("tools/world_enrichment/profiles-world.mjs"), "--world", ProjectSettings.globalize_path(entry.path), "--output", ProjectSettings.globalize_path(pending)], log, true, false)
+ var why := ""
+ if code != 0 or not profiles.load_world(world, pending): why = "Origin profile enrichment could not be prepared. Existing worlds and saves were preserved. " + profiles.error
+ if why.is_empty():
+  for pin in pins:
+   why = profiles.validate_pin(pin, world, pending)
+   if not why.is_empty(): break
+ if not why.is_empty():
+  _remove_flat_directory(pending, true)
+  _release_lock()
+  return _fail(why)
+ var committed := not DirAccess.dir_exists_absolute(target) and DirAccess.rename_absolute(pending, target) == OK
+ if not committed: _remove_flat_directory(pending, true)
+ _release_lock()
+ if not committed: return _fail("Origin profiles could not be committed. Existing history was preserved.")
+ return {"ok": true, "descriptor": profiles.descriptor}

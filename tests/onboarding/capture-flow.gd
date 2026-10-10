@@ -66,13 +66,13 @@ func run() -> void:
  check(ui.page == 1, "mouse Next region")
  await capture("03-region")
  var previous_state: int = ui.state_id
- await key(KEY_ENTER)
  await key(KEY_DOWN)
- await key(KEY_ENTER)
- check(ui.state_id != previous_state, "keyboard state popup selection")
+ check(ui.state_id != previous_state, "keyboard themed state list selection")
  # Restore canonical first region for the sequential evidence.
  ui.choose_state(previous_state)
  await frames()
+ await click(ui.next_button)
+ check(ui.page == 1 and ui.area_view == "region", "mouse Next region list")
  await click(ui.next_button)
  check(ui.page == 2, "mouse Next hometown")
  await capture("04-hometown")

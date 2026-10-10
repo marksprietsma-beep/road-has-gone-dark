@@ -1,0 +1,64 @@
+name: Verify Hierarchical Origin Profiles and Native Distribution
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tools/**'
+      - 'data/world_enrichment/**'
+      - 'tests/**'
+      - 'export_presets.cfg'
+      - '.github/workflows/verify-origin-profiles.yml'
+  workflow_dispatch:
+jobs:
+  profiles:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen build dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Prepare verified Godot and the single native offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Linux profiles, five offline worlds, real input/render and regressions
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/origin_profiles/run-tests.py --visual --regressions
+      - name: Windows native profiles, five offline worlds, persistence and regressions
+        if: runner.os == 'Windows'
+        run: python tests/origin_profiles/run-tests.py --regressions
+      - name: Assemble this Linux run's real frames for review
+        if: runner.os == 'Linux'
+        run: |
+          python -m pip install -r tests/origin_profiles/requirements-visual.txt
+          python tests/origin_profiles/make-contact-sheet.py
+      - name: Install checksum-verified native export templates
+        run: python tools/release/prepare-templates.py
+      - name: Export, test and archive the complete native game and matching helper
+        env:
+          GAME80_RELEASE_ROOT: ${{ runner.temp }}/game80-distributions
+        run: python tests/origin_profiles/verify-package.py
+      - name: Upload executed evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game80-qa-${{ runner.os }}
+          path: docs/implementation/game80
+      - name: Upload complete native distribution and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: game80-complete-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game80-distributions/*.zip
+            ${{ runner.temp }}/game80-distributions/*.tar.gz
+            ${{ runner.temp }}/game80-distributions/*.sha256

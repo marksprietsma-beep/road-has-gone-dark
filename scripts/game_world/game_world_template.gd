@@ -18,6 +18,7 @@ var world_ref: Dictionary = {}
 var _raw: Dictionary = {}
 # Override only for isolated tests/custom library roots; not persisted as a path.
 var enrichment_directory := ""
+var profiles_directory := ""
 
 func load_fixture(path: String) -> bool:
 	error = ""
@@ -114,6 +115,13 @@ func get_record(kind: String, source_id: int) -> Dictionary:
 		if item is Dictionary and int(item.get("i", -1)) == source_id and not item.is_empty():
 			return item.duplicate(true)
 	return {}
+
+func political_columns() -> Dictionary:
+	# Read-only bulk view avoids repeated linear cell lookup in integrity checks.
+	var out := {}
+	for key in ["ids", "heights", "state", "province"]:
+		out[key] = _raw.get("cells", {}).get(key, []).duplicate(true)
+	return out
 
 func raw_counts() -> Dictionary:
 	var counts := {"cells": _raw.get("cells", {}).get("ids", []).size()}

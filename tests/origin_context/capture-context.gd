@@ -50,6 +50,7 @@ func select_home(ui: Control, id: int) -> void:
  ui.page = 1
  ui.choose_state(int(cell.state))
  ui.choose_province(int(cell.province))
+ ui.show_page()
  await click(ui.next_button)
  var index := -1
  for i in ui.candidates.size():
@@ -141,6 +142,8 @@ func run() -> void:
  var generated: Dictionary=ui.entries[ui.world_index]
  await click(ui.next_button)
  await capture(ui,"generated-region")
+ await click(ui.next_button)
+ check(ui.page==1 and ui.area_view=="region","generated state advances to region")
  await click(ui.next_button)
  check(ui.page==2 and ui.burg_id>0,"generated source reaches real hometown candidates")
  await capture(ui,"generated-hometown")
