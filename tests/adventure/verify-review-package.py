@@ -22,7 +22,7 @@ with log.open('w',encoding='utf-8') as stream:
                             stdout=stream,stderr=subprocess.STDOUT,timeout=900)
 text = log.read_text(encoding='utf-8')
 print(text,flush=True)
-proof = json.loads((base/'clean-profile/review-proof.json').read_text())
+proof = json.loads((base/'clean-profile/review-proof.json').read_text(encoding='utf-8'))
 assert result.returncode == 0 and 'ERROR:' not in text and proof['failures']==0 and proof['checks']>=60
 assert proof['empty_path'] and not proof['source_helper_override']
 assert proof['art']['styles']==['lpc']
@@ -43,7 +43,7 @@ if sandbox:
         run = subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=distribution,env=sandbox_env,stdout=stream,stderr=subprocess.STDOUT,timeout=900)
     output = sandbox_log.read_text(encoding='utf-8')
     print(output,flush=True)
-    sandbox_proof = json.loads((sandbox_root/'review-proof.json').read_text())
+    sandbox_proof = json.loads((sandbox_root/'review-proof.json').read_text(encoding='utf-8'))
     assert run.returncode==0 and 'ERROR:' not in output and sandbox_proof['failures']==0
     assert sandbox_proof['empty_path'] and not sandbox_proof['source_helper_override']
     assert len(sandbox_proof['sandbox']['scenarios'])==3 and len(sandbox_proof['sandbox']['results'])==3
@@ -52,7 +52,7 @@ if sandbox:
     assert (distribution/'SANDBOX-GENERATION.json').exists()
 assert not any((distribution/'artwork'/name).exists() for name in ['kenney','0x72','navinius'])
 # Audit all distributed original resources independently of Godot import remaps.
-art_manifest=json.loads((distribution/'artwork/sources.json').read_text())
+art_manifest=json.loads((distribution/'artwork/sources.json').read_text(encoding='utf-8'))
 for row in art_manifest['files']:
     original=distribution/'artwork'/pathlib.Path(row['path']).relative_to('assets/combat')
     assert hashlib.file_digest(original.open('rb'),'sha256').hexdigest()==row['sha256']
@@ -72,6 +72,6 @@ with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as package:
         if path.is_file(): package.write(path,pathlib.Path(distribution.name)/path.relative_to(distribution))
 digest = hashlib.file_digest(archive.open('rb'),'sha256').hexdigest()
 (base/(archive.name+'.sha256')).write_text(digest+'  '+archive.name+'\n')
-proof.update(production_launch=True,archive_sha256=digest,archive=archive.name,distribution=json.loads((distribution/'distribution.json').read_text()))
+proof.update(production_launch=True,archive_sha256=digest,archive=archive.name,distribution=json.loads((distribution/'distribution.json').read_text(encoding='utf-8')))
 (evidence/'windows-proof.json').write_text(json.dumps(proof,indent=2)+'\n')
 print('::notice title=First Adventure Windows proof::'+json.dumps(proof,separators=(',',':')),flush=True)
