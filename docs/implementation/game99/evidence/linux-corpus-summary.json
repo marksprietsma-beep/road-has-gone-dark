@@ -1,0 +1,3203 @@
+{
+  "planned_worlds": 33,
+  "completed": 33,
+  "successes": 33,
+  "failures": 0,
+  "seconds": 284.0082538600001,
+  "worlds": [
+    {
+      "seed": "game96-sandbox-review-v2",
+      "success": true,
+      "source_sha": "c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1",
+      "geography_sha": "37d132f3c4d30d02cc93eca591c65eabaada7284de54e82ff991ba3e7fd4045e",
+      "generation_seconds": 5.905296372,
+      "seconds": 12.599667128,
+      "cells": 5736,
+      "features": 11,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3869,
+        "islands": 10,
+        "lakes": 1
+      },
+      "off_canvas": [
+        {
+          "id": 9109,
+          "p": [
+            722.0000000000003,
+            800.4226306386807
+          ]
+        }
+      ],
+      "neighbor_edges": 17109,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 29,
+        "inland": 18,
+        "lake_adjacent": 129,
+        "nearest_map_edge": {
+          "home": 489,
+          "distance": 41.809999999999945
+        }
+      },
+      "regions": [
+        {
+          "home": 29,
+          "cell": 4914,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:4914",
+          "region_sha": "2457d2f34dbf0ac8e4448e2e76c258b9a21a8929ea2e3d33b63c43fd4b446beb",
+          "content_sha": "08c96907202578e8d0d5dc2527c06b5198d4b68fc23b1ded49f6b29e910123d4"
+        },
+        {
+          "home": 18,
+          "cell": 518,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:518",
+          "region_sha": "6db3e7781526fd8f4a7e2424340b6dc271d56dc61e36ce9ac8492bdce43e24f7",
+          "content_sha": "71bd7de36c89039c78afb8c7ea4aeb10ca7328bfd98b2887e2e0f35b7fc0ec63"
+        },
+        {
+          "home": 129,
+          "cell": 4068,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:4068",
+          "region_sha": "52b73dea9f0f483cb5618e3082fe1a32b0f3682223dbd841d7829d345bddb78b",
+          "content_sha": "02bf7c383c4a46c1315daa381488a74788fcfb5856c391db9b8ba2e3a2b3dc8e"
+        },
+        {
+          "home": 489,
+          "cell": 5710,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:5710",
+          "region_sha": "a4d7f96e2abaab2b2f317fcb8925e2b2fb8f7eca36cdbf318f1575562c826313",
+          "content_sha": "b4e0cf00949d7fb58c7a4740b97fe1f789e18b43bc74018f44b7f4f7af0cfde7"
+        },
+        {
+          "home": 23,
+          "cell": 4905,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:4905",
+          "region_sha": "51a2e24a502da71bcf46bd3c9ba65091fef34b4f5e4a4888e7d5881da30e931c",
+          "content_sha": "dd6cffe3102feb3d1c0c36de798424f97154b02b947ab33043520d75297048e4"
+        },
+        {
+          "home": 31,
+          "cell": 5134,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:5134",
+          "region_sha": "09b2b85ab1b9200c939d074613ac7b4b80c4742a080c3c1ce11bd46611ff4903",
+          "content_sha": "30a167f7e04e174e73c17c94174fc23fd5916a939985da0315a53cf72c8d7643"
+        },
+        {
+          "home": 40,
+          "cell": 2731,
+          "biome": "Hot desert",
+          "region_id": "local-cell:v1:6c119a381e1ccfc5178e38d52d8d20412d1b91fca74ed611ce9c49e6731afdf4:cell:2731",
+          "region_sha": "f903f9854420b18247d143c21b8f7286ee01432420d8ad9364d4d2d8a03d77ad",
+          "content_sha": "28b3c04c9bc6a2092c39c520f3d31f88981ccb2d9a9214d7bcfb8c504a7e0ad0"
+        }
+      ]
+    },
+    {
+      "seed": "game-11-determinism",
+      "success": true,
+      "source_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "geography_sha": "86f288aa7cb2f73a20566c85abae76e037a5a92e470501fa26c1b505ae2756ac",
+      "generation_seconds": 6.198964161,
+      "seconds": 13.132119749000001,
+      "cells": 5959,
+      "features": 12,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4335,
+        "islands": 8,
+        "lakes": 4
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17782,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 25,
+        "inland": 22,
+        "lake_adjacent": 26,
+        "nearest_map_edge": {
+          "home": 717,
+          "distance": 94.8599999999999
+        }
+      },
+      "regions": [
+        {
+          "home": 25,
+          "cell": 3408,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:3408",
+          "region_sha": "646ad65bc02d4412b9e27b9daf5f8182f1a46dcda790f7c5c62146d37fb1071d",
+          "content_sha": "412f3d457ce028267e24a1d271bb5cdc7947cb3dcee6dd55bc7268ebc4c05f5e"
+        },
+        {
+          "home": 22,
+          "cell": 5509,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:5509",
+          "region_sha": "3e2d56221906b8f2b53a224772d65be546ecff32626af90040afe5dc046d15e4",
+          "content_sha": "a1fb7347ce99f1a6856cd23b80575665e812e43fa2d58852385d3057979de25f"
+        },
+        {
+          "home": 26,
+          "cell": 4719,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:4719",
+          "region_sha": "fac3c2953d670ef866911017bad326c65a0d0b676c20a2805408def56477f2b8",
+          "content_sha": "2beffe8374d3ffb8c4947fda54b5f74232e2514a1383972fcf27e37d1c7f455c"
+        },
+        {
+          "home": 717,
+          "cell": 2456,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:2456",
+          "region_sha": "cb9cc8e271b0a7c9a2adadba5639353d0886e598b2c0d6c234e13069aef4f2da",
+          "content_sha": "9b9b2a5b2f3a3a0903729e758e0b43c5f7e0f26d910e5c36b84e9f216a9e1b1c"
+        },
+        {
+          "home": 24,
+          "cell": 2022,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:2022",
+          "region_sha": "bd7e4879ea9298be4f8bcb3ca5cd74a147e5343ce9368a3626ff620e85d908a3",
+          "content_sha": "2a728aeb92d80f03d10fa905db4c507c2ff408d7b6270a47dbac565029b54087"
+        },
+        {
+          "home": 47,
+          "cell": 1324,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:1324",
+          "region_sha": "24cbf807d2fb8e33429a3067cc95d5d90b55c74fda2ad4ade3206a833fc26a18",
+          "content_sha": "ac92782f681bb548e839cba899cd038f04151f6fd06e064862f72ea1fd458261"
+        },
+        {
+          "home": 48,
+          "cell": 2984,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:c931d8155a546aed4254188dc719981a07b2eb8ccdab27b240558b8d63280adb:cell:2984",
+          "region_sha": "59b82ff79bb7dc0b0d4886bd9ab9b380b42f94985701a73300c0a0b41f410f8e",
+          "content_sha": "a2cd96d841d2d25db35f529bf7f2fc4c7827164fba26e636f8200df7e2c9d82a"
+        }
+      ]
+    },
+    {
+      "seed": "atlas-showcase-06",
+      "success": true,
+      "source_sha": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+      "geography_sha": "fc0d743d9f369e973095233e27323596c019c7471f80903e07e4b2a66d85d95a",
+      "generation_seconds": 6.7015071509999995,
+      "seconds": 13.825580023,
+      "cells": 5881,
+      "features": 16,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4167,
+        "islands": 10,
+        "lakes": 6
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17542,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 32,
+        "inland": 28,
+        "lake_adjacent": 32,
+        "nearest_map_edge": {
+          "home": 468,
+          "distance": 121.29999999999995
+        }
+      },
+      "regions": [
+        {
+          "home": 32,
+          "cell": 2563,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:2563",
+          "region_sha": "0f3f4d6aa85a209f5ba912bb8cd7bb049451e3f48427e7bb3b64ac78b6bdb3ef",
+          "content_sha": "2fd97ad1852ad843bb7a02ead22a81179c63198fe9e1b50ec0ae1446af1879d9"
+        },
+        {
+          "home": 28,
+          "cell": 4347,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:4347",
+          "region_sha": "1e83c3f2f9018c965b2cba8ed32809765db3665887585fe04241479c82281fa4",
+          "content_sha": "01012a37eb28fe9ca4fd983015ed7bc0dfb60821340cc654e21ec48f92dd02da"
+        },
+        {
+          "home": 468,
+          "cell": 5721,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:5721",
+          "region_sha": "5e49a30ad2efc848c3dc36f9dbac8c516e0ecc2f41f4e5be7120f93d5cc0dd13",
+          "content_sha": "3db86873360f1e110d96850f39c927efe74a4c1ea3324c60bbf09308ef58e6e0"
+        },
+        {
+          "home": 36,
+          "cell": 4283,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:4283",
+          "region_sha": "06c1b1615716773a893b0aed9ba32dc67fd5a0c7f63648e379dde4e13ca86c8d",
+          "content_sha": "7b84a137dc9ae4f97d374668a6ed75ec2b69752a2b8db9fdf2d6f89592a13744"
+        },
+        {
+          "home": 49,
+          "cell": 3438,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:3438",
+          "region_sha": "5a8504436fb5861eea42263d265ab7434334ea20bfda4f28f751c0bece6e880e",
+          "content_sha": "c3cf8e06fe0bb34ddfdd9d7c3ef94c2c73233b33b76f01f3b4bb3b0f8bf656c7"
+        },
+        {
+          "home": 173,
+          "cell": 5355,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:5355",
+          "region_sha": "7b5cc70949b1ef953942745e07d1a55f1f111dc5d132c0969d32fc705a1d3dbf",
+          "content_sha": "0e8bf33f4e94b861c8bff050093037d64e74523c6b26f07cb9866807f4105f1c"
+        },
+        {
+          "home": 194,
+          "cell": 2652,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:af0b0523d7b459b263013d5cc60f60aa0adba46525f3b1248726825bee6e2b35:cell:2652",
+          "region_sha": "e4e9ab7f4dfe686e8e49850b1d3c3b54da048c4b000655263f1354db1abc9080",
+          "content_sha": "fcfdd62d832fb6081883b474482f4fe00071fe164be692ecff84659f4e6e0b7c"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-00",
+      "success": true,
+      "source_sha": "9b1c0c7f341eb4f7e84e20b83d24000ec8d17843514c5ee179be02d59e8173f5",
+      "geography_sha": "cd27a0330133d4bad2bd4b2201c35692c7a072280f447879a1c238d2433a0c3a",
+      "generation_seconds": 5.5672827929999995,
+      "seconds": 12.666898723,
+      "cells": 6001,
+      "features": 15,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4465,
+        "islands": 8,
+        "lakes": 7
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17895,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 17,
+        "inland": 14,
+        "lake_adjacent": 82,
+        "nearest_map_edge": {
+          "home": 407,
+          "distance": 70.75
+        }
+      },
+      "regions": [
+        {
+          "home": 17,
+          "cell": 5281,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:5281",
+          "region_sha": "f7b954e89f898eace4459d648f47f2da165befddb786dd4d13daa20b1792c0c7",
+          "content_sha": "1ce6b00d68980baa9a73ad710c61031a59e5cf10eee00885dcabee7cba09e6ef"
+        },
+        {
+          "home": 14,
+          "cell": 5559,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:5559",
+          "region_sha": "e95f0ca837eafa75574d37da58930549876169df28ff0de9104a91b2af11ff94",
+          "content_sha": "63ed012b386acdd6e670d4abb20d28fe7f29a9304d85739e55f0ba59ca723d70"
+        },
+        {
+          "home": 82,
+          "cell": 4536,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:4536",
+          "region_sha": "6b783b3bb07834d96ae4f6ea2e302eecb9e9db7dc8c3ed4a62fec8ed0cd1151c",
+          "content_sha": "72c4a9ddb85424c22a2024216e3cc3f1aa2cb6901b205149a9949a2aac9602e0"
+        },
+        {
+          "home": 407,
+          "cell": 5947,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:5947",
+          "region_sha": "d8b3eb7e4171edf366feb6d2e7454751299d86209650643741963bd125687508",
+          "content_sha": "ddeec3d26ecb5273d8179740c8ebeac9f15404b978c53f74bc6a4e8cedf214db"
+        },
+        {
+          "home": 22,
+          "cell": 1582,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:1582",
+          "region_sha": "f2c1fafbfd657734c9ad0a464d6344893c7f01b57bb77c61a4988852bc961cea",
+          "content_sha": "0c149528634d64fa5a45f4e3bb19b4f38cbfdc20b979476554087bc197009d34"
+        },
+        {
+          "home": 62,
+          "cell": 4424,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:4424",
+          "region_sha": "276258334754721398674f7848eee5a8ac50da597d16391408ab25d74d48c05c",
+          "content_sha": "7b15230d41ebabae45b385ec5eddfd1c787b89bf5b3023f6a8f53b1b9d10a011"
+        },
+        {
+          "home": 89,
+          "cell": 3903,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:7491fd2ebeafe57de93d122695ac3d70f1546cf912c516f40898fba455cab8e7:cell:3903",
+          "region_sha": "f276defec049f9911aa94f730b5cd67590808457190bec80f91c215a8f2a4ce7",
+          "content_sha": "5e0bdce4b2405f0ce740b0e6adc5e2a9a4709796f11f2a79b843d6971c25621e"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-01",
+      "success": true,
+      "source_sha": "b959a9df1b1c7575ca7ca6216a31fc2c3cc84701aaa3da1ba777ace27c353015",
+      "geography_sha": "c5b390abe15ec29ef77c26759207cf965710ca0b7dbf6f3beb2431cabc99dc07",
+      "generation_seconds": 5.173963906,
+      "seconds": 11.327943548,
+      "cells": 5657,
+      "features": 16,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3773,
+        "islands": 13,
+        "lakes": 3
+      },
+      "off_canvas": [],
+      "neighbor_edges": 16864,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 24,
+        "inland": 35,
+        "lake_adjacent": 195,
+        "nearest_map_edge": {
+          "home": 296,
+          "distance": 83.65000000000009
+        }
+      },
+      "regions": [
+        {
+          "home": 24,
+          "cell": 863,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:863",
+          "region_sha": "5af23928fd90b28d6ad9bdc4782b0ef691250220a1fede0034c1470e58ce0847",
+          "content_sha": "c16377da0bc1b4e6a18b5e93b7004a357147698163c00eb4ad336da6e4cff77c"
+        },
+        {
+          "home": 35,
+          "cell": 4676,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:4676",
+          "region_sha": "68b96f5a52d8c944b49ff3b6b0b273603403e985fdd9424fc8ecc72ef55d25a9",
+          "content_sha": "b17f1d6e3b5f2c19bee4ce591091d54845a199426e2e6f379d8e43ee7c5111ec"
+        },
+        {
+          "home": 195,
+          "cell": 2661,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:2661",
+          "region_sha": "b222b72de04a995aac43f077f7cecfb0858263dcf4cde5d715555265d7dec1c9",
+          "content_sha": "2b1a49fc7f87671885426acae46f6620b690b796dc06bf38be37d17512f12465"
+        },
+        {
+          "home": 296,
+          "cell": 2908,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:2908",
+          "region_sha": "8b0fb5bbafeb6d06b5f70c4daec73be46e1ee7b3bad95d770d6affc33ec93ad0",
+          "content_sha": "56341aa00e2b1e3d7eea6477f399ad386df178a62a282ac650883e84acf0b8ce"
+        },
+        {
+          "home": 25,
+          "cell": 5314,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:5314",
+          "region_sha": "2d456a904da29bd4e5c86617f06e5f1f91a9ea79f4b15bc18a4cbe9eb67d5866",
+          "content_sha": "d968755ef60546b4169bb7c72fef55e4f82d0e9f14ee6a6173e2c862135dae14"
+        },
+        {
+          "home": 33,
+          "cell": 1872,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:1872",
+          "region_sha": "c0634b9854b54e68ae05dd86d8aa2d3450ce250fa4d152c383f0a5373d787395",
+          "content_sha": "935ac3d008ea6b627c0991ee3dce045abd6eb04ddfe599c86058f787277dedcd"
+        },
+        {
+          "home": 36,
+          "cell": 1296,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:df9e4feef0b847f83649433e05eed75ed6f9df9651f6b0d22fe6bc0d0ce3d581:cell:1296",
+          "region_sha": "ecdba8d3c1d4a8bd64db1a8b9cf4da86a09b1e56c3bd5960e6042c6f0ad716f8",
+          "content_sha": "eba0765301cf8e0a9be5801e2ac5b490f982ae4f01bf91bd22f769388050f3d7"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-02",
+      "success": true,
+      "source_sha": "19fe4e0bf15fc07c799590aa77835845b9e5a3eb4da036aa3484182801766129",
+      "geography_sha": "02c5ef97447076a331ed960c4c2dff558de8ffc481af361650a1aca8dee38700",
+      "generation_seconds": 5.5839776,
+      "seconds": 12.335873283,
+      "cells": 6253,
+      "features": 20,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4362,
+        "islands": 15,
+        "lakes": 5
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18659,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 19,
+        "inland": 21,
+        "lake_adjacent": 48,
+        "nearest_map_edge": {
+          "home": 392,
+          "distance": 56.13
+        }
+      },
+      "regions": [
+        {
+          "home": 19,
+          "cell": 722,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:722",
+          "region_sha": "335509d63235ef0f5bdb54f25be29fac92bee210f575f00bb46074f2a4aabe4c",
+          "content_sha": "7d72a8c3f3c8210850213f8266e76c57bd106f05239a4bdc4fa1c9b74c522584"
+        },
+        {
+          "home": 21,
+          "cell": 2542,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:2542",
+          "region_sha": "5614f59fbac7ad53b0a5a5073073fe41d639d746e15e4beb5d83f1fb0596c38d",
+          "content_sha": "e69856fd964f5a0c732534822e425ccad48f2cc21dc000f0ea76e2dbe53d48fd"
+        },
+        {
+          "home": 48,
+          "cell": 5497,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:5497",
+          "region_sha": "3f128104a62b372636d5b8733590a2dae5a8328cf7c0ad1bf9e770d2d19ad0e4",
+          "content_sha": "af3baea0131f5d251c8ac98d4e1b8aa8fb9cf163a44a0558e23bf4694b30a2ea"
+        },
+        {
+          "home": 392,
+          "cell": 2325,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:2325",
+          "region_sha": "e7b9a3a49ee64e6e5cb9747a1af983b4c8fd1e3f467d7be82aeda610769a8997",
+          "content_sha": "f40fc8f6bf1b96221fcdc1fd377a47654595deb8055a694fc20c6ee0f5583b64"
+        },
+        {
+          "home": 23,
+          "cell": 1829,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:1829",
+          "region_sha": "d67ffe386a6d881868e2970e7d3124af8354733f23a8fccdce7fc501b78508f2",
+          "content_sha": "e251163216aef4bf5a7c52d250fab6a815fad1625c6f4a8635c40533b7451f80"
+        },
+        {
+          "home": 24,
+          "cell": 3366,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:3366",
+          "region_sha": "82ce51ec42cbaa6a672c91858f466b8987fd3e0e35b16b5c10124c798542b0ba",
+          "content_sha": "37a8f0779231436fdc9e1c7f6b3e8c2f2ee6cf38a4ded4869753b9993417b378"
+        },
+        {
+          "home": 33,
+          "cell": 3212,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:d972cf493b9075c23d0c8c8de22582a582155c00614d265774e7a09fc2244293:cell:3212",
+          "region_sha": "e1a3373463a620d0c9cd5214cc46d70243192837159a6d5bb66eaad38eece1a4",
+          "content_sha": "aed81b0bab7c337193ed891a0911fe4508b057bb27952238306c3df4e0fcbb44"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-03",
+      "success": true,
+      "source_sha": "dbcc07d6bd6da3d98c88f3bc680b9888f266ed81cd1bdd684db4d85fade1cfd5",
+      "geography_sha": "48a94a9c82d2deecfcf671849fbf1723f0d3212b747e1663ec7e8793291db38b",
+      "generation_seconds": 5.581992612,
+      "seconds": 12.634920619999999,
+      "cells": 6077,
+      "features": 17,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4481,
+        "islands": 11,
+        "lakes": 6
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18120,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 40,
+        "inland": 24,
+        "lake_adjacent": 226,
+        "nearest_map_edge": {
+          "home": 358,
+          "distance": 56.77999999999997
+        }
+      },
+      "regions": [
+        {
+          "home": 40,
+          "cell": 4792,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:4792",
+          "region_sha": "7f790de50bf52b3c57b230a329ce6f9f41c36f62377b249ff491ccf623d5ffc3",
+          "content_sha": "18d43dc1fc31a6b0338731fe98000f2b8bd7b8acb364fcbd70caace190450ea3"
+        },
+        {
+          "home": 24,
+          "cell": 5646,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:5646",
+          "region_sha": "6adc424128b4f166ea4d0be83875a2d643d05909e682286efb5803cc8aded19e",
+          "content_sha": "2cd1b90d445ce8debab6ddf5d9d21a4113a37de5fb674dc927474d7c233abee2"
+        },
+        {
+          "home": 226,
+          "cell": 1967,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:1967",
+          "region_sha": "a7ebdbd9a00114bc97035b5ea15ca81be179ec101b7a2fe8c1a5170249648b1b",
+          "content_sha": "0aaa67b187fa18be78226c21fc1b4433a5dd2d43a3c24d909edf373d12bd6c3a"
+        },
+        {
+          "home": 358,
+          "cell": 6047,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:6047",
+          "region_sha": "21b6a72be4d56e5505efcd705a78a4de97de0550144c103e1672765b0e8107b1",
+          "content_sha": "8f4f7fbb0954862eab64a3273999387ccc754222a0a77be67a930ac9c91270a1"
+        },
+        {
+          "home": 30,
+          "cell": 1822,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:1822",
+          "region_sha": "13d6d854760e6af49738b603e04653af241f7b6f94ffc26c54008e1797849e26",
+          "content_sha": "ab3c82f4a04c82ee14f1a14cbbabb667575fe0fb0d884dfc1d92d74f6e76730f"
+        },
+        {
+          "home": 32,
+          "cell": 738,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:738",
+          "region_sha": "97eae300c5eab47cff2868dcaa8d2b528ee3ac03447f6224575f6f891f447de7",
+          "content_sha": "33a5ae0053fbcccb10c271483761803240d675908df1711a9c313404cf9b533d"
+        },
+        {
+          "home": 77,
+          "cell": 4368,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:5f448a85dff19e6206f8671ce6b7f7be49939e870665bce5d6548edfd06c685c:cell:4368",
+          "region_sha": "5299f6a93df48446e6ba8bfb7aa7df57608bb391795212624de23b851025c365",
+          "content_sha": "97ba6b34e903781317bcf6001b9276103b496598b0d936fa17328b427ee98f25"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-04",
+      "success": true,
+      "source_sha": "9a14dcbfaede494208a01322958d1aed7fc268c196b9dd7adfb8ddd9fad1ad29",
+      "geography_sha": "32d2edac986fa2b4cbb735473ee5b5d5aed14d856f03c28c8ba377cf60bf0b60",
+      "generation_seconds": 5.082510659,
+      "seconds": 11.706222896,
+      "cells": 5433,
+      "features": 13,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3656,
+        "islands": 12,
+        "lakes": 1
+      },
+      "off_canvas": [],
+      "neighbor_edges": 16198,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 28,
+        "inland": 25,
+        "nearest_map_edge": {
+          "home": 571,
+          "distance": 104.26
+        }
+      },
+      "regions": [
+        {
+          "home": 28,
+          "cell": 4438,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:4438",
+          "region_sha": "c7997048647930df7fed847baada195f73adbc31c03ff924ad312c620818a983",
+          "content_sha": "58bc5833e4919a2204d2f66235bbf5154261a855da48aa6a7a97321b61333136"
+        },
+        {
+          "home": 25,
+          "cell": 3515,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:3515",
+          "region_sha": "90f7c6d6811314f0d6ae70cab06c8a39f4cc54d85820a875a3546129d85e121f",
+          "content_sha": "d75e1096797540dc223d40b596ea2cb74b733850347151ac1418ec6f2a64d913"
+        },
+        {
+          "home": 571,
+          "cell": 2285,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:2285",
+          "region_sha": "ce4c34cfc021032d99a65ee12b9e5c0e259683670deb50303c46b6cc8fac33b9",
+          "content_sha": "eb754b203d1f66d85758fdf686350ddd0e3d3d5b2199bfc6129620acefaf8f0f"
+        },
+        {
+          "home": 30,
+          "cell": 2767,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:2767",
+          "region_sha": "73dd42dbf44e06b418c1611b219c60f951a6a295cded77b1981e4dd39a0507b9",
+          "content_sha": "67d4cb825412fc3dae11dc65869bc6c1524b47fd58e2940213b861a929666c91"
+        },
+        {
+          "home": 38,
+          "cell": 3249,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:3249",
+          "region_sha": "26dc569f76b79f2dc4c27f7a1d8b5b67759caa7e8a4b4c7a15aed7dc7862c4da",
+          "content_sha": "f0bd6754152806a5232cd06980dc810e580dfedee2e35d260b5bee06444f6483"
+        },
+        {
+          "home": 149,
+          "cell": 1043,
+          "biome": "Tundra",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:1043",
+          "region_sha": "688d12c2a64cbd478b16f580f5f9684f88d179cac0cc9fb9e644954466bbf9e1",
+          "content_sha": "f099ec37a007194d5215f9ca0a18da5b9a83f474fbe5a3ed228e96b3916ab6cd"
+        },
+        {
+          "home": 296,
+          "cell": 1220,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:3b89f98d79451fd4daab91890d4866329ff952975999c9bc7c14bcf3854852c0:cell:1220",
+          "region_sha": "82d892adabb22b79d95cb364eeda06aa750786cb74e74daf93bccb09c00f6efe",
+          "content_sha": "d3fa4739940f6be0e40ec8a7ae682fceb7c2d982ea6a3499b42a7647fde1c3be"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-05",
+      "success": true,
+      "source_sha": "6238e38cf4dd0cb61b19cf1d065e880c9892029af3487710b85be434503a2816",
+      "geography_sha": "fa55fe8f3dcc65c89a657c5b012726d75468df37f684950d9510c0fe29aad0b1",
+      "generation_seconds": 5.312249199000001,
+      "seconds": 11.780835145000001,
+      "cells": 5284,
+      "features": 17,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3576,
+        "islands": 15,
+        "lakes": 2
+      },
+      "off_canvas": [],
+      "neighbor_edges": 15763,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 37,
+        "inland": 19,
+        "lake_adjacent": 647,
+        "nearest_map_edge": {
+          "home": 650,
+          "distance": 97.5
+        }
+      },
+      "regions": [
+        {
+          "home": 37,
+          "cell": 1246,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:1246",
+          "region_sha": "0959462fe99149fb28a963d895abc67ac423d0df7aee839590b0ae8a240cbd44",
+          "content_sha": "0b7a9fbc9026866a281abc0d76004341b4f85f9558b5e876ba93929e2ec2d0a9"
+        },
+        {
+          "home": 19,
+          "cell": 4431,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:4431",
+          "region_sha": "38e63b8cfba08d546f74a794926bb507fc41e1df53ab6cb39cd79222b19bfd0f",
+          "content_sha": "935aae727a381353dc94607bf4d3a960ed7fbdd8c66723e60f2ce42892acd717"
+        },
+        {
+          "home": 647,
+          "cell": 2176,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:2176",
+          "region_sha": "b18acdc0ad9e1d0565357b77e396b9a42734cc42f9127caa4a96e5e36f9c5913",
+          "content_sha": "8df6c8745477b870891dbe19ff2efce24032993a6ab856231223e896cee929dd"
+        },
+        {
+          "home": 650,
+          "cell": 4009,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:4009",
+          "region_sha": "8f69275c617293ea7578bb79fea21a71c16021b313b6a8d16b3c3c322e2dd191",
+          "content_sha": "b1d778faeb3577caf566853249c217e3a905e76dbb5c0271fd6865b41332d999"
+        },
+        {
+          "home": 44,
+          "cell": 1766,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:1766",
+          "region_sha": "5f09a3546987d7da87f7c6a366225fd7dd63567b806ebfabe75a860533c2ed8e",
+          "content_sha": "351300d1d1d72a09f722b7d93a7bee85030f441efa13093599512c470fab8f5c"
+        },
+        {
+          "home": 51,
+          "cell": 2983,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:2983",
+          "region_sha": "fab28700ae75fad07e08b3bc2f054bcfae8e97d24bd2e1d689d14db5a929f6a4",
+          "content_sha": "e7544989362575d277b2ced47083c25081c4a8292a0f252512ea16a5d279042c"
+        },
+        {
+          "home": 69,
+          "cell": 3540,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:67fc8d4cbb0114906f6f434091871eed97b3f458b9ad272afe252b2dff1dc4be:cell:3540",
+          "region_sha": "07610410eaccd3e5e14f4f83d1ecacc8f37c1df6ee5ea3481d7d7f7a2dac4c14",
+          "content_sha": "16a9e36747bf9940825dce89616d4f7abcc0f8d87bd7edf0fbb3d3a0fbb41fc9"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-06",
+      "success": true,
+      "source_sha": "8300135b93b162b940f7cc4d253f04aabbdcbe845665f9a466e2e4759a772003",
+      "geography_sha": "c7e3b11b4a6ecb008db042986ed115505daebb97098f52f03aceea0255ab7ae6",
+      "generation_seconds": 5.635325878,
+      "seconds": 11.840337207,
+      "cells": 6732,
+      "features": 20,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4513,
+        "islands": 14,
+        "lakes": 6
+      },
+      "off_canvas": [],
+      "neighbor_edges": 20078,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 27,
+        "inland": 61,
+        "lake_adjacent": 152,
+        "nearest_map_edge": {
+          "home": 811,
+          "distance": 57.48000000000002
+        }
+      },
+      "regions": [
+        {
+          "home": 27,
+          "cell": 1156,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:1156",
+          "region_sha": "615e59b40c2961bd910be9f756d32a945c30c98ac332e2d9e0641b4e05c8d559",
+          "content_sha": "17033f4154082e928d321fe2202f1b64ca9f36236105b2f78a0347151b51ef75"
+        },
+        {
+          "home": 61,
+          "cell": 1187,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:1187",
+          "region_sha": "66f61c0964ec560426b7864a94b3e3dbcbe5c61f1f8a4ec0d76a2081ee5af15e",
+          "content_sha": "36268284df14ead354778636fb1287f9aac301975de6811ad0572f7172eee6be"
+        },
+        {
+          "home": 152,
+          "cell": 1757,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:1757",
+          "region_sha": "6b94c2cfeaf9a23f3e5bcdd6861602ce257656e5d9058dc46175571802b58745",
+          "content_sha": "609a4df7a26a1ea45dbe812271cb35f6d196516aa919eae61f26865aef67b3d1"
+        },
+        {
+          "home": 811,
+          "cell": 3108,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:3108",
+          "region_sha": "2df5bcadd48fc8824ab7cc113ee5b06272d0b596df37f4f48e8964231c96cccd",
+          "content_sha": "b7d3b711281aa8fefe0b10488d3fb5a07af19eb553a0d532501d79ac2c841e85"
+        },
+        {
+          "home": 43,
+          "cell": 600,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:600",
+          "region_sha": "46a06437ac3acc1be500b6fc31a5cbcb44f4166a1d15850b545aa35ae24a1eb1",
+          "content_sha": "656bb6e5c6145a353bfe29429ad468ae6ad1239ba86f1f7373316c1ade005605"
+        },
+        {
+          "home": 70,
+          "cell": 3299,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:3299",
+          "region_sha": "13608d2e2a542c24e8d623f94e247ec243f5e77d35e120d9436309725d20d882",
+          "content_sha": "ba4fcb46a5ba5901a21fa782fd6389837f89725d2223366b9003d93dba013cd6"
+        },
+        {
+          "home": 74,
+          "cell": 4086,
+          "biome": "Hot desert",
+          "region_id": "local-cell:v1:1d2bfe01cba7a69c3f1a74546a344789ab64477b8d4e966ba43c0ec66e370c6d:cell:4086",
+          "region_sha": "def0e2834409ba6b05ddd560046787394a29296101b7de6627e0dda167f0a849",
+          "content_sha": "61b45ae65a7975378bd7548b4ceb94805847fd721a9a90afba3d5ea5676734ba"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-07",
+      "success": true,
+      "source_sha": "7b492aac35be0651269bfe7e388f7485e98f885238eac5dc2be64590108088a3",
+      "geography_sha": "94ae66807b591424512f64a5e3020281dd52cd6a5db2ae6b8ab12ea35de77475",
+      "generation_seconds": 5.571604538000001,
+      "seconds": 12.775345194,
+      "cells": 5892,
+      "features": 22,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4400,
+        "islands": 9,
+        "lakes": 13
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17573,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 15,
+        "inland": 14,
+        "lake_adjacent": 31,
+        "nearest_map_edge": {
+          "home": 444,
+          "distance": 51.89999999999998
+        }
+      },
+      "regions": [
+        {
+          "home": 15,
+          "cell": 1010,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:1010",
+          "region_sha": "76dda52bd046008b51cdb9feaf02c8da3d44a3dc103e6c9399c122ebd3ca2c69",
+          "content_sha": "e701859ed5d91b4dc2fee5b14cdbdb13dcf94059edb9ca0070bb2b5bae65367d"
+        },
+        {
+          "home": 14,
+          "cell": 3788,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:3788",
+          "region_sha": "852e27853b49a3db21d133e215a4256d1937360d11482c8c887c8a037a2ffe48",
+          "content_sha": "a5872b299ddc7c54cf01d269167bd2711054d469846e09aa1d39287aad6dada0"
+        },
+        {
+          "home": 31,
+          "cell": 5629,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:5629",
+          "region_sha": "1ff0b2d688eb8fe3adacb0cb8ca0327b64c31e6f8eb5c705477a0c2219e933f9",
+          "content_sha": "b8b5da91f12ca8132a146060a3b91503ebcee853952dfef4dcbe0105ca84a4dc"
+        },
+        {
+          "home": 444,
+          "cell": 5824,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:5824",
+          "region_sha": "7ccd116cf67707da30e72fc75b1165934ecf9ab53eb7cae4d22b9f6825a85d62",
+          "content_sha": "917e704854abc4f8e5c92946e76faa2210e03faf45202cf5b120d3ec3cee0f78"
+        },
+        {
+          "home": 23,
+          "cell": 838,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:838",
+          "region_sha": "8dc37f1e6cad581392e79245efab837c9b3dfff900100da951cb392ae8499403",
+          "content_sha": "3a52be00c7e183e521bbd304a2c8db7c9e883320bafc3bf4760a2b40772e264e"
+        },
+        {
+          "home": 38,
+          "cell": 2970,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:2970",
+          "region_sha": "45f0e01a6eeaaef010c62f2817e429569f729450a1cecead34edbc7d8f34416c",
+          "content_sha": "cea04e795428674aa7672e057f6bc7a9086c7b836926c210c58b3261085153db"
+        },
+        {
+          "home": 57,
+          "cell": 5004,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:6e6fe6ccc4414922274999531fa3ee84d77ae63b0df3a6465f30c59b0110a34b:cell:5004",
+          "region_sha": "4011da21432c262add829a7ce362bb9478dbfe50e96ea6f47387e26cb97e02b0",
+          "content_sha": "23fd890625e7e06ec6b7d4d76bc04bd1a55a093930ab38330d9f612dde90ca69"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-08",
+      "success": true,
+      "source_sha": "133621ebb4817af2422dfebca423eb96aecfc9a2f351e1c2f922873e165df787",
+      "geography_sha": "ac734b3204175ebd4e749b953edc3ae5bf58eed8a20ea973b5e5ef597860b28d",
+      "generation_seconds": 5.166284162,
+      "seconds": 10.927165722,
+      "cells": 5393,
+      "features": 16,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3767,
+        "islands": 15,
+        "lakes": 1
+      },
+      "off_canvas": [
+        {
+          "id": 8709,
+          "p": [
+            744.3564053819108,
+            803.2634480277604
+          ]
+        },
+        {
+          "id": 8885,
+          "p": [
+            756.4373902528384,
+            802.9751815774717
+          ]
+        },
+        {
+          "id": 9036,
+          "p": [
+            722.0000000000018,
+            803.303475120387
+          ]
+        },
+        {
+          "id": 9145,
+          "p": [
+            742,
+            804.9700124223617
+          ]
+        },
+        {
+          "id": 9258,
+          "p": [
+            762.4999999999997,
+            806.813970797721
+          ]
+        }
+      ],
+      "neighbor_edges": 16079,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 30,
+        "inland": 42,
+        "lake_adjacent": 635,
+        "nearest_map_edge": {
+          "home": 310,
+          "distance": 33.60000000000002
+        }
+      },
+      "regions": [
+        {
+          "home": 30,
+          "cell": 5334,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:5334",
+          "region_sha": "23e52a1f7b679798ff8c3987a58a58bfcfc131d8b9949399c63daf05a067f3ae",
+          "content_sha": "d4f2fa8a4c84e7a5cc7cdc74d6e2b1395a892b484f68e39acae89c75ba830690"
+        },
+        {
+          "home": 42,
+          "cell": 1785,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:1785",
+          "region_sha": "f762d956303ee40cdd1d87f96dccd6e2a734a11d437c892158108dcbcd95845a",
+          "content_sha": "e3ef037bcccd0555687eada5bd95f8dea8df0a9e17e26d79e5da679ebfcf47f7"
+        },
+        {
+          "home": 635,
+          "cell": 3325,
+          "biome": "Hot desert",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:3325",
+          "region_sha": "ba5bc6e73e02b0e38427c87da151e81493db6c1b2c0f9b81c1817129e79e3538",
+          "content_sha": "d728a8403bf4fad34ea371dfd10389993e168c6cc3ffc988f6ac11a686a7b600"
+        },
+        {
+          "home": 310,
+          "cell": 5326,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:5326",
+          "region_sha": "458c63eb710f75438a951fc090e9d3c1dd360e160d35846972a49e8507938937",
+          "content_sha": "4c07659b07655df6d96c93b96a2077714beee9f1548e768ef2bd001430bc4745"
+        },
+        {
+          "home": 36,
+          "cell": 344,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:344",
+          "region_sha": "e939cc07b9f2d955004f015e0de1b6ca1285ef9b7fa73e090888c93be30a1dc0",
+          "content_sha": "6684da3c7993d8cefcd86751e9d2cccd9c306aaad5806a5aee21f471a13f5695"
+        },
+        {
+          "home": 51,
+          "cell": 2046,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:2046",
+          "region_sha": "603009a8173b334584c312282f06c9e9c248f855986dfb081c40e512f288b157",
+          "content_sha": "f0c07fdce1f16e982f02c029c397815a2fab2a11da399769956978bad93324a8"
+        },
+        {
+          "home": 56,
+          "cell": 137,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:5a5e1f736f490e26f3eaa3a3ca740e5c600f93141d503bfa0fa8387df5a95677:cell:137",
+          "region_sha": "3a2ce6be58a097884eb92bffd46ce5a4ec533c17cc0ece47464349be429a00fe",
+          "content_sha": "ff4cf2714888a85a9f3287a13ce3ad570e71dda5545b38fc72d120f1bd8c5c4a"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-09",
+      "success": true,
+      "source_sha": "74f509a6ea1ff28db3f280fc1fd1c08527d997807a29a120cb392fa35e818a5c",
+      "geography_sha": "b17ae974a7b0f7f3a235238d2a7a194395feb86d089a6482b2af0be2ecf388e8",
+      "generation_seconds": 5.6612935470000005,
+      "seconds": 13.211177579000001,
+      "cells": 6173,
+      "features": 18,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4214,
+        "islands": 17,
+        "lakes": 1
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18416,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 20,
+        "inland": 24,
+        "lake_adjacent": 28,
+        "nearest_map_edge": {
+          "home": 587,
+          "distance": 54.5
+        }
+      },
+      "regions": [
+        {
+          "home": 20,
+          "cell": 4044,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:4044",
+          "region_sha": "f4b977f5572046d5d8135f4ec8bf87e038f606eff7e37f923ced87e5694d9ffc",
+          "content_sha": "3a4981849ce82bf8a6446731336222f9eae92f439b83016f1ee08a9ae9832b67"
+        },
+        {
+          "home": 24,
+          "cell": 4253,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:4253",
+          "region_sha": "4536b6d8992c0b911cc673136d44ba74e497f38e5c159056d0234f1b4e0137e5",
+          "content_sha": "48b46853a27fa6ef8ea5b62758d37d4bb03e310e44170ea34e0bc2ff2f6f4744"
+        },
+        {
+          "home": 28,
+          "cell": 2840,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:2840",
+          "region_sha": "0354a17bf392f90e2ccdaa3f70c39995b30b679146bead080686337d80dd4e7e",
+          "content_sha": "ee33c5f9e785ff4b490fd04bc934d0f3332adb475fdd5acf2c77333198bc273d"
+        },
+        {
+          "home": 587,
+          "cell": 3694,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:3694",
+          "region_sha": "5b485c803edcbbea12a3d6e8e6a891b0297ddf774740edaaf5972e01775bc0fb",
+          "content_sha": "8899ce5b35ac2e774761d2a65e477f67f71452c65f05d0f12ac03cf271b8aaa5"
+        },
+        {
+          "home": 70,
+          "cell": 4089,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:4089",
+          "region_sha": "c3f0330bc8922c307521031a106979d1ac646b6d0940ec7fd4f660a004eed33a",
+          "content_sha": "fa87e2bf3a9c5172a4fe404bf667399108f61533af0c5043fcc82ab73c378ba2"
+        },
+        {
+          "home": 82,
+          "cell": 4108,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:4108",
+          "region_sha": "e3d016b4e252e2a12aaed6030fe69955ab85f08bf39b9802d01d3a539cc5c174",
+          "content_sha": "1b8e435abe7e43247fa9d7a6c6325c8854e1601b1073392cd15328f3f116e8db"
+        },
+        {
+          "home": 179,
+          "cell": 1777,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:807e091bc94f684ad3ce2b4ec661d4f24268a8907161cb56dadaee7ecf170f88:cell:1777",
+          "region_sha": "5d6e84bb3b29d5844061fa310889e44581e5cd5585102dd76e9fc261019d7c19",
+          "content_sha": "2e2ad57ed65269cbee7c62844622d8b8424f60060c86670c6ec08a168d0c2c77"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-10",
+      "success": true,
+      "source_sha": "1eb4bbcc8d45a38590dba94e5e033df00b3f5e9918504eb381d6f97f146afcb7",
+      "geography_sha": "c55e4bfd434d92ccfc41f1a62e91be37488fdcdeaf09a8049bfcf49540b522ec",
+      "generation_seconds": 5.582421311,
+      "seconds": 12.604878282000001,
+      "cells": 6375,
+      "features": 15,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4567,
+        "islands": 6,
+        "lakes": 9
+      },
+      "off_canvas": [],
+      "neighbor_edges": 19011,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 23,
+        "inland": 20,
+        "lake_adjacent": 70,
+        "nearest_map_edge": {
+          "home": 375,
+          "distance": 54.27
+        }
+      },
+      "regions": [
+        {
+          "home": 23,
+          "cell": 4997,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:4997",
+          "region_sha": "64848daba1441a8acd5ce2b25c37e4f8ee6affa3b7dde941264117cacb55c598",
+          "content_sha": "9f54c332666eea0db6ffa57e36b9f218fc9ceca28a314b49d83007544e3f80d8"
+        },
+        {
+          "home": 20,
+          "cell": 3749,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:3749",
+          "region_sha": "6ac7e80b0d3e473965818806fa041642882068a7984d4880599534d02e0e4010",
+          "content_sha": "ecae254175269c9f12af2d90634107bd3710b9559392ddfbcc602e80d8612838"
+        },
+        {
+          "home": 70,
+          "cell": 3428,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:3428",
+          "region_sha": "6e6e59632b459c2b1bce27b406cf64f13da6bbfb75d6cd58dccc70803d34ec97",
+          "content_sha": "02d17919f536187e5beb5ea0688c2b49bcf45e4279d03d2d065eb0881ef10d21"
+        },
+        {
+          "home": 375,
+          "cell": 2875,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:2875",
+          "region_sha": "6738d777222811a87ba5eb4b35ba8c244d0a5bbcf49d6d44fa3712f2a9ae92da",
+          "content_sha": "0bf91e96914c04e0c6e9007561865544bf47acfed6590dde7ff90a9386110dc1"
+        },
+        {
+          "home": 21,
+          "cell": 4466,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:4466",
+          "region_sha": "f5839b52a8f5e62859494d78238c18685a0f4286eca5b94c89ff74bc110ce01c",
+          "content_sha": "08ad11fff072b57e097c9fadcc8e718fefa242ff39ab9396c708d77057179d8e"
+        },
+        {
+          "home": 97,
+          "cell": 5367,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:5367",
+          "region_sha": "caaba15cc2bfd9d0267baf0cef8ee818d313b10e9a2de544d1c41aca8127f3ad",
+          "content_sha": "59818b640f6d34ed7f35aa5affd3603740a452805fb15f16d32f131b093cf3ee"
+        },
+        {
+          "home": 104,
+          "cell": 2763,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:60f9d6247590acd4b804cb47e402cf818431691d100b005189ad424942842a4b:cell:2763",
+          "region_sha": "6ceaecb639302338df967e01b08c8113eb50d874e067fd37a449215701f7449f",
+          "content_sha": "a8442a3311bb5f3fda6a535768f3f61056d66d8487a3925611d6a0e8d43ef69f"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-11",
+      "success": true,
+      "source_sha": "b3769de74c920e2fc593834ff0e2eff959a09a99fd0f0c271169e411980e92e8",
+      "geography_sha": "a1821fb53ba82823f00ce689dd7a19f53e4ad7d7e7bebaf70d23987cb6ff8c8b",
+      "generation_seconds": 5.6478186390000005,
+      "seconds": 13.626738904,
+      "cells": 6421,
+      "features": 15,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4688,
+        "islands": 9,
+        "lakes": 6
+      },
+      "off_canvas": [
+        {
+          "id": 9347,
+          "p": [
+            579.4999999999995,
+            -1.529143897996721
+          ]
+        },
+        {
+          "id": 11559,
+          "p": [
+            342.7393949860599,
+            -2.4521002789120194
+          ]
+        },
+        {
+          "id": 11820,
+          "p": [
+            356.00000000000045,
+            -1.5434873949577743
+          ]
+        },
+        {
+          "id": 12124,
+          "p": [
+            336,
+            -4.458846645367245
+          ]
+        },
+        {
+          "id": 12345,
+          "p": [
+            315.49999999999983,
+            -3.713638430926378
+          ]
+        }
+      ],
+      "neighbor_edges": 19136,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 19,
+        "inland": 13,
+        "lake_adjacent": 113,
+        "nearest_map_edge": {
+          "home": 424,
+          "distance": 83.70000000000005
+        }
+      },
+      "regions": [
+        {
+          "home": 19,
+          "cell": 3779,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:3779",
+          "region_sha": "e352a4e95cc3e98af8b9c14ca00ce2aa86ec5e7ee45d6f958609860c61ef6b1c",
+          "content_sha": "a364d317bcb851336491ccf2be2e8a4098ab25b0e7637f48b4e0b8e10e6abeae"
+        },
+        {
+          "home": 13,
+          "cell": 3080,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:3080",
+          "region_sha": "597385b00728d82182c7c5addf9f69b7b814c3b4a9371ac703b61146b331ef68",
+          "content_sha": "2329bb91d70673089a165a8c6ff396e3166a46230613e53d9a9ff17914449332"
+        },
+        {
+          "home": 113,
+          "cell": 5572,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:5572",
+          "region_sha": "0c7c924a2c170e9376737570d4e7f41d93c285774dee9d98e4b889960ae48da3",
+          "content_sha": "e17ef0e48ca659d341a7dfe9f7c81a77b37e2edc3958da1d339b1c02f779a09b"
+        },
+        {
+          "home": 424,
+          "cell": 2212,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:2212",
+          "region_sha": "72b30e891412ea79889902fc50cd36e98b0f2d259d9e9f66a4e67cea5421b6da",
+          "content_sha": "d71fc237d718d0d4c4bc47ea6490d813ef9dcf71f93664df309c28f2927e9b7e"
+        },
+        {
+          "home": 15,
+          "cell": 4489,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:4489",
+          "region_sha": "1947a80769925982b5e284efb0c55e51d94ece45d47d5ceb9aa88812063a5170",
+          "content_sha": "343de7984c5216d634bc8bcc5863c5c14afcb9f2123b60bc5ab42559d815d93d"
+        },
+        {
+          "home": 28,
+          "cell": 4817,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:4817",
+          "region_sha": "72804bc8c164da190b657fb371a1ebb8f56ca11de28719d8176d0dd412a5fe21",
+          "content_sha": "68a29ecb59e1c42eb2c748d049a706ed8bcd1fd5533cb3443f2b6e79b63ea4cb"
+        },
+        {
+          "home": 35,
+          "cell": 5710,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:e6d70a5b12da3b3b14635e54a16c08730abdc78ba3566df4426827d4db9126b4:cell:5710",
+          "region_sha": "45e8ae74c4dbcc8f99fc86d7f557fe1a94bdff53b584fe1ebc11d1428cb32401",
+          "content_sha": "cf596239ab7d43bdd016ebce0b714a65f27850dbc9de7bb269818e7cacf5ddea"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-12",
+      "success": true,
+      "source_sha": "5d6667e19404148b5062a05fc6829e874db74fa5bef3220f3efc96c247ce2f57",
+      "geography_sha": "a4c4dd696b5517b733a0c3aba6505b944c93aa7c0986d2685706056d5db10df0",
+      "generation_seconds": 5.4539367709999995,
+      "seconds": 12.261284624999998,
+      "cells": 5653,
+      "features": 18,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4191,
+        "islands": 12,
+        "lakes": 6
+      },
+      "off_canvas": [],
+      "neighbor_edges": 16850,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 23,
+        "inland": 18,
+        "lake_adjacent": 97,
+        "nearest_map_edge": {
+          "home": 326,
+          "distance": 49.89
+        }
+      },
+      "regions": [
+        {
+          "home": 23,
+          "cell": 5426,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:5426",
+          "region_sha": "1d83d8622492dca54363aa2624046856c0b15cb478378c2237d9994641141992",
+          "content_sha": "6648e7a0346f84e7065f6c06dec58162ef18db77c00d8a1def0dd36956081efa"
+        },
+        {
+          "home": 18,
+          "cell": 4735,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:4735",
+          "region_sha": "2d5cecd9bb5b2d9dba7be70758dec33261d5a8dfce0621e1c36bb34ea4bdab44",
+          "content_sha": "d1fe4f1bdc539b983f83821b337031f3b9c3788d3fb5424193166e85fbec4994"
+        },
+        {
+          "home": 97,
+          "cell": 2313,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:2313",
+          "region_sha": "217337b12fff461d398b877e280aacbc2208e7d531483539a346e6a9ff674785",
+          "content_sha": "32d9c13efc513f71df52c50049753a7ba441af0f9d95553bb14e5aa7a32481e6"
+        },
+        {
+          "home": 326,
+          "cell": 3348,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:3348",
+          "region_sha": "457d08fbe44e7fe5c9f9308fbd6f5a805dc2aa4c391356a25bc78ed868bb8a9d",
+          "content_sha": "ddd1eec7c1004d816b964fbd4a162beff414379a5447ce095267890b74a222ce"
+        },
+        {
+          "home": 22,
+          "cell": 4450,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:4450",
+          "region_sha": "309d940499fc2f329dd7b1ba38c1a6487d602c7b98af652549f5b526d2d3f702",
+          "content_sha": "703fc943c95b69146a9103cc009f900a9223bbd6097dd4def8fee4363163f0c3"
+        },
+        {
+          "home": 39,
+          "cell": 407,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:407",
+          "region_sha": "d0c219a3cd906caf83c1a8bf73084b798a2669a5eb7c6a7dfc7278420b4a11c6",
+          "content_sha": "b3f0887ce8e2e535d6c6fbcb6ecf87bdc2fe8655db266608b5a9f8a29024f66c"
+        },
+        {
+          "home": 180,
+          "cell": 3613,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:a1e1ee7bea8120add4cb206ae88940559fe53323e0a6518f1addc9dab04ee0e0:cell:3613",
+          "region_sha": "2440c72820d9943ee7ca00c63849dc84f8993502c4f0ef16d57b8f4c5159bcfd",
+          "content_sha": "592f1e0cfe36f78e84b9938e40ac9ae807e21fa68c69bba0587c68332dfb87aa"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-13",
+      "success": true,
+      "source_sha": "d0791b1c3d2fa0b03eef178711365d132cf997057ccd8431eb0c7216635e313e",
+      "geography_sha": "488e5cce23c566ebfd54b1fc49033f2fffc50be5aeb36a8b31b515b55bb13527",
+      "generation_seconds": 5.519949949000001,
+      "seconds": 12.068634639999999,
+      "cells": 6744,
+      "features": 12,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4686,
+        "islands": 5,
+        "lakes": 7
+      },
+      "off_canvas": [],
+      "neighbor_edges": 20116,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 37,
+        "inland": 31,
+        "lake_adjacent": 49,
+        "nearest_map_edge": {
+          "home": 948,
+          "distance": 66.40000000000009
+        }
+      },
+      "regions": [
+        {
+          "home": 37,
+          "cell": 530,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:530",
+          "region_sha": "ed843c3f1f4ffa63e9b024e84d323dbbfc66f556dde388ddff7fc66ab28322c1",
+          "content_sha": "2f3cefde7fe816cecde5b3bdfab032244f7dcb87e57038ed1e0c2e54b6629c63"
+        },
+        {
+          "home": 31,
+          "cell": 6572,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:6572",
+          "region_sha": "5e0a5353cb5c9ef2b74384be689716630cb9c309bc13406e791c8efe50a115c8",
+          "content_sha": "6bf936e795676dfe1147d71e3b6ab39c6ac05c6f6b7527a733eefe364ea069e9"
+        },
+        {
+          "home": 49,
+          "cell": 662,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:662",
+          "region_sha": "1763592ea85e73d7c608945329c3637d62b682694d102e1ee9bf98546919bf55",
+          "content_sha": "7913bbb27b26967add99db6a7bd824c0fd36a7559c58a830f5bb32a9956e5f74"
+        },
+        {
+          "home": 948,
+          "cell": 1988,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:1988",
+          "region_sha": "1812e6b40221c9e4e9cb7d50453570e266a2fefd401e9a522281c28c90ae6004",
+          "content_sha": "8bc9d1c917a36ec176ef6b791b235ad56e288eaf4305ce68958b805a3b7555ca"
+        },
+        {
+          "home": 32,
+          "cell": 1730,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:1730",
+          "region_sha": "cacb7f255f5a6242c48a6d1e890f4f7ee6b531c00b9f4379cb68222b43e3f4ed",
+          "content_sha": "0899b49488663b0b50c87951b145d491ad36114e7f896a5dc6bde905688a7aab"
+        },
+        {
+          "home": 58,
+          "cell": 3214,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:3214",
+          "region_sha": "98a0a533d20401db06b6a1a8a08b79dd7998bfed169a53dd38e48e8331ad719d",
+          "content_sha": "45ae251c64d45cd3ee01fa18e1320d8dfaa54c257314e631939859b4be06cafb"
+        },
+        {
+          "home": 72,
+          "cell": 2685,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:3b01501412ab8f811f0b41794d5ac65fa6f8dbaf5a932700153c97967e995498:cell:2685",
+          "region_sha": "45d17c24d67a6e906014af37c3ce95126089012aee604801c9aa63bc0f0c5caa",
+          "content_sha": "492625e93691287e4fc123423aefbed44cf64c6c4fd32dc31f4de2ea9f3565b6"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-14",
+      "success": true,
+      "source_sha": "23d4dae320cfec721ae37a8fe024b7067c4e30499d5c9f1a1effab0190507b35",
+      "geography_sha": "b0c5e27da527f348d595ba5ce8f8dac4c8ab28ec7ac490200c714597e2a56409",
+      "generation_seconds": 5.137165404,
+      "seconds": 11.730016863,
+      "cells": 5834,
+      "features": 19,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4059,
+        "islands": 14,
+        "lakes": 5
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17404,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 32,
+        "inland": 24,
+        "lake_adjacent": 84,
+        "nearest_map_edge": {
+          "home": 467,
+          "distance": 86.12
+        }
+      },
+      "regions": [
+        {
+          "home": 32,
+          "cell": 5183,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:5183",
+          "region_sha": "04e70a13fb8aca5e9dcf52ba27d329b9009e8feb311301dfd77939fbc61023db",
+          "content_sha": "8daa1ba0aa2c31413d792c380a5747d6a94b92c28b1a8409b0bd76451bceb47b"
+        },
+        {
+          "home": 24,
+          "cell": 3057,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:3057",
+          "region_sha": "9b103646edb6cb925f9f4911f7eb08e85111c2cd91782c17a2720ae26b241f27",
+          "content_sha": "29ed6b10df5400f86a80b6361a3406186077294a2c76ca038074ef07da5d10cd"
+        },
+        {
+          "home": 84,
+          "cell": 1208,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:1208",
+          "region_sha": "0c72725dfd5a6a65d521a5a9e7852fbb94eae6f5fe5b258f3c41a71431b01772",
+          "content_sha": "788708c6045c5c4910c568c207834e1604628e8530ee46aa9005b5d4ff0f5aeb"
+        },
+        {
+          "home": 467,
+          "cell": 5809,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:5809",
+          "region_sha": "7b7c0d7bab694c6f94478536c6f9c9a7da82dd2c26dfc8082153bc684d4e8e8a",
+          "content_sha": "77267b007bd9d32004be7cbdcb939c2889e063ab493cb0fcd1032b2ac548f6ba"
+        },
+        {
+          "home": 28,
+          "cell": 3610,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:3610",
+          "region_sha": "111f1246ebe48d2f3f071314e5175f956d09b80ef525b8c627d14940bc66fe70",
+          "content_sha": "af5f9f8e632561c784b972ec3b120af8c6cbcbcd92824cc3f6dd3920383bd0c9"
+        },
+        {
+          "home": 60,
+          "cell": 4699,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:4699",
+          "region_sha": "66a350d7eebb7b93046d5d56f414b705b0a8fcb509fb41a9ca31921a9e627f4f",
+          "content_sha": "dfc8a35d4699656eed9609b32d681a33c1f4894854fcad55ecba795839d5bc9e"
+        },
+        {
+          "home": 124,
+          "cell": 2956,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:7580b1efadaac39cfbcd5d0152f2fd6e111fa1294e058fb06573cbcc1cc09af8:cell:2956",
+          "region_sha": "36e04f4b030ef1794eeb54fc30763d17587a61ef8413b9aa19cfc875fcdf5a7d",
+          "content_sha": "92b5454357ed7d9c54547d518f47c20f59bf92f06dedda021140d470614d849e"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-15",
+      "success": true,
+      "source_sha": "70ddc094eeb60b16e8de1ea9a6ef4a831c8845d8f3369b1b7a7388a4e9b76be7",
+      "geography_sha": "de340ee80356afa347e74b71f473f4bf56373740418318589af9f53061f35c8e",
+      "generation_seconds": 5.337689063000001,
+      "seconds": 11.909160406000002,
+      "cells": 5936,
+      "features": 27,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3996,
+        "islands": 20,
+        "lakes": 7
+      },
+      "off_canvas": [
+        {
+          "id": 11964,
+          "p": [
+            1280.0804293930973,
+            292.98052009041635
+          ]
+        },
+        {
+          "id": 11969,
+          "p": [
+            1280.5828178826853,
+            317.18258633746325
+          ]
+        },
+        {
+          "id": 11983,
+          "p": [
+            1280.4948111641268,
+            332.4205282044151
+          ]
+        },
+        {
+          "id": 11984,
+          "p": [
+            1280.486267005107,
+            275.0003091683493
+          ]
+        },
+        {
+          "id": 11990,
+          "p": [
+            1280.1894977272718,
+            359.5
+          ]
+        },
+        {
+          "id": 11993,
+          "p": [
+            1284.3671244886132,
+            338.9999999999996
+          ]
+        },
+        {
+          "id": 11996,
+          "p": [
+            1281.973097345124,
+            318.49999999999994
+          ]
+        },
+        {
+          "id": 12000,
+          "p": [
+            1282.5097772772858,
+            297.99999999999363
+          ]
+        },
+        {
+          "id": 12006,
+          "p": [
+            1283.0423092485594,
+            277.50000000000057
+          ]
+        },
+        {
+          "id": 12011,
+          "p": [
+            1283.3670593036002,
+            257.00000000000153
+          ]
+        }
+      ],
+      "neighbor_edges": 17701,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 24,
+        "inland": 26,
+        "lake_adjacent": 89,
+        "nearest_map_edge": {
+          "home": 68,
+          "distance": 30.420000000000073
+        }
+      },
+      "regions": [
+        {
+          "home": 24,
+          "cell": 5057,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:5057",
+          "region_sha": "ca7b17b6d4cdb3e0b7a03b80213d45837fa758a6ecd8c76d7ed669d1d8c342eb",
+          "content_sha": "48b6e5602e8329f235e037b5e269fbebca8e703d8aa3f517ddab2a8c5d728f46"
+        },
+        {
+          "home": 26,
+          "cell": 2437,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:2437",
+          "region_sha": "3d8ab335db4d654a2b21475ffcc3795b0a5686ec0db4fae36297b69873f54ddc",
+          "content_sha": "95caa17f70e781642175ef2509dcf84e062196fbdec00f446136c1ee4f2970e4"
+        },
+        {
+          "home": 89,
+          "cell": 723,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:723",
+          "region_sha": "b6f6554ea26bc270f805aa3a1e0f0fdd2deb45c39f21a81d591f78cea53f5d4c",
+          "content_sha": "98e7111ac65e0aaf9ac3643292a06d9fdf8d19c519f33f744dcdefee637e7437"
+        },
+        {
+          "home": 68,
+          "cell": 1609,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:1609",
+          "region_sha": "cb6bb800e2da63016edf054ac4634e48d99bc09934db8a6cf8937df675524ad6",
+          "content_sha": "26015aac514793274f6069ef221dd67f900805e3c03b9a1373134ef74e96f6e8"
+        },
+        {
+          "home": 32,
+          "cell": 2955,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:2955",
+          "region_sha": "89235d03e4e9b7f418e6e2cbfe38da9c77dcd9d82bbe3a287ef18c821bce4991",
+          "content_sha": "18bdaa28400fb3fe972a5119b4054d7414022071f67777af60b5b6fee08be29e"
+        },
+        {
+          "home": 133,
+          "cell": 3235,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:3235",
+          "region_sha": "88c168b1242b89e32b064288866e74ae33345e381880bfad47d9a9fc8483202b",
+          "content_sha": "57ff8d3c6fe17c90bdba07a0b9a665a7a1384807c155b0913ec9f73ff8264692"
+        },
+        {
+          "home": 158,
+          "cell": 5711,
+          "biome": "Tundra",
+          "region_id": "local-cell:v1:467f6e00e4e046188614ebb8a88352ca16369bd559434857df2f94bac0b9011b:cell:5711",
+          "region_sha": "dcdd970543e58dedfe2c5f1b3909e16f6b3db95af6cc78fe40e3137aee74cab9",
+          "content_sha": "afddf429b2447bf54e870a7a691751cfb64e89cdd68d6afea32af88618586394"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-16",
+      "success": true,
+      "source_sha": "f260d87f89f4ca1550f90f91b0ebaa25346635dc5f50d1fb0c37c93de986cda2",
+      "geography_sha": "1e6f49a2ac4e045649e09f40e239e6a316f2694adf7354d557b6da56d2bfb091",
+      "generation_seconds": 5.590682814999999,
+      "seconds": 12.591379936,
+      "cells": 6155,
+      "features": 14,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4501,
+        "islands": 10,
+        "lakes": 4
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18360,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 35,
+        "inland": 14,
+        "lake_adjacent": 260,
+        "nearest_map_edge": {
+          "home": 620,
+          "distance": 49.3
+        }
+      },
+      "regions": [
+        {
+          "home": 35,
+          "cell": 2740,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:2740",
+          "region_sha": "4225f85d9665efcc2da4f072cc52017bd95c324d998b7b049fa3b71ff9382fa2",
+          "content_sha": "94e1654a536c40c7019c1386282a6bce7eb1c2222ea8aa87364ab3a29a5861fc"
+        },
+        {
+          "home": 14,
+          "cell": 5057,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:5057",
+          "region_sha": "5cedf94e6a38129f770db1e1c6256fdbc0bf3b19fa68f63e8dce198a01b598a1",
+          "content_sha": "66087a6961101294b7542464be71ca47f0b682fd5d19d69683ecc04de997e109"
+        },
+        {
+          "home": 260,
+          "cell": 3496,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:3496",
+          "region_sha": "b0d94f99ced90c92dea490eef39b5d6cee1c406ebb5687ce3c192b5cda8149e6",
+          "content_sha": "da22548180e477d6cc4409914f56aa70e8f93394c5e6e8a023649d10bfba8f67"
+        },
+        {
+          "home": 620,
+          "cell": 2311,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:2311",
+          "region_sha": "7555d963b7dc0db1a014610296e6457665f5c27baed62d0d9290c2fecffad439",
+          "content_sha": "1c80795e2d55d15ac144988cd48e03191957f18f210c6f43a963aef6926566c5"
+        },
+        {
+          "home": 16,
+          "cell": 1795,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:1795",
+          "region_sha": "07c1ef7f2f86b457d85f1cc8f5e6d22c26b37f05b51fdab00dd9da930b4e9667",
+          "content_sha": "ea714987d46320bc8be5d04cf837c07083b2f1349d5cdc73f9379caba0a7c6e2"
+        },
+        {
+          "home": 23,
+          "cell": 3210,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:3210",
+          "region_sha": "418302e38e08659675a5d09ef23ffc37add6eef1aeece745bd669d4feeb837d7",
+          "content_sha": "41ec8f7750b4e40c990cab23d698333774c4340963fa3a7578cd22303e7e2636"
+        },
+        {
+          "home": 31,
+          "cell": 5495,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:cf04fbf602c37247b511f5063316884acc949c42b676a50578b7d1d72ba4982f:cell:5495",
+          "region_sha": "8e293a51dac607506c24ae31788f1fbe39106e071faed9e61ac1ce16a5baa5a2",
+          "content_sha": "b285d3bf9210221370a7743d309607db9b1d85a6246749ff3e73661f73224c46"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-17",
+      "success": true,
+      "source_sha": "2b8508fc0fed907ca8ffdfd68ef4086a29f0ad2f740d1d87dc8da5c867b426f6",
+      "geography_sha": "1904b534ff7c8f13225508a1681a4183935f5102329d9694aa85bfd6681865fb",
+      "generation_seconds": 4.853016899999999,
+      "seconds": 10.524233714,
+      "cells": 5277,
+      "features": 31,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3387,
+        "islands": 29,
+        "lakes": 2
+      },
+      "off_canvas": [],
+      "neighbor_edges": 15746,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 23,
+        "inland": 25,
+        "lake_adjacent": 67,
+        "nearest_map_edge": {
+          "home": 378,
+          "distance": 62.84
+        }
+      },
+      "regions": [
+        {
+          "home": 23,
+          "cell": 268,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:268",
+          "region_sha": "9575406ef5459cc9175a351b74189a57ce43408c766a280c932a3da7d4c2d3dd",
+          "content_sha": "eb88663ae4843fedd199d98c20dc4b22d8d5cae54b947c6717d9da37d069362f"
+        },
+        {
+          "home": 25,
+          "cell": 161,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:161",
+          "region_sha": "af659b069629d8c22a29ee73703dc04b037833ac1e5898bbf2084de31cecfee0",
+          "content_sha": "8ed4705a60144a5b43cc79263461574699c716135b8c47c809efadd72949baa0"
+        },
+        {
+          "home": 67,
+          "cell": 1531,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:1531",
+          "region_sha": "db03ad97b149579720fd9bf788736c3a13e4f0eb0549e96e8a75981fa793704f",
+          "content_sha": "df48367e26b83c3e9d9f83d5ee7061cf42127fe7edf9582bc7985acffe8f7e46"
+        },
+        {
+          "home": 378,
+          "cell": 2731,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:2731",
+          "region_sha": "63aa3ffda75994c1e493c1ce27ce1253c224730690cab6dee75acfe9031b3334",
+          "content_sha": "525e799661e306e17aa4e459eefe2cafeaafbc494751b52bd27aaa842189a78a"
+        },
+        {
+          "home": 27,
+          "cell": 4361,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:4361",
+          "region_sha": "aab53fcfbba60ec1c53a65e0a5e5af90dc03f03029e3609bac3725f09f088729",
+          "content_sha": "d72c2c7f4146f8e3224d4efa6989d9d030112cd0c75e0fcbed1af45c4849cd01"
+        },
+        {
+          "home": 36,
+          "cell": 4957,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:4957",
+          "region_sha": "633683ef3a40f92a7ea1620fc4e4619d1252f530bd8aa570fa143483a5780127",
+          "content_sha": "860ef15c22d46e857a08837d27eac65b3f3854a79c89d009a0949df443b7d708"
+        },
+        {
+          "home": 38,
+          "cell": 3003,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:f0b136edaa276ae9cd8f8e0fe49eb50807a676f9d33154768a55cca12dca7fac:cell:3003",
+          "region_sha": "035ca628bbe3b963117503e04b487d62e4757bee83e338a7079f27c1a0748bfe",
+          "content_sha": "7ea24a18586490fee1b776ba40ad5ae81d8205ceddea90d6c5d685b7a45cadf8"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-18",
+      "success": true,
+      "source_sha": "7fcd3891b893b723fff42ff91a6979276cb9bc7c30b02bb056c553665d3660fa",
+      "geography_sha": "454f292b0f60b7b4a914bfdfc126e2c51bd2a44c4b2281eb227072eceb8c39f5",
+      "generation_seconds": 5.814230259,
+      "seconds": 12.357983674,
+      "cells": 6245,
+      "features": 17,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4401,
+        "islands": 7,
+        "lakes": 10
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18638,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 25,
+        "inland": 26,
+        "lake_adjacent": 52,
+        "nearest_map_edge": {
+          "home": 558,
+          "distance": 74.04
+        }
+      },
+      "regions": [
+        {
+          "home": 25,
+          "cell": 1990,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:1990",
+          "region_sha": "e91533b9fa516b39d05e7e5737a772864a4189f15128d6140403865b2d76b222",
+          "content_sha": "88126ad1a319345374f47450aad4165d458d07bb7cc82112638f5c5982117ace"
+        },
+        {
+          "home": 26,
+          "cell": 4882,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:4882",
+          "region_sha": "6f24bd3feb2702f2e321f3f0d20f6846a8c7572a5e75062f0a407deabaee96b8",
+          "content_sha": "a7afbdfa680b0656c2cf087a2f84578304966b5825bf44c2ebba2124ada3f8a4"
+        },
+        {
+          "home": 52,
+          "cell": 2578,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:2578",
+          "region_sha": "bd314a26ccea58691939d0e72dfbefda8e7a8566ad1f8ca17b59184bc831c206",
+          "content_sha": "6a3bb11e24b4c64ca9277f9abf000f8e531c7f3e57d0df67a933c5377d50d151"
+        },
+        {
+          "home": 558,
+          "cell": 3461,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:3461",
+          "region_sha": "f109cbce40fe12703e9819d542de354c0e545175eac0262d8029d90c480836e0",
+          "content_sha": "f7b8bab169b0b8c29eedb98158608b66568583af0f7013e61cab62e6fd28063b"
+        },
+        {
+          "home": 27,
+          "cell": 2253,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:2253",
+          "region_sha": "f1a9893d91d95e360931c67e69bf7f4c022f8660a648eb00f4d8193c105aecd6",
+          "content_sha": "7d0fa41ee32665ff5370631472a10f951beb26a366fe3b4d7ced82a2d4d058cf"
+        },
+        {
+          "home": 60,
+          "cell": 5070,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:5070",
+          "region_sha": "605e35a2dab5b80ca9526e4a5787ab711daa90aae5fdd1c35283bae75959a133",
+          "content_sha": "34c325c221ecefa576e354d38da236b9e350b26ba194b406f88a2acf83c74198"
+        },
+        {
+          "home": 83,
+          "cell": 6082,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:78f9a1105551e867a267dc97310e7cdcd5a8521a80f443514bfac1e74c06a3cc:cell:6082",
+          "region_sha": "404be4fb117dcfd652c3afc95423db39655a1b00bbdc40729cd09c6225eab738",
+          "content_sha": "d99d40091a80be163091ab7acdf9962e7f6747574d8e0a966a94d3033346e89e"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-19",
+      "success": true,
+      "source_sha": "8d5820aa7b1e514297304addef9054b689ec63288b2d49269846f7eb262a43ce",
+      "geography_sha": "253d882cd2f5dd5fdde36d6fad4618116a09d671dcaf24a0e26e0c72302a6601",
+      "generation_seconds": 5.185646611,
+      "seconds": 11.799969338,
+      "cells": 6329,
+      "features": 21,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4160,
+        "islands": 19,
+        "lakes": 2
+      },
+      "off_canvas": [],
+      "neighbor_edges": 18876,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 26,
+        "inland": 22,
+        "lake_adjacent": 317,
+        "nearest_map_edge": {
+          "home": 355,
+          "distance": 44.82000000000005
+        }
+      },
+      "regions": [
+        {
+          "home": 26,
+          "cell": 5436,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:5436",
+          "region_sha": "f4e87b7139b1e06d4d48d1272b4535ce0e3b9382291eba6ca0a92e440e66b54b",
+          "content_sha": "ddbc22c537c23b91eaa02debe1c6d8ac7bd555ca94b14073710b84866b3284d2"
+        },
+        {
+          "home": 22,
+          "cell": 4164,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:4164",
+          "region_sha": "9407fbae610cac205dee8f618fdb8c4896607cfc4a7b83eb26a62f5ef20863aa",
+          "content_sha": "aebf8a968e74a3d5f325f0dcf9c6e835cf157b142e24e96a3fdf4c4986a03fbd"
+        },
+        {
+          "home": 317,
+          "cell": 4543,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:4543",
+          "region_sha": "f4c8be8930ebd62266f96b5763518307502e2efb09ff6cb1abccb1f89f54d572",
+          "content_sha": "354fe51896dc3fb73ce614e4b0c5ca34ef21685a44c38a5f689d074a47267bcd"
+        },
+        {
+          "home": 355,
+          "cell": 6296,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:6296",
+          "region_sha": "5e4cb6e2e2a6221363f2509720ab90a3a3664a97c20d6cc0143037d014617a1d",
+          "content_sha": "14790724f2216b5bc6e1725881e9274d467ec6f9eeb5cbe41be289464725e519"
+        },
+        {
+          "home": 55,
+          "cell": 4816,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:4816",
+          "region_sha": "67e4ddc77eab80e8833f05204b95efd8df04cbcd0b15c6269fabf138032beb19",
+          "content_sha": "14709570ff74a4588147dfc44c474d374f9e56f4adf9cce458e320d162c9b10d"
+        },
+        {
+          "home": 66,
+          "cell": 1504,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:1504",
+          "region_sha": "a024f06f68764e584b4d6aee715721147a17ad029c2672efb5ef85129cf5acb5",
+          "content_sha": "1eb303f10b6b8fa39608287aaa6920e2f6c371b7ef9dc7b1b815685f6f6f8ee1"
+        },
+        {
+          "home": 78,
+          "cell": 1581,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:8d45b61c20c3e6eda9c8a8c21946f2554967e637b7296fcd45f63eb85561df8c:cell:1581",
+          "region_sha": "4cb2dbdb223fdf57131135f4cc5e53cf19f514dde5f83cb1512c965d1e3b786f",
+          "content_sha": "6c0fc361b8874d1a8ac17fafc950fe1fae2e73b9aefdee5f2f9082c1a608c558"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-20",
+      "success": true,
+      "source_sha": "0324507aef61fef838465fbf15a75aba3b273f982ac72ba9b7b6bdd050d73991",
+      "geography_sha": "993a190c340c825c95bad509420154da546495891dd872d2f1a72f0e1b391887",
+      "generation_seconds": 5.5886222100000005,
+      "seconds": 11.974522417,
+      "cells": 5518,
+      "features": 18,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3776,
+        "islands": 13,
+        "lakes": 5
+      },
+      "off_canvas": [],
+      "neighbor_edges": 16455,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 13,
+        "inland": 10,
+        "lake_adjacent": 13,
+        "nearest_map_edge": {
+          "home": 607,
+          "distance": 109.13000000000011
+        }
+      },
+      "regions": [
+        {
+          "home": 13,
+          "cell": 4539,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:4539",
+          "region_sha": "f56af5ee7f383ca13636c8864f5953e2cc31f99785685c9b69c0ae50109e7956",
+          "content_sha": "9c29b5fafeca6df6ef5887894eea3e77c105a2779b851f0058316ce75df460dc"
+        },
+        {
+          "home": 10,
+          "cell": 2076,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:2076",
+          "region_sha": "eb937fd76af713dc3ba238a238bcd759ebadf5d3d710b44fad63e195057096a3",
+          "content_sha": "bdcf30d5a9b724456704e323d6b6a54258de2303d0675291b51dc6914a0e9625"
+        },
+        {
+          "home": 607,
+          "cell": 1985,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:1985",
+          "region_sha": "b12449d3170139fc5f9b2b17004d0602f2c59c0aafb6befa09af1c05f89d72d3",
+          "content_sha": "5775b962646ed551fa5873b0c7050885c09ebd81df31ff9bf41d9c95c56a5ed7"
+        },
+        {
+          "home": 22,
+          "cell": 3607,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:3607",
+          "region_sha": "000542d3311943c34887be0283c561e5ac832e808390fb043f580f7e979f37dd",
+          "content_sha": "40507bc08ad7655cd7e605200b9fefab0e039f7ce8585d953cabd068abf0cf33"
+        },
+        {
+          "home": 27,
+          "cell": 800,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:800",
+          "region_sha": "1736dd564d35ebb0d655f9d670c8b5675f45781e9687a97bdb4cf775e76ac4a1",
+          "content_sha": "5108ea1eca423a5444c4f6bdd3eb51b09e7a9e87e2b227b3eb94187d5b2f5419"
+        },
+        {
+          "home": 69,
+          "cell": 3806,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:3806",
+          "region_sha": "366c06ad0d4d48e5a3fbfd94e11a5477163d24dc6f5344dccd1e6bd9e9806c7b",
+          "content_sha": "ac20d8389d06a216ac383e2976b84c5eda516b2e6652ceece8f3ea813f17ac27"
+        },
+        {
+          "home": 88,
+          "cell": 4655,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:a08328023fd18a08729b9e5317497ab5a54e4c28b53e52c89c997eb26cba93b9:cell:4655",
+          "region_sha": "1ec8c89f4eadbba62613552c9259e12860fb5b8f224ca21c2467e4f4f0f8a501",
+          "content_sha": "474ac22448006e11e15ee8e9efb6b47184a626ce226a6328ad0b7e9da9f886b6"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-21",
+      "success": true,
+      "source_sha": "1f3873fa750dc6906fda76fc0b04f306a8b632babf319cb4c1906c1f5ed8766f",
+      "geography_sha": "0a2ecef9f14f3d9dfa300265f38684ed368cdd04ee2d171792c000340ce114b8",
+      "generation_seconds": 5.070982914999999,
+      "seconds": 11.709955224,
+      "cells": 5731,
+      "features": 16,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4117,
+        "islands": 6,
+        "lakes": 10
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17090,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 21,
+        "inland": 23,
+        "lake_adjacent": 29,
+        "nearest_map_edge": {
+          "home": 443,
+          "distance": 112.38
+        }
+      },
+      "regions": [
+        {
+          "home": 21,
+          "cell": 581,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:581",
+          "region_sha": "65cec5b2644e9fdaf2375875965280b18c5c8e12f9728abc4eea9579938989fd",
+          "content_sha": "12e990319c8fc5ed268a6223d95c0a9e2ce111abc593f77d52c7a4f630c79232"
+        },
+        {
+          "home": 23,
+          "cell": 1349,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:1349",
+          "region_sha": "c3cce10468ea0bd7105e2f386c7afed0f7ac9c26198e85e839e2f3d232b34366",
+          "content_sha": "0c28b4fa6bf5dec567fa406c1a044ac31c3c91f01bcd90a8825ba15dca58fd76"
+        },
+        {
+          "home": 29,
+          "cell": 1806,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:1806",
+          "region_sha": "b965080a28fd69fb757f6d57a4a2c6a2a14da04e592cb50cf258fd7e626fd65d",
+          "content_sha": "b5f0d03e42f59844525ebdf154449170bf023e4288582547fd803a017f0d06f5"
+        },
+        {
+          "home": 443,
+          "cell": 5339,
+          "biome": "Tundra",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:5339",
+          "region_sha": "3de2e363938eade1fb402040b7cf0bea3832ed898ad99f4670ba8103bdb4027b",
+          "content_sha": "67730f963c78fde1b24a5cd59c2f711bf3861e51e9e921bbb526fd25a98de468"
+        },
+        {
+          "home": 26,
+          "cell": 2175,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:2175",
+          "region_sha": "b1c4e753bc68b89cc06061d1f0ad30f8fc590a85ef26c22bffb11d1b6a2355e4",
+          "content_sha": "417d039c61ef6069e933507f63df298e4143363de7a14ca9719a554e5bc78273"
+        },
+        {
+          "home": 31,
+          "cell": 1271,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:1271",
+          "region_sha": "6c0d06bd65cb77abae8e2e9d235cb522fa615815daaa987a0e6fde23e3c2d24f",
+          "content_sha": "b4672aae06ba2368854069cbe4b9cb009f57ee67ac6748a88f265c37c151301c"
+        },
+        {
+          "home": 37,
+          "cell": 3054,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:5ab175b732d85a493930f603e7ebfde564f58fedc524952fac6613f257340778:cell:3054",
+          "region_sha": "ce489ef731914d7b8a20f42199d41a4e1fad71908c7f86d781c3885049d3ba1b",
+          "content_sha": "ab883138bd37fd23b72ecb5101d9387794dae535540bcef8d592bd5ad387eba7"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-22",
+      "success": true,
+      "source_sha": "5106cd6df30423b13db5287f0cc6a8d37d223bfff2f4ace1a3bb4cef255008ec",
+      "geography_sha": "b5853db230283c74c2920592347f10a462f1079c551524418fe182d2218da128",
+      "generation_seconds": 5.688642489999999,
+      "seconds": 11.539015191,
+      "cells": 5739,
+      "features": 10,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4182,
+        "islands": 6,
+        "lakes": 4
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17118,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 21,
+        "inland": 14,
+        "lake_adjacent": 94,
+        "nearest_map_edge": {
+          "home": 324,
+          "distance": 77.34
+        }
+      },
+      "regions": [
+        {
+          "home": 21,
+          "cell": 633,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:633",
+          "region_sha": "ebca51bac79c20e0c05ec80b4082d6d2dfdbd91a47d2021e07a6bae6237d0b07",
+          "content_sha": "4af310b9e9d2270f0bb4c24707ca4548d1675f62453ca8a881b5456c80bcec93"
+        },
+        {
+          "home": 14,
+          "cell": 506,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:506",
+          "region_sha": "95f3aa7225616d3aa3315cbd4d52fb17ab81e418f1062f97117dc61730a6d3ea",
+          "content_sha": "f06b89f38a1964962ab273868f4d86ed1251ef85c94edc2d4ff59a2a5cd6e092"
+        },
+        {
+          "home": 94,
+          "cell": 2278,
+          "biome": "Hot desert",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:2278",
+          "region_sha": "651e7962b417700d71fdf11559fdd2576e565db533bda1394e6d043a646e8e36",
+          "content_sha": "43a2b90aea0d3287113957c0b208f671e8019ac1bc5928f299ca0eb66b11e2f4"
+        },
+        {
+          "home": 324,
+          "cell": 727,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:727",
+          "region_sha": "252c53e321fc515e690ea68f76a97147201c8dda9681dd1acc1834d2ca910bf2",
+          "content_sha": "ba315db7e7e19ed9efba71de3c6eccc272e664cf37c9542c28c217181de55034"
+        },
+        {
+          "home": 16,
+          "cell": 711,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:711",
+          "region_sha": "c3c8a699e69affccfd5501618f800235c34b5d2d910e021dc8244cc5bdc4d592",
+          "content_sha": "e15f0977ede073e18191fb62cec09bafb07511729da4d592e116cef3593e9765"
+        },
+        {
+          "home": 17,
+          "cell": 4388,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:4388",
+          "region_sha": "ea8c0c51f71fc9badc91645462dd1cd94129e8512ee844715d948e97b99058f0",
+          "content_sha": "aa1c179e6138ef6e6ffce5a3021169aa768357de7f4f0f96f91b4b5c87946ed9"
+        },
+        {
+          "home": 26,
+          "cell": 1946,
+          "biome": "Hot desert",
+          "region_id": "local-cell:v1:ac4d471c4be2962d9467f0185d752703bff3325c85d99564af6a2faac6928949:cell:1946",
+          "region_sha": "4784babaff9db71dc581ff399b84b2bf85f349614219c089987411b0149690b2",
+          "content_sha": "5793ba2aac870611cd49cfa92dfdb750d59b042d3c718c66bb6875ecb537ae53"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-23",
+      "success": true,
+      "source_sha": "6facbd0c24f57720e341f92d9b4fa81910f83e289a9840c32b1351aac2017ada",
+      "geography_sha": "ce058963d1a729d85e9c1a51025437a9cbe2f981886fd843295299a3fb6453a2",
+      "generation_seconds": 5.83677146,
+      "seconds": 11.67705901,
+      "cells": 5880,
+      "features": 15,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4211,
+        "islands": 10,
+        "lakes": 5
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17539,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 19,
+        "inland": 18,
+        "lake_adjacent": 45,
+        "nearest_map_edge": {
+          "home": 588,
+          "distance": 90.76999999999998
+        }
+      },
+      "regions": [
+        {
+          "home": 19,
+          "cell": 3787,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:3787",
+          "region_sha": "f4e784d1e6fc3f817fad45441966b67bf4d37ede4b288ad96ee257c8c0ba5713",
+          "content_sha": "38c6ced52e78b1a16d96843e02a635473cf7f73afc611dd203e4017d53bf71a4"
+        },
+        {
+          "home": 18,
+          "cell": 3156,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:3156",
+          "region_sha": "3f693e5717488d593df92fe15b285542e480728ba2f1dda24591f3b7fbbac5a3",
+          "content_sha": "d467e1b080ecd978180230e80639e29140021e937bf6e3b2f1111f7fc015fdef"
+        },
+        {
+          "home": 45,
+          "cell": 2833,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:2833",
+          "region_sha": "85f77908a5d39a025d44a522dd8d9550c5d7366fa2503d2359a3da843974d0fb",
+          "content_sha": "6530994a6bef774c6c3b461bc173c758b3e0684bfcb5b7eb0db90d2b1da05c20"
+        },
+        {
+          "home": 588,
+          "cell": 5829,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:5829",
+          "region_sha": "d5ec7ffc314e2d6420a7dd22004e89111f2d0f7652836e36b824aff6039af334",
+          "content_sha": "e2b1ebebe308243cbcc7f6c49daa5a9d6764e544ffd0e50dac2a28d982ec1a66"
+        },
+        {
+          "home": 28,
+          "cell": 49,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:49",
+          "region_sha": "7de96f28587057a9dc10fa62b4a4588abef84c7877af3a3855dd5b7d4dd6372c",
+          "content_sha": "fb3bf0ac720bf98ec47c4b96604265a1318a05fe5e85e25f719d1a220848ba3e"
+        },
+        {
+          "home": 59,
+          "cell": 1297,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:1297",
+          "region_sha": "445857b5443cd742a0cd5e39998aa104644eab9b4af8a969810f7b5097a79325",
+          "content_sha": "4665b4ed11b09be534560f3299e82c91590b3315a048668c8c9ace6504a133d0"
+        },
+        {
+          "home": 187,
+          "cell": 572,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:83054c3bb9266af70334ca5ce03203ee43857b7f152c04bbc441dc0da253c5ab:cell:572",
+          "region_sha": "6f257d42abb7a65af91011f0090bc1166dd560f2d73da72670005e1398a64e59",
+          "content_sha": "4b282bf5e09ab1ddffc28f56574254a59e30c39e6f2ac8334e72ce2f0b630c21"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-24",
+      "success": true,
+      "source_sha": "0f9afe2aa4acf108afc4406ea9a2031defe932b3834e288a2d7cec48ab6ca7e0",
+      "geography_sha": "e157cf92c840b24e083db57aec4b9f7ece4c0d743f74e5d7eacd20e0333b9eda",
+      "generation_seconds": 4.8028054099999995,
+      "seconds": 10.170116512,
+      "cells": 5049,
+      "features": 20,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 3351,
+        "islands": 15,
+        "lakes": 5
+      },
+      "off_canvas": [],
+      "neighbor_edges": 15053,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 34,
+        "inland": 32,
+        "lake_adjacent": 117,
+        "nearest_map_edge": {
+          "home": 288,
+          "distance": 67.81999999999994
+        }
+      },
+      "regions": [
+        {
+          "home": 34,
+          "cell": 3734,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:3734",
+          "region_sha": "39a157b6cf1b65c97892825dcfe231011992d6f242292d0ec856f79b503332c8",
+          "content_sha": "78cc16e78c5b1d4bef48231f54212cc8110d5e1c6c304e4a16ae18194541ce26"
+        },
+        {
+          "home": 32,
+          "cell": 4655,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:4655",
+          "region_sha": "8d690f9940a2319f629f1b830b3f34fb7a7f98ea34d332b987bfee8b160084e0",
+          "content_sha": "d573d3e4d8be2f30ac2f4b9672b44fc3031e7451f06fe15d68d8e0ec56da35a1"
+        },
+        {
+          "home": 117,
+          "cell": 2835,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:2835",
+          "region_sha": "499029902a6a5e8f617cf1bc2fa633766dbc4df224ec3ab5d5ef3a0840c46bce",
+          "content_sha": "4a720a9ff29556a50183ef91fa96beb2c17377c208e96328737fb0f4f838db3e"
+        },
+        {
+          "home": 288,
+          "cell": 3993,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:3993",
+          "region_sha": "c5829dd469d83432049ef5103d99e73110d5047519ae463c372a755485795b93",
+          "content_sha": "1b397895a437b63b6736fec6295834a938cef42ffd2b1a326b9041ff9650b68a"
+        },
+        {
+          "home": 41,
+          "cell": 313,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:313",
+          "region_sha": "e4533f78056f8adcc0b0ad755492c4f067cee578a56ef60d8b376f6e5937b95a",
+          "content_sha": "91efc2cb8280340022e5b518abba4f08386e48ed1d4aaf49c77bccfefbb15024"
+        },
+        {
+          "home": 72,
+          "cell": 2241,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:2241",
+          "region_sha": "0b42034f5961a62267f8aae89a9df4889dc5fbe627f289fc26c3f6e12a5389f3",
+          "content_sha": "78e0c31c3836bdbac5a31d3f2097cf888ba576a19ea8c2b7447ff0fa8eb5455c"
+        },
+        {
+          "home": 110,
+          "cell": 1276,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:38fadc1d77588d958470872e2d5d38e8ffab7425ecd672b8420be3108bb34107:cell:1276",
+          "region_sha": "fdbcddf8b1359468098d45724686fc189d7f356726deb2ea98581120bdd7b2fd",
+          "content_sha": "0caca1599819b321368f7820c6d69c56bc3004ded7a202fd991b74d4cefad3fa"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-25",
+      "success": true,
+      "source_sha": "3b563e2aeb53ceb18f844d325ffd5a911ff43b32e083b31ee927b5ee72e9657d",
+      "geography_sha": "f08e482374a4234b4763ad5c5cf7f80fcb2f3908e6cd544b235b47444fcd2186",
+      "generation_seconds": 5.597837895,
+      "seconds": 12.615172594,
+      "cells": 5717,
+      "features": 14,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4191,
+        "islands": 12,
+        "lakes": 2
+      },
+      "off_canvas": [
+        {
+          "id": 7407,
+          "p": [
+            627.0672258267338,
+            -1.6946271218411881
+          ]
+        },
+        {
+          "id": 7825,
+          "p": [
+            640.5000000000022,
+            -9.021337466786274
+          ]
+        },
+        {
+          "id": 7899,
+          "p": [
+            588.8941045588859,
+            -0.13237510016143056
+          ]
+        },
+        {
+          "id": 7906,
+          "p": [
+            741.9999999999995,
+            -0.9636382393411684
+          ]
+        },
+        {
+          "id": 7994,
+          "p": [
+            592.441989474582,
+            -0.7378355243696247
+          ]
+        },
+        {
+          "id": 8212,
+          "p": [
+            630.4314585957709,
+            -1.6282277908732952
+          ]
+        },
+        {
+          "id": 8245,
+          "p": [
+            619.9999999999995,
+            -7.779031350482115
+          ]
+        },
+        {
+          "id": 8246,
+          "p": [
+            551.8581810068275,
+            -1.9865224134490667
+          ]
+        },
+        {
+          "id": 8317,
+          "p": [
+            600.0000000000014,
+            -5.040593536358252
+          ]
+        },
+        {
+          "id": 8416,
+          "p": [
+            579.4999999999999,
+            -9.275747330960629
+          ]
+        },
+        {
+          "id": 8561,
+          "p": [
+            558.9999999999998,
+            -7.806846339499817
+          ]
+        },
+        {
+          "id": 8731,
+          "p": [
+            538.9999999999981,
+            -3.4067554240645164
+          ]
+        }
+      ],
+      "neighbor_edges": 17043,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 13,
+        "inland": 14,
+        "lake_adjacent": 51,
+        "nearest_map_edge": {
+          "home": 179,
+          "distance": 22.5
+        }
+      },
+      "regions": [
+        {
+          "home": 13,
+          "cell": 672,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:672",
+          "region_sha": "880923839273c14770ba02f9dcc7bab9a25d04478e2786bb7c80c3be05d0e352",
+          "content_sha": "54b574b6bd281522b3d13a412c692f54988e59284e244dfb59d1e19a2506179e"
+        },
+        {
+          "home": 14,
+          "cell": 3826,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:3826",
+          "region_sha": "0ed8c462db5695275b2353018d0f9ff1f47e6564757f3a22350c750ae41391ff",
+          "content_sha": "9dc5af5ec492441fcbcf9b145508ddd1f50ff40f96b32fb27df2620c30c2c190"
+        },
+        {
+          "home": 51,
+          "cell": 2681,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:2681",
+          "region_sha": "ca13d4877cb0af6d00e6534f025461430cdfd99bf4cdcbcbc4c9b609c0f83f63",
+          "content_sha": "6ed5cdf1129367f19ea2ba4ea5ed024f5d27153a566551090dff1864da6f3b12"
+        },
+        {
+          "home": 179,
+          "cell": 38,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:38",
+          "region_sha": "8d2edfebce5e97a71ae47d3cc8720a1323434d5b22ab8182633a8f315ace0a0c",
+          "content_sha": "ef04e377bef2deb5683042cba44ffcbc3bb472d362969de5cbc76ee0f1fa7cc3"
+        },
+        {
+          "home": 16,
+          "cell": 1057,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:1057",
+          "region_sha": "cce6340c056672d18389f7a5d236360d574f03609431dca86ff1f4bb417be908",
+          "content_sha": "5e53d47dfe986b6dc8fe2929e58c3400d6be8d6b59af703ee8af78c1848e681c"
+        },
+        {
+          "home": 24,
+          "cell": 1864,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:1864",
+          "region_sha": "2b69a3662f0018af2b344f1b661e217dfde0023d37b3e4aa12939e8438182baa",
+          "content_sha": "f18cd6b28798d937b25dca9750fbf5e11bfccfe74435da2b63be9a874fab070b"
+        },
+        {
+          "home": 76,
+          "cell": 3673,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:2933911c58815d0df0eb9b7bf956cb4997e4dccb2df622d370cb240223c51f64:cell:3673",
+          "region_sha": "f57927d3bd9e3402fcb82f55b4cbf79cacc3d43e00ec8cf69773b6db94f7c253",
+          "content_sha": "8b692c05f170474f5279b2540c8a4cbfee3d91849b88fa9e1672b4ae64631b09"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-26",
+      "success": true,
+      "source_sha": "44af4529210aa2874fb2a4c2734db6866fea012d1783070070fe651591e542cb",
+      "geography_sha": "2be5713bdb84e42249f2de3a96cf3cd40b8bc3d6e56bc5fbde2f79d29379c92e",
+      "generation_seconds": 5.200180978,
+      "seconds": 11.648845740999999,
+      "cells": 5952,
+      "features": 12,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4218,
+        "islands": 5,
+        "lakes": 7
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17753,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 19,
+        "inland": 34,
+        "lake_adjacent": 24,
+        "nearest_map_edge": {
+          "home": 571,
+          "distance": 76.5
+        }
+      },
+      "regions": [
+        {
+          "home": 19,
+          "cell": 119,
+          "biome": "Tropical rainforest",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:119",
+          "region_sha": "ee42a539ce6083b8f7a10335fa71bd3d400cdc78d38297c8c9826be85cae53e0",
+          "content_sha": "54d88ce10bcda7a5e16c997fe41283bcac269df70ae3cdd18c468da859e8bab6"
+        },
+        {
+          "home": 34,
+          "cell": 289,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:289",
+          "region_sha": "0ab5280a4777a670d7af040e1ac191d0670ad1a0fc0491e0362f3c1eda821dcb",
+          "content_sha": "cca6e4d2f60be76e960a45b25721931ed2861f5d61c70961014389100a69b9a0"
+        },
+        {
+          "home": 24,
+          "cell": 3264,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:3264",
+          "region_sha": "7bd8c67f189f6abf99e4fcbe83ff08c77d85eadbf6eecd104f2d1fbf3b926d5e",
+          "content_sha": "c35c30ece01330e6e0a4aa40b1a4b82538d41fa64b1b40fe9805aaedda0cd514"
+        },
+        {
+          "home": 571,
+          "cell": 3051,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:3051",
+          "region_sha": "4445323f8511ef19215f66f6c949aaf963f93f875c181d0040ec2a4dfe1eaf2d",
+          "content_sha": "756f89d769235ac364bd70b44a72dc81b0024474723db4e4be1f530d067d617b"
+        },
+        {
+          "home": 44,
+          "cell": 2634,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:2634",
+          "region_sha": "3fc28214b0e89ee9108b360ee0415745d939b66e7b3ae39f3363af01c44c1844",
+          "content_sha": "5e1d18398285ac2bdafdb69081b46c72529e24ef2180b45ebaac156e1173ace5"
+        },
+        {
+          "home": 60,
+          "cell": 2777,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:2777",
+          "region_sha": "5f4b20315ef207f3e3102babf2426c5a37a0e661cc6d1a317389731fb4db6667",
+          "content_sha": "0541f1a65540e4d71e6d546712d4a5efe17e81e54de0f055b16ff5f2b49e0014"
+        },
+        {
+          "home": 61,
+          "cell": 935,
+          "biome": "Cold desert",
+          "region_id": "local-cell:v1:9e8698ae6609b8618cdcefacf246f731da24751b85f9b0d03700dff241211319:cell:935",
+          "region_sha": "6fdb27816e58e5fabf6f3446e5f162286fdbe6aa7c6bb330fe72b1fe06ef07bc",
+          "content_sha": "94e5c247ebffd898ec2689eba920a4173f90fbc29ca407a1ccaffef599bdb8d1"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-27",
+      "success": true,
+      "source_sha": "2f5113c14e2fb1e24fc292c6398226c3c2a2d10d733162010b347c23da9c8818",
+      "geography_sha": "130ffbb5520b6f0d99e2f972f77c842135ad6c1797733d5e17a564aec533f973",
+      "generation_seconds": 5.721872274,
+      "seconds": 12.259595465,
+      "cells": 6660,
+      "features": 28,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4734,
+        "islands": 18,
+        "lakes": 10
+      },
+      "off_canvas": [
+        {
+          "id": 13431,
+          "p": [
+            1281.3953009799213,
+            400.4999999999991
+          ]
+        },
+        {
+          "id": 13434,
+          "p": [
+            1280.05764624597,
+            379.9999999999993
+          ]
+        },
+        {
+          "id": 13438,
+          "p": [
+            1281.677942631069,
+            359.5000000000023
+          ]
+        }
+      ],
+      "neighbor_edges": 19866,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 23,
+        "inland": 31,
+        "lake_adjacent": 100,
+        "nearest_map_edge": {
+          "home": 819,
+          "distance": 53.51999999999998
+        }
+      },
+      "regions": [
+        {
+          "home": 23,
+          "cell": 4885,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:4885",
+          "region_sha": "3d79d1809fdfa1cd712ac30dfef971a7b0a93694df062a8578e2367542cc926c",
+          "content_sha": "b6bf75327b025649404b6144d1006eb3cb86c95594ebd49d1d06021361693efa"
+        },
+        {
+          "home": 31,
+          "cell": 511,
+          "biome": "Taiga",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:511",
+          "region_sha": "7dd6499c177529d7f90956b6d22a867435e6d4bac6f61edb3953fee0de511516",
+          "content_sha": "4966174033d918afaf37d1a816a76c34fa524b5e42de6bd381d32db901fd7c59"
+        },
+        {
+          "home": 100,
+          "cell": 3649,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:3649",
+          "region_sha": "5a858ccf43841d5d58551f3cbadaa83914db6abcc023f6c54979e018c30816da",
+          "content_sha": "2c2d2d5362eebf96ec4b6504647235455e92bf1d3734eeba5b0c6e050d1c21b3"
+        },
+        {
+          "home": 819,
+          "cell": 3594,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:3594",
+          "region_sha": "09d42bc7062d90d3e672a792f060ad374091876412f1421d56ce3e61d2eccf4d",
+          "content_sha": "2e6180fb62b31b1841532b1633df76cb1d6c776671bb02c93e5f5e93a05b28af"
+        },
+        {
+          "home": 26,
+          "cell": 5620,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:5620",
+          "region_sha": "2276eb544cd2d25f58ef557ad3ec5d8c5ad73d7d99d37efcbd4b4d96cb11ef56",
+          "content_sha": "5968d6b1f0492e77242983640e69b275da92c26dc0b970c76f6bc7c7f1849354"
+        },
+        {
+          "home": 42,
+          "cell": 4370,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:4370",
+          "region_sha": "85678e089cad44239f03ff1792e452afc0f4f7764e447bffbcc6450a4f68ed71",
+          "content_sha": "7c9d743346d4371a294e47f4ecc04bf52e5392c11b4e831b6d5a4b2e490fa697"
+        },
+        {
+          "home": 68,
+          "cell": 3972,
+          "biome": "Tropical seasonal forest",
+          "region_id": "local-cell:v1:accf0f70ae61f23bf9667ef412cd202e97fcef9fddf32922dfba4f546f17dcb3:cell:3972",
+          "region_sha": "5ef6573fd469553c10abbf06b5770566c1ef22fec12b9f5ccf2ea4642e0aa7f4",
+          "content_sha": "cc31ed9a0dbe338261a4581c36d12f1212363ce68bbfa01eaa8c4b5df01626b7"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-28",
+      "success": true,
+      "source_sha": "91b4a998079a8743a5f1b2db1743f9db3a5c63c0c29957befac54c6c4de9b598",
+      "geography_sha": "51ddc7c751ff8d3ead9fc49476a6192410fa90dd01fb4a3d9b715a8906684c75",
+      "generation_seconds": 5.273189939,
+      "seconds": 12.113408065000002,
+      "cells": 5939,
+      "features": 12,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4277,
+        "islands": 8,
+        "lakes": 4
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17722,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 21,
+        "inland": 15,
+        "lake_adjacent": 121,
+        "nearest_map_edge": {
+          "home": 160,
+          "distance": 72.86
+        }
+      },
+      "regions": [
+        {
+          "home": 21,
+          "cell": 2906,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:2906",
+          "region_sha": "a9759d2f8323ecc630b894a74d5f8d3f32d7f833d9418d51d81cce73295e5a79",
+          "content_sha": "f158bcb09b347912a65406dd7c13c17d3c2c0368599ec3085afc53f872f2a98d"
+        },
+        {
+          "home": 15,
+          "cell": 1739,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:1739",
+          "region_sha": "a4266c736cd4f80082351e593e34d5a2019b4a4cfcd8cb2bca7e38defa575645",
+          "content_sha": "768957cebe22376dc447a40edb51f0cbbbbb246e87144929d684765d9e556678"
+        },
+        {
+          "home": 121,
+          "cell": 3527,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:3527",
+          "region_sha": "424692a3d4ede25e8f1150cd9b3030f569340499c9259ef31637ec3dfed5eb58",
+          "content_sha": "12a252a483117bdc2370dd0295e1ea25fde837276288bdf390e6686146b8df33"
+        },
+        {
+          "home": 160,
+          "cell": 3577,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:3577",
+          "region_sha": "ec887417613fad03dc6278d796a16f38a45d29ce51b6e75303988ef18320f6b6",
+          "content_sha": "929acffa4da9442da79de94ae8a29a91b19793aa7c817aebf7159bf42f722414"
+        },
+        {
+          "home": 20,
+          "cell": 3780,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:3780",
+          "region_sha": "685ef51bde19ed8095cd7d5ae3a0423716474f8c99b33f16cf0befa8a5a28ee6",
+          "content_sha": "d2d5e1f5c6416b7d31b3d10a86b6183eb832d463752ab9b524666db993734220"
+        },
+        {
+          "home": 24,
+          "cell": 2745,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:2745",
+          "region_sha": "d0c51209c502f529d05a535110fdc7bd51a214fd7089e7e8e38052a3c312f4b3",
+          "content_sha": "cef31c5044794af763b729a92f2d5353b4791f49a2ecd126eaaddcbb5f10f295"
+        },
+        {
+          "home": 51,
+          "cell": 1818,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:24678e8f250acdadfa63e21d28cd74aae1af16dc8e9b4f174ca54ad3368fb426:cell:1818",
+          "region_sha": "e641bdbf26b96521b3ed79efcd375063b6d12b6227c2a971ba7f54e18e5e889c",
+          "content_sha": "3cb3285f8e83eafe6ee780bef8efdb109ecfe19f0321cfebe3dea8e5b1bbbcee"
+        }
+      ]
+    },
+    {
+      "seed": "game99-independent-29",
+      "success": true,
+      "source_sha": "0574baf7880fcf7449c781ebef2b244768c7ef8847f286e435d319f997c3bcfa",
+      "geography_sha": "d4a241ede89689258ccda2a729e7c0dfc071120004d3ad3fb2b2ae95baaed899",
+      "generation_seconds": 5.098508035,
+      "seconds": 10.899119229,
+      "cells": 5808,
+      "features": 20,
+      "map": {
+        "width": 1280,
+        "height": 800,
+        "land_cells": 4127,
+        "islands": 11,
+        "lakes": 9
+      },
+      "off_canvas": [],
+      "neighbor_edges": 17332,
+      "shoreline_seams": 2,
+      "lake_seams": 1,
+      "boundary_cells": [],
+      "categories": {
+        "coastal": 16,
+        "inland": 20,
+        "lake_adjacent": 28,
+        "nearest_map_edge": {
+          "home": 784,
+          "distance": 80.20000000000005
+        }
+      },
+      "regions": [
+        {
+          "home": 16,
+          "cell": 2290,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:2290",
+          "region_sha": "3b66be8d1cf0466c14c3bd40bd594a0cd05f9e509c1f387ea098f501553a499c",
+          "content_sha": "759c4031b667a77ab631b09c8ce285ce1b6c3fe133d8b71737eef9fcba6ca3cd"
+        },
+        {
+          "home": 20,
+          "cell": 2338,
+          "biome": "Temperate deciduous forest",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:2338",
+          "region_sha": "e87210ddf27583a7f14a28571e083a37f2d22c21c223a73f51e9899350f81cd7",
+          "content_sha": "bdaeea94f2fde4e446f55cc621d5274c9111d5897d3e87c0766057b00109db4c"
+        },
+        {
+          "home": 28,
+          "cell": 3041,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:3041",
+          "region_sha": "2c1047acab2abed6e8e05a4afb5ed9c487e634f346e991fba7e87ff081319b51",
+          "content_sha": "0217bf07f560b09b695f3ac761bff2befe416a06df2f99b41377a2648622358d"
+        },
+        {
+          "home": 784,
+          "cell": 5136,
+          "biome": "Wetland",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:5136",
+          "region_sha": "4edf9408cbcbc6c05906c805731d1d620e09b42b2715eb52a546034166b8979f",
+          "content_sha": "cd3d8bb7f9877e0171bee4c566a095276db138d938f620d94207f1d1d80e06f7"
+        },
+        {
+          "home": 25,
+          "cell": 2479,
+          "biome": "Temperate rainforest",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:2479",
+          "region_sha": "cff2503cda89b423a0ff4fbd44c0c58b2895d5b14437ac148ef6520eefbc9c2f",
+          "content_sha": "501ed7130993eb14bee266778d7c2340e2c38f9a18b0a63348a43c0431bc85e7"
+        },
+        {
+          "home": 59,
+          "cell": 1102,
+          "biome": "Savanna",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:1102",
+          "region_sha": "54d02adb94e093f6392483e9d4c35a5411b02f241fa3a4c4d5ed8050634005bf",
+          "content_sha": "30a1de438b2b90f937e4d0b144cdad552b7712a474783a1f5e6b622446e07721"
+        },
+        {
+          "home": 68,
+          "cell": 2650,
+          "biome": "Grassland",
+          "region_id": "local-cell:v1:e9cfc7698697510bb3eb04e2f109981289f82b17a6f48fc579e1b87ea6a784e2:cell:2650",
+          "region_sha": "2faa94f8d6b3d8661c62314db9de5162979cead19b551233dece7762698d3789",
+          "content_sha": "d38be2d10175a16b7ca13dbd5c955b5698bed2c1905749dd0112dc955c6f267d"
+        }
+      ]
+    }
+  ]
+}

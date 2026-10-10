@@ -1,0 +1,18 @@
+Original GitHub job log excerpts; full logs linked in DELIVERY.md.
+2026-10-10T11:50:52.2594397Z ✔ failed old replay recovers unchanged source, deterministic/idempotent v1 cache (3388.7753ms)
+2026-10-10T11:50:52.2598142Z ✔ interruption before sidecar publication retries a missing cache safely (3266.7127ms)
+2026-10-10T11:50:52.2602173Z ✔ canonical mismatch publishes nothing and never changes source bytes (3232.9006ms)
+2026-10-10T11:50:52.2604792Z ✔ existing corrupt and unverified caches fail closed without overwriting them (20.6924ms)
+2026-10-10T11:50:52.2734332Z ✔ off-canvas original rings stay exact, clip only at the viewport (2.2308ms)
+2026-10-10T11:50:52.2735124Z ✔ feature-only v1 remains compatible (0.2124ms)
+2026-10-10T11:50:52.2736178Z ✔ writer and reader reject NaN, infinity, null, wrong dimensions and strings (1.7006ms)
+2026-10-10T11:50:52.2737215Z ✔ missing/repeated references, collapsed rings and invalid cell centres rejected (0.6869ms)
+2026-10-10T11:50:52.2738217Z ✔ self-intersecting nonzero-area shoreline is rejected by both paths (0.5916ms)
+2026-10-10T11:50:52.2739251Z ✔ source identity, provider, seed, dimensions and geometry labels remain pinned (0.3237ms)
+2026-10-10T11:50:52.2740371Z ✔ real failing source retains canonical SHA and every original coordinate/ID (132.624ms)
+2026-10-10T11:50:52.2741080Z ℹ tests 11
+2026-10-10T11:50:52.2741626Z ℹ pass 11
+2026-10-10T11:50:52.2741922Z ℹ fail 0
+2026-10-10T11:50:52.2742569Z ℹ skipped 0
+2026-10-10T11:50:52.2743206Z ℹ duration_ms 10021.3985
+2026-10-10T11:54:30.5076921Z PASS old failed and valid campaigns preserved through actual source-version handoff

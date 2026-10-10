@@ -1,0 +1,29 @@
+{
+  "checks": 129,
+  "empty_path": true,
+  "failures": 0,
+  "platform": "Windows",
+  "recovery": {
+    "base_sha": "9a68f0bf718392e30f6d33f9c565a1a637219d9d7ab5a79d8fec61e43ea6936a",
+    "home": 100.0,
+    "party_ids": [
+      "0e87325cf460a1da2e578eb0187bf4b4:adventurer:1",
+      "0e87325cf460a1da2e578eb0187bf4b4:adventurer:2",
+      "0e87325cf460a1da2e578eb0187bf4b4:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:c0fd5597c660a57fd75909be9c07e4db5dfa8c3a3405560bdfdc2164c27c8777": {
+        "battle_hash": "f3734cb84e0b7096fb0bec8f850352d510586245a014be629b7778bb0445286d",
+        "outcome": "victory",
+        "sequence": 5,
+        "site_id": "sandbox-site:c0fd5597c660a57fd75909be9c07e4db5dfa8c3a3405560bdfdc2164c27c8777",
+        "text": "The armed occupants of Secluded camp \u00b7 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      }
+    },
+    "slot": "0e87325cf460a1da2e578eb0187bf4b4",
+    "world_sha": "c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1"
+  },
+  "source_helper_override": false,
+  "visual": false
+}

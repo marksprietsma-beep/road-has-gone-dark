@@ -1,0 +1,38 @@
+[
+  {
+    "check": "prepare-real-worlds",
+    "seconds": 55.828,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "import",
+    "seconds": 6.016,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "generation-constraints",
+    "seconds": 0.406,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "generated-corpus",
+    "seconds": 203.469,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "multi-opportunity-create",
+    "seconds": 26.484,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "multi-opportunity-replay",
+    "seconds": 55.016,
+    "exit_code": 0,
+    "errors": false
+  }
+]
