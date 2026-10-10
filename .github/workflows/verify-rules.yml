@@ -1,0 +1,62 @@
+name: Verify GAME-32 Rules Core and Native Distribution
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-32-d20-rules-core-v1]
+  pull_request:
+    paths: ['scripts/rules/**', 'scripts/game_world/**', 'data/rules/**', 'tests/rules/**', '.github/workflows/verify-rules.yml']
+  workflow_dispatch:
+jobs:
+  rules:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Pinned engine and existing compatible helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Rules content, deterministic oracle, stress and existing-save migration
+        run: python tests/rules/run-tests.py
+      - name: Linux complete foundation and UI regressions
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' python tests/ui_system/run-tests.py --visual --regressions
+      - name: Windows complete foundation and UI regressions
+        if: runner.os == 'Windows'
+        run: python tests/ui_system/run-tests.py --regressions
+      - name: Verified native export templates
+        run: python tools/release/prepare-templates.py
+      - name: Complete native game and empty-PATH expedition proof
+        env:
+          GAME84_RELEASE_ROOT: ${{ runner.temp }}/game32-distributions
+          GAME_RELEASE_TAG: game32
+          GAME_RELEASE_EVIDENCE: docs/implementation/game32
+        run: python tests/expedition/verify-package.py
+      - name: Rules review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game32-qa-${{ runner.os }}
+          path: |
+            docs/implementation/game32
+            docs/implementation/game83
+            docs/implementation/game84
+      - name: Complete game with existing helper
+        uses: actions/upload-artifact@v4
+        with:
+          name: game32-complete-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game32-distributions/*.zip
+            ${{ runner.temp }}/game32-distributions/*.tar.gz
+            ${{ runner.temp }}/game32-distributions/*.sha256

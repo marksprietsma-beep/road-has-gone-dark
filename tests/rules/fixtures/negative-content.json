@@ -1,0 +1,181 @@
+[
+  {
+    "case": "duplicate",
+    "path": [
+      "classes",
+      1,
+      "id"
+    ],
+    "value": "roadwarden"
+  },
+  {
+    "case": "reference",
+    "path": [
+      "features",
+      0,
+      "abilities"
+    ],
+    "value": [
+      "absent"
+    ]
+  },
+  {
+    "case": "operator",
+    "path": [
+      "feats",
+      0,
+      "requirements"
+    ],
+    "value": {
+      "op": "script",
+      "path": "arbitrary.gd"
+    }
+  },
+  {
+    "case": "effect",
+    "path": [
+      "abilities",
+      0,
+      "effects"
+    ],
+    "value": [
+      {
+        "op": "execute"
+      }
+    ]
+  },
+  {
+    "case": "hook",
+    "path": [
+      "features",
+      0,
+      "hooks"
+    ],
+    "value": [
+      "untrusted"
+    ]
+  },
+  {
+    "case": "formula",
+    "path": [
+      "classes",
+      0,
+      "bab"
+    ],
+    "value": {
+      "op": "floor_divide",
+      "args": [
+        {
+          "op": "const",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "case": "dice",
+    "path": [
+      "equipment",
+      0,
+      "damage"
+    ],
+    "value": "1000000d1"
+  },
+  {
+    "case": "progression",
+    "path": [
+      "classes",
+      0,
+      "max_level"
+    ],
+    "value": 21
+  },
+  {
+    "case": "resource",
+    "path": [
+      "resources",
+      0,
+      "refresh"
+    ],
+    "value": "every_battle_focus"
+  },
+  {
+    "case": "cycle",
+    "path": [
+      "features",
+      0,
+      "grants"
+    ],
+    "value": [
+      "held-ground"
+    ]
+  },
+  {
+    "case": "extra_effect",
+    "path": [
+      "abilities",
+      0,
+      "effects"
+    ],
+    "value": [
+      {
+        "op": "heal",
+        "amount": {
+          "op": "const",
+          "value": 1
+        },
+        "script": "arbitrary.gd"
+      }
+    ]
+  },
+  {
+    "case": "status_cycle",
+    "path": [
+      "statuses",
+      0,
+      "effects"
+    ],
+    "value": [
+      {
+        "op": "apply_status",
+        "id": "slowed"
+      }
+    ]
+  },
+  {
+    "case": "progression_dependency",
+    "path": [
+      "classes",
+      0,
+      "bab"
+    ],
+    "value": {
+      "op": "stat",
+      "id": "BAB"
+    }
+  },
+  {
+    "case": "trigger",
+    "path": [
+      "abilities",
+      0,
+      "trigger"
+    ],
+    "value": "unregistered"
+  },
+  {
+    "case": "modifier_scope",
+    "path": [
+      "abilities",
+      7,
+      "effects",
+      0,
+      "scope"
+    ],
+    "value": "unknown_lifetime"
+  }
+]
