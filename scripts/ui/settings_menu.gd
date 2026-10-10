@@ -7,6 +7,7 @@ const MAIN_MENU_SCENE := "res://scenes/ui/main_menu.tscn"
 
 
 func _ready() -> void:
+	GameUI.install(self)
 	back_button.pressed.connect(_return_to_menu)
 	content.modulate.a = 0.0
 	var tween := create_tween()

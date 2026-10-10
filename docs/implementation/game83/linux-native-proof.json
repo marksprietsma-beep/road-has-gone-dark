@@ -1,0 +1,41 @@
+{
+  "platform": "Linux",
+  "native_export_test": "isolated release export full expedition lifecycle; production release export launch passed",
+  "source_helper_override": false,
+  "path_empty": true,
+  "native_result": {
+    "checks": 60,
+    "failures": 0,
+    "source_helper_override": false,
+    "timings": [
+      {
+        "six_transitions_ms": 3361,
+        "world": "game-11-determinism"
+      },
+      {
+        "six_transitions_ms": 3511,
+        "world": "atlas-showcase-06"
+      },
+      {
+        "six_transitions_ms": 4027,
+        "world": "game84-native-package"
+      }
+    ],
+    "worlds": 3
+  },
+  "archive": "game83-linux-x64.tar.gz",
+  "archive_sha256": "c15b4b59059a8880159e1003bc7792c344ab0f21927c37630cc6429d580b91e4",
+  "distribution": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "linux",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "a6c8b56e7565e32e14a22f9dde00f1666840fc1ff257e7ee07d0acc7ff0e78c5"
+    },
+    "executable_sha256": "b6edd497a47f27fe1d7f5e3466bfa0f4d80d752adc7fcbdf9abee122ba3eec6e"
+  }
+}

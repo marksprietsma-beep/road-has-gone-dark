@@ -5,7 +5,10 @@ root = pathlib.Path(__file__).resolve().parents[2]
 os.chdir(root)
 base = pathlib.Path(os.environ['GAME84_RELEASE_ROOT']).resolve()
 base.mkdir(parents=True, exist_ok=True)
-name = 'game84-' + ('windows' if os.name == 'nt' else 'linux') + '-x64'
+release_tag = os.environ.get('GAME_RELEASE_TAG', 'game84')
+evidence = root/os.environ.get('GAME_RELEASE_EVIDENCE', 'docs/implementation/game84')
+(evidence/'logs').mkdir(parents=True, exist_ok=True)
+name = release_tag + '-' + ('windows' if os.name == 'nt' else 'linux') + '-x64'
 distribution = base/name
 subprocess.run(['node', 'tools/release/export-game.mjs', '--helper', os.environ.get('GAME76_HELPER_ROOT', str(root/'worldgen-helper')),
                 '--godot', os.environ.get('GODOT_BIN', 'godot'), '--qa', '--qa-scene', 'res://tests/expedition/verify-distribution.tscn', '--output', str(distribution)], check=True)
@@ -13,7 +16,7 @@ environment = os.environ.copy()
 environment.pop('GAME76_HELPER_ROOT', None)
 environment.update(PATH='', NODE_PATH='', NODE_OPTIONS='', GAME84_DISTRIBUTION_TEST_ROOT=str(base/'native-test'))
 executable = distribution/('road-has-gone-dark-qa.exe' if os.name == 'nt' else 'road-has-gone-dark-qa')
-log = root/'docs/implementation/game84/logs/native-distribution.txt'
+log = evidence/'logs/native-distribution.txt'
 with log.open('w', encoding='utf-8') as handle:
     result = subprocess.run([str(executable), '--headless', '--audio-driver', 'Dummy'],
                             cwd=distribution, env=environment, stdout=handle, stderr=subprocess.STDOUT, timeout=600)
@@ -40,7 +43,7 @@ digest = hashlib.file_digest(archive.open('rb'), 'sha256').hexdigest()
 proof = {'platform':platform.system(), 'native_export_test':'isolated release export full expedition lifecycle; production release export launch passed', 'source_helper_override':False,
          'path_empty':True, 'native_result':native, 'archive':archive.name, 'archive_sha256':digest,
          'distribution':json.loads((distribution/'distribution.json').read_text())}
-(root/'docs/implementation/game84/distribution-proof.json').write_text(json.dumps(proof, indent=2)+'\n')
+(evidence/'distribution-proof.json').write_text(json.dumps(proof, indent=2)+'\n')
 print('Verified complete game + helper:', archive, flush=True)
 
 print('::notice title=GAME-84 native distribution proof::'+json.dumps(proof,separators=(',',':')),flush=True)

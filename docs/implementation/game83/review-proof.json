@@ -1,0 +1,904 @@
+{
+  "base_sha": "3541e0bb2cc72ee147c3589e3a354b3b670d85e5",
+  "tested_source_sha": "bfbdf48b4ae26dd1fc516cd8641177ee63fc4bd5",
+  "protected_paths_unchanged": [
+    "scripts/game_world",
+    "scripts/party",
+    "scripts/world_library",
+    "scripts/world_enrichment",
+    "scripts/expedition/expedition_service.gd",
+    "scripts/expedition/expedition_records.gd",
+    "tools",
+    "data",
+    "tests/worldgen/fixtures",
+    "project.godot"
+  ],
+  "complete_save_records_equal": 14,
+  "campaigns_exercised_by_capture": [
+    "55f65f4122d139290301e8403ee2984a.json"
+  ],
+  "save_comparison": "All fields compared; no normalization or exclusions",
+  "capture_note": "Filenames identify requested physical window sizes. Godot viewport texture can omit a one-pixel letterbox; exact raster sizes are recorded below.",
+  "captures": [
+    {
+      "path": "before/expedition/consequence-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5b3438633e594b5c7574b7d1eed0b77d24bd736e61622946f0a7f2c330cd4f91"
+    },
+    {
+      "path": "before/expedition/consequence-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "de01a8744cdb1685bf1f24426cf5e9112e4e794181be3bb3c3a652e7b1ad1f8b"
+    },
+    {
+      "path": "before/expedition/consequence-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "91197ff4285404d159d44520a31c2cf357dc8f467e3860e0f31ac2e9d13f75ae"
+    },
+    {
+      "path": "before/expedition/fresh-generated-world.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e232a107b7ccf71da48f1f1046e39ae2c2eb51b05beedc2c999037bff79600fd"
+    },
+    {
+      "path": "before/expedition/hometown-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d28c765b1d54646fa54f240d1d6824d6bdc38185bec1306571f36b71b45d19e5"
+    },
+    {
+      "path": "before/expedition/hometown-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e076ea8cf6fc1d4c3453e629656c400dfbeaab653f666705031758850ecd8ea9"
+    },
+    {
+      "path": "before/expedition/hometown-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "abc8ecfb99c5498eac7612403fd99884922e06d4ce36533350a6f9fe1cf793ff"
+    },
+    {
+      "path": "before/expedition/known-site-map.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f4d8ac426a78a433c7906215419e340f0070bcbd473f4db760cc75f164056b1a"
+    },
+    {
+      "path": "before/expedition/lead-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f4d8ac426a78a433c7906215419e340f0070bcbd473f4db760cc75f164056b1a"
+    },
+    {
+      "path": "before/expedition/lead-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "92ffa8b98f1e817e1f5a15a77ae9d974c7f69cc06acdf07b5ea5d1a7abd58b6b"
+    },
+    {
+      "path": "before/expedition/lead-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "2a34a8c998ed34759aa1a713694e5f1aa1ab948331cc0c54a748eca820b256eb"
+    },
+    {
+      "path": "before/expedition/main-menu-resume-expedition.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2e79e3101864364d3fd48adb3c178d566b7c3e08a3cf2a96ac748faa054daa3c"
+    },
+    {
+      "path": "before/expedition/party-ready-handoff.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "689785262b053cf336e02f6d622a185aa1c4d39656c5fd75ec1504fa3bbc040f"
+    },
+    {
+      "path": "before/expedition/resumed-result-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "7eff96976452664fa8d6444c191c59b8499470d97a2fc6846fa5c1c4f27838cc"
+    },
+    {
+      "path": "before/expedition/resumed-result-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "563e7b8b435c78d1dd2ffbb1dca2784aa85472b9e9fb62cdfbe836609d276028"
+    },
+    {
+      "path": "before/expedition/resumed-result-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "82bd85155019556259c80d3f7928d0fed3782b7ecd5b336fde05ce345e109e22"
+    },
+    {
+      "path": "before/expedition/returned-hometown-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ca75d14fc4796de347b8a3a51e86188bfcc462f7f75625faca26c1b22d823a30"
+    },
+    {
+      "path": "before/expedition/returned-hometown-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e232a107b7ccf71da48f1f1046e39ae2c2eb51b05beedc2c999037bff79600fd"
+    },
+    {
+      "path": "before/expedition/returned-hometown-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "339874c9fb8657c6ce86535e77992c7f4a4a1c533a8ba5700061262e9c2583a4"
+    },
+    {
+      "path": "before/expedition/rumour-before-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b170681a814bb1676f024e903b198e4b4ce155d8d50b2a3099192838994d8986"
+    },
+    {
+      "path": "before/expedition/rumour-before-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "f1792f15f2dc5f4c93d1cd73a65eeb572e6ea3d67f6f19c90c63eda4c6db544f"
+    },
+    {
+      "path": "before/expedition/rumour-before-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "68d142c2d87bb75caa3a8b7e117bb13fe66c843950f475c38633a11634f0bb8c"
+    },
+    {
+      "path": "before/expedition/rumour-discovered-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2c7fab054c278b920e53986f057c42870e0f0be82d4e44f619a87f8add4ac362"
+    },
+    {
+      "path": "before/expedition/rumour-discovered-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "f74d4842481e0436d00da744bb2283322641fa0abc6700f762b31d47759e9e44"
+    },
+    {
+      "path": "before/expedition/rumour-discovered-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "bd33d55c32117eb69c51fa7d240bda6fa921f090f1496a664afeb626b081b09b"
+    },
+    {
+      "path": "before/expedition/site-options-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "145ea22ff55341595151c1b0df2505a5ac8c9c524d5d0affec97384292062294"
+    },
+    {
+      "path": "before/expedition/site-options-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "bcad25a143b7bc95a29ccc3ddc34ded145b64b20cf5a50fd5298b577082192a3"
+    },
+    {
+      "path": "before/expedition/site-options-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "4d6050f424693c4d3b35dff28884652f23c1627d4d54321e0350e1e8a4288072"
+    },
+    {
+      "path": "before/origin/confirm-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5d48370d22686fd2d12160d4278ac2ab20540a9f75d860e25367c58853c4e494"
+    },
+    {
+      "path": "before/origin/confirm-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "77303183d75be89ada09c5f4421f105bf0f33ba15f8066c1d33d689f6ce4a4bc"
+    },
+    {
+      "path": "before/origin/confirm-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "434370131f4450c36c617fd4fe6b0fed0fd446d742e716593b8ebc0a47b2a422"
+    },
+    {
+      "path": "before/origin/hometown-choice-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "221970c47d65c823e316d3a277ecbd5bb4a31ffb88ab803c802864b0a21f6f73"
+    },
+    {
+      "path": "before/origin/hometown-choice-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "22f6341607210a9a45b8b0db04bfd0831d763044c2ec85d79f99bc770252f0d1"
+    },
+    {
+      "path": "before/origin/hometown-choice-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "694b42914663030bc149a5bd2b5cd8ab168c67e9649e25f6e2724a11cc8ac2a5"
+    },
+    {
+      "path": "before/origin/main-menu-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "13fae8022cf9ea9d613b1de2f7fc09f0ba84a4201f10660dd3ad37a8998d2554"
+    },
+    {
+      "path": "before/origin/main-menu-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "86a4aba3b3b9eab7b2b7225eef34261c1c57d29550b06ecfa927a93480640099"
+    },
+    {
+      "path": "before/origin/main-menu-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "54a3d9cce69d696bb3aa9a681f3cae21650b1fd668ee48bde7ce44b9c0d910e9"
+    },
+    {
+      "path": "before/origin/party-background-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "6c88e59ddfd1b5f423b22db398026ba364e82378bb4f146023f562644f90aaca"
+    },
+    {
+      "path": "before/origin/party-background-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "ca6fc5a86003211e36175f119f009308fdea6aafbe120fad568b43e2574b49c8"
+    },
+    {
+      "path": "before/origin/party-background-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "c0af07d5d6b955a154829fe2d999b22c53b5a465de15fc39daf1cecdb4de1ed9"
+    },
+    {
+      "path": "before/origin/party-creation-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "fe995a4e99d2a234fdb8629f0123a6ca0d806d4e4f4fff4b0be83cfad18228b5"
+    },
+    {
+      "path": "before/origin/party-creation-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "31eb6493b9fb91a79bdcca5c973e0a48a0bbf5866b6ee3a17062db8893687483"
+    },
+    {
+      "path": "before/origin/party-creation-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "74e44ca924b7896f73d401b6708a3cfd376e56dc6c496c7b7df04d2ccb12cb5b"
+    },
+    {
+      "path": "before/origin/party-ready-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8c16d58790efcf8fd6b93959095168bf6c2246de583487cb32579ebdbaab8e21"
+    },
+    {
+      "path": "before/origin/party-ready-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "391c8cbe01b9db971e6c4d716ceeb4281ca544806d0cbe58ab1d15fbeb36afce"
+    },
+    {
+      "path": "before/origin/party-ready-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "25152de036af2b00ccac6c17cc8a169509b607832124845dccc393bb0f4cdd76"
+    },
+    {
+      "path": "before/origin/region-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "10774074e18f18caf643988c4a8e6a67ba23bf7cb926384a38551d84d2dd05ae"
+    },
+    {
+      "path": "before/origin/region-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "98775d09ef1162e1234234fe9c022bb1a9ee143618967ea55e8cf693eb802ff0"
+    },
+    {
+      "path": "before/origin/region-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "6b1796556fa76164bd01c0577c28f79055377b1a745a31fd03d120007c1c1a57"
+    },
+    {
+      "path": "before/origin/state-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4d21f3d490219413df395e698fcbce1acdc1be846b57a5c1983072a854cf1114"
+    },
+    {
+      "path": "before/origin/state-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "525c32a35077886857fc797e4205c6932e6f8053ad81a3e9ad085e5b2e1000c8"
+    },
+    {
+      "path": "before/origin/state-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "2119f3331f2a800a16825605e114035b00ebf396c61f512844519ca9fcf24c53"
+    },
+    {
+      "path": "before/origin/world-1280x720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "507499b824fb86a4a7797d79ab6087d8edda6224cba8197665d54795df1518ee"
+    },
+    {
+      "path": "before/origin/world-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "3c3844f3a1d3b37b2cd3e25f7cdd579c3ef38a4e1a5e56a72b249ef398ff3daa"
+    },
+    {
+      "path": "before/origin/world-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "bb392ffa8e109f8acbcedf439ca3896e27e81fa856f2dec7b5ea2d00f9b5e8ed"
+    },
+    {
+      "path": "after/expedition/consequence-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "778fea464c1fc64bee95537b43fd0ba999c03cdc5231870816875690749cda10"
+    },
+    {
+      "path": "after/expedition/consequence-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "359be384a52f40cdd002d0cdc70e29f960199ef37091b422ed50bd6bc80ee7bd"
+    },
+    {
+      "path": "after/expedition/consequence-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "21e69babdb758601811eefd6b5dd6ec33c4ece63099bd0812dba32261894a857"
+    },
+    {
+      "path": "after/expedition/fresh-generated-world.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "345b8d0117a86feb744831a625ede410d5aeb676579a2089e28169ab00bd9b08"
+    },
+    {
+      "path": "after/expedition/hometown-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "0a36b36e942e661c3dad506a961d5fb4179f13eae15a0fc179d81138a5b3c4d9"
+    },
+    {
+      "path": "after/expedition/hometown-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "cb2ad3212a6af1b9704b1347576b06ecc4a2c1e020a69301a048f27e77a649d8"
+    },
+    {
+      "path": "after/expedition/hometown-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "72fa86ea1238c452c3d3d26e1261fdbd48ab37c8e14186c689204d82f3033ccf"
+    },
+    {
+      "path": "after/expedition/known-site-map.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "4d1e1924456a55c2c4123ced9aa71c4b3eff006ca6f442f44900e44b43e46e66"
+    },
+    {
+      "path": "after/expedition/lead-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "4d1e1924456a55c2c4123ced9aa71c4b3eff006ca6f442f44900e44b43e46e66"
+    },
+    {
+      "path": "after/expedition/lead-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e585a9ce2a10890a06d43871aaa20d3d76be2fcf2bd1f5f466d4a07e9316aca4"
+    },
+    {
+      "path": "after/expedition/lead-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "e54f00f1b2d940b4e5875db61847b5842aea374c0ce3fabf3b80c3947e2d1871"
+    },
+    {
+      "path": "after/expedition/main-menu-resume-expedition.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "04c7d25b873e15d6ca1ce1589eb616936a426cf8160d99d1de9ce5760e8dbc24"
+    },
+    {
+      "path": "after/expedition/party-ready-handoff.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "184472c77b65590a0b149127f89d8a15e96315bd584bbd5f74bc307d96f0c8a7"
+    },
+    {
+      "path": "after/expedition/resumed-result-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "778fea464c1fc64bee95537b43fd0ba999c03cdc5231870816875690749cda10"
+    },
+    {
+      "path": "after/expedition/resumed-result-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "359be384a52f40cdd002d0cdc70e29f960199ef37091b422ed50bd6bc80ee7bd"
+    },
+    {
+      "path": "after/expedition/resumed-result-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "21e69babdb758601811eefd6b5dd6ec33c4ece63099bd0812dba32261894a857"
+    },
+    {
+      "path": "after/expedition/returned-hometown-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "ee7efd5dc7543c1d8f9af854c8ef8fdd4e71e76538bb2f602230e6e4e9d63717"
+    },
+    {
+      "path": "after/expedition/returned-hometown-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "345b8d0117a86feb744831a625ede410d5aeb676579a2089e28169ab00bd9b08"
+    },
+    {
+      "path": "after/expedition/returned-hometown-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "c15c083a22c645d8062c74f4936b101611ddbef66bd6eefe0a441fed2074dcad"
+    },
+    {
+      "path": "after/expedition/rumour-before-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "ee35fb786d828ae41cfc3b3d3177afd88ba8aec8fb886ffa8740cabeaf803d8f"
+    },
+    {
+      "path": "after/expedition/rumour-before-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "37561094f1a5ac24e688afee8c1f8785e0afbd3942cba13f0cfd2fb4c4cf250c"
+    },
+    {
+      "path": "after/expedition/rumour-before-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "b130aef661e7e9e63587ec2c33d8cc95bb56d1f3097f2a458a0bd47eff1ef1b2"
+    },
+    {
+      "path": "after/expedition/rumour-discovered-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "a033e450ab259c11f19f6d1ad767d0ae36dd9996a89db02ca622f0e4feba9390"
+    },
+    {
+      "path": "after/expedition/rumour-discovered-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "82d4ca40a95d4c89b6f0a491f9a8d082cb09627e3670c4db1adeeb8072b84309"
+    },
+    {
+      "path": "after/expedition/rumour-discovered-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "2987ecf51f733ece648cb0d88fda3dc0cc6f4c74c133ee3d3325cb7a26dcb606"
+    },
+    {
+      "path": "after/expedition/site-options-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "f32f8dba14e3cadc4b834b07cc8b62b87ff81b96517e7cd7cfae693579c7f78e"
+    },
+    {
+      "path": "after/expedition/site-options-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "2fc4522947f1a3d35810655ac083936b94c5fec1bf79a8ffdd2318880608ca79"
+    },
+    {
+      "path": "after/expedition/site-options-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "e025665fed393de29bfc7b06ff46f65c4ff22a1bcc81b08d379298d98ccab3fc"
+    },
+    {
+      "path": "after/origin/confirm-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "cbb77b014c029dd3e88fb5c11e27ae66063af7d5d2711ff91d42000db0a3cde3"
+    },
+    {
+      "path": "after/origin/confirm-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "eaaa03ef207a4d441af870f031c96d8554b4efcad75b9e8da3f628991557d318"
+    },
+    {
+      "path": "after/origin/confirm-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "a09068c07e6a688568bbf4f6ded3adb1f2b062fda7fe51daf3e8db77e6442021"
+    },
+    {
+      "path": "after/origin/hometown-choice-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "d86e8bbd1a78383a8768bac482a10ee3fdec8213936514479dbe22c9a0f356e7"
+    },
+    {
+      "path": "after/origin/hometown-choice-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e2deef5e93ee3e00a6e3993cac957517b6abaee1d95780b7dc73bb9a9a5e0a3a"
+    },
+    {
+      "path": "after/origin/hometown-choice-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "ee8e201de5bbcfb7157bd6ec4afd4307e1f7611cc62bca3dbf204069b36c7edd"
+    },
+    {
+      "path": "after/origin/main-menu-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "287bd0976d6563e3f01888828d5fb5342ac949c39ac46f289d307690082a7ea2"
+    },
+    {
+      "path": "after/origin/main-menu-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "954351ca5b98f16f5b01cad0b4547791ac8b414eba3c6667bed4af96ab540510"
+    },
+    {
+      "path": "after/origin/main-menu-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "ced04b60a6eae6efadaaa5a84131967d93fb7f6af0a7d46bb1f04c496d2ea9e8"
+    },
+    {
+      "path": "after/origin/party-background-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "4cc612bf53ce3ee80959e59666ea2964b56c8b81218778721ced496550b9953b"
+    },
+    {
+      "path": "after/origin/party-background-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e4f851c61b0c2b5b4925fa55946778c6b2390ff5f86d47ad6b8e6093feb518e3"
+    },
+    {
+      "path": "after/origin/party-background-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "b0f77ec7a31f103ed51933095d4a3b32fa12e47052a4d61fc14163f43af27ba9"
+    },
+    {
+      "path": "after/origin/party-creation-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "53bf721f649c23c8b3e4a8a0cf131aaa53c3f777e2dc2fadfd81aac739fdabd9"
+    },
+    {
+      "path": "after/origin/party-creation-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "43d610ea02fee04a29557c9886f205c3186a4275c712325ebc33abe1dc2ad1f2"
+    },
+    {
+      "path": "after/origin/party-creation-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "aa82dbf8aec5db5d57ceb214d03f20c1e1b53a61685fda2b91edb3bc95f7a25d"
+    },
+    {
+      "path": "after/origin/party-ready-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "015815ee70186482741bc9d13e50b57cf8ad40aea6963b98c4edf71b3c3a9f68"
+    },
+    {
+      "path": "after/origin/party-ready-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "e3855c8f1e18106008c29ab0a1962efbcb2e29403c6d99542cc4337c8cddf285"
+    },
+    {
+      "path": "after/origin/party-ready-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "0d57862d6d539609cd98e334a6330d740f43f585d17e89605a10f06703bdb0d3"
+    },
+    {
+      "path": "after/origin/region-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "805c65cf8cf8d0d33d0dd46296eec0452a04a481afa94be5ba397a4cb6188f38"
+    },
+    {
+      "path": "after/origin/region-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "713a0fd777ba52d8c809324ac547977724c96c49c551a37e8860c27fc537099a"
+    },
+    {
+      "path": "after/origin/region-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "145eae7a6038b192a87dff9698de329518d5f04b5c8b8e68c0f218f762e76b1e"
+    },
+    {
+      "path": "after/origin/state-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "965812758b838ddc89c8ca64e13f84387b28046eba3aee403f07327d77a875fd"
+    },
+    {
+      "path": "after/origin/state-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "601cd4a96cf53388d27de96cd339338992cbdd755af5d516bbe9ea23cdff2a22"
+    },
+    {
+      "path": "after/origin/state-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "97d847b559ae00a978b51288f5eb48902ba5534fd5d35c6bb735ebb2841d127e"
+    },
+    {
+      "path": "after/origin/world-1280x720.png",
+      "size": [
+        1280,
+        719
+      ],
+      "sha256": "e69bf1d35c2d6a4c34fd12702cb349d6a47697cc38b6cb2bfc03953e97869505"
+    },
+    {
+      "path": "after/origin/world-2560x1440.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "sha256": "f282f0b65ca5f0d12319c13298b7e8f50643501f7b324901d8b5bcf07a4e3255"
+    },
+    {
+      "path": "after/origin/world-640x360.png",
+      "size": [
+        640,
+        360
+      ],
+      "sha256": "ab2dd244a0c033ec8f65c2477c244ddc4328fa432470a74775b8954fd652cc13"
+    }
+  ]
+}
