@@ -121,6 +121,7 @@ func run() -> void:
   check(faulty.save_existing(slot,moved,entry.world).ok,"isolated self-resealed coordinate corruption fixture")
   var tampered_bytes := FileAccess.get_file_as_string(faulty._slot_path(slot))
   var mismatch := service.operate(entry,slot,"resume")
+  check(not service.operate(entry,slot,"sandbox_begin",1,{"revision":state.expedition.revision}).ok,"repeat preparation cannot accept source-coordinate drift")
   check(not mismatch.ok and FileAccess.get_file_as_string(faulty._slot_path(slot))==tampered_bytes,"source regeneration rejects moved site without overwriting save")
   check(faulty.save_existing(slot,state,entry.world).ok,"restore owned corruption fixture through existing writer")
   check(service.recover(slot,entry.world).ok,"final campaign remains valid")

@@ -32,6 +32,7 @@ Native Windows CI runs the legacy journey as well as the procedural journey from
 - Tactical withdrawal is terminal defeat, preserving that attempt rather than resetting it. Precombat return permits revisit. A retreat/re-engagement policy needs an explicit future mechanical contract.
 - Return provides labelled V0 HP/Focus recovery; journey XP is not levelling. Injuries, death, factions, relationships, personal quests and economic rewards remain future systems/hooks.
 - Version/config/source drift fails visibly and preserves the campaign; future generator revisions need compatibility/versioned readers, not a reroll migration.
+- An additional fresh-world trial (`game96-sandbox-review-v2`, source SHA `c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1`) hit the existing geography-sidecar error `Bad Azgaar packed vertex position 9109` before sandbox preparation. Its campaign stayed preserved. World generation/geography code was deliberately not changed; that source-world limitation is separate from the passing five-world corpus. Use another world/preset for this review if encountered.
 - Native packaged logic/launch tests do not replace a human Windows desktop/GPU playtest of this unsigned build.
 
 Recommended next mechanical sandbox milestone: a bounded encounter-threat budget plus reviewed post-expedition recovery/withdrawal rules, using this persisted encounter ledger. Measure actual player decisions before expanding the bestiary or geography types.

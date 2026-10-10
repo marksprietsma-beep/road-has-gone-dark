@@ -13,6 +13,7 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
  var base := SandboxGenerator.generate(world,int(state.origin.home_burg_id),service.packet.content)
  if base.is_empty():return service.fail("No valid bounded sandbox layout; campaign preserved.")
  var candidate: Dictionary=state.duplicate(true)
+ if candidate.has("sandbox") and candidate.sandbox.base_sha!=RulesJson.digest(base):return service.fail("Generated source/version does not match the saved sandbox. Nothing was rerolled.")
  if operation=="sandbox_begin":
   if candidate.has("sandbox"):return {"ok":true,"candidate":candidate}
   var prepared := RulesRecords.preview_preparation(candidate)
