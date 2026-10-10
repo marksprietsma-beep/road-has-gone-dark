@@ -18,7 +18,7 @@ if(!existsSync(executable))throw Error('Export did not produce the game executab
 // from an owned temporary project whose entry point is the diagnostic scene.
 // The checkout and production main scene are never changed.
 const qaScene=get('--qa-scene')??'res://tests/origin_profiles/verify-distribution.tscn';
-if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn','res://tests/expedition/verify-distribution.tscn','res://tests/adventure/review-flow.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
+if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn','res://tests/expedition/verify-distribution.tscn','res://tests/adventure/review-flow.tscn','res://tests/sandbox/distribution-review.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
 if(a.includes('--qa')){
  const stage=mkdtempSync(join(tmpdir(),'trhgd-export-proof-'));
  try{
@@ -39,6 +39,8 @@ cpSync(join(root,'data/art/styles.json'),join(target,'artwork/styles.json'));
 assertHelper(join(target,'worldgen-helper'));
 execFileSync(engine,['--headless','--path',root,'--script','tools/release/export-notices.gd','--','--output',target],{cwd:root,stdio:'inherit'});
 writeFileSync(join(target,'REGIONAL-ART-NOTICE.txt'),'Regional illustrations use the pinned MIT Town Forge provider (copyright and licence in worldgen-helper/vendor/town-forge/LICENSE). Selected Game-icons artwork by Delapouite and Lorc, https://game-icons.net/, is licensed CC BY 3.0, https://creativecommons.org/licenses/by/3.0/. Source shapes were recoloured for parchment ink and their old square backings removed. Exact source revisions and artist mappings are retained in worldgen-helper/assets/map_icons/trials/game-icons/landmark_sources.json and the adjacent README.md. No endorsement is implied.\n');
-writeFileSync(join(target,'OLD-ROAD-ART-NOTICE.txt'),'Old Road terrain and overlays are original project-authored pixel drawings in scripts/ui/combat/battlefield_tile.gd; layouts are authored in data/combat/battlefields/. No external terrain pack, new artwork licence, or procedural map generator is used. LPC characters retain the original per-part notices in artwork/.\n');
+writeFileSync(join(target,'OLD-ROAD-ART-NOTICE.txt'),'Old Road terrain and overlays are original project-authored pixel drawings in scripts/ui/combat/battlefield_tile.gd; layouts are authored in data/combat/battlefields/. No external terrain pack or new artwork licence is used for this authored fixture. Generated sandbox maps are described separately in SANDBOX-ART-NOTICE.txt. LPC characters retain the original per-part notices in artwork/.\n');
+cpSync(join(root,'data/sandbox/generation-v1.json'),join(target,'SANDBOX-GENERATION.json'));
+writeFileSync(join(target,'SANDBOX-ART-NOTICE.txt'),'Generated terrain and props use original TRHGD pixel drawings and authored pieces; no external terrain pack. GAME-62/84 supplies source-owned geographic positions. Fine terrain, disused structures and occupations are generated/inferred local fiction, not Azgaar canon. Versioned recipe parameters are retained in SANDBOX-GENERATION.json. LPC source licences remain in artwork/.\n');
 writeFileSync(join(target,'distribution.json'),JSON.stringify({schema_version:1,godot:version,platform:process.platform,arch:process.arch,enrichmentRuntimes:manifest.enrichmentRuntimes,executable_sha256:createHash('sha256').update(readFileSync(executable)).digest('hex')},null,2)+'\n');
 console.log('Complete native offline distribution:',target);
