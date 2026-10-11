@@ -1,0 +1,475 @@
+{
+  "checks": 623,
+  "empty_path": true,
+  "existing_campaign": {
+    "base_sha": "7829b4e92d42351c6bd3b8ded5ac52f58188f1eedb567f90d683b71ff31fcdf2",
+    "party_ids": [
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+        "battle_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+        "outcome": "victory",
+        "sequence": 8,
+        "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+        "text": "The armed occupants of Secluded camp \u00b7 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a": {
+        "battle_hash": "408781ea1e42aef394b1acaf3c3fcd52e6c4fd1dd57a592714f8b6fcc8a6e1b7",
+        "outcome": "victory",
+        "sequence": 21,
+        "site_id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+        "text": "The armed occupants of Roadside obstruction \u00b7 4 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+        "battle_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+        "outcome": "victory",
+        "sequence": 13,
+        "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+        "text": "The armed occupants of Broken work-yard \u00b7 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+        "battle_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+        "outcome": "defeat",
+        "sequence": 17,
+        "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+        "text": "The armed occupants of Hostile clearing \u00b7 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      }
+    },
+    "source": "Executed GAME99 Linux recovery fixture",
+    "victory_site": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+    "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+  },
+  "failures": 0,
+  "journeys": [
+    {
+      "base_sha": "50406e79ce99de9db29da91738079bf949daec254fa453c97a65358245f78b09",
+      "biome": "Grassland",
+      "cache_root": "user://expedition-content",
+      "home_id": 201.0,
+      "home_name": "Kegyes",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "57793e7c67e2fbba392e4c859427c843:adventurer:1",
+          "name": "Utaoma",
+          "profession": "book-binder",
+          "role": "vanguard"
+        },
+        {
+          "id": "57793e7c67e2fbba392e4c859427c843:adventurer:2",
+          "name": "Budobe",
+          "profession": "repairer",
+          "role": "scout"
+        },
+        {
+          "id": "57793e7c67e2fbba392e4c859427c843:adventurer:3",
+          "name": "Nuashe",
+          "profession": "carter",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:57793e7c67e2fbba392e4c859427c843:adventurer:2",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "57793e7c67e2fbba392e4c859427c843:adventurer:2",
+          "profession": "repairer",
+          "provisions_gained": 2,
+          "provisions_spent": 0,
+          "sequence": 6,
+          "site_id": "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7",
+          "supplies_after": 4,
+          "supplies_before": 2,
+          "text": "Abandoned travellers\u2019 shelter: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 1 turn(s), 0 provision(s); recovered 2. Journey XP each: 0. Contribution: repairer.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "careful",
+          "complete": true,
+          "discovered_site": "",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 1,
+          "sequence": 10,
+          "site_id": "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439",
+          "supplies_after": 2,
+          "supplies_before": 3,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 1 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "168e160ba08b061c470f6c4900ac62a769f4e34d5e9acc2c6868019185088a7c",
+          "choice_id": "combat_result",
+          "complete": true,
+          "discovered_site": "",
+          "event": "record",
+          "information": "Armed occupants defeated.",
+          "outcome": "victory",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 15,
+          "site_id": "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Contested salvage yard: victory. Armed occupants defeated. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 10.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 10
+        }
+      ],
+      "sandbox_sha": "a3c827bee9fc3cdde8a5ee266c2e1cacd36554dbc637345a1df4fb03e35941cf",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "57793e7c67e2fbba392e4c859427c843",
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "45afd4acf0508e3de81c47e6467d9f1aaf6a83096938cbd17d028efda09c4364",
+      "biome": "Temperate deciduous forest",
+      "cache_root": "user://expedition-content",
+      "home_id": 17.0,
+      "home_name": "Celcabatlo",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "bd0f2e4e181a24e5fe4c40d05bda1408:adventurer:1",
+          "name": "Bibse",
+          "profession": "brewer",
+          "role": "expert"
+        },
+        {
+          "id": "bd0f2e4e181a24e5fe4c40d05bda1408:adventurer:2",
+          "name": "Dunvibr",
+          "profession": "tavern-keeper",
+          "role": "vanguard"
+        },
+        {
+          "id": "bd0f2e4e181a24e5fe4c40d05bda1408:adventurer:3",
+          "name": "Atoushoshe",
+          "profession": "metalworker",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "quick",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Only a partial recovery was made; the rest was left unchecked.",
+          "outcome": "partial_recovery",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 1,
+          "provisions_spent": 1,
+          "sequence": 5,
+          "site_id": "sandbox-site:49135d139f7aae71e38c7672c29c2981557597901ccb30e3c7887066968e974e",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Scattered travelling supplies: partial recovery. Only a partial recovery was made; the rest was left unchecked. Cost: 1 turn(s), 1 provision(s); recovered 1. Journey XP each: 0.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "sandbox_sha": "681c83a4129e10e34a2df92e5753973e63e1086eac2a1d5ca0dd149556046a77",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "bd0f2e4e181a24e5fe4c40d05bda1408",
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "0de1506cb3089bd5842e62814d065f0c916a80f207a1e028afe85c38625f9cdf",
+      "biome": "Temperate rainforest",
+      "cache_root": "user://expedition-content",
+      "home_id": 13.0,
+      "home_name": "Bretnes",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "645172711c892f43b93751de60f5bea1:adventurer:1",
+          "name": "Huutho",
+          "profession": "toolmaker",
+          "role": "vanguard"
+        },
+        {
+          "id": "645172711c892f43b93751de60f5bea1:adventurer:2",
+          "name": "Lula",
+          "profession": "fisher",
+          "role": "scout"
+        },
+        {
+          "id": "645172711c892f43b93751de60f5bea1:adventurer:3",
+          "name": "Bibemgur",
+          "profession": "traveller",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:645172711c892f43b93751de60f5bea1:adventurer:2",
+          "complete": true,
+          "discovered_site": "sandbox-site:4a4857b334af8c592d2244a7a980a951228e20cafe7d983b77871d156e8a9d4e",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "645172711c892f43b93751de60f5bea1:adventurer:2",
+          "profession": "fisher",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 5,
+          "site_id": "sandbox-site:94f710fdd08c3639885c2db69ae24ccaf102bd6c044b5fc7236e43e73c4fe394",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 0. Contribution: fisher.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "sandbox_sha": "ef4b533babdc9ebc26005728b56e25def31a78814f3a586c6f53765699378356",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "645172711c892f43b93751de60f5bea1",
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "8165da1470b38408b5d259a7a531a6a7d0fb39d1fe595a5a35661553723a25b0",
+      "biome": "Hot desert",
+      "cache_root": "user://expedition-content",
+      "home_id": 202.0,
+      "home_name": "Mubarjan",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "7c584152affbc96701d6fa7d59705e00:adventurer:1",
+          "name": "Nenio",
+          "profession": "cobbler",
+          "role": "expert"
+        },
+        {
+          "id": "7c584152affbc96701d6fa7d59705e00:adventurer:2",
+          "name": "Vunu",
+          "profession": "lamp-keeper",
+          "role": "vanguard"
+        },
+        {
+          "id": "7c584152affbc96701d6fa7d59705e00:adventurer:3",
+          "name": "Adati",
+          "profession": "carter",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:7c584152affbc96701d6fa7d59705e00:adventurer:3",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "7c584152affbc96701d6fa7d59705e00:adventurer:3",
+          "profession": "carter",
+          "provisions_gained": 1,
+          "provisions_spent": 0,
+          "sequence": 5,
+          "site_id": "sandbox-site:8d05f069bfeeef3f78ed61663f62c904f7bd7498240fbb6dea32be24532cd381",
+          "supplies_after": 4,
+          "supplies_before": 3,
+          "text": "Scattered travelling supplies: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 1 turn(s), 0 provision(s); recovered 1. Journey XP each: 0. Contribution: carter.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "quick",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "A surface assessment was recorded; no other location was established.",
+          "outcome": "partial_assessment",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 10,
+          "site_id": "sandbox-site:d228fd5e5146e3003e9055b9ec031698c4f1b37744e55f7c17508cf7a66dd359",
+          "supplies_after": 2,
+          "supplies_before": 2,
+          "text": "Traces of abandoned work: partial assessment. A surface assessment was recorded; no other location was established. Cost: 1 turn(s), 0 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "negotiate",
+          "complete": true,
+          "discovered_site": "",
+          "event": "negotiate",
+          "information": "Access secured; the armed group remains in place.",
+          "outcome": "peaceful_access",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 2,
+          "sequence": 14,
+          "site_id": "sandbox-site:9bcfa176e9dc733abd17bdd8cc9dd9575467779e8b6474177703ac8fdf758524",
+          "supplies_after": 1,
+          "supplies_before": 3,
+          "text": "Obstructed route approach: peaceful access. Access secured; the armed group remains in place. Cost: 2 turn(s), 2 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "sandbox_sha": "94267720417903b915c338013e3cf8d7042031a89d92daec09925c6e6648903c",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "7c584152affbc96701d6fa7d59705e00",
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    },
+    {
+      "base_sha": "a5be432c99a4dfe78eac7f056d094f5d92d8684a65454b5bb5c191be9dbbed55",
+      "biome": "Cold desert",
+      "cache_root": "user://expedition-content",
+      "home_id": 189.0,
+      "home_name": "Eseq",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "b3a4297bbf09d399d4bf99b2d5e4b246:adventurer:1",
+          "name": "Kodele",
+          "profession": "local-clerk",
+          "role": "vanguard"
+        },
+        {
+          "id": "b3a4297bbf09d399d4bf99b2d5e4b246:adventurer:2",
+          "name": "Lavkibraf",
+          "profession": "herbal-preparer",
+          "role": "scout"
+        },
+        {
+          "id": "b3a4297bbf09d399d4bf99b2d5e4b246:adventurer:3",
+          "name": "Baomoo",
+          "profession": "baker",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "negotiate",
+          "complete": true,
+          "discovered_site": "",
+          "event": "negotiate",
+          "information": "Access secured; the armed group remains in place.",
+          "outcome": "peaceful_access",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 2,
+          "sequence": 6,
+          "site_id": "sandbox-site:aaa0260de456659558d04007f4b15309d71b80fd4b7fd63428de898f0b94eba1",
+          "supplies_after": 0,
+          "supplies_before": 2,
+          "text": "Contested salvage yard: peaceful access. Access secured; the armed group remains in place. Cost: 2 turn(s), 2 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "sandbox_sha": "3bd5bb33813b0d1ad5ce4da5ec85b3388165652025345593df4f9c2ae7e1c474",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "b3a4297bbf09d399d4bf99b2d5e4b246",
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    },
+    {
+      "base_sha": "098eaab820990a34ef063e66bf5ea67421a51a4e8fcdad66f1591d111a7d98d9",
+      "biome": "Savanna",
+      "cache_root": "user://expedition-content",
+      "home_id": 39.0,
+      "home_name": "Husharab",
+      "library_root": "D:\\a\\_temp/game101-review/review/library",
+      "party": [
+        {
+          "id": "1a44d46185a008d268e502f47f186d7a:adventurer:1",
+          "name": "Ravvek",
+          "profession": "mason",
+          "role": "expert"
+        },
+        {
+          "id": "1a44d46185a008d268e502f47f186d7a:adventurer:2",
+          "name": "Kunmersir",
+          "profession": "weaver",
+          "role": "vanguard"
+        },
+        {
+          "id": "1a44d46185a008d268e502f47f186d7a:adventurer:3",
+          "name": "Nuefo",
+          "profession": "carter",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:1a44d46185a008d268e502f47f186d7a:adventurer:1",
+          "complete": true,
+          "discovered_site": "sandbox-site:2639eb769c0c3e0fe4b7947a9ba373cac50ed4f7d9506c55ded5fc2fa1aabaa2",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "1a44d46185a008d268e502f47f186d7a:adventurer:1",
+          "profession": "mason",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 5,
+          "site_id": "sandbox-site:3c012cec2f0fa64a6fda6c8fae992eae7e1a5a59c47fbb830e9a858c70e55945",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Traces of abandoned work: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 0. Contribution: mason.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "sandbox_sha": "1ae258144c4300fefaf845292cb2c694c53129385ea0e6f80a932b362b0918eb",
+      "save_root": "D:\\a\\_temp/game101-review/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "1a44d46185a008d268e502f47f186d7a",
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    }
+  ],
+  "platform": "Windows",
+  "source_helper_override": false,
+  "visual": false
+}
