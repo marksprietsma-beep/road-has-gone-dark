@@ -41,7 +41,7 @@ func wait_party(ui: Control) -> void:
 func shot(name: String, ui: Control=null) -> void:
  await frames()
  if ui!=null:
-  check(ui.origin.is_visible_in_tree() and ui.origin.size.y >= 18 and not ui.origin.text.is_empty(), "origin reminder visible: " + name)
+  check(ui.origin.is_visible_in_tree() and ui.origin.get_theme_font_size("font_size") >= GameUI.META and root.get_visible_rect().encloses(ui.origin.get_global_rect()) and not ui.origin.text.is_empty(), "readable shared-theme origin reminder fits viewport: " + name)
   check(ui.finish_button.get_global_rect().end.y<=root.get_visible_rect().size.y-8,"footer visible: "+name)
   check(ui.detail_tabs.get_global_rect().end.y<ui.back_button.get_global_rect().position.y,"details above footer")
  if ui!=null:
