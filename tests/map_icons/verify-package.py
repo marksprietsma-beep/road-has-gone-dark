@@ -6,8 +6,8 @@ subprocess.run(['node','tools/release/export-game.mjs','--helper',helper,'--godo
 qa=dist/('road-has-gone-dark-qa.exe'if os.name=='nt'else'road-has-gone-dark-qa');env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='');env.pop('GAME76_HELPER_ROOT',None)
 with (base/'native-export.log').open('w',encoding='utf-8')as f:r=subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=dist,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=900)
 text=(base/'native-export.log').read_text(encoding='utf-8');assert r.returncode==0 and not any(t in text for t in ['ERROR:','SCRIPT ERROR:','Parse Error']),text[-6000:]
-proof=json.loads((base/'map-icons-proof.json').read_text());assert not proof['source_helper_override'] and proof['empty_path'] and proof['failures']==0
-(base/'native-export-proof.json').write_text(json.dumps(proof,indent=2)+'\n')
+proof=json.loads((base/'map-icons-proof.json').read_text(encoding='utf-8'));assert not proof['source_helper_override'] and proof['empty_path'] and proof['failures']==0
+(base/'native-export-proof.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf-8')
 exe=dist/('road-has-gone-dark.exe'if os.name=='nt'else'road-has-gone-dark')
 r=subprocess.run([str(exe),'--headless','--audio-driver','Dummy','--quit-after','30'],cwd=dist,env=env,capture_output=True,text=True,timeout=90)
 assert r.returncode==0 and 'ERROR:'not in r.stdout+r.stderr
@@ -22,5 +22,5 @@ else:
  archive=release/(name+'.tar.gz')
  with tarfile.open(archive,'w:gz')as t:t.add(dist,arcname=name)
 digest=hashlib.file_digest(archive.open('rb'),'sha256').hexdigest();(release/(archive.name+'.sha256')).write_text(digest+'  '+archive.name+'\n')
-(base/'distribution-proof.json').write_text(json.dumps({'archive':archive.name,'archive_sha256':digest,'source_commit':os.environ.get('GITHUB_SHA','local'),'original_icons_bundled_in_helper':True,'native_export':proof,'production_launch':True},indent=2)+'\n')
+(base/'distribution-proof.json').write_text(json.dumps({'archive':archive.name,'archive_sha256':digest,'source_commit':os.environ.get('GITHUB_SHA','local'),'original_icons_bundled_in_helper':True,'native_export':proof,'production_launch':True},indent=2)+'\n',encoding='utf-8')
 print('Verified native map icons, saved campaign and packaged runtime:',archive,digest,flush=True)
