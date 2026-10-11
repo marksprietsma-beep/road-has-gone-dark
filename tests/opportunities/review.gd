@@ -45,7 +45,12 @@ func journey(spec: Dictionary,index: int) -> void:
  ui.choose_home(home_index);ui.show_page();await frames();await shot("home-%02d-origin"%index)
  await click(ui.next_button);await click(ui.next_button);await wait_scene("res://scenes/ui/party_creation.tscn")
  for i in 3:
-  ui.selected=i+1;ui._start("edit",{"role_id":(["vanguard","scout","adept"] if index%2==0 else ["expert","vanguard","adept"])[i]});await wait_job()
+  var role: String=(["vanguard","scout","adept"] if index%2==0 else ["expert","vanguard","adept"])[i]
+  ui.selected=i+1;ui.refresh();ui.pick(ui.role_picker,role);ui.recommend(role)
+  ui.detail_tabs.current_tab=0
+  await click(ui.save_button);await wait_job()
+  check(ui.state.character_builder.confirmed.has(ui.state.party_ids[i]),"actual creator confirms each distinct build")
+ await review_creation(index)
  await click(ui.finish_button);await wait_job();await click(ui.finish_button);await wait_scene("res://scenes/gameplay/expedition.tscn")
  await click(ui.action_buttons.sandbox_begin);await wait_job()
  check(ui.state.sandbox.version==OpportunityGenerator.VERSION,"production defaults to V2")
@@ -113,3 +118,6 @@ func restart() -> void:
   restored.append({"home_id":journey.home_id,"sandbox_sha":journey.sandbox_sha,"paths":ui.state.sandbox.results})
  FileAccess.open(base.path_join("restart-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"journeys":restored,"platform":OS.get_name(),"empty_path":OS.get_environment("PATH").is_empty(),"source_helper_override":not OS.get_environment("GAME76_HELPER_ROOT").is_empty()},"  ")+"\n")
  print("GAME101 FRESH PROCESS ",checks," / ",failures);tree.quit(1 if failures else 0)
+
+func review_creation(_index: int) -> void:
+ pass

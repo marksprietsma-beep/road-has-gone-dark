@@ -90,7 +90,7 @@ func run() -> void:
   root.size=dimensions
   await frames()
   await shot("party-overview-%dx%d"%[dimensions.x,dimensions.y],ui)
-  ui.detail_tabs.current_tab=1
+  ui.detail_tabs.current_tab=0
   await shot("background-%dx%d"%[dimensions.x,dimensions.y],ui)
   ui.detail_tabs.current_tab=0
  # Actual OptionButton popup and keyboard ancestry selection.
@@ -126,10 +126,11 @@ func run() -> void:
  await shot("edited-name-2560x1440",ui)
  var siblings: Array = [ui.state.party.members[1].duplicate(true),ui.state.party.members[2].duplicate(true)]
  var variant: int = ui.state.party.members[0].background_variant
- ui.detail_tabs.current_tab=1
+ ui.detail_tabs.current_tab=0
  await click(ui.reroll_button)
+ await click(ui.save_button)
  await wait_party(ui)
- check(ui.state.party.members[0].background_variant==variant+1 and ui.state.party.members[0].name=="Mara of Home","deliberate reroll retains manual name")
+ check(ui.state.character_builder.confirmed.has(id) and ui.state.party.members[0].name=="Mara of Home","deliberate background selection retains manual name")
  check(ui.state.party.members[1]==siblings[0] and ui.state.party.members[2]==siblings[1],"reroll leaves both siblings unchanged")
  await shot("regenerated-background-2560x1440",ui)
  ui.roster.grab_focus()
@@ -139,6 +140,8 @@ func run() -> void:
  await click(ui.roster,ui.roster.get_global_rect().position+ui.roster.get_item_rect(2).get_center())
  check(ui.selected==3,"mouse selects third adventurer")
  await shot("third-background-2560x1440",ui)
+ for member_index in [1,2]:
+  ui.selected=member_index+1;ui.refresh();await click(ui.save_button);await wait_party(ui)
  await click(ui.finish_button)
  await wait_party(ui)
  check(ui.ready_view and ui.state.onboarding_stage=="party_ready","ready is saved verified handoff without gameplay")
@@ -182,7 +185,7 @@ func run() -> void:
  ui=current_scene
  await wait_party(ui)
  await shot("fresh-world-party-2560x1440",ui)
- ui.detail_tabs.current_tab=1
+ ui.detail_tabs.current_tab=0
  await shot("fresh-world-background-2560x1440",ui)
  print("GAME-81 actual input/render flow: ",checks," checks, ",failures," failures")
  quit(1 if failures else 0)

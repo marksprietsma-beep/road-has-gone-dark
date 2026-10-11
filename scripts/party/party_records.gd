@@ -13,9 +13,16 @@ static func satisfies(rule: Variant, tags: Dictionary) -> bool:
  return false
 
 static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
+ var party: Variant=state.get("party")
+ if party is Dictionary and party.get("schema_version")==2:return CharacterBuilderRecords.validate_party(state,world)
+ return validate_legacy(state,world)
+
+static func validate_legacy(state: Dictionary, world: GameWorldTemplate, personal_origins: bool=false) -> String:
  if not state.has("party"): return "" # Historical skeletons are still valid.
  var party: Variant = state.party
- if not party is Dictionary or party.size() != 7 or party.get("schema_version") != 1 or not party.get("status") in ["draft", "ready"] or party.get("generator_version") != "trhgd-party-1" or party.get("runtime_manifest_sha") != FileAccess.get_sha256(WorldPeoples.RUNTIME): return "Invalid party schema or runtime"
+ var schema := 2 if personal_origins else 1
+ var generator := "player-party-1" if personal_origins else "trhgd-party-1"
+ if not party is Dictionary or party.size() != 7 or party.get("schema_version") != schema or not party.get("status") in ["draft", "ready"] or party.get("generator_version") != generator or party.get("runtime_manifest_sha") != FileAccess.get_sha256(WorldPeoples.RUNTIME): return "Invalid party schema or runtime"
  var runtime := WorldOriginLore.read_json(WorldPeoples.RUNTIME)
  if party.get("content_pack_sha") != runtime.get("content_pack_sha"): return "Party content version mismatch"
  if state.get("onboarding_stage") != ("party_ready" if party.status == "ready" else "party_creation"): return "Party onboarding stage mismatch"
@@ -55,6 +62,21 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
   if not (m.background_variant is int or m.background_variant is float) or m.background_variant != int(m.background_variant) or m.background_variant < 0 or m.background_variant > 9007199254740991 or not m.background_id is String or not m.background_id.begins_with(id + ":background:") or m.background_id.length() != id.length() + 32: return "Invalid background identity"
   var expected_background := id + ":background:" + JSON.stringify(["trhgd-party-1", party.content_pack_sha, int(m.background_variant), m.people_id, m.role_id]).sha256_text().left(20)
   if m.background_id != expected_background: return "Background digest mismatch"
+  if personal_origins:
+   if not m.origin_refs is Dictionary or not RulesJson.integer(m.origin_refs.get("burg_id"),1,RulesJson.LIMIT):return "Invalid personal origin"
+   home=world.get_record("burg",int(m.origin_refs.burg_id))
+   if home.is_empty():return "Missing personal origin hometown"
+   cell=world.get_record("cell",int(home.cell))
+   if not world.validate_origin(int(cell.state),int(home.i)):return "Invalid personal origin state"
+   local=profiles.get("hometowns",{}).get(str(int(home.i)),{})
+   if local.is_empty():return "Missing personal origin profile"
+   tags={}
+   for tag in local.source_context.tags:tags[tag]=true
+   if int(cell.get("religion",0))>0 and not world.get_record("religion",int(cell.religion)).is_empty():tags["religion"]=true
+   region=profiles.get("regions",{}).get(str(local.parents.region),{})
+   parent=profiles.get("states",{}).get(str(int(cell.state)),{})
+   if region.is_empty() or parent.is_empty():return "Missing personal origin parents"
+   if region.get("source_context",{}).get("tags",[]).has("mine"):tags["regional-mine"]=true
   var refs: Variant = m.origin_refs
   if not refs is Dictionary or refs.size() != 8 or refs.get("world_id") != world.world_id or refs.get("world_sha") != world.source_sha256 or refs.get("burg_id") != home.i or refs.get("cell_id") != home.cell or refs.get("state_id") != cell.get("state") or refs.get("province_id") != cell.get("province") or refs.get("culture_id") != cell.get("culture") or refs.get("religion_id") != cell.get("religion"): return "Character origin source mismatch"
   var facts: Variant = m.generated_facts
@@ -64,7 +86,7 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
   if not facts.public_relationship is Dictionary or facts.biography_form != i: return "Invalid public relationship or biography form"
   var identity := {"state_profile_id":parent.id,"region_profile_id":region.id,"hometown_profile_id":local.id,"posture":parent.public.posture,"livelihood":local.public.prose_facts.activity,"regional_contribution":local.public.regional_dependency.contribution,"local_memory":local.public.local_memory,"tradition":local.public.tradition}
   if facts.origin_identity != identity: return "Background public profile identity mismatch"
-  var relationships := {"kind":"hometown-neighbours","other_character_ids":state.party_ids.filter(func(other: String): return other != id)}
+  var relationships := {"kind":"party-companions" if personal_origins else "hometown-neighbours","other_character_ids":state.party_ids.filter(func(other: String): return other != id)}
   if facts.public_relationship != relationships: return "Invalid party relationship"
   var background: Dictionary = facts.background
   var fields := ["name","naming","birthplace","age_band","occupation","training","family","childhood","value","habit","concern","contact","traits","keepsake","local_knowledge","first_failure","first_success","motivation","hometown_relationship"]

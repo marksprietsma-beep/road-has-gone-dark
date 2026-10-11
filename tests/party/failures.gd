@@ -15,7 +15,7 @@ class FaultStore extends GamePlaythroughStore:
    pending = false
    return _fail("Injected post-write validation failure")
   return super.load_save(slot,world)
-class FaultGenerator extends PartyService:
+class FaultGenerator extends CharacterBuilderService:
  func _helper(_entry: Dictionary, _request: Dictionary) -> Dictionary:
   return fail("Injected generator failure")
 class FaultPackedInput extends PartyService:
@@ -43,7 +43,7 @@ func wait_ui(ui: Control) -> void:
  check(ui.thread==null,"UI job completed")
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
- var service := PartyService.new()
+ var service := CharacterBuilderService.new()
  service.store = FaultStore.new()
  service.store.save_root = "user://game81-failures-" + Crypto.new().generate_random_bytes(8).hex_encode()
  var entry: Dictionary = service.library.discover()[0]
@@ -133,12 +133,16 @@ func run() -> void:
  check(service.store.load_save(slot,world).state.onboarding_stage=="party_creation","failed ready keeps draft stage")
  check(FileAccess.get_file_as_string(path)==raw,"failed ready restores draft bytes")
  service.store.fail_reload=false
+ var legacy_draft := raw
  # Exercise the actual production presenter, not just the service result.
  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root}
  var ui=load("res://scenes/ui/party_creation.tscn").instantiate()
  ui.service=service
  root.add_child(ui)
  await wait_ui(ui)
+ for i in 3:
+  ui.selected=i+1;ui.refresh();ui._save_changes();await wait_ui(ui)
+ raw=FileAccess.get_file_as_string(path)
  service.store.fail_reload=true
  ui._finish()
  await wait_ui(ui)
@@ -151,7 +155,8 @@ func run() -> void:
  check(ui.ready_view and ui.state.onboarding_stage=="party_ready","UI deterministic retry validates same campaign")
  ui.queue_free()
  await process_frame
- put(path,raw) # Restore this owned test draft for the crash scenarios below.
+ raw=legacy_draft
+ put(path,raw) # Restore the original legacy draft for its independent crash scenarios.
  var journals := {"before":raw,"after_sha":raw.sha256_text()}
  put(service._journal(slot),JSON.stringify(journals))
  check(service.recover(slot,world).ok,"restart validates completed same-slot transaction")
