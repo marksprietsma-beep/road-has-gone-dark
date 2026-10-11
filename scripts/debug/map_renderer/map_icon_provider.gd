@@ -33,8 +33,8 @@ static func available_families() -> Array[String]:
 		if name == "Procedural":
 			continue
 		var folder: String = ROOT + str(FAMILY_DIRECTORIES.get(name, "")) + "/"
-		var has_capital := FileAccess.file_exists(folder + "capital.svg") or FileAccess.file_exists(folder + "capital.png")
-		var has_town := FileAccess.file_exists(folder + "town.svg") or FileAccess.file_exists(folder + "town.png")
+		var has_capital := ResourceLoader.exists(folder + "capital.svg") or ResourceLoader.exists(folder + "capital.png")
+		var has_town := ResourceLoader.exists(folder + "town.svg") or ResourceLoader.exists(folder + "town.png")
 		if has_capital and has_town:
 			present.append(name)
 	return present
@@ -80,6 +80,13 @@ func _standalone_texture(role: String) -> Texture2D:
 	if FileAccess.file_exists(svg_path):
 		var svg_image := _load_svg(svg_path)
 		return ImageTexture.create_from_image(svg_image) if svg_image else null
+	# Exported PCKs remap imported artwork to Godot textures. Raw file access
+	# remains useful in source/debug runs; ResourceLoader follows export remaps.
+	for path in [png_path, svg_path]:
+		if ResourceLoader.exists(path):
+			var imported: Resource = ResourceLoader.load(path)
+			if imported is Texture2D:
+				return imported
 	_report_error("Unmapped icon role %s for family %s" % [role, family])
 	return null
 

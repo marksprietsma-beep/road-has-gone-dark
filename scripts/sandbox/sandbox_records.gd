@@ -72,7 +72,7 @@ static func validate(state: Dictionary,world: GameWorldTemplate) -> String:
 static func projection(s: Dictionary) -> Dictionary:
  var sites: Array=[];var leads: Array=[]
  for row in s.base.sites:
-  var known: bool=s.knowledge[row.id]!="rumoured"
+  var known: bool=s.knowledge[row.id] in ["discovered","visited","resolved"]
   if known:sites.append({"id":row.id,"name":row.name,"kind":row.kind,"position":row.position,"description":row.description,"knowledge":s.knowledge[row.id]})
   leads.append({"id":row.id,"site":row.id if known else "","title":row.name if known else "Rumour of an occupied work-yard","knowledge":s.knowledge[row.id],"status":"resolved" if s.results.has(row.id) else "available","goal":"Approach and assess the armed occupants","clue":row.description if known else "A local report describes armed occupants somewhere outside the town. Scout to establish their position."})
  return {"sites":sites,"leads":leads,"home_position":s.base.home_position}

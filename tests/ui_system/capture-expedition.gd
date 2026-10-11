@@ -19,10 +19,11 @@ func shot(name: String) -> void:
  if ui.state.expedition.active.get("phase")=="result":
   check(ui.content.get_parent().scroll_vertical==0,"result opens at its heading rather than previous action scroll")
  var frame: Rect2=ui.map.map_rect()
- for i in ui.map.get_child_count():
-  var marker: Control=ui.map.get_child(i)
-  var site: Dictionary=ui.public_view.sites[i]
+ for site: Dictionary in ui.public_view.sites:
+  var marker: Control=ui.map.markers[site.id]
   var expected: Vector2=frame.position+Vector2(site.position[0],site.position[1])*frame.size/1000
   check((marker.position+marker.size/2).distance_to(expected)<0.01,"site hit target retains exact source-derived location")
   check(marker.text.is_empty() and marker.tooltip_text.contains(site.name),"semantic marker retains named keyboard/mouse target")
+ var home: Control=ui.map.markers.hometown
+ check((home.position+home.size/2).distance_to(ui.map.screen_point(ui.public_view.home_position))<0.01,"source hometown icon retains its own geographic centre")
  if root.size.x>640: check(root.content_scale_size.x>640,"desktop uses additional layout space")

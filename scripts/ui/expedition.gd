@@ -161,13 +161,13 @@ func refresh() -> void:
  if not a.is_empty():
   var active_leads: Array=public_view.leads.filter(func(l: Dictionary):return l.id==a.lead_id)
   if not active_leads.is_empty(): selected_site=str(active_leads[0].site)
- map.setup(service.packet.svg,public_view,location,selected_site)
+ map.setup(service.packet.svg,public_view,location,selected_site,MapIconRoles.home(home))
  footer.text="Party at hometown · "+str(home.name)
  for s in public_view.sites:
   if s.id==location: footer.text="Party at "+str(s.name)
  if a.is_empty() and not AdventureService.legacy_review:
   title.text=str(home.name)+" · Local opportunities"
-  map.setup(service.packet.svg,{"sites":[],"leads":[],"home_position":service.packet.content.home_position},"","")
+  map.setup(service.packet.svg,{"sites":[],"leads":[],"home_position":service.packet.content.home_position},"","",MapIconRoles.home(home))
   content.add_child(label("Choose your own expedition",GameUI.SECTION))
   content.add_child(label("Record several local opportunities from this region, then decide where your party will go. There is no compulsory opening quest.",GameUI.META))
   button("sandbox_begin","Explore local opportunities",func():start("sandbox_begin"),"Keep your existing companions and prepare their starting rules. Sites and encounters remain saved after discovery.")
@@ -291,7 +291,7 @@ func refresh_sandbox() -> void:
  home_button.text="Return home & rest · 1 turn"
  var selected_site: String=str(a.get("site_id",selected))
  var visible_selection: bool=public_view.sites.any(func(row: Dictionary):return row.id==selected_site)
- map.setup(service.packet.svg,public_view,str(a.get("site_id","")) if a.get("phase")!="map" else "",selected_site if visible_selection else "")
+ map.setup(service.packet.svg,public_view,str(a.get("site_id","")) if a.get("phase")!="map" else "",selected_site if visible_selection else "",MapIconRoles.home(home))
  footer.text="Party at hometown · "+str(home.name) if a.is_empty() else "Party approaching a rumoured location" if s.knowledge[a.site_id]=="rumoured" else "Party near "+str(SandboxRecords.site(s,a.site_id).name)
  if a.is_empty():
   if not selected.is_empty():

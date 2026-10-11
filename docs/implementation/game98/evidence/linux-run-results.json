@@ -1,0 +1,26 @@
+[
+  {
+    "check": "shared-semantics",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 0.064
+  },
+  {
+    "check": "six-existing-regions",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 20.142
+  },
+  {
+    "check": "import",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 24.247
+  },
+  {
+    "check": "production-map-contracts",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 37.932
+  }
+]

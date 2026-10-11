@@ -107,7 +107,7 @@ func set_icon_provider(provider: MapIconProvider) -> void:
 			var white_ink := ShaderMaterial.new()
 			white_ink.shader = LEGEND_WHITE_SHADER
 			icon.material = white_ink
-			var role := str(LandmarkMapLayer.EXISTING_ROLE_ALIASES.get(kind, kind))
+			var role := MapIconRoles.marker(kind)
 			icon.texture = provider.texture_for(role)
 			row.add_child(icon)
 			var text_col := VBoxContainer.new()

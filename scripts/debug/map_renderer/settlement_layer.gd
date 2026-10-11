@@ -58,12 +58,7 @@ func _draw() -> void:
 			draw_circle(p, 0.75, Color("#504536", 0.82))
 
 func _role_for(settlement: Dictionary) -> String:
-	var group := str(settlement.get("group", ""))
-	if group == "caravanserai" or group == "trading_post":
-		return "trading"
-	if group in MapIconProvider.ROLES:
-		return group
-	return "capital" if int(settlement.get("capital", 0)) == 1 else "town"
+	return MapIconRoles.settlement(settlement)
 
 func _draw_icon(texture: Texture2D, center: Vector2, target: float) -> void:
 	var source := texture.get_size()

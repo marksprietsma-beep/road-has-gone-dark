@@ -141,8 +141,10 @@ func run() -> void:
   await wait_job()
   check(ui.public_view.sites.size()==3,"scouting adds discovered marker")
   await shot("rumour-discovered"+suffix)
-  check(ui.map.get_child_count()==3,"only known locations are interactive markers")
-  await click(ui.map.get_child(1))
+  var public_ids: Array=ui.public_view.sites.map(func(s: Dictionary):return s.id)
+  public_ids.append("hometown") # Known source hometown now has its own semantic control.
+  check(ui.map.markers.size()==public_ids.size() and ui.map.markers.keys().all(func(id: String):return id in public_ids),"only public locations and source hometown have marker controls")
+  await click(ui.map.markers[ui.public_view.sites[1].id])
   await click(ui.action_buttons.travel)
   await wait_job()
   check(ui.state.expedition.active.phase=="site","mouse travel reaches site")

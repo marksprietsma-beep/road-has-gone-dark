@@ -1,0 +1,67 @@
+name: GAME-98 Production Local Icons and Native Review Build
+concurrency:
+  group: game98-icons-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-98-shared-local-icons]
+    paths: ['scripts/**', 'tools/**', 'tests/map_icons/**', 'data/map_icons/**', 'data/world_enrichment/runtime-expedition-v1.json', 'export_presets.cfg', '.github/workflows/verify-local-icons.yml']
+  workflow_dispatch:
+jobs:
+  icons:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Godot and single offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples from Godot imports
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Six contrasting real regions, knowledge and existing campaign
+        env:
+          GAME98_TEST_ROOT: ${{ runner.temp }}/game98-review
+        run: python tests/map_icons/run-tests.py --output "${{ runner.temp }}/game98-review"
+      - name: Existing First Adventure combat and save regression
+        run: python tests/adventure/run-tests.py --godot "${{ env.GODOT_BIN }}" --work-dir "${{ runner.temp }}/game98-adventure"
+      - name: Existing GAME-83 responsive presentation
+        run: python -c "import os,subprocess; subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/ui_system/presentation.gd'],check=True)"
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Export and test complete native game and original SVG resources
+        env:
+          GAME98_TEST_ROOT: ${{ runner.temp }}/game98-review
+        run: python tests/map_icons/verify-package.py
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game98-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game98-review/*.json
+            ${{ runner.temp }}/game98-review/*.log
+            ${{ runner.temp }}/game98-adventure/*.json
+            ${{ runner.temp }}/game98-adventure/*.log
+          retention-days: 90
+      - name: Windows/Linux complete playable distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: game98-complete-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game98-review/distribution/*.zip
+            ${{ runner.temp }}/game98-review/distribution/*.tar.gz
+            ${{ runner.temp }}/game98-review/distribution/*.sha256
+          retention-days: 30

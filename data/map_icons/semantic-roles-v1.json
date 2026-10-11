@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "family": "Game-icons",
+  "settlement_roles": ["capital", "city", "town", "village", "hamlet", "fort", "monastery", "trading", "ruins", "cave", "lighthouse", "mine"],
+  "settlement_aliases": {"caravanserai": "trading", "trading_post": "trading"},
+  "marker_aliases": {"caves": "cave", "lighthouses": "lighthouse", "mines": "mine"},
+  "site_roles": {
+    "farmstead": "hamlet", "roadside_inn": "inns", "watchtower": "fort",
+    "shrine": "monastery", "ruins": "ruins", "cave": "cave", "old_mine": "mine",
+    "abandoned_camp": "encounters", "ancient_stones": "statues", "dangerous_woods": "encounters",
+    "camp": "encounters", "clearing": "encounters", "roadside": "encounters"
+  },
+  "fallback": "unidentified",
+  "notes": "Camp, ordinary clearing and roadside obstruction use the approved encounter portrait: no approved tent/clearing/obstruction artwork exists. Their exact kind stays in public tooltips. Source landmarks use their own actual type; a nearby road or biome never proves a bridge, fortress, sacred grove or portal."
+}
