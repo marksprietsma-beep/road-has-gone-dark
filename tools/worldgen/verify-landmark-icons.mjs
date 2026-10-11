@@ -36,12 +36,15 @@ assert.deepEqual([...new Set(descriptionTypes)].sort(), [...new Set(upstream)].s
 assert.equal(legendTypes.length, 36, "Map key has duplicate categories");
 assert.deepEqual([...new Set(actual)].sort(), [...new Set(upstream)].sort(), "Marker taxonomy differs from upstream");
 
-const aliasesBlock = renderer.match(/const EXISTING_ROLE_ALIASES := \{([\s\S]*?)\}/);
-assert.ok(aliasesBlock, "Existing role aliases missing");
-const aliases = Object.fromEntries([...aliasesBlock[1].matchAll(/"([^"]+)":\s*"([^"]+)"/g)]
-  .map(match => [match[1], match[2]]));
-assert.deepEqual(Object.keys(aliases).sort(), ["caves", "lighthouses", "mines", "ruins"]);
-assert.ok(renderer.includes('else "unidentified"'), "Unknown marker fallback missing");
+const semantics = JSON.parse(read("data/map_icons/semantic-roles-v1.json"));
+const aliases = semantics.marker_aliases;
+assert.deepEqual(aliases, {caves: "cave", lighthouses: "lighthouse", mines: "mine"});
+assert.equal(semantics.fallback, "unidentified", "Unknown marker fallback missing");
+assert.ok(renderer.includes("MapIconRoles.marker(kind)"), "Atlas must use shared marker roles");
+assert.ok(key.includes("MapIconRoles.marker(kind)"), "Glossary must use shared marker roles");
+// Ruins already uses its singular settlement role; the three plural aliases
+// also reuse existing art. Keep all source/licence checks for the 32 new roles.
+const reused = new Set(["ruins", ...Object.keys(aliases)]);
 assert.ok(!renderer.includes("_draw_volcano") && !renderer.includes("_draw_marker("), "Procedural POIs remain");
 assert.ok(provider.includes('var family := "Game-icons"'), "Game-icons must remain the default");
 
@@ -55,7 +58,7 @@ for (const type of upstream) {
   assert.match(svg, /fill="#28221b"/);
   assert.ok(!svg.includes('<path d="M0 0h512v512H0z"/>'), "Opaque background " + role);
   assert.ok(!svg.includes('fill="#fff"'), "White ink not normalised " + role);
-  if (!aliases[type]) {
+  if (!reused.has(type)) {
     const item = manifest.newRoles[type];
     assert.ok(item && ["delapouite", "lorc"].includes(item.author), "Unknown source for " + type);
     assert.equal(item.prepared, type + ".svg");
