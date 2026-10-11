@@ -2,12 +2,6 @@ class_name LandmarkMapLayer
 extends MapLayer
 
 ## Exact upstream types retain original Game-icons role aliases from GAME-28.
-const EXISTING_ROLE_ALIASES := {
-	"ruins": "ruins",
-	"caves": "cave",
-	"lighthouses": "lighthouse",
-	"mines": "mine",
-}
 const MEDIUM_ZOOM_TYPES := ["volcanoes", "ruins", "battlefields", "lighthouses"]
 ## Prioritise permanent story hooks and dangers over routine waypoints.
 ## Stable original marker ID breaks ties: density/pan/scroll order cannot
@@ -74,7 +68,7 @@ func _draw() -> void:
 		if zoom_band == 1 and kind not in MEDIUM_ZOOM_TYPES:
 			continue
 		var known := kind in MapIconProvider.MARKER_TYPES
-		var role := str(EXISTING_ROLE_ALIASES.get(kind, kind)) if known else "unidentified"
+		var role := MapIconRoles.marker(kind)
 		if not known and not _warned_unknown_types.has(kind):
 			_warned_unknown_types[kind] = true
 			push_warning("Unknown Azgaar marker type '%s'; using neutral authored pin" % kind)

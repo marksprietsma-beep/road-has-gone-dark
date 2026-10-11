@@ -1,9 +1,10 @@
 import {readFileSync} from 'node:fs';
 import {sourceDryLand,insidePolygon} from './compose-local-region.mjs';
-export const SITE_ROLES={farmstead:'hamlet',roadside_inn:'inns',watchtower:'fort',shrine:'monastery',ruins:'ruins',cave:'cave',old_mine:'mine',abandoned_camp:'encounters',ancient_stones:'statues',dangerous_woods:'sacred-forests'};
-const roles=new Set(['capital','city','town','village','hamlet','fort','monastery','trading','ruins','cave','lighthouse','mine']);
+export const SEMANTICS=JSON.parse(readFileSync(new URL('../../data/map_icons/semantic-roles-v1.json',import.meta.url),'utf8'));
+export const SITE_ROLES=SEMANTICS.site_roles;
+const roles=new Set(SEMANTICS.settlement_roles);
 export function settlementRole(s){
- if(['caravanserai','trading_post'].includes(s.group))return 'trading';
+ if(SEMANTICS.settlement_aliases[s.group])return SEMANTICS.settlement_aliases[s.group];
  return roles.has(s.group)?s.group:s.capital===1?'capital':'town';
 }
 export function buildSharedIcons(world,context){

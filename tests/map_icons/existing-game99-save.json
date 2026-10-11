@@ -1,0 +1,3513 @@
+{
+  "characters": [
+    {
+      "assignment": "travelling",
+      "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1:background:77dc9bff29d4077e00b2",
+      "build": {
+
+      },
+      "build_version": 0.0,
+      "conditions": [],
+      "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+      "name": "Norub",
+      "people_id": "orc",
+      "role_id": "vanguard",
+      "rules_pack": "pf1e-derived:planned"
+    },
+    {
+      "assignment": "travelling",
+      "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2:background:38c9a6fbc2f30f8156e4",
+      "build": {
+
+      },
+      "build_version": 0.0,
+      "conditions": [],
+      "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+      "name": "Taoka",
+      "people_id": "hearth-elf",
+      "role_id": "scout",
+      "rules_pack": "pf1e-derived:planned"
+    },
+    {
+      "assignment": "travelling",
+      "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3:background:59dc688ef81c6257ceb6",
+      "build": {
+
+      },
+      "build_version": 0.0,
+      "conditions": [],
+      "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+      "name": "Dokmibu",
+      "people_id": "human",
+      "role_id": "adept",
+      "rules_pack": "pf1e-derived:planned"
+    }
+  ],
+  "expedition": {
+    "active": {
+
+    },
+    "cell_id": 5583.0,
+    "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+    "knowledge": {
+      "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350": "discovered",
+      "site:31843f0e2715f45c52fa42a819a2d507a62778e7d036283295efae41e4f9ffae": "unknown",
+      "site:41746bb6ade829555df31b0f375279fc769beafb929e8a7daca76134ee90d811": "unknown",
+      "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c": "unknown",
+      "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1": "rumoured",
+      "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c": "unknown",
+      "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e": "unknown",
+      "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5": "discovered"
+    },
+    "leads": [
+      {
+        "goal": "Record surviving worked stones",
+        "goal_id": "record-surviving-worked-stones",
+        "hook": {
+          "evidence": "a-marked-object",
+          "generator": {
+            "generator": "trhgd-game78-1",
+            "pack": "trhgd-game78-1",
+            "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+            "provider": "sha-staged"
+          },
+          "issuer": {
+            "id": "settlements:101/contract:expedition:site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5/issuer",
+            "role": "religious-attendant"
+          }
+        },
+        "id": "lead:1c448cdeec6d3f74eee67b55438d78597f01d7959340583d8e8e64ef1c0a4b3e",
+        "issuer": "religious attendant",
+        "knowledge": "discovered",
+        "origin": "generated-local",
+        "site_id": "site:7f0b410c3d92937160ff6a00ab2c9f716b66f7f4a53732fe85c1d436ef40e4f5",
+        "status": "available"
+      },
+      {
+        "goal": "Record surviving worked stones",
+        "goal_id": "record-surviving-worked-stones",
+        "hook": {
+          "evidence": "a-repair-tally",
+          "generator": {
+            "generator": "trhgd-game78-1",
+            "pack": "trhgd-game78-1",
+            "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+            "provider": "sha-staged"
+          },
+          "issuer": {
+            "id": "settlements:101/contract:expedition:site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1/issuer",
+            "role": "possible-recruit"
+          }
+        },
+        "id": "lead:80281423587687f6a8b372ca5e86fccf5a49e0365de09a5761124385e5aa68c6",
+        "issuer": "repair apprentice",
+        "knowledge": "rumoured",
+        "origin": "generated-local",
+        "site_id": "site:5308a793433034bbb0e087732740a981bee3e639e35aa08ae82a09621e5d90d1",
+        "status": "available"
+      },
+      {
+        "goal": "Record surviving worked stones",
+        "goal_id": "record-surviving-worked-stones",
+        "hook": {
+          "evidence": "a-marked-object",
+          "generator": {
+            "generator": "trhgd-game78-1",
+            "pack": "trhgd-game78-1",
+            "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+            "provider": "sha-staged"
+          },
+          "issuer": {
+            "id": "settlements:101/contract:expedition:site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350/issuer",
+            "role": "book-binder"
+          }
+        },
+        "id": "lead:67a4ea23539b0c180da152d533936fa12ebad6220bde15a24756b95bb3584c73",
+        "issuer": "book binder",
+        "knowledge": "discovered",
+        "origin": "generated-local",
+        "site_id": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+        "status": "available"
+      }
+    ],
+    "log": [
+      {
+        "sequence": 1.0,
+        "text": "Local accounts are ready. Your party gathers at home.",
+        "tick": 0.0,
+        "type": "begin"
+      },
+      {
+        "sequence": 2.0,
+        "text": "Local opportunities are recorded from this region. No opening quest is required.",
+        "tick": 0.0,
+        "type": "begin"
+      },
+      {
+        "sequence": 3.0,
+        "text": "The party sets out to assess a local opportunity.",
+        "tick": 1.0,
+        "type": "depart"
+      },
+      {
+        "sequence": 4.0,
+        "text": "Arrived at Secluded camp · 1. The site and encounter are generated local content.",
+        "tick": 2.0,
+        "type": "travel"
+      },
+      {
+        "sequence": 5.0,
+        "text": "Returned home and rested (V0 HP/Focus recovery). Site knowledge, opponents and results remain recorded.",
+        "tick": 3.0,
+        "type": "return"
+      },
+      {
+        "sequence": 6.0,
+        "text": "The party sets out to assess a local opportunity.",
+        "tick": 4.0,
+        "type": "depart"
+      },
+      {
+        "sequence": 7.0,
+        "text": "Arrived at Secluded camp · 1. The site and encounter are generated local content.",
+        "tick": 5.0,
+        "type": "travel"
+      },
+      {
+        "sequence": 8.0,
+        "text": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "tick": 7.0,
+        "type": "record"
+      },
+      {
+        "sequence": 9.0,
+        "text": "Returned home and rested (V0 HP/Focus recovery). Site knowledge, opponents and results remain recorded.",
+        "tick": 8.0,
+        "type": "return"
+      },
+      {
+        "sequence": 10.0,
+        "text": "The party sets out to assess a local opportunity.",
+        "tick": 9.0,
+        "type": "depart"
+      },
+      {
+        "sequence": 11.0,
+        "text": "Located Broken work-yard · 2. Its source-grounded position stays discovered.",
+        "tick": 11.0,
+        "type": "scout"
+      },
+      {
+        "sequence": 12.0,
+        "text": "Arrived at Broken work-yard · 2. The site and encounter are generated local content.",
+        "tick": 12.0,
+        "type": "travel"
+      },
+      {
+        "sequence": 13.0,
+        "text": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "tick": 14.0,
+        "type": "record"
+      },
+      {
+        "sequence": 14.0,
+        "text": "Returned home and rested (V0 HP/Focus recovery). Site knowledge, opponents and results remain recorded.",
+        "tick": 15.0,
+        "type": "return"
+      },
+      {
+        "sequence": 15.0,
+        "text": "The party sets out to assess a local opportunity.",
+        "tick": 16.0,
+        "type": "depart"
+      },
+      {
+        "sequence": 16.0,
+        "text": "Arrived at Hostile clearing · 3. The site and encounter are generated local content.",
+        "tick": 17.0,
+        "type": "travel"
+      },
+      {
+        "sequence": 17.0,
+        "text": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "tick": 17.0,
+        "type": "leave"
+      },
+      {
+        "sequence": 18.0,
+        "text": "Returned home and rested (V0 HP/Focus recovery). Site knowledge, opponents and results remain recorded.",
+        "tick": 18.0,
+        "type": "return"
+      }
+    ],
+    "outcomes": {
+
+    },
+    "packet_sha": "88abd250068c1d97273df0f860f8646deef66284645509ae4d7717b423f8ab8a",
+    "revision": 18.0,
+    "version": "trhgd-expedition-v1"
+  },
+  "game_clock": {
+    "tick": 18.0,
+    "time_unit": "expedition-turn"
+  },
+  "mechanics": {
+    "records": {
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:1": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "roadwarden",
+            "feat_id": "sentry-trained",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-orc",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 10.0,
+          "STR": 15.0,
+          "WIS": 12.0
+        },
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+        "choices": {
+          "prepared_abilities": []
+        },
+        "equipment": [
+          "shortblade",
+          "mail",
+          "shield"
+        ],
+        "revision": 8.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 14.0,
+          "modifiers": [],
+          "resources": {
+
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:2": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "wayfinder",
+            "feat_id": "quick-reflex",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0,
+              "craft": 1.0,
+              "insight": 1.0,
+              "perception": 1.0,
+              "persuasion": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-hearth-elf",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 13.0,
+          "DEX": 15.0,
+          "INT": 14.0,
+          "STR": 10.0,
+          "WIS": 12.0
+        },
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+        "choices": {
+          "prepared_abilities": []
+        },
+        "equipment": [
+          "shortblade",
+          "bow",
+          "leathers"
+        ],
+        "revision": 8.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 11.0,
+          "modifiers": [],
+          "resources": {
+
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:3": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "class_id": "lantern-adept",
+            "feat_id": "keen-focus",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "athletics": 1.0,
+              "craft": 1.0,
+              "insight": 1.0,
+              "perception": 1.0
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-human",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 10.0,
+          "CON": 12.0,
+          "DEX": 13.0,
+          "INT": 15.0,
+          "STR": 8.0,
+          "WIS": 14.0
+        },
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+        "choices": {
+          "prepared_abilities": [
+            "apparent-wall",
+            "false-guard",
+            "slow"
+          ]
+        },
+        "equipment": [
+          "staff",
+          "focus-token"
+        ],
+        "revision": 8.0,
+        "rules_ref": {
+          "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+          "engine_schema": 1.0,
+          "pack_id": "trhgd-rules-v1",
+          "rules_version": "1.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "granted_features": [],
+          "hp": 10.0,
+          "modifiers": [],
+          "resources": {
+            "focus": 2.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      }
+    },
+    "revision": 8.0,
+    "rules_ref": {
+      "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+      "engine_schema": 1.0,
+      "pack_id": "trhgd-rules-v1",
+      "rules_version": "1.0.0",
+      "schema_version": 1.0
+    },
+    "schema_version": 1.0,
+    "source_party_sha": "6944ef47dff5ec91c49ace81ffe9bb13ccbffbfd7936b5f0e5275b0271ed612f"
+  },
+  "onboarding_stage": "party_ready",
+  "origin": {
+    "home_burg_id": 101.0,
+    "home_id": "burg:101",
+    "province_id": 155.0,
+    "state_id": 16.0
+  },
+  "party": {
+    "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+    "generator_version": "trhgd-party-1",
+    "members": [
+      {
+        "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1:background:77dc9bff29d4077e00b2",
+        "background_variant": 1.0,
+        "biography": "Norub grew up in Iusususus, in an adoptive household. A patient older apprentice taught them the work of a traveller. Their household contributed to boatbuilding. They hope to pay a modest family debt; they still carry a stitched scrap of cloth.",
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+        "generated_facts": {
+          "background": {
+            "age_band": "older-adult",
+            "birthplace": {
+              "id": 101.0,
+              "name": "Iusususus",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+            },
+            "childhood": "delivering-small-parcels",
+            "concern": "mistaking-pride-for-competence",
+            "contact": {
+              "id": "settlements:101/character:party:slot:1:variant:1:people:orc:role:vanguard/contact",
+              "name": "Nigudu",
+              "relationship": "known-person",
+              "role": "a-sibling-who-stayed-home"
+            },
+            "family": "adoptive-household",
+            "first_failure": "kept-quiet-about-a-small-mistake",
+            "first_success": "helped-complete-a-communal-task",
+            "habit": "notes-who-lent-an-object",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-stitched-scrap-of-cloth",
+            "local_knowledge": {
+              "burg_id": 101.0,
+              "cell_id": 5583.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "pay-a-modest-family-debt",
+            "name": "Norub",
+            "naming": {
+              "culture_id": 9.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "orc"
+            },
+            "occupation": "traveller",
+            "training": "a-patient-older-apprentice",
+            "traits": [
+              "curious",
+              "boastful"
+            ],
+            "value": "practical-fairness"
+          },
+          "biography_form": 0.0,
+          "foundation_occupation_id": "traveller",
+          "occupation_id": "traveller",
+          "origin_identity": {
+            "hometown_profile_id": "burg:101",
+            "livelihood": "boatbuilding",
+            "local_memory": "Clerks corrected a levy after several households were counted twice.",
+            "posture": "outward-looking",
+            "region_profile_id": "province:16:155",
+            "regional_contribution": "boats and shaped timber",
+            "state_profile_id": "state:16",
+            "tradition": "Local households include absent households when recording communal contributions."
+          },
+          "people_id": "orc",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "coast",
+              "coastal-port",
+              "culture",
+              "farmland",
+              "forest",
+              "port",
+              "religion",
+              "settlement:town",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Norub",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 101.0,
+          "cell_id": 5583.0,
+          "culture_id": 9.0,
+          "province_id": 155.0,
+          "religion_id": 17.0,
+          "state_id": 16.0,
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "people_id": "orc",
+        "role_id": "vanguard",
+        "slot": 1.0
+      },
+      {
+        "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2:background:38c9a6fbc2f30f8156e4",
+        "background_variant": 1.0,
+        "biography": "Raised in Iusususus, Taoka learned a working trade as a harbour worker, guided by a neighbour who taught evening lessons. Their grandparent household shared in boatbuilding. Leaving home, they hope to return a borrowed possession. A plain copper ring remains a reminder of that life.",
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+        "generated_facts": {
+          "background": {
+            "age_band": "older-adult",
+            "birthplace": {
+              "id": 101.0,
+              "name": "Iusususus",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+            },
+            "childhood": "caring-for-younger-children",
+            "concern": "leaving-household-duties-unfinished",
+            "contact": {
+              "id": "settlements:101/character:party:slot:2:variant:1:people:hearth-elf:role:scout/contact",
+              "name": "Kigob",
+              "relationship": "known-person",
+              "role": "a-household-guardian"
+            },
+            "family": "grandparent-household",
+            "first_failure": "trusted-an-incomplete-inventory",
+            "first_success": "completed-a-difficult-repair",
+            "habit": "turns-a-ring-when-thinking",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-plain-copper-ring",
+            "local_knowledge": {
+              "burg_id": 101.0,
+              "cell_id": 5583.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "return-a-borrowed-possession",
+            "name": "Taoka",
+            "naming": {
+              "culture_id": 9.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "hearth-elf"
+            },
+            "occupation": "harbour-worker",
+            "training": "a-neighbour-who-taught-evening-lessons",
+            "traits": [
+              "boastful",
+              "sceptical"
+            ],
+            "value": "practical-fairness"
+          },
+          "biography_form": 1.0,
+          "foundation_occupation_id": "harbour-worker",
+          "occupation_id": "harbour-worker",
+          "origin_identity": {
+            "hometown_profile_id": "burg:101",
+            "livelihood": "boatbuilding",
+            "local_memory": "Clerks corrected a levy after several households were counted twice.",
+            "posture": "outward-looking",
+            "region_profile_id": "province:16:155",
+            "regional_contribution": "boats and shaped timber",
+            "state_profile_id": "state:16",
+            "tradition": "Local households include absent households when recording communal contributions."
+          },
+          "people_id": "hearth-elf",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "coast",
+              "coastal-port",
+              "culture",
+              "farmland",
+              "forest",
+              "port",
+              "religion",
+              "settlement:town",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Taoka",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 101.0,
+          "cell_id": 5583.0,
+          "culture_id": 9.0,
+          "province_id": 155.0,
+          "religion_id": 17.0,
+          "state_id": 16.0,
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "people_id": "hearth-elf",
+        "role_id": "scout",
+        "slot": 2.0
+      },
+      {
+        "background_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3:background:59dc688ef81c6257ceb6",
+        "background_variant": 1.0,
+        "biography": "Dokmibu comes from a single-parent household in Iusususus. Their former work was that of a porter. In a community centred on boatbuilding, they learned from a neighbour who taught evening lessons. They carry a smoothed stone from a workbench and hope to seek work beyond familiar workshops.",
+        "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+        "generated_facts": {
+          "background": {
+            "age_band": "older-adult",
+            "birthplace": {
+              "id": 101.0,
+              "name": "Iusususus",
+              "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+            },
+            "childhood": "mending-ordinary-possessions",
+            "concern": "returning-without-useful-work",
+            "contact": {
+              "id": "settlements:101/character:party:slot:3:variant:1:people:human:role:adept/contact",
+              "name": "Rores",
+              "relationship": "known-person",
+              "role": "a-household-neighbour"
+            },
+            "family": "single-parent-household",
+            "first_failure": "forgot-an-agreed-meeting",
+            "first_success": "found-an-economical-way-to-reuse-worn-goods",
+            "habit": "keeps-small-usable-offcuts",
+            "hometown_relationship": "leaving-with-unfinished-obligations",
+            "keepsake": "a-smoothed-stone-from-a-workbench",
+            "local_knowledge": {
+              "burg_id": 101.0,
+              "cell_id": 5583.0,
+              "hidden_pois": [],
+              "kind": "public-origin"
+            },
+            "motivation": "seek-work-beyond-familiar-workshops",
+            "name": "Dokmibu",
+            "naming": {
+              "culture_id": 9.0,
+              "model": "TRHGD people/culture phonotactics",
+              "people_id": "human"
+            },
+            "occupation": "porter",
+            "training": "a-neighbour-who-taught-evening-lessons",
+            "traits": [
+              "cowardly",
+              "patient"
+            ],
+            "value": "respect-for-borrowed-goods"
+          },
+          "biography_form": 2.0,
+          "foundation_occupation_id": "porter",
+          "occupation_id": "porter",
+          "origin_identity": {
+            "hometown_profile_id": "burg:101",
+            "livelihood": "boatbuilding",
+            "local_memory": "Clerks corrected a levy after several households were counted twice.",
+            "posture": "outward-looking",
+            "region_profile_id": "province:16:155",
+            "regional_contribution": "boats and shaped timber",
+            "state_profile_id": "state:16",
+            "tradition": "Local households include absent households when recording communal contributions."
+          },
+          "people_id": "human",
+          "provenance": {
+            "context_tags": [
+              "adjacent-town",
+              "coast",
+              "coastal-port",
+              "culture",
+              "farmland",
+              "forest",
+              "port",
+              "religion",
+              "settlement:town",
+              "trail",
+              "trail-cell"
+            ],
+            "foundation_versions": {
+              "generator": "trhgd-game78-1",
+              "pack": "trhgd-game78-1",
+              "pack_sha": "31a9bd036a153e9356b6b7cc1dfae2945992fc4c70e2f32c2881ef3c3031104c",
+              "provider": "lexicon-staged"
+            },
+            "generator": "GAME-78 production character adapter",
+            "naming": "Lexicon original phonotactics conditioned by independent people and source culture IDs",
+            "visibility": "character-owned public; no private generator facts"
+          },
+          "public_relationship": {
+            "kind": "hometown-neighbours",
+            "other_character_ids": [
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+              "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+            ]
+          },
+          "schema_version": 1.0
+        },
+        "name": "Dokmibu",
+        "name_edited": false,
+        "origin_refs": {
+          "burg_id": 101.0,
+          "cell_id": 5583.0,
+          "culture_id": 9.0,
+          "province_id": 155.0,
+          "religion_id": 17.0,
+          "state_id": 16.0,
+          "world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+          "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+        },
+        "people_id": "human",
+        "role_id": "adept",
+        "slot": 3.0
+      }
+    ],
+    "peoples_pin": {
+      "base_world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "base_world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+      "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+      "content_pack_version": "trhgd-party-1",
+      "enrichment_sha": "2bec64b356e748e990c08590f797db4940b03bdcc0fe71469b09594decf7742d",
+      "generator_version": "trhgd-party-1",
+      "profiles_sha": "b4a1da6d295196488d0ad08fa2573e1246cf49685b44665a99e988f51bfec3f1",
+      "provider": "trhgd-peoples",
+      "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "schema_version": 1.0
+    },
+    "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+    "schema_version": 1.0,
+    "status": "ready"
+  },
+  "party_ids": [
+    "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+    "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+    "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+  ],
+  "player_knowledge": {
+    "discovered_poi_ids": [],
+    "known_burg_ids": [
+      "burg:101"
+    ],
+    "rumoured_poi_ids": [],
+    "visited_poi_ids": []
+  },
+  "playthrough_id": "bcf8a451942877ca0a2bd70d75757a37",
+  "sandbox": {
+    "active": {
+
+    },
+    "base": {
+      "cell_id": 5583,
+      "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+      "home_id": 101,
+      "home_position": [
+        602.239033,
+        301.489296
+      ],
+      "seed": "1c3a0fbf1b0d036d6a0261e7e40b912d651475ca5cbde6567996421d478dc561",
+      "sites": [
+        {
+          "board": {
+            "attempt": 0,
+            "blocked": [
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                4,
+                6
+              ]
+            ],
+            "enemies": [
+              {
+                "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+                "name": "Armed scavenger",
+                "position": [
+                  8,
+                  3
+                ],
+                "role": "vanguard",
+                "weapon": "shortblade"
+              },
+              {
+                "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+                "name": "Armed scavenger",
+                "position": [
+                  8,
+                  4
+                ],
+                "role": "vanguard",
+                "weapon": "shortblade"
+              }
+            ],
+            "generation": {
+              "composition": 2,
+              "environment": "forest",
+              "kind": "camp",
+              "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+              "seed": "fc5c4b2be1416a467779d2f1bc8a095d4db3a0b768f9889a96347960099d291b",
+              "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+              "version": "sandbox-spine-v1"
+            },
+            "height": 8,
+            "id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+            "party_positions": [
+              [
+                3,
+                3
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "presentation": {
+              "environment": "forest",
+              "features": [
+                {
+                  "at": [
+                    6,
+                    5
+                  ],
+                  "kind": "campfire"
+                },
+                {
+                  "at": [
+                    2,
+                    2
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    3,
+                    2
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    4,
+                    6
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    0,
+                    7
+                  ],
+                  "kind": "cart"
+                }
+              ],
+              "ground": [
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg"
+              ]
+            },
+            "title": "Skirmish at the camp",
+            "width": 12
+          },
+          "context": {
+            "biome": "Temperate deciduous forest",
+            "cell_id": 5583,
+            "environment": "forest",
+            "home_id": 101,
+            "placement_ref": "site:0fb2371dea62939fab8c652bbd5edd5787cd3512f969468c4dd38116ba0bc350",
+            "placement_slot": 2,
+            "region_id": 155,
+            "route_ref": -1,
+            "source": "Verified GAME-62/84 original-cell-owned dry land; fine terrain and occupation inferred/generated, not canonical Azgaar history."
+          },
+          "description": "Shelter and abandoned supplies make this patch useful to armed travellers. A small armed group has occupied the shelter.",
+          "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+          "kind": "camp",
+          "name": "Secluded camp · 1",
+          "opportunity_id": "opportunity:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+          "position": [
+            369,
+            640
+          ],
+          "provenance": {
+            "authorship": "TRHGD generated local fiction",
+            "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "fc5c4b2be1416a467779d2f1bc8a095d4db3a0b768f9889a96347960099d291b",
+            "version": "sandbox-spine-v1",
+            "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+          },
+          "reward": "10 journey XP per companion on victory; the site stays resolved.",
+          "world_position": [
+            592.54213604138,
+            648.808911352027
+          ]
+        },
+        {
+          "board": {
+            "attempt": 0,
+            "blocked": [
+              [
+                4,
+                2
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "enemies": [
+              {
+                "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+                "name": "Hostile lookout",
+                "position": [
+                  2,
+                  6
+                ],
+                "role": "scout",
+                "weapon": "bow"
+              },
+              {
+                "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+                "name": "Hostile lookout",
+                "position": [
+                  2,
+                  5
+                ],
+                "role": "scout",
+                "weapon": "bow"
+              }
+            ],
+            "generation": {
+              "composition": 3,
+              "environment": "forest",
+              "kind": "ruins",
+              "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+              "seed": "13396f64c77587d8df4cbe42042bd7f8dbfdedd745a5b482a8f0be915fe0157a",
+              "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+              "version": "sandbox-spine-v1"
+            },
+            "height": 8,
+            "id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+            "party_positions": [
+              [
+                7,
+                6
+              ],
+              [
+                7,
+                5
+              ],
+              [
+                8,
+                4
+              ]
+            ],
+            "presentation": {
+              "environment": "forest",
+              "features": [
+                {
+                  "at": [
+                    3,
+                    3
+                  ],
+                  "kind": "wall"
+                },
+                {
+                  "at": [
+                    4,
+                    3
+                  ],
+                  "kind": "wall"
+                },
+                {
+                  "at": [
+                    2,
+                    3
+                  ],
+                  "kind": "wall"
+                },
+                {
+                  "at": [
+                    4,
+                    2
+                  ],
+                  "kind": "wall"
+                },
+                {
+                  "at": [
+                    4,
+                    5
+                  ],
+                  "kind": "wall"
+                },
+                {
+                  "at": [
+                    9,
+                    0
+                  ],
+                  "kind": "rubble"
+                }
+              ],
+              "ground": [
+                "gggggggggg",
+                "gggggggggg",
+                "gggggggggg",
+                "gggggggggg",
+                "gppppppppg",
+                "gppppppppg",
+                "gppppppppg",
+                "gggggggggg"
+              ]
+            },
+            "title": "Scavengers in the broken yard",
+            "width": 10
+          },
+          "context": {
+            "biome": "Temperate deciduous forest",
+            "cell_id": 5583,
+            "environment": "forest",
+            "home_id": 101,
+            "placement_ref": "site:428aa8b629d5afe306382880eaaac37aca6dadc8cacd1a5ff166442b1e06fa1c",
+            "placement_slot": 3,
+            "region_id": 155,
+            "route_ref": -1,
+            "source": "Verified GAME-62/84 original-cell-owned dry land; fine terrain and occupation inferred/generated, not canonical Azgaar history."
+          },
+          "description": "A disused work-yard offers shelter and stone worth scavenging. Armed scavengers dispute access to the remaining work.",
+          "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+          "kind": "ruins",
+          "name": "Broken work-yard · 2",
+          "opportunity_id": "opportunity:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+          "position": [
+            583,
+            794
+          ],
+          "provenance": {
+            "authorship": "TRHGD generated local fiction",
+            "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "13396f64c77587d8df4cbe42042bd7f8dbfdedd745a5b482a8f0be915fe0157a",
+            "version": "sandbox-spine-v1",
+            "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+          },
+          "reward": "10 journey XP per companion on victory; the site stays resolved.",
+          "world_position": [
+            595.613846971076,
+            651.019394918256
+          ]
+        },
+        {
+          "board": {
+            "attempt": 0,
+            "blocked": [
+              [
+                2,
+                1
+              ],
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                6
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "enemies": [
+              {
+                "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1",
+                "name": "Armed scavenger",
+                "position": [
+                  3,
+                  4
+                ],
+                "role": "vanguard",
+                "weapon": "shortblade"
+              },
+              {
+                "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2",
+                "name": "Hostile lookout",
+                "position": [
+                  3,
+                  3
+                ],
+                "role": "scout",
+                "weapon": "bow"
+              }
+            ],
+            "generation": {
+              "composition": 1,
+              "environment": "forest",
+              "kind": "clearing",
+              "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+              "seed": "4ed283f901e4299d4aad42bc308302b165eccd34dd2cd1967e044cf391e2dbd1",
+              "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+              "version": "sandbox-spine-v1"
+            },
+            "height": 8,
+            "id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+            "party_positions": [
+              [
+                8,
+                4
+              ],
+              [
+                8,
+                3
+              ],
+              [
+                9,
+                2
+              ]
+            ],
+            "presentation": {
+              "environment": "forest",
+              "features": [
+                {
+                  "at": [
+                    2,
+                    1
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    5,
+                    7
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    4,
+                    7
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    5,
+                    6
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    5,
+                    3
+                  ],
+                  "kind": "rock"
+                },
+                {
+                  "at": [
+                    11,
+                    0
+                  ],
+                  "kind": "scrub"
+                }
+              ],
+              "ground": [
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg"
+              ]
+            },
+            "title": "Lookouts in the clearing",
+            "width": 12
+          },
+          "context": {
+            "biome": "Temperate deciduous forest",
+            "cell_id": 5583,
+            "environment": "forest",
+            "home_id": 101,
+            "placement_ref": "site:57d0607f7636c9cc2973d302e3d8e7b28cec8f8163075c0db32c0b353a831d1c",
+            "placement_slot": 4,
+            "region_id": 155,
+            "route_ref": -1,
+            "source": "Verified GAME-62/84 original-cell-owned dry land; fine terrain and occupation inferred/generated, not canonical Azgaar history."
+          },
+          "description": "A local opening offers a vantage point and space to gather supplies. Hostile lookouts watch the approach.",
+          "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+          "kind": "clearing",
+          "name": "Hostile clearing · 3",
+          "opportunity_id": "opportunity:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+          "position": [
+            382,
+            671
+          ],
+          "provenance": {
+            "authorship": "TRHGD generated local fiction",
+            "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "4ed283f901e4299d4aad42bc308302b165eccd34dd2cd1967e044cf391e2dbd1",
+            "version": "sandbox-spine-v1",
+            "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+          },
+          "reward": "10 journey XP per companion on victory; the site stays resolved.",
+          "world_position": [
+            592.728735303464,
+            649.253878823151
+          ]
+        },
+        {
+          "board": {
+            "attempt": 0,
+            "blocked": [
+              [
+                5,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            "enemies": [
+              {
+                "id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a:opponent:1",
+                "name": "Armed scavenger",
+                "position": [
+                  8,
+                  3
+                ],
+                "role": "vanguard",
+                "weapon": "shortblade"
+              }
+            ],
+            "generation": {
+              "composition": 0,
+              "environment": "forest",
+              "kind": "roadside",
+              "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+              "seed": "dbcb404c267fe5afee39e1a579ab551073baaa47081c3a7e8bf00c4bfc77cc9f",
+              "site_id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+              "version": "sandbox-spine-v1"
+            },
+            "height": 8,
+            "id": "encounter:617bd26ea35cbb22b004a2fb2c50c63d7c7b7523017111cfe32b5e65361fbe00",
+            "party_positions": [
+              [
+                3,
+                2
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "presentation": {
+              "environment": "forest",
+              "features": [
+                {
+                  "at": [
+                    5,
+                    0
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    6,
+                    0
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    5,
+                    1
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    2,
+                    5
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    3,
+                    5
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    2,
+                    6
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    4,
+                    5
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    3,
+                    6
+                  ],
+                  "kind": "tree"
+                },
+                {
+                  "at": [
+                    0,
+                    7
+                  ],
+                  "kind": "cart"
+                }
+              ],
+              "ground": [
+                "gggggggggggg",
+                "gggggggggggg",
+                "rrrrrrrrrrrr",
+                "rrrrrrrrrrrr",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg",
+                "gggggggggggg"
+              ]
+            },
+            "title": "Threat near the source road",
+            "width": 12
+          },
+          "context": {
+            "biome": "Temperate deciduous forest",
+            "cell_id": 5583,
+            "environment": "forest",
+            "home_id": 101,
+            "placement_ref": "site:7ee6452864e8c650a244120df6957f4c86a4df13a6f27ebf15dd35e755a98b4e",
+            "placement_slot": 5,
+            "region_id": 155,
+            "route_ref": 267,
+            "source": "Verified GAME-62/84 original-cell-owned dry land; fine terrain and occupation inferred/generated, not canonical Azgaar history."
+          },
+          "description": "The source route passes near this position; armed travellers exploit its approach. Armed travellers obstruct passage near the route.",
+          "id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+          "kind": "roadside",
+          "name": "Roadside obstruction · 4",
+          "opportunity_id": "opportunity:617bd26ea35cbb22b004a2fb2c50c63d7c7b7523017111cfe32b5e65361fbe00",
+          "position": [
+            508,
+            318
+          ],
+          "provenance": {
+            "authorship": "TRHGD generated local fiction",
+            "content_sha": "cd514c1d9dc8b17db32d5b46640be4f2b764a5e9049912e2c13925d6f151bc78",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "dbcb404c267fe5afee39e1a579ab551073baaa47081c3a7e8bf00c4bfc77cc9f",
+            "version": "sandbox-spine-v1",
+            "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+          },
+          "reward": "10 journey XP per companion on victory; the site stays resolved.",
+          "world_position": [
+            594.537312766743,
+            644.186991168092
+          ]
+        }
+      ],
+      "version": "sandbox-spine-v1",
+      "world_ref": {
+        "generator": {
+          "provider": "azgaar",
+          "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+          "version": "1.153.1"
+        },
+        "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+        "schema_version": 1,
+        "seed": "game-11-determinism",
+        "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+      }
+    },
+    "base_sha": "7829b4e92d42351c6bd3b8ded5ac52f58188f1eedb567f90d683b71ff31fcdf2",
+    "characters": {
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:1": {
+        "history": [
+          {
+            "encounter_id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+            "outcome": "victory",
+            "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+            "summary": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+            "outcome": "victory",
+            "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+            "summary": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+            "outcome": "defeat",
+            "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+            "summary": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn."
+          }
+        ],
+        "xp": 20
+      },
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:2": {
+        "history": [
+          {
+            "encounter_id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+            "outcome": "victory",
+            "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+            "summary": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+            "outcome": "victory",
+            "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+            "summary": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+            "outcome": "defeat",
+            "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+            "summary": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn."
+          }
+        ],
+        "xp": 20
+      },
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:3": {
+        "history": [
+          {
+            "encounter_id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+            "outcome": "victory",
+            "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+            "summary": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+            "outcome": "victory",
+            "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+            "summary": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP."
+          },
+          {
+            "encounter_id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+            "outcome": "defeat",
+            "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+            "summary": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn."
+          }
+        ],
+        "xp": 20
+      }
+    },
+    "encounters": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              6
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+              "name": "Armed scavenger",
+              "position": [
+                8,
+                3
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            },
+            {
+              "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+              "name": "Armed scavenger",
+              "position": [
+                8,
+                4
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            }
+          ],
+          "generation": {
+            "composition": 2,
+            "environment": "forest",
+            "kind": "camp",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "fc5c4b2be1416a467779d2f1bc8a095d4db3a0b768f9889a96347960099d291b",
+            "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+          "party_positions": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  6,
+                  5
+                ],
+                "kind": "campfire"
+              },
+              {
+                "at": [
+                  2,
+                  2
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  3,
+                  2
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  4,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  0,
+                  7
+                ],
+                "kind": "cart"
+              }
+            ],
+            "ground": [
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg"
+            ]
+          },
+          "title": "Skirmish at the camp",
+          "width": 12
+        },
+        "budget": {
+          "main": 0,
+          "move": 1
+        },
+        "commands": [
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "attack",
+            "revision": 0,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "destination": [
+              7,
+              4
+            ],
+            "kind": "move",
+            "revision": 1
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "end",
+            "revision": 2
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "destination": [
+              7,
+              3
+            ],
+            "kind": "move",
+            "revision": 3
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "attack",
+            "revision": 4,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "end",
+            "revision": 5
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "destination": [
+              5,
+              4
+            ],
+            "kind": "move",
+            "revision": 6
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "spark",
+            "revision": 7,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "end",
+            "revision": 8
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+            "kind": "attack",
+            "revision": 9,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1"
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+            "kind": "end",
+            "revision": 10
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+            "kind": "attack",
+            "revision": 11,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+            "kind": "end",
+            "revision": 12
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "attack",
+            "revision": 13,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "end",
+            "revision": 14
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "attack",
+            "revision": 15,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "destination": [
+              8,
+              3
+            ],
+            "kind": "move",
+            "revision": 16
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "end",
+            "revision": 17
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "spark",
+            "revision": 18,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "destination": [
+              8,
+              5
+            ],
+            "kind": "move",
+            "revision": 19
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "end",
+            "revision": 20
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+            "kind": "attack",
+            "revision": 21,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+          },
+          {
+            "actor_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+            "kind": "end",
+            "revision": 22
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "attack",
+            "revision": 23,
+            "target_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2"
+          }
+        ],
+        "cursor": 0,
+        "encounter_sha": "7f7820b509d51e9827e5e68ef931c64dd1838e8e1f3438fb3e7944239900f7ab",
+        "log": [
+          "The party approaches the generated site: Skirmish at the camp.",
+          "Taoka attacks Armed scavenger: 1 + 2 vs 12, miss.",
+          "Taoka moves.",
+          "Norub moves.",
+          "Norub hits Armed scavenger: 10 + 3 vs 12, 6 damage.",
+          "Dokmibu moves.",
+          "Dokmibu uses Lantern Spark on Armed scavenger. 7 damage.",
+          "Armed scavenger attacks Norub: 3 + 3 vs 16, miss.",
+          "Armed scavenger hits Taoka: 11 + 3 vs 13, 3 damage.",
+          "Taoka attacks Armed scavenger: 12 + -2 vs 12, miss.",
+          "Norub hits Armed scavenger: 16 + 3 vs 12, 5 damage.",
+          "Armed scavenger is down.",
+          "Norub moves.",
+          "Dokmibu uses Lantern Spark on Armed scavenger. 4 damage.",
+          "Dokmibu moves.",
+          "Armed scavenger hits Taoka: 13 + 3 vs 13, 5 damage.",
+          "Taoka finds an opening: Precision +4.",
+          "Taoka hits Armed scavenger: 20 + -2 vs 12, 11 damage (critical).",
+          "Armed scavenger is down.",
+          "Victory: the raiders withdraw."
+        ],
+        "order": [
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+          "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+          "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2"
+        ],
+        "reason": "opponents_downed",
+        "revision": 24,
+        "rng": {
+          "counter": 15,
+          "seed": "c4aacfcdc5e9710cc5d4e8352635a81908cb33a4935fc4c17d6ecf187f2708e9",
+          "version": "sha256-counter-v1"
+        },
+        "round": 3,
+        "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+        "state_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+        "status": "victory",
+        "units": {
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "name": "Norub",
+            "position": [
+              8,
+              3
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-orc",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "mail",
+                "shield"
+              ],
+              "revision": 2,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 14,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "shortblade"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "name": "Taoka",
+            "position": [
+              7,
+              4
+            ],
+            "precision_used": true,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-hearth-elf",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "bow",
+                "leathers"
+              ],
+              "revision": 2,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 3,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "bow"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "name": "Dokmibu",
+            "position": [
+              8,
+              5
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "lantern-adept",
+                  "feat_id": "keen-focus",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 10,
+                "CON": 12,
+                "DEX": 13,
+                "INT": 15,
+                "STR": 8,
+                "WIS": 14
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+              "choices": {
+                "prepared_abilities": [
+                  "apparent-wall",
+                  "false-guard",
+                  "slow"
+                ]
+              },
+              "equipment": [
+                "staff",
+                "focus-token"
+              ],
+              "revision": 2,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 10,
+                "modifiers": [],
+                "resources": {
+                  "focus": 2
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "staff"
+          },
+          "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1": {
+            "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+            "name": "Armed scavenger",
+            "position": [
+              8,
+              3
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 0,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "shortblade"
+          },
+          "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2": {
+            "id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+            "name": "Armed scavenger",
+            "position": [
+              8,
+              4
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999:opponent:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 0,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "shortblade"
+          }
+        },
+        "version": 1
+      },
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              4,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+              "name": "Hostile lookout",
+              "position": [
+                2,
+                6
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            },
+            {
+              "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                2,
+                5
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 3,
+            "environment": "forest",
+            "kind": "ruins",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "13396f64c77587d8df4cbe42042bd7f8dbfdedd745a5b482a8f0be915fe0157a",
+            "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+          "party_positions": [
+            [
+              7,
+              6
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              8,
+              4
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  3,
+                  3
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  3
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  2,
+                  3
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  2
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  4,
+                  5
+                ],
+                "kind": "wall"
+              },
+              {
+                "at": [
+                  9,
+                  0
+                ],
+                "kind": "rubble"
+              }
+            ],
+            "ground": [
+              "gggggggggg",
+              "gggggggggg",
+              "gggggggggg",
+              "gggggggggg",
+              "gppppppppg",
+              "gppppppppg",
+              "gppppppppg",
+              "gggggggggg"
+            ]
+          },
+          "title": "Scavengers in the broken yard",
+          "width": 10
+        },
+        "budget": {
+          "main": 0,
+          "move": 1
+        },
+        "commands": [
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "destination": [
+              3,
+              4
+            ],
+            "kind": "move",
+            "revision": 0
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "attack",
+            "revision": 1,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "end",
+            "revision": 2
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+            "kind": "attack",
+            "revision": 3,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+            "destination": [
+              3,
+              5
+            ],
+            "kind": "move",
+            "revision": 4
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+            "kind": "end",
+            "revision": 5
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "kind": "attack",
+            "revision": 6,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "destination": [
+              2,
+              4
+            ],
+            "kind": "move",
+            "revision": 7
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "kind": "end",
+            "revision": 8
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "destination": [
+              3,
+              6
+            ],
+            "kind": "move",
+            "revision": 9
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "attack",
+            "revision": 10,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "end",
+            "revision": 11
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "destination": [
+              4,
+              4
+            ],
+            "kind": "move",
+            "revision": 12
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "spark",
+            "revision": 13,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "end",
+            "revision": 14
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "attack",
+            "revision": 15,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "end",
+            "revision": 16
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "kind": "attack",
+            "revision": 17,
+            "target_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2"
+          },
+          {
+            "actor_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "kind": "end",
+            "revision": 18
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "destination": [
+              2,
+              5
+            ],
+            "kind": "move",
+            "revision": 19
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "attack",
+            "revision": 20,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2"
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "kind": "end",
+            "revision": 21
+          },
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "kind": "spark",
+            "revision": 22,
+            "target_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2"
+          }
+        ],
+        "cursor": 4,
+        "encounter_sha": "d8132961600a770595566b5a3bca67685cb5f6fc9e3270b7cc2b5aa9b9effce8",
+        "log": [
+          "The party approaches the generated site: Scavengers in the broken yard.",
+          "Taoka moves.",
+          "Taoka hits Hostile lookout: 13 + 2 vs 12, 1 damage.",
+          "Hostile lookout attacks Taoka: 7 + 2 vs 13, miss.",
+          "Hostile lookout moves.",
+          "Hostile lookout finds an opening: Precision +4.",
+          "Hostile lookout hits Taoka: 13 + 2 vs 13, 6 damage.",
+          "Hostile lookout moves.",
+          "Norub moves.",
+          "Norub hits Hostile lookout: 9 + 3 vs 12, 4 damage.",
+          "Dokmibu moves.",
+          "Dokmibu uses Lantern Spark on Hostile lookout. 6 damage.",
+          "Taoka finds an opening: Precision +4.",
+          "Taoka hits Hostile lookout: 16 + -2 vs 12, 9 damage.",
+          "Hostile lookout is down.",
+          "Hostile lookout attacks Taoka: 3 + -2 vs 13, miss.",
+          "Norub moves.",
+          "Norub hits Hostile lookout: 13 + 3 vs 12, 3 damage.",
+          "Dokmibu uses Lantern Spark on Hostile lookout. 1 damage.",
+          "Victory: the raiders withdraw."
+        ],
+        "order": [
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+          "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+          "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+        ],
+        "reason": "opponents_downed",
+        "revision": 23,
+        "rng": {
+          "counter": 14,
+          "seed": "c7f5ae5174ad3e8ab6dc4de900b621db14ae8caf15b5b96ec872f7b8799578f0",
+          "version": "sha256-counter-v1"
+        },
+        "round": 2,
+        "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+        "state_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+        "status": "victory",
+        "units": {
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "name": "Norub",
+            "position": [
+              2,
+              5
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-orc",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "mail",
+                "shield"
+              ],
+              "revision": 4,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 14,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "shortblade"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "name": "Taoka",
+            "position": [
+              3,
+              4
+            ],
+            "precision_used": true,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-hearth-elf",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "bow",
+                "leathers"
+              ],
+              "revision": 4,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 5,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "bow"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "name": "Dokmibu",
+            "position": [
+              4,
+              4
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "lantern-adept",
+                  "feat_id": "keen-focus",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 10,
+                "CON": 12,
+                "DEX": 13,
+                "INT": 15,
+                "STR": 8,
+                "WIS": 14
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+              "choices": {
+                "prepared_abilities": [
+                  "apparent-wall",
+                  "false-guard",
+                  "slow"
+                ]
+              },
+              "equipment": [
+                "staff",
+                "focus-token"
+              ],
+              "revision": 4,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 10,
+                "modifiers": [],
+                "resources": {
+                  "focus": 2
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "staff"
+          },
+          "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1": {
+            "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+            "name": "Hostile lookout",
+            "position": [
+              3,
+              5
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "bow"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 0,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "bow"
+          },
+          "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2": {
+            "id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+            "name": "Hostile lookout",
+            "position": [
+              2,
+              4
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7:opponent:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "bow"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 0,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "bow"
+          }
+        },
+        "version": 1
+      },
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+        "board": {
+          "attempt": 0,
+          "blocked": [
+            [
+              2,
+              1
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "enemies": [
+            {
+              "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1",
+              "name": "Armed scavenger",
+              "position": [
+                3,
+                4
+              ],
+              "role": "vanguard",
+              "weapon": "shortblade"
+            },
+            {
+              "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2",
+              "name": "Hostile lookout",
+              "position": [
+                3,
+                3
+              ],
+              "role": "scout",
+              "weapon": "bow"
+            }
+          ],
+          "generation": {
+            "composition": 1,
+            "environment": "forest",
+            "kind": "clearing",
+            "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+            "seed": "4ed283f901e4299d4aad42bc308302b165eccd34dd2cd1967e044cf391e2dbd1",
+            "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+            "version": "sandbox-spine-v1"
+          },
+          "height": 8,
+          "id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+          "party_positions": [
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              9,
+              2
+            ]
+          ],
+          "presentation": {
+            "environment": "forest",
+            "features": [
+              {
+                "at": [
+                  2,
+                  1
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  5,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  4,
+                  7
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  5,
+                  6
+                ],
+                "kind": "tree"
+              },
+              {
+                "at": [
+                  5,
+                  3
+                ],
+                "kind": "rock"
+              },
+              {
+                "at": [
+                  11,
+                  0
+                ],
+                "kind": "scrub"
+              }
+            ],
+            "ground": [
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg",
+              "gggggggggggg"
+            ]
+          },
+          "title": "Lookouts in the clearing",
+          "width": 12
+        },
+        "budget": {
+          "main": 1,
+          "move": 1
+        },
+        "commands": [
+          {
+            "actor_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "kind": "retreat",
+            "revision": 0
+          }
+        ],
+        "cursor": 0,
+        "encounter_sha": "3c6be0056c1796ea0117c9d37b9f783fe6e955020ac052441fb49d379f860299",
+        "log": [
+          "The party approaches the generated site: Lookouts in the clearing.",
+          "The party withdraws from the raiders."
+        ],
+        "order": [
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+          "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+          "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1"
+        ],
+        "reason": "retreat",
+        "revision": 1,
+        "rng": {
+          "counter": 0,
+          "seed": "446a824dc07be9517bb3b456f2770ac0bf498504ddf3b3d78731a5e01f546657",
+          "version": "sha256-counter-v1"
+        },
+        "round": 1,
+        "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+        "state_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+        "status": "defeat",
+        "units": {
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:1": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+            "name": "Norub",
+            "position": [
+              8,
+              4
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-orc",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "mail",
+                "shield"
+              ],
+              "revision": 6,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 14,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "shortblade"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:2": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+            "name": "Taoka",
+            "position": [
+              8,
+              3
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-hearth-elf",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade",
+                "bow",
+                "leathers"
+              ],
+              "revision": 6,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 11,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "bow"
+          },
+          "bcf8a451942877ca0a2bd70d75757a37:adventurer:3": {
+            "id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+            "name": "Dokmibu",
+            "position": [
+              9,
+              2
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "lantern-adept",
+                  "feat_id": "keen-focus",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 10,
+                "CON": 12,
+                "DEX": 13,
+                "INT": 15,
+                "STR": 8,
+                "WIS": 14
+              },
+              "character_id": "bcf8a451942877ca0a2bd70d75757a37:adventurer:3",
+              "choices": {
+                "prepared_abilities": [
+                  "apparent-wall",
+                  "false-guard",
+                  "slow"
+                ]
+              },
+              "equipment": [
+                "staff",
+                "focus-token"
+              ],
+              "revision": 6,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 10,
+                "modifiers": [],
+                "resources": {
+                  "focus": 2
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "party",
+            "weapon": "staff"
+          },
+          "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1": {
+            "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1",
+            "name": "Armed scavenger",
+            "position": [
+              3,
+              4
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "roadwarden",
+                  "feat_id": "sentry-trained",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 14,
+                "DEX": 13,
+                "INT": 10,
+                "STR": 15,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:1",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "shortblade"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 14,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "shortblade"
+          },
+          "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2": {
+            "id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2",
+            "name": "Hostile lookout",
+            "position": [
+              3,
+              3
+            ],
+            "precision_used": false,
+            "reaction": 1,
+            "record": {
+              "advancement_history": [
+                {
+                  "attribute_increase": "",
+                  "class_id": "wayfinder",
+                  "feat_id": "quick-reflex",
+                  "level": 1,
+                  "skill_allocations": {
+                    "arcana": 1,
+                    "athletics": 1,
+                    "craft": 1,
+                    "insight": 1,
+                    "perception": 1,
+                    "persuasion": 1
+                  }
+                }
+              ],
+              "ancestry_ref": "heritage-human",
+              "background_ref": "hometown-background",
+              "base_attributes": {
+                "CHA": 8,
+                "CON": 13,
+                "DEX": 15,
+                "INT": 14,
+                "STR": 10,
+                "WIS": 12
+              },
+              "character_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9:opponent:2",
+              "choices": {
+                "prepared_abilities": []
+              },
+              "equipment": [
+                "bow"
+              ],
+              "revision": 1,
+              "rules_ref": {
+                "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+                "engine_schema": 1,
+                "pack_id": "trhgd-rules-v1",
+                "rules_version": "1.0.0",
+                "schema_version": 1
+              },
+              "runtime": {
+                "apparent_effects": [],
+                "granted_features": [],
+                "hp": 11,
+                "modifiers": [],
+                "resources": {
+
+                },
+                "senses": [],
+                "statuses": [],
+                "temporary_hp": 0
+              },
+              "schema_version": 1
+            },
+            "team": "enemy",
+            "weapon": "bow"
+          }
+        },
+        "version": 1
+      }
+    },
+    "knowledge": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": "resolved",
+      "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a": "discovered",
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": "resolved",
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": "resolved"
+    },
+    "results": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+        "battle_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+        "outcome": "victory",
+        "sequence": 8,
+        "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+        "text": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+        "battle_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+        "outcome": "victory",
+        "sequence": 13,
+        "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+        "text": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+        "battle_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+        "outcome": "defeat",
+        "sequence": 17,
+        "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+        "text": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      }
+    },
+    "revision": 65,
+    "version": "sandbox-spine-v1"
+  },
+  "save_version": 1.0,
+  "world_deltas": {
+    "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+      "battle_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+      "encounter_id": "encounter:a8101910f4792f1646d1323661170662851d845a4541654890c9feafdfc4434c",
+      "pending_future_hooks": [
+        "injury",
+        "relationship",
+        "reputation",
+        "personal_quest"
+      ],
+      "sandbox_outcome": "victory"
+    },
+    "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+      "battle_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+      "encounter_id": "encounter:5aba6554e5ab6387b024e9481cb506ae62c7372b21b31994f4cc32ca5226cbd8",
+      "pending_future_hooks": [
+        "injury",
+        "relationship",
+        "reputation",
+        "personal_quest"
+      ],
+      "sandbox_outcome": "victory"
+    },
+    "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+      "battle_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+      "encounter_id": "encounter:354866abd9c5b93b375d4c9256227298b176a87ab0093d2561a760b3730ffbbb",
+      "pending_future_hooks": [
+        "injury",
+        "relationship",
+        "reputation",
+        "personal_quest"
+      ],
+      "sandbox_outcome": "defeat"
+    }
+  },
+  "world_ref": {
+    "generator": {
+      "provider": "azgaar",
+      "upstreamCommit": "cc5dbac5db12ba4a7c47e647f6bef8bd7bf930c6",
+      "version": "1.153.1"
+    },
+    "id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+    "schema_version": 1.0,
+    "seed": "game-11-determinism",
+    "sha256": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+  }
+}
