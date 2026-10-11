@@ -4,7 +4,7 @@ Base: merged GAME-99 main `d4e5e3c559793633cf1dc03f2b11e33d933c2f8d`. Work begin
 
 The atlas's `MapIconProvider` already decodes the approved original Game-icons SVGs into cached Godot textures. Settlement and landmark layers select semantic roles. The GAME-62 debug local viewer consumes Node-generated shared-icon metadata and uses the same provider. Neither pathway supplied the actual gameplay map: `scripts/expedition/expedition_map.gd` instantiated `site_marker.gd` diamond buttons and manually drew a house. The existing sealed geography artwork correctly omitted private sites; the missing integration was its public marker overlay.
 
-The implementation reuses that provider and the existing production controls. `data/map_icons/semantic-roles-v1.json` is the common mapping consumed by `MapIconRoles` in Godot and `shared-map-icons.mjs` in Node. Atlas settlement groups and singular marker aliases retain their existing meanings. The helper includes and integrity-pins the JSON; export presets preserve raw SVGs so FileAccess-based decoding works inside the exported game.
+The implementation reuses that provider and the existing production controls. `data/map_icons/semantic-roles-v1.json` is the common mapping consumed by `MapIconRoles` in Godot and `shared-map-icons.mjs` in Node. Atlas settlement groups and singular marker aliases retain their existing meanings. The helper includes and integrity-pins the JSON and original SVGs. In source runs the provider decodes raw files; exported games load Godot's imported textures through ResourceLoader, which follows the PCK's resource remaps. Native testing exposed and corrected the previous source-only assumption. No separate authored raster copies are needed.
 
 | Meaning | Approved role |
 | --- | --- |
