@@ -1,6 +1,7 @@
 class_name ExpeditionRecords
 extends RefCounted
 const VERSION := "trhgd-expedition-v1"
+const EVENT_COSTS := {"begin":0,"accept":0,"depart":1,"scout":2,"travel":1,"survey":2,"record":2,"secure":2,"study":2,"craft":2,"leave":0,"return":1,"recover":2,"quick":1,"inspect":2,"negotiate":2}
 static func canonical(v: Variant) -> String:
  if v is Dictionary:
   var keys: Array = v.keys()
@@ -37,10 +38,13 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  if not e.get("active") is Dictionary or not e.get("log") is Array or not e.get("outcomes") is Dictionary or not e.get("revision") is float and not e.get("revision") is int: return "Invalid expedition state"
  if e.revision<0 or int(e.revision)!=e.revision or e.log.size()!=e.revision: return "Invalid transition revision/log"
  var clock:=0
- var costs: Dictionary={"begin":0,"accept":0,"depart":1,"scout":2,"travel":1,"survey":2,"record":2,"secure":2,"study":2,"craft":2,"leave":0,"return":1}
+ var costs: Dictionary=EVENT_COSTS.duplicate()
+ if not state.get("sandbox",{}) is Dictionary:return "Invalid sandbox namespace"
+ if state.get("sandbox",{}).get("version")!=OpportunityGenerator.VERSION:
+  for key in ["recover","quick","inspect","negotiate"]:costs.erase(key)
  for i in e.log.size():
   var event: Variant = e.log[i]
-  if not event is Dictionary or event.get("sequence")!=i+1 or not event.get("type") in ["begin","accept","depart","scout","travel","survey","record","secure","study","craft","leave","return"] or not event.get("text") is String or event.text.length()>450 or event.size()!=4: return "Invalid expedition event"
+  if not event is Dictionary or event.get("sequence")!=i+1 or not costs.has(event.get("type")) or not event.get("text") is String or event.text.length()>450 or event.size()!=4: return "Invalid expedition event"
   clock+=int(costs[event.type])
   if event.get("tick")!=clock: return "Invalid expedition event clock"
  if not e.active.is_empty():

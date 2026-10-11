@@ -2,6 +2,7 @@ extends "res://tests/adventure/review-flow.gd"
 ## Mouse/keyboard drive the real production controllers; no alternate resolver.
 var captured_move := false
 func run() -> void:
+ SandboxAdventure.legacy_review=true
  AdventureService.legacy_review=false
  base=OS.get_environment("ADVENTURE_REVIEW_ROOT")
  if base.is_empty(): base=ProjectSettings.globalize_path("user://first-adventure-review-proof")

@@ -1,6 +1,7 @@
 extends "res://tests/sandbox/review-flow.gd"
 ## Resume a genuine old-version blocked save via production menu/controllers.
 func run() -> void:
+ SandboxAdventure.legacy_review=true
  AdventureService.legacy_review=false
  base=OS.get_environment("ADVENTURE_REVIEW_ROOT");DirAccess.make_dir_recursive_absolute(base)
  var campaign_root := OS.get_environment("GAME99_OLD_CAMPAIGN")

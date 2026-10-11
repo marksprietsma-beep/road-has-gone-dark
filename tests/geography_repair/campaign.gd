@@ -2,6 +2,9 @@ extends "res://tests/sandbox/lifecycle.gd"
 ## Runs unchanged source main to create a blocked campaign, then repaired source
 ## in independent processes against exactly the same library/save directories.
 func run() -> void:
+ if FileAccess.file_exists("res://scripts/sandbox/opportunity_generator.gd"):
+  var compatibility: Variant=load("res://scripts/sandbox/sandbox_adventure.gd")
+  compatibility.legacy_review=true
  base=OS.get_environment("GAME99_CAMPAIGN_ROOT")
  DirAccess.make_dir_recursive_absolute(base)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")

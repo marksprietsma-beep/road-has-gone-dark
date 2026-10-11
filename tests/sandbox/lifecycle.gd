@@ -73,6 +73,7 @@ func reject(operation: String,extra: Dictionary={}) -> void:
  var rejected := service.operate(entry,slot,operation,1,changes)
  check(not rejected.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"reject/retry preserves exact save: "+operation)
 func run() -> void:
+ SandboxAdventure.legacy_review=true
  base=OS.get_environment("GAME96_TEST_ROOT")
  DirAccess.make_dir_recursive_absolute(base)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
