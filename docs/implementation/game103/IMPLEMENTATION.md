@@ -1,6 +1,6 @@
 # GAME-103 player-controlled characters
 
-New and unfinished campaigns enter the existing party-creation scene with three suggested level-one build drafts. Suggestions are optional; none become gameplay mechanics until the player saves and confirms each adventurer, then readies the party. Ready legacy parties skip creation and are never regenerated. The permanent **Characters** sheet is accessible from the expedition and **Sheet** from paused tactical combat.
+New and unfinished campaigns enter the existing party-creation scene with three suggested level-one build drafts. Suggestions are optional; none become gameplay mechanics until the player saves and confirms each adventurer, then readies the party. Ready legacy parties skip creation and are never regenerated. This includes pre-GAME32 ready parties with no mechanics namespace: their LPC preview is pure, their saved bytes stay unchanged, and entering the hometown uses the existing rules-preparation path. The permanent **Characters** sheet is accessible from the expedition and **Sheet** from paused tactical combat.
 
 ## Ownership and validation
 

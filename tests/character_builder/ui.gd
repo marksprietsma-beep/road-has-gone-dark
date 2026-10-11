@@ -44,5 +44,17 @@ func run() -> void:
  check(ui.state.mechanics.records.size()==3,"finalisation retains one gameplay roster")
  var policy := CharacterBuilderRecords.preview_advancement(ui.state,ui.state.party_ids[0],ui.advance_editor.choice())
  check(not policy.ok and ui.advancement_button.disabled,"zero XP sheet cannot grant a level")
+ # Genuine pre-GAME32 ready save: identity exists, mechanics have not been prepared.
+ var old_origin := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
+ check(old_origin.ok and service.store.save_new(old_origin.state.playthrough_id,old_origin.state,entry.world).ok,"legacy origin fixture")
+ var old_slot: String=old_origin.state.playthrough_id
+ var generated := service.operate(entry,old_slot,"generate");check(generated.ok,"original party generator")
+ var ready := service.operate(entry,old_slot,"ready");check(ready.ok and not ready.state.has("mechanics") and not ready.state.has("character_builder"),"original unprepared ready-party contract")
+ var old_bytes := FileAccess.get_file_as_bytes(service.store._slot_path(old_slot))
+ PartyService.handoff={"entry":entry,"slot":old_slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
+ change_scene_to_file("res://scenes/ui/party_creation.tscn");await settle();ui=current_scene;await wait_job()
+ check(ui.ready_view and not ui.finish_button.disabled and ui.state.party==ready.state.party,"pre-GAME32 party renders and retains its hometown handoff")
+ check(FileAccess.get_file_as_bytes(service.store._slot_path(old_slot))==old_bytes and not ui.state.has("mechanics") and not ui.state.has("character_builder"),"legacy preview preserves exact bytes and never commits suggested mechanics")
+ check(ui.preview_recipes.size()==3 and ui.advancement_button.disabled,"legacy LPC previews remain available without fake progression")
  FileAccess.open(base.path_join("ui-results.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures},"  "))
  print("GAME103 editor ",checks," / ",failures);quit(1 if failures else 0)

@@ -171,7 +171,7 @@ func refresh() -> void:
  if state.is_empty():updating=false;_busy();return
  var members: Array=state.party.members
  var visuals := state.duplicate(true)
- if not visuals.has("mechanics"):visuals.mechanics={"records":state.character_builder.drafts}
+ if not visuals.has("mechanics") and state.has("character_builder"):visuals.mechanics={"records":state.character_builder.drafts}
  var units := CombatArt.party_units(visuals)
  for m in members:
   var r := CharacterBuilderRecords.record(state,m.character_id)

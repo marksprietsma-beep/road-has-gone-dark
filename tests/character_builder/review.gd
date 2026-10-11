@@ -25,6 +25,7 @@ func journey(spec: Dictionary,index: int) -> void:
  await super.journey(spec,index)
  await inspect_sheet("custom-%02d"%index,false)
 func existing_campaign() -> void:
+ await unprepared_party()
  await super.existing_campaign()
  await inspect_sheet("legacy",true)
 func find_button(node: Node,label: String) -> Button:
@@ -61,3 +62,26 @@ func inspect_sheet(prefix: String,advance: bool) -> void:
  else:check(ui.advancement_button.disabled,"insufficient journey XP visibly prevents free levels")
  await click(ui.back_button);await wait_scene("res://scenes/gameplay/expedition.tscn")
  if not advance:check(RulesJson.digest(ui.state)==before,"sheet return preserves exact campaign")
+
+func unprepared_party() -> void:
+ var entry: Dictionary=ui.entry
+ var origin: Dictionary=ui.state.origin
+ var service := CharacterBuilderService.new()
+ service.store.save_root=base.path_join("unprepared/saves");service.library.library_root=ui.service.library.library_root
+ service.library.save_root=service.store.save_root
+ var created := service.store.create_playthrough(entry.world,int(origin.state_id),int(origin.home_burg_id),int(origin.province_id))
+ check(created.ok and service.store.save_new(created.state.playthrough_id,created.state,entry.world).ok,"genuine old-format origin")
+ var slot: String=created.state.playthrough_id
+ check(service.operate(entry,slot,"generate").ok,"original generated party")
+ var ready := service.operate(entry,slot,"ready")
+ check(ready.ok and not ready.state.has("mechanics") and not ready.state.has("character_builder"),"pre-GAME32 ready save remains supported")
+ var path := service.store._slot_path(slot);var bytes := FileAccess.get_file_as_bytes(path)
+ var party := RulesJson.digest(ready.state.party)
+ PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
+ tree.change_scene_to_file("res://scenes/ui/party_creation.tscn");await wait_scene("res://scenes/ui/party_creation.tscn")
+ check(ui.ready_view and ui.preview_recipes.size()==3 and FileAccess.get_file_as_bytes(path)==bytes,"old ready identity renders three authentic LPC previews without save changes")
+ check(not ui.state.has("mechanics") and not ui.state.has("character_builder") and ui.advancement_button.disabled,"preview never commits suggested builds or grants legacy progression")
+ await shot("legacy-unprepared-ready")
+ await click(ui.finish_button);await wait_scene("res://scenes/gameplay/expedition.tscn")
+ check(RulesJson.digest(ui.state.party)==party and ui.state.party_ids==ready.state.party_ids,"existing hometown preparation preserves all old identities")
+ proof.unprepared_legacy={"party_sha":party,"preview_bytes_unchanged":true,"persistent_ids":ui.state.party_ids,"hometown_handoff":true}
