@@ -9,3 +9,7 @@ for phase in ['create','reload']:
  results.append(dict(phase=phase,seconds=round(time.monotonic()-start,3),**proof));(base/'timings.json').write_text(json.dumps(results,indent=2))
  assert r.returncode==0 and proof['failures']==0 and 'ERROR:'not in text,text[-6000:]
  print(results[-1],flush=True)
+with (base/'ui.log').open('w',encoding='utf-8')as log:r=subprocess.run([engine,'--headless','--audio-driver','Dummy','--path',str(root),'--script','tests/character_builder/ui.gd'],cwd=root,env=os.environ,stdout=log,stderr=subprocess.STDOUT,timeout=240)
+text=(base/'ui.log').read_text(encoding='utf-8');proof=json.loads((base/'ui-results.json').read_text())
+assert r.returncode==0 and proof['failures']==0 and 'ERROR:'not in text,text[-6000:]
+print(proof,flush=True)

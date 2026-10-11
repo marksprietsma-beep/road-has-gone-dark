@@ -133,7 +133,8 @@ func _busy() -> void:
  save_button.disabled=busy or ready_view or entry.is_empty() or not state.is_empty() and not editor.preview.get("ok",false)
  finish_button.disabled=busy or state.is_empty() or not ready_view and state.get("character_builder",{}).get("confirmed",[]).size()!=3
  back_button.disabled=busy;roster.set_enabled(not busy)
- for control in [name_edit,people_picker,heritage_picker,role_picker,origin_picker,background_picker,editor,advance_editor]:lock_input(control,busy)
+ revert_button.disabled=busy
+ lock_input(detail_tabs,busy)
  message_label.text=message;message_label.tooltip_text=message
 func lock_input(node: Node,busy: bool) -> void:
  if node is Control:
@@ -152,6 +153,7 @@ func lock_input(node: Node,busy: bool) -> void:
 func _process(_delta: float) -> void:
  if thread==null or thread.is_alive():return
  var result: Dictionary=thread.wait_to_finish();thread=null
+ lock_input(detail_tabs,false)
  if result.get("ok",false):
   state=result.state;message="Character saved and verified." if state.party.status=="draft" else "Saved character sheet."
   if pending_selection>0:selected=pending_selection;pending_selection=0
@@ -163,6 +165,7 @@ func refresh() -> void:
  title.text="Character sheet" if sheet_mode else ("Party ready" if ready_view else "Build your adventurers")
  save_button.visible=not ready_view and not sheet_mode;finish_button.visible=not sheet_mode
  revert_button.visible=not ready_view and not sheet_mode
+ reroll_button.visible=not ready_view and not sheet_mode
  finish_button.text="Enter hometown" if ready_view else "Party ready"
  detail_tabs.visible=not state.is_empty();roster.clear();preview_recipes={}
  if state.is_empty():updating=false;_busy();return

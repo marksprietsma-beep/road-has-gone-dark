@@ -36,7 +36,7 @@ func wait_party(ui: Control) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
  check(ui.thread==null and not ui.state.is_empty(),"async generation/save completes: "+ui.message)
- check(ui.message.begins_with("Party saved") or ui.ready_view,"only verified save succeeds")
+ check(ui.message.begins_with("Character saved") or ui.ready_view,"only verified save succeeds")
  await frames()
 func shot(name: String, ui: Control=null) -> void:
  await frames()
