@@ -55,6 +55,7 @@ func region(spec: Dictionary,index: int) -> void:
    var b: Variant=map.markers[s.id]
    check(b.icon_texture!=null and b.icon_role==MapIconRoles.site(s.kind),"correct real icon for "+s.kind)
    check((b.position+b.size/2).is_equal_approx(map.screen_point(s.position)),"projected coordinates remain exact")
+   check(map.marker_at(b.position+b.size/2)==s.id,"crowded click resolves to exact geographic site")
    check(b.size.is_equal_approx(Vector2(32,32)),"independent readable rectangular mouse target "+str(b.size))
   await capture("region-%02d-normal-%dx%d"%[index,resolution.x,resolution.y])
   var first: Dictionary=projection.sites[0];var button: Variant=map.markers[first.id];var instance: int=button.get_instance_id();var position: Vector2=button.position
@@ -64,7 +65,7 @@ func region(spec: Dictionary,index: int) -> void:
    for down in [true,false]:
     var event:=InputEventMouseButton.new();event.button_index=MOUSE_BUTTON_LEFT;event.position=button.get_global_rect().position+Vector2(2,2);event.pressed=down;tree.root.push_input(event,true)
    await frames()
-   check(seen.back()==first.id,"transparent SVG corner remains a valid rectangular click target")
+   check(seen.back()==map.marker_at(button.position+Vector2(2,2)),"transparent SVG corner remains a valid nearest rectangular click target")
   map.setup(packet.svg,projection,"",first.id,home);await frames()
   check(map.markers[first.id].get_instance_id()==instance and map.markers[first.id].position==position,"selection retains button and source coordinate; no flicker/relocation")
   check(map.markers[first.id].selected,"gold destination state")
@@ -127,8 +128,9 @@ func existing_campaign() -> void:
  if candidates.is_empty():return
  var id: String=candidates[0].id
  var selection_bytes:=FileAccess.get_file_as_bytes(path)
+ var selection_authority: Dictionary=ui.state.sandbox.duplicate(true)
  await click(ui.action_buttons[id])
- check(FileAccess.get_file_as_bytes(path)==selection_bytes and ui.state.sandbox==old.sandbox,"map selection does not write saves or alter combat/RNG/logs")
+ check(FileAccess.get_file_as_bytes(path)==selection_bytes and ui.state.sandbox==selection_authority,"map selection does not write saves or alter combat/RNG/logs")
  await click(ui.action_buttons.sandbox_accept);await wait_job()
  if ui.action_buttons.has("sandbox_scout"):await click(ui.action_buttons.sandbox_scout);await wait_job()
  await click(ui.action_buttons.sandbox_travel);await wait_job();await click(ui.action_buttons.sandbox_fight);await wait_scene("res://scenes/combat/first_adventure.tscn")

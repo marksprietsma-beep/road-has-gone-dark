@@ -75,3 +75,33 @@ func rebuild() -> void:
  queue_redraw()
 func _draw() -> void:
  if texture!=null: draw_texture_rect(texture,map_rect(),false)
+
+func marker_at(point: Vector2) -> String:
+ # Overlapping rectangular targets choose the nearest genuine geographic centre.
+ # No site moves; keyboard activation still uses the focused public button's ID.
+ var found: String=""
+ var distance:=INF
+ for id in markers:
+  var b: Control=markers[id]
+  if not Rect2(b.position,b.size).has_point(point):continue
+  var candidate:=point.distance_squared_to(b.position+b.size/2)
+  if candidate<distance:
+   found=id;distance=candidate
+ return found
+func _get_tooltip(at_position: Vector2) -> String:
+ var id:=marker_at(at_position)
+ return str(markers[id].tooltip_text) if not id.is_empty() else ""
+func _gui_input(event: InputEvent) -> void:
+ if event is InputEventMouseMotion:
+  var id:=marker_at(event.position)
+  mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND if not id.is_empty() else Control.CURSOR_ARROW
+  for key in markers:
+   markers[key].hovered=key==id
+   markers[key].queue_redraw()
+ if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
+  var id:=marker_at(event.position)
+  if not id.is_empty():
+   accept_event()
+   if not event.pressed:
+    markers[id].grab_focus()
+    if id!="hometown":markers[id].pressed.emit()

@@ -4,11 +4,13 @@ var selected := false
 var party := false
 var completed := false
 var hometown := false
+var hovered := false
 var icon_role := "unidentified"
 var icon_texture: Texture2D
 var icon_diameter := 24.0
 func _ready() -> void:
  custom_minimum_size=Vector2(32,32)
+ mouse_filter=Control.MOUSE_FILTER_IGNORE
  mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
  for state in ["normal","hover","pressed","focus","disabled"]: add_theme_stylebox_override(state,StyleBoxEmpty.new())
  for event in [mouse_entered,mouse_exited,focus_entered,focus_exited]: event.connect(queue_redraw)
@@ -23,7 +25,7 @@ func _draw() -> void:
  else:
   # Resource failure remains visibly neutral; never borrow another semantic icon.
   draw_string(ThemeDB.fallback_font,centre+Vector2(-4,5),"?",HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color("28221b"))
- if selected or has_focus() or is_hovered(): draw_arc(centre,radius+3,0,TAU,32,GameUI.GOLD,2.0,true)
+ if selected or has_focus() or hovered or is_hovered(): draw_arc(centre,radius+3,0,TAU,32,GameUI.GOLD,2.0,true)
  if completed:
   var at:=centre+Vector2(radius-2,radius-2)
   draw_circle(at,5,Color("171b17"))

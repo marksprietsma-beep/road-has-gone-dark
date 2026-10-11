@@ -1,4 +1,7 @@
 name: GAME-98 Production Local Icons and Native Review Build
+concurrency:
+  group: game98-icons-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 on:
