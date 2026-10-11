@@ -1,0 +1,34 @@
+{
+  "source_commit": "47286f6dd3a9895022b819d86f239fb44a4b4a2f",
+  "workflow_run": 38049495261,
+  "artifact_id": 11669557653,
+  "archive": "game99-geography-repaired-windows-x64.zip",
+  "archive_bytes": 120198306,
+  "playable_zip_sha256": "7196ed42e87199efc9499f6f5abd0ceca9dce4e21e59e0bb43cf4fc8e56a115c",
+  "github_outer_artifact_sha256": "718c3d837a8c54b6b5412f5bd509104f65beb4401fc9fd0de1c56e76081dd6e8",
+  "helper_source_hashes": {
+    "tools/worldgen/geography-sidecar.mjs": "b1f4fd6ce0781b2c9d193dca13a2c9c388e6de91012cdda2f241e569b6f87973",
+    "tools/expedition/geography-cache.mjs": "900ec7056ca66c7f36ab24252d91b40d9b845bbc0118b74a579d83b5ec9af2ce",
+    "tools/expedition/entry.mjs": "e2128a5444e08178ae48b919ff60ad7a9a9bd0499d311aa3db37a248c1a2157d",
+    "data/world_enrichment/runtime-expedition-v1.json": "137756e32f9fa190bdbe40a9e15c4a066cd2a1ca1a78f24b3f356c3e6813d891"
+  },
+  "zip_crc_valid": true,
+  "zip_entries": 7056,
+  "original_art_files_verified": 291,
+  "executable_machine_ids": {
+    "road-has-gone-dark.exe": "0x8664",
+    "worldgen-helper/node.exe": "0x8664"
+  },
+  "qa_executables_removed": true,
+  "cross_platform_comparison": {
+    "worlds": 33,
+    "regions": 231,
+    "matching_fields": [
+      "seed",
+      "source_sha",
+      "geography_sha",
+      "regions",
+      "off_canvas"
+    ]
+  }
+}

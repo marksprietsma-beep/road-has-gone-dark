@@ -7,7 +7,8 @@ evidence.mkdir(parents=True, exist_ok=True)
 engine = os.environ.get('GODOT_BIN', 'godot')
 helper = os.environ['GAME76_HELPER_ROOT']
 sandbox = os.environ.get('GAME96_RELEASE') == '1'
-name = 'game96-sandbox-windows-x64' if sandbox else 'game95-old-road-windows-x64'
+geography_repair = os.environ.get('GAME99_RELEASE') == '1'
+name = 'game99-geography-repaired-windows-x64' if geography_repair else ('game96-sandbox-windows-x64' if sandbox else 'game95-old-road-windows-x64')
 distribution = base / name
 assert os.name == 'nt', 'Produce and verify Windows on the native Windows runner'
 subprocess.run(['node',str(root/'tools/release/export-game.mjs'),'--helper',helper,'--godot',engine,'--qa',
@@ -38,6 +39,7 @@ proof['preference_restart']=True
 if sandbox:
     sandbox_root = base/'sandbox-clean-profile'
     sandbox_env = dict(environment,GAME96_REVIEW='sandbox',ADVENTURE_REVIEW_ROOT=str(sandbox_root))
+    if geography_repair:sandbox_env['GAME99_REVIEW_SEED']='game96-sandbox-review-v2'
     sandbox_log = evidence/'windows-sandbox.log'
     with sandbox_log.open('w',encoding='utf-8') as stream:
         run = subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=distribution,env=sandbox_env,stdout=stream,stderr=subprocess.STDOUT,timeout=900)
@@ -50,6 +52,27 @@ if sandbox:
     proof['sandbox']=sandbox_proof['sandbox']
     (evidence/'windows-sandbox-proof.json').write_text(json.dumps(sandbox_proof,indent=2)+'\n',encoding='utf-8')
     assert (distribution/'SANDBOX-GENERATION.json').exists()
+if geography_repair:
+    assert sandbox_proof['world_sha']=='c9eb47dacfe4560df8cdd4bb128ab578ff2997e288c79665fb2cf9ab5791cbe1'
+    helper_hashes={}
+    for relative in ['tools/worldgen/geography-sidecar.mjs','tools/expedition/geography-cache.mjs','tools/expedition/entry.mjs','data/world_enrichment/runtime-expedition-v1.json']:
+        bundled=distribution/'worldgen-helper'/relative
+        digest=hashlib.sha256(bundled.read_bytes()).hexdigest()
+        assert digest==hashlib.sha256((root/relative).read_bytes()).hexdigest()
+        helper_hashes[relative]=digest
+    old_campaign=pathlib.Path(os.environ['GAME99_OLD_CAMPAIGN'])
+    recovery_root=base/'exported-recovery-proof'
+    recovery_env=dict(environment,GAME99_RECOVERY_UI='1',GAME99_OLD_CAMPAIGN=str(old_campaign),ADVENTURE_REVIEW_ROOT=str(recovery_root))
+    with (evidence/'windows-existing-campaign.log').open('w',encoding='utf-8') as stream:
+        recovered=subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=distribution,env=recovery_env,stdout=stream,stderr=subprocess.STDOUT,timeout=900)
+    recovery_text=(evidence/'windows-existing-campaign.log').read_text(encoding='utf-8')
+    print(recovery_text,flush=True)
+    recovery_proof=json.loads((recovery_root/'review-proof.json').read_text(encoding='utf-8'))
+    assert recovered.returncode==0 and 'ERROR:' not in recovery_text and recovery_proof['failures']==0
+    assert recovery_proof['empty_path'] and not recovery_proof['source_helper_override']
+    assert recovery_proof['recovery']['world_sha']==sandbox_proof['world_sha']
+    (evidence/'windows-existing-campaign-proof.json').write_text(json.dumps(recovery_proof,indent=2)+'\n',encoding='utf-8')
+    proof['geography_repair']={'helper_hashes':helper_hashes,'old_campaign':recovery_proof['recovery']}
 assert not any((distribution/'artwork'/name).exists() for name in ['kenney','0x72','navinius'])
 # Audit all distributed original resources independently of Godot import remaps.
 art_manifest=json.loads((distribution/'artwork/sources.json').read_text(encoding='utf-8'))
@@ -66,6 +89,9 @@ for path in distribution.glob('road-has-gone-dark-qa*'): path.unlink()
 (distribution/'START-HERE.txt').write_text('GAME-95 PARTY PREVIEW AND AUTHORED OLD ROAD\n\nExtract the entire ZIP. Run road-has-gone-dark.exe. Keep worldgen-helper and artwork beside it. No Node or Godot installation is required.\n\nEscape skips the intro. New Game -> generate/select world -> state -> region -> hometown -> Confirm origin -> Check all three saved LPC party previews -> Party ready -> Enter hometown. Prepare first adventure -> select local account -> Accept -> Begin expedition -> Scout if needed -> Travel -> Fight.\n\nLPC is the production art direction; F7 and the four-style selector are retired. Legacy presentation preferences default safely to LPC. New fights use the authored 12x8 Old Road with trees, rock, broken cart and milestone. Old 8x6 saves resume unchanged. Cross marks indicate blocked terrain; road/scrub/ditch remain ordinary walkable tiles. Slower presentation locks combat actions for a bounded beat (up to 3.2 seconds); menu/Escape remain available. Move then click a dotted tile; Attack/ability then a highlighted target; End turn. Watch walking, blade swings, bow draw/release, Lantern Spark casting, damage/miss feedback and defeat. Vanguard Guard uses the actual shield. Art credits are available in combat and artwork/.\n\nVictory or Withdraw -> Return to regional play -> hometown. Main menu/Resume Expedition preserve the battle. Saves remain in %APPDATA%/Godot/app_userdata/Road Has Gone Dark. This unsigned review build requires human Windows desktop/GPU playtest.\n',encoding='utf-8')
 if sandbox:
     (distribution/'START-HERE.txt').write_text("GAME-96 PROCEDURAL SANDBOX SPINE V1\n\nExtract the ENTIRE ZIP and run road-has-gone-dark.exe. Keep worldgen-helper and artwork beside the executable. No Godot, Node or artwork installation required. Escape skips intro.\n\nNew Game -> generate/select world -> state/origin -> region -> hometown -> Confirm origin -> inspect three LPC party previews -> Party ready -> Enter hometown -> Explore local opportunities. Four stable local opportunities are generated. Inspect any available one -> Set out -> Scout a rumoured report if needed -> Travel -> Engage occupants. Move then click a dotted tile; Attack/ability then a highlighted target; End turn. Main menu/Resume Expedition preserves exact battle progress. Victory or Withdraw (terminal defeat) -> Return to regional play -> Return home & rest -> choose another opportunity. Results, opponents and character history stay saved; completed attempts do not respawn. V0 rest restores HP/Focus; journey XP is a placeholder, not levelling.\n\nTry different hometowns/world seeds for map dimensions, forest/dry/upland terrain, obstacle arrangements, source-route sites and blade/bow enemy composition. Cross marks identify real blockers; other ground is walkable. Fine terrain and occupation are inferred/generated, not canonical Azgaar history. LPC is the sole production provider. F7/four-pack comparison are historical fixtures. Art and generation notices are bundled. Original Old Road remains available to regressions and existing active saves, not as a required quest.\n\nSaves: %APPDATA%/Godot/app_userdata/Road Has Gone Dark. Back up personal saves before reviewing. Unsigned build: human Windows desktop/GPU playtest still required.\n",encoding='utf-8')
+if geography_repair:
+    start_here=distribution/'START-HERE.txt'
+    start_here.write_text('GAME-99 GEOGRAPHY REPAIR — EXISTING CAMPAIGNS PRESERVED\n\nExtract this complete NEW ZIP into its own folder. Run road-has-gone-dark.exe; keep worldgen-helper and artwork beside it. Use Continue / Resume Expedition on the main menu for your existing campaign. The application uses the same saved-data location as GAME-96/97; no save reset or world reroll is required. Missing geography is reconstructed from the same immutable world and seed, then fingerprint-verified. Do not replace only the executable: the corrected helper is required.\n\n'+start_here.read_text(encoding='utf-8'),encoding='utf-8')
 archive = base/(name+'.zip')
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as package:
     for path in sorted(distribution.rglob('*')):

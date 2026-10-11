@@ -16,7 +16,7 @@ func run() -> void:
  check(ui.library.helper_status().ok,"compatible offline helper available")
  # Same generation controller and button, with a reproducible review seed.
  ui.generation_button.pressed.disconnect(ui._start_generation)
- ui.generation_button.pressed.connect(func():ui._start_generation("game96-sandbox-review-v1"))
+ ui.generation_button.pressed.connect(func():ui._start_generation(OS.get_environment("GAME99_REVIEW_SEED") if not OS.get_environment("GAME99_REVIEW_SEED").is_empty() else "game96-sandbox-review-v1"))
  await click(ui.generation_button)
  var deadline := Time.get_ticks_msec()+240000
  while ui.job_thread!=null and Time.get_ticks_msec()<deadline: await tree.process_frame
