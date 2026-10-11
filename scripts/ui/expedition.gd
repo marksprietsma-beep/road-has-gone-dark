@@ -86,9 +86,10 @@ func _ready() -> void:
   message="No campaign selected. Return to the main menu."
   refresh()
  else: start("resume")
-func start(operation: String, lead: String="") -> void:
+func start(operation: String, lead: String="", choice: String="") -> void:
  if thread!=null: return
  var changes := {"lead":lead,"revision":state.get("expedition",{}).get("revision",-1)}
+ if not choice.is_empty():changes.choice=choice
  message="Preparing local map…" if operation=="resume" else "Saving…"
  thread=Thread.new()
  thread.start(func(): return service.operate(entry,slot,operation,1,changes))
@@ -280,6 +281,7 @@ func _exit_tree() -> void:
 
 func refresh_sandbox() -> void:
  var s: Dictionary=state.sandbox;var a: Dictionary=s.active
+ var v2: bool=s.version==OpportunityGenerator.VERSION
  var home: Dictionary=entry.world.get_record("burg",int(state.origin.home_burg_id))
  public_view=SandboxRecords.projection(s)
  title.text=str(home.name)+" · Local opportunities" if a.is_empty() else {"map":"Local expedition","site":"At the generated site","result":"Expedition record"}.get(a.phase,"Local expedition")
@@ -297,7 +299,7 @@ func refresh_sandbox() -> void:
   if not selected.is_empty():
    var lead: Dictionary=public_view.leads.filter(func(row: Dictionary):return row.id==selected)[0]
    content.add_child(label(lead.title,GameUI.SECTION));content.add_child(GameUI.badge(lead.status.capitalize()+" · "+lead.knowledge.capitalize()))
-   content.add_child(label(lead.clue));content.add_child(label("Assess a local threat. Victory records the site and grants 10 journey XP per companion.",GameUI.META))
+   content.add_child(label(lead.clue));content.add_child(label("Choose a recovery, investigation or contested approach. Noncombat earns provisions or information, not battle XP." if v2 else "Assess a local threat. Victory records the site and grants 10 journey XP per companion.",GameUI.META))
    if lead.status=="available":button("sandbox_accept","Set out for this opportunity",func():start("sandbox_accept",lead.id))
    else:content.add_child(label(s.results[lead.id].text,GameUI.META))
    button("leads","Back to opportunities",func():selected="";refresh())
@@ -315,21 +317,39 @@ func refresh_sandbox() -> void:
  else:
   var site := SandboxRecords.site(s,a.site_id)
   var known: bool=s.knowledge[site.id]!="rumoured"
-  content.add_child(label(site.name if known else "Rumoured occupied site",GameUI.SECTION))
+  content.add_child(label(site.name if known else "Unlocated local report" if v2 else "Rumoured occupied site",GameUI.SECTION))
   content.add_child(label(site.description if known else "Scout to establish the position of this local report."))
   if a.phase=="map":
    if not known:button("sandbox_scout","Scout the report · 2 turns / 1 provision",func():start("sandbox_scout"))
    else:button("sandbox_travel","Travel to the site · 1 turn / 1 provision",func():start("sandbox_travel"))
   elif a.phase=="site":
-   var weapons: Array=site.board.enemies.map(func(e: Dictionary):return "bow" if e.weapon=="bow" else "blade")
-   content.add_child(label("%d armed occupants · %s\nBattlefield: %d×%d · %s"%[weapons.size(),", ".join(weapons),site.board.width,site.board.height,site.context.biome],GameUI.META))
-   content.add_child(label("Their presence and fine terrain are generated local content; the source world supplies the anchor.",GameUI.META))
-   button("sandbox_fight","Engage the occupants",func():start("sandbox_fight"),"The encounter is saved before combat. You can also return home without starting it.")
+   if v2:show_activity_choices(site)
+   else:
+    var weapons: Array=site.board.enemies.map(func(e: Dictionary):return "bow" if e.weapon=="bow" else "blade")
+    content.add_child(label("%d armed occupants · %s\nBattlefield: %d×%d · %s"%[weapons.size(),", ".join(weapons),site.board.width,site.board.height,site.context.biome],GameUI.META))
+    content.add_child(label("Their presence and fine terrain are generated local content; the source world supplies the anchor.",GameUI.META))
+    button("sandbox_fight","Engage the occupants",func():start("sandbox_fight"),"The encounter is saved before combat. You can also return home without starting it.")
   elif a.phase=="result":
    content.add_child(GameUI.badge(s.results[site.id].outcome.capitalize()))
    content.add_child(label("What changed",GameUI.SECTION));content.add_child(label(s.results[site.id].text))
-   content.add_child(label("Return home to rest and choose another opportunity. This encounter will not reroll.",GameUI.META))
+   content.add_child(label("Return home to rest and choose another opportunity. This result will not reroll.",GameUI.META))
  if thread==null:
+  if v2 and a.get("phase")=="site":
+   for key in action_buttons:
+    if not action_buttons[key].disabled:action_buttons[key].call_deferred("grab_focus");return
   for key in ["sandbox_accept","sandbox_scout","sandbox_travel","sandbox_fight","leads"]:
    if action_buttons.has(key):action_buttons[key].call_deferred("grab_focus");return
   if a.is_empty() and not public_view.leads.is_empty() and action_buttons.has(public_view.leads[0].id):action_buttons[public_view.leads[0].id].call_deferred("grab_focus")
+func show_activity_choices(site: Dictionary) -> void:
+ var s: Dictionary=state.sandbox;var activity := OpportunityGenerator.template(site.activity_id)
+ content.add_child(GameUI.badge(activity.family.capitalize()+" · "+("Armed occupants; combat avoidable" if activity.family=="contested" else "No combat required")))
+ for fact in s.information.get(site.id,[]):content.add_child(label("Recorded: "+str(fact.text),GameUI.META))
+ if activity.family=="contested" and s.actions.any(func(action: Dictionary):return action.site_id==site.id and action.outcome=="observed"):
+  content.add_child(label("Observed: %d occupants · %s · %d×%d terrain"%[site.board.enemies.size(),", ".join(site.board.enemies.map(func(enemy: Dictionary):return "bow" if enemy.weapon=="bow" else "blade")),site.board.width,site.board.height],GameUI.META))
+ for choice in OpportunityGenerator.choices(state,site):
+  var key: String="sandbox_fight" if choice.id=="fight" else "choice:"+str(choice.id)
+  var effect: String="Existing combat rules · risks HP/Focus · 10 XP each on victory, 0 on defeat · requires 1 provision to remain prepared." if choice.id=="fight" else "%d turn(s) / %d provision(s) · %s · no battle XP"%[ExpeditionRecords.EVENT_COSTS[choice.event],choice.provisions,choice.information]
+  if choice.gain>0:effect+=" · recover up to %d provisions (maximum 4)"%choice.gain
+  button(key,str(choice.label),func():start("sandbox_fight") if choice.id=="fight" else start("sandbox_activity","",choice.id),effect)
+  var observed: bool=not choice.complete and s.actions.any(func(action: Dictionary):return action.site_id==site.id and action.outcome==choice.outcome)
+  action_buttons[key].disabled=thread!=null or observed or int(s.active.supplies)<maxi(int(choice.provisions),1 if choice.id=="fight" else 0)

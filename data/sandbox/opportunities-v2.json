@@ -1,0 +1,440 @@
+{
+  "version": "sandbox-opportunities-v2",
+  "opportunity_count": 4,
+  "activities": [
+    {
+      "id": "lost_supplies",
+      "family": "recovery",
+      "kind": "clearing",
+      "name": "Scattered travelling supplies",
+      "description": "Abandoned packs lie in a local opening. Their contents are unclaimed generated local fiction, not a source-world treasure.",
+      "weights": {
+        "forest": 5,
+        "grass": 3,
+        "upland": 2,
+        "dry": 1
+      },
+      "requires_route": false,
+      "professions": [
+        "porter",
+        "carter",
+        "traveller",
+        "harbour-worker",
+        "mine-cart-handler",
+        "herbal-preparer"
+      ],
+      "choices": [
+        {
+          "id": "careful",
+          "label": "Check and recover the stores",
+          "event": "recover",
+          "provisions": 1,
+          "outcome": "recovered",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "gain": 3,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "quick",
+          "label": "Take only the obvious usable stores",
+          "event": "quick",
+          "provisions": 1,
+          "outcome": "partial_recovery",
+          "information": "Only a partial recovery was made; the rest was left unchecked.",
+          "gain": 1,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_shelter",
+      "family": "recovery",
+      "kind": "camp",
+      "name": "Abandoned travellers\u2019 shelter",
+      "description": "A disused shelter holds weathered stores. Checking them carefully takes time; an unchecked recovery yields less.",
+      "weights": {
+        "forest": 2,
+        "grass": 3,
+        "upland": 3,
+        "dry": 5
+      },
+      "requires_route": false,
+      "professions": [
+        "repairer",
+        "woodworker",
+        "ship-carpenter",
+        "cartwright-helper",
+        "porter",
+        "herbal-preparer"
+      ],
+      "choices": [
+        {
+          "id": "careful",
+          "label": "Check and recover the stores",
+          "event": "recover",
+          "provisions": 1,
+          "outcome": "recovered",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "gain": 3,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "quick",
+          "label": "Take only the obvious usable stores",
+          "event": "quick",
+          "provisions": 1,
+          "outcome": "partial_recovery",
+          "information": "Only a partial recovery was made; the rest was left unchecked.",
+          "gain": 1,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "old_work",
+      "family": "investigation",
+      "kind": "ruins",
+      "name": "Traces of abandoned work",
+      "description": "A patch of disused work may explain another local report. Its former purpose is uncertain; this is generated local evidence.",
+      "weights": {
+        "forest": 2,
+        "grass": 3,
+        "upland": 5,
+        "dry": 4
+      },
+      "requires_route": false,
+      "professions": [
+        "mason",
+        "repairer",
+        "woodworker",
+        "ship-carpenter",
+        "ore-sorter",
+        "mine-cart-handler",
+        "potter"
+      ],
+      "choices": [
+        {
+          "id": "careful",
+          "label": "Investigate and compare the reports",
+          "event": "inspect",
+          "provisions": 1,
+          "outcome": "investigated",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "gain": 0,
+          "reveal": true,
+          "complete": true
+        },
+        {
+          "id": "quick",
+          "label": "Make a quick assessment",
+          "event": "quick",
+          "provisions": 0,
+          "outcome": "partial_assessment",
+          "information": "A surface assessment was recorded; no other location was established.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "unusual_traces",
+      "family": "investigation",
+      "kind": "clearing",
+      "name": "Unusual traces",
+      "description": "Tracks and discarded markings cross the local ground. A quick look cannot establish how they connect to the other reports.",
+      "weights": {
+        "forest": 5,
+        "grass": 2,
+        "upland": 2,
+        "dry": 1
+      },
+      "requires_route": false,
+      "professions": [
+        "herder",
+        "fisher",
+        "traveller",
+        "stable-worker",
+        "harbour-worker"
+      ],
+      "choices": [
+        {
+          "id": "careful",
+          "label": "Investigate and compare the reports",
+          "event": "inspect",
+          "provisions": 1,
+          "outcome": "investigated",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "gain": 0,
+          "reveal": true,
+          "complete": true
+        },
+        {
+          "id": "quick",
+          "label": "Make a quick assessment",
+          "event": "quick",
+          "provisions": 0,
+          "outcome": "partial_assessment",
+          "information": "A surface assessment was recorded; no other location was established.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "camp_access",
+      "family": "contested",
+      "kind": "camp",
+      "name": "Occupied shelter",
+      "description": "Armed travellers control a useful shelter. They accept provisions for access; their motives are not canonical source-world facts.",
+      "weights": {
+        "forest": 4,
+        "grass": 3,
+        "upland": 2,
+        "dry": 3
+      },
+      "requires_route": false,
+      "professions": [
+        "traveller",
+        "porter",
+        "carter",
+        "harbour-worker"
+      ],
+      "choices": [
+        {
+          "id": "negotiate",
+          "label": "Offer provisions for peaceful access",
+          "event": "negotiate",
+          "provisions": 2,
+          "outcome": "peaceful_access",
+          "information": "Access secured; the armed group remains in place.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "inspect",
+          "label": "Observe the occupants before committing",
+          "event": "inspect",
+          "provisions": 1,
+          "outcome": "observed",
+          "information": "The saved number, weapons and battlefield are now recorded.",
+          "gain": 0,
+          "reveal": false,
+          "complete": false
+        },
+        {
+          "id": "fight",
+          "label": "Engage in tactical combat",
+          "event": "begin",
+          "provisions": 0,
+          "outcome": "combat",
+          "information": "",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "salvage_dispute",
+      "family": "contested",
+      "kind": "ruins",
+      "name": "Contested salvage yard",
+      "description": "Armed scavengers dispute access to disused work. Paying provisions secures access without claiming to defeat them.",
+      "weights": {
+        "forest": 2,
+        "grass": 2,
+        "upland": 5,
+        "dry": 4
+      },
+      "requires_route": false,
+      "professions": [
+        "repairer",
+        "mason",
+        "woodworker",
+        "ore-sorter"
+      ],
+      "choices": [
+        {
+          "id": "negotiate",
+          "label": "Offer provisions for peaceful access",
+          "event": "negotiate",
+          "provisions": 2,
+          "outcome": "peaceful_access",
+          "information": "Access secured; the armed group remains in place.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "inspect",
+          "label": "Observe the occupants before committing",
+          "event": "inspect",
+          "provisions": 1,
+          "outcome": "observed",
+          "information": "The saved number, weapons and battlefield are now recorded.",
+          "gain": 0,
+          "reveal": false,
+          "complete": false
+        },
+        {
+          "id": "fight",
+          "label": "Engage in tactical combat",
+          "event": "begin",
+          "provisions": 0,
+          "outcome": "combat",
+          "information": "",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "id": "road_passage",
+      "family": "contested",
+      "kind": "roadside",
+      "name": "Obstructed route approach",
+      "description": "A verified nearby source route offers passage, but armed travellers demand provisions. Their occupation is generated local fiction.",
+      "weights": {
+        "forest": 3,
+        "grass": 5,
+        "upland": 3,
+        "dry": 4
+      },
+      "requires_route": true,
+      "professions": [
+        "traveller",
+        "carter",
+        "porter",
+        "stable-worker"
+      ],
+      "choices": [
+        {
+          "id": "negotiate",
+          "label": "Offer provisions for peaceful access",
+          "event": "negotiate",
+          "provisions": 2,
+          "outcome": "peaceful_access",
+          "information": "Access secured; the armed group remains in place.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "inspect",
+          "label": "Observe the occupants before committing",
+          "event": "inspect",
+          "provisions": 1,
+          "outcome": "observed",
+          "information": "The saved number, weapons and battlefield are now recorded.",
+          "gain": 0,
+          "reveal": false,
+          "complete": false
+        },
+        {
+          "id": "fight",
+          "label": "Engage in tactical combat",
+          "event": "begin",
+          "provisions": 0,
+          "outcome": "combat",
+          "information": "",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        },
+        {
+          "id": "leave",
+          "label": "Withdraw without completing the objective",
+          "event": "leave",
+          "provisions": 0,
+          "outcome": "withdrawn",
+          "information": "The opportunity was left unresolved; the local concern remains.",
+          "gain": 0,
+          "reveal": false,
+          "complete": true
+        }
+      ]
+    }
+  ],
+  "event_turns": {
+    "recover": 2,
+    "quick": 1,
+    "inspect": 2,
+    "negotiate": 2,
+    "leave": 0,
+    "begin": 0
+  }
+}

@@ -26,7 +26,7 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   if operation=="resume":
    var resumed := super._operate_locked(entry,slot,operation,member,changes)
    if not resumed.get("ok",false):return resumed
-   var original := SandboxGenerator.generate(world,int(state.origin.home_burg_id),packet.content)
+   var original := OpportunityGenerator.generate(world,int(state.origin.home_burg_id),packet.content) if state.sandbox.version==OpportunityGenerator.VERSION else SandboxGenerator.generate(world,int(state.origin.home_burg_id),packet.content)
    if RulesJson.digest(original)!=state.sandbox.base_sha:return fail("Saved sandbox source/version changed. Nothing was regenerated.")
    resumed.state.sandbox=RulesJson.normalize(resumed.state.sandbox)
    return resumed

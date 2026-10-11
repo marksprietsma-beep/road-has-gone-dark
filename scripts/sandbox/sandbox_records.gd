@@ -15,6 +15,7 @@ static func battle(state: Dictionary) -> Dictionary:
  return s.get("encounters",{}).get(id,{})
 static func validate(state: Dictionary,world: GameWorldTemplate) -> String:
  if not state.has("sandbox"):return ""
+ if state.sandbox is Dictionary and state.sandbox.get("version")==OpportunityGenerator.VERSION:return OpportunityRecords.validate(state,world)
  var s: Variant=RulesJson.normalize(state.sandbox)
  if not s is Dictionary or s.size()!=9 or s.get("version")!=SandboxGenerator.VERSION or not RulesJson.integer(s.get("revision"),1,RulesJson.LIMIT) or not s.get("base") is Dictionary or not s.get("base_sha") is String or not s.get("knowledge") is Dictionary or not s.get("encounters") is Dictionary or not s.get("results") is Dictionary or not s.get("active") is Dictionary or not s.get("characters") is Dictionary:return "sandbox.schema: Invalid record"
  if not state.has("expedition") or not state.has("mechanics") or state.party.status!="ready":return "sandbox.context: Existing party/expedition/rules required"
@@ -70,6 +71,9 @@ static func validate(state: Dictionary,world: GameWorldTemplate) -> String:
   if s.active.phase in ["site","combat"] and s.knowledge[s.active.site_id] not in ["visited","resolved"]:return "sandbox.active: Missing visit"
  return ""
 static func projection(s: Dictionary) -> Dictionary:
+ if s.get("version")==OpportunityGenerator.VERSION:return OpportunityRecords.projection(s)
+ return project_v1(s)
+static func project_v1(s: Dictionary) -> Dictionary:
  var sites: Array=[];var leads: Array=[]
  for row in s.base.sites:
   var known: bool=s.knowledge[row.id] in ["discovered","visited","resolved"]

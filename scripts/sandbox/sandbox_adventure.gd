@@ -1,7 +1,10 @@
 class_name SandboxAdventure
 extends RefCounted
+static var legacy_review := false # V1 fixture diagnostics only; saved version wins.
 ## Transitions return candidates to AdventureService's existing lock/journal/store.
 static func transition(service: AdventureService,entry: Dictionary,state: Dictionary,operation: String,changes: Dictionary) -> Dictionary:
+ if state.get("sandbox",{}).get("version",SandboxGenerator.VERSION if legacy_review else OpportunityGenerator.VERSION)==OpportunityGenerator.VERSION:
+  return OpportunityAdventure.transition(service,entry,state,operation,changes)
  var world: GameWorldTemplate=entry.world
  if state.party.status!="ready" or not state.has("expedition") or not state.expedition.active.is_empty():return service.fail("Return to the hometown with your saved party first.")
  if not state.get("first_adventure",{}).get("battle",{}).is_empty() and state.first_adventure.result.is_empty():return service.fail("Finish or withdraw from the saved Old Road fixture first.")
