@@ -1,0 +1,2406 @@
+{
+  "activities": {
+    "abandoned_shelter": 33,
+    "camp_access": 18,
+    "lost_supplies": 20,
+    "old_work": 28,
+    "road_passage": 11,
+    "salvage_dispute": 27,
+    "unusual_traces": 23
+  },
+  "checks": 1693,
+  "choices": {
+    "careful": 208,
+    "companion": 296,
+    "fight": 112,
+    "inspect": 112,
+    "leave": 320,
+    "negotiate": 112,
+    "quick": 208
+  },
+  "companion_choices": 296,
+  "compositions": {
+    "[\"bow\", \"bow\"]": 16,
+    "[\"shortblade\", \"bow\"]": 14,
+    "[\"shortblade\", \"shortblade\"]": 11,
+    "[\"shortblade\"]": 15
+  },
+  "contexts": [
+    {
+      "base_sha": "50406e79ce99de9db29da91738079bf949daec254fa453c97a65358245f78b09",
+      "biome": "Grassland",
+      "home_id": 201.0,
+      "home_name": "Kegyes",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "7da02434547ae3b864a9d215386bbf330186230ec39009fb9a48f87e9d76eee8",
+          "family": "contested",
+          "id": "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f",
+          "kind": "ruins",
+          "position": [
+            392,
+            394
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "9d81733ace4ec2e1d71316358af270b244cf3798b3a63d67ec131282afa3305a",
+          "family": "recovery",
+          "id": "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7",
+          "kind": "camp",
+          "position": [
+            391,
+            175
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "8a318d029f3078242cf1c70bb2244625da4624dabf8629e2ab49293a2fc00e63",
+          "family": "contested",
+          "id": "sandbox-site:d471783914a9e4ea31302b8aaf77aff0687044accacd3a642b0d7144a490c820",
+          "kind": "roadside",
+          "position": [
+            559,
+            504
+          ],
+          "route_ref": 412
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "bf336c1af0caea62386bef445fb195fd893e3d3b1eb885a1b7db90f603331f39",
+          "family": "investigation",
+          "id": "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439",
+          "kind": "clearing",
+          "position": [
+            583,
+            256
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-00"
+    },
+    {
+      "base_sha": "029670bfb4d6f2c852cd7c566e70ec5dab97685684db080a4f5185416fc47d32",
+      "biome": "Temperate deciduous forest",
+      "home_id": 17.0,
+      "home_name": "Celcabatlo",
+      "sites": [
+        {
+          "activity": "lost_supplies",
+          "board_sha": "9449444c91b34e7186c9a975f26c65a284ac411d0630d102269b8d1580cb8a35",
+          "family": "recovery",
+          "id": "sandbox-site:49135d139f7aae71e38c7672c29c2981557597901ccb30e3c7887066968e974e",
+          "kind": "clearing",
+          "position": [
+            376,
+            544
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "ae0d4f36ea30d6afa98ec676d867db4323cb34518222446fa42c3a8c202da9aa",
+          "family": "investigation",
+          "id": "sandbox-site:0255b0bab208499020d58650af977151db8f7b695201bbf2740d9db08d37b6b8",
+          "kind": "clearing",
+          "position": [
+            366,
+            350
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "86060c78eb9db765abfa4d1ce83d7e0d0212c793293d06d457357ae23852e6c2",
+          "family": "recovery",
+          "id": "sandbox-site:8c61e30a5b26e2fb95423d9485f034ed05f36ddb04783c72b0f04222b4c0847f",
+          "kind": "camp",
+          "position": [
+            514,
+            317
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "9335256099420d6fe69f78b3e60c63b6922063932da6f834ed3b9fd47fb8a48b",
+          "family": "contested",
+          "id": "sandbox-site:a68c775eca8f0ca68611b401c334c749f6f36420752c8f19cfd640b158038efd",
+          "kind": "camp",
+          "position": [
+            516,
+            646
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-00"
+    },
+    {
+      "base_sha": "0de1506cb3089bd5842e62814d065f0c916a80f207a1e028afe85c38625f9cdf",
+      "biome": "Temperate rainforest",
+      "home_id": 13.0,
+      "home_name": "Bretnes",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "0d1c30c344cf8fdf40432ecd43a819548b818b85a820129a7b8baf524f65325e",
+          "family": "investigation",
+          "id": "sandbox-site:94f710fdd08c3639885c2db69ae24ccaf102bd6c044b5fc7236e43e73c4fe394",
+          "kind": "clearing",
+          "position": [
+            377,
+            602
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "c8981c4306b0fc54da35a073f6b862c44e9789865af2c8d128072d94d1beee8f",
+          "family": "contested",
+          "id": "sandbox-site:4a4857b334af8c592d2244a7a980a951228e20cafe7d983b77871d156e8a9d4e",
+          "kind": "camp",
+          "position": [
+            528,
+            482
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "74eec726a0cb64391ea3d9b75634af963ab47d7916158324edafea3894d87354",
+          "family": "recovery",
+          "id": "sandbox-site:ada88b30690c672bbf1fbe27dd4eb01e5f6a4d15ef4b3c149ab27e71f7a62282",
+          "kind": "clearing",
+          "position": [
+            396,
+            814
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "1a23a5ef954d83fad000186e13ca3720bc15ceeb2006620c8a383f0fe36a3c59",
+          "family": "contested",
+          "id": "sandbox-site:d2015a0ffa187228b253de83d4d14a641f0a1edfe531568fd1ea8ba6132ac422",
+          "kind": "roadside",
+          "position": [
+            411,
+            515
+          ],
+          "route_ref": 499
+        }
+      ],
+      "world_seed": "game101-variety-00"
+    },
+    {
+      "base_sha": "3e5bd8e8a4817fa573a70ef710e896a76228d3621d9716d9c827cae71f4ac47a",
+      "biome": "Taiga",
+      "home_id": 90.0,
+      "home_name": "Kokuzli",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "1f2e7e4eaefb5a097bac77476c7b8a7e5854053f67096588e7791c5258a324e4",
+          "family": "investigation",
+          "id": "sandbox-site:5a8ec3fccce8a4e0c2abc72ef07a3762fcf0aec40eadc1fb8aceb07e469f7561",
+          "kind": "clearing",
+          "position": [
+            348,
+            515
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "95755d781d53462e4b6e48c9e0b25ad13e73059bbb0f427b6f41c9d6866fb968",
+          "family": "recovery",
+          "id": "sandbox-site:46fa5957da601661aca3752d7459aea0ccd626081af9c51b794d186dc3f16e72",
+          "kind": "clearing",
+          "position": [
+            380,
+            324
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "d38363e059f6bb70a02d314662cf7d9bedbddf8b88c00d3cf589bf0371706c4d",
+          "family": "investigation",
+          "id": "sandbox-site:aba3f836d10299fa236077bc4f5bdfb8c244a3e04248a43bc4c2c6ee37a42a1b",
+          "kind": "ruins",
+          "position": [
+            661,
+            451
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "d550ce2d9d4d3ee5e7f60760296bc4b039598284d449a51a471e2a4003d50d3c",
+          "family": "contested",
+          "id": "sandbox-site:6e62dc0370d8205d623debcc463484d6128f69411ce8d1a75f251ed58a3620cd",
+          "kind": "ruins",
+          "position": [
+            315,
+            625
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-00"
+    },
+    {
+      "base_sha": "0f36e2fd5534215d083e5eb7a8755f1dac4e6ead326340623974e757dcd350d6",
+      "biome": "Hot desert",
+      "home_id": 110.0,
+      "home_name": "Qosasan",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "fd78affb82501241de24302174f1fbea67364f30e1998bb532237145bf6cf0fa",
+          "family": "recovery",
+          "id": "sandbox-site:59ac57fd349fe273019f09d221af9950622c71e30b39d7f3ed33813952115d07",
+          "kind": "camp",
+          "position": [
+            369,
+            588
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "c335120a78fb7c810faf32a2a115e15d30f2c81bc8d5cec322eaf87f9927ebf1",
+          "family": "contested",
+          "id": "sandbox-site:36a7246252254b8e714af6cb166071a80a3169f6f4e74cf46a4a78635fd59af5",
+          "kind": "ruins",
+          "position": [
+            387,
+            273
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "abfb3586a99197f4b187acb2da37e7a8050fe3c3b1ad07d8b0d113a643751a21",
+          "family": "investigation",
+          "id": "sandbox-site:1ddc1c59554c424129ec924bf76efb3cf2eac092b5af37d180937236ebe582d1",
+          "kind": "ruins",
+          "position": [
+            626,
+            185
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "d315914ff0e198e7f2a028277e6a27ebb134eb6ec2804897455c6ea607c5930c",
+          "family": "investigation",
+          "id": "sandbox-site:4162663eb410010f84da6a7df1234d4c038a5e2cbe589219f9ab9f7f6614b581",
+          "kind": "clearing",
+          "position": [
+            482,
+            194
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-01"
+    },
+    {
+      "base_sha": "a5be432c99a4dfe78eac7f056d094f5d92d8684a65454b5bb5c191be9dbbed55",
+      "biome": "Cold desert",
+      "home_id": 189.0,
+      "home_name": "Eseq",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "c591f7046c19154be00337a66e58847f09274d5030eb8fbd0d019b2c7fa66819",
+          "family": "recovery",
+          "id": "sandbox-site:ce0f58a8716fdaf50a7016d9ab6e56a6c9a9155b1f7080ea6897750a864b86e9",
+          "kind": "camp",
+          "position": [
+            483,
+            499
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "319ed0c6cd05ee7d03277b271bf49a322dbc9cc109f372d8a277b570e039c046",
+          "family": "contested",
+          "id": "sandbox-site:aaa0260de456659558d04007f4b15309d71b80fd4b7fd63428de898f0b94eba1",
+          "kind": "ruins",
+          "position": [
+            482,
+            390
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "b69411663d08bfe97464e1b8e07903195ba40bfd5776b2ed0fa3f291f1fd1d5d",
+          "family": "investigation",
+          "id": "sandbox-site:4f5bd65da3650c501fa214cdfcb3291e208d7a26259d8ad186b04b615f9c6fe6",
+          "kind": "ruins",
+          "position": [
+            176,
+            358
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "adb9b7f157c54a937f3641cbd2a2ece139c0e00882d7fe34d54694a316ab1a0c",
+          "family": "recovery",
+          "id": "sandbox-site:043aa1a17fab9a6281de1b9b0a510cc92c519f92cd2c78cff13821f9efaebcb1",
+          "kind": "clearing",
+          "position": [
+            652,
+            619
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-01"
+    },
+    {
+      "base_sha": "098eaab820990a34ef063e66bf5ea67421a51a4e8fcdad66f1591d111a7d98d9",
+      "biome": "Savanna",
+      "home_id": 39.0,
+      "home_name": "Husharab",
+      "sites": [
+        {
+          "activity": "old_work",
+          "board_sha": "500f4010db9ab6675dab03e7362df973c451fd6fc7a135efc88f9bd83e32264f",
+          "family": "investigation",
+          "id": "sandbox-site:3c012cec2f0fa64a6fda6c8fae992eae7e1a5a59c47fbb830e9a858c70e55945",
+          "kind": "ruins",
+          "position": [
+            490,
+            659
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "b98abe58bd66e4b8e6e97108ea6e1092fb05144c433a8263a4de5f7dd87ed6c8",
+          "family": "contested",
+          "id": "sandbox-site:2639eb769c0c3e0fe4b7947a9ba373cac50ed4f7d9506c55ded5fc2fa1aabaa2",
+          "kind": "roadside",
+          "position": [
+            461,
+            628
+          ],
+          "route_ref": 7
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "ba07be29cfc2ffd352bc5de2adcbea617ed75badf65a59fe540a0e1c20ab7c5c",
+          "family": "recovery",
+          "id": "sandbox-site:1193004799c7e1efaffc0f088318c7b82081c733df35cd358483654d6ef603f7",
+          "kind": "camp",
+          "position": [
+            394,
+            701
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "3e33d189b28567099e8290d9b240a9ed7b804eeb74472446c45e1df8a3d3930c",
+          "family": "recovery",
+          "id": "sandbox-site:626712be3e5318bac5ea52a8bd8d29b07ebdcbcc27727689c302229e0175f800",
+          "kind": "clearing",
+          "position": [
+            630,
+            779
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-01"
+    },
+    {
+      "base_sha": "ad993d5c83d7be6b2f23bfb0be66800f6b183c0a3662beffbe16951a85c0069e",
+      "biome": "Grassland",
+      "home_id": 46.0,
+      "home_name": "Fiupo",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "d1003ffa1a8c9835043d35d7736b44ee54c25e0d531500c95ccdaf15754f2ea0",
+          "family": "recovery",
+          "id": "sandbox-site:a139da300962c99110bed48dca24bb750763688bd5de1313e81d87c32368b5a2",
+          "kind": "camp",
+          "position": [
+            306,
+            752
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "da98044d1e70c76ba53d3869a45db97266692ad598cbd9aa26e48fa63c000d85",
+          "family": "contested",
+          "id": "sandbox-site:7911396f8be3a64f3f95d9da489c09384dea5624040f86f3428d65e827f16c29",
+          "kind": "ruins",
+          "position": [
+            573,
+            565
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "0bef1a88e6887de8c204afbfe3bfacdaa7ad6699b33542ef2371da7a233d4a74",
+          "family": "contested",
+          "id": "sandbox-site:5a9484cfc14b756c2df75f8d233813f983a1eb2cd303aa398b23687ffdcbac61",
+          "kind": "camp",
+          "position": [
+            507,
+            228
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "03498865850bc772728f79aef3e8cfd9903c8333fb5dbd873e49033294d7cea3",
+          "family": "investigation",
+          "id": "sandbox-site:c3aac95b0b55a3edb58242123c043b378bba82c759024661bf60ff8616a06165",
+          "kind": "ruins",
+          "position": [
+            457,
+            837
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-01"
+    },
+    {
+      "base_sha": "c66061726d56e32c0a649d80f826ec7f8b129c0fb736c8b5fc62a566a85e28db",
+      "biome": "Hot desert",
+      "home_id": 346.0,
+      "home_name": "Fjellnesda",
+      "sites": [
+        {
+          "activity": "camp_access",
+          "board_sha": "f6db13f3b01aaaa4fa3c2279ed62fab3647a8b0d312082272b6cd027270a0803",
+          "family": "contested",
+          "id": "sandbox-site:e296909c744917a668c451123c2d6a4e10d2b48baf63b669c87d28c34c8f053e",
+          "kind": "camp",
+          "position": [
+            152,
+            564
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "5a860278e3f6e67ff12709f211c29caf11e9680f4781454d5f4445c3ce8205c0",
+          "family": "recovery",
+          "id": "sandbox-site:6e295e2f44d78af85f9321af9f10b71395ad804fdd987ed0c6c5d9b148280b89",
+          "kind": "camp",
+          "position": [
+            680,
+            619
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "3639f09a0884382d3683efcb9ed8579af71975e75d9948b1cdd5a56d4cf0c9fc",
+          "family": "investigation",
+          "id": "sandbox-site:59a96ee7e697fe14d95efe6c98335be273d162c2e6e109c68c2525076d95c502",
+          "kind": "ruins",
+          "position": [
+            630,
+            740
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "11901a826aed123ae3a5010aff52fa6af3cfe961422d6beffc1fea560a0fda9e",
+          "family": "contested",
+          "id": "sandbox-site:baadc75e25bd253ab7581d78c5d9e370643bd0da4a42081a7a6f98b736c15ea7",
+          "kind": "ruins",
+          "position": [
+            182,
+            511
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-02"
+    },
+    {
+      "base_sha": "0a28a9fdd491f7e2a6baf8e2314e5e9d8b2fd17b0bdc79fbf5b1a7ec5bdda167",
+      "biome": "Savanna",
+      "home_id": 68.0,
+      "home_name": "Stornestad",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "0cce5e3ba67fb2b47756c93dce1ebba2a23ac311a1b8596b26593c8f3886c064",
+          "family": "recovery",
+          "id": "sandbox-site:eae85180d450f5be30534b643326db9f4a3694173d29457e30a6498ad52f9992",
+          "kind": "camp",
+          "position": [
+            716,
+            632
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "7c1c172c97b5e45089124469665c94ae6208cefe09537f6e89472d78c8a42e94",
+          "family": "investigation",
+          "id": "sandbox-site:ae49b7b5ab4aacd836a491ea1c092ced90437b17871f041d6d9974b010c933da",
+          "kind": "ruins",
+          "position": [
+            623,
+            600
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "2e8c1201dc35790eeeba0bd36104b28898f6a4826a8be9c6bf5476fc5135910f",
+          "family": "contested",
+          "id": "sandbox-site:d39d0b948b998d4d6f3bc7f1dc89a262d286e3e6f6c38bd6578893d416c5cd17",
+          "kind": "camp",
+          "position": [
+            766,
+            449
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "b06de09052faa379171604de217e02a39a0a86cc1ca8a6ee24b250cebe3c280f",
+          "family": "contested",
+          "id": "sandbox-site:80844b8a69e043ac0440a55dea44dd77fb42a8bc3c85ca94edcc583614ab677d",
+          "kind": "ruins",
+          "position": [
+            415,
+            630
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-02"
+    },
+    {
+      "base_sha": "76b78531b5ca3121e222dbafd76b2ab822f4fad312588d52587544b005efa0b6",
+      "biome": "Grassland",
+      "home_id": 78.0,
+      "home_name": "Troydon",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "1f3dd03f1194e82ecc70bce26f00897ae6c7b27b7639d4d8758cc6e8c223a7d2",
+          "family": "recovery",
+          "id": "sandbox-site:ae68c8294dd3dc2e6a8c6f7e3e9c47fc9c35d5a84c5f6bef81ef1d8060c1026a",
+          "kind": "camp",
+          "position": [
+            220,
+            580
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "5c07abceccd6c61cf1cf450b69e8309f0cd7c48190b0f4baa7f4ffa2e47365e2",
+          "family": "investigation",
+          "id": "sandbox-site:e3021c31182a19d59497d304ae95754f47a57d0d2ad9f3144180a16906da8ea3",
+          "kind": "clearing",
+          "position": [
+            572,
+            270
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "dfc207ddd3173e40b2ffde7eb413fa467455eaeba6c391fa7b238e67313d3c95",
+          "family": "contested",
+          "id": "sandbox-site:47100028f987f6d50e51f4fc6421c42409ccf6b1be42d4c7bab6b7516c79e247",
+          "kind": "roadside",
+          "position": [
+            626,
+            506
+          ],
+          "route_ref": 72
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "de1122cda66baae8db34df817a1f5027848fdc6b0bef3a3a4c8e28093fd3a551",
+          "family": "contested",
+          "id": "sandbox-site:a92d395ebff0ef1d3c24a0f2921116dbbf186d7d8ef6e08504c7e598e6c9b25c",
+          "kind": "ruins",
+          "position": [
+            507,
+            426
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-02"
+    },
+    {
+      "base_sha": "49a2278fc13b1cea56c2664f6d9bbc4391699b62f09342c5ee84e93d9abae738",
+      "biome": "Tropical seasonal forest",
+      "home_id": 30.0,
+      "home_name": "Oremoa",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "d189a793b411f5c6d2e129a7dfda7e004451bdfb79642a7a130bf85b17e0132e",
+          "family": "contested",
+          "id": "sandbox-site:974897b58cebb39a49b66f153a8f8e0429b9e76b97b605324ede00e84ceee8cc",
+          "kind": "ruins",
+          "position": [
+            785,
+            644
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "1587f29636601cf019caaa4f3cd4b5a919275e778c42e95f5ca692fb2f1eb482",
+          "family": "contested",
+          "id": "sandbox-site:7011718958af0fb0737e7265fa2d780d41c5b411ece91090f85ac28c923225de",
+          "kind": "roadside",
+          "position": [
+            661,
+            662
+          ],
+          "route_ref": 362
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "2c9745909240fc0b4acdf4e9bacce340779461b6f664085e1f41e7c5966c2d6f",
+          "family": "recovery",
+          "id": "sandbox-site:92fded6ff188f8a55914d394895db105a5cca03ed92218e2984bb83400f33c44",
+          "kind": "camp",
+          "position": [
+            325,
+            623
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "40dfd3e7a22c9c49b283ea30241e57cb28fbdb6b24fa01aa973cf5d31c671307",
+          "family": "investigation",
+          "id": "sandbox-site:5ba770eef0f8f1eefa4c704807bdb0e6525c28e1cc4cf166b29697e543ff4672",
+          "kind": "clearing",
+          "position": [
+            619,
+            228
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-02"
+    },
+    {
+      "base_sha": "717fd4b868f030a153575bf49ea71060b55f5c7441f19a82fbf9f9a1a6fa5921",
+      "biome": "Hot desert",
+      "home_id": 403.0,
+      "home_name": "Mitbury",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "caebc47a88b3ab484a1d969e8e407b853330428b65a96e0848315c9965c25164",
+          "family": "contested",
+          "id": "sandbox-site:459ce3e928016474b38ba2ab25f8a3f9ed0ed1fd1910688192a23a79dda6af27",
+          "kind": "ruins",
+          "position": [
+            603,
+            585
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "e2c6b6700d2493823f31f0c46a40096b0ef0ca406ac822ae8614768f1dd5cd99",
+          "family": "recovery",
+          "id": "sandbox-site:0793f0ec9691a27a204baa96797fa2c150613fa8025645351d63882cab12ca2a",
+          "kind": "camp",
+          "position": [
+            601,
+            707
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "7f7d064b09158a04ef72947606eddb16f1e9800f03568ce09997968edb590ece",
+          "family": "contested",
+          "id": "sandbox-site:c5521f11239c13484c33c5d1a762a8efa697fd6b66acb64ff8dce645a7318f91",
+          "kind": "camp",
+          "position": [
+            538,
+            447
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "b6af4cae30f19f80c96c764603f830f254fbb32dcb7f32dc35da042d7165b6a2",
+          "family": "investigation",
+          "id": "sandbox-site:02ec226deb20cb8c378ebe3ffc3b42365c54bc1dd0744658890ed838f0fc2ac4",
+          "kind": "clearing",
+          "position": [
+            392,
+            278
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-03"
+    },
+    {
+      "base_sha": "9f27cffeb8ced053c6fb957bbb8c6c14ea13f829eec456b04b1d1051d5f9f661",
+      "biome": "Savanna",
+      "home_id": 53.0,
+      "home_name": "Wihulton",
+      "sites": [
+        {
+          "activity": "old_work",
+          "board_sha": "1d3617ab8837edfd5b29327bfa5d81df605b7ec5887cc1b271af51947c980a59",
+          "family": "investigation",
+          "id": "sandbox-site:54e89bb1aa701279ab1df4138b3ed108d4534696998c497a8bc03332ec2a1a07",
+          "kind": "ruins",
+          "position": [
+            511,
+            590
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "999c497553843851f4ef83bc17b4fe6bbf29d3a712a1a9d2adbc13843c578cf4",
+          "family": "contested",
+          "id": "sandbox-site:ed0ae41ce076ea209f4f1fe0deba39dba36c855b23e4fc29c820786f540d1ace",
+          "kind": "ruins",
+          "position": [
+            385,
+            525
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "57b31853372b985321701e5b4efcb1cf5e61008d1fcfff8825e8fd6e8b28a9ca",
+          "family": "recovery",
+          "id": "sandbox-site:a6acbb3b97c94c1a0267ecdc1d765c1ed252babd21ddd449547b199e3ce97089",
+          "kind": "camp",
+          "position": [
+            164,
+            565
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "68ebc2c4526e0130e0a347c163ee8b425d8b61ce098bdbb9d296e8964eabd1b3",
+          "family": "investigation",
+          "id": "sandbox-site:30c77957e2ac8315b3395b7659b8b04edbbe17615bec4261e9e4c3e9666002f5",
+          "kind": "clearing",
+          "position": [
+            595,
+            370
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-03"
+    },
+    {
+      "base_sha": "7730bad87b797370d57ec7035f388d59610edc2755280aacaf949524dd7915c0",
+      "biome": "Grassland",
+      "home_id": 147.0,
+      "home_name": "Beford",
+      "sites": [
+        {
+          "activity": "camp_access",
+          "board_sha": "a1616a198a5dc2108a8dff3c0006621d1e702397f4d67b9f753c96087fa01955",
+          "family": "contested",
+          "id": "sandbox-site:978b825b81f071e207e20868a89a87c2b6e10234201c8643b57e86069ec6a661",
+          "kind": "camp",
+          "position": [
+            404,
+            282
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "23b200a873542948427faa8487b933e744d2d79b5bd1dbc3729f098ea4f0a05a",
+          "family": "investigation",
+          "id": "sandbox-site:2a168590566cb839c74e35bcee2d9a7bc7cb347adbaa94966794951090e60d8d",
+          "kind": "ruins",
+          "position": [
+            622,
+            307
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "dc5c06fd8d6e73f8fdb2fba97e4b403e2b9ea13c796c727bd43e6e170075c529",
+          "family": "contested",
+          "id": "sandbox-site:4d8440e66abc670bbb7523ac8d39d2a5731508ff2bce21fb8174cbd0d8fd514c",
+          "kind": "ruins",
+          "position": [
+            322,
+            339
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "281c64895cc7d7e87c0a4ddd992ace07169f634a3061288a1af0e3b60bb02e89",
+          "family": "recovery",
+          "id": "sandbox-site:f7f1df0ea67fa66985e5ee7a70571a5eb0cae5be68d2c84a1da0981340e0c91d",
+          "kind": "camp",
+          "position": [
+            357,
+            271
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-03"
+    },
+    {
+      "base_sha": "d9f7cee4584cdcdf57524504299094f7434183cd3dbeecd279d61a0da053a9e6",
+      "biome": "Tropical seasonal forest",
+      "home_id": 73.0,
+      "home_name": "Hatford",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "e121bd3b23f5a1bf18654c8e9cbe97c07625b1c138aa4ebb4192082babc1de29",
+          "family": "investigation",
+          "id": "sandbox-site:ec5121a12de8f886e6c91dd3242e96aefa7db766bae02f66d48490af4d32a8c9",
+          "kind": "clearing",
+          "position": [
+            432,
+            616
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "5de5c74e658dc2e57be710117bd9293492e13e469e6bf802f58628a4ec9de9af",
+          "family": "contested",
+          "id": "sandbox-site:4ae00710f92b6a8efc2d2fab16b39463ee3ab1c24a9e91e2c011198a3bb8b82c",
+          "kind": "camp",
+          "position": [
+            713,
+            580
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "8143c8f981b51306eb0b2fabbcf0099c57752b39f5a4fdb33b4641361f70c033",
+          "family": "investigation",
+          "id": "sandbox-site:138220ca8b25f208cbf54d263ede67f14847c8598d959ff312857bae89b8dce3",
+          "kind": "ruins",
+          "position": [
+            432,
+            709
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "7c30d46383c513ee01f9af115a5bdccdc93db834d1cf99917e9be26e76965464",
+          "family": "recovery",
+          "id": "sandbox-site:d51ec49857e27cf79b86f4ba4bac63c82e6a85e9521fdc655c923b551a2b126d",
+          "kind": "clearing",
+          "position": [
+            555,
+            650
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-03"
+    },
+    {
+      "base_sha": "7c99716713ade86a96d57bb197265160f2e0395d59ceda9a99661813326d4ea9",
+      "biome": "Cold desert",
+      "home_id": 402.0,
+      "home_name": "Harlowleigh",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "ab3abb06d86d514091c5587c70d52edabf6a38df576f94cecac18976f842316d",
+          "family": "recovery",
+          "id": "sandbox-site:6d0b5b02985449674cbad862fa31d1769ee73d1633972a431a8a4150f5178622",
+          "kind": "camp",
+          "position": [
+            811,
+            592
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "69a96bd26d49a017e1a233c8f7fdc0220e9bcb721d27e7be160d78628fa94730",
+          "family": "contested",
+          "id": "sandbox-site:ce716aac1fcd494da0f434bae6cab75824580df4658d3a8afc147f94dc5f75ad",
+          "kind": "ruins",
+          "position": [
+            576,
+            369
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "cc08fd385983937ec3d64d5e8ca35ad90adc4ab0d09a935ae46f919aaecc3f12",
+          "family": "contested",
+          "id": "sandbox-site:851afbbb6161ba9fdaf7ab51fb7fae7c44cc4224607ff9a25fb3c465ac158bfd",
+          "kind": "camp",
+          "position": [
+            403,
+            694
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "feda0edd3443b9b9ebb4da17d920114b3f6aa807b28c40b71d5b36386a2cc920",
+          "family": "investigation",
+          "id": "sandbox-site:34df08eec91e867d6c849cf21d63f7ce3a8fa32b3bb6529a89aea0bd771e0daa",
+          "kind": "ruins",
+          "position": [
+            576,
+            524
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-04"
+    },
+    {
+      "base_sha": "1c89906adce170b7290ae4ec02ad85f5bcc03afe31de56df35a400a9fc7bd9fd",
+      "biome": "Savanna",
+      "home_id": 586.0,
+      "home_name": "Midlingra",
+      "sites": [
+        {
+          "activity": "road_passage",
+          "board_sha": "1725cb4d8f9ef4245b8151f56ece03214c98c263cddd296c0536aebdd798cb92",
+          "family": "contested",
+          "id": "sandbox-site:3a0e38d4f198b51cb01996035404e45e2c409ec4126c42cbd20741ce9bb5b668",
+          "kind": "roadside",
+          "position": [
+            564,
+            452
+          ],
+          "route_ref": 277
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "4550c2d947731a08ac207d032a1cb8c870b64a055edc27919c4f984176e1af7a",
+          "family": "investigation",
+          "id": "sandbox-site:19dac5b22fedc18bdd6e5541353eb06dc883e9b308a5859749548326cec0a8ba",
+          "kind": "ruins",
+          "position": [
+            440,
+            405
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "1f5a4190258f627811fc68a31c1e120bd020f980512f862dc838292de5be1756",
+          "family": "recovery",
+          "id": "sandbox-site:ed9c5c3c99bf2c437de1c7dc02759c75e0c7b1c072c04fb7cd36376107f52f2b",
+          "kind": "camp",
+          "position": [
+            336,
+            523
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "22734390ba6019a2c1c00770700342c30170a3b72b9e43c23c70009bb568474b",
+          "family": "contested",
+          "id": "sandbox-site:47daa47577994e38c3b9255df9e218ab77237413d808c07622518eeb9dd3feb6",
+          "kind": "ruins",
+          "position": [
+            529,
+            673
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-04"
+    },
+    {
+      "base_sha": "dccc154677fbc057d94e009fcb2f681278865a8ff5ee777cd3bf4f64dc34f0e9",
+      "biome": "Grassland",
+      "home_id": 32.0,
+      "home_name": "Rothel",
+      "sites": [
+        {
+          "activity": "lost_supplies",
+          "board_sha": "63b4948431aa0777f6244822c0ae0bd7989d68bd5a9c651ca235a10f261e1e50",
+          "family": "recovery",
+          "id": "sandbox-site:ca6ed12d0b13bdd1ad0ecde1668e0bc9c1b480d9ced1f2ab2002f21e66397955",
+          "kind": "clearing",
+          "position": [
+            409,
+            666
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "55fa6aad04cc915fe7dbd4bc6fa6f71ea40ffe0389b89c615adf5c722bd35232",
+          "family": "contested",
+          "id": "sandbox-site:31eb36acbd4774e8ba808052c4d67e6dd98b6f395971ef1bb150e093b7f63136",
+          "kind": "ruins",
+          "position": [
+            672,
+            588
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "d18189bd3028ac981bc4ad9a4d64ceed95aac7505cd908cf285a0e2d8deec8ee",
+          "family": "contested",
+          "id": "sandbox-site:027397c22cb7a92d2e059f58ae90e0419d07abfb40d301aa9ec5e6748b2a45e8",
+          "kind": "camp",
+          "position": [
+            639,
+            517
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "ebc8779872d516f54ce38b0fd23334139c250027f40572ab3396a341e1a53de2",
+          "family": "investigation",
+          "id": "sandbox-site:f8585493b7411c241b31108836089b8443049242a7878298826035fc60742d58",
+          "kind": "ruins",
+          "position": [
+            480,
+            332
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-04"
+    },
+    {
+      "base_sha": "2bdc1106f379ed81181895b34f329c8096a30dc19912f4df78623f25f910c42e",
+      "biome": "Tropical seasonal forest",
+      "home_id": 27.0,
+      "home_name": "Nostonden",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "545adb951f9d86ae01a6dfa17a6ddf981cb0fb34619d7542eff8d3349afe3ce3",
+          "family": "investigation",
+          "id": "sandbox-site:05aae9cf977eb5511423d4cdd7293d89634ae4df3abb37f602f953afa49e31c0",
+          "kind": "clearing",
+          "position": [
+            384,
+            167
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "aa09f537477bb46c810a05bb8152ee100f1fcdcc199694ce1fdeb63c60922654",
+          "family": "recovery",
+          "id": "sandbox-site:db9424b91e37b4ef6545b0578a2f6d035cc66ce7556fd28f53252f1878fc276b",
+          "kind": "clearing",
+          "position": [
+            478,
+            561
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "c8737bc65ac2be0fef0c357720c9eaa0173b6715be67d460a689c848da9a7f43",
+          "family": "contested",
+          "id": "sandbox-site:4a03385cce4c1d82fcbd132809909b0e79850f2f1327843100ea79443f3927c3",
+          "kind": "camp",
+          "position": [
+            368,
+            640
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "3366e8e648ad5831814a4b5673b19f9166378c3b9299b8fda103cc1d9b2ad215",
+          "family": "recovery",
+          "id": "sandbox-site:57daf83a1489090da0e669b844035c14610a5e7211d292d1e33bbef3c4bdec88",
+          "kind": "camp",
+          "position": [
+            774,
+            601
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-04"
+    },
+    {
+      "base_sha": "ffbe220ffe50d72d4f8f6bd2f0d9706c93632b75851268deb1c2f6750b092546",
+      "biome": "Hot desert",
+      "home_id": 85.0,
+      "home_name": "Konyanya",
+      "sites": [
+        {
+          "activity": "old_work",
+          "board_sha": "4d28757532c77fbfe69ba02f492672ee8cc47f375cbb87ba6f1c17b500cd8564",
+          "family": "investigation",
+          "id": "sandbox-site:7fde4030ae6cc928c842fed7aa5bbcb4dae402802a716d9906e87b2cf8f6148c",
+          "kind": "ruins",
+          "position": [
+            284,
+            780
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "2f0eeb6a04881418f525eb5ad8e40853e9cf9764b372b9f8c929abe732511fb6",
+          "family": "recovery",
+          "id": "sandbox-site:c8552c0073cecf14972eb2db0e589042c4bd0ac2eec56250b9f0d602c1e4c4b8",
+          "kind": "camp",
+          "position": [
+            429,
+            715
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "d19c0b510d5199a0798008c0cef1b6c28477dc393c8938345d38be9eed46bb95",
+          "family": "contested",
+          "id": "sandbox-site:710cf9337c553fa5c594faa0d335e28c835e34953435eed9514cba874d9b4384",
+          "kind": "roadside",
+          "position": [
+            736,
+            780
+          ],
+          "route_ref": 194
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "d344e4a753035f097cc3c6eae9602e525b9caba8b480d1f6298f6409ee44eeb0",
+          "family": "recovery",
+          "id": "sandbox-site:19316bab2169aeee5eb199a6535d20585b933fcd81c6a1332f449fa3721c1da0",
+          "kind": "clearing",
+          "position": [
+            588,
+            510
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-05"
+    },
+    {
+      "base_sha": "85d6278b64acb67956134e76c733d8efd72cd2f05bd0dcf81814725b687595db",
+      "biome": "Savanna",
+      "home_id": 64.0,
+      "home_name": "Tungduguro",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "7d83e9a973889407d5d61e9214d33cb80c6aa9743bbf2196ae2cc776c2c1424d",
+          "family": "contested",
+          "id": "sandbox-site:0e6ecbb18919235556d6ce2b0fc3a325b1c93659a751cf6fac898b2f74cfeee7",
+          "kind": "ruins",
+          "position": [
+            563,
+            362
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "e8c18e68a6378bbd34a6883f751bc0972cebf745524b95039548a73b23f82aa2",
+          "family": "recovery",
+          "id": "sandbox-site:d59b3eea3fb7a9b4b528f6f9ff7a7068149cf8d75d2043ee0814a14794feb781",
+          "kind": "camp",
+          "position": [
+            618,
+            633
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "6fe2dd36545cd78457147237ebff3fe39606587d82b64a1330e0fe4c0c55c6b2",
+          "family": "recovery",
+          "id": "sandbox-site:fe9d030c41d09c2a5d08353fbddf2ca40e6cd92fea7f02ead0ba12c4dfac0514",
+          "kind": "clearing",
+          "position": [
+            356,
+            597
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "7eac9ed1155f174f3884e0209e77d6a817b02519913c5b147df17d21973df9a0",
+          "family": "investigation",
+          "id": "sandbox-site:181fe0a48fa0ca9ceb66be8f7d70be7fd9e95a1ac76cdd1dbb3c789a43d8765a",
+          "kind": "ruins",
+          "position": [
+            394,
+            424
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-05"
+    },
+    {
+      "base_sha": "52a6ba7043c2bbba9e4815f5d1da8e19eae3e14c78defe50fff6b0c01b33bcab",
+      "biome": "Grassland",
+      "home_id": 77.0,
+      "home_name": "Quarzeana",
+      "sites": [
+        {
+          "activity": "camp_access",
+          "board_sha": "ca1c0eceeaa1072cd34cd5edb65fc6cab8d14d9c7f35a85b8788c39985894c07",
+          "family": "contested",
+          "id": "sandbox-site:b9b403dbfc4991f567896f7820680349406bed772039ad20ff95211b9c6b9ced",
+          "kind": "camp",
+          "position": [
+            388,
+            731
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "551f29d2931f17ceedf638336326b76fb2b3c5c060beafc46905bdde4188cc0f",
+          "family": "recovery",
+          "id": "sandbox-site:c335076a6e2c513563c8ed1c09699936a986a160d1f44a6fe33b93dd9212f639",
+          "kind": "camp",
+          "position": [
+            503,
+            351
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "87863c6392ba9ab6a5b1a2ae1dff155bf6c1a639e24a7936dfdf3956ddd799a1",
+          "family": "recovery",
+          "id": "sandbox-site:d6c7cf53c899002ed24f132fb88e6c2aaab71af32a1eda85a466c13bb41e1a9a",
+          "kind": "clearing",
+          "position": [
+            261,
+            624
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "78beff1cb694bad21d4b434ec968d07393ac0e48075e06df4f2285eb9a8e8245",
+          "family": "investigation",
+          "id": "sandbox-site:69b34cd0bcbdb712d388b50e721febac3e010d06c06a59248e0e35e6d5f3fad4",
+          "kind": "ruins",
+          "position": [
+            385,
+            495
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-05"
+    },
+    {
+      "base_sha": "ca7e9b13901a0f7af45c7605195589ee04ae08973b77d1f709ca4d5aaf550ca5",
+      "biome": "Tropical seasonal forest",
+      "home_id": 23.0,
+      "home_name": "Rututum",
+      "sites": [
+        {
+          "activity": "road_passage",
+          "board_sha": "45249e683c6a7b3d0730ad59010d0defdc1a5351c795398a54e3e8e7bfbfee05",
+          "family": "contested",
+          "id": "sandbox-site:a51cf01a91d645412340526fd46835bfedd52418855b5a267cc38b39398e84f8",
+          "kind": "roadside",
+          "position": [
+            454,
+            362
+          ],
+          "route_ref": 38
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "770f2b23e528ccde5f276077d19c6c8ced1061aac502a04a113031ed099f227d",
+          "family": "recovery",
+          "id": "sandbox-site:c5f8332b514344cd9a99a314125d8a01d600e5b97915f47ff7fe1521397769a8",
+          "kind": "clearing",
+          "position": [
+            754,
+            245
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "5c7c4db0e5606c12a524c7761c3c0ff2b7d609d3f64b47fddc1140649d9f97ac",
+          "family": "contested",
+          "id": "sandbox-site:cac1960065fcc69013ce59d9ae4a39689df906c82a1bb756f3b826c0f34e645e",
+          "kind": "camp",
+          "position": [
+            588,
+            313
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "2ae72629257be18fc1d15347303eaaa1b8a9ec949851c1fbb588178426fdbfbe",
+          "family": "investigation",
+          "id": "sandbox-site:5c02243577c51a1680fb16ed0f0398acaf02087008315a8ea430f8593e0f36db",
+          "kind": "ruins",
+          "position": [
+            518,
+            728
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-05"
+    },
+    {
+      "base_sha": "325886ae4b7e53c45548dbb5dfacfcbb351a2ef9aa82c9040d8d3e6d925e1cb4",
+      "biome": "Cold desert",
+      "home_id": 130.0,
+      "home_name": "Velecha",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "4514f5a80f169d7154a012efbf66be9efbd04ec1444530bd6a1c77aa73a741e3",
+          "family": "recovery",
+          "id": "sandbox-site:e805b00cbbdc0c146cb9d720f3fa15cc8d0263ad461168385b43b677b2ac7c94",
+          "kind": "camp",
+          "position": [
+            639,
+            498
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "71718a79667d78a300b72508b9f3429693642e234c69d5699b11177e8a023b30",
+          "family": "investigation",
+          "id": "sandbox-site:3685ad29dd450103172d3ff77366eab16e9ff264520b1e68d9854134375cce71",
+          "kind": "ruins",
+          "position": [
+            282,
+            573
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "e0a6e73d5cd2a9aff65cb370243af809ec0573412dcc19aed485e4c07ab11e07",
+          "family": "contested",
+          "id": "sandbox-site:43b81acb8e41e76ddac4a5b60b4895c30d8b5c4078f1c26e85e02d2ba9e0a886",
+          "kind": "camp",
+          "position": [
+            487,
+            564
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "29c8f1450c76d8c57509d3c04723b736c09d185c39a555158cb8bf5a0c04d2cd",
+          "family": "investigation",
+          "id": "sandbox-site:305a3224660bf7f0cad70504482eb3054cecb89e4d92654e419411ff67fc4c83",
+          "kind": "clearing",
+          "position": [
+            500,
+            605
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-06"
+    },
+    {
+      "base_sha": "fe341cd5839b6bbb0d9d93116b1cca0424225fcc1978032eb51f852a521bba41",
+      "biome": "Savanna",
+      "home_id": 440.0,
+      "home_name": "Allos",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "68760b3fa136310b151757f5dc1fa391e4c36c7f9b7856cdd9f2036c729d3067",
+          "family": "contested",
+          "id": "sandbox-site:378ec4f9a58c396ae88d63752b69c0ea59d8ff73fddd6044d98d23249fa84152",
+          "kind": "ruins",
+          "position": [
+            527,
+            322
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "6b213262992b6852221b94f61df3d355e097bb43fd579cff112416314bffb50f",
+          "family": "recovery",
+          "id": "sandbox-site:c3a2e313023f5c74fc481c713f58167b575eb66e6f300626da1bf0e2074d4a78",
+          "kind": "camp",
+          "position": [
+            656,
+            668
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "f6ae5940fe09f518c1d6399b2388d9f756387fbccca27ad23cdb2a104d6509cd",
+          "family": "investigation",
+          "id": "sandbox-site:09c0be61d8698552263dbe8fcd3fe25cefa7479772c7177856972c44803be291",
+          "kind": "ruins",
+          "position": [
+            735,
+            502
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "d598d20f1a820e1f8f6ed686524cd3c0230d65744e7b32ffa51987d7ee13c92e",
+          "family": "investigation",
+          "id": "sandbox-site:bf67b5274837bbb86304e7431d6de7ef548625e68823ab3c15ee4b7964570f42",
+          "kind": "clearing",
+          "position": [
+            538,
+            528
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-06"
+    },
+    {
+      "base_sha": "a888affd593a332fb90e6794e3d55026f218f4a4f77878c887bf8c8ec882fe55",
+      "biome": "Grassland",
+      "home_id": 71.0,
+      "home_name": "Cordes",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "b11958a7be187ae09334efd12e8219f7c28c28db79a0a0ee55ad07e03de5a59a",
+          "family": "investigation",
+          "id": "sandbox-site:a75c551a305ff572e29afb77c0e693c922376babbe7fc6eaa9a8c2019a77492e",
+          "kind": "clearing",
+          "position": [
+            269,
+            484
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "0d31dea64202b11dc4bef97c642a79c3684e01565d6ff65b30d7106cc1e485db",
+          "family": "contested",
+          "id": "sandbox-site:a627447b42312237c1629d73233600ba05e51427b135a331bb870b3cb3fb17d8",
+          "kind": "ruins",
+          "position": [
+            691,
+            495
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "e622207f926329fe370f23c36c82fd5c20715d9cb60463a2843cc195209d27f7",
+          "family": "recovery",
+          "id": "sandbox-site:453da0dbc9caaa720e5c2c237b08a8faf2f4cdac12cdeced3daaf44246233dfd",
+          "kind": "camp",
+          "position": [
+            380,
+            465
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "ad7ef9ed6b5bf42b5ce5834bafc8c77ed3709db5ccaf60555ffdc4e19f8d0f3c",
+          "family": "recovery",
+          "id": "sandbox-site:d4a01842fc383b0d9ff46d1f4c00fb0c08f084ee7218678aac8d58344d5fe353",
+          "kind": "clearing",
+          "position": [
+            556,
+            754
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-06"
+    },
+    {
+      "base_sha": "5abbfa5ee5ed102233fa239b3a31035c92fa59be50ff660c382359aad85fe64d",
+      "biome": "Tropical seasonal forest",
+      "home_id": 302.0,
+      "home_name": "Shamshing",
+      "sites": [
+        {
+          "activity": "lost_supplies",
+          "board_sha": "609086ef875753f2ed712c2115bdf0b6cb065bcc0bda8d815600b45d15a6abd0",
+          "family": "recovery",
+          "id": "sandbox-site:6f26d244672f229bbfa7beda8ecfa59b1bcc362acb18d2e12e6f756b097ac67b",
+          "kind": "clearing",
+          "position": [
+            477,
+            277
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "f97d7e0e04b7ab22c1d502cdd8c64f2d560267c623a25fca5af89a1ce4e578e1",
+          "family": "recovery",
+          "id": "sandbox-site:b2043998f7d6be4afd55dac259bee65138157b1e892449f0e561ec668850f301",
+          "kind": "camp",
+          "position": [
+            599,
+            569
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "0f0cc9be44aec89465b986685ddd5d7f5a2949df9eb47ffe2d0240bdd64b6c29",
+          "family": "contested",
+          "id": "sandbox-site:b2e58ce81e74d00f5385f5a811eb99dc8ac3a095388fd4d3b35692ec649e243f",
+          "kind": "ruins",
+          "position": [
+            436,
+            433
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "62b5a14d92d42b0ad992dfff164807e96aae542ee65c723ee81c347584ec66ed",
+          "family": "investigation",
+          "id": "sandbox-site:ec034aed54af619d5e987e82e38b7a98f68a9cd52faf0c5972d0a4e7ebd3dc6b",
+          "kind": "clearing",
+          "position": [
+            440,
+            678
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-06"
+    },
+    {
+      "base_sha": "9754737ceffb6c215e4f3ec835e904495d2e0641a4cfc0e48ba52970b6e85bf7",
+      "biome": "Hot desert",
+      "home_id": 597.0,
+      "home_name": "Durnerid",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "0ebac5b69abe16d168e6a5c007428a92a703d583d8cc098bd65ae0330f570111",
+          "family": "recovery",
+          "id": "sandbox-site:b8efa4e6e537e78d49ba0bd37097bafe9b7dcf5961705fc9afb098ce3d5dc85f",
+          "kind": "camp",
+          "position": [
+            407,
+            701
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "31fd678d16aec10d0f2723a2f2cecb4aa1a0ad5cf7f322f5b4ddcd7285b3fe75",
+          "family": "contested",
+          "id": "sandbox-site:30192d0807e682746888732f9537fab2030555ee64a678740685c8bb59f70811",
+          "kind": "camp",
+          "position": [
+            623,
+            438
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "b21ef0757ab24c0d23352e06ba7dab773b1359894cbc6a8221b8e1a38d6c5105",
+          "family": "recovery",
+          "id": "sandbox-site:a1bb37a21831a5323ad93ef8d1dd8210a04bf5e6c573da61a18fd19ddd804877",
+          "kind": "clearing",
+          "position": [
+            479,
+            740
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "2cdc6d38e3430aacf8fccec72bc44972932491152329cd08d9b4766298cae94a",
+          "family": "investigation",
+          "id": "sandbox-site:cda09ad6321c1b46b3e7f4ca6090d4b3f534598a96798b7919f8e5bdcfd9d9e0",
+          "kind": "ruins",
+          "position": [
+            433,
+            169
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-07"
+    },
+    {
+      "base_sha": "bd45d12013c15b366645f1577e4dca2ab7f919b73c8c571b41a0dcacb9172c1e",
+      "biome": "Savanna",
+      "home_id": 314.0,
+      "home_name": "Avewen",
+      "sites": [
+        {
+          "activity": "road_passage",
+          "board_sha": "4d03a63bcab059a2b83d513904a347348baafab718e3bf99f7632ba9ba118140",
+          "family": "contested",
+          "id": "sandbox-site:19b9113960465b5d845e87291f21c174a25aabb2b0a4401d9d3952966e30434e",
+          "kind": "roadside",
+          "position": [
+            485,
+            564
+          ],
+          "route_ref": 31
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "c462d278c1484616787531151039d61ae5bc652dd3275cecf021a98132415bd8",
+          "family": "investigation",
+          "id": "sandbox-site:da18b868aa9abee01faacd0d187f64344a3c613acc6e459fa109d69e848ca1b9",
+          "kind": "ruins",
+          "position": [
+            674,
+            339
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "a87709a16f56c933fe2ad85d7895ff7aadb7b358ec707ce1261f144dcb666ae0",
+          "family": "investigation",
+          "id": "sandbox-site:88ecf6fe79167849b8fed2e85376465c108b1ed7ef860b30fa1d12f31dfb2e81",
+          "kind": "clearing",
+          "position": [
+            199,
+            390
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "48c103bbcb3ab32e8194763abb06c5d1ce444a66725c5eb1de54039380489fc8",
+          "family": "recovery",
+          "id": "sandbox-site:0af0b71af7ec26617beb08ade40854bbb9c0f5e390b545ce0cff87076c97d6ad",
+          "kind": "clearing",
+          "position": [
+            310,
+            733
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-07"
+    },
+    {
+      "base_sha": "068ec63eca33f919d37ab5221c4107e9d116fa195bfe985858d9190102bb638b",
+      "biome": "Grassland",
+      "home_id": 108.0,
+      "home_name": "Chepan",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "8f07dda43158c9780bef1463b904305cadf19e433d5a0050093d9ab9f03d4584",
+          "family": "investigation",
+          "id": "sandbox-site:41ee379715120e7f87137217ebd4bb6ede44821aa77afe7f904e4ef43f57eca3",
+          "kind": "clearing",
+          "position": [
+            476,
+            325
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "96ad9e59ba3a03664ae1407831bcfb8c276866634e82284f2d1e8ea41939d803",
+          "family": "recovery",
+          "id": "sandbox-site:f8f5ad24fc6e12fc469909a5be7d59df156de99e26ae980d7b8e1f5f48e4090a",
+          "kind": "camp",
+          "position": [
+            515,
+            375
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "5b6e1c42aca543b19b2d0537e6cb384ba3162c7e7a62fbffcabacc34f36a4c8e",
+          "family": "contested",
+          "id": "sandbox-site:f9b2b68cb3ba198b810a0688a83be36d5a3ce4e1ad821dbb866b0c363d561167",
+          "kind": "camp",
+          "position": [
+            739,
+            737
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "e08265e9fbc326fb86701516ca9138f49d9c746710293489b329d83d0abde487",
+          "family": "investigation",
+          "id": "sandbox-site:30fe7722e5d2724344f4a6cc3e5343e246bb57c74e68ea97f727ea875796f32d",
+          "kind": "ruins",
+          "position": [
+            534,
+            434
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-07"
+    },
+    {
+      "base_sha": "400143bb2722e17e28ec3c60f3157f2d26bdd817c59386f329473f284ad767db",
+      "biome": "Tropical seasonal forest",
+      "home_id": 29.0,
+      "home_name": "Korsun",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "f4aea8e656cabd8bea3c56aa10ed2df68297803d5fa5330aff9b535d4868d471",
+          "family": "investigation",
+          "id": "sandbox-site:9079a3b26d1b824eb577c9351aa01332eb0fc4757c3dfd18f3f9fafd24915f1f",
+          "kind": "clearing",
+          "position": [
+            569,
+            627
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "690892207069fb49dcb7ddec5a38c0dfae08598668e9e34a9611939fe58ba7f9",
+          "family": "contested",
+          "id": "sandbox-site:a0599b23e4d2296521a3bab401b185c256fbe51c69cf6b9c758b103df575d7f4",
+          "kind": "ruins",
+          "position": [
+            642,
+            615
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "cdd2ba9cbee9907fbc3ff908f7734695e7ce99bd86626447a0fa9aceefd44317",
+          "family": "recovery",
+          "id": "sandbox-site:307e198b9cbee696baea7b50bde54b754759bfa606f69c3cdffe5e4cd37926aa",
+          "kind": "clearing",
+          "position": [
+            362,
+            231
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "1f0d07f553e68b83d7b59ddc04e8ce9d44527cbc0d0bf0e37483dadf13e6e0ac",
+          "family": "investigation",
+          "id": "sandbox-site:42594bfd6115e4154098324b5a53ebb120963a32585d00cdf8a276380103c6ec",
+          "kind": "ruins",
+          "position": [
+            536,
+            267
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-07"
+    },
+    {
+      "base_sha": "8749dbfdcab1a6fdce8b58d037e5aed8aab68132a450a948f417e671cd866065",
+      "biome": "Hot desert",
+      "home_id": 132.0,
+      "home_name": "Gaubi",
+      "sites": [
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "46dd9fb32b11c2f952c5d067ef2fd254a42f561bbb83943c1cbd0498be2ba6c7",
+          "family": "contested",
+          "id": "sandbox-site:1ce1df3202b48ede071856cd31ff6c70e7bee8adb983b7e641e9a1688bdde810",
+          "kind": "ruins",
+          "position": [
+            252,
+            254
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "0342a7d9851c76dba32ad5aa3538e06029ffa985acf6f5248f976884e6f8a06c",
+          "family": "investigation",
+          "id": "sandbox-site:20341fc6e7aef854d7ee471fe5f0e0c93c44f05f4ae840c93bd6bf75d0f5ecab",
+          "kind": "ruins",
+          "position": [
+            754,
+            637
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "b6152e76fd8b4f8c961cef89431f1c037353f433ddcb1f9b9d8d1c45d1a3e318",
+          "family": "recovery",
+          "id": "sandbox-site:fe9f809d93ec2bda7714ac5d8d6c43f8c2dfa1726c46defec49540c83d126582",
+          "kind": "camp",
+          "position": [
+            450,
+            641
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "f681c4ba0f71c5173ca63e9b8a25dda6740093376e3267be86e0c418a110afea",
+          "family": "investigation",
+          "id": "sandbox-site:3557d81eb577862066d637e4b7c6af3cbc5c8626ecc7863d7061e2ead816e1ab",
+          "kind": "clearing",
+          "position": [
+            384,
+            608
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-08"
+    },
+    {
+      "base_sha": "bf7aedf822ad749e2204c6922936e1ba934cb88313b498bd1c3d8062dc398f16",
+      "biome": "Cold desert",
+      "home_id": 84.0,
+      "home_name": "Onianais",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "21a5b929cf1f214970e273f74e815385debdeb4ff19b65033a820ba213ea6578",
+          "family": "recovery",
+          "id": "sandbox-site:6eee30c737b02be29fa2855ed3ac1372ac438662c356cb334095d3852fd89f3b",
+          "kind": "camp",
+          "position": [
+            611,
+            707
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "bd6c080aeb6522a4ffebe6ce443532cc3cdfab07abea1a56ca9482388f433f84",
+          "family": "investigation",
+          "id": "sandbox-site:64c7f0052411d9b87b2194790e707390ecea468ca2e5438afe33a38b501a11bf",
+          "kind": "clearing",
+          "position": [
+            658,
+            416
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "f3fc0c9d2cc0cda6e2f9f4cbae8fe31d6ec632c3cabee9998a77450efe9d079d",
+          "family": "contested",
+          "id": "sandbox-site:a27254904dda51f8faa5f2e2a3f6a6413701bd5bfe73c2ce3918afa54e54ab1e",
+          "kind": "camp",
+          "position": [
+            672,
+            607
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "58226e56db04911eb0096d1610337213cfa92753e3cd3593b1544d714c89808a",
+          "family": "contested",
+          "id": "sandbox-site:872f39477eca5652a6022e33d3b97733201bd6aa046a19c2af6da9032e660e29",
+          "kind": "ruins",
+          "position": [
+            626,
+            574
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-08"
+    },
+    {
+      "base_sha": "dd7d47c7dfc5ffef1ffac19d9e4c3a9a10ffbd96c48c257faa743df2a2a215c1",
+      "biome": "Savanna",
+      "home_id": 75.0,
+      "home_name": "Sypepi",
+      "sites": [
+        {
+          "activity": "old_work",
+          "board_sha": "208228cfc41b8d3eca878ff0be8c9fc44b8ed9ecf6c70641973ae9fd66dc1a17",
+          "family": "investigation",
+          "id": "sandbox-site:7c9c72192e142fc52646fcc4eeff696c993c7e5fe1a2aef9ec61c4c905c3c3e6",
+          "kind": "ruins",
+          "position": [
+            703,
+            470
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "aff1247eb79a98b215406538bf649f450d655ff5038b0b8de661e7e8d8c3fd35",
+          "family": "recovery",
+          "id": "sandbox-site:2a8eb2a190e9e9fd039eb758f66f3e91d7ee6e9f60af6102ee70953bb1ada103",
+          "kind": "camp",
+          "position": [
+            468,
+            333
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "953f46088ff31995bb74260ab971f91ac87665436d59eda5b25bc492c36e414a",
+          "family": "recovery",
+          "id": "sandbox-site:0079be584d6345db108c37335e58aa196da85146f6989c479d55fa25335f55d2",
+          "kind": "clearing",
+          "position": [
+            245,
+            426
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "c7488ef2c3f6929079947305186dbc0875c532ed046cf4346cc8024b80586337",
+          "family": "contested",
+          "id": "sandbox-site:bfdaeb1d109459bfc16444bb171bc86a16af5f9fc242b230695f052b197e6d7a",
+          "kind": "ruins",
+          "position": [
+            346,
+            639
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-08"
+    },
+    {
+      "base_sha": "6809256cd4c29c3234642108205624be003424dfa4a87900c7ae95dec9fd6286",
+      "biome": "Grassland",
+      "home_id": 81.0,
+      "home_name": "Bashak",
+      "sites": [
+        {
+          "activity": "unusual_traces",
+          "board_sha": "ff793f7e1823ef8fa7549346d5791c8fb0839e04f749caa3534b5a15ac586623",
+          "family": "investigation",
+          "id": "sandbox-site:98262dcd230cb6591429185cc03dcf360bc283a4cc90c026f30b4ef79be3bb76",
+          "kind": "clearing",
+          "position": [
+            349,
+            463
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "0195927991ea74d5bbcfcde26c3adc3ed764f22c6c4f79d309d77b833c85a094",
+          "family": "contested",
+          "id": "sandbox-site:bf99b22ddac638dbd62931065c5d086c89ab1b1137c0db12ad8f905b89f9bc9c",
+          "kind": "ruins",
+          "position": [
+            600,
+            402
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "a3d029c6ee73f63cdedadfa197e9290690be86d1bcd48d0980377099367e6fbb",
+          "family": "recovery",
+          "id": "sandbox-site:5ebbb63f544874bff8bb0ddfe5191f89c58525a0148eb8ad9d92b751fdba9b71",
+          "kind": "camp",
+          "position": [
+            654,
+            725
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "743589416afb245d02224a22fdd6ca53eedb6364bb8c21bf5310c9baab0648df",
+          "family": "investigation",
+          "id": "sandbox-site:64d25536a154360cfe3b76297c588e70bc9b77c2bd9eb165f1a628266b65ee95",
+          "kind": "ruins",
+          "position": [
+            416,
+            268
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-08"
+    },
+    {
+      "base_sha": "5f4a1506686452d180786c4da69e5836dad8bf0842e6a79ba23ecc7267978165",
+      "biome": "Hot desert",
+      "home_id": 29.0,
+      "home_name": "Eniondos",
+      "sites": [
+        {
+          "activity": "old_work",
+          "board_sha": "dc246dc44b766f51bf1a17d7caa404bf5275653da295804826ec8ca6253520ed",
+          "family": "investigation",
+          "id": "sandbox-site:431aee2fc1581bbb040eebfdb006239ca06d1c08dbd7eda0861b0f73f4daee30",
+          "kind": "ruins",
+          "position": [
+            589,
+            512
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "32a5266538a290a2323432df640f370b4e26006adb7bd1bdb073db0624489b88",
+          "family": "contested",
+          "id": "sandbox-site:85e92aab86f537f30c6cafae4d74290872e8ff0377702de9b8af088cd88fb03e",
+          "kind": "ruins",
+          "position": [
+            236,
+            712
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "2823b4119b4d4008653b51920e56f8c5d63d89df5d972204b34b30da105b46f7",
+          "family": "recovery",
+          "id": "sandbox-site:8c23866201454565f8ab7e919be69fe2ae88abb61c35951c03e11bacaf3a1593",
+          "kind": "camp",
+          "position": [
+            414,
+            686
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "lost_supplies",
+          "board_sha": "152114c226c7478c58f370a831b817ec6284bfbaca6c0aa3eed49b76aac72660",
+          "family": "recovery",
+          "id": "sandbox-site:a2df721c6081d7870447bdd7df7f683f4cef3959669197274182dbf0ae0374d3",
+          "kind": "clearing",
+          "position": [
+            400,
+            715
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-09"
+    },
+    {
+      "base_sha": "2fb2345d8182ab3f00bd3305853878189c5133d39f629b1b75e7621d3715a175",
+      "biome": "Cold desert",
+      "home_id": 45.0,
+      "home_name": "Perythre",
+      "sites": [
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "aa4ef7201c3f44db72641bec1deb45cde7cedfc3eb5c6afa20a54d8f07f50360",
+          "family": "recovery",
+          "id": "sandbox-site:fd33e3881e41c4ca29a8f32d084683876d53e65294d0493d381cceeb169b6fea",
+          "kind": "camp",
+          "position": [
+            429,
+            671
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "old_work",
+          "board_sha": "1c924421fcfa4e30ab41f9ebd05e9b53b99fa25fd3721b59be02e86e8d038023",
+          "family": "investigation",
+          "id": "sandbox-site:2a23556c31967330f41af35732b556f41f87b69f5cd44948ab7dfbf53b610a3b",
+          "kind": "ruins",
+          "position": [
+            356,
+            479
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "1ed94bbe635b86d7f579b0ea6e0de982af1768813346ee46dc1774ef3ba336b2",
+          "family": "contested",
+          "id": "sandbox-site:b583403c9cc81981d2b09ad056f3609df3bd9a16e2ab91e6a633ff432a158c37",
+          "kind": "ruins",
+          "position": [
+            480,
+            308
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "road_passage",
+          "board_sha": "1726898bd4ed65199497409fd40f7628fda16a4eb39550adea0954989e1ede1d",
+          "family": "contested",
+          "id": "sandbox-site:4e64ed986723dca8a4d6d07d5a9c09dc5940615120efeb1aa33da6221dbdcf0a",
+          "kind": "roadside",
+          "position": [
+            396,
+            305
+          ],
+          "route_ref": 264
+        }
+      ],
+      "world_seed": "game101-variety-09"
+    },
+    {
+      "base_sha": "bd491d523226cc3f606fd4448a860a7760268a8d3939f1da20cfb89c07b34297",
+      "biome": "Savanna",
+      "home_id": 47.0,
+      "home_name": "Sinon",
+      "sites": [
+        {
+          "activity": "road_passage",
+          "board_sha": "1df31cd75db772fd717f91e007e4d787804e7e6d34467656a5c64b404e1fbe94",
+          "family": "contested",
+          "id": "sandbox-site:a008541c36e2c849bf3d2c3ef045c4cac0a995faa3b5d122aeed933245d8d364",
+          "kind": "roadside",
+          "position": [
+            343,
+            291
+          ],
+          "route_ref": 102
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "bb8fab8effd0c093402764a4684ab569af421e3a81d89312ed0a04b4965867c2",
+          "family": "recovery",
+          "id": "sandbox-site:11d77b994f60a349a6155c06ed834c442241b36173b1fde180b20acfaef704d1",
+          "kind": "camp",
+          "position": [
+            571,
+            519
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "c77c79b2a6533b1810b3cbf78689564e6bade0bd2baabd0ffab6690be6b6a4bd",
+          "family": "investigation",
+          "id": "sandbox-site:3b98dda0421b684198718f123e48643944e8ed5cb68f7b4690a91138cf223543",
+          "kind": "clearing",
+          "position": [
+            399,
+            227
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "camp_access",
+          "board_sha": "0116daceef9e35384ed8aaf15b1602712f70847b5e614893fc5cdd84b2766205",
+          "family": "contested",
+          "id": "sandbox-site:b6bba9fc6f8e0d2aef396ac39f77793432d9e2a4fdf9dea4236b2f577a28b5ee",
+          "kind": "camp",
+          "position": [
+            646,
+            512
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-09"
+    },
+    {
+      "base_sha": "c3a8eb0389df5736270ca9daa67579fe0bc79a33501408761f3485ba743d7c07",
+      "biome": "Grassland",
+      "home_id": 77.0,
+      "home_name": "Bavodurelia",
+      "sites": [
+        {
+          "activity": "lost_supplies",
+          "board_sha": "0a8a5062ef1c7d0c14093c8a8de8b673924dd4872c372756058b8d21fccb8887",
+          "family": "recovery",
+          "id": "sandbox-site:d623b6ce9227e9baf15d803742e6444f00aa96e0c358d696fe0fa242618b775e",
+          "kind": "clearing",
+          "position": [
+            492,
+            695
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "unusual_traces",
+          "board_sha": "2cfc0644cbdece3b2b3e4742da02d66a60ab8a32f560a0411d1e20acdff4c56b",
+          "family": "investigation",
+          "id": "sandbox-site:a7d393fd41cb7a6122096bfffa087fcdd1218cc4e97b009e539613fbe1107bcd",
+          "kind": "clearing",
+          "position": [
+            408,
+            831
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "abandoned_shelter",
+          "board_sha": "229c84e86800719dbbb903738774b1a1393f667973a19b1e5e4265d552a1d8ca",
+          "family": "recovery",
+          "id": "sandbox-site:6abef4dc2cf3365ee6780936db69961897d80b11f87060adb673b6e13ed1f294",
+          "kind": "camp",
+          "position": [
+            542,
+            749
+          ],
+          "route_ref": -1
+        },
+        {
+          "activity": "salvage_dispute",
+          "board_sha": "1236b66bd0e60e85474ca0ff059c2bf1a9f8d99d3f5e99e6e023c560da74c1f5",
+          "family": "contested",
+          "id": "sandbox-site:ed4f0f810fad1bd420d8ef44c1d0dd740260c5e8b3fa6d35aec4122f1c39aaab",
+          "kind": "ruins",
+          "position": [
+            344,
+            578
+          ],
+          "route_ref": -1
+        }
+      ],
+      "world_seed": "game101-variety-09"
+    }
+  ],
+  "environments": {
+    "dry": 84,
+    "forest": 36,
+    "grass": 36,
+    "upland": 4
+  },
+  "failures": 0,
+  "families": {
+    "contested": 56,
+    "investigation": 51,
+    "recovery": 53
+  },
+  "home_signatures": {
+    "abandoned_shelter,camp_access,lost_supplies,old_work": 2,
+    "abandoned_shelter,camp_access,lost_supplies,unusual_traces": 2,
+    "abandoned_shelter,camp_access,old_work,salvage_dispute": 5,
+    "abandoned_shelter,camp_access,old_work,unusual_traces": 2,
+    "abandoned_shelter,camp_access,road_passage,unusual_traces": 1,
+    "abandoned_shelter,camp_access,salvage_dispute,unusual_traces": 2,
+    "abandoned_shelter,lost_supplies,old_work,road_passage": 2,
+    "abandoned_shelter,lost_supplies,old_work,salvage_dispute": 4,
+    "abandoned_shelter,lost_supplies,salvage_dispute,unusual_traces": 3,
+    "abandoned_shelter,old_work,road_passage,salvage_dispute": 2,
+    "abandoned_shelter,old_work,salvage_dispute,unusual_traces": 5,
+    "abandoned_shelter,road_passage,salvage_dispute,unusual_traces": 3,
+    "camp_access,lost_supplies,old_work,road_passage": 1,
+    "camp_access,lost_supplies,old_work,salvage_dispute": 1,
+    "camp_access,lost_supplies,old_work,unusual_traces": 1,
+    "camp_access,lost_supplies,road_passage,unusual_traces": 1,
+    "lost_supplies,old_work,road_passage,unusual_traces": 1,
+    "lost_supplies,old_work,salvage_dispute,unusual_traces": 2
+  },
+  "kinds": {
+    "camp": 51,
+    "clearing": 43,
+    "roadside": 11,
+    "ruins": 55
+  },
+  "sizes": {
+    "10x8": 13,
+    "12x8": 29,
+    "8x6": 14
+  },
+  "unsupported_source_placements": [],
+  "worlds": [
+    {
+      "replay_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161",
+      "seed": "game101-variety-00",
+      "sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "replay_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98",
+      "seed": "game101-variety-01",
+      "sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    },
+    {
+      "replay_sha": "e0d6405fdf1f34bb4a7bf3b68eebeada0a571731f2045ad6c135978dd0844e83",
+      "seed": "game101-variety-02",
+      "sha": "e0d6405fdf1f34bb4a7bf3b68eebeada0a571731f2045ad6c135978dd0844e83"
+    },
+    {
+      "replay_sha": "de3f9a0827348623556ff780aed987255d2d9c6d91b7a891375343452ffadc29",
+      "seed": "game101-variety-03",
+      "sha": "de3f9a0827348623556ff780aed987255d2d9c6d91b7a891375343452ffadc29"
+    },
+    {
+      "replay_sha": "dc31bff0a8a820c0a2530ed892a9fb31bea9354f0761cc9f398f57fb9e1a3757",
+      "seed": "game101-variety-04",
+      "sha": "dc31bff0a8a820c0a2530ed892a9fb31bea9354f0761cc9f398f57fb9e1a3757"
+    },
+    {
+      "replay_sha": "1758ee5144f6705e9e0b552641031ff959b544000c719537c6ee74b40131f452",
+      "seed": "game101-variety-05",
+      "sha": "1758ee5144f6705e9e0b552641031ff959b544000c719537c6ee74b40131f452"
+    },
+    {
+      "replay_sha": "b113a35351a243498c39953b67949dfab603fa714f726bc4fd42f3e456a0e968",
+      "seed": "game101-variety-06",
+      "sha": "b113a35351a243498c39953b67949dfab603fa714f726bc4fd42f3e456a0e968"
+    },
+    {
+      "replay_sha": "715f98402af869a90762c12b1834ca1c234611f0b5914bd935a817e10115bc6c",
+      "seed": "game101-variety-07",
+      "sha": "715f98402af869a90762c12b1834ca1c234611f0b5914bd935a817e10115bc6c"
+    },
+    {
+      "replay_sha": "a0de164b843bf71620426c80b764b2f8dac28db477b2087ace029a985d1a9ee5",
+      "seed": "game101-variety-08",
+      "sha": "a0de164b843bf71620426c80b764b2f8dac28db477b2087ace029a985d1a9ee5"
+    },
+    {
+      "replay_sha": "7edd27aa629beef381cd6528aa669b14f8b78037d34c47accd7722f0cf8c75cb",
+      "seed": "game101-variety-09",
+      "sha": "7edd27aa629beef381cd6528aa669b14f8b78037d34c47accd7722f0cf8c75cb"
+    }
+  ]
+}

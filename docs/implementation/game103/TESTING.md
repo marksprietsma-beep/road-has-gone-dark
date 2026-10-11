@@ -1,6 +1,6 @@
 # Human review
 
-Use the complete Windows package linked in DELIVERY.md. Extract the GitHub artifact ZIP, then extract its playable ZIP completely. Launch `road-has-gone-dark.exe` beside its artwork and worldgen-helper folders; no installed Godot or Node is needed. Escape skips the intro. Do not delete existing saves.
+Use the complete Windows package linked in DELIVERY.md. For Godot development, open `scenes/ui/main_menu.tscn` and run that scene (F6), then follow the real New Game flow; the creator requires an existing origin handoff. Extract the GitHub artifact ZIP, then extract its playable ZIP completely. Launch `road-has-gone-dark.exe` beside its artwork and worldgen-helper folders; no installed Godot or Node is needed. Escape skips the intro. Do not delete existing saves.
 
 1. New Game → generate/select world → origin region → hometown → confirm.
 2. On **Build your adventurers**, select the first adventurer. Identity permits name, current ancestry/heritage, separate narrative role, personal origin and compatible profession. A different personal origin does not move the party hometown.
