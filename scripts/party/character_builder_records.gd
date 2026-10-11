@@ -21,7 +21,16 @@ static func threshold(level: int) -> int:
  var rows: Array=WorldOriginLore.read_json(POLICY).xp_thresholds
  return int(rows[level-1]) if level>=1 and level<=rows.size() else RulesJson.LIMIT
 static func xp(state: Dictionary,id: String) -> int:
- return int(state.get("sandbox",{}).get("characters",{}).get(id,{}).get("xp",0))+int(state.get("first_adventure",{}).get("characters",{}).get(id,{}).get("xp",0))
+ var amount := 0
+ for progression_key in ["sandbox","first_adventure"]:
+  var progression: Variant=state.get(progression_key,{})
+  if not progression is Dictionary:return 0
+  var characters: Variant=progression.get("characters",{})
+  if not characters is Dictionary:return 0
+  var character: Variant=characters.get(id,{})
+  if not character is Dictionary or not RulesJson.integer(character.get("xp",0),0,RulesJson.LIMIT):return 0
+  amount+=int(character.get("xp",0))
+ return mini(amount,RulesJson.LIMIT)
 static func record(state: Dictionary,id: String) -> Dictionary:
  return state.get("mechanics",{}).get("records",{}).get(id,state.get("character_builder",{}).get("drafts",{}).get(id,{}))
 static func definition(record_value: Dictionary) -> Dictionary:

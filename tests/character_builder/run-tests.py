@@ -13,3 +13,7 @@ with (base/'ui.log').open('w',encoding='utf-8')as log:r=subprocess.run([engine,'
 text=(base/'ui.log').read_text(encoding='utf-8');proof=json.loads((base/'ui-results.json').read_text())
 assert r.returncode==0 and proof['failures']==0 and 'ERROR:'not in text,text[-6000:]
 print(proof,flush=True)
+with (base/'xp-shape.log').open('w',encoding='utf-8')as log:r=subprocess.run([engine,'--headless','--audio-driver','Dummy','--path',str(root),'--script','tests/character_builder/xp-shape.gd'],cwd=root,env=os.environ,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+text=(base/'xp-shape.log').read_text(encoding='utf-8');proof=json.loads((base/'xp-shape-results.json').read_text())
+assert r.returncode==0 and proof['failures']==0 and 'ERROR:'not in text,text[-6000:]
+print(proof,flush=True)

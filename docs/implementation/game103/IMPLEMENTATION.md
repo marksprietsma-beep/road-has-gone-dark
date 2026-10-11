@@ -4,7 +4,7 @@ New and unfinished campaigns enter the existing party-creation scene with three 
 
 ## Ownership and validation
 
-`CharacterBuilderService` extends the existing service and uses its world guard, campaign lock, transactional journal and `GamePlaythroughStore`. No second save writer exists. It rejects stale full-state hashes. Finalisation transfers all drafts into the existing pinned mechanics records atomically. Gameplay still consumes `RulesCharacter` derived snapshots; narrative role does not select a different class after finalisation.
+`CharacterBuilderService` extends the existing service and uses its world guard, campaign lock, transactional journal and `GamePlaythroughStore`. No second save writer exists. It rejects stale full-state hashes. Malformed XP namespaces, rosters and numeric values cannot throw script errors or fund advancement; campaign validation still rejects the damaged save. Finalisation transfers all drafts into the existing pinned mechanics records atomically. Gameplay still consumes `RulesCharacter` derived snapshots; narrative role does not select a different class after finalisation.
 
 Player parties have schema 2 / `player-party-1`, explicitly permitting independently source-backed personal hometowns and source-compatible professions. Schema 1 retains its original generated-party contract. New-party identity mirrors, background identity, world geography, tags, ancestry/heritage correspondence, companion IDs and confirmed records are validated on every load. Existing world fingerprints, art recipes, opportunity versions, helper pins and `trhgd-rules-v1` definitions are unchanged.
 
