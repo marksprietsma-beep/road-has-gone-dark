@@ -24,6 +24,7 @@ func run():
    var enemies: Array=battle.order.filter(func(id: String):return battle.units[id].team=="enemy")
    battle.units[enemies[0]].position=[1,0];battle.units[enemies[1]].position=[2,0]
    battle=engine.seal(battle)
+   check(engine.validate(JSON.parse_string(JSON.stringify(battle))).is_empty(),"initial battle checksum survives JSON; fresh enemy histories use String keys")
    var id: String=path+"-power-"+str(level)
    var target: String="a" if source.definition("abilities",id).targeting.kind=="ally" else enemies[0]
    var command := {"actor_id":"a","revision":battle.revision,"kind":id,"target_id":target}

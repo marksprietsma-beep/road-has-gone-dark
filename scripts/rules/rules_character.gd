@@ -328,8 +328,8 @@ func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
  var next_level: int=candidate.advancement_history.size()+1
  var step := {"level":next_level,"class_id":choice.get("class_id",""),"skill_allocations":choice.get("skill_allocations",{}).duplicate(true),"feat_id":choice.get("feat_id",""),"attribute_increase":choice.get("attribute_increase","")}
  if RulesCareer.enabled(registry):
-  step.specialisations=choice.get("specialisations",{}).duplicate(true)
-  step.bonus_feats=choice.get("bonus_feats",[]).duplicate()
+  step["specialisations"]=choice.get("specialisations",{}).duplicate(true)
+  step["bonus_feats"]=choice.get("bonus_feats",[]).duplicate()
  candidate.advancement_history.append(step)
  var replay := _replay(candidate)
  if not replay.ok: return replay

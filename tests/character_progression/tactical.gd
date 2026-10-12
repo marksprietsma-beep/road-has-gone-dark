@@ -40,6 +40,7 @@ func run():
     var target: String='a' if ability.targeting.kind=='self' or int(ability.targeting.get('radius',0))>0 else 'b' if ability.targeting.kind=='ally' else enemies[0]
     battle=engine.seal(battle)
     check(engine.validate(battle).is_empty(),'valid deterministic fixture')
+    check(engine.validate(JSON.parse_string(JSON.stringify(battle))).is_empty(),'initial generated enemies and selected history survive JSON checksum')
     var command := {'actor_id':'a','revision':battle.revision,'kind':id,'target_id':target}
     var result := engine.command(battle,command)
     check(result.ok,cls+' L'+str(level)+' genuine tactical '+id+': '+str(result.get('error','')))
