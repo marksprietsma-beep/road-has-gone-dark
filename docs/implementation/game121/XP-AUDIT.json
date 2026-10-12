@@ -1,0 +1,80 @@
+{
+  "method": "Static source/content audit and previously successful CI evidence; no new worlds, saves or gameplay test runs",
+  "game119_review_head": "05b093aed4d9c2b3967321d405f649182168f9b2",
+  "tested_gameplay_source": "0971a58a42abd1012d8798023ae50f5d62d39979",
+  "activity_template_counts": {
+    "recovery": 2,
+    "investigation": 2,
+    "contested": 3
+  },
+  "new_campaign_opportunities": 4,
+  "family_constraints": [
+    "recovery",
+    "investigation",
+    "contested",
+    "weighted wildcard"
+  ],
+  "combat_opportunities_min": 1,
+  "combat_opportunities_max": 2,
+  "xp_per_victory_per_character": 10,
+  "noncombat_xp": 0,
+  "fresh_v2_max_xp_per_character": 20,
+  "maximum_fresh_v2_earned_level": 2,
+  "frozen_v1_max_sandbox_xp_per_character": 40,
+  "optional_saved_old_road_max_additional_xp": 10,
+  "thresholds": [
+    {
+      "level": 2,
+      "total_xp": 10,
+      "successful_10_xp_objectives_from_zero": 1,
+      "additional_10_xp_objectives_from_best_v2": 0
+    },
+    {
+      "level": 3,
+      "total_xp": 40,
+      "successful_10_xp_objectives_from_zero": 4,
+      "additional_10_xp_objectives_from_best_v2": 2
+    },
+    {
+      "level": 6,
+      "total_xp": 250,
+      "successful_10_xp_objectives_from_zero": 25,
+      "additional_10_xp_objectives_from_best_v2": 23
+    },
+    {
+      "level": 12,
+      "total_xp": 1210,
+      "successful_10_xp_objectives_from_zero": 121,
+      "additional_10_xp_objectives_from_best_v2": 119
+    },
+    {
+      "level": 20,
+      "total_xp": 3610,
+      "successful_10_xp_objectives_from_zero": 361,
+      "additional_10_xp_objectives_from_best_v2": 359
+    }
+  ],
+  "source_file_sha256": {
+    "scripts/sandbox/opportunity_generator.gd": "0c16febc519970716a539e31d1be1cad5b238494af560ff16df22df4004f4a37",
+    "scripts/sandbox/opportunity_adventure.gd": "e7220efae11adbd5d50ed0ae7307d35a74a833fe0f1f5cebba2e427928453dd0",
+    "scripts/sandbox/opportunity_records.gd": "4785f8f13efd203f6f41cdac75aaacb41120f73eb1106cd40d09ab1ddad445cc",
+    "scripts/sandbox/sandbox_generator.gd": "ef8708a8375396072ea51476541e43045721c241189876824992991625fe9c5c",
+    "scripts/sandbox/sandbox_adventure.gd": "3495c5191767b4c229b708defebe6d994dddf62e5bac94191ae0cae99439c034",
+    "scripts/combat/adventure_service.gd": "ff90212c0f8204ba7e6da2b32f5c0f0949952ce420f607aca5933025c00646ed",
+    "scripts/combat/adventure_records.gd": "ef0ff9cdfdb8cbd95af1464e8639a78820391e34b8e890e5b1ad823d3d73147b",
+    "scripts/party/character_builder_records.gd": "4ee0c5fc3d77329a09d67c949fb7dcf028dadfa2774752d6d6a2458ad7c12b8f",
+    "scripts/game_world/game_playthrough_store.gd": "c7206f2b1966642e2b1392432f32c2327ba6d3f26f108aa376b7be4415699040",
+    "scripts/ui/expedition.gd": "07024f4e0ed4e2076f9b416ec0f0a41e572f78c9d30bf54622c6be21ed898787",
+    "data/sandbox/opportunities-v2.json": "3f3402ac8841916a5833dfeebffd3d9594ee1d4181836a2f65bb03c22dc1d898",
+    "data/sandbox/generation-v1.json": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+    "data/characters/builder-v1.json": "82ea3c637d689cfdb8336c1e10b20c0fbcce4c87d2386a629cfe359de95610b0",
+    "data/characters/builder-v2.json": "79051d78c060e01c4fb43cfdd55af69a5256d681f9e5475bcf6275912527be65",
+    "tests/opportunities/lifecycle.gd": "36cd4f3716bf76503cd7fa4c597e7a6eabe91c1a08cf59d805fb417f980d287e"
+  },
+  "limitations": [
+    "No measured human completion times",
+    "No new empirical cross-region campaign traversal; supported service/UI transitions were inspected",
+    "Cycle/reward extension is proposed, not implemented",
+    "Core class cap12 is separate from total character cap20; future progression breadth remains open"
+  ]
+}
