@@ -12,7 +12,17 @@ func run() -> void:
   FileAccess.open(base.path_join("advanced-restart-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"separate_process":true},"  "))
   print("GAME119 ADVANCED FRESH PROCESS ",checks," / ",failures);tree.quit(1 if failures else 0);return
  var service := AdventureService.new();service.store.save_root=base.path_join("review/saves");service.library.library_root=base.path_join("review/library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("review/cache")
- var resume := service.resumable();check(not resume.is_empty(),"reuse completed earned-victory checkpoint")
+ var resume := {}
+ var available: Array=service.library.discover()
+ var names := DirAccess.get_files_at(service.store.save_root)
+ names.sort_custom(func(a: String,b: String):return FileAccess.get_modified_time(service.store.save_root.path_join(a))>FileAccess.get_modified_time(service.store.save_root.path_join(b)))
+ for name in names:
+  if not name.ends_with(".json"):continue
+  var state: Dictionary=WorldOriginLore.read_json(service.store.save_root.path_join(name))
+  if state.get("party",{}).get("status")!="ready" or state.get("mechanics",{}).get("rules_ref",{}).get("pack_id")!=RulesRecords.NEW_PACK:continue
+  var matches: Array=available.filter(func(row: Dictionary):return row.id==state.world_ref.id)
+  if matches.size()==1 and service.recover(state.playthrough_id,matches[0].world).ok:resume={"entry":matches[0],"slot":state.playthrough_id};break
+ check(not resume.is_empty(),"reuse completed current-pin earned-victory checkpoint; never repin a draft or older campaign")
  PartyService.handoff={"entry":resume.entry,"slot":resume.slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
  tree.change_scene_to_file("res://scenes/gameplay/expedition.tscn");await wait_scene("res://scenes/gameplay/expedition.tscn")
  await advanced_review()
