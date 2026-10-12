@@ -175,6 +175,21 @@ func operate(entry: Dictionary, slot: String, operation: String, member: int = 1
  DirAccess.remove_absolute(lock)
  return result
 
+func generate_party_preview(entry: Dictionary,state: Dictionary) -> Dictionary:
+ ## Pure campaign candidate: the creator pins content in the same journalled commit.
+ var peoples := WorldPeoples.new()
+ if not peoples.load_world(entry.world):
+  if FileAccess.file_exists(WorldPeoples.directory(entry.world).path_join("descriptor.json")):return fail(peoples.error)
+  var ensured := _helper(entry,{"operation":"ensure"})
+  if not ensured.ok:return ensured
+  if not peoples.load_world(entry.world):return fail(peoples.error)
+ var generated := _helper(entry,{"operation":"generate","campaign":state})
+ if not generated.ok:return generated
+ var candidate := state.duplicate(true);candidate.party=generated.party;candidate.onboarding_stage="party_creation"
+ for i in 3:
+  for key in ["name","people_id","role_id","background_id"]:candidate.characters[i][key]=candidate.party.members[i][key]
+ return {"ok":true,"candidate":candidate}
+
 func _operate_locked(entry: Dictionary, slot: String, operation: String, member: int, changes: Dictionary) -> Dictionary:
  var world: GameWorldTemplate = entry.world
  var loaded := recover(slot, world)

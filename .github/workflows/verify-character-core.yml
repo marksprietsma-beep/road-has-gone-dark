@@ -52,6 +52,11 @@ jobs:
         env:
           GAME103_TEST_ROOT: ${{ runner.temp }}/game103-lifecycle
         run: python tests/character_builder/run-tests.py
+      - name: Atomic fresh creator and interruption-safe default pin
+        env:
+          GAME103_TEST_ROOT: ${{ runner.temp }}/game103-lifecycle
+          GAME118_TEST_ROOT: ${{ runner.temp }}/game118-core
+        run: python tests/character_core/run-tests.py --atomic
       - name: Existing First Adventure combat and save regression
         run: python tests/adventure/run-tests.py --godot "${{ env.GODOT_BIN }}" --work-dir "${{ runner.temp }}/game101-adventure"
       - name: Existing GAME-83 responsive presentation

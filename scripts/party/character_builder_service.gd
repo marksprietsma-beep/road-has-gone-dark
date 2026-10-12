@@ -10,9 +10,9 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   if state.get("party",{}).get("status")=="ready" or state.has("character_builder"):return loaded
   var fresh := not state.has("party")
   if not state.has("party"):
-   loaded=super._operate_locked(entry,slot,"generate",1,{})
-   if not loaded.ok:return loaded
-   state=loaded.state
+   var generated := generate_party_preview(entry,state)
+   if not generated.ok:return generated
+   state=generated.candidate
   var candidate := state.duplicate(true)
   var shadow := state.duplicate(true)
   shadow.party.status="ready";shadow.onboarding_stage="party_ready"

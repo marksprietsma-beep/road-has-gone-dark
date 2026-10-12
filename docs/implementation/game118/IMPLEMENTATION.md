@@ -34,7 +34,7 @@ Seven ancestry families are Human, Dwarf, Elf, Halfling, Gnome, Half-elf and Hal
 
 ## Compatibility and boundaries
 
-`trhgd-character-v4` / engine3 is separately pinned. Published v1/v2/v3 data remain byte-identical. New core records include typed prepared-copy choices; new player-party schema3 permits canonical ancestry IDs while the pinned helper still supplies original public world facts. Existing creator namespaces and ready parties never auto-upgrade. Pre-existing generated unfinished parties keep legacy content. Only a genuinely fresh party defaults to v4.
+`trhgd-character-v4` / engine3 is separately pinned. Published v1/v2/v3 data remain byte-identical. New core records include typed prepared-copy choices; new player-party schema3 permits canonical ancestry IDs while the pinned helper still supplies original public world facts. Existing creator namespaces and ready parties never auto-upgrade. Pre-existing generated unfinished parties keep legacy content. Only a genuinely fresh party defaults to v4. Fresh party generation and its current rules pin are committed together; interruption cannot leave a new party looking like an old unpinned draft.
 
 Core XP policy is separately pinned in builder-v2: cumulative `10 × (level−1)²`, making the first actual 10-XP victory fund level two. Older builder-v1 thresholds remain unchanged. No test XP grant is exposed in production. Advancement/preparation reuse CharacterBuilderService, its lock/journal and the one existing campaign store. Preparation preserves shared remaining slots. Existing home return is the rest boundary.
 
