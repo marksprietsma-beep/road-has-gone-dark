@@ -1,0 +1,10 @@
+extends "res://tests/character_progression/review.gd"
+func review_content(index: int) -> void:
+ await super.review_content(index)
+ for cls in ["fighter","wizard","cleric","sorcerer","ranger"]:
+  ui.editor.set_class(cls);ui.detail_tabs.current_tab=1
+  ui.editor.sections.current_tab=ui.editor.sections.get_tab_count()-1
+  await frames();await shot("game119-creator-"+cls+"-specialisation")
+  check(ui.editor.preview.ok,"current creator class choices produce legal build "+cls)
+ print("GAME119 CURRENT CREATOR RENDER ",checks," / ",failures)
+ tree.quit(1 if failures else 0)

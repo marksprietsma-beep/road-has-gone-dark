@@ -1,0 +1,5 @@
+extends SceneTree
+func _initialize():
+ create_timer(180).timeout.connect(func():push_error("creator capture watchdog");quit(1))
+ call_deferred("start")
+func start():root.add_child(load("/workspace/artifacts/game119/creator-capture-node.gd").new())
