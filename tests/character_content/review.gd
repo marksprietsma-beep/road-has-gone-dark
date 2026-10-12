@@ -48,9 +48,13 @@ func restart() -> void:
   var library := GameWorldLibrary.new();library.library_root=journey_data.library_root
   var matching: Array=library.discover().filter(func(e: Dictionary):return e.world.source_sha256==journey_data.world_sha)
   var result := store.load_save(journey_data.slot,matching[0].world)
-  check(result.ok and result.state.mechanics.rules_ref==RulesJson.normalize(journey_data.rules_ref),"fresh process retains chosen content pin")
+  check(result.ok and RulesJson.normalize(result.state.mechanics.rules_ref)==RulesJson.normalize(journey_data.rules_ref),"fresh process retains chosen content pin")
   for id in result.state.party_ids:
    check(RulesCharacter.new(RulesRecords.registry(result.state)).derive_character(result.state.mechanics.records[id]).snapshot.snapshot_hash==journey_data.snapshots[id],"fresh process reconstructs exact new-pack snapshot")
  var proof_file := base.path_join("restart-proof.json")
  var result: Dictionary=WorldOriginLore.read_json(proof_file);result.checks=checks;result.failures=failures
  FileAccess.open(proof_file,FileAccess.WRITE).store_string(JSON.stringify(result,"  ")+"\n")
+
+func finish() -> void:
+ print("GAME104 REVIEW FAILED ",checks," / ",failures)
+ tree.quit(1)
