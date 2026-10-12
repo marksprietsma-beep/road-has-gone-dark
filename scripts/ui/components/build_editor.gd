@@ -11,6 +11,9 @@ var attribute_pickers := {}
 var skill_pickers := {}
 var equipment_pickers := {}
 var preparation_pickers := {}
+var class_filter: LineEdit
+var feat_filter: LineEdit
+var class_detail: Label
 var class_picker: OptionButton
 var feat_picker: OptionButton
 var increase_picker: OptionButton
@@ -38,6 +41,7 @@ func select_id(control: OptionButton,id: String) -> void:
  for i in control.item_count:
   if str(control.get_item_metadata(i))==id:control.select(i);return
 func setup(record_value: Dictionary,is_advance := false) -> void:
+ source=RulesRecords.registry(record_value);kernel=CharacterBuilderRecords.kernel(record_value)
  base=record_value.duplicate(true);advance=is_advance
  ancestry_ref=base.ancestry_ref;background_ref=base.background_ref;attributes=base.base_attributes.duplicate(true)
  for child in get_children():remove_child(child);child.queue_free()
@@ -55,7 +59,16 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
     for other in attributes:
      if other!=key and int(attributes[other])==score:attributes[other]=old;select_id(attribute_pickers[other],str(old));break
     attributes[key]=score;refresh_preview())
+ class_filter=LineEdit.new();class_filter.placeholder_text="Search classes · selected choice stays visible";add_child(class_filter)
  class_picker=picker(self,"Class",source.ids("classes").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
+ class_detail=GameUI.label("",GameUI.META);add_child(class_detail)
+ class_filter.text_changed.connect(func(_query: String):
+  if updating:return
+  class_picker.clear()
+  for id in source.ids("classes"):
+   var row := source.definition("classes",id)
+   if id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)
+  select_id(class_picker,class_id);refresh_preview())
  class_picker.item_selected.connect(func(_index: int):
   if updating:return
   class_id=id_of(class_picker);allocation={};feat_id="";refresh_preview())
@@ -75,6 +88,8 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
    if updating:return
    allocation[id]=int(value);refresh_preview())
  add_child(GameUI.action("Suggested skill allocation",suggest_allocation))
+ feat_filter=LineEdit.new();feat_filter.placeholder_text="Search feats · selected choice stays visible";add_child(feat_filter)
+ feat_filter.text_changed.connect(func(_query: String):if not updating:refresh_preview())
  feat_picker=picker(self,"Feat",[])
  feat_picker.item_selected.connect(func(_index: int):
   if updating:return
@@ -121,6 +136,10 @@ func refresh_preview() -> void:
    var id: String=str(class_picker.get_item_metadata(i));var why := CharacterBuilderRecords.reason(available.classes[id])
    class_picker.set_item_disabled(i,not why.is_empty());class_picker.get_popup().set_item_tooltip(i,why)
    if not why.is_empty():messages.append(source.definition("classes",id).name+": "+why)
+ var cls := source.definition("classes",class_id)
+ class_detail.text="%s · HP +%d/level · %d skill points + INT · cap %d
+BAB %s · Saves %s
+Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.get("skill_points",0)),int(cls.get("max_level",0)),progression_text(cls.get("bab",{}))," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.get("saves",{}).get(save,{})))),", ".join(cls.get("features",[]).map(func(t: Dictionary):return "L%d %s"%[int(t.at),feature_text(t.id)]))]
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
   budget.text="%d points remaining / %d this level. Ranks cannot exceed total level."%[options.skill_points_remaining,options.skill_points]
@@ -133,14 +152,15 @@ func refresh_preview() -> void:
   else:
    feat_picker.disabled=false
    for id in options.feat_choices:
+    if id!=feat_id and not feat_filter.text.to_lower() in str(source.definition("feats",id).name).to_lower():continue
     var why := CharacterBuilderRecords.reason(options.feat_choices[id]);var index: int=feat_picker.item_count
     feat_picker.add_item(str(source.definition("feats",id).name)+( " · locked" if not why.is_empty() else ""));feat_picker.set_item_metadata(index,id)
-    feat_picker.set_item_disabled(index,not why.is_empty());feat_picker.get_popup().set_item_tooltip(index,why)
+    feat_picker.set_item_disabled(index,not why.is_empty());feat_picker.get_popup().set_item_tooltip(index,why+"\n"+", ".join(source.definition("feats",id).features.map(func(feature_id: String):return feature_text(feature_id))))
     if not why.is_empty():messages.append(source.definition("feats",id).name+": "+why)
    select_id(feat_picker,feat_id)
    if feat_id.is_empty():feat_picker.select(-1)
  else:budget.text=CharacterBuilderRecords.reason(options)
- preview=kernel.preview_advancement(base,choice()) if advance else CharacterBuilderRecords.create(base.character_id,definition())
+ preview=kernel.preview_advancement(base,choice()) if advance else CharacterBuilderRecords.create(base.character_id,definition(),base)
  if preview.ok and not advance:
   for id in preparation_pickers:
    var granted: bool=preview.snapshot.abilities.has(id)
@@ -156,3 +176,20 @@ func suggest_allocation() -> void:
   allocation=suggested.choice.skill_allocations
   if advance:attribute_increase=suggested.choice.attribute_increase;select_id(increase_picker,attribute_increase)
  refresh_preview()
+
+func feature_text(id: String) -> String:
+ var row := source.definition("features",id)
+ var text: String=str(row.get("name",id))
+ for m in row.get("modifiers",[]):text+=" · "+str(m.stat)+" "+formula_text(m.value)+" ("+str(m.type)+")"
+ for ability in row.get("abilities",[]):text+=" · "+str(source.definition("abilities",ability).name)
+ return text
+
+func formula_text(node: Dictionary) -> String:
+ if node.get("op")=="const":return "%+d"%int(node.value)
+ return RulesJson.canonical(node)
+func progression_text(node: Dictionary) -> String:
+ var values: Array[String]=[]
+ for level in [1,5,10,15,20]:
+  var result := RulesExpressions.evaluate_formula(node,{"classes":{class_id:level}})
+  values.append("%d:%+d"%[level,int(result.get("value",0))])
+ return " ".join(values)+" (level:value)"

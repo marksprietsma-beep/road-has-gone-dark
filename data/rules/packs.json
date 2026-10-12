@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "packs": [
+    {
+      "path": "res://data/rules/trhgd-rules-v1.json",
+      "rules_ref": {
+        "pack_id": "trhgd-rules-v1",
+        "schema_version": 1,
+        "rules_version": "1.0.0",
+        "engine_schema": 1,
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098"
+      }
+    },
+    {
+      "path": "res://data/rules/trhgd-character-v2.json",
+      "rules_ref": {
+        "pack_id": "trhgd-character-v2",
+        "schema_version": 1,
+        "rules_version": "2.0.0",
+        "engine_schema": 1,
+        "content_hash": "84765fe4605034fd7b993fee3f61dab992934f56e9e7a9c2c31435088ff57763"
+      }
+    }
+  ]
+}

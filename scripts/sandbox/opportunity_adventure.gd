@@ -65,7 +65,7 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
   s.active={}
   for id in candidate.party_ids:
    var record: Dictionary=candidate.mechanics.records[id]
-   var snapshot: Dictionary=RulesCharacter.new(RulesRecords.registry()).derive_character(record).snapshot
+   var snapshot: Dictionary=RulesCharacter.new(RulesRecords.registry(candidate)).derive_character(record).snapshot
    record.runtime.hp=int(snapshot.stats.HP);record.runtime.statuses=[]
    for resource in snapshot.resource_capacities:record.runtime.resources[resource]=snapshot.resource_capacities[resource]
    record.revision+=1
@@ -92,13 +92,13 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
    apply(service,candidate,site,choice)
   elif operation=="sandbox_fight":
    if a.phase!="site" or OpportunityGenerator.template(site.activity_id).family!="contested" or a.supplies<1 or s.results.has(selected) or s.encounters.has(selected):return service.fail("No unresolved hostile encounter is available.")
-   var battle := TacticalCombat.new().create_generated(candidate,selected,site.board)
+   var battle := TacticalCombat.new(candidate).create_generated(candidate,selected,site.board)
    if battle.is_empty():return service.fail("Generated combat failed validation; campaign preserved.")
    s.encounters[selected]=battle;a.phase="combat"
    service._event(candidate,"begin","The contested encounter is saved. Combat now owns its actions and RNG.",0)
   elif operation=="sandbox_command":
    if a.phase!="combat" or not s.encounters.has(selected) or s.results.has(selected):return service.fail("No unresolved saved battle.")
-   var engine := TacticalCombat.new();var b: Dictionary=s.encounters[selected]
+   var engine := TacticalCombat.new(candidate);var b: Dictionary=s.encounters[selected]
    var command: Variant=changes.get("command",{})
    if not command is Dictionary:return service.fail("Invalid combat command.")
    if engine.current(b).team=="enemy" and RulesJson.digest(command)!=RulesJson.digest(engine.enemy_command(b)):return service.fail("Enemy orders remain deterministic.")

@@ -6,6 +6,10 @@ var registry := RulesRecords.registry()
 var characters := RulesCharacter.new(registry)
 var effects := RulesEffects.new(registry)
 
+func _init(context: Dictionary = {}) -> void:configure(context)
+func configure(context: Dictionary) -> void:
+ registry=RulesRecords.registry(context);characters=RulesCharacter.new(registry);effects=RulesEffects.new(registry)
+
 func create(state: Dictionary, site_id: String, layout_id: String=CombatBattlefields.LEGACY) -> Dictionary:
  var definition := CombatBattlefields.definition(layout_id)
  if not CombatBattlefields.valid_definition(definition):return {}
@@ -16,6 +20,8 @@ func create_generated(state: Dictionary,site_id: String,definition: Dictionary) 
  return create_definition(state,site_id,definition,RulesJson.digest(definition))
 
 func create_definition(state: Dictionary,site_id: String,definition: Dictionary,pin: String) -> Dictionary:
+ configure(state)
+ if not registry.ready():return {}
  var battle := {"version":1,"encounter_sha":pin,"site_id":site_id,"board":definition.duplicate(true),"units":{},"order":[],"cursor":0,"round":1,"revision":0,"status":"active","reason":"","budget":{"move":1,"main":1},"rng":RulesRng.initial(RulesJson.digest([state.world_ref,state.origin,site_id,definition.id])),"log":[],"commands":[]}
  for i in state.party_ids.size():
   var id: String = state.party_ids[i]
@@ -108,6 +114,8 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
 
 func command(source: Dictionary,input: Dictionary) -> Dictionary:
  source=RulesJson.normalize(source)
+ if source.get("units") is Dictionary and not source.units.is_empty():configure(source.units.values()[0].get("record",{}))
+ if not registry.ready():return fail("Rules pack unavailable")
  # Dot-added GDScript keys can be StringName; JSON saves contain Strings.
  input=RulesJson.normalize(JSON.parse_string(JSON.stringify(input)))
  if source.status!="active" or input.get("revision")!=source.revision: return fail("This turn changed. Resume the saved battle.")
@@ -239,6 +247,10 @@ func seal(b: Dictionary) -> Dictionary:
  b.erase("state_hash");b["state_hash"]=RulesJson.digest(b);return b
 func validate(b: Dictionary) -> String:
  b=RulesJson.normalize(b)
+ if b.get("units") is Dictionary and not b.units.is_empty():
+  var first: Variant=b.units.values()[0]
+  if first is Dictionary and first.get("record") is Dictionary:configure(first.record)
+ if not registry.ready():return "Rules pack unavailable"
  if not b.has_all(["version","encounter_sha","site_id","board","units","order","cursor","round","revision","status","reason","budget","rng","log","commands","state_hash"]): return "Incomplete battle"
  var generated: bool=b.board is Dictionary and b.board.has("generation")
  if b.version!=1 or (not generated and CombatBattlefields.identify(b).is_empty()) or (generated and (not SandboxGenerator.valid_board(b.board) or b.encounter_sha!=RulesJson.digest(b.board) or b.board.generation.site_id!=b.site_id)): return "Battlefield pin mismatch"

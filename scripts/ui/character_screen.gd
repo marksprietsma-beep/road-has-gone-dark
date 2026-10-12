@@ -13,6 +13,7 @@ var thread: Thread
 var message := ""
 var ready_view := false
 var expedition_cache_root := "user://expedition-content"
+var content_button: Button
 var title: Label
 var origin: Label
 var roster: PartyRoster
@@ -71,6 +72,9 @@ func _ready() -> void:
  for side in ["top","bottom"]:margin.add_theme_constant_override("margin_"+side,8)
  var column := VBoxContainer.new();margin.add_child(column);column.add_theme_constant_override("separation",4)
  title=label("Character builder",GameUI.TITLE);column.add_child(title)
+ content_button=GameUI.action("Use expanded martial content · new party only",func():
+  if thread==null and not state.is_empty():_start("builder_content",{"before_hash":RulesJson.digest(state),"pack_id":RulesRecords.NEW_PACK}))
+ column.add_child(content_button)
  origin=label("",GameUI.META);origin.autowrap_mode=TextServer.AUTOWRAP_OFF;origin.clip_text=true;origin.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(origin)
  pane=HBoxContainer.new();pane.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(pane)
  var left := VBoxContainer.new();left.custom_minimum_size.x=164;pane.add_child(left)
@@ -129,6 +133,7 @@ func _start(operation: String,changes: Dictionary={}) -> void:
  thread=Thread.new();thread.start(service.operate.bind(entry,slot,operation,selected,changes));_busy()
 func _busy() -> void:
  var busy := thread!=null
+ content_button.disabled=busy or ready_view or not state.get("character_builder",{}).get("confirmed",[]).is_empty()
  save_button.text="Retry preparation" if state.is_empty() else "Save adventurer"
  save_button.disabled=busy or ready_view or entry.is_empty() or not state.is_empty() and not editor.preview.get("ok",false)
  finish_button.disabled=busy or state.is_empty() or not ready_view and state.get("character_builder",{}).get("confirmed",[]).size()!=3
@@ -162,6 +167,8 @@ func _process(_delta: float) -> void:
 func refresh() -> void:
  updating=true
  ready_view=not state.is_empty() and state.party.status=="ready"
+ content_button.visible=not ready_view and not sheet_mode and not state.is_empty() and state.get("character_builder",{}).get("rules_ref",{}).get("pack_id","")!=RulesRecords.NEW_PACK
+ content_button.disabled=thread!=null or not state.get("character_builder",{}).get("confirmed",[]).is_empty()
  title.text="Character sheet" if sheet_mode else ("Party ready" if ready_view else "Build your adventurers")
  save_button.visible=not ready_view and not sheet_mode;finish_button.visible=not sheet_mode
  revert_button.visible=not ready_view and not sheet_mode
@@ -171,7 +178,7 @@ func refresh() -> void:
  if state.is_empty():updating=false;_busy();return
  var members: Array=state.party.members
  var visuals := state.duplicate(true)
- if not visuals.has("mechanics") and state.has("character_builder"):visuals.mechanics={"records":state.character_builder.drafts}
+ if not visuals.has("mechanics") and state.has("character_builder"):visuals.mechanics={"schema_version":1,"rules_ref":state.character_builder.rules_ref,"revision":1,"source_party_sha":RulesJson.digest(state.party),"records":state.character_builder.drafts}
  var units := CombatArt.party_units(visuals)
  for m in members:
   var r := CharacterBuilderRecords.record(state,m.character_id)
@@ -179,7 +186,7 @@ func refresh() -> void:
   if not recipe.is_empty():preview_recipes[m.character_id]=recipe.recipe_hash
   var roles: Dictionary={}
   for step in r.get("advancement_history",[]):roles[step.class_id]=int(roles.get(step.class_id,0))+1
-  var text := " / ".join(roles.keys().map(func(id: String):return str(RulesRecords.registry().definition("classes",id).name)))
+  var text := " / ".join(roles.keys().map(func(id: String):return str(RulesRecords.registry(state).definition("classes",id).name)))
   roster.add_item(m.name+"\n"+text,CombatArt.thumbnail(recipe))
   roster.set_item_tooltip(int(m.slot)-1,text+" · "+str(m.people_id)+" · "+str(m.role_id)+" narrative role")
  roster.select(selected-1)
@@ -210,7 +217,7 @@ func refresh() -> void:
   var battle := AdventureService.active_battle(state)
   if battle.get("status")=="active" and battle.units.has(m.character_id):r=battle.units[m.character_id].record
   statistics.text=sheet(r,m)
-  var derived := CharacterBuilderRecords.kernel().derive_character(r) if not r.is_empty() else {}
+  var derived := CharacterBuilderRecords.kernel(state).derive_character(r) if not r.is_empty() else {}
   live_summary.text="HP %d / %d · Defence %d\nMelee %+d · Ranged %+d"%[derived.snapshot.current_hp,derived.snapshot.stats.HP,derived.snapshot.stats.defence,derived.snapshot.stats.melee_attack,derived.snapshot.stats.ranged_attack] if derived.get("ok",false) else ""
   if not r.is_empty():advance_editor.setup(CharacterBuilderRecords.record(state,m.character_id),true)
   _advance_changed()
@@ -221,9 +228,11 @@ func _identity() -> Dictionary:
  return {"name":name_edit.text.strip_edges(),"people_id":selected_id(people_picker),"role_id":selected_id(role_picker),"origin_burg":int(selected_id(origin_picker)),"occupation_id":selected_id(background_picker)}
 func _heritages() -> void:
  heritage_picker.clear()
- for id in CharacterBuilderRecords.ancestry(selected_id(people_picker)):
-  var row := RulesRecords.registry().definition("ancestries",id)
-  heritage_picker.add_item(str(row.get("name","Standard lineage · "+row.people_id)));heritage_picker.set_item_metadata(heritage_picker.item_count-1,id)
+ for id in CharacterBuilderRecords.ancestry(selected_id(people_picker),state):
+  var row := RulesRecords.registry(state).definition("ancestries",id)
+  var caption: String="Standard lineage · "+str(row.people_id) if id.begins_with("heritage-") else id.trim_prefix("lineage-").replace("-"," ").capitalize()
+  heritage_picker.add_item(caption);heritage_picker.set_item_metadata(heritage_picker.item_count-1,id)
+  heritage_picker.get_popup().set_item_tooltip(heritage_picker.item_count-1,", ".join(row.get("modifiers",[]).map(func(modifier: Dictionary):return str(modifier.stat)+" %+d (%s)"%[int(modifier.value.value),modifier.type])))
 func _backgrounds() -> void:
  if entry.is_empty():return
  background_picker.clear()
@@ -245,11 +254,11 @@ func _preview_changed() -> void:
  if save_button!=null:_busy()
 func recommend(role_id: String) -> void:
  if ready_view or state.is_empty():return
- var rec := RulesRecords.registry().recommendation(role_id)
- var record_value := CharacterBuilderRecords.kernel().create(state.party_ids[selected-1],rec.attributes,selected_id(heritage_picker))
+ var rec := RulesRecords.registry(state).recommendation(role_id)
+ var record_value := CharacterBuilderRecords.kernel(state).create(state.party_ids[selected-1],rec.attributes,selected_id(heritage_picker))
  record_value.equipment=rec.equipment.duplicate()
- var choice := CharacterBuilderRecords.kernel().suggested_choice(record_value,rec["class"],rec.feat)
- var applied := CharacterBuilderRecords.kernel().preview_advancement(record_value,choice.choice)
+ var choice := CharacterBuilderRecords.kernel(state).suggested_choice(record_value,rec["class"],rec.feat)
+ var applied := CharacterBuilderRecords.kernel(state).preview_advancement(record_value,choice.choice)
  if applied.ok:editor.setup(applied.candidate);_preview_changed()
 func dirty() -> bool:
  return not ready_view and not state.is_empty() and saved_form!=RulesJson.digest({"identity":_identity(),"build":editor.definition()})
@@ -290,7 +299,7 @@ static func stat_line(snapshot: Dictionary) -> String:
  return "HP %d/%d · Defence %d · Melee %+d · Ranged %+d\nFort %+d · Reflex %+d · Will %+d · Initiative %+d\nMovement %d · Reach %d"%[snapshot.current_hp,s.HP,s.defence,s.melee_attack,s.ranged_attack,s.fortitude,s.reflex,s.will,s.initiative,s.stride,s.reach]
 func sheet(r: Dictionary,m: Dictionary) -> String:
  if r.is_empty():return "Your saved identity is preserved. Enter the hometown to prepare its existing GAME-32 mechanics."
- var result := CharacterBuilderRecords.kernel().derive_character(r)
+ var result := CharacterBuilderRecords.kernel(state).derive_character(r)
  if not result.ok:return CharacterBuilderRecords.reason(result)
  var s: Dictionary=result.snapshot
  var lines: Array=[m.name+" · Level "+str(s.level),stat_line(s),"\nAttributes"]
@@ -299,13 +308,13 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   lines.append("%s %d (%+d)"%[id,s.attributes[id],modifier.value])
  lines.append("\nSkills · rank / total")
  for id in s.skills:
-  var skill: Dictionary=s.skills[id];lines.append("%s: %d / %+d%s"%[RulesRecords.registry().definition("skills",id).name,skill.ranks,skill.total," · requires training" if not skill.usable else ""])
- lines.append("\nFeats: "+", ".join(s.feats.map(func(id: String):return str(RulesRecords.registry().definition("feats",id).name))))
- lines.append("Equipment: "+", ".join(s.equipment.map(func(id: String):return str(RulesRecords.registry().definition("equipment",id).name))))
- lines.append("\nClass features: "+", ".join(s.features.map(func(id: String):return str(RulesRecords.registry().definition("features",id).get("name",id)))))
+  var skill: Dictionary=s.skills[id];lines.append("%s: %d / %+d%s"%[RulesRecords.registry(state).definition("skills",id).name,skill.ranks,skill.total," · requires training" if not skill.usable else ""])
+ lines.append("\nFeats: "+", ".join(s.feats.map(func(id: String):return str(RulesRecords.registry(state).definition("feats",id).name))))
+ lines.append("Equipment: "+", ".join(s.equipment.map(func(id: String):return str(RulesRecords.registry(state).definition("equipment",id).name))))
+ lines.append("\nClass features: "+", ".join(s.features.map(func(id: String):return str(RulesRecords.registry(state).definition("features",id).get("name",id)))))
  lines.append("\nKnown abilities · current tactical availability")
  for id in s.abilities:
-  var ability := RulesRecords.registry().definition("abilities",id)
+  var ability := RulesRecords.registry(state).definition("abilities",id)
   var costs: Array=[]
   for key in ["main","move","reaction"]:
    if int(ability.cost.get(key,0))>0:costs.append(str(ability.cost[key])+" "+key+" action")
@@ -316,7 +325,7 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  lines.append("\nResources")
  for id in s.resource_capacities:lines.append("%s: %d / %d"%[id,s.current_resources.get(id,0),s.resource_capacities[id]])
  lines.append("\nOrdered class history")
- for step in r.advancement_history:lines.append("Level %d: %s%s"%[step.level,RulesRecords.registry().definition("classes",step.class_id).name," · "+step.feat_id if not step.feat_id.is_empty() else ""])
+ for step in r.advancement_history:lines.append("Level %d: %s%s"%[step.level,RulesRecords.registry(state).definition("classes",step.class_id).name," · "+step.feat_id if not step.feat_id.is_empty() else ""])
  lines.append("Journey XP: %d · Next level requires %d total"%[CharacterBuilderRecords.xp(state,m.character_id),CharacterBuilderRecords.threshold(int(s.level)+1)])
  lines.append("\nBackground: "+str(m.generated_facts.occupation_id)+" · Narrative role: "+str(m.role_id)+"\n"+str(m.biography))
  return "\n".join(lines)

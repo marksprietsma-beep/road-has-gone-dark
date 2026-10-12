@@ -32,7 +32,7 @@ func load_data(input: Dictionary) -> Dictionary:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if candidate.get("pack_id")!="trhgd-rules-v1" or candidate.get("schema_version")!=1 or candidate.get("engine_schema")!=1 or candidate.get("rules_version")!="1.0.0": found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version")] not in [["trhgd-rules-v1","1.0.0"],["trhgd-character-v2","2.0.0"]] or candidate.get("schema_version")!=1 or candidate.get("engine_schema")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
