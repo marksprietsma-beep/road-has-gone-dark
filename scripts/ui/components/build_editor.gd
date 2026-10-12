@@ -37,6 +37,7 @@ var bonus_feats: Array=[]
 var career_section: VBoxContainer
 var career_pickers := {}
 var bonus_picker: OptionButton
+var bonus_column: VBoxContainer
 
 func picker(parent: Control,title: String,rows: Array) -> OptionButton:
  var row := HBoxContainer.new();parent.add_child(row)
@@ -104,6 +105,7 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   if updating:return
   feat_id=id_of(feat_picker);refresh_preview())
  feat_detail=GameUI.label("",GameUI.META);feat_section.add_child(feat_detail)
+ if RulesCareer.enabled(source):bonus_column=VBoxContainer.new();feat_section.add_child(bonus_column)
  if not advance:
   var gear_section := form_section("Equipment")
   gear_section.add_child(GameUI.label("Starting equipment",GameUI.SECTION))
@@ -255,6 +257,9 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
   class_detail.text=str(cls.description)+"\nHit die d%d · %s BAB · %s casting\nProficiencies: %s\nClass skills (+3 when trained): %s\nPlayable levels 1–%d; higher-level content remains in the programme."%[int(cls.hit_die),"full" if cls.bab.op=="class_level" else "partial",str(cls.spell_mode)+" "+str(cls.casting_attribute) if not cls.spell_mode.is_empty() else "no",", ".join(cls.proficiencies),", ".join(cls.class_skills),int(cls.max_level)]
   class_detail.tooltip_text="\n".join(cls.features.map(func(t: Dictionary):return "Level %d: %s"%[int(t.at),feature_text(t.id)]))
  progression_detail.text="%s · HP +%d/level + CON · %d skill points + INT\nBAB: %s\nSaves: %s\n%s"%[cls.name,int(cls.hp_per_level),int(cls.skill_points),progression_text(cls.bab)," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.saves[save]))),"\n".join(cls.features.map(func(tier: Dictionary):return "Level %d: %s"%[int(tier.at),feature_text(tier.id)]))]
+ if RulesCareer.enabled(source):
+  class_detail.text+="\nEntry: "+RulesCareer.requirement_text(cls.requirements,source)
+  if cls.get("class_kind")=="prestige" and not cls.career_choices.is_empty():class_detail.text=class_detail.text.replace("no casting","advances chosen casting tracks")
  if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
@@ -323,6 +328,8 @@ func progression_text(node: Dictionary) -> String:
 func career_controls() -> void:
  if career_section==null:return
  for child in career_section.get_children():career_section.remove_child(child);child.queue_free()
+ if bonus_column!=null:
+  for child in bonus_column.get_children():bonus_column.remove_child(child);child.queue_free()
  career_pickers={};bonus_picker=null
  var classes: Dictionary=kernel.derive_character(base).get("snapshot",{}).get("class_levels",{}) if advance else {}
  var class_level := int(classes.get(class_id,0))+1
@@ -352,7 +359,7 @@ func career_controls() -> void:
  if career_pickers.is_empty():career_section.add_child(GameUI.label("No new specialisation at this class level. Existing choices remain on the character sheet.",GameUI.META))
  bonus_feats=[]
  if RulesCareer.feat_count(source,level,class_id,class_level)>1:
-  career_section.add_child(GameUI.label("Two feat grants coincide: choose both separately.",GameUI.SECTION))
-  bonus_picker=picker(career_section,"Additional feat",source.ids("feats").map(func(id: String):return {"id":id,"name":source.definition("feats",id).name}))
+  bonus_column.add_child(GameUI.label("Two feat grants coincide: choose both separately.",GameUI.SECTION))
+  bonus_picker=picker(bonus_column,"Additional feat",source.ids("feats").map(func(id: String):return {"id":id,"name":source.definition("feats",id).name}))
   select_id(bonus_picker,"steady-study");bonus_feats=[id_of(bonus_picker)]
   bonus_picker.item_selected.connect(func(_i: int):bonus_feats=[id_of(bonus_picker)];if not updating:refresh_preview())

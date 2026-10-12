@@ -51,8 +51,32 @@ func run():
  archer=kernel.preview_advancement(archer,choice.choice).candidate
  var snap: Dictionary=kernel.derive_character(archer).snapshot
  var engine := TacticalCombat.new()
- check(engine.quarry_matches(snap,{"team":"enemy","weapon":"bow"}),"archer quarry targets actual hostile bow equipment")
- check(not engine.quarry_matches(snap,{"team":"enemy","weapon":"shortblade"}),"archer quarry excludes blade bandit")
- check(not engine.quarry_matches(snap,{"team":"party","weapon":"bow"}),"quarry never targets allies")
+ check(RulesCareer.quarry_matches(snap,{"team":"enemy","weapon":"bow"},source),"archer quarry targets actual hostile bow equipment")
+ check(not RulesCareer.quarry_matches(snap,{"team":"enemy","weapon":"shortblade"},source),"archer quarry excludes blade bandit")
+ check(not RulesCareer.quarry_matches(snap,{"team":"party","weapon":"bow"},source),"quarry never targets allies")
+ # Compare actual attacks under the same RNG, not just matching descriptors.
+ archer.equipment=["bow","leathers"]
+ var raider := archer.duplicate(true);raider.advancement_history[0].specialisations["ranger-quarry-choice"]="raiders"
+ var base_state := {"world_ref":{"id":"quarry-test"},"origin":{"home_burg_id":1},"party_ids":["quarry","b","c"],"party":{"members":[{"name":"Tracker"},{"name":"B"},{"name":"C"}]},"mechanics":{"rules_ref":source.rules_ref(),"records":{"quarry":archer}}}
+ for id in ["b","c"]:
+  var ally := kernel.create(id,source.recommendation("vanguard").attributes,"heritage-human")
+  ally.equipment=["shortblade"];base_state.mechanics.records[id]=kernel.preview_advancement(ally,kernel.suggested_choice(ally,"fighter").choice).candidate
+ for seed in 30:
+  var outcomes: Array=[]
+  for selected in [archer,raider]:
+   var state := base_state.duplicate(true);state.mechanics.records.quarry=selected
+   var combat := TacticalCombat.new(state);var battle := combat.create(state,"quarry-site")
+   battle.cursor=battle.order.find("quarry");battle.units.quarry.position=[0,0];battle.units.b.position=[0,1];battle.units.c.position=[0,2]
+   battle.units["bandit-blade"].position=[2,0];battle.units["bandit-bow"].position=[4,0]
+   battle.rng=RulesRng.initial("quarry-proof:"+str(seed));battle=combat.seal(battle)
+   var result := combat.command(battle,{"actor_id":"quarry","revision":battle.revision,"kind":"attack","target_id":"bandit-blade"})
+   check(result.ok,"actual chosen quarry attack: "+str(result.get("error","")))
+   if not result.ok:quit(1);return
+   outcomes.append(result.battle)
+  if outcomes.all(func(b: Dictionary):return b.log.any(func(line: String):return "hits" in line)):
+   check(outcomes[0].units["bandit-blade"].record.runtime.hp==outcomes[1].units["bandit-blade"].record.runtime.hp+2,"selected raider quarry adds actual two damage; archer quarry does not affect blade bandit")
+   check(outcomes[0].rng==outcomes[1].rng,"quarry evaluation consumes no additional RNG")
+   break
+  if seed==29:check(false,"deterministic hit comparison found")
  print("GAME119 PRESTIGE COMBAT ",checks," / ",failures)
  quit(1 if failures else 0)

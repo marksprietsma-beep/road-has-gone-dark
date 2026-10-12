@@ -5,6 +5,7 @@ var failures := 0
 var source: RulesRegistry
 var kernel: RulesCharacter
 var advanced := {}
+var entry_builds := {}
 func check(ok: bool,why: String) -> void:
  checks+=1
  if not ok:failures+=1;push_error(why)
@@ -52,6 +53,7 @@ func run():
   var qualify := kernel.available_advancement(r)
   check(qualify.classes[path].ok,"attainable ordered prerequisite path "+path)
   var prior: Dictionary=kernel.derive_character(r).snapshot
+  entry_builds[path]=r.duplicate(true)
   var normal_level: int= r.advancement_history.size()
   for n in 5:r=step(r,path)
   var derived := kernel.derive_character(r)
@@ -88,7 +90,10 @@ func run():
  chosen=kernel.suggested_choice(virgin,"wizard");chosen.choice.specialisations["wizard-choice-1"]="abjuration"
  next=kernel.preview_advancement(virgin,chosen.choice)
  check(next.ok and next.snapshot.abilities.has("wizard-abjuration-1") and not next.snapshot.abilities.has("wizard-evocation-1"),"exclusive school is functional")
+ check(entry_builds.size()==4,"all four pre-entry histories retained for visible prerequisite evidence")
  var output := OS.get_environment("GAME119_TEST_ROOT")
- if not output.is_empty():FileAccess.open(output.path_join("advanced-fixtures.json"),FileAccess.WRITE).store_string(JSON.stringify(advanced,"  "))
+ if not output.is_empty():
+  FileAccess.open(output.path_join("advanced-fixtures.json"),FileAccess.WRITE).store_string(JSON.stringify(advanced,"  "))
+  FileAccess.open(output.path_join("entry-fixtures.json"),FileAccess.WRITE).store_string(JSON.stringify(entry_builds,"  "))
  print("GAME119 PRESTIGE ",checks," / ",failures)
  quit(1 if failures else 0)

@@ -239,10 +239,10 @@ func refresh() -> void:
   var rows: Array=profiles.projection.hometowns.values();rows.sort_custom(func(a: Dictionary,b: Dictionary):return str(a.name)<str(b.name))
   for row in rows:
    origin_picker.add_item(str(row.name)+" · "+str(world.get_record("state",int(row.state_id)).name));origin_picker.set_item_metadata(origin_picker.item_count-1,str(int(row.burg_id)))
- pick(origin_picker,str(int(m.origin_refs.burg_id)));_backgrounds();pick(background_picker,str(m.generated_facts.occupation_id));_heritages()
+ pick(origin_picker,str(int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))));_backgrounds();pick(background_picker,str(m.generated_facts.occupation_id));_heritages()
  if not r.is_empty():pick(heritage_picker,r.ancestry_ref)
  description.text=RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)).get("description",str(pack.peoples[people_picker.selected].description) if people_picker.selected>=0 and people_picker.selected<pack.peoples.size() else "")
- biography.text=m.biography+"\n\nMotivation: "+AdventureRecords.foundation_label("motivation",m.generated_facts.background.motivation)+"\nPersonal origin: "+str(world.get_record("burg",int(m.origin_refs.burg_id)).name)+"\nCulture is source-world context, separate from ancestry."
+ biography.text=m.biography+"\n\nMotivation: "+AdventureRecords.foundation_label("motivation",m.generated_facts.background.motivation)+"\nPersonal origin: "+str(world.get_record("burg",int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))).name)+"\nCulture is source-world context, separate from ancestry."
  name_edit.editable=not ready_view
  for control in [people_picker,heritage_picker,role_picker,origin_picker,background_picker,reroll_button]:control.disabled=ready_view
  detail_tabs.set_tab_disabled(1,ready_view or sheet_mode)
@@ -411,9 +411,12 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   for option in s.specialisations:lines.append(str(option.name)+": "+str(option.description))
   lines.append("Effective casting levels: "+str(s.casting_levels))
  lines.append("\nOrdered class history")
+ var class_counts := {};var rules := RulesRecords.registry(state)
  for step in r.advancement_history:
-  lines.append("Level %d: %s%s"%[step.level,RulesRecords.registry(state).definition("classes",step.class_id).name," · "+step.feat_id if not step.feat_id.is_empty() else ""])
-  if step.has("specialisations"):lines.append("  Choices: "+str(step.specialisations)+" · additional feats: "+str(step.bonus_feats))
+  class_counts[step.class_id]=int(class_counts.get(step.class_id,0))+1
+  lines.append("Level %d: %s %d%s"%[step.level,rules.definition("classes",step.class_id).name,int(class_counts[step.class_id])," · "+str(rules.definition("feats",step.feat_id).name) if not step.feat_id.is_empty() else ""])
+  if step.has("specialisations"):
+   for label in RulesCareer.history_choices(step,rules,int(class_counts[step.class_id])):lines.append("  "+label)
  lines.append("Journey XP: %d · Next level requires %d total"%[CharacterBuilderRecords.xp(state,m.character_id),CharacterBuilderRecords.threshold(int(s.level)+1,state)])
  lines.append("\nBackground: "+str(m.generated_facts.occupation_id)+" · Narrative role: "+str(m.role_id)+"\n"+str(m.biography))
  return "\n".join(lines)

@@ -56,3 +56,28 @@ static func validate_definition(row: Dictionary,tables: Dictionary,errors: Array
    if option.has("advance_casting"):
     RulesRegistry._reference(tables,"classes",option.advance_casting,group.id,errors)
     if option.get("progression_class")!=row.id or tables.classes.get(option.advance_casting,{}).get("spell_mode","").is_empty():errors.append(RulesJson.issue("career.casting",group.id,"Casting must advance an actual caster from this prestige track"))
+
+static func quarry_matches(snapshot: Dictionary,target: Dictionary,source: RulesRegistry) -> bool:
+ return enabled(source) and snapshot.tags.has("quarry_archer") and target.team=="enemy" and source.definition("equipment",target.weapon).tags.has("ranged")
+
+static func requirement_text(node: Dictionary,source: RulesRegistry) -> String:
+ var op: String=node.op
+ if op in ["all","any"]:
+  var words: Array=node.args.map(func(child: Dictionary):return requirement_text(child,source))
+  return ("; " if op=="all" else " or ").join(words) if not words.is_empty() else "No entry restrictions"
+ if op=="not":return "Excludes "+requirement_text(node.arg,source)
+ var category: String={"class_level":"classes","skill":"skills","feat":"feats","feature":"features","resource":"resources"}.get(op,"")
+ var label: String=str(source.definition(category,str(node.get("id",""))).get("name",str(node.get("id",op)).replace("_"," ").replace("-"," ").capitalize())) if not category.is_empty() else str(node.get("id",op)).replace("_"," ").capitalize()
+ if op=="bab":label="BAB"
+ if op=="level":label="Total level"
+ if op=="class_level":label+=" class level"
+ if op=="casting":label+=" casting level"
+ if op=="skill":label+=" ranks"
+ return label+(" ≥ "+str(int(node.min)) if node.has("min") else "")
+static func history_choices(step: Dictionary,source: RulesRegistry,class_level: int) -> Array[String]:
+ var names: Array[String]=[]
+ for group in groups(source,step.class_id,class_level):
+  for option in group.options:
+   if step.get("specialisations",{}).get(group.id)==option.id:names.append(group.name+": "+option.name)
+ for id in step.get("bonus_feats",[]):names.append("Bonus feat: "+str(source.definition("feats",id).name))
+ return names
