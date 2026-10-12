@@ -1,6 +1,6 @@
 # Character content validation checkpoint
 
-Production source: `a5138f871532d5573ce323cd06b5dabe661c7bbd`. Current new content is `trhgd-character-v3`, rules3.0.0, engine2. All v1 and prototype v2 files/pins remain byte-identical. No automatic migration occurs.
+Final production source: `0184fcfa2149e39472424e55fd55d0f277a54e3b`. Current new content is `trhgd-character-v3`, rules3.0.0, engine2. All v1 and prototype v2 files/pins remain byte-identical. No automatic migration occurs.
 
 ## Completed local checks
 
@@ -32,7 +32,11 @@ The failed prototype diagnostics are not final acceptance evidence. The original
 
 ## Native verification
 
-[Windows/Linux workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38193531641) passed both platforms: 887 exported journey checks and 54 independent restart checks each, with empty PATH and bundled helper. Its archive was independently verified, but is superseded by the subsequent small-screen footer correction. Final refreshed proof, archive checksum and delivery link will be added only after successful execution and independent archive verification.
+[Final Windows/Linux native workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38197788374) passed both platform jobs at production source `0184fcfa2149e39472424e55fd55d0f277a54e3b`, including the small-screen footer correction. Each exported runtime passed **887 journey checks and 54 independent restart checks**, with empty PATH and no external helper override. New-pack creation, all three new martial paths, real combat/results/return, exact content pins and 18 saved snapshots were verified. Original builder, frozen rules/combat, ten generated worlds/forty contexts and existing-save compatibility also passed in the workflow.
+
+The Windows playable archive was independently downloaded and checked: SHA matches the workflow checksum and distribution proof, ZIP integrity passes, all 7,059 files are present, the production executable and bundled Node/helper are included, and diagnostics are removed. Final links/checksum/launch instructions: DELIVERY. Earlier successful archive `555e9130...` is superseded; do not deliver it.
+
+Original mouse/keyboard/render regression now passes **111/0**, including both previously failing unconfirmed-party 640x360 footer assertions. The selector moved into the existing Identity scroll tab; no assertion was weakened. All relevant broader workflows passed at this source, including GAME-32, GAME-83, party/expedition, world library, origin context/profiles, world enrichment and save/onboarding foundations. [Party/expedition Windows/Linux](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38197790629), [GAME-83](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38197790660), [GAME-32](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38197790638).
 
 ## Coverage status
 
