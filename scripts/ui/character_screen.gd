@@ -16,6 +16,8 @@ var expedition_cache_root := "user://expedition-content"
 var content_button: Button
 var class_choice: OptionButton
 var class_introduction: Label
+var identity_validation: Label
+var review_build_button: Button
 var optional_role: Button
 var title: Label
 var origin: Label
@@ -100,6 +102,11 @@ func _ready() -> void:
  heritage_picker.item_selected.connect(func(_i: int):if not updating:_identity_changed())
  commonness=label("Inherited traits appear on your mechanical sheet. Culture and background are separate choices.",GameUI.META);identity.add_child(commonness)
  description=label("",GameUI.META);identity.add_child(description)
+ identity_validation=label("",GameUI.META);identity_validation.add_theme_color_override("font_color",GameUI.ERROR);identity.add_child(identity_validation)
+ review_build_button=GameUI.action("Review incomplete build",func():
+  detail_tabs.current_tab=1
+  if editor.sections!=null:editor.sections.current_tab=1 if "skill" in CharacterBuilderRecords.reason(editor.preview).to_lower() else 0)
+ identity.add_child(review_build_button)
  optional_role=GameUI.action("Optional build guidance",func():role_picker.visible=not role_picker.visible)
  identity.add_child(optional_role)
  role_picker=option(identity,"Narrative role · recommendations only",pack.roles)
@@ -296,6 +303,9 @@ func _preview_changed() -> void:
   var s: Dictionary=editor.preview.snapshot.stats
   live_summary.text="Preview HP %d · Defence %d\nMelee %+d · Ranged %+d"%[s.HP,s.defence,s.melee_attack,s.ranged_attack]
  else:live_summary.text="Incomplete build · review choices"
+ if identity_validation!=null:
+  identity_validation.text="" if editor.preview.get("ok",false) else CharacterBuilderRecords.reason(editor.preview)
+  review_build_button.visible=not editor.preview.get("ok",false)
  if save_button!=null:_busy()
 func recommend(role_id: String) -> void:
  if ready_view or state.is_empty():return

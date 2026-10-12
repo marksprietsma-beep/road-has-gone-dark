@@ -1,0 +1,9 @@
+# GAME-118 input/render regression repair
+
+Failing run: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38229065245, Linux GAME83/GAME81 at f7c6200. Windows non-render checks passed; this did not cover the failing actual-input path.
+
+The nine failures share one root cause. The old capture script changes ancestry, then assumes that identity-only Save remains legal. In the new mechanical creator, changing Half-orc to another ancestry removes an INT penalty: this fixture needs four skill points instead of its existing three. Save is correctly disabled; the test still clicks it and accepts the previous success message as a completed save. The subsequent Enter save rejects the underallocated build; navigation cannot discard that unsaved invalid build, and the party cannot become ready. These are cascading test interactions, not nine independent campaign corruption defects.
+
+No validation, skill budget or legacy assertion is removed. Race & class now displays the exact incomplete-build reason and a Review incomplete build action leading to the Skills page. The capture uses the real Suggested skill allocation button, then saves. Clicks ensure their controls are scrolled into view and assert that actions are enabled. The same full input/render path runs separately against a fresh latest-content campaign and an original generated campaign retaining its legacy pin; it checks the exact pin at creation and ready transition. Name, stable ID, sibling isolation, background, keyboard/mouse roster, ready state, persistence and hometown resume assertions remain.
+
+Local actual Godot/Mesa renders after the repair: fresh 139 checks / 0 failures; pinned legacy 140 checks / 0 failures. Windows/Linux CI and refreshed distribution evidence are recorded in DELIVERY.md after the final content batch. Higher-level content is a separate immutable pack; published v1–v4 remain byte-identical.
