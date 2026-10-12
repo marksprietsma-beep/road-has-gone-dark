@@ -1,0 +1,26 @@
+[
+  {
+    "check": "import",
+    "seconds": 4.355,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "combat",
+    "seconds": 1.523,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "campaign-create",
+    "seconds": 20.752,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "check": "campaign-reload",
+    "seconds": 48.589,
+    "exit_code": 0,
+    "errors": false
+  }
+]

@@ -21,4 +21,11 @@ for row in coverage['entries']:
  if row['playable']:assert row.get('evidence') and row['intended_implementation']['production_id']
  if row['intended_implementation']['kind']=='exception':assert row.get('exception_reason')
 assert len(ids)==720
+occurrences=coverage['source_entry_counts'];assert occurrences['ancestry']==403 and occurrences['adventurer_base_classes']==66 and occurrences['prestige']==283
+variants=[v for r in coverage['entries']for v in r['source_variants']]
+assert len(variants)==760 and len({v['key']for v in variants})==760
+for variant in variants:
+ assert variant['status']in ['researched','designed','implemented','mechanically_validated','playable']
+ assert variant['playable']==(variant['status']=='playable')
+ if variant['playable']:assert variant.get('production_id') and variant.get('evidence')
 print(json.dumps({'installed_packs':len(seen),'accounted_research_entries':len(ids),'playable_catalogue_entries':sum(r['playable']for r in coverage['entries'])}))

@@ -189,7 +189,10 @@ func formula_text(node: Dictionary) -> String:
  return RulesJson.canonical(node)
 func progression_text(node: Dictionary) -> String:
  var values: Array[String]=[]
- for level in [1,5,10,15,20]:
+ var cap: int=int(source.definition("classes",class_id).get("max_level",20))
+ var levels: Array=[1,5,10,15,20].filter(func(level: int):return level<=cap)
+ if not levels.has(cap):levels.append(cap);levels.sort()
+ for level in levels:
   var result := RulesExpressions.evaluate_formula(node,{"classes":{class_id:level}})
   values.append("%d:%+d"%[level,int(result.get("value",0))])
  return " ".join(values)+" (level:value)"

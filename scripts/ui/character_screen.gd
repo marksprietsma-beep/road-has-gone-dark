@@ -74,7 +74,6 @@ func _ready() -> void:
  title=label("Character builder",GameUI.TITLE);column.add_child(title)
  content_button=GameUI.action("Use expanded martial content · new party only",func():
   if thread==null and not state.is_empty():_start("builder_content",{"before_hash":RulesJson.digest(state),"pack_id":RulesRecords.NEW_PACK}))
- column.add_child(content_button)
  origin=label("",GameUI.META);origin.autowrap_mode=TextServer.AUTOWRAP_OFF;origin.clip_text=true;origin.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(origin)
  pane=HBoxContainer.new();pane.size_flags_vertical=Control.SIZE_EXPAND_FILL;column.add_child(pane)
  var left := VBoxContainer.new();left.custom_minimum_size.x=164;pane.add_child(left)
@@ -83,6 +82,7 @@ func _ready() -> void:
  live_summary=label("",GameUI.META);left.add_child(live_summary)
  detail_tabs=TabContainer.new();detail_tabs.size_flags_horizontal=Control.SIZE_EXPAND_FILL;detail_tabs.add_theme_font_size_override("font_size",12);pane.add_child(detail_tabs)
  var identity := scroll_tab("Identity")
+ identity.add_child(content_button)
  name_edit=LineEdit.new();name_edit.max_length=48;name_edit.placeholder_text="Character name";identity.add_child(name_edit);name_edit.text_changed.connect(func(_value: String):if not updating:_identity_changed())
  name_edit.text_submitted.connect(func(_value: String):_save_changes())
  people_picker=option(identity,"Ancestry · current prototype options",pack.peoples)

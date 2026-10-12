@@ -22,6 +22,6 @@ Next coherent delivery should implement typed inherited attribute/size/vision/re
 
 For each remaining catalogue row, write a distinct original design and point `intended_implementation.production_id` at released content only after implementation. Retain researched/designed/implemented/mechanically_validated/playable statuses separately. Playable requires real creation, advancement, combat and persistence evidence. Original martial proof classes in this checkpoint do not erase the missing defining mechanics of Monk, Ranger, Barbarian or the other researched paths.
 
-Recreate the matrix from the pinned research branch input with `python tools/character-content/coverage.py <catalogue.md> --check`. Source SHA in the JSON prevents drifting to a different transcription. Index headline discrepancies need a separate source reconciliation, not fabricated entries or a quiet scope reduction.
+Recreate the matrix from the pinned research branch input with `python tools/character-content/coverage.py <catalogue.md> --check`. Source SHA in the JSON prevents drifting to a different transcription. The headline source counts reconcile to all 752 indexed entries, plus eight NPC families. Independent source-variant records retain every occurrence; same-name source versions must be reviewed before sharing mechanics. No fabricated entries or scope reduction are necessary.
 
 Regression and native build commands are in TESTING. Reuse the existing kernel, campaign owner, pinned helper and CI exports. No second rules engine or save writer.

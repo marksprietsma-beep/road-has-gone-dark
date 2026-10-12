@@ -3,7 +3,7 @@
 Godot 4.6.3: open `scenes/ui/main_menu.tscn` and press F6. For the packaged game, launch the executable after extracting the entire distribution.
 
 1. New Game → world → origin → hometown → Build your adventurers.
-2. Before saving any adventurer, choose **Use expanded martial content · new party only**. This explicitly repins the unconfirmed suggestions; identities and source-world facts remain stable. The button disappears after selection. It is disabled once anyone has been saved.
+2. Before saving any adventurer, open **Identity** and choose **Use expanded martial content · new party only**. This explicitly repins the unconfirmed suggestions; identities and source-world facts remain stable. The button disappears after selection. It is disabled once anyone has been saved.
 3. Select each adventurer. Identity offers the current prototype people and optional inherited traits; hover heritage choices for actual modifiers. Culture and personal origin remain separate.
 4. Build: search classes, choose Blade Dancer, Iron Bulwark or Road Stalker, review HP/skills and level:value BAB/save progression. Select a legal feat and spend the exact skill budget. Choosing a new class may invalidate a previous class-dependent feat; the builder explains this and prevents saving. Suggested skills are optional. Select legal equipment/preparations, inspect Sheet, then Save adventurer. Repeat for all three; Party ready → Enter hometown.
 5. Explore existing opportunities, travel, fight and return. Passive features use the existing Attack/Guard/movement authority. Characters opens the permanent sheet. Actual earned XP and home presence gate advancement; choose another martial path to test multiclassing. No test-only level or XP grant is exposed.
