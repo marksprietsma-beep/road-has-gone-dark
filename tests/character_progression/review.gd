@@ -46,12 +46,16 @@ func advanced_review() -> void:
   var loaded := store.load_save(state.playthrough_id,entry.world)
   check(loaded.ok and RulesJson.digest(loaded.state)==RulesJson.digest(state),"advanced save reload exactly "+path)
   check(state.sandbox==original.sandbox and state.party==original.party,"fixture keeps actual identities/consequences/earned XP "+path)
-  PartyService.handoff={"entry":entry,"slot":state.playthrough_id,"save_root":root_path,"library_root":library_root,"cache_root":cache_root}
+  CharacterScreen.handoff={"entry":entry,"slot":state.playthrough_id,"save_root":root_path,"library_root":library_root,"cache_root":cache_root}
   tree.change_scene_to_file("res://scenes/ui/character_sheet.tscn");await wait_scene("res://scenes/ui/character_sheet.tscn")
   ui.detail_tabs.current_tab=2;await frames()
   ui.title.text="DEVELOPMENT FIXTURE · "+path.capitalize()+" · actual earned XP unchanged"
   await shot("game119-"+path+"-advanced-sheet")
-  ui.detail_tabs.current_tab=3;await frames();await shot("game119-"+path+"-prestige-requirements")
+  var sheet_scroll: ScrollContainer=ui.detail_tabs.get_child(2)
+  sheet_scroll.scroll_vertical=int(sheet_scroll.get_v_scroll_bar().max_value);await frames();await shot("game119-"+path+"-multiclass-history")
+  ui.detail_tabs.current_tab=3;await frames()
+  ui.advance_editor.set_class(path);await frames();await shot("game119-"+path+"-prestige-requirements")
+  ui.advance_editor.sections.current_tab=0;await frames();await shot("game119-"+path+"-feat-choices")
   check(ui.advancement_button.disabled,"fixture never grants free production advancement XP")
   if path=="mystic-theurge":
    ui.detail_tabs.current_tab=ui.detail_tabs.get_tab_count()-1;await frames();await shot("game119-hybrid-spell-choices")
