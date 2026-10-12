@@ -70,7 +70,7 @@ func _replay(record: Dictionary) -> Dictionary:
  for i in record.advancement_history.size():
   var step: Variant=record.advancement_history[i]
   var path := "advancement_history."+str(i)
-  if not step is Dictionary or step.size()!=5 or step.get("level")!=i+1 or not step.get("class_id") is String or not step.get("skill_allocations") is Dictionary or not step.get("feat_id") is String or not step.get("attribute_increase") is String:
+  if not step is Dictionary or step.size()!=(7 if RulesCareer.enabled(registry) else 5) or step.get("level")!=i+1 or not step.get("class_id") is String or not step.get("skill_allocations") is Dictionary or not step.get("feat_id") is String or not step.get("attribute_increase") is String:
    return RulesJson.result([RulesJson.issue("advancement.schema",path,"Invalid ordered advancement step")])
   var cls := registry.definition("classes",step.class_id)
   if cls.is_empty(): return RulesJson.result([RulesJson.issue("advancement.class",path,"Unknown class")])
@@ -83,6 +83,10 @@ func _replay(record: Dictionary) -> Dictionary:
    if not step.attribute_increase in RulesExpressions.ATTRIBUTES or int(attributes[step.attribute_increase])>=22: return RulesJson.result([RulesJson.issue("advancement.attribute",path,"A legal scheduled attribute increase is required")])
    attributes[step.attribute_increase]+=1
   elif not step.attribute_increase.is_empty(): return RulesJson.result([RulesJson.issue("advancement.attribute_schedule",path,"No attribute increase at this level")])
+  if RulesCareer.enabled(registry):
+   var options_errors := RulesCareer.validate_choices(registry,step.class_id,int(classes.get(step.class_id,0))+1,step.get("specialisations"),context)
+   if not options_errors.is_empty():return RulesJson.result(options_errors)
+   if not step.get("bonus_feats") is Array:return RulesJson.result([RulesJson.issue("career.feats",path,"Explicit additional feat selections required")])
   classes[step.class_id]=int(classes.get(step.class_id,0))+1
   var points := maxi(1,int(cls.skill_points)+int(floor(float(int(attributes.INT)-10)/2.0)))
   var allocated := 0
@@ -103,6 +107,16 @@ func _replay(record: Dictionary) -> Dictionary:
     return requirement
    feats.append(step.feat_id)
   elif not step.feat_id.is_empty(): return RulesJson.result([RulesJson.issue("advancement.feat_schedule",path,"No feat choice at this level")])
+  if RulesCareer.enabled(registry):
+   var remaining := RulesCareer.feat_count(registry,i+1,step.class_id,int(classes[step.class_id]))-int(feat_at(i+1,step.class_id,int(classes[step.class_id])))
+   if step.bonus_feats.size()!=remaining:return RulesJson.result([RulesJson.issue("career.feat_count",path,"Every simultaneous feat grant requires its own choice")])
+   for id in step.bonus_feats:
+    var feat := registry.definition("feats",str(id))
+    if feat.is_empty() or feats.has(id) and not feat.repeatable:return RulesJson.result([RulesJson.issue("career.feat",path,"Choose a legal, unclaimed additional feat")])
+    context=_context(attributes,classes,ranks,feats,record,false)
+    var valid := RulesExpressions.evaluate_requirements(feat.requirements,context)
+    if not valid.ok:return valid
+    feats.append(id)
   context=_context(attributes,classes,ranks,feats,record,false)
   if not context.errors.is_empty(): return RulesJson.result(context.errors)
  context=_context(attributes,classes,ranks,feats,record,true)
@@ -140,6 +154,7 @@ func _feature(context: Dictionary,id: String,source: String) -> void:
 func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats: Array,record: Dictionary,include_runtime: bool) -> Dictionary:
  var context := {"attributes":attributes.duplicate(true),"classes":classes.duplicate(true),"skills":ranks.duplicate(true),"feats":feats.duplicate(),"features":[],"feature_sources":[],"tags":[],"ancestry_tags":[],"senses":["sight","hearing"],"abilities":registry.rule("base_abilities").duplicate(),"resources":[],"casting":{},"capacities":{},"level":0,"stats":{},"errors":[]}
  for id in classes: context.level+=int(classes[id])
+ if RulesCareer.enabled(registry):context.casting_levels=RulesCareer.casting_levels(record,classes,registry)
  for pair in [["ancestries",record.ancestry_ref],["backgrounds",record.background_ref]]:
   var source := registry.definition(pair[0],pair[1])
   for tag in source.get("tags",[]):
@@ -155,6 +170,16 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   if not cls.casting_tradition.is_empty(): context.casting[cls.casting_tradition]=int(context.casting.get(cls.casting_tradition,0))+_value(cls.casting,context)
   for tier in cls.features:
    if int(classes[id])>=int(tier.at): _feature(context,tier.id,id+":"+str(tier.at)+":"+tier.id)
+ if RulesCareer.enabled(registry):
+  for option in RulesCareer.selections(record,classes,registry):
+   for id in option.features:_feature(context,id,"choice:"+str(option.id)+":"+id)
+  for id in context.casting_levels:
+   var cls := registry.definition("classes",id)
+   if cls.get("spell_mode","").is_empty():continue
+   var extra := int(context.casting_levels[id])-int(classes.get(id,0))
+   context.casting[cls.casting_tradition]=int(context.casting.get(cls.casting_tradition,0))+extra
+   for tier in cls.features:
+    if int(tier.at)>int(classes.get(id,0)) and int(tier.at)<=int(context.casting_levels[id]) and registry.definition("features",tier.id).tags.has("casting_tier"):_feature(context,tier.id,"hybrid:"+id+":"+tier.id)
  for i in feats.size():
   for id in registry.definition("feats",feats[i]).get("features",[]): _feature(context,id,"feat:"+str(i)+":"+id)
  if include_runtime:
@@ -286,6 +311,9 @@ func derive_character(record: Dictionary) -> Dictionary:
   snapshot.ancestry=registry.definition("ancestries",record.ancestry_ref).duplicate(true)
   snapshot.base_attributes=record.base_attributes.duplicate(true)
   snapshot.proficiencies=RulesCoreContent.proficiencies(c.classes,registry)
+  if RulesCareer.enabled(registry):
+   snapshot.specialisations=RulesCareer.selections(record,c.classes,registry).duplicate(true)
+   snapshot.casting_levels=c.casting_levels.duplicate()
   snapshot=RulesJson.string_keys(snapshot)
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
@@ -294,9 +322,14 @@ func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
  var old := validate_build(record)
  if not old.ok: return old
  var candidate: Dictionary=record.duplicate(true)
- if choice.size()!=4 or not choice.get("skill_allocations") is Dictionary or not choice.get("class_id") is String or not choice.get("feat_id") is String or not choice.get("attribute_increase") is String: return RulesJson.result([RulesJson.issue("advancement.choice","choice","Exactly four typed choice fields required")])
+ if choice.size()!=(6 if RulesCareer.enabled(registry) else 4) or not choice.get("skill_allocations") is Dictionary or not choice.get("class_id") is String or not choice.get("feat_id") is String or not choice.get("attribute_increase") is String: return RulesJson.result([RulesJson.issue("advancement.choice","choice","Exactly four typed choice fields required")])
+ if RulesCareer.enabled(registry) and (not choice.get("specialisations") is Dictionary or not choice.get("bonus_feats") is Array or not choice.bonus_feats.all(func(id: Variant):return id is String)):
+  return RulesJson.result([RulesJson.issue("career.choice","choice","Typed specialisations and additional feat IDs required")])
  var next_level: int=candidate.advancement_history.size()+1
  var step := {"level":next_level,"class_id":choice.get("class_id",""),"skill_allocations":choice.get("skill_allocations",{}).duplicate(true),"feat_id":choice.get("feat_id",""),"attribute_increase":choice.get("attribute_increase","")}
+ if RulesCareer.enabled(registry):
+  step.specialisations=choice.get("specialisations",{}).duplicate(true)
+  step.bonus_feats=choice.get("bonus_feats",[]).duplicate()
  candidate.advancement_history.append(step)
  var replay := _replay(candidate)
  if not replay.ok: return replay
@@ -357,7 +390,14 @@ func suggested_choice(record: Dictionary,class_id: String,preferred_feat: String
   if amount>0: allocation[skill]=amount;points-=amount
  if points!=0: return RulesJson.result([RulesJson.issue("advancement.skill_capacity","skills","Insufficient skill capacity")])
  var feat := preferred_feat if feat_at(next,class_id,int(c.classes.get(class_id,0))+1) else ""
- return {"ok":true,"choice":{"class_id":class_id,"skill_allocations":allocation,"feat_id":feat,"attribute_increase":attribute}}
+ var choice := {"class_id":class_id,"skill_allocations":allocation,"feat_id":feat,"attribute_increase":attribute}
+ if RulesCareer.enabled(registry):
+  choice.specialisations=RulesCareer.defaults(registry,class_id,int(c.classes.get(class_id,0))+1)
+  for group in RulesCareer.groups(registry,class_id,int(c.classes.get(class_id,0))+1):
+   for option in group.options:
+    if RulesExpressions.evaluate_requirements(option.requirements,c).ok:choice.specialisations[group.id]=option.id;break
+  choice.bonus_feats=["steady-study"] if RulesCareer.feat_count(registry,next,class_id,int(c.classes.get(class_id,0))+1)>1 else []
+ return {"ok":true,"choice":choice}
 
 func preview_choices(record: Dictionary,class_id: String,draft: Dictionary = {}) -> Dictionary:
  # Explain options after a selected class and partial choices, without applying.

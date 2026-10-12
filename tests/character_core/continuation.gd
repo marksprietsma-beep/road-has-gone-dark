@@ -48,7 +48,7 @@ func active_feat(cls: String,feat: String,action: String) -> void:
   var empty := battle.duplicate(true);empty.units.continuation.record.runtime.resources.focus=0;empty=engine.seal(empty)
   check(not engine.command(empty,command).ok,"zero Focus blocks Arcane strike")
 func run() -> void:
- source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ source=RulesRecords.registry(JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/packs.json")).packs.filter(func(row: Dictionary):return row.rules_ref.pack_id=="trhgd-character-v6")[0].rules_ref);kernel=RulesCharacter.new(source)
  check(source.ready() and source.rules_ref().pack_id=="trhgd-character-v6","explicit continuation default")
  var old: RulesRegistry
  for pin in RulesRecords.installed_packs():

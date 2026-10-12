@@ -228,10 +228,10 @@ func refresh() -> void:
  class_choice.clear()
  for id in source.ids("classes"):
   var row := source.definition("classes",id)
-  if not core and int(row.max_level)<20:continue
+  if not core and int(row.max_level)<20 or not ready_view and row.get("class_kind")=="prestige":continue
   class_choice.add_item(row.name);class_choice.set_item_metadata(class_choice.item_count-1,id)
  class_choice.disabled=ready_view
- commonness.text="%d familiar ancestries · %d core classes · traits and abilities are mechanical."%[RulesCoreContent.ancestry_rows(source).size(),source.ids("classes").size()] if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
+ commonness.text="%d familiar ancestries · %d core classes · traits and abilities are mechanical."%[RulesCoreContent.ancestry_rows(source).size(),source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind", "base")=="base").size()] if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
  name_edit.text=m.name;pick(people_picker,m.people_id);pick(role_picker,m.role_id)
  origin_picker.clear()
  var profiles := OriginProfiles.new()
@@ -406,8 +406,14 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   for id in s.spell_preparations:lines.append("%s · %d prepared copies"%[RulesRecords.registry(state).definition("abilities",id).name,int(s.spell_preparations[id])])
  lines.append("\nResources")
  for id in s.resource_capacities:lines.append("%s: %d / %d"%[id,s.current_resources.get(id,0),s.resource_capacities[id]])
+ if s.has("specialisations"):
+  lines.append("\nPersistent specialisations")
+  for option in s.specialisations:lines.append(str(option.name)+": "+str(option.description))
+  lines.append("Effective casting levels: "+str(s.casting_levels))
  lines.append("\nOrdered class history")
- for step in r.advancement_history:lines.append("Level %d: %s%s"%[step.level,RulesRecords.registry(state).definition("classes",step.class_id).name," · "+step.feat_id if not step.feat_id.is_empty() else ""])
+ for step in r.advancement_history:
+  lines.append("Level %d: %s%s"%[step.level,RulesRecords.registry(state).definition("classes",step.class_id).name," · "+step.feat_id if not step.feat_id.is_empty() else ""])
+  if step.has("specialisations"):lines.append("  Choices: "+str(step.specialisations)+" · additional feats: "+str(step.bonus_feats))
  lines.append("Journey XP: %d · Next level requires %d total"%[CharacterBuilderRecords.xp(state,m.character_id),CharacterBuilderRecords.threshold(int(s.level)+1,state)])
  lines.append("\nBackground: "+str(m.generated_facts.occupation_id)+" · Narrative role: "+str(m.role_id)+"\n"+str(m.biography))
  return "\n".join(lines)

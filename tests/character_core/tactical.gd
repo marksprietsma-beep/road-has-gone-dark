@@ -6,7 +6,7 @@ func check(ok: bool,why: String) -> void:
  if not ok:failures+=1;push_error(why)
 func _initialize():call_deferred('run')
 func run():
- var source := RulesRecords.new_character_registry();var kernel := RulesCharacter.new(source)
+ var source := RulesRecords.registry(JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/packs.json")).packs.filter(func(row: Dictionary):return row.rules_ref.pack_id=="trhgd-character-v6")[0].rules_ref);var kernel := RulesCharacter.new(source)
  for cls in source.ids('classes'):
   var editor := BuildEditor.new();root.add_child(editor)
   var record := kernel.create('a',source.recommendation('vanguard').attributes,'heritage-human')

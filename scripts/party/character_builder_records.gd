@@ -42,15 +42,22 @@ static func definition(record_value: Dictionary) -> Dictionary:
  var step: Dictionary=record_value.advancement_history[0]
  var definition := {"attributes":record_value.base_attributes.duplicate(true),"ancestry_ref":record_value.ancestry_ref,"background_ref":record_value.background_ref,"class_id":step.class_id,"skill_allocations":step.skill_allocations.duplicate(true),"feat_id":step.feat_id,"equipment":record_value.equipment.duplicate(),"prepared_abilities":record_value.choices.prepared_abilities.duplicate()}
  if record_value.rules_ref.get("engine_schema")==3:definition.spell_preparations=record_value.choices.spell_preparations.duplicate(true)
+ if RulesCareer.enabled(RulesRecords.registry(record_value)):
+  definition.specialisations=step.specialisations.duplicate(true);definition.bonus_feats=step.bonus_feats.duplicate()
  return definition
 static func create(id: String,draft: Dictionary,context: Dictionary = {}) -> Dictionary:
  var core: bool=RulesRecords.registry(context).rules_ref().get("engine_schema")==3
- if draft.size()!=(9 if core else 8) or not draft.has_all(["attributes","ancestry_ref","background_ref","class_id","skill_allocations","feat_id","equipment","prepared_abilities"]) or not draft.attributes is Dictionary or not draft.skill_allocations is Dictionary or not draft.equipment is Array or not draft.prepared_abilities is Array: return {"ok":false,"error":"Exactly eight typed starting-build fields required"}
+ var career := RulesCareer.enabled(RulesRecords.registry(context))
+ if draft.size()!=((11 if career else 9) if core else 8) or not draft.has_all(["attributes","ancestry_ref","background_ref","class_id","skill_allocations","feat_id","equipment","prepared_abilities"]) or not draft.attributes is Dictionary or not draft.skill_allocations is Dictionary or not draft.equipment is Array or not draft.prepared_abilities is Array: return {"ok":false,"error":"Exactly eight typed starting-build fields required"}
  for key in ["ancestry_ref","background_ref","class_id","feat_id"]:
   if not draft[key] is String:return {"ok":false,"error":"Build references must be content IDs"}
  var base := kernel(context).create(id,draft.attributes,draft.ancestry_ref,draft.background_ref)
  base.equipment=draft.equipment.duplicate()
- var result := kernel(context).preview_advancement(base,{"class_id":draft.class_id,"skill_allocations":draft.skill_allocations,"feat_id":draft.feat_id,"attribute_increase":""})
+ var choice := {"class_id":draft.class_id,"skill_allocations":draft.skill_allocations,"feat_id":draft.feat_id,"attribute_increase":""}
+ if career:
+  if not draft.get("specialisations") is Dictionary or not draft.get("bonus_feats") is Array:return {"ok":false,"error":"Review class specialisations and all feat grants"}
+  choice.specialisations=draft.specialisations.duplicate(true);choice.bonus_feats=draft.bonus_feats.duplicate()
+ var result := kernel(context).preview_advancement(base,choice)
  if not result.ok:return result
  if not result.candidate.equipment.any(func(item: Variant):return item is String and RulesRecords.registry(context).definition("equipment",item).get("kind")=="weapon"):return {"ok":false,"error":"Choose at least one starting weapon"}
  result.candidate.choices.prepared_abilities=draft.prepared_abilities.duplicate()

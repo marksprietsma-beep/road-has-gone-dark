@@ -1,0 +1,1228 @@
+{
+  "pack_id": "trhgd-character-v7",
+  "base_classes": 11,
+  "base_class_level_cap": 12,
+  "prestige_classes": 4,
+  "prestige_class_level_cap": 5,
+  "feats": 30,
+  "race_families": 9,
+  "heritage_records": 14,
+  "specialisation_groups": 27,
+  "status": "implemented; local verification in progress; native publication pending",
+  "programme_scope": {
+    "ancestry_source_occurrences": 403,
+    "base_class_source_occurrences": 66,
+    "prestige_source_occurrences": 283
+  },
+  "entries": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "barbarian-choice-1",
+          "name": "Rage power",
+          "at": 1,
+          "options": [
+            {
+              "id": "reckless",
+              "name": "Reckless assault",
+              "description": "Reckless assault \u00b7 main action; rage uses \u00d7 1; apply barbarian reckless 1 status; melee_attack 3 / damage 3 / defence -2",
+              "features": [
+                "barbarian-reckless-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "resilient",
+              "name": "Resilient rage",
+              "description": "Resilient rage \u00b7 main action; rage uses \u00d7 1; apply barbarian resilient 1 status; fortitude 4 / defence 2",
+              "features": [
+                "barbarian-resilient-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "barbarian-choice-6",
+          "name": "Rage power advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "reckless",
+              "name": "Reckless assault",
+              "description": "Reckless assault mastery \u00b7 main action; rage uses \u00d7 1; apply barbarian reckless 6 status; temporary HP Barbarian level; melee_attack 3 / damage 3 / defence -2",
+              "features": [
+                "barbarian-reckless-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "resilient",
+              "name": "Resilient rage",
+              "description": "Resilient rage mastery \u00b7 main action; rage uses \u00d7 1; apply barbarian resilient 6 status; temporary HP Barbarian level; fortitude 4 / defence 2",
+              "features": [
+                "barbarian-resilient-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "bard-choice-1",
+          "name": "Performance tradition",
+          "at": 1,
+          "options": [
+            {
+              "id": "dirge",
+              "name": "Disheartening dirge",
+              "description": "Disheartening dirge \u00b7 main action; performance \u00d7 1; apply bard dirge 1 status; melee_attack -2 / will -2",
+              "features": [
+                "bard-dirge-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "rally",
+              "name": "Rallying song",
+              "description": "Rallying song \u00b7 main action; performance \u00d7 1; apply bard rally 1 status; initiative 2 / defence 2",
+              "features": [
+                "bard-rally-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "bard-choice-6",
+          "name": "Performance tradition advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "dirge",
+              "name": "Disheartening dirge",
+              "description": "Disheartening dirge mastery \u00b7 main action; performance \u00d7 1; apply bard dirge 6 status; temporary HP Bard level; melee_attack -2 / will -2",
+              "features": [
+                "bard-dirge-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "rally",
+              "name": "Rallying song",
+              "description": "Rallying song mastery \u00b7 main action; performance \u00d7 1; apply bard rally 6 status; temporary HP Bard level; initiative 2 / defence 2",
+              "features": [
+                "bard-rally-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "cleric-choice-1",
+          "name": "Domain",
+          "at": 1,
+          "options": [
+            {
+              "id": "healing",
+              "name": "Healing domain",
+              "description": "Healing domain \u00b7 main action; channel \u00d7 1; heal 4 + Cleric level \u00d7 1; remove slowed; bounded heal or saved spell damage",
+              "features": [
+                "cleric-healing-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "war",
+              "name": "War domain",
+              "description": "War domain \u00b7 main action; channel \u00d7 1; apply cleric war 1 status; melee_attack 2 / damage 2",
+              "features": [
+                "cleric-war-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "cleric-choice-6",
+          "name": "Domain advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "healing",
+              "name": "Healing domain",
+              "description": "Healing domain mastery \u00b7 main action; channel \u00d7 1; heal 8 + Cleric level \u00d7 2; remove slowed; bounded heal or saved spell damage",
+              "features": [
+                "cleric-healing-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "war",
+              "name": "War domain",
+              "description": "War domain mastery \u00b7 main action; channel \u00d7 1; apply cleric war 6 status; temporary HP Cleric level; melee_attack 2 / damage 2",
+              "features": [
+                "cleric-war-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "druid-choice-1",
+          "name": "Nature bond",
+          "at": 1,
+          "options": [
+            {
+              "id": "growth",
+              "name": "Growth bond",
+              "description": "Growth bond \u00b7 main action; nature bond uses \u00d7 1; apply druid growth 1 status; defence 2 / fortitude 2",
+              "features": [
+                "druid-growth-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "storm",
+              "name": "Storm bond",
+              "description": "Storm bond \u00b7 main action; nature bond uses \u00d7 1; Reflex save: 1d6 + 0 arcane damage; apply druid storm 1 status; resisted: 1d6 + 0 arcane damage (half); stride -2",
+              "features": [
+                "druid-storm-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "druid-choice-6",
+          "name": "Nature bond advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "growth",
+              "name": "Growth bond",
+              "description": "Growth bond mastery \u00b7 main action; nature bond uses \u00d7 1; apply druid growth 6 status; temporary HP Druid level; defence 2 / fortitude 2",
+              "features": [
+                "druid-growth-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "storm",
+              "name": "Storm bond",
+              "description": "Storm bond mastery \u00b7 main action; nature bond uses \u00d7 1; Reflex save: 3d6 + 0 arcane damage; apply druid storm 6 status; resisted: 3d6 + 0 arcane damage (half); temporary HP Druid level; stride -2",
+              "features": [
+                "druid-storm-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "fighter-choice-1",
+          "name": "Weapon discipline",
+          "at": 1,
+          "options": [
+            {
+              "id": "blade",
+              "name": "Blade discipline",
+              "description": "Blade discipline \u00b7 main action; fighter resolve \u00d7 1; apply fighter blade 1 status; melee_attack 2 / defence 1",
+              "features": [
+                "fighter-blade-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "bow",
+              "name": "Bow discipline",
+              "description": "Bow discipline \u00b7 main action; fighter resolve \u00d7 1; apply fighter bow 1 status; ranged_attack 2 / damage 1",
+              "features": [
+                "fighter-bow-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "fighter-choice-6",
+          "name": "Weapon discipline advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "blade",
+              "name": "Blade discipline",
+              "description": "Blade discipline mastery \u00b7 main action; fighter resolve \u00d7 1; apply fighter blade 6 status; temporary HP Fighter level; melee_attack 2 / defence 1",
+              "features": [
+                "fighter-blade-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "bow",
+              "name": "Bow discipline",
+              "description": "Bow discipline mastery \u00b7 main action; fighter resolve \u00d7 1; apply fighter bow 6 status; temporary HP Fighter level; ranged_attack 2 / damage 1",
+              "features": [
+                "fighter-bow-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "monk-choice-1",
+          "name": "Ki discipline",
+          "at": 1,
+          "options": [
+            {
+              "id": "iron",
+              "name": "Iron body",
+              "description": "Iron body \u00b7 main action; ki \u00d7 1; apply monk iron 1 status; defence 3 / fortitude 2",
+              "features": [
+                "monk-iron-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "wind",
+              "name": "Wind step",
+              "description": "Wind step \u00b7 main action; ki \u00d7 1; apply monk wind 1 status; stride 2 / reflex 2",
+              "features": [
+                "monk-wind-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "monk-choice-6",
+          "name": "Ki discipline advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "iron",
+              "name": "Iron body",
+              "description": "Iron body mastery \u00b7 main action; ki \u00d7 1; apply monk iron 6 status; temporary HP Monk level; defence 3 / fortitude 2",
+              "features": [
+                "monk-iron-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "wind",
+              "name": "Wind step",
+              "description": "Wind step mastery \u00b7 main action; ki \u00d7 1; apply monk wind 6 status; temporary HP Monk level; stride 2 / reflex 2",
+              "features": [
+                "monk-wind-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "paladin-choice-1",
+          "name": "Sacred oath",
+          "at": 1,
+          "options": [
+            {
+              "id": "mercy",
+              "name": "Merciful oath",
+              "description": "Merciful oath \u00b7 main action; lay hands \u00d7 1; heal 4 + Paladin level \u00d7 1; remove slowed; bounded heal or saved spell damage",
+              "features": [
+                "paladin-mercy-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "justice",
+              "name": "Oath of justice",
+              "description": "Oath of justice \u00b7 main action; lay hands \u00d7 1; apply paladin justice 1 status; melee_attack 2 / damage 3",
+              "features": [
+                "paladin-justice-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "paladin-choice-6",
+          "name": "Sacred oath advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "mercy",
+              "name": "Merciful oath",
+              "description": "Merciful oath mastery \u00b7 main action; lay hands \u00d7 1; heal 8 + Paladin level \u00d7 2; remove slowed; bounded heal or saved spell damage",
+              "features": [
+                "paladin-mercy-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "justice",
+              "name": "Oath of justice",
+              "description": "Oath of justice mastery \u00b7 main action; lay hands \u00d7 1; apply paladin justice 6 status; temporary HP Paladin level; melee_attack 2 / damage 3",
+              "features": [
+                "paladin-justice-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "ranger-choice-1",
+          "name": "Combat style",
+          "at": 1,
+          "options": [
+            {
+              "id": "archery",
+              "name": "Archery style",
+              "description": "Archery style \u00b7 main action; tracker resolve \u00d7 1; apply ranger archery 1 status; ranged_attack 2 / damage 2",
+              "features": [
+                "ranger-archery-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "blade",
+              "name": "Blade style",
+              "description": "Blade style \u00b7 main action; tracker resolve \u00d7 1; apply ranger blade 1 status; melee_attack 2 / defence 2",
+              "features": [
+                "ranger-blade-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger-choice-6",
+          "name": "Combat style advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "archery",
+              "name": "Archery style",
+              "description": "Archery style mastery \u00b7 main action; tracker resolve \u00d7 1; apply ranger archery 6 status; temporary HP Ranger level; ranged_attack 2 / damage 2",
+              "features": [
+                "ranger-archery-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "blade",
+              "name": "Blade style",
+              "description": "Blade style mastery \u00b7 main action; tracker resolve \u00d7 1; apply ranger blade 6 status; temporary HP Ranger level; melee_attack 2 / defence 2",
+              "features": [
+                "ranger-blade-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger-quarry-choice",
+          "name": "Favoured enemy",
+          "at": 1,
+          "options": [
+            {
+              "id": "raiders",
+              "name": "Humanoid raiders",
+              "description": "+2 attack and damage against humanoid raiders. Archer choice only applies to hostile bow wielders.",
+              "features": [
+                "ranger-quarry-raiders"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "archers",
+              "name": "Hostile archers",
+              "description": "+2 attack and damage against hostile archers. Archer choice only applies to hostile bow wielders.",
+              "features": [
+                "ranger-quarry-archers"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "rogue-choice-1",
+          "name": "Rogue talent",
+          "at": 1,
+          "options": [
+            {
+              "id": "debilitating",
+              "name": "Debilitating trick",
+              "description": "Debilitating trick \u00b7 main action; rogue talent uses \u00d7 1; apply rogue debilitating 1 status; defence -3 / melee_attack -2",
+              "features": [
+                "rogue-debilitating-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "escape",
+              "name": "Escape artist",
+              "description": "Escape artist \u00b7 main action; rogue talent uses \u00d7 1; apply rogue escape 1 status; stride 2 / defence 2",
+              "features": [
+                "rogue-escape-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "rogue-choice-6",
+          "name": "Rogue talent advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "debilitating",
+              "name": "Debilitating trick",
+              "description": "Debilitating trick mastery \u00b7 main action; rogue talent uses \u00d7 1; apply rogue debilitating 6 status; temporary HP Rogue level; defence -3 / melee_attack -2",
+              "features": [
+                "rogue-debilitating-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "escape",
+              "name": "Escape artist",
+              "description": "Escape artist mastery \u00b7 main action; rogue talent uses \u00d7 1; apply rogue escape 6 status; temporary HP Rogue level; stride 2 / defence 2",
+              "features": [
+                "rogue-escape-6-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "sorcerer-choice-1",
+          "name": "Bloodline",
+          "at": 1,
+          "options": [
+            {
+              "id": "draconic",
+              "name": "Draconic bloodline",
+              "description": "Draconic bloodline \u00b7 main action; bloodline uses \u00d7 1; Reflex save: 1d6 + 2 arcane damage; resisted: 1d6 + 2 arcane damage (half); bounded heal or saved spell damage",
+              "features": [
+                "sorcerer-draconic-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "fey",
+              "name": "Fey bloodline",
+              "description": "Fey bloodline \u00b7 main action; bloodline uses \u00d7 1; apply sorcerer fey 1 status; stride -2 / will -2",
+              "features": [
+                "sorcerer-fey-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "sorcerer-choice-6",
+          "name": "Bloodline advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "draconic",
+              "name": "Draconic bloodline",
+              "description": "Draconic bloodline mastery \u00b7 main action; bloodline uses \u00d7 1; Reflex save: 3d6 + 2 arcane damage; resisted: 3d6 + 2 arcane damage (half); bounded heal or saved spell damage",
+              "features": [
+                "sorcerer-draconic-6-feature"
+              ],
+              "requirements": {
+                "op": "feature",
+                "id": "sorcerer-draconic-1-feature"
+              }
+            },
+            {
+              "id": "fey",
+              "name": "Fey bloodline",
+              "description": "Fey bloodline mastery \u00b7 main action; bloodline uses \u00d7 1; apply sorcerer fey 6 status; temporary HP Sorcerer level; stride -2 / will -2",
+              "features": [
+                "sorcerer-fey-6-feature"
+              ],
+              "requirements": {
+                "op": "feature",
+                "id": "sorcerer-fey-1-feature"
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "category": "base",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 12,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "wizard-choice-1",
+          "name": "Arcane school",
+          "at": 1,
+          "options": [
+            {
+              "id": "evocation",
+              "name": "Evocation school",
+              "description": "Evocation school \u00b7 main action; school uses \u00d7 1; Reflex save: 1d6 + 2 arcane damage; resisted: 1d6 + 2 arcane damage (half); bounded heal or saved spell damage",
+              "features": [
+                "wizard-evocation-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            },
+            {
+              "id": "abjuration",
+              "name": "Abjuration school",
+              "description": "Abjuration school \u00b7 main action; school uses \u00d7 1; apply wizard abjuration 1 status; defence 2 / will 2",
+              "features": [
+                "wizard-abjuration-1-feature"
+              ],
+              "requirements": {
+                "op": "all",
+                "args": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "wizard-choice-6",
+          "name": "Arcane school advanced technique",
+          "at": 6,
+          "options": [
+            {
+              "id": "evocation",
+              "name": "Evocation school",
+              "description": "Evocation school mastery \u00b7 main action; school uses \u00d7 1; Reflex save: 3d6 + 2 arcane damage; resisted: 3d6 + 2 arcane damage (half); bounded heal or saved spell damage",
+              "features": [
+                "wizard-evocation-6-feature"
+              ],
+              "requirements": {
+                "op": "feature",
+                "id": "wizard-evocation-1-feature"
+              }
+            },
+            {
+              "id": "abjuration",
+              "name": "Abjuration school",
+              "description": "Abjuration school mastery \u00b7 main action; school uses \u00d7 1; apply wizard abjuration 6 status; temporary HP Wizard level; defence 2 / will 2",
+              "features": [
+                "wizard-abjuration-6-feature"
+              ],
+              "requirements": {
+                "op": "feature",
+                "id": "wizard-abjuration-1-feature"
+              }
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "duelist",
+      "name": "Duelist",
+      "category": "prestige",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 5,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "eldritch-knight",
+      "name": "Eldritch Knight",
+      "category": "prestige",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 5,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "eldritch-knight-arcane",
+          "name": "Advance arcane casting",
+          "at": 1,
+          "options": [
+            {
+              "id": "wizard",
+              "name": "Wizard",
+              "description": "Each prestige level advances Wizard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "wizard",
+                "min": 1
+              },
+              "advance_casting": "wizard",
+              "progression_class": "eldritch-knight"
+            },
+            {
+              "id": "sorcerer",
+              "name": "Sorcerer",
+              "description": "Each prestige level advances Sorcerer casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "sorcerer",
+                "min": 1
+              },
+              "advance_casting": "sorcerer",
+              "progression_class": "eldritch-knight"
+            },
+            {
+              "id": "bard",
+              "name": "Bard",
+              "description": "Each prestige level advances Bard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "bard",
+                "min": 1
+              },
+              "advance_casting": "bard",
+              "progression_class": "eldritch-knight"
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "arcane-trickster",
+      "name": "Arcane Trickster",
+      "category": "prestige",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 5,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "arcane-trickster-arcane",
+          "name": "Advance arcane casting",
+          "at": 1,
+          "options": [
+            {
+              "id": "wizard",
+              "name": "Wizard",
+              "description": "Each prestige level advances Wizard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "wizard",
+                "min": 1
+              },
+              "advance_casting": "wizard",
+              "progression_class": "arcane-trickster"
+            },
+            {
+              "id": "sorcerer",
+              "name": "Sorcerer",
+              "description": "Each prestige level advances Sorcerer casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "sorcerer",
+                "min": 1
+              },
+              "advance_casting": "sorcerer",
+              "progression_class": "arcane-trickster"
+            },
+            {
+              "id": "bard",
+              "name": "Bard",
+              "description": "Each prestige level advances Bard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "bard",
+                "min": 1
+              },
+              "advance_casting": "bard",
+              "progression_class": "arcane-trickster"
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    },
+    {
+      "id": "mystic-theurge",
+      "name": "Mystic Theurge",
+      "category": "prestige",
+      "researched": true,
+      "designed": true,
+      "implemented": true,
+      "mechanically_validated": true,
+      "native_validated": false,
+      "playable_level_cap": 5,
+      "complete_sourcebook_conversion": false,
+      "specialisations": [
+        {
+          "id": "mystic-theurge-arcane",
+          "name": "Advance arcane casting",
+          "at": 1,
+          "options": [
+            {
+              "id": "wizard",
+              "name": "Wizard",
+              "description": "Each prestige level advances Wizard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "wizard",
+                "min": 1
+              },
+              "advance_casting": "wizard",
+              "progression_class": "mystic-theurge"
+            },
+            {
+              "id": "sorcerer",
+              "name": "Sorcerer",
+              "description": "Each prestige level advances Sorcerer casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "sorcerer",
+                "min": 1
+              },
+              "advance_casting": "sorcerer",
+              "progression_class": "mystic-theurge"
+            },
+            {
+              "id": "bard",
+              "name": "Bard",
+              "description": "Each prestige level advances Bard casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "bard",
+                "min": 1
+              },
+              "advance_casting": "bard",
+              "progression_class": "mystic-theurge"
+            }
+          ]
+        },
+        {
+          "id": "mystic-theurge-divine",
+          "name": "Advance divine casting",
+          "at": 1,
+          "options": [
+            {
+              "id": "cleric",
+              "name": "Cleric",
+              "description": "Each prestige level advances Cleric casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "cleric",
+                "min": 1
+              },
+              "advance_casting": "cleric",
+              "progression_class": "mystic-theurge"
+            },
+            {
+              "id": "druid",
+              "name": "Druid",
+              "description": "Each prestige level advances Druid casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "druid",
+                "min": 1
+              },
+              "advance_casting": "druid",
+              "progression_class": "mystic-theurge"
+            },
+            {
+              "id": "paladin",
+              "name": "Paladin",
+              "description": "Each prestige level advances Paladin casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "paladin",
+                "min": 1
+              },
+              "advance_casting": "paladin",
+              "progression_class": "mystic-theurge"
+            },
+            {
+              "id": "ranger",
+              "name": "Ranger",
+              "description": "Each prestige level advances Ranger casting tiers, slots and repertoire; it does not grant unrelated base-class powers.",
+              "features": [],
+              "requirements": {
+                "op": "class_level",
+                "id": "ranger",
+                "min": 1
+              },
+              "advance_casting": "ranger",
+              "progression_class": "mystic-theurge"
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        "tests/character_progression/careers.gd",
+        "tests/character_progression/prestige.gd",
+        "tests/character_progression/tactical.gd",
+        "tests/character_progression/prestige-combat.gd"
+      ]
+    }
+  ]
+}

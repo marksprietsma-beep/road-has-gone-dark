@@ -178,6 +178,8 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
     var actor_snapshot: Dictionary= characters.derive_character(actor.record).snapshot
     var ally_snapshot: Dictionary= characters.derive_character(ally.record).snapshot
     var context := {"source_character_id":actor.id,"character_id":actor.id,"target_id":ally.id,"stats":actor_snapshot.stats,"target_stats":ally_snapshot.stats,"target_tags":ally_snapshot.tags,"attributes":actor_snapshot.attributes,"classes":actor_snapshot.class_levels,"capacities":actor_snapshot.resource_capacities}
+    if actor_snapshot.has("casting_levels"):context.casting_levels=actor_snapshot.casting_levels
+    context.target_capacities=ally_snapshot.resource_capacities
     for effect in definition.effects:
      var area := effects.resolve_rules_effect(effect,actor.record.runtime,ally.record.runtime,context,b.rng)
      if not area.ok:return fail("Area effect unavailable: "+RulesJson.canonical(area.errors))
@@ -209,7 +211,7 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
  var bonus: int=int(s.ranged_attack if ranged else s.melee_attack)
  if registry.rules_ref().engine_schema==3:
   var snap: Dictionary= characters.derive_character(a.record).snapshot
-  if snap.tags.has("favoured_raider") and t.team=="enemy":bonus+=2
+  if quarry_matches(snap,t):bonus+=2
   if technique in ["power-strike","flurry"]:bonus-=2
   if technique=="aimed-shot":bonus+=2
   if technique=="smite":bonus+=maxi(0,int(floor(float(int(snap.attributes.CHA)-10)/2.0)))
@@ -224,7 +226,7 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
   var snap: Dictionary= characters.derive_character(a.record).snapshot
   amount+=int(s.damage)
   if not ranged:amount+=int(floor(float(int(snap.attributes.STR)-10)/2.0))
-  if snap.tags.has("favoured_raider") and t.team=="enemy":amount+=2
+  if quarry_matches(snap,t):amount+=2
   if technique=="power-strike":amount+=4
   if technique=="smite":amount+=int(snap.class_levels.get("paladin",0))
  else:
@@ -320,3 +322,7 @@ func validate(b: Dictionary) -> String:
  if b.status=="active" and not alive(current(b)): return "Downed active unit"
  return ""
 func fail(why: String) -> Dictionary: return {"ok":false,"error":why}
+
+func quarry_matches(snapshot: Dictionary,target: Dictionary) -> bool:
+ if target.team!="enemy":return false
+ return snapshot.tags.has("favoured_raider") or snapshot.tags.has("quarry_archer") and registry.definition("equipment",target.weapon).tags.has("ranged")
