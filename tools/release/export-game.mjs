@@ -24,6 +24,7 @@ if(a.includes('--qa')){
  try{
   for(const dir of ['assets','data','scenes','scripts','tests','themes'])if(existsSync(join(root,dir)))cpSync(join(root,dir),join(stage,dir),{recursive:true});
   cpSync(join(root,'export_presets.cfg'),join(stage,'export_presets.cfg'));
+  cpSync(join(root,'icon.svg'),join(stage,'icon.svg'));
   writeFileSync(join(stage,'project.godot'),readFileSync(join(root,'project.godot'),'utf8').replace(/run\/main_scene="[^"]+"/,'run/main_scene="'+qaScene+'"'));
   execFileSync(engine,['--headless','--editor','--path',stage,'--quit'],{stdio:'inherit'});
   execFileSync(engine,['--headless','--path',stage,'--export-release',preset,join(target,process.platform==='win32'?'road-has-gone-dark-qa.exe':'road-has-gone-dark-qa')],{stdio:'inherit'});
