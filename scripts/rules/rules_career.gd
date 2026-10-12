@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")=="trhgd-character-v7"
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:

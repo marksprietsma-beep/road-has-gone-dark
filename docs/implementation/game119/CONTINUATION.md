@@ -16,3 +16,5 @@ Remaining coherent batches:
 5. Remaining base-class/race/prestige catalogue adaptations:66 base classes,403 retained ancestry/subrace entries and~283 prestige entries remain the programme. Preserve provenance, source variants and deduplication decisions. No catalogue row silently retired.
 
 Keep draft PR80/81/88 and this stacked work unmerged. Human Windows review is pending. GitHub tracker mirrors can be maintained; Linear is not callable in this environment.
+
+Immutable refinement: v8 supersedes the already-pushed v7 as the fresh default. v7 remains installed unchanged. Barbarian11 now combines Rage, clearing Slowed/Off Balance and twice-class-level temporary HP for two Rage uses; the old v7 version duplicated level9 temporary HP and is deliberately retained only for exact old pins. A comparison test demonstrates the new action's distinct benefit. No XP policy or legacy action economy changed.

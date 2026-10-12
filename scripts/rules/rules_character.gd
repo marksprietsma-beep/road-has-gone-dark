@@ -322,7 +322,7 @@ func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
  var old := validate_build(record)
  if not old.ok: return old
  var candidate: Dictionary=record.duplicate(true)
- if choice.size()!=(6 if RulesCareer.enabled(registry) else 4) or not choice.get("skill_allocations") is Dictionary or not choice.get("class_id") is String or not choice.get("feat_id") is String or not choice.get("attribute_increase") is String: return RulesJson.result([RulesJson.issue("advancement.choice","choice","Exactly four typed choice fields required")])
+ if choice.size()!=(6 if RulesCareer.enabled(registry) else 4) or not choice.get("skill_allocations") is Dictionary or not choice.get("class_id") is String or not choice.get("feat_id") is String or not choice.get("attribute_increase") is String: return RulesJson.result([RulesJson.issue("advancement.choice","choice","Exactly six typed choice fields required, including specialisations and additional feats" if RulesCareer.enabled(registry) else "Exactly four typed choice fields required")])
  if RulesCareer.enabled(registry) and (not choice.get("specialisations") is Dictionary or not choice.get("bonus_feats") is Array or not choice.bonus_feats.all(func(id: Variant):return id is String)):
   return RulesJson.result([RulesJson.issue("career.choice","choice","Typed specialisations and additional feat IDs required")])
  var next_level: int=candidate.advancement_history.size()+1
