@@ -1,6 +1,6 @@
 # GAME-119 review steps
 
-Windows package link and checksum are recorded in DELIVERY.md when native CI succeeds. Extract both ZIP layers and keep the executable, helper and artwork together; run road-has-gone-dark.exe. No Godot or Node installation is required. Escape skips the intro.
+The verified Windows package link and inner-ZIP checksum are recorded in [DELIVERY.md](DELIVERY.md). Historical native Windows/Linux CI succeeded; human acceptance remains pending. Extract both ZIP layers and keep the executable, helper and artwork together; run road-has-gone-dark.exe. No Godot or Node installation is required. Escape skips the intro.
 
 1. **New Game** → generate/select a world → origin → hometown. Fresh creator offers eleven familiar core classes automatically; existing campaigns deliberately keep their original exact rules pins.
 2. Choose race/heritage/background/class. In **Build → Specialisation**, compare the two class choices. Examples: Wizard evocation/abjuration; Cleric healing/war domains; Sorcerer draconic/fey bloodlines; Ranger style and quarry. Review actual powers, finite resources and numerical effects. Review attributes, skill ranks, feats, spells and equipment; save all three adventurers and choose Party ready.

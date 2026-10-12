@@ -10,4 +10,6 @@ Actually available:11 core classes1–12;4 prestige paths1–5;30 mechanical fea
 
 Validation and Windows download/checksum: `docs/implementation/game119/DELIVERY.md`. Actual Godot captures cover creator choices, higher sheets, feat/spell selection, multiclass history, prestige prerequisites/casting selection, real tactical effects and reload. Old creator workflows now exercise their actual immutable v1/v3 fixtures, retaining original assertions; fresh v9 is separately tested. GAME32/GAME94 frozen oracles remain enabled. The original tactical byte hash remains protected through an exact projection of only two explicitly career-gated additions.
 
-Publication is pending successful current native packaging and user clicking **Publish draft PR**. Human Windows acceptance remains pending. Do not merge automatically.
+Native Windows/Linux packaging and GAME-103/GAME-104 compatibility passed on `0971a58a42abd1012d8798023ae50f5d62d39979`. Recovered HEAD `1af874f` and subsequent recovery corrections change documentation/evidence only. [Windows artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282791480/artifacts/11763575553); inner ZIP SHA-256 `61c82b65ae29ba5548c4e35ae25594a4f055406fb86aa5057f90219c1b8c07cc`. Preserved native proof: 1,252 checks and 87 restart checks per platform. Historical tests were verified, not rerun.
+
+Publication is pending Mark clicking **Publish draft PR**, with base `feature/game-118-playable-core-characters`. Human Windows acceptance remains pending. Do not merge automatically.

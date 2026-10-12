@@ -8,7 +8,7 @@
   "race_families": 9,
   "heritage_records": 14,
   "specialisation_groups": 27,
-  "status": "implemented; source/rendered validation; native Windows verification pending",
+  "status": "implemented; source/rendered and native Windows/Linux validation passed; draft publication and human acceptance pending",
   "programme_scope": {
     "ancestry_source_occurrences": 403,
     "base_class_source_occurrences": 66,
@@ -23,7 +23,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -105,7 +105,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -187,7 +187,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -269,7 +269,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -351,7 +351,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -433,7 +433,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -515,7 +515,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -597,7 +597,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -710,7 +710,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -792,7 +792,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -874,7 +874,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 12,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -956,7 +956,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 5,
       "complete_sourcebook_conversion": false,
       "specialisations": [],
@@ -975,7 +975,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 5,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -1041,7 +1041,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 5,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -1107,7 +1107,7 @@
       "designed": true,
       "implemented": true,
       "mechanically_validated": true,
-      "native_validated": false,
+      "native_validated": true,
       "playable_level_cap": 5,
       "complete_sourcebook_conversion": false,
       "specialisations": [
@@ -1224,5 +1224,16 @@
         "tests/character_progression/prestige-combat.gd"
       ]
     }
-  ]
+  ],
+  "native_validation": {
+    "source_commit": "0971a58a42abd1012d8798023ae50f5d62d39979",
+    "workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282791480",
+    "scope": "All class mechanical suites executed in native Godot on Windows/Linux. Exported full player journeys sample Fighter/Rogue/Wizard and eight entry/advanced fixtures for the four prestige paths; not every class/UI combination has an exported player-journey capture.",
+    "exported_player_journey_classes": [
+      "fighter",
+      "rogue",
+      "wizard"
+    ],
+    "human_acceptance": "pending"
+  }
 }

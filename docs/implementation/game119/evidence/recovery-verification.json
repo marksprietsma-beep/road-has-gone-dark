@@ -1,0 +1,78 @@
+{
+  "verified_at_utc": "2026-10-12T23:33:12.196528+00:00",
+  "recovered_head": "1af874f0d6a2a0a05e75c37bce084ee1bd082eaf",
+  "tested_implementation_source": "0971a58a42abd1012d8798023ae50f5d62d39979",
+  "recovered_delta_documentation_only": true,
+  "verification_kind": "Historical CI/artifact records verified; successful gameplay suites were not rerun",
+  "runs": [
+    {
+      "id": 38282791480,
+      "label": "GAME-119 native Windows/Linux",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282791480",
+      "head_sha": "0971a58a42abd1012d8798023ae50f5d62d39979",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "opportunities (windows-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "opportunities (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 38282792357,
+      "label": "GAME-103 compatibility",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282792357",
+      "head_sha": "0971a58a42abd1012d8798023ae50f5d62d39979",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "opportunities (ubuntu-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "opportunities (windows-latest)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 38282797418,
+      "label": "GAME-104 compatibility",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282797418",
+      "head_sha": "0971a58a42abd1012d8798023ae50f5d62d39979",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "opportunities (windows-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "opportunities (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "windows_artifact": {
+    "id": 11763575553,
+    "expired": false,
+    "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38282791480/artifacts/11763575553",
+    "outer_artifact_digest": "sha256:1f6a7bf08086c4dbb61ec58f0a2d8f3c67db453d7c898bc432453fcdd3ea2b16",
+    "inner_playable_zip": "game119-deep-character-progression-windows-x64.zip",
+    "inner_playable_zip_sha256": "61c82b65ae29ba5548c4e35ae25594a4f055406fb86aa5057f90219c1b8c07cc",
+    "file_count": 7062,
+    "crc_errors": null,
+    "exact_v9_content_bytes": true,
+    "exact_installed_rules_manifest": true,
+    "executable_sha256": "3b153894ac21f1800451db12de7989a118313978da5c253d7d09b08d40ddeb44",
+    "licence_credit_entries": 124
+  },
+  "publication": "Pending Mark clicking Publish draft PR; no GAME-119 PR exists at recovery"
+}
