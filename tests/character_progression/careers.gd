@@ -29,5 +29,43 @@ func run():
    check(snap.specialisations.size()>=2,"durable two choices "+cls)
    var illegal := kernel.suggested_choice(record,cls)
    check(not kernel.preview_advancement(record,illegal.choice).ok,"honest current cap")
+ verify_feat_chains()
  print("GAME119 CAREERS ",checks," / ",failures)
  quit(1 if failures else 0)
+
+func verify_feat_chains() -> void:
+ var record := kernel.create("feat-chain",source.recommendation("adept").attributes,"heritage-human")
+ for level in range(1,11):
+  var chosen := "weapon-focus" if level==1 else "veteran-weapon-training" if level==6 else "greater-weapon-focus" if level==8 else "greater-weapon-specialisation" if level==10 else "steady-study"
+  var proposal := kernel.suggested_choice(record,"fighter",chosen)
+  var result := kernel.preview_advancement(record,proposal.choice)
+  check(result.ok,"actual earned prerequisite chain "+chosen)
+  if not result.ok:return
+  if level in [8,10]:
+   var control: Dictionary=proposal.choice.duplicate(true);control.feat_id="steady-study"
+   var baseline := kernel.preview_advancement(record,control)
+   check(baseline.ok,"same-level feat control")
+   check(result.snapshot.stats.melee_attack==baseline.snapshot.stats.melee_attack+1 if level==8 else result.snapshot.stats.damage==baseline.snapshot.stats.damage+2,"typed greater focus/specialisation actually changes statistics")
+  record=result.candidate
+ var caster := kernel.create("greater-focus",source.recommendation("adept").attributes,"heritage-human")
+ for level in range(1,6):
+  var proposal := kernel.suggested_choice(caster,"wizard","spell-focus" if level==1 else "greater-spell-focus" if level==5 else "steady-study")
+  var result := kernel.preview_advancement(caster,proposal.choice)
+  check(result.ok,"actual spell-focus chain")
+  if level==5:
+   var control: Dictionary=proposal.choice.duplicate(true);control.feat_id="steady-study"
+   check(result.snapshot.stats.save_dc==kernel.preview_advancement(caster,control).snapshot.stats.save_dc+1,"greater focus improves actual effect DC")
+  caster=result.candidate
+ var mover := kernel.create("spring-chain",source.recommendation("scout").attributes,"heritage-human")
+ for level in range(1,6):
+  var proposal := kernel.suggested_choice(mover,"ranger","dodge" if level==1 else "mobility" if level==3 else "spring-attack" if level==5 else "steady-study")
+  var result := kernel.preview_advancement(mover,proposal.choice)
+  check(result.ok,"actual movement feat chain")
+  if level==5:
+   var control: Dictionary=proposal.choice.duplicate(true);control.feat_id="steady-study"
+   check(result.snapshot.stats.stride==kernel.preview_advancement(mover,control).snapshot.stats.stride+1,"spring attack changes actual reachable movement budget")
+  mover=result.candidate
+ var blank := kernel.create("negative-feat",source.recommendation("adept").attributes,"heritage-human")
+ for id in ["greater-weapon-focus","greater-spell-focus","spring-attack","greater-weapon-specialisation"]:
+  var proposal := kernel.suggested_choice(blank,"fighter",id)
+  check(not kernel.preview_advancement(blank,proposal.choice).ok,"higher feat rejects unmet prerequisites "+id)
