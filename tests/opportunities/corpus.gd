@@ -16,7 +16,7 @@ func run() -> void:
    # may be removed when projecting the unchanged legacy authority.
    var legacy := FileAccess.get_file_as_string("res://"+file)
    for stat in ["bonus","amount"]:
-    var adapter := "  # GAME119 v7-only target profile; frozen legacy branch above remains exact.\n  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):"+stat+"+=2\n"
+    var adapter: String= "  # GAME119 v7-only target profile; frozen legacy branch above remains exact.\n  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):"+stat+"+=2\n"
     check(legacy.count(adapter)==1,"exactly one explicitly gated career adapter: "+stat)
     legacy=legacy.replace(adapter,"")
    digest=legacy.sha256_text()
