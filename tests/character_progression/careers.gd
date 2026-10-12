@@ -8,7 +8,7 @@ func check(ok: bool,why: String) -> void:
  if not ok:failures+=1;push_error(why)
 func _initialize():call_deferred("run")
 func run():
- source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v8.json").ok,"validated career pack")
+ source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v9.json").ok,"validated career pack")
  kernel=RulesCharacter.new(source)
  for cls in source.ids("classes"):
   if source.definition("classes",cls).class_kind!="base":continue

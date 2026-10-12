@@ -4,7 +4,7 @@ Start: GAME-118 draft PR88, 9a52a7bed19cda2b2ecdc3e5e435dc9598812be9. Independen
 
 The existing GAME-32 engine already replays ordered multiclass history, skills, class BAB/saves and declarative prerequisites. Reuse it, the campaign lock/journal/save owner, creator editor, spellbook editor and tactical effects. No second rules engine, save writer or combat action economy.
 
-The blocking gaps were durable class choices, simultaneous general/class feat grants and choosing which existing casting track a hybrid prestige class advances. These are implemented as optional versioned class definitions and explicit choices in v7 ordered history. Old v1–v7 records retain exact original shape and mechanics. New campaigns use v8; no campaign auto-upgrade.
+The blocking gaps were durable class choices, simultaneous general/class feat grants and choosing which existing casting track a hybrid prestige class advances. These are implemented as optional versioned class definitions and explicit choices in v7 ordered history. Old v1–v8 records retain exact original shape and mechanics. New campaigns use v9; no campaign auto-upgrade.
 
 This coherent batch targets all eleven core classes through **12**, two scheduled specialisation groups per core class (plus Ranger quarry), and **four five-level prestige adaptations**. It does not claim full levels 1–20, sourcebook parity, every domain/bloodline/school, companions, summons or completion of 403/66/~283 research scope. Higher progression is only counted when actual effects and resources validate.
 

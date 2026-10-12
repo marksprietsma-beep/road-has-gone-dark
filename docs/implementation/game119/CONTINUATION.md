@@ -18,3 +18,5 @@ Remaining coherent batches:
 Keep draft PR80/81/88 and this stacked work unmerged. Human Windows review is pending. GitHub tracker mirrors can be maintained; Linear is not callable in this environment.
 
 Immutable refinement: v8 supersedes the already-pushed v7 as the fresh default. v7 remains installed unchanged. Barbarian11 now combines Rage, clearing Slowed/Off Balance and twice-class-level temporary HP for two Rage uses; the old v7 version duplicated level9 temporary HP and is deliberately retained only for exact old pins. A comparison test demonstrates the new action's distinct benefit. No XP policy or legacy action economy changed.
+
+Final repertoire audit: v9 is the latest fresh default, preserving v1–v8 exactly. A fully learned Bard/Sorcerer could otherwise lack room at several newly unlocked tiers. Explicit nondecreasing allowances now guarantee space at each unlock, including Bard4/6/10 and Sorcerer4/6/8/10/12, while all earlier learned spells remain. Every spontaneous casting tier is tested from a filled legal prior repertoire, through actual cast and JSON reload. This is a content-version correction, not a campaign repin.

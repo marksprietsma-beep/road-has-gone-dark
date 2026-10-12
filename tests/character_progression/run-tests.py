@@ -5,7 +5,7 @@ root=Path(__file__).resolve().parents[2]
 base=Path(os.environ.get('GAME119_TEST_ROOT','/tmp/game119-checks'));base.mkdir(parents=True,exist_ok=True)
 env=dict(os.environ,GAME119_TEST_ROOT=str(base))
 rows=[]
-for name in ['careers','prestige','choices','prestige-combat','tactical']:
+for name in ['careers','prestige','choices','prestige-combat','repertoire','tactical']:
  start=time.monotonic()
  with (base/(name+'.log')).open('w',encoding='utf-8') as f:
   result=subprocess.run([os.environ.get('GODOT_BIN','godot'),'--headless','--audio-driver','Dummy','--path',str(root),'--script',f'tests/character_progression/{name}.gd'],cwd=root,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=900)
