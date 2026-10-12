@@ -24,7 +24,7 @@ Confirmed architectural constraints:
 
 ## First coherent delivery
 
-Separately pinned original `trhgd-character-v2` extends the unchanged legacy data. Three original martial paths have distinct twenty-level HP/BAB/save/skill progressions and tiered passive features: Blade Dancer (mobility/accuracy), Iron Bulwark (durability/guard with movement cost), Road Stalker (ranged accuracy/initiative/skill breadth). They are narrow original specializations, not complete equivalents of Monk, Barbarian, Ranger or other researched classes. Seven optional inherited traits and seven actual feats use existing validated typed modifiers/prerequisites. No Emberkin-specific art or mechanics are added.
+Separately pinned original `trhgd-character-v3` extends the unchanged legacy data. Three original martial paths have distinct twenty-level HP/BAB/save/skill progressions and tiered passive features: Blade Dancer (mobility/accuracy), Iron Bulwark (durability/guard with movement cost), Road Stalker (ranged accuracy/initiative/skill breadth). They are narrow original specializations, not complete equivalents of Monk, Barbarian, Ranger or other researched classes. Seven optional inherited traits and seven actual feats use existing validated typed modifiers/prerequisites. No Emberkin-specific art or mechanics are added.
 
 The expanded pack is explicitly selected before confirming any starting character. Existing drafts and ready campaigns stay pinned; changing a confirmed party's pack is rejected. The same kernel resolves creation, advancement, combat, save/reload and home recovery. V1 source bytes, helper pins, RNG and original frozen combat remain unchanged.
 
@@ -42,3 +42,9 @@ This delivery is a programme checkpoint, not completion of the full catalogue. C
 ## Reviewed source fingerprint update
 
 Initial native CI38191918484 passed ten generated worlds on both platforms, then the GAME101 corpus rejected its whole-file tactical source hash. This branch adds only saved-pack registry configuration to TacticalCombat (constructor, creation, command and validation); its movement/attack/action/RNG algorithms remain unchanged. The frozen First Adventure combat digest and GAME32 golden oracle passed. Update only that source fingerprint in `tests/opportunities/v1-pins.json`, preserving every other protected source/world/icon pin and all behavioural assertions. This is an explicit reviewed integration change, not disabling a failing test.
+
+## Engine2 snapshot serialization correction
+
+Fresh-process comparison exposed a Godot key-type issue: internally added StringName statistic keys can sort separately from ordinary String keys even when values are identical. Changing the legacy canonical hash would invalidate historical pins and frozen oracles. Instead, engine2 normalizes key types at the new character snapshot boundary before deriving/hashing. New content is pinned as `trhgd-character-v3` / rules3.0.0 / engine2. Earlier v1 and prototype v2 data/pins remain installed byte-identically, without automatic migration. The entire legacy calculation/hashing path remains unchanged. Every new class/heritage/level combination now checks snapshot equality across JSON serialization as well as build legality.
+
+The initial source journey's 1034/0 run remains valid mechanical/UI evidence for the prototype. Its first restart test had a float/int reference-comparison error and exposed the snapshot key ordering difference after reconstructing the replay fixture; those failed runs are diagnostic evidence, not final acceptance. Final native evidence must exercise engine2 from actual creation through restart without replacing snapshots or weakening assertions.

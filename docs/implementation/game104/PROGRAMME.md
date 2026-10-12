@@ -16,7 +16,7 @@ Linear tools are unavailable in this session. These GitHub issues are mirrors fo
 
 ## Exact continuation
 
-Resume branch `feature/game-104-character-content-foundation` and draft PR81, stacked on draft PR80 `feature/game-103-character-builder`. Never restart or merge either draft without human review. Read AUDIT, coverage matrix, validation and delivery first. Preserve all released rules pack files and recorded content hashes; no silent migration of v1 or v2.
+Resume branch `feature/game-104-character-content-foundation` and draft PR81, stacked on draft PR80 `feature/game-103-character-builder`. Never restart or merge either draft without human review. Read AUDIT, coverage matrix, validation and delivery first. Preserve all released rules pack files and recorded content hashes; no silent migration of v1, prototype v2 or current v3.
 
 Next coherent delivery should implement typed inherited attribute/size/vision/resistance capability schema and equipment/class proficiency support, then an original ancestry/heritage cohort using those genuine consequences. This unlocks more of the catalogue without inventing unsupported dropdowns. Use GAME-108/#84 and GAME-111/#87 together; do not begin another world-content milestone.
 

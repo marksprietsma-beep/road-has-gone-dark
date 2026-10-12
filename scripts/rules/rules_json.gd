@@ -53,3 +53,16 @@ static func issue(code: String, path: String, detail: String, extra: Dictionary 
 
 static func result(errors: Array) -> Dictionary:
  return {"ok":errors.is_empty(),"errors":errors}
+
+static func string_keys(value: Variant) -> Variant:
+ # Engine2 snapshot boundary only. Preserve engine1 canonical bytes and saves.
+ if value is Dictionary:
+  var result := {}
+  for key in value:result[str(key)]=string_keys(value[key])
+  return result
+ if value is Array:
+  var result: Array=[]
+  for item in value:result.append(string_keys(item))
+  return result
+ if value is float and integer(value):return int(value)
+ return value

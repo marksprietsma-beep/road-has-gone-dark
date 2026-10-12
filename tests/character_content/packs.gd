@@ -11,7 +11,7 @@ func run() -> void:
  check(legacy.ready(),"legacy pack loads")
  check(expanded.ready(),"expanded pack loads: "+RulesJson.canonical(expanded.errors))
  if not expanded.ready():finish();return
- check(legacy.rules_ref().pack_id=="trhgd-rules-v1" and expanded.rules_ref().pack_id=="trhgd-character-v2","separate pack identity")
+ check(legacy.rules_ref().pack_id=="trhgd-rules-v1" and expanded.rules_ref().pack_id==RulesRecords.NEW_PACK,"separate pack identity")
  var wrong := expanded.rules_ref();wrong.content_hash="0".repeat(64)
  check(not RulesRecords.registry(wrong).ready(),"tampered pin rejected without substitution")
  check(legacy.ids("classes").size()==4 and expanded.ids("classes").size()==7,"immutable v1, extended v2")
@@ -30,8 +30,11 @@ func run() -> void:
     if not applied.ok:break
     record=applied.candidate
     check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"saved history replay "+class_id)
+    var a := kernel.derive_character(record)
+    var b := kernel.derive_character(JSON.parse_string(JSON.stringify(record)))
+    check(a.snapshot.snapshot_hash==b.snapshot.snapshot_hash,"stable engine2 snapshot across serialization")
    check(record.advancement_history.size()==20,"full twenty-level progression")
-   check(not RulesCharacter.new(legacy).validate_build(record).ok,"v2 is never interpreted as v1")
+   check(not RulesCharacter.new(legacy).validate_build(record).ok,"new pack is never interpreted as v1")
  for id in expanded.ids("ancestries"):
   if not id.begins_with("lineage-"):continue
   var row := expanded.definition("ancestries",id)
@@ -49,6 +52,8 @@ func run() -> void:
  var invalid_namespace := {"mechanics":[]}
  check(not RulesRecords.registry(invalid_namespace).ready(),"malformed rules namespace cleanly rejected")
  check(not RulesRecords.registry({"rules_ref":{}}).ready(),"explicit empty pin never falls back")
+ var prior: Dictionary=RulesRecords.installed_packs()[1].rules_ref
+ check(RulesRecords.registry(prior).ready() and prior.pack_id=="trhgd-character-v2","earlier published prototype pin remains installed without migration")
  var original := RulesCharacter.new(legacy)
  var rec := legacy.recommendation("vanguard")
  var old := original.create("legacy",rec.attributes,"heritage-human");old.equipment=["shortblade"]
