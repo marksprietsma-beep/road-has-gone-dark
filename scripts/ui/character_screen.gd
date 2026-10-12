@@ -296,7 +296,7 @@ func _commit_advancement() -> void:
  _start("builder_advance",{"before_hash":preview.before_hash,"candidate_hash":preview.candidate_hash,"character_id":id,"choice":preview.choice})
 static func stat_line(snapshot: Dictionary) -> String:
  var s: Dictionary=snapshot.stats
- return "HP %d/%d · Defence %d · Melee %+d · Ranged %+d\nFort %+d · Reflex %+d · Will %+d · Initiative %+d\nMovement %d · Reach %d"%[snapshot.current_hp,s.HP,s.defence,s.melee_attack,s.ranged_attack,s.fortitude,s.reflex,s.will,s.initiative,s.stride,s.reach]
+ return "HP %d/%d · Defence %d · BAB %+d · Melee %+d · Ranged %+d\nFort %+d · Reflex %+d · Will %+d · Initiative %+d\nMovement %d · Reach %d"%[snapshot.current_hp,s.HP,s.defence,s.BAB,s.melee_attack,s.ranged_attack,s.fortitude,s.reflex,s.will,s.initiative,s.stride,s.reach]
 func sheet(r: Dictionary,m: Dictionary) -> String:
  if r.is_empty():return "Your saved identity is preserved. Enter the hometown to prepare its existing GAME-32 mechanics."
  var result := CharacterBuilderRecords.kernel(state).derive_character(r)
