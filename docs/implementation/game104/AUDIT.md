@@ -38,3 +38,7 @@ The expanded pack is explicitly selected before confirming any starting characte
 6. Remaining catalogue rows: independently reviewable original designs, mechanical validation, real playable journey proof, and explicit exception rationale where licensing or incompatible source concepts require original adaptation.
 
 This delivery is a programme checkpoint, not completion of the full catalogue. Coverage statuses must only advance with per-option evidence. No arbitrary final option cap is introduced.
+
+## Reviewed source fingerprint update
+
+Initial native CI38191918484 passed ten generated worlds on both platforms, then the GAME101 corpus rejected its whole-file tactical source hash. This branch adds only saved-pack registry configuration to TacticalCombat (constructor, creation, command and validation); its movement/attack/action/RNG algorithms remain unchanged. The frozen First Adventure combat digest and GAME32 golden oracle passed. Update only that source fingerprint in `tests/opportunities/v1-pins.json`, preserving every other protected source/world/icon pin and all behavioural assertions. This is an explicit reviewed integration change, not disabling a failing test.
