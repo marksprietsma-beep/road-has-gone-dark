@@ -76,5 +76,42 @@
     "No new empirical cross-region campaign traversal; supported service/UI transitions were inspected",
     "Cycle/reward extension is proposed, not implemented",
     "Core class cap12 is separate from total character cap20; future progression breadth remains open"
+  ],
+  "historically_validated_prestige_entry_examples": [
+    {
+      "path": "arcane-trickster",
+      "qualified_build_levels": {
+        "rogue": 2,
+        "wizard": 3
+      },
+      "entry_character_level": 6,
+      "entry_xp": 250
+    },
+    {
+      "path": "duelist",
+      "qualified_build_levels": {
+        "fighter": 6
+      },
+      "entry_character_level": 7,
+      "entry_xp": 360
+    },
+    {
+      "path": "eldritch-knight",
+      "qualified_build_levels": {
+        "fighter": 2,
+        "wizard": 5
+      },
+      "entry_character_level": 8,
+      "entry_xp": 490
+    },
+    {
+      "path": "mystic-theurge",
+      "qualified_build_levels": {
+        "wizard": 3,
+        "cleric": 3
+      },
+      "entry_character_level": 7,
+      "entry_xp": 360
+    }
   ]
 }

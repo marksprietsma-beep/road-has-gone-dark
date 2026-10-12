@@ -16,6 +16,15 @@ A saved combat victory grants **10 journey XP to each character**. Defeat, peace
 | Level12 | 1,210 | 121 | 119 |
 | Level20 | 3,610 | 361 | 359 |
 
+Existing GAME-119 CI preserves these legally qualified example histories (examples, not a claim of the mathematically earliest possible build):
+
+| Prestige path | Qualified pre-entry history | Next character level | XP needed for first prestige level |
+| --- | --- | ---: | ---: |
+| Arcane Trickster | Rogue2 / Wizard3 | 6 | 250 |
+| Duelist | Fighter6 | 7 | 360 |
+| Eldritch Knight | Fighter2 / Wizard5 | 8 | 490 |
+| Mystic Theurge | Wizard3 / Cleric3 | 7 | 360 |
+
 Levels6/12/20 cannot be earned in the present fresh journey. High-level GAME-119 fixtures prove mechanics, not organic access. Total character level20 is permitted by the existing kernel through legal multiclass histories; individual core classes are capped at12 and the four prestige classes at5. Neither cap solves the XP ceiling.
 
 Older V1 sandbox records contain four fights, for at most40 sandbox XP. A saved authored Old Road victory can contribute another10; it can happen only once. Those are alternative/historical record paths, not another40 XP obtainable by switching an existing V2 campaign to V1. A fresh normal UI bypasses the authored opening. Even a hypothetical core-policy campaign with both a completed Old Road and V2 reaches at most30, below level three. Existing engine1/2 builder policies require20×(level−1)²; their exact `policy_sha` and rules pin must remain intact. Do not apply the newer thresholds to old campaigns.
@@ -51,7 +60,7 @@ Required proof for that future implementation:
 - Fresh campaigns and exhausted existing V1/V2 campaigns obtain new meaningful events without world resets or rewritten historical pins/results; starting the extension changes only permitted new state.
 - Repeated cycle preview, stale commands, interrupted generation/commit, mid-combat restart and duplicate terminal requests do not reroll, lose history or duplicate XP. Corrupt cycle IDs/base hashes/reward records fail validation.
 - Recovery/investigation/peaceful success earns its explicitly pinned objective reward; partial actions and unsuccessful outcomes do not. Combat earns the same single objective reward, with unchanged GAME-32 command/RNG results.
-- A genuine fresh campaign earns250 XP from saved real objectives, advances to level six, satisfies an attainable prestige path through deliberate legal choices, and reloads unchanged. Test legal histories/prerequisites rather than inserting XP or fixture levels. Exercise a Wizard/Fighter route to Eldritch Knight or an equally attainable approved path.
+- A genuine fresh campaign earns250 XP from saved real objectives and advances to level six. Demonstrate actual earned prestige entry using an approved legal history: Rogue2/Wizard3 then Arcane Trickster1 at250 XP, or continue to490 XP for the tested Fighter2/Wizard5 then Eldritch Knight1 example. Reload choices/history/XP unchanged. Do not claim the Wizard/Fighter path enters at level six, or insert fixture XP/levels.
 - An isolated deterministic long-run *gameplay driver* completes enough actual events to cross1,210 and3,610 XP and verifies every reward/reload, clearly distinguished from a human playthrough and from prior high-level development fixtures. Full single-class13–20 is not claimed until its own content exists.
 - Preserve frozen V1/V2, existing pinned character policies, GAME-81 input/UI, GAME-32 replay, procedural combat/save suites and native Windows/Linux packages. Capture the real home/next-cycle/earned-advancement/reload UI.
 - Record human activity timings before calling the high-level cadence reasonably paced. Catalogue breadth is not marked complete by this work.
