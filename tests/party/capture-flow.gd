@@ -33,6 +33,19 @@ func click(control: Control, point: Vector2 = Vector2(-1,-1)) -> void:
   e.pressed = down
   root.push_input(e,true)
  await frames()
+func choose_native(control: OptionButton,id: String) -> void:
+ var target := -1
+ for index in control.item_count:
+  if str(control.get_item_metadata(index))==id:target=index
+ check(target>=0,"visible option available: "+id)
+ await click(control)
+ check(control.get_popup().visible,"native selection popup is open")
+ var focused: int=control.get_popup().get_focused_item()
+ if focused<0:await key(KEY_DOWN);focused=control.get_popup().get_focused_item()
+ check(focused>=0,"native popup has a keyboard-focused item")
+ for index in abs(target-focused):await key(KEY_DOWN if target>focused else KEY_UP)
+ await key(KEY_ENTER)
+ check(str(control.get_item_metadata(control.selected))==id,"native popup selects: "+id)
 func wait_scene(path: String) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while (current_scene==null or current_scene.scene_file_path!=path) and Time.get_ticks_msec()<deadline: await process_frame
@@ -111,6 +124,15 @@ func run() -> void:
   ui.detail_tabs.current_tab=0
   await shot("background-%dx%d"%[dimensions.x,dimensions.y],ui)
   ui.detail_tabs.current_tab=0
+ # Force the reported dependency every fresh run instead of relying on the
+ # random generated identity: Human Wizard -> Orc reduces INT, skill budget
+ # and prepared-slot capacity. Legacy keeps its original unchanged setup.
+ if not legacy:
+  await choose_native(ui.people_picker,"human")
+  await choose_native(ui.class_choice,"fighter")
+  await choose_native(ui.class_choice,"wizard")
+  check(ui.editor.preview.ok,"Human Wizard starts with a complete real mechanical build")
+  await click(ui.save_button);await wait_party(ui)
  # Actual OptionButton popup and keyboard ancestry selection.
  await click(ui.people_picker)
  await shot("people-popup-2560x1440")
@@ -119,6 +141,7 @@ func run() -> void:
  await key(KEY_ENTER)
  await key(KEY_DOWN)
  await key(KEY_ENTER)
+ if not legacy:check(ui.selected_id(ui.people_picker)=="orc" and not ui.editor.preview.ok,"Human-to-Orc caster change deliberately exercises skill and preparation budgets")
  # A changed inherited INT modifier changes the real skill budget. Complete it
  # through the visible Skills action rather than attempting a disabled Save.
  for attempt in 3:
@@ -126,6 +149,7 @@ func run() -> void:
   check(ui.save_button.disabled and not ui.identity_validation.text.is_empty(),"incomplete ancestry build is visibly explained and cannot save")
   var reason: String=CharacterBuilderRecords.reason(ui.editor.preview).to_lower()
   var label: String="Suggested skill allocation" if "skill" in reason else "Suggested spell selections"
+  ui.detail_tabs.current_tab=0;await frames()
   await click(ui.review_build_button)
   var suggestions: Array = ui.editor.find_children("*","Button",true,false).filter(func(button: Button):return button.text==label)
   check(suggestions.size()==1,"visible recommendation action exists: "+label)

@@ -1,3 +1,7 @@
+# Current continuation review
+
+Use the Windows package and exact fresh/legacy test route in [DELIVERY.md](DELIVERY.md). Latest content is v6: nine race families, fourteen heritages, eleven core classes through eight and twenty-six feats. An ancestry edit can change Skills and Spells budgets; Review incomplete build explains and links the required choices. The following original v4 instructions remain historical guidance for that pinned batch.
+
 # GAME-118 player review
 
 Download/extract the complete Windows archive, preserving the executable, worldgen-helper and artwork folders. Launch `road-has-gone-dark.exe`; Escape skips the intro. No Godot or Node installation is needed.

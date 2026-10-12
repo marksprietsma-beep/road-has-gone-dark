@@ -1,47 +1,35 @@
-# GAME-118 Windows review delivery
+# GAME-118 regression repair and continuation review delivery
 
-[Draft PR88](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/88), stacked on unmerged draft PR81. PR80/81/88 remain drafts. No merge performed.
+[Draft PR88](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/88) remains stacked on draft PR81/PR80. None are merged. Human acceptance and the full character programme remain open.
 
-**[Download the self-contained Windows x64 build](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38223873830/artifacts/11736109448).** GitHub downloads an outer artifact ZIP: extract it, then extract `game118-playable-core-characters-windows-x64.zip`. Open its folder and run `road-has-gone-dark.exe`. Keep the helper/artwork beside it. No Godot or Node installation is required. Escape skips the intro. The build is unsigned.
+## Windows download, checksum and native proof
 
-Playable ZIP SHA-256:
+The refreshed self-contained Windows x64 package and matching SHA-256 file are attached to the [final production-source Windows/Linux release workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38239740437), under **game118-complete-Windows**. The inner playable archive is `game118-playable-core-characters-windows-x64.zip`. The exact artifact link, independently checked checksum and final CI conclusions are recorded in the [PR88 delivery section](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/88). Per-OS native export/restart proofs, source SHA and distribution hashes are retained in **game118-evidence-Windows/Linux** on that same run. Do not substitute the earlier v4 package; its historical delivery is preserved in DELIVERY-CORE-V4.md.
 
-```
-19ab5adce02ca83ac9605c75aee9f7ff2ca19bd58cce5d32c06e2e85d5e8f980
-```
+Production/build source: **5c422cee29cc3f61292d834e4ff5c2cac988e630**. Separate commits: bfe808c regression repair, d8b3a4e progression/ancestry/feat batch, 5c422ce spontaneous repertoire edge case. Subsequent test/evidence/documentation changes do not alter production files or installed content pins; equivalence is checked before publication.
 
-Build/source commit: `de63453c83e6451b8929e708f3e1e5a9e559ca38`. Implementation commits: `1d7d26d6a9d5aada1374bbbee8591fb3c944abe8` (core content/default creator), `a461936ad25d4186cb8d94e0596dc072b06abfa3` (atomic fresh party/pin), `de63453` (pending card/class/portrait consistency). Later delivery commits contain documentation and evidence only; production equivalence is checked before publication.
+Extract the outer GitHub artifact ZIP, then extract the playable ZIP inside it. Run `road-has-gone-dark.exe`, retaining its accompanying artwork/helper folders. No Godot or Node installation is needed. Escape skips the intro. The build is unsigned; native packaging verification uses the bundled helper with an empty PATH.
 
-Fresh-pack **actually playable starting counts**: **7 race families / 10 heritage records; 11 classes; 0 prestige classes; 18 feats**. Class progression and tactical powers are implemented/verified through six. Actual player journeys demonstrate three characters earning and committing level two after real combat XP. These are original TRHGD core-archetype adaptations, not complete tabletop conversions. The full 403 ancestry / 66 base / approximately 283 prestige catalogue remains open; its coverage spreadsheet is not counted as playable content.
+## Exact player route
 
-## Exact player test
+1. **New Game → generate/select world → origin → hometown.** Race & class opens automatically with eleven familiar classes and nine ancestry families; no content opt-in. Existing Resume campaigns deliberately keep their original options and pins.
+2. Create a Dwarf Fighter, Half-elf Rogue and Elf Wizard. Review **Build → Attributes / Skills / Feats / Equipment / Spells / Progression**, then **Sheet**. Spells show individual prepared copies or known repertoire. Review ancestry bonuses, class features, restrictions and numerical totals; save all three → **Party ready → Enter hometown**.
+3. To exercise the repaired case, select a Human Wizard, save it, then select Orc. Inherited INT changes the skill and slot budgets. Save must remain disabled until these choices are legal. **Review incomplete build → Skills → Suggested skill allocation**, then return to **Race & class → Review incomplete build → Spells → Suggested spell selections**. The spell suggestion preserves attributes and equipment. Save, edit the name with Enter, navigate the roster and complete the party.
+4. Prepare/scout/travel to a contextual contested opportunity. Enter combat, move, attack and cast the Wizard's prepared spells. Win, resolve consequences and return home. **Characters → Advance** uses actual earned 10 XP to fund level two under the new policy; review and commit each character once.
+5. Exit/relaunch/Resume. Character IDs, class history, traits, equipment, spells/resources, XP and campaign consequences must reload. Existing saves are retained: no deletion or silent content upgrade is part of this route.
 
-1. **New Game** → generate/select world → origin → hometown → creator. The first **Race & class** page must offer the eleven familiar classes and seven ancestry families without a content button or configuration.
-2. Build a Dwarf Fighter, Half-elf Rogue and Elf Wizard. **Build** contains Attributes, Skills, Feats, Equipment, Spells and Progression. Review numerical ancestry effects and abilities in **Sheet**, save each, then **Party ready → Enter hometown**. Pending cards/biographies/sheets reflect edited choices before saving.
-3. Prepare a contextual opportunity, scout/travel to a contested site and fight. Use class techniques and spells; the Wizard's individual prepared copies and total tier slots both limit casts. Win, return to regional play, return home.
-4. **Characters → Advance**: earned 10 XP funds level two under the new core policy. Review skill ranks and any scheduled general/bonus feat, commit once. **Spellbook** changes prepared copies at home, preserves shared remaining slots and retains learned spontaneous spells.
-5. Exit, relaunch and Resume. Identities, numerical traits, class history, equipment, spell selections/resources, XP and consequences must reload. Existing campaigns keep their original exact packs/policies and old options; use a fresh New Game to review this content. Do not delete existing saves.
+Production scenes remain scenes/ui/main_menu.tscn, scenes/ui/party_creation.tscn, scenes/ui/character_sheet.tscn and scenes/gameplay/expedition.tscn. More route detail: TESTING.md. Exact scope/handoff: CONTINUATION.md. Root cause: REGRESSION-REPAIR.md.
 
-More detail/scenes: [TESTING.md](TESTING.md). Features and explicit continuation: [IMPLEMENTATION.md](IMPLEMENTATION.md).
+## Actual local evidence
 
-## Verified evidence
+Final-source creation/progression: **6,868 / 0**; tactical commands and exact state/log/RNG replay: **3,111 / 0**; continuation/feat prerequisites/spontaneous tier learning: **109 / 0**; previous v4 campaign load/sheet/save-byte/reload proof: **15 / 0**. These include 11 classes across 14 heritage records through eight. Published v1–v5 remain installed unchanged; old v4 class cap and repertoire are explicitly checked.
 
-[Windows/Linux complete release workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38223873830) passed on the build source. Each OS passed:
+Final-source real Godot/Mesa focused journey: **539 / 0**, one fresh hometown plus original GAME99 continuation, with real combat XP and all three earned level-two characters. Separate-process restart: **10 / 0**. Capture driver: **70 / 0**. Twenty-four actual PNGs under screenshots/continuation/ show first-open UI at 640×360, 1280×720 and 2560×1440, class/race menus, attributes, prepared spells, sheets, new ancestry traits, combat/results, earned advancement and reload. Each has a SHA-256, source revision and dimensions in evidence/continuation/screenshots.json. The earlier six-hometown/full-11-class render passed **1,147 / 0** at d8b3a4e; its only later production change is the class-eight Sorcerer allowance. Final native workflows run the complete six-hometown path on the final source.
 
-- 5,064 core creation/progression/equipment/score/preparation checks, including all eleven classes across all ten heritages through six.
-- 1,987 genuine tactical-power checks, exact state/log/RNG replay, prepared-copy exhaustion, save-for-half and Evasion.
-- Frozen GAME32 **22,181** checks, **235** existing-save migration checks and **6** restart checks. Published v1/v2/v3 data and old XP policy remain unchanged.
-- Prior v3 twenty-level combinations **3,721** checks; original builder **150 + 5 + 25 + 26**, atomic fresh-generation/interruption/retry **7** checks; original First Adventure combat/save and GAME83 presentation gates.
-- Ten generated-world/fourty-context V1/V2 regressions and production journeys. Final native export: **998** journey checks and **54** separate-process restart checks, including original GAME99 campaign continuation. Empty PATH, bundled helper only, production executable launch, no diagnostic executable in the package.
+The original GAME81 input/render assertions remain, with deterministic Human Wizard → Orc setup for the fresh run and a separate untouched legacy setup. The fresh real-input capture passes **176 / 0**. Proof files retain the actual immutable pins. Final native workflow outcomes and input counts are available in PR88 and the corresponding QA artifacts; CI failures remain failures until investigated, never converted to skipped gates.
 
-All ten source workflows are successful, including separate [GAME32](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38223878874), [GAME83 UI](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38223878810), and [party/expedition native checks](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38223878827).
+## Playable versus researched
 
-Local real Godot renders additionally passed **1,125** journey checks and **54** fresh-process checks; final creator/sheet capture driver **62** checks. Twenty-seven PNGs are retained under screenshots/, with individual hashes/source revisions in evidence/screenshots.json. Source geometry fixtures were reused for these focused visual captures; native release tests generated/select worlds through the normal offline controller.
+Latest fresh content: **9 race families / 14 heritage records, 11 core archetype adaptations through level 8, 26 mechanical feats, 0 prestige classes**. The 403 ancestry / 66 base / approximately 283 prestige research programme is unfinished; no coverage row is counted as a complete playable conversion simply because a low-level adaptation exists.
 
-Archive integrity independently checked: **7,062 files**, CRC valid, published checksum matches, executable/Node/helper/art attribution/immutable rule manifest/both progression policies present, QA executable absent. See evidence/windows-archive-verification.json and native Windows/Linux proofs/timings.
-
-## Remaining scope
-
-Human acceptance is pending. This is a low-level playable batch. Core progression beyond six, larger repertoires and parameterised domains/bloodlines/quarries, full companions/summons, advanced class/equipment/feat options and prestige paths remain programme work. Current regional opportunities are finite and limit organically attainable higher XP. World presence metadata remains the legacy prototype layer. LPC provides neutral humanoid fallbacks for unsupported ancestry anatomy and bear form; small bodies scale down and Monk presentation is unarmed. No completed final ancestry roster or complete source-catalogue conversion is claimed.
-
-[Programme #82](https://github.com/marksprietsma-beep/road-has-gone-dark/issues/82) and children #83–87 remain open, with concrete playable continuation recorded. No Linear update is claimed.
+Higher class levels, full repertoires, parameterised domains/bloodlines/quarries/schools, multiple simultaneous feat grants at overlapping schedules, companions/summons, more substantial transformations and prestige paths remain work. Current finite opportunities constrain organically attainable higher XP; upper-level mechanics use explicit development progression fixtures, while actual play demonstrates earned level two. Goblin/Orc and unsupported body plans have neutral LPC fallbacks, not dedicated completed anatomy. Senses are descriptors on current daylight maps. See CONTINUATION.md for concrete programme priorities; #82 and #83–87 remain open.

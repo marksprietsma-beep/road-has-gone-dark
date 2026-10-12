@@ -1,5 +1,7 @@
 # GAME-118 — Recognisable playable characters
 
+**Current continuation:** the repaired creator and latest separately pinned content now offer nine race families, fourteen heritage records, eleven classes through eight and twenty-six feats. See CONTINUATION.md and DELIVERY.md. The material below records the original v4 batch; its published pin and existing campaigns remain unchanged.
+
 The blocking [PR81 review](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/81#issuecomment-6117744253) was correct: fresh campaigns used legacy content, expanded content was hidden in Identity, the visible classes remained unfamiliar originals, and narrative roles competed with mechanical choices. Green technical tests did not establish player acceptance.
 
 Reviewed GAME103/104 implementation and delivery, the GAME108/109/110/111 programme mirrors (#84–87), GAME36 capability work (#83), the GAME88 accepted direction/catalogue, and the review. Linear is not callable here; the user's GAME118 brief and GitHub review are authoritative. Neither parent draft #80/#81 is merged.

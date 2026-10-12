@@ -1,0 +1,78 @@
+{
+  "checks": 10,
+  "empty_path": false,
+  "failures": 0,
+  "journeys": [
+    {
+      "home_id": 201.0,
+      "paths": {
+        "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439": {
+          "battle_hash": "",
+          "choice_id": "careful",
+          "complete": true,
+          "discovered_site": "",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0.0,
+          "provisions_spent": 1.0,
+          "sequence": 10.0,
+          "site_id": "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439",
+          "supplies_after": 2.0,
+          "supplies_before": 3.0,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 1 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2.0,
+          "version": "activity-result-v2",
+          "xp_each": 0.0
+        },
+        "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7": {
+          "battle_hash": "",
+          "choice_id": "companion:4939388df1c27311ee17ecb4e7272f44:adventurer:1",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "4939388df1c27311ee17ecb4e7272f44:adventurer:1",
+          "profession": "repairer",
+          "provisions_gained": 2.0,
+          "provisions_spent": 0.0,
+          "sequence": 6.0,
+          "site_id": "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7",
+          "supplies_after": 4.0,
+          "supplies_before": 2.0,
+          "text": "Abandoned travellers’ shelter: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 1 turn(s), 0 provision(s); recovered 2. Journey XP each: 0. Contribution: repairer.",
+          "turns": 1.0,
+          "version": "activity-result-v2",
+          "xp_each": 0.0
+        },
+        "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f": {
+          "battle_hash": "ab22c4eb0826e93ff78ef2910013bcbb11fab1547c3b51e46e381a7fa727c341",
+          "choice_id": "combat_result",
+          "complete": true,
+          "discovered_site": "",
+          "event": "record",
+          "information": "Armed occupants defeated.",
+          "outcome": "victory",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0.0,
+          "provisions_spent": 0.0,
+          "sequence": 15.0,
+          "site_id": "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f",
+          "supplies_after": 3.0,
+          "supplies_before": 3.0,
+          "text": "Contested salvage yard: victory. Armed occupants defeated. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 10.",
+          "turns": 2.0,
+          "version": "activity-result-v2",
+          "xp_each": 10.0
+        }
+      },
+      "sandbox_sha": "8fc05e199b8d1814251fa6dfe25f56096760893756eea72895aeb82ae118c9ea"
+    }
+  ],
+  "platform": "Linux",
+  "source_helper_override": true
+}

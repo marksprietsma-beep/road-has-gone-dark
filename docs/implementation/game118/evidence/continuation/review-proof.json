@@ -1,0 +1,185 @@
+{
+  "checks": 539,
+  "core_actions": [
+    "wizard-arcane-bolt",
+    "power-strike",
+    "spark"
+  ],
+  "empty_path": false,
+  "existing_campaign": {
+    "base_sha": "7829b4e92d42351c6bd3b8ded5ac52f58188f1eedb567f90d683b71ff31fcdf2",
+    "party_ids": [
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+        "battle_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+        "outcome": "victory",
+        "sequence": 8,
+        "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+        "text": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a": {
+        "battle_hash": "408781ea1e42aef394b1acaf3c3fcd52e6c4fd1dd57a592714f8b6fcc8a6e1b7",
+        "outcome": "victory",
+        "sequence": 21,
+        "site_id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+        "text": "The armed occupants of Roadside obstruction · 4 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+        "battle_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+        "outcome": "victory",
+        "sequence": 13,
+        "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+        "text": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+        "battle_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+        "outcome": "defeat",
+        "sequence": 17,
+        "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+        "text": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      }
+    },
+    "source": "Executed GAME99 Linux recovery fixture",
+    "victory_site": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+    "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+  },
+  "failures": 0,
+  "journeys": [
+    {
+      "base_sha": "50406e79ce99de9db29da91738079bf949daec254fa453c97a65358245f78b09",
+      "biome": "Grassland",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "fighter",
+        "rogue",
+        "wizard"
+      ],
+      "home_id": 201.0,
+      "home_name": "Kegyes",
+      "library_root": "/workspace/artifacts/game118/final-continuation-visual/review/library",
+      "party": [
+        {
+          "id": "4939388df1c27311ee17ecb4e7272f44:adventurer:1",
+          "name": "Alric of the Road",
+          "profession": "repairer",
+          "role": "vanguard"
+        },
+        {
+          "id": "4939388df1c27311ee17ecb4e7272f44:adventurer:2",
+          "name": "Rogue of the Road",
+          "profession": "baker",
+          "role": "scout"
+        },
+        {
+          "id": "4939388df1c27311ee17ecb4e7272f44:adventurer:3",
+          "name": "Wizard of the Road",
+          "profession": "possible-recruit",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:4939388df1c27311ee17ecb4e7272f44:adventurer:1",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "4939388df1c27311ee17ecb4e7272f44:adventurer:1",
+          "profession": "repairer",
+          "provisions_gained": 2,
+          "provisions_spent": 0,
+          "sequence": 6,
+          "site_id": "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7",
+          "supplies_after": 4,
+          "supplies_before": 2,
+          "text": "Abandoned travellers’ shelter: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 1 turn(s), 0 provision(s); recovered 2. Journey XP each: 0. Contribution: repairer.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "careful",
+          "complete": true,
+          "discovered_site": "",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 1,
+          "sequence": 10,
+          "site_id": "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439",
+          "supplies_after": 2,
+          "supplies_before": 3,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 1 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "ab22c4eb0826e93ff78ef2910013bcbb11fab1547c3b51e46e381a7fa727c341",
+          "choice_id": "combat_result",
+          "complete": true,
+          "discovered_site": "",
+          "event": "record",
+          "information": "Armed occupants defeated.",
+          "outcome": "victory",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 15,
+          "site_id": "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Contested salvage yard: victory. Armed occupants defeated. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 10.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 10
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "a14f2332daac6c3f2b2f5832166438ffda3bb4fea169366cfa8bc512b11af71d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v6",
+        "rules_version": "6.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "8fc05e199b8d1814251fa6dfe25f56096760893756eea72895aeb82ae118c9ea",
+      "save_root": "/workspace/artifacts/game118/final-continuation-visual/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "4939388df1c27311ee17ecb4e7272f44",
+      "snapshots": {
+        "4939388df1c27311ee17ecb4e7272f44:adventurer:1": "25fb4086ab47d409edc8d6fae6985a217e924944c8cf0f6bd53ff60526195ba7",
+        "4939388df1c27311ee17ecb4e7272f44:adventurer:2": "321fa359ddae5b3404412be1b53decb578113f03b532a9b0b751da3c9978400e",
+        "4939388df1c27311ee17ecb4e7272f44:adventurer:3": "9552005faf7db71ef8155055a4b784e4ad7de495090d483835e3556a5a338ff5"
+      },
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    }
+  ],
+  "platform": "Linux",
+  "source_helper_override": true,
+  "unprepared_legacy": {
+    "hometown_handoff": true,
+    "party_sha": "f3b6da6e5a942a8e5bd3280157b6d54d3eee505e7d346b9a70b8525873cd5d00",
+    "persistent_ids": [
+      "c9beab0066e44194504bde4568c16d93:adventurer:1",
+      "c9beab0066e44194504bde4568c16d93:adventurer:2",
+      "c9beab0066e44194504bde4568c16d93:adventurer:3"
+    ],
+    "preview_bytes_unchanged": true
+  },
+  "visual": true
+}
