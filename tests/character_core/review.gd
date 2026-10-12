@@ -25,6 +25,7 @@ func review_build(index: int,member: int) -> void:
  check(ui.editor.preview.ok,"familiar "+race+" "+cls+" has a real legal build: "+CharacterBuilderRecords.reason(ui.editor.preview))
  check(ui.editor.preview.candidate.advancement_history[0].class_id==cls,"actual mechanical class independent of narrative role")
  ui.name_edit.text=cls.capitalize()+" of the Road";ui.name_edit.text_changed.emit(ui.name_edit.text)
+ check(ui.roster.rows[member].get_child(0).get_child(1).get_child(1).text.begins_with(cls.capitalize()),"pending party card shows the selected real class")
  check(ui.biography.text.contains(ui.name_edit.text) and ui.statistics.text.contains(ui.name_edit.text),"pending biography and sheet agree with edited name")
  if index==0:
   ui.detail_tabs.current_tab=0;await frames();await shot(cls+'-ancestry-traits')

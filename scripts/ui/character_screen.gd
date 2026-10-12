@@ -282,7 +282,12 @@ func _identity_changed() -> void:
 func _preview_changed() -> void:
  if state.is_empty() or ready_view:return
  if editor.preview.get("ok",false):
-  var pending: Dictionary=state.party.members[selected-1].duplicate(true);pending.name=name_edit.text;pending.biography=biography.text
+  var pending: Dictionary=state.party.members[selected-1].duplicate(true);pending.name=name_edit.text;pending.biography=biography.text;pending.people_id=selected_id(people_picker)
+  var engine := TacticalCombat.new(editor.preview.candidate)
+  var unit := engine.unit(pending.character_id,pending.name,"party",[0,0],editor.preview.candidate,TacticalCombat.weapon_for(editor.preview.candidate))
+  var recipe := CombatArt.recipe("lpc",unit,pending)
+  roster.update_item(selected-1,pending.name+"\n"+str(editor.source.definition("classes",editor.class_id).name)+" · preview",CombatArt.thumbnail(recipe))
+  preview_recipes[pending.character_id]=recipe.recipe_hash
   statistics.text=sheet(editor.preview.candidate,pending)+"\n\nLIVE PREVIEW · Save this adventurer to retain these choices."
  else:statistics.text="Incomplete build: "+CharacterBuilderRecords.reason(editor.preview)
  if editor.preview.get("ok",false):

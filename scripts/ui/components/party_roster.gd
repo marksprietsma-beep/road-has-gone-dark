@@ -25,6 +25,12 @@ func add_item(caption: String,icon: Texture2D) -> void:
  line.add_child(labels)
  var title := GameUI.label(parts[0],14);title.autowrap_mode=TextServer.AUTOWRAP_OFF;title.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;labels.add_child(title)
  var details := GameUI.label(parts[1] if parts.size()>1 else "",12);details.custom_minimum_size.y=28;details.max_lines_visible=2;details.clip_text=true;labels.add_child(details)
+func update_item(index: int,caption: String,icon: Texture2D) -> void:
+ var parts := caption.split("\n");var line: HBoxContainer=rows[index].get_child(0)
+ line.get_child(0).texture=icon
+ var labels: VBoxContainer=line.get_child(1)
+ labels.get_child(0).text=parts[0];labels.get_child(1).text=parts[1] if parts.size()>1 else ""
+
 func set_item_tooltip(index: int,value: String) -> void:rows[index].tooltip_text=value
 func get_item_rect(index: int) -> Rect2:return Rect2(rows[index].position,rows[index].size)
 func get_item_count() -> int:return rows.size()
