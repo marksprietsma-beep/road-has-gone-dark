@@ -7,11 +7,11 @@ func check(ok: bool,why: String) -> void:
 func _initialize() -> void:call_deferred("run")
 func run() -> void:
  var legacy := RulesRecords.registry()
- var expanded := RulesRecords.new_character_registry()
+ var expanded := RulesRecords.registry(RulesRecords.installed_packs()[2].rules_ref)
  check(legacy.ready(),"legacy pack loads")
  check(expanded.ready(),"expanded pack loads: "+RulesJson.canonical(expanded.errors))
  if not expanded.ready():finish();return
- check(legacy.rules_ref().pack_id=="trhgd-rules-v1" and expanded.rules_ref().pack_id==RulesRecords.NEW_PACK,"separate pack identity")
+ check(legacy.rules_ref().pack_id=="trhgd-rules-v1" and expanded.rules_ref().pack_id=="trhgd-character-v3","separate pack identity")
  var wrong := expanded.rules_ref();wrong.content_hash="0".repeat(64)
  check(not RulesRecords.registry(wrong).ready(),"tampered pin rejected without substitution")
  check(legacy.ids("classes").size()==4 and expanded.ids("classes").size()==7,"immutable v1, extended v2")

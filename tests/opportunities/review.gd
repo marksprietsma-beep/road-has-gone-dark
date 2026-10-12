@@ -21,7 +21,7 @@ func journey(spec: Dictionary,index: int) -> void:
  await click(ui.new_game_button);await wait_scene("res://scenes/ui/new_game_origin.tscn")
  ui.library.library_root=base.path_join("review/library");ui.store.save_root=base.path_join("review/saves");ui.library.save_root=ui.store.save_root
  ui._reload_library();ui.choose_world(0);ui.show_page()
- if index in [0,3]:
+ if index in [0,3] and OS.get_environment("GAME_REVIEW_REUSE_WORLDS")!="1":
   ui.generation_button.pressed.disconnect(ui._start_generation)
   ui.generation_button.pressed.connect(func():ui._start_generation(spec.seed))
   await click(ui.generation_button)

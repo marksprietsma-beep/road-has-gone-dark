@@ -91,6 +91,15 @@ static func pick(seed: String, domain: String, count: int) -> int:
  return (domain+":"+seed).sha256_text().left(7).hex_to_int()%count
 static func recipe(_style_id: String, unit: Dictionary, member: Dictionary={}, descriptors: Dictionary={}) -> Dictionary:
  var style: Dictionary=styles()[0];var p := profile(str(unit.id),member,descriptors)
+ if unit.record.get("rules_ref",{}).get("engine_schema")==3:
+  var ancestry := RulesRecords.registry(unit.record).definition("ancestries",str(unit.record.ancestry_ref))
+  p.identity_layers.heritage={"rules_ref":unit.record.rules_ref,"ancestry_ref":unit.record.ancestry_ref}
+  if not descriptors.has("body"):
+   p.body.plan=ancestry.get("body_plan","humanoid")
+   p.body.size={"small":0.78,"medium":1.0,"large":1.16}.get(ancestry.get("size","medium"),1.0)
+  if unit.record.runtime.statuses.any(func(status: Dictionary):return status.id=="bear-form") and not descriptors.has("transformation"):
+   p.transformation={"source":"wild-shape","body":p.body.duplicate(true)}
+   p.transformation.body.plan="quadruped";p.transformation.body.size=1.15
  var body: Dictionary=p.transformation.get("body",p.body)
  var warnings: Array[String]=[]
  var equipment: Array=unit.record.get("equipment",[])
@@ -121,7 +130,7 @@ static func recipe(_style_id: String, unit: Dictionary, member: Dictionary={}, d
   if weapon=="bow":components.append("hood")
  if weapon=="bow":components.append_array(["bow-back","bow-front"])
  elif weapon=="staff":components.append("cane-"+family)
- else:components.append_array(["blade-back","blade-front"])
+ elif weapon!="unarmed":components.append_array(["blade-back","blade-front"])
  components.sort_custom(func(a: String,b: String):return float(style.parts[a].z)<float(style.parts[b].z))
  var animations := {};var fallbacks: Array[String]=[]
  var source_acts := {"idle":"idle","move":"walk","slash":"slash","shoot":"shoot","thrust":"thrust","spell":"spellcast","down":"hurt","hit":"hurt","guard":"walk"}

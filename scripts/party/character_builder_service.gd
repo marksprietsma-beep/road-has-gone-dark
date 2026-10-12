@@ -8,6 +8,7 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  var state: Dictionary=loaded.state
  if operation=="builder_open":
   if state.get("party",{}).get("status")=="ready" or state.has("character_builder"):return loaded
+  var fresh := not state.has("party")
   if not state.has("party"):
    loaded=super._operate_locked(entry,slot,"generate",1,{})
    if not loaded.ok:return loaded
@@ -15,14 +16,38 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   var candidate := state.duplicate(true)
   var shadow := state.duplicate(true)
   shadow.party.status="ready";shadow.onboarding_stage="party_ready"
-  var prepared := RulesRecords.preview_preparation(shadow)
+  var source := RulesRecords.new_character_registry() if fresh else RulesRecords.registry(state)
+  if fresh:
+   if not source.ready():return fail("Latest supported character content is unavailable")
+   for i in 3:
+    var m: Dictionary=candidate.party.members[i]
+    m.people_id=source.definition("ancestries",RulesCoreContent.initial_ancestry(m.people_id)).people_id
+    m.generated_facts.people_id=m.people_id
+    m.background_id=m.character_id+":background:"+JSON.stringify(["trhgd-party-1",candidate.party.content_pack_sha,int(m.background_variant),m.people_id,m.role_id]).sha256_text().left(20)
+    candidate.characters[i].people_id=m.people_id;candidate.characters[i].background_id=m.background_id
+   shadow=candidate.duplicate(true);shadow.party.status="ready";shadow.onboarding_stage="party_ready"
+  var prepared := RulesRecords.preview_preparation(shadow,source.rules_ref())
   if not prepared.ok:return prepared
-  candidate.party.schema_version=2;candidate.party.generator_version="player-party-1"
+  candidate.party.schema_version=3 if fresh else 2;candidate.party.generator_version="player-party-2" if fresh else "player-party-1"
   for m in candidate.party.members:m.generated_facts.public_relationship.kind="party-companions"
-  candidate.character_builder={"version":1,"rules_ref":prepared.candidate.mechanics.rules_ref,"revision":1,"confirmed":[],"drafts":prepared.candidate.mechanics.records,"advancements":[],"policy_sha":FileAccess.get_sha256(CharacterBuilderRecords.POLICY),"initial_levels":{}}
+  candidate.character_builder={"version":1,"rules_ref":prepared.candidate.mechanics.rules_ref,"revision":1,"confirmed":[],"drafts":prepared.candidate.mechanics.records,"advancements":[],"policy_sha":FileAccess.get_sha256(CharacterBuilderRecords.CORE_POLICY if fresh else CharacterBuilderRecords.POLICY),"initial_levels":{}}
   for id in candidate.party_ids:candidate.character_builder.initial_levels[id]=1
   return commit(slot,candidate,entry.world)
  if changes.get("before_hash")!=RulesJson.digest(state):return fail("builder.stale: Campaign changed after your preview. Reload before saving.")
+ if operation=="builder_spells":
+  if not state.has("mechanics") or RulesRecords.registry(state).rules_ref().engine_schema!=3 or AdventureService.away(state):return fail("Prepare core spells at home using this character's saved rules")
+  if not changes.get("character_id") is String or not state.mechanics.records.has(changes.character_id) or not changes.get("spells") is Array or not changes.get("preparations") is Dictionary:return fail("A typed spell selection is required")
+  var candidate := state.duplicate(true);var record: Dictionary=candidate.mechanics.records[changes.character_id]
+  var source := RulesRecords.registry(state)
+  for id in record.choices.prepared_abilities:
+   var cls: String=str(source.definition("abilities",str(id)).get("casting_class",""))
+   if source.definition("classes",cls).get("spell_mode")=="spontaneous" and not changes.spells.has(id):return fail("Known spontaneous spells cannot be forgotten by changing preparations")
+  record.choices.prepared_abilities=changes.spells.duplicate();record.choices.spell_preparations=changes.preparations.duplicate(true);record.revision+=1
+  RulesCoreContent.refill_prepared(record,source)
+  var valid := RulesCharacter.new(source).derive_character(record)
+  if not valid.ok:return valid
+  candidate.mechanics.revision+=1
+  return commit(slot,candidate,entry.world)
  if operation=="builder_advance":
   if not changes.get("choice") is Dictionary or not changes.get("character_id") is String:return fail("A structured advancement choice is required")
   var preview := CharacterBuilderRecords.preview_advancement(state,changes.character_id,changes.choice)
@@ -33,15 +58,7 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  var candidate := state.duplicate(true)
  var b: Dictionary=candidate.character_builder
  if operation=="builder_content":
-  if not b.confirmed.is_empty():return fail("Choose a content pack before saving any adventurer. Confirmed identities and builds will not be replaced.")
-  if changes.get("pack_id")!=RulesRecords.NEW_PACK:return fail("Unknown reviewed character pack")
-  var source := RulesRecords.new_character_registry()
-  if not source.ready():return fail("Character content pack unavailable")
-  var shadow := state.duplicate(true);shadow.party.status="ready"
-  var prepared := RulesRecords.preview_preparation(shadow,source.rules_ref())
-  if not prepared.ok:return prepared
-  b.rules_ref=source.rules_ref();b.drafts=prepared.candidate.mechanics.records;b.revision+=1
-  return commit(slot,candidate,entry.world)
+  return fail("Existing creator rules pins are retained. Latest content is automatic for a fresh New Game.")
  if operation=="builder_ready":
   if b.confirmed.size()!=3:return fail("Review and save each of your three adventurers first")
   candidate.party.status="ready";candidate.onboarding_stage="party_ready"
@@ -66,11 +83,14 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  var generated := _helper(entry,{"operation":"generate","campaign":scratch})
  if not generated.ok:return generated
  scratch.party=generated.party
- var edited := _helper(entry,{"operation":"edit","campaign":scratch,"slot":member,"changes":{"name":identity.name,"people_id":identity.people_id,"role_id":identity.role_id}})
+ var edited := _helper(entry,{"operation":"edit","campaign":scratch,"slot":member,"changes":{"name":identity.name,"people_id":identity.people_id if state.party.schema_version!=3 else "human","role_id":identity.role_id}})
  if not edited.ok:return edited
  var m: Dictionary=edited.party.members[member-1]
  var job: Dictionary=jobs[0]
  var f: Dictionary=m.generated_facts
+ if state.party.schema_version==3:
+  m.people_id=identity.people_id;f.people_id=identity.people_id
+  m.background_id=m.character_id+":background:"+JSON.stringify(["trhgd-party-1",candidate.party.content_pack_sha,int(m.background_variant),m.people_id,m.role_id]).sha256_text().left(20)
  f.occupation_id=job.id;f.foundation_occupation_id=job.get("foundation",job.id)
  f.background.occupation=f.foundation_occupation_id
  var foundation := WorldOriginLore.read_json("res://data/world_enrichment/trhgd-expanded-v1.json")
@@ -81,6 +101,8 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  if training.is_empty():training=foundation.training.filter(func(row: Dictionary):return PartyRecords.satisfies(row.get("requires"),tags))
  if training.is_empty():return fail("No compatible background training is available")
  f.background.training=training[0].id
+ # A pending profession/origin edit does not reroll the adventurer's motivation.
+ f.background.motivation=state.party.members[member-1].generated_facts.background.motivation
  f.public_relationship={"kind":"party-companions","other_character_ids":state.party_ids.filter(func(other: String):return other!=id)}
  f.provenance.generator="Player-selected identity using pinned source-world public facts"
  m.biography="%s grew up in %s and worked as a %s. %s %s"%[m.name,c.home.name,str(job.get("label",job.get("key",job.id))).replace("-"," "),AdventureRecords.foundation_label("training",f.background.training),AdventureRecords.foundation_label("motivation",f.background.motivation)]

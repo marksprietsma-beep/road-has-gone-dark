@@ -32,7 +32,7 @@ func load_data(input: Dictionary) -> Dictionary:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
@@ -48,7 +48,7 @@ func load_data(input: Dictionary) -> Dictionary:
  if not found.is_empty(): return _fail(found)
  for category in CATEGORIES:
   for id in tables[category]:
-   _validate_definition(category,tables[category][id],tables,found)
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema))
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
@@ -77,7 +77,7 @@ static func _refs(node: Dictionary, tables: Dictionary, path: String, found: Arr
  var categories := {"class_level":"classes","skill":"skills","feat":"feats","feature":"features","resource":"resources"}
  if categories.has(op): _reference(tables,categories[op],node.get("id"),path,found)
  if op=="stat" and not node.get("id") in STATS: found.append(RulesJson.issue("reference.stat",path,"Unknown derived statistic"))
- if op=="casting" and node.get("id")!="arcane": found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))
+ if op=="casting" and node.get("id") not in ["arcane","divine"]: found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))
  if node.get("args") is Array:
   for i in node.args.size():
    if node.args[i] is Dictionary: _refs(node.args[i],tables,path+"."+str(i),found,requirement)
@@ -116,12 +116,15 @@ static func _amount(value: Variant,tables: Dictionary,path: String,found: Array)
   _formula(value.get("bonus"),tables,path+".bonus",found)
  else: _formula(value,tables,path,found)
 
-static func validate_effect(effect: Variant,tables: Dictionary,path: String,found: Array,depth: int = 0) -> void:
+static func validate_effect(effect: Variant,tables: Dictionary,path: String,found: Array,depth: int = 0,engine: int = 1) -> void:
  if depth>16 or not effect is Dictionary or not effect.get("op") in EFFECTS: found.append(RulesJson.issue("effect.operator",path,"Unknown, malformed or deep effect"));return
  var op: String = effect.op
- var fields := {"modify_stat":["op","stat","type","value","when","scope"],"modify_save":["op","stat","type","value","when","scope"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"]}
+ if effect.has("save_half") and (engine<3 or op!="damage" or effect.save_half!=true):found.append(RulesJson.issue("effect.save_half",path,"Only engine 3 saved half-damage effects supported"))
+ if effect.has("on_success") and (engine<3 or op!="save"):found.append(RulesJson.issue("effect.save_success",path,"Only engine 3 save success branches supported"))
+ var fields := {"modify_stat":["op","stat","type","value","when","scope"],"modify_save":["op","stat","type","value","when","scope"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type","save_half"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure","on_success"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"]}
+ if effect.has("recipient") and (engine<3 or effect.recipient!="actor"): found.append(RulesJson.issue("effect.recipient",path,"Only explicit actor recipient supported"))
  for field in effect:
-  if not field in fields[op]: found.append(RulesJson.issue("effect.field",path+"."+str(field),"Unknown effect field"))
+  if not (field=="recipient" and engine==3) and not field in fields[op]: found.append(RulesJson.issue("effect.field",path+"."+str(field),"Unknown effect field"))
  if op in ["modify_stat","modify_save"]:
   if effect.has("scope") and not effect.scope in ["persistent","current_event"]: found.append(RulesJson.issue("effect.scope",path,"Unknown modifier persistence scope"))
   if not effect.get("stat") in STATS or not effect.get("type") in TYPES: found.append(RulesJson.issue("effect.modifier",path,"Invalid effect statistic/type"))
@@ -143,7 +146,11 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
   _formula(effect.get("dc"),tables,path+".dc",found)
   if not effect.get("on_failure") is Array: found.append(RulesJson.issue("effect.save_failure",path,"Failure effects required"))
   else:
-   for i in effect.on_failure.size(): validate_effect(effect.on_failure[i],tables,path+".on_failure."+str(i),found,depth+1)
+   for i in effect.on_failure.size(): validate_effect(effect.on_failure[i],tables,path+".on_failure."+str(i),found,depth+1,engine)
+  if effect.has("on_success"):
+   if not effect.on_success is Array:found.append(RulesJson.issue("effect.save_success",path,"Success effects must be an array"))
+   else:
+    for i in effect.on_success.size():validate_effect(effect.on_success[i],tables,path+".on_success."+str(i),found,depth+1,engine)
  elif op in ["apparent_effect","defensive_duplicate"]:
   var d: Variant=effect.get("descriptor")
   if not d is Dictionary or not d.get("kind") in ["false_target","defensive_duplicate","apparent_obstacle","glamer","concealment","figment"] or d.get("collision")!=false or not d.get("senses") is Array or d.senses.is_empty() or not d.get("presentation") is Dictionary:
@@ -159,7 +166,7 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
   _formula(d.get("dc"),tables,path+".dc",found)
   if not d.get("save") in RulesExpressions.SAVES or not d.get("investigation_trigger") is String or not d.get("bypass_tags") is Array or not RulesJson.integer(d.get("maximum_maintained"),1,10) or not d.get("replacement") in ["cancel_prior","reject"] or not d.get("break_conditions") is Array or not d.get("success") is String or not d.get("failure") is String: found.append(RulesJson.issue("effect.observer",path,"Explicit observer/disbelief/maintenance metadata is required"))
 
-static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array) -> void:
+static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array,engine: int=1) -> void:
  var path: String = category+"."+row.id
  var allowed := {
   "classes":["id","name","max_level","requirements","hp_per_level","skill_points","bab","saves","casting","casting_tradition","features","provenance"],
@@ -173,7 +180,12 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   "ancestries":["id","people_id","tags","features","modifiers","provenance"],
   "backgrounds":["id","tags","features","modifiers","provenance"]
  }
+ var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment"],"features":["description"],"abilities":["description","casting_class","spell_tier"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan"]}
  var optional := ["movement","trigger","follow_up","reach","range","damage","damage_type"]
+ if engine==3:
+  allowed[category].append_array(extensions.get(category,[]))
+  optional.append_array(extensions.get(category,[]))
+  RulesCoreContent.validate_definition(category,row,tables,found)
  for field in allowed[category]:
   if not field in optional and not row.has(field): found.append(RulesJson.issue("definition.field_missing",path+"."+field,"Required definition field absent"))
  for field in row:
@@ -192,7 +204,7 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   else: _modifiers(row.modifiers,tables,path+".modifiers",found)
  if category=="classes":
   if not RulesJson.integer(row.get("max_level"),1,20) or not RulesJson.integer(row.get("hp_per_level"),1,30) or not RulesJson.integer(row.get("skill_points"),1,10): found.append(RulesJson.issue("class.progression",path,"Invalid bounded progression"))
-  if not row.get("casting_tradition") in ["","arcane"]: found.append(RulesJson.issue("class.casting",path,"Unsupported casting tradition"))
+  if not row.get("casting_tradition") in (["","arcane","divine"] if engine==3 else ["","arcane"]): found.append(RulesJson.issue("class.casting",path,"Unsupported casting tradition"))
   for formula in [row.get("bab"),row.get("casting")]:
    if formula is Dictionary and _contains_stat(formula): found.append(RulesJson.issue("class.formula_dependency",path,"Class progressions cannot depend on derived stats"))
   _formula(row.get("bab"),tables,path+".bab",found)
@@ -233,7 +245,7 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   if not row.get("stacking") in ["refresh","replace","reject","stack"]: found.append(RulesJson.issue("status.stacking",path,"Unknown stacking rule"))
   if not row.get("effects") is Array: found.append(RulesJson.issue("status.effects",path,"Explicit status effects required"))
   else:
-   for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found)
+   for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found,0,engine)
  elif category=="abilities":
   if row.has("trigger") and not row.trigger in ["leave_melee_threat","illusion_disbelieved","qualifying_hit"]: found.append(RulesJson.issue("ability.trigger",path,"Unregistered trigger"))
   var cost: Variant=row.get("cost")
@@ -260,7 +272,7 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
    if not row.follow_up is Dictionary or row.follow_up.size()!=2 or row.follow_up.get("reaction")!=1 or not RulesJson.integer(row.follow_up.get("damage_reduction"),0,100): found.append(RulesJson.issue("ability.follow_up",path,"Follow-up uses the shared reaction contract"))
   if not row.get("effects") is Array: found.append(RulesJson.issue("ability.effects",path,"Effect array required"))
   else:
-   for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found)
+   for i in row.effects.size(): validate_effect(row.effects[i],tables,path+".effects."+str(i),found,0,engine)
  elif category=="equipment":
   if not row.get("kind") in ["weapon","armor","shield","utility"]: found.append(RulesJson.issue("equipment.kind",path,"Unknown equipment kind"))
   if row.get("kind")=="weapon":

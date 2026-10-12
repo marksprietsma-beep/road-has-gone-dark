@@ -3,7 +3,7 @@ extends RefCounted
 static var _registry: RulesRegistry
 static var _versions := {}
 const PACKS := "res://data/rules/packs.json"
-const NEW_PACK := "trhgd-character-v3"
+const NEW_PACK := "trhgd-character-v4"
 
 static func registry(context: Dictionary = {}) -> RulesRegistry:
  var reference: Variant={}
@@ -88,6 +88,7 @@ static func preview_preparation(state: Dictionary, selected: Dictionary = {}) ->
   var recommendation := source.recommendation(str(member.get("role_id")))
   if recommendation.is_empty(): return {"ok":false,"error":"No reviewed starting recommendation for narrative role"}
   var ancestry := "heritage-"+str(member.get("people_id"))
+  if source.rules_ref().engine_schema==3:ancestry=RulesCoreContent.initial_ancestry(str(member.get("people_id")))
   var record := characters.create(member.character_id,recommendation.attributes,ancestry)
   record.equipment=recommendation.equipment.duplicate()
   var suggested := characters.suggested_choice(record,recommendation["class"],recommendation.feat)
@@ -95,8 +96,13 @@ static func preview_preparation(state: Dictionary, selected: Dictionary = {}) ->
   var applied := characters.apply_advancement(record,suggested.choice,0)
   if not applied.ok: return applied
   record=applied.candidate
+  if source.rules_ref().engine_schema==3:
+   record.choices.prepared_abilities=RulesCoreContent.suggested_spells(applied.snapshot,source)
+   record.choices.spell_preparations=RulesCoreContent.starting_preparations(applied.snapshot,source)
+   record.choices.prepared_abilities=record.choices.prepared_abilities.filter(func(id: String):return not source.definition("abilities",id).tags.has("prepared"))+record.choices.spell_preparations.keys()
+   RulesCoreContent.refill_prepared(record,source)
   # Explicit starting choices; ordinary/class abilities remain granted data.
-  record.choices.prepared_abilities=applied.snapshot.abilities.filter(func(id: String): return source.definition("abilities",id).tags.has("perception") or source.definition("abilities",id).tags.has("control"))
+  if source.rules_ref().engine_schema!=3:record.choices.prepared_abilities=applied.snapshot.abilities.filter(func(id: String): return source.definition("abilities",id).tags.has("perception") or source.definition("abilities",id).tags.has("control"))
   records[member.character_id]=record
  var candidate := state.duplicate(true)
  candidate.mechanics={"schema_version":1,"rules_ref":source.rules_ref(),"revision":1,"source_party_sha":RulesJson.digest(state.party),"records":records}

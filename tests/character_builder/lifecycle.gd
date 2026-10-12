@@ -35,6 +35,8 @@ func run() -> void:
  check(created.ok,"source origin")
  slot=created.state.playthrough_id
  check(service.store.save_new(slot,created.state,entry.world).ok,"original save")
+ # This frozen lifecycle exercises legacy v1 builds; fresh core journeys are tested separately.
+ check(service.operate(entry,slot,"generate").ok,"existing original draft keeps legacy content")
  var opened := service.operate(entry,slot,"builder_open")
  check(opened.ok,str(opened.get("error",opened.get("errors",[]))))
  if not opened.ok:finish();return

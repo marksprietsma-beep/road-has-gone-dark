@@ -36,6 +36,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if not t.ok: return t
  var ability := registry.definition("abilities",ability_id)
  if ability.is_empty() or not a.snapshot.abilities.has(ability_id): return RulesJson.result([RulesJson.issue("ability.unowned",ability_id,"Actor does not own the ability")])
+ if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not actor.choices.prepared_abilities.has(ability_id):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
  var cost := validate_ability_cost(ability_id,actor.runtime,budget)
@@ -64,6 +65,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  # Reserved authoritative fields cannot be overridden by hook/event payloads.
  context.character_id=actor.character_id;context.source_character_id=actor.character_id
  context.target_id=target.character_id;context.target_stats=t.snapshot.stats
+ context.target_tags=t.snapshot.tags
  context.target_capacities=t.snapshot.resource_capacities
  context.stats=a.snapshot.stats;context.capacities=a.snapshot.resource_capacities
  if ability.timing.kind!="instant":
@@ -86,7 +88,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
 func resolve_rules_effect(effect: Dictionary,actor_runtime: Dictionary,target_runtime: Dictionary,context: Dictionary,rng: Dictionary) -> Dictionary:
  if not RulesRng.valid_state(rng): return RulesJson.result([RulesJson.issue("rng.state","rng","Explicit validated RNG required")])
  var errors: Array=[]
- RulesRegistry.validate_effect(effect,registry._tables,"effect",errors)
+ RulesRegistry.validate_effect(effect,registry._tables,"effect",errors,0,int(registry.rules_ref().engine_schema))
  if not errors.is_empty(): return RulesJson.result(errors)
  if not _primitive_runtime(actor_runtime) or not _primitive_runtime(target_runtime): return RulesJson.result([RulesJson.issue("effect.runtime","runtime","Invalid current mechanical state")])
  var state := {"actor":actor_runtime.duplicate(true),"target":target_runtime.duplicate(true),"rng":rng.duplicate(true),"events":[]}
@@ -111,6 +113,12 @@ func _amount(expression: Dictionary,state: Dictionary,context: Dictionary) -> Di
  return RulesExpressions.evaluate_formula(expression,context)
 
 func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Dictionary:
+ if effect.get("recipient")=="actor":
+  var directed := effect.duplicate(true);directed.erase("recipient")
+  var redirected := {"actor":state.actor,"target":state.actor,"rng":state.rng,"events":state.events}
+  var own_context := context.duplicate(true);own_context.target_id=context.character_id;own_context.target_stats=context.stats
+  var result := _apply(directed,redirected,own_context);state.rng=redirected.rng
+  return result
  var op: String=effect.op
  var target: Dictionary=state.target
  if op in ["damage","heal","temporary_hp","spend_resource","restore_resource"]:
@@ -119,6 +127,9 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   var amount: int=int(evaluated.value)
   if amount<0 or amount>100000: return RulesJson.result([RulesJson.issue("effect.amount",op,"Effect amount must be nonnegative and bounded")])
   if op=="damage":
+   if effect.get("save_half",false):
+    if not context.get("saving_throw_success",false):return RulesJson.result([RulesJson.issue("effect.save_half",op,"Half damage requires a successful authoritative save")])
+    amount=0 if context.get("target_tags",[]).has("evasion") else int(floor(float(amount)/2.0))
    var absorbed := mini(amount,int(target.temporary_hp));target.temporary_hp-=absorbed
    var lost := mini(amount-absorbed,int(target.hp));target.hp-=lost
    state.events.append({"type":"damage_applied","target":context.get("target_id",""),"amount":lost,"temporary_absorbed":absorbed,"damage_type":effect.damage_type})
@@ -180,6 +191,11 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
    for child in effect.on_failure:
     var result := _apply(child,state,context)
     if not result.ok: return result
+  else:
+   var saved_context := context.duplicate(true);saved_context.saving_throw_success=true
+   for child in effect.get("on_success",[]):
+    var result := _apply(child,state,saved_context)
+    if not result.ok:return result
  elif op in ["apparent_effect","defensive_duplicate"]:
   var descriptor: Dictionary=effect.descriptor.duplicate(true)
   var dc := RulesExpressions.evaluate_formula(descriptor.dc,context)

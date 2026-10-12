@@ -25,6 +25,11 @@ var background_ref := "hometown-background"
 var attributes := {}
 var allocation := {}
 var class_id := ""
+var sections: TabContainer
+var spell_section: VBoxContainer
+var class_help: Label
+var feat_detail: Label
+var progression_detail: Label
 var feat_id := ""
 var attribute_increase := ""
 
@@ -43,22 +48,11 @@ func select_id(control: OptionButton,id: String) -> void:
 func setup(record_value: Dictionary,is_advance := false) -> void:
  source=RulesRecords.registry(record_value);kernel=CharacterBuilderRecords.kernel(record_value)
  base=record_value.duplicate(true);advance=is_advance
+ class_id=str(base.advancement_history.back().class_id)
  ancestry_ref=base.ancestry_ref;background_ref=base.background_ref;attributes=base.base_attributes.duplicate(true)
  for child in get_children():remove_child(child);child.queue_free()
- attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={}
+ attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={};sections=null
  updating=true
- if not advance:
-  add_child(GameUI.label("Allocate the standard array",GameUI.SECTION))
-  add_child(GameUI.label("Choosing a score swaps its previous allocation. Every score is used once.",GameUI.META))
-  for key in RulesExpressions.ATTRIBUTES:
-   var rows: Array=source.rule("standard_array").map(func(value: Variant):return {"id":str(value),"name":str(value)})
-   var control := picker(self,key,rows);select_id(control,str(attributes[key]));attribute_pickers[key]=control
-   control.item_selected.connect(func(_index: int):
-    if updating:return
-    var score := int(id_of(control));var old: int=int(attributes[key])
-    for other in attributes:
-     if other!=key and int(attributes[other])==score:attributes[other]=old;select_id(attribute_pickers[other],str(old));break
-    attributes[key]=score;refresh_preview())
  class_filter=LineEdit.new();class_filter.placeholder_text="Search classes · selected choice stays visible";add_child(class_filter)
  class_picker=picker(self,"Class",source.ids("classes").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
  class_detail=GameUI.label("",GameUI.META);add_child(class_detail)
@@ -71,41 +65,52 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   select_id(class_picker,class_id);refresh_preview())
  class_picker.item_selected.connect(func(_index: int):
   if updating:return
-  class_id=id_of(class_picker);allocation={};feat_id="";refresh_preview())
+  set_class(id_of(class_picker)))
+ var attribute_section := form_section("Attributes")
+ if not advance:
+  attribute_section.add_child(GameUI.label("Allocate the standard array",GameUI.SECTION))
+  attribute_section.add_child(GameUI.label("Base scores use each value once. Racial adjustments appear separately on the sheet; choosing a score swaps its allocation.",GameUI.META))
+  for key in RulesExpressions.ATTRIBUTES:
+   var rows: Array=source.rule("standard_array").map(func(value: Variant):return {"id":str(value),"name":str(value)})
+   var control := picker(attribute_section,key,rows);select_id(control,str(attributes[key]));attribute_pickers[key]=control
+   control.item_selected.connect(_score_selected.bind(str(key)))
  if advance:
   increase_picker=picker(self,"Increase",[{"id":"","name":"No attribute increase selected"}]+RulesExpressions.ATTRIBUTES.map(func(id: String):return {"id":id,"name":id+" +1"}))
   increase_picker.item_selected.connect(func(_index: int):
    if updating:return
    attribute_increase=id_of(increase_picker);refresh_preview())
- add_child(GameUI.label("Skill ranks",GameUI.SECTION))
- budget=GameUI.label("",GameUI.META);add_child(budget)
+ var skill_section := form_section("Skills")
+ skill_section.add_child(GameUI.label("Skill ranks",GameUI.SECTION))
+ budget=GameUI.label("",GameUI.META);skill_section.add_child(budget)
  for id in source.ids("skills"):
-  var row := HBoxContainer.new();add_child(row)
+  var row := HBoxContainer.new();skill_section.add_child(row)
   var skill := source.definition("skills",id)
   var caption := GameUI.label(skill.name+" ("+skill.attribute+")",GameUI.META);caption.size_flags_horizontal=Control.SIZE_EXPAND_FILL;row.add_child(caption)
   var spin := SpinBox.new();spin.min_value=0;spin.max_value=20;spin.step=1;spin.custom_minimum_size.x=90;row.add_child(spin);skill_pickers[id]=spin
   spin.value_changed.connect(func(value: float):
    if updating:return
    allocation[id]=int(value);refresh_preview())
- add_child(GameUI.action("Suggested skill allocation",suggest_allocation))
- feat_filter=LineEdit.new();feat_filter.placeholder_text="Search feats · selected choice stays visible";add_child(feat_filter)
+ skill_section.add_child(GameUI.action("Suggested skill allocation",suggest_allocation))
+ var feat_section := form_section("Feats")
+ feat_filter=LineEdit.new();feat_filter.placeholder_text="Search feats · selected choice stays visible";feat_section.add_child(feat_filter)
  feat_filter.text_changed.connect(func(_query: String):if not updating:refresh_preview())
- feat_picker=picker(self,"Feat",[])
+ feat_picker=picker(feat_section,"Feat",[])
  feat_picker.item_selected.connect(func(_index: int):
   if updating:return
   feat_id=id_of(feat_picker);refresh_preview())
+ feat_detail=GameUI.label("",GameUI.META);feat_section.add_child(feat_detail)
  if not advance:
-  add_child(GameUI.label("Starting equipment",GameUI.SECTION))
-  add_child(GameUI.label("Bow is the active weapon when carried; otherwise staff, then blade. Armour and shields affect defence through GAME-32.",GameUI.META))
+  var gear_section := form_section("Equipment")
+  gear_section.add_child(GameUI.label("Starting equipment",GameUI.SECTION))
+  gear_section.add_child(GameUI.label("Choose one active weapon and compatible armour. Class proficiencies are enforced." if source.rules_ref().engine_schema==3 else "Bow, then staff, then blade determine your active legacy weapon.",GameUI.META))
+  gear_section.add_child(GameUI.action("Suggested class equipment and spells",func():class_loadout();refresh_preview()))
   for id in source.ids("equipment"):
-   var control := CheckBox.new();control.text=source.definition("equipment",id).name;equipment_pickers[id]=control
-   control.button_pressed=base.equipment.has(id);add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
-  add_child(GameUI.label("Preparations",GameUI.SECTION))
-  add_child(GameUI.label("Granted abilities remain usable under current V0 combat rules. Preparations record your choices; they do not grant unknown abilities or extra casts.",GameUI.META))
-  for id in source.ids("abilities"):
-   if source.rule("base_abilities").has(id):continue
-   var control := CheckBox.new();control.text=source.definition("abilities",id).name;preparation_pickers[id]=control
-   control.button_pressed=base.choices.prepared_abilities.has(id);add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
+   var control := CheckBox.new();control.text=source.definition("equipment",id).name+ (" · "+str(source.definition("equipment",id).get("proficiency","")) if source.rules_ref().engine_schema==3 else "");equipment_pickers[id]=control
+   control.button_pressed=base.equipment.has(id);gear_section.add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
+  spell_section=form_section("Spells")
+  spell_controls()
+ var progression := form_section("Progression")
+ progression_detail=GameUI.label("",GameUI.META);progression.add_child(progression_detail)
  explanation=GameUI.label("",GameUI.META);add_child(explanation)
  if advance:
   var suggestion := kernel.suggested_choice(base,str(base.advancement_history.back().class_id))
@@ -117,6 +122,89 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
  select_id(class_picker,class_id)
  if advance:select_id(increase_picker,attribute_increase)
  updating=false;refresh_preview()
+func spell_controls() -> void:
+ if spell_section==null:return
+ for child in spell_section.get_children():spell_section.remove_child(child);child.queue_free()
+ preparation_pickers={}
+ var cls := source.definition("classes",class_id)
+ spell_section.add_child(GameUI.label("Prepared spells / known repertoire",GameUI.SECTION))
+ var help := "Legacy preparations record granted choices."
+ if source.rules_ref().engine_schema==3:
+  help="Prepare copies of individual spells; copies and tier slots are spent on each cast. Copies in each tier cannot exceed its slot capacity." if cls.spell_mode=="prepared" else "Spontaneous casting: choose up to %d known spells; casts spend shared tier slots. Known spells remain learned."%RulesCoreContent.selection_limit(class_id,1,source) if cls.spell_mode=="spontaneous" else "This class has no starting spellcasting."
+ spell_section.add_child(GameUI.label(help,GameUI.META))
+ var granted: Array=[]
+ for tier in cls.features:
+  if int(tier.at)==1:granted.append_array(source.definition("features",tier.id).abilities)
+ for id in source.ids("abilities"):
+  if source.rule("base_abilities").has(id):continue
+  var row := source.definition("abilities",id)
+  if source.rules_ref().engine_schema==3 and (not granted.has(id) or not row.tags.has("spell")):continue
+  if source.rules_ref().engine_schema==3 and row.tags.has("prepared"):
+   var line := HBoxContainer.new();spell_section.add_child(line)
+   var caption := GameUI.label(row.name,GameUI.META);caption.size_flags_horizontal=Control.SIZE_EXPAND_FILL;line.add_child(caption)
+   var control := SpinBox.new();control.min_value=0;control.max_value=30;control.step=1;control.tooltip_text=row.get("description",row.name)+" · choose prepared copies";control.custom_minimum_size.x=88;line.add_child(control)
+   control.value=int(base.choices.get("spell_preparations",{}).get(id,0));preparation_pickers[id]=control
+   control.value_changed.connect(func(_value: float):if not updating:refresh_preview())
+  else:
+   var control := CheckBox.new();control.text=row.name;control.tooltip_text=row.get("description",row.name);preparation_pickers[id]=control
+   control.button_pressed=base.choices.prepared_abilities.has(id);spell_section.add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
+func prepared_ids() -> Array:
+ return preparation_pickers.keys().filter(func(id: String):return int(preparation_pickers[id].value)>0 if preparation_pickers[id] is SpinBox else preparation_pickers[id].button_pressed)
+func prepared_counts() -> Dictionary:
+ var copies := {}
+ for id in preparation_pickers:
+  if preparation_pickers[id] is SpinBox and int(preparation_pickers[id].value)>0:copies[id]=int(preparation_pickers[id].value)
+ return copies
+
+func form_section(title: String) -> VBoxContainer:
+ if sections==null:
+  sections=TabContainer.new();sections.custom_minimum_size.y=250;sections.size_flags_horizontal=Control.SIZE_EXPAND_FILL;add_child(sections)
+ var scroll := ScrollContainer.new();scroll.name=title;scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;scroll.follow_focus=true;sections.add_child(scroll)
+ var column := VBoxContainer.new();column.size_flags_horizontal=Control.SIZE_EXPAND_FILL;column.add_theme_constant_override("separation",6);scroll.add_child(column)
+ return column
+func _score_selected(index: int,key: String) -> void:
+ if updating:return
+ var score := int(attribute_pickers[key].get_item_metadata(index));var old := int(attributes[key])
+ updating=true
+ for other in attributes:
+  if other!=key and int(attributes[other])==score:attributes[other]=old;break
+ attributes[key]=score
+ for id in attribute_pickers:select_id(attribute_pickers[id],str(attributes[id]))
+ updating=false;refresh_preview()
+func class_loadout() -> void:
+ if advance or source.rules_ref().engine_schema!=3:return
+ var cls := source.definition("classes",class_id)
+ spell_controls()
+ for id in equipment_pickers:equipment_pickers[id].button_pressed=cls.recommended_equipment.has(id)
+ var initial := kernel.create(base.character_id,attributes,ancestry_ref,background_ref)
+ initial.equipment=cls.recommended_equipment.duplicate()
+ var suggestion := kernel.suggested_choice(initial,class_id,"toughness")
+ if not suggestion.ok:return
+ var starting := kernel.preview_advancement(initial,suggestion.choice)
+ if not starting.ok:return
+ var copies := RulesCoreContent.starting_preparations(starting.snapshot,source)
+ var selected := RulesCoreContent.suggested_spells(starting.snapshot,source)
+ for id in preparation_pickers:
+  if preparation_pickers[id] is SpinBox:preparation_pickers[id].set_value_no_signal(int(copies.get(id,0)))
+  else:preparation_pickers[id].button_pressed=selected.has(id)
+
+func set_class(id: String) -> void:
+ if advance:
+  class_id=id;select_id(class_picker,id)
+  var suggestion := kernel.suggested_choice(base,id)
+  if suggestion.ok:
+   allocation=suggestion.choice.skill_allocations;feat_id=suggestion.choice.feat_id;attribute_increase=suggestion.choice.attribute_increase
+   select_id(increase_picker,attribute_increase)
+  refresh_preview();return
+ updating=true;class_id=id;select_id(class_picker,id);allocation={};feat_id="toughness" if source.rules_ref().engine_schema==3 else "steady-study"
+ if source.rules_ref().engine_schema==3:
+  var priorities: Array={"barbarian":["STR","CON","DEX","WIS","CHA","INT"],"bard":["CHA","DEX","INT","CON","WIS","STR"],"cleric":["WIS","CON","STR","CHA","INT","DEX"],"druid":["WIS","CON","DEX","INT","CHA","STR"],"fighter":["STR","CON","DEX","WIS","INT","CHA"],"monk":["WIS","DEX","STR","CON","INT","CHA"],"paladin":["STR","CHA","CON","WIS","DEX","INT"],"ranger":["DEX","WIS","CON","STR","INT","CHA"],"rogue":["DEX","INT","CON","WIS","CHA","STR"],"sorcerer":["CHA","DEX","CON","INT","WIS","STR"],"wizard":["INT","DEX","CON","WIS","CHA","STR"]}.get(id,RulesExpressions.ATTRIBUTES)
+  var values: Array=source.rule("standard_array")
+  for i in priorities.size():attributes[priorities[i]]=values[i]
+  for attribute in attribute_pickers:select_id(attribute_pickers[attribute],str(attributes[attribute]))
+ class_loadout()
+ updating=false
+ suggest_allocation()
 func unlevelled() -> Dictionary:
  return kernel.create(base.character_id,attributes,ancestry_ref,background_ref)
 func skill_draft() -> Dictionary:
@@ -124,7 +212,9 @@ func skill_draft() -> Dictionary:
 func choice() -> Dictionary:
  return {"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"attribute_increase":attribute_increase if advance else ""}
 func definition() -> Dictionary:
- return {"attributes":attributes.duplicate(true),"ancestry_ref":ancestry_ref,"background_ref":background_ref,"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"equipment":equipment_pickers.keys().filter(func(id: String):return equipment_pickers[id].button_pressed),"prepared_abilities":preparation_pickers.keys().filter(func(id: String):return preparation_pickers[id].button_pressed)}
+ var value := {"attributes":attributes.duplicate(true),"ancestry_ref":ancestry_ref,"background_ref":background_ref,"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"equipment":equipment_pickers.keys().filter(func(id: String):return equipment_pickers[id].button_pressed),"prepared_abilities":prepared_ids()}
+ if source.rules_ref().engine_schema==3:value.spell_preparations=prepared_counts()
+ return value
 func refresh_preview() -> void:
  if updating or base.is_empty():return
  updating=true
@@ -140,6 +230,11 @@ func refresh_preview() -> void:
  class_detail.text="%s · HP +%d/level · %d skill points + INT · cap %d
 BAB %s · Saves %s
 Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.get("skill_points",0)),int(cls.get("max_level",0)),progression_text(cls.get("bab",{}))," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.get("saves",{}).get(save,{})))),", ".join(cls.get("features",[]).map(func(t: Dictionary):return "L%d %s"%[int(t.at),feature_text(t.id)]))]
+ if source.rules_ref().engine_schema==3:
+  class_detail.text=str(cls.description)+"\nHit die d%d · %s BAB · %s casting\nProficiencies: %s\nClass skills (+3 when trained): %s\nPlayable levels 1–6; higher-level content remains in the programme."%[int(cls.hit_die),"full" if cls.bab.op=="class_level" else "partial",str(cls.spell_mode)+" "+str(cls.casting_attribute) if not cls.spell_mode.is_empty() else "no",", ".join(cls.proficiencies),", ".join(cls.class_skills)]
+  class_detail.tooltip_text="\n".join(cls.features.map(func(t: Dictionary):return "Level %d: %s"%[int(t.at),feature_text(t.id)]))
+ progression_detail.text="%s · HP +%d/level + CON · %d skill points + INT\nBAB: %s\nSaves: %s\n%s"%[cls.name,int(cls.hp_per_level),int(cls.skill_points),progression_text(cls.bab)," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.saves[save]))),"\n".join(cls.features.map(func(tier: Dictionary):return "Level %d: %s"%[int(tier.at),feature_text(tier.id)]))]
+ if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
   budget.text="%d points remaining / %d this level. Ranks cannot exceed total level."%[options.skill_points_remaining,options.skill_points]
@@ -161,13 +256,20 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
    if feat_id.is_empty():feat_picker.select(-1)
  else:budget.text=CharacterBuilderRecords.reason(options)
  preview=kernel.preview_advancement(base,choice()) if advance else CharacterBuilderRecords.create(base.character_id,definition(),base)
- if preview.ok and not advance:
+ if not advance:
+  var granted_ids: Array=[]
+  for tier in cls.get("features",[]):
+   if int(tier.at)<=1:granted_ids.append_array(source.definition("features",tier.id).get("abilities",[]))
   for id in preparation_pickers:
-   var granted: bool=preview.snapshot.abilities.has(id)
-   preparation_pickers[id].disabled=not granted
+   var granted: bool=granted_ids.has(id)
+   if preparation_pickers[id] is BaseButton:preparation_pickers[id].disabled=not granted
+   else:preparation_pickers[id].editable=granted
    preparation_pickers[id].tooltip_text="Granted by this build" if granted else "Not granted by this build"
+ if feat_detail!=null:
+  var feat := source.definition("feats",feat_id)
+  feat_detail.text="Choose a feat to see its mechanical benefits and requirements." if feat.is_empty() else str(feat.name)+"\n"+"\n".join(feat.features.map(func(id: String):return feature_text(id)))
  # Keep explicitly selected illegal preparations visible until the player removes them.
- explanation.text=("Valid GAME-32 preview." if preview.ok else CharacterBuilderRecords.reason(preview))+"\n\n"+"\n".join(messages)
+ explanation.text=("Ready to save: attributes, class, skills, feat and equipment are valid." if preview.ok else CharacterBuilderRecords.reason(preview))+"\n\n"+"\n".join(messages)
  explanation.add_theme_color_override("font_color",GameUI.MUTED if preview.ok else GameUI.ERROR)
  updating=false;changed.emit()
 func suggest_allocation() -> void:
@@ -179,7 +281,7 @@ func suggest_allocation() -> void:
 
 func feature_text(id: String) -> String:
  var row := source.definition("features",id)
- var text: String=str(row.get("name",id))
+ var text: String=str(row.get("name",id))+ (" · "+str(row.description) if not str(row.get("description","")).is_empty() else "")
  for m in row.get("modifiers",[]):text+=" · "+str(m.stat)+" "+formula_text(m.value)+" ("+str(m.type)+")"
  for ability in row.get("abilities",[]):text+=" · "+str(source.definition("abilities",ability).name)
  return text
