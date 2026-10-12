@@ -1,0 +1,23 @@
+{
+  "rules_pack": "trhgd-character-v4",
+  "playable_starting_races": 7,
+  "heritage_records": 10,
+  "playable_starting_classes": 11,
+  "implemented_class_level_cap": 6,
+  "actually_played_earned_level": 2,
+  "playable_prestige_classes": 0,
+  "playable_feats": 18,
+  "source_catalogue_completed": false,
+  "target_source_occurrences": {
+    "ancestry": 403,
+    "base_classes": 66,
+    "prestige": 283
+  },
+  "full_programme_open": true,
+  "proofs": [
+    "native-windows/core-proof.json",
+    "native-windows/tactical-proof.json",
+    "native-windows/native-export-proof.json",
+    "native-windows/native-restart-proof.json"
+  ]
+}

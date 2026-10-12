@@ -1,0 +1,68 @@
+[
+  {
+    "check": "import",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 33.39
+  },
+  {
+    "check": "ten-real-worlds",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 60.917
+  },
+  {
+    "check": "weighted-generation",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 5.126
+  },
+  {
+    "check": "v2-create",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 15.808
+  },
+  {
+    "check": "v2-replay",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 6.128
+  },
+  {
+    "check": "v2-combat-restart",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 12.845
+  },
+  {
+    "check": "v1-create",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 13.659
+  },
+  {
+    "check": "v1-replay",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 26.679
+  },
+  {
+    "check": "review-contexts",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 11.309
+  },
+  {
+    "check": "production-review",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 349.378
+  },
+  {
+    "check": "fresh-process-restart",
+    "exit_code": 0,
+    "errors": false,
+    "seconds": 11.338
+  }
+]
