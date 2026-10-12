@@ -14,7 +14,7 @@ func run() -> void:
  var service := AdventureService.new();service.store.save_root=base.path_join("review/saves");service.library.library_root=base.path_join("review/library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("review/cache")
  var resume := {}
  var available: Array=service.library.discover()
- var names := DirAccess.get_files_at(service.store.save_root)
+ var names: Array=Array(DirAccess.get_files_at(service.store.save_root))
  names.sort_custom(func(a: String,b: String):return FileAccess.get_modified_time(service.store.save_root.path_join(a))>FileAccess.get_modified_time(service.store.save_root.path_join(b)))
  for name in names:
   if not name.ends_with(".json"):continue
