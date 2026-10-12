@@ -121,14 +121,17 @@ func run() -> void:
  await key(KEY_ENTER)
  # A changed inherited INT modifier changes the real skill budget. Complete it
  # through the visible Skills action rather than attempting a disabled Save.
- if not ui.editor.preview.get("ok",false):
+ for attempt in 3:
+  if ui.editor.preview.get("ok",false):break
   check(ui.save_button.disabled and not ui.identity_validation.text.is_empty(),"incomplete ancestry build is visibly explained and cannot save")
+  var reason: String=CharacterBuilderRecords.reason(ui.editor.preview).to_lower()
+  var label: String="Suggested skill allocation" if "skill" in reason else "Suggested spell selections"
   await click(ui.review_build_button)
-  var suggestions: Array = ui.editor.find_children("*","Button",true,false).filter(func(button: Button):return button.text=="Suggested skill allocation")
-  check(suggestions.size()==1,"visible skill recommendation action exists")
+  var suggestions: Array = ui.editor.find_children("*","Button",true,false).filter(func(button: Button):return button.text==label)
+  check(suggestions.size()==1,"visible recommendation action exists: "+label)
   await click(suggestions[0])
-  check(ui.editor.preview.ok,"ancestry-adjusted skill budget can be completed through actual UI")
-  ui.detail_tabs.current_tab=0;await frames()
+ check(ui.editor.preview.get("ok",false),"ancestry-adjusted skill and preparation budgets completed through actual UI")
+ ui.detail_tabs.current_tab=0;await frames()
  await click(ui.save_button)
  await wait_party(ui)
  check(ui.state.party.members[0].character_id==id,"ancestry selection retains stable ID")
@@ -172,7 +175,7 @@ func run() -> void:
   ui.selected=member_index+1;ui.refresh();await click(ui.save_button);await wait_party(ui)
  await click(ui.finish_button)
  await wait_party(ui)
- check(ui.state.mechanics.rules_ref==original_pin,"ready-party transition preserves exact campaign pin")
+ check(ui.state.get("mechanics",{}).get("rules_ref")==original_pin,"ready-party transition preserves exact campaign pin")
  check(ui.ready_view and ui.state.onboarding_stage=="party_ready","ready is saved verified handoff without gameplay")
  await shot("party-ready-2560x1440",ui)
  var slot: String=ui.slot

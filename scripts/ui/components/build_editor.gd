@@ -135,6 +135,7 @@ func spell_controls() -> void:
  var granted: Array=[]
  for tier in cls.features:
   if int(tier.at)==1:granted.append_array(source.definition("features",tier.id).abilities)
+ if source.rules_ref().engine_schema==3:spell_section.add_child(GameUI.action("Suggested spell selections",suggest_spell_selections))
  for id in source.ids("abilities"):
   if source.rule("base_abilities").has(id):continue
   var row := source.definition("abilities",id)
@@ -176,6 +177,14 @@ func class_loadout() -> void:
  var cls := source.definition("classes",class_id)
  spell_controls()
  for id in equipment_pickers:equipment_pickers[id].button_pressed=cls.recommended_equipment.has(id)
+ _suggest_spells()
+func suggest_spell_selections() -> void:
+ if advance or source.rules_ref().engine_schema!=3:return
+ var before := updating
+ updating=true;_suggest_spells();updating=before
+ if not updating:refresh_preview()
+func _suggest_spells() -> void:
+ var cls := source.definition("classes",class_id)
  var initial := kernel.create(base.character_id,attributes,ancestry_ref,background_ref)
  initial.equipment=cls.recommended_equipment.duplicate()
  var suggestion := kernel.suggested_choice(initial,class_id,"toughness")
@@ -231,7 +240,7 @@ func refresh_preview() -> void:
 BAB %s · Saves %s
 Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.get("skill_points",0)),int(cls.get("max_level",0)),progression_text(cls.get("bab",{}))," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.get("saves",{}).get(save,{})))),", ".join(cls.get("features",[]).map(func(t: Dictionary):return "L%d %s"%[int(t.at),feature_text(t.id)]))]
  if source.rules_ref().engine_schema==3:
-  class_detail.text=str(cls.description)+"\nHit die d%d · %s BAB · %s casting\nProficiencies: %s\nClass skills (+3 when trained): %s\nPlayable levels 1–6; higher-level content remains in the programme."%[int(cls.hit_die),"full" if cls.bab.op=="class_level" else "partial",str(cls.spell_mode)+" "+str(cls.casting_attribute) if not cls.spell_mode.is_empty() else "no",", ".join(cls.proficiencies),", ".join(cls.class_skills)]
+  class_detail.text=str(cls.description)+"\nHit die d%d · %s BAB · %s casting\nProficiencies: %s\nClass skills (+3 when trained): %s\nPlayable levels 1–%d; higher-level content remains in the programme."%[int(cls.hit_die),"full" if cls.bab.op=="class_level" else "partial",str(cls.spell_mode)+" "+str(cls.casting_attribute) if not cls.spell_mode.is_empty() else "no",", ".join(cls.proficiencies),", ".join(cls.class_skills),int(cls.max_level)]
   class_detail.tooltip_text="\n".join(cls.features.map(func(t: Dictionary):return "Level %d: %s"%[int(t.at),feature_text(t.id)]))
  progression_detail.text="%s · HP +%d/level + CON · %d skill points + INT\nBAB: %s\nSaves: %s\n%s"%[cls.name,int(cls.hp_per_level),int(cls.skill_points),progression_text(cls.bab)," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.saves[save]))),"\n".join(cls.features.map(func(tier: Dictionary):return "Level %d: %s"%[int(tier.at),feature_text(tier.id)]))]
  if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)

@@ -105,7 +105,9 @@ func _ready() -> void:
  identity_validation=label("",GameUI.META);identity_validation.add_theme_color_override("font_color",GameUI.ERROR);identity.add_child(identity_validation)
  review_build_button=GameUI.action("Review incomplete build",func():
   detail_tabs.current_tab=1
-  if editor.sections!=null:editor.sections.current_tab=1 if "skill" in CharacterBuilderRecords.reason(editor.preview).to_lower() else 0)
+  if editor.sections!=null:
+   var reason := CharacterBuilderRecords.reason(editor.preview).to_lower()
+   editor.sections.current_tab=1 if "skill" in reason else 4 if "spell" in reason or "prepared" in reason else 0)
  identity.add_child(review_build_button)
  optional_role=GameUI.action("Optional build guidance",func():role_picker.visible=not role_picker.visible)
  identity.add_child(optional_role)
@@ -229,7 +231,7 @@ func refresh() -> void:
   if not core and int(row.max_level)<20:continue
   class_choice.add_item(row.name);class_choice.set_item_metadata(class_choice.item_count-1,id)
  class_choice.disabled=ready_view
- commonness.text="7 familiar ancestries · 11 core classes · traits and abilities are mechanical." if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
+ commonness.text="%d familiar ancestries · %d core classes · traits and abilities are mechanical."%[RulesCoreContent.ancestry_rows(source).size(),source.ids("classes").size()] if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
  name_edit.text=m.name;pick(people_picker,m.people_id);pick(role_picker,m.role_id)
  origin_picker.clear()
  var profiles := OriginProfiles.new()

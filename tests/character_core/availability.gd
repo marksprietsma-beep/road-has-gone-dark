@@ -7,15 +7,16 @@ func check(ok: bool,why: String):
 func _initialize():call_deferred('run')
 func run():
  var source := RulesRecords.new_character_registry()
- check(source.ready(),'default content available')
+ check(source.ready(),'default content available: '+RulesJson.canonical(source.errors))
+ if not source.ready():quit(1);return
  check(source.ids('classes').size()==11,'eleven genuine core classes')
- check(RulesCoreContent.ancestry_rows(source).size()==7,'seven familiar races independent of prototype presence data')
+ check(RulesCoreContent.ancestry_rows(source).size()==9,'nine familiar races independent of prototype presence data')
  var kernel := RulesCharacter.new(source)
  var feats := {}
  for cls in source.ids('classes'):
   for heritage in source.ids('ancestries'):
    var record := kernel.create('core:'+cls,{'STR':15,'DEX':14,'CON':13,'INT':12,'WIS':10,'CHA':8},heritage)
-   for level in range(1,7):
+   for level in range(1,int(source.definition("classes",cls).max_level)+1):
     var choice := kernel.suggested_choice(record,cls)
     check(choice.ok,cls+' valid advancement')
     if not choice.ok:continue
@@ -78,5 +79,5 @@ func run():
  var output := OS.get_environment('GAME118_TEST_ROOT')
  if not output.is_empty():
   DirAccess.make_dir_recursive_absolute(output)
-  FileAccess.open(output.path_join('core-proof.json'),FileAccess.WRITE).store_string(JSON.stringify({'checks':checks,'failures':failures,'races':7,'heritages':10,'classes':11,'class_level_cap':6,'prestige_classes':0,'feats':feats.keys(),'rules_ref':source.rules_ref()},'  '))
+  FileAccess.open(output.path_join('core-proof.json'),FileAccess.WRITE).store_string(JSON.stringify({'checks':checks,'failures':failures,'races':RulesCoreContent.ancestry_rows(source).size(),'heritages':source.ids('ancestries').size(),'classes':11,'class_level_cap':8,'prestige_classes':0,'feats':feats.keys(),'rules_ref':source.rules_ref()},'  '))
  quit(1 if failures else 0)

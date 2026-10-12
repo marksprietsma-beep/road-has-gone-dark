@@ -5,7 +5,7 @@ func review_content(index: int) -> void:
  print("GAME118 fresh creator ",index)
  check(ui.state.character_builder.rules_ref.pack_id==RulesRecords.NEW_PACK,"fresh New Game defaults to current supported rules without opt-in")
  check(not ui.content_button.is_visible_in_tree(),"no hidden content-button journey")
- check(ui.class_choice.item_count==11 and ui.people_picker.item_count==7,"familiar race and class decisions offered on first open")
+ check(ui.class_choice.item_count==11 and ui.people_picker.item_count==9,"familiar race and class decisions offered on first open")
  check(not ui.role_picker.is_visible_in_tree(),"narrative guidance subordinate")
  check(ui.preview_recipes.size()==3,"three actual persistent LPC adventurers")
  if index==0:
@@ -18,7 +18,7 @@ func review_content(index: int) -> void:
 func review_build(index: int,member: int) -> void:
  var cls: String=cohorts[index][member]
  print("GAME118 actual character ",cls)
- var races: Array=["dwarf","half-elf","elf","human","gnome","halfling","half-orc"]
+ var races: Array=["dwarf","half-elf","elf","human","gnome","halfling","half-orc","goblin","orc"]
  var race: String=races[(index*3+member)%races.size()]
  ui.pick(ui.people_picker,race);ui.people_picker.item_selected.emit(ui.people_picker.selected)
  ui.pick(ui.class_choice,cls);ui.class_choice.item_selected.emit(ui.class_choice.selected)

@@ -12,7 +12,7 @@ func run():
   var record := kernel.create('a',source.recommendation('vanguard').attributes,'heritage-human')
   record=kernel.preview_advancement(record,kernel.suggested_choice(record,'fighter','toughness').choice).candidate
   editor.setup(record);editor.set_class(cls);record=editor.preview.candidate
-  for level in range(1,7):
+  for level in range(1,int(source.definition("classes",cls).max_level)+1):
    if level>1:record=kernel.preview_advancement(record,kernel.suggested_choice(record,cls).choice).candidate
    var snapshot: Dictionary=kernel.derive_character(record).snapshot
    record.runtime.hp=int(snapshot.stats.HP)
