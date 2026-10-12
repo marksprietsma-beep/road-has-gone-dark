@@ -4,6 +4,12 @@ extends RefCounted
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if row.get("tags") is Array and row.tags.size()!=RulesRegistry._unique_count(row.tags):errors.append(RulesJson.issue("core.tags_duplicate",row.id,"Duplicate content tags are invalid"))
  if category=="classes":
+  if row.has("known_spell_limits"):
+   var limits: Variant=row.known_spell_limits
+   if row.get("spell_mode")!="spontaneous" or not limits is Array or limits.size()!=int(row.max_level)+1 or not limits.all(func(n: Variant):return RulesJson.integer(n,0,40)) or limits[0]!=0:
+    errors.append(RulesJson.issue("core.known_limits",row.id,"Spontaneous repertoire needs a bounded allowance for every class level"));return
+   for i in range(1,limits.size()):
+    if limits[i]<limits[i-1]:errors.append(RulesJson.issue("core.known_limits",row.id,"Learned repertoire cannot shrink"))
   if not row.get("bonus_feat_levels") is Array or not row.bonus_feat_levels.all(func(n: Variant):return RulesJson.integer(n,1,int(row.max_level))) or not row.get("description") is String or not RulesJson.integer(row.get("hit_die"),4,12) or not row.get("class_skills") is Array or not row.get("proficiencies") is Array or not row.get("recommended_equipment") is Array or row.get("spell_mode") not in ["","prepared","spontaneous"] or row.get("casting_attribute") not in ["","STR","DEX","CON","INT","WIS","CHA"]:errors.append(RulesJson.issue("core.class",row.id,"Typed class skills, proficiencies and casting required"));return
   for id in row.class_skills:RulesRegistry._reference(tables,"skills",id,row.id,errors)
   for id in row.recommended_equipment:RulesRegistry._reference(tables,"equipment",id,row.id,errors)
@@ -34,6 +40,10 @@ static func equipment_legal(item: Dictionary,classes: Dictionary,source: RulesRe
  if classes.has("monk") and item.kind in ["armor","shield"]:return false
  return str(item.proficiency).is_empty() or proficiencies(classes,source).has(item.proficiency)
 static func selection_limit(cls: String,level: int,source: RulesRegistry) -> int:
+ var definition := source.definition("classes",cls)
+ if definition.has("known_spell_limits"):
+  var limits: Array=definition.known_spell_limits
+  return int(limits[clampi(level,0,limits.size()-1)])
  return 2+level if source.definition("classes",cls).spell_mode=="prepared" else 1+int(ceil(float(level)/2.0))
 static func selection_errors(record: Dictionary,context: Dictionary,source: RulesRegistry) -> Array:
  var counts := {};var errors: Array=[]

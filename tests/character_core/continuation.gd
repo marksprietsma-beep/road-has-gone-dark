@@ -49,7 +49,7 @@ func active_feat(cls: String,feat: String,action: String) -> void:
   check(not engine.command(empty,command).ok,"zero Focus blocks Arcane strike")
 func run() -> void:
  source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
- check(source.ready() and source.rules_ref().pack_id=="trhgd-character-v5","explicit continuation default")
+ check(source.ready() and source.rules_ref().pack_id=="trhgd-character-v6","explicit continuation default")
  var old: RulesRegistry
  for pin in RulesRecords.installed_packs():
   if pin.rules_ref.pack_id=="trhgd-character-v4":old=RulesRecords.registry(pin.rules_ref)
@@ -117,6 +117,30 @@ func run() -> void:
  check(editor.preview.ok,"explicit Skills and Spells suggestions repair the changed budgets")
  check(editor.attributes==attributes_before and editor.definition().equipment==equipment_before,"spell recommendation preserves allocated attributes and chosen equipment")
  editor.queue_free()
+ var caster := kernel.create("known-caster",{"STR":8,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":15},"heritage-human")
+ for n in range(1,8):caster=kernel.preview_advancement(caster,kernel.suggested_choice(caster,"sorcerer").choice).candidate
+ caster.choices.prepared_abilities=["sorcerer-arcane-bolt","sorcerer-mage-armour","sorcerer-enfeeble","sorcerer-scorching-ray","sorcerer-haste-spell"]
+ check(kernel.validate_build(caster).ok,"full class-seven known repertoire is legal")
+ var known_before: Array=caster.choices.prepared_abilities.duplicate()
+ var learned := kernel.preview_advancement(caster,kernel.suggested_choice(caster,"sorcerer").choice)
+ check(learned.ok,"full known repertoire can advance into class eight")
+ if learned.ok:
+  caster=learned.candidate;caster.choices.prepared_abilities.append("sorcerer-ice-lance")
+  check(kernel.validate_build(caster).ok and known_before.all(func(id: String):return caster.choices.prepared_abilities.has(id)),"new tier-four spell fits without erasing already learned spells")
+  var target := kernel.create("spell-target",source.recommendation("vanguard").attributes,"heritage-human")
+  target=kernel.preview_advancement(target,kernel.suggested_choice(target,"fighter").choice).candidate
+  var used := RulesEffects.new(source).use_ability(caster,target,"sorcerer-ice-lance",{"move":1,"main":1,"reaction":1},RulesRng.initial("known-tier-four"))
+  check(used.ok,"newly learned tier-four spell actually casts")
+  if used.ok:check(used.actor.runtime.resources["sorcerer-slots-4"]==caster.runtime.resources["sorcerer-slots-4"]-1,"tier-four casting spends its proper shared slot")
+  caster.choices.prepared_abilities.append("sorcerer-greater-ward")
+  check(not kernel.validate_build(caster).ok,"known repertoire above six remains invalid")
+ for limits in [[0,2],[0,2,1,3,3,4,4,5,6],[1,2,2,3,3,4,4,5,6],[0,2,2,3,3,4,4,5,41]]:
+  var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/trhgd-character-v6.json"))
+  for cls in data.classes:
+   if cls.id=="sorcerer":cls.known_spell_limits=limits
+  check(not RulesRegistry.new().load_data(data).ok,"malformed/shrinking/unbounded known-spell table rejected")
+ for row in RulesRecords.installed_packs():
+  if row.rules_ref.pack_id=="trhgd-character-v5":check(RulesCoreContent.selection_limit("sorcerer",8,RulesRecords.registry(row.rules_ref))==5,"already-pushed v5 retains original repertoire mechanics")
  var output := OS.get_environment("GAME118_TEST_ROOT")
  if not output.is_empty():FileAccess.open(output.path_join("continuation-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref()},"  "))
  print("GAME118 CONTINUATION ",checks," / ",failures);quit(1 if failures else 0)

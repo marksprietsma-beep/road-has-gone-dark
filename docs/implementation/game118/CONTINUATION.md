@@ -2,7 +2,7 @@
 
 This is original project-authored tactical content, with source provenance retained per record. It does not copy sourcebook prose, reproduce proprietary settings, or claim full D&D/Pathfinder rules conversions.
 
-The latest fresh-campaign default is separately pinned **trhgd-character-v5**, engine3. All previously published v1/v2/v3/v4 pack files remain byte-identical. Existing creator and ready-campaign namespaces retain their exact original pack and XP policy. A saved v4 campaign still offers seven ancestry families and its level-six cap. There is no hidden opt-in or automatic upgrade.
+The latest fresh-campaign default is separately pinned **trhgd-character-v6**, engine3. All previously published v1/v2/v3/v4/v5 pack files remain byte-identical. Existing creator and ready-campaign namespaces retain their exact original pack and XP policy. A saved v4 campaign still offers seven ancestry families and its level-six cap. There is no hidden opt-in or automatic upgrade.
 
 ## Actually available
 
@@ -17,7 +17,7 @@ The nine families are Human, Dwarf, Elf, Halfling, Gnome, Half-elf, Half-orc, Go
 
 ## Levels seven and eight
 
-All eleven classes retain distinct earlier powers and gain verified ordered progression through eight, including scheduled attributes, skill ranks, legal feats, resources and exact history replay. Fighter receives its class-eight bonus feat. Wizard, Cleric and Druid unlock tier four at seven; Sorcerer at eight. Paladin/Ranger unlock their third tier at eight. Bard retains its existing spontaneous third tier. Each new tier has real shared slots, prerequisites and prepared copy counts or persistent known selections. New offensive spells use Reflex saves for half and genuine Evasion; healing is bounded by HP, and wards use timed typed modifiers.
+All eleven classes retain distinct earlier powers and gain verified ordered progression through eight, including scheduled attributes, skill ranks, legal feats, resources and exact history replay. Fighter receives its class-eight bonus feat. Wizard, Cleric and Druid unlock tier four at seven; Sorcerer at eight. Paladin/Ranger unlock their third tier at eight. Bard retains its existing spontaneous third tier. Each new tier has real shared slots, prerequisites and prepared copy counts or persistent known selections. Sorcerer known-spell allowance rises from five at seven to six at eight so a fully learned earlier repertoire can acquire its newly unlocked tier. This correction uses a validated nondecreasing class table; the already-pushed v5 pin remains installed unchanged. New offensive spells use Reflex saves for half and genuine Evasion; healing is bounded by HP, and wards use timed typed modifiers.
 
 | Class | Class-seven addition |
 | --- | --- |
