@@ -155,6 +155,7 @@ func verify_content() -> void:
    var used := RulesEffects.new(source).use_ability(actor,actor if ability.targeting.kind=="self" else target,id,{"main":1,"move":1,"reaction":1},RulesRng.initial(id))
    check(used.ok,"actual expanded career ability "+id+JSON.stringify(used.get("errors",[])))
    if used.ok:check(used.budget.main==0,"expanded ability spends main "+id)
+   if used.ok and id=="druid-master-20":check(kernel.derive_character(used.actor).snapshot.capabilities.weapon_damage.get("bear-claws")=="2d10","high Druid body damage applies to actual natural weapon")
    if cls in ["crusader","swordsage","wilder","binder","psion","psychic-warrior","soulknife","warlock","scout","swashbuckler","knight","warblade"]:
     var battle_actor: Dictionary=actor.duplicate(true);battle_actor.character_id="a"
     battle_actor.equipment=definition.recommended_equipment.duplicate()

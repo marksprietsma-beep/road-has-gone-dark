@@ -70,6 +70,8 @@ get('features','druid-shape')['abilities'] += [wolf,revert]
 # Higher Druid defensive techniques also use real body descriptors and can revert.
 for at in [13,16,20]:
  st=get('statuses',f'druid-master-{at}-form');st['body_form']=copy.deepcopy(get('statuses','bear-form')['body_form']);st['body_form']['id']=st['id']
+ if st.get('capabilities',{}).get('weapon_damage',{}).get('unarmed'):
+  st['capabilities']['weapon_damage']['bear-claws']=st['capabilities']['weapon_damage'].pop('unarmed')
  get('abilities','revert-form')['effects'].append(dict(op='remove_status',id=st['id']))
 # Prepared temporary summons: actual tier slot + prepared copy, three global rounds.
 for cls,attr in [('wizard','INT'),('cleric','WIS'),('druid','WIS')]:
