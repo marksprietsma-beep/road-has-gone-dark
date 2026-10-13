@@ -1,0 +1,11 @@
+# GAME-121: Sustain contextual adventures and earned character progression
+
+Base: `feature/game-119-deep-character-progression`; head: `feature/game-121-sustainable-adventures`. Keep the parent stack and this PR as unmerged drafts.
+
+Fresh campaigns can now choose Seek new leads at home, resolve contextual recovery/investigation/peaceful/combat objectives for10 XP each once, advance real characters and request another set of reports. Unfinished reports survive returns/restarts; completed results and historical threats remain in the adventure journal. Duplicate inspections, failed/partial outcomes, rest/travel and repeated terminal requests grant no XP.
+
+The new optional cycle ledger reuses the existing opportunity transitions, source-owned local placements, class kernel, tactical engine and single campaign lock/journal. Original V1/V2 results, installed character packs v1–v9 and both old XP policies remain untouched. Deterministic skill contributions use actual briefing skill totals and save provisions. New bandits advance through existing legal class definitions to the mean-party tier (cap12); combat authority and action economy are unchanged.
+
+Verification includes organically earned Rogue2/Wizard3/ArcaneTrickster2, real spell/prestige power use, save/reload, journal rollback, duplicate/corruption checks, legacy campaign extension, original character/world/combat/input regressions and native Windows/Linux packages. Final links/checksum and exact source qualification belong in `docs/implementation/game121/DELIVERY.md` after CI completes. Screenshots are actual Godot renders of earned states, not fixture grants.
+
+Limits: seven reused activity templates, basic one/two-bandit AI, hometown-only context, pinned briefing skills and unmeasured human high-level pacing. Permanent unresolved occupations can reduce later combat reports while noncombat progression continues. Core13–20 and the full403/66/~283 programme remain open. Human acceptance and publication are pending; Mark must click Publish draft PR. Do not merge automatically.
