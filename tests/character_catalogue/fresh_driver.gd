@@ -105,6 +105,15 @@ func creator(name: String,member: int,people: String,cls: String) -> void:
  check(ui.editor.preview.ok,"visible new race/class preview "+people+" "+cls)
  ui.detail_tabs.current_tab=2 if not people.is_empty() else 0
  await screenshot(name,false)
+ if name=="first-open-catalogue":
+  ui.class_choice.get_popup().popup(Rect2i(Vector2i(ui.class_choice.get_global_rect().position),Vector2i(ui.class_choice.size)))
+  for frame in 4:await get_tree().process_frame
+  await screenshot("available-core-and-alternative-classes",false)
+  ui.class_choice.get_popup().hide()
+  ui.people_picker.get_popup().popup(Rect2i(Vector2i(ui.people_picker.get_global_rect().position),Vector2i(ui.people_picker.size)))
+  for frame in 4:await get_tree().process_frame
+  await screenshot("available-ancestry-families",false)
+  ui.people_picker.get_popup().hide()
  get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
  for frame in 3:await get_tree().process_frame
 func screenshot(name: String,development: bool) -> void:
@@ -127,7 +136,12 @@ func advanced_capture(fixture: Dictionary,fixture_root: String,path: String) -> 
  var scroll: ScrollContainer=ui.detail_tabs.get_child(2);scroll.scroll_vertical=int(scroll.get_v_scroll_bar().max_value)
  await screenshot("development-"+path+"-history",true)
  if path=="wizard":
-  ui.detail_tabs.current_tab=4;await screenshot("development-tier9-spells",true)
+  ui.detail_tabs.current_tab=4
+  for frame in 4:await get_tree().process_frame
+  var spells_scroll: ScrollContainer=ui.detail_tabs.get_child(4)
+  var spell_control: Control=ui.spellbook.controls["wizard-tier9-tempest"]
+  spells_scroll.scroll_vertical=int(spell_control.position.y)-100
+  await screenshot("development-tier9-spells",true)
  get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
  for frame in 3:await get_tree().process_frame
 func fight_new() -> void:

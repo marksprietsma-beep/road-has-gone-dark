@@ -248,7 +248,7 @@ func refresh() -> void:
    origin_picker.add_item(str(row.name)+" · "+str(world.get_record("state",int(row.state_id)).name));origin_picker.set_item_metadata(origin_picker.item_count-1,str(int(row.burg_id)))
  pick(origin_picker,str(int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))));_backgrounds();pick(background_picker,str(m.generated_facts.occupation_id));_heritages()
  if not r.is_empty():pick(heritage_picker,r.ancestry_ref)
- description.text=RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)).get("description",str(pack.peoples[people_picker.selected].description) if people_picker.selected>=0 and people_picker.selected<pack.peoples.size() else "")
+ description.text=RulesCoreContent.ancestry_description(RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)))
  biography.text=m.biography+"\n\nMotivation: "+AdventureRecords.foundation_label("motivation",m.generated_facts.background.motivation)+"\nPersonal origin: "+str(world.get_record("burg",int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))).name)+"\nCulture is source-world context, separate from ancestry."
  name_edit.editable=not ready_view
  for control in [people_picker,heritage_picker,role_picker,origin_picker,background_picker,reroll_button]:control.disabled=ready_view
@@ -304,7 +304,7 @@ func _identity_changed() -> void:
   var home: Dictionary=entry.world.get_record("burg",int(selected_id(origin_picker)))
   var job := background_picker.get_item_text(background_picker.selected) if background_picker.selected>=0 else "chosen profession"
   biography.text="Pending biography · %s grew up in %s and worked as a %s.\nMotivation retained: %s\nCulture follows the selected source-world origin; it is separate from ancestry."%[name_edit.text,str(home.get("name","chosen origin")),job,AdventureRecords.foundation_label("motivation",state.party.members[selected-1].generated_facts.background.motivation)]
- description.text=RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)).get("description",str(pack.peoples[people_picker.selected].description) if people_picker.selected>=0 and people_picker.selected<pack.peoples.size() else "")
+ description.text=RulesCoreContent.ancestry_description(RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)))
  editor.refresh_preview()
 func _preview_changed() -> void:
  if state.is_empty() or ready_view:return
@@ -397,8 +397,8 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  var s: Dictionary=result.snapshot
  var lines: Array=[m.name+" · Level "+str(s.level),stat_line(s)]
  if s.has("ancestry"):
-  lines.append("\nRace / heritage: "+str(s.ancestry.name)+" · "+str(s.ancestry.size)+" "+str(s.ancestry.body_plan)+"\n"+str(s.ancestry.description))
-  lines.append("Senses: "+", ".join(s.senses)+"\nProficiencies: "+", ".join(s.proficiencies))
+  lines.append("\nRace / heritage: "+str(s.ancestry.name)+" · "+str(s.ancestry.size)+" "+str(s.ancestry.body_plan)+"\n"+RulesCoreContent.ancestry_description(s.ancestry))
+  lines.append("Recorded senses: "+", ".join(s.senses)+"\nProficiencies: "+", ".join(s.proficiencies))
  if s.has("capabilities"):
   lines.append("Inherited / class capabilities: "+RulesCapabilities.summary(s.capabilities))
   if s.ancestry.has("visual_profile"):lines.append("Artwork: neutral humanoid fallback; dedicated "+str(s.ancestry.body_plan)+" art is pending.")

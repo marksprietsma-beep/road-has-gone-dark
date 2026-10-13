@@ -107,3 +107,12 @@ static func ancestry_rows(source: RulesRegistry) -> Array:
   var row := source.definition("ancestries",id)
   if not seen.has(row.people_id):rows.append({"id":row.people_id,"name":str(row.name).trim_suffix(" Standard"),"description":row.description});seen[row.people_id]=true
  return rows
+static func ancestry_description(row: Dictionary) -> String:
+ # Keep original pins intact while accurately describing the current battlefield.
+ var text: String=str(row.get("description",""))
+ var pattern:=RegEx.new();pattern.compile("(?i)(darkvision|low-light vision)(; | and |;| )?")
+ var unavailable:=pattern.search(text)!=null
+ if unavailable:
+  text=pattern.sub(text,"",true).strip_edges()
+  text+=" Inherited vision is recorded; darkness/low-light battlefield rules are not implemented."
+ return text

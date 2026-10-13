@@ -29,6 +29,7 @@ func run() -> void:
  kernel=RulesCharacter.new(source)
  check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh normal default is v10")
  check(RulesCoreContent.ancestry_rows(source).size()==17,"seventeen family options")
+ check(RulesCoreContent.ancestry_description(source.definition("ancestries","heritage-elf")).contains("not implemented"),"unsupported vision is never claimed as functioning battlefield mechanics")
  check(source.ids("ancestries").size()==26 and source.ids("feats").size()==38,"real content counts")
  for cls in source.ids("classes"):
   if source.definition("classes",cls).class_kind!="base":continue
