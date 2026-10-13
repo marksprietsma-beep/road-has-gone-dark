@@ -1,5 +1,35 @@
 extends "res://tests/opportunities/review.gd"
 ## Extends the real V2 journey: individual creation, permanent sheets and earned advancement.
+func review_content(index: int) -> void:
+ await open_pinned_creator("trhgd-rules-v1",index)
+func open_pinned_creator(pack_id: String,index: int) -> void:
+ # Fresh default is separately tested by GAME118/119. These assertions belong
+ # to the original pinned creator and its original earned-XP policy.
+ var original: Dictionary=ui.state.duplicate(true);var entry: Dictionary=ui.entry
+ var library_root: String=ui.service.library.library_root
+ var original_path: String=ui.service.store._slot_path(ui.slot);var original_bytes := FileAccess.get_file_as_bytes(original_path)
+ var service := CharacterBuilderService.new();service.library.library_root=library_root
+ service.store.save_root=base.path_join("legacy-pinned-creators/"+pack_id+"/"+str(index)+"/saves")
+ var born := service.store.create_playthrough(entry.world,int(original.origin.state_id),int(original.origin.home_burg_id),int(original.origin.province_id))
+ var generated := service.generate_party_preview(entry,born.state);check(generated.ok,"original source-grounded legacy creator fixture")
+ var source: RulesRegistry
+ for row in RulesRecords.installed_packs():
+  if row.rules_ref.pack_id==pack_id:source=RulesRecords.registry(row.rules_ref)
+ check(source!=null and source.ready(),"actual immutable legacy creator pack installed")
+ var shadow: Dictionary=generated.candidate;shadow.party.status="ready";shadow.onboarding_stage="party_ready"
+ var prepared := RulesRecords.preview_preparation(shadow,source.rules_ref());check(prepared.ok,"legacy builds come from their actual original pack")
+ var candidate: Dictionary=prepared.candidate
+ candidate.party.status="draft";candidate.party.schema_version=2;candidate.party.generator_version="player-party-1";candidate.onboarding_stage="party_creation"
+ for member in candidate.party.members:member.generated_facts.public_relationship.kind="party-companions"
+ candidate.character_builder={"version":1,"rules_ref":source.rules_ref(),"revision":1,"confirmed":[],"drafts":candidate.mechanics.records,"advancements":[],"policy_sha":FileAccess.get_sha256(CharacterBuilderRecords.POLICY),"initial_levels":{}}
+ candidate.erase("mechanics")
+ for id in candidate.party_ids:candidate.character_builder.initial_levels[id]=1
+ candidate=JSON.parse_string(JSON.stringify(candidate))
+ var stored := service.store.save_new(candidate.playthrough_id,candidate,entry.world);check(stored.ok,"existing-pin creator fixture through original writer: "+str(stored.get("error","")))
+ check(FileAccess.get_file_as_bytes(original_path)==original_bytes,"legacy fixture does not repin or rewrite the actual fresh campaign")
+ PartyService.handoff={"entry":entry,"slot":candidate.playthrough_id,"save_root":service.store.save_root,"library_root":library_root}
+ tree.change_scene_to_file("res://scenes/ui/party_creation.tscn");await tree.process_frame;await tree.process_frame;await wait_scene("res://scenes/ui/party_creation.tscn")
+ check(RulesJson.normalize(ui.state.character_builder.rules_ref)==source.rules_ref(),"existing creator retains exact original rules and XP pin: "+JSON.stringify(ui.state.character_builder.rules_ref)+" expected "+JSON.stringify(source.rules_ref()))
 func review_creation(index: int) -> void:
  if index!=0:return
  var id: String=ui.state.party_ids[0]
@@ -78,7 +108,7 @@ func unprepared_party() -> void:
  var path := service.store._slot_path(slot);var bytes := FileAccess.get_file_as_bytes(path)
  var party := RulesJson.digest(ready.state.party)
  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root}
- tree.change_scene_to_file("res://scenes/ui/party_creation.tscn");await wait_scene("res://scenes/ui/party_creation.tscn")
+ tree.change_scene_to_file("res://scenes/ui/party_creation.tscn");await tree.process_frame;await tree.process_frame;await wait_scene("res://scenes/ui/party_creation.tscn")
  check(ui.ready_view and ui.preview_recipes.size()==3 and FileAccess.get_file_as_bytes(path)==bytes,"old ready identity renders three authentic LPC previews without save changes")
  check(not ui.state.has("mechanics") and not ui.state.has("character_builder") and ui.advancement_button.disabled,"preview never commits suggested builds or grants legacy progression")
  await shot("legacy-unprepared-ready")

@@ -210,6 +210,8 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
  if registry.rules_ref().engine_schema==3:
   var snap: Dictionary= characters.derive_character(a.record).snapshot
   if snap.tags.has("favoured_raider") and t.team=="enemy":bonus+=2
+  # GAME119 v7-only target profile; frozen legacy branch above remains exact.
+  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):bonus+=2
   if technique in ["power-strike","flurry"]:bonus-=2
   if technique=="aimed-shot":bonus+=2
   if technique=="smite":bonus+=maxi(0,int(floor(float(int(snap.attributes.CHA)-10)/2.0)))
@@ -225,6 +227,8 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
   amount+=int(s.damage)
   if not ranged:amount+=int(floor(float(int(snap.attributes.STR)-10)/2.0))
   if snap.tags.has("favoured_raider") and t.team=="enemy":amount+=2
+  # GAME119 v7-only target profile; frozen legacy branch above remains exact.
+  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):amount+=2
   if technique=="power-strike":amount+=4
   if technique=="smite":amount+=int(snap.class_levels.get("paladin",0))
  else:

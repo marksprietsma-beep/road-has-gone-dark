@@ -45,10 +45,22 @@ func run() -> void:
   check(replay.status!="active","authored layout reaches an outcome")
   check(RulesJson.canonical(b)==original,"replay never mutates initial state")
   layout_proof[layout]={"initial_hash":b.state_hash,"final_hash":replay.state_hash,"outcome":replay.status,"commands":command_count,"dimensions":[b.board.width,b.board.height],"rng_counter":replay.rng.counter}
+ # The redesigned sheet needs the real world context, not an empty entry.
+ # Reconstruct the public seeded fixture once and verify its exact identity.
+ var library := GameWorldLibrary.new();library.library_root=output.path_join("preview-world-context")
+ var worlds: Array=library.discover().filter(func(row: Dictionary):return row.world.seed==source.world_ref.seed)
+ if worlds.is_empty():
+  var staged := library.create_staging();check(staged.ok,"owned legacy preview staging")
+  var generated := library.run_generator(staged.directory,source.world_ref.seed);check(generated.ok,"canonical legacy preview source: "+str(generated.get("error","")))
+  var imported := library.import_generated(staged.directory);check(imported.ok,"canonical legacy preview import")
+  worlds=[imported.entry]
+ var context: Dictionary=worlds[0]
+ check(context.world.source_sha256==source.world_ref.sha256,"legacy preview uses exact original world fingerprint")
  # Real party UI: same three generated identities, prepared gear and front-facing layers.
  PartyService.handoff={"entry":{},"slot":"isolated-preview"}
  var party: Control=load("res://scenes/ui/party_creation.tscn").instantiate();root.add_child(party);current_scene=party;party.set_process(false)
- party.state=source;party.ready_view=false;party.message="Same generated party · saved identities";party.refresh()
+ if party.thread!=null:party.thread.wait_to_finish();party.thread=null
+ party.entry=context;party.state=source;party.ready_view=true;party.message="Same generated party · saved identities";party.refresh()
  party.origin.text="Party review · same Gaabuba, Luke and Hodbruth identities"
  var preview_recipes: Dictionary=party.preview_recipes.duplicate(true)
  check(preview_recipes.size()==3,"three actual generated paper-doll previews")

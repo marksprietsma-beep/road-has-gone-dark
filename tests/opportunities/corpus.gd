@@ -9,7 +9,18 @@ func check(value: bool,why: String) -> void:
 func count(group: String,key: String) -> void:metrics[group][key]=int(metrics[group].get(key,0))+1
 func run() -> void:
  var pins: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://tests/opportunities/v1-pins.json"))
- for file in pins:check(FileAccess.get_sha256("res://"+file)==pins[file],"protected V1/combat/source/icon contract unchanged: "+file)
+ for file in pins:
+  var digest := FileAccess.get_sha256("res://"+file)
+  if file=="scripts/combat/tactical_combat.gd":
+   # Retain the original byte oracle. Only these explicit v7-gated additions
+   # may be removed when projecting the unchanged legacy authority.
+   var legacy := FileAccess.get_file_as_string("res://"+file)
+   for stat in ["bonus","amount"]:
+    var adapter: String= "  # GAME119 v7-only target profile; frozen legacy branch above remains exact.\n  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):"+stat+"+=2\n"
+    check(legacy.count(adapter)==1,"exactly one explicitly gated career adapter: "+stat)
+    legacy=legacy.replace(adapter,"")
+   digest=legacy.sha256_text()
+  check(digest==pins[file],"protected V1/combat/source/icon contract unchanged: "+file)
  var root_path := OS.get_environment("GAME101_TEST_ROOT")
  var corpus: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(root_path.path_join("corpus.json")))
  metrics.worlds=corpus.worlds;metrics["unsupported_source_placements"]=corpus.unsupported

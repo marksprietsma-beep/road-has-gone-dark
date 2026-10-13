@@ -1,8 +1,8 @@
 extends "res://tests/character_builder/review.gd"
-func review_content(_index: int) -> void:
- check(not ui.content_button.disabled and ui.state.character_builder.confirmed.is_empty(),"content selection available before any confirmation")
- await click(ui.content_button);await wait_job()
- check(ui.state.character_builder.rules_ref.pack_id==RulesRecords.NEW_PACK,"visible selector pins expanded content")
+func review_content(index: int) -> void:
+ await open_pinned_creator("trhgd-character-v3",index)
+ check(not ui.content_button.is_visible_in_tree(),"obsolete opt-in is absent; existing v3 creator retains its pin")
+ check(ui.state.character_builder.rules_ref.pack_id=="trhgd-character-v3","legacy expanded content retains exact pin")
  check(ui.preview_recipes.size()==3,"three genuine current-build art previews remain available")
 func review_build(index: int,member: int) -> void:
  if member!=0:return
@@ -31,7 +31,7 @@ func review_build(index: int,member: int) -> void:
 func journey(spec: Dictionary,index: int) -> void:
  await super.journey(spec,index)
  var source := RulesRecords.registry(ui.state)
- check(source.rules_ref().pack_id==RulesRecords.NEW_PACK,"journey remains on expanded pin after combat/home")
+ check(source.rules_ref().pack_id=="trhgd-character-v3","journey remains on expanded pin after combat/home")
  var snapshots := {}
  for id in ui.state.party_ids:
   var result := RulesCharacter.new(source).derive_character(ui.state.mechanics.records[id])

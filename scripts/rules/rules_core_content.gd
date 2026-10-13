@@ -4,6 +4,7 @@ extends RefCounted
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if row.get("tags") is Array and row.tags.size()!=RulesRegistry._unique_count(row.tags):errors.append(RulesJson.issue("core.tags_duplicate",row.id,"Duplicate content tags are invalid"))
  if category=="classes":
+  RulesCareer.validate_definition(row,tables,errors)
   if row.has("known_spell_limits"):
    var limits: Variant=row.known_spell_limits
    if row.get("spell_mode")!="spontaneous" or not limits is Array or limits.size()!=int(row.max_level)+1 or not limits.all(func(n: Variant):return RulesJson.integer(n,0,40)) or limits[0]!=0:
@@ -52,7 +53,7 @@ static func selection_errors(record: Dictionary,context: Dictionary,source: Rule
   if not spell.tags.has("spell"):continue
   var cls: String=str(spell.get("casting_class",""));counts[cls]=int(counts.get(cls,0))+1
  for cls in counts:
-  if not context.classes.has(cls) or int(counts[cls])>selection_limit(cls,int(context.classes.get(cls,0)),source):errors.append(RulesJson.issue("spell.limit",cls,"Too many prepared or known spells"))
+  if not context.classes.has(cls) or int(counts[cls])>selection_limit(cls,int(context.get("casting_levels",context.classes).get(cls,0)),source):errors.append(RulesJson.issue("spell.limit",cls,"Too many prepared or known spells"))
  var budgets := {};var spent := {}
  for id in context.capacities:
   if source.definition("resources",str(id)).has("slot_class"):budgets[id]=int(context.capacities[id])
@@ -93,7 +94,7 @@ static func refill_prepared(record: Dictionary,source: RulesRegistry) -> void:
 static func suggested_spells(snapshot: Dictionary,source: RulesRegistry) -> Array:
  var selected: Array=[]
  for cls in snapshot.class_levels:
-  var limit := selection_limit(cls,int(snapshot.class_levels[cls]),source)
+  var limit := selection_limit(cls,int(snapshot.get("casting_levels",snapshot.class_levels).get(cls,0)),source)
   for id in snapshot.abilities:
    if source.definition("abilities",id).get("casting_class")==cls and source.definition("abilities",id).tags.has("spell") and limit>0:selected.append(id);limit-=1
  return selected

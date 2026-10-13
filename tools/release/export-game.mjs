@@ -18,12 +18,13 @@ if(!existsSync(executable))throw Error('Export did not produce the game executab
 // from an owned temporary project whose entry point is the diagnostic scene.
 // The checkout and production main scene are never changed.
 const qaScene=get('--qa-scene')??'res://tests/origin_profiles/verify-distribution.tscn';
-if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn','res://tests/expedition/verify-distribution.tscn','res://tests/adventure/review-flow.tscn','res://tests/sandbox/distribution-review.tscn','res://tests/map_icons/verify-distribution.tscn','res://tests/opportunities/review.tscn','res://tests/character_builder/review.tscn','res://tests/character_content/review.tscn','res://tests/character_core/review.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
+if(!['res://tests/origin_profiles/verify-distribution.tscn','res://tests/party/verify-distribution.tscn','res://tests/expedition/verify-distribution.tscn','res://tests/adventure/review-flow.tscn','res://tests/sandbox/distribution-review.tscn','res://tests/map_icons/verify-distribution.tscn','res://tests/opportunities/review.tscn','res://tests/character_builder/review.tscn','res://tests/character_content/review.tscn','res://tests/character_core/review.tscn','res://tests/character_progression/review.tscn'].includes(qaScene))throw Error('Unapproved diagnostic entry point');
 if(a.includes('--qa')){
  const stage=mkdtempSync(join(tmpdir(),'trhgd-export-proof-'));
  try{
   for(const dir of ['assets','data','scenes','scripts','tests','themes'])if(existsSync(join(root,dir)))cpSync(join(root,dir),join(stage,dir),{recursive:true});
   cpSync(join(root,'export_presets.cfg'),join(stage,'export_presets.cfg'));
+  cpSync(join(root,'icon.svg'),join(stage,'icon.svg'));
   writeFileSync(join(stage,'project.godot'),readFileSync(join(root,'project.godot'),'utf8').replace(/run\/main_scene="[^"]+"/,'run/main_scene="'+qaScene+'"'));
   execFileSync(engine,['--headless','--editor','--path',stage,'--quit'],{stdio:'inherit'});
   execFileSync(engine,['--headless','--path',stage,'--export-release',preset,join(target,process.platform==='win32'?'road-has-gone-dark-qa.exe':'road-has-gone-dark-qa')],{stdio:'inherit'});

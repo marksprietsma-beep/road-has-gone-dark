@@ -50,7 +50,7 @@ func wait_job() -> void:
  if ui.has_method("is_presenting"):
   while (ui.is_presenting() or ui.presentation_active) and Time.get_ticks_msec()<deadline:await tree.process_frame
  check(ui.thread==null and not ui.state.is_empty(),"production save/generation completed")
- if ui.scene_file_path.contains("party_creation") or ui.scene_file_path.contains("character_sheet"): check(ui.ready_view or ui.message.begins_with("Character saved"),"party/character verified")
+ if ui.scene_file_path.contains("party_creation") or ui.scene_file_path.contains("character_sheet"): check(ui.ready_view or ui.message.begins_with("Character saved"),"party/character verified: "+str(ui.message))
  else: check(ui.message.is_empty(),"verified action: "+ui.message)
  await frames()
 func shot(name: String) -> void:

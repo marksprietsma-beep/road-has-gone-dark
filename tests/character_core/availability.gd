@@ -6,7 +6,7 @@ func check(ok: bool,why: String):
  if not ok:failures+=1;push_error(why)
 func _initialize():call_deferred('run')
 func run():
- var source := RulesRecords.new_character_registry()
+ var source := RulesRecords.registry(JSON.parse_string(FileAccess.get_file_as_string("res://data/rules/packs.json")).packs.filter(func(row: Dictionary):return row.rules_ref.pack_id=="trhgd-character-v6")[0].rules_ref)
  check(source.ready(),'default content available: '+RulesJson.canonical(source.errors))
  if not source.ready():quit(1);return
  check(source.ids('classes').size()==11,'eleven genuine core classes')

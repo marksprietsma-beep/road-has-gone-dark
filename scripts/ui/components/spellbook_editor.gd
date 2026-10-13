@@ -12,7 +12,7 @@ func setup(value: Dictionary) -> void:
  for cls in result.snapshot.class_levels:
   var definition := source.definition('classes',cls)
   if definition.get('spell_mode','').is_empty():continue
-  var level: int=int(result.snapshot.class_levels[cls])
+  var level: int=int(result.snapshot.get("casting_levels",result.snapshot.class_levels)[cls])
   add_child(GameUI.label(definition.name+' · '+str(definition.spell_mode).capitalize(),GameUI.SECTION))
   add_child(GameUI.label('Select up to %d spells. %s Casting uses %s; required score is 10 + spell tier.'%[RulesCoreContent.selection_limit(cls,level,source),'Known spontaneous spells are retained; add new choices as progression permits.' if definition.spell_mode=='spontaneous' else 'Prepared selections may change at home. Current spell slots are preserved.',definition.casting_attribute],GameUI.META))
   for id in result.snapshot.abilities:

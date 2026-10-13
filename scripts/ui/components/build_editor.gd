@@ -32,6 +32,12 @@ var feat_detail: Label
 var progression_detail: Label
 var feat_id := ""
 var attribute_increase := ""
+var specialisations := {}
+var bonus_feats: Array=[]
+var career_section: VBoxContainer
+var career_pickers := {}
+var bonus_picker: OptionButton
+var bonus_column: VBoxContainer
 
 func picker(parent: Control,title: String,rows: Array) -> OptionButton:
  var row := HBoxContainer.new();parent.add_child(row)
@@ -99,6 +105,7 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   if updating:return
   feat_id=id_of(feat_picker);refresh_preview())
  feat_detail=GameUI.label("",GameUI.META);feat_section.add_child(feat_detail)
+ if RulesCareer.enabled(source):bonus_column=VBoxContainer.new();feat_section.add_child(bonus_column)
  if not advance:
   var gear_section := form_section("Equipment")
   gear_section.add_child(GameUI.label("Starting equipment",GameUI.SECTION))
@@ -121,6 +128,8 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   class_id=step.class_id;allocation=step.skill_allocations.duplicate(true);feat_id=step.feat_id
  select_id(class_picker,class_id)
  if advance:select_id(increase_picker,attribute_increase)
+ if RulesCareer.enabled(source):
+  career_section=form_section("Specialisation");career_controls()
  updating=false;refresh_preview()
 func spell_controls() -> void:
  if spell_section==null:return
@@ -204,6 +213,7 @@ func set_class(id: String) -> void:
   if suggestion.ok:
    allocation=suggestion.choice.skill_allocations;feat_id=suggestion.choice.feat_id;attribute_increase=suggestion.choice.attribute_increase
    select_id(increase_picker,attribute_increase)
+  if RulesCareer.enabled(source):career_controls()
   refresh_preview();return
  updating=true;class_id=id;select_id(class_picker,id);allocation={};feat_id="toughness" if source.rules_ref().engine_schema==3 else "steady-study"
  if source.rules_ref().engine_schema==3:
@@ -212,6 +222,7 @@ func set_class(id: String) -> void:
   for i in priorities.size():attributes[priorities[i]]=values[i]
   for attribute in attribute_pickers:select_id(attribute_pickers[attribute],str(attributes[attribute]))
  class_loadout()
+ if RulesCareer.enabled(source):career_controls()
  updating=false
  suggest_allocation()
 func unlevelled() -> Dictionary:
@@ -219,10 +230,13 @@ func unlevelled() -> Dictionary:
 func skill_draft() -> Dictionary:
  return {"skill_allocations":allocation.duplicate(true),"attribute_increase":attribute_increase if advance else ""}
 func choice() -> Dictionary:
- return {"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"attribute_increase":attribute_increase if advance else ""}
+ var value := {"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"attribute_increase":attribute_increase if advance else ""}
+ if RulesCareer.enabled(source):value.specialisations=specialisations.duplicate(true);value.bonus_feats=bonus_feats.duplicate()
+ return value
 func definition() -> Dictionary:
  var value := {"attributes":attributes.duplicate(true),"ancestry_ref":ancestry_ref,"background_ref":background_ref,"class_id":class_id,"skill_allocations":allocation.duplicate(true),"feat_id":feat_id,"equipment":equipment_pickers.keys().filter(func(id: String):return equipment_pickers[id].button_pressed),"prepared_abilities":prepared_ids()}
  if source.rules_ref().engine_schema==3:value.spell_preparations=prepared_counts()
+ if RulesCareer.enabled(source):value.specialisations=specialisations.duplicate(true);value.bonus_feats=bonus_feats.duplicate()
  return value
 func refresh_preview() -> void:
  if updating or base.is_empty():return
@@ -243,6 +257,9 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
   class_detail.text=str(cls.description)+"\nHit die d%d · %s BAB · %s casting\nProficiencies: %s\nClass skills (+3 when trained): %s\nPlayable levels 1–%d; higher-level content remains in the programme."%[int(cls.hit_die),"full" if cls.bab.op=="class_level" else "partial",str(cls.spell_mode)+" "+str(cls.casting_attribute) if not cls.spell_mode.is_empty() else "no",", ".join(cls.proficiencies),", ".join(cls.class_skills),int(cls.max_level)]
   class_detail.tooltip_text="\n".join(cls.features.map(func(t: Dictionary):return "Level %d: %s"%[int(t.at),feature_text(t.id)]))
  progression_detail.text="%s · HP +%d/level + CON · %d skill points + INT\nBAB: %s\nSaves: %s\n%s"%[cls.name,int(cls.hp_per_level),int(cls.skill_points),progression_text(cls.bab)," / ".join(RulesExpressions.SAVES.map(func(save: String):return save+" "+progression_text(cls.saves[save]))),"\n".join(cls.features.map(func(tier: Dictionary):return "Level %d: %s"%[int(tier.at),feature_text(tier.id)]))]
+ if RulesCareer.enabled(source):
+  class_detail.text+="\nEntry: "+RulesCareer.requirement_text(cls.requirements,source)
+  if cls.get("class_kind")=="prestige" and not cls.career_choices.is_empty():class_detail.text=class_detail.text.replace("no casting","advances chosen casting tracks")
  if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
@@ -307,3 +324,42 @@ func progression_text(node: Dictionary) -> String:
   var result := RulesExpressions.evaluate_formula(node,{"classes":{class_id:level}})
   values.append("%d:%+d"%[level,int(result.get("value",0))])
  return " ".join(values)+" (level:value)"
+
+func career_controls() -> void:
+ if career_section==null:return
+ for child in career_section.get_children():career_section.remove_child(child);child.queue_free()
+ if bonus_column!=null:
+  for child in bonus_column.get_children():bonus_column.remove_child(child);child.queue_free()
+ career_pickers={};bonus_picker=null
+ var classes: Dictionary=kernel.derive_character(base).get("snapshot",{}).get("class_levels",{}) if advance else {}
+ var class_level := int(classes.get(class_id,0))+1
+ var level: int=base.advancement_history.size()+1 if advance else 1
+ specialisations=RulesCareer.defaults(source,class_id,class_level)
+ if advance:
+  var suggestion := kernel.suggested_choice(base,class_id)
+  if suggestion.ok:specialisations=suggestion.choice.specialisations.duplicate(true)
+ if not advance and base.advancement_history[0].class_id==class_id:specialisations=base.advancement_history[0].specialisations.duplicate(true)
+ career_section.add_child(GameUI.label("Deliberate class choices",GameUI.SECTION))
+ career_section.add_child(GameUI.label("Recommended choices are shown below. Review alternatives: each choice persists in your ordered class history.",GameUI.META))
+ for group in RulesCareer.groups(source,class_id,class_level):
+  var control := picker(career_section,group.name,group.options)
+  career_pickers[group.id]=control;select_id(control,str(specialisations.get(group.id,"")))
+  if advance:
+   var context: Dictionary=kernel.derive_character(base).context
+   for i in group.options.size():
+    var why := CharacterBuilderRecords.reason(RulesExpressions.evaluate_requirements(group.options[i].requirements,context))
+    control.set_item_disabled(i,not why.is_empty());control.get_popup().set_item_tooltip(i,why)
+  var detail := GameUI.label("",GameUI.META);career_section.add_child(detail)
+  var update_detail := func():
+   var option: Dictionary=group.options.filter(func(row: Dictionary):return row.id==id_of(control))[0]
+   specialisations[group.id]=option.id
+   detail.text=option.description+"\n"+"\n".join(option.features.map(func(id: String):return feature_text(id)))
+  update_detail.call()
+  control.item_selected.connect(func(_i: int):update_detail.call();if not updating:refresh_preview())
+ if career_pickers.is_empty():career_section.add_child(GameUI.label("No new specialisation at this class level. Existing choices remain on the character sheet.",GameUI.META))
+ bonus_feats=[]
+ if RulesCareer.feat_count(source,level,class_id,class_level)>1:
+  bonus_column.add_child(GameUI.label("Two feat grants coincide: choose both separately.",GameUI.SECTION))
+  bonus_picker=picker(bonus_column,"Additional feat",source.ids("feats").map(func(id: String):return {"id":id,"name":source.definition("feats",id).name}))
+  select_id(bonus_picker,"steady-study");bonus_feats=[id_of(bonus_picker)]
+  bonus_picker.item_selected.connect(func(_i: int):bonus_feats=[id_of(bonus_picker)];if not updating:refresh_preview())
