@@ -1,0 +1,86 @@
+name: GAME-104 Character Content and Native Review Build
+concurrency:
+  group: game104-characters-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-104-character-content-foundation]
+    paths: ['scripts/**', 'tools/**', 'tests/opportunities/**', 'tests/character_builder/**', 'tests/character_content/**', 'data/rules/**', 'data/characters/**', 'data/sandbox/**', 'data/world_enrichment/runtime-expedition-v1.json', 'export_presets.cfg', '.github/workflows/verify-character-content.yml']
+  workflow_dispatch:
+jobs:
+  opportunities:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Godot and single offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples from Godot imports
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Ten generated worlds, forty contexts, V1/V2 save reliability and production journeys
+        env:
+          GAME101_TEST_ROOT: ${{ runner.temp }}/game101-review
+        run: python tests/opportunities/run-tests.py --output "${{ runner.temp }}/game101-review"
+      - name: Installed pins, complete coverage and twenty-level new-class combinations
+        run: |
+          python tools/character-content/validate.py
+          python -c "import os,subprocess; subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/character_content/packs.gd'],check=True)"
+      - name: Frozen GAME-32 oracle and existing-save migration
+        env:
+          GAME32_EVIDENCE: ${{ runner.temp }}/game104-rules
+        run: python tests/rules/run-tests.py
+      - name: Custom builds, illegal choices, combat snapshots and earned legacy advancement
+        env:
+          GAME103_TEST_ROOT: ${{ runner.temp }}/game103-lifecycle
+        run: python tests/character_builder/run-tests.py
+      - name: Existing First Adventure combat and save regression
+        run: python tests/adventure/run-tests.py --godot "${{ env.GODOT_BIN }}" --work-dir "${{ runner.temp }}/game101-adventure"
+      - name: Existing GAME-83 responsive presentation
+        run: python -c "import os,subprocess; subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/ui_system/presentation.gd'],check=True)"
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Export native V1/V2 journeys with bundled helper and original artwork
+        env:
+          GAME101_TEST_ROOT: ${{ runner.temp }}/game101-review
+        run: python tests/character_content/verify-package.py
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game104-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game101-review/*.json
+            ${{ runner.temp }}/game101-review/*.log
+            ${{ runner.temp }}/game101-review/corpus/*.json
+            ${{ runner.temp }}/game101-review/lifecycle/*.json
+            ${{ runner.temp }}/game101-review/v1-lifecycle/*.json
+            ${{ runner.temp }}/game101-adventure/*.json
+            ${{ runner.temp }}/game101-adventure/*.log
+            ${{ runner.temp }}/game104-rules/*.json
+            ${{ runner.temp }}/game104-rules/*.log
+            ${{ runner.temp }}/game103-lifecycle/*.json
+            ${{ runner.temp }}/game103-lifecycle/*.log
+          retention-days: 90
+      - name: Windows/Linux complete playable distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: game104-complete-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game101-review/distribution/*.zip
+            ${{ runner.temp }}/game101-review/distribution/*.tar.gz
+            ${{ runner.temp }}/game101-review/distribution/*.sha256
+          retention-days: 90

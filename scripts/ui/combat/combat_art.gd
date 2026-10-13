@@ -36,7 +36,7 @@ static func party_units(state: Dictionary) -> Dictionary:
  var candidate: Dictionary=state.duplicate(true);candidate.party.status="ready"
  var result := RulesRecords.preview_preparation(candidate)
  if not result.ok:return {}
- var engine := TacticalCombat.new();var units := {}
+ var engine := TacticalCombat.new(result.candidate);var units := {}
  for member in candidate.party.members:
   var record: Dictionary=result.candidate.mechanics.records[member.character_id]
   units[member.character_id]=engine.unit(member.character_id,member.name,"party",[0,0],record,TacticalCombat.weapon_for(record))

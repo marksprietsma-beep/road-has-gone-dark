@@ -1,0 +1,31 @@
+{
+  "checks": 39,
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "9b055f5488d3bc57b1b67f2c36a8bea59b6ab89c878f6d796a4da3e09ca7e31f",
+    "engine_schema": 2.0,
+    "pack_id": "trhgd-character-v3",
+    "rules_version": "3.0.0",
+    "schema_version": 1.0
+  },
+  "actual_saved_builds": [
+    {
+      "id": "f0dac7fe667a8f2c9a3a08beb156bd8d:adventurer:1",
+      "heritage": "lineage-human-watchful",
+      "class": "blade-dancer",
+      "feat": "quick-start"
+    },
+    {
+      "id": "f0dac7fe667a8f2c9a3a08beb156bd8d:adventurer:2",
+      "heritage": "lineage-dwarf-deepstead",
+      "class": "iron-bulwark",
+      "feat": "stout-heart"
+    },
+    {
+      "id": "f0dac7fe667a8f2c9a3a08beb156bd8d:adventurer:3",
+      "heritage": "lineage-wood-elf-longstride",
+      "class": "road-stalker",
+      "feat": "sure-shot"
+    }
+  ]
+}

@@ -234,6 +234,7 @@ func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
  return errors
 
 func derive_character(record: Dictionary) -> Dictionary:
+ if registry.rules_ref().get("engine_schema")==2:record=RulesJson.string_keys(record)
  var replay := _replay(record)
  if not replay.ok: return replay
  var errors := _runtime_errors(record,replay.context)
@@ -254,6 +255,7 @@ func derive_character(record: Dictionary) -> Dictionary:
   if not total.ok: return total
   skills[id]={"ranks":int(c.skills[id]),"total":total.value,"usable":not definition.trained_only or int(c.skills[id])>0,"typed_modifiers":total.applied}
  var snapshot := {"schema_version":1,"rules_ref":registry.rules_ref(),"character_id":record.character_id,"build_hash":RulesJson.digest(record),"level":c.level,"class_levels":c.classes,"attributes":c.attributes,"stats":c.stats,"skills":skills,"features":c.features,"feats":c.feats,"tags":c.tags,"senses":c.senses,"abilities":c.abilities,"resource_capacities":c.capacities,"current_resources":record.runtime.resources.duplicate(true),"prepared_abilities":record.choices.prepared_abilities.duplicate(),"casting":c.casting,"runtime_statuses":record.runtime.statuses.duplicate(true),"maintained_effects":record.runtime.apparent_effects.duplicate(true),"current_hp":int(record.runtime.hp),"temporary_hp":int(record.runtime.temporary_hp),"equipment":record.equipment.duplicate(true),"typed_modifiers":c.applied_modifiers,"action_contract":{"move":1,"main":1,"shared_reaction":int(registry.rule("shared_reaction")),"reaction_refresh":"global_round_start"}}
+ if registry.rules_ref().get("engine_schema")==2:snapshot=RulesJson.string_keys(snapshot)
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 

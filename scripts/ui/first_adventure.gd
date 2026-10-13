@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
   var result: Dictionary=thread.wait_to_finish();thread=null
   var previous := battle().duplicate(true)
   if result.get("ok",false):
-   state=result.state;message="";ai_delay=CombatPacing.AI_PAUSE_SECONDS
+   state=result.state;engine.configure(state);message="";ai_delay=CombatPacing.AI_PAUSE_SECONDS
    start_presentation(previous)
    if not battle().is_empty() and engine.current(battle()).id!=actor_id:
     actor_id=engine.current(battle()).id;mode="attack"

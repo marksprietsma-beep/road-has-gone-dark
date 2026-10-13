@@ -19,7 +19,7 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   if not prepared.ok:return prepared
   candidate.party.schema_version=2;candidate.party.generator_version="player-party-1"
   for m in candidate.party.members:m.generated_facts.public_relationship.kind="party-companions"
-  candidate.character_builder={"version":1,"rules_ref":RulesRecords.registry().rules_ref(),"revision":1,"confirmed":[],"drafts":prepared.candidate.mechanics.records,"advancements":[],"policy_sha":FileAccess.get_sha256(CharacterBuilderRecords.POLICY),"initial_levels":{}}
+  candidate.character_builder={"version":1,"rules_ref":prepared.candidate.mechanics.rules_ref,"revision":1,"confirmed":[],"drafts":prepared.candidate.mechanics.records,"advancements":[],"policy_sha":FileAccess.get_sha256(CharacterBuilderRecords.POLICY),"initial_levels":{}}
   for id in candidate.party_ids:candidate.character_builder.initial_levels[id]=1
   return commit(slot,candidate,entry.world)
  if changes.get("before_hash")!=RulesJson.digest(state):return fail("builder.stale: Campaign changed after your preview. Reload before saving.")
@@ -32,6 +32,16 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  if not state.has("character_builder") or state.party.status!="draft" or state.has("mechanics") or state.has("expedition"):return fail("Starting characters are already committed. Use advancement; identities are preserved.")
  var candidate := state.duplicate(true)
  var b: Dictionary=candidate.character_builder
+ if operation=="builder_content":
+  if not b.confirmed.is_empty():return fail("Choose a content pack before saving any adventurer. Confirmed identities and builds will not be replaced.")
+  if changes.get("pack_id")!=RulesRecords.NEW_PACK:return fail("Unknown reviewed character pack")
+  var source := RulesRecords.new_character_registry()
+  if not source.ready():return fail("Character content pack unavailable")
+  var shadow := state.duplicate(true);shadow.party.status="ready"
+  var prepared := RulesRecords.preview_preparation(shadow,source.rules_ref())
+  if not prepared.ok:return prepared
+  b.rules_ref=source.rules_ref();b.drafts=prepared.candidate.mechanics.records;b.revision+=1
+  return commit(slot,candidate,entry.world)
  if operation=="builder_ready":
   if b.confirmed.size()!=3:return fail("Review and save each of your three adventurers first")
   candidate.party.status="ready";candidate.onboarding_stage="party_ready"
@@ -42,9 +52,9 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
  var identity: Dictionary=changes.identity
  if identity.size()!=5 or not identity.has_all(["name","people_id","role_id","origin_burg","occupation_id"]) or not identity.name is String or not identity.people_id is String or not identity.role_id is String or not identity.occupation_id is String or not RulesJson.integer(identity.origin_burg,1,RulesJson.LIMIT):return fail("Invalid identity choices")
  var id: String=state.party_ids[member-1]
- var created := CharacterBuilderRecords.create(id,changes.build)
+ var created := CharacterBuilderRecords.create(id,changes.build,state)
  if not created.ok:return created
- if not CharacterBuilderRecords.ancestry(identity.people_id).has(created.candidate.ancestry_ref):return fail("Choose a valid heritage for this ancestry")
+ if not CharacterBuilderRecords.ancestry(identity.people_id,state).has(created.candidate.ancestry_ref):return fail("Choose a valid heritage for this ancestry")
  var c := CharacterBuilderRecords.context(entry.world,int(identity.origin_burg))
  if c.is_empty():return fail("Choose an eligible source-world personal origin")
  var jobs := CharacterBuilderRecords.backgrounds(entry.world,int(identity.origin_burg)).filter(func(row: Dictionary):return row.id==identity.occupation_id)

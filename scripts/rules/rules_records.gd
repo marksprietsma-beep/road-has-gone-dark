@@ -1,19 +1,63 @@
 class_name RulesRecords
 extends RefCounted
 static var _registry: RulesRegistry
+static var _versions := {}
+const PACKS := "res://data/rules/packs.json"
+const NEW_PACK := "trhgd-character-v3"
 
-static func registry() -> RulesRegistry:
- if _registry==null:
-  _registry=RulesRegistry.new()
-  _registry.load_pack()
- return _registry
+static func registry(context: Dictionary = {}) -> RulesRegistry:
+ var reference: Variant={}
+ for key in ["character_builder","mechanics"]:
+  if context.has(key):
+   if not context[key] is Dictionary:
+    var invalid := RulesRegistry.new();invalid._fail([RulesJson.issue("pack.pin",key,"Malformed rules namespace")]);return invalid
+   if context[key].has("rules_ref"):reference=context[key].rules_ref
+ if context.has("rules_ref"):reference=context.rules_ref
+ if context.has("pack_id"):reference=context
+ if not reference is Dictionary:
+  var invalid := RulesRegistry.new();invalid._fail([RulesJson.issue("pack.pin","rules_ref","Malformed rules reference")]);return invalid
+ if reference.is_empty() and not context.has("rules_ref") and not context.has("pack_id"):
+  if _registry==null:
+   _registry=RulesRegistry.new();_registry.load_pack()
+  return _registry
+ var key := RulesJson.digest(reference)
+ if _versions.has(key):return _versions[key]
+ var source := RulesRegistry.new()
+ var rows := installed_packs()
+ if not rows.is_empty():
+  for row in rows:
+   if row is Dictionary and RulesJson.normalize(row.get("rules_ref"))==RulesJson.normalize(reference):
+    source.load_pack(str(row.path))
+    if source.ready() and source.rules_ref()!=RulesJson.normalize(reference):source._fail([RulesJson.issue("pack.pin","rules_ref","Installed pack differs from its exact published pin")])
+    _versions[key]=source;return source
+ source._fail([RulesJson.issue("pack.unavailable","rules_ref","Exact rules pack is unavailable; no automatic upgrade or substitution")])
+ return source
+
+static func installed_packs() -> Array:
+ if not FileAccess.file_exists(PACKS):return []
+ var parser := JSON.new()
+ if parser.parse(FileAccess.get_file_as_string(PACKS))!=OK or not parser.data is Dictionary:return []
+ var manifest: Dictionary=parser.data
+ if manifest.size()!=2 or manifest.get("schema_version")!=1 or not manifest.get("packs") is Array:return []
+ var seen := {}
+ for row in manifest.packs:
+  if not row is Dictionary or row.size()!=2 or not row.get("path") is String or not row.path.begins_with("res://data/rules/") or row.path.contains("..") or not row.get("rules_ref") is Dictionary:return []
+  var reference: Dictionary=row.rules_ref
+  if reference.size()!=5 or not reference.has_all(["pack_id","schema_version","rules_version","content_hash","engine_schema"]) or not reference.pack_id is String or seen.has(reference.pack_id):return []
+  seen[reference.pack_id]=true
+ return manifest.packs
+
+static func new_character_registry() -> RulesRegistry:
+ for row in installed_packs():
+  if row.rules_ref.pack_id==NEW_PACK:return registry(row.rules_ref)
+ return registry({"pack_id":NEW_PACK})
 
 static func preparation_status(state: Dictionary) -> String:
  return "prepared" if state.has("mechanics") else "not_prepared"
 
 static func validate(state: Dictionary) -> String:
  if not state.has("mechanics"): return "" # Historical campaigns are not corrupt.
- var source := registry()
+ var source := registry(state)
  if not source.ready(): return "rules.pack_unavailable: "+RulesJson.canonical(source.errors)
  var mechanics: Variant=state.mechanics
  if not mechanics is Dictionary or mechanics.size()!=5 or mechanics.get("schema_version")!=1 or RulesJson.normalize(mechanics.get("rules_ref"))!=source.rules_ref() or not RulesJson.integer(mechanics.get("revision"),1,RulesJson.LIMIT) or not mechanics.get("records") is Dictionary or not mechanics.get("source_party_sha") is String or mechanics.source_party_sha.length()!=64 or not mechanics.source_party_sha.is_valid_hex_number(false): return "rules.schema_or_pin: Invalid mechanical schema or exact rules pin"
@@ -28,12 +72,12 @@ static func validate(state: Dictionary) -> String:
   if not result.ok: return "rules.build: "+RulesJson.canonical(result.errors)
  return ""
 
-static func preview_preparation(state: Dictionary) -> Dictionary:
+static func preview_preparation(state: Dictionary, selected: Dictionary = {}) -> Dictionary:
  if state.has("mechanics"):
   var why := validate(state)
   if not why.is_empty(): return {"ok":false,"error":why}
   return {"ok":true,"operation":"prepare","before_hash":RulesJson.digest(state),"candidate_hash":RulesJson.digest(state),"candidate":state.duplicate(true),"already_prepared":true}
- var source := registry()
+ var source := registry(selected if not selected.is_empty() else state)
  if not source.ready(): return {"ok":false,"error":"Rules content unavailable","errors":source.errors}
  if state.get("party",{}).get("status")!="ready" or not state.get("party",{}).get("members") is Array or not state.get("characters") is Array or not state.get("party_ids") is Array: return {"ok":false,"error":"Prepare the existing narrative party first; no character is regenerated"}
  if state.party.members.size()!=state.characters.size() or state.characters.size()!=state.party_ids.size(): return {"ok":false,"error":"Existing party identities are inconsistent"}
@@ -65,7 +109,7 @@ static func preview_advancement(state: Dictionary,identity: String,choice: Dicti
  if not state.has("mechanics") or not why.is_empty(): return {"ok":false,"error":"Prepared exact-pinned mechanical records required. "+why}
  if not state.mechanics.records.has(identity): return {"ok":false,"error":"Unknown existing character identity"}
  var record: Dictionary=state.mechanics.records[identity]
- var changed := RulesCharacter.new(registry()).apply_advancement(record,choice,int(record.revision))
+ var changed := RulesCharacter.new(registry(state)).apply_advancement(record,choice,int(record.revision))
  if not changed.ok: return changed
  var candidate := state.duplicate(true)
  candidate.mechanics.records[identity]=changed.candidate
@@ -79,7 +123,7 @@ static func preview_runtime(state: Dictionary,identity: String,runtime: Dictiona
  var candidate := state.duplicate(true)
  var record: Dictionary=candidate.mechanics.records[identity]
  record.runtime=runtime.duplicate(true);record.revision=int(record.revision)+1
- var valid := RulesCharacter.new(registry()).derive_character(record)
+ var valid := RulesCharacter.new(registry(state)).derive_character(record)
  if not valid.ok: return valid
  candidate.mechanics.revision=int(candidate.mechanics.revision)+1
  return {"ok":true,"operation":"runtime","character_id":identity,"runtime":runtime.duplicate(true),"before_hash":RulesJson.digest(state),"candidate_hash":RulesJson.digest(candidate),"candidate":candidate,"snapshot":valid.snapshot}

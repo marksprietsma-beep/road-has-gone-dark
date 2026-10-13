@@ -44,9 +44,11 @@ func journey(spec: Dictionary,index: int) -> void:
  check(home_index>=0,"requested source hometown is genuinely offered")
  ui.choose_home(home_index);ui.show_page();await frames();await shot("home-%02d-origin"%index)
  await click(ui.next_button);await click(ui.next_button);await wait_scene("res://scenes/ui/party_creation.tscn")
+ await review_content(index)
  for i in 3:
   var role: String=(["vanguard","scout","adept"] if index%2==0 else ["expert","vanguard","adept"])[i]
   ui.selected=i+1;ui.refresh();ui.pick(ui.role_picker,role);ui.recommend(role)
+  await review_build(index,i)
   ui.detail_tabs.current_tab=0
   await click(ui.save_button);await wait_job()
   check(ui.state.character_builder.confirmed.has(ui.state.party_ids[i]),"actual creator confirms each distinct build")
@@ -121,3 +123,6 @@ func restart() -> void:
 
 func review_creation(_index: int) -> void:
  pass
+
+func review_content(_index: int) -> void:pass
+func review_build(_index: int,_slot: int) -> void:pass

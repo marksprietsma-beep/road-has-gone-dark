@@ -2,7 +2,7 @@ class_name CharacterBuilderRecords
 extends RefCounted
 ## Creator policy and source-backed identity validation, never a second rules engine.
 const POLICY := "res://data/characters/builder-v1.json"
-static func kernel() -> RulesCharacter: return RulesCharacter.new(RulesRecords.registry())
+static func kernel(context: Dictionary = {}) -> RulesCharacter: return RulesCharacter.new(RulesRecords.registry(context))
 static func reason(result: Dictionary) -> String:
  if result.get("ok",false): return ""
  if result.has("error"): return str(result.error)
@@ -14,9 +14,11 @@ static func reason(result: Dictionary) -> String:
   if e.has("actual"):text+=" · actual "+str(e.actual)
   if e.has("expected"):text+=" · expected "+str(e.expected)
   return text))
-static func ancestry(people_id: String) -> Array:
- var source := RulesRecords.registry()
- return source.ids("ancestries").filter(func(id: String):return source.definition("ancestries",id).people_id==people_id)
+static func ancestry(people_id: String,context: Dictionary = {}) -> Array:
+ var source := RulesRecords.registry(context)
+ var rows := source.ids("ancestries").filter(func(id: String):return source.definition("ancestries",id).people_id==people_id)
+ rows.sort_custom(func(a: String,b: String):return a.begins_with("heritage-") if a.begins_with("heritage-")!=b.begins_with("heritage-") else a<b)
+ return rows
 static func threshold(level: int) -> int:
  var rows: Array=WorldOriginLore.read_json(POLICY).xp_thresholds
  return int(rows[level-1]) if level>=1 and level<=rows.size() else RulesJson.LIMIT
@@ -36,17 +38,17 @@ static func record(state: Dictionary,id: String) -> Dictionary:
 static func definition(record_value: Dictionary) -> Dictionary:
  var step: Dictionary=record_value.advancement_history[0]
  return {"attributes":record_value.base_attributes.duplicate(true),"ancestry_ref":record_value.ancestry_ref,"background_ref":record_value.background_ref,"class_id":step.class_id,"skill_allocations":step.skill_allocations.duplicate(true),"feat_id":step.feat_id,"equipment":record_value.equipment.duplicate(),"prepared_abilities":record_value.choices.prepared_abilities.duplicate()}
-static func create(id: String,draft: Dictionary) -> Dictionary:
+static func create(id: String,draft: Dictionary,context: Dictionary = {}) -> Dictionary:
  if draft.size()!=8 or not draft.has_all(["attributes","ancestry_ref","background_ref","class_id","skill_allocations","feat_id","equipment","prepared_abilities"]) or not draft.attributes is Dictionary or not draft.skill_allocations is Dictionary or not draft.equipment is Array or not draft.prepared_abilities is Array: return {"ok":false,"error":"Exactly eight typed starting-build fields required"}
  for key in ["ancestry_ref","background_ref","class_id","feat_id"]:
   if not draft[key] is String:return {"ok":false,"error":"Build references must be content IDs"}
- var base := kernel().create(id,draft.attributes,draft.ancestry_ref,draft.background_ref)
+ var base := kernel(context).create(id,draft.attributes,draft.ancestry_ref,draft.background_ref)
  base.equipment=draft.equipment.duplicate()
- var result := kernel().preview_advancement(base,{"class_id":draft.class_id,"skill_allocations":draft.skill_allocations,"feat_id":draft.feat_id,"attribute_increase":""})
+ var result := kernel(context).preview_advancement(base,{"class_id":draft.class_id,"skill_allocations":draft.skill_allocations,"feat_id":draft.feat_id,"attribute_increase":""})
  if not result.ok:return result
- if not result.candidate.equipment.any(func(item: Variant):return item is String and RulesRecords.registry().definition("equipment",item).get("kind")=="weapon"):return {"ok":false,"error":"Choose at least one starting weapon"}
+ if not result.candidate.equipment.any(func(item: Variant):return item is String and RulesRecords.registry(context).definition("equipment",item).get("kind")=="weapon"):return {"ok":false,"error":"Choose at least one starting weapon"}
  result.candidate.choices.prepared_abilities=draft.prepared_abilities.duplicate()
- var derived := kernel().derive_character(result.candidate)
+ var derived := kernel(context).derive_character(result.candidate)
  if not derived.ok:return derived
  result.snapshot=derived.snapshot
  return result
@@ -92,7 +94,7 @@ static func validate_party(state: Dictionary,world: GameWorldTemplate) -> String
 static func validate(state: Dictionary) -> String:
  if not state.has("character_builder"):return "builder.missing: Player party requires creator records" if state.get("party",{}).get("schema_version")==2 else ""
  var b: Variant=state.character_builder
- if not b is Dictionary or b.size()!=8 or not b.has_all(["version","rules_ref","revision","confirmed","drafts","advancements","policy_sha","initial_levels"]) or b.version!=1 or RulesJson.normalize(b.rules_ref)!=RulesRecords.registry().rules_ref() or b.policy_sha!=FileAccess.get_sha256(POLICY) or not RulesJson.integer(b.revision,1,RulesJson.LIMIT) or not b.confirmed is Array or not b.drafts is Dictionary or not b.advancements is Array or not b.initial_levels is Dictionary:return "builder.schema: Invalid creator policy/schema"
+ if not b is Dictionary or b.size()!=8 or not b.has_all(["version","rules_ref","revision","confirmed","drafts","advancements","policy_sha","initial_levels"]) or b.version!=1 or RulesJson.normalize(b.rules_ref)!=RulesRecords.registry(state).rules_ref() or b.policy_sha!=FileAccess.get_sha256(POLICY) or not RulesJson.integer(b.revision,1,RulesJson.LIMIT) or not b.confirmed is Array or not b.drafts is Dictionary or not b.advancements is Array or not b.initial_levels is Dictionary:return "builder.schema: Invalid creator policy/schema"
  if b.confirmed.size()!=RulesRegistry._unique_count(b.confirmed) or not b.confirmed.all(func(id: Variant):return id is String and state.party_ids.has(id)):return "builder.confirmation: Invalid saved confirmation"
  var ready: bool=state.party.status=="ready"
  if ready and state.party.schema_version==2 and state.get("mechanics",{}).get("source_party_sha")!=RulesJson.digest(state.party):return "builder.identity: Committed party identity changed"
@@ -100,8 +102,8 @@ static func validate(state: Dictionary) -> String:
  if state.party.schema_version==2 and ready and b.confirmed.size()!=3:return "builder.confirmation: Confirm every starting adventurer"
  for m in state.party.members:
   var r := record(state,m.character_id)
-  if r.is_empty() or r.get("character_id")!=m.character_id or not kernel().validate_build(r).ok:return "builder.build: Invalid exact-pinned build"
-  if not ancestry(m.people_id).has(r.ancestry_ref):return "builder.ancestry: Mechanical heritage conflicts with selected ancestry"
+  if r.is_empty() or r.get("character_id")!=m.character_id or not kernel(state).validate_build(r).ok:return "builder.build: Invalid exact-pinned build"
+  if not ancestry(m.people_id,state).has(r.ancestry_ref):return "builder.ancestry: Mechanical heritage conflicts with selected ancestry"
   if not ready and r.advancement_history.size()!=1:return "builder.start: Starting level is exactly one"
   if not b.initial_levels.has(m.character_id) or not RulesJson.integer(b.initial_levels[m.character_id],1,r.advancement_history.size()):return "builder.history: Missing grandfathered initial level"
  var levels: Dictionary=b.initial_levels.duplicate(true)
@@ -122,7 +124,7 @@ static func preview_advancement(state: Dictionary,id: String,choice: Dictionary)
  var result := RulesRecords.preview_advancement(state,id,choice)
  if not result.ok:return result
  if not result.candidate.has("character_builder"):
-  result.candidate.character_builder={"version":1,"rules_ref":RulesRecords.registry().rules_ref(),"revision":1,"confirmed":[],"drafts":{},"advancements":[],"policy_sha":FileAccess.get_sha256(POLICY),"initial_levels":{}}
+  result.candidate.character_builder={"version":1,"rules_ref":RulesRecords.registry(state).rules_ref(),"revision":1,"confirmed":[],"drafts":{},"advancements":[],"policy_sha":FileAccess.get_sha256(POLICY),"initial_levels":{}}
   for character in state.characters:result.candidate.character_builder.initial_levels[character.id]=state.mechanics.records[character.id].advancement_history.size()
  var b: Dictionary=result.candidate.character_builder
  b.revision+=1

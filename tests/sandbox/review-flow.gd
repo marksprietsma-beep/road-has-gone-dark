@@ -103,6 +103,7 @@ func run() -> void:
  proof.sandbox.results=ui.state.sandbox.results;proof.sandbox.party_ids=ui.state.party_ids
  finish()
 func play_fight() -> void:
+ engine.configure(ui.state)
  var deadline := Time.get_ticks_msec()+360000
  while ui.battle().status=="active" and Time.get_ticks_msec()<deadline:
   if ui.thread!=null or ui.is_presenting() or ui.presentation_active or engine.current(ui.battle()).team=="enemy":await tree.process_frame;continue

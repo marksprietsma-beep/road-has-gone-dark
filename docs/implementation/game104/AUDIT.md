@@ -1,0 +1,55 @@
+# Complete character programme: architecture and coverage audit
+
+Baseline: GAME-103 draft PR80, `6f3bba8099f202a0b536b445227d69a9d3b3722f`, with all outstanding CI workflows now successful. Main remains `a47f972`. This feature is stacked on PR80; neither PR is authorised to merge. The user's full-scope programme supersedes the older GAME-88 recommendations limiting production breadth, while retaining the accepted guide's separation of identity, build and acquired life history.
+
+Inputs read: complete GAME-88 catalogue and accepted direction at research commit `c09e586`, GAME-32 contract, current kernel/builder, native delivery proofs and current CI. Toolchain/helper/templates already verified in the existing environment; no setup changes needed. No callable Linear connector is present. GitHub will carry implementation tracking and a precise Linear reconciliation file without claiming external updates.
+
+## Coverage, including source discrepancies
+
+`COVERAGE.json` accounts for every transcribed ancestry and prestige entry and each listed base/NPC class, retaining repeated source-group references. Actual unique names are **364 ancestry/subrace entries, 66 adventurer classes plus 8 NPC families, and 282 prestige paths**. The retained source occurrences reconcile the headline counts exactly: **403 ancestry entries, 66 adventurer class entries and 283 prestige entries = 752**, plus eight NPC families. Unique names differ because cross-references/repeated source names are retained. Each occurrence has an independent design/status key; same-name prestige versions must not share mechanics without review. None of these research counts imply implementation. NPC careers remain accounted for without being promised as starting adventurers. All entries initially remain researched, with individual stable IDs, original-equivalent licensing strategy and explicit category owner. Similarity to an existing starter class is not sufficient to mark a catalogue concept playable.
+
+## Reuse and constraints
+
+The existing kernel already has ordered multiclass history, caps, skills, typed requirements, feats, equipment, modifiers, bounded effects, resources and exact snapshot hashes. Existing save/journal locks, campaign owner, generated identities, source-world professions, combat authority, artwork and onboarding remain reusable.
+
+Confirmed architectural constraints:
+
+- The registry only recognises the v1 identity; campaign/UI/combat call sites always use that singleton. New definitions cannot be appended to v1 without invalidating every exact saved pin. First delivery adds an explicit installed-pack manifest, exact-reference resolver and per-record/per-campaign registry routing. No implicit migration.
+- Creator previews contain draft records, not authoritative saved mechanics. Their art projection must construct a complete temporary preparation namespace so the existing validation can render all three current builds. This does not write or alter campaign state.
+- Current small dropdowns need search and numerical explanations before scaling. First delivery adds search without changing actual choices, and displays actual class progression/feature modifiers from the registry.
+- WorldPeoples, PartyRecords and the pinned helper still validate the eight prototype people IDs. Broad ancestry expansion needs a separately versioned identity catalogue/public party schema with legacy dispatch; editing the old helper/people pack would break its source pins. Art profiles already separate body configuration from class/culture, but do not supply every future body plan.
+- Attribute inheritance, size, vision, resistances, body slots and acquired overlays need typed capability extensions. Existing ancestry `modifiers` can safely express a first limited inherited-trait batch; it cannot honestly represent aquatic breathing, flight or transformations yet.
+- Casting only recognises arcane capacity; preparations do not implement tabletop spell levels/slots/known-spell selection. Divine/spontaneous/psionic/occult systems need their own typed definitions and generic authority support. Do not label a generic spark caster as all these classes.
+- Existing V0 tactical wiring accepts Attack, Guard, Spark, Slow and Healing Thread plus trusted precision/reaction hooks. Every new active ability needs real generic action/targeting UI wiring and deterministic manual/AI tests. Passive martial progressions are genuinely usable now without a combat rewrite.
+- Class-specific skill lists, proficiencies, armour restrictions, hit dice, companions, summons, stances, manoeuvres and prestige world-achievement requirements are not represented fully. Keep these catalogue entries unplayable until those consequences exist.
+
+## First coherent delivery
+
+Separately pinned original `trhgd-character-v3` extends the unchanged legacy data. Three original martial paths have distinct twenty-level HP/BAB/save/skill progressions and tiered passive features: Blade Dancer (mobility/accuracy), Iron Bulwark (durability/guard with movement cost), Road Stalker (ranged accuracy/initiative/skill breadth). They are narrow original specializations, not complete equivalents of Monk, Barbarian, Ranger or other researched classes. Seven optional inherited traits and seven actual feats use existing validated typed modifiers/prerequisites. No Emberkin-specific art or mechanics are added.
+
+The expanded pack is explicitly selected before confirming any starting character. Existing drafts and ready campaigns stay pinned; changing a confirmed party's pack is rejected. The same kernel resolves creation, advancement, combat, save/reload and home recovery. V1 source bytes, helper pins, RNG and original frozen combat remain unchanged.
+
+## Ordered continuation to complete breadth
+
+1. GAME-36: retain installed packs forever; add reviewed migrations only when necessary, manifest validation and source/licence audit gates.
+2. GAME-108: typed inherited ability adjustments, sizes/movement/vision/resistance/body compatibility; then genuine ancestry/heritage combinations; acquired overlays retain original ancestry/class history.
+3. GAME-109 / GAME-111: proficiencies/class skills, weapon choices, bounded combat ability wiring, prepared/spontaneous spell lists/slots and divine traditions. Preserve distinct concepts, not recoloured templates.
+4. GAME-111: companion/summon authority, manoeuvre/stance and psionic/occult/binding systems, each with persistence and deterministic combat proofs.
+5. GAME-110: catalogue-specific prerequisite/progression design, hybrid casting and world-achievement facts, then source-group coherent prestige batches.
+6. Remaining catalogue rows: independently reviewable original designs, mechanical validation, real playable journey proof, and explicit exception rationale where licensing or incompatible source concepts require original adaptation.
+
+This delivery is a programme checkpoint, not completion of the full catalogue. Coverage statuses must only advance with per-option evidence. No arbitrary final option cap is introduced.
+
+## Reviewed source fingerprint update
+
+Initial native CI38191918484 passed ten generated worlds on both platforms, then the GAME101 corpus rejected its whole-file tactical source hash. This branch adds only saved-pack registry configuration to TacticalCombat (constructor, creation, command and validation); its movement/attack/action/RNG algorithms remain unchanged. The frozen First Adventure combat digest and GAME32 golden oracle passed. Update only that source fingerprint in `tests/opportunities/v1-pins.json`, preserving every other protected source/world/icon pin and all behavioural assertions. This is an explicit reviewed integration change, not disabling a failing test.
+
+## Engine2 snapshot serialization correction
+
+Fresh-process comparison exposed a Godot key-type issue: internally added StringName statistic keys can sort separately from ordinary String keys even when values are identical. Changing the legacy canonical hash would invalidate historical pins and frozen oracles. Instead, engine2 normalizes key types at the new character snapshot boundary before deriving/hashing. New content is pinned as `trhgd-character-v3` / rules3.0.0 / engine2. Earlier v1 and prototype v2 data/pins remain installed byte-identically, without automatic migration. The entire legacy calculation/hashing path remains unchanged. Every new class/heritage/level combination now checks snapshot equality across JSON serialization as well as build legality.
+
+The initial source journey's 1034/0 run remains valid mechanical/UI evidence for the prototype. Its first restart test had a float/int reference-comparison error and exposed the snapshot key ordering difference after reconstructing the replay fixture; those failed runs are diagnostic evidence, not final acceptance. Final native evidence must exercise engine2 from actual creation through restart without replacing snapshots or weakening assertions.
+
+## Small-screen regression correction
+
+The first stable native build passed 887 exported journey checks and 54 restart checks on each platform. Broader GAME81/GAME83/GAME32 render regressions independently found that the new pack-selection button consumed enough fixed vertical space to push the unconfirmed default party footer below 640x360. Move that button into the existing scrollable Identity tab; retain the original footer/hitbox/ink assertions. The numerical class chart also stops at the selected class's actual cap (Veil10 rather than displaying out-of-cap 15/20 rows). These are presentation corrections and require a refreshed review build; they do not change rules, records or RNG.
