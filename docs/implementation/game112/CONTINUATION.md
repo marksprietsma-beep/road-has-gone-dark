@@ -1,5 +1,15 @@
 # Exact continuation
 
+## Current integration status
+
+PRs #91, #92 and #93 are merged normally into main and the narrow diagnostic repair is merged as [#94](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/94); original feature branches are retained. Owner authorisation supersedes earlier instructions to click Publish draft PR, keep these drafts unmerged or target the old stack.
+
+Gameplay/build source: `94f2c3391844e4dd5fd62310c304733728ce87b0`. Post-repair verified main: `a3b47ede4703b1fdea3eb3052ecf3e7060321e19`. Only the two diagnostic battle drivers and documentation/evidence changed between them; production code/content/assets/helpers are identical. Integrated catalogue/earned-XP/combat/save/native Windows/Linux and current production workflows passed. Main defaults to v11: 19 base adaptations, 8 prestige paths, 17 ancestry families/26 heritages, 40 feats, 14 skills. Human acceptance remains separate; the full 403/66/283 programme is open.
+
+Use [the current integration delivery and main-based continuation](../character-integration/DELIVERY.md) for merge history, source-qualified CI/build/checksum and the next character-only wave. Preserve v1–v11 and old campaign pins. The records below preserve their exact historical context and are not current publication instructions.
+
+## Historical pre-integration record
+
 Branch feature/game-112-character-catalogue-wave-one, based on GAME121 f3c12b9. v11 is the expanded default; never mutate v1–v10 or repin existing saves. Use DELIVERY.md for final tested source/head, build and CI. Keep all parent drafts unmerged. Publication uses Mark clicking Publish draft PR, base feature/game-121-sustainable-adventures.
 
 This wave implements19 base tracks: eleven familiar cores with executable progression1–20 and eight new adaptations1–12 (Psion, Psychic Warrior, Soulknife, Warlock, Scout, Swashbuckler, Knight, Warblade). Eight prestige paths: original four1–5 plus Shadowdancer/Dragon Disciple/Dwarven Defender/Pyrokineticist1–10.17 ancestry families/26 inherited records,40 feats,14 skills. Counts describe bounded TRHGD functionality, not complete tabletop subsystems. Spell tiers7–9 work for full casters; Bard/Paladin/Ranger gain additional bounded tiers5/6.

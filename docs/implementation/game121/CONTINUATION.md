@@ -1,5 +1,15 @@
 # GAME-121 continuation
 
+## Current integration status
+
+PRs #91, #92 and #93 are merged normally into main and the narrow diagnostic repair is merged as [#94](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/94); original feature branches are retained. Owner authorisation supersedes earlier instructions to click Publish draft PR, keep these drafts unmerged or target the old stack.
+
+Gameplay/build source: `94f2c3391844e4dd5fd62310c304733728ce87b0`. Post-repair verified main: `a3b47ede4703b1fdea3eb3052ecf3e7060321e19`. Only the two diagnostic battle drivers and documentation/evidence changed between them; production code/content/assets/helpers are identical. Integrated catalogue/earned-XP/combat/save/native Windows/Linux and current production workflows passed. Main defaults to v11: 19 base adaptations, 8 prestige paths, 17 ancestry families/26 heritages, 40 feats, 14 skills. Human acceptance remains separate; the full 403/66/283 programme is open.
+
+Use [the current integration delivery and main-based continuation](../character-integration/DELIVERY.md) for merge history, source-qualified CI/build/checksum and the next character-only wave. Preserve v1–v11 and old campaign pins. The records below preserve their exact historical context and are not current publication instructions.
+
+## Historical pre-integration record
+
 Source branch: `feature/game-121-sustainable-adventures`, stacked on GAME-119 head05b093a. Main implementation15a96af; validation-cache integrity fix1ff309b. Parent PR80/81/88 and GAME-119 remain unmerged; publication uses the user's Publish draft PR workflow.
 
 Implemented: contextual report cycles, persistent original geography and history, unfinished returns, objective XP for full noncombat/combat success, actual deterministic skill contributions, class-kernel-based enemy advancement, visible XP thresholds and adventure journal. Original character packs/XP policies/TacticalCombat remain exact. There is no production XP/level button, save reset, second save writer or new tactical authority.

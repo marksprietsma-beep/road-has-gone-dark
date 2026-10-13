@@ -1,5 +1,15 @@
 # GAME-119 continuation and boundaries
 
+## Current integration status
+
+PRs #91, #92 and #93 are merged normally into main and the narrow diagnostic repair is merged as [#94](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/94); original feature branches are retained. Owner authorisation supersedes earlier instructions to click Publish draft PR, keep these drafts unmerged or target the old stack.
+
+Gameplay/build source: `94f2c3391844e4dd5fd62310c304733728ce87b0`. Post-repair verified main: `a3b47ede4703b1fdea3eb3052ecf3e7060321e19`. Only the two diagnostic battle drivers and documentation/evidence changed between them; production code/content/assets/helpers are identical. Integrated catalogue/earned-XP/combat/save/native Windows/Linux and current production workflows passed. Main defaults to v11: 19 base adaptations, 8 prestige paths, 17 ancestry families/26 heritages, 40 feats, 14 skills. Human acceptance remains separate; the full 403/66/283 programme is open.
+
+Use [the current integration delivery and main-based continuation](../character-integration/DELIVERY.md) for merge history, source-qualified CI/build/checksum and the next character-only wave. Preserve v1–v11 and old campaign pins. The records below preserve their exact historical context and are not current publication instructions.
+
+## Historical pre-integration record
+
 Implemented in v7: eleven distinct core archetype adaptations through level12; 27 scheduled career groups; four five-level prestige paths; 30 mechanical feats. Existing nine race families/fourteen heritages are unchanged. This does not complete levels1–20 or the full403/66/~283 programme.
 
 School/domain/bloodline/style/rage/talent choices grant actual limited powers, not full Pathfinder subsystems. Wizard school and Sorcerer bloodline advanced techniques require their original choice. Ranger quarry targets raiders or hostile bow wielders; no final ancestry taxonomy is implied. Favoured-enemy variants for creatures absent from current encounters remain work.
