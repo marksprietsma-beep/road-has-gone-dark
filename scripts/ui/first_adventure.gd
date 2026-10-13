@@ -89,7 +89,7 @@ func send(kind: String,target: String="",destination: Array=[]) -> void:
  var input := {"revision":b.revision,"actor_id":engine.current(b).id,"kind":kind}
  if not target.is_empty(): input.target_id=target
  if not destination.is_empty(): input.destination=destination
- operate("sandbox_command" if state.has("sandbox") and not state.sandbox.active.is_empty() else "battle_command",input)
+ operate(AdventureService.command_operation(state),input)
 func _process(delta: float) -> void:
  if thread!=null:
   if thread.is_alive(): return
@@ -117,7 +117,7 @@ func _process(delta: float) -> void:
  var b := battle()
  if not b.is_empty() and b.status=="active" and engine.current(b).team=="enemy" and message.is_empty():
   ai_delay-=delta
-  if ai_delay<=0: operate("sandbox_command" if state.has("sandbox") and not state.sandbox.active.is_empty() else "battle_command",engine.enemy_command(b))
+  if ai_delay<=0: operate(AdventureService.command_operation(state),engine.enemy_command(b))
 func choose_tile(p: Array) -> void:
  var b := battle()
  if b.is_empty() or b.status!="active": return
@@ -363,7 +363,7 @@ func location_context() -> String:
  if b.is_empty():return ""
  var text := "Old Road · authored roadside approach"
  if b.board.has("generation"):
-  var site := SandboxRecords.site(state.sandbox,b.site_id)
+  var site := SandboxRecords.site(AdventureService.opportunities(state),b.site_id)
   return str(site.name)+" · "+str(site.context.biome)+" · inferred/generated local terrain"
  for site in service.packet.get("content",{}).get("sites",[]):
   if site.id==b.site_id:text="Roadside approach to "+str(site.name);break

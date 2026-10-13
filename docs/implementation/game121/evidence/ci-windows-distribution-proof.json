@@ -1,0 +1,178 @@
+{
+  "source_commit": "1ff309bca003c2d0bbe0cc6a3c05b145565c5225",
+  "archive": "game121-sustainable-adventures-windows-x64.zip",
+  "archive_sha256": "a9ceccd24bc3b7b757b05d9561820223201e259b5dbf4dc2cfe3346aeb0bbe7e",
+  "native_earned": {
+    "checks": 1489,
+    "cycles": 10,
+    "earned_choices": [
+      {
+        "class": "rogue",
+        "level": 2,
+        "xp": 10
+      },
+      {
+        "class": "wizard",
+        "level": 3,
+        "xp": 40
+      },
+      {
+        "class": "wizard",
+        "level": 4,
+        "xp": 90
+      },
+      {
+        "class": "wizard",
+        "level": 5,
+        "xp": 160
+      },
+      {
+        "class": "arcane-trickster",
+        "level": 6,
+        "xp": 250
+      },
+      {
+        "class": "arcane-trickster",
+        "level": 7,
+        "xp": 360
+      }
+    ],
+    "empty_path": true,
+    "failures": 0,
+    "history": [
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "rogue",
+        "feat_id": "steady-study",
+        "level": 1.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 1.0,
+          "insight": 1.0,
+          "perception": 1.0,
+          "persuasion": 1.0,
+          "religion": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "rogue-choice-1": "debilitating"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "rogue",
+        "feat_id": "",
+        "level": 2.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 1.0,
+          "insight": 1.0,
+          "perception": 1.0,
+          "persuasion": 1.0,
+          "religion": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "steady-study",
+        "level": 3.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "wizard-choice-1": "evocation"
+        }
+      },
+      {
+        "attribute_increase": "INT",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "",
+        "level": 4.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "steady-study",
+        "level": 5.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "arcane-trickster",
+        "feat_id": "",
+        "level": 6.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 2.0,
+          "craft": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "arcane-trickster-arcane": "wizard"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "arcane-trickster",
+        "feat_id": "steady-study",
+        "level": 7.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 2.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      }
+    ],
+    "platform": "Windows",
+    "prestige_used": true,
+    "screenshots": [],
+    "slot": "d41b3d4a5340c3391f63587871ff84fe",
+    "source_helper_override": false,
+    "spell_used": true,
+    "state_sha": "799e0f074eb054ed5e382fee3643dd9fc7e00d6bd7ec297add406c144a7a4bff",
+    "xp": 380
+  },
+  "production_launch": true,
+  "bundled_helper": true,
+  "separate_process_restart": true
+}

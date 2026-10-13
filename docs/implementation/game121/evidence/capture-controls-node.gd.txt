@@ -1,0 +1,44 @@
+extends "res://tests/adventure_cycles/earned_driver.gd"
+func run() -> void:
+ base="/workspace/artifacts/game121/control-visual-clean";DirAccess.make_dir_recursive_absolute(base)
+ var source_root := "/workspace/artifacts/game121/final-source/earned"
+ service.store.save_root=source_root.path_join("saves");service.library.library_root=source_root.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=source_root.path_join("cache")
+ entry=service.library.discover()[0]
+ slot=JSON.parse_string(FileAccess.get_file_as_string(source_root.path_join("earned-proof.json"))).slot
+ var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"load actual earned campaign");state=loaded.state
+ if not cycle().active.is_empty():
+  var active_site: Dictionary=SandboxRecords.site(cycle(),cycle().active.site_id)
+  var active_family: String=OpportunityGenerator.template(active_site.activity_id).family
+  action("cycle_activity",{"choice":"negotiate" if active_family=="contested" else "careful"});action("cycle_return")
+ for i in 4:
+  if cycle().results.has(cycle().base.sites[i].id):continue
+  travel(i)
+  var family: String=OpportunityGenerator.template(cycle().base.sites[i].activity_id).family
+  action("cycle_activity",{"choice":"negotiate" if family=="contested" else "careful"});action("cycle_return")
+ await capture("seek-another-cycle","expedition")
+ PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
+ get_tree().change_scene_to_file("res://scenes/gameplay/expedition.tscn")
+ for n in 10:await get_tree().process_frame
+ var ui=get_tree().current_scene
+ while ui.thread!=null:await get_tree().process_frame
+ var before_xp := CharacterBuilderRecords.xp(ui.state,ui.state.party_ids[0])
+ ui.action_buttons.cycle_seek.pressed.emit()
+ while ui.thread!=null:await get_tree().process_frame
+ state=ui.state
+ check(CharacterBuilderRecords.xp(state,state.party_ids[0])==before_xp,"actual Seek new leads button grants no XP")
+ var site: Dictionary=cycle().base.sites[1]
+ ui.action_buttons[site.id].pressed.emit()
+ for n in 3:await get_tree().process_frame
+ ui.action_buttons.sandbox_accept.pressed.emit()
+ while ui.thread!=null:await get_tree().process_frame
+ if ui.action_buttons.has("sandbox_scout"):
+  ui.action_buttons.sandbox_scout.pressed.emit()
+  while ui.thread!=null:await get_tree().process_frame
+ ui.action_buttons.sandbox_travel.pressed.emit()
+ while ui.thread!=null:await get_tree().process_frame
+ state=ui.state
+ for n in 3:await get_tree().process_frame
+ check(ui.action_buttons.keys().any(func(key: Variant):return str(key).begins_with("choice:skill:")),"actual production UI offers saved-skill contributions")
+ await capture("skill-objective-choices","expedition")
+ FileAccess.open(base.path_join("controls-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"screenshots":screenshots},"  "))
+ finish()

@@ -39,6 +39,9 @@ static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  if e.revision<0 or int(e.revision)!=e.revision or e.log.size()!=e.revision: return "Invalid transition revision/log"
  var clock:=0
  var costs: Dictionary=EVENT_COSTS.duplicate()
+ if state.has("adventure_cycles"):
+  for key in EVENT_COSTS:costs["cycle_"+str(key)]=EVENT_COSTS[key]
+  costs["cycle_seek"]=1
  if not state.get("sandbox",{}) is Dictionary:return "Invalid sandbox namespace"
  if state.get("sandbox",{}).get("version")!=OpportunityGenerator.VERSION:
   for key in ["recover","quick","inspect","negotiate"]:costs.erase(key)

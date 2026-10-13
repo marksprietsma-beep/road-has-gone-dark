@@ -1,0 +1,178 @@
+{
+  "checks": 1111,
+  "cycles": 10,
+  "earned_choices": [
+    {
+      "class": "rogue",
+      "level": 2,
+      "xp": 10
+    },
+    {
+      "class": "wizard",
+      "level": 3,
+      "xp": 40
+    },
+    {
+      "class": "wizard",
+      "level": 4,
+      "xp": 90
+    },
+    {
+      "class": "wizard",
+      "level": 5,
+      "xp": 160
+    },
+    {
+      "class": "arcane-trickster",
+      "level": 6,
+      "xp": 250
+    },
+    {
+      "class": "arcane-trickster",
+      "level": 7,
+      "xp": 360
+    }
+  ],
+  "empty_path": false,
+  "failures": 0,
+  "history": [
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "rogue",
+      "feat_id": "steady-study",
+      "level": 1.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 1.0,
+        "craft": 1.0,
+        "insight": 1.0,
+        "perception": 1.0,
+        "persuasion": 1.0,
+        "religion": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+        "rogue-choice-1": "debilitating"
+      }
+    },
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "rogue",
+      "feat_id": "",
+      "level": 2.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 1.0,
+        "craft": 1.0,
+        "insight": 1.0,
+        "perception": 1.0,
+        "persuasion": 1.0,
+        "religion": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+
+      }
+    },
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "wizard",
+      "feat_id": "steady-study",
+      "level": 3.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+        "wizard-choice-1": "evocation"
+      }
+    },
+    {
+      "attribute_increase": "INT",
+      "bonus_feats": [],
+      "class_id": "wizard",
+      "feat_id": "",
+      "level": 4.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+
+      }
+    },
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "wizard",
+      "feat_id": "steady-study",
+      "level": 5.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+
+      }
+    },
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "arcane-trickster",
+      "feat_id": "",
+      "level": 6.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 2.0,
+        "craft": 1.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+        "arcane-trickster-arcane": "wizard"
+      }
+    },
+    {
+      "attribute_increase": "",
+      "bonus_feats": [],
+      "class_id": "arcane-trickster",
+      "feat_id": "steady-study",
+      "level": 7.0,
+      "skill_allocations": {
+        "acrobatics": 1.0,
+        "animal-handling": 1.0,
+        "arcana": 1.0,
+        "athletics": 1.0,
+        "craft": 2.0,
+        "stealth": 1.0
+      },
+      "specialisations": {
+
+      }
+    }
+  ],
+  "platform": "Windows",
+  "prestige_used": true,
+  "screenshots": [],
+  "slot": "4631596385a8bb585fcec5c89718324a",
+  "source_helper_override": true,
+  "spell_used": true,
+  "state_sha": "74d9d3e47cf090aaf5e9e9b30e23fa58b552e94b98a5804fc77fdfe3d3fd3d24",
+  "xp": 380
+}

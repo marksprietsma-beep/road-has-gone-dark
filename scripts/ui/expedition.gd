@@ -18,6 +18,8 @@ var menu_button: Button
 var home_button: Button
 var action_buttons := {}
 var saved_indicator: Label
+var show_history := false
+var history_index := 0
 func label(text: String, font: int=14) -> Label:
  return GameUI.label(text, font)
 func _ready() -> void:
@@ -75,7 +77,7 @@ func _ready() -> void:
  controls.add_child(GameUI.action("Characters",func():
   if thread==null and not state.is_empty():CharacterScreen.open_sheet(self,entry,slot,service.store.save_root,service.library.library_root,service.cache_root,"res://scenes/gameplay/expedition.tscn")))
  controls.add_child(GameUI.spacer())
- home_button=GameUI.action("Return to hometown · 1 turn",func(): start("sandbox_return" if state.has("sandbox") and not state.sandbox.active.is_empty() else "return"),true)
+ home_button=GameUI.action("Return to hometown · 1 turn",func(): start("cycle_return" if not OpportunityCycles.current(state).get("active",{}).is_empty() else "sandbox_return" if state.has("sandbox") and not state.sandbox.active.is_empty() else "return"),true)
  home_button.visible=false
  controls.add_child(home_button)
  var h := PartyService.handoff
@@ -90,6 +92,7 @@ func _ready() -> void:
  else: start("resume")
 func start(operation: String, lead: String="", choice: String="") -> void:
  if thread!=null: return
+ if state.has("adventure_cycles") and operation.begins_with("sandbox_"):operation=operation.replace("sandbox_","cycle_")
  var changes := {"lead":lead,"revision":state.get("expedition",{}).get("revision",-1)}
  if not choice.is_empty():changes.choice=choice
  message="Preparing local map…" if operation=="resume" else "Saving…"
@@ -104,7 +107,7 @@ func _process(_delta: float) -> void:
   var was_away: bool = AdventureService.away(state)
   state=result.state
   if was_away and not AdventureService.away(state): selected=""
-  public_view=SandboxRecords.projection(state.sandbox) if state.has("sandbox") else ExpeditionRecords.projection(service.packet.content,state.expedition)
+  public_view=SandboxRecords.projection(AdventureService.opportunities(state)) if state.has("sandbox") or state.has("adventure_cycles") else ExpeditionRecords.projection(service.packet.content,state.expedition)
   message=""
   var battle: Dictionary=AdventureService.active_battle(state)
   if not battle.is_empty() and battle.status=="active":
@@ -116,7 +119,7 @@ func button(id: String, text: String, callback: Callable, effect: String="") -> 
  if id=="return":
   action_buttons[id]=home_button
   return
- var b := GameUI.action(text,callback,id in ["accept","depart","scout","travel","prepare_adventure","begin_battle","sandbox_begin","sandbox_accept","sandbox_scout","sandbox_travel","sandbox_fight"])
+ var b := GameUI.action(text,callback,id in ["cycle_seek","accept","depart","scout","travel","prepare_adventure","begin_battle","sandbox_begin","sandbox_accept","sandbox_scout","sandbox_travel","sandbox_fight"])
  b.alignment=HORIZONTAL_ALIGNMENT_LEFT
  b.clip_text=true
  b.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -144,7 +147,7 @@ func refresh() -> void:
  if state.is_empty():
   status.text=message
   return
- if state.has("sandbox"):
+ if state.has("sandbox") or state.has("adventure_cycles"):
   refresh_sandbox()
   return
  var w: GameWorldTemplate = entry.world
@@ -173,7 +176,8 @@ func refresh() -> void:
   map.setup(service.packet.svg,{"sites":[],"leads":[],"home_position":service.packet.content.home_position},"","",MapIconRoles.home(home))
   content.add_child(label("Choose your own expedition",GameUI.SECTION))
   content.add_child(label("Record several local opportunities from this region, then decide where your party will go. There is no compulsory opening quest.",GameUI.META))
-  button("sandbox_begin","Explore local opportunities",func():start("sandbox_begin"),"Keep your existing companions and prepare their starting rules. Sites and encounters remain saved after discovery.")
+  button("cycle_seek","Seek new leads",func():start("cycle_seek"),"Current contextual objectives · 10 XP each on full success · saved history and geography remain.")
+  button("sandbox_begin","Explore standing local reports",func():start("sandbox_begin"),"Keep your existing companions and prepare their starting rules. Sites and encounters remain saved after discovery.")
   for member in state.party.members:
    var identity := AdventureRecords.identity(state,member)
    content.add_child(label(identity.name+" · "+identity.archetype+"\n"+identity.background,GameUI.META))
@@ -262,7 +266,7 @@ func refresh() -> void:
 func select_site(id: String) -> void:
  for l in public_view.leads:
   if l.site==id:
-   if AdventureService.away(state) and (state.sandbox.active.site_id!=l.id if state.has("sandbox") else state.expedition.active.lead_id!=l.id):
+   if AdventureService.away(state) and (AdventureService.opportunities(state).active.site_id!=l.id if state.has("sandbox") or state.has("adventure_cycles") else state.expedition.active.lead_id!=l.id):
     message="This expedition follows another account. Return home to choose this lead."
    else:
     message=""
@@ -282,10 +286,10 @@ func _exit_tree() -> void:
  if thread!=null: thread.wait_to_finish()
 
 func refresh_sandbox() -> void:
- var s: Dictionary=state.sandbox;var a: Dictionary=s.active
- var v2: bool=s.version==OpportunityGenerator.VERSION
+ var s: Dictionary=AdventureService.opportunities(state);var a: Dictionary=s.active
+ var v2: bool=s.version in [OpportunityGenerator.VERSION,OpportunityCycles.VERSION]
  var home: Dictionary=entry.world.get_record("burg",int(state.origin.home_burg_id))
- public_view=SandboxRecords.projection(s)
+ public_view=OpportunityRecords.projection(s) if s.version==OpportunityCycles.VERSION else SandboxRecords.projection(s)
  title.text=str(home.name)+" · Local opportunities" if a.is_empty() else {"map":"Local expedition","site":"At the generated site","result":"Expedition record"}.get(a.phase,"Local expedition")
  reminder.text=", ".join(state.party.members.map(func(m: Dictionary):return m.name))+" · "+str(s.base.sites[0].context.biome)
  reminder.tooltip_text="Source hometown and parent-cell biome; fine local features are generated/inferred."
@@ -298,10 +302,30 @@ func refresh_sandbox() -> void:
  map.setup(service.packet.svg,public_view,str(a.get("site_id","")) if a.get("phase")!="map" else "",selected_site if visible_selection else "",MapIconRoles.home(home))
  footer.text="Party at hometown · "+str(home.name) if a.is_empty() else "Party approaching a rumoured location" if s.knowledge[a.site_id]=="rumoured" else "Party near "+str(SandboxRecords.site(s,a.site_id).name)
  if a.is_empty():
+  if CycleAdventure.ready_for_leads(state):button("cycle_seek","Seek new leads · 1 turn",func():selected="";start("cycle_seek"),"Previous reports and consequences remain in the journal.")
+  if state.has("adventure_cycles"):
+   var ledger: Dictionary=state.adventure_cycles
+   button("cycle_history","Adventure journal",func():show_history=not show_history;history_index=ledger.cycles.size()-1;refresh())
+   if show_history:
+    history_index=clampi(history_index,0,ledger.cycles.size()-1)
+    var past: Dictionary=ledger.cycles[history_index].record
+    content.add_child(label("Reports %d · persistent record"%(history_index+1),GameUI.SECTION))
+    for place in past.base.sites:
+     if past.results.has(place.id):content.add_child(label(place.name+"\n"+str(past.results[place.id].text),GameUI.META))
+    if history_index>0:button("history_older","Older reports",func():history_index-=1;refresh())
+    if history_index<ledger.cycles.size()-1:button("history_newer","Newer reports",func():history_index+=1;refresh())
+   content.add_child(label("Reports %d · %d of 4 resolved · Threat tier %d"%[ledger.cycles.size(),s.results.size(),int(ledger.cycles.back().context.threat_level)],GameUI.META))
+   for member in state.party.members:
+    var id: String=member.character_id;var xp := CharacterBuilderRecords.xp(state,id)
+    var next: int=state.mechanics.records[id].advancement_history.size()+1
+    content.add_child(label("%s · XP %d / %d for level %d"%[member.name,xp,CharacterBuilderRecords.threshold(next,state),next],GameUI.META))
+   if ledger.cycles.size()>1:
+    var previous: Dictionary=ledger.cycles[-2].record
+    content.add_child(label("Previous reports · "+", ".join(previous.results.values().map(func(r: Dictionary):return str(r.outcome).replace("_"," "))),GameUI.META))
   if not selected.is_empty():
    var lead: Dictionary=public_view.leads.filter(func(row: Dictionary):return row.id==selected)[0]
    content.add_child(label(lead.title,GameUI.SECTION));content.add_child(GameUI.badge(lead.status.capitalize()+" · "+lead.knowledge.capitalize()))
-   content.add_child(label(lead.clue));content.add_child(label("Choose a recovery, investigation or contested approach. Noncombat earns provisions or information, not battle XP." if v2 else "Assess a local threat. Victory records the site and grants 10 journey XP per companion.",GameUI.META))
+   content.add_child(label(lead.clue));content.add_child(label("Full recovery, investigation, peaceful access or combat victory: 10 XP each, once. Partial/failed attempts: 0 XP." if state.has("adventure_cycles") else "Choose a recovery, investigation or contested approach. Noncombat earns provisions or information, not battle XP." if v2 else "Assess a local threat. Victory records the site and grants 10 journey XP per companion.",GameUI.META))
    if lead.status=="available":button("sandbox_accept","Set out for this opportunity",func():start("sandbox_accept",lead.id))
    else:content.add_child(label(s.results[lead.id].text,GameUI.META))
    button("leads","Back to opportunities",func():selected="";refresh())
@@ -343,15 +367,18 @@ func refresh_sandbox() -> void:
    if action_buttons.has(key):action_buttons[key].call_deferred("grab_focus");return
   if a.is_empty() and not public_view.leads.is_empty() and action_buttons.has(public_view.leads[0].id):action_buttons[public_view.leads[0].id].call_deferred("grab_focus")
 func show_activity_choices(site: Dictionary) -> void:
- var s: Dictionary=state.sandbox;var activity := OpportunityGenerator.template(site.activity_id)
+ var s: Dictionary=AdventureService.opportunities(state);var activity := OpportunityGenerator.template(site.activity_id)
  content.add_child(GameUI.badge(activity.family.capitalize()+" · "+("Armed occupants; combat avoidable" if activity.family=="contested" else "No combat required")))
  for fact in s.information.get(site.id,[]):content.add_child(label("Recorded: "+str(fact.text),GameUI.META))
  if activity.family=="contested" and s.actions.any(func(action: Dictionary):return action.site_id==site.id and action.outcome=="observed"):
   content.add_child(label("Observed: %d occupants · %s · %d×%d terrain"%[site.board.enemies.size(),", ".join(site.board.enemies.map(func(enemy: Dictionary):return "bow" if enemy.weapon=="bow" else "blade")),site.board.width,site.board.height],GameUI.META))
- for choice in OpportunityGenerator.choices(state,site):
+ for choice in (OpportunityCycles.choices(state,site) if state.has("adventure_cycles") else OpportunityGenerator.choices(state,site)):
   var key: String="sandbox_fight" if choice.id=="fight" else "choice:"+str(choice.id)
   var effect: String="Existing combat rules · risks HP/Focus · 10 XP each on victory, 0 on defeat · requires 1 provision to remain prepared." if choice.id=="fight" else "%d turn(s) / %d provision(s) · %s · no battle XP"%[ExpeditionRecords.EVENT_COSTS[choice.event],choice.provisions,choice.information]
   if choice.gain>0:effect+=" · recover up to %d provisions (maximum 4)"%choice.gain
+  if state.has("adventure_cycles"):
+   effect="Full objective: 10 XP each · one reward per report. Failed/partial/withdrawn: 0 XP. %d provision(s)."%int(choice.provisions)
+   if str(choice.id).begins_with("skill:"):effect+=" Skills assessed when these reports were prepared; one deterministic attempt, no retry for XP."
   button(key,str(choice.label),func():start("sandbox_fight") if choice.id=="fight" else start("sandbox_activity","",choice.id),effect)
   var observed: bool=not choice.complete and s.actions.any(func(action: Dictionary):return action.site_id==site.id and action.outcome==choice.outcome)
   action_buttons[key].disabled=thread!=null or observed or int(s.active.supplies)<maxi(int(choice.provisions),1 if choice.id=="fight" else 0)
