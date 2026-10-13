@@ -225,6 +225,8 @@ func refresh() -> void:
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
    if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
+   var body := RulesEntities.form(actor.record,engine.registry)
+   if not body.is_empty():detail.text+="\nForm: "+str(body.id).replace("-"," ")+" · "+str(body.size)+"\nCreature/form artwork: humanoid fallback"
    detail.add_theme_color_override("font_color",GameUI.GOLD)
    add_action("move","Move · select a clear tile")
    add_action("attack","Attack · select enemy")

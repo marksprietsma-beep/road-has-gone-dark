@@ -121,6 +121,12 @@ func demonstrate_battle(shape: bool) -> void:
   if shape and reverted:break # Retain active battle for a real process-restart proof.
  if shape:check(shaped and reverted and demonstration_actions.has("bear-attack"),"Druid transforms, attacks with changed anatomy and reverts")
  else:check(AdventureService.active_battle(state).status!="active","actual new-party encounter resolves")
+func screenshot(name: String,development: bool) -> void:
+ var fixture: bool=development or name.contains("fixture") or service.store.save_root.ends_with("shape-fixture")
+ if fixture and get_tree().current_scene!=null and get_tree().current_scene.get("title") is Label:
+  var heading: Label=get_tree().current_scene.title
+  if not heading.text.begins_with("DEVELOPMENT FIXTURE"):heading.text="DEVELOPMENT FIXTURE · XP not granted · "+heading.text
+ await super.screenshot(name,fixture)
 func finish_wave() -> void:
  FileAccess.open(base.path_join("screenshots.json"),FileAccess.WRITE).store_string(JSON.stringify(screenshots," "))
  print("WAVE TWO JOURNEY ",checks," / ",failures)
