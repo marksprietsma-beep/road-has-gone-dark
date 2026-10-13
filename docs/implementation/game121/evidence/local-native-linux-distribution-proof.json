@@ -1,0 +1,178 @@
+{
+  "source_commit": "local",
+  "archive": "game121-sustainable-adventures-linux-x64.tar.gz",
+  "archive_sha256": "429af74b7103c72ac33f005e3de8e04be118ce6f9e13f6c5b5c1f2ba249a0c41",
+  "native_earned": {
+    "checks": 1125,
+    "cycles": 11,
+    "earned_choices": [
+      {
+        "class": "rogue",
+        "level": 2,
+        "xp": 10
+      },
+      {
+        "class": "wizard",
+        "level": 3,
+        "xp": 40
+      },
+      {
+        "class": "wizard",
+        "level": 4,
+        "xp": 90
+      },
+      {
+        "class": "wizard",
+        "level": 5,
+        "xp": 160
+      },
+      {
+        "class": "arcane-trickster",
+        "level": 6,
+        "xp": 250
+      },
+      {
+        "class": "arcane-trickster",
+        "level": 7,
+        "xp": 360
+      }
+    ],
+    "empty_path": true,
+    "failures": 0,
+    "history": [
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "rogue",
+        "feat_id": "steady-study",
+        "level": 1.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 1.0,
+          "insight": 1.0,
+          "perception": 1.0,
+          "persuasion": 1.0,
+          "religion": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "rogue-choice-1": "debilitating"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "rogue",
+        "feat_id": "",
+        "level": 2.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 1.0,
+          "insight": 1.0,
+          "perception": 1.0,
+          "persuasion": 1.0,
+          "religion": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "steady-study",
+        "level": 3.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "wizard-choice-1": "evocation"
+        }
+      },
+      {
+        "attribute_increase": "INT",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "",
+        "level": 4.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "wizard",
+        "feat_id": "steady-study",
+        "level": 5.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "arcane-trickster",
+        "feat_id": "",
+        "level": 6.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 2.0,
+          "craft": 1.0,
+          "stealth": 1.0
+        },
+        "specialisations": {
+          "arcane-trickster-arcane": "wizard"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "arcane-trickster",
+        "feat_id": "steady-study",
+        "level": 7.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "arcana": 1.0,
+          "athletics": 1.0,
+          "craft": 2.0,
+          "stealth": 1.0
+        },
+        "specialisations": {}
+      }
+    ],
+    "platform": "Linux",
+    "prestige_used": true,
+    "screenshots": [],
+    "slot": "7c92f071e85a03cb50cf6413d6dd1a39",
+    "source_helper_override": false,
+    "spell_used": true,
+    "state_sha": "887895226254f84ff3e777632b8d8c4f2d5a7d90dbcdc57eae8772b306d5791d",
+    "xp": 390
+  },
+  "production_launch": true,
+  "bundled_helper": true,
+  "separate_process_restart": true
+}

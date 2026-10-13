@@ -1,0 +1,36 @@
+extends "res://tests/adventure_cycles/earned_driver.gd"
+func run() -> void:
+ base="/workspace/artifacts/game121/extra-visual"
+ DirAccess.make_dir_recursive_absolute(base)
+ var source_root := "/workspace/artifacts/game121/final-source/earned"
+ service.store.save_root=source_root.path_join("saves");service.library.library_root=source_root.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=source_root.path_join("cache")
+ entry=service.library.discover()[0]
+ var proof: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(source_root.path_join("earned-proof.json")));slot=proof.slot
+ var resumed := service.operate(entry,slot,"resume");check(resumed.ok,str(resumed.get("error","")));state=resumed.state
+ CharacterScreen.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
+ get_tree().change_scene_to_file("res://scenes/ui/character_sheet.tscn")
+ for n in 10:await get_tree().process_frame
+ var ui=get_tree().current_scene
+ while ui.thread!=null:await get_tree().process_frame
+ ui.detail_tabs.current_tab=2
+ for n in 5:await get_tree().process_frame
+ var scroll: ScrollContainer=ui.detail_tabs.get_child(2)
+ scroll.scroll_vertical=int(scroll.get_v_scroll_bar().max_value)
+ for n in 5:await get_tree().process_frame
+ await RenderingServer.frame_post_draw
+ var folder := base.path_join("screenshots");DirAccess.make_dir_recursive_absolute(folder)
+ get_tree().root.get_texture().get_image().save_png(folder.path_join("earned-multiclass-history.png"))
+ get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+ for n in 2:await get_tree().process_frame
+ for cycle_index in 20:
+  action("cycle_seek")
+  for i in 4:
+   var site: Dictionary=cycle().base.sites[i]
+   if OpportunityGenerator.template(site.activity_id).family=="contested":
+    travel(i);await fight(site);action("cycle_return")
+    if prestige_used:break
+   else:await earn(i)
+  if prestige_used:break
+ check(prestige_used,"actual earned prestige power demonstrated in a new contextual fight")
+ FileAccess.open(base.path_join("capture-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"prestige_used":prestige_used,"spell_used":spell_used,"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"screenshots":screenshots},"  "))
+ finish()
