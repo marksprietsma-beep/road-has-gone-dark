@@ -89,6 +89,10 @@ func run() -> void:
   party.detail_tabs.current_tab = 1
   await shot("party-background" + suffix)
   party.detail_tabs.current_tab = 0
+  for member_index in 3:
+   party.selected=member_index+1;party.refresh();await click(party.save_button)
+   while party.thread!=null and Time.get_ticks_msec()<deadline:await process_frame
+   check(party.state.character_builder.confirmed.has(party.state.party_ids[member_index]),"each adventurer reviewed before ready")
   await click(party.finish_button)
   while party.thread != null and Time.get_ticks_msec() < deadline: await process_frame
   check(party.ready_view, "actual ready transition")

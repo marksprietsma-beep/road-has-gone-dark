@@ -45,6 +45,8 @@ func _ready() -> void:
  title=GameUI.label("Bandits on the Old Road",18);title.autowrap_mode=TextServer.AUTOWRAP_OFF;title.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;title.size_flags_horizontal=Control.SIZE_EXPAND_FILL;heading.add_child(title)
  var art_label := GameUI.label("Universal LPC",12);art_label.autowrap_mode=TextServer.AUTOWRAP_OFF;heading.add_child(art_label)
  var credits := GameUI.action("Art credits",show_art_credits);credits.add_theme_font_size_override("font_size",12);heading.add_child(credits)
+ heading.add_child(GameUI.action("Sheet",func():
+  if thread==null and not state.is_empty() and not is_presenting():CharacterScreen.open_sheet(self,entry,slot,service.store.save_root,service.library.library_root,service.cache_root,"res://scenes/combat/first_adventure.tscn")))
  resized.connect(layout_board)
  status=GameUI.label(message,GameUI.META);column.add_child(status)
  turn_label=GameUI.label("",GameUI.META);turn_label.autowrap_mode=TextServer.AUTOWRAP_OFF;turn_label.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS;column.add_child(turn_label)

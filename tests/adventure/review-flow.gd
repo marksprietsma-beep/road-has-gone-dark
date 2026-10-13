@@ -50,7 +50,7 @@ func wait_job() -> void:
  if ui.has_method("is_presenting"):
   while (ui.is_presenting() or ui.presentation_active) and Time.get_ticks_msec()<deadline:await tree.process_frame
  check(ui.thread==null and not ui.state.is_empty(),"production save/generation completed")
- if ui.scene_file_path.contains("party_creation"): check(ui.ready_view or ui.message.begins_with("Party saved"),"party verified")
+ if ui.scene_file_path.contains("party_creation") or ui.scene_file_path.contains("character_sheet"): check(ui.ready_view or ui.message.begins_with("Character saved"),"party/character verified")
  else: check(ui.message.is_empty(),"verified action: "+ui.message)
  await frames()
 func shot(name: String) -> void:
@@ -88,7 +88,10 @@ func run() -> void:
  await wait_scene("res://scenes/ui/party_creation.tscn")
  # Explicit review composition, through the existing party editor service path.
  for i in 3:
-  ui.selected=i+1;ui._start("edit",{"role_id":["vanguard","scout","adept"][i]});await wait_job()
+  var role: String=["vanguard","scout","adept"][i]
+  ui.selected=i+1;ui.refresh();ui.pick(ui.role_picker,role);ui.recommend(role)
+  await click(ui.save_button);await wait_job()
+  check(ui.state.character_builder.confirmed.has(ui.state.party_ids[i]),"actual creator reviewed build")
  ui.selected=1;ui.refresh();await shot("party")
  var preview_recipes: Dictionary=ui.preview_recipes.duplicate(true)
  check(preview_recipes.size()==3,"all three saved identities have LPC party previews")

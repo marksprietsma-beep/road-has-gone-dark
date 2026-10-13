@@ -72,6 +72,8 @@ func _ready() -> void:
  column.add_child(controls)
  menu_button=GameUI.action("Main menu",return_menu)
  controls.add_child(menu_button)
+ controls.add_child(GameUI.action("Characters",func():
+  if thread==null and not state.is_empty():CharacterScreen.open_sheet(self,entry,slot,service.store.save_root,service.library.library_root,service.cache_root,"res://scenes/gameplay/expedition.tscn")))
  controls.add_child(GameUI.spacer())
  home_button=GameUI.action("Return to hometown · 1 turn",func(): start("sandbox_return" if state.has("sandbox") and not state.sandbox.active.is_empty() else "return"),true)
  home_button.visible=false

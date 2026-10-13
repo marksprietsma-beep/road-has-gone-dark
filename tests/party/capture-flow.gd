@@ -36,12 +36,12 @@ func wait_party(ui: Control) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
  check(ui.thread==null and not ui.state.is_empty(),"async generation/save completes: "+ui.message)
- check(ui.message.begins_with("Party saved") or ui.ready_view,"only verified save succeeds")
+ check(ui.message.begins_with("Character saved") or ui.ready_view,"only verified save succeeds")
  await frames()
 func shot(name: String, ui: Control=null) -> void:
  await frames()
  if ui!=null:
-  check(ui.origin.is_visible_in_tree() and ui.origin.size.y >= 18 and not ui.origin.text.is_empty(), "origin reminder visible: " + name)
+  check(ui.origin.is_visible_in_tree() and ui.origin.get_theme_font_size("font_size") >= GameUI.META and root.get_visible_rect().encloses(ui.origin.get_global_rect()) and not ui.origin.text.is_empty(), "readable shared-theme origin reminder fits viewport: " + name)
   check(ui.finish_button.get_global_rect().end.y<=root.get_visible_rect().size.y-8,"footer visible: "+name)
   check(ui.detail_tabs.get_global_rect().end.y<ui.back_button.get_global_rect().position.y,"details above footer")
  if ui!=null:
@@ -90,7 +90,7 @@ func run() -> void:
   root.size=dimensions
   await frames()
   await shot("party-overview-%dx%d"%[dimensions.x,dimensions.y],ui)
-  ui.detail_tabs.current_tab=1
+  ui.detail_tabs.current_tab=0
   await shot("background-%dx%d"%[dimensions.x,dimensions.y],ui)
   ui.detail_tabs.current_tab=0
  # Actual OptionButton popup and keyboard ancestry selection.
@@ -126,10 +126,11 @@ func run() -> void:
  await shot("edited-name-2560x1440",ui)
  var siblings: Array = [ui.state.party.members[1].duplicate(true),ui.state.party.members[2].duplicate(true)]
  var variant: int = ui.state.party.members[0].background_variant
- ui.detail_tabs.current_tab=1
+ ui.detail_tabs.current_tab=0
  await click(ui.reroll_button)
+ await click(ui.save_button)
  await wait_party(ui)
- check(ui.state.party.members[0].background_variant==variant+1 and ui.state.party.members[0].name=="Mara of Home","deliberate reroll retains manual name")
+ check(ui.state.character_builder.confirmed.has(id) and ui.state.party.members[0].name=="Mara of Home","deliberate background selection retains manual name")
  check(ui.state.party.members[1]==siblings[0] and ui.state.party.members[2]==siblings[1],"reroll leaves both siblings unchanged")
  await shot("regenerated-background-2560x1440",ui)
  ui.roster.grab_focus()
@@ -139,6 +140,8 @@ func run() -> void:
  await click(ui.roster,ui.roster.get_global_rect().position+ui.roster.get_item_rect(2).get_center())
  check(ui.selected==3,"mouse selects third adventurer")
  await shot("third-background-2560x1440",ui)
+ for member_index in [1,2]:
+  ui.selected=member_index+1;ui.refresh();await click(ui.save_button);await wait_party(ui)
  await click(ui.finish_button)
  await wait_party(ui)
  check(ui.ready_view and ui.state.onboarding_stage=="party_ready","ready is saved verified handoff without gameplay")
@@ -182,7 +185,7 @@ func run() -> void:
  ui=current_scene
  await wait_party(ui)
  await shot("fresh-world-party-2560x1440",ui)
- ui.detail_tabs.current_tab=1
+ ui.detail_tabs.current_tab=0
  await shot("fresh-world-background-2560x1440",ui)
  print("GAME-81 actual input/render flow: ",checks," checks, ",failures," failures")
  quit(1 if failures else 0)

@@ -170,6 +170,8 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 		if not party_error.is_empty(): return party_error
 	var rules_error := RulesRecords.validate(state)
 	if not rules_error.is_empty(): return rules_error
+	var builder_error := CharacterBuilderRecords.validate(state)
+	if not builder_error.is_empty(): return builder_error
 	var expedition_error := ExpeditionRecords.validate(state, world)
 	if not expedition_error.is_empty(): return expedition_error
 	var adventure_error := AdventureRecords.validate(state, world)

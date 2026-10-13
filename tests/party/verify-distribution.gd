@@ -79,8 +79,11 @@ func run() -> void:
     ui.name_edit.text="Offline Name"
     ui._save_changes(true)
     while ui.thread!=null and Time.get_ticks_msec()<deadline: await get_tree().process_frame
-    check(ui.state.party.members[0].name=="Offline Name" and ui.state.party.members[0].background_variant==1,"exported UI edit and reroll saved")
+    check(ui.state.party.members[0].name=="Offline Name" and ui.state.character_builder.confirmed.has(ui.state.party_ids[0]),"exported UI edit and reviewed build saved")
     check(ui.state.party.members[1]==initial.party.members[1],"sibling immutable")
+    for member_index in [1,2]:
+     ui.selected=member_index+1;ui.refresh();ui._save_changes()
+     while ui.thread!=null and Time.get_ticks_msec()<deadline:await get_tree().process_frame
     ui._finish()
     while ui.thread!=null and Time.get_ticks_msec()<deadline: await get_tree().process_frame
     check(ui.ready_view and ui.state.onboarding_stage=="party_ready","exported UI ready only after persistence")
