@@ -17,6 +17,13 @@ func run() -> void:
   var fixture := fixture_service.operate(entry,slot,"resume")
   check(fixture.ok,"separate process active Wild Shape campaign reload")
   if fixture.ok:check(AdventureService.active_battle(fixture.state).state_hash==proof.fixture_battle_hash,"active companion/summon/form battle retained exactly by original writer")
+  var active_store := GamePlaythroughStore.new();active_store.save_root=base.path_join("active-shape-fixture")
+  var active := active_store.load_save(slot,entry.world)
+  check(active.ok,"original campaign writer reloads active body form")
+  if active.ok:
+   var active_battle := AdventureService.active_battle(active.state)
+   var owner_id: String=active.state.party_ids[0]
+   check(RulesEntities.form(active_battle.units[owner_id].record,RulesRecords.registry(active.state)).id=="bear-form","active transformation survives executable restart")
   await capture("wave-two-reloaded-party","sheet",2)
   finish_wave();return
  var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"canonical world profiles")
