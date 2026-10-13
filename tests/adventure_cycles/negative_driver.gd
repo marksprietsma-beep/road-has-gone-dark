@@ -80,12 +80,13 @@ func run() -> void:
  for field in ["policy_sha","version"]:
   var bad := state.duplicate(true);bad.adventure_cycles[field]="tampered"
   check(not service.store._validate(bad,entry.world).is_empty(),"bad cycle pin rejected: "+field)
- for mutation in ["xp","result","profile","memory","seed"]:
+ for mutation in ["xp","result","profile","memory","seed","equipment"]:
   var bad := state.duplicate(true);var first: Dictionary=bad.adventure_cycles.cycles[0]
   if mutation=="xp":first.record.characters[bad.party_ids[0]].xp+=10
   elif mutation=="result":first.record.results.values()[0].xp_each+=10
   elif mutation=="profile":first.context.profiles[bad.party_ids[0]].base_attributes.INT=20
   elif mutation=="memory":bad.adventure_cycles.cycles[1].context.memories={}
+  elif mutation=="equipment":bad.mechanics.records[bad.party_ids[0]].equipment=["staff"]
   else:first.record.base.seed="tampered"
   check(not service.store._validate(bad,entry.world).is_empty(),"corrupt/doubled consequence rejected: "+mutation)
  FileAccess.open(base.path_join("negative-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"cycles":state.adventure_cycles.cycles.size()},"  "))

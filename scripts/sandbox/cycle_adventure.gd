@@ -66,7 +66,7 @@ static func validate(state: Dictionary,world: GameWorldTemplate) -> String:
  var histories := {}
  for id in state.party_ids:
   var now: Dictionary=RulesJson.string_keys(state.mechanics.records[id])
-  histories[id]=RulesJson.digest([now.advancement_history,now.base_attributes,now.ancestry_ref,now.rules_ref])
+  histories[id]=RulesJson.digest([now.advancement_history,now.base_attributes,now.ancestry_ref,now.rules_ref,now.equipment,now.background_ref])
  var previous_end := 0
  for index in ledger.cycles.size():
   var cycle: Variant=ledger.cycles[index]
