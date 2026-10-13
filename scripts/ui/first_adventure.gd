@@ -130,7 +130,12 @@ func select_mode(value: String) -> void:
 func add_action(id: String,text: String) -> void:
  var button := GameUI.action(text,func():select_mode(id),mode==id)
  button.disabled=thread!=null or engine.current(battle()).team!="party" or int(battle().budget.move if id=="move" else battle().budget.main)<1
+ if engine.registry.rules_ref().engine_schema==3 and id!="move":
+  var actor: Dictionary=engine.current(battle())
+  var available := engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)})
+  button.disabled=button.disabled or not available.ok
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
+ button.clip_text=true
  gate_button(button)
  button.tooltip_text=text
  actions.add_child(button);action_buttons[id]=button
@@ -218,14 +223,27 @@ func refresh() -> void:
   if actor.team=="party":
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
+   if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
    detail.add_theme_color_override("font_color",GameUI.GOLD)
    add_action("move","Move · select a clear tile")
    add_action("attack","Attack · select enemy")
-   if abilities.has("guard"):
+   if engine.registry.rules_ref().engine_schema==3:
+    for id in abilities:
+     if id in ["attack","move","departure-attack","precision"]:continue
+     var ability := engine.registry.definition("abilities",id)
+     if ability.tags.has("spell") and not actor.record.choices.prepared_abilities.has(id):continue
+     if ability.tags.has("passive") or ability.has("trigger"):continue
+     if ability.targeting.kind=="self":
+      var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
+      button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
+      button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
+     else:
+      add_action(id,ability.name+" · range "+str(ability.targeting.get("range",1))+resource_text(ability,actor));action_buttons[id].tooltip_text=ability.get("description",ability.name)
+   elif abilities.has("guard"):
     var guard := GameUI.action("Guard · protect adjacent ally",func():send("guard",actor.id))
     guard.disabled=thread!=null or int(b.budget.main)<1;gate_button(guard);actions.add_child(guard);action_buttons.guard=guard
-   if abilities.has("precision"): actions.add_child(GameUI.label("Opening Strike: +4 once per round when an ally threatens your target.",GameUI.META))
-   if abilities.has("spark"):
+   if abilities.has("precision"): actions.add_child(GameUI.label("Sneak attack requires an ally threatening your target; once per round." if engine.registry.rules_ref().engine_schema==3 else "Opening Strike: +4 once per round when an ally threatens your target.",GameUI.META))
+   if engine.registry.rules_ref().engine_schema!=3 and abilities.has("spark"):
     add_action("spark","Lantern Spark · range 5")
     add_action("slow","Binding Step · 1 Focus (%d left)"%focus)
     add_action("healing-thread","Mending Thread · 1 Focus / adjacent ally")
@@ -266,6 +284,16 @@ func show_art_credits() -> void:
  text.add_theme_font_size_override("normal_font_size",14);text.text=FileAccess.get_file_as_string("res://assets/combat/LPC-CREDITS.txt");scroll.add_child(text)
  add_child(dialog);dialog.popup_centered_ratio(0.8);dialog.confirmed.connect(dialog.queue_free)
 
+func presentation_kind_for(kind: String) -> String:
+ if engine.registry.rules_ref().get("engine_schema")!=3:return kind
+ var ability := engine.registry.definition("abilities",kind)
+ if ability.get("tags",[]).has("spell"):return "healing-thread" if ability.effects.any(func(effect: Dictionary):return effect.op=="heal") else "spark"
+ if ability.get("tags",[]).has("weapon_strike"):return "attack"
+ return kind if kind in ["attack","move","end","retreat"] else "guard"
+func resource_text(ability: Dictionary,actor: Dictionary) -> String:
+ var values: Array=[]
+ for id in ability.cost.resources:values.append(("copies" if engine.registry.definition("resources",id).has("prepared_ability") else "tier "+str(engine.registry.definition("resources",id).get("spell_tier",0)) if engine.registry.definition("resources",id).has("slot_class") else engine.registry.definition("resources",id).name)+": "+str(int(actor.record.runtime.resources.get(id,0))))
+ return " · "+", ".join(values) if not values.is_empty() else ""
 func animate_committed(previous: Dictionary) -> void:
  var after := battle()
  if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision):return
@@ -283,7 +311,7 @@ func animate_committed(previous: Dictionary) -> void:
   elif command.kind not in ["end","retreat"]:
    var direction := Vector2.ZERO
    if after.units.has(target):direction=Vector2(after.units[target].position[0]-after.units[actor].position[0],after.units[target].position[1]-after.units[actor].position[1])
-   action_serial=pawns[actor].play_action(command.kind,direction)
+   action_serial=pawns[actor].play_action(presentation_kind_for(command.kind),direction)
    delay=float(pawns[actor].recipe.timelines.get(pawns[actor].animation,{}).get("impact",0.1))
  visual_impact(previous,after.duplicate(true),command,delay,action_serial)
 
@@ -292,9 +320,9 @@ func visual_impact(previous: Dictionary, committed: Dictionary, command: Diction
  if not is_inside_tree():return
  var actor: String=command.actor_id;var target: String=str(command.get("target_id",""))
  if action_serial>=0 and (not pawns.has(actor) or pawns[actor].serial!=action_serial):return
- if pawns.has(actor) and pawns.has(target) and (command.kind in ["spark","slow","healing-thread"] or command.kind=="attack" and committed.units[actor].weapon=="bow"):
+ if pawns.has(actor) and pawns.has(target) and (presentation_kind_for(command.kind) in ["spark","slow","healing-thread"] or presentation_kind_for(command.kind)=="attack" and committed.units[actor].weapon=="bow"):
   var effect := CombatEffect.new();effect.from=pawns[actor].get_global_rect().get_center();effect.to=pawns[target].get_global_rect().get_center()
-  effect.kind="arrow" if command.kind=="attack" else command.kind;add_child(effect)
+  effect.kind="arrow" if presentation_kind_for(command.kind)=="attack" else presentation_kind_for(command.kind);add_child(effect)
   await get_tree().create_timer(CombatPacing.PROJECTILE_SECONDS).timeout
   if not is_inside_tree():return
  var added_logs: Array=committed.log.slice(previous.log.size())
@@ -317,7 +345,7 @@ func presentation_seconds(previous: Dictionary) -> float:
  var after := battle()
  if previous.is_empty() or after.is_empty() or int(after.revision)<=int(previous.revision):return 0.0
  var command: Dictionary=after.commands.back();var actor: String=command.actor_id
- var kind: String=command.kind
+ var kind: String=presentation_kind_for(command.kind)
  if kind in ["end","retreat"]:return CombatPacing.POST_BEAT_SECONDS
  var downed: bool=after.order.any(func(id: String):return engine.alive(previous.units[id]) and not engine.alive(after.units[id]))
  var reaction := CombatPacing.clip_seconds(CombatPacing.timelines(CombatArt.styles()[0].timelines),"down") if downed else CombatPacing.REACTION_SECONDS

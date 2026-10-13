@@ -35,7 +35,10 @@ for name in ['smoke-party','reader-failures','failures']:
 if (base/'saves').exists():shutil.rmtree(base/'saves') # This runner owns its test root, never the player's save root.
 for phase in ['create','replay']:
  env['GAME81_PHASE']=phase;run('lifecycle-'+phase,[engine,'--headless','--audio-driver','Dummy','--path','.','--script','tests/party/lifecycle.gd'])
-if args.visual:run('input-render',[engine,'--audio-driver','Dummy','--path','.','--script','tests/party/capture-flow.gd'])
+if args.visual:
+ for mode in ['fresh','legacy']:
+  visual_env=dict(env,GAME81_CAPTURE_LEGACY='1' if mode=='legacy' else '0')
+  run('input-render-'+mode,[engine,'--audio-driver','Dummy','--path','.','--script','tests/party/capture-flow.gd'],visual_env)
 if args.regressions:run('game80-regressions',[os.sys.executable,'tests/origin_profiles/run-tests.py','--regressions']+(['--visual']if args.visual else[]),timeout=3600)
 assert before=={str(p):hashfile(p)for p in frozen}
 metrics=json.loads((docs/'batch-metrics.json').read_text());print('::notice title=GAME-81 batch proof::'+json.dumps({k:metrics[k]for k in ['characters','structured','prose','story_combinations','biography_forms','contradictions','invalid_source_claims','hidden_information_leaks']},separators=(',',':')),flush=True)

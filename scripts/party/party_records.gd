@@ -14,14 +14,14 @@ static func satisfies(rule: Variant, tags: Dictionary) -> bool:
 
 static func validate(state: Dictionary, world: GameWorldTemplate) -> String:
  var party: Variant=state.get("party")
- if party is Dictionary and party.get("schema_version")==2:return CharacterBuilderRecords.validate_party(state,world)
+ if party is Dictionary and (party.get("schema_version")==2 or party.get("schema_version")==3):return CharacterBuilderRecords.validate_party(state,world)
  return validate_legacy(state,world)
 
-static func validate_legacy(state: Dictionary, world: GameWorldTemplate, personal_origins: bool=false) -> String:
+static func validate_legacy(state: Dictionary, world: GameWorldTemplate, personal_origins: bool=false,core_identity: bool=false) -> String:
  if not state.has("party"): return "" # Historical skeletons are still valid.
  var party: Variant = state.party
- var schema := 2 if personal_origins else 1
- var generator := "player-party-1" if personal_origins else "trhgd-party-1"
+ var schema := 3 if core_identity else 2 if personal_origins else 1
+ var generator := "player-party-2" if core_identity else "player-party-1" if personal_origins else "trhgd-party-1"
  if not party is Dictionary or party.size() != 7 or party.get("schema_version") != schema or not party.get("status") in ["draft", "ready"] or party.get("generator_version") != generator or party.get("runtime_manifest_sha") != FileAccess.get_sha256(WorldPeoples.RUNTIME): return "Invalid party schema or runtime"
  var runtime := WorldOriginLore.read_json(WorldPeoples.RUNTIME)
  if party.get("content_pack_sha") != runtime.get("content_pack_sha"): return "Party content version mismatch"
@@ -36,6 +36,9 @@ static func validate_legacy(state: Dictionary, world: GameWorldTemplate, persona
   if not character is Dictionary or not character.get("id") is String or not character.get("name") is String: return "Invalid underlying character record"
  var pack := WorldOriginLore.read_json(WorldPeoples.PACK)
  var people_ids: Array = pack.peoples.map(func(r: Dictionary): return r.id)
+ if core_identity:
+  if RulesRecords.registry(state).rules_ref().get("engine_schema")!=3:return "Core identity needs its exact rules pin"
+  people_ids=RulesCoreContent.ancestry_rows(RulesRecords.registry(state)).map(func(row: Dictionary):return row.id)
  var role_ids: Array = pack.roles.map(func(r: Dictionary): return r.id)
  var home: Dictionary = world.get_record("burg", int(state.origin.home_burg_id))
  var cell: Dictionary = world.get_record("cell", int(home.cell))

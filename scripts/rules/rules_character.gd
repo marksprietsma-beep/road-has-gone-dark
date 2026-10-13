@@ -6,7 +6,13 @@ var registry: RulesRegistry
 func _init(source: RulesRegistry) -> void: registry=source
 
 func create(identity: String, attributes: Dictionary, ancestry: String, background: String = "hometown-background") -> Dictionary:
- return {"schema_version":1,"character_id":identity,"rules_ref":registry.rules_ref(),"base_attributes":attributes.duplicate(true),"ancestry_ref":ancestry,"background_ref":background,"advancement_history":[],"equipment":[],"choices":{"prepared_abilities":[]},"runtime":{"hp":0,"temporary_hp":0,"resources":{},"statuses":[],"modifiers":[],"granted_features":[],"senses":[],"apparent_effects":[]},"revision":0}
+ var record := {"schema_version":1,"character_id":identity,"rules_ref":registry.rules_ref(),"base_attributes":attributes.duplicate(true),"ancestry_ref":ancestry,"background_ref":background,"advancement_history":[],"equipment":[],"choices":{"prepared_abilities":[]},"runtime":{"hp":0,"temporary_hp":0,"resources":{},"statuses":[],"modifiers":[],"granted_features":[],"senses":[],"apparent_effects":[]},"revision":0}
+
+ if registry.rules_ref().get("engine_schema")==3:record.choices.spell_preparations={}
+ return record
+
+func feat_at(level: int,class_id: String,class_level: int) -> bool:
+ return registry.rule("feat_levels").has(level) or registry.rules_ref().engine_schema==3 and registry.definition("classes",class_id).bonus_feat_levels.has(class_level)
 
 func _shape(record: Dictionary) -> Array:
  var errors: Array = []
@@ -29,7 +35,8 @@ func _shape(record: Dictionary) -> Array:
  for key in ["advancement_history","equipment"]:
   if not record.get(key) is Array: errors.append(RulesJson.issue("build.array",key,"Expected array"))
  if not RulesJson.integer(record.get("revision"),0,RulesJson.LIMIT): errors.append(RulesJson.issue("build.revision","revision","Integer revision required"))
- if not record.get("choices") is Dictionary or record.choices.size()!=1 or not record.choices.get("prepared_abilities") is Array: errors.append(RulesJson.issue("build.choices","choices","Explicit prepared-ability choices required"))
+ if not record.get("choices") is Dictionary or record.choices.size()!=(2 if registry.rules_ref().get("engine_schema")==3 else 1) or not record.choices.get("prepared_abilities") is Array: errors.append(RulesJson.issue("build.choices","choices","Explicit prepared-ability choices required"))
+ if registry.rules_ref().get("engine_schema")==3 and not record.get("choices",{}).get("spell_preparations") is Dictionary:errors.append(RulesJson.issue("build.preparations","choices","Typed prepared copy counts required"))
  if not record.get("runtime") is Dictionary: errors.append(RulesJson.issue("build.runtime","runtime","Mutable mechanical record required"))
  else:
   var runtime: Dictionary=record.runtime
@@ -54,6 +61,8 @@ func _replay(record: Dictionary) -> Dictionary:
  if not errors.is_empty(): return RulesJson.result(errors)
  if record.advancement_history.size()>int(registry.rule("max_level")): return RulesJson.result([RulesJson.issue("build.level_cap","history","Total level limit exceeded")])
  var attributes: Dictionary=RulesJson.normalize(record.base_attributes)
+ if registry.rules_ref().engine_schema==3:
+  for id in registry.definition("ancestries",record.ancestry_ref).attribute_adjustments:attributes[id]+=int(registry.definition("ancestries",record.ancestry_ref).attribute_adjustments[id])
  var classes := {};var ranks := {};var feats: Array=[]
  for skill in registry.ids("skills"): ranks[skill]=0
  var context := _context(attributes,classes,ranks,feats,record,false)
@@ -84,7 +93,7 @@ func _replay(record: Dictionary) -> Dictionary:
   if allocated!=points: return RulesJson.result([RulesJson.issue("advancement.skill_budget",path,"Exact skill-point allocation required",{"expected":points,"current":allocated})])
   context=_context(attributes,classes,ranks,feats,record,false)
   if not context.errors.is_empty(): return RulesJson.result(context.errors)
-  if registry.rule("feat_levels").has(i+1):
+  if feat_at(i+1,step.class_id,int(classes[step.class_id])):
    var feat := registry.definition("feats",step.feat_id)
    if feat.is_empty(): return RulesJson.result([RulesJson.issue("advancement.feat",path,"A legal feat choice is required")])
    if feats.has(step.feat_id) and not feat.repeatable: return RulesJson.result([RulesJson.issue("advancement.feat_repeat",path,"Feat is not repeatable")])
@@ -104,6 +113,8 @@ func _replay(record: Dictionary) -> Dictionary:
   var item := registry.definition("equipment",id)
   if item.is_empty(): return RulesJson.result([RulesJson.issue("equipment.reference","equipment","Unknown equipment",{"id":id})])
   if slots.has(id): return RulesJson.result([RulesJson.issue("equipment.duplicate","equipment","Duplicate equipment reference")])
+  if registry.rules_ref().engine_schema==3 and not classes.is_empty() and not RulesCoreContent.equipment_legal(item,classes,registry):return RulesJson.result([RulesJson.issue("equipment.proficiency",id,"Not proficient with this equipment, or incompatible with Monk discipline")])
+  if registry.rules_ref().engine_schema==3 and item.kind=="weapon" and slots.has("slot:weapon"):return RulesJson.result([RulesJson.issue("equipment.slot",id,"Choose one active weapon")])
   if item.kind in ["armor","shield"] and slots.has("slot:"+item.kind): return RulesJson.result([RulesJson.issue("equipment.slot","equipment","Conflicting equipment slot")])
   slots[id]=true;slots["slot:"+item.kind]=true
   var legal := RulesExpressions.evaluate_requirements(item.requirements,context)
@@ -111,6 +122,9 @@ func _replay(record: Dictionary) -> Dictionary:
  if record.choices.prepared_abilities.size()!=RulesRegistry._unique_count(record.choices.prepared_abilities): return RulesJson.result([RulesJson.issue("build.prepared_duplicate","choices","Prepared abilities must be unique")])
  for id in record.choices.prepared_abilities:
   if not id is String or not context.abilities.has(id): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
+ if registry.rules_ref().engine_schema==3:
+  var spell_errors := RulesCoreContent.selection_errors(record,context,registry)
+  if not spell_errors.is_empty():return RulesJson.result(spell_errors)
  return {"ok":true,"context":context}
 
 func _feature(context: Dictionary,id: String,source: String) -> void:
@@ -151,9 +165,16 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  var dex := int(floor(float(int(attributes.DEX)-10)/2.0))
  base.HP=maxi(1,int(base.HP)+con*int(context.level));base.defence+=dex;base.fortitude+=con;base.reflex+=dex
  base.will+=int(floor(float(int(attributes.WIS)-10)/2.0));base.initiative=dex
+ if registry.rules_ref().engine_schema==3:
+  if context.tags.has("monk_unarmoured") and not record.equipment.any(func(id: String):return registry.definition("equipment",id).kind in ["armor","shield"]):base.defence+=maxi(0,int(floor(float(int(attributes.WIS)-10)/2.0)))
+  if context.tags.has("divine_grace"):
+   for save in RulesExpressions.SAVES:base[save]+=maxi(0,int(floor(float(int(attributes.CHA)-10)/2.0)))
  base.melee_attack=int(base.BAB)+int(floor(float(int(attributes.STR)-10)/2.0));base.ranged_attack=int(base.BAB)+dex
  context.stats=base.duplicate(true)
- for resource in context.resources: context.capacities[resource]=maxi(0,_value(registry.definition("resources",resource).capacity,context))
+ for resource in context.resources:
+  var definition := registry.definition("resources",resource)
+  context.capacities[resource]=maxi(0,_value(definition.capacity,context))
+  if registry.rules_ref().engine_schema==3 and definition.has("prepared_ability"):context.capacities[resource]=int(record.choices.spell_preparations.get(definition.prepared_ability,0))
  var modifiers := {}
  for stat in RulesRegistry.STATS: modifiers[stat]=[]
  for entry in context.feature_sources: _collect_modifiers(registry.definition("features",entry.id).modifiers,entry.source,context,modifiers)
@@ -234,7 +255,7 @@ func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
  return errors
 
 func derive_character(record: Dictionary) -> Dictionary:
- if registry.rules_ref().get("engine_schema")==2:record=RulesJson.string_keys(record)
+ if int(registry.rules_ref().get("engine_schema",1))>=2:record=RulesJson.string_keys(record)
  var replay := _replay(record)
  if not replay.ok: return replay
  var errors := _runtime_errors(record,replay.context)
@@ -253,9 +274,19 @@ func derive_character(record: Dictionary) -> Dictionary:
    modifiers.append(typed)
   var total := RulesModifiers.combine(int(c.skills[id])+int(floor(float(int(c.attributes[definition.attribute])-10)/2.0)),modifiers,c)
   if not total.ok: return total
+  if registry.rules_ref().engine_schema==3:
+   var ancestry := registry.definition("ancestries",record.ancestry_ref)
+   total.value+=int(ancestry.skill_bonuses.get(id,0))
+   if int(c.skills[id])>0 and c.classes.keys().any(func(cls: String):return registry.definition("classes",cls).class_skills.has(id)):total.value+=3
   skills[id]={"ranks":int(c.skills[id]),"total":total.value,"usable":not definition.trained_only or int(c.skills[id])>0,"typed_modifiers":total.applied}
  var snapshot := {"schema_version":1,"rules_ref":registry.rules_ref(),"character_id":record.character_id,"build_hash":RulesJson.digest(record),"level":c.level,"class_levels":c.classes,"attributes":c.attributes,"stats":c.stats,"skills":skills,"features":c.features,"feats":c.feats,"tags":c.tags,"senses":c.senses,"abilities":c.abilities,"resource_capacities":c.capacities,"current_resources":record.runtime.resources.duplicate(true),"prepared_abilities":record.choices.prepared_abilities.duplicate(),"casting":c.casting,"runtime_statuses":record.runtime.statuses.duplicate(true),"maintained_effects":record.runtime.apparent_effects.duplicate(true),"current_hp":int(record.runtime.hp),"temporary_hp":int(record.runtime.temporary_hp),"equipment":record.equipment.duplicate(true),"typed_modifiers":c.applied_modifiers,"action_contract":{"move":1,"main":1,"shared_reaction":int(registry.rule("shared_reaction")),"reaction_refresh":"global_round_start"}}
- if registry.rules_ref().get("engine_schema")==2:snapshot=RulesJson.string_keys(snapshot)
+ if int(registry.rules_ref().get("engine_schema",1))>=2:snapshot=RulesJson.string_keys(snapshot)
+ if registry.rules_ref().engine_schema==3:
+  snapshot.spell_preparations=record.choices.spell_preparations.duplicate(true)
+  snapshot.ancestry=registry.definition("ancestries",record.ancestry_ref).duplicate(true)
+  snapshot.base_attributes=record.base_attributes.duplicate(true)
+  snapshot.proficiencies=RulesCoreContent.proficiencies(c.classes,registry)
+  snapshot=RulesJson.string_keys(snapshot)
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
@@ -315,12 +346,17 @@ func suggested_choice(record: Dictionary,class_id: String,preferred_feat: String
  # Skills are selected by stable content ID, prioritising the explicitly named
  # arcane skill for any build with casting. No role becomes a class implicitly.
  var order := registry.ids("skills")
+ if registry.rules_ref().engine_schema==3:
+  var preferred: Array=cls.class_skills.duplicate()
+  for id in order:
+   if not preferred.has(id):preferred.append(id)
+  order=preferred
  if cls.casting_tradition=="arcane": order.erase("arcana");order.push_front("arcana")
  for skill in order:
   var amount := mini(points,next-int(c.skills.get(skill,0)))
   if amount>0: allocation[skill]=amount;points-=amount
  if points!=0: return RulesJson.result([RulesJson.issue("advancement.skill_capacity","skills","Insufficient skill capacity")])
- var feat := preferred_feat if registry.rule("feat_levels").has(next) else ""
+ var feat := preferred_feat if feat_at(next,class_id,int(c.classes.get(class_id,0))+1) else ""
  return {"ok":true,"choice":{"class_id":class_id,"skill_allocations":allocation,"feat_id":feat,"attribute_increase":attribute}}
 
 func preview_choices(record: Dictionary,class_id: String,draft: Dictionary = {}) -> Dictionary:
@@ -359,7 +395,7 @@ func preview_choices(record: Dictionary,class_id: String,draft: Dictionary = {})
  var context := _context(attributes,classes,ranks,valid.context.feats,record,false)
  if not context.errors.is_empty(): return RulesJson.result(context.errors)
  var feats := {}
- if registry.rule("feat_levels").has(level):
+ if feat_at(level,class_id,int(classes[class_id])):
   for id in registry.ids("feats"):
    var feat := registry.definition("feats",id)
    feats[id]=RulesExpressions.evaluate_requirements(feat.requirements,context)

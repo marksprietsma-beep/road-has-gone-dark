@@ -1,0 +1,37 @@
+extends "res://tests/character_core/review.gd"
+func run():
+ base='/workspace/artifacts/game118/continuation-captures';DirAccess.make_dir_recursive_absolute(base);visual=true;tree.root.size=Vector2i(1280,720)
+ var service := CharacterBuilderService.new();service.store.save_root=base.path_join('saves');service.library.library_root='/workspace/artifacts/game118/final-continuation-visual/review/library'
+ var entry: Dictionary=service.library.discover()[0];var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),'real source world')
+ var home: Dictionary=profiles.projection.hometowns.values()[0]
+ var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id));check(service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,'real new origin')
+ PartyService.handoff={'entry':entry,'slot':born.state.playthrough_id,'save_root':service.store.save_root,'library_root':service.library.library_root}
+ tree.change_scene_to_file('res://scenes/ui/party_creation.tscn');await wait_scene('res://scenes/ui/party_creation.tscn')
+ for size in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:tree.root.size=size;await frames();await shot('first-open-%dx%d'%[size.x,size.y])
+ tree.root.size=Vector2i(1280,720);await frames();await click(ui.class_choice);await shot('core-class-options');await key(KEY_ESCAPE)
+ await click(ui.people_picker);await shot('race-options');await key(KEY_ESCAPE)
+ for member in 3:
+  ui.selected=member+1;ui.refresh();await review_build(0,member)
+  if member==2:
+   ui.detail_tabs.current_tab=1;ui.editor.sections.current_tab=0
+   var outer: ScrollContainer=ui.editor.get_parent().get_parent();outer.ensure_control_visible(ui.editor.sections);await frames();await shot('wizard-attributes')
+   ui.editor.sections.current_tab=4
+   var scroll: ScrollContainer=ui.editor.get_parent().get_parent();scroll.ensure_control_visible(ui.editor.sections);await frames();await shot('wizard-prepared-copies')
+   ui.editor.sections.current_tab=5;await frames();await shot('wizard-progression')
+  ui.detail_tabs.current_tab=0;await click(ui.save_button);await wait_job()
+ ui.selected=1;ui.refresh();ui.pick(ui.people_picker,'goblin');ui.people_picker.item_selected.emit(ui.people_picker.selected);ui.detail_tabs.current_tab=2;await frames();await shot('goblin-inherited-sheet')
+ ui.pick(ui.people_picker,'orc');ui.people_picker.item_selected.emit(ui.people_picker.selected)
+ ui.detail_tabs.current_tab=0;await frames();await click(ui.review_build_button);await click(find_button(ui,'Suggested skill allocation'));check(ui.editor.preview.ok,'Orc inherited skill budget completed through visible UI');ui.detail_tabs.current_tab=2;await frames();await shot('orc-inherited-sheet')
+ ui.refresh();await click(ui.finish_button);await wait_job();await shot('three-core-adventurers-ready')
+ var saved: Dictionary=WorldOriginLore.read_json('/workspace/artifacts/game118/final-continuation-visual/review-proof.json');var journey: Dictionary=saved.journeys[0]
+ service.library.library_root=journey.library_root
+ var matching: Array=service.library.discover().filter(func(row: Dictionary):return row.world.source_sha256==journey.world_sha)
+ PartyService.handoff={'entry':matching[0],'slot':journey.slot,'save_root':journey.save_root,'library_root':journey.library_root,'cache_root':journey.cache_root}
+ tree.change_scene_to_file('res://scenes/gameplay/expedition.tscn');await wait_scene('res://scenes/gameplay/expedition.tscn')
+ await click(find_button(ui,'Characters'));await wait_scene('res://scenes/ui/character_sheet.tscn')
+ for member in 3:
+  ui.selected=member+1;ui.refresh();ui.detail_tabs.current_tab=2;await frames();await shot('earned-level-two-'+cohorts[0][member])
+  ui.detail_tabs.get_child(2).scroll_vertical=700;await frames();await shot('abilities-'+cohorts[0][member])
+  ui.detail_tabs.get_child(2).scroll_vertical=1100;await frames();await shot('resources-history-'+cohorts[0][member])
+ FileAccess.open(base.path_join('capture-proof.json'),FileAccess.WRITE).store_string(JSON.stringify({'checks':checks,'failures':failures,'source_commit':'5c422cee29cc3f61292d834e4ff5c2cac988e630','actual_godot_render':true},'  '))
+ print('GAME118 CAPTURES ',checks,' / ',failures);tree.quit(1 if failures else 0)

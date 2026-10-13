@@ -1,0 +1,592 @@
+{
+  "checks": 1125,
+  "core_actions": [
+    "wizard-arcane-bolt",
+    "power-strike",
+    "spark"
+  ],
+  "empty_path": false,
+  "existing_campaign": {
+    "base_sha": "7829b4e92d42351c6bd3b8ded5ac52f58188f1eedb567f90d683b71ff31fcdf2",
+    "party_ids": [
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:1",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:2",
+      "bcf8a451942877ca0a2bd70d75757a37:adventurer:3"
+    ],
+    "results": {
+      "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999": {
+        "battle_hash": "be76f62eafd278ea6700ced1b26ddef3270a5f5dd27d9607eb331187493fa719",
+        "outcome": "victory",
+        "sequence": 8,
+        "site_id": "sandbox-site:483ad43616355975685247abf67b4ab5cd3942471d14a50cc9f426897a52b999",
+        "text": "The armed occupants of Secluded camp · 1 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a": {
+        "battle_hash": "408781ea1e42aef394b1acaf3c3fcd52e6c4fd1dd57a592714f8b6fcc8a6e1b7",
+        "outcome": "victory",
+        "sequence": 21,
+        "site_id": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+        "text": "The armed occupants of Roadside obstruction · 4 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7": {
+        "battle_hash": "59702a54f2683e103f53109e98572bb6e16159279a55a2d2b1a1358de992cb7b",
+        "outcome": "victory",
+        "sequence": 13,
+        "site_id": "sandbox-site:950a19bcc0c371549b78f7f8f6e3696d4a58b1dd462ad7db6f9d1eacca43a0a7",
+        "text": "The armed occupants of Broken work-yard · 2 were defeated. The opportunity is complete; each companion gains 10 journey XP.",
+        "xp_each": 10
+      },
+      "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9": {
+        "battle_hash": "64b96605a1e5688470f467df613508025484fdca46ccda7c2bc0571d20046e3c",
+        "outcome": "defeat",
+        "sequence": 17,
+        "site_id": "sandbox-site:97ab2377a5deca41203abdccc442d8ccbbf0d53d879395517cc3a32b8afc6bf9",
+        "text": "The armed occupants of Hostile clearing · 3 drove the party back. This attempt and the surviving opponents stay recorded; no reward or silent respawn.",
+        "xp_each": 0
+      }
+    },
+    "source": "Executed GAME99 Linux recovery fixture",
+    "victory_site": "sandbox-site:5ed7d5d3a0c9c58061c29e0741f05096a8461cf62442009586ace8d77541ec9a",
+    "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5"
+  },
+  "failures": 0,
+  "journeys": [
+    {
+      "base_sha": "50406e79ce99de9db29da91738079bf949daec254fa453c97a65358245f78b09",
+      "biome": "Grassland",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "fighter",
+        "rogue",
+        "wizard"
+      ],
+      "home_id": 201.0,
+      "home_name": "Kegyes",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "98eea3a8d398e2553e00269d8e937f3b:adventurer:1",
+          "name": "Alric of the Road",
+          "profession": "metalworker",
+          "role": "vanguard"
+        },
+        {
+          "id": "98eea3a8d398e2553e00269d8e937f3b:adventurer:2",
+          "name": "Rogue of the Road",
+          "profession": "traveller",
+          "role": "scout"
+        },
+        {
+          "id": "98eea3a8d398e2553e00269d8e937f3b:adventurer:3",
+          "name": "Wizard of the Road",
+          "profession": "baker",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "careful",
+          "complete": true,
+          "discovered_site": "",
+          "event": "recover",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 3,
+          "provisions_spent": 1,
+          "sequence": 6,
+          "site_id": "sandbox-site:a228d83fa3a0d025c5fc02d52b59380712c5eb1d7156a08800749e88e49560f7",
+          "supplies_after": 4,
+          "supplies_before": 2,
+          "text": "Abandoned travellers’ shelter: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 2 turn(s), 1 provision(s); recovered 3. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "companion:98eea3a8d398e2553e00269d8e937f3b:adventurer:2",
+          "complete": true,
+          "discovered_site": "",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "98eea3a8d398e2553e00269d8e937f3b:adventurer:2",
+          "profession": "traveller",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 10,
+          "site_id": "sandbox-site:7f988138b090ea32a272fdba4bdb253753a27c04f194311977ccd86b89d98439",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 0. Contribution: traveller.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "2f74108d16901d8dfaaaa2e39009f7c5ec2ff2b675c273fc29a56b0a52dd1e94",
+          "choice_id": "combat_result",
+          "complete": true,
+          "discovered_site": "",
+          "event": "record",
+          "information": "Armed occupants defeated.",
+          "outcome": "victory",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 15,
+          "site_id": "sandbox-site:bad1d365e0811b765b3215a8f037b9cb46f898dab831abbfa0c3c206817eac3f",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Contested salvage yard: victory. Armed occupants defeated. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 10.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 10
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "afcfdfdb0211633ab170a703d1f8278da86b21fb269d2a1b24c2463d12e0a6ea",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "98eea3a8d398e2553e00269d8e937f3b",
+      "snapshots": {
+        "98eea3a8d398e2553e00269d8e937f3b:adventurer:1": "ca95f64cf83232fd5ed96030215994da4bce648c81338a1bb9db91868c3e6cb4",
+        "98eea3a8d398e2553e00269d8e937f3b:adventurer:2": "df4590a358f1371173f0e2884a0395fa7a898f48c4845fb5306035e7c54cb6c4",
+        "98eea3a8d398e2553e00269d8e937f3b:adventurer:3": "77dd8e799a2cb1d0f8bd85ddfb17ad90158a074468b9694cf9af62426d4b646d"
+      },
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "029670bfb4d6f2c852cd7c566e70ec5dab97685684db080a4f5185416fc47d32",
+      "biome": "Temperate deciduous forest",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "barbarian",
+        "bard",
+        "cleric"
+      ],
+      "home_id": 17.0,
+      "home_name": "Celcabatlo",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:1",
+          "name": "Barbarian of the Road",
+          "profession": "toolmaker",
+          "role": "expert"
+        },
+        {
+          "id": "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:2",
+          "name": "Bard of the Road",
+          "profession": "baker",
+          "role": "vanguard"
+        },
+        {
+          "id": "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:3",
+          "name": "Cleric of the Road",
+          "profession": "charcoal-burner",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "quick",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Only a partial recovery was made; the rest was left unchecked.",
+          "outcome": "partial_recovery",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 1,
+          "provisions_spent": 1,
+          "sequence": 5,
+          "site_id": "sandbox-site:49135d139f7aae71e38c7672c29c2981557597901ccb30e3c7887066968e974e",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Scattered travelling supplies: partial recovery. Only a partial recovery was made; the rest was left unchecked. Cost: 1 turn(s), 1 provision(s); recovered 1. Journey XP each: 0.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "a625a7e8377281318595f54030bccf29184177e3cce80236467920767d8e3124",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "1f7baf25f3174df4e71a0b6d3e55e2a3",
+      "snapshots": {
+        "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:1": "b8d1f2724746b6c3012fe2df6d0dcfa0dac9966913eba6a56f62a2ba3f9d49eb",
+        "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:2": "f6696e5d5e4d6c5302eb144be8afd8f698f8af7d5ddd0177300d8236df6810c6",
+        "1f7baf25f3174df4e71a0b6d3e55e2a3:adventurer:3": "8ba17cdc255d704594bb827f7b774c9b613a9df4b18cbbfdde8d09e2b191fdf3"
+      },
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "0de1506cb3089bd5842e62814d065f0c916a80f207a1e028afe85c38625f9cdf",
+      "biome": "Temperate rainforest",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "monk",
+        "paladin",
+        "ranger"
+      ],
+      "home_id": 13.0,
+      "home_name": "Bretnes",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "d9877c976c555ba57802fc644891788a:adventurer:1",
+          "name": "Monk of the Road",
+          "profession": "stall-keeper",
+          "role": "vanguard"
+        },
+        {
+          "id": "d9877c976c555ba57802fc644891788a:adventurer:2",
+          "name": "Paladin of the Road",
+          "profession": "book-binder",
+          "role": "scout"
+        },
+        {
+          "id": "d9877c976c555ba57802fc644891788a:adventurer:3",
+          "name": "Ranger of the Road",
+          "profession": "possible-recruit",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "careful",
+          "complete": true,
+          "discovered_site": "sandbox-site:4a4857b334af8c592d2244a7a980a951228e20cafe7d983b77871d156e8a9d4e",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 1,
+          "sequence": 5,
+          "site_id": "sandbox-site:94f710fdd08c3639885c2db69ae24ccaf102bd6c044b5fc7236e43e73c4fe394",
+          "supplies_after": 2,
+          "supplies_before": 3,
+          "text": "Unusual traces: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 1 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "fe522d7be213ab82fa7bb705ef6ca9c26575f93fc922aeb4abd7b53255acb1fc",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-00",
+      "slot": "d9877c976c555ba57802fc644891788a",
+      "snapshots": {
+        "d9877c976c555ba57802fc644891788a:adventurer:1": "84760b51eb5fa67541a31ec29c26ff0cee1833385571bff96a27d153dac39198",
+        "d9877c976c555ba57802fc644891788a:adventurer:2": "748ced944b6f157e35edb13d72e497eb4500be2f69dcede11b821257e93862e1",
+        "d9877c976c555ba57802fc644891788a:adventurer:3": "a758c8aa1837eb808513dd688dcc901d229c9fb4b8332760869067e1123ba4ee"
+      },
+      "world_sha": "65404bf0160d189f1fd334faf21b17f7d82cd1c35f3191d5fdb9396f5f952161"
+    },
+    {
+      "base_sha": "8165da1470b38408b5d259a7a531a6a7d0fb39d1fe595a5a35661553723a25b0",
+      "biome": "Hot desert",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "sorcerer",
+        "druid",
+        "fighter"
+      ],
+      "home_id": 202.0,
+      "home_name": "Mubarjan",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:1",
+          "name": "Sorcerer of the Road",
+          "profession": "mason",
+          "role": "expert"
+        },
+        {
+          "id": "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:2",
+          "name": "Druid of the Road",
+          "profession": "weaver",
+          "role": "vanguard"
+        },
+        {
+          "id": "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:3",
+          "name": "Fighter of the Road",
+          "profession": "carter",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "companion:3ce6a5ca24b18bc45267de8e90136f9c:adventurer:3",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "Stores checked; the shelter or packs are unoccupied.",
+          "outcome": "recovered",
+          "participant": "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:3",
+          "profession": "carter",
+          "provisions_gained": 1,
+          "provisions_spent": 0,
+          "sequence": 5,
+          "site_id": "sandbox-site:8d05f069bfeeef3f78ed61663f62c904f7bd7498240fbb6dea32be24532cd381",
+          "supplies_after": 4,
+          "supplies_before": 3,
+          "text": "Scattered travelling supplies: recovered. Stores checked; the shelter or packs are unoccupied. Cost: 1 turn(s), 0 provision(s); recovered 1. Journey XP each: 0. Contribution: carter.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "companion:3ce6a5ca24b18bc45267de8e90136f9c:adventurer:1",
+          "complete": true,
+          "discovered_site": "",
+          "event": "inspect",
+          "information": "Evidence compared with local reports; any still-unlocated report is charted.",
+          "outcome": "investigated",
+          "participant": "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:1",
+          "profession": "mason",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 10,
+          "site_id": "sandbox-site:d228fd5e5146e3003e9055b9ec031698c4f1b37744e55f7c17508cf7a66dd359",
+          "supplies_after": 2,
+          "supplies_before": 2,
+          "text": "Traces of abandoned work: investigated. Evidence compared with local reports; any still-unlocated report is charted. Cost: 2 turn(s), 0 provision(s); recovered 0. Journey XP each: 0. Contribution: mason.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        },
+        {
+          "battle_hash": "",
+          "choice_id": "negotiate",
+          "complete": true,
+          "discovered_site": "",
+          "event": "negotiate",
+          "information": "Access secured; the armed group remains in place.",
+          "outcome": "peaceful_access",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 2,
+          "sequence": 14,
+          "site_id": "sandbox-site:9bcfa176e9dc733abd17bdd8cc9dd9575467779e8b6474177703ac8fdf758524",
+          "supplies_after": 1,
+          "supplies_before": 3,
+          "text": "Obstructed route approach: peaceful access. Access secured; the armed group remains in place. Cost: 2 turn(s), 2 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "24b40b44b53f5cf87c7d1a23ec3302c8756b0276926ee710822a411f4457dd99",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "3ce6a5ca24b18bc45267de8e90136f9c",
+      "snapshots": {
+        "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:1": "d4425bddf3fd2fd12259dde371e3e4b088237a7079b6a514fa137c1cf337c09b",
+        "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:2": "2ba2a0decc712f4159628ddd858b76772e6296e4401ed9c17a4872518ed4ba15",
+        "3ce6a5ca24b18bc45267de8e90136f9c:adventurer:3": "7f2ea7fa54556a9b44eaad8c8238119dd47650b2e8c752ab00df19cc7793367d"
+      },
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    },
+    {
+      "base_sha": "a5be432c99a4dfe78eac7f056d094f5d92d8684a65454b5bb5c191be9dbbed55",
+      "biome": "Cold desert",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "cleric",
+        "ranger",
+        "rogue"
+      ],
+      "home_id": 189.0,
+      "home_name": "Eseq",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "d3590078bac673cf7b86faf571fdfaa7:adventurer:1",
+          "name": "Cleric of the Road",
+          "profession": "religious-attendant",
+          "role": "vanguard"
+        },
+        {
+          "id": "d3590078bac673cf7b86faf571fdfaa7:adventurer:2",
+          "name": "Ranger of the Road",
+          "profession": "baker",
+          "role": "scout"
+        },
+        {
+          "id": "d3590078bac673cf7b86faf571fdfaa7:adventurer:3",
+          "name": "Rogue of the Road",
+          "profession": "possible-recruit",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "negotiate",
+          "complete": true,
+          "discovered_site": "",
+          "event": "negotiate",
+          "information": "Access secured; the armed group remains in place.",
+          "outcome": "peaceful_access",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 2,
+          "sequence": 6,
+          "site_id": "sandbox-site:aaa0260de456659558d04007f4b15309d71b80fd4b7fd63428de898f0b94eba1",
+          "supplies_after": 0,
+          "supplies_before": 2,
+          "text": "Contested salvage yard: peaceful access. Access secured; the armed group remains in place. Cost: 2 turn(s), 2 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 2,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "beb02d411f556e5f3dd8b789e739764d73816c1a06c403ef4f9c8a4ac253732c",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "d3590078bac673cf7b86faf571fdfaa7",
+      "snapshots": {
+        "d3590078bac673cf7b86faf571fdfaa7:adventurer:1": "a9b8d973d463acd1b58ef32b39c74af0bd6659d0f962eb8b8da0642e0b434e12",
+        "d3590078bac673cf7b86faf571fdfaa7:adventurer:2": "22e8cacfa5c76b64c68dde90fa2a76e7749bd97ffb1706d412f26797adc07fae",
+        "d3590078bac673cf7b86faf571fdfaa7:adventurer:3": "32f0c1bc9056e4c46292cf93b6a7cc2ef7384c47645928e0f33d010ae6f747ff"
+      },
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    },
+    {
+      "base_sha": "098eaab820990a34ef063e66bf5ea67421a51a4e8fcdad66f1591d111a7d98d9",
+      "biome": "Savanna",
+      "cache_root": "user://expedition-content",
+      "classes": [
+        "druid",
+        "bard",
+        "monk"
+      ],
+      "home_id": 39.0,
+      "home_name": "Husharab",
+      "library_root": "/workspace/artifacts/game118/final-visual/review/library",
+      "party": [
+        {
+          "id": "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:1",
+          "name": "Druid of the Road",
+          "profession": "tavern-keeper",
+          "role": "expert"
+        },
+        {
+          "id": "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:2",
+          "name": "Bard of the Road",
+          "profession": "brewer",
+          "role": "vanguard"
+        },
+        {
+          "id": "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:3",
+          "name": "Monk of the Road",
+          "profession": "religious-attendant",
+          "role": "adept"
+        }
+      ],
+      "paths": [
+        {
+          "battle_hash": "",
+          "choice_id": "quick",
+          "complete": true,
+          "discovered_site": "",
+          "event": "quick",
+          "information": "A surface assessment was recorded; no other location was established.",
+          "outcome": "partial_assessment",
+          "participant": "",
+          "profession": "",
+          "provisions_gained": 0,
+          "provisions_spent": 0,
+          "sequence": 5,
+          "site_id": "sandbox-site:3c012cec2f0fa64a6fda6c8fae992eae7e1a5a59c47fbb830e9a858c70e55945",
+          "supplies_after": 3,
+          "supplies_before": 3,
+          "text": "Traces of abandoned work: partial assessment. A surface assessment was recorded; no other location was established. Cost: 1 turn(s), 0 provision(s); recovered 0. Journey XP each: 0.",
+          "turns": 1,
+          "version": "activity-result-v2",
+          "xp_each": 0
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1fdce326026d750facd07f364ff63a79739cc9434d94aa845bc3892ebc4a8926",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v4",
+        "rules_version": "4.0.0",
+        "schema_version": 1
+      },
+      "sandbox_sha": "9370bc6474415f3c0e7bd70d507e4dcc21e962a2b726ab2f2bcc2cd313625e16",
+      "save_root": "/workspace/artifacts/game118/final-visual/review/saves",
+      "seed": "game101-variety-01",
+      "slot": "cd533f4f0d1c4242b673a6c584f84c9f",
+      "snapshots": {
+        "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:1": "ada14ec1ff2425b6ad5c0c870395bb10a98666e64f01b495bc51428a1c9d8d5c",
+        "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:2": "8759404e080eb3f602f2efa3346836356761221595da3bea44686f71afc92838",
+        "cd533f4f0d1c4242b673a6c584f84c9f:adventurer:3": "e8416fc41f50a210ea8da6722f3b37c60a7322b16a0141c1fbc70de5f2a9712b"
+      },
+      "world_sha": "022293dab85eac3fa7c9b1e4261408afa5f38f44591f02560ff8b5382c929f98"
+    }
+  ],
+  "platform": "Linux",
+  "source_helper_override": true,
+  "unprepared_legacy": {
+    "hometown_handoff": true,
+    "party_sha": "e244720596c8ff0452e4ad8e86d0aea0ca805cd0fef052fde9af2f9a20c879e6",
+    "persistent_ids": [
+      "b42c6068aa2c1827a12fcac6cff0bc21:adventurer:1",
+      "b42c6068aa2c1827a12fcac6cff0bc21:adventurer:2",
+      "b42c6068aa2c1827a12fcac6cff0bc21:adventurer:3"
+    ],
+    "preview_bytes_unchanged": true
+  },
+  "visual": true
+}

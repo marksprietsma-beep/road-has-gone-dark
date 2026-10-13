@@ -51,6 +51,9 @@ func create_definition(state: Dictionary,site_id: String,definition: Dictionary,
  return seal(battle)
 
 static func weapon_for(record: Dictionary) -> String:
+ if record.get("rules_ref",{}).get("engine_schema")==3:
+  for id in record.equipment:
+   if RulesRecords.registry(record).definition("equipment",id).get("kind")=="weapon":return id
  return "bow" if record.equipment.has("bow") else "staff" if record.equipment.has("staff") else "shortblade"
 
 func unit(id: String, title: String, team: String, position: Array, record: Dictionary, weapon: String) -> Dictionary:
@@ -106,6 +109,19 @@ func engaged(b: Dictionary,u: Dictionary) -> bool:
  return false
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
  if not alive(t): return false
+ if registry.rules_ref().engine_schema==3 and ability!="attack":
+  var definition := registry.definition("abilities",ability)
+  if definition.is_empty() or definition.tags.has("passive") or definition.has("trigger"):return false
+  var targeting: Dictionary=definition.targeting
+  if targeting.kind=="self":return u.id==t.id
+  if targeting.kind=="ally":return t.team==u.team and distance(u.position,t.position)<=int(targeting.get("range",0)) and line_clear(b,u.position,t.position)
+  if targeting.kind!="creature" or t.team==u.team:return false
+  if definition.tags.has("weapon_strike"):
+   var weapon := registry.definition("equipment",u.weapon)
+   if definition.tags.has("flurry") and u.weapon!="unarmed":return false
+   if definition.tags.has("power_strike") and weapon.tags.has("ranged"):return false
+   return distance(u.position,t.position)<=int(weapon.range) and line_clear(b,u.position,t.position)
+  return distance(u.position,t.position)<=int(targeting.get("range",1)) and line_clear(b,u.position,t.position)
  if ability=="guard": return u.id==t.id
  if ability=="healing-thread": return t.team==u.team and distance(u.position,t.position)<=1
  if t.team==u.team: return false
@@ -144,8 +160,9 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
    actor.position=route[i].duplicate()
   b.budget.move=0;b.log.append(actor.name+" moves.")
   if not alive(actor): next_turn(b)
- elif kind in ["attack","guard","spark","slow","healing-thread"]:
-  var target_id: String=str(input.get("target_id",actor.id if kind=="guard" else ""))
+ elif kind in ["attack","guard","spark","slow","healing-thread"] or registry.rules_ref().engine_schema==3 and not registry.definition("abilities",kind).is_empty():
+  var definition := registry.definition("abilities",kind)
+  var target_id: String=str(input.get("target_id",actor.id if definition.targeting.kind=="self" else ""))
   if not b.units.has(target_id) or not eligible(b,actor,b.units[target_id],kind): return fail("Choose a living target in range and line of sight.")
   var target: Dictionary=b.units[target_id]
   var budget := {"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}
@@ -153,7 +170,22 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   if not used.ok: return fail("Action unavailable: "+RulesJson.canonical(used.errors))
   actor.record=used.actor;target.record=used.target;b.rng=used.rng
   b.budget={"move":used.budget.move,"main":used.budget.main};actor.reaction=used.budget.reaction
+  if registry.rules_ref().engine_schema==3 and int(definition.targeting.get("radius",0))>0:
+   # The action/slot is spent exactly once. Deterministic allies are resolved in turn order.
+   for id in b.order:
+    var ally: Dictionary=b.units[id]
+    if id==target.id or ally.team!=target.team or not alive(ally) or distance(target.position,ally.position)>int(definition.targeting.radius) or not line_clear(b,target.position,ally.position):continue
+    var actor_snapshot: Dictionary= characters.derive_character(actor.record).snapshot
+    var ally_snapshot: Dictionary= characters.derive_character(ally.record).snapshot
+    var context := {"source_character_id":actor.id,"character_id":actor.id,"target_id":ally.id,"stats":actor_snapshot.stats,"target_stats":ally_snapshot.stats,"target_tags":ally_snapshot.tags,"attributes":actor_snapshot.attributes,"classes":actor_snapshot.class_levels,"capacities":actor_snapshot.resource_capacities}
+    for effect in definition.effects:
+     var area := effects.resolve_rules_effect(effect,actor.record.runtime,ally.record.runtime,context,b.rng)
+     if not area.ok:return fail("Area effect unavailable: "+RulesJson.canonical(area.errors))
+     ally.record.runtime=area.target;actor.record.runtime=area.actor;b.rng=area.rng;used.events.append_array(area.events)
   if kind=="attack": weapon_attack(b,actor,target,false)
+  elif registry.rules_ref().engine_schema==3 and definition.tags.has("weapon_strike"):
+   weapon_attack(b,actor,target,false,kind)
+   if definition.tags.has("flurry") and alive(target):weapon_attack(b,actor,target,false,kind)
   else: b.log.append(actor.name+" uses "+registry.definition("abilities",kind).name+" on "+target.name+". "+ability_summary(used.events))
  else: return fail("Unknown battle action.")
  finish_if_needed(b)
@@ -169,11 +201,18 @@ func ability_summary(events: Array) -> String:
   elif event.type=="status_applied": summaries.append(str(event.id).capitalize()+" applied.")
  return " ".join(summaries)
 
-func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool) -> void:
+func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,technique: String="") -> void:
  var weapon := registry.definition("equipment","shortblade" if reaction and a.weapon=="bow" else a.weapon)
+ if registry.rules_ref().engine_schema==3 and a.weapon=="unarmed" and int(characters.derive_character(a.record).snapshot.class_levels.get("monk",0))>=4:weapon=weapon.duplicate(true);weapon.damage="1d8"
  var ranged: bool=weapon.tags.has("ranged")
  var s := stats(a)
  var bonus: int=int(s.ranged_attack if ranged else s.melee_attack)
+ if registry.rules_ref().engine_schema==3:
+  var snap: Dictionary= characters.derive_character(a.record).snapshot
+  if snap.tags.has("favoured_raider") and t.team=="enemy":bonus+=2
+  if technique in ["power-strike","flurry"]:bonus-=2
+  if technique=="aimed-shot":bonus+=2
+  if technique=="smite":bonus+=maxi(0,int(floor(float(int(snap.attributes.CHA)-10)/2.0)))
  if ranged and engaged(b,a): bonus-=4
  var roll := RulesRng.attack_roll(bonus,int(stats(t).defence),registry.rule("critical"),b.rng)
  b.rng=roll.rng
@@ -181,7 +220,15 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool) -> 
   b.log.append("%s %s %s: %d + %d vs %d, miss."%[a.name,"reacts against" if reaction else "attacks",t.name,roll.total,bonus,stats(t).defence]);return
  var damage := RulesRng.roll(weapon.damage,b.rng);b.rng=damage.rng
  var amount: int=int(damage.total)+int(roll.critical_bonus)
- if not ranged: amount+=maxi(0,int(floor((int(a.record.base_attributes.STR)-10)/2.0)))
+ if registry.rules_ref().engine_schema==3:
+  var snap: Dictionary= characters.derive_character(a.record).snapshot
+  amount+=int(s.damage)
+  if not ranged:amount+=int(floor(float(int(snap.attributes.STR)-10)/2.0))
+  if snap.tags.has("favoured_raider") and t.team=="enemy":amount+=2
+  if technique=="power-strike":amount+=4
+  if technique=="smite":amount+=int(snap.class_levels.get("paladin",0))
+ else:
+  if not ranged:amount+=maxi(0,int(floor((int(a.record.base_attributes.STR)-10)/2.0)))
  var allied_threat := false
  for id in b.order:
   var ally: Dictionary=b.units[id]
@@ -190,12 +237,13 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool) -> 
   var precision := effects.use_ability(a.record,t.record,"precision",{"move":1,"main":1,"reaction":a.reaction},b.rng,{"trigger":"qualifying_hit","tags":["allied_melee_threat"],"event_id":str(b.revision)})
   if precision.ok:
    for event in precision.events:
-    if event.type=="event_modifier" and event.stat=="damage": amount+=int(event.value)
-   a.precision_used=true;b.log.append(a.name+" finds an opening: Precision +4.")
+    if event.type=="event_modifier" and event.stat=="damage": amount+=int(event.value) if registry.rules_ref().engine_schema!=3 else 2*int(ceil(float(characters.derive_character(a.record).snapshot.class_levels.get("rogue",0))/2.0))
+   a.precision_used=true;b.log.append(a.name+" finds an opening: Precision +"+str(2*int(ceil(float(characters.derive_character(a.record).snapshot.class_levels.get("rogue",0))/2.0)))+"." if registry.rules_ref().engine_schema==3 else a.name+" finds an opening: Precision +4.")
  for id in b.order:
   var guard: Dictionary=b.units[id]
   if guard.id!=t.id and guard.team==t.team and alive(guard) and int(guard.reaction)>0 and distance(guard.position,t.position)==1 and guard.record.runtime.statuses.any(func(v: Dictionary):return v.id=="guarding"):
    guard.reaction=0;amount=maxi(0,amount-4);b.log.append(guard.name+" protects "+t.name+": damage reduced by 4.");break
+ amount=maxi(0,amount)
  var absorbed := mini(amount,int(t.record.runtime.temporary_hp))
  t.record.runtime.temporary_hp-=absorbed
  t.record.runtime.hp=maxi(0,int(t.record.runtime.hp)-(amount-absorbed))

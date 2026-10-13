@@ -19,7 +19,13 @@ func key(code: int) -> void:
   await process_frame
  await frames()
 func click(control: Control, point: Vector2 = Vector2(-1,-1)) -> void:
+ var ancestor := control.get_parent()
+ while ancestor!=null:
+  if ancestor is ScrollContainer:ancestor.ensure_control_visible(control)
+  ancestor=ancestor.get_parent()
  await frames()
+ check(control.is_visible_in_tree() and root.get_visible_rect().has_point(control.get_global_rect().get_center()),"clicked control is visible in viewport")
+ if control is BaseButton:check(not control.disabled,"clicked action is enabled")
  for down in [true,false]:
   var e := InputEventMouseButton.new()
   e.button_index = MOUSE_BUTTON_LEFT
@@ -27,6 +33,19 @@ func click(control: Control, point: Vector2 = Vector2(-1,-1)) -> void:
   e.pressed = down
   root.push_input(e,true)
  await frames()
+func choose_native(control: OptionButton,id: String) -> void:
+ var target := -1
+ for index in control.item_count:
+  if str(control.get_item_metadata(index))==id:target=index
+ check(target>=0,"visible option available: "+id)
+ await click(control)
+ check(control.get_popup().visible,"native selection popup is open")
+ var focused: int=control.get_popup().get_focused_item()
+ if focused<0:await key(KEY_DOWN);focused=control.get_popup().get_focused_item()
+ check(focused>=0,"native popup has a keyboard-focused item")
+ for index in abs(target-focused):await key(KEY_DOWN if target>focused else KEY_UP)
+ await key(KEY_ENTER)
+ check(str(control.get_item_metadata(control.selected))==id,"native popup selects: "+id)
 func wait_scene(path: String) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while (current_scene==null or current_scene.scene_file_path!=path) and Time.get_ticks_msec()<deadline: await process_frame
@@ -36,7 +55,7 @@ func wait_party(ui: Control) -> void:
  var deadline := Time.get_ticks_msec()+90000
  while ui.thread!=null and Time.get_ticks_msec()<deadline: await process_frame
  check(ui.thread==null and not ui.state.is_empty(),"async generation/save completes: "+ui.message)
- check(ui.message.begins_with("Character saved") or ui.ready_view,"only verified save succeeds")
+ check(ui.message.begins_with("Character saved") or ui.ready_view,"only verified save succeeds: "+ui.message)
  await frames()
 func shot(name: String, ui: Control=null) -> void:
  await frames()
@@ -57,6 +76,9 @@ func shot(name: String, ui: Control=null) -> void:
  check(root.get_texture().get_image().save_png(output.path_join(name+".png"))==OK,"real screenshot "+name)
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
+ if not OS.get_environment("GAME81_CAPTURE_OUTPUT").is_empty():output=OS.get_environment("GAME81_CAPTURE_OUTPUT")
+ var legacy := OS.get_environment("GAME81_CAPTURE_LEGACY")=="1"
+ if legacy:output=output.path_join("pinned-legacy")
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
  var base := OS.get_environment("GAME81_TEST_ROOT")
  change_scene_to_file("res://scenes/ui/main_menu.tscn")
@@ -77,11 +99,20 @@ func run() -> void:
  await click(origin_ui.next_button)
  check(origin_ui.page==3,"main menu to origin confirmation")
  await shot("origin-confirmation")
+ if legacy:
+  origin_ui.party_creation_requested.disconnect(origin_ui._open_party)
+  origin_ui.party_creation_requested.connect(func(entry: Dictionary,slot: String):
+   var old := PartyService.new();old.store.save_root=origin_ui.store.save_root;old.library.library_root=origin_ui.library.library_root
+   var generated := old.operate(entry,slot,"generate")
+   check(generated.ok,"create an original unpinned legacy party before opening the redesigned creator")
+   origin_ui._open_party(entry,slot))
  var campaign_root: String = origin_ui.store.save_root
  await key(KEY_ENTER)
  await wait_scene("res://scenes/ui/party_creation.tscn")
  var ui = current_scene
  await wait_party(ui)
+ var original_pin: Dictionary=ui.state.character_builder.rules_ref.duplicate(true)
+ check(original_pin.pack_id==("trhgd-rules-v1" if legacy else RulesRecords.NEW_PACK),"legacy stays pinned; fresh New Game defaults to latest familiar classes")
  check(ui.state.party.members.size()==3,"exactly three adventurers")
  check(DirAccess.get_files_at(campaign_root).size()==1,"origin and party use one campaign")
  var id: String = ui.state.party.members[0].character_id
@@ -93,6 +124,15 @@ func run() -> void:
   ui.detail_tabs.current_tab=0
   await shot("background-%dx%d"%[dimensions.x,dimensions.y],ui)
   ui.detail_tabs.current_tab=0
+ # Force the reported dependency every fresh run instead of relying on the
+ # random generated identity: Human Wizard -> Orc reduces INT, skill budget
+ # and prepared-slot capacity. Legacy keeps its original unchanged setup.
+ if not legacy:
+  await choose_native(ui.people_picker,"human")
+  await choose_native(ui.class_choice,"fighter")
+  await choose_native(ui.class_choice,"wizard")
+  check(ui.editor.preview.ok,"Human Wizard starts with a complete real mechanical build")
+  await click(ui.save_button);await wait_party(ui)
  # Actual OptionButton popup and keyboard ancestry selection.
  await click(ui.people_picker)
  await shot("people-popup-2560x1440")
@@ -101,6 +141,21 @@ func run() -> void:
  await key(KEY_ENTER)
  await key(KEY_DOWN)
  await key(KEY_ENTER)
+ if not legacy:check(ui.selected_id(ui.people_picker)=="orc" and not ui.editor.preview.ok,"Human-to-Orc caster change deliberately exercises skill and preparation budgets")
+ # A changed inherited INT modifier changes the real skill budget. Complete it
+ # through the visible Skills action rather than attempting a disabled Save.
+ for attempt in 3:
+  if ui.editor.preview.get("ok",false):break
+  check(ui.save_button.disabled and not ui.identity_validation.text.is_empty(),"incomplete ancestry build is visibly explained and cannot save")
+  var reason: String=CharacterBuilderRecords.reason(ui.editor.preview).to_lower()
+  var label: String="Suggested skill allocation" if "skill" in reason else "Suggested spell selections"
+  ui.detail_tabs.current_tab=0;await frames()
+  await click(ui.review_build_button)
+  var suggestions: Array = ui.editor.find_children("*","Button",true,false).filter(func(button: Button):return button.text==label)
+  check(suggestions.size()==1,"visible recommendation action exists: "+label)
+  await click(suggestions[0])
+ check(ui.editor.preview.get("ok",false),"ancestry-adjusted skill and preparation budgets completed through actual UI")
+ ui.detail_tabs.current_tab=0;await frames()
  await click(ui.save_button)
  await wait_party(ui)
  check(ui.state.party.members[0].character_id==id,"ancestry selection retains stable ID")
@@ -144,6 +199,7 @@ func run() -> void:
   ui.selected=member_index+1;ui.refresh();await click(ui.save_button);await wait_party(ui)
  await click(ui.finish_button)
  await wait_party(ui)
+ check(ui.state.get("mechanics",{}).get("rules_ref")==original_pin,"ready-party transition preserves exact campaign pin")
  check(ui.ready_view and ui.state.onboarding_stage=="party_ready","ready is saved verified handoff without gameplay")
  await shot("party-ready-2560x1440",ui)
  var slot: String=ui.slot
@@ -187,5 +243,6 @@ func run() -> void:
  await shot("fresh-world-party-2560x1440",ui)
  ui.detail_tabs.current_tab=0
  await shot("fresh-world-background-2560x1440",ui)
+ FileAccess.open(output.path_join("input-render-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"legacy":legacy,"rules_ref":original_pin},"  "))
  print("GAME-81 actual input/render flow: ",checks," checks, ",failures," failures")
  quit(1 if failures else 0)
