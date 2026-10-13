@@ -1,0 +1,115 @@
+{
+  "source_commit": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+  "archive": "game112-character-catalogue-wave-one-linux-x64.tar.gz",
+  "archive_sha256": "7cef6638ec52ff876f32daa0316ec8fcc6350306a32527651bd73b681084c5b8",
+  "native": {
+    "mechanics": {
+      "base_classes": [
+        "barbarian",
+        "bard",
+        "cleric",
+        "druid",
+        "fighter",
+        "knight",
+        "monk",
+        "paladin",
+        "psion",
+        "psychic-warrior",
+        "ranger",
+        "rogue",
+        "scout",
+        "sorcerer",
+        "soulknife",
+        "swashbuckler",
+        "warblade",
+        "warlock",
+        "wizard"
+      ],
+      "checks": 1684,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v11",
+        "rules_version": "11.0.0",
+        "schema_version": 1
+      }
+    },
+    "tactical": {
+      "checks": 2066,
+      "failures": 0,
+      "prestige_paths": [
+        "shadowdancer",
+        "dragon-disciple",
+        "dwarven-defender",
+        "pyrokineticist"
+      ],
+      "rules_ref": {
+        "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v11",
+        "rules_version": "11.0.0",
+        "schema_version": 1
+      }
+    },
+    "fresh": {
+      "checks": 181,
+      "development_saves": [
+        {
+          "development_fixture": true,
+          "ordinary_xp_granted": false,
+          "path": "wizard",
+          "save_root": "/home/runner/work/_temp/game112-native/fresh/development-wizard",
+          "snapshots": {
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:1": "b4a9004b6b657966b910e94d41fd6635656e1d249c9c9ae98bc96ae046c2a099",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:2": "2909eb4d48d8295ea1bb5c28ced4e0f7e730c5b2d9352ed6229a9ae5139091ac",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:3": "a039471fe7b2bcafb6e6ec50697fe7d7a3154c9d065c98479b7a80e19b168ef0"
+          }
+        },
+        {
+          "development_fixture": true,
+          "ordinary_xp_granted": false,
+          "path": "psion",
+          "save_root": "/home/runner/work/_temp/game112-native/fresh/development-psion",
+          "snapshots": {
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:1": "c8359073b6cd7ff9851cbe1a97e9460939e186fc8443360f67fd2c562fb8ae14",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:2": "2909eb4d48d8295ea1bb5c28ced4e0f7e730c5b2d9352ed6229a9ae5139091ac",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:3": "a039471fe7b2bcafb6e6ec50697fe7d7a3154c9d065c98479b7a80e19b168ef0"
+          }
+        },
+        {
+          "development_fixture": true,
+          "ordinary_xp_granted": false,
+          "path": "shadowdancer",
+          "save_root": "/home/runner/work/_temp/game112-native/fresh/development-shadowdancer",
+          "snapshots": {
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:1": "2cc517331cbc1cc18f898a3a499bf6db8b5d1ce585294e9139cdb922462f5ffe",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:2": "2909eb4d48d8295ea1bb5c28ced4e0f7e730c5b2d9352ed6229a9ae5139091ac",
+            "efadb1179a8f8d3af1a5d3ca5dbe08db:adventurer:3": "a039471fe7b2bcafb6e6ec50697fe7d7a3154c9d065c98479b7a80e19b168ef0"
+          }
+        }
+      ],
+      "earned_xp": 40,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v11",
+        "rules_version": "11.0.0",
+        "schema_version": 1
+      },
+      "screenshots": [],
+      "slot": "efadb1179a8f8d3af1a5d3ca5dbe08db",
+      "state_sha": "3e31913f56e3f511a64c981b6da339319c0558a8bd35e325110ae61d1460ed11",
+      "used_actions": [
+        "psion-technique-1",
+        "warlock-technique-1",
+        "warblade-technique-1"
+      ]
+    }
+  },
+  "production_launch": true,
+  "separate_process_restart": true,
+  "empty_path": true,
+  "source_helper_override": false
+}

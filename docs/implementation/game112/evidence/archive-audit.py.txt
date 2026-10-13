@@ -1,0 +1,33 @@
+from pathlib import Path
+import hashlib,json,zipfile,tarfile
+root=Path('/workspace/road-has-gone-dark');work=Path('/workspace/artifacts/game112')
+result={}
+for platform,ext in [('windows','.zip'),('linux','.tar.gz')]:
+    folder=work/f'final-build-{platform}';a=next(folder.glob('*'+ext))
+    d=json.loads((work/f'final-ci-{platform}/game112-native/distribution-proof.json').read_text())
+    digest=hashlib.file_digest(a.open('rb'),'sha256').hexdigest()
+    assert digest==d['archive_sha256']==next(folder.glob('*.sha256')).read_text().split()[0]
+    if platform=='windows':
+        package=zipfile.ZipFile(a);assert package.testzip() is None
+        names=package.namelist();read=package.read
+    else:
+        package=tarfile.open(a);names=package.getnames();read=lambda n:package.extractfile(n).read()
+    def file(suffix):return read(next(n for n in names if n.endswith('/'+suffix)))
+    for suffix,source in [('CORE-CHARACTER-CONTENT.json','data/rules/trhgd-character-v11.json'),('CHARACTER-RULES-MANIFEST.json','data/rules/packs.json'),('builder-v1.json','data/characters/builder-v1.json'),('builder-v2.json','data/characters/builder-v2.json')]:assert file(suffix)==(root/source).read_bytes()
+    exe=file('road-has-gone-dark.exe'if platform=='windows'else'road-has-gone-dark')
+    manifest=json.loads(file('distribution.json'));assert manifest['platform']==('win32'if platform=='windows'else'linux') and manifest['arch']=='x64'
+    exe_sha=hashlib.sha256(exe).hexdigest();assert exe_sha==manifest['executable_sha256']
+    if platform=='windows':
+        node=read(next(n for n in names if 'worldgen-helper/' in n and n.endswith('/node.exe')))
+        for binary in [exe,node]:
+            assert binary[:2]==b'MZ';offset=int.from_bytes(binary[60:64],'little')
+            assert binary[offset:offset+4]==b'PE\0\0'and int.from_bytes(binary[offset+4:offset+6],'little')==0x8664
+    else:assert exe[:4]==b'\x7fELF'and any('worldgen-helper/' in n and n.endswith('/node')for n in names)
+    assert not any('road-has-gone-dark-qa' in n for n in names)
+    assert len(file('GODOT-LICENSE.txt'))>100
+    assert any('/artwork/'in n and ('LICENSE'in n.upper()or'ATTRIBUTION'in n.upper()or'CREDIT'in n.upper())for n in names)
+    assert any(n.endswith('/CONTEXTUAL-CYCLES-POLICY.json')for n in names)
+    result[platform]=dict(archive=a.name,sha256=digest,executable_sha256=exe_sha,source_commit=d['source_commit'],exact_v11_and_manifest=True,exact_xp_policies=True,x64_executable_and_bundled_node=True,original_notices_included=True,qa_executable_excluded=True,entries=len(names),crc_verified=platform=='windows')
+    package.close()
+(work/'archive-audit.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result,indent=2))

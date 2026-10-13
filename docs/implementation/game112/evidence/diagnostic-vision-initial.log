@@ -1,0 +1,91 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: actual creator loaded
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/adventure_cycles/earned_driver.gd:17)
+       [1] creator (res://tests/character_catalogue/fresh_driver.gd:95)
+SCRIPT ERROR: Invalid access to property or key 'ok' on a base object of type 'Dictionary'.
+          at: creator (res://tests/character_catalogue/fresh_driver.gd:101)
+          GDScript backtrace (most recent call first):
+              [0] creator (res://tests/character_catalogue/fresh_driver.gd:101)
+ERROR: actual creator loaded
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/adventure_cycles/earned_driver.gd:17)
+       [1] creator (res://tests/character_catalogue/fresh_driver.gd:95)
+SCRIPT ERROR: Invalid access to property or key 'item_count' on a base object of type 'Nil'.
+          at: BuildEditor.select_id (res://scripts/ui/components/build_editor.gd:52)
+          GDScript backtrace (most recent call first):
+              [0] select_id (res://scripts/ui/components/build_editor.gd:52)
+              [1] set_class (res://scripts/ui/components/build_editor.gd:219)
+              [2] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'character_id' on a base object of type 'Dictionary'.
+          at: BuildEditor.unlevelled (res://scripts/ui/components/build_editor.gd:231)
+          GDScript backtrace (most recent call first):
+              [0] unlevelled (res://scripts/ui/components/build_editor.gd:231)
+              [1] suggest_allocation (res://scripts/ui/components/build_editor.gd:304)
+              [2] set_class (res://scripts/ui/components/build_editor.gd:229)
+              [3] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'ok' on a base object of type 'Dictionary'.
+          at: creator (res://tests/character_catalogue/fresh_driver.gd:101)
+          GDScript backtrace (most recent call first):
+              [0] creator (res://tests/character_catalogue/fresh_driver.gd:101)
+ERROR: actual creator loaded
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/adventure_cycles/earned_driver.gd:17)
+       [1] creator (res://tests/character_catalogue/fresh_driver.gd:95)
+SCRIPT ERROR: Invalid access to property or key 'item_count' on a base object of type 'Nil'.
+          at: BuildEditor.select_id (res://scripts/ui/components/build_editor.gd:52)
+          GDScript backtrace (most recent call first):
+              [0] select_id (res://scripts/ui/components/build_editor.gd:52)
+              [1] set_class (res://scripts/ui/components/build_editor.gd:219)
+              [2] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'character_id' on a base object of type 'Dictionary'.
+          at: BuildEditor.unlevelled (res://scripts/ui/components/build_editor.gd:231)
+          GDScript backtrace (most recent call first):
+              [0] unlevelled (res://scripts/ui/components/build_editor.gd:231)
+              [1] suggest_allocation (res://scripts/ui/components/build_editor.gd:304)
+              [2] set_class (res://scripts/ui/components/build_editor.gd:229)
+              [3] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'ok' on a base object of type 'Dictionary'.
+          at: creator (res://tests/character_catalogue/fresh_driver.gd:101)
+          GDScript backtrace (most recent call first):
+              [0] creator (res://tests/character_catalogue/fresh_driver.gd:101)
+ERROR: actual creator loaded
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/adventure_cycles/earned_driver.gd:17)
+       [1] creator (res://tests/character_catalogue/fresh_driver.gd:95)
+SCRIPT ERROR: Invalid access to property or key 'item_count' on a base object of type 'Nil'.
+          at: BuildEditor.select_id (res://scripts/ui/components/build_editor.gd:52)
+          GDScript backtrace (most recent call first):
+              [0] select_id (res://scripts/ui/components/build_editor.gd:52)
+              [1] set_class (res://scripts/ui/components/build_editor.gd:219)
+              [2] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'character_id' on a base object of type 'Dictionary'.
+          at: BuildEditor.unlevelled (res://scripts/ui/components/build_editor.gd:231)
+          GDScript backtrace (most recent call first):
+              [0] unlevelled (res://scripts/ui/components/build_editor.gd:231)
+              [1] suggest_allocation (res://scripts/ui/components/build_editor.gd:304)
+              [2] set_class (res://scripts/ui/components/build_editor.gd:229)
+              [3] creator (res://tests/character_catalogue/fresh_driver.gd:99)
+SCRIPT ERROR: Invalid access to property or key 'ok' on a base object of type 'Dictionary'.
+          at: creator (res://tests/character_catalogue/fresh_driver.gd:101)
+          GDScript backtrace (most recent call first):
+              [0] creator (res://tests/character_catalogue/fresh_driver.gd:101)
+SCRIPT ERROR: Invalid access to property or key 'base' on a base object of type 'Dictionary'.
+          at: travel (res://tests/adventure_cycles/earned_driver.gd:62)
+          GDScript backtrace (most recent call first):
+              [0] travel (res://tests/adventure_cycles/earned_driver.gd:62)
+              [1] run (res://tests/character_catalogue/fresh_driver.gd:51)
+              [2] capture (res://tests/adventure_cycles/earned_driver.gd:170)
+SCRIPT ERROR: Invalid access to property or key 'active' on a base object of type 'Dictionary'.
+          at: run (res://tests/character_catalogue/fresh_driver.gd:52)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/character_catalogue/fresh_driver.gd:52)
+              [1] capture (res://tests/adventure_cycles/earned_driver.gd:170)

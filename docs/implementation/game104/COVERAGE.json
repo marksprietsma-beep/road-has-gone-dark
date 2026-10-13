@@ -21,11 +21,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "barbarian"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -35,19 +35,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-barbarian",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-barbarian:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "barbarian",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -57,11 +86,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "bard"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -71,19 +100,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-bard",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-bard:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "bard",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -93,11 +151,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "cleric"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -107,19 +165,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-cleric",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-cleric:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "cleric",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -129,11 +216,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "druid"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -143,19 +230,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-druid",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-druid:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "druid",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -165,11 +281,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "fighter"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -179,19 +295,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-fighter",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-fighter:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "fighter",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -201,11 +346,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "monk"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -215,19 +360,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-monk",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-monk:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "monk",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -237,11 +411,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "paladin"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -251,19 +425,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-paladin",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-paladin:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "paladin",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -273,11 +476,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "ranger"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -287,19 +490,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-ranger",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-ranger:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "ranger",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -309,11 +541,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "rogue"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -323,19 +555,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-rogue",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-rogue:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "rogue",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -345,11 +606,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "sorcerer"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -359,19 +620,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-sorcerer",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-sorcerer:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "sorcerer",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -381,11 +671,11 @@
         "Core"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "wizard"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -395,19 +685,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-wizard",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-wizard:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "wizard",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -417,11 +736,11 @@
         "Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "psion"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -431,19 +750,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-psion",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-psion:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "psion",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -453,11 +801,11 @@
         "Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "psychic-warrior"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -467,19 +815,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-psychic-warrior",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-psychic-warrior:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "psychic-warrior",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -489,11 +866,11 @@
         "Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "soulknife"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -503,19 +880,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-soulknife",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-soulknife:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "soulknife",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -597,11 +1003,11 @@
         "Complete Adventurer"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "scout"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -611,19 +1017,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-scout",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-scout:complete-adventurer:0",
           "source_group": "Complete Adventurer",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "scout",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -669,11 +1104,11 @@
         "Complete Arcane"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "warlock"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -683,19 +1118,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-warlock",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-warlock:complete-arcane:0",
           "source_group": "Complete Arcane",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "warlock",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -1029,11 +1493,11 @@
         "Complete Warrior"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "swashbuckler"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1043,19 +1507,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-swashbuckler",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-swashbuckler:complete-warrior:0",
           "source_group": "Complete Warrior",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "swashbuckler",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -2109,11 +2602,11 @@
         "Player's Handbook II"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "knight"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2123,19 +2616,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-knight",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-knight:player-s-handbook-ii:0",
           "source_group": "Player's Handbook II",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "knight",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -2217,11 +2739,11 @@
         "Tome of Battle"
       ],
       "category": "base_class",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "warblade"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2231,19 +2753,48 @@
       "owner": "GAME-109",
       "design_key": "base_class-warblade",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "base_class-warblade:tome-of-battle:0",
           "source_group": "Tome of Battle",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "warblade",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 12,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -2685,11 +3236,11 @@
         "Human and human-derived"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-human"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2699,18 +3250,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-human",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-human:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-human",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -2721,11 +3302,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-aasimar"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2735,17 +3316,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-aasimar",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-aasimar:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-aasimar",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-aasimar:planetouched-index-family:1",
@@ -2755,6 +3348,24 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -3996,11 +4607,11 @@
         "Half-elves"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-half-elf"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4010,17 +4621,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-half-elf",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-half-elf:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-half-elf",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-half-elf:elves:1",
@@ -4038,6 +4661,24 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -4225,11 +4866,11 @@
         "Orcs"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-half-orc"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4239,17 +4880,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-half-orc",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-half-orc:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-half-orc",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-half-orc:half-orcs:1",
@@ -4267,6 +4920,24 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -4969,11 +5640,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-tiefling"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4983,17 +5654,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-tiefling",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-tiefling:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-tiefling",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-tiefling:planetouched-index-family:1",
@@ -5003,6 +5686,24 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -6132,11 +6833,11 @@
         "Dwarves"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-dwarf"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -6146,18 +6847,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-dwarf",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-dwarf:dwarves:0",
           "source_group": "Dwarves",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-dwarf",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -7051,11 +7782,11 @@
         "Elves"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-elf"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -7065,18 +7796,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-elf",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-elf:elves:0",
           "source_group": "Elves",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-elf",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -9099,11 +9860,11 @@
         "Gnolls"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-gnoll"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -9113,18 +9874,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-gnoll",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-gnoll:gnolls:0",
           "source_group": "Gnolls",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-gnoll",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -9169,11 +9960,11 @@
         "Gnomes"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-gnome"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -9183,18 +9974,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-gnome",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-gnome:gnomes:0",
           "source_group": "Gnomes",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-gnome",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -9939,11 +10760,11 @@
         "Goblinoids"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-goblin"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -9953,18 +10774,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-goblin",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-goblin:goblinoids:0",
           "source_group": "Goblinoids",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-goblin",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -10333,11 +11184,11 @@
         "Goblinoids"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-hobgoblin"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -10347,18 +11198,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-hobgoblin",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-hobgoblin:goblinoids:0",
           "source_group": "Goblinoids",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-hobgoblin",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -10613,11 +11494,11 @@
         "Goliath and related"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-goliath"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -10627,18 +11508,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-goliath",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-goliath:goliath-and-related:0",
           "source_group": "Goliath and related",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-goliath",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -11453,11 +12364,11 @@
         "Halflings"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-halfling"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -11467,18 +12378,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-halfling",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-halfling:halflings:0",
           "source_group": "Halflings",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-halfling",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -12407,11 +13348,11 @@
         "Other H\u2013K"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-kobold"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -12421,18 +13362,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-kobold",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-kobold:other-h-k:0",
           "source_group": "Other H\u2013K",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-kobold",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -12757,11 +13728,11 @@
         "Lizardfolk and related"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-lizardfolk"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -12771,18 +13742,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-lizardfolk",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-lizardfolk:lizardfolk-and-related:0",
           "source_group": "Lizardfolk and related",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-lizardfolk",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -13702,11 +14703,11 @@
         "Orcs"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-orc"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -13716,18 +14717,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-orc",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-orc:orcs:0",
           "source_group": "Orcs",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-orc",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -15321,11 +16352,11 @@
         "Warforged"
       ],
       "category": "ancestry",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "production_id": "heritage-steelbound"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -15335,18 +16366,48 @@
       "owner": "GAME-108",
       "design_key": "ancestry-warforged",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "ancestry-warforged:warforged:0",
           "source_group": "Warforged",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "heritage-steelbound",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": null,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -15812,11 +16873,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "arcane-trickster"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -15826,19 +16887,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-arcane-trickster",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-arcane-trickster:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "arcane-trickster",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -15956,11 +17046,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "dragon-disciple"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -15970,19 +17060,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-dragon-disciple",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-dragon-disciple:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "dragon-disciple",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 10,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -15992,11 +17111,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "duelist"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16006,19 +17125,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-duelist",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-duelist:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "duelist",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -16028,11 +17176,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "dwarven-defender"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16042,19 +17190,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-dwarven-defender",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-dwarven-defender:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "dwarven-defender",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 10,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -16064,11 +17241,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "eldritch-knight"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16078,19 +17255,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-eldritch-knight",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-eldritch-knight:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "eldritch-knight",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -16208,11 +17414,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "mystic-theurge"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16222,19 +17428,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-mystic-theurge",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-mystic-theurge:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "mystic-theurge",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -16280,11 +17515,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "shadowdancer"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16294,19 +17529,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-shadowdancer",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-shadowdancer:core:0",
           "source_group": "Core",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "shadowdancer",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 10,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -16568,11 +17832,11 @@
         "Psionic"
       ],
       "category": "prestige",
-      "status": "researched",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "pyrokineticist"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -16582,19 +17846,48 @@
       "owner": "GAME-110",
       "design_key": "prestige-pyrokineticist",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "human review of this bounded adaptation",
+        "remaining deeper concept mechanics tracked in GAME-112 continuation"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review the verified native adaptation; expand missing concept mechanics without conflating unreviewed source variants.",
       "source_variants": [
         {
           "key": "prestige-pyrokineticist:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
-          "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "status": "playable",
+          "playable": true,
+          "production_id": "pyrokineticist",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_catalogue/mechanics.gd",
+            "tests/character_catalogue/tactical.gd",
+            "docs/implementation/game112/DELIVERY.md",
+            "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+            "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+            "docs/implementation/game112/SCREENSHOTS.md"
+          ],
+          "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v11",
+        "level_cap": 10,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "native_validation": "Windows/Linux source and exported-game passed",
+        "source_variant_equivalence": "unreviewed variants remain independent; no wholesale consolidation approved",
+        "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+        "human_acceptance": "pending"
+      },
+      "evidence": [
+        "tests/character_catalogue/mechanics.gd",
+        "tests/character_catalogue/tactical.gd",
+        "docs/implementation/game112/DELIVERY.md",
+        "docs/implementation/game112/evidence/ci-windows-distribution-proof.json",
+        "docs/implementation/game112/evidence/ci-linux-distribution-proof.json",
+        "docs/implementation/game112/SCREENSHOTS.md"
       ]
     },
     {
@@ -25944,5 +27237,21 @@
     "npc_class_families": 8,
     "indexed_adventurer_catalogue_total": 752,
     "including_npc_total": 760
+  },
+  "current_delivery": {
+    "pack_id": "trhgd-character-v11",
+    "base_tracks": 19,
+    "core_level_cap": 20,
+    "new_base_level_cap": 12,
+    "prestige_paths": 8,
+    "legacy_prestige_cap": 5,
+    "new_prestige_cap": 10,
+    "ancestry_families": 17,
+    "heritage_records": 26,
+    "feats": 40,
+    "skills": 14,
+    "scheduled_choice_groups": 47,
+    "status": "source implemented; focused mechanics and new-party save tests passed; native/full regressions pending",
+    "programme_complete": false
   }
 }

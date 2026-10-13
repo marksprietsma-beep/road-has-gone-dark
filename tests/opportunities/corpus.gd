@@ -15,6 +15,12 @@ func run() -> void:
    # Retain the original byte oracle. Only these explicit v7-gated additions
    # may be removed when projecting the unchanged legacy authority.
    var legacy := FileAccess.get_file_as_string("res://"+file)
+   var projection: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://tests/character_catalogue/legacy-projection.json"))
+   check(legacy.sha256_text()==projection.current_sha256,"current combat source matches explicitly reviewed adapter list")
+   for adapter in projection.reviewed_adapters:
+    check(legacy.count(adapter.after)==1,"exactly one approved v10/v11 capability adapter")
+    legacy=legacy.replace(adapter.after,adapter.before)
+   check(legacy.sha256_text()==projection.baseline_sha256,"reviewed additions reconstruct exact GAME121 combat source")
    for stat in ["bonus","amount"]:
     var adapter: String= "  # GAME119 v7-only target profile; frozen legacy branch above remains exact.\n  if RulesCareer.enabled(registry) and RulesCareer.quarry_matches(snap,t,registry):"+stat+"+=2\n"
     check(legacy.count(adapter)==1,"exactly one explicitly gated career adapter: "+stat)

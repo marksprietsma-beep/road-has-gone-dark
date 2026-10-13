@@ -1,0 +1,13 @@
+# Human review
+
+Download the verified Windows artifact in DELIVERY.md. Extract outer artifact ZIP then inner playable ZIP, keeping every file together. Run road-has-gone-dark.exe; Escape skips intro. No Godot/Node install required. Source entry: res://scenes/ui/main_menu.tscn.
+
+New Game -> world -> origin -> hometown -> creator. Fresh default is v11 without a content button. Use Race/Heritage (ancestry search and size filter retain the selected identity), then Class and the Build tabs. Compare Tiefling Psion, Aasimar Warlock and Steelbound Warblade. Psion priorities put Intelligence first, Warlock Charisma, Warblade Strength. Choose discipline/invocation/stance, ranks and actual feats; review numerical Sheet. Steelbound integrated plating rejects armour; Suggested equipment excludes the blocked slot. Save all three, Party ready, enter hometown.
+
+Seek new leads -> choose report -> set out/scout/travel -> resolve. In contested combat use Mind Thrust (shared points), Eldritch Blast (repeatable main action), or Iron-edge manoeuvre (readiness); Recover manoeuvres consumes a main action. Defences, HP and deterministic command authority remain the existing engine. Full objectives give10 XP once; return -> Characters -> Advance. Prepare spell copies in Spellbook, select legal feats/options and review actual prerequisites. Quit/relaunch/Resume verifies exact identities, pins, choices and rewards. Existing campaigns retain their original content even when the current default expands.
+
+For normal prestige progression, the existing earned Rogue2/Wizard3 path remains attainable at250 XP. New prestige prerequisites are visible: Shadowdancer total5/Stealth5/Dodge; Dragon Disciple total5/arcane3/Arcana4; Dwarven Defender BAB5/Dwarf/Toughness; Pyrokineticist total5/Psion point capacity6/Arcana4. Never qualify with a temporary battle grant.
+
+Advanced screenshots explicitly label development fixtures: Wizard20/tier9, Psion12 and Rogue5/Shadowdancer10. These isolated writer-created saves use no production XP grant or new menu feature. The separate GAME121 journey continues to prove earned prestige, rather than treating fixtures as ordinary gameplay advancement.
+
+Automation: set GAME112_TEST_ROOT to an owned output directory, GODOT_BIN to4.6.3 and the existing verified helper path; python tests/character_catalogue/run-tests.py. Full CI retains frozen GAME32, original builder/content/core/career/input/opportunity/earned-XP suites and native Windows/Linux checks. Errors in engine logs fail despite zero exit status. Artwork is an honest neutral humanoid fallback for new body profiles; inspect before choosing a final art direction.

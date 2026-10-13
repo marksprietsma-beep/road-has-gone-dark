@@ -2,7 +2,7 @@ class_name RulesExpressions
 extends RefCounted
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 const SAVES := ["fortitude", "reflex", "will"]
-const FORMULA_OPS := ["const", "attribute", "modifier", "level", "class_level", "casting_level", "stat", "sum", "min", "max", "multiply", "floor_divide"]
+const FORMULA_OPS := ["const", "attribute", "modifier", "level", "class_level", "casting_level", "skill_rank", "stat", "sum", "min", "max", "multiply", "floor_divide"]
 const REQUIREMENT_OPS := ["all", "any", "not", "level", "class_level", "attribute", "skill", "feat", "feature", "tag", "bab", "save", "casting", "resource", "ancestry"]
 
 static func validate_formula(node: Variant, path: String = "formula", depth: int = 0) -> Array:
@@ -17,7 +17,7 @@ static func validate_formula(node: Variant, path: String = "formula", depth: int
  elif op in ["attribute", "modifier"]:
   fields.append("id")
   if not node.get("id") in ATTRIBUTES: errors.append(RulesJson.issue("formula.attribute",path,"Unknown attribute"))
- elif op in ["class_level", "casting_level", "stat"]:
+ elif op in ["class_level", "casting_level", "skill_rank", "stat"]:
   fields.append("id")
   if not node.get("id") is String or node.id.is_empty(): errors.append(RulesJson.issue("formula.reference",path,"A stable reference is required"))
  elif op in ["sum", "min", "max", "multiply", "floor_divide"]:
@@ -42,6 +42,7 @@ static func _formula(node: Dictionary, context: Dictionary) -> Dictionary:
  elif op == "level": value = int(context.get("level",0))
  elif op == "class_level": value = int(context.get("classes",{}).get(node.id,0))
  elif op == "casting_level": value = int(context.get("casting_levels",context.get("classes",{})).get(node.id,0))
+ elif op == "skill_rank":value=int(context.get("skills",{}).get(node.id,0))
  elif op in ["attribute", "modifier"]:
   value = int(context.get("attributes",{}).get(node.id,10))
   if op == "modifier": value = int(floor(float(value-10)/2.0))

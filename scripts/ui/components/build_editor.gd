@@ -185,7 +185,8 @@ func class_loadout() -> void:
  if advance or source.rules_ref().engine_schema!=3:return
  var cls := source.definition("classes",class_id)
  spell_controls()
- for id in equipment_pickers:equipment_pickers[id].button_pressed=cls.recommended_equipment.has(id)
+ var blocked: Array=source.definition("ancestries",ancestry_ref).get("capabilities",{}).get("blocked_equipment",[])
+ for id in equipment_pickers:equipment_pickers[id].button_pressed=cls.recommended_equipment.has(id) and not source.definition("equipment",id).kind in blocked
  _suggest_spells()
 func suggest_spell_selections() -> void:
  if advance or source.rules_ref().engine_schema!=3:return
@@ -195,7 +196,7 @@ func suggest_spell_selections() -> void:
 func _suggest_spells() -> void:
  var cls := source.definition("classes",class_id)
  var initial := kernel.create(base.character_id,attributes,ancestry_ref,background_ref)
- initial.equipment=cls.recommended_equipment.duplicate()
+ initial.equipment=cls.recommended_equipment.filter(func(id: String):return not source.definition("equipment",id).kind in source.definition("ancestries",ancestry_ref).get("capabilities",{}).get("blocked_equipment",[]))
  var suggestion := kernel.suggested_choice(initial,class_id,"toughness")
  if not suggestion.ok:return
  var starting := kernel.preview_advancement(initial,suggestion.choice)
@@ -218,6 +219,7 @@ func set_class(id: String) -> void:
  updating=true;class_id=id;select_id(class_picker,id);allocation={};feat_id="toughness" if source.rules_ref().engine_schema==3 else "steady-study"
  if source.rules_ref().engine_schema==3:
   var priorities: Array={"barbarian":["STR","CON","DEX","WIS","CHA","INT"],"bard":["CHA","DEX","INT","CON","WIS","STR"],"cleric":["WIS","CON","STR","CHA","INT","DEX"],"druid":["WIS","CON","DEX","INT","CHA","STR"],"fighter":["STR","CON","DEX","WIS","INT","CHA"],"monk":["WIS","DEX","STR","CON","INT","CHA"],"paladin":["STR","CHA","CON","WIS","DEX","INT"],"ranger":["DEX","WIS","CON","STR","INT","CHA"],"rogue":["DEX","INT","CON","WIS","CHA","STR"],"sorcerer":["CHA","DEX","CON","INT","WIS","STR"],"wizard":["INT","DEX","CON","WIS","CHA","STR"]}.get(id,RulesExpressions.ATTRIBUTES)
+  priorities=source.definition("classes",id).get("attribute_priority",priorities)
   var values: Array=source.rule("standard_array")
   for i in priorities.size():attributes[priorities[i]]=values[i]
   for attribute in attribute_pickers:select_id(attribute_pickers[attribute],str(attributes[attribute]))
@@ -309,6 +311,7 @@ func feature_text(id: String) -> String:
  var row := source.definition("features",id)
  var text: String=str(row.get("name",id))+ (" · "+str(row.description) if not str(row.get("description","")).is_empty() else "")
  for m in row.get("modifiers",[]):text+=" · "+str(m.stat)+" "+formula_text(m.value)+" ("+str(m.type)+")"
+ if row.has("capabilities"):text+=" · "+RulesCapabilities.summary(row.capabilities)
  for ability in row.get("abilities",[]):text+=" · "+str(source.definition("abilities",ability).name)
  return text
 

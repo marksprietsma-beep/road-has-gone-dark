@@ -32,7 +32,7 @@ func load_data(input: Dictionary) -> Dictionary:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
@@ -48,11 +48,12 @@ func load_data(input: Dictionary) -> Dictionary:
  if not found.is_empty(): return _fail(found)
  for category in CATEGORIES:
   for id in tables[category]:
-   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema))
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"])
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
  _check_cycles(tables,found)
+ if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"]:RulesCatalogueValidation.validate(tables,found)
  if not found.is_empty(): return _fail(found)
  _pack=RulesJson.freeze(candidate);_tables=RulesJson.freeze(tables);content_hash=RulesJson.digest(candidate);errors=[]
  return {"ok":true,"rules_ref":rules_ref()}
@@ -74,7 +75,7 @@ static func _reference(tables: Dictionary, category: String, id: Variant, path: 
 
 static func _refs(node: Dictionary, tables: Dictionary, path: String, found: Array, requirement: bool) -> void:
  var op: String = node.get("op","")
- var categories := {"class_level":"classes","casting_level":"classes","skill":"skills","feat":"feats","feature":"features","resource":"resources"}
+ var categories := {"class_level":"classes","casting_level":"classes","skill":"skills","skill_rank":"skills","feat":"feats","feature":"features","resource":"resources"}
  if categories.has(op): _reference(tables,categories[op],node.get("id"),path,found)
  if op=="stat" and not node.get("id") in STATS: found.append(RulesJson.issue("reference.stat",path,"Unknown derived statistic"))
  if op=="casting" and node.get("id") not in ["arcane","divine"]: found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))
@@ -166,7 +167,7 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
   _formula(d.get("dc"),tables,path+".dc",found)
   if not d.get("save") in RulesExpressions.SAVES or not d.get("investigation_trigger") is String or not d.get("bypass_tags") is Array or not RulesJson.integer(d.get("maximum_maintained"),1,10) or not d.get("replacement") in ["cancel_prior","reject"] or not d.get("break_conditions") is Array or not d.get("success") is String or not d.get("failure") is String: found.append(RulesJson.issue("effect.observer",path,"Explicit observer/disbelief/maintenance metadata is required"))
 
-static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array,engine: int=1) -> void:
+static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array,engine: int=1,wave: bool=false) -> void:
  var path: String = category+"."+row.id
  var allowed := {
   "classes":["id","name","max_level","requirements","hp_per_level","skill_points","bab","saves","casting","casting_tradition","features","provenance"],
@@ -180,12 +181,18 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   "ancestries":["id","people_id","tags","features","modifiers","provenance"],
   "backgrounds":["id","tags","features","modifiers","provenance"]
  }
- var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment","known_spell_limits","career_choices","class_kind"],"features":["description"],"abilities":["description","casting_class","spell_tier"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan"]}
+ var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment","known_spell_limits","career_choices","class_kind","attribute_priority"],"features":["description","capabilities"],"abilities":["description","casting_class","spell_tier","attack_weapon"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan","capabilities","visual_profile"],"statuses":["capabilities"]}
+ if not wave:
+  for values in extensions.values():
+   for field in ["capabilities","visual_profile","attribute_priority","attack_weapon"]:values.erase(field)
  var optional := ["movement","trigger","follow_up","reach","range","damage","damage_type"]
  if engine==3:
   allowed[category].append_array(extensions.get(category,[]))
   optional.append_array(extensions.get(category,[]))
   RulesCoreContent.validate_definition(category,row,tables,found)
+  if row.has("capabilities"):
+   RulesCapabilities.validate(row.capabilities,tables,path,found)
+   if category=="statuses" and row.capabilities is Dictionary and row.capabilities.has("resource_bonuses"):found.append(RulesJson.issue("capability.temporary_capacity",path,"Transient statuses cannot change persistent resource capacity"))
  for field in allowed[category]:
   if not field in optional and not row.has(field): found.append(RulesJson.issue("definition.field_missing",path+"."+field,"Required definition field absent"))
  for field in row:

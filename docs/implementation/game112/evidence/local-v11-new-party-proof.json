@@ -1,0 +1,55 @@
+{
+ "checks": 184,
+ "development_saves": [
+  {
+   "development_fixture": true,
+   "ordinary_xp_granted": false,
+   "path": "wizard",
+   "save_root": "/workspace/artifacts/game112/v11-source/fresh/development-wizard",
+   "snapshots": {
+    "33464dfe6cbae84656a11fda248348f9:adventurer:1": "b6188489a4fdd9b5241225305dabcbf542251e366bc09e004ee81cadd640edc5",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:2": "e2bf81ab2be36b4ffed75cd3a9bc04a5b7e2519119958933a5f42a4cb8d9573c",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:3": "95540c16d19e4b3426df2c169a0a762f746798c48a18747a1a393157bf44e3f9"
+   }
+  },
+  {
+   "development_fixture": true,
+   "ordinary_xp_granted": false,
+   "path": "psion",
+   "save_root": "/workspace/artifacts/game112/v11-source/fresh/development-psion",
+   "snapshots": {
+    "33464dfe6cbae84656a11fda248348f9:adventurer:1": "4275cb8288615552f8d12d59bddfe1e56c11baa87786ef33b3a871f79c8d227c",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:2": "e2bf81ab2be36b4ffed75cd3a9bc04a5b7e2519119958933a5f42a4cb8d9573c",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:3": "95540c16d19e4b3426df2c169a0a762f746798c48a18747a1a393157bf44e3f9"
+   }
+  },
+  {
+   "development_fixture": true,
+   "ordinary_xp_granted": false,
+   "path": "shadowdancer",
+   "save_root": "/workspace/artifacts/game112/v11-source/fresh/development-shadowdancer",
+   "snapshots": {
+    "33464dfe6cbae84656a11fda248348f9:adventurer:1": "11fb00435a251becfc161dcd47b13ef39465888adfce296e5ee83100bb592e0b",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:2": "e2bf81ab2be36b4ffed75cd3a9bc04a5b7e2519119958933a5f42a4cb8d9573c",
+    "33464dfe6cbae84656a11fda248348f9:adventurer:3": "95540c16d19e4b3426df2c169a0a762f746798c48a18747a1a393157bf44e3f9"
+   }
+  }
+ ],
+ "earned_xp": 40,
+ "failures": 0,
+ "rules_ref": {
+  "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+  "engine_schema": 3,
+  "pack_id": "trhgd-character-v11",
+  "rules_version": "11.0.0",
+  "schema_version": 1
+ },
+ "screenshots": [],
+ "slot": "33464dfe6cbae84656a11fda248348f9",
+ "state_sha": "cfda7a8883cd6d7e50835bd1c83aaa178b7aee62fe4f40771ca5fb413df405c7",
+ "used_actions": [
+  "psion-technique-1",
+  "warlock-technique-1",
+  "warblade-technique-1"
+ ]
+}

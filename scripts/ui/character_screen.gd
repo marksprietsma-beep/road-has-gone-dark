@@ -24,6 +24,8 @@ var origin: Label
 var roster: PartyRoster
 var name_edit: LineEdit
 var people_picker: OptionButton
+var ancestry_search: LineEdit
+var ancestry_size: OptionButton
 var heritage_picker: OptionButton
 var role_picker: OptionButton
 var origin_picker: OptionButton
@@ -96,6 +98,10 @@ func _ready() -> void:
  class_choice=option(identity,"Class · your mechanical progression",[])
  class_choice.item_selected.connect(func(_i: int):if not updating:editor.set_class(selected_id(class_choice));_identity_changed())
  class_introduction=label("",GameUI.META);class_introduction.max_lines_visible=2;class_introduction.clip_text=true;identity.add_child(class_introduction)
+ ancestry_search=LineEdit.new();ancestry_search.placeholder_text="Search ancestries · selected identity stays visible";identity.add_child(ancestry_search)
+ ancestry_size=option(identity,"Ancestry size filter",[{"id":"all","name":"All body sizes"},{"id":"small","name":"Small"},{"id":"medium","name":"Medium"},{"id":"large","name":"Large"}])
+ ancestry_search.text_changed.connect(func(_query: String):_filter_ancestries())
+ ancestry_size.item_selected.connect(func(_i: int):_filter_ancestries())
  people_picker=option(identity,"Race / ancestry",pack.peoples)
  people_picker.item_selected.connect(func(_i: int):if not updating:_heritages();_identity_changed())
  heritage_picker=option(identity,"Compatible heritage",[])
@@ -222,6 +228,7 @@ func refresh() -> void:
  overview.text="%d / 3 reviewed"%state.get("character_builder",{}).get("confirmed",[]).size() if not ready_view else "Journey XP: %d"%CharacterBuilderRecords.xp(state,m.character_id)
  var source := RulesRecords.registry(state)
  var core: bool=source.rules_ref().get("engine_schema")==3
+ ancestry_search.visible=RulesCapabilities.enabled(source);ancestry_size.visible=RulesCapabilities.enabled(source)
  people_picker.clear()
  var people_rows: Array=RulesCoreContent.ancestry_rows(source) if core else pack.peoples
  for row in people_rows:people_picker.add_item(row.name);people_picker.set_item_metadata(people_picker.item_count-1,row.id)
@@ -231,7 +238,7 @@ func refresh() -> void:
   if not core and int(row.max_level)<20 or not ready_view and row.get("class_kind")=="prestige":continue
   class_choice.add_item(row.name);class_choice.set_item_metadata(class_choice.item_count-1,id)
  class_choice.disabled=ready_view
- commonness.text="%d familiar ancestries · %d core classes · traits and abilities are mechanical."%[RulesCoreContent.ancestry_rows(source).size(),source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind", "base")=="base").size()] if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
+ commonness.text="%d familiar ancestries · %d playable base classes · traits and abilities are mechanical."%[RulesCoreContent.ancestry_rows(source).size(),source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind", "base")=="base").size()] if core else "Existing campaign: exact original rules retained. These are prototype ancestry records."
  name_edit.text=m.name;pick(people_picker,m.people_id);pick(role_picker,m.role_id)
  origin_picker.clear()
  var profiles := OriginProfiles.new()
@@ -241,7 +248,7 @@ func refresh() -> void:
    origin_picker.add_item(str(row.name)+" · "+str(world.get_record("state",int(row.state_id)).name));origin_picker.set_item_metadata(origin_picker.item_count-1,str(int(row.burg_id)))
  pick(origin_picker,str(int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))));_backgrounds();pick(background_picker,str(m.generated_facts.occupation_id));_heritages()
  if not r.is_empty():pick(heritage_picker,r.ancestry_ref)
- description.text=RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)).get("description",str(pack.peoples[people_picker.selected].description) if people_picker.selected>=0 and people_picker.selected<pack.peoples.size() else "")
+ description.text=RulesCoreContent.ancestry_description(RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)))
  biography.text=m.biography+"\n\nMotivation: "+AdventureRecords.foundation_label("motivation",m.generated_facts.background.motivation)+"\nPersonal origin: "+str(world.get_record("burg",int(m.get("origin_refs",{}).get("burg_id",state.origin.home_burg_id))).name)+"\nCulture is source-world context, separate from ancestry."
  name_edit.editable=not ready_view
  for control in [people_picker,heritage_picker,role_picker,origin_picker,background_picker,reroll_button]:control.disabled=ready_view
@@ -266,6 +273,17 @@ func refresh() -> void:
  updating=false;_busy()
 func _identity() -> Dictionary:
  return {"name":name_edit.text.strip_edges(),"people_id":selected_id(people_picker),"role_id":selected_id(role_picker),"origin_burg":int(selected_id(origin_picker)),"occupation_id":selected_id(background_picker)}
+func _filter_ancestries() -> void:
+ if updating or state.is_empty() or people_picker==null:return
+ var source:=RulesRecords.registry(state)
+ if not RulesCapabilities.enabled(source):return
+ var current:=selected_id(people_picker);people_picker.clear()
+ for row in RulesCoreContent.ancestry_rows(source):
+  var variants:=CharacterBuilderRecords.ancestry(row.id,state)
+  var size_value: String=str(source.definition("ancestries",variants[0]).size)
+  if row.id!=current and (not ancestry_search.text.to_lower() in row.name.to_lower() or selected_id(ancestry_size)!="all" and selected_id(ancestry_size)!=size_value):continue
+  people_picker.add_item(row.name);people_picker.set_item_metadata(people_picker.item_count-1,row.id)
+ pick(people_picker,current)
 func _heritages() -> void:
  heritage_picker.clear()
  for id in CharacterBuilderRecords.ancestry(selected_id(people_picker),state):
@@ -286,7 +304,7 @@ func _identity_changed() -> void:
   var home: Dictionary=entry.world.get_record("burg",int(selected_id(origin_picker)))
   var job := background_picker.get_item_text(background_picker.selected) if background_picker.selected>=0 else "chosen profession"
   biography.text="Pending biography · %s grew up in %s and worked as a %s.\nMotivation retained: %s\nCulture follows the selected source-world origin; it is separate from ancestry."%[name_edit.text,str(home.get("name","chosen origin")),job,AdventureRecords.foundation_label("motivation",state.party.members[selected-1].generated_facts.background.motivation)]
- description.text=RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)).get("description",str(pack.peoples[people_picker.selected].description) if people_picker.selected>=0 and people_picker.selected<pack.peoples.size() else "")
+ description.text=RulesCoreContent.ancestry_description(RulesRecords.registry(state).definition("ancestries",selected_id(heritage_picker)))
  editor.refresh_preview()
 func _preview_changed() -> void:
  if state.is_empty() or ready_view:return
@@ -379,8 +397,11 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  var s: Dictionary=result.snapshot
  var lines: Array=[m.name+" · Level "+str(s.level),stat_line(s)]
  if s.has("ancestry"):
-  lines.append("\nRace / heritage: "+str(s.ancestry.name)+" · "+str(s.ancestry.size)+" "+str(s.ancestry.body_plan)+"\n"+str(s.ancestry.description))
-  lines.append("Senses: "+", ".join(s.senses)+"\nProficiencies: "+", ".join(s.proficiencies))
+  lines.append("\nRace / heritage: "+str(s.ancestry.name)+" · "+str(s.ancestry.size)+" "+str(s.ancestry.body_plan)+"\n"+RulesCoreContent.ancestry_description(s.ancestry))
+  lines.append("Recorded senses: "+", ".join(s.senses)+"\nProficiencies: "+", ".join(s.proficiencies))
+ if s.has("capabilities"):
+  lines.append("Inherited / class capabilities: "+RulesCapabilities.summary(s.capabilities))
+  if s.ancestry.has("visual_profile"):lines.append("Artwork: neutral humanoid fallback; dedicated "+str(s.ancestry.body_plan)+" art is pending.")
  lines.append("\nAttributes · final score / modifier")
  for id in RulesExpressions.ATTRIBUTES:
   var modifier := RulesExpressions.evaluate_formula({"op":"modifier","id":id},result.context)
@@ -409,7 +430,11 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  if s.has("specialisations"):
   lines.append("\nPersistent specialisations")
   for option in s.specialisations:lines.append(str(option.name)+": "+str(option.description))
-  lines.append("Effective casting levels: "+str(s.casting_levels))
+  var casting_tracks: Array[String]=[]
+  for id in s.casting_levels:
+   var cls:=RulesRecords.registry(state).definition("classes",id)
+   if not str(cls.get("spell_mode","")).is_empty():casting_tracks.append(str(cls.name)+" "+str(s.casting_levels[id]))
+  if not casting_tracks.is_empty():lines.append("Effective spell progression: "+", ".join(casting_tracks))
  lines.append("\nOrdered class history")
  var class_counts := {};var rules := RulesRecords.registry(state)
  for step in r.advancement_history:

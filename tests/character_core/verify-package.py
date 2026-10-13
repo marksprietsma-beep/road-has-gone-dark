@@ -21,7 +21,7 @@ if tag.startswith('game119'):
  (dist/'START-HERE.txt').write_text('GAME-119 REVIEW\n\nExtract the entire archive; run road-has-gone-dark.exe. No Godot/Node install needed. New Game uses the latest supported career content; old campaigns keep exact original rules. Build -> Specialisation offers class choices. Characters -> Advancement offers legal multiclass and prestige paths with prerequisites. Core class caps are 12; four prestige paths have five playable levels. Ordinary earned XP remains unchanged. High-level development screenshots are explicitly labelled; no free XP or fixture saves are included in normal play. Full levels 13-20 and catalogue programme remain open.\n',encoding='utf-8')
 for filename in ['builder-v1.json','builder-v2.json']:shutil.copy2(root/'data/characters'/filename,dist/filename)
 shutil.copy2(root/'data/rules/packs.json',dist/'CHARACTER-RULES-MANIFEST.json')
-shutil.copy2(root/'data/rules'/((re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)+'.json') if tag.startswith('game119') else 'trhgd-character-v6.json'),dist/'CORE-CHARACTER-CONTENT.json')
+shutil.copy2(root/'data/rules'/(re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)+'.json'),dist/'CORE-CHARACTER-CONTENT.json')
 for p in dist.glob('road-has-gone-dark-qa*'):p.unlink()
 if os.name=='nt':
  archive=release/(name+'.zip')

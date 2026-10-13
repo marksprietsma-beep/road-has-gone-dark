@@ -1,0 +1,12 @@
+extends SceneTree
+func _initialize():call_deferred("run")
+func run():
+ var s:=RulesRegistry.new();s.load_pack("res://data/rules/trhgd-character-v10.json")
+ var k:=RulesCharacter.new(s);var r:=k.create("int-specialist",s.recommendation("adept").attributes,"heritage-tiefling")
+ for n in 20:
+  var choice:=k.suggested_choice(r,"rogue")
+  if not choice.ok:print("FAILED LEVEL ",n+1," ",JSON.stringify(choice));quit(0);return
+  var result:=k.preview_advancement(r,choice.choice)
+  if not result.ok:print("FAILED LEVEL ",n+1," ",JSON.stringify(result));quit(0);return
+  r=result.candidate
+ quit(0)

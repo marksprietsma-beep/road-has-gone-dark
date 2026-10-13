@@ -5,7 +5,16 @@ func review_content(index: int) -> void:
  print("GAME118 fresh creator ",index)
  check(ui.state.character_builder.rules_ref.pack_id==RulesRecords.NEW_PACK,"fresh New Game defaults to current supported rules without opt-in")
  check(not ui.content_button.is_visible_in_tree(),"no hidden content-button journey")
- check(ui.class_choice.item_count==11 and ui.people_picker.item_count==9,"familiar race and class decisions offered on first open")
+ var source:=RulesRecords.registry(ui.state)
+ var expected_classes:=source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")=="base")
+ var actual_classes: Array=[];var actual_peoples: Array=[]
+ for i in ui.class_choice.item_count:actual_classes.append(str(ui.class_choice.get_item_metadata(i)))
+ for i in ui.people_picker.item_count:actual_peoples.append(str(ui.people_picker.get_item_metadata(i)))
+ var expected_peoples:=RulesCoreContent.ancestry_rows(source).map(func(row: Dictionary):return str(row.id))
+ expected_classes.sort();actual_classes.sort();expected_peoples.sort();actual_peoples.sort()
+ check(actual_classes==expected_classes and actual_peoples==expected_peoples,"first open exposes every actual playable class/race, without omissions or decorative extras")
+ check(cohorts.slice(0,4).all(func(group: Array):return group.all(func(id: String):return actual_classes.has(id))),"all eleven familiar core decisions remain available")
+ check(["human","dwarf","elf","halfling","gnome","half-elf","half-orc","goblin","orc"].all(func(id: String):return actual_peoples.has(id)),"all nine original familiar families remain available")
  check(not ui.role_picker.is_visible_in_tree(),"narrative guidance subordinate")
  check(ui.preview_recipes.size()==3,"three actual persistent LPC adventurers")
  if index==0:

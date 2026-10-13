@@ -1,0 +1,414 @@
+{
+  "canonical_matrix": "docs/implementation/game104/COVERAGE.json",
+  "source_scope": {
+    "base_class": 74,
+    "ancestry": 403,
+    "prestige": 283,
+    "adventurer_base_classes": 66,
+    "npc_class_families": 8,
+    "indexed_adventurer_catalogue_total": 752,
+    "including_npc_total": 760
+  },
+  "normalized_counts": {
+    "base_class": 74,
+    "ancestry": 364,
+    "prestige": 282,
+    "adventurer_base_classes": 66,
+    "npc_class_families": 8
+  },
+  "delivery": {
+    "pack_id": "trhgd-character-v11",
+    "base_tracks": 19,
+    "core_level_cap": 20,
+    "new_base_level_cap": 12,
+    "prestige_paths": 8,
+    "legacy_prestige_cap": 5,
+    "new_prestige_cap": 10,
+    "ancestry_families": 17,
+    "heritage_records": 26,
+    "feats": 40,
+    "skills": 14,
+    "scheduled_choice_groups": 47,
+    "status": "playable bounded wave; Windows/Linux source, native and UI/input verified; human review pending",
+    "programme_complete": false,
+    "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+    "human_acceptance": "pending",
+    "mapped_playable_source_occurrences": 44,
+    "unresolved_adventurer_source_occurrences": 708
+  },
+  "classes": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "kind": "base",
+      "implemented_cap": 20,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "duelist",
+      "name": "Duelist",
+      "kind": "prestige",
+      "implemented_cap": 5,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "eldritch-knight",
+      "name": "Eldritch Knight",
+      "kind": "prestige",
+      "implemented_cap": 5,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "arcane-trickster",
+      "name": "Arcane Trickster",
+      "kind": "prestige",
+      "implemented_cap": 5,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "mystic-theurge",
+      "name": "Mystic Theurge",
+      "kind": "prestige",
+      "implemented_cap": 5,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "psion",
+      "name": "Psion",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "psychic-warrior",
+      "name": "Psychic Warrior",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "soulknife",
+      "name": "Soulknife",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "warlock",
+      "name": "Warlock",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "swashbuckler",
+      "name": "Swashbuckler",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "knight",
+      "name": "Knight",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "warblade",
+      "name": "Warblade",
+      "kind": "base",
+      "implemented_cap": 12,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "shadowdancer",
+      "name": "Shadowdancer",
+      "kind": "prestige",
+      "implemented_cap": 10,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "dragon-disciple",
+      "name": "Dragon Disciple",
+      "kind": "prestige",
+      "implemented_cap": 10,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "dwarven-defender",
+      "name": "Dwarven Defender",
+      "kind": "prestige",
+      "implemented_cap": 10,
+      "complete_sourcebook_conversion": false
+    },
+    {
+      "id": "pyrokineticist",
+      "name": "Pyrokineticist",
+      "kind": "prestige",
+      "implemented_cap": 10,
+      "complete_sourcebook_conversion": false
+    }
+  ],
+  "ancestries": [
+    {
+      "id": "heritage-human",
+      "people_id": "human",
+      "name": "Human Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-dwarf",
+      "people_id": "dwarf",
+      "name": "Dwarf Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-dwarf-hill",
+      "people_id": "dwarf",
+      "name": "Dwarf Hill",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-elf",
+      "people_id": "elf",
+      "name": "Elf Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-elf-woodland",
+      "people_id": "elf",
+      "name": "Elf Woodland",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-halfling",
+      "people_id": "halfling",
+      "name": "Halfling Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-halfling-stout",
+      "people_id": "halfling",
+      "name": "Halfling Stout",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-gnome",
+      "people_id": "gnome",
+      "name": "Gnome Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-half-elf",
+      "people_id": "half-elf",
+      "name": "Half-elf Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-half-orc",
+      "people_id": "half-orc",
+      "name": "Half-orc Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-goblin",
+      "people_id": "goblin",
+      "name": "Goblin Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-goblin-cavern",
+      "people_id": "goblin",
+      "name": "Goblin Cavern",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-orc",
+      "people_id": "orc",
+      "name": "Orc Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-orc-highland",
+      "people_id": "orc",
+      "name": "Orc Highland",
+      "body_plan": "humanoid",
+      "dedicated_art": null
+    },
+    {
+      "id": "heritage-aasimar",
+      "people_id": "aasimar",
+      "name": "Aasimar Standard",
+      "body_plan": "celestial-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-tiefling",
+      "people_id": "tiefling",
+      "name": "Tiefling Standard",
+      "body_plan": "horned-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-kobold",
+      "people_id": "kobold",
+      "name": "Kobold Standard",
+      "body_plan": "small-reptilian",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-lizardfolk",
+      "people_id": "lizardfolk",
+      "name": "Lizardfolk Standard",
+      "body_plan": "reptilian",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-gnoll",
+      "people_id": "gnoll",
+      "name": "Gnoll Standard",
+      "body_plan": "furred-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-hobgoblin",
+      "people_id": "hobgoblin",
+      "name": "Hobgoblin Standard",
+      "body_plan": "humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-goliath",
+      "people_id": "goliath",
+      "name": "Goliath Standard",
+      "body_plan": "large-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-steelbound",
+      "people_id": "steelbound",
+      "name": "Steelbound Standard",
+      "body_plan": "constructed-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-tiefling-ash",
+      "people_id": "tiefling",
+      "name": "Tiefling Ash",
+      "body_plan": "horned-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-aasimar-dawn",
+      "people_id": "aasimar",
+      "name": "Aasimar Dawn",
+      "body_plan": "celestial-humanoid",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-kobold-stone",
+      "people_id": "kobold",
+      "name": "Kobold Stone",
+      "body_plan": "small-reptilian",
+      "dedicated_art": false
+    },
+    {
+      "id": "heritage-steelbound-scout",
+      "people_id": "steelbound",
+      "name": "Steelbound Scout",
+      "body_plan": "constructed-humanoid",
+      "dedicated_art": false
+    }
+  ]
+}
