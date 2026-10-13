@@ -4,7 +4,7 @@ Source branch: `feature/game-121-sustainable-adventures`, stacked on GAME-119 he
 
 Implemented: contextual report cycles, persistent original geography and history, unfinished returns, objective XP for full noncombat/combat success, actual deterministic skill contributions, class-kernel-based enemy advancement, visible XP thresholds and adventure journal. Original character packs/XP policies/TacticalCombat remain exact. There is no production XP/level button, save reset, second save writer or new tactical authority.
 
-Local source and rendered journeys have organically earned Arcane Trickster entry and advancement using Rogue2/Wizard3. Prepared Wizard spells and a prestige power were used in the service-driven combat journey. Captured high-level states are earned, not grandfathered development fixtures. Windows/Linux native verification remains tracked in DELIVERY.md; do not confuse interim local proof with a final build or human acceptance.
+Local source and rendered journeys have organically earned Arcane Trickster entry and advancement using Rogue2/Wizard3. Prepared Wizard spells and a prestige power were used in the service-driven combat journey. Captured high-level states are earned, not grandfathered development fixtures. Final Windows/Linux source and exported-game workflow38334351918 passed at1ff309b, including earned entry at250 XP, further prestige advancement at360 XP, real spells/powers, bundled helper and separate-process reload. Verified Windows artifact/checksum and qualified historical/local evidence are in DELIVERY.md. No human acceptance or published PR is claimed; prompt Mark to click Publish draft PR with the GAME-119 branch as base, then record the actual URL.
 
 Next programme work after this batch's review:
 

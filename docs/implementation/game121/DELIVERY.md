@@ -1,6 +1,6 @@
 # GAME-121 review delivery
 
-Status: production implementation/source verification complete; final CI exported-game packages still in progress. This is not final human acceptance. Windows artifact URL/checksum will be filled from the completed immutable workflow, not inferred or claimed before upload.
+Status: production implementation, regression workflows and self-contained native Windows/Linux verification passed. Windows package downloaded and independently checked. Human acceptance and draft publication remain pending.
 
 ## Source and scope
 
@@ -14,7 +14,19 @@ Real skill contributions use saved briefing totals with an independent determini
 
 ## Verified evidence
 
-[GAME-121 full source/native workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38334351918) runs source1ff309b on Windows/Linux. All source steps passed; exported-game checks/package upload remain running at this documentation checkpoint. Parent source coverage includes ten generated worlds/forty contexts, original V1/V2 lifecycle/save/replay, GAME-103/104/118/119 character suites, frozen GAME-32, original adventure and responsive presentation.
+[GAME-121 full source/native workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38334351918) passed on Windows and Linux at source1ff309b, including exported-game checks and package upload. Parent source coverage includes ten generated worlds/forty contexts, original V1/V2 lifecycle/save/replay, GAME-103/104/118/119 character suites, frozen GAME-32, original adventure and responsive presentation.
+
+Final CI evidence, retained separately from local historical runs:
+
+| Verification | Windows | Linux |
+| --- | --- | --- |
+| Legacy pinned campaign extension |22 checks,0 failures|22 checks,0 failures|
+| Negative/reward/cache/journal checks |68 checks,0 failures|69 checks,0 failures|
+| Source earned journey |1,111 checks,380 XP,0 failures|875 checks,360 XP,0 failures|
+| Native exported earned journey |1,489 checks,380 XP,0 failures|967 checks,370 XP,0 failures|
+| Separate-process restart and production launch |passed|passed|
+
+Both native packages earned Arcane Trickster1 at250 XP and Arcane Trickster2 at360 XP through actual saved objectives, used real spells and the prestige ability, and ran with empty PATH and no source-helper override. Different generated campaigns/command counts explain differing assertion totals; this is not a cross-platform identical-world replay claim. Per-run proofs and wall-clock timings are in [evidence](evidence/). Source earned automation took710.515 seconds on Windows and433.454 seconds on Linux; neither is measured human playtime.
 
 [Production UI/GAME-81 input/render and distribution workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38333540759) passed on **both OSes**, source15a96af. The subsequent1ff309b changes only the cycle-validation cache key and its negative test; UI source is identical. The initial GAME-12115a96af run was superseded/cancelled by that fix, not described as a successful run.
 
@@ -29,9 +41,15 @@ Actual local evidence:
 
 ## Windows package
 
-Pending final native workflow artifact. Do not use a parent GAME-119 archive or a source-only executable as the GAME-121 review build. The final link and inner playable ZIP checksum must match source1ff309b; later doc-only commits do not require gameplay rebuilds.
+[Download the complete Windows x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38334351918/artifacts/11786328530) (`game121-complete-Windows`). GitHub sign-in may be required. Inner playable archive: `game121-sustainable-adventures-windows-x64.zip`.
 
-After verification: download the GitHub artifact, extract its outer ZIP, then extract the inner `game121-sustainable-adventures-windows-x64.zip` completely. Run `road-has-gone-dark.exe`, keeping `worldgen-helper`, artwork and licence notices together. No Godot or Node installation is required. Follow [TESTING.md](TESTING.md); source scene is `res://scenes/ui/main_menu.tscn`. Existing campaigns use Resume without deleting/recreating saves.
+SHA-256: `a9ceccd24bc3b7b757b05d9561820223201e259b5dbf4dc2cfe3346aeb0bbe7e`.
+
+The downloaded archive matches both the CI distribution proof and supplied checksum file. All7,063 ZIP entries passed CRC validation; the executable hash matches distribution.json; v9 character content, both XP policy files and cycle policy are byte-identical to the tested repository; bundled Windows Node, helper, artwork and required notices are present. The rules manifest retains installed historical packs. Build source is `1ff309bca003c2d0bbe0cc6a3c05b145565c5225`; subsequent documentation/evidence commits have no changes to scripts, scenes, data, assets, themes, tools, tests, project.godot or export_presets.cfg.
+
+[Linux x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38334351918/artifacts/11786076257), inner archive SHA-256 from CI distribution proof: `d797fb2bdc619ed995e3231579d6ed1091e3a824f8912d22cac94d73f3d61d05`. The earlier locally built Linux archive has a different hash and is identified separately above.
+
+Download the GitHub artifact, extract its outer ZIP, then extract the inner `game121-sustainable-adventures-windows-x64.zip` completely. Open the extracted game folder and run `road-has-gone-dark.exe`, keeping `worldgen-helper`, artwork and licence notices together. No Godot or Node installation is required. Follow [TESTING.md](TESTING.md); source scene is `res://scenes/ui/main_menu.tscn`. Existing campaigns use Resume without deleting/recreating saves.
 
 ## Pacing, content and limits
 
