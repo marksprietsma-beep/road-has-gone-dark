@@ -145,6 +145,15 @@ func verify_content() -> void:
   if record.is_empty():continue
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"twenty-level saved career "+cls)
   var snap: Dictionary=kernel.derive_character(record).snapshot
+  if cls=="druid":
+   var master: Dictionary=record.duplicate(true);master.runtime.resources=snap.resource_capacities.duplicate()
+   var transformed := RulesEffects.new(source).use_ability(master,master,"druid-master-20",{"main":1,"move":1,"reaction":1},RulesRng.initial("master-form"))
+   check(transformed.ok,"high Druid form really executes")
+   if transformed.ok:
+    var form_stats: Dictionary=kernel.derive_character(transformed.actor).snapshot
+    var combat := TacticalCombat.new(transformed.actor)
+    var actor := combat.unit(master.character_id,"Master Druid","party",[0,0],transformed.actor,"staff")
+    check(combat.active_weapon(actor)=="bear-claws" and form_stats.capabilities.weapon_damage.get("bear-claws")=="2d10","master natural damage matches actual combat weapon")
   for id in snap.abilities:
    var ability := source.definition("abilities",id)
    if ability.provenance.get("revision")!="game112-wave-two" or ability.tags.has("spell"):continue
@@ -155,7 +164,6 @@ func verify_content() -> void:
    var used := RulesEffects.new(source).use_ability(actor,actor if ability.targeting.kind=="self" else target,id,{"main":1,"move":1,"reaction":1},RulesRng.initial(id))
    check(used.ok,"actual expanded career ability "+id+JSON.stringify(used.get("errors",[])))
    if used.ok:check(used.budget.main==0,"expanded ability spends main "+id)
-   if used.ok and id=="druid-master-20":check(kernel.derive_character(used.actor).snapshot.capabilities.weapon_damage.get("bear-claws")=="2d10","high Druid body damage applies to actual natural weapon")
    if cls in ["crusader","swordsage","wilder","binder","psion","psychic-warrior","soulknife","warlock","scout","swashbuckler","knight","warblade"]:
     var battle_actor: Dictionary=actor.duplicate(true);battle_actor.character_id="a"
     battle_actor.equipment=definition.recommended_equipment.duplicate()
