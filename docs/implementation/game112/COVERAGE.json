@@ -29,8 +29,12 @@
     "feats": 40,
     "skills": 14,
     "scheduled_choice_groups": 47,
-    "status": "source implemented; focused mechanics and new-party save tests passed; native/full regressions pending",
-    "programme_complete": false
+    "status": "playable bounded wave; Windows/Linux source, native and UI/input verified; human review pending",
+    "programme_complete": false,
+    "verified_source": "7777f1d435819dd18098efd5a71fb1e6928b751f",
+    "human_acceptance": "pending",
+    "mapped_playable_source_occurrences": 44,
+    "unresolved_adventurer_source_occurrences": 708
   },
   "classes": [
     {
