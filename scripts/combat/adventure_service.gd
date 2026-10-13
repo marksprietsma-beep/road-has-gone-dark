@@ -2,26 +2,45 @@ class_name AdventureService
 extends ExpeditionService
 static var legacy_review := false # Diagnostic drivers only; never saved.
 static func active_battle(state: Dictionary) -> Dictionary:
+ var c := OpportunityCycles.current(state)
+ if not c.get("active",{}).is_empty():return c.encounters.get(c.active.site_id,{})
  var generated := SandboxRecords.battle(state)
  return generated if not generated.is_empty() else state.get("first_adventure",{}).get("battle",{})
 static func active_result(state: Dictionary) -> Dictionary:
+ var c := OpportunityCycles.current(state)
+ if not c.get("active",{}).is_empty():return c.results.get(c.active.site_id,{})
  var s: Dictionary=state.get("sandbox",{})
  if not s.get("active",{}).is_empty():return s.results.get(s.active.site_id,{})
  return state.get("first_adventure",{}).get("result",{})
+static func opportunities(state: Dictionary) -> Dictionary:
+ return OpportunityCycles.current(state) if state.has("adventure_cycles") else state.get("sandbox",{})
+static func command_operation(state: Dictionary) -> String:
+ return "cycle_command" if not OpportunityCycles.current(state).get("active",{}).is_empty() else "sandbox_command" if not state.get("sandbox",{}).get("active",{}).is_empty() else "battle_command"
 static func away(state: Dictionary) -> bool:
- return not state.get("sandbox",{}).get("active",{}).is_empty() or not state.get("expedition",{}).get("active",{}).is_empty()
+ return not OpportunityCycles.current(state).get("active",{}).is_empty() or not state.get("sandbox",{}).get("active",{}).is_empty() or not state.get("expedition",{}).get("active",{}).is_empty()
 ## Existing party lock/journal is the only writer, including individual turns.
 func _operate_locked(entry: Dictionary,slot: String,operation: String,member: int,changes: Dictionary) -> Dictionary:
  var world: GameWorldTemplate=entry.world
  var loaded := recover(slot,world)
  if not loaded.ok: return loaded
  var state: Dictionary=loaded.state
+ if operation.begins_with("cycle_"):
+  var transition := CycleAdventure.transition(self,entry,state,operation,changes)
+  if not transition.get("ok",false):return transition
+  return commit(slot,transition.candidate,world)
+ if state.has("adventure_cycles") and operation!="resume" and not OpportunityCycles.current(state).active.is_empty():return fail("Return from the current reports before another regional action.")
+ if state.has("adventure_cycles") and operation.begins_with("sandbox_"):return fail("Standing reports are archived. Continue the current saved leads instead.")
  if operation.begins_with("sandbox_"):
   var transition := SandboxAdventure.transition(self,entry,state,operation,changes)
   if not transition.get("ok",false):return transition
   var committed := commit(slot,transition.candidate,world)
   if committed.get("ok",false):committed.state.sandbox=RulesJson.normalize(committed.state.sandbox)
   return committed
+ if state.has("adventure_cycles") and operation=="resume":
+  var resumed := super._operate_locked(entry,slot,operation,member,changes)
+  if not resumed.ok:return resumed
+  if not CycleAdventure.source_matches(state,packet):return fail("Saved report geography changed; campaign preserved.")
+  return resumed
  if state.has("sandbox"):
   if operation=="resume":
    var resumed := super._operate_locked(entry,slot,operation,member,changes)

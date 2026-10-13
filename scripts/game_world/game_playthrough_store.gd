@@ -168,16 +168,19 @@ func _validate(state: Dictionary, world: GameWorldTemplate) -> String:
 	if state.has("party"):
 		var party_error := PartyRecords.validate(state, world)
 		if not party_error.is_empty(): return party_error
+	if not state.get("world_deltas") is Dictionary or not state.get("game_clock") is Dictionary: return "Invalid world consequences or clock"
 	var rules_error := RulesRecords.validate(state)
 	if not rules_error.is_empty(): return rules_error
-	var builder_error := CharacterBuilderRecords.validate(state)
-	if not builder_error.is_empty(): return builder_error
 	var expedition_error := ExpeditionRecords.validate(state, world)
 	if not expedition_error.is_empty(): return expedition_error
 	var adventure_error := AdventureRecords.validate(state, world)
 	if not adventure_error.is_empty(): return adventure_error
 	var sandbox_error := SandboxRecords.validate(state, world)
 	if not sandbox_error.is_empty(): return sandbox_error
+	var cycle_error := CycleAdventure.validate(state, world)
+	if not cycle_error.is_empty(): return cycle_error
+	var builder_error := CharacterBuilderRecords.validate(state)
+	if not builder_error.is_empty(): return builder_error
 	var party: Array = state.get("party_ids", [])
 	var characters: Array = state.get("characters", [])
 	# New campaigns start with exactly three members. Recruitment later adds

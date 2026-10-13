@@ -26,7 +26,7 @@ static func threshold(level: int,context: Dictionary={}) -> int:
  var rows: Array=WorldOriginLore.read_json(policy(context)).xp_thresholds
  return int(rows[level-1]) if level>=1 and level<=rows.size() else RulesJson.LIMIT
 static func xp(state: Dictionary,id: String) -> int:
- var amount := 0
+ var amount := OpportunityCycles.xp(state,id)
  for progression_key in ["sandbox","first_adventure"]:
   var progression: Variant=state.get(progression_key,{})
   if not progression is Dictionary:return 0

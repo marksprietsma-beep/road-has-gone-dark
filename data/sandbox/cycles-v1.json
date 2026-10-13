@@ -1,0 +1,54 @@
+{
+  "version": "contextual-cycles-v1",
+  "objective_xp": 10,
+  "rewarded_outcomes": [
+    "recovered",
+    "investigated",
+    "peaceful_access",
+    "victory"
+  ],
+  "skill_map": {
+    "recovery": [
+      "craft",
+      "survival"
+    ],
+    "investigation": [
+      "perception",
+      "arcana",
+      "religion"
+    ],
+    "contested": [
+      "persuasion",
+      "insight"
+    ]
+  },
+  "skill_dc_base": 10,
+  "enemy_level_cap": 12,
+  "titles": {
+    "recovery": [
+      "Provision request",
+      "Travellers needing assistance",
+      "Damaged stores",
+      "Shelter provisions"
+    ],
+    "investigation": [
+      "New trail report",
+      "Missing route markers",
+      "Uncertain local evidence",
+      "Survey request"
+    ],
+    "contested": [
+      "New arrivals disputing access",
+      "Travellers blocking supplies",
+      "Armed salvage claim",
+      "Passage disagreement"
+    ]
+  },
+  "authorship": "Original TRHGD contextual reports and objective reward policy; canonical geography unchanged",
+  "challenge_level": "ceil_mean_party_level",
+  "skill_provision_cost": {
+    "recovery": 0,
+    "investigation": 0,
+    "contested": 1
+  }
+}
