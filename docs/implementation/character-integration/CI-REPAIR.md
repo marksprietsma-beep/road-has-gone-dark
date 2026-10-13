@@ -21,3 +21,7 @@ Raw before/after proofs and logs are retained beside this document. Native Windo
 ## Shared sandbox follow-up
 
 The generated sandbox review inherited the same obsolete battle policy. It now calls the shared legal-offensive-control helper and records actual selected actions in its proof. Both original four-/six-minute deadlines and all generated encounter outcome, history/reward, layout, render/RNG, resume and persistence assertions remain unchanged. Verification of this follow-up is recorded in the final integration delivery after it completes; the initial before/after results above remain qualified to their exact earlier source.
+
+## Final verification
+
+Shared-helper source `3594c847f1a2dc44870f4158fac45be660b565eb`: sandbox source 266 checks / 0 failures; native Windows and Linux each passed 229 First Adventure and 284 sandbox checks with an empty PATH and no source-helper override. Both used actual Wizard, Ranger and Fighter powers and retained legacy replay, outcome/reward and persistence assertions. Complete Windows geography/campaign recovery and all five PR #94 checks passed before its normal merge. The post-merge main workflows also passed. Exact links, source qualifications, raw proofs, build checksum and programme limitations are in [DELIVERY.md](DELIVERY.md).

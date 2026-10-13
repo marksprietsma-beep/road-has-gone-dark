@@ -1,0 +1,183 @@
+{
+  "baseRefName": "main",
+  "headRefName": "feature/game-119-deep-character-progression",
+  "headRefOid": "05b093aed4d9c2b3967321d405f649182168f9b2",
+  "isDraft": false,
+  "mergeStateStatus": "CLEAN",
+  "mergeable": "MERGEABLE",
+  "number": 91,
+  "state": "OPEN",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T13:11:44Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959639/job/115294508446",
+      "name": "rules (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify GAME-32 Rules Core and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T13:10:45Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959722/job/115294508802",
+      "name": "ui (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:45Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify GAME-83 Production UI and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:24:49Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959663/job/115294508497",
+      "name": "gameworld-smoke",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify GameWorld save foundation"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:43:37Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959579/job/115294508314",
+      "name": "profiles (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:44Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Hierarchical Origin Profiles and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:25:37Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959660/job/115294508564",
+      "name": "onboarding",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify New Game origin"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:32:11Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959583/job/115294508884",
+      "name": "context (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Origin Context"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T13:05:06Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959693/job/115294508534",
+      "name": "party (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Party and Production Expedition Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:36:54Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959730/job/115294508821",
+      "name": "enrichment (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Production World Enrichment"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:30:08Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959592/job/115294508730",
+      "name": "library (ubuntu-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify World Library"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:56:56Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959639/job/115294508550",
+      "name": "rules (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify GAME-32 Rules Core and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T13:01:13Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959722/job/115294508525",
+      "name": "ui (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify GAME-83 Production UI and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:39:30Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959579/job/115294508690",
+      "name": "profiles (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Hierarchical Origin Profiles and Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:28:49Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959583/job/115294508526",
+      "name": "context (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Origin Context"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T13:00:03Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959693/job/115294508927",
+      "name": "party (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Party and Production Expedition Native Distribution"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:34:30Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959730/job/115294509076",
+      "name": "enrichment (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify Production World Enrichment"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:27:32Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959592/job/115294508258",
+      "name": "library (windows-latest)",
+      "startedAt": "2026-10-13T12:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify World Library"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-13T12:30:09Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38396959592/job/115297191121",
+      "name": "review-packages",
+      "startedAt": "2026-10-13T12:30:09Z",
+      "status": "COMPLETED",
+      "workflowName": "Verify World Library"
+    }
+  ],
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/pull/91"
+}
