@@ -100,10 +100,19 @@ static func recipe(_style_id: String, unit: Dictionary, member: Dictionary={}, d
   if unit.record.runtime.statuses.any(func(status: Dictionary):return status.id=="bear-form") and not descriptors.has("transformation"):
    p.transformation={"source":"wild-shape","body":p.body.duplicate(true)}
    p.transformation.body.plan="quadruped";p.transformation.body.size=1.15
+ var source := RulesRecords.registry(unit.record)
+ var active_form := RulesEntities.form(unit.record,source)
+ if not active_form.is_empty():
+  p.transformation={"source":active_form.id,"body":{"plan":active_form.body_plan,"size":{"small":0.78,"medium":1.0,"large":1.16}[active_form.size]}}
+ if unit.has("entity"):
+  var creature := source.definition("creatures",unit.entity.definition_id)
+  if not creature.is_empty():p.transformation={"source":unit.entity.definition_id,"body":{"plan":creature.body_plan,"size":{"small":0.78,"medium":1.0,"large":1.16}[creature.size]}}
  var body: Dictionary=p.transformation.get("body",p.body)
  var warnings: Array[String]=[]
- var equipment: Array=unit.record.get("equipment",[])
- var weapon: String=unit.weapon
+ if unit.has("entity") or not active_form.is_empty():warnings.append("Creature/form artwork unavailable: neutral humanoid fallback")
+ var equipment: Array=unit.record.get("equipment",[]).duplicate()
+ if not active_form.is_empty():equipment=[]
+ var weapon: String="unarmed" if unit.has("entity") or not active_form.is_empty() else unit.weapon
  var role := "scout" if weapon=="bow" else "adept" if weapon=="staff" else "vanguard" if equipment.has("mail") else "expert"
  if unit.team=="enemy":role="raider-archer" if weapon=="bow" else "raider-blade"
  var seed: String=p.visual_seed

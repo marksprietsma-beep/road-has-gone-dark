@@ -189,7 +189,7 @@ func refresh() -> void:
      if candidate.character_id==id: member=candidate;break
     var recipe := CombatArt.recipe(art_style,u,member)
     var pawn: CombatPawn=retained[id] if retained.has(id) else CombatPawn.new();button.add_child(pawn)
-    var badge: String=str(state.party_ids.find(id)+1) if u.team=="party" else "A" if u.weapon=="bow" else "B"
+    var badge: String=("S" if u.entity.kind=="summon" else "C") if u.has("entity") else str(state.party_ids.find(id)+1) if u.team=="party" else "A" if u.weapon=="bow" else "B"
     pawn.present(u,recipe,actor.id==id and playing,int(engine.stats(u).HP),badge)
     pawns[id]=pawn
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
@@ -227,6 +227,13 @@ func refresh() -> void:
    detail.add_theme_color_override("font_color",GameUI.GOLD)
    add_action("move","Move · select a clear tile")
    add_action("attack","Attack · select enemy")
+   if actor.has("entity"):
+    detail.text+="\nOwned by "+b.units[actor.entity.owner_id].name+" · "+("temporary: %d rounds"%actor.entity.remaining if actor.entity.kind=="summon" else "persistent companion")+"\nCreature appearance: labelled humanoid fallback"
+   for creature in b.units.values():
+    if creature.get("entity",{}).get("owner_id")==actor.id and engine.alive(creature):
+     var owned_id: String=creature.id
+     var dismiss := GameUI.action("Dismiss "+creature.name,func():send("dismiss",owned_id))
+     dismiss.disabled=thread!=null or int(b.budget.main)<1;gate_button(dismiss);actions.add_child(dismiss);action_buttons["dismiss:"+owned_id]=dismiss
    if engine.registry.rules_ref().engine_schema==3:
     for id in abilities:
      if id in ["attack","move","departure-attack","precision"]:continue
@@ -328,6 +335,7 @@ func visual_impact(previous: Dictionary, committed: Dictionary, command: Diction
  var added_logs: Array=committed.log.slice(previous.log.size())
  for id in committed.order:
   if not pawns.has(id):continue
+  if not previous.units.has(id):continue
   var change: int=int(committed.units[id].record.runtime.hp)-int(previous.units[id].record.runtime.hp)
   if change!=0:pawns[id].react(change)
   elif target==id and command.kind in ["attack","spark"]:
@@ -347,7 +355,7 @@ func presentation_seconds(previous: Dictionary) -> float:
  var command: Dictionary=after.commands.back();var actor: String=command.actor_id
  var kind: String=presentation_kind_for(command.kind)
  if kind in ["end","retreat"]:return CombatPacing.POST_BEAT_SECONDS
- var downed: bool=after.order.any(func(id: String):return engine.alive(previous.units[id]) and not engine.alive(after.units[id]))
+ var downed: bool=after.order.any(func(id: String):return previous.units.has(id) and engine.alive(previous.units[id]) and not engine.alive(after.units[id]))
  var reaction := CombatPacing.clip_seconds(CombatPacing.timelines(CombatArt.styles()[0].timelines),"down") if downed else CombatPacing.REACTION_SECONDS
  if kind=="move":
   var route: Array=engine.paths(previous,previous.units[actor]).get(str(after.units[actor].position),[])

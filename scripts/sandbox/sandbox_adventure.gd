@@ -40,6 +40,7 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
    var record: Dictionary=candidate.mechanics.records[id]
    var snapshot: Dictionary=RulesCharacter.new(RulesRecords.registry(candidate)).derive_character(record).snapshot
    record.runtime.hp=int(snapshot.stats.HP);record.runtime.statuses=[]
+   RulesEntities.recover_companions(record,RulesRecords.registry(state))
    for resource in snapshot.resource_capacities:record.runtime.resources[resource]=snapshot.resource_capacities[resource]
    record.revision+=1
   candidate.mechanics.revision+=1

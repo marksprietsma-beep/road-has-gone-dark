@@ -9,6 +9,7 @@ func create(identity: String, attributes: Dictionary, ancestry: String, backgrou
  var record := {"schema_version":1,"character_id":identity,"rules_ref":registry.rules_ref(),"base_attributes":attributes.duplicate(true),"ancestry_ref":ancestry,"background_ref":background,"advancement_history":[],"equipment":[],"choices":{"prepared_abilities":[]},"runtime":{"hp":0,"temporary_hp":0,"resources":{},"statuses":[],"modifiers":[],"granted_features":[],"senses":[],"apparent_effects":[]},"revision":0}
 
  if registry.rules_ref().get("engine_schema")==3:record.choices.spell_preparations={}
+ if RulesEntities.enabled(registry):record.runtime.companions={}
  return record
 
 func feat_at(level: int,class_id: String,class_level: int) -> bool:
@@ -40,7 +41,7 @@ func _shape(record: Dictionary) -> Array:
  if not record.get("runtime") is Dictionary: errors.append(RulesJson.issue("build.runtime","runtime","Mutable mechanical record required"))
  else:
   var runtime: Dictionary=record.runtime
-  if runtime.size()!=8: errors.append(RulesJson.issue("build.runtime","runtime","Unexpected runtime fields"))
+  if runtime.size()!=(9 if RulesEntities.enabled(registry) else 8): errors.append(RulesJson.issue("build.runtime","runtime","Unexpected runtime fields"))
   for key in ["hp","temporary_hp"]:
    if not RulesJson.integer(runtime.get(key),0,100000): errors.append(RulesJson.issue("build.runtime",key,"Bounded nonnegative current HP required"))
   if not runtime.get("resources") is Dictionary: errors.append(RulesJson.issue("build.runtime","resources","Resource values required"))
@@ -73,6 +74,7 @@ func _replay(record: Dictionary) -> Dictionary:
   if not step is Dictionary or step.size()!=(7 if RulesCareer.enabled(registry) else 5) or step.get("level")!=i+1 or not step.get("class_id") is String or not step.get("skill_allocations") is Dictionary or not step.get("feat_id") is String or not step.get("attribute_increase") is String:
    return RulesJson.result([RulesJson.issue("advancement.schema",path,"Invalid ordered advancement step")])
   var cls := registry.definition("classes",step.class_id)
+  if cls.get("class_kind")=="companion" and not (record.character_id.ends_with(":companion") or record.character_id.contains(":summon:")):return RulesJson.result([RulesJson.issue("companion.class",path,"Creature advancement is internal to owned actors")])
   if cls.is_empty(): return RulesJson.result([RulesJson.issue("advancement.class",path,"Unknown class")])
   if int(classes.get(step.class_id,0))>=int(cls.max_level): return RulesJson.result([RulesJson.issue("advancement.class_cap",path,"Class level cap exceeded")])
   var requirement := RulesExpressions.evaluate_requirements(cls.requirements,context)
@@ -139,7 +141,7 @@ func _replay(record: Dictionary) -> Dictionary:
    if registry.definition("equipment",id).kind in body_caps.blocked_equipment:return RulesJson.result([RulesJson.issue("equipment.body",id,"Inherited body configuration cannot use this slot")])
  if record.choices.prepared_abilities.size()!=RulesRegistry._unique_count(record.choices.prepared_abilities): return RulesJson.result([RulesJson.issue("build.prepared_duplicate","choices","Prepared abilities must be unique")])
  for id in record.choices.prepared_abilities:
-  if not id is String or not context.abilities.has(id): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
+  if not id is String or not (context.abilities.has(id) or RulesEntities.enabled(registry) and not RulesEntities.form(record,registry).is_empty() and _context(attributes,classes,ranks,feats,record,false).abilities.has(id)): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
  if registry.rules_ref().engine_schema==3:
   var spell_errors := RulesCoreContent.selection_errors(record,context,registry)
   if not spell_errors.is_empty():return RulesJson.result(spell_errors)
@@ -190,15 +192,20 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   for id in record.runtime.granted_features: _feature(context,str(id),"granted:"+str(id))
   for sense in record.runtime.senses:
    if not context.senses.has(sense): context.senses.append(sense)
+ var active_form := RulesEntities.form(record,registry) if include_runtime else {}
+ if not active_form.is_empty():
+  for id in active_form.attributes:context.attributes[id]+=int(active_form.attributes[id])
+  _feature(context,active_form.feature_id,"form:"+active_form.id)
+ var physical: Dictionary=context.attributes
  var con := int(floor(float(int(attributes.CON)-10)/2.0))
- var dex := int(floor(float(int(attributes.DEX)-10)/2.0))
+ var dex := int(floor(float(int(physical.DEX)-10)/2.0))
  base.HP=maxi(1,int(base.HP)+con*int(context.level));base.defence+=dex;base.fortitude+=con;base.reflex+=dex
  base.will+=int(floor(float(int(attributes.WIS)-10)/2.0));base.initiative=dex
  if registry.rules_ref().engine_schema==3:
   if context.tags.has("monk_unarmoured") and not record.equipment.any(func(id: String):return registry.definition("equipment",id).kind in ["armor","shield"]):base.defence+=maxi(0,int(floor(float(int(attributes.WIS)-10)/2.0)))
   if context.tags.has("divine_grace"):
    for save in RulesExpressions.SAVES:base[save]+=maxi(0,int(floor(float(int(attributes.CHA)-10)/2.0)))
- base.melee_attack=int(base.BAB)+int(floor(float(int(attributes.STR)-10)/2.0));base.ranged_attack=int(base.BAB)+dex
+ base.melee_attack=int(base.BAB)+int(floor(float(int(physical.STR)-10)/2.0));base.ranged_attack=int(base.BAB)+dex
  context.stats=base.duplicate(true)
  for resource in context.resources:
   var definition := registry.definition("resources",resource)
@@ -214,6 +221,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  for entry in context.feature_sources: _collect_modifiers(registry.definition("features",entry.id).modifiers,entry.source,context,modifiers)
  for pair in [["ancestries",record.ancestry_ref],["backgrounds",record.background_ref]]: _collect_modifiers(registry.definition(pair[0],pair[1]).get("modifiers",[]),pair[1],context,modifiers)
  for id in record.equipment:
+  if not active_form.is_empty() and registry.definition("equipment",str(id)).kind in active_form.suppressed_equipment:continue
   var item := registry.definition("equipment",str(id))
   _collect_modifiers(item.get("modifiers",[]),"equipment:"+str(id),context,modifiers)
   for tag in item.get("tags",[]):
@@ -234,6 +242,9 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   if not combined.ok: context.errors.append_array(combined.errors)
   context.stats[stat]=combined.get("value",0);applied[stat]=combined.get("applied",[])
  context.stats.stride=maxi(1,int(context.stats.stride));context.stats.HP=maxi(1,int(context.stats.HP))
+ if not active_form.is_empty():
+  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell"))
+  context.body_form=active_form.duplicate(true)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()
  return context
@@ -254,6 +265,7 @@ func _collect_modifiers(definitions: Array,source: String,context: Dictionary,ou
 
 func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
  var errors: Array=[];var runtime: Dictionary=record.runtime
+ if RulesEntities.enabled(registry):errors.append_array(RulesEntities.runtime_errors(record,registry))
  for key in ["granted_features","senses"]:
   if runtime[key].size()!=RulesRegistry._unique_count(runtime[key]): errors.append(RulesJson.issue("runtime.duplicate","runtime."+key,"Granted identifiers must be unique"))
  var status_ids := {}
@@ -325,6 +337,9 @@ func derive_character(record: Dictionary) -> Dictionary:
    snapshot.casting_levels=c.casting_levels.duplicate()
   snapshot=RulesJson.string_keys(snapshot)
  if RulesCapabilities.enabled(registry):snapshot.capabilities=RulesCapabilities.derive(c,record,registry,true)
+ if RulesEntities.enabled(registry):
+  snapshot.body_form=c.get("body_form",{}).duplicate(true)
+  snapshot.companions=record.runtime.companions.duplicate(true)
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
@@ -348,6 +363,9 @@ func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
   if not candidate.runtime.resources.has(id): candidate.runtime.resources[id]=int(replay.context.capacities[id])
  if next_level==1: candidate.runtime.hp=int(replay.context.stats.HP)
  candidate.runtime.hp=mini(int(candidate.runtime.hp),int(replay.context.stats.HP))
+ if RulesEntities.enabled(registry):
+  var synced := RulesEntities.synchronize(candidate,registry)
+  if not synced.ok:return synced
  var derived := derive_character(candidate)
  if not derived.ok: return derived
  return {"ok":true,"candidate":candidate,"snapshot":derived.snapshot,"before_hash":RulesJson.digest(record)}
@@ -362,10 +380,14 @@ func available_advancement(record: Dictionary) -> Dictionary:
  # Entry options must use the same durable qualification basis as replay.
  # Temporary battle/runtime grants do not rewrite historical class entry.
  var c: Dictionary=derived.context
- var entry_context := _context(c.attributes,c.classes,c.skills,c.feats,record,false)
+ var entry_attributes: Dictionary=c.attributes.duplicate()
+ if RulesEntities.enabled(registry):
+  for id in RulesEntities.form(record,registry).get("attributes",{}):entry_attributes[id]-=int(RulesEntities.form(record,registry).attributes[id])
+ var entry_context := _context(entry_attributes,c.classes,c.skills,c.feats,record,false)
  if not entry_context.errors.is_empty(): return RulesJson.result(entry_context.errors)
  var options := {}
  for id in registry.ids("classes"):
+  if registry.definition("classes",id).get("class_kind")=="companion":continue
   var definition := registry.definition("classes",id)
   var result := RulesExpressions.evaluate_requirements(definition.requirements,entry_context)
   if int(derived.context.level)>=int(registry.rule("max_level")) or int(derived.context.classes.get(id,0))>=int(definition.max_level): result=RulesJson.result([RulesJson.issue("advancement.level_cap",id,"Progression limit reached")])
