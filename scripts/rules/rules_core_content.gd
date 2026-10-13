@@ -23,6 +23,9 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   for id in row.skill_bonuses:
    if not tables.skills.has(id) or not RulesJson.integer(row.skill_bonuses[id],-4,4):errors.append(RulesJson.issue("core.skill",row.id,"Invalid inherited skill bonus"))
  elif category in ["resources","abilities"]:
+  if row.has("attack_weapon"):
+   RulesRegistry._reference(tables,"equipment",row.attack_weapon,row.id,errors)
+   if tables.equipment.get(row.attack_weapon,{}).get("kind")!="weapon":errors.append(RulesJson.issue("core.natural_weapon",row.id,"Natural strike requires an actual weapon definition"))
   if row.has("prepared_ability"):RulesRegistry._reference(tables,"abilities",row.prepared_ability,row.id,errors)
   for field in ["slot_class","casting_class"]:
    if row.has(field):RulesRegistry._reference(tables,"classes",row[field],row.id,errors)

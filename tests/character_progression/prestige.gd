@@ -43,7 +43,7 @@ func fixture(path: String) -> Dictionary:
   r=step(r,schedule[i],feat,["acrobatics"] if path=="duelist" else ["spellcraft"] if path=="eldritch-knight" else ["stealth","arcana"] if path=="arcane-trickster" else ["arcana","insight"])
  return r
 func run():
- source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ source=RulesRecords.registry(RulesRecords.installed_packs().filter(func(row: Dictionary):return row.rules_ref.pack_id=="trhgd-character-v9")[0].rules_ref);kernel=RulesCharacter.new(source)
  check(source.ready() and RulesCareer.enabled(source),"new default career pack")
  var virgin := kernel.create("entry",source.recommendation("adept").attributes,"heritage-human")
  for path in ["duelist","eldritch-knight","arcane-trickster","mystic-theurge"]:

@@ -75,6 +75,7 @@ func occupant(b: Dictionary,p: Array) -> String:
 func neighbours(p: Array) -> Array:
  return [[int(p[0]),int(p[1])-1],[int(p[0])-1,int(p[1])],[int(p[0])+1,int(p[1])],[int(p[0]),int(p[1])+1]]
 func paths(b: Dictionary,u: Dictionary) -> Dictionary:
+ if RulesCapabilities.enabled(registry) and characters.derive_character(u.record).snapshot.capabilities.immobile:return {}
  b=RulesJson.normalize(b);u=RulesJson.normalize(u)
  var found := {str(u.position):[u.position]}
  var queue: Array = [u.position]
@@ -102,10 +103,16 @@ func line_clear(b: Dictionary,a: Array,z: Array) -> bool:
   else: y+=sy;iy+=1
   if blocked(b,[x,y]): return false
  return true
+func threat_reach(u: Dictionary) -> int:
+ if RulesCapabilities.enabled(registry):return maxi(1,int(stats(u).reach))
+ return 1
+func weapon_range(u: Dictionary) -> int:
+ var value: int=int(registry.definition("equipment",u.weapon).range)
+ return maxi(value,threat_reach(u)) if RulesCapabilities.enabled(registry) else value
 func engaged(b: Dictionary,u: Dictionary) -> bool:
  for id in b.order:
   var other: Dictionary=b.units[id]
-  if alive(other) and other.team!=u.team and distance(other.position,u.position)==1: return true
+  if alive(other) and other.team!=u.team and distance(other.position,u.position)<=threat_reach(other): return true
  return false
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
  if not alive(t): return false
@@ -117,15 +124,15 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
   if targeting.kind=="ally":return t.team==u.team and distance(u.position,t.position)<=int(targeting.get("range",0)) and line_clear(b,u.position,t.position)
   if targeting.kind!="creature" or t.team==u.team:return false
   if definition.tags.has("weapon_strike"):
-   var weapon := registry.definition("equipment",u.weapon)
+   var weapon := registry.definition("equipment",definition.get("attack_weapon",u.weapon))
    if definition.tags.has("flurry") and u.weapon!="unarmed":return false
    if definition.tags.has("power_strike") and weapon.tags.has("ranged"):return false
-   return distance(u.position,t.position)<=int(weapon.range) and line_clear(b,u.position,t.position)
+   return distance(u.position,t.position)<=(int(weapon.range) if definition.has("attack_weapon") else weapon_range(u)) and line_clear(b,u.position,t.position)
   return distance(u.position,t.position)<=int(targeting.get("range",1)) and line_clear(b,u.position,t.position)
  if ability=="guard": return u.id==t.id
  if ability=="healing-thread": return t.team==u.team and distance(u.position,t.position)<=1
  if t.team==u.team: return false
- var reach: int=int(registry.definition("equipment",u.weapon).range) if ability=="attack" else 5
+ var reach: int=weapon_range(u) if ability=="attack" else 5
  return distance(u.position,t.position)<=reach and line_clear(b,u.position,t.position)
 
 func command(source: Dictionary,input: Dictionary) -> Dictionary:
@@ -152,7 +159,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
    var previous: Array=actor.position
    for id in b.order:
     var enemy: Dictionary=b.units[id]
-    if alive(enemy) and enemy.team!=actor.team and int(enemy.reaction)>0 and distance(enemy.position,previous)==1 and distance(enemy.position,route[i])>1:
+    if alive(enemy) and enemy.team!=actor.team and int(enemy.reaction)>0 and distance(enemy.position,previous)<=threat_reach(enemy) and distance(enemy.position,route[i])>threat_reach(enemy):
      enemy.reaction=0
      weapon_attack(b,enemy,actor,true)
      if not alive(actor): break
@@ -178,6 +185,8 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
     var actor_snapshot: Dictionary= characters.derive_character(actor.record).snapshot
     var ally_snapshot: Dictionary= characters.derive_character(ally.record).snapshot
     var context := {"source_character_id":actor.id,"character_id":actor.id,"target_id":ally.id,"stats":actor_snapshot.stats,"target_stats":ally_snapshot.stats,"target_tags":ally_snapshot.tags,"attributes":actor_snapshot.attributes,"classes":actor_snapshot.class_levels,"capacities":actor_snapshot.resource_capacities}
+    if RulesCapabilities.enabled(registry):
+     context.target_capabilities=ally_snapshot.capabilities;context.capabilities=actor_snapshot.capabilities;context.casting_levels=actor_snapshot.casting_levels
     for effect in definition.effects:
      var area := effects.resolve_rules_effect(effect,actor.record.runtime,ally.record.runtime,context,b.rng)
      if not area.ok:return fail("Area effect unavailable: "+RulesJson.canonical(area.errors))
@@ -203,7 +212,12 @@ func ability_summary(events: Array) -> String:
 
 func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,technique: String="") -> void:
  var weapon := registry.definition("equipment","shortblade" if reaction and a.weapon=="bow" else a.weapon)
- if registry.rules_ref().engine_schema==3 and a.weapon=="unarmed" and int(characters.derive_character(a.record).snapshot.class_levels.get("monk",0))>=4:weapon=weapon.duplicate(true);weapon.damage="1d8"
+ var attack_weapon: String=str(registry.definition("abilities",technique).get("attack_weapon",a.weapon)) if RulesCapabilities.enabled(registry) else str(a.weapon)
+ if attack_weapon!=a.weapon:weapon=registry.definition("equipment",attack_weapon)
+ if registry.rules_ref().engine_schema==3 and attack_weapon=="unarmed" and int(characters.derive_character(a.record).snapshot.class_levels.get("monk",0))>=4:weapon=weapon.duplicate(true);weapon.damage="1d8"
+ if RulesCapabilities.enabled(registry):
+  var overrides: Dictionary=characters.derive_character(a.record).snapshot.capabilities.weapon_damage
+  if overrides.has(attack_weapon):weapon=weapon.duplicate(true);weapon.damage=overrides[attack_weapon]
  var ranged: bool=weapon.tags.has("ranged")
  var s := stats(a)
  var bonus: int=int(s.ranged_attack if ranged else s.melee_attack)
@@ -216,6 +230,12 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
   if technique=="aimed-shot":bonus+=2
   if technique=="smite":bonus+=maxi(0,int(floor(float(int(snap.attributes.CHA)-10)/2.0)))
  if ranged and engaged(b,a): bonus-=4
+ if RulesCapabilities.enabled(registry):
+  var chance: int=int(characters.derive_character(t.record).snapshot.capabilities.concealment)
+  if chance>0:
+   var conceal := RulesRng.roll("1d100",b.rng);b.rng=conceal.rng
+   if int(conceal.total)<=chance:
+    b.log.append(a.name+" loses the target in concealment.");return
  var roll := RulesRng.attack_roll(bonus,int(stats(t).defence),registry.rule("critical"),b.rng)
  b.rng=roll.rng
  if not roll.hit:
@@ -247,6 +267,11 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
   var guard: Dictionary=b.units[id]
   if guard.id!=t.id and guard.team==t.team and alive(guard) and int(guard.reaction)>0 and distance(guard.position,t.position)==1 and guard.record.runtime.statuses.any(func(v: Dictionary):return v.id=="guarding"):
    guard.reaction=0;amount=maxi(0,amount-4);b.log.append(guard.name+" protects "+t.name+": damage reduced by 4.");break
+ if RulesCapabilities.enabled(registry):
+  var caps: Dictionary=characters.derive_character(a.record).snapshot.capabilities
+  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0:
+   amount+=int(caps.moving_damage);a.precision_used=true;b.log.append(a.name+" exploits movement: +"+str(caps.moving_damage)+" damage.")
+  amount=RulesCapabilities.reduce_damage(amount,str(weapon.get("damage_type","physical")),characters.derive_character(t.record).snapshot.capabilities)
  amount=maxi(0,amount)
  var absorbed := mini(amount,int(t.record.runtime.temporary_hp))
  t.record.runtime.temporary_hp-=absorbed

@@ -67,6 +67,9 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  context.target_id=target.character_id;context.target_stats=t.snapshot.stats
  context.target_tags=t.snapshot.tags
  context.target_capacities=t.snapshot.resource_capacities
+ if RulesCapabilities.enabled(registry):
+  context.target_capabilities=t.snapshot.capabilities
+  context.capabilities=a.snapshot.capabilities
  context.stats=a.snapshot.stats;context.capacities=a.snapshot.resource_capacities
  if ability.timing.kind!="instant":
   events.append({"type":"ability_deferred","ability_id":ability_id,"timing":ability.timing.duplicate(true)})
@@ -117,6 +120,7 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   var directed := effect.duplicate(true);directed.erase("recipient")
   var redirected := {"actor":state.actor,"target":state.actor,"rng":state.rng,"events":state.events}
   var own_context := context.duplicate(true);own_context.target_id=context.character_id;own_context.target_stats=context.stats
+  if RulesCapabilities.enabled(registry):own_context.target_capabilities=context.get("capabilities",{})
   var result := _apply(directed,redirected,own_context);state.rng=redirected.rng
   return result
  var op: String=effect.op
@@ -130,6 +134,10 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
    if effect.get("save_half",false):
     if not context.get("saving_throw_success",false):return RulesJson.result([RulesJson.issue("effect.save_half",op,"Half damage requires a successful authoritative save")])
     amount=0 if context.get("target_tags",[]).has("evasion") else int(floor(float(amount)/2.0))
+   if RulesCapabilities.enabled(registry):
+    var reduced := RulesCapabilities.reduce_damage(amount,effect.damage_type,context.get("target_capabilities",{}))
+    if reduced!=amount:state.events.append({"type":"damage_resisted","damage_type":effect.damage_type,"amount":amount-reduced})
+    amount=reduced
    var absorbed := mini(amount,int(target.temporary_hp));target.temporary_hp-=absorbed
    var lost := mini(amount-absorbed,int(target.hp));target.hp-=lost
    state.events.append({"type":"damage_applied","target":context.get("target_id",""),"amount":lost,"temporary_absorbed":absorbed,"damage_type":effect.damage_type})
@@ -167,6 +175,8 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   if not target.senses.has(effect.id): target.senses.append(effect.id)
   state.events.append({"type":"sense_granted","id":effect.id})
  elif op=="apply_status":
+  if RulesCapabilities.enabled(registry) and context.get("target_capabilities",{}).get("immunities",[]).has(effect.id):
+   state.events.append({"type":"status_resisted","id":effect.id});return {"ok":true}
   var definition := registry.definition("statuses",effect.id)
   var existing: Array=target.statuses.filter(func(s: Dictionary): return s.id==effect.id)
   if not existing.is_empty() and definition.stacking=="reject": return RulesJson.result([RulesJson.issue("effect.status_stack",effect.id,"Existing status rejects stacking")])

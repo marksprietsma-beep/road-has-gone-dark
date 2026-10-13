@@ -133,6 +133,10 @@ func _replay(record: Dictionary) -> Dictionary:
   slots[id]=true;slots["slot:"+item.kind]=true
   var legal := RulesExpressions.evaluate_requirements(item.requirements,context)
   if not legal.ok: return legal
+ if RulesCapabilities.enabled(registry):
+  var body_caps := RulesCapabilities.derive(context,record,registry,false)
+  for id in record.equipment:
+   if registry.definition("equipment",id).kind in body_caps.blocked_equipment:return RulesJson.result([RulesJson.issue("equipment.body",id,"Inherited body configuration cannot use this slot")])
  if record.choices.prepared_abilities.size()!=RulesRegistry._unique_count(record.choices.prepared_abilities): return RulesJson.result([RulesJson.issue("build.prepared_duplicate","choices","Prepared abilities must be unique")])
  for id in record.choices.prepared_abilities:
   if not id is String or not context.abilities.has(id): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
@@ -200,6 +204,11 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   var definition := registry.definition("resources",resource)
   context.capacities[resource]=maxi(0,_value(definition.capacity,context))
   if registry.rules_ref().engine_schema==3 and definition.has("prepared_ability"):context.capacities[resource]=int(record.choices.spell_preparations.get(definition.prepared_ability,0))
+ if RulesCapabilities.enabled(registry):
+  var bonuses: Dictionary=RulesCapabilities.derive(context,record,registry,false).resource_bonuses
+  for id in bonuses:
+   if not context.capacities.has(id):context.errors.append(RulesJson.issue("capability.resource_unowned",id,"Capacity bonus requires an owned pool"))
+   else:context.capacities[id]=maxi(0,int(context.capacities[id])+int(bonuses[id]))
  var modifiers := {}
  for stat in RulesRegistry.STATS: modifiers[stat]=[]
  for entry in context.feature_sources: _collect_modifiers(registry.definition("features",entry.id).modifiers,entry.source,context,modifiers)
@@ -315,6 +324,7 @@ func derive_character(record: Dictionary) -> Dictionary:
    snapshot.specialisations=RulesCareer.selections(record,c.classes,registry).duplicate(true)
    snapshot.casting_levels=c.casting_levels.duplicate()
   snapshot=RulesJson.string_keys(snapshot)
+ if RulesCapabilities.enabled(registry):snapshot.capabilities=RulesCapabilities.derive(c,record,registry,true)
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 

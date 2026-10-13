@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:
@@ -34,7 +34,7 @@ static func casting_levels(record: Dictionary,classes: Dictionary,source: RulesR
  for option in selections(record,classes,source):
   if option.has("advance_casting"):
    var target: String=option.advance_casting
-   levels[target]=int(levels.get(target,0))+int(classes.get(option.progression_class,0))
+   levels[target]=int(levels.get(target,0))+int(floor(float(classes.get(option.progression_class,0))/float(option.get("advance_ratio",1))))
  return levels
 static func validate_definition(row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if row.has("class_kind") and row.class_kind not in ["base","prestige"]:errors.append(RulesJson.issue("career.kind",row.id,"Known base/prestige classification required"))
@@ -50,9 +50,10 @@ static func validate_definition(row: Dictionary,tables: Dictionary,errors: Array
    if options.has(option.id):errors.append(RulesJson.issue("career.duplicate",group.id,"Option IDs must be unique"))
    options[option.id]=true
    for field in option:
-    if field not in ["id","name","description","features","requirements","advance_casting","progression_class"]:errors.append(RulesJson.issue("career.field",group.id,"Unknown option field"))
+    if field not in ["id","name","description","features","requirements","advance_casting","progression_class","advance_ratio"]:errors.append(RulesJson.issue("career.field",group.id,"Unknown option field"))
    for id in option.features:RulesRegistry._reference(tables,"features",id,group.id,errors)
    RulesRegistry._requirement(option.requirements,tables,group.id,errors)
+   if option.has("advance_ratio") and (not option.has("advance_casting") or not RulesJson.integer(option.advance_ratio,1,4)):errors.append(RulesJson.issue("career.ratio",group.id,"Explicit bounded casting advancement ratio required"))
    if option.has("advance_casting"):
     RulesRegistry._reference(tables,"classes",option.advance_casting,group.id,errors)
     if option.get("progression_class")!=row.id or tables.classes.get(option.advance_casting,{}).get("spell_mode","").is_empty():errors.append(RulesJson.issue("career.casting",group.id,"Casting must advance an actual caster from this prestige track"))
