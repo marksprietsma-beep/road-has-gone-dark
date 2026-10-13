@@ -138,9 +138,15 @@ func run() -> void:
  await shot("people-popup-2560x1440")
  await key(KEY_ESCAPE)
  ui.people_picker.grab_focus()
- await key(KEY_ENTER)
- await key(KEY_DOWN)
- await key(KEY_ENTER)
+ if legacy:
+  await key(KEY_ENTER)
+  await key(KEY_DOWN)
+  await key(KEY_ENTER)
+ else:
+  # The expanded roster now places Kobold after Human. Select the intended
+  # Orc dependency by stable ID using the actual popup and keyboard, keeping
+  # every invalid-budget, disabled-Save and legacy input assertion intact.
+  await choose_native(ui.people_picker,"orc")
  if not legacy:check(ui.selected_id(ui.people_picker)=="orc" and not ui.editor.preview.ok,"Human-to-Orc caster change deliberately exercises skill and preparation budgets")
  # A changed inherited INT modifier changes the real skill budget. Complete it
  # through the visible Skills action rather than attempting a disabled Save.
