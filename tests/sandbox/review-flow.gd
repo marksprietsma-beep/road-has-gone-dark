@@ -1,6 +1,7 @@
 extends "res://tests/adventure/review-flow.gd"
 ## Mouse/keyboard drive the real production controllers; no alternate resolver.
 var captured_move := false
+var generated_actions: Array[String]=[]
 func run() -> void:
  SandboxAdventure.legacy_review=true
  AdventureService.legacy_review=false
@@ -101,20 +102,20 @@ func run() -> void:
   await shot("returned-home-"+site.kind)
  check(ui.state.sandbox.characters.values().all(func(c: Dictionary):return c.xp==20 and c.history.size()==3),"two wins plus withdrawal produce exactly one history/reward per site")
  proof.sandbox.results=ui.state.sandbox.results;proof.sandbox.party_ids=ui.state.party_ids
+ proof.sandbox.used_actions=generated_actions
  finish()
 func play_fight() -> void:
  engine.configure(ui.state)
  var deadline := Time.get_ticks_msec()+360000
  while ui.battle().status=="active" and Time.get_ticks_msec()<deadline:
   if ui.thread!=null or ui.is_presenting() or ui.presentation_active or engine.current(ui.battle()).team=="enemy":await tree.process_frame;continue
-  var b: Dictionary=ui.battle();var actor := engine.current(b)
-  var mode := "spark" if engine.characters.derive_character(actor.record).snapshot.abilities.has("spark") else "attack"
-  var target := ""
-  if int(b.budget.main)>0:
-   for id in b.order:
-    if engine.eligible(b,actor,b.units[id],mode):target=id;break
+  var b: Dictionary=ui.battle()
+  var selected := offensive_target(b)
+  var mode: String=selected.mode
+  var target: String=selected.target
   if not target.is_empty():
    await click(ui.action_buttons[mode]);await click(ui.tiles[str(b.units[target].position)]);await wait_job()
+   if not generated_actions.has(mode):generated_actions.append(mode)
   else:
    var command := engine.enemy_command(b)
    if command.kind=="move":

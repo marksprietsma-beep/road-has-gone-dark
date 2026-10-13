@@ -176,16 +176,17 @@ func run() -> void:
  check(ui.art_style==paused_art,"menu reload restores chosen art style")
  for id in ui.pawns: check(ui.pawns[id].recipe.recipe_hash==paused_recipes[id],"saved generated character appearance restored")
  deadline=Time.get_ticks_msec()+240000
+ var used_actions: Array[String]=[]
  while ui.battle().status=="active" and Time.get_ticks_msec()<deadline:
+  if ui.thread==null and not ui.message.is_empty():check(false,"combat action failed: "+ui.message);return
   if ui.thread!=null or ui.is_presenting() or ui.presentation_active or engine.current(ui.battle()).team=="enemy": await tree.process_frame;continue
-  var b: Dictionary=ui.battle();var actor := engine.current(b)
-  var mode := "spark" if engine.characters.derive_character(actor.record).snapshot.abilities.has("spark") else "attack"
-  var target := ""
-  if int(b.budget.main)>0:
-   for id in b.order:
-    if engine.eligible(b,actor,b.units[id],mode): target=id;break
+  var b: Dictionary=ui.battle()
+  var selected := offensive_target(b)
+  var mode: String=selected.mode
+  var target: String=selected.target
   if not target.is_empty():
    await click(ui.action_buttons[mode]);await click(ui.tiles[str(b.units[target].position)]);await wait_job()
+   if not used_actions.has(mode):used_actions.append(mode)
   elif int(b.budget.move)>0:
    var command := engine.enemy_command(b)
    if command.kind=="move":
@@ -193,6 +194,9 @@ func run() -> void:
    else: await click(ui.end_button);await wait_job()
   else: await click(ui.end_button);await wait_job()
  check(ui.battle().status=="victory","production fight reaches victory")
+ if ui.battle().status!="victory":return
+ check(used_actions.has("wizard-arcane-bolt"),"actual recommended Wizard spell used through production controls")
+ proof.used_actions=used_actions
  print("REVIEW: victory achieved")
  proof.victory_battle_hash=ui.battle().state_hash
  await shot("victory")
@@ -218,6 +222,22 @@ func run() -> void:
  check(ui.state.expedition.active.is_empty() and ui.state.first_adventure.characters.values().all(func(c: Dictionary):return c.xp==0 and c.history.size()==1),"defeat returns with no victory reward")
  check(service.store.load_save(failed_slot,entry.world).ok,"defeat save valid from bundled resources")
  finish()
+func offensive_target(b: Dictionary) -> Dictionary:
+ # Both legacy-board and generated journeys must use actual pinned powers.
+ # This only chooses enabled production controls; it resolves no mechanics.
+ engine.configure(ui.state)
+ var actor := engine.current(b)
+ var selected := {"mode":"","target":""}
+ if int(b.budget.main)<=0:return selected
+ var choices: Array=ui.action_buttons.keys().filter(func(id: String):return id!="move" and not ui.action_buttons[id].disabled)
+ choices.erase("attack");choices.append("attack")
+ for action in choices:
+  var ability := engine.registry.definition("abilities",action)
+  # Avoid repeatedly spending turns on non-damaging buffs.
+  if action!="attack" and not ability.get("tags",[]).has("weapon_strike") and not ability.get("effects",[]).any(func(effect: Dictionary):return effect.op=="damage"):continue
+  for id in b.order:
+   if b.units[id].team!=actor.team and engine.eligible(b,actor,b.units[id],action):return {"mode":action,"target":id}
+ return selected
 func finish() -> void:
  proof.checks=checks;proof.failures=failures
  var file := FileAccess.open(base.path_join("review-proof.json"),FileAccess.WRITE)
