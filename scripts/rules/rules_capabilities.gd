@@ -4,7 +4,7 @@ extends RefCounted
 const FIELDS := ["resistances", "immunities", "blocked_equipment", "weapon_damage", "concealment", "moving_damage", "immobile", "resource_bonuses"]
 const DAMAGE_TYPES := ["physical", "arcane", "fire", "cold", "electricity", "acid", "radiant", "psychic", "necrotic", "force"]
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") == "trhgd-character-v10"
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v10","trhgd-character-v11"]
 static func validate(value: Variant,tables: Dictionary,path: String,errors: Array) -> void:
  if not value is Dictionary:errors.append(RulesJson.issue("capability.schema",path,"Expected typed inherited/class capabilities"));return
  for field in value:

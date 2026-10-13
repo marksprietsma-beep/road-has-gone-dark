@@ -32,7 +32,7 @@ func load_data(input: Dictionary) -> Dictionary:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
@@ -48,12 +48,12 @@ func load_data(input: Dictionary) -> Dictionary:
  if not found.is_empty(): return _fail(found)
  for category in CATEGORIES:
   for id in tables[category]:
-   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id=="trhgd-character-v10")
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"])
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
  _check_cycles(tables,found)
- if candidate.pack_id=="trhgd-character-v10":RulesCatalogueValidation.validate(tables,found)
+ if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"]:RulesCatalogueValidation.validate(tables,found)
  if not found.is_empty(): return _fail(found)
  _pack=RulesJson.freeze(candidate);_tables=RulesJson.freeze(tables);content_hash=RulesJson.digest(candidate);errors=[]
  return {"ok":true,"rules_ref":rules_ref()}
@@ -75,7 +75,7 @@ static func _reference(tables: Dictionary, category: String, id: Variant, path: 
 
 static func _refs(node: Dictionary, tables: Dictionary, path: String, found: Array, requirement: bool) -> void:
  var op: String = node.get("op","")
- var categories := {"class_level":"classes","casting_level":"classes","skill":"skills","feat":"feats","feature":"features","resource":"resources"}
+ var categories := {"class_level":"classes","casting_level":"classes","skill":"skills","skill_rank":"skills","feat":"feats","feature":"features","resource":"resources"}
  if categories.has(op): _reference(tables,categories[op],node.get("id"),path,found)
  if op=="stat" and not node.get("id") in STATS: found.append(RulesJson.issue("reference.stat",path,"Unknown derived statistic"))
  if op=="casting" and node.get("id") not in ["arcane","divine"]: found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))

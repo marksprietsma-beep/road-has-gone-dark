@@ -382,6 +382,7 @@ func suggested_choice(record: Dictionary,class_id: String,preferred_feat: String
  var attribute := ""
  if registry.rule("attribute_increase_levels").has(next):
   for id in RulesExpressions.ATTRIBUTES:
+   if int(c.attributes[id])>=22:continue
    if attribute.is_empty() or int(c.attributes[id])>int(c.attributes[attribute]): attribute=id
  var int_value: int=int(c.attributes.INT)+(1 if attribute=="INT" else 0)
  var points := maxi(1,int(cls.skill_points)+int(floor(float(int_value-10)/2.0)))

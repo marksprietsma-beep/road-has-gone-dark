@@ -24,7 +24,7 @@ func run() -> void:
  var born:=service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"source-backed fresh campaign")
  slot=born.state.playthrough_id;action_builder("builder_open")
- check(state.character_builder.rules_ref.pack_id=="trhgd-character-v10","normal first open uses latest content")
+ check(state.character_builder.rules_ref.pack_id=="trhgd-character-v11","normal first open uses latest content")
  await creator("first-open-catalogue",1,"","")
  if failures>0:finish();return
  var source:=RulesRecords.registry(state);var kernel:=RulesCharacter.new(source)
@@ -88,6 +88,7 @@ func finish() -> void:
  get_tree().quit(1 if failures else 0)
 func creator(name: String,member: int,people: String,cls: String) -> void:
  if DisplayServer.get_name()=="headless":return
+ get_tree().root.gui_embed_subwindows=true
  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
  get_tree().change_scene_to_file("res://scenes/ui/party_creation.tscn")
  var deadline:=Time.get_ticks_msec()+60000
@@ -140,7 +141,7 @@ func advanced_capture(fixture: Dictionary,fixture_root: String,path: String) -> 
   for frame in 4:await get_tree().process_frame
   var spells_scroll: ScrollContainer=ui.detail_tabs.get_child(4)
   var spell_control: Control=ui.spellbook.controls["wizard-tier9-tempest"]
-  spells_scroll.scroll_vertical=int(spell_control.position.y)-100
+  spells_scroll.scroll_vertical=int(spell_control.get_global_rect().position.y-ui.spellbook.get_global_rect().position.y)-100
   await screenshot("development-tier9-spells",true)
  get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
  for frame in 3:await get_tree().process_frame

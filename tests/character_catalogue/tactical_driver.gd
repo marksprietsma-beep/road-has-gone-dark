@@ -1,7 +1,7 @@
 extends "res://tests/character_catalogue/mechanics_driver.gd"
 var advanced := {}
 func run() -> void:
- source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v10.json").ok,"new tactical pack")
+ source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v11.json").ok,"new tactical pack")
  kernel=RulesCharacter.new(source)
  for path in ["shadowdancer","dragon-disciple","dwarven-defender","pyrokineticist"]:
   var base_class: String={"shadowdancer":"rogue","dragon-disciple":"sorcerer","dwarven-defender":"fighter","pyrokineticist":"psion"}[path]
@@ -36,6 +36,7 @@ func run() -> void:
    exercise(record,ability)
  verify_spells()
  verify_feats()
+ verify_training()
  verify_geometry()
  if not OS.get_environment("GAME112_TEST_ROOT").is_empty():
   FileAccess.open(OS.get_environment("GAME112_TEST_ROOT").path_join("tactical-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"prestige_paths":advanced.keys(),"rules_ref":source.rules_ref()}," "))
@@ -128,3 +129,20 @@ func verify_geometry() -> void:
   battle=fixture(defender);engine=TacticalCombat.new(defender)
   var result:=engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"dwarven-defender-technique-1","target_id":"a"})
   check(result.ok and engine.paths(result.battle,result.battle.units.a).is_empty(),"defensive stance sacrifices actual movement")
+
+func verify_training() -> void:
+ for cls in ["bard","druid"]:
+  var skill: String="performance" if cls=="bard" else "nature"
+  var feat: String="inspiring-performance" if cls=="bard" else "natural-scholar"
+  var record:=kernel.create("trained:"+cls,source.recommendation("adept").attributes,"heritage-human")
+  for n in 5:
+   var result:=kernel.preview_advancement(record,kernel.suggested_choice(record,cls,feat if n==4 else "steady-study").choice)
+   check(result.ok,"real training/feat progression "+cls)
+   if not result.ok:break
+   record=result.candidate
+  var snap:=kernel.derive_character(record)
+  check(snap.ok and snap.snapshot.skills[skill].ranks>=5,"class training has actual rank consequence "+skill)
+  if not snap.ok:continue
+  var control:=record.duplicate(true);control.advancement_history.back().feat_id="steady-study"
+  var baseline:=kernel.derive_character(control)
+  check(baseline.ok and (snap.snapshot.resource_capacities.performance==baseline.snapshot.resource_capacities.performance+1 if cls=="bard" else snap.snapshot.stats.save_dc==baseline.snapshot.stats.save_dc+1),"rank-gated feat changes actual casting/performance "+cls)

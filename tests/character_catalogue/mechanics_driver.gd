@@ -23,14 +23,19 @@ func build(id: String,cls: String,ancestry: String="heritage-human",levels: int=
  return record
 func run() -> void:
  source=RulesRegistry.new()
- var installed := source.load_pack("res://data/rules/trhgd-character-v10.json")
+ var installed := source.load_pack("res://data/rules/trhgd-character-v11.json")
  check(installed.ok,"v10 validates: "+JSON.stringify(installed.get("errors",[])))
  if not installed.ok:get_tree().quit(1);return
  kernel=RulesCharacter.new(source)
- check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh normal default is v10")
+ var history: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://tests/character_catalogue/historical-pins.json"))
+ for row in history.packs:
+  var installed_rows:=RulesRecords.installed_packs().filter(func(candidate: Dictionary):return candidate.rules_ref.pack_id==row.rules_ref.pack_id)
+  check(installed_rows.size()==1 and RulesJson.normalize(installed_rows[0])==RulesJson.normalize(row),"published installed pin unchanged "+str(row.rules_ref.pack_id))
+  check(FileAccess.get_sha256(row.path)==history.file_hashes[row.path],"historical content bytes unchanged "+str(row.rules_ref.pack_id))
+ check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh normal default is v11")
  check(RulesCoreContent.ancestry_rows(source).size()==17,"seventeen family options")
  check(RulesCoreContent.ancestry_description(source.definition("ancestries","heritage-elf")).contains("not implemented"),"unsupported vision is never claimed as functioning battlefield mechanics")
- check(source.ids("ancestries").size()==26 and source.ids("feats").size()==38,"real content counts")
+ check(source.ids("ancestries").size()==26 and source.ids("feats").size()==40,"real content counts")
  for cls in source.ids("classes"):
   if source.definition("classes",cls).class_kind!="base":continue
   var cap: int=int(source.definition("classes",cls).max_level)
@@ -59,6 +64,7 @@ func run() -> void:
    check(actual.budget.main==0,"main action spent "+id)
    var replay := RulesEffects.new(source).use_ability(actor,actor if ability.targeting.kind=="self" else target,id,{"main":1,"move":1,"reaction":1},RulesRng.initial("new-action:"+id))
    check(RulesJson.digest(actual)==RulesJson.digest(replay),"effect/RNG repeat "+id)
+ verify_skill_frontiers()
  verify_ancestries()
  verify_resource_identities()
  verify_negatives()
@@ -71,6 +77,20 @@ func run() -> void:
  print("GAME112 MECHANICS ",checks," / ",failures)
  completed.emit()
  if not no_quit:get_tree().quit(1 if failures else 0)
+func verify_skill_frontiers() -> void:
+ for ancestry in ["heritage-tiefling","heritage-tiefling-ash","heritage-goblin"]:
+  var record:=build("int-frontier","rogue",ancestry,20)
+  check(not record.is_empty() and record.advancement_history.size()==20,"high-Intelligence ancestry can spend every skill point through20 "+ancestry)
+ var ranger:=kernel.create("capped-attribute",{"DEX":15,"WIS":14,"CON":13,"STR":12,"INT":10,"CHA":8},"heritage-goblin")
+ for n in 20:
+  var suggestion:=kernel.suggested_choice(ranger,"ranger")
+  var result:=kernel.preview_advancement(ranger,suggestion.choice)
+  check(result.ok,"suggestion respects inherited attribute maximum "+str(n))
+  if not result.ok:break
+  ranger=result.candidate
+ check(ranger.advancement_history.size()==20,"high-Dexterity ancestry can complete20 without an illegal suggestion")
+ var old:=RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v10.json").ok,"pushed v10 retained exactly")
+ check(old.ids("skills").size()==12 and source.ids("skills").size()==14,"refinement adds real Nature/Performance without editing prior pins")
 func verify_ancestries() -> void:
  for ancestry in source.ids("ancestries"):
   var record := build("ancestry:"+ancestry,"fighter",ancestry)
@@ -114,6 +134,10 @@ func verify_resource_identities() -> void:
  check(recovery.ok and recovery.actor.runtime.resources["warblade-readiness"]==2 and recovery.budget.main==0,"main-action manoeuvre recovery is distinct and bounded")
 func verify_negatives() -> void:
  var data:=source.source_data()
+ var cycle:=data.duplicate(true);cycle.feats[0].requirements={"op":"feat","id":cycle.feats[1].id};cycle.feats[1].requirements={"op":"feat","id":cycle.feats[0].id}
+ check(not RulesRegistry.new().load_data(cycle).ok,"cyclic feat requirements reject")
+ var impossible:=data.duplicate(true);impossible.classes[0].requirements={"op":"skill","id":"nature","min":21}
+ check(not RulesRegistry.new().load_data(impossible).ok,"unreachable rank prerequisite rejects")
  var malformed:=data.duplicate(true);malformed.ancestries[0].capabilities={"flight":true}
  check(not RulesRegistry.new().load_data(malformed).ok,"unsupported movement cannot masquerade as a capability")
  malformed=data.duplicate(true);malformed.ancestries[0].capabilities={"immunities":["invented-condition"]}
