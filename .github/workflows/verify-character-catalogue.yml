@@ -41,8 +41,7 @@ jobs:
         run: python tests/opportunities/run-tests.py --output "${{ runner.temp }}/game101-review"
       - name: Installed pins, complete coverage and twenty-level new-class combinations
         run: |
-          python tools/character-content/validate.py
-          python -c "import os,subprocess; subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/character_content/packs.gd'],check=True)"
+          python -c "import os,sys,subprocess; subprocess.run([sys.executable,'tools/character-content/validate.py'],check=True); subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/character_content/packs.gd'],check=True)"
       - name: Familiar character matrix and genuine tactical powers through level eight
         env:
           GAME118_TEST_ROOT: ${{ runner.temp }}/game118-core
