@@ -121,6 +121,13 @@ func screenshot(name: String,development: bool) -> void:
  for resolution in [Vector2i(1280,720),Vector2i(640,360),Vector2i(2560,1440)]:
   get_tree().root.size=resolution
   for frame in 5:await get_tree().process_frame
+  if name.contains("-history"):
+   var history_scroll: ScrollContainer=get_tree().current_scene.detail_tabs.get_child(2)
+   history_scroll.scroll_vertical=int(history_scroll.get_v_scroll_bar().max_value)
+  if name=="development-tier9-spells":
+   var spells_scroll: ScrollContainer=get_tree().current_scene.detail_tabs.get_child(4)
+   spells_scroll.ensure_control_visible(get_tree().current_scene.spellbook.controls["wizard-tier9-tempest"])
+  for frame in 4:await get_tree().process_frame
   await RenderingServer.frame_post_draw
   DirAccess.make_dir_recursive_absolute(base.path_join("screenshots"))
   var file:=name+"-%dx%d.png"%[resolution.x,resolution.y]

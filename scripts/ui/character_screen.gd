@@ -430,7 +430,11 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  if s.has("specialisations"):
   lines.append("\nPersistent specialisations")
   for option in s.specialisations:lines.append(str(option.name)+": "+str(option.description))
-  lines.append("Effective casting levels: "+str(s.casting_levels))
+  var casting_tracks: Array[String]=[]
+  for id in s.casting_levels:
+   var cls:=RulesRecords.registry(state).definition("classes",id)
+   if not str(cls.get("spell_mode","")).is_empty():casting_tracks.append(str(cls.name)+" "+str(s.casting_levels[id]))
+  if not casting_tracks.is_empty():lines.append("Effective spell progression: "+", ".join(casting_tracks))
  lines.append("\nOrdered class history")
  var class_counts := {};var rules := RulesRecords.registry(state)
  for step in r.advancement_history:
