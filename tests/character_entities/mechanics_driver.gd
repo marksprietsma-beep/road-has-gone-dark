@@ -155,10 +155,15 @@ func verify_content() -> void:
    var used := RulesEffects.new(source).use_ability(actor,actor if ability.targeting.kind=="self" else target,id,{"main":1,"move":1,"reaction":1},RulesRng.initial(id))
    check(used.ok,"actual expanded career ability "+id+JSON.stringify(used.get("errors",[])))
    if used.ok:check(used.budget.main==0,"expanded ability spends main "+id)
+   if cls in ["crusader","swordsage","wilder","binder","psion","psychic-warrior","soulknife","warlock","scout","swashbuckler","knight","warblade"]:
+    var battle_actor: Dictionary=actor.duplicate(true);battle_actor.character_id="a"
+    battle_actor.equipment=definition.recommended_equipment.duplicate()
+    verify_tactical(battle_actor,id)
+
  var novice := build("novice","fighter",1)
  for path in ["warshaper","bonded-summoner"]:
   check(not kernel.available_advancement(novice).classes[path].ok,"invalid prestige entry "+path)
-  var record := build("career:"+path,"druid" if path=="warshaper" else "wizard",6 if path=="warshaper" else 5)
+  var record := build("a","druid" if path=="warshaper" else "wizard",6 if path=="warshaper" else 5)
   check(kernel.available_advancement(record).classes[path].ok,"genuine prestige prerequisites "+path)
   for n in 5:
    var advanced := kernel.preview_advancement(record,kernel.suggested_choice(record,path).choice)
@@ -166,6 +171,7 @@ func verify_content() -> void:
    if not advanced.ok:break
    record=advanced.candidate
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"prestige ordered history reload "+path)
+  for at in [1,3,5]:verify_tactical(record,path+"-technique-"+str(at))
  for ancestry in ["centaur","minotaur","changeling","shifter"]:
   var record := build("ancestry:"+ancestry,"fighter",1,"heritage-"+ancestry)
   check(kernel.validate_build(record).ok,"new inherited mechanics "+ancestry)
@@ -181,6 +187,23 @@ func verify_content() -> void:
   if not next.ok:break
   mixed=next.candidate
  check(mixed.advancement_history.size()==20 and kernel.validate_build(JSON.parse_string(JSON.stringify(mixed))).ok,"ordered mixed history survives reload")
+func verify_tactical(record: Dictionary,ability: String) -> void:
+ var engine := TacticalCombat.new(record);var battle := fixture(record)
+ battle.units.a.position=[0,0];battle.units.b.position=[0,2];battle.units.c.position=[0,3]
+ battle.units["bandit-blade"].position=[1,0];battle.units["bandit-bow"].position=[2,0]
+ for id in battle.order:
+  if battle.units[id].has("entity"):battle.units[id].position=[1,2]
+ battle=engine.seal(battle)
+ check(engine.validate(battle).is_empty(),"valid tactical fixture "+ability+engine.validate(battle))
+ var definition := source.definition("abilities",ability)
+ var target := "a" if definition.targeting.kind in ["self","ally"] else "bandit-blade"
+ var command := {"actor_id":"a","revision":battle.revision,"kind":ability,"target_id":target}
+ var result := engine.command(battle,command)
+ check(result.ok,"actual tactical action "+ability+str(result.get("error","")))
+ if not result.ok:return
+ check(engine.validate(result.battle).is_empty(),"valid actual tactical action "+ability+engine.validate(result.battle))
+ var repeat := engine.command(battle,command)
+ check(repeat.ok and repeat.battle.state_hash==result.battle.state_hash and repeat.battle.rng==result.battle.rng and repeat.battle.log==result.battle.log,"actual tactical replay/log/RNG "+ability)
 func finish() -> void:
  print("WAVE TWO ENTITY CHECKS ",checks," / ",failures)
  if not root_path.is_empty():FileAccess.open(root_path.path_join("restart-proof.json" if OS.get_environment("GAME112W2_RESTART")=="1" else "mechanics-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref()}," "))
