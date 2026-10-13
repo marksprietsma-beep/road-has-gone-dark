@@ -9,7 +9,9 @@ func create(identity: String, attributes: Dictionary, ancestry: String, backgrou
  var record := {"schema_version":1,"character_id":identity,"rules_ref":registry.rules_ref(),"base_attributes":attributes.duplicate(true),"ancestry_ref":ancestry,"background_ref":background,"advancement_history":[],"equipment":[],"choices":{"prepared_abilities":[]},"runtime":{"hp":0,"temporary_hp":0,"resources":{},"statuses":[],"modifiers":[],"granted_features":[],"senses":[],"apparent_effects":[]},"revision":0}
 
  if registry.rules_ref().get("engine_schema")==3:record.choices.spell_preparations={}
- if RulesEntities.enabled(registry):record.runtime.companions={}
+ if RulesEntities.enabled(registry):
+  record.runtime.companions={}
+  record.runtime.resources=_context(attributes,{}, {},[],record,false).capacities.duplicate()
  return record
 
 func feat_at(level: int,class_id: String,class_level: int) -> bool:
@@ -52,6 +54,7 @@ func _shape(record: Dictionary) -> Array:
  return errors
 
 func validate_build(record: Dictionary) -> Dictionary:
+ if RulesEntities.enabled(registry):record=RulesJson.string_keys(record)
  var replay := _replay(record)
  if not replay.ok: return replay
  var errors := _runtime_errors(record,replay.context)

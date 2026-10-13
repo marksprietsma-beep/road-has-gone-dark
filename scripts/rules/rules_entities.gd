@@ -6,6 +6,7 @@ static func enabled(source: RulesRegistry) -> bool:
 static func form(record: Dictionary,source: RulesRegistry) -> Dictionary:
  if not enabled(source):return {}
  for status in record.runtime.statuses:
+  if not status is Dictionary:continue
   var definition := source.definition("statuses",str(status.get("id","")))
   if definition.has("body_form"):return definition.body_form
  return {}
@@ -83,7 +84,9 @@ static func synchronize(record: Dictionary,source: RulesRegistry) -> Dictionary:
 static func runtime_errors(record: Dictionary,source: RulesRegistry) -> Array:
  var errors: Array=[]
  if not record.runtime.get("companions") is Dictionary or record.runtime.companions.size()>1:return [RulesJson.issue("companion.runtime","companions","At most one typed permanent companion per owner")]
- var forms: Array=record.runtime.statuses.filter(func(s: Dictionary):return source.definition("statuses",str(s.get("id",""))).has("body_form"))
+ var expected := bonds(record,source)
+ if expected.size()!=record.runtime.companions.size():errors.append(RulesJson.issue("companion.missing","companions","Permanent bond must retain its companion record"))
+ var forms: Array=record.runtime.statuses.filter(func(s: Variant):return s is Dictionary and source.definition("statuses",str(s.get("id",""))).has("body_form"))
  if forms.size()>1:errors.append(RulesJson.issue("form.overlap","statuses","Only one active body form"))
  for id in record.runtime.companions:
   var value: Variant=record.runtime.companions[id]

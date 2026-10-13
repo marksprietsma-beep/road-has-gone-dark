@@ -74,6 +74,11 @@ static func validate(engine: TacticalCombat,battle: Dictionary) -> String:
    if engine.alive(u):
     if summoned.has(e.owner_id):return "Duplicate active summon"
     summoned[e.owner_id]=true
+ for id in base:
+  var owner: Dictionary=battle.units[id]
+  if owner.team=="party":
+   for pet_id in owner.record.runtime.companions:
+    if int(owner.record.runtime.companions[pet_id].record.runtime.hp)>0 and not battle.units.has(pet_id):return "Missing living permanent companion"
  if base.size()!=3+battle.board.enemies.size():return "Original roster changed"
  for enemy in battle.board.enemies:
   if not base.has(enemy.id) or battle.units[enemy.id].team!="enemy":return "Authored enemy changed"

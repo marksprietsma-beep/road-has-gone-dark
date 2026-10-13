@@ -931,11 +931,11 @@
         "Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "wilder"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -945,20 +945,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-wilder",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "base_class-wilder:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "wilder",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-ninja",
@@ -2667,11 +2679,11 @@
         "Tome of Battle"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "crusader"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2681,20 +2693,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-crusader",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "base_class-crusader:tome-of-battle:0",
           "source_group": "Tome of Battle",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "crusader",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-swordsage",
@@ -2703,11 +2727,11 @@
         "Tome of Battle"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "swordsage"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2717,20 +2741,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-swordsage",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "base_class-swordsage:tome-of-battle:0",
           "source_group": "Tome of Battle",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "swordsage",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-warblade",
@@ -2804,11 +2840,11 @@
         "Tome of Magic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "binder"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2818,20 +2854,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-binder",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "base_class-binder:tome-of-magic:0",
           "source_group": "Tome of Magic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "binder",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-shadowcaster",
@@ -3733,14 +3781,14 @@
       "source_name": "Changeling",
       "source_groups": [
         "Human and human-derived",
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-changeling"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -3750,27 +3798,40 @@
       "owner": "GAME-108",
       "design_key": "ancestry-changeling",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "ancestry-changeling:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-changeling",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-changeling:other-standalone-small-families-a-d:1",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-complacent-human",
@@ -3917,7 +3978,7 @@
       "source_name": "Extaminaar",
       "source_groups": [
         "Human and human-derived",
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -3948,7 +4009,7 @@
         },
         {
           "key": "ancestry-extaminaar:w-y:1",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -4480,7 +4541,7 @@
       "source_name": "Hagspawn",
       "source_groups": [
         "Human and human-derived",
-        "Other G\u2013H"
+        "Other G–H"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -4511,7 +4572,7 @@
         },
         {
           "key": "ancestry-hagspawn:other-g-h:1",
-          "source_group": "Other G\u2013H",
+          "source_group": "Other G–H",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -4774,7 +4835,7 @@
       "source_name": "Half-Kender",
       "source_groups": [
         "Human and human-derived",
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -4805,7 +4866,7 @@
         },
         {
           "key": "ancestry-half-kender:other-h-k:1",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -5526,11 +5587,11 @@
         "Lycanthrope / shifter indexed family"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-shifter"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -5540,17 +5601,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-shifter",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "ancestry-shifter:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-shifter",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-shifter:lycanthrope-shifter-indexed-family:1",
@@ -5560,7 +5624,17 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-silverbrow-human",
@@ -5885,7 +5959,7 @@
       "id": "ancestry-adu-ja",
       "source_name": "Adu'ja",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -5908,7 +5982,7 @@
       "source_variants": [
         {
           "key": "ancestry-adu-ja:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -5920,7 +5994,7 @@
       "id": "ancestry-hound-archon",
       "source_name": "Hound Archon",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -5943,7 +6017,7 @@
       "source_variants": [
         {
           "key": "ancestry-hound-archon:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -5955,7 +6029,7 @@
       "id": "ancestry-armand",
       "source_name": "Armand",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -5978,7 +6052,7 @@
       "source_variants": [
         {
           "key": "ancestry-armand:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -5990,7 +6064,7 @@
       "id": "ancestry-asherati",
       "source_name": "Asherati",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6013,7 +6087,7 @@
       "source_variants": [
         {
           "key": "ancestry-asherati:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6025,7 +6099,7 @@
       "id": "ancestry-azer",
       "source_name": "Azer",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6048,7 +6122,7 @@
       "source_variants": [
         {
           "key": "ancestry-azer:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6060,7 +6134,7 @@
       "id": "ancestry-bariaur",
       "source_name": "Bariaur",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6083,7 +6157,7 @@
       "source_variants": [
         {
           "key": "ancestry-bariaur:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6095,7 +6169,7 @@
       "id": "ancestry-exalted-bariaur",
       "source_name": "Exalted Bariaur",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6118,7 +6192,7 @@
       "source_variants": [
         {
           "key": "ancestry-exalted-bariaur:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6130,7 +6204,7 @@
       "id": "ancestry-cactacae",
       "source_name": "Cactacae",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6153,7 +6227,7 @@
       "source_variants": [
         {
           "key": "ancestry-cactacae:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6165,7 +6239,7 @@
       "id": "ancestry-catfolk",
       "source_name": "Catfolk",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6188,7 +6262,7 @@
       "source_variants": [
         {
           "key": "ancestry-catfolk:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6200,14 +6274,14 @@
       "id": "ancestry-centaur",
       "source_name": "Centaur",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-centaur"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -6217,25 +6291,38 @@
       "owner": "GAME-108",
       "design_key": "ancestry-centaur",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "ancestry-centaur:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
-          "status": "researched",
+          "source_group": "Other standalone / small families A–D",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-centaur",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-wendle-centaur",
       "source_name": "Wendle Centaur",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6258,7 +6345,7 @@
       "source_variants": [
         {
           "key": "ancestry-wendle-centaur:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6270,7 +6357,7 @@
       "id": "ancestry-chitine",
       "source_name": "Chitine",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6293,7 +6380,7 @@
       "source_variants": [
         {
           "key": "ancestry-chitine:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6305,7 +6392,7 @@
       "id": "ancestry-crucian",
       "source_name": "Crucian",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6328,7 +6415,7 @@
       "source_variants": [
         {
           "key": "ancestry-crucian:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6340,7 +6427,7 @@
       "id": "ancestry-daelkyr-half-blood",
       "source_name": "Daelkyr Half-Blood",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6363,7 +6450,7 @@
       "source_variants": [
         {
           "key": "ancestry-daelkyr-half-blood:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6375,7 +6462,7 @@
       "id": "ancestry-darfellan",
       "source_name": "Darfellan",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6398,7 +6485,7 @@
       "source_variants": [
         {
           "key": "ancestry-darfellan:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6410,7 +6497,7 @@
       "id": "ancestry-cambion",
       "source_name": "Cambion",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6433,7 +6520,7 @@
       "source_variants": [
         {
           "key": "ancestry-cambion:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6445,7 +6532,7 @@
       "id": "ancestry-diaboli",
       "source_name": "Diaboli",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6468,7 +6555,7 @@
       "source_variants": [
         {
           "key": "ancestry-diaboli:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6480,7 +6567,7 @@
       "id": "ancestry-diopsid",
       "source_name": "Diopsid",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6503,7 +6590,7 @@
       "source_variants": [
         {
           "key": "ancestry-diopsid:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6515,7 +6602,7 @@
       "id": "ancestry-doppelganger",
       "source_name": "Doppelganger",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6538,7 +6625,7 @@
       "source_variants": [
         {
           "key": "ancestry-doppelganger:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6550,7 +6637,7 @@
       "id": "ancestry-baaz-draconian",
       "source_name": "Baaz Draconian",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6573,7 +6660,7 @@
       "source_variants": [
         {
           "key": "ancestry-baaz-draconian:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6585,7 +6672,7 @@
       "id": "ancestry-bozak-draconian",
       "source_name": "Bozak Draconian",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6608,7 +6695,7 @@
       "source_variants": [
         {
           "key": "ancestry-bozak-draconian:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6620,7 +6707,7 @@
       "id": "ancestry-kapak-draconian",
       "source_name": "Kapak Draconian",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6643,7 +6730,7 @@
       "source_variants": [
         {
           "key": "ancestry-kapak-draconian:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6655,7 +6742,7 @@
       "id": "ancestry-dracotaur",
       "source_name": "Dracotaur",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6678,7 +6765,7 @@
       "source_variants": [
         {
           "key": "ancestry-dracotaur:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6690,7 +6777,7 @@
       "id": "ancestry-dragonborn-of-bahamut",
       "source_name": "Dragonborn of Bahamut",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6713,7 +6800,7 @@
       "source_variants": [
         {
           "key": "ancestry-dragonborn-of-bahamut:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6725,7 +6812,7 @@
       "id": "ancestry-dragonkin",
       "source_name": "Dragonkin",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6748,7 +6835,7 @@
       "source_variants": [
         {
           "key": "ancestry-dragonkin:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6760,7 +6847,7 @@
       "id": "ancestry-dromite",
       "source_name": "Dromite",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6783,7 +6870,7 @@
       "source_variants": [
         {
           "key": "ancestry-dromite:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -6795,7 +6882,7 @@
       "id": "ancestry-dvati",
       "source_name": "Dvati",
       "source_groups": [
-        "Other standalone / small families A\u2013D"
+        "Other standalone / small families A–D"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -6818,7 +6905,7 @@
       "source_variants": [
         {
           "key": "ancestry-dvati:other-standalone-small-families-a-d:0",
-          "source_group": "Other standalone / small families A\u2013D",
+          "source_group": "Other standalone / small families A–D",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -11626,7 +11713,7 @@
       "id": "ancestry-goatfolk",
       "source_name": "Goatfolk",
       "source_groups": [
-        "Other G\u2013H"
+        "Other G–H"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -11649,7 +11736,7 @@
       "source_variants": [
         {
           "key": "ancestry-goatfolk:other-g-h:0",
-          "source_group": "Other G\u2013H",
+          "source_group": "Other G–H",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -11661,7 +11748,7 @@
       "id": "ancestry-grimlock",
       "source_name": "Grimlock",
       "source_groups": [
-        "Other G\u2013H"
+        "Other G–H"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -11684,7 +11771,7 @@
       "source_variants": [
         {
           "key": "ancestry-grimlock:other-g-h:0",
-          "source_group": "Other G\u2013H",
+          "source_group": "Other G–H",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -11696,7 +11783,7 @@
       "id": "ancestry-grippli",
       "source_name": "Grippli",
       "source_groups": [
-        "Other G\u2013H"
+        "Other G–H"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -11719,7 +11806,7 @@
       "source_variants": [
         {
           "key": "ancestry-grippli:other-g-h:0",
-          "source_group": "Other G\u2013H",
+          "source_group": "Other G–H",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -11731,7 +11818,7 @@
       "id": "ancestry-hadozee",
       "source_name": "Hadozee",
       "source_groups": [
-        "Other G\u2013H"
+        "Other G–H"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -11754,7 +11841,7 @@
       "source_variants": [
         {
           "key": "ancestry-hadozee:other-g-h:0",
-          "source_group": "Other G\u2013H",
+          "source_group": "Other G–H",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13030,7 +13117,7 @@
       "id": "ancestry-harssaf",
       "source_name": "Harssaf",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13053,7 +13140,7 @@
       "source_variants": [
         {
           "key": "ancestry-harssaf:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13065,7 +13152,7 @@
       "id": "ancestry-hellbred",
       "source_name": "Hellbred",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13088,7 +13175,7 @@
       "source_variants": [
         {
           "key": "ancestry-hellbred:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13100,7 +13187,7 @@
       "id": "ancestry-hengeyokai",
       "source_name": "Hengeyokai",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13123,7 +13210,7 @@
       "source_variants": [
         {
           "key": "ancestry-hengeyokai:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13135,7 +13222,7 @@
       "id": "ancestry-insectare",
       "source_name": "Insectare",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13158,7 +13245,7 @@
       "source_variants": [
         {
           "key": "ancestry-insectare:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13170,7 +13257,7 @@
       "id": "ancestry-kender",
       "source_name": "Kender",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13193,7 +13280,7 @@
       "source_variants": [
         {
           "key": "ancestry-kender:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13205,7 +13292,7 @@
       "id": "ancestry-afflicted-kender",
       "source_name": "Afflicted Kender",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13228,7 +13315,7 @@
       "source_variants": [
         {
           "key": "ancestry-afflicted-kender:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13240,7 +13327,7 @@
       "id": "ancestry-kenku",
       "source_name": "Kenku",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13263,7 +13350,7 @@
       "source_variants": [
         {
           "key": "ancestry-kenku:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13275,7 +13362,7 @@
       "id": "ancestry-khepri",
       "source_name": "Khepri",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13298,7 +13385,7 @@
       "source_variants": [
         {
           "key": "ancestry-khepri:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13310,7 +13397,7 @@
       "id": "ancestry-kir-lanan",
       "source_name": "Kir-Lanan",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13333,7 +13420,7 @@
       "source_variants": [
         {
           "key": "ancestry-kir-lanan:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13345,7 +13432,7 @@
       "id": "ancestry-kobold",
       "source_name": "Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "playable",
@@ -13369,7 +13456,7 @@
       "source_variants": [
         {
           "key": "ancestry-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "playable",
           "playable": true,
           "production_id": "heritage-kobold",
@@ -13410,7 +13497,7 @@
       "id": "ancestry-aquatic-kobold",
       "source_name": "Aquatic Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13433,7 +13520,7 @@
       "source_variants": [
         {
           "key": "ancestry-aquatic-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13445,7 +13532,7 @@
       "id": "ancestry-arctic-kobold",
       "source_name": "Arctic Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13468,7 +13555,7 @@
       "source_variants": [
         {
           "key": "ancestry-arctic-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13480,7 +13567,7 @@
       "id": "ancestry-desert-kobold",
       "source_name": "Desert Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13503,7 +13590,7 @@
       "source_variants": [
         {
           "key": "ancestry-desert-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13515,7 +13602,7 @@
       "id": "ancestry-earth-kobold",
       "source_name": "Earth Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13538,7 +13625,7 @@
       "source_variants": [
         {
           "key": "ancestry-earth-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13550,7 +13637,7 @@
       "id": "ancestry-jungle-kobold",
       "source_name": "Jungle Kobold",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13573,7 +13660,7 @@
       "source_variants": [
         {
           "key": "ancestry-jungle-kobold:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13585,7 +13672,7 @@
       "id": "ancestry-korobokuru",
       "source_name": "Korobokuru",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13608,7 +13695,7 @@
       "source_variants": [
         {
           "key": "ancestry-korobokuru:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13620,7 +13707,7 @@
       "id": "ancestry-krinth",
       "source_name": "Krinth",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13643,7 +13730,7 @@
       "source_variants": [
         {
           "key": "ancestry-krinth:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13655,7 +13742,7 @@
       "id": "ancestry-kuo-toa",
       "source_name": "Kuo-Toa",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13678,7 +13765,7 @@
       "source_variants": [
         {
           "key": "ancestry-kuo-toa:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -13690,7 +13777,7 @@
       "id": "ancestry-kyrie",
       "source_name": "Kyrie",
       "source_groups": [
-        "Other H\u2013K"
+        "Other H–K"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -13713,7 +13800,7 @@
       "source_variants": [
         {
           "key": "ancestry-kyrie:other-h-k:0",
-          "source_group": "Other H\u2013K",
+          "source_group": "Other H–K",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -14178,11 +14265,11 @@
         "Mind flayer / Minotaur"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-minotaur"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -14192,19 +14279,32 @@
       "owner": "GAME-108",
       "design_key": "ancestry-minotaur",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "ancestry-minotaur:mind-flayer-minotaur:0",
           "source_group": "Mind flayer / Minotaur",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-minotaur",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-krynnish-minotaur",
@@ -14385,7 +14485,7 @@
       "id": "ancestry-neraphim",
       "source_name": "Neraphim",
       "source_groups": [
-        "Other N\u2013P"
+        "Other N–P"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -14408,7 +14508,7 @@
       "source_variants": [
         {
           "key": "ancestry-neraphim:other-n-p:0",
-          "source_group": "Other N\u2013P",
+          "source_group": "Other N–P",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -14420,7 +14520,7 @@
       "id": "ancestry-nezumi",
       "source_name": "Nezumi",
       "source_groups": [
-        "Other N\u2013P"
+        "Other N–P"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -14443,7 +14543,7 @@
       "source_variants": [
         {
           "key": "ancestry-nezumi:other-n-p:0",
-          "source_group": "Other N\u2013P",
+          "source_group": "Other N–P",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -14455,7 +14555,7 @@
       "id": "ancestry-nycter",
       "source_name": "Nycter",
       "source_groups": [
-        "Other N\u2013P"
+        "Other N–P"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -14478,7 +14578,7 @@
       "source_variants": [
         {
           "key": "ancestry-nycter:other-n-p:0",
-          "source_group": "Other N\u2013P",
+          "source_group": "Other N–P",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -14490,7 +14590,7 @@
       "id": "ancestry-phanaton",
       "source_name": "Phanaton",
       "source_groups": [
-        "Other N\u2013P"
+        "Other N–P"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -14513,7 +14613,7 @@
       "source_variants": [
         {
           "key": "ancestry-phanaton:other-n-p:0",
-          "source_group": "Other N\u2013P",
+          "source_group": "Other N–P",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -15859,7 +15959,7 @@
       "id": "ancestry-taer",
       "source_name": "Taer",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -15882,7 +15982,7 @@
       "source_variants": [
         {
           "key": "ancestry-taer:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -15894,7 +15994,7 @@
       "id": "ancestry-tasloi",
       "source_name": "Tasloi",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -15917,7 +16017,7 @@
       "source_variants": [
         {
           "key": "ancestry-tasloi:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -15929,7 +16029,7 @@
       "id": "ancestry-thanoi",
       "source_name": "Thanoi",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -15952,7 +16052,7 @@
       "source_variants": [
         {
           "key": "ancestry-thanoi:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -15964,7 +16064,7 @@
       "id": "ancestry-thri-kreen",
       "source_name": "Thri-Kreen",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -15987,7 +16087,7 @@
       "source_variants": [
         {
           "key": "ancestry-thri-kreen:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -15999,7 +16099,7 @@
       "id": "ancestry-tibbit",
       "source_name": "Tibbit",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16022,7 +16122,7 @@
       "source_variants": [
         {
           "key": "ancestry-tibbit:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16034,7 +16134,7 @@
       "id": "ancestry-t-kel",
       "source_name": "T'kel",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16057,7 +16157,7 @@
       "source_variants": [
         {
           "key": "ancestry-t-kel:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16069,7 +16169,7 @@
       "id": "ancestry-tortle",
       "source_name": "Tortle",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16092,7 +16192,7 @@
       "source_variants": [
         {
           "key": "ancestry-tortle:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16104,7 +16204,7 @@
       "id": "ancestry-troglodyte",
       "source_name": "Troglodyte",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16127,7 +16227,7 @@
       "source_variants": [
         {
           "key": "ancestry-troglodyte:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16139,7 +16239,7 @@
       "id": "ancestry-troll",
       "source_name": "Troll",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16162,7 +16262,7 @@
       "source_variants": [
         {
           "key": "ancestry-troll:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16174,7 +16274,7 @@
       "id": "ancestry-crystalline-troll",
       "source_name": "Crystalline Troll",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16197,7 +16297,7 @@
       "source_variants": [
         {
           "key": "ancestry-crystalline-troll:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16209,7 +16309,7 @@
       "id": "ancestry-unbodied",
       "source_name": "Unbodied",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16232,7 +16332,7 @@
       "source_variants": [
         {
           "key": "ancestry-unbodied:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16244,7 +16344,7 @@
       "id": "ancestry-ursoi",
       "source_name": "Ursoi",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16267,7 +16367,7 @@
       "source_variants": [
         {
           "key": "ancestry-ursoi:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16279,7 +16379,7 @@
       "id": "ancestry-vanara",
       "source_name": "Vanara",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16302,7 +16402,7 @@
       "source_variants": [
         {
           "key": "ancestry-vanara:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16314,7 +16414,7 @@
       "id": "ancestry-vodyanoi",
       "source_name": "Vodyanoi",
       "source_groups": [
-        "T\u2013V"
+        "T–V"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16337,7 +16437,7 @@
       "source_variants": [
         {
           "key": "ancestry-vodyanoi:t-v:0",
-          "source_group": "T\u2013V",
+          "source_group": "T–V",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16519,7 +16619,7 @@
       "id": "ancestry-wemic",
       "source_name": "Wemic",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16542,7 +16642,7 @@
       "source_variants": [
         {
           "key": "ancestry-wemic:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16554,7 +16654,7 @@
       "id": "ancestry-wildren",
       "source_name": "Wildren",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16577,7 +16677,7 @@
       "source_variants": [
         {
           "key": "ancestry-wildren:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16589,7 +16689,7 @@
       "id": "ancestry-windrazor",
       "source_name": "Windrazor",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16612,7 +16712,7 @@
       "source_variants": [
         {
           "key": "ancestry-windrazor:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16624,7 +16724,7 @@
       "id": "ancestry-windscythe",
       "source_name": "Windscythe",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16647,7 +16747,7 @@
       "source_variants": [
         {
           "key": "ancestry-windscythe:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16659,7 +16759,7 @@
       "id": "ancestry-witchknife",
       "source_name": "Witchknife",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16682,7 +16782,7 @@
       "source_variants": [
         {
           "key": "ancestry-witchknife:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16694,7 +16794,7 @@
       "id": "ancestry-xeph",
       "source_name": "Xeph",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16717,7 +16817,7 @@
       "source_variants": [
         {
           "key": "ancestry-xeph:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16729,7 +16829,7 @@
       "id": "ancestry-xvart",
       "source_name": "Xvart",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16752,7 +16852,7 @@
       "source_variants": [
         {
           "key": "ancestry-xvart:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16764,7 +16864,7 @@
       "id": "ancestry-yuan-ti-pureblood",
       "source_name": "Yuan-ti Pureblood",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16787,7 +16887,7 @@
       "source_variants": [
         {
           "key": "ancestry-yuan-ti-pureblood:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -16799,7 +16899,7 @@
       "id": "ancestry-tainted-one",
       "source_name": "Tainted One",
       "source_groups": [
-        "W\u2013Y"
+        "W–Y"
       ],
       "category": "ancestry",
       "status": "researched",
@@ -16822,7 +16922,7 @@
       "source_variants": [
         {
           "key": "ancestry-tainted-one:w-y:0",
-          "source_group": "W\u2013Y",
+          "source_group": "W–Y",
           "status": "researched",
           "playable": false,
           "production_id": null,
@@ -20628,7 +20728,7 @@
     },
     {
       "id": "prestige-nature-s-warrior",
-      "source_name": "Nature\u2019s Warrior",
+      "source_name": "Nature’s Warrior",
       "source_groups": [
         "Complete Warrior"
       ],
@@ -21101,11 +21201,11 @@
         "Complete Warrior"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "earned_prestige_path",
-        "production_id": null
+        "kind": "distinct_class",
+        "production_id": "warshaper"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -21115,20 +21215,32 @@
       "owner": "GAME-110",
       "design_key": "prestige-warshaper",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "prestige-warshaper:complete-warrior:0",
           "source_group": "Complete Warrior",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "warshaper",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "prestige-ebonmar-infiltrator",
@@ -23018,11 +23130,11 @@
         "Miniatures Handbook"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "earned_prestige_path",
-        "production_id": null
+        "kind": "distinct_class",
+        "production_id": "bonded-summoner"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -23032,20 +23144,32 @@
       "owner": "GAME-110",
       "design_key": "prestige-bonded-summoner",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native gameplay, save/replay and original adaptation scope.",
       "source_variants": [
         {
           "key": "prestige-bonded-summoner:miniatures-handbook:0",
           "source_group": "Miniatures Handbook",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "bonded-summoner",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v12",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_entities/mechanics_driver.gd",
+        "tactical_test": "tests/character_entities/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "prestige-dragon-samurai",
@@ -27253,5 +27377,42 @@
     "scheduled_choice_groups": 47,
     "status": "source implemented; focused mechanics and new-party save tests passed; native/full regressions pending",
     "programme_complete": false
+  },
+  "wave_two": {
+    "candidate_pack": "trhgd-character-v12",
+    "baseline_pack": "trhgd-character-v11",
+    "status": "implementation_under_validation",
+    "before": {
+      "base_classes": 19,
+      "prestige_classes": 8,
+      "ancestry_families": 17,
+      "heritages": 26,
+      "feats": 40,
+      "skills": 14,
+      "career_choices": 47
+    },
+    "after": {
+      "base_classes": 23,
+      "prestige_classes": 10,
+      "ancestry_families": 21,
+      "heritages": 30,
+      "feats": 45,
+      "skills": 14,
+      "career_choices": 66
+    },
+    "new_source_rows": [
+      "base_class-wilder",
+      "base_class-crusader",
+      "base_class-swordsage",
+      "base_class-binder",
+      "prestige-warshaper",
+      "prestige-bonded-summoner",
+      "ancestry-centaur",
+      "ancestry-minotaur",
+      "ancestry-changeling",
+      "ancestry-shifter"
+    ],
+    "all_occurrences_preserved": true,
+    "complete_programme": false
   }
 }

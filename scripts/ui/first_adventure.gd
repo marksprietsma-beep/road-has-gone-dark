@@ -175,6 +175,7 @@ func refresh() -> void:
    var p := [x,y];var id := engine.occupant(b,p)
    if id.is_empty():
     for candidate in b.order:
+     if b.units[candidate].get("entity",{}).get("active",true)==false and int(b.units[candidate].record.runtime.hp)>0:continue
      if b.units[candidate].position==p and not engine.alive(b.units[candidate]): id=candidate;break
    var button := BattlefieldTile.new();button.custom_minimum_size=Vector2(tile_side,tile_side);button.add_theme_font_size_override("font_size",10)
    var cell := BattlefieldArt.cell(art,p)
@@ -216,7 +217,7 @@ func refresh() -> void:
  var summary: Array[String]=[]
  for id in b.order:
   var u: Dictionary=b.units[id]
-  summary.append("%s%s · %d/%d HP"%[str(state.party_ids.find(id)+1)+". " if u.team=="party" else "",u.name,u.record.runtime.hp,engine.stats(u).HP])
+  summary.append("%s%s · %d/%d HP"%[("S. " if u.entity.kind=="summon" else "C. ") if u.has("entity") else str(state.party_ids.find(id)+1)+". " if u.team=="party" else "",u.name,u.record.runtime.hp,engine.stats(u).HP])
  detail.text="\n".join(summary)
  if playing:
   var abilities: Array=engine.characters.derive_character(actor.record).snapshot.abilities

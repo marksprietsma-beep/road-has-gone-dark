@@ -32,7 +32,7 @@ func run() -> void:
   var installed_rows:=RulesRecords.installed_packs().filter(func(candidate: Dictionary):return candidate.rules_ref.pack_id==row.rules_ref.pack_id)
   check(installed_rows.size()==1 and RulesJson.normalize(installed_rows[0])==RulesJson.normalize(row),"published installed pin unchanged "+str(row.rules_ref.pack_id))
   check(FileAccess.get_sha256(row.path)==history.file_hashes[row.path],"historical content bytes unchanged "+str(row.rules_ref.pack_id))
- check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh normal default is v11")
+ check(RulesRecords.new_character_registry().rules_ref().pack_id==RulesRecords.NEW_PACK,"fresh normal default is latest supported pack; historical v11 tested separately")
  check(RulesCoreContent.ancestry_rows(source).size()==17,"seventeen family options")
  check(RulesCoreContent.ancestry_description(source.definition("ancestries","heritage-elf")).contains("not implemented"),"unsupported vision is never claimed as functioning battlefield mechanics")
  check(source.ids("ancestries").size()==26 and source.ids("feats").size()==40,"real content counts")
