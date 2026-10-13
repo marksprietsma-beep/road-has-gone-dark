@@ -1,0 +1,50 @@
+extends "res://tests/character_catalogue/fresh_driver.gd"
+var capture_ability := ""
+func run() -> void:
+ base="/workspace/artifacts/game112/extra-effects/fresh"
+ service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
+ entry=service.library.discover()[0]
+ var prior: Dictionary=WorldOriginLore.read_json(base.path_join("new-party-proof.json"));slot=prior.slot
+ var loaded:=service.operate(entry,slot,"resume");check(loaded.ok,"actual prior new-class campaign");state=loaded.state
+ for id in state.party_ids:
+  var record: Dictionary=state.mechanics.records[id];var kernel:=RulesCharacter.new(RulesRecords.registry(state))
+  var choice: Dictionary=kernel.suggested_choice(record,record.advancement_history[0].class_id).choice
+  var preview:=CharacterBuilderRecords.preview_advancement(state,id,choice)
+  check(preview.ok,"earned new-class advancement, no grants")
+  action_builder("builder_advance",1,{"character_id":id,"choice":choice,"candidate_hash":preview.candidate_hash})
+ await capture("earned-new-class-level2","sheet",2)
+ action("cycle_seek")
+ for i in 4:
+  travel(i)
+  var site:=SandboxRecords.site(cycle(),cycle().active.site_id)
+  if OpportunityGenerator.template(site.activity_id).family=="contested":await fight_new()
+  else:action("cycle_activity",{"choice":"careful"})
+  action("cycle_return")
+ var reloaded:=service.operate(entry,slot,"resume")
+ check(reloaded.ok and RulesJson.digest(reloaded.state)==RulesJson.digest(state),"earned new classes and actual power results reload")
+ FileAccess.open(base.path_join("extra-effects-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"used_actions":used_actions,"ordinary_xp_granted":false,"screenshots":screenshots,"state_sha":RulesJson.digest(state)}," "))
+ finish()
+func screenshot(name: String,development: bool) -> void:
+ if get_tree().current_scene.scene_file_path=="res://scenes/combat/first_adventure.tscn" and not capture_ability.is_empty():
+  get_tree().current_scene.mode=capture_ability;get_tree().current_scene.refresh()
+ await super.screenshot(name,development)
+func fight_new() -> void:
+ action("cycle_fight");engine.configure(state)
+ for n in 250:
+  var battle:=AdventureService.active_battle(state)
+  if failures>0 or battle.status!="active":break
+  var actor:=engine.current(battle);var command:=engine.enemy_command(battle);var new_power:=false
+  if actor.team=="party" and int(battle.budget.main)>0:
+   var cls: String=actor.record.advancement_history[0].class_id;var ability:=cls+"-technique-1"
+   var targets: Array=battle.units.values().filter(func(target: Dictionary):return target.team=="enemy" and engine.eligible(battle,actor,target,ability))
+   if not targets.is_empty() and engine.effects.validate_ability_cost(ability,actor.record.runtime,{"main":int(battle.budget.main),"move":int(battle.budget.move),"reaction":int(actor.reaction)}).ok:
+    command={"actor_id":actor.id,"revision":battle.revision,"kind":ability,"target_id":targets[0].id}
+    new_power=not used_actions.has(ability)
+    if new_power:used_actions.append(ability)
+  capture_ability=str(command.kind) if new_power else ""
+  if new_power:await capture("actual-"+str(command.kind)+"-before","combat")
+  var expected:=engine.command(battle,command);check(expected.ok,"actual new power command")
+  action("cycle_command",{"command":command})
+  check(AdventureService.active_battle(state).state_hash==expected.battle.state_hash,"same authority and save")
+  if new_power:await capture("actual-"+str(command.kind)+"-effect","combat")
+ check(AdventureService.active_battle(state).status!="active","actual new-class battle terminal")
