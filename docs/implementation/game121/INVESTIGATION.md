@@ -1,6 +1,6 @@
 # GAME-121 — Sustainable earned XP: initial investigation
 
-Status: source audit complete; implementation not started. Separate branch `research/game-121-earned-xp-cadence`, based on recovered GAME-119 review head `05b093a`. GAME-119's tested source is `0971a58`; this investigation adds documentation only. [GitHub mirror #90](https://github.com/marksprietsma-beep/road-has-gone-dark/issues/90); [Linear GAME-121](https://linear.app/marksprietsma/issue/GAME-121). No Linear update is claimed.
+Historical investigation checkpoint (research commit2441a6f): source audit complete; implementation had not started. Current production implementation and verification are documented in [ASSESSMENT.md](ASSESSMENT.md), [TESTING.md](TESTING.md) and [PACING.md](PACING.md). Separate branch `research/game-121-earned-xp-cadence`, based on recovered GAME-119 review head `05b093a`. GAME-119's tested source is `0971a58`; this investigation adds documentation only. [GitHub mirror #90](https://github.com/marksprietsma-beep/road-has-gone-dark/issues/90); [Linear GAME-121](https://linear.app/marksprietsma/issue/GAME-121). No Linear update is claimed.
 
 ## The present journey stops before level three
 
