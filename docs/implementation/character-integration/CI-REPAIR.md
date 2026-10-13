@@ -4,11 +4,11 @@ The consolidated main Windows workflow [38407548386](https://github.com/markspri
 
 The old driver selected the retired Adept `spark`, while new campaign recommendations now use genuine Fighter, Ranger and Wizard builds. The current Wizard has a prepared Arcane Bolt. The driver never selected that spell or the other class attacks, so its fight policy was obsolete. This was reproduced locally on the unmodified consolidated main source `94f2c3391844e4dd5fd62310c304733728ce87b0`: the battle remained active at round seven when the unchanged four-minute limit expired.
 
-The repair selects enabled offensive buttons from the live pinned registry and retains basic Attack as fallback. It uses the same production controls, legal targeting, saves and movement path as before. An additional assertion requires the real Wizard spell to have been used. Failed combat actions now report the controller message immediately; a failed victory assertion returns without printing a false victory or cascading into a disabled Return control.
+The repair uses one shared diagnostic helper for both First Adventure and the inherited sandbox battle driver; both contained the same retired-Spark assumption. It selects enabled offensive buttons from the live pinned registry and retains basic Attack as fallback. It uses the same production controls, legal targeting, saves and movement path as before. An additional assertion requires the real Wizard spell to have been used. Failed combat actions now report the controller message immediately; a failed victory assertion returns without printing a false victory or cascading into a disabled Return control.
 
 No production scripts, rules, RNG, content packs, campaign pins, XP policy, combat deadlines or regression oracles were changed. Existing legacy-board resume/hash checks, genuine victory/defeat outcomes, art isolation, return-home rewards and save validity assertions remain intact. Dynamic assertion totals depend on the number of UI actions, not a fixed weakened count.
 
-## Local source verification
+## Initial First Adventure verification (a6867cd)
 
 Godot4.6.3 on Linux, isolated owned save/library roots, exact public seed `first-adventure-review-v1`:
 
@@ -17,3 +17,7 @@ Godot4.6.3 on Linux, isolated owned save/library roots, exact public seed `first
 - Both source runs used the compatible bundled Linux helper override and a normal PATH. They are source validation, not native empty-PATH Windows claims.
 
 Raw before/after proofs and logs are retained beside this document. Native Windows verification and final publication are recorded in the integration delivery after they actually complete. The unrelated ongoing catalogue/UI/party checks continue on the original consolidated implementation; their runtime source is unchanged by this test-only repair.
+
+## Shared sandbox follow-up
+
+The generated sandbox review inherited the same obsolete battle policy. It now calls the shared legal-offensive-control helper and records actual selected actions in its proof. Both original four-/six-minute deadlines and all generated encounter outcome, history/reward, layout, render/RNG, resume and persistence assertions remain unchanged. Verification of this follow-up is recorded in the final integration delivery after it completes; the initial before/after results above remain qualified to their exact earlier source.
