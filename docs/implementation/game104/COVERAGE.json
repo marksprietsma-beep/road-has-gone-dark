@@ -28371,7 +28371,17 @@
       "docs/implementation/game112-wave-two/evidence/ci-windows-native-distribution-proof.json",
       "docs/implementation/game112-wave-two/evidence/ci-linux-native-distribution-proof.json"
     ],
-    "human_acceptance": "pending"
+    "human_acceptance": "pending",
+    "post_merge_validation": {
+      "source": "89c8956de79122e64c57a3826645a87007ed632c",
+      "workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625941",
+      "windows_linux": "passed",
+      "evidence": [
+        "docs/implementation/game112-wave-two/evidence/main-windows-distribution-proof.json",
+        "docs/implementation/game112-wave-two/evidence/main-linux-distribution-proof.json"
+      ],
+      "programme_complete": false
+    }
   },
   "historical_deliveries": [
     {

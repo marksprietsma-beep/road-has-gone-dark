@@ -2,7 +2,9 @@
 
 PR: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/96
 
-Verified implementation and native-package source: `3eca3109c33176cbcf2cd373dec4db04ef3e2bfa`, on `feature/game-112-character-catalogue-wave-two`, based on main `9b3680eda4c9953c8275721b132fbe5d5eda229f`. Final publication commits add documentation, coverage accounting and evidence only; their production equivalence is checked before merge. Merge SHA/status is recorded in the PR and final GitHub tracking comments after the normal merge; this document does not anticipate a merge that has not happened.
+PR #96 was normally merged as `89c8956de79122e64c57a3826645a87007ed632c`, preserving the baseline9b3680e and delivery0b76d84 histories. All16 final PR checks passed; one optional World Library package job was skipped. All four post-merge workflows passed, including both complete native character jobs, both party/expedition jobs, both UI jobs and the production Windows build.
+
+Latest native-package source is merged main `89c8956de79122e64c57a3826645a87007ed632c`. The original implementation source was3eca310, followed by documentation-only delivery0b76d84. Main's tree equals that delivery tree; all production/test/build trees match the original verified implementation. This final publication follow-up changes documentation/evidence only. Actual final main SHA is recorded in GitHub rather than anticipating the hash of a future documentation merge.
 
 Character pack: `trhgd-character-v12`, canonical content hash `5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b`. Fresh campaigns default to v12. Historical v1–v11 files are byte-identical to the integrated baseline, and existing campaigns retain exact saved rules pins. Once delivered, append a new content version rather than editing v12.
 
@@ -43,48 +45,49 @@ Druid 5 gains actual Bear/Wolf forms: changed STR/DEX, size/reach/movement, natu
 
 ## Windows review package
 
-[Download Windows x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492793161/artifacts/11866490219)
+[Download Windows x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625941/artifacts/11876850412)
 
-Inner playable ZIP: `game112-character-catalogue-wave-two-windows-x64.zip` (121,370,695 bytes).
+Inner playable ZIP: `game112-character-catalogue-wave-two-windows-x64.zip` (121,376,303 bytes).
 
 SHA-256:
 
 ```text
-109b4f9f90a753b99b250b97da26a2757fc3ff9f3f803c279c46be6a28d8799f
+d2b21eeda18977af635eaeb06275d6c169e9d790579f556857a773b43c37dc3d
 ```
 
 Extract the outer GitHub artifact ZIP, then this inner playable ZIP. Open the extracted folder and run `road-has-gone-dark.exe`. Keep all files together, including the bundled helper, artwork and licence notices. No installed Godot or Node is needed. Escape skips the intro. GitHub sign-in may be needed to download an Actions artifact. Retention is 90 days from upload; archive the package for longer-term access.
 
 The downloaded archive passes ZIP integrity checking; executable/content/manifest/start instructions and bundled helper are present, QA executables are excluded, and its content JSON matches this repository byte-for-byte. Native Windows CI ran gameplay and a new-process restart with empty PATH and no source-helper override, then launched the production executable. This is native headless verification, not human desktop/GPU acceptance.
 
-[Linux x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492793161/artifacts/11864833746), inner archive `game112-character-catalogue-wave-two-linux-x64.tar.gz`:
+[Linux x64 artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625941/artifacts/11878025259), inner archive `game112-character-catalogue-wave-two-linux-x64.tar.gz`:
 
 ```text
-9587f957cc30fd18c5e0d9f52d284dd45ff460eadc4c836d1ca189057de3816e
+1153a2115de6e70d8b3422815c64ee154dad021a5ea5d1b102f705df7904fe1e
 ```
 
 ## Verified results
 
-[Full source/native Windows and Linux workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492793161): both jobs passed on the verified implementation source. Downloaded proofs and phase timings are retained in [evidence](evidence/), including independent archive verification.
+[Full post-merge source/native Windows and Linux workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625941): both jobs passed on merged main89c8956. Original implementation-run evidence38492793161 is retained separately. Downloaded proofs and phase timings are retained in [evidence](evidence/), including independent archive verification.
 
 | Proof | Windows | Linux |
 |---|---:|---:|
 | Wave Two mechanics (source and native, each) | 1,953 / 0 failures | 1,953 / 0 failures |
 | Separate mechanics restart | 7 / 0 | 7 / 0 |
-| Source campaign journey | 189 / 0 | 174 / 0 |
-| Native campaign journey | 234 / 0 | 234 / 0 |
+| Original3eca310 source campaign journey | 189 / 0 | 174 / 0 |
+| Main native campaign journey | 243 / 0 | 210 / 0 |
 | Separate campaign restart | 6 / 0 | 6 / 0 |
 | Earned journey XP | 40 | 40 |
 
-Journey command counts vary with independently created persistent identities/encounters; each run verifies deterministic replay and exact writer-owned state. Do not treat distinct campaign identities as an identical seed comparison. Native gameplay took 247.281 seconds on Windows and 208.118 on Linux; restart took 3.719 and 2.871 seconds respectively. No engine errors were hidden behind zero exit codes.
+Journey command counts vary with independently created persistent identities/encounters; each run verifies deterministic replay and exact writer-owned state. Do not treat distinct campaign identities as an identical seed comparison. Native gameplay took 162.328 seconds on Windows and 205.006 on Linux; restart took 2.766 and 3.173 seconds respectively. No engine errors were hidden behind zero exit codes.
 
 The full workflow passed the original generated-world/40-context opportunity tests, V1/V2 save compatibility, GAME-103/104/118 creator/content/default/atomic checks, GAME-119 careers/prestige, GAME-121 actual earned prestige/cycles, historical Wave One matrix, First Adventure and responsive UI checks. Frozen GAME-32 kernel: 22,181 checks, zero failures; original migration/restart checks also pass. Protected historical packs, hashes and behavioural oracle remain unchanged.
 
-Additional current-source aggregate workflows all passed:
+Additional merged-main workflows all passed:
 
-- [Rules and native distribution](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492798220)
-- [Party, input/render and expedition](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492798260)
-- [Production UI and native distribution](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38492798171)
+- [Final PR-head rules and native distribution](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38517244100)
+- [Main production Windows build](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625923)
+- [Party, input/render and expedition](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625849)
+- [Production UI and native distribution](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625871)
 
 All current PR checks passed; the optional World Library `review-packages` job was skipped, with both library verification jobs successful. The Wave Two package was independently produced and verified. Earlier failed/cancelled runs are historical, not successful final evidence. The long ancestry-menu failure on 712b5b1 was a real production input bug, corrected on 3eca310 without changing old assertions; see [CI-REPAIR.md](CI-REPAIR.md). The initial unregistered source-projection failure was also corrected with explicit reversible v12 adapters while retaining original frozen hashes/oracle.
 

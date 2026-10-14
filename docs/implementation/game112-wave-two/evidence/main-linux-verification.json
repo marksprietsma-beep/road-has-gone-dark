@@ -1,0 +1,37 @@
+{
+  "source": "89c8956de79122e64c57a3826645a87007ed632c",
+  "artifact_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38521625941/artifacts/11878025259",
+  "sha256": "1153a2115de6e70d8b3422815c64ee154dad021a5ea5d1b102f705df7904fe1e",
+  "archive": "game112-character-catalogue-wave-two-linux-x64.tar.gz",
+  "proofs": {
+    "mechanics": {
+      "checks": 1953,
+      "failures": 0,
+      "earned_xp": null
+    },
+    "restart": {
+      "checks": 7,
+      "failures": 0,
+      "earned_xp": null
+    },
+    "journey": {
+      "checks": 210,
+      "failures": 0,
+      "earned_xp": 40
+    }
+  },
+  "timings": [
+    {
+      "phase": "native-gameplay",
+      "seconds": 205.006,
+      "exit_code": 0,
+      "errors": false
+    },
+    {
+      "phase": "native-process-restart",
+      "seconds": 3.173,
+      "exit_code": 0,
+      "errors": false
+    }
+  ]
+}
