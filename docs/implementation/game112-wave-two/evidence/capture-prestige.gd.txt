@@ -1,0 +1,68 @@
+extends SceneTree
+class Driver:
+ extends "res://tests/character_entities/journey_driver.gd"
+ func run() -> void:
+  base="/workspace/artifacts/wave-two/current-prestige-renders"
+  DirAccess.make_dir_recursive_absolute(base)
+  service.store.save_root=base.path_join("seed-saves");service.library.save_root=service.store.save_root
+  entry=service.library.discover()[0]
+  var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"real fixture world")
+  var home: Dictionary=profiles.projection.hometowns.values()[0]
+  var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
+  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"original writer creates isolated fixture seed")
+  slot=born.state.playthrough_id;action_builder("builder_open")
+  var source := RulesRecords.registry(state);var kernel := RulesCharacter.new(source)
+  for i in 3:
+   var id: String=state.party_ids[i]
+   var initial := kernel.create(id,source.recommendation("adept").attributes,"heritage-human")
+   var result := kernel.preview_advancement(initial,kernel.suggested_choice(initial,"wizard").choice)
+   check(result.ok,"legal level-one fixture seed")
+   result.candidate.equipment=["staff"]
+   var identity := {"name":"Review "+str(i+1),"people_id":"human","role_id":"adept","origin_burg":int(home.burg_id),"occupation_id":CharacterBuilderRecords.backgrounds(entry.world,int(home.burg_id))[0].id}
+   action_builder("builder_save",i+1,{"identity":identity,"build":CharacterBuilderRecords.definition(result.candidate)})
+  action_builder("builder_ready")
+  var template: Dictionary=state.duplicate(true)
+  get_tree().root.gui_embed_subwindows=true
+  for path in ["warshaper","bonded-summoner"]:
+   var state_fixture := template.duplicate(true);var id: String=state_fixture.party_ids[0]
+   var record := kernel.create(id,source.recommendation("adept").attributes,state_fixture.mechanics.records[id].ancestry_ref)
+   var cls: String="druid" if path=="warshaper" else "wizard"
+   var levels: int=6 if path=="warshaper" else 5
+   for n in levels:
+    var step := kernel.preview_advancement(record,kernel.suggested_choice(record,cls).choice)
+    check(step.ok,"genuine entry build")
+    if not step.ok:finish_wave();return
+    record=step.candidate
+   check(kernel.available_advancement(record).classes[path].ok,"legitimate entry eligibility")
+   for phase in ["eligibility","progression"]:
+    if phase=="progression":
+     for n in 5:
+      var step := kernel.preview_advancement(record,kernel.suggested_choice(record,path).choice)
+      check(step.ok,"real prestige advancement")
+      if not step.ok:finish_wave();return
+      record=step.candidate
+    record.runtime.hp=int(kernel.derive_character(record).snapshot.stats.HP)
+    state_fixture.mechanics.records[id]=record;state_fixture.character_builder.advancements=[]
+    for actor_id in state_fixture.party_ids:state_fixture.character_builder.initial_levels[actor_id]=state_fixture.mechanics.records[actor_id].advancement_history.size()
+    service.store.save_root=base.path_join(path+"-"+phase)
+    var saved := service.store.save_new(slot,state_fixture,entry.world)
+    check(saved.ok,"original writer saves explicitly labelled fixture "+str(saved.get("error","")))
+    if not saved.ok:finish_wave();return
+    CharacterScreen.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
+    get_tree().change_scene_to_file("res://scenes/ui/character_sheet.tscn")
+    while get_tree().current_scene==null or not get_tree().current_scene is CharacterScreen:await get_tree().process_frame
+    var ui: CharacterScreen=get_tree().current_scene
+    while ui.thread!=null or ui.state.is_empty():await get_tree().process_frame
+    ui.title.text="DEVELOPMENT FIXTURE · "+path+" · XP not granted"
+    if phase=="eligibility":
+     ui.detail_tabs.current_tab=3;ui.advance_editor.set_class(path)
+     for n in 5:await get_tree().process_frame
+    else:ui.detail_tabs.current_tab=2
+    await screenshot("wave-two-"+path+"-"+phase+"-fixture",true)
+    if phase=="progression":
+     var scroll: ScrollContainer=ui.detail_tabs.get_child(2);scroll.scroll_vertical=int(scroll.get_v_scroll_bar().max_value)
+     await screenshot("wave-two-"+path+"-history-fixture",true)
+    get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+    for n in 5:await get_tree().process_frame
+  finish_wave()
+func _initialize() -> void:root.call_deferred("add_child",Driver.new())

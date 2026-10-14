@@ -1,0 +1,73 @@
+{
+  "archive": "game112-character-catalogue-wave-two-linux-x64.tar.gz",
+  "sha256": "9587f957cc30fd18c5e0d9f52d284dd45ff460eadc4c836d1ca189057de3816e",
+  "proofs": {
+    "mechanics": {
+      "checks": 1953,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v12",
+        "rules_version": "12.0.0",
+        "schema_version": 1
+      }
+    },
+    "restart": {
+      "checks": 7,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v12",
+        "rules_version": "12.0.0",
+        "schema_version": 1
+      }
+    },
+    "journey": {
+      "checks": 234,
+      "demonstration_actions": [
+        "attack",
+        "move",
+        "end",
+        "wizard-summon-sentinel",
+        "81f647a378252f7fae02f97882dc1b80:adventurer:2:summon:6",
+        "81f647a378252f7fae02f97882dc1b80:adventurer:1:companion",
+        "wilder-surge",
+        "wild-shape",
+        "bear-attack",
+        "revert-form"
+      ],
+      "earned_xp": 40,
+      "failures": 0,
+      "fixture_battle_hash": "0131905f0dfc86955f416e1874933c5846b3cd084094972762a68f6f11499a1f",
+      "fixture_is_earned": false,
+      "rules_ref": {
+        "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v12",
+        "rules_version": "12.0.0",
+        "schema_version": 1
+      },
+      "screenshots": [],
+      "slot": "81f647a378252f7fae02f97882dc1b80",
+      "state_sha": "64ddecfe5c2ca0afeb15f5d30df5bce9bebad2caa3631bca8a2e89e8f61780ef"
+    }
+  },
+  "source_helper_override": false,
+  "empty_path": true,
+  "timings": [
+    {
+      "phase": "native-gameplay",
+      "seconds": 208.118,
+      "exit_code": 0,
+      "errors": false
+    },
+    {
+      "phase": "native-process-restart",
+      "seconds": 2.871,
+      "exit_code": 0,
+      "errors": false
+    }
+  ]
+}

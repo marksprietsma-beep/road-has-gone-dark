@@ -1,0 +1,947 @@
+﻿2026-10-13T23:48:48.0943907Z Current runner version: '2.337.0'
+2026-10-13T23:48:48.0965917Z ##[group]Runner Image Provisioner
+2026-10-13T23:48:48.0966650Z Hosted Compute Agent
+2026-10-13T23:48:48.0967148Z Version: 20261002.596
+2026-10-13T23:48:48.0967776Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-13T23:48:48.0968380Z Build Date: 2026-10-02T22:28:27Z
+2026-10-13T23:48:48.0968997Z Worker ID: {4e3b1460-d5a7-47c1-b334-c57cdd778a26}
+2026-10-13T23:48:48.0969597Z Region: westus3
+2026-10-13T23:48:48.0970059Z Cloud: Azure
+2026-10-13T23:48:48.0970550Z ##[endgroup]
+2026-10-13T23:48:48.0971684Z ##[group]Operating System
+2026-10-13T23:48:48.0972205Z Ubuntu
+2026-10-13T23:48:48.0972718Z 24.04.5
+2026-10-13T23:48:48.0973148Z LTS
+2026-10-13T23:48:48.0973676Z ##[endgroup]
+2026-10-13T23:48:48.0974139Z ##[group]Runner Image
+2026-10-13T23:48:48.0974640Z Image: ubuntu-24.04
+2026-10-13T23:48:48.0975168Z Version: 20261004.327.1
+2026-10-13T23:48:48.0976422Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-13T23:48:48.0977762Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-13T23:48:48.0978585Z ##[endgroup]
+2026-10-13T23:48:48.0979513Z ##[group]GITHUB_TOKEN Permissions
+2026-10-13T23:48:48.0981055Z Contents: read
+2026-10-13T23:48:48.0981644Z Metadata: read
+2026-10-13T23:48:48.0982147Z ##[endgroup]
+2026-10-13T23:48:48.0983801Z Secret source: Actions
+2026-10-13T23:48:48.0984599Z Cache mode: write
+2026-10-13T23:48:48.0985188Z Prepare workflow directory
+2026-10-13T23:48:48.1248625Z Prepare all required actions
+2026-10-13T23:48:48.1303384Z Getting action download info
+2026-10-13T23:48:48.4273595Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-13T23:48:48.7956539Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-13T23:48:49.0802362Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-13T23:48:49.2542048Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-13T23:48:49.5631370Z Complete job name: ui (ubuntu-latest)
+2026-10-13T23:48:49.6416593Z ##[group]Run actions/checkout@v4
+2026-10-13T23:48:49.6417612Z with:
+2026-10-13T23:48:49.6418339Z   repository: marksprietsma-beep/road-has-gone-dark
+2026-10-13T23:48:49.6425789Z   token: ***
+2026-10-13T23:48:49.6426448Z   ssh-strict: true
+2026-10-13T23:48:49.6427095Z   ssh-user: git
+2026-10-13T23:48:49.6427749Z   persist-credentials: true
+2026-10-13T23:48:49.6428474Z   clean: true
+2026-10-13T23:48:49.6429137Z   sparse-checkout-cone-mode: true
+2026-10-13T23:48:49.6429907Z   fetch-depth: 1
+2026-10-13T23:48:49.6430551Z   fetch-tags: false
+2026-10-13T23:48:49.6431216Z   show-progress: true
+2026-10-13T23:48:49.6431882Z   lfs: false
+2026-10-13T23:48:49.6432505Z   submodules: false
+2026-10-13T23:48:49.6433170Z   set-safe-directory: true
+2026-10-13T23:48:49.6433912Z   allow-unsafe-pr-checkout: false
+2026-10-13T23:48:49.6434968Z ##[endgroup]
+2026-10-13T23:48:49.7385861Z Syncing repository: marksprietsma-beep/road-has-gone-dark
+2026-10-13T23:48:49.7388257Z ##[group]Getting Git version info
+2026-10-13T23:48:49.7389508Z Working directory is '/home/runner/work/road-has-gone-dark/road-has-gone-dark'
+2026-10-13T23:48:49.7391137Z [command]/usr/bin/git version
+2026-10-13T23:48:49.8636062Z git version 2.55.0
+2026-10-13T23:48:49.8653537Z ##[endgroup]
+2026-10-13T23:48:49.8666662Z Temporarily overriding HOME='/home/runner/work/_temp/0058d21d-4498-49c2-a8d1-0e66f18b0cbd' before making global git config changes
+2026-10-13T23:48:49.8670769Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-13T23:48:49.8672670Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/road-has-gone-dark/road-has-gone-dark
+2026-10-13T23:48:49.8715930Z Deleting the contents of '/home/runner/work/road-has-gone-dark/road-has-gone-dark'
+2026-10-13T23:48:49.8719120Z ##[group]Initializing the repository
+2026-10-13T23:48:49.8722450Z [command]/usr/bin/git init /home/runner/work/road-has-gone-dark/road-has-gone-dark
+2026-10-13T23:48:49.8850644Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-13T23:48:49.8852487Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-13T23:48:49.8854384Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-13T23:48:49.8856258Z hint: call:
+2026-10-13T23:48:49.8857134Z hint:
+2026-10-13T23:48:49.8858228Z hint: 	git config --global init.defaultBranch <name>
+2026-10-13T23:48:49.8859568Z hint:
+2026-10-13T23:48:49.8860791Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-13T23:48:49.8862995Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-13T23:48:49.8864668Z hint:
+2026-10-13T23:48:49.8865689Z hint: 	git branch -m <name>
+2026-10-13T23:48:49.8866699Z hint:
+2026-10-13T23:48:49.8868082Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-13T23:48:49.8870823Z Initialized empty Git repository in /home/runner/work/road-has-gone-dark/road-has-gone-dark/.git/
+2026-10-13T23:48:49.8873653Z [command]/usr/bin/git remote add origin https://github.com/marksprietsma-beep/road-has-gone-dark
+2026-10-13T23:48:49.8906838Z ##[endgroup]
+2026-10-13T23:48:49.8908515Z ##[group]Disabling automatic garbage collection
+2026-10-13T23:48:49.8910064Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-13T23:48:49.8938850Z ##[endgroup]
+2026-10-13T23:48:49.8940452Z ##[group]Setting up auth
+2026-10-13T23:48:49.8944957Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T23:48:49.8977951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T23:48:50.0654089Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T23:48:50.0685227Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T23:48:50.0884684Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T23:48:50.0914793Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T23:48:50.1109161Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-13T23:48:50.1144440Z ##[endgroup]
+2026-10-13T23:48:50.1146169Z ##[group]Fetching the repository
+2026-10-13T23:48:50.1153056Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31f5851a7f71d60ae9d34963cf6287b5f108dd04:refs/remotes/pull/96/merge
+2026-10-13T23:48:56.5353210Z From https://github.com/marksprietsma-beep/road-has-gone-dark
+2026-10-13T23:48:56.5354400Z  * [new ref]         31f5851a7f71d60ae9d34963cf6287b5f108dd04 -> pull/96/merge
+2026-10-13T23:48:56.5360062Z ##[endgroup]
+2026-10-13T23:48:56.5361003Z ##[group]Determining the checkout info
+2026-10-13T23:48:56.5364438Z ##[endgroup]
+2026-10-13T23:48:56.5373800Z [command]/usr/bin/git sparse-checkout disable
+2026-10-13T23:48:56.5474685Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-13T23:48:56.5504186Z ##[group]Checking out the ref
+2026-10-13T23:48:56.5508057Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/96/merge
+2026-10-13T23:48:57.4986287Z Note: switching to 'refs/remotes/pull/96/merge'.
+2026-10-13T23:48:57.4986737Z 
+2026-10-13T23:48:57.4987026Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-13T23:48:57.4987577Z changes and commit them, and you can discard any commits you make in this
+2026-10-13T23:48:57.4988534Z state without impacting any branches by switching back to a branch.
+2026-10-13T23:48:57.4988878Z 
+2026-10-13T23:48:57.4989165Z If you want to create a new branch to retain commits you create, you may
+2026-10-13T23:48:57.4989702Z do so (now or later) by using -c with the switch command. Example:
+2026-10-13T23:48:57.4990030Z 
+2026-10-13T23:48:57.4990163Z   git switch -c <new-branch-name>
+2026-10-13T23:48:57.4990382Z 
+2026-10-13T23:48:57.4990562Z Or undo this operation with:
+2026-10-13T23:48:57.4990759Z 
+2026-10-13T23:48:57.4990874Z   git switch -
+2026-10-13T23:48:57.4991020Z 
+2026-10-13T23:48:57.4991321Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-13T23:48:57.4991705Z 
+2026-10-13T23:48:57.4992150Z HEAD is now at 31f5851 Merge 712b5b16343bfed287035ed6bfc4b5d251bf7182 into 9b3680eda4c9953c8275721b132fbe5d5eda229f
+2026-10-13T23:48:57.5048027Z ##[endgroup]
+2026-10-13T23:48:57.5085673Z [command]/usr/bin/git log -1 --format=%H
+2026-10-13T23:48:57.5109963Z 31f5851a7f71d60ae9d34963cf6287b5f108dd04
+2026-10-13T23:48:57.5342930Z ##[group]Run actions/setup-node@v4
+2026-10-13T23:48:57.5343173Z with:
+2026-10-13T23:48:57.5343353Z   node-version: 24.19.0
+2026-10-13T23:48:57.5343541Z   always-auth: false
+2026-10-13T23:48:57.5343728Z   check-latest: false
+2026-10-13T23:48:57.5345974Z   token: ***
+2026-10-13T23:48:57.5346146Z ##[endgroup]
+2026-10-13T23:48:57.6488593Z Attempting to download 24.19.0...
+2026-10-13T23:48:57.6573175Z (node:2099) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T23:48:57.6573876Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T23:48:58.6552932Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-10-13T23:48:59.2222586Z Extracting ...
+2026-10-13T23:48:59.2334394Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/4af32e94-00da-4e4e-b0bc-6c0a44f111ea -f /home/runner/work/_temp/42f2f7d7-e09f-4daf-9b74-b21d82d562af
+2026-10-13T23:49:00.2803985Z Adding to the cache ...
+2026-10-13T23:49:02.8463208Z ##[group]Environment details
+2026-10-13T23:49:03.0213228Z node: v24.19.0
+2026-10-13T23:49:03.0213540Z npm: 11.17.0
+2026-10-13T23:49:03.0213810Z yarn: 1.22.22
+2026-10-13T23:49:03.0214343Z ##[endgroup]
+2026-10-13T23:49:03.0462091Z ##[group]Run actions/setup-python@v5
+2026-10-13T23:49:03.0462321Z with:
+2026-10-13T23:49:03.0462488Z   python-version: 3.12
+2026-10-13T23:49:03.0462667Z   check-latest: false
+2026-10-13T23:49:03.0464663Z   token: ***
+2026-10-13T23:49:03.0464842Z   update-environment: true
+2026-10-13T23:49:03.0465044Z   allow-prereleases: false
+2026-10-13T23:49:03.0465243Z   freethreaded: false
+2026-10-13T23:49:03.0465634Z ##[endgroup]
+2026-10-13T23:49:03.1525211Z ##[group]Installed versions
+2026-10-13T23:49:03.1602965Z (node:2134) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T23:49:03.1604006Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T23:49:03.1604643Z Successfully set up CPython (3.12.15)
+2026-10-13T23:49:03.1605194Z ##[endgroup]
+2026-10-13T23:49:03.1743286Z ##[group]Run npm ci --ignore-scripts --prefix vendor/azgaar
+2026-10-13T23:49:03.1743866Z [36;1mnpm ci --ignore-scripts --prefix vendor/azgaar[0m
+2026-10-13T23:49:03.2034164Z shell: /usr/bin/bash -e {0}
+2026-10-13T23:49:03.2034465Z env:
+2026-10-13T23:49:03.2034706Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:03.2035072Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-13T23:49:03.2035547Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:03.2035859Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:03.2036165Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:03.2036463Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-13T23:49:03.2036929Z ##[endgroup]
+2026-10-13T23:49:04.5806275Z npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+2026-10-13T23:49:04.9228737Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-10-13T23:49:05.0002653Z npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+2026-10-13T23:49:05.0200120Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-10-13T23:49:05.7562441Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2026-10-13T23:49:10.1313391Z 
+2026-10-13T23:49:10.1314474Z added 483 packages, and audited 484 packages in 7s
+2026-10-13T23:49:10.1315106Z 
+2026-10-13T23:49:10.1316159Z 76 packages are looking for funding
+2026-10-13T23:49:10.1316743Z   run `npm fund` for details
+2026-10-13T23:49:10.1596715Z 
+2026-10-13T23:49:10.1597470Z 15 vulnerabilities (1 low, 8 moderate, 6 high)
+2026-10-13T23:49:10.1597737Z 
+2026-10-13T23:49:10.1598081Z To address issues that do not require attention, run:
+2026-10-13T23:49:10.1598427Z   npm audit fix
+2026-10-13T23:49:10.1598562Z 
+2026-10-13T23:49:10.1598800Z To address all issues (including breaking changes), run:
+2026-10-13T23:49:10.1599189Z   npm audit fix --force
+2026-10-13T23:49:10.1599361Z 
+2026-10-13T23:49:10.1599499Z Run `npm audit` for details.
+2026-10-13T23:49:10.3997620Z ##[group]Run python tests/world_library/prepare-ci.py
+2026-10-13T23:49:10.3997968Z [36;1mpython tests/world_library/prepare-ci.py[0m
+2026-10-13T23:49:10.4055614Z shell: /usr/bin/bash -e {0}
+2026-10-13T23:49:10.4055828Z env:
+2026-10-13T23:49:10.4056049Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:10.4056398Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-13T23:49:10.4056732Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:10.4057029Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:10.4057321Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:10.4057613Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-13T23:49:10.4057868Z ##[endgroup]
+2026-10-13T23:49:16.4468289Z Packaged 109 locked runtime packages with licences at /home/runner/work/_temp/worldgen-helper
+2026-10-13T23:49:43.7305986Z ##[group]Run xvfb-run -a python tests/expedition/verify-capture-failures.py
+2026-10-13T23:49:43.7306462Z [36;1mxvfb-run -a python tests/expedition/verify-capture-failures.py[0m
+2026-10-13T23:49:43.7306931Z [36;1mxvfb-run -a -s '-screen 0 3840x2160x24' python tests/ui_system/run-tests.py --visual --regressions[0m
+2026-10-13T23:49:43.7364515Z shell: /usr/bin/bash -e {0}
+2026-10-13T23:49:43.7364729Z env:
+2026-10-13T23:49:43.7364951Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:43.7365298Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-13T23:49:43.7365778Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:43.7366073Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:43.7366374Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-13T23:49:43.7366681Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-13T23:49:43.7367035Z   GODOT_BIN: /home/runner/work/_temp/godot/Godot_v4.6.3-stable_linux.x86_64
+2026-10-13T23:49:43.7367389Z   GAME76_HELPER_ROOT: /home/runner/work/_temp/worldgen-helper
+2026-10-13T23:49:43.7367734Z   GAME76_GENERATED_TEST_DIR: /home/runner/work/_temp/generated worlds with spaces
+2026-10-13T23:49:43.7368266Z   GAME97_EVIDENCE_ROOT: docs/implementation/game83/logs/capture-failures
+2026-10-13T23:49:43.7368560Z ##[endgroup]
+2026-10-13T23:51:21.3621694Z PASS expected assertion failure exits 1 in 9.69s
+2026-10-13T23:51:21.3622259Z PASS expected offscreen failure exits 1 in 0.79s
+2026-10-13T23:51:24.5983107Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-13T23:51:24.5983409Z 
+2026-10-13T23:51:24.5984222Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+2026-10-13T23:51:24.5985069Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+2026-10-13T23:51:24.5987750Z [  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+2026-10-13T23:51:24.5988487Z [  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+2026-10-13T23:51:24.5989203Z [  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+2026-10-13T23:51:24.5989990Z [  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+2026-10-13T23:51:24.5990841Z [  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+2026-10-13T23:51:24.5991419Z [92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+2026-10-13T23:51:24.5991784Z [0m
+2026-10-13T23:51:24.5992368Z [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+2026-10-13T23:51:24.5993152Z [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+2026-10-13T23:51:24.5993901Z [  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+2026-10-13T23:51:24.5994480Z [92m[ DONE ][39m [1mloading_editor_layout[22m
+2026-10-13T23:51:24.5994828Z [0m
+2026-10-13T23:51:24.8635785Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-13T23:51:24.8636085Z 
+2026-10-13T23:51:24.8636249Z GAME-83 presentation: 20 checks, 0 failures
+2026-10-14T00:07:41.4400087Z c8574bdeed019669aea190dc0211f7e120fcb2c5b0f4e5121b94e50678053b24  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-0/world.json
+2026-10-14T00:07:41.4401547Z f1772c90e94c85281f26140d2d3887fce190141b65aeb6e5accb19035e421680  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-0/world.relief.svg
+2026-10-14T00:07:41.4402933Z 49c519f0691b21259161dc23c2005b4e0e02d410853c6cac80a88737900c5c6a  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-0/world.vegetation.svg
+2026-10-14T00:07:41.4404302Z de343a2cf2851e9889dcae3279eb9b43ab6b0d7e65497b53f0c8ee1a23ea51ff  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-1/world.json
+2026-10-14T00:07:41.4406186Z 7cd9baafcaea8be377fd4df2373bf1a54eade1831f711a811e05f823ab8bdc52  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-1/world.relief.svg
+2026-10-14T00:07:41.4407618Z c7aaa47248cb95e1d5b924c03d54d5bee2e3e5557d6cabcdcff6acdfc9ae2d9b  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-1/world.vegetation.svg
+2026-10-14T00:07:41.4408969Z 43a189d874bcf4be623fd67814c7e19b3c9a367358e1da6d0264ef72c5809aa2  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-2/world.json
+2026-10-14T00:07:41.4410048Z 4516bde1a71105faad6cfbee977e82e4ac969963ea0ebe7e58ca25ec708b601f  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-2/world.relief.svg
+2026-10-14T00:07:41.4410894Z c3be0c9f94e66607a58f6873294501f9af032c6dd03695abf1ea8bab6d874f11  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-2/world.vegetation.svg
+2026-10-14T00:07:41.4411719Z f040507845de2b105cafe8c17dd202d97c4408078c8583acb7312a4f8b554983  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-3/world.json
+2026-10-14T00:07:41.4412535Z 4d437bb59aa0d323d7151b0e6312a1eeca01245186916b8d511aff5c8baa15ee  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-3/world.relief.svg
+2026-10-14T00:07:41.4413419Z 0d68d1f00c3d4bbbd71940e1b9baac3984773692b76dc5b6ebbba4045a65a13c  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-3/world.vegetation.svg
+2026-10-14T00:07:41.4414243Z dbf5ee6cbac45ef51ffb98f5d90cfe7018648915d54a687ae08f606f19b5c5e8  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-4/world.json
+2026-10-14T00:07:41.4415200Z 48bcf8a050e1ef2f54dd4719b1435429b874be8278a23f840b24aad92c1f6da1  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-4/world.relief.svg
+2026-10-14T00:07:41.4416307Z 972f803ec6d34b1bc64cd99d99fb9198da72c4dace4ac3cad1dfc5608dfff2cc  /tmp/game83-ui-25n5gr1a/generated/game84-expedition-4/world.vegetation.svg
+2026-10-14T00:07:41.4416960Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4417189Z 
+2026-10-14T00:07:41.4417721Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+2026-10-14T00:07:41.4418238Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+2026-10-14T00:07:41.4418728Z [  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+2026-10-14T00:07:41.4419220Z [  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+2026-10-14T00:07:41.4419701Z [  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+2026-10-14T00:07:41.4420176Z [  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+2026-10-14T00:07:41.4420622Z [  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+2026-10-14T00:07:41.4420996Z [92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+2026-10-14T00:07:41.4421234Z [0m
+2026-10-14T00:07:41.4421604Z [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+2026-10-14T00:07:41.4422097Z [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+2026-10-14T00:07:41.4424105Z [  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+2026-10-14T00:07:41.4424678Z [92m[ DONE ][39m [1mloading_editor_layout[22m
+2026-10-14T00:07:41.4425086Z [0m
+2026-10-14T00:07:41.4425644Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4425962Z 
+2026-10-14T00:07:41.4426154Z GAME-84 lifecycle create: 324 checks, 0 failures
+2026-10-14T00:07:41.4426675Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4426967Z 
+2026-10-14T00:07:41.4427158Z GAME-84 lifecycle replay: 85 checks, 0 failures
+2026-10-14T00:07:41.4427634Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4427967Z 
+2026-10-14T00:07:41.4428179Z GAME-84 cache integrity: 15 checks, 0 failures
+2026-10-14T00:07:41.4428747Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4429061Z 
+2026-10-14T00:07:41.4429259Z GAME-84 failure safety: 32 checks, 0 failures
+2026-10-14T00:07:41.4429795Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4430356Z 
+2026-10-14T00:07:41.4430628Z Outcome corpus finished game-11-determinism; cases 6
+2026-10-14T00:07:41.4431166Z Outcome corpus finished game-11-determinism; cases 12
+2026-10-14T00:07:41.4431692Z Outcome corpus finished game-11-determinism; cases 18
+2026-10-14T00:07:41.4432217Z Outcome corpus finished game-11-determinism; cases 24
+2026-10-14T00:07:41.4432725Z Outcome corpus finished game-11-determinism; cases 30
+2026-10-14T00:07:41.4433228Z Outcome corpus finished game-11-determinism; cases 36
+2026-10-14T00:07:41.4433728Z Outcome corpus finished game-11-determinism; cases 42
+2026-10-14T00:07:41.4434244Z Outcome corpus finished game-11-determinism; cases 48
+2026-10-14T00:07:41.4434766Z Outcome corpus finished atlas-showcase-06; cases 54
+2026-10-14T00:07:41.4435275Z Outcome corpus finished atlas-showcase-06; cases 60
+2026-10-14T00:07:41.4435941Z Outcome corpus finished atlas-showcase-06; cases 66
+2026-10-14T00:07:41.4436444Z Outcome corpus finished atlas-showcase-06; cases 72
+2026-10-14T00:07:41.4436958Z Outcome corpus finished atlas-showcase-06; cases 78
+2026-10-14T00:07:41.4437452Z Outcome corpus finished atlas-showcase-06; cases 84
+2026-10-14T00:07:41.4437947Z Outcome corpus finished atlas-showcase-06; cases 90
+2026-10-14T00:07:41.4438445Z Outcome corpus finished atlas-showcase-06; cases 96
+2026-10-14T00:07:41.4439152Z Outcome corpus finished game84-expedition-2; cases 102
+2026-10-14T00:07:41.4439708Z Outcome corpus finished game84-expedition-2; cases 108
+2026-10-14T00:07:41.4440233Z Outcome corpus finished game84-expedition-2; cases 114
+2026-10-14T00:07:41.4440771Z Outcome corpus finished game84-expedition-2; cases 120
+2026-10-14T00:07:41.4441279Z Outcome corpus finished game84-expedition-2; cases 126
+2026-10-14T00:07:41.4441795Z Outcome corpus finished game84-expedition-2; cases 132
+2026-10-14T00:07:41.4442305Z Outcome corpus finished game84-expedition-2; cases 138
+2026-10-14T00:07:41.4442809Z Outcome corpus finished game84-expedition-2; cases 144
+2026-10-14T00:07:41.4443325Z Outcome corpus finished game84-expedition-0; cases 150
+2026-10-14T00:07:41.4443841Z Outcome corpus finished game84-expedition-0; cases 156
+2026-10-14T00:07:41.4444421Z Outcome corpus finished game84-expedition-0; cases 162
+2026-10-14T00:07:41.4444954Z Outcome corpus finished game84-expedition-0; cases 168
+2026-10-14T00:07:41.4445623Z Outcome corpus finished game84-expedition-0; cases 174
+2026-10-14T00:07:41.4446146Z Outcome corpus finished game84-expedition-0; cases 180
+2026-10-14T00:07:41.4446662Z Outcome corpus finished game84-expedition-0; cases 186
+2026-10-14T00:07:41.4447173Z Outcome corpus finished game84-expedition-0; cases 192
+2026-10-14T00:07:41.4447699Z Outcome corpus finished game84-expedition-4; cases 198
+2026-10-14T00:07:41.4448217Z Outcome corpus finished game84-expedition-4; cases 204
+2026-10-14T00:07:41.4448744Z Outcome corpus finished game84-expedition-4; cases 210
+2026-10-14T00:07:41.4449260Z Outcome corpus finished game84-expedition-4; cases 216
+2026-10-14T00:07:41.4449793Z Outcome corpus finished game84-expedition-4; cases 222
+2026-10-14T00:07:41.4450304Z Outcome corpus finished game84-expedition-4; cases 228
+2026-10-14T00:07:41.4450819Z Outcome corpus finished game84-expedition-4; cases 234
+2026-10-14T00:07:41.4451342Z Outcome corpus finished game84-expedition-4; cases 240
+2026-10-14T00:07:41.4451875Z Outcome corpus finished game84-expedition-1; cases 246
+2026-10-14T00:07:41.4452404Z Outcome corpus finished game84-expedition-1; cases 252
+2026-10-14T00:07:41.4452910Z Outcome corpus finished game84-expedition-1; cases 258
+2026-10-14T00:07:41.4453408Z Outcome corpus finished game84-expedition-1; cases 264
+2026-10-14T00:07:41.4453981Z Outcome corpus finished game84-expedition-1; cases 270
+2026-10-14T00:07:41.4454482Z Outcome corpus finished game84-expedition-1; cases 276
+2026-10-14T00:07:41.4454982Z Outcome corpus finished game84-expedition-1; cases 282
+2026-10-14T00:07:41.4455664Z Outcome corpus finished game84-expedition-1; cases 288
+2026-10-14T00:07:41.4456181Z Outcome corpus finished game84-expedition-3; cases 294
+2026-10-14T00:07:41.4456909Z Outcome corpus finished game84-expedition-3; cases 300
+2026-10-14T00:07:41.4457467Z Outcome corpus finished game84-expedition-3; cases 306
+2026-10-14T00:07:41.4458014Z Outcome corpus finished game84-expedition-3; cases 312
+2026-10-14T00:07:41.4458526Z Outcome corpus finished game84-expedition-3; cases 318
+2026-10-14T00:07:41.4459046Z Outcome corpus finished game84-expedition-3; cases 324
+2026-10-14T00:07:41.4459557Z Outcome corpus finished game84-expedition-3; cases 330
+2026-10-14T00:07:41.4459902Z Outcome corpus finished game84-expedition-3; cases 336
+2026-10-14T00:07:41.4460252Z GAME-84 actual outcome corpus: 336 sets, 2822 checks, 0 failures
+2026-10-14T00:07:41.4460664Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4460886Z 
+2026-10-14T00:07:41.4461537Z { "world": "game-11-determinism", "world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5", "cold_replay_and_region_ms": 5069, "warm_resume_ms": 113, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4462697Z { "world": "atlas-showcase-06", "world_sha": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3", "cold_replay_and_region_ms": 5361, "warm_resume_ms": 121, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4464029Z { "world": "game84-expedition-2", "world_sha": "43a189d874bcf4be623fd67814c7e19b3c9a367358e1da6d0264ef72c5809aa2", "cold_replay_and_region_ms": 5046, "warm_resume_ms": 224, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4465185Z { "world": "game84-expedition-0", "world_sha": "c8574bdeed019669aea190dc0211f7e120fcb2c5b0f4e5121b94e50678053b24", "cold_replay_and_region_ms": 4747, "warm_resume_ms": 156, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4466568Z { "world": "game84-expedition-4", "world_sha": "dbf5ee6cbac45ef51ffb98f5d90cfe7018648915d54a687ae08f606f19b5c5e8", "cold_replay_and_region_ms": 4910, "warm_resume_ms": 202, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4467711Z { "world": "game84-expedition-1", "world_sha": "de343a2cf2851e9889dcae3279eb9b43ab6b0d7e65497b53f0c8ee1a23ea51ff", "cold_replay_and_region_ms": 4773, "warm_resume_ms": 175, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4468840Z { "world": "game84-expedition-3", "world_sha": "f040507845de2b105cafe8c17dd202d97c4408078c8583acb7312a4f8b554983", "cold_replay_and_region_ms": 4829, "warm_resume_ms": 209, "campaign_bytes_unchanged": true }
+2026-10-14T00:07:41.4470206Z PASS batch {"worlds":7,"regions":105,"sites":840,"leads":315,"choice_sets":840,"site_types":27,"distinct_visible_prose":339,"duplicate_visible_prose":501,"lead_goal_forms":3,"geographic_violations":0,"knowledge_leaks":0,"determinism_failures":0,"elapsed_seconds":42.106642736000005}
+2026-10-14T00:07:41.4471130Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4471669Z WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+2026-10-14T00:07:41.4472125Z      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+2026-10-14T00:07:41.4472720Z OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+2026-10-14T00:07:41.4473062Z 
+2026-10-14T00:07:41.4473221Z GAME-84 real input/render: 230 checks, 0 failures
+2026-10-14T00:07:41.4473795Z ✔ presence is deterministic, all peoples selectable, culture is independent (166.502321ms)
+2026-10-14T00:07:41.4474373Z ✔ three stable members, repeated generation, different roles/lives/forms (8.77463ms)
+2026-10-14T00:07:41.4474974Z ✔ name edits preserve identity; deterministic reroll retains manual name and siblings (8.114033ms)
+2026-10-14T00:07:41.4475739Z ✔ all eight people and four role IDs accepted without rarity restrictions (51.869468ms)
+2026-10-14T00:07:41.4476358Z ✔ invalid identities, versions, incomplete party, secret leak and unsupported IDs refused (8.50857ms)
+2026-10-14T00:07:41.4476746Z ℹ tests 5
+2026-10-14T00:07:41.4476916Z ℹ suites 0
+2026-10-14T00:07:41.4477219Z ℹ pass 5
+2026-10-14T00:07:41.4477385Z ℹ fail 0
+2026-10-14T00:07:41.4477552Z ℹ cancelled 0
+2026-10-14T00:07:41.4477728Z ℹ skipped 0
+2026-10-14T00:07:41.4477900Z ℹ todo 0
+2026-10-14T00:07:41.4478092Z ℹ duration_ms 791.545493
+2026-10-14T00:07:41.4478658Z 377622820cbbc5e8b27af80da0319bd8315fea03ff6ea17edb6834c955f23a4e  /tmp/game81 party rkea5dra/generated/game81-party-world-0/world.json
+2026-10-14T00:07:41.4479507Z 78937bad20bc7f131830f77c8fd54ef5efeaefc6c3a948fb24e83afc6de08f2f  /tmp/game81 party rkea5dra/generated/game81-party-world-0/world.relief.svg
+2026-10-14T00:07:41.4480386Z 2b00a1fa9d6ccf1497e21751e31ce2dfa32766c2029663ff4ab7c701db772e7f  /tmp/game81 party rkea5dra/generated/game81-party-world-0/world.vegetation.svg
+2026-10-14T00:07:41.4481209Z 3e230a5962c8501968d1846d01501ff07e86208e05859b77fb237d03b35f95da  /tmp/game81 party rkea5dra/generated/game81-party-world-1/world.json
+2026-10-14T00:07:41.4482020Z 20cf0425c0d9026047b875300c1e6d257ce688756bc46eb29fc63a0f1fac1eb8  /tmp/game81 party rkea5dra/generated/game81-party-world-1/world.relief.svg
+2026-10-14T00:07:41.4482860Z 234531ba130a2012a9a5dee22fc35e5420624b98773b8ffa7dbab1f245e5a717  /tmp/game81 party rkea5dra/generated/game81-party-world-1/world.vegetation.svg
+2026-10-14T00:07:41.4483680Z 62ec9c596f186f1a080610cce6cca315292dd6fda5e7832260906ecca636b9ec  /tmp/game81 party rkea5dra/generated/game81-party-world-2/world.json
+2026-10-14T00:07:41.4484604Z 45b5c6a1c03c05c7008a2a5850b7abc7caa1f50f4061b5ff4317529ee3f876b2  /tmp/game81 party rkea5dra/generated/game81-party-world-2/world.relief.svg
+2026-10-14T00:07:41.4485628Z 94859a18a259c8e5c15cea3bc14b80e4b0ba1204072840b36841d8e16cf9f474  /tmp/game81 party rkea5dra/generated/game81-party-world-2/world.vegetation.svg
+2026-10-14T00:07:41.4486456Z 97190938a24e2b1b36bdbbe77c1aa99a7fd8e01056d54c49682b132531034bee  /tmp/game81 party rkea5dra/generated/game81-party-world-3/world.json
+2026-10-14T00:07:41.4487273Z f12c4573257cf5fc38e87fd120cae95fadbc66fc8ceff6782bf3c74b47875fa3  /tmp/game81 party rkea5dra/generated/game81-party-world-3/world.relief.svg
+2026-10-14T00:07:41.4488125Z 86398fe21fe40a7a571d0fdf1d37ffe3d1c9740f8c82e55ff1ca9271469f9ddc  /tmp/game81 party rkea5dra/generated/game81-party-world-3/world.vegetation.svg
+2026-10-14T00:07:41.4488956Z f07e49ac19f5ce252dd2c73d480cd97f0dfed3c0112b1ea7b87edc774c909046  /tmp/game81 party rkea5dra/generated/game81-party-world-4/world.json
+2026-10-14T00:07:41.4489780Z dc579ba0884a29d89004667e2444128f404aab18175c48c84025a4fa7f468aa3  /tmp/game81 party rkea5dra/generated/game81-party-world-4/world.relief.svg
+2026-10-14T00:07:41.4490609Z 63568a663bf36078216bc50538360d5b31bc47e828986773623368b4b4e0ee11  /tmp/game81 party rkea5dra/generated/game81-party-world-4/world.vegetation.svg
+2026-10-14T00:07:41.4491078Z {
+2026-10-14T00:07:41.4491244Z   "characters": 1050,
+2026-10-14T00:07:41.4491424Z   "worlds": [
+2026-10-14T00:07:41.4491580Z     {
+2026-10-14T00:07:41.4491996Z       "file": "/home/runner/work/road-has-gone-dark/road-has-gone-dark/tests/worldgen/fixtures/game-11-determinism.json",
+2026-10-14T00:07:41.4492524Z       "sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+2026-10-14T00:07:41.4492830Z       "home_count": 429,
+2026-10-14T00:07:41.4493014Z       "characters": 150,
+2026-10-14T00:07:41.4493209Z       "compile_ms": 443.792773,
+2026-10-14T00:07:41.4493439Z       "generation_ms": 110.21478000000019,
+2026-10-14T00:07:41.4493685Z       "per_character_ms": 0.7347652000000012,
+2026-10-14T00:07:41.4493902Z       "descriptor": {
+2026-10-14T00:07:41.4494087Z         "schema_version": 1,
+2026-10-14T00:07:41.4494308Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4494550Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4494808Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4495197Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4495981Z         "base_world_id": "azgaar:1.153.1:game-11-determinism:2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+2026-10-14T00:07:41.4496544Z         "base_world_sha": "2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5",
+2026-10-14T00:07:41.4508321Z         "profiles_sha": "b4a1da6d295196488d0ad08fa2573e1246cf49685b44665a99e988f51bfec3f1",
+2026-10-14T00:07:41.4509131Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4509835Z         "enrichment_sha": "2bec64b356e748e990c08590f797db4940b03bdcc0fe71469b09594decf7742d"
+2026-10-14T00:07:41.4510298Z       }
+2026-10-14T00:07:41.4510498Z     },
+2026-10-14T00:07:41.4510662Z     {
+2026-10-14T00:07:41.4511063Z       "file": "/home/runner/work/road-has-gone-dark/road-has-gone-dark/tests/worldgen/fixtures/atlas-showcase.json",
+2026-10-14T00:07:41.4511599Z       "sha": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+2026-10-14T00:07:41.4511923Z       "home_count": 426,
+2026-10-14T00:07:41.4512116Z       "characters": 150,
+2026-10-14T00:07:41.4512333Z       "compile_ms": 348.35219099999995,
+2026-10-14T00:07:41.4512576Z       "generation_ms": 90.9877349999997,
+2026-10-14T00:07:41.4512818Z       "per_character_ms": 0.606584899999998,
+2026-10-14T00:07:41.4513038Z       "descriptor": {
+2026-10-14T00:07:41.4513226Z         "schema_version": 1,
+2026-10-14T00:07:41.4513626Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4513898Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4514168Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4514568Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4515156Z         "base_world_id": "azgaar:1.153.1:atlas-showcase-06:9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+2026-10-14T00:07:41.4515908Z         "base_world_sha": "9f942b07bb73c2af17c4039d009561b696864e02ec67f2e8dd3a5ef6a757ebb3",
+2026-10-14T00:07:41.4516387Z         "profiles_sha": "e2ceb269dc730b5993c4c8771adf429e40aef70378c116548987327146cf044a",
+2026-10-14T00:07:41.4516903Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4517410Z         "enrichment_sha": "9565dc4d1d722dba694114d41577c564c33a7633019b41ed8e95c54ad3a398c3"
+2026-10-14T00:07:41.4517735Z       }
+2026-10-14T00:07:41.4517898Z     },
+2026-10-14T00:07:41.4518048Z     {
+2026-10-14T00:07:41.4518343Z       "file": "/tmp/game81 party rkea5dra/generated/game81-party-world-0/world.json",
+2026-10-14T00:07:41.4518778Z       "sha": "377622820cbbc5e8b27af80da0319bd8315fea03ff6ea17edb6834c955f23a4e",
+2026-10-14T00:07:41.4519084Z       "home_count": 419,
+2026-10-14T00:07:41.4519276Z       "characters": 150,
+2026-10-14T00:07:41.4519487Z       "compile_ms": 333.24071700000013,
+2026-10-14T00:07:41.4519724Z       "generation_ms": 81.80238299999996,
+2026-10-14T00:07:41.4519971Z       "per_character_ms": 0.5453492199999997,
+2026-10-14T00:07:41.4520193Z       "descriptor": {
+2026-10-14T00:07:41.4520380Z         "schema_version": 1,
+2026-10-14T00:07:41.4520635Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4520884Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4521144Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4521539Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4522143Z         "base_world_id": "azgaar:1.153.1:game81-party-world-0:377622820cbbc5e8b27af80da0319bd8315fea03ff6ea17edb6834c955f23a4e",
+2026-10-14T00:07:41.4522697Z         "base_world_sha": "377622820cbbc5e8b27af80da0319bd8315fea03ff6ea17edb6834c955f23a4e",
+2026-10-14T00:07:41.4523165Z         "profiles_sha": "d80c10123921c797b3fadc0669ffebb01d99a457af1f61af990004697a5e4bd7",
+2026-10-14T00:07:41.4523668Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4524159Z         "enrichment_sha": "b000bc8ff41001a929f4470439bc4c085703d87dfa33875e02278b3917052834"
+2026-10-14T00:07:41.4524477Z       }
+2026-10-14T00:07:41.4524736Z     },
+2026-10-14T00:07:41.4524888Z     {
+2026-10-14T00:07:41.4525180Z       "file": "/tmp/game81 party rkea5dra/generated/game81-party-world-1/world.json",
+2026-10-14T00:07:41.4525739Z       "sha": "3e230a5962c8501968d1846d01501ff07e86208e05859b77fb237d03b35f95da",
+2026-10-14T00:07:41.4526044Z       "home_count": 399,
+2026-10-14T00:07:41.4526234Z       "characters": 150,
+2026-10-14T00:07:41.4526433Z       "compile_ms": 321.010362,
+2026-10-14T00:07:41.4526653Z       "generation_ms": 82.03283800000054,
+2026-10-14T00:07:41.4526900Z       "per_character_ms": 0.5468855866666703,
+2026-10-14T00:07:41.4527117Z       "descriptor": {
+2026-10-14T00:07:41.4527300Z         "schema_version": 1,
+2026-10-14T00:07:41.4527515Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4527755Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4528028Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4528425Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4528999Z         "base_world_id": "azgaar:1.153.1:game81-party-world-1:3e230a5962c8501968d1846d01501ff07e86208e05859b77fb237d03b35f95da",
+2026-10-14T00:07:41.4529533Z         "base_world_sha": "3e230a5962c8501968d1846d01501ff07e86208e05859b77fb237d03b35f95da",
+2026-10-14T00:07:41.4530150Z         "profiles_sha": "b4f3ad094a4a32fe38acd650bfd0a8e087f4ff48b8f13e742ea92bfa8e5ba807",
+2026-10-14T00:07:41.4530662Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4531163Z         "enrichment_sha": "ee0219cb4cbcc803c522316bd04c0f2c7cad9bc6999a9bb7be597aaa61766c3f"
+2026-10-14T00:07:41.4531493Z       }
+2026-10-14T00:07:41.4531646Z     },
+2026-10-14T00:07:41.4531794Z     {
+2026-10-14T00:07:41.4532085Z       "file": "/tmp/game81 party rkea5dra/generated/game81-party-world-2/world.json",
+2026-10-14T00:07:41.4532514Z       "sha": "62ec9c596f186f1a080610cce6cca315292dd6fda5e7832260906ecca636b9ec",
+2026-10-14T00:07:41.4532823Z       "home_count": 482,
+2026-10-14T00:07:41.4533008Z       "characters": 150,
+2026-10-14T00:07:41.4533207Z       "compile_ms": 344.626256,
+2026-10-14T00:07:41.4533434Z       "generation_ms": 79.62723999999889,
+2026-10-14T00:07:41.4533686Z       "per_character_ms": 0.5308482666666593,
+2026-10-14T00:07:41.4533901Z       "descriptor": {
+2026-10-14T00:07:41.4534084Z         "schema_version": 1,
+2026-10-14T00:07:41.4534301Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4534540Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4534805Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4535189Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4535921Z         "base_world_id": "azgaar:1.153.1:game81-party-world-2:62ec9c596f186f1a080610cce6cca315292dd6fda5e7832260906ecca636b9ec",
+2026-10-14T00:07:41.4536486Z         "base_world_sha": "62ec9c596f186f1a080610cce6cca315292dd6fda5e7832260906ecca636b9ec",
+2026-10-14T00:07:41.4536965Z         "profiles_sha": "ef0b9106e1616054c584d24e44ea080deec26c7ef3c75420bfbbd52929be034a",
+2026-10-14T00:07:41.4537457Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4537957Z         "enrichment_sha": "e3cf33cdfa8b68973902624421de3e873a39d464e6befb3576be46520e150fe8"
+2026-10-14T00:07:41.4538272Z       }
+2026-10-14T00:07:41.4538419Z     },
+2026-10-14T00:07:41.4538565Z     {
+2026-10-14T00:07:41.4538853Z       "file": "/tmp/game81 party rkea5dra/generated/game81-party-world-3/world.json",
+2026-10-14T00:07:41.4539278Z       "sha": "97190938a24e2b1b36bdbbe77c1aa99a7fd8e01056d54c49682b132531034bee",
+2026-10-14T00:07:41.4539573Z       "home_count": 345,
+2026-10-14T00:07:41.4539756Z       "characters": 150,
+2026-10-14T00:07:41.4539958Z       "compile_ms": 281.1083490000001,
+2026-10-14T00:07:41.4540196Z       "generation_ms": 85.16598800000111,
+2026-10-14T00:07:41.4540589Z       "per_character_ms": 0.5677732533333407,
+2026-10-14T00:07:41.4540811Z       "descriptor": {
+2026-10-14T00:07:41.4540996Z         "schema_version": 1,
+2026-10-14T00:07:41.4541214Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4541454Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4541723Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4542104Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4542682Z         "base_world_id": "azgaar:1.153.1:game81-party-world-3:97190938a24e2b1b36bdbbe77c1aa99a7fd8e01056d54c49682b132531034bee",
+2026-10-14T00:07:41.4543229Z         "base_world_sha": "97190938a24e2b1b36bdbbe77c1aa99a7fd8e01056d54c49682b132531034bee",
+2026-10-14T00:07:41.4543704Z         "profiles_sha": "3113c43bfe1c7ff90f67db59d53b2217d9e053a211a6d5f8ecac379fcdf45a20",
+2026-10-14T00:07:41.4544198Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4544690Z         "enrichment_sha": "1d5a45f7223f57f41aff886b9752205c9e8a429d1cc62e053a0e277d20abf90f"
+2026-10-14T00:07:41.4545003Z       }
+2026-10-14T00:07:41.4545155Z     },
+2026-10-14T00:07:41.4545308Z     {
+2026-10-14T00:07:41.4545756Z       "file": "/tmp/game81 party rkea5dra/generated/game81-party-world-4/world.json",
+2026-10-14T00:07:41.4546293Z       "sha": "f07e49ac19f5ce252dd2c73d480cd97f0dfed3c0112b1ea7b87edc774c909046",
+2026-10-14T00:07:41.4546602Z       "home_count": 430,
+2026-10-14T00:07:41.4546790Z       "characters": 150,
+2026-10-14T00:07:41.4546992Z       "compile_ms": 353.8015019999998,
+2026-10-14T00:07:41.4547232Z       "generation_ms": 81.78967799999964,
+2026-10-14T00:07:41.4547473Z       "per_character_ms": 0.5452645199999976,
+2026-10-14T00:07:41.4547689Z       "descriptor": {
+2026-10-14T00:07:41.4547872Z         "schema_version": 1,
+2026-10-14T00:07:41.4548089Z         "provider": "trhgd-peoples",
+2026-10-14T00:07:41.4548335Z         "generator_version": "trhgd-party-1",
+2026-10-14T00:07:41.4548597Z         "content_pack_version": "trhgd-party-1",
+2026-10-14T00:07:41.4548985Z         "content_pack_sha": "17f25b5e3edf444b2a9b504024df1a24fd6b6b71c4b02205f227330dc3349eb2",
+2026-10-14T00:07:41.4549570Z         "base_world_id": "azgaar:1.153.1:game81-party-world-4:f07e49ac19f5ce252dd2c73d480cd97f0dfed3c0112b1ea7b87edc774c909046",
+2026-10-14T00:07:41.4550140Z         "base_world_sha": "f07e49ac19f5ce252dd2c73d480cd97f0dfed3c0112b1ea7b87edc774c909046",
+2026-10-14T00:07:41.4550629Z         "profiles_sha": "581b191e90bdcad5afba2cd6b1b8e5b4388945650ceb161cfa2587ea6de31199",
+2026-10-14T00:07:41.4551123Z         "runtime_manifest_sha": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+2026-10-14T00:07:41.4551615Z         "enrichment_sha": "32f03ee4e3a66cf517f4c8f4a4082cd488caba0680d8bde5150c58dd0c4b53c2"
+2026-10-14T00:07:41.4551935Z       }
+2026-10-14T00:07:41.4552083Z     }
+2026-10-14T00:07:41.4552235Z   ],
+2026-10-14T00:07:41.4552389Z   "structured": {
+2026-10-14T00:07:41.4552573Z     "distinct": 1050,
+2026-10-14T00:07:41.4552751Z     "total": 1050,
+2026-10-14T00:07:41.4552923Z     "duplicates": 0
+2026-10-14T00:07:41.4553089Z   },
+2026-10-14T00:07:41.4553248Z   "prose": {
+2026-10-14T00:07:41.4553408Z     "distinct": 1050,
+2026-10-14T00:07:41.4553590Z     "total": 1050,
+2026-10-14T00:07:41.4553755Z     "duplicates": 0
+2026-10-14T00:07:41.4553922Z   },
+2026-10-14T00:07:41.4554079Z   "story_combinations": {
+2026-10-14T00:07:41.4554267Z     "distinct": 1050,
+2026-10-14T00:07:41.4554435Z     "total": 1050,
+2026-10-14T00:07:41.4554597Z     "duplicates": 0
+2026-10-14T00:07:41.4554764Z   },
+2026-10-14T00:07:41.4554927Z   "biography_forms": {
+2026-10-14T00:07:41.4555092Z     "0": 350,
+2026-10-14T00:07:41.4555240Z     "1": 350,
+2026-10-14T00:07:41.4555536Z     "2": 350
+2026-10-14T00:07:41.4555685Z   },
+2026-10-14T00:07:41.4555835Z   "occupations": {
+2026-10-14T00:07:41.4556007Z     "woodworker": 73,
+2026-10-14T00:07:41.4556174Z     "porter": 41,
+2026-10-14T00:07:41.4556464Z     "tavern-keeper": 24,
+2026-10-14T00:07:41.4556810Z     "potter": 29,
+2026-10-14T00:07:41.4557018Z     "basket-maker": 44,
+2026-10-14T00:07:41.4557243Z     "weaver": 33,
+2026-10-14T00:07:41.4557478Z     "brewer": 26,
+2026-10-14T00:07:41.4557647Z     "net-maker": 7,
+2026-10-14T00:07:41.4557830Z     "possible-recruit": 22,
+2026-10-14T00:07:41.4558027Z     "stall-keeper": 26,
+2026-10-14T00:07:41.4558205Z     "harbour-worker": 7,
+2026-10-14T00:07:41.4558384Z     "repairer": 36,
+2026-10-14T00:07:41.4558570Z     "needleworker": 31,
+2026-10-14T00:07:41.4558752Z     "toolmaker": 29,
+2026-10-14T00:07:41.4558920Z     "baker": 44,
+2026-10-14T00:07:41.4559089Z     "lamp-keeper": 33,
+2026-10-14T00:07:41.4559264Z     "carter": 52,
+2026-10-14T00:07:41.4559459Z     "religious-attendant": 24,
+2026-10-14T00:07:41.4559668Z     "charcoal-burner": 77,
+2026-10-14T00:07:41.4559853Z     "cobbler": 35,
+2026-10-14T00:07:41.4560020Z     "traveller": 20,
+2026-10-14T00:07:41.4560197Z     "mine-cart-handler": 2,
+2026-10-14T00:07:41.4560389Z     "scribe": 34,
+2026-10-14T00:07:41.4560555Z     "local-clerk": 20,
+2026-10-14T00:07:41.4560731Z     "rope-maker": 36,
+2026-10-14T00:07:41.4560919Z     "cartwright-helper": 81,
+2026-10-14T00:07:41.4561121Z     "herbal-preparer": 33,
+2026-10-14T00:07:41.4561431Z     "book-binder": 31,
+2026-10-14T00:07:41.4561627Z     "sailmaker-apprentice": 5,
+2026-10-14T00:07:41.4561816Z     "mason": 30,
+2026-10-14T00:07:41.4561981Z     "metalworker": 19,
+2026-10-14T00:07:41.4562159Z     "gate-keeper": 4,
+2026-10-14T00:07:41.4562326Z     "fisher": 20,
+2026-10-14T00:07:41.4562493Z     "river-carrier": 11,
+2026-10-14T00:07:41.4562680Z     "ship-carpenter": 9,
+2026-10-14T00:07:41.4562859Z     "ore-sorter": 1,
+2026-10-14T00:07:41.4563028Z     "stable-worker": 1
+2026-10-14T00:07:41.4563199Z   },
+2026-10-14T00:07:41.4563351Z   "families": {
+2026-10-14T00:07:41.4563553Z     "widowed-guardian-household": 81,
+2026-10-14T00:07:41.4563778Z     "adoptive-household": 80,
+2026-10-14T00:07:41.4564020Z     "household-of-retired-craft-workers": 97,
+2026-10-14T00:07:41.4564281Z     "two-parent-household": 97,
+2026-10-14T00:07:41.4564510Z     "grandparent-household": 91,
+2026-10-14T00:07:41.4564740Z     "two-connected-households": 81,
+2026-10-14T00:07:41.4564955Z     "extended-household": 75,
+2026-10-14T00:07:41.4565183Z     "household-of-family-friends": 91,
+2026-10-14T00:07:41.4565576Z     "sibling-household": 92,
+2026-10-14T00:07:41.4565777Z     "guardian-household": 98,
+2026-10-14T00:07:41.4565998Z     "family-of-itinerant-workers": 84,
+2026-10-14T00:07:41.4566237Z     "single-parent-household": 83
+2026-10-14T00:07:41.4566431Z   },
+2026-10-14T00:07:41.4566580Z   "motivations": {
+2026-10-14T00:07:41.4566799Z     "find-the-origin-of-an-inherited-tool": 52,
+2026-10-14T00:07:41.4567064Z     "learn-unfamiliar-crafts": 69,
+2026-10-14T00:07:41.4567315Z     "seek-work-beyond-familiar-workshops": 75,
+2026-10-14T00:07:41.4567610Z     "bring-a-younger-sibling-new-opportunities": 56,
+2026-10-14T00:07:41.4567880Z     "find-a-former-mentor": 61,
+2026-10-14T00:07:41.4568111Z     "return-a-borrowed-possession": 65,
+2026-10-14T00:07:41.4568365Z     "understand-an-old-family-account": 69,
+2026-10-14T00:07:41.4568646Z     "earn-enough-to-repair-a-family-home": 65,
+2026-10-14T00:07:41.4568909Z     "collect-practical-repair-methods": 73,
+2026-10-14T00:07:41.4569167Z     "visit-a-relative-who-moved-away": 64,
+2026-10-14T00:07:41.4569411Z     "carry-a-household-letter": 67,
+2026-10-14T00:07:41.4569638Z     "pay-a-modest-family-debt": 63,
+2026-10-14T00:07:41.4569904Z     "see-how-other-places-manage-shared-work": 69,
+2026-10-14T00:07:41.4570208Z     "make-a-living-without-leaning-on-family": 64,
+2026-10-14T00:07:41.4570489Z     "keep-a-promise-to-a-departed-friend": 71,
+2026-10-14T00:07:41.4570793Z     "prove-that-a-past-failure-need-not-define-them": 67
+2026-10-14T00:07:41.4571038Z   },
+2026-10-14T00:07:41.4571195Z   "keepsakes": {
+2026-10-14T00:07:41.4571397Z     "a-repaired-wooden-cup": 85,
+2026-10-14T00:07:41.4571600Z     "a-spare-buckle": 88,
+2026-10-14T00:07:41.4571931Z     "a-plain-copper-ring": 79,
+2026-10-14T00:07:41.4572156Z     "a-stitched-scrap-of-cloth": 95,
+2026-10-14T00:07:41.4572388Z     "a-tiny-box-of-spare-pegs": 81,
+2026-10-14T00:07:41.4572611Z     "a-blank-account-leaf": 83,
+2026-10-14T00:07:41.4572873Z     "a-smoothed-stone-from-a-workbench": 92,
+2026-10-14T00:07:41.4573127Z     "a-folded-household-letter": 80,
+2026-10-14T00:07:41.4573339Z     "an-old-tally-stick": 88,
+2026-10-14T00:07:41.4573534Z     "a-worn-tool-handle": 96,
+2026-10-14T00:07:41.4573742Z     "a-bent-practice-nail": 94,
+2026-10-14T00:07:41.4573959Z     "a-short-measuring-cord": 89
+2026-10-14T00:07:41.4574145Z   },
+2026-10-14T00:07:41.4574297Z   "contradictions": 0,
+2026-10-14T00:07:41.4574481Z   "invalid_source_claims": 0,
+2026-10-14T00:07:41.4574687Z   "hidden_information_leaks": 0,
+2026-10-14T00:07:41.4574891Z   "repeat_checks": 1050,
+2026-10-14T00:07:41.4575092Z   "peak_memory": 371023872
+2026-10-14T00:07:41.4575274Z }
+2026-10-14T00:07:41.4575754Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4575989Z 
+2026-10-14T00:07:41.4576408Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+2026-10-14T00:07:41.4576937Z [   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+2026-10-14T00:07:41.4577550Z [  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+2026-10-14T00:07:41.4578048Z [  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+2026-10-14T00:07:41.4578523Z [  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+2026-10-14T00:07:41.4578993Z [  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+2026-10-14T00:07:41.4579441Z [  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+2026-10-14T00:07:41.4579811Z [92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+2026-10-14T00:07:41.4580047Z [0m
+2026-10-14T00:07:41.4580434Z [   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (28 steps)[39m[0m
+2026-10-14T00:07:41.4580926Z [   0% ] [90m[1m_update_scan_actions[22m | consequence-640x360.png[39m[0m
+2026-10-14T00:07:41.4581369Z [   3% ] [90m[1m_update_scan_actions[22m | consequence-1280x720.png[39m[0m
+2026-10-14T00:07:41.4581821Z [   6% ] [90m[1m_update_scan_actions[22m | consequence-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4582273Z [  10% ] [90m[1m_update_scan_actions[22m | fresh-generated-world.png[39m[0m
+2026-10-14T00:07:41.4582709Z [  13% ] [90m[1m_update_scan_actions[22m | hometown-640x360.png[39m[0m
+2026-10-14T00:07:41.4583138Z [  17% ] [90m[1m_update_scan_actions[22m | hometown-1280x720.png[39m[0m
+2026-10-14T00:07:41.4583565Z [  20% ] [90m[1m_update_scan_actions[22m | hometown-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4583986Z [  24% ] [90m[1m_update_scan_actions[22m | known-site-map.png[39m[0m
+2026-10-14T00:07:41.4584396Z [  27% ] [90m[1m_update_scan_actions[22m | lead-640x360.png[39m[0m
+2026-10-14T00:07:41.4584805Z [  31% ] [90m[1m_update_scan_actions[22m | lead-1280x720.png[39m[0m
+2026-10-14T00:07:41.4585204Z [  34% ] [90m[1m_update_scan_actions[22m | lead-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4585824Z [  37% ] [90m[1m_update_scan_actions[22m | main-menu-resume-expedition.png[39m[0m
+2026-10-14T00:07:41.4586310Z [  41% ] [90m[1m_update_scan_actions[22m | party-ready-handoff.png[39m[0m
+2026-10-14T00:07:41.4586769Z [  44% ] [90m[1m_update_scan_actions[22m | resumed-result-640x360.png[39m[0m
+2026-10-14T00:07:41.4587233Z [  48% ] [90m[1m_update_scan_actions[22m | resumed-result-1280x720.png[39m[0m
+2026-10-14T00:07:41.4587699Z [  51% ] [90m[1m_update_scan_actions[22m | resumed-result-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4588180Z [  55% ] [90m[1m_update_scan_actions[22m | returned-hometown-640x360.png[39m[0m
+2026-10-14T00:07:41.4588656Z [  58% ] [90m[1m_update_scan_actions[22m | returned-hometown-1280x720.png[39m[0m
+2026-10-14T00:07:41.4589247Z [  62% ] [90m[1m_update_scan_actions[22m | returned-hometown-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4589711Z [  65% ] [90m[1m_update_scan_actions[22m | rumour-before-640x360.png[39m[0m
+2026-10-14T00:07:41.4590164Z [  68% ] [90m[1m_update_scan_actions[22m | rumour-before-1280x720.png[39m[0m
+2026-10-14T00:07:41.4590627Z [  72% ] [90m[1m_update_scan_actions[22m | rumour-before-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4591087Z [  75% ] [90m[1m_update_scan_actions[22m | rumour-discovered-640x360.png[39m[0m
+2026-10-14T00:07:41.4591561Z [  79% ] [90m[1m_update_scan_actions[22m | rumour-discovered-1280x720.png[39m[0m
+2026-10-14T00:07:41.4592036Z [  82% ] [90m[1m_update_scan_actions[22m | rumour-discovered-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4592498Z [  86% ] [90m[1m_update_scan_actions[22m | site-options-640x360.png[39m[0m
+2026-10-14T00:07:41.4592939Z [  89% ] [90m[1m_update_scan_actions[22m | site-options-1280x720.png[39m[0m
+2026-10-14T00:07:41.4593390Z [  93% ] [90m[1m_update_scan_actions[22m | site-options-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4593758Z [92m[ DONE ][39m [1m_update_scan_actions[22m
+2026-10-14T00:07:41.4593983Z [0m
+2026-10-14T00:07:41.4594323Z [   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (28 steps)[39m[0m
+2026-10-14T00:07:41.4594860Z [   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4595287Z [   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4595774Z [   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4596186Z [  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4596591Z [  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4596995Z [  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4597396Z [  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4597829Z [  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4598239Z [  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4598641Z [  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4599046Z [  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4599448Z [  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4599849Z [  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4600256Z [  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4600659Z [  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4601061Z [  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4601462Z [  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4601868Z [  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4602271Z [  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4602674Z [  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4603081Z [  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4603491Z [  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4603930Z [  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4604338Z [  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4604748Z [  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4605152Z [  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4605635Z [  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4606149Z [  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+2026-10-14T00:07:41.4606606Z [   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+2026-10-14T00:07:41.4607034Z [   0% ] [90m[1mreimport[22m | site-options-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4607433Z [   3% ] [90m[1mreimport[22m | site-options-1280x720.png[39m[0m
+2026-10-14T00:07:41.4607820Z [   6% ] [90m[1mreimport[22m | site-options-640x360.png[39m[0m
+2026-10-14T00:07:41.4608235Z [  10% ] [90m[1mreimport[22m | rumour-discovered-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4608669Z [  13% ] [90m[1mreimport[22m | rumour-discovered-1280x720.png[39m[0m
+2026-10-14T00:07:41.4609084Z [  17% ] [90m[1mreimport[22m | rumour-discovered-640x360.png[39m[0m
+2026-10-14T00:07:41.4609491Z [  20% ] [90m[1mreimport[22m | rumour-before-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4609889Z [  24% ] [90m[1mreimport[22m | rumour-before-1280x720.png[39m[0m
+2026-10-14T00:07:41.4610286Z [  27% ] [90m[1mreimport[22m | rumour-before-640x360.png[39m[0m
+2026-10-14T00:07:41.4610705Z [  31% ] [90m[1mreimport[22m | returned-hometown-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4611128Z [  34% ] [90m[1mreimport[22m | returned-hometown-1280x720.png[39m[0m
+2026-10-14T00:07:41.4611670Z [  37% ] [90m[1mreimport[22m | returned-hometown-640x360.png[39m[0m
+2026-10-14T00:07:41.4612086Z [  41% ] [90m[1mreimport[22m | resumed-result-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4612502Z [  44% ] [90m[1mreimport[22m | resumed-result-1280x720.png[39m[0m
+2026-10-14T00:07:41.4612901Z [  48% ] [90m[1mreimport[22m | resumed-result-640x360.png[39m[0m
+2026-10-14T00:07:41.4613293Z [  51% ] [90m[1mreimport[22m | party-ready-handoff.png[39m[0m
+2026-10-14T00:07:41.4613703Z [  55% ] [90m[1mreimport[22m | main-menu-resume-expedition.png[39m[0m
+2026-10-14T00:07:41.4614111Z [  58% ] [90m[1mreimport[22m | lead-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4614471Z [  62% ] [90m[1mreimport[22m | lead-1280x720.png[39m[0m
+2026-10-14T00:07:41.4614818Z [  65% ] [90m[1mreimport[22m | lead-640x360.png[39m[0m
+2026-10-14T00:07:41.4615179Z [  68% ] [90m[1mreimport[22m | known-site-map.png[39m[0m
+2026-10-14T00:07:41.4615640Z [  72% ] [90m[1mreimport[22m | hometown-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4616020Z [  75% ] [90m[1mreimport[22m | hometown-1280x720.png[39m[0m
+2026-10-14T00:07:41.4616390Z [  79% ] [90m[1mreimport[22m | hometown-640x360.png[39m[0m
+2026-10-14T00:07:41.4616773Z [  82% ] [90m[1mreimport[22m | fresh-generated-world.png[39m[0m
+2026-10-14T00:07:41.4617167Z [  86% ] [90m[1mreimport[22m | consequence-2560x1440.png[39m[0m
+2026-10-14T00:07:41.4617559Z [  89% ] [90m[1mreimport[22m | consequence-1280x720.png[39m[0m
+2026-10-14T00:07:41.4617936Z [  93% ] [90m[1mreimport[22m | consequence-640x360.png[39m[0m
+2026-10-14T00:07:41.4618324Z [  96% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+2026-10-14T00:07:41.4618645Z [92m[ DONE ][39m [1mreimport[22m
+2026-10-14T00:07:41.4618848Z [0m
+2026-10-14T00:07:41.4619195Z [   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (28 steps)[39m[0m
+2026-10-14T00:07:41.4619661Z [   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+2026-10-14T00:07:41.4620004Z [92m[ DONE ][39m [1mreimport[22m
+2026-10-14T00:07:41.4620212Z [0m
+2026-10-14T00:07:41.4620570Z [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+2026-10-14T00:07:41.4621050Z [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+2026-10-14T00:07:41.4621486Z [  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+2026-10-14T00:07:41.4621843Z [92m[ DONE ][39m [1mloading_editor_layout[22m
+2026-10-14T00:07:41.4622074Z [0m
+2026-10-14T00:07:41.4622365Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4622583Z 
+2026-10-14T00:07:41.4623528Z Bakusi grew up in Iusususus, in a family of itinerant workers. A neighbour who taught evening lessons taught them the work of a net maker. Their early work was shaped by boatbuilding. They hope to understand an old family account; they still carry a short measuring cord.
+2026-10-14T00:07:41.4624335Z GAME-81 smoke failures: 0
+2026-10-14T00:07:41.4624669Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4624891Z 
+2026-10-14T00:07:41.4625034Z GAME-81 reader corruption checks: 17; failures: 0
+2026-10-14T00:07:41.4625567Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4625815Z 
+2026-10-14T00:07:41.4625941Z GAME-81 failure checks: 74; failures: 0
+2026-10-14T00:07:41.4626280Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4626487Z 
+2026-10-14T00:07:41.4626631Z GAME-81 lifecycle create: 142 checks, 0 failures
+2026-10-14T00:07:41.4626990Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4627201Z 
+2026-10-14T00:07:41.4627338Z GAME-81 lifecycle replay: 56 checks, 0 failures
+2026-10-14T00:07:41.4627688Z Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+2026-10-14T00:07:41.4628178Z WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+2026-10-14T00:07:41.4628745Z      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+2026-10-14T00:07:41.4629322Z OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+2026-10-14T00:07:41.4629664Z 
+2026-10-14T00:07:41.4629791Z ERROR: native selection popup is open
+2026-10-14T00:07:41.4630069Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4630364Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4630651Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4630966Z        [1] choose_native (res://tests/party/capture-flow.gd:42)
+2026-10-14T00:07:41.4631276Z        [2] click (res://tests/party/capture-flow.gd:35)
+2026-10-14T00:07:41.4631562Z        [3] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4631865Z ERROR: native popup has a keyboard-focused item
+2026-10-14T00:07:41.4632164Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4632446Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4632719Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4633025Z        [1] choose_native (res://tests/party/capture-flow.gd:45)
+2026-10-14T00:07:41.4633325Z        [2] key (res://tests/party/capture-flow.gd:20)
+2026-10-14T00:07:41.4633607Z        [3] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4633883Z ERROR: native selection popup is open
+2026-10-14T00:07:41.4634151Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4634434Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4634708Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4635003Z        [1] choose_native (res://tests/party/capture-flow.gd:42)
+2026-10-14T00:07:41.4635301Z        [2] click (res://tests/party/capture-flow.gd:35)
+2026-10-14T00:07:41.4635678Z        [3] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4635974Z ERROR: native popup has a keyboard-focused item
+2026-10-14T00:07:41.4636255Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4636525Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4636789Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4637077Z        [1] choose_native (res://tests/party/capture-flow.gd:45)
+2026-10-14T00:07:41.4637369Z        [2] key (res://tests/party/capture-flow.gd:20)
+2026-10-14T00:07:41.4637643Z        [3] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4637912Z ERROR: native popup selects: orc
+2026-10-14T00:07:41.4638286Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4638564Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4638841Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4639129Z        [1] choose_native (res://tests/party/capture-flow.gd:48)
+2026-10-14T00:07:41.4639420Z        [2] key (res://tests/party/capture-flow.gd:20)
+2026-10-14T00:07:41.4639690Z        [3] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4640097Z ERROR: Human-to-Orc caster change deliberately exercises skill and preparation budgets
+2026-10-14T00:07:41.4640473Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-14T00:07:41.4640749Z    GDScript backtrace (most recent call first):
+2026-10-14T00:07:41.4641016Z        [0] check (res://tests/party/capture-flow.gd:9)
+2026-10-14T00:07:41.4641286Z        [1] run (res://tests/party/capture-flow.gd:150)
+2026-10-14T00:07:41.4641576Z        [2] choose_native (res://tests/party/capture-flow.gd:48)
+2026-10-14T00:07:41.4641865Z        [3] key (res://tests/party/capture-flow.gd:20)
+2026-10-14T00:07:41.4642143Z        [4] frames (res://tests/party/capture-flow.gd:12)
+2026-10-14T00:07:41.4642450Z GAME-81 actual input/render flow: 170 checks, 6 failures
+2026-10-14T00:07:41.4642819Z input-render-fresh failed
+2026-10-14T00:07:41.4680577Z ##[error]game81-regressions failed: m[1mreimport[22m | rumour-discovered-2560x1440.png[39m[0m
+[  13% ] [90m[1mreimport[22m | rumour-discovered-1280x720.png[39m[0m
+[  17% ] [90m[1mreimport[22m | rumour-discovered-640x360.png[39m[0m
+[  20% ] [90m[1mreimport[22m | rumour-before-2560x1440.png[39m[0m
+[  24% ] [90m[1mreimport[22m | rumour-before-1280x720.png[39m[0m
+[  27% ] [90m[1mreimport[22m | rumour-before-640x360.png[39m[0m
+[  31% ] [90m[1mreimport[22m | returned-hometown-2560x1440.png[39m[0m
+[  34% ] [90m[1mreimport[22m | returned-hometown-1280x720.png[39m[0m
+[  37% ] [90m[1mreimport[22m | returned-hometown-640x360.png[39m[0m
+[  41% ] [90m[1mreimport[22m | resumed-result-2560x1440.png[39m[0m
+[  44% ] [90m[1mreimport[22m | resumed-result-1280x720.png[39m[0m
+[  48% ] [90m[1mreimport[22m | resumed-result-640x360.png[39m[0m
+[  51% ] [90m[1mreimport[22m | party-ready-handoff.png[39m[0m
+[  55% ] [90m[1mreimport[22m | main-menu-resume-expedition.png[39m[0m
+[  58% ] [90m[1mreimport[22m | lead-2560x1440.png[39m[0m
+[  62% ] [90m[1mreimport[22m | lead-1280x720.png[39m[0m
+[  65% ] [90m[1mreimport[22m | lead-640x360.png[39m[0m
+[  68% ] [90m[1mreimport[22m | known-site-map.png[39m[0m
+[  72% ] [90m[1mreimport[22m | hometown-2560x1440.png[39m[0m
+[  75% ] [90m[1mreimport[22m | hometown-1280x720.png[39m[0m
+[  79% ] [90m[1mreimport[22m | hometown-640x360.png[39m[0m
+[  82% ] [90m[1mreimport[22m | fresh-generated-world.png[39m[0m
+[  86% ] [90m[1mreimport[22m | consequence-2560x1440.png[39m[0m
+[  89% ] [90m[1mreimport[22m | consequence-1280x720.png[39m[0m
+[  93% ] [90m[1mreimport[22m | consequence-640x360.png[39m[0m
+[  96% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (28 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+Bakusi grew up in Iusususus, in a family of itinerant workers. A neighbour who taught evening lessons taught them the work of a net maker. Their early work was shaped by boatbuilding. They hope to understand an old family account; they still carry a short measuring cord.
+GAME-81 smoke failures: 0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-81 reader corruption checks: 17; failures: 0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-81 failure checks: 74; failures: 0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-81 lifecycle create: 142 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GAME-81 lifecycle replay: 56 checks, 0 failures
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+
+ERROR: native selection popup is open
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/party/capture-flow.gd:9)
+       [1] choose_native (res://tests/party/capture-flow.gd:42)
+       [2] click (res://tests/party/capture-flow.gd:35)
+       [3] frames (res://tests/party/capture-flow.gd:12)
+ERROR: native popup has a keyboard-focused item
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent ca
+2026-10-14T00:07:41.4695501Z game81-regressions failed
+2026-10-14T00:07:41.4719759Z ##[error]game84-and-foundations: A[  24%25 ] [90m[1mreimport[22m | rumour-before-1280x720.png[39m[0m%0A[  27%25 ] [90m[1mreimport[22m | rumour-before-640x360.png[39m[0m%0A[  31%25 ] [90m[1mreimport[22m | returned-hometown-2560x1440.png[39m[0m%0A[  34%25 ] [90m[1mreimport[22m | returned-hometown-1280x720.png[39m[0m%0A[  37%25 ] [90m[1mreimport[22m | returned-hometown-640x360.png[39m[0m%0A[  41%25 ] [90m[1mreimport[22m | resumed-result-2560x1440.png[39m[0m%0A[  44%25 ] [90m[1mreimport[22m | resumed-result-1280x720.png[39m[0m%0A[  48%25 ] [90m[1mreimport[22m | resumed-result-640x360.png[39m[0m%0A[  51%25 ] [90m[1mreimport[22m | party-ready-handoff.png[39m[0m%0A[  55%25 ] [90m[1mreimport[22m | main-menu-resume-expedition.png[39m[0m%0A[  58%25 ] [90m[1mreimport[22m | lead-2560x1440.png[39m[0m%0A[  62%25 ] [90m[1mreimport[22m | lead-1280x720.png[39m[0m%0A[  65%25 ] [90m[1mreimport[22m | lead-640x360.png[39m[0m%0A[  68%25 ] [90m[1mreimport[22m | known-site-map.png[39m[0m%0A[  72%25 ] [90m[1mreimport[22m | hometown-2560x1440.png[39m[0m%0A[  75%25 ] [90m[1mreimport[22m | hometown-1280x720.png[39m[0m%0A[  79%25 ] [90m[1mreimport[22m | hometown-640x360.png[39m[0m%0A[  82%25 ] [90m[1mreimport[22m | fresh-generated-world.png[39m[0m%0A[  86%25 ] [90m[1mreimport[22m | consequence-2560x1440.png[39m[0m%0A[  89%25 ] [90m[1mreimport[22m | consequence-1280x720.png[39m[0m%0A[  93%25 ] [90m[1mreimport[22m | consequence-640x360.png[39m[0m%0A[  96%25 ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m%0A[92m[ DONE ][39m [1mreimport[22m%0A[0m%0A[   0%25 ] [90m[1mreimport[22m | Started (Re)Importing Assets (28 steps)[39m[0m%0A[   0%25 ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m%0A[92m[ DONE ][39m [1mreimport[22m%0A[0m%0A[   0%25 ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m%0A[   0%25 ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m%0A[  16%25 ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m%0A[92m[ DONE ][39m [1mloading_editor_layout[22m%0A[0m%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0A%0ABakusi grew up in Iusususus, in a family of itinerant workers. A neighbour who taught evening lessons taught them the work of a net maker. Their early work was shaped by boatbuilding. They hope to understand an old family account; they still carry a short measuring cord.%0AGAME-81 smoke failures: 0%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0A%0AGAME-81 reader corruption checks: 17; failures: 0%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0A%0AGAME-81 failure checks: 74; failures: 0%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0A%0AGAME-81 lifecycle create: 142 checks, 0 failures%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0A%0AGAME-81 lifecycle replay: 56 checks, 0 failures%0AGodot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org%0AWARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.%0A     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)%0AOpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)%0A%0AERROR: native selection popup is open%0A   at: push_error (core/variant/variant_utility.cpp:1024)%0A   GDScript backtrace (most recent call first):%0A       [0] check (res://tests/party/capture-flow.gd:9)%0A       [1] choose_native (res://tests/party/capture-flow.gd:42)%0A       [2] click (res://tests/party/capture-flow.gd:35)%0A       [3] frames (res://tests/party/capture-flow.gd:12)%0AERROR: native popup has a keyboard-focused item%0A   at: push_error (core/variant/variant_utility.cpp:1024)%0A   GDScript backtrace (most recent call first):%0A       [0] check (res://tests/party/capture-flow.gd:9)%0A       [1] choose_native (res://
+2026-10-14T00:07:41.4729498Z game84-and-foundations failed
+2026-10-14T00:07:41.4863807Z ##[error]Process completed with exit code 1.
+2026-10-14T00:07:41.4945825Z ##[group]Run actions/upload-artifact@v4
+2026-10-14T00:07:41.4946069Z with:
+2026-10-14T00:07:41.4946233Z   name: game83-qa-Linux
+2026-10-14T00:07:41.4946430Z   path: docs/implementation/game83
+2026-10-14T00:07:41.4946646Z   if-no-files-found: warn
+2026-10-14T00:07:41.4946834Z   compression-level: 6
+2026-10-14T00:07:41.4947010Z   overwrite: false
+2026-10-14T00:07:41.4947186Z   include-hidden-files: false
+2026-10-14T00:07:41.4947380Z env:
+2026-10-14T00:07:41.4947580Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-14T00:07:41.4947907Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-14T00:07:41.4948234Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-14T00:07:41.4948542Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-14T00:07:41.4948829Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-14T00:07:41.4949118Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-14T00:07:41.4949484Z   GODOT_BIN: /home/runner/work/_temp/godot/Godot_v4.6.3-stable_linux.x86_64
+2026-10-14T00:07:41.4949825Z   GAME76_HELPER_ROOT: /home/runner/work/_temp/worldgen-helper
+2026-10-14T00:07:41.4950173Z   GAME76_GENERATED_TEST_DIR: /home/runner/work/_temp/generated worlds with spaces
+2026-10-14T00:07:41.4950469Z ##[endgroup]
+2026-10-14T00:07:41.6247137Z (node:4714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-14T00:07:41.6247769Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-14T00:07:41.6618491Z With the provided path, there will be 292 files uploaded
+2026-10-14T00:07:41.6623841Z Artifact name is valid!
+2026-10-14T00:07:41.6624456Z Root directory input is valid!
+2026-10-14T00:07:42.0163018Z Beginning upload of artifact content to blob storage
+2026-10-14T00:07:42.3288472Z (node:4714) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-14T00:07:42.9949259Z Uploaded bytes 8388608
+2026-10-14T00:07:43.3116924Z Uploaded bytes 16777216
+2026-10-14T00:07:43.6562631Z Uploaded bytes 25165824
+2026-10-14T00:07:43.8628375Z Uploaded bytes 31204394
+2026-10-14T00:07:43.9268730Z Finished uploading artifact content to blob storage!
+2026-10-14T00:07:43.9271325Z SHA256 digest of uploaded artifact zip is 285918313f6e46844cdcde4b6bdd3f58f8a062434b02071359d5c1f743c15b02
+2026-10-14T00:07:43.9272717Z Finalizing artifact upload
+2026-10-14T00:07:44.2022298Z Artifact game83-qa-Linux.zip successfully finalized. Artifact ID 11860204258
+2026-10-14T00:07:44.2022996Z Artifact game83-qa-Linux has been successfully uploaded! Final size is 31204394 bytes. Artifact ID is 11860204258
+2026-10-14T00:07:44.2028716Z Artifact download URL: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38485799923/artifacts/11860204258
+2026-10-14T00:07:44.2216829Z Post job cleanup.
+2026-10-14T00:07:44.2892844Z [command]/usr/bin/git version
+2026-10-14T00:07:44.2926294Z git version 2.55.0
+2026-10-14T00:07:44.2958259Z Temporarily overriding HOME='/home/runner/work/_temp/38459989-f702-4b26-bdea-c706b27236d0' before making global git config changes
+2026-10-14T00:07:44.2959071Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-14T00:07:44.2963052Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/road-has-gone-dark/road-has-gone-dark
+2026-10-14T00:07:44.2993858Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-14T00:07:44.3022889Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-14T00:07:44.3245519Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-14T00:07:44.3275692Z http.https://github.com/.extraheader
+2026-10-14T00:07:44.3278473Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-14T00:07:44.3306329Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-14T00:07:44.3523795Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-14T00:07:44.3554217Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-14T00:07:44.3890931Z Cleaning up orphan processes
+2026-10-14T00:07:44.4161797Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

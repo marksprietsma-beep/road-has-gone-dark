@@ -1,0 +1,42 @@
+extends SceneTree
+class CaptureDriver:
+ extends "res://tests/character_entities/journey_driver.gd"
+ func run() -> void:
+  base=OS.get_environment("GAME112W2_TEST_ROOT").path_join("captures")
+  DirAccess.make_dir_recursive_absolute(base)
+  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
+  entry=service.library.discover()[0]
+  var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"real world")
+  var home: Dictionary=profiles.projection.hometowns.values()[0]
+  var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
+  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"real creator save")
+  slot=born.state.playthrough_id;action_builder("builder_open")
+  get_tree().root.gui_embed_subwindows=true
+  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
+  get_tree().change_scene_to_file("res://scenes/ui/party_creation.tscn")
+  while get_tree().current_scene==null or not get_tree().current_scene is CharacterScreen:await get_tree().process_frame
+  var ui: CharacterScreen=get_tree().current_scene
+  while ui.thread!=null or ui.state.is_empty():await get_tree().process_frame
+  await screenshot("wave-two-first-open-creator",false)
+  ui.class_choice.get_popup().popup(Rect2i(Vector2i(ui.class_choice.get_global_rect().position),Vector2i(ui.class_choice.size)))
+  await screenshot("wave-two-real-class-menu",false);ui.class_choice.get_popup().hide()
+  ui.people_picker.get_popup().popup(Rect2i(Vector2i(ui.people_picker.get_global_rect().position),Vector2i(ui.people_picker.size)))
+  await screenshot("wave-two-real-ancestry-menu",false);ui.people_picker.get_popup().hide()
+  ui.pick(ui.class_choice,"druid");ui.class_choice.item_selected.emit(ui.class_choice.selected);ui.detail_tabs.current_tab=1
+  ui.editor.sections.current_tab=ui.editor.sections.get_tab_count()-1
+  for frame in 4:await get_tree().process_frame
+  ui.detail_tabs.get_child(1).ensure_control_visible(ui.editor.career_section)
+  await screenshot("wave-two-animal-companion-choice",false)
+  var picker: OptionButton=ui.editor.career_pickers["druid-companion"]
+  picker.get_popup().popup(Rect2i(Vector2i(picker.get_global_rect().position),Vector2i(picker.size)))
+  await screenshot("wave-two-wolf-or-bear-options",false);picker.get_popup().hide()
+  for cls in ["crusader","swordsage","binder","wilder"]:
+   ui.pick(ui.class_choice,cls);ui.class_choice.item_selected.emit(ui.class_choice.selected)
+   ui.editor.sections.current_tab=ui.editor.sections.get_tab_count()-1
+   for frame in 4:await get_tree().process_frame
+   ui.detail_tabs.get_child(1).ensure_control_visible(ui.editor.career_section)
+   await screenshot("wave-two-"+cls+"-career-choices",false)
+  print("RENDERED CHOICES ",checks," / ",failures)
+  FileAccess.open(base.path_join("screenshots.json"),FileAccess.WRITE).store_string(JSON.stringify(screenshots," "))
+  get_tree().quit(1 if failures else 0)
+func _initialize() -> void:root.call_deferred("add_child",CaptureDriver.new())
