@@ -46,7 +46,7 @@ career('ardent','Ardent','psion',6,4,'WIS','Chosen philosophical mantles restric
 career('lurk','Lurk','rogue',6,6,'INT','A psychic infiltrator with a smaller point reserve and limited ambush focus. Concealment, debilitation and a risky melee precision strike distinguish it from a full manifester.')
 career('cerebremancer','Cerebremancer','wizard',4,4,'INT','Earned arcane/psychic hybrid; advances the chosen arcane caster and shared manifesting level. Five original playable levels.',kind='prestige',cap=5,requirements=req(need('level',n=6),need('casting','arcane',3),need('resource','psychic-points',6),need('skill','arcana',4),need('feat','psychic-discipline')))
 for cls in psychic_classes:
- r=get('classes',cls);r['psychic_profile']=dict(max_tier=6 if cls in ['psychic-warrior','lurk']else 9,attribute='WIS'if cls=='ardent'else'CHA'if cls=='wilder'else'INT',points_per_level=1 if cls in ['psychic-warrior','lurk']else 2,mantle_restricted=cls=='ardent')
+ r=get('classes',cls);r['psychic_profile']=dict(max_tier=6 if cls in ['psychic-warrior','lurk']else 9,attribute='WIS'if cls in ['ardent','psychic-warrior']else'CHA'if cls=='wilder'else'INT',points_per_level=1 if cls in ['psychic-warrior','lurk']else 2,mantle_restricted=cls=='ardent')
 ml=calc('min',c(20),add(*(cl(x)for x in psychic_classes)))
 pp=add(c(2),*(mul(cl(x),get('classes',x)['psychic_profile']['points_per_level'])for x in psychic_classes))
 pool('psychic-points',pp)
@@ -212,6 +212,10 @@ def remap_node(value):
  return value
 for category in ['features','feats','abilities','classes','statuses','ancestries']:
  p[category]=remap_node(p[category])
+# Canonical psychic classification also covers inherited and retained legacy techniques.
+for ability_row in p['abilities']:
+ if any(key in ability_row['cost']['resources']for key in ['psychic-points','inherited-psychic']) or ability_row['id'].startswith(('psion-','psychic-warrior-','wilder-')):
+  if 'psychic'not in ability_row['tags']:ability_row['tags'].append('psychic')
 # High-level learned tiers require deliberate attribute advancement, never silently relax scores.
 (root/'data/rules/trhgd-character-v13.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n')
 manifest_path=root/'data/rules/packs.json';manifest=json.loads(manifest_path.read_text())

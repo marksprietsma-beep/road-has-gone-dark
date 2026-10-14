@@ -109,6 +109,7 @@ jobs:
         with:
           name: game112-wave-three-review-${{ matrix.os }}
           path: ${{ runner.temp }}/wave-three-native/distribution/*.*
+          retention-days: 90
       - name: Wave Three verification evidence
         if: always()
         uses: actions/upload-artifact@v4

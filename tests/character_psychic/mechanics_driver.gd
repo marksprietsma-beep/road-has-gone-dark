@@ -2,6 +2,7 @@ extends Node
 signal completed
 var no_quit := false
 var base := ""
+var advanced_examples := {}
 var failures := 0
 var checks := 0
 var source: RulesRegistry
@@ -12,6 +13,15 @@ func check(value: bool,message: String) -> void:
 func _ready() -> void:call_deferred("run")
 func build(id: String,cls: String,levels: int,ancestry := "heritage-human") -> Dictionary:
  var attributes := {"STR":10,"DEX":13,"CON":14,"INT":15,"WIS":12,"CHA":8}
+ var definition := source.definition("classes",cls)
+ var priority: Array=definition.get("attribute_priority",[])
+ if priority.is_empty():
+  var primary: String=definition.get("casting_attribute","")
+  if primary.is_empty():primary="STR"
+  priority=[primary]
+  for key in ["DEX","CON","INT","WIS","CHA","STR"]:
+   if not priority.has(key):priority.append(key)
+ for i in 6:attributes[priority[i]]=source.rule("standard_array")[i]
  if cls=="wilder":attributes={"STR":10,"DEX":13,"CON":14,"INT":12,"WIS":8,"CHA":15}
  if cls=="ardent":attributes={"STR":10,"DEX":13,"CON":14,"INT":12,"WIS":15,"CHA":8}
  var record := kernel.create(id,attributes,ancestry)
@@ -40,11 +50,12 @@ func run() -> void:
   FileAccess.open(base.path_join("restart-actual.json"),FileAccess.WRITE).store_string(JSON.stringify(replay))
   check(replay.ok and RulesJson.digest(replay)==saved.expected_hash,"separate process next augmentation and RNG replay")
   finish();return
- for cls in ["psion","psychic-warrior","wilder","ardent","lurk","druid","ranger","wizard"]:
+ for cls in source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")=="base"):
   var record := build(cls,cls,20)
   if record.is_empty():continue
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"twenty-level saved "+cls)
  test_psychic()
+ test_repertoire()
  test_tactical()
  test_entities()
  test_prestige()
@@ -115,6 +126,27 @@ func test_psychic() -> void:
   var id: String=ancestry.replace("heritage-","")+"-inheritance-action"
   var inherited := use(record,b if ancestry=="heritage-dromite" else record,id)
   check(inherited.ok and int(inherited.actor.runtime.resources["inherited-psychic"])==1,"actual inherited resource/effect "+ancestry)
+func test_repertoire() -> void:
+ var carrier := selected_build("repertoire","psion",20)
+ var target := build("target","fighter",20);target.runtime.hp=int(kernel.derive_character(target).snapshot.stats.HP)-20
+ if carrier.is_empty() or target.is_empty():return
+ for id in source.ids("psychic_powers"):
+  var record := carrier.duplicate(true)
+  var snap: Dictionary=kernel.derive_character(record).snapshot
+  if not snap.known_powers.has(id):record.advancement_history.back().specialisations["psion-power-20"]=id
+  check(kernel.validate_build(record).ok,"actual eligible learned repertoire "+id)
+  for variant in source.definition("psychic_powers",id).variants:
+   var definition := source.definition("abilities",variant)
+   var used := use(record,record if definition.targeting.kind=="self" else target,variant)
+   check(used.ok,"every advertised power/augmentation executes "+variant+JSON.stringify(used.get("errors",[])))
+   if used.ok:
+    check(int(record.runtime.resources["psychic-points"])-int(used.actor.runtime.resources["psychic-points"])==int(definition.cost.resources["psychic-points"]),"every augmentation has exact point expenditure "+variant)
+    check(used.budget.main==0 and kernel.validate_build(JSON.parse_string(JSON.stringify(used.actor))).ok,"power action/resource persistence "+variant)
+ var corrupt := source.source_data()
+ corrupt.psychic_powers[0].tier=10
+ check(not RulesRegistry.new().load_data(corrupt).ok,"unknown power tiers rejected")
+ corrupt=source.source_data();corrupt.abilities.filter(func(row: Dictionary):return row.has("psychic_power"))[0].cost.resources["psychic-points"]=0
+ check(not RulesRegistry.new().load_data(corrupt).ok,"false augmentation costs rejected by content schema")
 func test_tactical() -> void:
  var a := selected_build("a","psion",5,{"psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen"})
  var b := build("b","fighter",5);var c := build("c","fighter",5)
@@ -136,6 +168,21 @@ func test_tactical() -> void:
  moved=engine.command(moved,{"actor_id":"a","revision":moved.revision,"kind":"power-burst-step","target_id":"a"})
  # A power not selected in this build remains unavailable even via explicit commands.
  check(not moved.ok,"direct tactical command cannot bypass powers-known choices")
+ a=selected_build("a","psion",20)
+ if not kernel.derive_character(a).snapshot.known_powers.has("power-astral-guardian"):a.advancement_history.back().specialisations["psion-power-20"]="power-astral-guardian"
+ campaign.mechanics.records.a=a;engine=TacticalCombat.new(campaign);battle=engine.create(campaign,"psychic-summon")
+ battle.cursor=battle.order.find("a");battle=engine.seal(battle)
+ var summoned := engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"power-astral-guardian-aug2","target_id":"a"})
+ check(summoned.ok,"psychic summon creates an owned actor through ordinary command authority")
+ if summoned.ok:
+  var pet_id := "a:summon:0"
+  check(summoned.battle.units.has(pet_id) and summoned.battle.units[pet_id].entity.remaining==4,"augmentation extends real summon lifetime")
+  check(int(summoned.battle.units.a.record.runtime.resources["psychic-points"])==int(battle.units.a.record.runtime.resources["psychic-points"])-11,"psychic summon spends eleven actual points")
+  var duplicate: Dictionary=summoned.battle.duplicate(true);duplicate.budget.main=1;duplicate=engine.seal(duplicate)
+  check(not engine.command(duplicate,{"actor_id":"a","revision":duplicate.revision,"kind":"power-astral-guardian","target_id":"a"}).ok,"psychic summons obey the existing one-active-summon limit")
+  var living: Dictionary=summoned.battle.duplicate(true)
+  for n in 4:CombatEntities.round_start(engine,living)
+  check(not engine.alive(living.units[pet_id]),"psychic summon expires at augmented duration without refund")
 func test_entities() -> void:
  for creature in ["leopard","boar","stag","stone-guardian","renewal-spirit"]:
   var pet := RulesEntities.creature_record("pet:"+creature+":companion",creature,8,source)
@@ -158,6 +205,19 @@ func test_entities() -> void:
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(shaped.actor))).ok,"active form/companion saved reload "+form)
   var reverted := use(shaped.actor,shaped.actor,"revert-form")
   check(reverted.ok and kernel.derive_character(reverted.actor).snapshot.body_form.is_empty() and reverted.actor.runtime.hp==druid.runtime.hp,"explicit reversion without healing "+form)
+ var mixed := selected_build("mixed-form","druid",5)
+ var added := kernel.preview_advancement(mixed,kernel.suggested_choice(mixed,"psychic-warrior").choice)
+ check(added.ok,"real martial psychic/Druid multiclass history")
+ if added.ok:
+  var shaped := use(added.candidate,added.candidate,"wild-shape")
+  check(shaped.ok,"mixed psychic body form executes")
+  if shaped.ok:
+   var snapshot: Dictionary=kernel.derive_character(shaped.actor).snapshot
+   check(snapshot.abilities.all(func(id: String):return not source.definition("abilities",id).cost.resources.has("psychic-points")),"body form suppresses legacy psychic class techniques as well as new learned powers")
+ var inherited := build("inherited-form","druid",5,"heritage-dromite")
+ var inherited_shape := use(inherited,inherited,"wild-shape")
+ check(inherited_shape.ok,"inherited psychic character transforms")
+ if inherited_shape.ok:check(not kernel.derive_character(inherited_shape.actor).snapshot.abilities.has("dromite-inheritance-action"),"body form suppresses inherited psychic actions")
  var spent := druid.duplicate(true);var id: String=RulesEntities.identity(druid.character_id)
  spent.runtime.companions[id].record.runtime.resources["creature-effort"]=0
  var advanced := kernel.preview_advancement(spent,kernel.suggested_choice(spent,"druid").choice)
@@ -185,6 +245,7 @@ func test_prestige() -> void:
   record=step.candidate
  check(RulesEntities.bonds(record,source)[0].level==11,"chosen swift training and prestige levels grow the actual permanent pet")
  check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"earned-entry prestige/creature ordered history reload")
+ advanced_examples["beast-steward"]=record.duplicate(true)
  var hybrid := selected_build("hybrid","psion",3)
  for n in 3:
   var choice: Dictionary=kernel.suggested_choice(hybrid,"wizard").choice
@@ -202,6 +263,7 @@ func test_prestige() -> void:
  var snapshot: Dictionary=kernel.derive_character(hybrid).snapshot
  check(snapshot.manifesting_level==8 and snapshot.casting_levels.wizard==8,"prestige actually advances both traditions")
  check(kernel.validate_build(JSON.parse_string(JSON.stringify(hybrid))).ok,"hybrid histories and selected powers survive JSON reload")
+ advanced_examples["cerebremancer"]=hybrid.duplicate(true)
 func finish() -> void:
  print("WAVE3_MECHANICS ",checks," checks; ",failures," failures")
  if not base.is_empty():FileAccess.open(base.path_join("mechanics-restart-proof.json" if OS.get_environment("GAME112W3_RESTART")=="1" else "mechanics-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref()}))

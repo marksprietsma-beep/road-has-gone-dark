@@ -71,6 +71,7 @@ func run() -> void:
    var advanced := kernel.preview_advancement(record,choice);check(advanced.ok,"labelled development history "+cls+str(n))
    if not advanced.ok:finish();return
    record=advanced.candidate
+  record.equipment=source.definition("classes",track).recommended_equipment
   record.runtime.hp=int(kernel.derive_character(record).snapshot.stats.HP)
   fixture.mechanics.records[id]=record;fixture.character_builder.initial_levels[id]=record.advancement_history.size()
   var root_path := base.path_join("development-"+cls);var store := GamePlaythroughStore.new();store.save_root=root_path
