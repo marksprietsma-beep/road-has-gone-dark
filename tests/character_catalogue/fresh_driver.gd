@@ -161,12 +161,16 @@ func fight_new() -> void:
   var actor:=engine.current(battle);var command:=engine.enemy_command(battle)
   if actor.team=="party" and int(battle.budget.main)>0:
    var cls: String=actor.record.advancement_history[0].class_id;var ability:=cls+"-technique-1"
+   # v13 replaces automatic Psion techniques with actual persistent learned powers.
+   # Older pinned campaigns retain their original technique and the same assertions.
+   if RulesPsychic.enabled(engine.registry) and cls=="psion":ability="power-kinetic-bolt"
+   check(engine.characters.derive_character(actor.record).snapshot.abilities.has(ability),"saved class owns exercised action "+ability)
    var targets: Array=battle.units.values().filter(func(target: Dictionary):return target.team=="enemy" and engine.eligible(battle,actor,target,ability))
    if not targets.is_empty() and engine.effects.validate_ability_cost(ability,actor.record.runtime,{"main":int(battle.budget.main),"move":int(battle.budget.move),"reaction":int(actor.reaction)}).ok:
     command={"actor_id":actor.id,"revision":battle.revision,"kind":ability,"target_id":targets[0].id}
-    if not used_actions.has(ability):used_actions.append(ability)
-  var result:=engine.command(battle,command);check(result.ok,"new class pure command")
+  var result:=engine.command(battle,command);check(result.ok,"new class pure command "+JSON.stringify({"command":command,"error":result.get("error","")}))
   if not result.ok:break
+  if command.kind not in ["attack","move","end"] and not used_actions.has(command.kind):used_actions.append(command.kind)
   action("cycle_command",{"command":command})
   check(AdventureService.active_battle(state).state_hash==result.battle.state_hash,"new class command persists exact authority")
  check(AdventureService.active_battle(state).status!="active","new class battle completes")

@@ -1,5 +1,6 @@
 """Negative gates for append-only historical pins, using isolated copied fixtures."""
 from pathlib import Path
+from unittest.mock import patch
 import json,tempfile,shutil
 from pin_guard import verify
 root=Path(__file__).resolve().parents[2];pins=json.loads((root/'tests/adventure_cycles/source-pins.json').read_text());checks=0
@@ -18,6 +19,14 @@ with tempfile.TemporaryDirectory()as work:
   except (AssertionError,KeyError,FileNotFoundError):checks+=1
   else:raise AssertionError('Illegal manifest accepted')
  verify(base,pins);checks+=1
+ # A Windows default-codepage decode corrupts non-ASCII pack titles and exact hashes.
+ # Every parsed content file must request UTF-8, independently of host defaults.
+ original_read=Path.read_text
+ def explicit_utf8(path,*args,**kwargs):
+  assert kwargs.get('encoding')=='utf-8','Content must explicitly decode UTF-8'
+  return original_read(path,*args,**kwargs)
+ with patch.object(Path,'read_text',explicit_utf8):verify(base,pins)
+ checks+=1
  rejected(lambda m:m['packs'][0]['rules_ref'].update(content_hash='0'*64))
  rejected(lambda m:m['packs'].pop(0))
  rejected(lambda m:m['packs'].reverse())
