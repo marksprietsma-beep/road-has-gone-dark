@@ -43,6 +43,7 @@ func picker(parent: Control,title: String,rows: Array) -> OptionButton:
  var row := HBoxContainer.new();parent.add_child(row)
  var caption := GameUI.label(title,GameUI.META);caption.custom_minimum_size.x=88;row.add_child(caption)
  var control := OptionButton.new();control.size_flags_horizontal=Control.SIZE_EXPAND_FILL;control.clip_text=true;row.add_child(control)
+ GameUI.bound_choice_popup(control)
  for item in rows:
   control.add_item(str(item.get("name",item.id)));control.set_item_metadata(control.item_count-1,item.id)
  return control

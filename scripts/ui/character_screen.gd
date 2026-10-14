@@ -69,6 +69,7 @@ func scroll_tab(tab_name: String) -> VBoxContainer:
 func option(parent: Control,caption: String,rows: Array) -> OptionButton:
  parent.add_child(label(caption,GameUI.META))
  var result := OptionButton.new();result.size_flags_horizontal=Control.SIZE_EXPAND_FILL;result.clip_text=true;parent.add_child(result)
+ GameUI.bound_choice_popup(result)
  for item in rows:result.add_item(str(item.get("name",item.id)));result.set_item_metadata(result.item_count-1,item.id)
  return result
 func selected_id(control: OptionButton) -> String:return str(control.get_item_metadata(control.selected)) if control.selected>=0 else ""
