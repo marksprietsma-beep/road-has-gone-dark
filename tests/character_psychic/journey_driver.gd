@@ -58,10 +58,10 @@ func run() -> void:
  await capture("wave-three-earned-advancement","sheet",2)
  var earned := state.duplicate(true);var development_saves: Array=[]
  # Same ancestry and level, different actual powers; original writer owns each fixture.
- for cls in ["psion-control","ardent","lurk","druid"]:
+ for cls in ["psion-offence","psion-control","ardent","lurk","druid"]:
   var fixture := initial.duplicate(true);var id: String=fixture.party_ids[0]
-  var track: String="psion" if cls=="psion-control" else str(cls)
-  var attributes := {};var priority: Array=source.definition("classes",track).attribute_priority
+  var track: String="psion" if str(cls).begins_with("psion-") else str(cls)
+  var attributes := {};var priority: Array=source.definition("classes",track).get("attribute_priority",["WIS","CON","DEX","INT","STR","CHA"])
   for n in 6:attributes[priority[n]]=source.rule("standard_array")[n]
   var record := kernel.create(id,attributes,"heritage-human")
   for n in (8 if track=="druid" else 12):
@@ -78,7 +78,7 @@ func run() -> void:
   var snapshots := {}
   for member in fixture.party_ids:snapshots[member]=kernel.derive_character(fixture.mechanics.records[member]).snapshot.snapshot_hash
   development_saves.append({"save_root":root_path,"snapshots":snapshots})
-  await advanced_capture(fixture,root_path,cls)
+  if DisplayServer.get_name()!="headless":await advanced_capture(fixture,root_path,cls)
  state=earned
  FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"slot":slot,"state_sha":RulesJson.digest(state),"rules_ref":source.rules_ref(),"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"actions_used":actions_used,"development_saves":development_saves,"screenshots":screenshots}))
  finish()
@@ -99,7 +99,9 @@ func fight_psychic() -> void:
       if target.team=="enemy" and engine.eligible(battle,actor,target,ability_id):target_id=target.id;break
     if target_id.is_empty() or not engine.effects.validate_ability_cost(ability_id,actor.record.runtime,{"move":int(battle.budget.move),"main":int(battle.budget.main),"reaction":int(actor.reaction)}).ok:continue
     command={"actor_id":actor.id,"revision":battle.revision,"kind":ability_id,"target_id":target_id};actions_used.append(ability_id);break
-  action(AdventureService.command_operation(state),command)
+  action(AdventureService.command_operation(state),{"command":command})
+  if failures>0:break
+  if command.kind in ["power-kinetic-bolt","lurk-veil"]:await capture("wave-three-"+str(command.kind)+"-used","combat")
  check(AdventureService.active_battle(state).status!="active","ordinary psychic-party combat resolves")
  check(actions_used.has("power-kinetic-bolt"),"selected power functions in actual saved adventure combat")
 func finish() -> void:

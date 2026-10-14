@@ -136,6 +136,9 @@ func add_action(id: String,text: String) -> void:
   var actor: Dictionary=engine.current(battle())
   var available := engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)})
   button.disabled=button.disabled or not available.ok
+  if RulesPsychic.enabled(engine.registry):
+   var derived := engine.characters.derive_character(actor.record)
+   button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
  button.clip_text=true
  gate_button(button)
@@ -151,12 +154,12 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
  if not powers.has(selected_power):selected_power=powers[0];selected_augmentation=0
  var snapshot: Dictionary=engine.characters.derive_character(actor.record).snapshot
  actions.add_child(GameUI.label("Psychic powers · %d/%d points · manifesting level %d"%[int(actor.record.runtime.resources.get("psychic-points",0)),int(snapshot.resource_capacities.get("psychic-points",0)),int(snapshot.manifesting_level)],GameUI.META))
- var picker := OptionButton.new();GameUI.bound_choice_popup(picker);actions.add_child(picker)
+ var picker := OptionButton.new();picker.name="PsychicPowerSelector";GameUI.bound_choice_popup(picker);actions.add_child(picker)
  for id in powers:
   picker.add_item(source.definition("psychic_powers",id).name);picker.set_item_metadata(picker.item_count-1,id)
   if id==selected_power:picker.select(picker.item_count-1)
- picker.item_selected.connect(func(index: int):selected_power=str(picker.get_item_metadata(index));selected_augmentation=0;refresh())
- var augmentation := OptionButton.new();GameUI.bound_choice_popup(augmentation);actions.add_child(augmentation)
+ picker.item_selected.connect(func(index: int):selected_power=str(picker.get_item_metadata(index));selected_augmentation=0;mode=str(source.definition("psychic_powers",selected_power).variants[0]);refresh())
+ var augmentation := OptionButton.new();augmentation.name="PsychicAugmentationSelector";GameUI.bound_choice_popup(augmentation);actions.add_child(augmentation)
  var variants: Array=source.definition("psychic_powers",selected_power).variants.filter(func(id: String):return abilities.has(id))
  var selected_id: String=variants[0]
  for id in variants:
@@ -165,7 +168,7 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
   augmentation.set_item_text(augmentation.item_count-1,augmentation.get_item_text(augmentation.item_count-1)+" · %d points"%int(definition.cost.resources["psychic-points"]))
   augmentation.set_item_metadata(augmentation.item_count-1,id)
   if int(definition.augmentation)==selected_augmentation:augmentation.select(augmentation.item_count-1);selected_id=id
- augmentation.item_selected.connect(func(index: int):selected_augmentation=int(source.definition("abilities",str(augmentation.get_item_metadata(index))).augmentation);refresh())
+ augmentation.item_selected.connect(func(index: int):mode=str(augmentation.get_item_metadata(index));selected_augmentation=int(source.definition("abilities",mode).augmentation);refresh())
  var ability := source.definition("abilities",selected_id)
  if ability.targeting.kind=="self":
   var button := GameUI.action("Manifest "+ability.name,func():send(selected_id,actor.id))

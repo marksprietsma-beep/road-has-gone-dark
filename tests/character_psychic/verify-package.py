@@ -1,6 +1,7 @@
 """Self-contained native Windows/Linux gameplay, then a distinct process restart."""
 from pathlib import Path
 import os,subprocess,json,hashlib,tarfile,zipfile,shutil,time,re
+from checked_process import checked_process
 root=Path(__file__).resolve().parents[2];base=Path(os.environ['GAME112W3_TEST_ROOT']).resolve();base.mkdir(parents=True,exist_ok=True)
 release=base/'distribution';release.mkdir(exist_ok=True)
 name='game112-character-catalogue-wave-three-'+('windows'if os.name=='nt'else'linux')+'-x64';dist=release/name
@@ -8,11 +9,10 @@ subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GA
 qa=dist/('road-has-gone-dark-qa.exe'if os.name=='nt'else'road-has-gone-dark-qa')
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='');env.pop('GAME76_HELPER_ROOT',None);rows=[]
 for label,restart in [('native-gameplay',False),('native-process-restart',True)]:
- start=time.monotonic();log=base/(label+'.log')
- with log.open('w',encoding='utf-8')as stream:r=subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=dist,env=dict(env,GAME112W3_TEST_ROOT=str(base),GAME112W3_RESTART='1'if restart else'0'),stdout=stream,stderr=subprocess.STDOUT,timeout=3600)
- text=log.read_text(encoding='utf-8');errors=any(s in text for s in ['ERROR:','SCRIPT ERROR:','Parse Error'])
- rows.append(dict(phase=label,seconds=round(time.monotonic()-start,3),exit_code=r.returncode,errors=errors));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n')
- assert not r.returncode and not errors,text[-9000:]
+ log=base/(label+'.log')
+ result=checked_process([str(qa),'--headless','--audio-driver','Dummy'],cwd=dist,env=dict(env,GAME112W3_TEST_ROOT=str(base),GAME112W3_RESTART='1'if restart else'0'),log=log,timeout=3600)
+ text=log.read_text(encoding='utf-8');rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n')
+ assert not result['exit_code'] and not result['errors'] and not result['timeout'],text[-9000:]
 proofs={key:json.loads((base/path).read_text())for key,path in [('mechanics','mechanics-proof.json'),('restart','mechanics-restart-proof.json'),('journey','journey/proof.json')]}
 latest=re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)
 assert all(p['failures']==0 for p in proofs.values())
@@ -33,5 +33,5 @@ if os.name=='nt':
 else:
  with tarfile.open(archive,'w:gz')as z:z.add(dist,arcname=name)
 digest=hashlib.sha256(archive.read_bytes()).hexdigest();Path(str(archive)+'.sha256').write_text(digest+'  '+archive.name+'\n')
-(base/'distribution-proof.json').write_text(json.dumps(dict(archive=archive.name,sha256=digest,proofs=proofs,source_helper_override=False,empty_path=True,timings=rows),indent=2)+'\n')
+(base/'distribution-proof.json').write_text(json.dumps(dict(archive=archive.name,sha256=digest,proofs=proofs,source_commit=json.loads((dist/'distribution.json').read_text())['source_commit'],source_helper_override=False,empty_path=True,timings=rows),indent=2)+'\n')
 print(json.dumps(dict(archive=str(archive),sha256=digest)))
