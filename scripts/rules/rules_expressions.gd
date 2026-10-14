@@ -2,7 +2,7 @@ class_name RulesExpressions
 extends RefCounted
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 const SAVES := ["fortitude", "reflex", "will"]
-const FORMULA_OPS := ["const", "attribute", "modifier", "level", "class_level", "casting_level", "skill_rank", "stat", "sum", "min", "max", "multiply", "floor_divide"]
+const FORMULA_OPS := ["const", "attribute", "modifier", "level", "class_level", "casting_level", "skill_rank", "stat", "sum", "min", "max", "multiply", "floor_divide", "manifesting_modifier"]
 const REQUIREMENT_OPS := ["all", "any", "not", "level", "class_level", "attribute", "skill", "feat", "feature", "tag", "bab", "save", "casting", "resource", "ancestry"]
 
 static func validate_formula(node: Variant, path: String = "formula", depth: int = 0) -> Array:
@@ -39,6 +39,7 @@ static func _formula(node: Dictionary, context: Dictionary) -> Dictionary:
  var op: String = node.op
  var value := 0
  if op == "const": value = int(node.value)
+ elif op == "manifesting_modifier": value = int(context.get("manifesting_modifier",0))
  elif op == "level": value = int(context.get("level",0))
  elif op == "class_level": value = int(context.get("classes",{}).get(node.id,0))
  elif op == "casting_level": value = int(context.get("casting_levels",context.get("classes",{})).get(node.id,0))

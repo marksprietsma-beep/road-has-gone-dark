@@ -86,7 +86,10 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
    if not record.runtime.resources.has(id): record.runtime.resources[id]=0
   var valid := characters.validate_build(record)
   if not valid.ok: return valid
- return {"ok":true,"actor":new_actor,"target":new_target,"budget":new_budget,"rng":state.rng,"events":state.events}
+ var result := {"ok":true,"actor":new_actor,"target":new_target,"budget":new_budget,"rng":state.rng,"events":state.events}
+ # v13 effect boundaries canonicalise keys/numbers exactly as their saved JSON.
+ # Earlier packs retain their frozen raw-return behaviour.
+ return RulesJson.string_keys(result) if RulesPsychic.enabled(registry) else result
 
 func resolve_rules_effect(effect: Dictionary,actor_runtime: Dictionary,target_runtime: Dictionary,context: Dictionary,rng: Dictionary) -> Dictionary:
  if not RulesRng.valid_state(rng): return RulesJson.result([RulesJson.issue("rng.state","rng","Explicit validated RNG required")])

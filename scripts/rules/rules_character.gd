@@ -246,8 +246,9 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   context.stats[stat]=combined.get("value",0);applied[stat]=combined.get("applied",[])
  context.stats.stride=maxi(1,int(context.stats.stride));context.stats.HP=maxi(1,int(context.stats.HP))
  if not active_form.is_empty():
-  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell"))
+  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")))
   context.body_form=active_form.duplicate(true)
+ if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()
  return context
@@ -343,6 +344,8 @@ func derive_character(record: Dictionary) -> Dictionary:
  if RulesEntities.enabled(registry):
   snapshot.body_form=c.get("body_form",{}).duplicate(true)
   snapshot.companions=record.runtime.companions.duplicate(true)
+ if RulesPsychic.enabled(registry):
+  snapshot.manifesting_level=c.manifesting_level;snapshot.known_powers=c.known_powers.duplicate()
  snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
@@ -429,9 +432,13 @@ func suggested_choice(record: Dictionary,class_id: String,preferred_feat: String
  var choice := {"class_id":class_id,"skill_allocations":allocation,"feat_id":feat,"attribute_increase":attribute}
  if RulesCareer.enabled(registry):
   choice.specialisations=RulesCareer.defaults(registry,class_id,int(c.classes.get(class_id,0))+1)
+  var learned: Array=[]
   for group in RulesCareer.groups(registry,class_id,int(c.classes.get(class_id,0))+1):
    for option in group.options:
-    if RulesExpressions.evaluate_requirements(option.requirements,c).ok:choice.specialisations[group.id]=option.id;break
+    if not RulesCareer.option_eligibility(registry,class_id,int(c.classes.get(class_id,0))+1,option,c,choice.specialisations).ok:continue
+    var powers: Array=option.features.map(func(id: String):return str(registry.definition("features",id).get("known_power",""))).filter(func(id: String):return not id.is_empty())
+    if powers.any(func(id: String):return learned.has(id)):continue
+    choice.specialisations[group.id]=option.id;learned.append_array(powers);break
   choice.bonus_feats=["steady-study"] if RulesCareer.feat_count(registry,next,class_id,int(c.classes.get(class_id,0))+1)>1 else []
  return {"ok":true,"choice":choice}
 

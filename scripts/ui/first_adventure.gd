@@ -32,6 +32,8 @@ var presentation_until := 0
 var presentation_active := false
 var presentation_actor := ""
 var presentation_kind := ""
+var selected_power := ""
+var selected_augmentation := 0
 
 func _ready() -> void:
  GameUI.install(self)
@@ -142,6 +144,35 @@ func add_action(id: String,text: String) -> void:
 func gate_button(button: Button) -> void:
  button.set_meta("ready_disabled",button.disabled)
  button.disabled=button.disabled or is_presenting()
+func psychic_controls(actor: Dictionary,abilities: Array) -> void:
+ var source := engine.registry
+ var powers: Array=source.ids("psychic_powers").filter(func(id: String):return source.definition("psychic_powers",id).variants.any(func(variant: String):return abilities.has(variant)))
+ if powers.is_empty():return
+ if not powers.has(selected_power):selected_power=powers[0];selected_augmentation=0
+ var snapshot: Dictionary=engine.characters.derive_character(actor.record).snapshot
+ actions.add_child(GameUI.label("Psychic powers · %d/%d points · manifesting level %d"%[int(actor.record.runtime.resources.get("psychic-points",0)),int(snapshot.resource_capacities.get("psychic-points",0)),int(snapshot.manifesting_level)],GameUI.META))
+ var picker := OptionButton.new();GameUI.bound_choice_popup(picker);actions.add_child(picker)
+ for id in powers:
+  picker.add_item(source.definition("psychic_powers",id).name);picker.set_item_metadata(picker.item_count-1,id)
+  if id==selected_power:picker.select(picker.item_count-1)
+ picker.item_selected.connect(func(index: int):selected_power=str(picker.get_item_metadata(index));selected_augmentation=0;refresh())
+ var augmentation := OptionButton.new();GameUI.bound_choice_popup(augmentation);actions.add_child(augmentation)
+ var variants: Array=source.definition("psychic_powers",selected_power).variants.filter(func(id: String):return abilities.has(id))
+ var selected_id: String=variants[0]
+ for id in variants:
+  var definition := source.definition("abilities",id)
+  augmentation.add_item("Base" if int(definition.augmentation)==0 else "Augment +%d"%int(definition.augmentation))
+  augmentation.set_item_text(augmentation.item_count-1,augmentation.get_item_text(augmentation.item_count-1)+" · %d points"%int(definition.cost.resources["psychic-points"]))
+  augmentation.set_item_metadata(augmentation.item_count-1,id)
+  if int(definition.augmentation)==selected_augmentation:augmentation.select(augmentation.item_count-1);selected_id=id
+ augmentation.item_selected.connect(func(index: int):selected_augmentation=int(source.definition("abilities",str(augmentation.get_item_metadata(index))).augmentation);refresh())
+ var ability := source.definition("abilities",selected_id)
+ if ability.targeting.kind=="self":
+  var button := GameUI.action("Manifest "+ability.name,func():send(selected_id,actor.id))
+  button.disabled=thread!=null or not engine.effects.validate_ability_cost(selected_id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)}).ok
+  button.tooltip_text=ability.description;gate_button(button);actions.add_child(button);action_buttons[selected_id]=button
+ else:add_action(selected_id,"Manifest "+ability.name+" · select target");action_buttons[selected_id].tooltip_text=ability.description
+ actions.add_child(GameUI.label(ability.description,GameUI.META))
 func refresh() -> void:
  var retained: Dictionary=pawns.duplicate()
  for pawn in retained.values():
@@ -237,10 +268,12 @@ func refresh() -> void:
      var owned_id: String=creature.id
      var dismiss := GameUI.action("Dismiss "+creature.name,func():send("dismiss",owned_id))
      dismiss.disabled=thread!=null or int(b.budget.main)<1;gate_button(dismiss);actions.add_child(dismiss);action_buttons["dismiss:"+owned_id]=dismiss
+   if RulesPsychic.enabled(engine.registry):psychic_controls(actor,abilities)
    if engine.registry.rules_ref().engine_schema==3:
     for id in abilities:
      if id in ["attack","move","departure-attack","precision"]:continue
      var ability := engine.registry.definition("abilities",id)
+     if ability.has("psychic_power"):continue
      if ability.tags.has("spell") and not actor.record.choices.prepared_abilities.has(id):continue
      if ability.tags.has("passive") or ability.has("trigger"):continue
      if ability.targeting.kind=="self":
