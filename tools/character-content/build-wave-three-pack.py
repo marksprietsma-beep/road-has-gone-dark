@@ -125,9 +125,9 @@ for cls in psychic_classes:
 pool('lurk-focus',add(c(2),div(cl('lurk'),4)))
 status('lurk-veiled',caps={'concealment':25},turns=2);get('statuses','lurk-veiled')['tags']=['psychic_ambush_ready']
 ambush=ability('lurk-psychic-ambush','Psychic ambush','creature',[damage(add(c(2),div(cl('lurk'),2))),apply('off-balance')],{'psychic-points':1,'lurk-focus':1},['weapon_strike','psychic'],description='Main action and one PP/focus: melee weapon attack plus psychic damage 2 + half Lurk level and off-balance. Requires adjacency; leaving engagement still provokes.',reach=1)
-get('abilities',ambush)['requirements']=req(need('tag','psychic_ambush_ready'),need('tag','blade'))
+get('abilities',ambush)['requirements']=req(need('tag','psychic_ambush_ready'),need('tag','melee'))
 get('abilities',ambush)['effects'].append(dict(op='remove_status',id='lurk-veiled',recipient='actor'))
-get('abilities',ambush)['description']='Requires an active Psychic veil; consumes the veil, one focus/PP and main action. Adjacent target takes psychic damage2 + half Lurk level and off-balance, then a separate rolled attack with your equipped blade. Veiling requires a prior action; engagement remains dangerous.'
+get('abilities',ambush)['description']='Requires an active Psychic veil; consumes the veil, one focus/PP and main action. Adjacent target takes psychic damage2 + half Lurk level and off-balance, then a separate rolled attack with your equipped melee weapon. Veiling requires a prior action; engagement remains dangerous.'
 veil=ability('lurk-veil','Psychic veil','self',[apply('lurk-veiled')],{'lurk-focus':1},['psychic'],description='Main action, one focus; 25% weapon concealment for two global rounds. No invisibility or automatic sneak attack.')
 tier('lurk',1,feature('lurk-infiltration','Psychic infiltration',[ambush,veil],['lurk-focus']))
 for cls in ['psion','ardent','lurk','cerebremancer']:

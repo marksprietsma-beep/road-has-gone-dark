@@ -60,7 +60,7 @@ func run() -> void:
  # Same ancestry and level, different actual powers; original writer owns each fixture.
  for cls in ["psion-control","ardent","lurk","druid"]:
   var fixture := initial.duplicate(true);var id: String=fixture.party_ids[0]
-  var track := "psion" if cls=="psion-control" else cls
+  var track: String="psion" if cls=="psion-control" else str(cls)
   var attributes := {};var priority: Array=source.definition("classes",track).attribute_priority
   for n in 6:attributes[priority[n]]=source.rule("standard_array")[n]
   var record := kernel.create(id,attributes,"heritage-human")
@@ -93,7 +93,7 @@ func fight_psychic() -> void:
    var derived: Dictionary=engine.characters.derive_character(actor.record).snapshot
    for ability_id in ["power-kinetic-bolt","lurk-veil"]:
     if not derived.abilities.has(ability_id) or actions_used.has(ability_id):continue
-    var target_id := actor.id if ability_id=="lurk-veil" else ""
+    var target_id: String=actor.id if ability_id=="lurk-veil" else ""
     if target_id.is_empty():
      for target in battle.units.values():
       if target.team=="enemy" and engine.eligible(battle,actor,target,ability_id):target_id=target.id;break

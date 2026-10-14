@@ -99,6 +99,7 @@ func test_psychic() -> void:
   check(mixed.manifesting_level==3 and mixed.resource_capacities["psychic-points"]==7,"shared manifesting level/reserve sums different class contributions")
  var lurk := build("l","lurk",4)
  if not lurk.is_empty():
+  lurk.equipment=["shortblade"]
   check(not use(lurk,b,"lurk-psychic-ambush").ok,"ambush requires an earned prior veil")
   var veiled := use(lurk,lurk,"lurk-veil");check(veiled.ok,"veil actually applies concealment")
   if veiled.ok:
