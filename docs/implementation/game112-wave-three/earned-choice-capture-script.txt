@@ -1,0 +1,30 @@
+extends "res://tests/character_psychic/capture_driver.gd"
+func run() -> void:
+ base=OS.get_environment("GAME112W3_CAPTURE_ROOT");DirAccess.make_dir_recursive_absolute(base)
+ get_tree().root.gui_embed_subwindows=true
+ var earned := OS.get_environment("GAME121_EARNED_ROOT")
+ service.library.library_root=earned.path_join("library");entry=service.library.discover()[0]
+ service.cache_root=base.path_join("cache");service.store.save_root=earned.path_join("earned-prestige-choice");service.library.save_root=service.store.save_root
+ var files := DirAccess.get_files_at(service.store.save_root)
+ for file in files:
+  if file.ends_with(".json"):slot=file.get_basename();break
+ var loaded := service.store.load_save(slot,entry.world);check(loaded.ok,"genuinely earned saved qualification checkpoint")
+ if not loaded.ok:finish();return
+ state=loaded.state
+ var id: String=state.party_ids[0]
+ check(CharacterBuilderRecords.xp(state,id)>=250 and state.mechanics.records[id].advancement_history.size()==5,"earned XP and permanent history qualify without developer grant")
+ var ui := await open_screen("res://scenes/ui/character_sheet.tscn")
+ if ui==null:finish();return
+ ui.detail_tabs.current_tab=3
+ var options := RulesCharacter.new(RulesRecords.registry(state)).available_advancement(state.mechanics.records[id])
+ check(options.classes["arcane-trickster"].ok and options.classes.wizard.ok,"optional prestige and base continuation both legal")
+ check(not RulesCharacter.new(RulesRecords.registry(state)).derive_character(state.mechanics.records[id]).snapshot.class_levels.has("arcane-trickster"),"qualification has not assigned prestige")
+ await screenshot("earned-optional-prestige-choice",false)
+ ui.advance_editor.set_class("arcane-trickster")
+ await screenshot("earned-selected-prestige-preview",false)
+ var before := RulesJson.digest(ui.state)
+ ui.advance_editor.set_class("wizard")
+ check(RulesJson.digest(ui.state)==before,"manual class selection generates no XP or saved progression")
+ await screenshot("earned-declined-prestige-wizard-preview",false)
+ FileAccess.open(base.path_join("capture-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W3_SOURCE_SHA"),"script_sha256":FileAccess.get_sha256("/workspace/artifacts/wave-three/capture-earned-choice-driver.gd"),"earned_xp":CharacterBuilderRecords.xp(state,id),"screenshots":screenshots,"xp_injected":false}))
+ finish()
