@@ -54,6 +54,9 @@ func id_of(control: OptionButton) -> String:
 func select_id(control: OptionButton,id: String) -> void:
  for i in control.item_count:
   if str(control.get_item_metadata(i))==id:control.select(i);return
+func class_options() -> Array:
+ return source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")!="companion") if advance else kernel.starting_classes()
+
 func setup(record_value: Dictionary,is_advance := false) -> void:
  source=RulesRecords.registry(record_value);kernel=CharacterBuilderRecords.kernel(record_value)
  base=record_value.duplicate(true);advance=is_advance
@@ -63,12 +66,12 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
  attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={};sections=null;power_section=null
  updating=true
  class_filter=LineEdit.new();class_filter.placeholder_text="Search classes · selected choice stays visible";add_child(class_filter)
- class_picker=picker(self,"Class",source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")!="companion").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
+ class_picker=picker(self,"Class",class_options().map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
  class_detail=GameUI.label("",GameUI.META);add_child(class_detail)
  class_filter.text_changed.connect(func(_query: String):
   if updating:return
   class_picker.clear()
-  for id in source.ids("classes"):
+  for id in class_options():
    var row := source.definition("classes",id)
    if row.get("class_kind")=="companion":continue
    if id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)

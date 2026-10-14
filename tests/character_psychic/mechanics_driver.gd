@@ -54,6 +54,10 @@ func run() -> void:
   var record := build(cls,cls,20)
   if record.is_empty():continue
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"twenty-level saved "+cls)
+  var snap: Dictionary=kernel.derive_character(record).snapshot
+  var stable: Dictionary=JSON.parse_string(JSON.stringify(snap));stable.erase("snapshot_hash")
+  check(RulesJson.digest(stable)==snap.snapshot_hash,"complete snapshot hash is canonical JSON "+cls)
+  check(kernel.derive_character(JSON.parse_string(JSON.stringify(record))).snapshot.snapshot_hash==snap.snapshot_hash,"raw/saved advanced snapshot equality "+cls)
  test_psychic()
  test_spell_suggestions()
  test_repertoire()

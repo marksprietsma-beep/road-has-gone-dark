@@ -41,7 +41,10 @@ static func bonds(record: Dictionary,source: RulesRegistry) -> Array:
  var replay := RulesCharacter.new(source)._replay(record)
  if not replay.ok:return []
  var result: Array=[]
- for id in replay.context.features:
+ var durable_features: Array=replay.context.features
+ if RulesPsychic.enabled(source):
+  durable_features=durable_features.filter(func(id: String):return replay.context.feature_sources.any(func(entry: Dictionary):return entry.id==id and not str(entry.source).begins_with("granted:")))
+ for id in durable_features:
   var feature := source.definition("features",id)
   if not feature.has("companion"):continue
   var bond: Dictionary=feature.companion
@@ -51,7 +54,7 @@ static func bonds(record: Dictionary,source: RulesRegistry) -> Array:
   elif row.level>result[0].level:result[0]=row
  if RulesPsychic.enabled(source) and not result.is_empty():
   var growth := 0
-  for id in replay.context.features:
+  for id in durable_features:
    var feature := source.definition("features",id)
    if feature.has("companion_growth"):growth+=int(RulesExpressions.evaluate_formula(feature.companion_growth,replay.context).get("value",0))
   result[0].level=clampi(int(result[0].level)+growth,1,20)

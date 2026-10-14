@@ -94,7 +94,9 @@ func advance_to_prestige() -> void:
   proposal.choice.skill_allocations=allocation
   var preview := CharacterBuilderRecords.preview_advancement(state,id,proposal.choice)
   check(preview.ok,"earned legal advancement "+str(next)+": "+JSON.stringify(preview.get("errors",[]))+str(preview.get("error","")))
-  if next==6:await capture("prestige-entry-review","sheet",3)
+  if next==6:
+   if RulesPsychic.enabled(kernel.registry):check_earned_optional_prestige(id,kernel)
+   await capture("prestige-entry-review","sheet",3)
   action_builder("builder_advance",1,{"character_id":id,"choice":proposal.choice,"candidate_hash":preview.candidate_hash})
   var snapshot: Dictionary=kernel.derive_character(state.mechanics.records[id]).snapshot
   if snapshot.class_levels.has("wizard"):
@@ -103,12 +105,42 @@ func advance_to_prestige() -> void:
   if next==2:await capture("earned-level2-sheet","sheet",2)
   if next==6:await capture("prestige-earned-sheet","sheet",2)
   record=state.mechanics.records[id];next+=1
+func check_earned_optional_prestige(id: String,kernel: RulesCharacter) -> void:
+ # Branch the genuine earned save, using the same campaign writer. No XP is added.
+ var before := RulesJson.digest(state)
+ var eligibility := kernel.available_advancement(state.mechanics.records[id])
+ check(eligibility.ok and eligibility.classes["arcane-trickster"].ok,"earned permanent prerequisites open an optional prestige path")
+ check(RulesJson.digest(state)==before,"prestige eligibility generates no XP or class assignment")
+ var alternative := kernel.suggested_choice(state.mechanics.records[id],"wizard")
+ var preview := CharacterBuilderRecords.preview_advancement(state,id,alternative.choice)
+ check(preview.ok,"qualified player can decline prestige with genuinely funded Wizard advancement")
+ if not preview.ok:return
+ var checkpoint := GamePlaythroughStore.new();checkpoint.save_root=base.path_join("earned-prestige-choice")
+ check(checkpoint.save_new(slot,state,entry.world).ok,"original writer checkpoints genuine earned prestige qualification before selection")
+ var store := GamePlaythroughStore.new();store.save_root=base.path_join("earned-declined-prestige")
+ check(store.save_new(slot,state,entry.world).ok,"original writer preserves the earned alternate-choice branch")
+ var builder := CharacterBuilderService.new();builder.store=store;builder.library=service.library
+ var result := builder.operate(entry,slot,"builder_advance",1,{"before_hash":before,"character_id":id,"choice":alternative.choice,"candidate_hash":preview.candidate_hash})
+ check(result.ok,"explicit funded base-class choice instead of prestige")
+ if not result.ok:return
+ var chosen: Dictionary=result.state.mechanics.records[id]
+ check(chosen.advancement_history.back().class_id=="wizard" and not kernel.derive_character(chosen).snapshot.class_levels.has("arcane-trickster"),"qualified character remains Wizard until prestige is selected")
+ check(CharacterBuilderRecords.xp(result.state,id)==CharacterBuilderRecords.xp(state,id),"selector does not grant XP; cumulative earned rewards remain unchanged")
+ var loaded := store.load_save(slot,entry.world)
+ check(loaded.ok and RulesJson.digest(loaded.state)==RulesJson.digest(result.state),"declined prestige branch saves exact funded history")
+ check(RulesJson.digest(state)==before,"alternate manual choice never changes the primary earned campaign")
+ FileAccess.open(base.path_join("earned-optional-prestige.json"),FileAccess.WRITE).store_string(JSON.stringify({"save_root":store.save_root,"slot":slot,"state_hash":RulesJson.digest(result.state),"earned_xp":CharacterBuilderRecords.xp(result.state,id),"level":chosen.advancement_history.size(),"selected_class":"wizard","eligible_prestige":"arcane-trickster","xp_injected":false}))
 func run() -> void:
  base=OS.get_environment("GAME121_TEST_ROOT");DirAccess.make_dir_recursive_absolute(base)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0]
  if OS.get_environment("GAME121_RESTART")=="1":
   var saved: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base.path_join("earned-proof.json")));slot=saved.slot
+  if FileAccess.file_exists(base.path_join("earned-optional-prestige.json")):
+   var optional: Dictionary=WorldOriginLore.read_json(base.path_join("earned-optional-prestige.json"))
+   var alternative_store := GamePlaythroughStore.new();alternative_store.save_root=optional.save_root
+   var alternative := alternative_store.load_save(optional.slot,entry.world)
+   check(alternative.ok and RulesJson.digest(alternative.state)==optional.state_hash,"separate-process earned manual base choice and history restore exactly")
   var resumed := service.operate(entry,slot,"resume");check(resumed.ok,str(resumed.get("error","")));state=resumed.state
   check(RulesJson.digest(state)==saved.state_sha,"new process restores exact saved campaign")
   check(CharacterBuilderRecords.xp(state,state.party_ids[0])==saved.xp,"earned XP reload exact")
