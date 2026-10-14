@@ -8,4 +8,4 @@ Engineering sequence: audit existing effects/records/tactical validation; implem
 
 Starting playable counts: 19 bases (11 through20, eight through12), eight prestige paths,17 ancestry families/26 heritages,40 feats,14 skills,47 scheduled choices. Full403/66/283 programme remains open.
 
-Implementation and validation are pending; no new option is claimed playable by this initial checkpoint.
+The initial checkpoint was subsequently implemented, natively verified and normally merged in PR #96. See DELIVERY.md for the completed cohort and CONTINUATION.md for remaining programme work.
