@@ -69,7 +69,9 @@ jobs:
       - name: Earned prestige, contextual cycles and atomic objective rewards
         env:
           GAME121_TEST_ROOT: ${{ runner.temp }}/game121-source
-        run: python tests/adventure_cycles/run-tests.py --output "${{ runner.temp }}/game121-source"
+        run: |
+          python tests/adventure_cycles/pin_guard_test.py
+          python tests/adventure_cycles/run-tests.py --output "${{ runner.temp }}/game121-source"
       - name: New ancestry, class, high-tier spell, feat and prestige gameplay
         env:
           GAME112_TEST_ROOT: ${{ runner.temp }}/game112-source

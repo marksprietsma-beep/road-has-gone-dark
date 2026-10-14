@@ -29,6 +29,7 @@ func run() -> void:
  check(ui.editor.preview.ok,"creator distinct Psion power controls")
  await screenshot("psion-power-selection",false)
  await close_screen()
+ if OS.get_environment("GAME112W3_CREATOR_ONLY")=="1":finish();return
  slot=review_slot
  var source := RulesRecords.new_character_registry()
  var worker: Node=load("res://tests/character_psychic/mechanics_driver.gd").new()
@@ -101,7 +102,7 @@ func run() -> void:
    var targets: Array=battle.units.values().filter(func(target: Dictionary):return target.team=="enemy" and engine.eligible(battle,actor,target,actor.entity.definition_id+"-special"))
    if not targets.is_empty():issue_saved(actor.entity.definition_id+"-special",targets[0].id);await capture("companion-special-action-"+path,"combat")
  if failures==0:
-  FileAccess.open(base.path_join("render-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":"b76b5ce plus evidence-only test additions","screenshots":screenshots,"rules_ref":source.rules_ref(),"fixtures_are_earned":false}))
+  FileAccess.open(base.path_join("render-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W3_SOURCE_SHA"),"screenshots":screenshots,"rules_ref":source.rules_ref(),"fixtures_are_earned":false}))
  finish()
 func open_screen(path: String) -> Control:
  PartyService.handoff={"entry":entry,"slot":slot,"save_root":service.store.save_root,"library_root":service.library.library_root,"cache_root":service.cache_root}
@@ -165,6 +166,14 @@ func owner_next_turn(owner_id: String) -> void:
   action("cycle_command",{"command":command})
  check(false,"living owned actor receives a next turn")
 func screenshot(name: String,development: bool) -> void:
+ if name in ["ardent-power-selection","psion-power-selection","ardent-mantle-selection"]:
+  var ui: Control=get_tree().current_scene
+  var group: String="ardent-mantle" if name=="ardent-mantle-selection" else "ardent-power-1" if name=="ardent-power-selection" else "psion-power-1"
+  var control: Control=ui.editor.career_pickers[group]
+  control.grab_focus()
+  var outer: ScrollContainer=ui.detail_tabs.get_child(1)
+  outer.ensure_control_visible(control)
+  for n in 4:await get_tree().process_frame
  if development or service.store.save_root.contains("fixtures/"):
   if get_tree().current_scene!=null and get_tree().current_scene.get("title") is Label and not get_tree().current_scene.title.text.begins_with("DEVELOPMENT FIXTURE"):get_tree().current_scene.title.text="DEVELOPMENT FIXTURE · XP not granted · "+get_tree().current_scene.title.text
  await super.screenshot(name,development or service.store.save_root.contains("fixtures/"))
