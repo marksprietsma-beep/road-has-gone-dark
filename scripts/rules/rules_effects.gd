@@ -178,6 +178,8 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   if RulesCapabilities.enabled(registry) and context.get("target_capabilities",{}).get("immunities",[]).has(effect.id):
    state.events.append({"type":"status_resisted","id":effect.id});return {"ok":true}
   var definition := registry.definition("statuses",effect.id)
+  if definition.has("body_form"):
+   target.statuses=target.statuses.filter(func(s: Dictionary):return not registry.definition("statuses",s.id).has("body_form"))
   var existing: Array=target.statuses.filter(func(s: Dictionary): return s.id==effect.id)
   if not existing.is_empty() and definition.stacking=="reject": return RulesJson.result([RulesJson.issue("effect.status_stack",effect.id,"Existing status rejects stacking")])
   if definition.stacking in ["refresh","replace"]: target.statuses=target.statuses.filter(func(s: Dictionary): return s.id!=effect.id)
@@ -218,6 +220,8 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
    state.actor.apparent_effects.clear();state.events.append({"type":"maintained_effect_replaced"})
   state.actor.apparent_effects.append(descriptor)
   state.events.append({"type":"apparent_effect_created","apparent_id":descriptor.apparent_id})
+ elif op=="summon":
+  state.events.append({"type":"summon_intent","definition_id":effect.id,"rounds":int(effect.rounds)})
  elif op=="hook":
   var result := RulesHooks.invoke(effect.id,context)
   if not result.ok: return result

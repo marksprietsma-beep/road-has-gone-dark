@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:
@@ -37,7 +37,7 @@ static func casting_levels(record: Dictionary,classes: Dictionary,source: RulesR
    levels[target]=int(levels.get(target,0))+int(floor(float(classes.get(option.progression_class,0))/float(option.get("advance_ratio",1))))
  return levels
 static func validate_definition(row: Dictionary,tables: Dictionary,errors: Array) -> void:
- if row.has("class_kind") and row.class_kind not in ["base","prestige"]:errors.append(RulesJson.issue("career.kind",row.id,"Known base/prestige classification required"))
+ if row.has("class_kind") and row.class_kind not in (["base","prestige","companion"] if tables.has("creatures") else ["base","prestige"]):errors.append(RulesJson.issue("career.kind",row.id,"Known base/prestige classification required"))
  if not row.has("career_choices"):return
  if not row.career_choices is Array:errors.append(RulesJson.issue("career.definition",row.id,"Career groups must be an array"));return
  var ids := {}

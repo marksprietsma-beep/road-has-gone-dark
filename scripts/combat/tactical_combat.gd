@@ -41,6 +41,9 @@ func create_definition(state: Dictionary,site_id: String,definition: Dictionary,
   record=advanced.candidate
   battle.units[enemy.id]=unit(enemy.id,enemy.name,"enemy",enemy.position,record,enemy.weapon)
   battle.order.append(enemy.id)
+ if RulesEntities.enabled(registry):
+  battle.entities_version=1
+  if not CombatEntities.add_permanent(self,battle):return {}
  # Stable initiative, ties resolve by authored/party order. No random initiative.
  var ranks := {};var initiative := {}
  for i in battle.order.size():
@@ -61,7 +64,7 @@ func unit(id: String, title: String, team: String, position: Array, record: Dict
 
 func stats(u: Dictionary) -> Dictionary:
  return characters.derive_character(u.record).snapshot.stats
-func alive(u: Dictionary) -> bool: return int(u.record.runtime.hp)>0
+func alive(u: Dictionary) -> bool: return int(u.record.runtime.hp)>0 and u.get("entity",{}).get("active",true)
 func current(b: Dictionary) -> Dictionary: return b.units[b.order[int(b.cursor)]]
 func distance(a: Array,b: Array) -> int: return absi(int(a[0])-int(b[0]))+absi(int(a[1])-int(b[1]))
 func inside(b: Dictionary,p: Array) -> bool:
@@ -107,7 +110,7 @@ func threat_reach(u: Dictionary) -> int:
  if RulesCapabilities.enabled(registry):return maxi(1,int(stats(u).reach))
  return 1
 func weapon_range(u: Dictionary) -> int:
- var value: int=int(registry.definition("equipment",u.weapon).range)
+ var value: int=int(registry.definition("equipment",active_weapon(u)).range)
  return maxi(value,threat_reach(u)) if RulesCapabilities.enabled(registry) else value
 func engaged(b: Dictionary,u: Dictionary) -> bool:
  for id in b.order:
@@ -124,7 +127,7 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
   if targeting.kind=="ally":return t.team==u.team and distance(u.position,t.position)<=int(targeting.get("range",0)) and line_clear(b,u.position,t.position)
   if targeting.kind!="creature" or t.team==u.team:return false
   if definition.tags.has("weapon_strike"):
-   var weapon := registry.definition("equipment",definition.get("attack_weapon",u.weapon))
+   var weapon := registry.definition("equipment",definition.get("attack_weapon",active_weapon(u)))
    if definition.tags.has("flurry") and u.weapon!="unarmed":return false
    if definition.tags.has("power_strike") and weapon.tags.has("ranged"):return false
    return distance(u.position,t.position)<=(int(weapon.range) if definition.has("attack_weapon") else weapon_range(u)) and line_clear(b,u.position,t.position)
@@ -147,6 +150,10 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
  if input.get("actor_id")!=actor.id: return fail("It is another character's turn.")
  var kind: String=str(input.get("kind",""))
  if kind=="retreat": b.status="defeat";b.reason="retreat";b.log.append("The party withdraws from the raiders.")
+ elif kind=="dismiss" and RulesEntities.enabled(registry):
+  var target_id: String=str(input.get("target_id",""))
+  if int(b.budget.main)<1 or not b.units.has(target_id) or b.units[target_id].get("entity",{}).get("owner_id")!=actor.id or not alive(b.units[target_id]):return fail("Choose your active companion or summon; dismissal costs a main action.")
+  b.units[target_id].entity.active=false;b.budget.main=0;b.log.append(actor.name+" dismisses "+b.units[target_id].name+".")
  elif kind=="end": next_turn(b)
  elif kind=="move":
   if int(b.budget.move)<1: return fail("Movement already used this turn.")
@@ -176,6 +183,10 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   var used := effects.use_ability(actor.record,target.record,kind,budget,b.rng)
   if not used.ok: return fail("Action unavailable: "+RulesJson.canonical(used.errors))
   actor.record=used.actor;target.record=used.target;b.rng=used.rng
+  for event in used.events:
+   if event.type=="summon_intent":
+    var why := CombatEntities.summon(self,b,actor,event)
+    if not why.is_empty():return fail(why)
   b.budget={"move":used.budget.move,"main":used.budget.main};actor.reaction=used.budget.reaction
   if registry.rules_ref().engine_schema==3 and int(definition.targeting.get("radius",0))>0:
    # The action/slot is spent exactly once. Deterministic allies are resolved in turn order.
@@ -197,6 +208,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
    if definition.tags.has("flurry") and alive(target):weapon_attack(b,actor,target,false,kind)
   else: b.log.append(actor.name+" uses "+registry.definition("abilities",kind).name+" on "+target.name+". "+ability_summary(used.events))
  else: return fail("Unknown battle action.")
+ if RulesEntities.enabled(registry):CombatEntities.capture(b)
  finish_if_needed(b)
  b.revision+=1;b.commands.append(input.duplicate(true))
  return {"ok":true,"battle":seal(b)}
@@ -210,9 +222,13 @@ func ability_summary(events: Array) -> String:
   elif event.type=="status_applied": summaries.append(str(event.id).capitalize()+" applied.")
  return " ".join(summaries)
 
+func active_weapon(u: Dictionary) -> String:
+ var body := RulesEntities.form(u.record,registry)
+ return str(body.weapon_id) if not body.is_empty() else str(u.weapon)
+
 func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,technique: String="") -> void:
- var weapon := registry.definition("equipment","shortblade" if reaction and a.weapon=="bow" else a.weapon)
- var attack_weapon: String=str(registry.definition("abilities",technique).get("attack_weapon",a.weapon)) if RulesCapabilities.enabled(registry) else str(a.weapon)
+ var weapon := registry.definition("equipment","shortblade" if reaction and active_weapon(a)=="bow" else active_weapon(a))
+ var attack_weapon: String=str(registry.definition("abilities",technique).get("attack_weapon",active_weapon(a))) if RulesCapabilities.enabled(registry) else str(a.weapon)
  if attack_weapon!=a.weapon:weapon=registry.definition("equipment",attack_weapon)
  if registry.rules_ref().engine_schema==3 and attack_weapon=="unarmed" and int(characters.derive_character(a.record).snapshot.class_levels.get("monk",0))>=4:weapon=weapon.duplicate(true);weapon.damage="1d8"
  if RulesCapabilities.enabled(registry):
@@ -286,6 +302,7 @@ func next_turn(b: Dictionary) -> void:
   b.cursor=(int(b.cursor)+1)%b.order.size()
   if b.cursor==0:
    b.round+=1
+   if RulesEntities.enabled(registry):CombatEntities.round_start(self,b)
    for id in b.order:
     var u: Dictionary=b.units[id]
     u.reaction=1;u.precision_used=false
@@ -294,7 +311,7 @@ func next_turn(b: Dictionary) -> void:
  b.budget={"move":1,"main":1}
 func finish_if_needed(b: Dictionary) -> void:
  for team in ["enemy","party"]:
-  if not b.units.values().any(func(u: Dictionary):return u.team==team and alive(u)):
+  if not b.units.values().any(func(u: Dictionary):return u.team==team and alive(u) and (team!="party" or not u.has("entity"))):
    b.status="victory" if team=="enemy" else "defeat";b.reason="opponents_downed" if team=="enemy" else "party_downed"
    b.log.append("Victory: the raiders withdraw." if b.status=="victory" else "Defeat: the party is driven back.")
    return
@@ -321,6 +338,7 @@ func enemy_command(b: Dictionary) -> Dictionary:
   if best!=a.position: input.kind="move";input["destination"]=best
  return input
 func seal(b: Dictionary) -> Dictionary:
+ if RulesEntities.enabled(registry):b=RulesJson.string_keys(b)
  b.erase("state_hash");b["state_hash"]=RulesJson.digest(b);return b
 func validate(b: Dictionary) -> String:
  b=RulesJson.normalize(b)
@@ -333,7 +351,8 @@ func validate(b: Dictionary) -> String:
  if b.version!=1 or (not generated and CombatBattlefields.identify(b).is_empty()) or (generated and (not SandboxGenerator.valid_board(b.board) or b.encounter_sha!=RulesJson.digest(b.board) or b.board.generation.site_id!=b.site_id)): return "Battlefield pin mismatch"
  var copy := b.duplicate(true);copy.erase("state_hash")
  if RulesJson.digest(copy)!=b.state_hash: return "Battle checksum mismatch"
- var count: int=3+b.board.enemies.size()
+ var count: int=b.units.size() if RulesEntities.enabled(registry) and b.get("units") is Dictionary else 3+b.board.enemies.size()
+ if RulesEntities.enabled(registry) and (count<3+b.board.enemies.size() or count>32):return "Invalid creature count"
  if not b.units is Dictionary or not b.order is Array or b.order.size()!=count or b.units.size()!=count or not RulesJson.integer(b.cursor,0,count-1) or not RulesJson.integer(b.round,1,100000) or not RulesJson.integer(b.revision,0,100000) or not b.status in ["active","victory","defeat"] or not RulesRng.valid_state(b.rng): return "Invalid battle state"
  if not b.budget is Dictionary or b.budget.size()!=2 or not RulesJson.integer(b.budget.get("move"),0,1) or not RulesJson.integer(b.budget.get("main"),0,1) or not b.log is Array or not b.commands is Array or b.commands.size()!=int(b.revision): return "Invalid action history"
  var occupied := {};var seen := {}
@@ -346,6 +365,9 @@ func validate(b: Dictionary) -> String:
   if alive(u):
    if occupied.has(str(u.position)): return "Overlapping units"
    occupied[str(u.position)]=true
+ if RulesEntities.enabled(registry):
+  var entities_why := CombatEntities.validate(self,b)
+  if not entities_why.is_empty():return entities_why
  if b.status=="active" and not alive(current(b)): return "Downed active unit"
  return ""
 func fail(why: String) -> Dictionary: return {"ok":false,"error":why}

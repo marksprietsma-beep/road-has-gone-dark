@@ -43,6 +43,7 @@ func picker(parent: Control,title: String,rows: Array) -> OptionButton:
  var row := HBoxContainer.new();parent.add_child(row)
  var caption := GameUI.label(title,GameUI.META);caption.custom_minimum_size.x=88;row.add_child(caption)
  var control := OptionButton.new();control.size_flags_horizontal=Control.SIZE_EXPAND_FILL;control.clip_text=true;row.add_child(control)
+ GameUI.bound_choice_popup(control)
  for item in rows:
   control.add_item(str(item.get("name",item.id)));control.set_item_metadata(control.item_count-1,item.id)
  return control
@@ -60,13 +61,14 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
  attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={};sections=null
  updating=true
  class_filter=LineEdit.new();class_filter.placeholder_text="Search classes · selected choice stays visible";add_child(class_filter)
- class_picker=picker(self,"Class",source.ids("classes").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
+ class_picker=picker(self,"Class",source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")!="companion").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
  class_detail=GameUI.label("",GameUI.META);add_child(class_detail)
  class_filter.text_changed.connect(func(_query: String):
   if updating:return
   class_picker.clear()
   for id in source.ids("classes"):
    var row := source.definition("classes",id)
+   if row.get("class_kind")=="companion":continue
    if id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)
   select_id(class_picker,class_id);refresh_preview())
  class_picker.item_selected.connect(func(_index: int):

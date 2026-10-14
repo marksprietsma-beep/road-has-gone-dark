@@ -24,7 +24,7 @@ func run() -> void:
  var born:=service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"source-backed fresh campaign")
  slot=born.state.playthrough_id;action_builder("builder_open")
- check(state.character_builder.rules_ref.pack_id=="trhgd-character-v11","normal first open uses latest content")
+ check(state.character_builder.rules_ref.pack_id==RulesRecords.NEW_PACK,"normal first open uses latest content")
  await creator("first-open-catalogue",1,"","")
  if failures>0:finish();return
  var source:=RulesRecords.registry(state);var kernel:=RulesCharacter.new(source)

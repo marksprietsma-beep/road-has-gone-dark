@@ -4,7 +4,7 @@ const DEFAULT_PATH := "res://data/rules/trhgd-rules-v1.json"
 const CATEGORIES := ["classes","features","feats","skills","resources","statuses","abilities","equipment","ancestries","backgrounds"]
 const STATS := ["HP","defence","BAB","melee_attack","ranged_attack","fortitude","reflex","will","stride","reach","initiative","save_dc","damage"]
 const TYPES := ["untyped","training","armor","shield","insight","circumstance","condition"]
-const EFFECTS := ["modify_stat","grant_feature","spend_resource","restore_resource","damage","heal","apply_status","remove_status","temporary_hp","grant_sense","apparent_effect","defensive_duplicate","hook","save","modify_save"]
+const EFFECTS := ["modify_stat","grant_feature","spend_resource","restore_resource","damage","heal","apply_status","remove_status","temporary_hp","grant_sense","apparent_effect","defensive_duplicate","hook","save","modify_save","summon"]
 const EXPIRY := ["target_activation_end","source_activation_start","source_round_start","global_round_start","eligible_rest","explicit"]
 var _pack := {}
 var _tables := {}
@@ -27,16 +27,18 @@ func _fail(found: Array) -> Dictionary:
 func load_data(input: Dictionary) -> Dictionary:
  var candidate: Dictionary = RulesJson.normalize(input)
  var found: Array = []
- var required := ["pack_id","schema_version","rules_version","engine_schema","provenance","rules","role_recommendations"]+CATEGORIES
+ var categories: Array=CATEGORIES.duplicate()
+ if candidate.get("pack_id")=="trhgd-character-v12":categories.append("creatures")
+ var required := ["pack_id","schema_version","rules_version","engine_schema","provenance","rules","role_recommendations"]+categories
  for field in required:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3],["trhgd-character-v12","12.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
- for category in CATEGORIES:
+ for category in categories:
   tables[category]={}
   if not candidate.get(category) is Array:
    found.append(RulesJson.issue("pack.category",category,"Expected a definition array"));continue
@@ -46,14 +48,16 @@ func load_data(input: Dictionary) -> Dictionary:
    if tables[category].has(row.id): found.append(RulesJson.issue("definition.duplicate",category+"."+row.id,"Duplicate stable ID"))
    tables[category][row.id]=row
  if not found.is_empty(): return _fail(found)
- for category in CATEGORIES:
+ for category in categories:
   for id in tables[category]:
-   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"])
+   if category=="creatures":
+    RulesEntities.validate_creature(tables[category][id],tables,found);continue
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12"])
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
  _check_cycles(tables,found)
- if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11"]:RulesCatalogueValidation.validate(tables,found)
+ if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12"]:RulesCatalogueValidation.validate(tables,found)
  if not found.is_empty(): return _fail(found)
  _pack=RulesJson.freeze(candidate);_tables=RulesJson.freeze(tables);content_hash=RulesJson.digest(candidate);errors=[]
  return {"ok":true,"rules_ref":rules_ref()}
@@ -122,11 +126,14 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
  var op: String = effect.op
  if effect.has("save_half") and (engine<3 or op!="damage" or effect.save_half!=true):found.append(RulesJson.issue("effect.save_half",path,"Only engine 3 saved half-damage effects supported"))
  if effect.has("on_success") and (engine<3 or op!="save"):found.append(RulesJson.issue("effect.save_success",path,"Only engine 3 save success branches supported"))
- var fields := {"modify_stat":["op","stat","type","value","when","scope"],"modify_save":["op","stat","type","value","when","scope"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type","save_half"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure","on_success"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"]}
+ var fields := {"modify_stat":["op","stat","type","value","when","scope"],"modify_save":["op","stat","type","value","when","scope"],"grant_feature":["op","id"],"grant_sense":["op","id"],"spend_resource":["op","id","amount"],"restore_resource":["op","id","amount"],"damage":["op","amount","damage_type","save_half"],"heal":["op","amount"],"temporary_hp":["op","amount"],"apply_status":["op","id"],"remove_status":["op","id"],"save":["op","save","dc","on_failure","on_success"],"hook":["op","id"],"apparent_effect":["op","descriptor"],"defensive_duplicate":["op","descriptor"],"summon":["op","id","rounds"]}
  if effect.has("recipient") and (engine<3 or effect.recipient!="actor"): found.append(RulesJson.issue("effect.recipient",path,"Only explicit actor recipient supported"))
  for field in effect:
   if not (field=="recipient" and engine==3) and not field in fields[op]: found.append(RulesJson.issue("effect.field",path+"."+str(field),"Unknown effect field"))
- if op in ["modify_stat","modify_save"]:
+ if op=="summon":
+  _reference(tables,"creatures",effect.get("id"),path,found)
+  if not RulesJson.integer(effect.get("rounds"),1,20):found.append(RulesJson.issue("summon.duration",path,"Bounded round duration required"))
+ elif op in ["modify_stat","modify_save"]:
   if effect.has("scope") and not effect.scope in ["persistent","current_event"]: found.append(RulesJson.issue("effect.scope",path,"Unknown modifier persistence scope"))
   if not effect.get("stat") in STATS or not effect.get("type") in TYPES: found.append(RulesJson.issue("effect.modifier",path,"Invalid effect statistic/type"))
   _formula(effect.get("value"),tables,path+".value",found)
@@ -182,6 +189,11 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   "backgrounds":["id","tags","features","modifiers","provenance"]
  }
  var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment","known_spell_limits","career_choices","class_kind","attribute_priority"],"features":["description","capabilities"],"abilities":["description","casting_class","spell_tier","attack_weapon"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan","capabilities","visual_profile"],"statuses":["capabilities"]}
+ if tables.has("creatures"):
+  extensions.features.append("companion")
+  extensions.statuses.append("body_form")
+  if row.has("companion"):RulesEntities.validate_bond(row.companion,tables,found)
+  if row.has("body_form"):RulesEntities.validate_form(row.body_form,tables,found)
  if not wave:
   for values in extensions.values():
    for field in ["capabilities","visual_profile","attribute_priority","attack_weapon"]:values.erase(field)

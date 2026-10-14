@@ -1,0 +1,76 @@
+[
+  {
+    "platform": "windows",
+    "source": "3eca3109c33176cbcf2cd373dec4db04ef3e2bfa",
+    "sha256": "109b4f9f90a753b99b250b97da26a2757fc3ff9f3f803c279c46be6a28d8799f",
+    "archive": "game112-character-catalogue-wave-two-windows-x64.zip",
+    "bytes": 121370695,
+    "files": 7061,
+    "native": {
+      "mechanics": {
+        "checks": 1953,
+        "failures": 0
+      },
+      "restart": {
+        "checks": 7,
+        "failures": 0
+      },
+      "journey": {
+        "checks": 234,
+        "failures": 0
+      }
+    },
+    "earned_xp": 40,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 247.281,
+        "exit_code": 0,
+        "errors": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 3.719,
+        "exit_code": 0,
+        "errors": false
+      }
+    ]
+  },
+  {
+    "platform": "linux",
+    "source": "3eca3109c33176cbcf2cd373dec4db04ef3e2bfa",
+    "sha256": "9587f957cc30fd18c5e0d9f52d284dd45ff460eadc4c836d1ca189057de3816e",
+    "archive": "game112-character-catalogue-wave-two-linux-x64.tar.gz",
+    "bytes": 129918996,
+    "files": 7914,
+    "native": {
+      "mechanics": {
+        "checks": 1953,
+        "failures": 0
+      },
+      "restart": {
+        "checks": 7,
+        "failures": 0
+      },
+      "journey": {
+        "checks": 234,
+        "failures": 0
+      }
+    },
+    "earned_xp": 40,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 208.118,
+        "exit_code": 0,
+        "errors": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 2.871,
+        "exit_code": 0,
+        "errors": false
+      }
+    ]
+  }
+]

@@ -128,3 +128,10 @@ static func section(title: String) -> VBoxContainer:
  var result := VBoxContainer.new()
  result.add_child(label(title, SECTION))
  return result
+
+static func bound_choice_popup(control: OptionButton) -> void:
+ # Long ancestry/career rosters must scroll instead of covering their opener.
+ # A menu covering its button can consume the opening mouse release as a choice.
+ control.get_popup().max_size=Vector2i(0,300)
+ control.get_popup().about_to_popup.connect(func():
+  control.get_popup().max_size=Vector2i(0,clampi(int(control.get_window().size.y*0.42),96,300)))

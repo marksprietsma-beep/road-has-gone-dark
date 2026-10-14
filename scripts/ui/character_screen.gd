@@ -69,6 +69,7 @@ func scroll_tab(tab_name: String) -> VBoxContainer:
 func option(parent: Control,caption: String,rows: Array) -> OptionButton:
  parent.add_child(label(caption,GameUI.META))
  var result := OptionButton.new();result.size_flags_horizontal=Control.SIZE_EXPAND_FILL;result.clip_text=true;parent.add_child(result)
+ GameUI.bound_choice_popup(result)
  for item in rows:result.add_item(str(item.get("name",item.id)));result.set_item_metadata(result.item_count-1,item.id)
  return result
 func selected_id(control: OptionButton) -> String:return str(control.get_item_metadata(control.selected)) if control.selected>=0 else ""
@@ -235,6 +236,7 @@ func refresh() -> void:
  class_choice.clear()
  for id in source.ids("classes"):
   var row := source.definition("classes",id)
+  if row.get("class_kind")=="companion":continue
   if not core and int(row.max_level)<20 or not ready_view and row.get("class_kind")=="prestige":continue
   class_choice.add_item(row.name);class_choice.set_item_metadata(class_choice.item_count-1,id)
  class_choice.disabled=ready_view
@@ -411,6 +413,12 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   var skill: Dictionary=s.skills[id];lines.append("%s: %d / %+d%s"%[RulesRecords.registry(state).definition("skills",id).name,skill.ranks,skill.total," · requires training" if not skill.usable else ""])
  lines.append("\nFeats: "+", ".join(s.feats.map(func(id: String):return str(RulesRecords.registry(state).definition("feats",id).name))))
  lines.append("Equipment: "+", ".join(s.equipment.map(func(id: String):return str(RulesRecords.registry(state).definition("equipment",id).name))))
+ if s.has("companions"):
+  for companion in s.companions.values():
+   var pet: Dictionary=companion.record
+   var pet_snapshot := RulesCharacter.new(RulesRecords.registry(state)).derive_character(pet)
+   if pet_snapshot.ok:lines.append("Companion: "+str(RulesRecords.registry(state).definition("creatures",companion.definition_id).name)+" · level "+str(pet_snapshot.snapshot.level)+" · "+stat_line(pet_snapshot.snapshot)+" · humanoid art fallback")
+  if not s.get("body_form",{}).is_empty():lines.append("Active body form: "+str(s.body_form.id)+" · "+str(s.body_form.size)+" · natural weapon "+str(s.body_form.weapon_id)+"; equipment melded, spells suppressed. Original ancestry retained; humanoid art fallback.")
  lines.append("\nClass features: "+", ".join(s.features.map(func(id: String):return str(RulesRecords.registry(state).definition("features",id).get("name",id)))))
  lines.append("\nKnown abilities · current tactical availability")
  for id in s.abilities:

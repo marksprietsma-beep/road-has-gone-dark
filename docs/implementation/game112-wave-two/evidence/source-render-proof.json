@@ -1,0 +1,210 @@
+{
+ "checks": 295,
+ "demonstration_actions": [
+  "attack",
+  "move",
+  "end",
+  "wizard-summon-sentinel",
+  "e935bddaba352256af27921ba9782ec1:adventurer:2:summon:6",
+  "e935bddaba352256af27921ba9782ec1:adventurer:1:companion",
+  "wilder-surge",
+  "wild-shape",
+  "bear-attack",
+  "revert-form"
+ ],
+ "earned_xp": 40,
+ "failures": 0,
+ "fixture_battle_hash": "659f8056164bddb1d8470e0c09001d4093f3263fdcf663b5dfd25d475da7f22f",
+ "fixture_is_earned": false,
+ "rules_ref": {
+  "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+  "engine_schema": 3,
+  "pack_id": "trhgd-character-v12",
+  "rules_version": "12.0.0",
+  "schema_version": 1
+ },
+ "screenshots": [
+  {
+   "development_fixture": false,
+   "file": "wave-two-first-open-1280x720.png",
+   "sha256": "5aa1dc327d1957e6556253b4d03ae1c581652b95d81dc4d35a8b5ca1aa5548ab"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-first-open-640x360.png",
+   "sha256": "c07a7bc92517edd5ab7a6c8f4f2d71f60e17d69bbac9c6a897fc5bc17ec0a149"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-first-open-2560x1440.png",
+   "sha256": "a9eaf70d0ee7c6d6e5b8e89db1994936a3ef55f6136774813227291c747588e3"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-druid-1280x720.png",
+   "sha256": "6cd0e532fa780b01e1ff0cddf034d85c31927400ee09b54f8bcbb41be618e708"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-druid-640x360.png",
+   "sha256": "ea61354c88f4e678fc619ac24c416579eb97a4f6b494fb5c60307f3f6839944d"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-druid-2560x1440.png",
+   "sha256": "5738a8b87315fe1b705fa3b5e0cbc20b153c6e78769f3a5899da0e0ff313a2ad"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wizard-1280x720.png",
+   "sha256": "945613526e2105d063c8815a11d6e1053b1892702935ce2563cea34222d8cf04"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wizard-640x360.png",
+   "sha256": "82839152dcb0769a1d5c0857775827c302dd6ec5a8ce776ffb123fb1ea01fddc"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wizard-2560x1440.png",
+   "sha256": "e74a3b3fba4c211362b81f89135f32475d4738e80b5fdd3ee11ee25b0eb80de2"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wilder-1280x720.png",
+   "sha256": "2f18b7fefc50feb0a4dea970698fb40bd35c7e9e5a882f752069868651996f6d"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wilder-640x360.png",
+   "sha256": "6e9f9ddb17eefe04d4298ff95f4bea6c1fc9b7db125e4bd4a09cd0fc8310c259"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-create-wilder-2560x1440.png",
+   "sha256": "81f660d7e5fbd2b8803f0f5b23db96bb576b80e70c440f60a34a2d9676478c55"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-companion-sheet-1280x720.png",
+   "sha256": "bb8a2926262752ae44375db359082066745e5eb5476cfa95e49dd73f0280c686"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-companion-sheet-640x360.png",
+   "sha256": "575a418c3abdc483ae6f442bb5c6250a9af0f35d903e1ce8614f774070332ad8"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-companion-sheet-2560x1440.png",
+   "sha256": "f0437347b5413694ffa0ff68084c9be9e0f6a331a802fac76d08ee321e1b33df"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-owned-creatures-1280x720.png",
+   "sha256": "ba371a142c995b1cf27111c46b0e0ba1a8b28a3cabe3a29c0e40436d6e82e0cc"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-owned-creatures-640x360.png",
+   "sha256": "57e2d009b3858bd11bdcfad41e4518228acdbd5147621f8263a1e23870898ab7"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-owned-creatures-2560x1440.png",
+   "sha256": "680593c20d4125b836d7ee1857adc1c8acb1b49761ddc3ecd2f908076cb5ef72"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wizard-summon-sentinel-1280x720.png",
+   "sha256": "f9312def499eb492a98a8c1e2ce8ad9c4fd010cac50712a23ac05cac02a18212"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wizard-summon-sentinel-640x360.png",
+   "sha256": "5bafe1d0e97f2d7122a2fd619b2428a9896f610657791c40a13cea5f97903b42"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wizard-summon-sentinel-2560x1440.png",
+   "sha256": "46b901dcb56ca88c2ed9b9c4d38194c8530533c733600224eed5ca4a9c0c7494"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wilder-surge-1280x720.png",
+   "sha256": "0c87fda3c05ab773aea7e9ad6e1f5b6d209652c666a1b42da8660fedece0e35b"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wilder-surge-640x360.png",
+   "sha256": "66f931851039671c10560c8eb478db4a52b6c7e11e5ba407738fade5bb305b2a"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-wilder-surge-2560x1440.png",
+   "sha256": "c91d7a1fcda7ecfee306d067fb3d959d69f08c383955eddc12475e519d569072"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-earned-level2-1280x720.png",
+   "sha256": "4462e26db086f0e4f4cf8a91f05066b5bc4ce42d49f5d356ddde6a9b95c3a9b4"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-earned-level2-640x360.png",
+   "sha256": "344c818e06cd81f86dc3016a860ce5a8ecf93143884cdf68ecda2f55441cf1d0"
+  },
+  {
+   "development_fixture": false,
+   "file": "wave-two-earned-level2-2560x1440.png",
+   "sha256": "0b6d8ecfccb0551ec8ffd55f3c7339a125fff17230367dec2043225a176b52b9"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-shape-fixture-start-1280x720.png",
+   "sha256": "d0e1d7692802262e7b24bbc8d7d8b7b0ea972e04f2f9b3d8c9487a19d9a2478b"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-shape-fixture-start-640x360.png",
+   "sha256": "7bd146efd889337cc2612a555928399954ab2eb241b3040fe806d22e7589ce7f"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-shape-fixture-start-2560x1440.png",
+   "sha256": "c5c941b287394d45ce13dee0340820da0ef8dbc904040526af89e512e469dfb3"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-wild-shape-fixture-1280x720.png",
+   "sha256": "345dfb2c31786dd03c754742d20aa531c5739010ac55d7ad1f1e875c32df4189"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-wild-shape-fixture-640x360.png",
+   "sha256": "acdc81defef14c0a732ea3d59bee11b02a19c3379281b14d10986eb5ad785901"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-wild-shape-fixture-2560x1440.png",
+   "sha256": "2d26859526c0167ded154620ad6b1d652d4b3fa39b8ac3dfbe2b8483a24385e5"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-revert-form-fixture-1280x720.png",
+   "sha256": "2f1d87abd42ad6ef016bf741741b31059b0b28a461c57be221896a430ae4e6fd"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-revert-form-fixture-640x360.png",
+   "sha256": "93e09492cf1e3820cfe2e4b5fe308626e5d3f6be2b6338b81d9542d70abfa8e0"
+  },
+  {
+   "development_fixture": true,
+   "file": "wave-two-revert-form-fixture-2560x1440.png",
+   "sha256": "2556d575a8f8bde32d750dd8f5700d2ca95cb53dc7c31f6d127b259bd9b64a28"
+  }
+ ],
+ "slot": "e935bddaba352256af27921ba9782ec1",
+ "state_sha": "1cebef969c79bc55447c751fa0f0e8bf3a6b206b7d4009f7cabeaed0ac75fda0"
+}
