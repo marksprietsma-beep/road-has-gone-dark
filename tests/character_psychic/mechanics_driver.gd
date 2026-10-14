@@ -55,6 +55,7 @@ func run() -> void:
   if record.is_empty():continue
   check(kernel.validate_build(JSON.parse_string(JSON.stringify(record))).ok,"twenty-level saved "+cls)
  test_psychic()
+ test_spell_suggestions()
  test_repertoire()
  test_tactical()
  test_entities()
@@ -126,6 +127,21 @@ func test_psychic() -> void:
   var id: String=ancestry.replace("heritage-","")+"-inheritance-action"
   var inherited := use(record,b if ancestry=="heritage-dromite" else record,id)
   check(inherited.ok and int(inherited.actor.runtime.resources["inherited-psychic"])==1,"actual inherited resource/effect "+ancestry)
+func test_spell_suggestions() -> void:
+ for cls in ["wizard","cleric","druid"]:
+  var record := kernel.create("suggestions:"+cls,{"STR":8,"DEX":13,"CON":12,"INT":15 if cls=="wizard" else 14,"WIS":14 if cls=="wizard" else 15,"CHA":10},"heritage-human")
+  for n in 20:
+   var step := kernel.preview_advancement(record,kernel.suggested_choice(record,cls).choice)
+   check(step.ok,"spell suggestion career "+cls+str(n)+JSON.stringify(step.get("errors",[])))
+   if not step.ok:break
+   record=step.candidate
+   if n+1 not in [1,3,5,8,12,20]:continue
+   var snap: Dictionary=kernel.derive_character(record).snapshot
+   var copies := RulesCoreContent.starting_preparations(snap,source)
+   record.choices.prepared_abilities=copies.keys();record.choices.spell_preparations=copies
+   RulesCoreContent.refill_prepared(record,source)
+   check(kernel.validate_build(record).ok,"suggested spells respect repertoire and tier budgets "+cls+str(n+1)+JSON.stringify(kernel.validate_build(record).get("errors",[])))
+   check(copies.size()<=RulesCoreContent.selection_limit(cls,n+1,source),"expanded summons never overflow distinct prepared limit "+cls+str(n+1))
 func test_repertoire() -> void:
  var carrier := selected_build("repertoire","psion",20)
  var target := build("target","fighter",20);target.runtime.hp=int(kernel.derive_character(target).snapshot.stats.HP)-20
