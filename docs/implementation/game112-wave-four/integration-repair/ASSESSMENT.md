@@ -1,0 +1,11 @@
+# Post-merge native journey repair
+
+Main dc7243bb34ab82791abeab52dbae9242b6676f81 has the exact5509b7b gameplay tree. WaveFour's dedicated native Windows/Linux and production UI/party/sandbox checks passed. WaveThree run38722381984 failed its Windows job116381935865 at “Self-contained native companion/form campaign and separate-process reload”. Entity mechanics1953/0 passed, but the journey reported159/1: `distinct psychic surge acts in saved combat`.
+
+The preserved CI save proves the diagnosis. Wilder Bran moved to[3,2]; enemy tiles[2,3]/[2,4] were screened by blocked[3,3]. The generic melee bot minimised Manhattan distance, then ended its next turns because no closer free melee tile was available. It never sought a legal ranged line of sight. The other adventurers and creatures won at round3, and40XP was earned, without a surge command. This was a deficient player-test strategy, not evidence of a broken surge or persistence engine.
+
+The correction affects only test commands: validate owned ability/resources; use an already legal surge target; otherwise choose a shortest actually reachable route to a tile with legal spell range/line of sight. The ordinary movement command still controls costs, geometry, reactions and RNG. Other party attacks pause until this required demonstration has had its chance, keeping the strict surge assertion. Opponent AI, production combat, content pins, saves and XP authority are unchanged.
+
+The exact captured terminal battle is committed as a source fixture, with its CI origin. The focused test derives an explicitly labelled mechanics turn from that layout; it never rewrites an existing campaign. Fifteen checks prove the old melee stall, valid movement, real damage, four-point/main spending, drawback, exact JSON/RNG replay and untouched captured input. The fixture now runs in native QA as well as source. Existing companion, summon, form, earned-XP, pure-command/journal and cold-restart assertions remain enabled.
+
+Pending: corrected source journey/cold reload; native Windows/Linux QA and package evidence; narrow PR publication/merge; new-main validation. WaveFive has not been applied. Its separate proposal is unverified and must not be counted as delivered content. Keep programme82OPEN. No Linear status update is claimed.

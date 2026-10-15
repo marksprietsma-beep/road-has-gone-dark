@@ -1,24 +1,24 @@
 # Wave Four verification
 
-Source `1115aa7722b93a955256ad3b157f2ab201648dad`; v14 hash `3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559`.
+Final feature source `5509b7b89c8250cef02826b40066919e06d7023e`; v14 hash `3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559`.
 
-Native Windows/Linux workflow: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38684785820 . Both dedicated native and legacy restart platform jobs passed. The same run records the broader compatibility matrix. PR99 records current-head checks and publication outcome; merge is gated on successful required checks.
+Native Windows/Linux workflow: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38690794560 . Both dedicated native and legacy restart platform jobs passed. The same run records the broader compatibility matrix. PR99 is merged atdc7243b. Main integration conclusions are recorded separately in DELIVERY.md.
 
 | Native proof | Linux checks/failures | Windows checks/failures |
 |---|---:|---:|
 | mechanics | 1847/0 | 1847/0 |
 | restart | 73/0 | 73/0 |
-| journey | 113/0 | 135/0 |
-| cohort | 407/0 | 407/0 |
+| journey | 167/0 | 154/0 |
+| cohort | 452/0 | 452/0 |
 | cohort_restart | 7/0 | 7/0 |
 | earned | 273/0 | 273/0 |
 | earned_restart | 3/0 | 3/0 |
 
 All native proof references exactly match the final pin. Each package executes gameplay then a separate cold process with empty PATH, no checkout-helper override and actual bundled resources. Production executables also launch independently. Windows downloaded ZIP CRC/content verification and Linux archive verification are recorded in evidence/. Native timings are retained per phase; source timings distinguish import, mechanics, cohort, earned journey, ordinary journey and each cold process.
 
-Source focused checks passed1847/0; additional cohort407/0; independent restart73/0 and7/0. The ordinary source campaign passed143/0 and22/0 reload. The earned prestige campaign passed273/0 and3/0 reload:360 genuine XP across nine opportunity cycles, manual War Chanter entry and saved legal Marshal continuation. Campaign check counts vary with legal generated journeys, so they are reported separately rather than inflated into a combined assertion claim.
+Source focused checks passed1847/0; additional cohort452/0; independent restart73/0 and7/0. The ordinary source campaign passed143/0 and22/0 reload. The earned prestige campaign passed273/0 and3/0 reload:360 genuine XP across nine opportunity cycles, manual War Chanter entry and saved legal Marshal continuation. Campaign check counts vary with legal generated journeys, so they are reported separately rather than inflated into a combined assertion claim.
 
-Actual Godot creator captures:59/0,45 renders. Campaign/advanced captures:63/0,39 renders. Resolutions640×360,1280×720,2560×1440. Selected unedited images, source commit and SHA-256 hashes are in evidence/screenshots.json. Earned history and labelled development fixtures are distinct; high-level fixtures never claim ordinary earned XP.
+Actual Godot creator captures:63/0,48 renders on5509b7b. Campaign/advanced captures:63/0,39 renders. Resolutions640×360,1280×720,2560×1440. Selected unedited images, source commit and SHA-256 hashes are in evidence/screenshots.json. Earned history and labelled development fixtures are distinct; high-level fixtures never claim ordinary earned XP.
 
 Historical source guards:14 installed packs,760 accounted occurrences/720 rows; allv1–v13 pack bytes unchanged and frozen TacticalCombat source unchanged. Append-only pin guard9/0. Earlier06c8bfb frozen oracle evidence recorded22181 kernel assertions,235 migration and6 reload checks, all passing; the final full run reruns the required oracle/legacy suites and remains the authoritative final compatibility record. Historical results are not described as new executions.
 
@@ -38,4 +38,8 @@ Capture scripts use `capture.gd` with `GAME112W4_CAPTURE_ROOT`, `GAME112W4_WORLD
 
 ## Starting-gear correction checkpoint
 
-A new Human Wizard could equip creature-only Frost Fangs through the normal starting-equipment model. The new v14 creation-only predicate hides all natural-attack entries and rejects forged starting loadouts in CharacterBuilderRecords.create. Existing saved records are still accepted by the unchanged RulesCharacter replay; historical creation policy and actual inherited/creature attacks remain unchanged. Focused46/0; full additional cohort452/0. Two initial probe assertions used the wrong derived field and an invalid owned-creature fixture ID; corrected probes use the real inherited ability and the established summon identity format. No production invariant was relaxed. Content hash remains3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559. Replacement native/current-source compatibility is pending; earlier1115aa7 packages remain historical for this correction.
+A new Human Wizard could equip creature-only Frost Fangs through the normal starting-equipment model. The new v14 creation-only predicate hides all natural-attack entries and rejects forged starting loadouts in CharacterBuilderRecords.create. Existing saved records are still accepted by the unchanged RulesCharacter replay; historical creation policy and actual inherited/creature attacks remain unchanged. Focused46/0; full additional cohort452/0. Two initial probe assertions used the wrong derived field and an invalid owned-creature fixture ID; corrected probes use the real inherited ability and the established summon identity format. No production invariant was relaxed. Content hash remains3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559. Final-source native Windows/Linux and broad compatibility passed in38690794560; the merged-main runs are tracked in DELIVERY.md. Earlier1115aa7 packages remain historical for this correction.
+
+## Post-merge native journey correction
+
+Run38722381984 Windows failed the WaveTwo journey surge demonstration after its1953 entity checks passed. The captured blocked-corner layout reproduces the melee-bot stall; the corrected test uses legal movement to acquire surge line of sight, preserving all old assertions. Source regression15/0, real journey249/0 with40 earned XP, and cold restart passed. Native/platform/current-main repair results are tracked in integration-repair/ASSESSMENT.md; they remain pending. No gameplay or historical content file changed.

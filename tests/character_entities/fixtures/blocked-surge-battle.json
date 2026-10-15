@@ -1,0 +1,970 @@
+{
+  "board": {
+    "attempt": 0.0,
+    "blocked": [
+      [
+        4.0,
+        1.0
+      ],
+      [
+        3.0,
+        3.0
+      ]
+    ],
+    "enemies": [
+      {
+        "id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+        "name": "Armed scavenger",
+        "position": [
+          2.0,
+          4.0
+        ],
+        "role": "vanguard",
+        "weapon": "shortblade"
+      },
+      {
+        "id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+        "name": "Armed scavenger",
+        "position": [
+          2.0,
+          3.0
+        ],
+        "role": "vanguard",
+        "weapon": "shortblade"
+      }
+    ],
+    "generation": {
+      "composition": 2.0,
+      "environment": "forest",
+      "kind": "ruins",
+      "rules_sha": "dd3e14dd17de58da5440202cec2b69b0ea9f1bd2fafae5d2025cc534fb175f3a",
+      "seed": "aefdd096ff81bb1546355929cb5ed0b40224db224e1f4dcb3f2ab74daed4567b",
+      "site_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff",
+      "version": "sandbox-spine-v1"
+    },
+    "height": 6.0,
+    "id": "encounter:6491d3e3db57b803bf35a09799ca74740d47528b902161373cbb43ecb45b8980",
+    "party_positions": [
+      [
+        6.0,
+        4.0
+      ],
+      [
+        6.0,
+        3.0
+      ],
+      [
+        7.0,
+        2.0
+      ]
+    ],
+    "presentation": {
+      "environment": "forest",
+      "features": [
+        {
+          "at": [
+            4.0,
+            1.0
+          ],
+          "kind": "wall"
+        },
+        {
+          "at": [
+            3.0,
+            3.0
+          ],
+          "kind": "wall"
+        },
+        {
+          "at": [
+            7.0,
+            0.0
+          ],
+          "kind": "rubble"
+        }
+      ],
+      "ground": [
+        "gggggggg",
+        "gggggggg",
+        "gppppppg",
+        "gppppppg",
+        "gppppppg",
+        "gggggggg"
+      ]
+    },
+    "title": "Scavengers in the broken yard",
+    "width": 8.0
+  },
+  "budget": {
+    "main": 0.0,
+    "move": 0.0
+  },
+  "commands": [
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "destination": [
+        3.0,
+        4.0
+      ],
+      "kind": "move",
+      "revision": 0.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "attack",
+      "revision": 1.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "end",
+      "revision": 2.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "kind": "wizard-summon-sentinel",
+      "revision": 3.0,
+      "target_id": "8edc47dace67990d761f857b5ad54400:adventurer:2"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "destination": [
+        4.0,
+        3.0
+      ],
+      "kind": "move",
+      "revision": 4.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "kind": "end",
+      "revision": 5.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "destination": [
+        2.0,
+        2.0
+      ],
+      "kind": "move",
+      "revision": 6.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "attack",
+      "revision": 7.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "end",
+      "revision": 8.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "destination": [
+        2.0,
+        5.0
+      ],
+      "kind": "move",
+      "revision": 9.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "kind": "attack",
+      "revision": 10.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "kind": "end",
+      "revision": 11.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:3",
+      "destination": [
+        3.0,
+        2.0
+      ],
+      "kind": "move",
+      "revision": 12.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:3",
+      "kind": "end",
+      "revision": 13.0
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+      "kind": "attack",
+      "revision": 14.0,
+      "target_id": "8edc47dace67990d761f857b5ad54400:adventurer:1"
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+      "kind": "end",
+      "revision": 15.0
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+      "kind": "attack",
+      "revision": 16.0,
+      "target_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3"
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+      "kind": "end",
+      "revision": 17.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "attack",
+      "revision": 18.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "end",
+      "revision": 19.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "kind": "end",
+      "revision": 20.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "attack",
+      "revision": 21.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "end",
+      "revision": 22.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "kind": "attack",
+      "revision": 23.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "kind": "end",
+      "revision": 24.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:3",
+      "kind": "end",
+      "revision": 25.0
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+      "kind": "attack",
+      "revision": 26.0,
+      "target_id": "8edc47dace67990d761f857b5ad54400:adventurer:1"
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+      "kind": "end",
+      "revision": 27.0
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+      "kind": "attack",
+      "revision": 28.0,
+      "target_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3"
+    },
+    {
+      "actor_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+      "kind": "end",
+      "revision": 29.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "attack",
+      "revision": 30.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "destination": [
+        2.0,
+        4.0
+      ],
+      "kind": "move",
+      "revision": 31.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "kind": "end",
+      "revision": 32.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "kind": "end",
+      "revision": 33.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "attack",
+      "revision": 34.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2"
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "kind": "end",
+      "revision": 35.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "destination": [
+        1.0,
+        3.0
+      ],
+      "kind": "move",
+      "revision": 36.0
+    },
+    {
+      "actor_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "kind": "attack",
+      "revision": 37.0,
+      "target_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2"
+    }
+  ],
+  "cursor": 3.0,
+  "encounter_sha": "37634178506adb74fc7801f14566fcfb272eac78130e660a645406c7e1f31c90",
+  "entities_version": 1.0,
+  "log": [
+    "The party approaches the generated site: Scavengers in the broken yard.",
+    "Fen moves.",
+    "Fen attacks Armed scavenger: 5 + 0 vs 11, miss.",
+    "Lyra summons Sentinel spirit for 3 global rounds.",
+    "Lyra uses Summon sentinel on Lyra. ",
+    "Lyra moves.",
+    "Lyra's Sentinel spirit moves.",
+    "Lyra's Sentinel spirit hits Armed scavenger: 13 + 3 vs 11, 4 damage.",
+    "Fen's Wolf moves.",
+    "Fen's Wolf hits Armed scavenger: 14 + 3 vs 11, 4 damage.",
+    "Bran moves.",
+    "Armed scavenger hits Fen: 16 + 4 vs 12, 3 damage.",
+    "Armed scavenger hits Lyra's Sentinel spirit: 15 + 4 vs 13, 7 damage.",
+    "Fen hits Armed scavenger: 17 + 0 vs 11, 3 damage.",
+    "Lyra's Sentinel spirit hits Armed scavenger: 16 + 3 vs 11, 9 damage.",
+    "Fen's Wolf hits Armed scavenger: 15 + 3 vs 11, 8 damage.",
+    "Armed scavenger attacks Fen: 5 + 4 vs 12, miss.",
+    "Armed scavenger hits Lyra's Sentinel spirit: 12 + 4 vs 13, 3 damage.",
+    "Fen hits Armed scavenger: 18 + 0 vs 11, 3 damage.",
+    "Armed scavenger is down.",
+    "Fen moves.",
+    "Lyra's Sentinel spirit attacks Armed scavenger: 4 + 3 vs 11, miss.",
+    "Fen's Wolf moves.",
+    "Fen's Wolf hits Armed scavenger: 10 + 3 vs 11, 7 damage.",
+    "Armed scavenger is down.",
+    "Victory: the raiders withdraw."
+  ],
+  "order": [
+    "8edc47dace67990d761f857b5ad54400:adventurer:1",
+    "8edc47dace67990d761f857b5ad54400:adventurer:2",
+    "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+    "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+    "8edc47dace67990d761f857b5ad54400:adventurer:3",
+    "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+    "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2"
+  ],
+  "reason": "opponents_downed",
+  "revision": 38.0,
+  "rng": {
+    "counter": 23.0,
+    "seed": "29f040597257bccc77a45fca8815ef525df9adb110f431d6c35345e74c37a5e9",
+    "version": "sha256-counter-v1"
+  },
+  "round": 3.0,
+  "site_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff",
+  "state_hash": "603bf61d6a464343d5662f67604d1b7cd5d08a63ebd4969e63c5f7eec40d29a9",
+  "status": "victory",
+  "units": {
+    "8edc47dace67990d761f857b5ad54400:adventurer:1": {
+      "id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+      "name": "Fen",
+      "position": [
+        2.0,
+        4.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "druid",
+            "feat_id": "toughness",
+            "level": 1.0,
+            "skill_allocations": {
+              "insight": 1.0,
+              "nature": 1.0,
+              "perception": 1.0,
+              "survival": 1.0
+            },
+            "specialisations": {
+              "druid-choice-1": "growth",
+              "druid-companion": "wolf"
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-shifter",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 12.0,
+          "STR": 10.0,
+          "WIS": 15.0
+        },
+        "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [
+          "staff"
+        ],
+        "revision": 3.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {
+            "8edc47dace67990d761f857b5ad54400:adventurer:1:companion": {
+              "definition_id": "wolf",
+              "record": {
+                "advancement_history": [
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 1.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  }
+                ],
+                "ancestry_ref": "heritage-human",
+                "background_ref": "hometown-background",
+                "base_attributes": {
+                  "CHA": 10.0,
+                  "CON": 13.0,
+                  "DEX": 15.0,
+                  "INT": 8.0,
+                  "STR": 14.0,
+                  "WIS": 12.0
+                },
+                "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+                "choices": {
+                  "prepared_abilities": [],
+                  "spell_preparations": {}
+                },
+                "equipment": [],
+                "revision": 1.0,
+                "rules_ref": {
+                  "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+                  "engine_schema": 3.0,
+                  "pack_id": "trhgd-character-v14",
+                  "rules_version": "14.0.0",
+                  "schema_version": 1.0
+                },
+                "runtime": {
+                  "apparent_effects": [],
+                  "companions": {},
+                  "granted_features": [
+                    "wolf-creature-body"
+                  ],
+                  "hp": 11.0,
+                  "manifested_powers": [],
+                  "modifiers": [],
+                  "resources": {},
+                  "senses": [],
+                  "statuses": [],
+                  "temporary_hp": 0.0
+                },
+                "schema_version": 1.0
+              }
+            }
+          },
+          "granted_features": [],
+          "hp": 12.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {
+            "druid-prepared-nature-cure": 0.0,
+            "druid-prepared-summon-sentinel": 0.0,
+            "druid-prepared-thorn-dart": 0.0,
+            "druid-prepared-vine-snare": 0.0,
+            "druid-slots-1": 3.0,
+            "nature-bond-uses": 1.0,
+            "shifter-shifts": 1.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "party",
+      "weapon": "staff"
+    },
+    "8edc47dace67990d761f857b5ad54400:adventurer:1:companion": {
+      "entity": {
+        "active": true,
+        "definition_id": "wolf",
+        "kind": "companion",
+        "owner_id": "8edc47dace67990d761f857b5ad54400:adventurer:1",
+        "remaining": 0.0
+      },
+      "id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+      "name": "Fen's Wolf",
+      "position": [
+        1.0,
+        3.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "bond-creature",
+            "feat_id": "steady-study",
+            "level": 1.0,
+            "skill_allocations": {
+              "athletics": 1.0
+            },
+            "specialisations": {}
+          }
+        ],
+        "ancestry_ref": "heritage-human",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 10.0,
+          "CON": 13.0,
+          "DEX": 15.0,
+          "INT": 8.0,
+          "STR": 14.0,
+          "WIS": 12.0
+        },
+        "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:1:companion",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [],
+        "revision": 1.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [
+            "wolf-creature-body"
+          ],
+          "hp": 11.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {},
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "party",
+      "weapon": "nature-bite"
+    },
+    "8edc47dace67990d761f857b5ad54400:adventurer:2": {
+      "id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+      "name": "Lyra",
+      "position": [
+        4.0,
+        3.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "wizard",
+            "feat_id": "toughness",
+            "level": 1.0,
+            "skill_allocations": {
+              "arcana": 1.0,
+              "craft": 1.0,
+              "insight": 1.0,
+              "spellcraft": 1.0
+            },
+            "specialisations": {
+              "wizard-choice-1": "evocation"
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-changeling",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 13.0,
+          "DEX": 14.0,
+          "INT": 15.0,
+          "STR": 10.0,
+          "WIS": 12.0
+        },
+        "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+        "choices": {
+          "prepared_abilities": [
+            "wizard-summon-sentinel"
+          ],
+          "spell_preparations": {
+            "wizard-summon-sentinel": 1.0
+          }
+        },
+        "equipment": [
+          "staff"
+        ],
+        "revision": 3.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [],
+          "hp": 12.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {
+            "changeling-adaptations": 1.0,
+            "school-uses": 1.0,
+            "wizard-prepared-arcane-bolt": 0.0,
+            "wizard-prepared-enfeeble": 0.0,
+            "wizard-prepared-mage-armour": 0.0,
+            "wizard-prepared-summon-sentinel": 0.0,
+            "wizard-slots-1": 2.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "party",
+      "weapon": "staff"
+    },
+    "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3": {
+      "entity": {
+        "active": true,
+        "definition_id": "sentinel-spirit",
+        "kind": "summon",
+        "owner_id": "8edc47dace67990d761f857b5ad54400:adventurer:2",
+        "remaining": 1.0
+      },
+      "id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+      "name": "Lyra's Sentinel spirit",
+      "position": [
+        2.0,
+        2.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "bond-creature",
+            "feat_id": "steady-study",
+            "level": 1.0,
+            "skill_allocations": {
+              "athletics": 1.0
+            },
+            "specialisations": {}
+          }
+        ],
+        "ancestry_ref": "heritage-human",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 10.0,
+          "CON": 15.0,
+          "DEX": 12.0,
+          "INT": 8.0,
+          "STR": 14.0,
+          "WIS": 13.0
+        },
+        "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:2:summon:3",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [],
+        "revision": 1.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [
+            "sentinel-spirit-creature-body"
+          ],
+          "hp": 2.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {},
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "party",
+      "weapon": "spirit-slam"
+    },
+    "8edc47dace67990d761f857b5ad54400:adventurer:3": {
+      "id": "8edc47dace67990d761f857b5ad54400:adventurer:3",
+      "name": "Bran",
+      "position": [
+        3.0,
+        2.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "wilder",
+            "feat_id": "toughness",
+            "level": 1.0,
+            "skill_allocations": {
+              "athletics": 1.0,
+              "perception": 1.0
+            },
+            "specialisations": {
+              "wilder-power-1": "power-kinetic-bolt"
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-minotaur",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 15.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 8.0,
+          "STR": 12.0,
+          "WIS": 10.0
+        },
+        "character_id": "8edc47dace67990d761f857b5ad54400:adventurer:3",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [
+          "staff"
+        ],
+        "revision": 3.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [],
+          "hp": 15.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {
+            "psychic-points": 4.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "party",
+      "weapon": "staff"
+    },
+    "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1": {
+      "id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+      "name": "Armed scavenger",
+      "position": [
+        2.0,
+        4.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "fighter",
+            "feat_id": "toughness",
+            "level": 1.0,
+            "skill_allocations": {
+              "athletics": 1.0,
+              "craft": 1.0
+            },
+            "specialisations": {
+              "fighter-choice-1": "blade"
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-human",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 10.0,
+          "STR": 15.0,
+          "WIS": 12.0
+        },
+        "character_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:1",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [
+          "shortblade"
+        ],
+        "revision": 1.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [],
+          "hp": 0.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {
+            "fighter-resolve": 1.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "enemy",
+      "weapon": "shortblade"
+    },
+    "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2": {
+      "id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+      "name": "Armed scavenger",
+      "position": [
+        2.0,
+        3.0
+      ],
+      "precision_used": false,
+      "reaction": 1.0,
+      "record": {
+        "advancement_history": [
+          {
+            "attribute_increase": "",
+            "bonus_feats": [],
+            "class_id": "fighter",
+            "feat_id": "toughness",
+            "level": 1.0,
+            "skill_allocations": {
+              "athletics": 1.0,
+              "craft": 1.0
+            },
+            "specialisations": {
+              "fighter-choice-1": "blade"
+            }
+          }
+        ],
+        "ancestry_ref": "heritage-human",
+        "background_ref": "hometown-background",
+        "base_attributes": {
+          "CHA": 8.0,
+          "CON": 14.0,
+          "DEX": 13.0,
+          "INT": 10.0,
+          "STR": 15.0,
+          "WIS": 12.0
+        },
+        "character_id": "cycle-site:fc836766c51f1da6db1a7814d6bb072f854f2733e470f5866fe911d57bd9c5ff:opponent:2",
+        "choices": {
+          "prepared_abilities": [],
+          "spell_preparations": {}
+        },
+        "equipment": [
+          "shortblade"
+        ],
+        "revision": 1.0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3.0,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1.0
+        },
+        "runtime": {
+          "apparent_effects": [],
+          "companions": {},
+          "granted_features": [],
+          "hp": 0.0,
+          "manifested_powers": [],
+          "modifiers": [],
+          "resources": {
+            "fighter-resolve": 1.0
+          },
+          "senses": [],
+          "statuses": [],
+          "temporary_hp": 0.0
+        },
+        "schema_version": 1.0
+      },
+      "team": "enemy",
+      "weapon": "shortblade"
+    }
+  },
+  "version": 1.0
+}

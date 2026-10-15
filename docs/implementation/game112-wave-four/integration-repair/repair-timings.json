@@ -1,0 +1,30 @@
+[
+  {
+    "test": "import",
+    "seconds": 4.809,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "test": "blocked-surge",
+    "seconds": 2.204,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "test": "journey",
+    "seconds": 123.395,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "test": "journey-restart",
+    "seconds": 3.806,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+]

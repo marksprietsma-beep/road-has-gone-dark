@@ -13,11 +13,14 @@ for label,restart in [('native-gameplay',False),('native-process-restart',True)]
  text=log.read_text(encoding='utf-8');errors=any(s in text for s in ['ERROR:','SCRIPT ERROR:','Parse Error'])
  rows.append(dict(phase=label,seconds=round(time.monotonic()-start,3),exit_code=r.returncode,errors=errors));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n')
  assert not r.returncode and not errors,text[-9000:]
-proofs={key:json.loads((base/path).read_text())for key,path in [('mechanics','mechanics-proof.json'),('restart','restart-proof.json'),('journey','journey/proof.json')]}
+proofs={key:json.loads((base/path).read_text())for key,path in [('mechanics','mechanics-proof.json'),('restart','restart-proof.json'),('journey','journey/proof.json'),('blocked_surge','blocked-surge-proof.json')]}
 latest=re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)
 assert all(p['failures']==0 for p in proofs.values())
 assert proofs['mechanics']['rules_ref']['pack_id']==proofs['restart']['rules_ref']['pack_id']=='trhgd-character-v12'
 assert proofs['journey']['rules_ref']['pack_id']==latest
+assert proofs['blocked_surge']['checks']>=15 and proofs['blocked_surge']['source_run']==38722381984
+captured=json.loads((root/'tests/character_entities/fixtures/blocked-surge-battle.json').read_text(encoding='utf-8'))
+assert proofs['blocked_surge']['rules_ref']==next(iter(captured['units'].values()))['record']['rules_ref']
 assert proofs['journey']['earned_xp']>=10 and 'wild-shape'in proofs['journey']['demonstration_actions'] and 'revert-form'in proofs['journey']['demonstration_actions']
 exe=dist/('road-has-gone-dark.exe'if os.name=='nt'else'road-has-gone-dark')
 r=subprocess.run([str(exe),'--headless','--audio-driver','Dummy','--quit-after','30'],cwd=dist,env=env,capture_output=True,text=True,timeout=90)

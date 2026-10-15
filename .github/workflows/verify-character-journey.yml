@@ -1,0 +1,59 @@
+name: GAME-112 Native Character Journey Repair
+on:
+  push:
+    branches: [fix/game-112-native-journey-actions, main]
+    paths: ['tests/character_entities/**', '.github/workflows/verify-character-journey.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  journey:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Godot and self-contained helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Captured blocked-corner case and real source campaign/restart
+        env:
+          GAME112W2_TEST_ROOT: ${{ runner.temp }}/journey-source
+        run: python tests/character_entities/verify-journey.py
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Full native entity mechanics, captured regression, saved journey and independent restart
+        env:
+          GAME112W2_TEST_ROOT: ${{ runner.temp }}/journey-native
+        run: python tests/character_entities/verify-package.py
+      - name: Preserve exact proofs and failure diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-journey-repair-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/journey-source/**/*.json
+            ${{ runner.temp }}/journey-source/*.log
+            ${{ runner.temp }}/journey-native/**/*.json
+            ${{ runner.temp }}/journey-native/*.log
+          retention-days: 90
+      - name: Self-contained native game
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-journey-repair-review-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/journey-native/distribution/*.zip*
+            ${{ runner.temp }}/journey-native/distribution/*.tar.gz*
+          retention-days: 90

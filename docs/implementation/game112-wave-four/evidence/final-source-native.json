@@ -1,0 +1,230 @@
+{
+  "windows": {
+    "archive": "game112-character-catalogue-wave-four-windows-x64.zip",
+    "sha256": "a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c",
+    "source_commit": "5509b7b89c8250cef02826b40066919e06d7023e",
+    "source_helper_override": false,
+    "empty_path": true,
+    "production_launch": true,
+    "separate_process_restart": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 552.5,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 14.234,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      }
+    ],
+    "proofs": {
+      "mechanics": {
+        "checks": 1847,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 73,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "checks": 154,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        },
+        "earned_xp": 40
+      },
+      "cohort": {
+        "checks": 452,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "cohort_restart": {
+        "checks": 7,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "earned": {
+        "checks": 273,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        },
+        "earned_xp": 360,
+        "xp_injected": false,
+        "cycles": 9
+      },
+      "earned_restart": {
+        "checks": 3,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      }
+    }
+  },
+  "linux": {
+    "archive": "game112-character-catalogue-wave-four-linux-x64.tar.gz",
+    "sha256": "75df85d16e64bc256fc59ee51d17b59edfd8baeda19274599255b85d052c8694",
+    "source_commit": "5509b7b89c8250cef02826b40066919e06d7023e",
+    "source_helper_override": false,
+    "empty_path": true,
+    "production_launch": true,
+    "separate_process_restart": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 444.984,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 12.217,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      }
+    ],
+    "proofs": {
+      "mechanics": {
+        "checks": 1847,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 73,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "checks": 167,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        },
+        "earned_xp": 30
+      },
+      "cohort": {
+        "checks": 452,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "cohort_restart": {
+        "checks": 7,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "earned": {
+        "checks": 273,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        },
+        "earned_xp": 360,
+        "xp_injected": false,
+        "cycles": 9
+      },
+      "earned_restart": {
+        "checks": 3,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      }
+    }
+  },
+  "feature_workflow": 38690794560,
+  "merge_commit": "dc7243bb34ab82791abeab52dbae9242b6676f81",
+  "independent_windows": {
+    "archive": "game112-character-catalogue-wave-four-windows-x64.zip",
+    "sha256": "a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c",
+    "files": 7061,
+    "source": "5509b7b89c8250cef02826b40066919e06d7023e",
+    "crc": true,
+    "pe_executable": true,
+    "bundled_node": true,
+    "exact_content": true
+  }
+}

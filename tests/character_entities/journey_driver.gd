@@ -113,8 +113,12 @@ func demonstrate_battle(shape: bool) -> void:
    elif actor.id==state.party_ids[1] and not demonstration_actions.has("wizard-summon-sentinel"):
     command={"actor_id":actor.id,"revision":battle.revision,"kind":"wizard-summon-sentinel","target_id":actor.id}
    elif actor.id==state.party_ids[2] and not demonstration_actions.has("wilder-surge"):
-    var targets: Array=battle.units.values().filter(func(t: Dictionary):return t.team=="enemy" and engine.eligible(battle,actor,t,"wilder-surge"))
-    if not targets.is_empty():command={"actor_id":actor.id,"revision":battle.revision,"kind":"wilder-surge","target_id":targets[0].id}
+    var surge := surge_demonstration_command(battle,actor)
+    if not surge.is_empty():command=surge
+   # Give the ranged demonstration its opportunity before other party attacks end
+   # a short encounter. These remain ordinary player commands, with no state edits.
+   if not shape and not demonstration_actions.has("wilder-surge") and actor.id!=state.party_ids[2] and command.kind=="attack":
+    command={"actor_id":actor.id,"revision":battle.revision,"kind":"end"}
   var pure := engine.command(battle,command);check(pure.ok,"saved owned/form command "+str(command.kind)+str(pure.get("error","")))
   if not pure.ok:break
   action("cycle_command",{"command":command})
@@ -128,6 +132,28 @@ func demonstrate_battle(shape: bool) -> void:
   if shape and reverted:break # Retain active battle for a real process-restart proof.
  if shape:check(shaped and reverted and demonstration_actions.has("bear-attack"),"Druid transforms, attacks with changed anatomy and reverts")
  else:check(AdventureService.active_battle(state).status!="active","actual new-party encounter resolves")
+func surge_demonstration_command(battle: Dictionary,actor: Dictionary) -> Dictionary:
+ if int(battle.budget.main)<1:return {}
+ var ability := "wilder-surge"
+ var snapshot := engine.characters.derive_character(actor.record)
+ if not snapshot.ok or not snapshot.snapshot.abilities.has(ability):return {}
+ if not engine.effects.validate_ability_cost(ability,actor.record.runtime,{"main":int(battle.budget.main),"move":int(battle.budget.move),"reaction":int(actor.reaction)}).ok:return {}
+ var targets: Array=battle.order.filter(func(id: String):return battle.units[id].team!=actor.team and engine.alive(battle.units[id]))
+ for id in targets:
+  if engine.eligible(battle,actor,battle.units[id],ability):return {"actor_id":actor.id,"revision":battle.revision,"kind":ability,"target_id":id}
+ if int(battle.budget.move)<1:return {}
+ # The melee bot minimises Manhattan distance and may stop behind a blocked
+ # supercover corner. Prefer the shortest actual route to a legal spell tile.
+ var routes: Array=engine.paths(battle,actor).values()
+ routes.sort_custom(func(a: Array,b: Array):
+  if a.size()!=b.size():return a.size()<b.size()
+  return int(a.back()[0])<int(b.back()[0]) if a.back()[0]!=b.back()[0] else int(a.back()[1])<int(b.back()[1]))
+ for route in routes:
+  if route.back()==actor.position:continue
+  var proposed: Dictionary=actor.duplicate(false);proposed.position=route.back()
+  for id in targets:
+   if engine.eligible(battle,proposed,battle.units[id],ability):return {"actor_id":actor.id,"revision":battle.revision,"kind":"move","destination":route.back().duplicate()}
+ return {}
 func screenshot(name: String,development: bool) -> void:
  var fixture: bool=development or name.contains("fixture") or service.store.save_root.ends_with("shape-fixture")
  if fixture and get_tree().current_scene!=null and get_tree().current_scene.get("title") is Label:

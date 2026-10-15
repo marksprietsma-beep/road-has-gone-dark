@@ -1,38 +1,38 @@
-# Wave Four delivery — replacement native build pending
+# Wave Four delivery — merged, main integration under verification
 
-Earlier native implementation source: `1115aa7722b93a955256ad3b157f2ab201648dad` on `feature/game-112-character-catalogue-wave-four`. Existing PR: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/99 . The PR records readiness, final merge status and main SHA; publication requires successful compatibility checks. Programme #82 remains open.
+PR [#99](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/99) merged normally on15 October2026 at `dc7243bb34ab82791abeab52dbae9242b6676f81`. Final feature source: `5509b7b89c8250cef02826b40066919e06d7023e`. The merge tree is byte-identical to that source. Programme #82 remains OPEN.
 
-Final candidate: `trhgd-character-v14`, schema14.0.0, engine3, content hash `3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559`.
+Released pack: `trhgd-character-v14`, version14.0.0, engine3. Content hash: `3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559`.
 
-## Starting-gear correction
+## Corrected Windows download
 
-A final audit reproduced a Human Wizard selecting a creature-only natural attack as starting equipment. The correction shares one tag-based v14 creation predicate between the existing Build editor and authoritative creation payload validation. It does not change combat, saved-record replay, historicalv1–v13 creation policy, innate attacks or creature weapons. Focused46/0 and cohort452/0 checks passed. The content hash/counts are unchanged.
+[Final-source Windows x64 artifact11952778574](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38690794560/artifacts/11952778574).
 
-A replacement source/native Windows/Linux run is required for this code correction. The prior package below remains preserved as an interim review build; it must not be described as containing the starting-gear fix. The PR records the replacement source/run/artifact as soon as verified.
+Playable inner ZIP: `game112-character-catalogue-wave-four-windows-x64.zip`.
 
-## Earlier Windows download
+SHA-256: `a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c`.
 
-https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38684785820/artifacts/11950207480
+Extract the GitHub artifact ZIP, then its inner playable ZIP. Keep the entire extracted folder together and launch `road-has-gone-dark.exe`. No separately installed Godot or Node is needed. The distribution includes `worldgen-helper/node.exe`, helper sources/dependencies, resources, art and licence notices. [PLAYTEST.md](PLAYTEST.md) gives the exact journey.
 
-Inner playable archive: `game112-character-catalogue-wave-four-windows-x64.zip`.
+Independent download validation passed ZIP CRC for7061 entries, confirmed both Windows PE binaries and matching sidecar checksum, and compared bundled CORE-CHARACTER-CONTENT.json byte-for-byte against the final source. Windows CI independently launched production with empty PATH/no checkout-helper override and verified a separate saved-game restart. This is native automated verification, not a new human acceptance claim.
 
-SHA-256: `4a99be627162f089d96bf2cf50725ade79b8cc4383deb0176148fb402bebec11`.
+Linux artifact11952303369: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38690794560/artifacts/11952303369 . Inner tar.gz SHA-256: `75df85d16e64bc256fc59ee51d17b59edfd8baeda19274599255b85d052c8694`.
 
-Extract the GitHub artifact ZIP, then its inner playable ZIP. Keep the complete inner folder together and run `road-has-gone-dark.exe`. No installed Godot or Node is needed. The helper, resources and required artwork/licences are bundled. Detailed actions and expected results: [PLAYTEST.md](PLAYTEST.md).
+## Final feature-source verification
 
-The native Windows job passed on a Windows runner with empty PATH and no source-helper override, including production executable startup and independent save/restart. The downloaded ZIP passed CRC validation for7061 files, contained the genuine Windows PE executable and bundled helper, and its content JSON matched the implementation commit byte-for-byte. This is automated native verification, not a claim of a new human Windows acceptance test.
+The complete six-job Windows/Linux workflow [38690794560](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38690794560) PASSED on5509b7b, including focused native restart, expanded source/native and broad compatibility on both platforms. Exact final-source receipts/timings are in [evidence/final-source-native.json](evidence/final-source-native.json); earlier1115aa7 receipts remain historical.
 
-Linux CI also passed. Its downloadable package is https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38684785820/artifacts/11950721053 ; inner tar.gz SHA-256 `7c920d506f749ea7f4ed0a4a66fbb16dfae030649da2da2888eed1ca19b8c1a2`.
+Both native platforms passed1847 mechanics,452 cohort,73 main restart,7 cohort restart,273 earned-progression and3 earned-restart checks, zero failures. Ordinary generated journey counts were167Linux/154Windows, with30/40earnedXP respectively; different valid generated journeys are not combined or described as identical. The independent prestige journey earned360XP through nine real cycles and manually selected War Chanter, with a separately saved lawful Marshal continuation.
 
-## Verification and source provenance
+The final creation-only starting-gear correction is included. New heroes cannot equip creature-only natural weapons, including forged payloads. Existing saves, historical creation pins, innate attacks and actual creature weapons remain valid. Focused46/0 and cohort452/0 tests preserve those distinctions.
 
-Native Windows/Linux and full compatibility matrix: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38684785820 . Native platform jobs passed; the linked workflow records the broader compatibility conclusion and controls publication. Exact proof/timing receipts are in evidence/; raw logs, source/native saves and timings remain in that run's platform evidence artifacts. Current-head PR checks and subsequent main checks are linked from PR99.
+Final-source real Godot creator validation passed63/0 with48 captures at640×360,1280×720 and2560×1440, including equipment filtering. The unchanged campaign/advanced presentation has63/0 and39 renders on1115aa7. Earned War Chanter evidence uses actual360XP; high-level Archmage/Metamind/Cognition fixtures are explicitly labelled development-only.
 
-Both native platforms passed1847 mechanics,407 additional cohort,73 main cold-restart,7 cohort cold-restart,273 earned-progression and3 earned cold-restart checks, with zero failures. Their ordinary generated journey counts are113 Linux/135 Windows, each with40 earned XP. Separate-process advanced histories, resources and content pins match exactly. The new prestige campaign earned360XP through nine real opportunity cycles, manually chose War Chanter and separately saved a legal Marshal continuation; no XP was injected.
+## Main integration
 
-Actual Godot capture validation passed59 creator checks/45 renders and63 campaign/advanced checks/39 renders at640×360,1280×720 and2560×1440. Eighteen selected screenshots and their SHA-256 manifest are committed. Earned War Chanter screenshots use real360XP; Archmage/Metamind/Cognition screenshots are explicitly labelled development fixtures. [TESTING.md](TESTING.md) distinguishes these sources and test outcomes.
+Post-merge runs ondc7243b: WaveFour38722381798; WaveThree38722381984; WaveTwo38722382016; productionUI38722381897; party/expedition38722382021; Windows sandbox38722381827. ProductionUI, party/expedition and Windows sandbox passed. WaveTwo also passed. WaveThree38722381984 failed its Windows native journey assertion `distinct psychic surge acts in saved combat`; the saved encounter showed the test bot stalling behind a blocked corner while using melee movement for a ranged power. A narrow test-only correction and captured15-check regression are being validated on `fix/game-112-native-journey-actions`. WaveFour remains in progress. WaveFive has not been applied, and main close-out remains blocked until the repair passes and is merged. Do not restart successful feature-source tests merely to update documentation.
 
-Documentation commit24360e7 alone changed no executable bytes. The subsequent starting-gear correction changes only new-creator filtering/validation and its tests, so it requires a fresh export. Later delivery receipts and the post-merge main package, when available, are recorded in PR99 and programme issue82 without changing tested gameplay merely to update a SHA.
+The older1115aa7 Windows artifact11950207480 does not contain the starting-gear fix. It remains an interim historical package and is superseded by11952778574 above. Earlier unreleased candidate builds are not the final release.
 
 ## Scope and limitations
 
