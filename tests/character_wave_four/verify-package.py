@@ -6,6 +6,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"character_psychic"))
 from checked_process import checked_process
 root=Path(__file__).resolve().parents[2];base=Path(os.environ['GAME112W4_TEST_ROOT']).resolve();base.mkdir(parents=True,exist_ok=True)
 release=base/'distribution';release.mkdir(exist_ok=True)
+source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+expected_manifest=(root/'data/rules/packs.json').read_bytes()
+expected_ref=next(r['rules_ref'] for r in json.loads(expected_manifest)['packs'] if r['rules_ref']['pack_id']=='trhgd-character-v14')
 name='game112-character-catalogue-wave-four-'+('windows'if os.name=='nt'else'linux')+'-x64';dist=release/name
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/character_wave_four/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/('road-has-gone-dark-qa.exe'if os.name=='nt'else'road-has-gone-dark-qa')
@@ -17,7 +20,10 @@ for label,restart in [('native-gameplay',False),('native-process-restart',True)]
  assert not result['exit_code'] and not result['errors'] and not result['timeout'],text[-9000:]
 proofs={key:json.loads((base/path).read_text())for key,path in [('mechanics','mechanics-proof.json'),('restart','restart-proof.json'),('journey','journey/proof.json')]}
 latest=re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)
-assert all(p['failures']==0 for p in proofs.values())
+assert (root/'data/rules/packs.json').read_bytes()==expected_manifest,'Content changed during native verification'
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()==source_commit,'Source commit changed during native verification'
+assert json.loads((dist/'distribution.json').read_text(encoding='utf-8'))['source_commit']==source_commit
+assert all(p['failures']==0 and p['rules_ref']==expected_ref for p in proofs.values())
 assert proofs['mechanics']['rules_ref']['pack_id']==proofs['restart']['rules_ref']['pack_id']=='trhgd-character-v14'
 assert proofs['journey']['rules_ref']['pack_id']==latest
 assert proofs['journey']['earned_xp']>=10 and 'power-kinetic-bolt'in proofs['journey']['actions_used']
