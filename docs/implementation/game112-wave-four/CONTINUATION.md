@@ -1,3 +1,13 @@
+# Wave Four merged — native journey integration repair in progress
+
+PR99 is MERGED atdc7243bb34ab82791abeab52dbae9242b6676f81. Final feature source5509b7b89c8250cef02826b40066919e06d7023e and full Windows/Linux workflow38690794560 passed. Correct Windows artifact11952778574 has playable ZIP SHA256a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c. Independent CRC, both PE binaries, exact content bytes and sidecar checksum passed. See DELIVERY.md and evidence/final-source-native.json.
+
+Do not resume the old feature branch or recreate PR99/v14. Check the six actual post-merge workflows listed in DELIVERY.md before beginning WaveFive. Run38722381984 failed the Windows WaveTwo journey: a melee test bot stalled behind a corner and never demonstrated the ranged Wilder surge. The repair branch is fix/game-112-native-journey-actions; source fixture15/0 passed, full source/native verification pending. No production combat/content/save change is proposed. WaveFive proposals remain outside the checkout in /workspace/artifacts/wave-five/proposal and must not be counted as playable or applied until this repair is closed. Once main passes, use feature/game-112-character-catalogue-wave-five from latest verifiedmain, append v15 and retain v1–v14 byte-for-byte. Keep82 OPEN. User authorises normal publication/merge after validation. Original destination760 occurrences:79 native mappings,681 unresolved. No world/map/quest/GAME105/GAME122 development.
+
+Latest owner handoff prioritises real hit-conditioned Duskblade channeling and eligible-rest Spirit Shaman retrieval, then broader distinct classes/prestige/ancestry/feat/spell/power/creature/form content. Record incomplete objectives honestly. Historical checkpoints below are superseded for publication, retained only as an audit trail.
+
+---
+
 # Latest recovery checkpoint — starting equipment
 
 The final audit found and reproduced NPC natural attacks selectable as new Human starting equipment. The same existing branch/PR99 now contains a minimal v14 creation-only filter and authoritative starting-payload rejection. Actual innate/creature attacks, saved record replay, content hash/counts and all historicalv1–v13 mechanics remain unchanged. Focused46/0, expanded cohort452/0, append-only guard9/0, source validation14packs/79mapped rows passed.

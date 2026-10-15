@@ -1,0 +1,27 @@
+{
+  "checks": 249,
+  "failures": 0,
+  "earned_xp": 40,
+  "rules_ref": {
+    "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v14",
+    "rules_version": "14.0.0",
+    "schema_version": 1
+  },
+  "demonstration_actions": [
+    "move",
+    "attack",
+    "end",
+    "wizard-summon-sentinel",
+    "81a8603496b9e1767ac15b92dbed0fe7:adventurer:2:summon:4",
+    "81a8603496b9e1767ac15b92dbed0fe7:adventurer:1:companion",
+    "wilder-surge",
+    "wild-shape",
+    "bear-attack",
+    "revert-form"
+  ],
+  "state_sha": "dbd82fc7e10f924f90a2c3ea2644cad37ddc6f196926d633e5a3aa76a243032e",
+  "fixture_battle_hash": "079fcc45f839dac65527b2434e7eaa8e842e72641ad0685c18f567f08858db25",
+  "fixture_is_earned": false
+}
