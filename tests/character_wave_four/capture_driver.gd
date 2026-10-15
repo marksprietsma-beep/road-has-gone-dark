@@ -25,11 +25,18 @@ func run() -> void:
    var found := false
    for index in ui.editor.sections.get_tab_count():
     if ui.editor.sections.get_tab_title(index)==tab:ui.editor.sections.current_tab=index;found=true
-   if found:await screenshot(cls+"-"+tab.to_lower(),false)
+   if found:
+    if tab=="Specialisation" and not ui.editor.career_pickers.is_empty():
+     var control: Control=ui.editor.career_pickers.values()[0]
+     control.grab_focus()
+     ui.detail_tabs.get_child(1).ensure_control_visible(control)
+     for frame in 4:await get_tree().process_frame
+    await screenshot(cls+"-"+tab.to_lower(),false)
  for people in ["air-genasi","earth-genasi","fire-genasi","water-genasi"]:
   ui.pick(ui.people_picker,people);ui.people_picker.item_selected.emit(ui.people_picker.selected)
+  ui.editor.suggest_allocation() # An inherited INT change changes the explicit skill-rank budget.
   ui.detail_tabs.current_tab=2
-  check(ui.editor.preview.ok,"actual inherited creator preview "+people)
+  check(ui.editor.preview.ok,"actual inherited creator preview "+people+JSON.stringify(ui.editor.preview.get("errors",[])))
   await screenshot(people+"-traits",false)
  await close_screen()
  FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W4_SOURCE_SHA"),"screenshots":screenshots,"development_fixture":false}))

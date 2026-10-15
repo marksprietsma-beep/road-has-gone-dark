@@ -1,6 +1,6 @@
 # Exact continuation — expanded cohort
 
-Continue branch feature/game-112-character-catalogue-wave-four and PR99. Do not create a replacement branch/pack. Candidate v14 hash33c0133bca9f66e663889249705c59423760fac4d557a282e416fdcd8971fdc4. Read PR-DESCRIPTION, TESTING and REPERTOIRE. All historicalv1–v13 are byte-identical; frozen TacticalCombat unchanged. Latest expanded source must be committed/pushed and receive native acceptance before merge.
+Continue branch feature/game-112-character-catalogue-wave-four and PR99. Do not create a replacement branch/pack. Candidate v14 hash3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559. Read PR-DESCRIPTION, TESTING and REPERTOIRE. All historicalv1–v13 are byte-identical; frozen TacticalCombat unchanged. Latest expanded source must be committed/pushed and receive native acceptance before merge.
 
 Added Beguiler, Dragonfire Adept, War Chanter, Archmage, Metamind, four Genasi families/two heritage tradeoffs, eight feats, six powers, two creatures, eighteen Beguiler spells/four shared spell identities. Base30/prestige16/families33/heritages44/feats66/powers35/creatures12. All base tracks1–20. Additional cohort generator is executed by existing build-wave-four-pack.py. No replacement engine.
 

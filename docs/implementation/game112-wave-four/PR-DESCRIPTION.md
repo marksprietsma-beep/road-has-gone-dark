@@ -27,8 +27,8 @@ Eight new ancestry families: Bugbear, Ogre, Half-giant, Troglodyte and Air/Earth
 
 Counts distinguish display-name spell identities from class references and level-labelled ability records. Choice groups are scheduled selections, not unique mechanical concepts. Seventeen new research mappings remain candidate implementations until expanded native acceptance. All760 research occurrences remain accounted for.
 
-A newly exposed v14 advancement-boundary defect is fixed: mixed StringName/String skill keys are normalised before ordered-history hashing; exact persistence validation remains enforced. Old content behaviour is untouched.
+Cognition Adept no longer inherits the template-only Erudite distinct-power limit. A newly exposed v14 advancement-boundary defect is fixed: mixed StringName/String skill keys are normalised before ordered-history hashing; exact persistence validation remains enforced. Old content behaviour is untouched.
 
-Verification checkpoint: expanded mechanics1846/0; cohort330/0, cold7/0; source cold restart73/0; legitimate earned campaign273/0, cold restart3/0. Initial06c8bfb Windows/Linux native jobs passed, but those packages contain the earlier28-class cohort. Expanded native and full compatibility are pending. Do not describe that older package as the expanded release.
+Verification checkpoint: corrected expanded mechanics1847/0; cohort407/0; source cold restart73/0; legitimate earned campaign273/0, cold restart3/0. Initial06c8bfb Windows/Linux native jobs passed, but those packages contain the earlier28-class cohort. Expanded native and full compatibility are pending. Do not describe that older package as the expanded release.
 
 Limitations: neutral humanoid LPC fallbacks, one tile per creature, no flight/swimming/environmental vision. Duskblade hit-conditioned channeling and Spirit Shaman rest-selected repertoire remain substantive follow-up work. No unrelated world/map/quest changes. Programme issue82 stays open. Normal merge only after current-head checks.

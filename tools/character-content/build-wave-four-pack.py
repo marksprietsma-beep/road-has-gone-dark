@@ -83,6 +83,7 @@ for cls in p['classes']:
     if not any(o['id']==x['id']for o in group['options']):group['options'].append(option(x['id'],x['name'],[x['feature_id']],description=x['description']))
 # One earned psychic prestige with deliberate choice and hybrid level progression.
 career('cognition-adept','Cognition Adept','erudite',4,4,'INT','Original adaptation of the researched Slayer concept: earned psychic/martial hunter with precise strikes, mental wards and learned powers. Five playable levels.',kind='prestige',cap=5,requirements=req(need('level',n=6),need('attribute','INT',13),need('bab',n=4),need('skill','perception',4),need('feat','psychic-discipline'),need('tag','psychic_manifester')))
+get('classes','cognition-adept').pop('distinct_power_limit',None)
 get('classes','cognition-adept')['psychic_profile']=dict(max_tier=9,attribute='INT',points_per_level=2,mantle_restricted=False)
 get('classes','cognition-adept')['bab']=cl('cognition-adept');tier('cognition-adept',1,'shared-psychic-access');psychics.append('cognition-adept')
 for at in range(1,6):

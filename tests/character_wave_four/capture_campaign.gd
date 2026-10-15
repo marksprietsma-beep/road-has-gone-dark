@@ -45,5 +45,26 @@ func run() -> void:
  var wrote := store.save_new(slot,fixture,entry.world)
  check(wrote.ok,"writer-owned labelled prestige fixture "+str(wrote.get("error","")))
  if wrote.ok:await advanced_capture(fixture,store.save_root,"cognition-adept")
- FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W4_SOURCE_SHA"),"screenshots":screenshots,"ordinary_earned_xp":proof.earned_xp,"advanced_fixture_earned":false}))
+ # Additional advanced histories are clearly development fixtures, not earned levels.
+ var cohort: Dictionary=WorldOriginLore.read_json(OS.get_environment("GAME112W4_SOURCE_ROOT").path_join("cohort/saved.json"))
+ for path in ["war-chanter","archmage","metamind"]:
+  fixture=original.state.duplicate(true)
+  record=cohort.records[path].duplicate(true);record.character_id=identity;record.ancestry_ref=fixture.mechanics.records[identity].ancestry_ref
+  fixture.mechanics.records[identity]=record;fixture.character_builder.initial_levels[identity]=record.advancement_history.size()
+  store=GamePlaythroughStore.new();store.save_root=base.path_join("development-"+path)
+  wrote=store.save_new(slot,fixture,entry.world)
+  check(wrote.ok,"writer-owned advanced cohort "+path+str(wrote.get("error","")))
+  if wrote.ok:await advanced_capture(fixture,store.save_root,path)
+ # Ordinary, XP-funded prestige history is rendered separately from those fixtures.
+ var earned_root := OS.get_environment("GAME112W4_SOURCE_ROOT").path_join("earned-cohort")
+ var earned: Dictionary=WorldOriginLore.read_json(earned_root.path_join("proof.json"))
+ slot=earned.slot;service.store.save_root=earned_root.path_join("saves");service.library.library_root=earned_root.path_join("library");service.library.save_root=service.store.save_root
+ entry=service.library.discover()[0]
+ loaded=service.operate(entry,slot,"resume")
+ check(loaded.ok,"actual360XP prestige campaign reload")
+ if loaded.ok:
+  state=loaded.state
+  await capture("earned-war-chanter-history","sheet",2)
+  await capture("earned-war-chanter-next-level","sheet",3)
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W4_SOURCE_SHA"),"screenshots":screenshots,"ordinary_earned_xp":proof.earned_xp,"prestige_earned_xp":earned.earned_xp,"advanced_fixture_earned":false}))
  finish()

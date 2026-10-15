@@ -159,6 +159,7 @@ func test_prestige() -> void:
   if not step.ok:return
   record=step.candidate
  check(not kernel.available_advancement(record).classes["cognition-adept"].ok,"prestige cap5")
+ check(RulesWaveFour.distinct_limit(kernel.derive_character(record).context,source)==1000,"non-Erudite prestige does not inherit distinct-power limit")
  fixtures.prestige=record
  check(kernel.derive_character(JSON.parse_string(JSON.stringify(record))).snapshot.snapshot_hash==kernel.derive_character(record).snapshot.snapshot_hash,"exact prestige JSON snapshot")
 func test_creatures() -> void:

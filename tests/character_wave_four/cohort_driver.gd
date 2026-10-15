@@ -20,7 +20,7 @@ func run() -> void:
  var previous: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(OS.get_environment("GAME112W4_TEST_ROOT").path_join("saved.json")))
  fixtures=previous.records
  check(fixtures.has("beguiler") and fixtures.has("dragonfire-adept"),"new classes completed existing1–20 matrix")
- test_choice_keys();test_beguiler();test_dragon();test_paths();test_inheritances();test_additional_creatures();test_additional_feats()
+ test_choice_keys();test_beguiler();test_dragon();test_paths();test_inheritances();test_additional_creatures();test_additional_feats();test_new_powers()
  var hashes := {}
  var records := {}
  for id in ["beguiler","dragonfire-adept","war-chanter","archmage","metamind"]:
@@ -170,7 +170,19 @@ func test_paths() -> void:
   check(use(record,fixtures.fighter,"high-arcana-force-5").ok,"high arcana is an executable power")
  if fixtures.has("war-chanter"):
   var record: Dictionary=fixtures["war-chanter"]
-  check(use(record,record,"chorus-courage").ok,"earned path actually grants wider maintained chorus")
+  var active := use(record,record,"chorus-courage")
+  check(active.ok,"earned path actually grants wider maintained chorus")
+  if active.ok:
+   var engine := TacticalAuras.new(source.rules_ref())
+   var ally: Dictionary=fixtures.fighter.duplicate(true);ally.character_id="chorus-ally"
+   var before: int=kernel.derive_character(ally).snapshot.stats.melee_attack
+   var b := {"units":{"owner":engine.unit("owner","Chanter","party",[1,1],active.actor,"shortblade"),"ally":engine.unit("ally","Ally","party",[5,1],ally,"shortblade")},"order":["owner","ally"],"status":"active","board":{"blocked":[]}}
+   RulesWaveFour.project_auras(engine,b)
+   check(engine.stats(b.units.ally).melee_attack>before,"chorus truly reaches radius4 ally")
+   b.units.ally.position=[6,1];RulesWaveFour.project_auras(engine,b)
+   check(engine.stats(b.units.ally).melee_attack==before,"chorus excludes radius5 ally")
+   var switched := use(active.actor,active.actor,"marshal-aura-assault")
+   check(switched.ok and switched.actor.runtime.statuses.size()==1,"multiclass chorus replaces other maintained aura")
 func test_inheritances() -> void:
  for id in ["air-genasi","earth-genasi","fire-genasi","water-genasi","air-genasi-highwind","earth-genasi-granite"]:
   var record := build("fighter",1,"heritage-"+id)
@@ -246,3 +258,18 @@ func use_at_save(actor: Dictionary,target: Dictionary,id: String,roll: int) -> D
    var rng := RulesRng.initial("cohort-save-"+str(n))
    if int(RulesRng.roll("1d20",rng).total)==roll:save_seeds[roll]=rng;break
  return RulesEffects.new(source).use_ability(actor,target,id,{"main":1,"move":1,"reaction":1},save_seeds[roll])
+
+func test_new_powers() -> void:
+ var master: Dictionary=fixtures.psion
+ var target := build("fighter",1);target.runtime.hp=1
+ for name in ["frost-lance","vigilant-link","severing-thought","communal-renewal","iron-carapace","void-detonation"]:
+  var power := source.definition("psychic_powers","power-"+name)
+  for id in power.variants:
+   var record: Dictionary=master.duplicate(true)
+   if not kernel.derive_character(record).snapshot.known_powers.has(power.id):record.runtime.granted_features.append(power.feature_id)
+   var recipient: Dictionary=record if source.definition("abilities",id).targeting.kind=="self"else target
+   var cast := use_at_save(record,recipient,id,1)
+   check(cast.ok,"new psychic effect probe "+id)
+   if cast.ok:
+    check(effect_state(cast.target)!=effect_state(recipient),"actual psychic HP/status effect "+id)
+    check(int(record.runtime.resources["psychic-points"])-int(cast.actor.runtime.resources["psychic-points"])==int(source.definition("abilities",id).cost.resources["psychic-points"]),"exact augmentation cost "+id)

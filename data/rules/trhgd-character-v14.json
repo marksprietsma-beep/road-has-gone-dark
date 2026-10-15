@@ -55196,28 +55196,6 @@
         "attribute": "INT",
         "points_per_level": 2,
         "mantle_restricted": false
-      },
-      "distinct_power_limit": {
-        "op": "sum",
-        "args": [
-          {
-            "op": "const",
-            "value": 1
-          },
-          {
-            "op": "floor_divide",
-            "args": [
-              {
-                "op": "class_level",
-                "id": "erudite"
-              },
-              {
-                "op": "const",
-                "value": 4
-              }
-            ]
-          }
-        ]
       }
     },
     {
