@@ -1593,8 +1593,8 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
         "production_id": "ardent"
@@ -1607,23 +1607,31 @@
       "owner": "GAME-109",
       "design_key": "base_class-ardent",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "base_class-ardent:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "ardent",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 20,
@@ -1713,8 +1721,8 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
         "production_id": "lurk"
@@ -1727,23 +1735,31 @@
       "owner": "GAME-109",
       "design_key": "base_class-lurk",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "base_class-lurk:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "lurk",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 20,
@@ -4392,8 +4408,8 @@
         "Human and human-derived"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-elan"
@@ -4406,23 +4422,31 @@
       "owner": "GAME-108",
       "design_key": "ancestry-elan",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "ancestry-elan:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-elan",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 0,
@@ -7431,8 +7455,8 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-dromite"
@@ -7445,23 +7469,31 @@
       "owner": "GAME-108",
       "design_key": "ancestry-dromite",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "ancestry-dromite:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-dromite",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 0,
@@ -14899,8 +14931,8 @@
         "Maenad / Mephit"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-maenad"
@@ -14913,23 +14945,31 @@
       "owner": "GAME-108",
       "design_key": "ancestry-maenad",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "ancestry-maenad:maenad-mephit:0",
           "source_group": "Maenad / Mephit",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-maenad",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 0,
@@ -17636,8 +17676,8 @@
         "W–Y"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-xeph"
@@ -17650,23 +17690,31 @@
       "owner": "GAME-108",
       "design_key": "ancestry-xeph",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "ancestry-xeph:w-y:0",
           "source_group": "W–Y",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-xeph",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 0,
@@ -18694,8 +18742,8 @@
         "Psionic"
       ],
       "category": "prestige",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
         "production_id": "cerebremancer"
@@ -18708,23 +18756,31 @@
       "owner": "GAME-110",
       "design_key": "prestige-cerebremancer",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "prestige-cerebremancer:psionic:0",
           "source_group": "Psionic",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "cerebremancer",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 5,
@@ -22381,8 +22437,8 @@
         "Dungeonscape"
       ],
       "category": "prestige",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
         "production_id": "beast-steward"
@@ -22395,23 +22451,31 @@
       "owner": "GAME-110",
       "design_key": "prestige-beast-heart-adept",
       "blocking_subsystems": [
-        "Native Windows/Linux validation pending"
+        "Bounded original adaptation; human review and broader source-concept completion remain"
       ],
-      "next_action": "Verify actual native mechanics/journey/restart.",
+      "next_action": "Expand bounded source-concept coverage without counting other variants as completed.",
       "source_variants": [
         {
           "key": "prestige-beast-heart-adept:dungeonscape:0",
           "source_group": "Dungeonscape",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "beast-steward",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
-          "evidence": [],
+          "evidence": [
+            "tests/character_psychic/mechanics_driver.gd",
+            "tests/character_psychic/journey_driver.gd",
+            "docs/implementation/game112-wave-three/DELIVERY.md"
+          ],
           "bounded_original_adaptation": true,
           "complete_sourcebook_conversion": false
         }
       ],
-      "evidence": [],
+      "evidence": [
+        "tests/character_psychic/mechanics_driver.gd",
+        "tests/character_psychic/journey_driver.gd",
+        "docs/implementation/game112-wave-three/DELIVERY.md"
+      ],
       "implementation": {
         "pack_id": "trhgd-character-v13",
         "level_cap": 5,
@@ -28415,18 +28479,20 @@
     "including_npc_total": 760
   },
   "current_delivery": {
-    "pack_id": "trhgd-character-v12",
-    "verified_source": "3eca3109c33176cbcf2cd373dec4db04ef3e2bfa",
-    "base_tracks": 23,
+    "pack_id": "trhgd-character-v13",
+    "verified_source": "5d6576102057c936f1c14fce868c70052958eb57",
+    "base_tracks": 25,
     "base_level_cap": 20,
-    "prestige_paths": 10,
-    "prestige_caps": "legacy/new five or ten levels by definition; new Warshaper/Bonded Summoner five",
-    "ancestry_families": 21,
-    "heritage_records": 30,
-    "feats": 45,
+    "prestige_paths": 12,
+    "prestige_caps": "five or ten by definition; new Beast Steward/Cerebremancer five",
+    "ancestry_families": 25,
+    "heritage_records": 34,
+    "feats": 50,
     "skills": 14,
-    "scheduled_choice_groups": 66,
-    "status": "Windows/Linux source and native validated; human acceptance pending; bounded original adaptations",
+    "scheduled_choice_groups": 133,
+    "selectable_psychic_powers": 21,
+    "creatures": 8,
+    "status": "Windows/Linux source and native validated; bounded original adaptations; human playtest pending",
     "programme_complete": false
   },
   "wave_two": {
@@ -28499,12 +28565,27 @@
       "scheduled_choice_groups": 47,
       "status": "source implemented; focused mechanics and new-party save tests passed; native/full regressions pending",
       "programme_complete": false
+    },
+    {
+      "pack_id": "trhgd-character-v12",
+      "verified_source": "3eca3109c33176cbcf2cd373dec4db04ef3e2bfa",
+      "base_tracks": 23,
+      "base_level_cap": 20,
+      "prestige_paths": 10,
+      "prestige_caps": "legacy/new five or ten levels by definition; new Warshaper/Bonded Summoner five",
+      "ancestry_families": 21,
+      "heritage_records": 30,
+      "feats": 45,
+      "skills": 14,
+      "scheduled_choice_groups": 66,
+      "status": "Windows/Linux source and native validated; human acceptance pending; bounded original adaptations",
+      "programme_complete": false
     }
   ],
   "wave_three": {
     "candidate_pack": "trhgd-character-v13",
     "baseline_pack": "trhgd-character-v12",
-    "status": "implementation_under_validation",
+    "status": "native_validated",
     "before": {
       "base_classes": 23,
       "prestige_classes": 10,
