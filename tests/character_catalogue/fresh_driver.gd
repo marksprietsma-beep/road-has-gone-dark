@@ -16,7 +16,14 @@ func run() -> void:
    var loaded:=store.load_save(slot,entry.world)
    check(loaded.ok,"development advanced character load")
    if loaded.ok:
-    for id in loaded.state.party_ids:check(RulesCharacter.new(RulesRecords.registry(loaded.state)).derive_character(loaded.state.mechanics.records[id]).snapshot.snapshot_hash==fixture.snapshots[id],"advanced history/resources preserve exact pin")
+    for id in loaded.state.party_ids:
+     var after: Dictionary=RulesCharacter.new(RulesRecords.registry(loaded.state)).derive_character(loaded.state.mechanics.records[id]).snapshot
+     var differences: Array=[]
+     if fixture.has("snapshot_values"):
+      for field in fixture.snapshot_values[id]:
+       if not after.has(field) or RulesJson.canonical(after[field])!=RulesJson.canonical(fixture.snapshot_values[id][field]):differences.append(str(field))
+      check(differences.is_empty(),"advanced before-save/after-load fields "+fixture.path+" "+id+" differing: "+str(differences))
+     check(after.snapshot_hash==fixture.snapshots[id],"advanced history/resources preserve exact pin "+fixture.path+" "+id+" before="+str(fixture.snapshots[id])+" after="+str(after.snapshot_hash)+" fields="+str(differences))
   await capture("catalogue-party-reloaded","sheet",2)
   finish();return
  var profiles:=OriginProfiles.new();check(profiles.load_world(entry.world),"real world profiles")
@@ -71,13 +78,14 @@ func run() -> void:
   if path=="wizard":
    record.choices.prepared_abilities=["wizard-tier9-tempest"];record.choices.spell_preparations={"wizard-tier9-tempest":1};RulesCoreContent.refill_prepared(record,source)
   fixture.mechanics.records[id]=record;fixture.character_builder.advancements=[]
-  var snapshots:={}
+  var snapshots:={};var snapshot_values:={}
   for character in fixture.party_ids:
    fixture.character_builder.initial_levels[character]=fixture.mechanics.records[character].advancement_history.size()
-   snapshots[character]=kernel.derive_character(fixture.mechanics.records[character]).snapshot.snapshot_hash
+   var derived: Dictionary=kernel.derive_character(fixture.mechanics.records[character]).snapshot
+   snapshots[character]=derived.snapshot_hash;snapshot_values[character]=JSON.parse_string(JSON.stringify(derived))
   var fixture_root:=base.path_join("development-"+path);var store:=GamePlaythroughStore.new();store.save_root=fixture_root
   var saved:=store.save_new(slot,fixture,entry.world);check(saved.ok,"original writer saves labelled advanced fixture "+path+str(saved.get("error","")))
-  development_saves.append({"save_root":fixture_root,"snapshots":snapshots,"path":path,"development_fixture":true,"ordinary_xp_granted":false})
+  development_saves.append({"save_root":fixture_root,"snapshots":snapshots,"snapshot_values":snapshot_values,"path":path,"development_fixture":true,"ordinary_xp_granted":false})
   if DisplayServer.get_name()!="headless":await advanced_capture(fixture,fixture_root,path)
  check(used_actions.size()>0,"actual saved encounter executes a new class ability")
  FileAccess.open(base.path_join("new-party-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"slot":slot,"state_sha":RulesJson.digest(state),"rules_ref":source.rules_ref(),"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"used_actions":used_actions,"development_saves":development_saves,"screenshots":screenshots}," "))
@@ -161,12 +169,16 @@ func fight_new() -> void:
   var actor:=engine.current(battle);var command:=engine.enemy_command(battle)
   if actor.team=="party" and int(battle.budget.main)>0:
    var cls: String=actor.record.advancement_history[0].class_id;var ability:=cls+"-technique-1"
+   # v13 replaces automatic Psion techniques with actual persistent learned powers.
+   # Older pinned campaigns retain their original technique and the same assertions.
+   if RulesPsychic.enabled(engine.registry) and cls=="psion":ability="power-kinetic-bolt"
+   check(engine.characters.derive_character(actor.record).snapshot.abilities.has(ability),"saved class owns exercised action "+ability)
    var targets: Array=battle.units.values().filter(func(target: Dictionary):return target.team=="enemy" and engine.eligible(battle,actor,target,ability))
    if not targets.is_empty() and engine.effects.validate_ability_cost(ability,actor.record.runtime,{"main":int(battle.budget.main),"move":int(battle.budget.move),"reaction":int(actor.reaction)}).ok:
     command={"actor_id":actor.id,"revision":battle.revision,"kind":ability,"target_id":targets[0].id}
-    if not used_actions.has(ability):used_actions.append(ability)
-  var result:=engine.command(battle,command);check(result.ok,"new class pure command")
+  var result:=engine.command(battle,command);check(result.ok,"new class pure command "+JSON.stringify({"command":command,"error":result.get("error","")}))
   if not result.ok:break
+  if command.kind not in ["attack","move","end"] and not used_actions.has(command.kind):used_actions.append(command.kind)
   action("cycle_command",{"command":command})
   check(AdventureService.active_battle(state).state_hash==result.battle.state_hash,"new class command persists exact authority")
  check(AdventureService.active_battle(state).status!="active","new class battle completes")

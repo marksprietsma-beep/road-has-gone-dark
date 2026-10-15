@@ -36,6 +36,8 @@ var specialisations := {}
 var bonus_feats: Array=[]
 var career_section: VBoxContainer
 var career_pickers := {}
+var power_section: VBoxContainer
+var power_query := ""
 var bonus_picker: OptionButton
 var bonus_column: VBoxContainer
 
@@ -52,21 +54,24 @@ func id_of(control: OptionButton) -> String:
 func select_id(control: OptionButton,id: String) -> void:
  for i in control.item_count:
   if str(control.get_item_metadata(i))==id:control.select(i);return
+func class_options() -> Array:
+ return source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")!="companion") if advance else kernel.starting_classes()
+
 func setup(record_value: Dictionary,is_advance := false) -> void:
  source=RulesRecords.registry(record_value);kernel=CharacterBuilderRecords.kernel(record_value)
  base=record_value.duplicate(true);advance=is_advance
  class_id=str(base.advancement_history.back().class_id)
  ancestry_ref=base.ancestry_ref;background_ref=base.background_ref;attributes=base.base_attributes.duplicate(true)
  for child in get_children():remove_child(child);child.queue_free()
- attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={};sections=null
+ attribute_pickers={};skill_pickers={};equipment_pickers={};preparation_pickers={};sections=null;power_section=null
  updating=true
  class_filter=LineEdit.new();class_filter.placeholder_text="Search classes · selected choice stays visible";add_child(class_filter)
- class_picker=picker(self,"Class",source.ids("classes").filter(func(id: String):return source.definition("classes",id).get("class_kind")!="companion").map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
+ class_picker=picker(self,"Class",class_options().map(func(id: String):return {"id":id,"name":source.definition("classes",id).name}))
  class_detail=GameUI.label("",GameUI.META);add_child(class_detail)
  class_filter.text_changed.connect(func(_query: String):
   if updating:return
   class_picker.clear()
-  for id in source.ids("classes"):
+  for id in class_options():
    var row := source.definition("classes",id)
    if row.get("class_kind")=="companion":continue
    if id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)
@@ -131,7 +136,9 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
  select_id(class_picker,class_id)
  if advance:select_id(increase_picker,attribute_increase)
  if RulesCareer.enabled(source):
-  career_section=form_section("Specialisation");career_controls()
+  career_section=form_section("Specialisation")
+  if RulesPsychic.enabled(source):power_section=form_section("Powers")
+  career_controls()
  updating=false;refresh_preview()
 func spell_controls() -> void:
  if spell_section==null:return
@@ -301,6 +308,7 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
  # Keep explicitly selected illegal preparations visible until the player removes them.
  explanation.text=("Ready to save: attributes, class, skills, feat and equipment are valid." if preview.ok else CharacterBuilderRecords.reason(preview))+"\n\n"+"\n".join(messages)
  explanation.add_theme_color_override("font_color",GameUI.MUTED if preview.ok else GameUI.ERROR)
+ if RulesPsychic.enabled(source):refresh_power_options()
  updating=false;changed.emit()
 func suggest_allocation() -> void:
  var suggested := kernel.suggested_choice(base if advance else unlevelled(),class_id,feat_id if not feat_id.is_empty() else "steady-study")
@@ -330,11 +338,34 @@ func progression_text(node: Dictionary) -> String:
   values.append("%d:%+d"%[level,int(result.get("value",0))])
  return " ".join(values)+" (level:value)"
 
+func refresh_power_options() -> void:
+ if not RulesPsychic.enabled(source):return
+ var current := base if advance else unlevelled()
+ var replay := kernel._replay(current)
+ if not replay.ok:return
+ var class_level := int(replay.context.classes.get(class_id,0))+1
+ for group in RulesCareer.groups(source,class_id,class_level):
+  if not group.options.any(func(option: Dictionary):return option.features.any(func(id: String):return source.definition("features",id).has("known_power"))):continue
+  var control: OptionButton=career_pickers.get(group.id)
+  if control==null:continue
+  control.clear()
+  for option in group.options:
+   if option.id!=specialisations.get(group.id) and not power_query.to_lower() in str(option.name).to_lower():continue
+   var why := CharacterBuilderRecords.reason(RulesCareer.option_eligibility(source,class_id,class_level,option,replay.context,specialisations))
+   control.add_item(option.name+(" · locked" if not why.is_empty() else ""));var i := control.item_count-1
+   control.set_item_metadata(i,option.id);control.set_item_disabled(i,not why.is_empty());control.get_popup().set_item_tooltip(i,why+"\n"+option.description)
+  select_id(control,str(specialisations.get(group.id,"")))
 func career_controls() -> void:
  if career_section==null:return
  for child in career_section.get_children():career_section.remove_child(child);child.queue_free()
  if bonus_column!=null:
   for child in bonus_column.get_children():bonus_column.remove_child(child);child.queue_free()
+ if power_section!=null:
+  for child in power_section.get_children():power_section.remove_child(child);child.queue_free()
+  power_section.add_child(GameUI.label("Powers known",GameUI.SECTION))
+  power_section.add_child(GameUI.label("Choose distinct powers. Base cost is 2 × tier − 1 points; augmentation spends additional points. Total expenditure cannot exceed shared manifesting level. Choices persist in class history.",GameUI.META))
+  var search := LineEdit.new();search.placeholder_text="Search powers · selected choice stays visible";search.text=power_query;power_section.add_child(search)
+  search.text_changed.connect(func(query: String):power_query=query;refresh_power_options())
  career_pickers={};bonus_picker=null
  var classes: Dictionary=kernel.derive_character(base).get("snapshot",{}).get("class_levels",{}) if advance else {}
  var class_level := int(classes.get(class_id,0))+1
@@ -347,14 +378,16 @@ func career_controls() -> void:
  career_section.add_child(GameUI.label("Deliberate class choices",GameUI.SECTION))
  career_section.add_child(GameUI.label("Recommended choices are shown below. Review alternatives: each choice persists in your ordered class history.",GameUI.META))
  for group in RulesCareer.groups(source,class_id,class_level):
-  var control := picker(career_section,group.name,group.options)
+  var is_power: bool=RulesPsychic.enabled(source) and group.options.any(func(option: Dictionary):return option.features.any(func(id: String):return source.definition("features",id).has("known_power")))
+  var parent: VBoxContainer=power_section if is_power else career_section
+  var control := picker(parent,group.name,group.options)
   career_pickers[group.id]=control;select_id(control,str(specialisations.get(group.id,"")))
   if advance:
    var context: Dictionary=kernel.derive_character(base).context
    for i in group.options.size():
     var why := CharacterBuilderRecords.reason(RulesExpressions.evaluate_requirements(group.options[i].requirements,context))
     control.set_item_disabled(i,not why.is_empty());control.get_popup().set_item_tooltip(i,why)
-  var detail := GameUI.label("",GameUI.META);career_section.add_child(detail)
+  var detail := GameUI.label("",GameUI.META);parent.add_child(detail)
   var update_detail := func():
    var option: Dictionary=group.options.filter(func(row: Dictionary):return row.id==id_of(control))[0]
    specialisations[group.id]=option.id

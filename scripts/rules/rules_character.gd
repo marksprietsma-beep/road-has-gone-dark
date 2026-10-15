@@ -79,6 +79,7 @@ func _replay(record: Dictionary) -> Dictionary:
   var cls := registry.definition("classes",step.class_id)
   if cls.get("class_kind")=="companion" and not (record.character_id.ends_with(":companion") or record.character_id.contains(":summon:")):return RulesJson.result([RulesJson.issue("companion.class",path,"Creature advancement is internal to owned actors")])
   if cls.is_empty(): return RulesJson.result([RulesJson.issue("advancement.class",path,"Unknown class")])
+  if i==0 and cls.get("class_kind")=="prestige":return RulesJson.result([RulesJson.issue("advancement.prestige_start",path,"Prestige paths require prior permanent class progression and an explicit advancement choice")])
   if int(classes.get(step.class_id,0))>=int(cls.max_level): return RulesJson.result([RulesJson.issue("advancement.class_cap",path,"Class level cap exceeded")])
   var requirement := RulesExpressions.evaluate_requirements(cls.requirements,context)
   if not requirement.ok:
@@ -246,8 +247,9 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   context.stats[stat]=combined.get("value",0);applied[stat]=combined.get("applied",[])
  context.stats.stride=maxi(1,int(context.stats.stride));context.stats.HP=maxi(1,int(context.stats.HP))
  if not active_form.is_empty():
-  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell"))
+  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")))
   context.body_form=active_form.duplicate(true)
+ if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()
  return context
@@ -343,7 +345,15 @@ func derive_character(record: Dictionary) -> Dictionary:
  if RulesEntities.enabled(registry):
   snapshot.body_form=c.get("body_form",{}).duplicate(true)
   snapshot.companions=record.runtime.companions.duplicate(true)
- snapshot.snapshot_hash=RulesJson.digest(snapshot)
+ if RulesPsychic.enabled(registry):
+  snapshot.manifesting_level=c.manifesting_level;snapshot.known_powers=c.known_powers.duplicate()
+ # v13 appends typed psychic/creature fields after the legacy snapshot boundary.
+ # Canonicalise those keys before hashing; mixed String/StringName sorting can
+ # otherwise depend on which historical scripts were loaded earlier in a process.
+ if RulesPsychic.enabled(registry):
+  snapshot=RulesJson.string_keys(snapshot)
+  snapshot["snapshot_hash"]=RulesJson.digest(snapshot)
+ else:snapshot.snapshot_hash=RulesJson.digest(snapshot)
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
 func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
@@ -377,6 +387,10 @@ func apply_advancement(record: Dictionary,choice: Dictionary,expected_revision: 
  if record.get("revision")!=expected_revision: return RulesJson.result([RulesJson.issue("advancement.stale","revision","Expected revision differs")])
  return preview_advancement(record,choice)
 
+func starting_classes() -> Array:
+ # Older packs have ordinary classes without an explicit class_kind field.
+ return registry.ids("classes").filter(func(id: String):return registry.definition("classes",id).get("class_kind","base")=="base")
+
 func available_advancement(record: Dictionary) -> Dictionary:
  var derived := derive_character(record)
  if not derived.ok: return derived
@@ -393,6 +407,7 @@ func available_advancement(record: Dictionary) -> Dictionary:
   if registry.definition("classes",id).get("class_kind")=="companion":continue
   var definition := registry.definition("classes",id)
   var result := RulesExpressions.evaluate_requirements(definition.requirements,entry_context)
+  if int(c.level)==0 and definition.get("class_kind")=="prestige":result=RulesJson.result([RulesJson.issue("advancement.prestige_start",id,"Prestige paths are earned advancement choices, not starting classes")])
   if int(derived.context.level)>=int(registry.rule("max_level")) or int(derived.context.classes.get(id,0))>=int(definition.max_level): result=RulesJson.result([RulesJson.issue("advancement.level_cap",id,"Progression limit reached")])
   options[id]=result
  return {"ok":true,"classes":options,"next_level":int(derived.context.level)+1}
@@ -429,9 +444,13 @@ func suggested_choice(record: Dictionary,class_id: String,preferred_feat: String
  var choice := {"class_id":class_id,"skill_allocations":allocation,"feat_id":feat,"attribute_increase":attribute}
  if RulesCareer.enabled(registry):
   choice.specialisations=RulesCareer.defaults(registry,class_id,int(c.classes.get(class_id,0))+1)
+  var learned: Array=[]
   for group in RulesCareer.groups(registry,class_id,int(c.classes.get(class_id,0))+1):
    for option in group.options:
-    if RulesExpressions.evaluate_requirements(option.requirements,c).ok:choice.specialisations[group.id]=option.id;break
+    if not RulesCareer.option_eligibility(registry,class_id,int(c.classes.get(class_id,0))+1,option,c,choice.specialisations).ok:continue
+    var powers: Array=option.features.map(func(id: String):return str(registry.definition("features",id).get("known_power",""))).filter(func(id: String):return not id.is_empty())
+    if powers.any(func(id: String):return learned.has(id)):continue
+    choice.specialisations[group.id]=option.id;learned.append_array(powers);break
   choice.bonus_feats=["steady-study"] if RulesCareer.feat_count(registry,next,class_id,int(c.classes.get(class_id,0))+1)>1 else []
  return {"ok":true,"choice":choice}
 

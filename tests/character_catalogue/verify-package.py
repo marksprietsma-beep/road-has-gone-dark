@@ -1,5 +1,5 @@
 """Export the same engine, exercise new content natively, preserve complete notices."""
-import hashlib,json,os,subprocess,tarfile,zipfile,shutil
+import hashlib,json,os,subprocess,tarfile,zipfile,shutil,time
 from pathlib import Path
 root=Path(__file__).resolve().parents[2];base=Path(os.environ['GAME112_TEST_ROOT']).resolve();base.mkdir(parents=True,exist_ok=True)
 release=base/'distribution';release.mkdir(exist_ok=True)
@@ -7,14 +7,18 @@ name='game112-character-catalogue-wave-one-'+('windows'if os.name=='nt'else'linu
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/character_catalogue/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/('road-has-gone-dark-qa.exe'if os.name=='nt'else'road-has-gone-dark-qa')
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='');env.pop('GAME76_HELPER_ROOT',None)
+timings=[]
 for label,restart in [('native-content',False),('native-restart',True)]:
+    start=time.monotonic()
     with (base/(label+'.log')).open('w',encoding='utf-8')as stream:
         result=subprocess.run([str(qa),'--headless','--audio-driver','Dummy'],cwd=dist,env=dict(env,GAME112_TEST_ROOT=str(base),GAME112_RESTART='1'if restart else'0'),stdout=stream,stderr=subprocess.STDOUT,timeout=2700)
     text=(base/(label+'.log')).read_text(encoding='utf-8')
-    assert result.returncode==0 and not any(s in text for s in ['ERROR:','SCRIPT ERROR:','Parse Error']),text[-9000:]
-proofs={label:json.loads((base/path).read_text())for label,path in [('mechanics','mechanics-proof.json'),('tactical','tactical-proof.json'),('fresh','fresh/new-party-proof.json')]}
+    timings.append(dict(phase=label,seconds=round(time.monotonic()-start,3),exit_code=result.returncode,errors=any(s in text for s in ['ERROR:','SCRIPT ERROR:','Parse Error'])))
+    (base/'native-timings.json').write_text(json.dumps(timings,indent=2)+'\n')
+    assert result.returncode==0 and not timings[-1]['errors'],text[-9000:]
+proofs={label:json.loads((base/path).read_text())for label,path in [('mechanics','mechanics-proof.json'),('tactical','tactical-proof.json'),('fresh','fresh/new-party-proof.json'),('prestige-gates','prestige-gates-proof.json')]}
 latest=json.loads((root/'data/rules/packs.json').read_text())['packs'][-1]['rules_ref']['pack_id']
-assert all(p['failures']==0 and p['rules_ref']['pack_id']==(latest if label=='fresh' else 'trhgd-character-v11')for label,p in proofs.items())
+assert all(p['failures']==0 and p['rules_ref']['pack_id']==(latest if label in ['fresh','prestige-gates'] else 'trhgd-character-v11')for label,p in proofs.items())
 assert proofs['fresh']['used_actions'] and len(proofs['fresh']['development_saves'])==3
 exe=dist/('road-has-gone-dark.exe'if os.name=='nt'else'road-has-gone-dark')
 r=subprocess.run([str(exe),'--headless','--audio-driver','Dummy','--quit-after','30'],cwd=dist,env=env,capture_output=True,text=True,timeout=90)
@@ -31,5 +35,5 @@ if os.name=='nt':
 else:
     with tarfile.open(archive,'w:gz')as t:t.add(dist,arcname=name)
 digest=hashlib.file_digest(archive.open('rb'),'sha256').hexdigest();(release/(archive.name+'.sha256')).write_text(digest+'  '+archive.name+'\n')
-(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=os.environ.get('GITHUB_SHA',subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()),archive=archive.name,archive_sha256=digest,native=proofs,production_launch=True,separate_process_restart=True,empty_path=True,source_helper_override=False),indent=2)+'\n')
+(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=os.environ.get('GITHUB_SHA',subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()),archive=archive.name,archive_sha256=digest,native=proofs,timings=timings,production_launch=True,separate_process_restart=True,empty_path=True,source_helper_override=False),indent=2)+'\n')
 print('Verified complete native catalogue distribution',archive,digest,flush=True)

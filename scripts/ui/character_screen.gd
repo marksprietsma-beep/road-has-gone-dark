@@ -420,6 +420,12 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
    if pet_snapshot.ok:lines.append("Companion: "+str(RulesRecords.registry(state).definition("creatures",companion.definition_id).name)+" · level "+str(pet_snapshot.snapshot.level)+" · "+stat_line(pet_snapshot.snapshot)+" · humanoid art fallback")
   if not s.get("body_form",{}).is_empty():lines.append("Active body form: "+str(s.body_form.id)+" · "+str(s.body_form.size)+" · natural weapon "+str(s.body_form.weapon_id)+"; equipment melded, spells suppressed. Original ancestry retained; humanoid art fallback.")
  lines.append("\nClass features: "+", ".join(s.features.map(func(id: String):return str(RulesRecords.registry(state).definition("features",id).get("name",id)))))
+ if s.has("known_powers"):
+  var source := RulesRecords.registry(state)
+  lines.append("\nPsychic powers known · manifesting level "+str(s.manifesting_level))
+  for id in s.known_powers:
+   var power := source.definition("psychic_powers",id)
+   lines.append("%s · tier%d · %s · base%d PP"%[power.name,int(power.tier),power.discipline,2*int(power.tier)-1])
  lines.append("\nKnown abilities · current tactical availability")
  for id in s.abilities:
   var ability := RulesRecords.registry(state).definition("abilities",id)

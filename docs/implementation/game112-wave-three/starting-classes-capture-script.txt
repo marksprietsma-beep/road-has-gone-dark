@@ -1,0 +1,33 @@
+extends "res://tests/character_psychic/capture_driver.gd"
+func run() -> void:
+ base=OS.get_environment("GAME112W3_CAPTURE_ROOT");DirAccess.make_dir_recursive_absolute(base)
+ get_tree().root.gui_embed_subwindows=true
+ var source_root := OS.get_environment("GAME112W3_SOURCE_ROOT").path_join("journey")
+ service.library.library_root=source_root.path_join("library");entry=service.library.discover()[0]
+ service.cache_root=base.path_join("cache");service.store.save_root=base.path_join("creation");service.library.save_root=service.store.save_root
+ var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"real source-world profiles")
+ var home: Dictionary=profiles.projection.hometowns.values()[0]
+ var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id));slot=born.state.playthrough_id
+ check(service.store.save_new(slot,born.state,entry.world).ok,"original writer creates a fresh campaign")
+ action_builder("builder_open")
+ var ui := await open_screen("res://scenes/ui/party_creation.tscn")
+ if ui==null:finish();return
+ check(ui.editor.class_options().size()==25,"all25 base classes available in embedded creator")
+ for id in ui.editor.class_options():check(RulesRecords.registry(state).definition("classes",id).class_kind=="base","no starting prestige class "+id)
+ ui.detail_tabs.current_tab=1
+ for resolution in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
+  get_tree().root.size=resolution
+  for frame in 5:await get_tree().process_frame
+  ui.editor.class_picker.grab_focus()
+  var outer: ScrollContainer=ui.detail_tabs.get_child(1);outer.ensure_control_visible(ui.editor.class_picker)
+  for frame in 5:await get_tree().process_frame
+  var popup: PopupMenu=ui.editor.class_picker.get_popup()
+  popup.popup(Rect2i(Vector2i(ui.editor.class_picker.get_global_rect().position),Vector2i(ui.editor.class_picker.size)))
+  for frame in 5:await get_tree().process_frame
+  await RenderingServer.frame_post_draw
+  var name := "starting-base-classes-only-%dx%d.png"%[resolution.x,resolution.y]
+  check(get_tree().root.get_texture().get_image().save_png(base.path_join(name))==OK,"actual Godot creation menu render")
+  screenshots.append({"file":name,"sha256":FileAccess.get_sha256(base.path_join(name)),"actual_godot_render":true,"development_fixture":false,"gameplay_source":OS.get_environment("GAME112W3_SOURCE_SHA")})
+  popup.hide()
+ FileAccess.open(base.path_join("capture-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W3_SOURCE_SHA"),"script_sha256":FileAccess.get_sha256("/workspace/artifacts/wave-three/capture-starting-classes-driver.gd"),"screenshots":screenshots}))
+ finish()

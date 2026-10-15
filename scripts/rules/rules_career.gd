@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:
@@ -20,14 +20,34 @@ static func selections(record: Dictionary,classes: Dictionary,source: RulesRegis
    for option in group.options:
     if step.get("specialisations",{}).get(group.id)==option.id:selected.append(option)
  return selected
+static func option_eligibility(source: RulesRegistry,cls: String,level: int,option: Dictionary,context: Dictionary,chosen: Dictionary={}) -> Dictionary:
+ var result := RulesExpressions.evaluate_requirements(option.requirements,context)
+ if not result.ok or not RulesPsychic.enabled(source):return result
+ for id in option.features:
+  var feature := source.definition("features",id)
+  if feature.get("unique_selection",false) and context.features.has(id):return RulesJson.result([RulesJson.issue("career.unique",id,"This permanent selection is already learned")])
+  var power: String=str(feature.get("known_power",""))
+  if not power.is_empty():
+   var eligible := RulesPsychic.eligibility(power,cls,level,context,source,chosen)
+   if not eligible.ok:return eligible
+ return {"ok":true}
 static func validate_choices(source: RulesRegistry,cls: String,level: int,chosen: Variant,context: Dictionary) -> Array:
  if not chosen is Dictionary:return [RulesJson.issue("career.schema",cls,"Select explicit class specialisations")]
- var scheduled := groups(source,cls,level);var errors: Array=[]
+ var scheduled := groups(source,cls,level);var errors: Array=[];var learned: Array=[];var unique: Array=[]
  if chosen.size()!=scheduled.size():errors.append(RulesJson.issue("career.count",cls,"Select exactly the scheduled class options"))
  for group in scheduled:
   var matches: Array=group.options.filter(func(option: Dictionary):return option.id==chosen.get(group.id))
   if matches.size()!=1:errors.append(RulesJson.issue("career.option",group.id,"Choose one valid specialisation"));continue
-  errors.append_array(RulesExpressions.evaluate_requirements(matches[0].requirements,context).get("errors",[]))
+  errors.append_array(option_eligibility(source,cls,level,matches[0],context,chosen).get("errors",[]))
+  if RulesPsychic.enabled(source):
+   for id in matches[0].features:
+    if source.definition("features",id).get("unique_selection",false):
+     if unique.has(id):errors.append(RulesJson.issue("career.unique",id,"Choose different permanent selections"))
+     unique.append(id)
+    var power: String=str(source.definition("features",id).get("known_power",""))
+    if power.is_empty():continue
+    if learned.has(power):errors.append(RulesJson.issue("psychic.duplicate",power,"Choose distinct powers at this level"))
+    learned.append(power)
  return errors
 static func casting_levels(record: Dictionary,classes: Dictionary,source: RulesRegistry) -> Dictionary:
  var levels := classes.duplicate()

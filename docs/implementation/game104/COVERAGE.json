@@ -1593,11 +1593,11 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "ardent"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1607,20 +1607,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-ardent",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "base_class-ardent:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "ardent",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-divine-mind",
@@ -1701,11 +1713,11 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "lurk"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1715,20 +1727,32 @@
       "owner": "GAME-109",
       "design_key": "base_class-lurk",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "base_class-lurk:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "lurk",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "base_class-hexblade",
@@ -4368,11 +4392,11 @@
         "Human and human-derived"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-elan"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4382,19 +4406,32 @@
       "owner": "GAME-108",
       "design_key": "ancestry-elan",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "ancestry-elan:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-elan",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-athasian-elan",
@@ -7394,11 +7431,11 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-dromite"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -7408,19 +7445,32 @@
       "owner": "GAME-108",
       "design_key": "ancestry-dromite",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "ancestry-dromite:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-dromite",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-dvati",
@@ -14849,11 +14899,11 @@
         "Maenad / Mephit"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-maenad"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -14863,19 +14913,32 @@
       "owner": "GAME-108",
       "design_key": "ancestry-maenad",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "ancestry-maenad:maenad-mephit:0",
           "source_group": "Maenad / Mephit",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-maenad",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-athasian-maenad",
@@ -17573,11 +17636,11 @@
         "W–Y"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-xeph"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -17587,19 +17650,32 @@
       "owner": "GAME-108",
       "design_key": "ancestry-xeph",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "ancestry-xeph:w-y:0",
           "source_group": "W–Y",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-xeph",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_fallback"
+      }
     },
     {
       "id": "ancestry-xvart",
@@ -18618,11 +18694,11 @@
         "Psionic"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "cerebremancer"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -18632,20 +18708,32 @@
       "owner": "GAME-110",
       "design_key": "prestige-cerebremancer",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "prestige-cerebremancer:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "cerebremancer",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "prestige-elocater",
@@ -22293,11 +22381,11 @@
         "Dungeonscape"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "beast-steward"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -22307,20 +22395,32 @@
       "owner": "GAME-110",
       "design_key": "prestige-beast-heart-adept",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Native Windows/Linux validation pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Verify actual native mechanics/journey/restart.",
       "source_variants": [
         {
           "key": "prestige-beast-heart-adept:dungeonscape:0",
           "source_group": "Dungeonscape",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "beast-steward",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v13",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false,
+        "mechanics_test": "tests/character_psychic/mechanics_driver.gd",
+        "tactical_test": "tests/character_psychic/journey_driver.gd",
+        "art_status": "neutral_humanoid_lpc"
+      }
     },
     {
       "id": "prestige-dungeon-lord",
@@ -28400,5 +28500,43 @@
       "status": "source implemented; focused mechanics and new-party save tests passed; native/full regressions pending",
       "programme_complete": false
     }
-  ]
+  ],
+  "wave_three": {
+    "candidate_pack": "trhgd-character-v13",
+    "baseline_pack": "trhgd-character-v12",
+    "status": "implementation_under_validation",
+    "before": {
+      "base_classes": 23,
+      "prestige_classes": 10,
+      "ancestry_families": 21,
+      "heritages": 30,
+      "feats": 45,
+      "skills": 14,
+      "creatures": 3,
+      "selectable_powers": 0
+    },
+    "after": {
+      "base_classes": 25,
+      "prestige_classes": 12,
+      "ancestry_families": 25,
+      "heritages": 34,
+      "feats": 50,
+      "skills": 14,
+      "creatures": 8,
+      "selectable_powers": 21,
+      "career_choices": 133
+    },
+    "new_source_rows": [
+      "base_class-ardent",
+      "base_class-lurk",
+      "prestige-beast-heart-adept",
+      "prestige-cerebremancer",
+      "ancestry-elan",
+      "ancestry-xeph",
+      "ancestry-maenad",
+      "ancestry-dromite"
+    ],
+    "all_occurrences_preserved": true,
+    "complete_programme": false
+  }
 }

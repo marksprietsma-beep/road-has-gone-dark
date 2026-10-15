@@ -1,8 +1,8 @@
 class_name RulesEntities
 extends RefCounted
-## v12-only body/owned-creature records. GAME-32 still derives every actor and action.
+## v12+ body/owned-creature records. GAME-32 still derives every actor and action.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")=="trhgd-character-v12"
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v12","trhgd-character-v13"]
 static func form(record: Dictionary,source: RulesRegistry) -> Dictionary:
  if not enabled(source):return {}
  for status in record.runtime.statuses:
@@ -41,7 +41,10 @@ static func bonds(record: Dictionary,source: RulesRegistry) -> Array:
  var replay := RulesCharacter.new(source)._replay(record)
  if not replay.ok:return []
  var result: Array=[]
- for id in replay.context.features:
+ var durable_features: Array=replay.context.features
+ if RulesPsychic.enabled(source):
+  durable_features=durable_features.filter(func(id: String):return replay.context.feature_sources.any(func(entry: Dictionary):return entry.id==id and not str(entry.source).begins_with("granted:")))
+ for id in durable_features:
   var feature := source.definition("features",id)
   if not feature.has("companion"):continue
   var bond: Dictionary=feature.companion
@@ -49,6 +52,12 @@ static func bonds(record: Dictionary,source: RulesRegistry) -> Array:
   var row := {"creature_id":bond.creature_id,"level":mini(20,level)}
   if result.is_empty():result.append(row)
   elif row.level>result[0].level:result[0]=row
+ if RulesPsychic.enabled(source) and not result.is_empty():
+  var growth := 0
+  for id in durable_features:
+   var feature := source.definition("features",id)
+   if feature.has("companion_growth"):growth+=int(RulesExpressions.evaluate_formula(feature.companion_growth,replay.context).get("value",0))
+  result[0].level=clampi(int(result[0].level)+growth,1,20)
  return result # One durable nature bond per owner, including multiclassing.
 static func identity(owner: String) -> String:return owner+":companion"
 static func creature_record(id: String,definition_id: String,level: int,source: RulesRegistry) -> Dictionary:
@@ -57,6 +66,7 @@ static func creature_record(id: String,definition_id: String,level: int,source: 
  var kernel := RulesCharacter.new(source)
  var record := kernel.create(id,definition.attributes,"heritage-human")
  record.runtime.granted_features=[definition.feature_id]
+ if RulesPsychic.enabled(source):record.runtime.resources=kernel._replay(record).context.capacities.duplicate()
  for n in level:
   var choice := kernel.suggested_choice(record,"bond-creature")
   if not choice.ok:return {}
@@ -79,6 +89,9 @@ static func synchronize(record: Dictionary,source: RulesRegistry) -> Dictionary:
   var deficit: int=int(old.snapshot.stats.HP)-int(previous.record.runtime.hp)
   pet.runtime.hp=maxi(0,int(pet.runtime.hp)-deficit)
   pet.runtime.statuses=previous.record.runtime.statuses.duplicate(true)
+  if RulesPsychic.enabled(source):
+   for resource in pet.runtime.resources:
+    if previous.record.runtime.resources.has(resource):pet.runtime.resources[resource]=mini(int(pet.runtime.resources[resource]),int(previous.record.runtime.resources[resource]))
  record.runtime.companions={id:{"definition_id":bond.creature_id,"record":pet}}
  return {"ok":true}
 static func runtime_errors(record: Dictionary,source: RulesRegistry) -> Array:

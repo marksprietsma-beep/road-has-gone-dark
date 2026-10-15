@@ -72,6 +72,37 @@ static func selection_errors(record: Dictionary,context: Dictionary,source: Rule
   if source.definition("abilities",str(id)).tags.has("prepared") and not record.choices.spell_preparations.has(id):errors.append(RulesJson.issue("spell.preparation_missing",str(id),"Choose how many copies to prepare"))
  return errors
 static func starting_preparations(snapshot: Dictionary,source: RulesRegistry) -> Dictionary:
+ var proposed := _legacy_starting_preparations(snapshot,source)
+ if not RulesPsychic.enabled(source):return proposed
+ # Reserve one legal suggestion per unlocked tier before adding variety.
+ # Distinct-spell limits and total tier slots are independent ceilings.
+ var copies := {};var counts := {};var tiers := {}
+ for id in proposed:
+  var ability := source.definition("abilities",id)
+  if int(proposed[id])<=0 or not ability.tags.has("prepared"):continue
+  for pool in ability.cost.resources:
+   if not source.definition("resources",pool).has("slot_class"):continue
+   if not tiers.has(pool):tiers[pool]=[]
+   tiers[pool].append(id)
+ var pools: Array=tiers.keys();pools.sort()
+ for pass_index in [0,1]:
+  for pool in pools:
+   var cls: String=source.definition("resources",pool).slot_class
+   var limit := selection_limit(cls,int(snapshot.get("casting_levels",snapshot.class_levels).get(cls,0)),source)
+   for id in tiers[pool]:
+    if copies.has(id):continue
+    if int(counts.get(cls,0))>=limit:break
+    copies[id]=int(proposed[id]);counts[cls]=int(counts.get(cls,0))+1
+    if pass_index==0:break
+ for pool in pools:
+  var selected: Array=tiers[pool].filter(func(id: String):return copies.has(id))
+  if selected.is_empty():continue
+  var spent := 0
+  for id in selected:spent+=int(copies[id])
+  var remaining: int=int(snapshot.resource_capacities[pool])-spent
+  if remaining>0:copies[selected[0]]+=remaining
+ return copies
+static func _legacy_starting_preparations(snapshot: Dictionary,source: RulesRegistry) -> Dictionary:
  var copies := {}
  for pool in snapshot.resource_capacities:
   if not source.definition("resources",str(pool)).has("slot_class"):continue

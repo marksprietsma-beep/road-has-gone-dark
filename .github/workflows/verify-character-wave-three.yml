@@ -1,0 +1,253 @@
+name: GAME-112 Character Catalogue Wave Three
+concurrency:
+  group: game112-wave-three-${{ github.ref }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-112-character-catalogue-wave-three, main]
+    paths: ['scripts/**', 'tools/**', 'tests/opportunities/**', 'tests/character_builder/**', 'tests/character_content/**', 'tests/character_core/**', 'tests/character_progression/**', 'tests/adventure_cycles/**', 'tests/character_catalogue/**', 'tests/character_entities/**', 'tests/character_psychic/**', 'data/rules/**', 'data/characters/**', 'data/sandbox/**', 'data/world_enrichment/runtime-expedition-v1.json', 'export_presets.cfg', '.github/workflows/verify-character-wave-three.yml']
+  workflow_dispatch:
+jobs:
+  native-restart:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified engine and bundled helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Focused native catalogue, nine advanced snapshots and process restart
+        env:
+          GAME112_TEST_ROOT: ${{ runner.temp }}/game112-native
+        run: python tests/character_catalogue/verify-package.py
+      - name: Preserve same-head focused native proofs and package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-focused-native-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game112-native/*.json
+            ${{ runner.temp }}/game112-native/*.log
+            ${{ runner.temp }}/game112-native/fresh/**/*.json
+            ${{ runner.temp }}/game112-native/distribution/*.zip*
+            ${{ runner.temp }}/game112-native/distribution/*.tar.gz*
+          retention-days: 90
+  opportunities:
+    needs: native-restart
+    env:
+      GAME119_TEST_ROOT: ${{ github.workspace }}/game119-evidence
+      GAME_CHARACTER_REVIEW_TAG: game112-catalogue-parent
+      GAME_CHARACTER_REVIEW_SCENE: res://tests/character_core/review.tscn
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Godot and single offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples from Godot imports
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Ten generated worlds, forty contexts, V1/V2 save reliability and production journeys
+        env:
+          GAME101_TEST_ROOT: ${{ runner.temp }}/game101-review
+        run: python tests/opportunities/run-tests.py --output "${{ runner.temp }}/game101-review"
+      - name: Installed pins, complete coverage and twenty-level new-class combinations
+        run: |
+          python -c "import os,sys,subprocess; subprocess.run([sys.executable,'tools/character-content/validate.py'],check=True); subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/character_content/packs.gd'],check=True)"
+      - name: Familiar character matrix and genuine tactical powers through level eight
+        env:
+          GAME118_TEST_ROOT: ${{ runner.temp }}/game118-core
+        run: |
+          python tests/character_core/run-tests.py
+      - name: Durable choices, level-twelve powers and attainable prestige combat
+        run: python tests/character_progression/run-tests.py
+      - name: Frozen GAME-32 oracle and existing-save migration
+        env:
+          GAME32_EVIDENCE: ${{ runner.temp }}/game118-rules
+        run: python tests/rules/run-tests.py
+      - name: Custom builds, illegal choices, combat snapshots and earned legacy advancement
+        env:
+          GAME103_TEST_ROOT: ${{ runner.temp }}/game103-lifecycle
+        run: python tests/character_builder/run-tests.py
+      - name: Atomic fresh creator and interruption-safe default pin
+        env:
+          GAME103_TEST_ROOT: ${{ runner.temp }}/game103-lifecycle
+          GAME118_TEST_ROOT: ${{ runner.temp }}/game118-core
+        run: python tests/character_core/run-tests.py --atomic
+      - name: Existing First Adventure combat and save regression
+        run: python tests/adventure/run-tests.py --godot "${{ env.GODOT_BIN }}" --work-dir "${{ runner.temp }}/game101-adventure"
+      - name: Existing GAME-83 responsive presentation
+        run: python -c "import os,subprocess; subprocess.run([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path','.','--script','tests/ui_system/presentation.gd'],check=True)"
+      - name: Earned prestige, contextual cycles and atomic objective rewards
+        env:
+          GAME121_TEST_ROOT: ${{ runner.temp }}/game121-source
+        run: |
+          python tests/adventure_cycles/pin_guard_test.py
+          python tests/adventure_cycles/run-tests.py --output "${{ runner.temp }}/game121-source"
+      - name: New ancestry, class, high-tier spell, feat and prestige gameplay
+        env:
+          GAME112_TEST_ROOT: ${{ runner.temp }}/game112-source
+        run: python tests/character_catalogue/run-tests.py
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Export native V1/V2 journeys with bundled helper and original artwork
+        env:
+          GAME101_TEST_ROOT: ${{ runner.temp }}/game101-review
+        run: python tests/character_core/verify-package.py
+      - name: Self-contained native earned prestige and restart package
+        env:
+          GAME121_TEST_ROOT: ${{ runner.temp }}/game121-native
+        run: python tests/adventure_cycles/verify-package.py
+      - name: Restore same-head focused native catalogue verification
+        uses: actions/download-artifact@v4
+        with:
+          name: game112-focused-native-${{ runner.os }}
+          path: ${{ runner.temp }}/game112-native
+      - name: Verify focused native proof belongs to this source
+        env:
+          GAME112_NATIVE_PROOF: ${{ runner.temp }}/game112-native/distribution-proof.json
+        run: python -c "import json,os; from pathlib import Path; p=json.loads(Path(os.environ['GAME112_NATIVE_PROOF']).read_text(encoding='utf-8')); assert p['source_commit']==os.environ['GITHUB_SHA']; assert p['production_launch'] and p['separate_process_restart'] and p['empty_path'] and not p['source_helper_override']; assert all(v['failures']==0 for v in p['native'].values())"
+      - name: Companion, summon, body-form and expanded-career source proofs
+        env:
+          GAME112W2_TEST_ROOT: ${{ runner.temp }}/wave-two-source
+        run: python tests/character_entities/run-tests.py
+      - name: Self-contained native companion/form campaign and separate-process reload
+        env:
+          GAME112W2_TEST_ROOT: ${{ runner.temp }}/wave-two-native
+        run: python tests/character_entities/verify-package.py
+      - name: Learned psychic powers, augmentation, creature mastery and saved prestige
+        env:
+          GAME112W3_TEST_ROOT: ${{ runner.temp }}/wave-three-source
+        run: python tests/character_psychic/run-tests.py
+      - name: Self-contained native psychic choices, earned advancement and process restart
+        env:
+          GAME112W3_TEST_ROOT: ${{ runner.temp }}/wave-three-native
+        run: python tests/character_psychic/verify-package.py
+      - name: Wave Three native review build
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-wave-three-review-${{ matrix.os }}
+          path: ${{ runner.temp }}/wave-three-native/distribution/*.*
+          retention-days: 90
+      - name: Wave Three verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-wave-three-new-evidence-${{ matrix.os }}
+          path: |
+            ${{ runner.temp }}/wave-three-source/*.json
+            ${{ runner.temp }}/wave-three-source/*.log
+            ${{ runner.temp }}/wave-three-source/journey/*.json
+            ${{ runner.temp }}/wave-three-native/*.json
+            ${{ runner.temp }}/wave-three-native/*.log
+            ${{ runner.temp }}/wave-three-native/journey/*.json
+      - name: Wave Two native review build
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-wave-three-complete-${{ runner.os }}
+          path: ${{ runner.temp }}/wave-two-native/distribution/*.${{ runner.os == 'Windows' && 'zip*' || 'tar.gz*' }}
+          retention-days: 90
+      - name: Wave Two source and native evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-wave-three-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/wave-two-source/**/*.json
+            ${{ runner.temp }}/wave-two-source/**/*.log
+            ${{ runner.temp }}/wave-two-native/**/*.json
+            ${{ runner.temp }}/wave-two-native/*.log
+          retention-days: 90
+      - name: Catalogue source and native evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game112-source/**/*.json
+            ${{ runner.temp }}/game112-source/**/*.log
+            ${{ runner.temp }}/game112-native/**/*.json
+            ${{ runner.temp }}/game112-native/*.log
+          retention-days: 90
+      - name: Complete native character catalogue game
+        uses: actions/upload-artifact@v4
+        with:
+          name: game112-complete-${{ runner.os }}
+          path: ${{ runner.temp }}/game112-native/distribution/*.${{ runner.os == 'Windows' && 'zip*' || 'tar.gz*' }}
+          retention-days: 90
+      - name: Earned progression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game121-earned-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game121-source/**/*.json
+            ${{ runner.temp }}/game121-source/**/*.log
+            ${{ runner.temp }}/game121-native/**/*.json
+            ${{ runner.temp }}/game121-native/*.log
+          retention-days: 90
+      - name: Complete sustainable adventure game
+        uses: actions/upload-artifact@v4
+        with:
+          name: game121-complete-${{ runner.os }}
+          path: ${{ runner.temp }}/game121-native/distribution/*.${{ runner.os == 'Windows' && 'zip*' || 'tar.gz*' }}
+          retention-days: 90
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game121-parent-evidence-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game101-review/*.json
+            ${{ runner.temp }}/game101-review/*.log
+            ${{ runner.temp }}/game101-review/corpus/*.json
+            ${{ runner.temp }}/game101-review/lifecycle/*.json
+            ${{ runner.temp }}/game101-review/v1-lifecycle/*.json
+            ${{ runner.temp }}/game101-adventure/*.json
+            ${{ runner.temp }}/game101-adventure/*.log
+            ${{ runner.temp }}/game118-rules/*.json
+            ${{ runner.temp }}/game118-rules/*.log
+            ${{ runner.temp }}/game103-lifecycle/*.json
+            ${{ runner.temp }}/game103-lifecycle/*.log
+            ${{ runner.temp }}/game118-core/*.json
+            ${{ runner.temp }}/game118-core/*.log
+            ${{ github.workspace }}/game119-evidence/*.json
+            ${{ github.workspace }}/game119-evidence/*.log
+          retention-days: 90
+      - name: Windows/Linux complete playable distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: game121-parent-complete-${{ runner.os }}
+          path: |
+            ${{ runner.temp }}/game101-review/distribution/*.zip
+            ${{ runner.temp }}/game101-review/distribution/*.tar.gz
+            ${{ runner.temp }}/game101-review/distribution/*.sha256
+          retention-days: 90
