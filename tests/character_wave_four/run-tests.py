@@ -7,6 +7,9 @@ from checked_process import checked_process
 root=Path(__file__).resolve().parents[2]
 base=Path(os.environ['GAME112W4_TEST_ROOT']).resolve();base.mkdir(parents=True,exist_ok=True)
 rows=[]
+imported=checked_process([os.environ.get("GODOT_BIN","godot"),"--headless","--editor","--audio-driver","Dummy","--path",str(root),"--quit"],cwd=root,env=os.environ.copy(),log=base/"import.log",timeout=300)
+rows.append(dict(test="import",**imported))
+if imported["exit_code"] or imported["errors"] or imported["timeout"]:raise RuntimeError((base/"import.log").read_text()[-9000:])
 for label,script,restart in [('mechanics','mechanics',False),('mechanics-restart','mechanics',True),('journey','journey',False),('journey-restart','journey',True)]:
  log=base/(label+'.log')
  result=checked_process([os.environ.get('GODOT_BIN','godot'),'--headless','--audio-driver','Dummy','--path',str(root),'--script',f'tests/character_wave_four/launch.gd'],cwd=root,env=dict(os.environ,GAME112W4_RESTART='1'if restart else'0',GAME112W4_PHASE=script,GAME112W3_TEST_ROOT=str(base),GAME112W3_RESTART='1'if restart else'0'),log=log,timeout=2700)
