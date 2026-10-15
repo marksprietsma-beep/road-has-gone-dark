@@ -112954,7 +112954,7 @@
         "revision": "game112-wave-four"
       },
       "name": "Bugbear",
-      "description": "Original bounded inheritance: {'DEX': 2, 'STR': 2, 'CHA': -2}; [{'stat': 'initiative', 'type': 'training', 'value': {'op': 'const', 'value': 2}}]. No environmental sight, flight or aquatic mechanics claimed. Neutral humanoid LPC fallback.",
+      "description": "A strong, quick humanoid. Strength +2, Dexterity +2, Charisma −2; initiative +2. Medium size.",
       "attribute_adjustments": {
         "DEX": 2,
         "STR": 2,
@@ -113007,7 +113007,7 @@
         "revision": "game112-wave-four"
       },
       "name": "Ogre",
-      "description": "Original bounded inheritance: {'STR': 4, 'INT': -2, 'CHA': -2}; [{'stat': 'fortitude', 'type': 'training', 'value': {'op': 'const', 'value': 1}}, {'stat': 'reach', 'type': 'training', 'value': {'op': 'const', 'value': 1}}]. No environmental sight, flight or aquatic mechanics claimed. Neutral humanoid LPC fallback.",
+      "description": "A large, powerful humanoid. Strength +4, Intelligence −2, Charisma −2; Fortitude +1 and melee reach +1. Occupies one tactical tile.",
       "attribute_adjustments": {
         "STR": 4,
         "INT": -2,
@@ -113056,7 +113056,7 @@
         "revision": "game112-wave-four"
       },
       "name": "Half-giant",
-      "description": "Original bounded inheritance: {'STR': 2, 'DEX': -2}; [{'stat': 'defence', 'type': 'training', 'value': {'op': 'const', 'value': 1}}]. No environmental sight, flight or aquatic mechanics claimed. Neutral humanoid LPC fallback.",
+      "description": "A massive humanoid with psychic inheritance. Strength +2, Dexterity −2; defence +1 and fire resistance2. Inherited stomp costs one of two points per home rest and leaves one adjacent enemy off balance.",
       "attribute_adjustments": {
         "STR": 2,
         "DEX": -2
@@ -113108,7 +113108,7 @@
         "revision": "game112-wave-four"
       },
       "name": "Troglodyte",
-      "description": "Original bounded inheritance: {'STR': 2, 'CON': 2, 'INT': -2}; [{'stat': 'defence', 'type': 'training', 'value': {'op': 'const', 'value': 2}}]. No environmental sight, flight or aquatic mechanics claimed. Neutral humanoid LPC fallback.",
+      "description": "A resilient reptilian humanoid. Strength +2, Constitution +2, Intelligence −2; natural defence +2. An inherited bite makes an ordinary melee attack for1d8 physical damage.",
       "attribute_adjustments": {
         "STR": 2,
         "CON": 2,
