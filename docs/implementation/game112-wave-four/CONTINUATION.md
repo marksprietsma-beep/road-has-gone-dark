@@ -1,3 +1,13 @@
+# Wave Four integration repaired — continue Wave Five
+
+PR99mergeddc7243b; test-only PR100mergedc1d5973a88fd6ff3f9584465e10a68ea16f571f6 after all7headchecks passed. Native Windows/Linux repair38735236420 passed on a495fe14beb50f40742eeb03acaa1403817f0c03; merged tree identical. All runtime/gameplay/content bytes equal the previously verified main. See DELIVERY.md for exact artifacts, SHA256, original full-suite conclusions and the automatic post-repair runs still pending. Do not claim pending repeats passed; monitor/fix any real failure before a further merge. Do not recreate either merged PR.
+
+Continue on feature/game-112-character-catalogue-wave-five from verifiedc1d5973. User authorises v15 implementation, native verification, publication and normal merge after checks. The prepared proposal under /workspace/artifacts/wave-five/proposal is unverified until actually applied, compiled and tested. Preserve historicalv1–v14 and frozenTacticalCombat bytes. Keep82OPEN; observed closure aftermerge was corrected. No Linear access required. Full760occurrences/720rows remain,79 currently native-mapped/681 unresolved. Candidate WaveFive numbers are not released counts.
+
+---
+
+## Superseded recovery checkpoints (audit trail)
+
 # Wave Four merged — native journey integration repair in progress
 
 PR99 is MERGED atdc7243bb34ab82791abeab52dbae9242b6676f81. Final feature source5509b7b89c8250cef02826b40066919e06d7023e and full Windows/Linux workflow38690794560 passed. Correct Windows artifact11952778574 has playable ZIP SHA256a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c. Independent CRC, both PE binaries, exact content bytes and sidecar checksum passed. See DELIVERY.md and evidence/final-source-native.json.
