@@ -3,6 +3,10 @@ extends RefCounted
 ## v14 adapters only. Ordinary effects, history, action costs and saves remain authoritative.
 static func enabled(source: RulesRegistry) -> bool:
  return source.rules_ref().get("pack_id")=="trhgd-character-v14"
+static func starting_equipment_allowed(item: Dictionary,source: RulesRegistry) -> bool:
+ # Natural attacks come from anatomy, forms or creatures, never a new hero's loadout.
+ # Existing saved records are not reclassified by this creation-only predicate.
+ return not enabled(source) or not item.get("tags",[]).has("natural")
 static func distinct_limit(context: Dictionary,source: RulesRegistry) -> int:
  var limit := 1000
  for cls in context.classes:

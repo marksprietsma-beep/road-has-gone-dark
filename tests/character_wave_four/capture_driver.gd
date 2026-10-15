@@ -14,7 +14,12 @@ func run() -> void:
  var ui := await open_screen("res://scenes/ui/party_creation.tscn")
  if ui==null:finish();return
  check(ui.editor.source.rules_ref().pack_id=="trhgd-character-v14","creator exact v14 default")
+ check(not ui.editor.equipment_pickers.has("frost-fangs")and not ui.editor.equipment_pickers.has("bulwark-slam"),"actual starting equipment UI excludes creature attacks")
  await screenshot("v14-first-open",false)
+ ui.detail_tabs.current_tab=1
+ for index in ui.editor.sections.get_tab_count():
+  if ui.editor.sections.get_tab_title(index)=="Equipment":ui.editor.sections.current_tab=index
+ await screenshot("v14-starting-equipment",false)
  for cls in ["erudite","divine-mind","marshal","beguiler","dragonfire-adept"]:
   ui.editor.set_class(cls);ui._identity_changed();ui.detail_tabs.current_tab=1
   check(ui.editor.preview.ok,"new creator legal default "+cls+JSON.stringify(ui.editor.preview.get("errors",[])))

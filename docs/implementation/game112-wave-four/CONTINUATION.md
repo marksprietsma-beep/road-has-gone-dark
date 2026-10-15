@@ -1,4 +1,10 @@
-# Exact continuation
+# Latest recovery checkpoint — starting equipment
+
+The final audit found and reproduced NPC natural attacks selectable as new Human starting equipment. The same existing branch/PR99 now contains a minimal v14 creation-only filter and authoritative starting-payload rejection. Actual innate/creature attacks, saved record replay, content hash/counts and all historicalv1–v13 mechanics remain unchanged. Focused46/0, expanded cohort452/0, append-only guard9/0, source validation14packs/79mapped rows passed.
+
+The previous automatic publication and post-merge monitor processes were deliberately stopped before editing. Do not restart them with their old24360e7/1115aa7 head expectations. Inspect actual latest branch/source and PR99, then the replacement Wave Four CI run. Preserve the earlier native packages/evidence. The old1115aa7 build does not contain the gear correction and must not be called the final replacement build. Capture the new real equipment UI, verify Windows/Linux and exact old/current saves, update the delivery source/artifact/checksum, then normal-merge after all current checks. Keep82 OPEN. No replacement branch/pack or new world features.
+
+# Prior checkpoint (superseded for native publication)
 
 Preserve branch feature/game-112-character-catalogue-wave-four and PR99. Gameplay/content source1115aa7722b93a955256ad3b157f2ab201648dad, v14 hash3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559. All source code is pushed. Later delivery commits affect documentation/coverage/screenshots only. Do not recreate implementation or a pack/branch.
 

@@ -51,6 +51,8 @@ static func create(id: String,draft: Dictionary,context: Dictionary = {}) -> Dic
  if draft.size()!=((11 if career else 9) if core else 8) or not draft.has_all(["attributes","ancestry_ref","background_ref","class_id","skill_allocations","feat_id","equipment","prepared_abilities"]) or not draft.attributes is Dictionary or not draft.skill_allocations is Dictionary or not draft.equipment is Array or not draft.prepared_abilities is Array: return {"ok":false,"error":"Exactly eight typed starting-build fields required"}
  for key in ["ancestry_ref","background_ref","class_id","feat_id"]:
   if not draft[key] is String:return {"ok":false,"error":"Build references must be content IDs"}
+ for item in draft.equipment:
+  if item is String and not RulesWaveFour.starting_equipment_allowed(RulesRecords.registry(context).definition("equipment",item),RulesRecords.registry(context)):return {"ok":false,"error":"Natural attacks are provided by anatomy, forms or creatures; choose normal starting equipment"}
  var base := kernel(context).create(id,draft.attributes,draft.ancestry_ref,draft.background_ref)
  base.equipment=draft.equipment.duplicate()
  var choice := {"class_id":draft.class_id,"skill_allocations":draft.skill_allocations,"feat_id":draft.feat_id,"attribute_increase":""}

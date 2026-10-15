@@ -1,10 +1,16 @@
-# Wave Four native delivery receipt
+# Wave Four delivery — replacement native build pending
 
-Implementation source: `1115aa7722b93a955256ad3b157f2ab201648dad` on `feature/game-112-character-catalogue-wave-four`. Existing PR: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/99 . The PR records readiness, final merge status and main SHA; publication requires successful compatibility checks. Programme #82 remains open.
+Earlier native implementation source: `1115aa7722b93a955256ad3b157f2ab201648dad` on `feature/game-112-character-catalogue-wave-four`. Existing PR: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/99 . The PR records readiness, final merge status and main SHA; publication requires successful compatibility checks. Programme #82 remains open.
 
 Final candidate: `trhgd-character-v14`, schema14.0.0, engine3, content hash `3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559`.
 
-## Windows download
+## Starting-gear correction
+
+A final audit reproduced a Human Wizard selecting a creature-only natural attack as starting equipment. The correction shares one tag-based v14 creation predicate between the existing Build editor and authoritative creation payload validation. It does not change combat, saved-record replay, historicalv1–v13 creation policy, innate attacks or creature weapons. Focused46/0 and cohort452/0 checks passed. The content hash/counts are unchanged.
+
+A replacement source/native Windows/Linux run is required for this code correction. The prior package below remains preserved as an interim review build; it must not be described as containing the starting-gear fix. The PR records the replacement source/run/artifact as soon as verified.
+
+## Earlier Windows download
 
 https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38684785820/artifacts/11950207480
 
@@ -26,7 +32,7 @@ Both native platforms passed1847 mechanics,407 additional cohort,73 main cold-re
 
 Actual Godot capture validation passed59 creator checks/45 renders and63 campaign/advanced checks/39 renders at640×360,1280×720 and2560×1440. Eighteen selected screenshots and their SHA-256 manifest are committed. Earned War Chanter screenshots use real360XP; Archmage/Metamind/Cognition screenshots are explicitly labelled development fixtures. [TESTING.md](TESTING.md) distinguishes these sources and test outcomes.
 
-Documentation, coverage and screenshots added after1115aa7 do not alter executable source, content or workflow logic. Verify this with `git diff 1115aa7..HEAD -- scripts tests tools data scenes themes project.godot export_presets.cfg .github`. Later delivery receipts and the post-merge main package, when available, are recorded in PR99 and programme issue82 without changing tested gameplay merely to update a SHA.
+Documentation commit24360e7 alone changed no executable bytes. The subsequent starting-gear correction changes only new-creator filtering/validation and its tests, so it requires a fresh export. Later delivery receipts and the post-merge main package, when available, are recorded in PR99 and programme issue82 without changing tested gameplay merely to update a SHA.
 
 ## Scope and limitations
 

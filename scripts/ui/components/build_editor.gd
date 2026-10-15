@@ -119,6 +119,7 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   gear_section.add_child(GameUI.label("Choose one active weapon and compatible armour. Class proficiencies are enforced." if source.rules_ref().engine_schema==3 else "Bow, then staff, then blade determine your active legacy weapon.",GameUI.META))
   gear_section.add_child(GameUI.action("Suggested class equipment and spells",func():class_loadout();refresh_preview()))
   for id in source.ids("equipment"):
+   if not RulesWaveFour.starting_equipment_allowed(source.definition("equipment",id),source):continue
    var control := CheckBox.new();control.text=source.definition("equipment",id).name+ (" · "+str(source.definition("equipment",id).get("proficiency","")) if source.rules_ref().engine_schema==3 else "");equipment_pickers[id]=control
    control.button_pressed=base.equipment.has(id);gear_section.add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
   spell_section=form_section("Spells")

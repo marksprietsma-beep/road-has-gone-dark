@@ -20,7 +20,7 @@ func run() -> void:
  var previous: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(OS.get_environment("GAME112W4_TEST_ROOT").path_join("saved.json")))
  fixtures=previous.records
  check(fixtures.has("beguiler") and fixtures.has("dragonfire-adept"),"new classes completed existing1–20 matrix")
- test_choice_keys();test_beguiler();test_dragon();test_paths();test_inheritances();test_additional_creatures();test_additional_feats();test_new_powers()
+ test_choice_keys();test_beguiler();test_dragon();test_paths();test_inheritances();test_additional_creatures();test_additional_feats();test_new_powers();test_starting_equipment()
  var hashes := {}
  var records := {}
  for id in ["beguiler","dragonfire-adept","war-chanter","archmage","metamind"]:
@@ -273,3 +273,30 @@ func test_new_powers() -> void:
    if cast.ok:
     check(effect_state(cast.target)!=effect_state(recipient),"actual psychic HP/status effect "+id)
     check(int(record.runtime.resources["psychic-points"])-int(cast.actor.runtime.resources["psychic-points"])==int(source.definition("abilities",id).cost.resources["psychic-points"]),"exact augmentation cost "+id)
+
+func test_starting_equipment() -> void:
+ var record := build("wizard",1)
+ record.equipment=["staff"]
+ var definition := CharacterBuilderRecords.definition(record)
+ check(CharacterBuilderRecords.create(record.character_id,definition,record).ok,"normal starting gear remains legal")
+ for id in source.ids("equipment"):
+  var item := source.definition("equipment",id)
+  if not item.tags.has("natural"):continue
+  var forged: Dictionary=definition.duplicate(true);forged.equipment=[id]
+  check(not CharacterBuilderRecords.create(record.character_id,forged,record).ok,"forged creature-only starting weapon rejected "+id)
+  var saved: Dictionary=record.duplicate(true);saved.equipment=[id]
+  check(kernel.validate_build(saved).ok,"existing candidate saved gear remains replay-compatible "+id)
+  check(not RulesWaveFour.starting_equipment_allowed(item,source),"creator excludes natural gear "+id)
+ var legacy := RulesRegistry.new();check(legacy.load_pack("res://data/rules/trhgd-character-v13.json").ok,"legacy gear pin")
+ check(RulesWaveFour.starting_equipment_allowed(legacy.definition("equipment","nature-bite"),legacy),"historical creation policy unchanged")
+ var legacy_kernel := RulesCharacter.new(legacy)
+ var old := legacy_kernel.create("legacy-gear",record.base_attributes,"heritage-human")
+ var old_step := legacy_kernel.preview_advancement(old,legacy_kernel.suggested_choice(old,"wizard","steady-study").choice)
+ check(old_step.ok,"historical initial build")
+ if old_step.ok:
+  old=old_step.candidate;old.equipment=["nature-bite"]
+  check(CharacterBuilderRecords.create(old.character_id,CharacterBuilderRecords.definition(old),old).ok,"historical creation acceptance preserved")
+ var trog := build("fighter",1,"heritage-troglodyte")
+ check(kernel.derive_character(trog).snapshot.abilities.has("troglodyte-natural-bite")and source.definition("abilities","troglodyte-natural-bite").attack_weapon=="boar-tusks","inherited natural attack remains available without equipping it")
+ for id in ["frost-hound","bulwark-construct"]:
+  check(kernel.validate_build(RulesEntities.creature_record("natural-test:summon:"+id,id,8,source)).ok,"actual creature retains its natural attack "+id)
