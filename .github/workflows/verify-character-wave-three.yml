@@ -1,7 +1,7 @@
 name: GAME-112 Character Catalogue Wave Three
 concurrency:
   group: game112-wave-three-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 permissions:
   contents: read
 on:
@@ -132,7 +132,9 @@ jobs:
           name: game112-focused-native-${{ runner.os }}
           path: ${{ runner.temp }}/game112-native
       - name: Verify focused native proof belongs to this source
-        run: python -c "import json,os; from pathlib import Path; p=json.loads(Path('${{ runner.temp }}/game112-native/distribution-proof.json').read_text(encoding='utf-8')); assert p['source_commit']==os.environ['GITHUB_SHA']; assert p['production_launch'] and p['separate_process_restart'] and p['empty_path'] and not p['source_helper_override']; assert all(v['failures']==0 for v in p['native'].values())"
+        env:
+          GAME112_NATIVE_PROOF: ${{ runner.temp }}/game112-native/distribution-proof.json
+        run: python -c "import json,os; from pathlib import Path; p=json.loads(Path(os.environ['GAME112_NATIVE_PROOF']).read_text(encoding='utf-8')); assert p['source_commit']==os.environ['GITHUB_SHA']; assert p['production_launch'] and p['separate_process_restart'] and p['empty_path'] and not p['source_helper_override']; assert all(v['failures']==0 for v in p['native'].values())"
       - name: Companion, summon, body-form and expanded-career source proofs
         env:
           GAME112W2_TEST_ROOT: ${{ runner.temp }}/wave-two-source
