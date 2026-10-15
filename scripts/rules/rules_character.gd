@@ -9,6 +9,7 @@ func create(identity: String, attributes: Dictionary, ancestry: String, backgrou
  var record := {"schema_version":1,"character_id":identity,"rules_ref":registry.rules_ref(),"base_attributes":attributes.duplicate(true),"ancestry_ref":ancestry,"background_ref":background,"advancement_history":[],"equipment":[],"choices":{"prepared_abilities":[]},"runtime":{"hp":0,"temporary_hp":0,"resources":{},"statuses":[],"modifiers":[],"granted_features":[],"senses":[],"apparent_effects":[]},"revision":0}
 
  if registry.rules_ref().get("engine_schema")==3:record.choices.spell_preparations={}
+ if RulesWaveFour.enabled(registry):record.runtime.manifested_powers=[]
  if RulesEntities.enabled(registry):
   record.runtime.companions={}
   record.runtime.resources=_context(attributes,{}, {},[],record,false).capacities.duplicate()
@@ -43,7 +44,7 @@ func _shape(record: Dictionary) -> Array:
  if not record.get("runtime") is Dictionary: errors.append(RulesJson.issue("build.runtime","runtime","Mutable mechanical record required"))
  else:
   var runtime: Dictionary=record.runtime
-  if runtime.size()!=(9 if RulesEntities.enabled(registry) else 8): errors.append(RulesJson.issue("build.runtime","runtime","Unexpected runtime fields"))
+  if runtime.size()!=(10 if RulesWaveFour.enabled(registry) else 9 if RulesEntities.enabled(registry) else 8): errors.append(RulesJson.issue("build.runtime","runtime","Unexpected runtime fields"))
   for key in ["hp","temporary_hp"]:
    if not RulesJson.integer(runtime.get(key),0,100000): errors.append(RulesJson.issue("build.runtime",key,"Bounded nonnegative current HP required"))
   if not runtime.get("resources") is Dictionary: errors.append(RulesJson.issue("build.runtime","resources","Resource values required"))
@@ -303,6 +304,7 @@ func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
    var descriptor: Dictionary=appearance.duplicate(true);descriptor.erase("apparent_id");descriptor.erase("source_character_id")
    descriptor.dc={"op":"const","value":int(descriptor.dc)}
    RulesRegistry.validate_effect({"op":"apparent_effect","descriptor":descriptor},registry._tables,"runtime.apparent_effects",errors)
+ if RulesWaveFour.enabled(registry):errors.append_array(RulesWaveFour.validate_runtime(record,context,registry))
  return errors
 
 func derive_character(record: Dictionary) -> Dictionary:
@@ -347,6 +349,9 @@ func derive_character(record: Dictionary) -> Dictionary:
   snapshot.companions=record.runtime.companions.duplicate(true)
  if RulesPsychic.enabled(registry):
   snapshot.manifesting_level=c.manifesting_level;snapshot.known_powers=c.known_powers.duplicate()
+ if RulesWaveFour.enabled(registry):
+  snapshot.manifested_powers=record.runtime.manifested_powers.duplicate()
+  snapshot.distinct_power_limit=RulesWaveFour.distinct_limit(c,registry)
  # v13 appends typed psychic/creature fields after the legacy snapshot boundary.
  # Canonicalise those keys before hashing; mixed String/StringName sorting can
  # otherwise depend on which historical scripts were loaded earlier in a process.
@@ -357,6 +362,7 @@ func derive_character(record: Dictionary) -> Dictionary:
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
 func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
+ if RulesWaveFour.enabled(registry):choice=RulesJson.string_keys(choice)
  var old := validate_build(record)
  if not old.ok: return old
  var candidate: Dictionary=record.duplicate(true)

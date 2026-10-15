@@ -40,7 +40,7 @@ static func validate(state: Dictionary,world: GameWorldTemplate) -> String:
   if not ids.has(id) or not s.knowledge[id] in ["rumoured","discovered","visited","resolved"]:return "sandbox.knowledge: Unknown site/state"
  for id in s.encounters:
   if not ids.has(id) or not s.encounters[id] is Dictionary:return "sandbox.encounter: Unknown encounter"
-  var b: Dictionary=s.encounters[id];var why := TacticalCombat.new().validate(b)
+  var b: Dictionary=s.encounters[id];var why := TacticalAuras.new().validate(b)
   if not why.is_empty() or b.site_id!=id or b.board!=site(s,id).board:return "sandbox.encounter: "+why
   var members: Array=b.units.values().filter(func(u: Dictionary):return u.team=="party" and not u.has("entity")).map(func(u: Dictionary):return u.id)
   if members.size()!=3 or not state.party_ids.all(func(p: String):return members.has(p)):return "sandbox.encounter: Party identities changed"

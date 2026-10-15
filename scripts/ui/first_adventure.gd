@@ -1,6 +1,6 @@
 extends Control
 var service := AdventureService.new()
-var engine := TacticalCombat.new()
+var engine := TacticalAuras.new()
 var entry := {}
 var slot := ""
 var state := {}
@@ -154,6 +154,8 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
  if not powers.has(selected_power):selected_power=powers[0];selected_augmentation=0
  var snapshot: Dictionary=engine.characters.derive_character(actor.record).snapshot
  actions.add_child(GameUI.label("Psychic powers · %d/%d points · manifesting level %d"%[int(actor.record.runtime.resources.get("psychic-points",0)),int(snapshot.resource_capacities.get("psychic-points",0)),int(snapshot.manifesting_level)],GameUI.META))
+ if snapshot.has("distinct_power_limit") and int(snapshot.distinct_power_limit)<1000:
+  actions.add_child(GameUI.label("Distinct powers this rest · %d/%d"%[snapshot.manifested_powers.size(),int(snapshot.distinct_power_limit)],GameUI.META))
  var picker := OptionButton.new();picker.name="PsychicPowerSelector";GameUI.bound_choice_popup(picker);actions.add_child(picker)
  for id in powers:
   picker.add_item(source.definition("psychic_powers",id).name);picker.set_item_metadata(picker.item_count-1,id)

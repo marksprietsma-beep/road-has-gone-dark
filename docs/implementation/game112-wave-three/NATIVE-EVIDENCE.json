@@ -1,0 +1,221 @@
+{
+  "windows_zip": "/workspace/artifacts/wave-three/github-delivery/windows/game112-character-catalogue-wave-three-windows-x64.zip",
+  "windows": {
+    "archive": "game112-character-catalogue-wave-three-windows-x64.zip",
+    "sha256": "3858150ba17360147cee91808fd1aa5c703c9ae9460a68b12b8793fd37fae18e",
+    "proofs": {
+      "mechanics": {
+        "checks": 1792,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 6,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "actions_used": [
+          "lurk-veil",
+          "power-kinetic-bolt"
+        ],
+        "checks": 165,
+        "development_saves": [
+          {
+            "save_root": "D:\\a\\_temp\\wave-three-native/journey/development-psion-offence",
+            "snapshots": {
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:1": "69afe9aad0ff9d08fae1abacf3ccf681d2a49a3c201477ce454fcd634b468ac9",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:2": "bdb2be61aaa60ebdd641cbed5d762a4bd63e3bf811ac3efbb858f53f1294a7bc",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:3": "185e3756b54c3492a5c052aa0ae720904d8cb5153c5628f538b2da593b0978ca"
+            }
+          },
+          {
+            "save_root": "D:\\a\\_temp\\wave-three-native/journey/development-psion-control",
+            "snapshots": {
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:1": "080c90fda2a56e37db51e544bca72e8cc24b53d4a1f232e0795eab37e2d2d7ea",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:2": "bdb2be61aaa60ebdd641cbed5d762a4bd63e3bf811ac3efbb858f53f1294a7bc",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:3": "185e3756b54c3492a5c052aa0ae720904d8cb5153c5628f538b2da593b0978ca"
+            }
+          },
+          {
+            "save_root": "D:\\a\\_temp\\wave-three-native/journey/development-ardent",
+            "snapshots": {
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:1": "9526f6285afcc09cd5d57ee4e4c5a2dafcc7d32d50606a15cdc4d3f2d0618b80",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:2": "bdb2be61aaa60ebdd641cbed5d762a4bd63e3bf811ac3efbb858f53f1294a7bc",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:3": "185e3756b54c3492a5c052aa0ae720904d8cb5153c5628f538b2da593b0978ca"
+            }
+          },
+          {
+            "save_root": "D:\\a\\_temp\\wave-three-native/journey/development-lurk",
+            "snapshots": {
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:1": "c559b53dd662b6d9a14f6926b922c700137503921fdf78deff71dda526a449f5",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:2": "bdb2be61aaa60ebdd641cbed5d762a4bd63e3bf811ac3efbb858f53f1294a7bc",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:3": "185e3756b54c3492a5c052aa0ae720904d8cb5153c5628f538b2da593b0978ca"
+            }
+          },
+          {
+            "save_root": "D:\\a\\_temp\\wave-three-native/journey/development-druid",
+            "snapshots": {
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:1": "276e7e2b85f720d214873928f54f2434f6d503b8b66c8c3fd297f7f8591881f2",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:2": "bdb2be61aaa60ebdd641cbed5d762a4bd63e3bf811ac3efbb858f53f1294a7bc",
+              "ec6a1dde194aa3ba19fcdf7b79514ed2:adventurer:3": "185e3756b54c3492a5c052aa0ae720904d8cb5153c5628f538b2da593b0978ca"
+            }
+          }
+        ],
+        "earned_xp": 30,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        },
+        "screenshots": [],
+        "slot": "ec6a1dde194aa3ba19fcdf7b79514ed2",
+        "state_sha": "8a8797f67656e69af1a5cb46776b2f39736b87a35c5e9935b8293d1a290890ab"
+      }
+    },
+    "source_commit": "5d6576102057c936f1c14fce868c70052958eb57",
+    "source_helper_override": false,
+    "empty_path": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 169.11,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 3.422,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      }
+    ]
+  },
+  "linux": {
+    "archive": "game112-character-catalogue-wave-three-linux-x64.tar.gz",
+    "sha256": "cb2e21b103860da80f4f8a488a1df8c150ca2e9ad1f6a57b858292c7dcf5377f",
+    "proofs": {
+      "mechanics": {
+        "checks": 1792,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 6,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "actions_used": [
+          "lurk-veil",
+          "power-kinetic-bolt"
+        ],
+        "checks": 178,
+        "development_saves": [
+          {
+            "save_root": "/home/runner/work/_temp/wave-three-native/journey/development-psion-offence",
+            "snapshots": {
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:1": "f16f70bae5e4f76d726984454d43f4ee5ba283844cd799f55021e797c5dc71f9",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:2": "41a95c2d553b6e13c5aef3d1663e113db1e6f253cef401db831e634cd7b2fcef",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:3": "04ed3fa25b24668a0bf1650f458f9ff684488f29f49c9202bcd641a5b07685b6"
+            }
+          },
+          {
+            "save_root": "/home/runner/work/_temp/wave-three-native/journey/development-psion-control",
+            "snapshots": {
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:1": "c8bf8090561340d7fc4298a2184395f11c794b62dbc64a67cd412c9bd742bccc",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:2": "41a95c2d553b6e13c5aef3d1663e113db1e6f253cef401db831e634cd7b2fcef",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:3": "04ed3fa25b24668a0bf1650f458f9ff684488f29f49c9202bcd641a5b07685b6"
+            }
+          },
+          {
+            "save_root": "/home/runner/work/_temp/wave-three-native/journey/development-ardent",
+            "snapshots": {
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:1": "8209c50f13b0eb5d54b08da896543691b9bf32418010be9f3be13c2d6e931c06",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:2": "41a95c2d553b6e13c5aef3d1663e113db1e6f253cef401db831e634cd7b2fcef",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:3": "04ed3fa25b24668a0bf1650f458f9ff684488f29f49c9202bcd641a5b07685b6"
+            }
+          },
+          {
+            "save_root": "/home/runner/work/_temp/wave-three-native/journey/development-lurk",
+            "snapshots": {
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:1": "b2bae3fee500fca23acb5339cc1a70027455807ec4e0eb96ae27fdc8bf152e99",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:2": "41a95c2d553b6e13c5aef3d1663e113db1e6f253cef401db831e634cd7b2fcef",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:3": "04ed3fa25b24668a0bf1650f458f9ff684488f29f49c9202bcd641a5b07685b6"
+            }
+          },
+          {
+            "save_root": "/home/runner/work/_temp/wave-three-native/journey/development-druid",
+            "snapshots": {
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:1": "6f6bb58fb052983da6e85917afbe0d3677921886dad1122ebfa990480f7db6de",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:2": "41a95c2d553b6e13c5aef3d1663e113db1e6f253cef401db831e634cd7b2fcef",
+              "a66ce8acfe9dd05add4c8638e4d86bec:adventurer:3": "04ed3fa25b24668a0bf1650f458f9ff684488f29f49c9202bcd641a5b07685b6"
+            }
+          }
+        ],
+        "earned_xp": 30,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v13",
+          "rules_version": "13.0.0",
+          "schema_version": 1
+        },
+        "screenshots": [],
+        "slot": "a66ce8acfe9dd05add4c8638e4d86bec",
+        "state_sha": "ccb5be9ddf0109c22357f70925be8b8e3a66d287b4b574e2aed4bce3628ea5ad"
+      }
+    },
+    "source_commit": "5d6576102057c936f1c14fce868c70052958eb57",
+    "source_helper_override": false,
+    "empty_path": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 224.046,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 3.805,
+        "exit_code": 0,
+        "errors": false,
+        "timeout": false
+      }
+    ]
+  },
+  "artifact_source": "5d6576102057c936f1c14fce868c70052958eb57",
+  "later_documentation_only": []
+}

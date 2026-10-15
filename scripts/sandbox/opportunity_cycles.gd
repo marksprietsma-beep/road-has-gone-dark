@@ -106,7 +106,7 @@ static func choices(state: Dictionary,site: Dictionary) -> Array:
    options.append(choice)
  return options
 static func initial_battle(state: Dictionary,site: Dictionary) -> Dictionary:
- var engine := TacticalCombat.new(state);var battle := engine.create_generated(state,site.id,site.board)
+ var engine := TacticalAuras.new(state);var battle := engine.create_generated(state,site.id,site.board)
  if battle.is_empty():return {}
  var level: int=int(state.adventure_cycles.cycles.back().context.threat_level)
  for enemy in site.board.enemies:

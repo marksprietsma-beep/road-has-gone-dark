@@ -39,6 +39,9 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not actor.choices.prepared_abilities.has(ability_id):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
+ if RulesWaveFour.enabled(registry):
+  var access := RulesWaveFour.power_access(actor,ability,a.context,registry)
+  if not access.ok:return access
  var cost := validate_ability_cost(ability_id,actor.runtime,budget)
  if not cost.ok: return cost
  if ability.has("trigger") and event_context.get("trigger")!=ability.trigger: return RulesJson.result([RulesJson.issue("ability.trigger",ability_id,"Required explicit trigger context is absent")])
@@ -46,6 +49,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if actor.character_id==target.character_id and actor!=target: return RulesJson.result([RulesJson.issue("ability.identity",ability_id,"Two different records share the same ID")])
  var new_actor: Dictionary=actor.duplicate(true)
  var new_target: Dictionary=new_actor if actor.character_id==target.character_id else target.duplicate(true)
+ if RulesWaveFour.enabled(registry) and ability.has("psychic_power") and not new_actor.runtime.manifested_powers.has(ability.psychic_power):new_actor.runtime.manifested_powers.append(ability.psychic_power)
  var new_budget := budget.duplicate(true)
  var events: Array=[]
  for token in ["move","main","reaction"]: new_budget[token]=int(new_budget[token])-int(ability.cost[token])
@@ -236,6 +240,7 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
 func refresh_resources(runtime: Dictionary,capacities: Dictionary,scope: String) -> Dictionary:
  if not scope in ["encounter","eligible_rest","short_rest","daily","explicit"]: return RulesJson.result([RulesJson.issue("resource.scope",scope,"Unknown refresh scope")])
  var candidate:=runtime.duplicate(true);var events: Array=[]
+ if RulesWaveFour.enabled(registry) and scope=="eligible_rest":candidate.manifested_powers=[]
  for id in candidate.get("resources",{}):
   var definition := registry.definition("resources",str(id))
   if definition.is_empty() or not RulesJson.integer(capacities.get(id),0,100000) or not RulesJson.integer(candidate.resources[id],0,int(capacities.get(id,0))): return RulesJson.result([RulesJson.issue("resource.capacity",str(id),"Unknown or invalid resource capacity/current value")])

@@ -1,0 +1,2804 @@
+{
+  "13": {
+    "pack": "trhgd-character-v13",
+    "base_classes": 25,
+    "prestige_classes": 12,
+    "ancestry_families": 25,
+    "heritages": 34,
+    "feats": 50,
+    "skills": 14,
+    "unique_spells": 87,
+    "spell_references": 125,
+    "psychic_powers": 21,
+    "other_named_abilities": 312,
+    "other_ability_records": 328,
+    "creatures": 8,
+    "body_forms": 11,
+    "career_choice_groups": 133,
+    "spell_identities": {
+      "arcane bolt": [
+        "bard-arcane-bolt",
+        "sorcerer-arcane-bolt",
+        "wizard-arcane-bolt"
+      ],
+      "mage armour": [
+        "bard-mage-armour",
+        "sorcerer-mage-armour",
+        "wizard-mage-armour"
+      ],
+      "enfeebling ray": [
+        "bard-enfeeble",
+        "sorcerer-enfeeble",
+        "wizard-enfeeble"
+      ],
+      "scorching ray": [
+        "bard-scorching-ray",
+        "sorcerer-scorching-ray",
+        "wizard-scorching-ray"
+      ],
+      "haste": [
+        "bard-haste-spell",
+        "sorcerer-haste-spell",
+        "wizard-haste-spell"
+      ],
+      "lightning": [
+        "bard-lightning",
+        "sorcerer-lightning",
+        "wizard-lightning"
+      ],
+      "cure wounds": [
+        "cleric-cure-wounds",
+        "paladin-cure-wounds"
+      ],
+      "bless": [
+        "cleric-bless",
+        "paladin-bless"
+      ],
+      "radiant strike": [
+        "cleric-radiance",
+        "paladin-radiance"
+      ],
+      "greater cure": [
+        "cleric-greater-cure",
+        "paladin-greater-cure"
+      ],
+      "protective prayer": [
+        "cleric-prayer",
+        "paladin-prayer"
+      ],
+      "sun lance": [
+        "cleric-sunburst"
+      ],
+      "vine snare": [
+        "druid-vine-snare",
+        "ranger-vine-snare"
+      ],
+      "nature cure": [
+        "druid-nature-cure",
+        "ranger-nature-cure"
+      ],
+      "thorn dart": [
+        "druid-thorn-dart",
+        "ranger-thorn-dart"
+      ],
+      "barkskin": [
+        "druid-barkskin-spell",
+        "ranger-barkskin-spell"
+      ],
+      "storm bolt": [
+        "druid-storm-bolt",
+        "ranger-storm-bolt"
+      ],
+      "grasping roots": [
+        "druid-roots"
+      ],
+      "ice lance": [
+        "wizard-ice-lance",
+        "sorcerer-ice-lance"
+      ],
+      "greater arcane ward": [
+        "wizard-greater-ward",
+        "sorcerer-greater-ward"
+      ],
+      "restoring light": [
+        "cleric-restoring-light",
+        "paladin-restoring-light"
+      ],
+      "ward of faith": [
+        "cleric-faith-ward",
+        "paladin-faith-ward"
+      ],
+      "storm lance": [
+        "druid-storm-lance",
+        "ranger-storm-lance"
+      ],
+      "oak ward": [
+        "druid-oak-ward",
+        "ranger-oak-ward"
+      ],
+      "wizard: binding tempest 5": [
+        "wizard-tier5-control"
+      ],
+      "wizard: restorative aegis 5": [
+        "wizard-tier5-restoration"
+      ],
+      "wizard: binding tempest 6": [
+        "wizard-tier6-control"
+      ],
+      "wizard: restorative aegis 6": [
+        "wizard-tier6-restoration"
+      ],
+      "sorcerer: binding tempest 5": [
+        "sorcerer-tier5-control"
+      ],
+      "sorcerer: restorative aegis 5": [
+        "sorcerer-tier5-restoration"
+      ],
+      "sorcerer: binding tempest 6": [
+        "sorcerer-tier6-control"
+      ],
+      "sorcerer: restorative aegis 6": [
+        "sorcerer-tier6-restoration"
+      ],
+      "cleric: binding tempest 5": [
+        "cleric-tier5-control"
+      ],
+      "cleric: restorative aegis 5": [
+        "cleric-tier5-restoration"
+      ],
+      "cleric: binding tempest 6": [
+        "cleric-tier6-control"
+      ],
+      "cleric: restorative aegis 6": [
+        "cleric-tier6-restoration"
+      ],
+      "druid: binding tempest 5": [
+        "druid-tier5-control"
+      ],
+      "druid: restorative aegis 5": [
+        "druid-tier5-restoration"
+      ],
+      "druid: binding tempest 6": [
+        "druid-tier6-control"
+      ],
+      "druid: restorative aegis 6": [
+        "druid-tier6-restoration"
+      ],
+      "bard: binding tempest 4": [
+        "bard-tier4-control"
+      ],
+      "bard: restorative aegis 4": [
+        "bard-tier4-restoration"
+      ],
+      "paladin: binding tempest 4": [
+        "paladin-tier4-control"
+      ],
+      "paladin: restorative aegis 4": [
+        "paladin-tier4-restoration"
+      ],
+      "ranger: binding tempest 4": [
+        "ranger-tier4-control"
+      ],
+      "ranger: restorative aegis 4": [
+        "ranger-tier4-restoration"
+      ],
+      "wizard: tempest 7": [
+        "wizard-tier7-tempest"
+      ],
+      "wizard: sanctuary 7": [
+        "wizard-tier7-sanctuary"
+      ],
+      "wizard: tempest 8": [
+        "wizard-tier8-tempest"
+      ],
+      "wizard: sanctuary 8": [
+        "wizard-tier8-sanctuary"
+      ],
+      "wizard: tempest 9": [
+        "wizard-tier9-tempest"
+      ],
+      "wizard: sanctuary 9": [
+        "wizard-tier9-sanctuary"
+      ],
+      "sorcerer: tempest 7": [
+        "sorcerer-tier7-tempest"
+      ],
+      "sorcerer: sanctuary 7": [
+        "sorcerer-tier7-sanctuary"
+      ],
+      "sorcerer: tempest 8": [
+        "sorcerer-tier8-tempest"
+      ],
+      "sorcerer: sanctuary 8": [
+        "sorcerer-tier8-sanctuary"
+      ],
+      "sorcerer: tempest 9": [
+        "sorcerer-tier9-tempest"
+      ],
+      "sorcerer: sanctuary 9": [
+        "sorcerer-tier9-sanctuary"
+      ],
+      "cleric: tempest 7": [
+        "cleric-tier7-tempest"
+      ],
+      "cleric: sanctuary 7": [
+        "cleric-tier7-sanctuary"
+      ],
+      "cleric: tempest 8": [
+        "cleric-tier8-tempest"
+      ],
+      "cleric: sanctuary 8": [
+        "cleric-tier8-sanctuary"
+      ],
+      "cleric: tempest 9": [
+        "cleric-tier9-tempest"
+      ],
+      "cleric: sanctuary 9": [
+        "cleric-tier9-sanctuary"
+      ],
+      "druid: tempest 7": [
+        "druid-tier7-tempest"
+      ],
+      "druid: sanctuary 7": [
+        "druid-tier7-sanctuary"
+      ],
+      "druid: tempest 8": [
+        "druid-tier8-tempest"
+      ],
+      "druid: sanctuary 8": [
+        "druid-tier8-sanctuary"
+      ],
+      "druid: tempest 9": [
+        "druid-tier9-tempest"
+      ],
+      "druid: sanctuary 9": [
+        "druid-tier9-sanctuary"
+      ],
+      "bard: tempest 5": [
+        "bard-tier5-tempest"
+      ],
+      "bard: sanctuary 5": [
+        "bard-tier5-sanctuary"
+      ],
+      "bard: tempest 6": [
+        "bard-tier6-tempest"
+      ],
+      "bard: sanctuary 6": [
+        "bard-tier6-sanctuary"
+      ],
+      "paladin: tempest 5": [
+        "paladin-tier5-tempest"
+      ],
+      "paladin: sanctuary 5": [
+        "paladin-tier5-sanctuary"
+      ],
+      "paladin: tempest 6": [
+        "paladin-tier6-tempest"
+      ],
+      "paladin: sanctuary 6": [
+        "paladin-tier6-sanctuary"
+      ],
+      "ranger: tempest 5": [
+        "ranger-tier5-tempest"
+      ],
+      "ranger: sanctuary 5": [
+        "ranger-tier5-sanctuary"
+      ],
+      "ranger: tempest 6": [
+        "ranger-tier6-tempest"
+      ],
+      "ranger: sanctuary 6": [
+        "ranger-tier6-sanctuary"
+      ],
+      "summon sentinel": [
+        "wizard-summon-sentinel",
+        "cleric-summon-sentinel",
+        "druid-summon-sentinel"
+      ],
+      "summon leopard": [
+        "wizard-summon-leopard",
+        "cleric-summon-leopard",
+        "druid-summon-leopard"
+      ],
+      "summon boar": [
+        "wizard-summon-boar",
+        "cleric-summon-boar",
+        "druid-summon-boar"
+      ],
+      "summon renewal spirit": [
+        "wizard-summon-renewal-spirit",
+        "cleric-summon-renewal-spirit",
+        "druid-summon-renewal-spirit"
+      ],
+      "summon stone guardian": [
+        "wizard-summon-stone-guardian",
+        "cleric-summon-stone-guardian",
+        "druid-summon-stone-guardian"
+      ]
+    },
+    "other_named_identities": {
+      "attack": [
+        "attack"
+      ],
+      "stride": [
+        "move"
+      ],
+      "dash": [
+        "dash"
+      ],
+      "charge": [
+        "charge"
+      ],
+      "disengage": [
+        "disengage"
+      ],
+      "departure attack": [
+        "departure-attack"
+      ],
+      "guard": [
+        "guard"
+      ],
+      "lantern spark": [
+        "spark"
+      ],
+      "binding step": [
+        "slow"
+      ],
+      "painted passage": [
+        "apparent-wall"
+      ],
+      "borrowed sentry": [
+        "false-guard"
+      ],
+      "lantern double": [
+        "defensive-duplicate"
+      ],
+      "mending thread": [
+        "healing-thread"
+      ],
+      "veil echo": [
+        "veil-echo"
+      ],
+      "rage": [
+        "rage"
+      ],
+      "reckless assault": [
+        "reckless-assault",
+        "barbarian-reckless-1"
+      ],
+      "second wind": [
+        "second-wind"
+      ],
+      "power strike": [
+        "power-strike"
+      ],
+      "flurry of blows": [
+        "flurry"
+      ],
+      "ki step": [
+        "ki-step"
+      ],
+      "smite raider": [
+        "smite"
+      ],
+      "lay on hands": [
+        "lay-on-hands"
+      ],
+      "aimed shot": [
+        "aimed-shot"
+      ],
+      "feint": [
+        "rogue-feint"
+      ],
+      "inspire courage": [
+        "inspire-courage"
+      ],
+      "channel healing": [
+        "channel-healing"
+      ],
+      "wild shape: bear": [
+        "wild-shape"
+      ],
+      "inspire heroism": [
+        "inspire-heroism"
+      ],
+      "channel sanctuary": [
+        "channel-sanctuary"
+      ],
+      "nature renewal": [
+        "renew-nature"
+      ],
+      "wholeness of body": [
+        "wholeness"
+      ],
+      "sheltering oath": [
+        "oath-shelter"
+      ],
+      "steady aim": [
+        "steady-aim"
+      ],
+      "expert feint": [
+        "expert-feint"
+      ],
+      "bloodline surge": [
+        "blood-surge"
+      ],
+      "scholar ward": [
+        "scholar-ward"
+      ],
+      "defensive strike": [
+        "defensive-strike"
+      ],
+      "arcane strike": [
+        "arcane-strike"
+      ],
+      "resilient rage": [
+        "barbarian-resilient-1"
+      ],
+      "reckless assault mastery": [
+        "barbarian-reckless-6"
+      ],
+      "resilient rage mastery": [
+        "barbarian-resilient-6"
+      ],
+      "disheartening dirge": [
+        "bard-dirge-1"
+      ],
+      "rallying song": [
+        "bard-rally-1"
+      ],
+      "disheartening dirge mastery": [
+        "bard-dirge-6"
+      ],
+      "rallying song mastery": [
+        "bard-rally-6"
+      ],
+      "healing domain": [
+        "cleric-healing-1"
+      ],
+      "war domain": [
+        "cleric-war-1"
+      ],
+      "healing domain mastery": [
+        "cleric-healing-6"
+      ],
+      "war domain mastery": [
+        "cleric-war-6"
+      ],
+      "growth bond": [
+        "druid-growth-1"
+      ],
+      "storm bond": [
+        "druid-storm-1"
+      ],
+      "growth bond mastery": [
+        "druid-growth-6"
+      ],
+      "storm bond mastery": [
+        "druid-storm-6"
+      ],
+      "blade discipline": [
+        "fighter-blade-1"
+      ],
+      "bow discipline": [
+        "fighter-bow-1"
+      ],
+      "blade discipline mastery": [
+        "fighter-blade-6"
+      ],
+      "bow discipline mastery": [
+        "fighter-bow-6"
+      ],
+      "iron body": [
+        "monk-iron-1"
+      ],
+      "wind step": [
+        "monk-wind-1"
+      ],
+      "iron body mastery": [
+        "monk-iron-6"
+      ],
+      "wind step mastery": [
+        "monk-wind-6"
+      ],
+      "merciful oath": [
+        "paladin-mercy-1"
+      ],
+      "oath of justice": [
+        "paladin-justice-1"
+      ],
+      "merciful oath mastery": [
+        "paladin-mercy-6"
+      ],
+      "oath of justice mastery": [
+        "paladin-justice-6"
+      ],
+      "archery style": [
+        "ranger-archery-1"
+      ],
+      "blade style": [
+        "ranger-blade-1"
+      ],
+      "archery style mastery": [
+        "ranger-archery-6"
+      ],
+      "blade style mastery": [
+        "ranger-blade-6"
+      ],
+      "debilitating trick": [
+        "rogue-debilitating-1"
+      ],
+      "escape artist": [
+        "rogue-escape-1"
+      ],
+      "debilitating trick mastery": [
+        "rogue-debilitating-6"
+      ],
+      "escape artist mastery": [
+        "rogue-escape-6"
+      ],
+      "draconic bloodline": [
+        "sorcerer-draconic-1"
+      ],
+      "fey bloodline": [
+        "sorcerer-fey-1"
+      ],
+      "draconic bloodline mastery": [
+        "sorcerer-draconic-6"
+      ],
+      "fey bloodline mastery": [
+        "sorcerer-fey-6"
+      ],
+      "evocation school": [
+        "wizard-evocation-1"
+      ],
+      "abjuration school": [
+        "wizard-abjuration-1"
+      ],
+      "evocation school mastery": [
+        "wizard-evocation-6"
+      ],
+      "abjuration school mastery": [
+        "wizard-abjuration-6"
+      ],
+      "unstoppable rage": [
+        "barbarian-career-9"
+      ],
+      "renewed fury": [
+        "barbarian-career-11"
+      ],
+      "song of recovery": [
+        "bard-career-9"
+      ],
+      "song of recovery perfected": [
+        "bard-career-11"
+      ],
+      "mass restoration": [
+        "cleric-career-9"
+      ],
+      "mass restoration perfected": [
+        "cleric-career-11"
+      ],
+      "grasping storm": [
+        "druid-career-9"
+      ],
+      "grasping storm perfected": [
+        "druid-career-11"
+      ],
+      "recovering guard": [
+        "fighter-career-9"
+      ],
+      "recovering guard perfected": [
+        "fighter-career-11"
+      ],
+      "disrupting palm": [
+        "monk-career-9"
+      ],
+      "disrupting palm perfected": [
+        "monk-career-11"
+      ],
+      "purifying oath": [
+        "paladin-career-9"
+      ],
+      "purifying oath perfected": [
+        "paladin-career-11"
+      ],
+      "unhindered pursuit": [
+        "ranger-career-9"
+      ],
+      "unhindered pursuit perfected": [
+        "ranger-career-11"
+      ],
+      "crippling trick": [
+        "rogue-career-9"
+      ],
+      "crippling trick perfected": [
+        "rogue-career-11"
+      ],
+      "bloodline tempest": [
+        "sorcerer-career-9"
+      ],
+      "bloodline tempest perfected": [
+        "sorcerer-career-11"
+      ],
+      "arcane restoration": [
+        "wizard-career-9"
+      ],
+      "arcane restoration perfected": [
+        "wizard-career-11"
+      ],
+      "parrying precision 1": [
+        "duelist-power-1"
+      ],
+      "parrying precision 3": [
+        "duelist-power-3"
+      ],
+      "parrying precision 5": [
+        "duelist-power-5"
+      ],
+      "spellblade surge 1": [
+        "eldritch-knight-power-1"
+      ],
+      "spellblade surge 3": [
+        "eldritch-knight-power-3"
+      ],
+      "spellblade surge 5": [
+        "eldritch-knight-power-5"
+      ],
+      "ranged legerdemain 1": [
+        "arcane-trickster-power-1"
+      ],
+      "ranged legerdemain 3": [
+        "arcane-trickster-power-3"
+      ],
+      "ranged legerdemain 5": [
+        "arcane-trickster-power-5"
+      ],
+      "concordant restoration 1": [
+        "mystic-theurge-power-1"
+      ],
+      "concordant restoration 3": [
+        "mystic-theurge-power-3"
+      ],
+      "concordant restoration 5": [
+        "mystic-theurge-power-5"
+      ],
+      "natural claws": [
+        "kobold-claws",
+        "lizardfolk-claws",
+        "gnoll-claws"
+      ],
+      "titan fury 13": [
+        "barbarian-master-13"
+      ],
+      "titan fury 16": [
+        "barbarian-master-16"
+      ],
+      "titan fury 20": [
+        "barbarian-master-20"
+      ],
+      "resonant renewal 13": [
+        "bard-master-13"
+      ],
+      "resonant renewal 16": [
+        "bard-master-16"
+      ],
+      "resonant renewal 20": [
+        "bard-master-20"
+      ],
+      "sanctuary of restoration 13": [
+        "cleric-master-13"
+      ],
+      "sanctuary of restoration 16": [
+        "cleric-master-16"
+      ],
+      "sanctuary of restoration 20": [
+        "cleric-master-20"
+      ],
+      "primal ironhide 13": [
+        "druid-master-13"
+      ],
+      "primal ironhide 16": [
+        "druid-master-16"
+      ],
+      "primal ironhide 20": [
+        "druid-master-20"
+      ],
+      "whirlwind discipline 13": [
+        "fighter-master-13"
+      ],
+      "whirlwind discipline 16": [
+        "fighter-master-16"
+      ],
+      "whirlwind discipline 20": [
+        "fighter-master-20"
+      ],
+      "resonating palm 13": [
+        "monk-master-13"
+      ],
+      "resonating palm 16": [
+        "monk-master-16"
+      ],
+      "resonating palm 20": [
+        "monk-master-20"
+      ],
+      "unbroken covenant 13": [
+        "paladin-master-13"
+      ],
+      "unbroken covenant 16": [
+        "paladin-master-16"
+      ],
+      "unbroken covenant 20": [
+        "paladin-master-20"
+      ],
+      "pinpoint quarry 13": [
+        "ranger-master-13"
+      ],
+      "pinpoint quarry 16": [
+        "ranger-master-16"
+      ],
+      "pinpoint quarry 20": [
+        "ranger-master-20"
+      ],
+      "expose the opening 13": [
+        "rogue-master-13"
+      ],
+      "expose the opening 16": [
+        "rogue-master-16"
+      ],
+      "expose the opening 20": [
+        "rogue-master-20"
+      ],
+      "bloodline cataclysm 13": [
+        "sorcerer-master-13"
+      ],
+      "bloodline cataclysm 16": [
+        "sorcerer-master-16"
+      ],
+      "bloodline cataclysm 20": [
+        "sorcerer-master-20"
+      ],
+      "master abjuration 13": [
+        "wizard-master-13"
+      ],
+      "master abjuration 16": [
+        "wizard-master-16"
+      ],
+      "master abjuration 20": [
+        "wizard-master-20"
+      ],
+      "mind thrust": [
+        "psion-technique-1"
+      ],
+      "augmented mind thrust 4": [
+        "psion-technique-4"
+      ],
+      "augmented mind thrust 8": [
+        "psion-technique-8"
+      ],
+      "augmented mind thrust 12": [
+        "psion-technique-12"
+      ],
+      "augmented strike 1": [
+        "psychic-warrior-technique-1"
+      ],
+      "augmented strike 4": [
+        "psychic-warrior-technique-4"
+      ],
+      "augmented strike 8": [
+        "psychic-warrior-technique-8"
+      ],
+      "augmented strike 12": [
+        "psychic-warrior-technique-12"
+      ],
+      "recover psychic focus": [
+        "soulknife-recover"
+      ],
+      "manifest mind blade": [
+        "soulknife-manifest"
+      ],
+      "psychic strike 1": [
+        "soulknife-technique-1"
+      ],
+      "psychic strike 4": [
+        "soulknife-technique-4"
+      ],
+      "psychic strike 8": [
+        "soulknife-technique-8"
+      ],
+      "psychic strike 12": [
+        "soulknife-technique-12"
+      ],
+      "eldritch blast": [
+        "warlock-technique-1"
+      ],
+      "shaping blast 4": [
+        "warlock-technique-4"
+      ],
+      "shaping blast 8": [
+        "warlock-technique-8"
+      ],
+      "shaping blast 12": [
+        "warlock-technique-12"
+      ],
+      "assault invocation": [
+        "warlock-invocation-assault"
+      ],
+      "ward invocation": [
+        "warlock-invocation-ward"
+      ],
+      "mark the opening 1": [
+        "scout-technique-1"
+      ],
+      "mark the opening 4": [
+        "scout-technique-4"
+      ],
+      "mark the opening 8": [
+        "scout-technique-8"
+      ],
+      "mark the opening 12": [
+        "scout-technique-12"
+      ],
+      "disarming flourish 1": [
+        "swashbuckler-technique-1"
+      ],
+      "disarming flourish 4": [
+        "swashbuckler-technique-4"
+      ],
+      "disarming flourish 8": [
+        "swashbuckler-technique-8"
+      ],
+      "disarming flourish 12": [
+        "swashbuckler-technique-12"
+      ],
+      "resolute challenge 1": [
+        "knight-technique-1"
+      ],
+      "resolute challenge 4": [
+        "knight-technique-4"
+      ],
+      "resolute challenge 8": [
+        "knight-technique-8"
+      ],
+      "resolute challenge 12": [
+        "knight-technique-12"
+      ],
+      "recover manoeuvres": [
+        "warblade-recover",
+        "crusader-recover",
+        "swordsage-recover"
+      ],
+      "iron-edge manoeuvre 1": [
+        "warblade-technique-1"
+      ],
+      "iron-edge manoeuvre 4": [
+        "warblade-technique-4"
+      ],
+      "iron-edge manoeuvre 8": [
+        "warblade-technique-8"
+      ],
+      "iron-edge manoeuvre 12": [
+        "warblade-technique-12"
+      ],
+      "shadowdancer technique 1": [
+        "shadowdancer-technique-1"
+      ],
+      "shadowdancer technique 4": [
+        "shadowdancer-technique-4"
+      ],
+      "shadowdancer technique 7": [
+        "shadowdancer-technique-7"
+      ],
+      "shadowdancer technique 10": [
+        "shadowdancer-technique-10"
+      ],
+      "dragon disciple technique 1": [
+        "dragon-disciple-technique-1"
+      ],
+      "dragon disciple technique 4": [
+        "dragon-disciple-technique-4"
+      ],
+      "dragon disciple technique 7": [
+        "dragon-disciple-technique-7"
+      ],
+      "dragon disciple technique 10": [
+        "dragon-disciple-technique-10"
+      ],
+      "dwarven defender technique 1": [
+        "dwarven-defender-technique-1"
+      ],
+      "dwarven defender technique 4": [
+        "dwarven-defender-technique-4"
+      ],
+      "dwarven defender technique 7": [
+        "dwarven-defender-technique-7"
+      ],
+      "dwarven defender technique 10": [
+        "dwarven-defender-technique-10"
+      ],
+      "pyrokineticist technique 1": [
+        "pyrokineticist-technique-1"
+      ],
+      "pyrokineticist technique 4": [
+        "pyrokineticist-technique-4"
+      ],
+      "pyrokineticist technique 7": [
+        "pyrokineticist-technique-7"
+      ],
+      "pyrokineticist technique 10": [
+        "pyrokineticist-technique-10"
+      ],
+      "wolf strike": [
+        "wolf-natural-strike"
+      ],
+      "bear strike": [
+        "bear-natural-strike"
+      ],
+      "sentinel spirit strike": [
+        "sentinel-spirit-natural-strike"
+      ],
+      "wild shape: wolf": [
+        "wild-shape-wolf"
+      ],
+      "return to original form": [
+        "revert-form"
+      ],
+      "synaptic disruption 13": [
+        "psion-master-13"
+      ],
+      "synaptic disruption 16": [
+        "psion-master-16"
+      ],
+      "synaptic disruption 20": [
+        "psion-master-20"
+      ],
+      "regain composure": [
+        "psion-career-recovery",
+        "psychic-warrior-career-recovery",
+        "soulknife-career-recovery",
+        "warlock-career-recovery",
+        "scout-career-recovery",
+        "swashbuckler-career-recovery",
+        "knight-career-recovery",
+        "warblade-career-recovery"
+      ],
+      "master psychic-warrior strike 13": [
+        "psychic-warrior-master-13"
+      ],
+      "master psychic-warrior strike 16": [
+        "psychic-warrior-master-16"
+      ],
+      "master psychic-warrior strike 20": [
+        "psychic-warrior-master-20"
+      ],
+      "master soulknife strike 13": [
+        "soulknife-master-13"
+      ],
+      "master soulknife strike 16": [
+        "soulknife-master-16"
+      ],
+      "master soulknife strike 20": [
+        "soulknife-master-20"
+      ],
+      "sapping invocation 13": [
+        "warlock-master-13"
+      ],
+      "sapping invocation 16": [
+        "warlock-master-16"
+      ],
+      "sapping invocation 20": [
+        "warlock-master-20"
+      ],
+      "master scout technique 13": [
+        "scout-master-13"
+      ],
+      "master scout technique 16": [
+        "scout-master-16"
+      ],
+      "master scout technique 20": [
+        "scout-master-20"
+      ],
+      "master swashbuckler technique 13": [
+        "swashbuckler-master-13"
+      ],
+      "master swashbuckler technique 16": [
+        "swashbuckler-master-16"
+      ],
+      "master swashbuckler technique 20": [
+        "swashbuckler-master-20"
+      ],
+      "master knight technique 13": [
+        "knight-master-13"
+      ],
+      "master knight technique 16": [
+        "knight-master-16"
+      ],
+      "master knight technique 20": [
+        "knight-master-20"
+      ],
+      "master warblade strike 13": [
+        "warblade-master-13"
+      ],
+      "master warblade strike 16": [
+        "warblade-master-16"
+      ],
+      "master warblade strike 20": [
+        "warblade-master-20"
+      ],
+      "rallying strike 1": [
+        "crusader-technique-1"
+      ],
+      "rallying strike 4": [
+        "crusader-technique-4"
+      ],
+      "rallying strike 8": [
+        "crusader-technique-8"
+      ],
+      "rally the company": [
+        "crusader-technique-12"
+      ],
+      "rallying strike 16": [
+        "crusader-technique-16"
+      ],
+      "devoted radiance strike": [
+        "crusader-technique-20"
+      ],
+      "master recovery": [
+        "crusader-master-ward",
+        "swordsage-master-ward",
+        "wilder-master-ward",
+        "binder-master-ward"
+      ],
+      "disrupting cut 1": [
+        "swordsage-technique-1"
+      ],
+      "disrupting cut 4": [
+        "swordsage-technique-4"
+      ],
+      "disrupting cut 8": [
+        "swordsage-technique-8"
+      ],
+      "disrupting cut 12": [
+        "swordsage-technique-12"
+      ],
+      "disrupting cut 16": [
+        "swordsage-technique-16"
+      ],
+      "disrupting cut 20": [
+        "swordsage-technique-20"
+      ],
+      "focused psychic impulse 1": [
+        "wilder-technique-1"
+      ],
+      "focused psychic impulse 4": [
+        "wilder-technique-4"
+      ],
+      "focused psychic impulse 8": [
+        "wilder-technique-8"
+      ],
+      "focused psychic impulse 12": [
+        "wilder-technique-12"
+      ],
+      "focused psychic impulse 16": [
+        "wilder-technique-16"
+      ],
+      "focused psychic impulse 20": [
+        "wilder-technique-20"
+      ],
+      "volatile psychic surge": [
+        "wilder-surge"
+      ],
+      "covenant shelter 1": [
+        "binder-technique-1"
+      ],
+      "covenant shelter 4": [
+        "binder-technique-4"
+      ],
+      "covenant shelter 8": [
+        "binder-technique-8"
+      ],
+      "covenant shelter 12": [
+        "binder-technique-12"
+      ],
+      "covenant sentinel": [
+        "binder-technique-16"
+      ],
+      "covenant metamorphosis": [
+        "binder-technique-20"
+      ],
+      "pact of embers": [
+        "binder-embers"
+      ],
+      "pact of sentinel": [
+        "binder-sentinel"
+      ],
+      "horn gore": [
+        "minotaur-gore"
+      ],
+      "adaptive reflexes": [
+        "changeling-adapt"
+      ],
+      "predatory shift": [
+        "shifter-shift"
+      ],
+      "measured renewal": [
+        "crusader-measured-renewal",
+        "swordsage-measured-renewal"
+      ],
+      "warshaper technique 1": [
+        "warshaper-technique-1"
+      ],
+      "warshaper technique 3": [
+        "warshaper-technique-3"
+      ],
+      "warshaper technique 5": [
+        "warshaper-technique-5"
+      ],
+      "bonded summoner technique 1": [
+        "bonded-summoner-technique-1"
+      ],
+      "bonded summoner technique 3": [
+        "bonded-summoner-technique-3"
+      ],
+      "bonded summoner technique 5": [
+        "bonded-summoner-technique-5"
+      ],
+      "psychic ambush": [
+        "lurk-psychic-ambush"
+      ],
+      "psychic veil": [
+        "lurk-veil"
+      ],
+      "centre psion 4": [
+        "psion-focus-4"
+      ],
+      "centre psion 8": [
+        "psion-focus-8"
+      ],
+      "centre psion 12": [
+        "psion-focus-12"
+      ],
+      "centre psion 16": [
+        "psion-focus-16"
+      ],
+      "centre psion 20": [
+        "psion-focus-20"
+      ],
+      "centre ardent 4": [
+        "ardent-focus-4"
+      ],
+      "centre ardent 8": [
+        "ardent-focus-8"
+      ],
+      "centre ardent 12": [
+        "ardent-focus-12"
+      ],
+      "centre ardent 16": [
+        "ardent-focus-16"
+      ],
+      "centre ardent 20": [
+        "ardent-focus-20"
+      ],
+      "centre lurk 4": [
+        "lurk-focus-4"
+      ],
+      "centre lurk 8": [
+        "lurk-focus-8"
+      ],
+      "centre lurk 12": [
+        "lurk-focus-12"
+      ],
+      "centre lurk 16": [
+        "lurk-focus-16"
+      ],
+      "centre lurk 20": [
+        "lurk-focus-20"
+      ],
+      "centre cerebremancer 3": [
+        "cerebremancer-focus-3"
+      ],
+      "centre cerebremancer 5": [
+        "cerebremancer-focus-5"
+      ],
+      "leopard strike": [
+        "leopard-natural-strike"
+      ],
+      "leopard predator": [
+        "leopard-special"
+      ],
+      "boar strike": [
+        "boar-natural-strike"
+      ],
+      "boar guardian": [
+        "boar-special"
+      ],
+      "stag strike": [
+        "stag-natural-strike"
+      ],
+      "stag support": [
+        "stag-special"
+      ],
+      "stone guardian strike": [
+        "stone-guardian-natural-strike"
+      ],
+      "stone guardian heavy": [
+        "stone-guardian-special"
+      ],
+      "renewal spirit strike": [
+        "renewal-spirit-natural-strike"
+      ],
+      "renewal spirit healer": [
+        "renewal-spirit-special"
+      ],
+      "call leopard": [
+        "bonded-summoner-call-leopard"
+      ],
+      "call renewal spirit": [
+        "bonded-summoner-call-renewal-spirit"
+      ],
+      "call stone guardian": [
+        "bonded-summoner-call-stone-guardian"
+      ],
+      "wild shape: leopard": [
+        "wild-shape-leopard"
+      ],
+      "wild shape: boar": [
+        "wild-shape-boar"
+      ],
+      "wild shape: stone guardian": [
+        "wild-shape-stone"
+      ],
+      "rally bonded ally": [
+        "steward-rally"
+      ],
+      "pack drive 3": [
+        "steward-drive-3"
+      ],
+      "pack drive 5": [
+        "steward-drive-5"
+      ],
+      "elan barrier": [
+        "elan-inheritance-action"
+      ],
+      "xeph speed": [
+        "xeph-inheritance-action"
+      ],
+      "maenad outburst": [
+        "maenad-inheritance-action"
+      ],
+      "dromite energy": [
+        "dromite-inheritance-action"
+      ]
+    }
+  },
+  "14": {
+    "pack": "trhgd-character-v14",
+    "base_classes": 30,
+    "prestige_classes": 16,
+    "ancestry_families": 33,
+    "heritages": 44,
+    "feats": 66,
+    "skills": 14,
+    "unique_spells": 111,
+    "spell_references": 162,
+    "psychic_powers": 35,
+    "other_named_abilities": 367,
+    "other_ability_records": 391,
+    "creatures": 12,
+    "body_forms": 12,
+    "career_choice_groups": 212,
+    "spell_identities": {
+      "arcane bolt": [
+        "bard-arcane-bolt",
+        "sorcerer-arcane-bolt",
+        "wizard-arcane-bolt"
+      ],
+      "mage armour": [
+        "bard-mage-armour",
+        "sorcerer-mage-armour",
+        "wizard-mage-armour"
+      ],
+      "enfeebling ray": [
+        "bard-enfeeble",
+        "sorcerer-enfeeble",
+        "wizard-enfeeble"
+      ],
+      "scorching ray": [
+        "bard-scorching-ray",
+        "sorcerer-scorching-ray",
+        "wizard-scorching-ray"
+      ],
+      "haste": [
+        "bard-haste-spell",
+        "sorcerer-haste-spell",
+        "wizard-haste-spell"
+      ],
+      "lightning": [
+        "bard-lightning",
+        "sorcerer-lightning",
+        "wizard-lightning"
+      ],
+      "cure wounds": [
+        "cleric-cure-wounds",
+        "paladin-cure-wounds"
+      ],
+      "bless": [
+        "cleric-bless",
+        "paladin-bless"
+      ],
+      "radiant strike": [
+        "cleric-radiance",
+        "paladin-radiance"
+      ],
+      "greater cure": [
+        "cleric-greater-cure",
+        "paladin-greater-cure"
+      ],
+      "protective prayer": [
+        "cleric-prayer",
+        "paladin-prayer"
+      ],
+      "sun lance": [
+        "cleric-sunburst"
+      ],
+      "vine snare": [
+        "druid-vine-snare",
+        "ranger-vine-snare"
+      ],
+      "nature cure": [
+        "druid-nature-cure",
+        "ranger-nature-cure"
+      ],
+      "thorn dart": [
+        "druid-thorn-dart",
+        "ranger-thorn-dart"
+      ],
+      "barkskin": [
+        "druid-barkskin-spell",
+        "ranger-barkskin-spell"
+      ],
+      "storm bolt": [
+        "druid-storm-bolt",
+        "ranger-storm-bolt"
+      ],
+      "grasping roots": [
+        "druid-roots"
+      ],
+      "ice lance": [
+        "wizard-ice-lance",
+        "sorcerer-ice-lance"
+      ],
+      "greater arcane ward": [
+        "wizard-greater-ward",
+        "sorcerer-greater-ward"
+      ],
+      "restoring light": [
+        "cleric-restoring-light",
+        "paladin-restoring-light"
+      ],
+      "ward of faith": [
+        "cleric-faith-ward",
+        "paladin-faith-ward"
+      ],
+      "storm lance": [
+        "druid-storm-lance",
+        "ranger-storm-lance"
+      ],
+      "oak ward": [
+        "druid-oak-ward",
+        "ranger-oak-ward"
+      ],
+      "wizard: binding tempest 5": [
+        "wizard-tier5-control"
+      ],
+      "wizard: restorative aegis 5": [
+        "wizard-tier5-restoration"
+      ],
+      "wizard: binding tempest 6": [
+        "wizard-tier6-control"
+      ],
+      "wizard: restorative aegis 6": [
+        "wizard-tier6-restoration"
+      ],
+      "sorcerer: binding tempest 5": [
+        "sorcerer-tier5-control"
+      ],
+      "sorcerer: restorative aegis 5": [
+        "sorcerer-tier5-restoration"
+      ],
+      "sorcerer: binding tempest 6": [
+        "sorcerer-tier6-control"
+      ],
+      "sorcerer: restorative aegis 6": [
+        "sorcerer-tier6-restoration"
+      ],
+      "cleric: binding tempest 5": [
+        "cleric-tier5-control"
+      ],
+      "cleric: restorative aegis 5": [
+        "cleric-tier5-restoration"
+      ],
+      "cleric: binding tempest 6": [
+        "cleric-tier6-control"
+      ],
+      "cleric: restorative aegis 6": [
+        "cleric-tier6-restoration"
+      ],
+      "druid: binding tempest 5": [
+        "druid-tier5-control"
+      ],
+      "druid: restorative aegis 5": [
+        "druid-tier5-restoration"
+      ],
+      "druid: binding tempest 6": [
+        "druid-tier6-control"
+      ],
+      "druid: restorative aegis 6": [
+        "druid-tier6-restoration"
+      ],
+      "bard: binding tempest 4": [
+        "bard-tier4-control"
+      ],
+      "bard: restorative aegis 4": [
+        "bard-tier4-restoration"
+      ],
+      "paladin: binding tempest 4": [
+        "paladin-tier4-control"
+      ],
+      "paladin: restorative aegis 4": [
+        "paladin-tier4-restoration"
+      ],
+      "ranger: binding tempest 4": [
+        "ranger-tier4-control"
+      ],
+      "ranger: restorative aegis 4": [
+        "ranger-tier4-restoration"
+      ],
+      "wizard: tempest 7": [
+        "wizard-tier7-tempest"
+      ],
+      "wizard: sanctuary 7": [
+        "wizard-tier7-sanctuary"
+      ],
+      "wizard: tempest 8": [
+        "wizard-tier8-tempest"
+      ],
+      "wizard: sanctuary 8": [
+        "wizard-tier8-sanctuary"
+      ],
+      "wizard: tempest 9": [
+        "wizard-tier9-tempest"
+      ],
+      "wizard: sanctuary 9": [
+        "wizard-tier9-sanctuary"
+      ],
+      "sorcerer: tempest 7": [
+        "sorcerer-tier7-tempest"
+      ],
+      "sorcerer: sanctuary 7": [
+        "sorcerer-tier7-sanctuary"
+      ],
+      "sorcerer: tempest 8": [
+        "sorcerer-tier8-tempest"
+      ],
+      "sorcerer: sanctuary 8": [
+        "sorcerer-tier8-sanctuary"
+      ],
+      "sorcerer: tempest 9": [
+        "sorcerer-tier9-tempest"
+      ],
+      "sorcerer: sanctuary 9": [
+        "sorcerer-tier9-sanctuary"
+      ],
+      "cleric: tempest 7": [
+        "cleric-tier7-tempest"
+      ],
+      "cleric: sanctuary 7": [
+        "cleric-tier7-sanctuary"
+      ],
+      "cleric: tempest 8": [
+        "cleric-tier8-tempest"
+      ],
+      "cleric: sanctuary 8": [
+        "cleric-tier8-sanctuary"
+      ],
+      "cleric: tempest 9": [
+        "cleric-tier9-tempest"
+      ],
+      "cleric: sanctuary 9": [
+        "cleric-tier9-sanctuary"
+      ],
+      "druid: tempest 7": [
+        "druid-tier7-tempest"
+      ],
+      "druid: sanctuary 7": [
+        "druid-tier7-sanctuary"
+      ],
+      "druid: tempest 8": [
+        "druid-tier8-tempest"
+      ],
+      "druid: sanctuary 8": [
+        "druid-tier8-sanctuary"
+      ],
+      "druid: tempest 9": [
+        "druid-tier9-tempest"
+      ],
+      "druid: sanctuary 9": [
+        "druid-tier9-sanctuary"
+      ],
+      "bard: tempest 5": [
+        "bard-tier5-tempest"
+      ],
+      "bard: sanctuary 5": [
+        "bard-tier5-sanctuary"
+      ],
+      "bard: tempest 6": [
+        "bard-tier6-tempest"
+      ],
+      "bard: sanctuary 6": [
+        "bard-tier6-sanctuary"
+      ],
+      "paladin: tempest 5": [
+        "paladin-tier5-tempest"
+      ],
+      "paladin: sanctuary 5": [
+        "paladin-tier5-sanctuary"
+      ],
+      "paladin: tempest 6": [
+        "paladin-tier6-tempest"
+      ],
+      "paladin: sanctuary 6": [
+        "paladin-tier6-sanctuary"
+      ],
+      "ranger: tempest 5": [
+        "ranger-tier5-tempest"
+      ],
+      "ranger: sanctuary 5": [
+        "ranger-tier5-sanctuary"
+      ],
+      "ranger: tempest 6": [
+        "ranger-tier6-tempest"
+      ],
+      "ranger: sanctuary 6": [
+        "ranger-tier6-sanctuary"
+      ],
+      "summon sentinel": [
+        "wizard-summon-sentinel",
+        "cleric-summon-sentinel",
+        "druid-summon-sentinel"
+      ],
+      "summon leopard": [
+        "wizard-summon-leopard",
+        "cleric-summon-leopard",
+        "druid-summon-leopard"
+      ],
+      "summon boar": [
+        "wizard-summon-boar",
+        "cleric-summon-boar",
+        "druid-summon-boar"
+      ],
+      "summon renewal spirit": [
+        "wizard-summon-renewal-spirit",
+        "cleric-summon-renewal-spirit",
+        "druid-summon-renewal-spirit"
+      ],
+      "summon stone guardian": [
+        "wizard-summon-stone-guardian",
+        "cleric-summon-stone-guardian",
+        "druid-summon-stone-guardian"
+      ],
+      "fracture concentration": [
+        "wizard-fracture-concentration",
+        "sorcerer-fracture-concentration",
+        "bard-fracture-concentration",
+        "cleric-fracture-concentration"
+      ],
+      "cleansing ward": [
+        "wizard-cleansing-ward",
+        "sorcerer-cleansing-ward",
+        "bard-cleansing-ward",
+        "cleric-cleansing-ward"
+      ],
+      "veil of doubt": [
+        "beguiler-beguiling-control-1"
+      ],
+      "false openings": [
+        "beguiler-beguiling-ward-1"
+      ],
+      "compelling stillness": [
+        "beguiler-beguiling-control-2"
+      ],
+      "veiled step": [
+        "beguiler-beguiling-ward-2"
+      ],
+      "phantasmal assault": [
+        "beguiler-beguiling-control-3"
+      ],
+      "mass veil": [
+        "beguiler-beguiling-ward-3"
+      ],
+      "mind tether": [
+        "beguiler-beguiling-control-4"
+      ],
+      "sheltering fiction": [
+        "beguiler-beguiling-ward-4"
+      ],
+      "dread convergence": [
+        "beguiler-beguiling-control-5"
+      ],
+      "lucid refuge": [
+        "beguiler-beguiling-ward-5"
+      ],
+      "crushing apprehension": [
+        "beguiler-beguiling-control-6"
+      ],
+      "unerring poise": [
+        "beguiler-beguiling-ward-6"
+      ],
+      "prismatic doubt": [
+        "beguiler-beguiling-control-7"
+      ],
+      "collective refuge": [
+        "beguiler-beguiling-ward-7"
+      ],
+      "nightmare pressure": [
+        "beguiler-beguiling-control-8"
+      ],
+      "perfect concealment": [
+        "beguiler-beguiling-ward-8"
+      ],
+      "dominion of dread": [
+        "beguiler-beguiling-control-9"
+      ],
+      "sanctuary of shadows": [
+        "beguiler-beguiling-ward-9"
+      ],
+      "anchoring ward": [
+        "wizard-anchoring-ward",
+        "cleric-anchoring-ward",
+        "druid-anchoring-ward"
+      ],
+      "summon frost hound": [
+        "wizard-summon-frost-hound",
+        "cleric-summon-frost-hound",
+        "druid-summon-frost-hound"
+      ],
+      "summon bulwark construct": [
+        "wizard-summon-bulwark-construct",
+        "cleric-summon-bulwark-construct",
+        "druid-summon-bulwark-construct"
+      ],
+      "restorative circle": [
+        "cleric-restorative-circle",
+        "druid-restorative-circle"
+      ]
+    },
+    "other_named_identities": {
+      "attack": [
+        "attack"
+      ],
+      "stride": [
+        "move"
+      ],
+      "dash": [
+        "dash"
+      ],
+      "charge": [
+        "charge"
+      ],
+      "disengage": [
+        "disengage"
+      ],
+      "departure attack": [
+        "departure-attack"
+      ],
+      "guard": [
+        "guard"
+      ],
+      "lantern spark": [
+        "spark"
+      ],
+      "binding step": [
+        "slow"
+      ],
+      "painted passage": [
+        "apparent-wall"
+      ],
+      "borrowed sentry": [
+        "false-guard"
+      ],
+      "lantern double": [
+        "defensive-duplicate"
+      ],
+      "mending thread": [
+        "healing-thread"
+      ],
+      "veil echo": [
+        "veil-echo"
+      ],
+      "rage": [
+        "rage"
+      ],
+      "reckless assault": [
+        "reckless-assault",
+        "barbarian-reckless-1"
+      ],
+      "second wind": [
+        "second-wind"
+      ],
+      "power strike": [
+        "power-strike"
+      ],
+      "flurry of blows": [
+        "flurry"
+      ],
+      "ki step": [
+        "ki-step"
+      ],
+      "smite raider": [
+        "smite"
+      ],
+      "lay on hands": [
+        "lay-on-hands"
+      ],
+      "aimed shot": [
+        "aimed-shot"
+      ],
+      "feint": [
+        "rogue-feint"
+      ],
+      "inspire courage": [
+        "inspire-courage"
+      ],
+      "channel healing": [
+        "channel-healing"
+      ],
+      "wild shape: bear": [
+        "wild-shape"
+      ],
+      "inspire heroism": [
+        "inspire-heroism"
+      ],
+      "channel sanctuary": [
+        "channel-sanctuary"
+      ],
+      "nature renewal": [
+        "renew-nature"
+      ],
+      "wholeness of body": [
+        "wholeness"
+      ],
+      "sheltering oath": [
+        "oath-shelter"
+      ],
+      "steady aim": [
+        "steady-aim"
+      ],
+      "expert feint": [
+        "expert-feint"
+      ],
+      "bloodline surge": [
+        "blood-surge"
+      ],
+      "scholar ward": [
+        "scholar-ward"
+      ],
+      "defensive strike": [
+        "defensive-strike"
+      ],
+      "arcane strike": [
+        "arcane-strike"
+      ],
+      "resilient rage": [
+        "barbarian-resilient-1"
+      ],
+      "reckless assault mastery": [
+        "barbarian-reckless-6"
+      ],
+      "resilient rage mastery": [
+        "barbarian-resilient-6"
+      ],
+      "disheartening dirge": [
+        "bard-dirge-1"
+      ],
+      "rallying song": [
+        "bard-rally-1"
+      ],
+      "disheartening dirge mastery": [
+        "bard-dirge-6"
+      ],
+      "rallying song mastery": [
+        "bard-rally-6"
+      ],
+      "healing domain": [
+        "cleric-healing-1"
+      ],
+      "war domain": [
+        "cleric-war-1"
+      ],
+      "healing domain mastery": [
+        "cleric-healing-6"
+      ],
+      "war domain mastery": [
+        "cleric-war-6"
+      ],
+      "growth bond": [
+        "druid-growth-1"
+      ],
+      "storm bond": [
+        "druid-storm-1"
+      ],
+      "growth bond mastery": [
+        "druid-growth-6"
+      ],
+      "storm bond mastery": [
+        "druid-storm-6"
+      ],
+      "blade discipline": [
+        "fighter-blade-1"
+      ],
+      "bow discipline": [
+        "fighter-bow-1"
+      ],
+      "blade discipline mastery": [
+        "fighter-blade-6"
+      ],
+      "bow discipline mastery": [
+        "fighter-bow-6"
+      ],
+      "iron body": [
+        "monk-iron-1"
+      ],
+      "wind step": [
+        "monk-wind-1"
+      ],
+      "iron body mastery": [
+        "monk-iron-6"
+      ],
+      "wind step mastery": [
+        "monk-wind-6"
+      ],
+      "merciful oath": [
+        "paladin-mercy-1"
+      ],
+      "oath of justice": [
+        "paladin-justice-1"
+      ],
+      "merciful oath mastery": [
+        "paladin-mercy-6"
+      ],
+      "oath of justice mastery": [
+        "paladin-justice-6"
+      ],
+      "archery style": [
+        "ranger-archery-1"
+      ],
+      "blade style": [
+        "ranger-blade-1"
+      ],
+      "archery style mastery": [
+        "ranger-archery-6"
+      ],
+      "blade style mastery": [
+        "ranger-blade-6"
+      ],
+      "debilitating trick": [
+        "rogue-debilitating-1"
+      ],
+      "escape artist": [
+        "rogue-escape-1"
+      ],
+      "debilitating trick mastery": [
+        "rogue-debilitating-6"
+      ],
+      "escape artist mastery": [
+        "rogue-escape-6"
+      ],
+      "draconic bloodline": [
+        "sorcerer-draconic-1"
+      ],
+      "fey bloodline": [
+        "sorcerer-fey-1"
+      ],
+      "draconic bloodline mastery": [
+        "sorcerer-draconic-6"
+      ],
+      "fey bloodline mastery": [
+        "sorcerer-fey-6"
+      ],
+      "evocation school": [
+        "wizard-evocation-1"
+      ],
+      "abjuration school": [
+        "wizard-abjuration-1"
+      ],
+      "evocation school mastery": [
+        "wizard-evocation-6"
+      ],
+      "abjuration school mastery": [
+        "wizard-abjuration-6"
+      ],
+      "unstoppable rage": [
+        "barbarian-career-9"
+      ],
+      "renewed fury": [
+        "barbarian-career-11"
+      ],
+      "song of recovery": [
+        "bard-career-9"
+      ],
+      "song of recovery perfected": [
+        "bard-career-11"
+      ],
+      "mass restoration": [
+        "cleric-career-9"
+      ],
+      "mass restoration perfected": [
+        "cleric-career-11"
+      ],
+      "grasping storm": [
+        "druid-career-9"
+      ],
+      "grasping storm perfected": [
+        "druid-career-11"
+      ],
+      "recovering guard": [
+        "fighter-career-9"
+      ],
+      "recovering guard perfected": [
+        "fighter-career-11"
+      ],
+      "disrupting palm": [
+        "monk-career-9"
+      ],
+      "disrupting palm perfected": [
+        "monk-career-11"
+      ],
+      "purifying oath": [
+        "paladin-career-9"
+      ],
+      "purifying oath perfected": [
+        "paladin-career-11"
+      ],
+      "unhindered pursuit": [
+        "ranger-career-9"
+      ],
+      "unhindered pursuit perfected": [
+        "ranger-career-11"
+      ],
+      "crippling trick": [
+        "rogue-career-9"
+      ],
+      "crippling trick perfected": [
+        "rogue-career-11"
+      ],
+      "bloodline tempest": [
+        "sorcerer-career-9"
+      ],
+      "bloodline tempest perfected": [
+        "sorcerer-career-11"
+      ],
+      "arcane restoration": [
+        "wizard-career-9"
+      ],
+      "arcane restoration perfected": [
+        "wizard-career-11"
+      ],
+      "parrying precision 1": [
+        "duelist-power-1"
+      ],
+      "parrying precision 3": [
+        "duelist-power-3"
+      ],
+      "parrying precision 5": [
+        "duelist-power-5"
+      ],
+      "spellblade surge 1": [
+        "eldritch-knight-power-1"
+      ],
+      "spellblade surge 3": [
+        "eldritch-knight-power-3"
+      ],
+      "spellblade surge 5": [
+        "eldritch-knight-power-5"
+      ],
+      "ranged legerdemain 1": [
+        "arcane-trickster-power-1"
+      ],
+      "ranged legerdemain 3": [
+        "arcane-trickster-power-3"
+      ],
+      "ranged legerdemain 5": [
+        "arcane-trickster-power-5"
+      ],
+      "concordant restoration 1": [
+        "mystic-theurge-power-1"
+      ],
+      "concordant restoration 3": [
+        "mystic-theurge-power-3"
+      ],
+      "concordant restoration 5": [
+        "mystic-theurge-power-5"
+      ],
+      "natural claws": [
+        "kobold-claws",
+        "lizardfolk-claws",
+        "gnoll-claws"
+      ],
+      "titan fury 13": [
+        "barbarian-master-13"
+      ],
+      "titan fury 16": [
+        "barbarian-master-16"
+      ],
+      "titan fury 20": [
+        "barbarian-master-20"
+      ],
+      "resonant renewal 13": [
+        "bard-master-13"
+      ],
+      "resonant renewal 16": [
+        "bard-master-16"
+      ],
+      "resonant renewal 20": [
+        "bard-master-20"
+      ],
+      "sanctuary of restoration 13": [
+        "cleric-master-13"
+      ],
+      "sanctuary of restoration 16": [
+        "cleric-master-16"
+      ],
+      "sanctuary of restoration 20": [
+        "cleric-master-20"
+      ],
+      "primal ironhide 13": [
+        "druid-master-13"
+      ],
+      "primal ironhide 16": [
+        "druid-master-16"
+      ],
+      "primal ironhide 20": [
+        "druid-master-20"
+      ],
+      "whirlwind discipline 13": [
+        "fighter-master-13"
+      ],
+      "whirlwind discipline 16": [
+        "fighter-master-16"
+      ],
+      "whirlwind discipline 20": [
+        "fighter-master-20"
+      ],
+      "resonating palm 13": [
+        "monk-master-13"
+      ],
+      "resonating palm 16": [
+        "monk-master-16"
+      ],
+      "resonating palm 20": [
+        "monk-master-20"
+      ],
+      "unbroken covenant 13": [
+        "paladin-master-13"
+      ],
+      "unbroken covenant 16": [
+        "paladin-master-16"
+      ],
+      "unbroken covenant 20": [
+        "paladin-master-20"
+      ],
+      "pinpoint quarry 13": [
+        "ranger-master-13"
+      ],
+      "pinpoint quarry 16": [
+        "ranger-master-16"
+      ],
+      "pinpoint quarry 20": [
+        "ranger-master-20"
+      ],
+      "expose the opening 13": [
+        "rogue-master-13"
+      ],
+      "expose the opening 16": [
+        "rogue-master-16"
+      ],
+      "expose the opening 20": [
+        "rogue-master-20"
+      ],
+      "bloodline cataclysm 13": [
+        "sorcerer-master-13"
+      ],
+      "bloodline cataclysm 16": [
+        "sorcerer-master-16"
+      ],
+      "bloodline cataclysm 20": [
+        "sorcerer-master-20"
+      ],
+      "master abjuration 13": [
+        "wizard-master-13"
+      ],
+      "master abjuration 16": [
+        "wizard-master-16"
+      ],
+      "master abjuration 20": [
+        "wizard-master-20"
+      ],
+      "mind thrust": [
+        "psion-technique-1"
+      ],
+      "augmented mind thrust 4": [
+        "psion-technique-4"
+      ],
+      "augmented mind thrust 8": [
+        "psion-technique-8"
+      ],
+      "augmented mind thrust 12": [
+        "psion-technique-12"
+      ],
+      "augmented strike 1": [
+        "psychic-warrior-technique-1"
+      ],
+      "augmented strike 4": [
+        "psychic-warrior-technique-4"
+      ],
+      "augmented strike 8": [
+        "psychic-warrior-technique-8"
+      ],
+      "augmented strike 12": [
+        "psychic-warrior-technique-12"
+      ],
+      "recover psychic focus": [
+        "soulknife-recover"
+      ],
+      "manifest mind blade": [
+        "soulknife-manifest"
+      ],
+      "psychic strike 1": [
+        "soulknife-technique-1"
+      ],
+      "psychic strike 4": [
+        "soulknife-technique-4"
+      ],
+      "psychic strike 8": [
+        "soulknife-technique-8"
+      ],
+      "psychic strike 12": [
+        "soulknife-technique-12"
+      ],
+      "eldritch blast": [
+        "warlock-technique-1"
+      ],
+      "shaping blast 4": [
+        "warlock-technique-4"
+      ],
+      "shaping blast 8": [
+        "warlock-technique-8"
+      ],
+      "shaping blast 12": [
+        "warlock-technique-12"
+      ],
+      "assault invocation": [
+        "warlock-invocation-assault"
+      ],
+      "ward invocation": [
+        "warlock-invocation-ward"
+      ],
+      "mark the opening 1": [
+        "scout-technique-1"
+      ],
+      "mark the opening 4": [
+        "scout-technique-4"
+      ],
+      "mark the opening 8": [
+        "scout-technique-8"
+      ],
+      "mark the opening 12": [
+        "scout-technique-12"
+      ],
+      "disarming flourish 1": [
+        "swashbuckler-technique-1"
+      ],
+      "disarming flourish 4": [
+        "swashbuckler-technique-4"
+      ],
+      "disarming flourish 8": [
+        "swashbuckler-technique-8"
+      ],
+      "disarming flourish 12": [
+        "swashbuckler-technique-12"
+      ],
+      "resolute challenge 1": [
+        "knight-technique-1"
+      ],
+      "resolute challenge 4": [
+        "knight-technique-4"
+      ],
+      "resolute challenge 8": [
+        "knight-technique-8"
+      ],
+      "resolute challenge 12": [
+        "knight-technique-12"
+      ],
+      "recover manoeuvres": [
+        "warblade-recover",
+        "crusader-recover",
+        "swordsage-recover"
+      ],
+      "iron-edge manoeuvre 1": [
+        "warblade-technique-1"
+      ],
+      "iron-edge manoeuvre 4": [
+        "warblade-technique-4"
+      ],
+      "iron-edge manoeuvre 8": [
+        "warblade-technique-8"
+      ],
+      "iron-edge manoeuvre 12": [
+        "warblade-technique-12"
+      ],
+      "shadowdancer technique 1": [
+        "shadowdancer-technique-1"
+      ],
+      "shadowdancer technique 4": [
+        "shadowdancer-technique-4"
+      ],
+      "shadowdancer technique 7": [
+        "shadowdancer-technique-7"
+      ],
+      "shadowdancer technique 10": [
+        "shadowdancer-technique-10"
+      ],
+      "dragon disciple technique 1": [
+        "dragon-disciple-technique-1"
+      ],
+      "dragon disciple technique 4": [
+        "dragon-disciple-technique-4"
+      ],
+      "dragon disciple technique 7": [
+        "dragon-disciple-technique-7"
+      ],
+      "dragon disciple technique 10": [
+        "dragon-disciple-technique-10"
+      ],
+      "dwarven defender technique 1": [
+        "dwarven-defender-technique-1"
+      ],
+      "dwarven defender technique 4": [
+        "dwarven-defender-technique-4"
+      ],
+      "dwarven defender technique 7": [
+        "dwarven-defender-technique-7"
+      ],
+      "dwarven defender technique 10": [
+        "dwarven-defender-technique-10"
+      ],
+      "pyrokineticist technique 1": [
+        "pyrokineticist-technique-1"
+      ],
+      "pyrokineticist technique 4": [
+        "pyrokineticist-technique-4"
+      ],
+      "pyrokineticist technique 7": [
+        "pyrokineticist-technique-7"
+      ],
+      "pyrokineticist technique 10": [
+        "pyrokineticist-technique-10"
+      ],
+      "wolf strike": [
+        "wolf-natural-strike"
+      ],
+      "bear strike": [
+        "bear-natural-strike"
+      ],
+      "sentinel spirit strike": [
+        "sentinel-spirit-natural-strike"
+      ],
+      "wild shape: wolf": [
+        "wild-shape-wolf"
+      ],
+      "return to original form": [
+        "revert-form"
+      ],
+      "synaptic disruption 13": [
+        "psion-master-13"
+      ],
+      "synaptic disruption 16": [
+        "psion-master-16"
+      ],
+      "synaptic disruption 20": [
+        "psion-master-20"
+      ],
+      "regain composure": [
+        "psion-career-recovery",
+        "psychic-warrior-career-recovery",
+        "soulknife-career-recovery",
+        "warlock-career-recovery",
+        "scout-career-recovery",
+        "swashbuckler-career-recovery",
+        "knight-career-recovery",
+        "warblade-career-recovery"
+      ],
+      "master psychic-warrior strike 13": [
+        "psychic-warrior-master-13"
+      ],
+      "master psychic-warrior strike 16": [
+        "psychic-warrior-master-16"
+      ],
+      "master psychic-warrior strike 20": [
+        "psychic-warrior-master-20"
+      ],
+      "master soulknife strike 13": [
+        "soulknife-master-13"
+      ],
+      "master soulknife strike 16": [
+        "soulknife-master-16"
+      ],
+      "master soulknife strike 20": [
+        "soulknife-master-20"
+      ],
+      "sapping invocation 13": [
+        "warlock-master-13"
+      ],
+      "sapping invocation 16": [
+        "warlock-master-16"
+      ],
+      "sapping invocation 20": [
+        "warlock-master-20"
+      ],
+      "master scout technique 13": [
+        "scout-master-13"
+      ],
+      "master scout technique 16": [
+        "scout-master-16"
+      ],
+      "master scout technique 20": [
+        "scout-master-20"
+      ],
+      "master swashbuckler technique 13": [
+        "swashbuckler-master-13"
+      ],
+      "master swashbuckler technique 16": [
+        "swashbuckler-master-16"
+      ],
+      "master swashbuckler technique 20": [
+        "swashbuckler-master-20"
+      ],
+      "master knight technique 13": [
+        "knight-master-13"
+      ],
+      "master knight technique 16": [
+        "knight-master-16"
+      ],
+      "master knight technique 20": [
+        "knight-master-20"
+      ],
+      "master warblade strike 13": [
+        "warblade-master-13"
+      ],
+      "master warblade strike 16": [
+        "warblade-master-16"
+      ],
+      "master warblade strike 20": [
+        "warblade-master-20"
+      ],
+      "rallying strike 1": [
+        "crusader-technique-1"
+      ],
+      "rallying strike 4": [
+        "crusader-technique-4"
+      ],
+      "rallying strike 8": [
+        "crusader-technique-8"
+      ],
+      "rally the company": [
+        "crusader-technique-12"
+      ],
+      "rallying strike 16": [
+        "crusader-technique-16"
+      ],
+      "devoted radiance strike": [
+        "crusader-technique-20"
+      ],
+      "master recovery": [
+        "crusader-master-ward",
+        "swordsage-master-ward",
+        "wilder-master-ward",
+        "binder-master-ward"
+      ],
+      "disrupting cut 1": [
+        "swordsage-technique-1"
+      ],
+      "disrupting cut 4": [
+        "swordsage-technique-4"
+      ],
+      "disrupting cut 8": [
+        "swordsage-technique-8"
+      ],
+      "disrupting cut 12": [
+        "swordsage-technique-12"
+      ],
+      "disrupting cut 16": [
+        "swordsage-technique-16"
+      ],
+      "disrupting cut 20": [
+        "swordsage-technique-20"
+      ],
+      "focused psychic impulse 1": [
+        "wilder-technique-1"
+      ],
+      "focused psychic impulse 4": [
+        "wilder-technique-4"
+      ],
+      "focused psychic impulse 8": [
+        "wilder-technique-8"
+      ],
+      "focused psychic impulse 12": [
+        "wilder-technique-12"
+      ],
+      "focused psychic impulse 16": [
+        "wilder-technique-16"
+      ],
+      "focused psychic impulse 20": [
+        "wilder-technique-20"
+      ],
+      "volatile psychic surge": [
+        "wilder-surge"
+      ],
+      "covenant shelter 1": [
+        "binder-technique-1"
+      ],
+      "covenant shelter 4": [
+        "binder-technique-4"
+      ],
+      "covenant shelter 8": [
+        "binder-technique-8"
+      ],
+      "covenant shelter 12": [
+        "binder-technique-12"
+      ],
+      "covenant sentinel": [
+        "binder-technique-16"
+      ],
+      "covenant metamorphosis": [
+        "binder-technique-20"
+      ],
+      "pact of embers": [
+        "binder-embers"
+      ],
+      "pact of sentinel": [
+        "binder-sentinel"
+      ],
+      "horn gore": [
+        "minotaur-gore"
+      ],
+      "adaptive reflexes": [
+        "changeling-adapt"
+      ],
+      "predatory shift": [
+        "shifter-shift"
+      ],
+      "measured renewal": [
+        "crusader-measured-renewal",
+        "swordsage-measured-renewal"
+      ],
+      "warshaper technique 1": [
+        "warshaper-technique-1"
+      ],
+      "warshaper technique 3": [
+        "warshaper-technique-3"
+      ],
+      "warshaper technique 5": [
+        "warshaper-technique-5"
+      ],
+      "bonded summoner technique 1": [
+        "bonded-summoner-technique-1"
+      ],
+      "bonded summoner technique 3": [
+        "bonded-summoner-technique-3"
+      ],
+      "bonded summoner technique 5": [
+        "bonded-summoner-technique-5"
+      ],
+      "psychic ambush": [
+        "lurk-psychic-ambush"
+      ],
+      "psychic veil": [
+        "lurk-veil"
+      ],
+      "centre psion 4": [
+        "psion-focus-4"
+      ],
+      "centre psion 8": [
+        "psion-focus-8"
+      ],
+      "centre psion 12": [
+        "psion-focus-12"
+      ],
+      "centre psion 16": [
+        "psion-focus-16"
+      ],
+      "centre psion 20": [
+        "psion-focus-20"
+      ],
+      "centre ardent 4": [
+        "ardent-focus-4"
+      ],
+      "centre ardent 8": [
+        "ardent-focus-8"
+      ],
+      "centre ardent 12": [
+        "ardent-focus-12"
+      ],
+      "centre ardent 16": [
+        "ardent-focus-16"
+      ],
+      "centre ardent 20": [
+        "ardent-focus-20"
+      ],
+      "centre lurk 4": [
+        "lurk-focus-4"
+      ],
+      "centre lurk 8": [
+        "lurk-focus-8"
+      ],
+      "centre lurk 12": [
+        "lurk-focus-12"
+      ],
+      "centre lurk 16": [
+        "lurk-focus-16"
+      ],
+      "centre lurk 20": [
+        "lurk-focus-20"
+      ],
+      "centre cerebremancer 3": [
+        "cerebremancer-focus-3"
+      ],
+      "centre cerebremancer 5": [
+        "cerebremancer-focus-5"
+      ],
+      "leopard strike": [
+        "leopard-natural-strike"
+      ],
+      "leopard predator": [
+        "leopard-special"
+      ],
+      "boar strike": [
+        "boar-natural-strike"
+      ],
+      "boar guardian": [
+        "boar-special"
+      ],
+      "stag strike": [
+        "stag-natural-strike"
+      ],
+      "stag support": [
+        "stag-special"
+      ],
+      "stone guardian strike": [
+        "stone-guardian-natural-strike"
+      ],
+      "stone guardian heavy": [
+        "stone-guardian-special"
+      ],
+      "renewal spirit strike": [
+        "renewal-spirit-natural-strike"
+      ],
+      "renewal spirit healer": [
+        "renewal-spirit-special"
+      ],
+      "call leopard": [
+        "bonded-summoner-call-leopard"
+      ],
+      "call renewal spirit": [
+        "bonded-summoner-call-renewal-spirit"
+      ],
+      "call stone guardian": [
+        "bonded-summoner-call-stone-guardian"
+      ],
+      "wild shape: leopard": [
+        "wild-shape-leopard"
+      ],
+      "wild shape: boar": [
+        "wild-shape-boar"
+      ],
+      "wild shape: stone guardian": [
+        "wild-shape-stone"
+      ],
+      "rally bonded ally": [
+        "steward-rally"
+      ],
+      "pack drive 3": [
+        "steward-drive-3"
+      ],
+      "pack drive 5": [
+        "steward-drive-5"
+      ],
+      "elan barrier": [
+        "elan-inheritance-action"
+      ],
+      "xeph speed": [
+        "xeph-inheritance-action"
+      ],
+      "maenad outburst": [
+        "maenad-inheritance-action"
+      ],
+      "dromite energy": [
+        "dromite-inheritance-action"
+      ],
+      "maintain assault aura": [
+        "divine-mind-aura-assault",
+        "marshal-aura-assault"
+      ],
+      "maintain bulwark aura": [
+        "divine-mind-aura-bulwark",
+        "marshal-aura-bulwark"
+      ],
+      "maintain stride aura": [
+        "divine-mind-aura-stride",
+        "marshal-aura-stride"
+      ],
+      "rally 2": [
+        "divine-mind-rally-2",
+        "marshal-rally-2"
+      ],
+      "rally 6": [
+        "divine-mind-rally-6",
+        "marshal-rally-6"
+      ],
+      "rally 12": [
+        "divine-mind-rally-12",
+        "marshal-rally-12"
+      ],
+      "rally 16": [
+        "divine-mind-rally-16",
+        "marshal-rally-16"
+      ],
+      "rally 20": [
+        "divine-mind-rally-20",
+        "marshal-rally-20"
+      ],
+      "cognition strike 1": [
+        "cognition-strike-1"
+      ],
+      "cognition strike 2": [
+        "cognition-strike-2"
+      ],
+      "cognition strike 3": [
+        "cognition-strike-3"
+      ],
+      "cognition strike 4": [
+        "cognition-strike-4"
+      ],
+      "cognition strike 5": [
+        "cognition-strike-5"
+      ],
+      "inherited stomp": [
+        "half-giant-stomp"
+      ],
+      "inherited bite": [
+        "troglodyte-natural-bite"
+      ],
+      "thorn guardian root": [
+        "thorn-guardian-special"
+      ],
+      "call thorn guardian": [
+        "call-thorn-guardian"
+      ],
+      "ember spirit flare": [
+        "ember-spirit-special"
+      ],
+      "call ember spirit": [
+        "call-ember-spirit"
+      ],
+      "wild shape: scaled guardian": [
+        "wild-shape-scaled-guardian"
+      ],
+      "fire breath": [
+        "dragon-breath-fire"
+      ],
+      "cold breath": [
+        "dragon-breath-cold"
+      ],
+      "electricity breath": [
+        "dragon-breath-electricity"
+      ],
+      "draconic ward 1": [
+        "draconic-ward-1"
+      ],
+      "draconic veil 1": [
+        "draconic-veil-1"
+      ],
+      "draconic hindrance 1": [
+        "draconic-hindrance-1"
+      ],
+      "draconic ward 6": [
+        "draconic-ward-6"
+      ],
+      "draconic veil 6": [
+        "draconic-veil-6"
+      ],
+      "draconic hindrance 6": [
+        "draconic-hindrance-6"
+      ],
+      "draconic ward 11": [
+        "draconic-ward-11"
+      ],
+      "draconic veil 11": [
+        "draconic-veil-11"
+      ],
+      "draconic hindrance 11": [
+        "draconic-hindrance-11"
+      ],
+      "draconic ward 16": [
+        "draconic-ward-16"
+      ],
+      "draconic veil 16": [
+        "draconic-veil-16"
+      ],
+      "draconic hindrance 16": [
+        "draconic-hindrance-16"
+      ],
+      "maintain chorus: courage": [
+        "chorus-courage"
+      ],
+      "maintain chorus: shelter": [
+        "chorus-shelter"
+      ],
+      "chorus rally 2": [
+        "chorus-rally-2"
+      ],
+      "chorus rally 4": [
+        "chorus-rally-4"
+      ],
+      "chorus rally 5": [
+        "chorus-rally-5"
+      ],
+      "high arcana: force 1": [
+        "high-arcana-force-1"
+      ],
+      "high arcana: ward 1": [
+        "high-arcana-ward-1"
+      ],
+      "high arcana: force 3": [
+        "high-arcana-force-3"
+      ],
+      "high arcana: ward 3": [
+        "high-arcana-ward-3"
+      ],
+      "high arcana: force 5": [
+        "high-arcana-force-5"
+      ],
+      "high arcana: ward 5": [
+        "high-arcana-ward-5"
+      ],
+      "reclaim psychic reserve": [
+        "metamind-reclaim"
+      ],
+      "air inherited gift": [
+        "air-genasi-gift"
+      ],
+      "earth inherited gift": [
+        "earth-genasi-gift"
+      ],
+      "fire inherited gift": [
+        "fire-genasi-gift"
+      ],
+      "water inherited gift": [
+        "water-genasi-gift"
+      ],
+      "frost hound chilling howl": [
+        "frost-hound-special"
+      ],
+      "call frost hound": [
+        "call-frost-hound"
+      ],
+      "bulwark construct shield lattice": [
+        "bulwark-construct-special"
+      ],
+      "call bulwark construct": [
+        "call-bulwark-construct"
+      ]
+    }
+  }
+}

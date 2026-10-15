@@ -76,15 +76,15 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   if not battle.is_empty() or not adventure.result.is_empty(): return fail("The first encounter is already saved.")
   var active: Dictionary=state.expedition.active
   if active.get("phase")!="site" or int(active.supplies)<1 or state.expedition.outcomes.has(active.get("site_id")): return fail("Visit an unresolved local site with provisions first.")
-  candidate.first_adventure.battle=TacticalCombat.new(state).create(state,active.site_id,CombatBattlefields.DEFAULT)
+  candidate.first_adventure.battle=TacticalAuras.new(state).create(state,active.site_id,CombatBattlefields.DEFAULT)
   if candidate.first_adventure.battle.is_empty():return fail("The authored battlefield is unavailable. Campaign preserved.")
   candidate.first_adventure.revision+=1
  elif operation=="battle_command":
   if battle.is_empty() or not adventure.result.is_empty(): return fail("No active encounter.")
   var command_input = changes.get("command",{})
   if not command_input is Dictionary: return fail("Invalid battle command.")
-  if TacticalCombat.new(state).current(battle).team=="enemy" and RulesJson.digest(command_input)!=RulesJson.digest(TacticalCombat.new(state).enemy_command(battle)): return fail("Enemy orders are deterministic.")
-  var applied := TacticalCombat.new(state).command(battle,command_input)
+  if TacticalAuras.new(state).current(battle).team=="enemy" and RulesJson.digest(command_input)!=RulesJson.digest(TacticalAuras.new(state).enemy_command(battle)): return fail("Enemy orders are deterministic.")
+  var applied := TacticalAuras.new(state).command(battle,command_input)
   if not applied.ok: return applied
   candidate.first_adventure.battle=applied.battle
   candidate.first_adventure.revision+=1

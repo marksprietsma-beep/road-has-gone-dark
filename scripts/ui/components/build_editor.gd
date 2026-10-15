@@ -119,6 +119,7 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   gear_section.add_child(GameUI.label("Choose one active weapon and compatible armour. Class proficiencies are enforced." if source.rules_ref().engine_schema==3 else "Bow, then staff, then blade determine your active legacy weapon.",GameUI.META))
   gear_section.add_child(GameUI.action("Suggested class equipment and spells",func():class_loadout();refresh_preview()))
   for id in source.ids("equipment"):
+   if not RulesWaveFour.starting_equipment_allowed(source.definition("equipment",id),source):continue
    var control := CheckBox.new();control.text=source.definition("equipment",id).name+ (" · "+str(source.definition("equipment",id).get("proficiency","")) if source.rules_ref().engine_schema==3 else "");equipment_pickers[id]=control
    control.button_pressed=base.equipment.has(id);gear_section.add_child(control);control.toggled.connect(func(_value: bool):if not updating:refresh_preview())
   spell_section=form_section("Spells")
@@ -272,6 +273,11 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
   class_detail.text+="\nEntry: "+RulesCareer.requirement_text(cls.requirements,source)
   if cls.get("class_kind")=="prestige" and not cls.career_choices.is_empty():class_detail.text=class_detail.text.replace("no casting","advances chosen casting tracks")
  if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)
+ if RulesWaveFour.enabled(source):
+  var full_details: String=class_detail.text
+  progression_detail.text=full_details+"\n\n"+progression_detail.text
+  class_detail.tooltip_text=full_details+"\n\n"+class_detail.tooltip_text
+  class_detail.text="%s · d%d · %d skill points + INT · levels 1–%d\nFull mechanics, prerequisites and features: Progression tab"%[cls.name,int(cls.hit_die),int(cls.skill_points),int(cls.max_level)]
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
   budget.text="%d points remaining / %d this level. Ranks cannot exceed total level."%[options.skill_points_remaining,options.skill_points]
@@ -364,6 +370,8 @@ func career_controls() -> void:
   for child in power_section.get_children():power_section.remove_child(child);child.queue_free()
   power_section.add_child(GameUI.label("Powers known",GameUI.SECTION))
   power_section.add_child(GameUI.label("Choose distinct powers. Base cost is 2 × tier − 1 points; augmentation spends additional points. Total expenditure cannot exceed shared manifesting level. Choices persist in class history.",GameUI.META))
+  if RulesWaveFour.enabled(source) and source.definition("classes",class_id).has("distinct_power_limit"):
+   power_section.add_child(GameUI.label("Distinct powers per home rest: 1 + floor(class level / 4). Recasting or augmenting a used power shares that identity. Saving or starting another encounter never resets this limit.",GameUI.META))
   var search := LineEdit.new();search.placeholder_text="Search powers · selected choice stays visible";search.text=power_query;power_section.add_child(search)
   search.text_changed.connect(func(query: String):power_query=query;refresh_power_options())
  career_pickers={};bonus_picker=null
@@ -391,7 +399,8 @@ func career_controls() -> void:
   var update_detail := func():
    var option: Dictionary=group.options.filter(func(row: Dictionary):return row.id==id_of(control))[0]
    specialisations[group.id]=option.id
-   detail.text=option.description+"\n"+"\n".join(option.features.map(func(id: String):return feature_text(id)))
+   detail.text=option.description
+   if not RulesWaveFour.enabled(source) or not is_power:detail.text+="\n"+"\n".join(option.features.map(func(id: String):return feature_text(id)))
   update_detail.call()
   control.item_selected.connect(func(_i: int):update_detail.call();if not updating:refresh_preview())
  if career_pickers.is_empty():career_section.add_child(GameUI.label("No new specialisation at this class level. Existing choices remain on the character sheet.",GameUI.META))

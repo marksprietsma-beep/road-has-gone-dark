@@ -1,0 +1,291 @@
+{
+  "archive": "game112-character-catalogue-wave-four-linux-x64.tar.gz",
+  "sha256": "7c5936c8a73b3646912c512b7756790f56714a1265253f6b632297aada1e05a6",
+  "proofs": {
+    "mechanics": {
+      "checks": 1847,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      }
+    },
+    "restart": {
+      "checks": 73,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      }
+    },
+    "journey": {
+      "actions_used": [
+        "power-kinetic-bolt"
+      ],
+      "checks": 141,
+      "development_saves": [
+        {
+          "save_root": "/workspace/artifacts/wave-four/release-native-linux/journey/development-psion-offence",
+          "snapshots": {
+            "3db11451bb62af911fa39835a310f822:adventurer:1": "df2e858b29c08e274294b6f6daea5a3e2d99cef0825b0dcc602f9995cef33249",
+            "3db11451bb62af911fa39835a310f822:adventurer:2": "bc663c7bf82ed7c0e10ea04d8318ff9562394e3fb29b842db1f90cb76def8475",
+            "3db11451bb62af911fa39835a310f822:adventurer:3": "4d0c23e321a0b79c0c731ec80a60b5bb18c9440816a01e383684c60abe7abacc"
+          }
+        },
+        {
+          "save_root": "/workspace/artifacts/wave-four/release-native-linux/journey/development-psion-control",
+          "snapshots": {
+            "3db11451bb62af911fa39835a310f822:adventurer:1": "4349c8d05d134975ddf66d6cf940d8146d6cc82a119838afd352e6840dfcf934",
+            "3db11451bb62af911fa39835a310f822:adventurer:2": "bc663c7bf82ed7c0e10ea04d8318ff9562394e3fb29b842db1f90cb76def8475",
+            "3db11451bb62af911fa39835a310f822:adventurer:3": "4d0c23e321a0b79c0c731ec80a60b5bb18c9440816a01e383684c60abe7abacc"
+          }
+        },
+        {
+          "save_root": "/workspace/artifacts/wave-four/release-native-linux/journey/development-ardent",
+          "snapshots": {
+            "3db11451bb62af911fa39835a310f822:adventurer:1": "a96ff812b6b880b97d47e3b8e9ce25d8b6e2dc381bac9dfc251367498bef1e2e",
+            "3db11451bb62af911fa39835a310f822:adventurer:2": "bc663c7bf82ed7c0e10ea04d8318ff9562394e3fb29b842db1f90cb76def8475",
+            "3db11451bb62af911fa39835a310f822:adventurer:3": "4d0c23e321a0b79c0c731ec80a60b5bb18c9440816a01e383684c60abe7abacc"
+          }
+        },
+        {
+          "save_root": "/workspace/artifacts/wave-four/release-native-linux/journey/development-lurk",
+          "snapshots": {
+            "3db11451bb62af911fa39835a310f822:adventurer:1": "d0e6bf17a596ab88861e7cc6b415139877964cacfad10e8716ea98cb16d3d888",
+            "3db11451bb62af911fa39835a310f822:adventurer:2": "bc663c7bf82ed7c0e10ea04d8318ff9562394e3fb29b842db1f90cb76def8475",
+            "3db11451bb62af911fa39835a310f822:adventurer:3": "4d0c23e321a0b79c0c731ec80a60b5bb18c9440816a01e383684c60abe7abacc"
+          }
+        },
+        {
+          "save_root": "/workspace/artifacts/wave-four/release-native-linux/journey/development-druid",
+          "snapshots": {
+            "3db11451bb62af911fa39835a310f822:adventurer:1": "d8b216e6b0e12a093a9034ab6bbbcc242942178a09baf95335089e0459157337",
+            "3db11451bb62af911fa39835a310f822:adventurer:2": "bc663c7bf82ed7c0e10ea04d8318ff9562394e3fb29b842db1f90cb76def8475",
+            "3db11451bb62af911fa39835a310f822:adventurer:3": "4d0c23e321a0b79c0c731ec80a60b5bb18c9440816a01e383684c60abe7abacc"
+          }
+        }
+      ],
+      "earned_xp": 40,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      },
+      "screenshots": [],
+      "slot": "3db11451bb62af911fa39835a310f822",
+      "state_sha": "1b51dcd5e7c964e880af89174c42f2c53fbed9b9baeeb8dbe1689d5b0581c784"
+    },
+    "cohort": {
+      "checks": 407,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      }
+    },
+    "cohort_restart": {
+      "checks": 7,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      }
+    },
+    "earned": {
+      "checks": 273,
+      "cycles": 9,
+      "declined_hash": "b70b286443c58e520963dd2731db526f57544ef094534657631eff88d16c0e1e",
+      "earned_xp": 360,
+      "failures": 0,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "commanding-presence",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {
+            "marshal-doctrine": "assault"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "insight": 1.0,
+            "perception": 2.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {
+            "marshal-doctrine-5": "bulwark"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "marshal",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "war-chanter",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 3.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {
+            "chorus-doctrine": "courage"
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      },
+      "slot": "517f50e77326c6fb916b62967313b035",
+      "state_hash": "5236c76f91f0f9abc39012f259a232d6bad70f20b3ca8719cc2edaf2ae23d4b6",
+      "xp_injected": false
+    },
+    "earned_restart": {
+      "checks": 3,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v14",
+        "rules_version": "14.0.0",
+        "schema_version": 1
+      }
+    }
+  },
+  "source_commit": "1115aa7722b93a955256ad3b157f2ab201648dad",
+  "source_helper_override": false,
+  "empty_path": true,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "timings": [
+    {
+      "phase": "native-gameplay",
+      "seconds": 398.138,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native-process-restart",
+      "seconds": 11.017,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "archive_integrity": {
+    "files_read": 7068,
+    "gzip_tar_read": true
+  }
+}
