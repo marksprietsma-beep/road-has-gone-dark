@@ -15,15 +15,22 @@ func run() -> void:
  if ui==null:finish();return
  check(ui.editor.source.rules_ref().pack_id=="trhgd-character-v14","creator exact v14 default")
  await screenshot("v14-first-open",false)
- for cls in ["erudite","divine-mind","marshal"]:
+ for cls in ["erudite","divine-mind","marshal","beguiler","dragonfire-adept"]:
   ui.editor.set_class(cls);ui._identity_changed();ui.detail_tabs.current_tab=1
   check(ui.editor.preview.ok,"new creator legal default "+cls+JSON.stringify(ui.editor.preview.get("errors",[])))
-  for tab in ["Class","Specialisation","Powers"]:
-   if tab=="Powers" and cls=="marshal":continue
+  for tab in ["Specialisation","Spells","Progression","Powers"]:
+   if tab=="Powers" and not ui.editor.source.definition("classes",cls).has("psychic_profile"):continue
+   if tab=="Spells" and ui.editor.source.definition("classes",cls).spell_mode.is_empty():continue
+   if tab=="Progression" and cls not in ["beguiler","dragonfire-adept"]:continue
    var found := false
    for index in ui.editor.sections.get_tab_count():
     if ui.editor.sections.get_tab_title(index)==tab:ui.editor.sections.current_tab=index;found=true
    if found:await screenshot(cls+"-"+tab.to_lower(),false)
+ for people in ["air-genasi","earth-genasi","fire-genasi","water-genasi"]:
+  ui.pick(ui.people_picker,people);ui.people_picker.item_selected.emit(ui.people_picker.selected)
+  ui.detail_tabs.current_tab=2
+  check(ui.editor.preview.ok,"actual inherited creator preview "+people)
+  await screenshot(people+"-traits",false)
  await close_screen()
  FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W4_SOURCE_SHA"),"screenshots":screenshots,"development_fixture":false}))
  finish()

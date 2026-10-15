@@ -1,7 +1,7 @@
-# Wave Four delivery — pending native acceptance
+# Wave Four delivery — expanded native verification pending
 
-This is the first coherent v14 batch, not completion of the aspirational Wave Four roster or GAME-88 catalogue. Read PR-DESCRIPTION.md for the before/after inventory, ASSESSMENT.md for the engineering sequence and TESTING.md for actual outcomes and corrections.
+Expanded candidate hash `33c0133bca9f66e663889249705c59423760fac4d557a282e416fdcd8971fdc4`. See PR-DESCRIPTION/REPERTOIRE for all counts and limitations. Initial native verification passed Windows/Linux at06c8bfb; that earlier build is not the expanded release.
 
-No final v14 Windows package or successful full native verification is claimed at this checkpoint. The verified previous v13 Windows package remains linked in the corrected Wave Three DELIVERY.md. New native Windows/Linux and compatibility CI must pass before this branch can be marked ready and merged. Programme #82 remains open.
+Historical first-cohort Windows artifact: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38674239280/artifacts/11947979010 . Playable ZIP SHA256 `a0c7a01e3a3c431640694116dab6b53dcce5061593e976c11c4661979a572de2`. Exact source06c8bfb, pin a63f2eecbd277c2baf8afc74c9d0bb5dc001d6ed4b55147670b4a1d67ca9729d. Retained as historical evidence only.
 
-Historical v1–v13 content is unchanged. New campaigns default to v14; existing saves retain exact pins. Prestige remains an earned, optional manual advancement. No world, map or quest content expansion.
+Expanded Windows/Linux package/checksum/current-head fullCI and merge remain pending. PR99 stays draft until verified. Existing campaigns retain exact original pins. Prestige remains optional earned advancement. No programme completion claimed.

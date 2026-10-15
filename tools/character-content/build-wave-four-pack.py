@@ -140,6 +140,7 @@ for cls in ['wizard','sorcerer','bard','cleric']:
    reserve=cls+'-prepared-'+id;row('resources',id=reserve,name=name+' copies',capacity=c(0),refresh='eligible_rest',prepared_ability=cls+'-'+id);costs[reserve]=1
   a=ability(cls+'-'+id,name,kind,fx,costs,['spell','prepared'if prepared else'spontaneous','tier_2'],description='Main action, one tier2 slot'+(' and prepared copy'if prepared else'')+'. '+('Will negates saveDC/Will−2 for two rounds.'if kind=='creature'else'Remove weakened/off-balance and grant six temporary HP.'),reach=4,casting_class=cls,spell_tier=2)
   tier(cls,3 if cls!='bard'else 4,feature(a+'-access',name,[a],list(costs.keys())[1:]if prepared else[]))
+exec((root/'tools/character-content/wave-four-cohort.py').read_text(encoding='utf-8'))
 path=root/'data/rules/trhgd-character-v14.json';path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 manifest_path=root/'data/rules/packs.json';manifest=json.loads(manifest_path.read_text())
 pin={k:p[k]for k in ['pack_id','schema_version','rules_version','engine_schema']};pin['content_hash']=hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()

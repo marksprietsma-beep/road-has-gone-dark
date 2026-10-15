@@ -2202,11 +2202,11 @@
         "Dragon Magic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "dragonfire-adept"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2216,20 +2216,29 @@
       "owner": "GAME-109",
       "design_key": "base_class-dragonfire-adept",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "base_class-dragonfire-adept:dragon-magic:0",
           "source_group": "Dragon Magic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "dragonfire-adept",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-mariner",
@@ -2895,11 +2904,11 @@
         "Player's Handbook II"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "beguiler"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2909,20 +2918,29 @@
       "owner": "GAME-109",
       "design_key": "base_class-beguiler",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "base_class-beguiler:player-s-handbook-ii:0",
           "source_group": "Player's Handbook II",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "beguiler",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-dragon-shaman",
@@ -4616,11 +4634,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-air-genasi"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4630,17 +4648,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-air-genasi",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-air-genasi:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-air-genasi",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-air-genasi:planetouched-index-family:1",
@@ -4650,7 +4671,14 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-dust-para-genasi",
@@ -4704,11 +4732,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-earth-genasi"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4718,17 +4746,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-earth-genasi",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-earth-genasi:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-earth-genasi",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-earth-genasi:planetouched-index-family:1",
@@ -4738,7 +4769,14 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-fire-genasi",
@@ -4748,11 +4786,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-fire-genasi"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -4762,17 +4800,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-fire-genasi",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-fire-genasi:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-fire-genasi",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-fire-genasi:planetouched-index-family:1",
@@ -4782,7 +4823,14 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-ice-para-genasi",
@@ -5012,11 +5060,11 @@
         "Planetouched index family"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-water-genasi"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -5026,17 +5074,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-water-genasi",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-water-genasi:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-water-genasi",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-water-genasi:planetouched-index-family:1",
@@ -5046,7 +5097,14 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-glimmerfolk",
@@ -18023,11 +18081,11 @@
         "Core"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "archmage"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -18037,20 +18095,29 @@
       "owner": "GAME-110",
       "design_key": "prestige-archmage",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "prestige-archmage:core:0",
           "source_group": "Core",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "archmage",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-assassin",
@@ -18982,11 +19049,11 @@
         "Psionic"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "metamind"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -18996,20 +19063,29 @@
       "owner": "GAME-110",
       "design_key": "prestige-metamind",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "prestige-metamind:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "metamind",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 10,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-psion-uncarnate",
@@ -22305,11 +22381,11 @@
         "Complete Warrior"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "war-chanter"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -22319,20 +22395,29 @@
       "owner": "GAME-110",
       "design_key": "prestige-war-chanter",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "prestige-war-chanter:complete-warrior:0",
           "source_group": "Complete Warrior",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "war-chanter",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-warshaper",
@@ -28708,7 +28793,16 @@
       "ancestry-bugbear",
       "ancestry-ogre",
       "ancestry-half-giant",
-      "ancestry-troglodyte"
+      "ancestry-troglodyte",
+      "base_class-beguiler",
+      "base_class-dragonfire-adept",
+      "prestige-war-chanter",
+      "prestige-archmage",
+      "prestige-metamind",
+      "ancestry-air-genasi",
+      "ancestry-earth-genasi",
+      "ancestry-fire-genasi",
+      "ancestry-water-genasi"
     ],
     "all_occurrences_preserved": true,
     "complete_programme": false

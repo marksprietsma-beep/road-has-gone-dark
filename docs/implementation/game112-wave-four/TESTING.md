@@ -13,3 +13,7 @@ Commands: `python tools/character-content/validate.py`; `python tests/adventure_
 Advanced histories are explicitly development fixtures. The production journey starts with0 XP and earns actual rewards; no XP button or selector grants XP. CI retains the earlier frozen, legacy, creator, earned, source and native suites. See the Wave Four workflow for the complete matrix.
 
 First native CI38673262643 failed before test execution on both platforms because the newly independent job had no Godot class cache. The source runner now performs an explicit checked editor import; no assertions or mechanics were relaxed. Normal local journey146/0 and restart22/0 already passed.
+
+## Expanded cohort checkpoint
+
+Candidate hash33c0133bca9f66e663889249705c59423760fac4d557a282e416fdcd8971fdc4 supersedes earlier v14 candidate hashes above. Expanded source mechanics1846/0, cold73/0. Additional cohort330/0 and cold7/0, including forced successful/failed saves and mixed-key hash invariants. New ordinary earned path273/0, separate restart3/0,360XP through9cycles. StringName advancement skill keys exposed a genuine choice-hash mismatch; normalisation now occurs at the v14 authoritative preview boundary. Strict campaign history validation is unchanged. Test effect probes use a low-level target for a failed save and a high-level target for a successful save: GAME-32 numeric saves have no automatic natural1 failure. Expanded native results pending.

@@ -1,28 +1,34 @@
-# Wave Four — first coherent v14 batch
+# Wave Four — expanded v14 character cohort
 
-The merged Wave Three baseline is retained. This first batch adds Erudite's saved distinct-powers-per-rest discipline, Divine Mind's mantle-restricted psychic support and Marshal's noncasting leadership. Maintained auras use ordinary actions/statuses/resources and project typed bonuses from live geometry through a thin inherited adapter. The frozen GAME-32 tactical source remains byte-for-byte unchanged; no action economy, targeting, turn order, XP policy or second save writer is introduced. v1–v13 bytes and saved pins remain unchanged.
+Preserves the merged Wave Three implementation and frozen GAME-32 authority. All historical v1–v13 files and saved pins remain unchanged. New campaigns use v14. This is a bounded original adaptation, not completion of GAME-88.
 
-New supporting adaptations: five-level Cognition Adept (bounded psychic hunter), Bugbear/Ogre/Half-giant/Troglodyte; eight feats, eight psychic powers with authored augmentation, two shared spell identities, two costed summons and Scaled Guardian form. Base tracks support1–20; prestige caps retain the existing5/10-level definitions. Eligibility is permanent and optional; prestige never starts at level1 or assigns itself, and ordinary advancement still requires earned XP.
+Five new base tracks support levels1–20: Erudite persists distinct powers used per rest; Divine Mind selects mantle-restricted powers and sustained auras; Marshal uses noncasting leadership; Beguiler uses Intelligence-based spontaneous illusion/control spells and concealment; Dragonfire Adept has selected elemental repeatable breath and finite invocations. Breath is an enemy-centred burst, not a cone. Every action uses the existing tactical resolver.
 
-| Category | v13 | v14 candidate |
+Four new optional prestige paths: Cognition Adept5, War Chanter5, Archmage5, Metamind10. Entry uses permanent requirements. Prestige never appears in starting-class choices, is never automatically assigned, and advancement requires earned XP and an explicit player selection. The new ordinary journey earns360XP over9 opportunity cycles and saves both a War Chanter choice and an alternative Marshal level.
+
+Eight new ancestry families: Bugbear, Ogre, Half-giant, Troglodyte and Air/Earth/Fire/Water Genasi; Highwind/Granite heritage tradeoffs retain their ancestry. Culture remains independent. Sixteen new feats, fourteen psychic powers, twenty-four named spell identities, four creatures and one form expand the shared systems.
+
+| Category | v13 | Expanded v14 candidate |
 |---|---:|---:|
-| Base classes | 25 | 28 |
-| Prestige paths | 12 | 13 |
-| Ancestry families | 25 | 29 |
-| Heritage records | 34 | 38 |
-| Feats | 50 | 58 |
-| Skills | 14 | 14 |
-| Named spell identities | 87 | 89 |
-| Class spell references | 125 | 133 |
-| Selectable psychic powers | 21 | 29 |
-| Other named ability identities | 312 | 332 |
-| Other ability records | 328 | 356 |
-| Creature definitions | 8 | 10 |
-| Body forms | 11 | 12 |
-| Scheduled choice groups | 133 | 189 |
+| base classes | 25 | 30 |
+| prestige classes | 12 | 16 |
+| ancestry families | 25 | 33 |
+| heritages | 34 | 44 |
+| feats | 50 | 66 |
+| skills | 14 | 14 |
+| unique spells | 87 | 111 |
+| spell references | 125 | 162 |
+| psychic powers | 21 | 35 |
+| other named abilities | 312 | 367 |
+| other ability records | 328 | 391 |
+| creatures | 8 | 12 |
+| body forms | 11 | 12 |
+| career choice groups | 133 | 212 |
 
-Spell identities are conservatively grouped by display name, separately listing every class reference in REPERTOIRE.json. Other named/ability records include level-labelled techniques and are not a claim of that many different mechanics. Scheduled power choices are not counted as distinct specialisation concepts. All760 indexed research occurrences remain; eight candidate mappings stay implemented until native verification. Skills remain14 because no new skill is needed here.
+Counts distinguish display-name spell identities from class references and level-labelled ability records. Choice groups are scheduled selections, not unique mechanical concepts. Seventeen new research mappings remain candidate implementations until expanded native acceptance. All760 research occurrences remain accounted for.
 
-Verification is in progress: frozen GAME-32 oracle passed22,181 kernel assertions plus235 migration/six reload; historical append-only guard9/0; actual Godot creator renders26/0 with18 captures at640/1280/2560. Current candidate mechanics, production journey, native Windows/Linux and full compatibility results must be verified before ready/merge. Historical successful runs are not final v14 acceptance.
+A newly exposed v14 advancement-boundary defect is fixed: mixed StringName/String skill keys are normalised before ordered-history hashing; exact persistence validation remains enforced. Old content behaviour is untouched.
 
-This is below Wave Four's aspirational totals. Beguiler/Duskblade/Dragonfire Adept/Spirit Shaman, additional prestige, heritage, metamagic and companion options remain explicit continuation work. Neutral humanoid LPC fallbacks persist; large creatures still occupy one tile; no flight/swimming/environmental vision claims. No unrelated world/map/quest expansion. Programme #82 remains open. The owner authorises normal merge after current-head checks, never a bypass.
+Verification checkpoint: expanded mechanics1846/0; cohort330/0, cold7/0; source cold restart73/0; legitimate earned campaign273/0, cold restart3/0. Initial06c8bfb Windows/Linux native jobs passed, but those packages contain the earlier28-class cohort. Expanded native and full compatibility are pending. Do not describe that older package as the expanded release.
+
+Limitations: neutral humanoid LPC fallbacks, one tile per creature, no flight/swimming/environmental vision. Duskblade hit-conditioned channeling and Spirit Shaman rest-selected repertoire remain substantive follow-up work. No unrelated world/map/quest changes. Programme issue82 stays open. Normal merge only after current-head checks.

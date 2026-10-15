@@ -362,6 +362,7 @@ func derive_character(record: Dictionary) -> Dictionary:
  return {"ok":true,"snapshot":RulesJson.freeze(snapshot),"context":c}
 
 func preview_advancement(record: Dictionary,choice: Dictionary) -> Dictionary:
+ if RulesWaveFour.enabled(registry):choice=RulesJson.string_keys(choice)
  var old := validate_build(record)
  if not old.ok: return old
  var candidate: Dictionary=record.duplicate(true)

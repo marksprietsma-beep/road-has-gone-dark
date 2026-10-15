@@ -1273,20 +1273,20 @@
   },
   "14": {
     "pack": "trhgd-character-v14",
-    "base_classes": 28,
-    "prestige_classes": 13,
-    "ancestry_families": 29,
-    "heritages": 38,
-    "feats": 58,
+    "base_classes": 30,
+    "prestige_classes": 16,
+    "ancestry_families": 33,
+    "heritages": 44,
+    "feats": 66,
     "skills": 14,
-    "unique_spells": 89,
-    "spell_references": 133,
-    "psychic_powers": 29,
-    "other_named_abilities": 332,
-    "other_ability_records": 356,
-    "creatures": 10,
+    "unique_spells": 111,
+    "spell_references": 162,
+    "psychic_powers": 35,
+    "other_named_abilities": 367,
+    "other_ability_records": 391,
+    "creatures": 12,
     "body_forms": 12,
-    "career_choice_groups": 189,
+    "career_choice_groups": 212,
     "spell_identities": {
       "arcane bolt": [
         "bard-arcane-bolt",
@@ -1598,6 +1598,79 @@
         "sorcerer-cleansing-ward",
         "bard-cleansing-ward",
         "cleric-cleansing-ward"
+      ],
+      "veil of doubt": [
+        "beguiler-beguiling-control-1"
+      ],
+      "false openings": [
+        "beguiler-beguiling-ward-1"
+      ],
+      "compelling stillness": [
+        "beguiler-beguiling-control-2"
+      ],
+      "veiled step": [
+        "beguiler-beguiling-ward-2"
+      ],
+      "phantasmal assault": [
+        "beguiler-beguiling-control-3"
+      ],
+      "mass veil": [
+        "beguiler-beguiling-ward-3"
+      ],
+      "mind tether": [
+        "beguiler-beguiling-control-4"
+      ],
+      "sheltering fiction": [
+        "beguiler-beguiling-ward-4"
+      ],
+      "dread convergence": [
+        "beguiler-beguiling-control-5"
+      ],
+      "lucid refuge": [
+        "beguiler-beguiling-ward-5"
+      ],
+      "crushing apprehension": [
+        "beguiler-beguiling-control-6"
+      ],
+      "unerring poise": [
+        "beguiler-beguiling-ward-6"
+      ],
+      "prismatic doubt": [
+        "beguiler-beguiling-control-7"
+      ],
+      "collective refuge": [
+        "beguiler-beguiling-ward-7"
+      ],
+      "nightmare pressure": [
+        "beguiler-beguiling-control-8"
+      ],
+      "perfect concealment": [
+        "beguiler-beguiling-ward-8"
+      ],
+      "dominion of dread": [
+        "beguiler-beguiling-control-9"
+      ],
+      "sanctuary of shadows": [
+        "beguiler-beguiling-ward-9"
+      ],
+      "anchoring ward": [
+        "wizard-anchoring-ward",
+        "cleric-anchoring-ward",
+        "druid-anchoring-ward"
+      ],
+      "summon frost hound": [
+        "wizard-summon-frost-hound",
+        "cleric-summon-frost-hound",
+        "druid-summon-frost-hound"
+      ],
+      "summon bulwark construct": [
+        "wizard-summon-bulwark-construct",
+        "cleric-summon-bulwark-construct",
+        "druid-summon-bulwark-construct"
+      ],
+      "restorative circle": [
+        "cleric-restorative-circle",
+        "druid-restorative-circle"
       ]
     },
     "other_named_identities": {
@@ -2620,6 +2693,111 @@
       ],
       "wild shape: scaled guardian": [
         "wild-shape-scaled-guardian"
+      ],
+      "fire breath": [
+        "dragon-breath-fire"
+      ],
+      "cold breath": [
+        "dragon-breath-cold"
+      ],
+      "electricity breath": [
+        "dragon-breath-electricity"
+      ],
+      "draconic ward 1": [
+        "draconic-ward-1"
+      ],
+      "draconic veil 1": [
+        "draconic-veil-1"
+      ],
+      "draconic hindrance 1": [
+        "draconic-hindrance-1"
+      ],
+      "draconic ward 6": [
+        "draconic-ward-6"
+      ],
+      "draconic veil 6": [
+        "draconic-veil-6"
+      ],
+      "draconic hindrance 6": [
+        "draconic-hindrance-6"
+      ],
+      "draconic ward 11": [
+        "draconic-ward-11"
+      ],
+      "draconic veil 11": [
+        "draconic-veil-11"
+      ],
+      "draconic hindrance 11": [
+        "draconic-hindrance-11"
+      ],
+      "draconic ward 16": [
+        "draconic-ward-16"
+      ],
+      "draconic veil 16": [
+        "draconic-veil-16"
+      ],
+      "draconic hindrance 16": [
+        "draconic-hindrance-16"
+      ],
+      "maintain chorus: courage": [
+        "chorus-courage"
+      ],
+      "maintain chorus: shelter": [
+        "chorus-shelter"
+      ],
+      "chorus rally 2": [
+        "chorus-rally-2"
+      ],
+      "chorus rally 4": [
+        "chorus-rally-4"
+      ],
+      "chorus rally 5": [
+        "chorus-rally-5"
+      ],
+      "high arcana: force 1": [
+        "high-arcana-force-1"
+      ],
+      "high arcana: ward 1": [
+        "high-arcana-ward-1"
+      ],
+      "high arcana: force 3": [
+        "high-arcana-force-3"
+      ],
+      "high arcana: ward 3": [
+        "high-arcana-ward-3"
+      ],
+      "high arcana: force 5": [
+        "high-arcana-force-5"
+      ],
+      "high arcana: ward 5": [
+        "high-arcana-ward-5"
+      ],
+      "reclaim psychic reserve": [
+        "metamind-reclaim"
+      ],
+      "air inherited gift": [
+        "air-genasi-gift"
+      ],
+      "earth inherited gift": [
+        "earth-genasi-gift"
+      ],
+      "fire inherited gift": [
+        "fire-genasi-gift"
+      ],
+      "water inherited gift": [
+        "water-genasi-gift"
+      ],
+      "frost hound chilling howl": [
+        "frost-hound-special"
+      ],
+      "call frost hound": [
+        "call-frost-hound"
+      ],
+      "bulwark construct shield lattice": [
+        "bulwark-construct-special"
+      ],
+      "call bulwark construct": [
+        "call-bulwark-construct"
       ]
     }
   }

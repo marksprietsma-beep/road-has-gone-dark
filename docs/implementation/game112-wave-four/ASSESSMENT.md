@@ -11,3 +11,7 @@ This is a coherent first batch of Wave Four, below the aspirational roster targe
 Verification sequence: load/reference validation → all base careers1–20 and focused effects/gates/persistence → frozen historical/Game32/earned-advancement/UI tests → native Windows/Linux with empty PATH and separate process restart → actual Godot captures → delivery source/hash audit → merge only when current-head checks pass. No world/quest/map expansion or XP grants in production.
 
 Frozen tactical source is preserved byte-for-byte. TacticalAuras inherits command/target/turn authority and only projects v14 auras at seal and weapon-resolution boundaries; production call sites select this adapter. Legacy pins delegate unchanged. The first attempted direct hooks were removed after the unchanged source-pin guard correctly rejected them.
+
+## Expanded cohort
+
+The first native Wave Four Windows/Linux jobs passed at06c8bfb. Continue beyond that batch with Beguiler/DragonfireAdept, WarChanter/Archmage/Metamind, fourGenasi/twoheritages, eightfeats/sixpowers/twocreatures and executable magic. The current candidate reaches aspirational roster counts while preserving shared authority. Duskblade is deferred honestly: hit-conditioned channeling needs structured hit events, not log parsing or damage-on-miss. SpiritShaman needs a genuine rest-selection lifecycle. No alternate engine introduced. WaveThree main postmerge checks38669734386/389/396/394/383 subsequently passed.
