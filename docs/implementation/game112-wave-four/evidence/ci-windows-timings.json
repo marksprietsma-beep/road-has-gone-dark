@@ -1,0 +1,57 @@
+[
+  {
+    "test": "import",
+    "seconds": 93.156,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "test": "mechanics",
+    "seconds": 197.985,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "cohort",
+    "seconds": 45.125,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "mechanics-restart",
+    "seconds": 7.828,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "cohort-restart",
+    "seconds": 2.406,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "earned",
+    "seconds": 241.469,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "earned-restart",
+    "seconds": 5.015,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "journey",
+    "seconds": 87.657,
+    "exit_code": 0,
+    "errors": false
+  },
+  {
+    "test": "journey-restart",
+    "seconds": 5.828,
+    "exit_code": 0,
+    "errors": false
+  }
+]
