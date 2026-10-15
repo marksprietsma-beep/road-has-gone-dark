@@ -1649,11 +1649,11 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "divine-mind"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1663,20 +1663,29 @@
       "owner": "GAME-109",
       "design_key": "base_class-divine-mind",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "base_class-divine-mind:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "divine-mind",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-erudite",
@@ -1685,11 +1694,11 @@
         "Complete Psionic"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "erudite"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1699,20 +1708,29 @@
       "owner": "GAME-109",
       "design_key": "base_class-erudite",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "base_class-erudite:complete-psionic:0",
           "source_group": "Complete Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "erudite",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-lurk",
@@ -2724,11 +2742,11 @@
         "Miniatures Handbook"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "marshal"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -2738,20 +2756,29 @@
       "owner": "GAME-109",
       "design_key": "base_class-marshal",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "base_class-marshal:miniatures-handbook:0",
           "source_group": "Miniatures Handbook",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "marshal",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-warmage",
@@ -3977,11 +4004,11 @@
         "Genie / Giant families"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-half-giant"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -3991,17 +4018,20 @@
       "owner": "GAME-108",
       "design_key": "ancestry-half-giant",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-half-giant:human-and-human-derived:0",
           "source_group": "Human and human-derived",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-half-giant",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         },
         {
           "key": "ancestry-half-giant:human-and-human-derived:1",
@@ -4019,7 +4049,14 @@
           "production_id": null,
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-mul",
@@ -11510,11 +11547,11 @@
         "Goblinoids"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-bugbear"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -11524,19 +11561,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-bugbear",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-bugbear:goblinoids:0",
           "source_group": "Goblinoids",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-bugbear",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-goblin",
@@ -15471,11 +15518,11 @@
         "Ogres"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-ogre"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -15485,19 +15532,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-ogre",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-ogre:ogres:0",
           "source_group": "Ogres",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-ogre",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-eneko",
@@ -17068,11 +17125,11 @@
         "T–V"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-troglodyte"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -17082,19 +17139,29 @@
       "owner": "GAME-108",
       "design_key": "ancestry-troglodyte",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "ancestry-troglodyte:t-v:0",
           "source_group": "T–V",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-troglodyte",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-troll",
@@ -18870,11 +18937,11 @@
         "Psionic"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "cognition-adept"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -18884,20 +18951,29 @@
       "owner": "GAME-110",
       "design_key": "prestige-illithid-slayer",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Focused mechanics and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Finish focused/native verification before promoting any mapping.",
       "source_variants": [
         {
           "key": "prestige-illithid-slayer:psionic:0",
           "source_group": "Psionic",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "cognition-adept",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [],
+      "implementation": {
+        "pack_id": "trhgd-character-v14",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-metamind",
@@ -28616,6 +28692,23 @@
       "ancestry-xeph",
       "ancestry-maenad",
       "ancestry-dromite"
+    ],
+    "all_occurrences_preserved": true,
+    "complete_programme": false
+  },
+  "wave_four": {
+    "candidate_pack": "trhgd-character-v14",
+    "baseline_pack": "trhgd-character-v13",
+    "status": "implementation_under_validation",
+    "new_source_rows": [
+      "base_class-erudite",
+      "base_class-divine-mind",
+      "base_class-marshal",
+      "prestige-illithid-slayer",
+      "ancestry-bugbear",
+      "ancestry-ogre",
+      "ancestry-half-giant",
+      "ancestry-troglodyte"
     ],
     "all_occurrences_preserved": true,
     "complete_programme": false

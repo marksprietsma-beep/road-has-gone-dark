@@ -22,11 +22,11 @@ func run() -> void:
  var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id))
  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"ordinary campaign creation")
  slot=born.state.playthrough_id;action_builder("builder_open")
- check(state.character_builder.rules_ref.pack_id=="trhgd-character-v13","fresh default v13; no content opt-in")
+ check(state.character_builder.rules_ref.pack_id==RulesRecords.NEW_PACK,"fresh default exact latest pin; no content opt-in")
  await creator("first-open-catalogue",1,"","")
  var source := RulesRecords.registry(state);var kernel := RulesCharacter.new(source)
  for i in 3:
-  var cls: String=["psion","ardent","lurk"][i];var ancestry: String=["human","elan","xeph"][i];var id: String=state.party_ids[i]
+  var cls: String=class_roster()[i];var ancestry: String=ancestry_roster()[i];var id: String=state.party_ids[i]
   var attributes := {};var priority: Array=source.definition("classes",cls).attribute_priority
   for n in 6:attributes[priority[n]]=source.rule("standard_array")[n]
   var record := kernel.create(id,attributes,"heritage-"+ancestry)
@@ -63,7 +63,7 @@ func run() -> void:
   var track: String="psion" if str(cls).begins_with("psion-") else str(cls)
   var attributes := {};var priority: Array=source.definition("classes",track).get("attribute_priority",["WIS","CON","DEX","INT","STR","CHA"])
   for n in 6:attributes[priority[n]]=source.rule("standard_array")[n]
-  var record := kernel.create(id,attributes,"heritage-human")
+  var record := kernel.create(id,attributes,initial.mechanics.records[id].ancestry_ref)
   for n in (8 if track=="druid" else 12):
    var choice: Dictionary=kernel.suggested_choice(record,track).choice
    if n==0 and cls=="psion-control":choice.specialisations["psion-power-1"]="power-thought-fog";choice.specialisations["psion-second-power"]="power-keen-mind"
@@ -75,7 +75,8 @@ func run() -> void:
   record.runtime.hp=int(kernel.derive_character(record).snapshot.stats.HP)
   fixture.mechanics.records[id]=record;fixture.character_builder.initial_levels[id]=record.advancement_history.size()
   var root_path := base.path_join("development-"+cls);var store := GamePlaythroughStore.new();store.save_root=root_path
-  check(store.save_new(slot,fixture,entry.world).ok,"writer-owned advanced fixture "+cls)
+  var saved_fixture := store.save_new(slot,fixture,entry.world)
+  check(saved_fixture.ok,"writer-owned advanced fixture "+cls+" "+JSON.stringify(saved_fixture.get("error","")))
   var snapshots := {}
   for member in fixture.party_ids:snapshots[member]=kernel.derive_character(fixture.mechanics.records[member]).snapshot.snapshot_hash
   development_saves.append({"save_root":root_path,"snapshots":snapshots})
@@ -109,3 +110,6 @@ func finish() -> void:
  FileAccess.open(base.path_join("screenshots.json"),FileAccess.WRITE).store_string(JSON.stringify(screenshots))
  print("WAVE THREE JOURNEY ",checks," / ",failures)
  get_tree().quit(1 if failures else 0)
+
+func class_roster() -> Array:return ["psion","ardent","lurk"]
+func ancestry_roster() -> Array:return ["human","elan","xeph"]

@@ -312,7 +312,7 @@ func _preview_changed() -> void:
  if state.is_empty() or ready_view:return
  if editor.preview.get("ok",false):
   var pending: Dictionary=state.party.members[selected-1].duplicate(true);pending.name=name_edit.text;pending.biography=biography.text;pending.people_id=selected_id(people_picker)
-  var engine := TacticalCombat.new(editor.preview.candidate)
+  var engine := TacticalAuras.new(editor.preview.candidate)
   var unit := engine.unit(pending.character_id,pending.name,"party",[0,0],editor.preview.candidate,TacticalCombat.weapon_for(editor.preview.candidate))
   var recipe := CombatArt.recipe("lpc",unit,pending)
   roster.update_item(selected-1,pending.name+"\n"+str(editor.source.definition("classes",editor.class_id).name)+" · preview",CombatArt.thumbnail(recipe))
@@ -423,6 +423,7 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  if s.has("known_powers"):
   var source := RulesRecords.registry(state)
   lines.append("\nPsychic powers known · manifesting level "+str(s.manifesting_level))
+  if s.has("distinct_power_limit") and int(s.distinct_power_limit)<1000:lines.append("Distinct powers this rest: %d/%d · resets only at home rest"%[s.manifested_powers.size(),int(s.distinct_power_limit)])
   for id in s.known_powers:
    var power := source.definition("psychic_powers",id)
    lines.append("%s · tier%d · %s · base%d PP"%[power.name,int(power.tier),power.discipline,2*int(power.tier)-1])

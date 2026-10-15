@@ -37,7 +37,7 @@ static func validate(state: Dictionary,_world: GameWorldTemplate) -> String:
   var h: Dictionary=c.hook
   if h.size()!=7 or h.get("id")!=m.character_id+":first-journey" or h.get("kind")!="background-concern" or h.get("concern_ref")!=str(m.generated_facts.background.concern) or h.get("background_ref")!=m.background_id or h.get("home_ref")!=state.origin.home_burg_id or not h.get("summary") is String or not h.get("status") in ["open","experienced"]: return "adventure.hook: Invalid source references"
  if not a.battle.is_empty():
-  var error := TacticalCombat.new().validate(a.battle)
+  var error := TacticalAuras.new().validate(a.battle)
   if not error.is_empty(): return "adventure.battle: "+error
   var ids: Array=a.battle.units.values().filter(func(u: Dictionary):return u.team=="party").map(func(u: Dictionary):return u.id)
   for id in state.party_ids:

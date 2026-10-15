@@ -76,7 +76,7 @@ static func validate(state: Dictionary,world: GameWorldTemplate,scope: Dictionar
  for id in s.encounters:
   if not ids.has(id) or not s.encounters[id] is Dictionary:return "opportunity.encounter: Invalid reference"
   var b: Dictionary=s.encounters[id]
-  var error := TacticalCombat.new().validate(b)
+  var error := TacticalAuras.new().validate(b)
   if not error.is_empty() or b.site_id!=id or b.board!=SandboxRecords.site(s,id).board:return "opportunity.encounter: "+error
   var members: Array=b.units.values().filter(func(u: Dictionary):return u.team=="party" and not u.has("entity")).map(func(u: Dictionary):return u.id)
   if members.size()!=3 or not state.party_ids.all(func(p: String):return p in members):return "opportunity.encounter: Persistent party changed"

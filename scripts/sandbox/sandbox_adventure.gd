@@ -40,6 +40,7 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
    var record: Dictionary=candidate.mechanics.records[id]
    var snapshot: Dictionary=RulesCharacter.new(RulesRecords.registry(candidate)).derive_character(record).snapshot
    record.runtime.hp=int(snapshot.stats.HP);record.runtime.statuses=[]
+   if RulesWaveFour.enabled(RulesRecords.registry(candidate)):record.runtime.manifested_powers=[]
    RulesEntities.recover_companions(record,RulesRecords.registry(state))
    for resource in snapshot.resource_capacities:record.runtime.resources[resource]=snapshot.resource_capacities[resource]
    record.revision+=1
@@ -57,12 +58,12 @@ static func transition(service: AdventureService,entry: Dictionary,state: Dictio
    service._event(candidate,"travel","Arrived at "+site.name+". The site and encounter are generated local content.",1)
   elif operation=="sandbox_fight":
    if active.phase!="site" or active.supplies<1 or s.results.has(selected) or s.encounters.has(selected):return service.fail("The encounter is already saved or unavailable.")
-   var battle := TacticalCombat.new(candidate).create_generated(candidate,selected,site.board)
+   var battle := TacticalAuras.new(candidate).create_generated(candidate,selected,site.board)
    if battle.is_empty():return service.fail("Generated encounter failed validation; campaign preserved.")
    s.encounters[selected]=battle;active.phase="combat"
   elif operation=="sandbox_command":
    if active.phase!="combat" or not s.encounters.has(selected) or s.results.has(selected):return service.fail("No unresolved saved encounter.")
-   var engine := TacticalCombat.new(candidate);var b: Dictionary=s.encounters[selected]
+   var engine := TacticalAuras.new(candidate);var b: Dictionary=s.encounters[selected]
    var command: Variant=changes.get("command",{})
    if not command is Dictionary:return service.fail("Invalid combat command.")
    if engine.current(b).team=="enemy" and RulesJson.digest(command)!=RulesJson.digest(engine.enemy_command(b)):return service.fail("Enemy orders remain deterministic.")

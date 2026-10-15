@@ -1,0 +1,9 @@
+# Exact continuation
+
+Branch feature/game-112-character-catalogue-wave-four, based on merged main0f46194. Preserve all work. Read ASSESSMENT/REPERTOIRE/PR-DESCRIPTION, then inspect actual current-head CI. New pack v14, all historicalv1–v13 unchanged. This is the first coherent batch, not the complete Wave Four ambition or catalogue.
+
+Erudite persists manifested power identities in existing runtime, resets only at actual eligible home rest; variants share identity. Divine Mind/Marshal use ordinary costed aura statuses. TacticalAuras inherits the frozen TacticalCombat authority and only projects aura modifiers at seal/weapon-resolution boundaries. All production constructors use it, but old packs are pure delegation. GAME-32 frozen source/pins must never be changed or assertions relaxed.
+
+Focused current source: tests/character_wave_four/run-tests.py, native verify-package.py. New native matrix runs before expensive compatibility. Separate process checks include exact snapshots/Erudite used-power ledger; normal production journey uses Erudite/Divine Mind/Marshal with actual world/save owner and earned rewards. Development20-level histories are clearly fixtures. Capture scripts render the production creator at three resolutions; keep raw provenance and inspect images before publishing them.
+
+Do not promote eight candidate mappings until actual Windows/Linux acceptance; do not count source variants as separate completed adaptations. Programme #82 and related category issues stay open. No Linear access needed. Keep branch/PR safely pushed; normal merge only after all current-head checks. If CI is pending/failing, report exact IDs/source and preserve a handoff, never claim a finished Windows release. Full wider roster/content expansion remains authorised after this coherent delivery.

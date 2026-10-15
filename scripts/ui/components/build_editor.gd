@@ -272,6 +272,11 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
   class_detail.text+="\nEntry: "+RulesCareer.requirement_text(cls.requirements,source)
   if cls.get("class_kind")=="prestige" and not cls.career_choices.is_empty():class_detail.text=class_detail.text.replace("no casting","advances chosen casting tracks")
  if source.rules_ref().engine_schema==3:progression_detail.text+="\nBonus feat choices at class levels: "+str(cls.bonus_feat_levels)
+ if RulesWaveFour.enabled(source):
+  var full_details: String=class_detail.text
+  progression_detail.text=full_details+"\n\n"+progression_detail.text
+  class_detail.tooltip_text=full_details+"\n\n"+class_detail.tooltip_text
+  class_detail.text="%s · d%d · %d skill points + INT · levels 1–%d\nFull mechanics, prerequisites and features: Progression tab"%[cls.name,int(cls.hit_die),int(cls.skill_points),int(cls.max_level)]
  var options := kernel.preview_choices(current,class_id,skill_draft())
  if options.ok:
   budget.text="%d points remaining / %d this level. Ranks cannot exceed total level."%[options.skill_points_remaining,options.skill_points]
