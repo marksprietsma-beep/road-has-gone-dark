@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
     steps:
@@ -144,7 +144,7 @@ jobs:
             ${{ github.workspace }}/game119-evidence/*.json
             ${{ github.workspace }}/game119-evidence/*.log
           retention-days: 90
-      - name: Windows/Linux complete playable distribution
+      - name: Windows complete playable distribution
         uses: actions/upload-artifact@v4
         with:
           name: game121-parent-complete-${{ runner.os }}
