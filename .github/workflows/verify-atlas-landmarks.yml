@@ -24,36 +24,44 @@ on:
 
 jobs:
   marker-coverage:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: '24'
       - name: Verify Azgaar taxonomy and authored Game-icons
         run: node tools/worldgen/verify-landmark-icons.mjs
 
   density-preview:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: '24'
       - name: Install pinned Azgaar generation dependencies
         run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
-      - name: Generate normal and landmark-heavy previews of identical geography
+      - name: Generate repeatable dense marker proofs
+        shell: pwsh
         run: |
           node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/baseline.json
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/landmark-stress.json --landmark-density 8
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tools/worldgen/generate-azgaar.mjs --seed game-11-determinism --output tools/worldgen/.tmp/stress-repeated.json --landmark-density 8
-          cmp tools/worldgen/.tmp/landmark-stress.json tools/worldgen/.tmp/stress-repeated.json
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          $a = (Get-FileHash -Algorithm SHA256 tools/worldgen/.tmp/landmark-stress.json).Hash
+          $b = (Get-FileHash -Algorithm SHA256 tools/worldgen/.tmp/stress-repeated.json).Hash
+          if ($a -ne $b) { throw "Marker density generation is nondeterministic" }
           node tools/worldgen/check-landmark-stress.mjs tools/worldgen/.tmp/baseline.json tools/worldgen/.tmp/landmark-stress.json
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tests/worldgen/validate-fixture.mjs tools/worldgen/.tmp/landmark-stress.json
-          mkdir -p artifact
-          cp tools/worldgen/.tmp/landmark-stress.json artifact/
-          cp tools/worldgen/.tmp/landmark-stress.relief.svg artifact/
-          cp tools/worldgen/.tmp/landmark-stress.vegetation.svg artifact/
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          New-Item -ItemType Directory -Force artifact | Out-Null
+          Copy-Item tools/worldgen/.tmp/landmark-stress.json artifact/
+          Copy-Item tools/worldgen/.tmp/landmark-stress.relief.svg artifact/
+          Copy-Item tools/worldgen/.tmp/landmark-stress.vegetation.svg artifact/
       - name: Downloadable landmark-stress Godot fixture
         uses: actions/upload-artifact@v4
         with:
@@ -61,26 +69,33 @@ jobs:
           path: artifact/
           if-no-files-found: error
           retention-days: 14
-          compression-level: 6
 
   godot-preview-smoke:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Godot 4.6.3 headless
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare verified Windows Godot
         run: |
-          curl -fL --retry 3 --retry-delay 2 \
-            https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip \
-            -o /tmp/godot.zip
-          echo 'd0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3  /tmp/godot.zip' | sha256sum -c -
-          unzip -q /tmp/godot.zip -d /tmp
-          chmod +x /tmp/Godot_v4.6.3-stable_linux.x86_64
+          npm ci --ignore-scripts --prefix vendor/azgaar
+          python tests/world_library/prepare-ci.py
       - name: Import scripts, scenes, and SVGs
+        shell: pwsh
         run: |
-          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --editor --path . --quit
-      - name: Launch atlas fixture viewer without graphics
+          & $env:GODOT_BIN --headless --editor --path . --quit
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+      - name: Launch atlas fixture viewer headlessly
+        shell: pwsh
         run: |
-          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
+          & $env:GODOT_BIN --headless --path . --quit-after 45 res://scenes/debug/world_fixture_viewer.tscn
+          if ($LASTEXITCODE -ne 0) { exit 1 }
       - name: Test expandable map key and declutter control
+        shell: pwsh
         run: |
-          /tmp/Godot_v4.6.3-stable_linux.x86_64 --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd
+          & $env:GODOT_BIN --headless --path . --script res://tests/worldgen/smoke-landmark-key.gd
+          if ($LASTEXITCODE -ne 0) { exit 1 }
