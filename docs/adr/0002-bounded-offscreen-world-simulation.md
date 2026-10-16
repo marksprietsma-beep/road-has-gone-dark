@@ -107,15 +107,25 @@ At a consequential decision, use the NPC's established priorities, current belie
 
 Reject D&D stats/alignment alone as an adequate identity model: characters with identical statistics can value different things. Reject an expansive personality-stat engine: it would add design/balance overhead without necessarily making meaningful choices clearer. The game should not repeatedly roll or mutate personality during idle time, force arbitrary reversals, overwrite character identity or produce unrepeatable outcomes.
 
-**Unresolved:** exact priority vocabulary and cardinality, how and when meaningful events revise a priority for NPCs or player-controlled Adventurers, the influence weights, and the mappings to specific existing rules/abilities. This decision approves neither additional personality attributes in GAME-32 nor gameplay implementation.
+**Unresolved:** exact priority vocabulary and cardinality, the milestone qualification/presentation rules for priority revision, the influence weights, and the mappings to specific existing rules/abilities. This decision approves neither additional personality attributes in GAME-32 nor gameplay implementation.
 
 ## Player adventurers share personality, not NPC decision control — accepted 16 October 2026
 
 Both significant NPCs and player-created **Adventurers** have compact **Personality Priorities**, preserving consistent vocabulary and allowing distinct personalities even for mechanically similar builds. For NPCs, priorities are inputs to their autonomous contextual decisions; for **player-controlled Adventurers**, priorities inform dialogue suggestions, personal hooks, reactions and roleplaying opportunities **without forbidding or overriding player choices**. A cautious, compassionate fighter remains free to choose a risky rescue. Acting against an established tendency can be intentional character development, not evidence that the game should reject the action or force a compensating obedience roll.
 
-Meaningful decisions and experiences can develop the Adventurer's personality, while the character's stable identity and prior history remain intact. Exactly **when and how** a priority is offered for revision, confirmed by the player, or changed through important events is a follow-up design decision. Do not infer permission for automatic per-action trait drift, hidden player-character disobedience, or routine decay.
+Meaningful decisions and experiences can develop the Adventurer's personality, while the character's stable identity and prior history remain intact. Priority development takes place at meaningful, recorded milestones as accepted below; exact eligibility and presentation details remain open. Do not infer permission for automatic per-action trait drift, hidden player-character disobedience, or routine decay.
 
 This extends the existing Character Life research direction: personality may colour presentation and produce grounded character-specific opportunities, but does not replace the party's player-selected D&D builds, negate sensible choices, or create a second mechanical personality ability system.
+
+## Personality development at meaningful milestones — accepted 16 October 2026
+
+Personality Priorities can **strengthen, be reinterpreted or be replaced in response to consequential, recorded character experiences**, not drift with every action or from routine elapsed time. An expedition, sacrifice, rescue, broken oath or other important life event can create a **Personality Milestone**. The incident may support multiple credible interpretations rather than selecting one mandatory identity change.
+
+For a **player-controlled Adventurer**, the player explicitly confirms any proposed change; they can choose between plausible developments or keep the existing priority while recognising an exceptional circumstance. A recorded character choice is a source of narrative development, not an automatic stat grind, and the game cannot covertly revise priorities or remove sensible future choices. For a **significant NPC**, bounded events may result in personality development according to established motives, relationships, beliefs and context without requesting player authorisation. Major revisions need intelligible causes and persistent history.
+
+The milestone and any accepted resulting change belong to the Playthrough's authoritative character record and survive save/reload. Avoid repetitive prompts after every small action, unlimited personality reward farming, hidden mood-meter decay and the replacement of identity history. This confirms the existing research principle that characters can grow without a continuously simulated psychology system.
+
+**Open implementation choices:** what qualifies as a milestone, how often choices are offered, how competing plausible changes are presented and confirmed, and whether/how revised priorities influence subsequent resolution weights. Do not infer numeric experience thresholds, new GAME-32 ability stats or implementation authority from this decision.
 
 ## Consequences and unresolved dependencies
 
