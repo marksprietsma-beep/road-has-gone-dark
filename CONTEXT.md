@@ -67,8 +67,12 @@ An attempt to influence a distant World Situation through a credible relationshi
 _Avoid_: Instant global command, direct Party action
 
 **Delegate**:
-A person or group entrusted with a bounded responsibility on the player's behalf, whose ability to act depends on existing relationships, circumstances and available resources.
+A person or group that accepts a bounded responsibility on the player's behalf and may exercise judgement within that responsibility, subject to relationships, personal obligations, circumstances and available resources.
 _Avoid_: Automatically obedient unit, universally controllable NPC
+
+**Mandate**:
+An agreed objective and its limits entrusted to a Delegate, allowing reasonable independent decisions without granting unrestricted control of the Delegate's behaviour.
+_Avoid_: Unconditional order, total control
 
 ## Characters and progression
 
