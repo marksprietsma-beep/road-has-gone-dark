@@ -74,6 +74,26 @@ _Avoid_: Automatically obedient unit, universally controllable NPC
 An agreed objective and its limits entrusted to a Delegate, allowing reasonable independent decisions without granting unrestricted control of the Delegate's behaviour.
 _Avoid_: Unconditional order, total control
 
+**Significant NPC**:
+A non-player character selected for consequential personal development through relationships, repeated interactions, influential actions, important roles or significant World Situations. Significance can emerge or fade, but prior identity, relationships and history persist when active development stops.
+_Avoid_: Every named NPC, continuously simulated citizen
+
+**NPC Initiative**:
+A bounded consequential action undertaken by an NPC to advance their own established ambition or relationship rather than in response to a player-issued Mandate. The action may happen while the Party is elsewhere.
+_Avoid_: Delegated order, continuous autonomous life simulation
+
+**Social Relationship**:
+A persistent, consequential connection between specific characters, including family, friendship, rivalry, loyalty, debt or obligation. Relationships may be asymmetric and change through meaningful events; an NPC need not be related to the Party for the connection to matter.
+_Avoid_: Every acquaintance, automatic reciprocal opinion
+
+**NPC Belief**:
+What a particular NPC currently considers true or likely based on firsthand experience, evidence or information received; it may be incomplete, mistaken or revised without changing actual World Events.
+_Avoid_: World truth, Player Knowledge, automatic omniscience
+
+**Motivation Conflict**:
+A consequential choice in which an NPC's established ambitions, beliefs, loyalties or obligations favour competing actions. Strongly supported choices can be clear; genuinely uncertain choices may depend on a bounded, context-informed roll.
+_Avoid_: Arbitrary personality reroll, Wisdom as morality
+
 ## Characters and progression
 
 **Adventurer**:

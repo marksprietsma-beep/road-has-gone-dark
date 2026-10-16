@@ -51,10 +51,58 @@ For example, an instructed militia captain facing an attack may divert defenders
 
 Reject strict scripted obedience, which would make established identity and relationships mechanically hollow, and reject unrestricted autonomy, which would undermine predictable delegated objectives and demand expensive continuous NPC simulation. Routine absence alone should not create a punitive relationship-decay treadmill. Exact mandate constraints, refusal handling, outcome resolution, player-facing explanation and delegation scope remain to be worked out before implementation.
 
+## Independent lives of significant NPCs — accepted 16 October 2026
+
+**Significant NPCs may pursue their own established ambitions and relationships through bounded, persistent events**, including developments that occur while the Party is away and without a player-issued Mandate. An established blacksmith might relocate, pursue a workshop, change an allegiance or develop a rivalry through meaningful circumstances. Such choices belong to the Playthrough's history, preserve character identity and may create later player-facing opportunities or consequences.
+
+This is distinct from the previously accepted **Delegate** behaviour: delegated judgement remains bounded by an agreed Mandate, while **NPC Initiative** serves that person's own motivation. An important NPC need not be recruited, personally known to the player, or geographically present for a relevant situation to develop. Equally, merely having a name does not require a schedule or evolving relationship graph.
+
+Reject purely reactive NPCs whose ambitions freeze until a player clicks them, and reject continuous independent simulation of most named NPCs. Track relevant developments at significant decision points under the existing bounded-simulation and reproducibility constraints. Never substitute freeform generated prose for committed world and relationship facts; hidden off-screen developments must still respect the Player Knowledge boundary.
+
+### Dynamic significance — accepted 16 October 2026
+
+An NPC becomes significant through relationships, repeated player interactions, influential actions, positions of responsibility or major World Situations, rather than membership in a fixed initial cast. A player-connected merchant can become prominent through earned trust, and a distant unknown rival can become relevant through regional events. A named NPC is not necessarily significant simply because they exist.
+
+Significance can diminish, reducing ongoing personal-event attention when the character is no longer salient. This **does not erase the character**: their stable identity, past actions, relationships, commitments and historical consequences persist and can become relevant again. Being absent from the active cast must not erase or evade unresolved consequences involving important player investments.
+
+Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
+
+**Open decisions:** which personality/disposition model and stat mappings express contextual choices, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+
+## Sparse relationships between significant NPCs — accepted 16 October 2026
+
+**Significant NPCs may form, retain and change meaningful relationships with one another**, not just with the Party. Family bonds, friendships, rivalries, loyalties, debts and obligations can matter to decisions, situations and later opportunities even when neither participant is recruited or currently visible. A village guard's ties to a criminal sibling or a rival commander can influence events independently of player interaction.
+
+Persist only **consequential connections**: ties that credibly affect a choice, eligibility, access, allegiance, resource or future callback. This is a **sparse social network**, not a fully populated matrix of opinions or continuously changing affinity values for every named NPC. Being significant does not require recording every friendship or casual acquaintance. A relationship can be directional or asymmetric where appropriate; a debtor's obligation need not imply equal reciprocal affection.
+
+A significant change to a relationship requires a meaningful event or a justified decision by the participants, with durable history. Passive absence should not erode ties by default. Relationship effects must respect the previously accepted distinction between world truth, conveyed information and player knowledge; this decision does not confer automatic knowledge of an event on every friend of a participant.
+
+Reject party-centred relationships only, which would undermine independent lives, and reject an all-NPC social simulation, which would expand beyond the bounded event model. Exact relationship strengths, conflicting evidence and credibility assessment, competing obligations and conflict resolution remain open design questions. No relationship engine is implemented by this record.
+
+## NPC information, belief and relationship changes — accepted 16 October 2026
+
+**NPCs must react based on information they plausibly possess or believe**, rather than immediately responding to hidden World Events. An NPC can personally witness an action or receive evidence, rumours, correspondence or accounts through credible in-world channels. Such information may be delayed, unreliable, incomplete or false; what the NPC believes is distinct both from authoritative Playthrough truth and from what the Party knows.
+
+A relationship, loyalty or local reputation may change when a relevant NPC interprets information consistent with their knowledge, prior commitments and motivations. For example, a captain does not automatically condemn the Party for a secret prison escape they could not know about. Later rumours may make the captain suspicious, and credible evidence may change their judgement. NPCs may also act on a mistaken belief; correcting it may require investigation, diplomacy or new evidence, not rewriting the original event.
+
+Do not broadcast actions to all related NPCs or every faction in a global reputation cascade. Information follows plausible witness/report channels and audience boundaries. This does not require continuous surveillance, per-NPC courier movement or an exhaustive epistemic simulation: consequential knowledge updates can be resolved at bounded event boundaries while retaining causal history and save/replay determinism.
+
+Rejected: **only firsthand observation**, which precludes meaningful rumours and indirect reputation; and **automatic opinion propagation**, which contradicts secrecy and the existing separation of world truth and character knowledge. Exact belief confidence scales, deception adjudication and evidence-resolution rules remain open.
+
+## Contextual choices with bounded uncertainty — accepted 16 October 2026
+
+When an NPC's important commitments conflict, select plausible options using their established motives, duties, relationships, **NPC Beliefs** and immediate circumstances. Do not impose one universal priority ordering for every character or substitute unrelated mood swings for causal behaviour. If the evidence strongly supports one action, the NPC can choose it without a random check. **If several plausible options are genuinely contested, a bounded, context-weighted roll may resolve the uncertainty**, with the resulting choice becoming persistent Playthrough history.
+
+Personality dispositions, strength of obligations, trust, fear, stakes and available options may shape such a check. Existing RPG abilities can affect **how** a character perceives a risk, assesses options, maintains resolve or executes an attempt. For example, Wisdom can support situational judgement, but **Wisdom is not a measure of kindness, morality, filial affection or loyalty**. Do not make a single ability score automatically dictate whom the NPC loves or betrays. Compromise options, such as negotiating a sentence instead of choosing either obedience or rescue, can arise from skills and circumstances and may have separate success checks.
+
+A consequential roll must be authoritative, bounded and reproducible: one resolution per event, with inputs, result and causal consequences retained across save/reload. Use the campaign's existing deterministic resolution and persistence boundaries; do not add an independent NPC dice engine or reroll on inspection, revisits or UI reopening. Player-visible explanations can describe motivations and circumstances without revealing hidden beliefs or the exact random draw before it resolves.
+
+The specific disposition model, influence weights, mechanical ability/skill mapping and dice expression are **not yet decided**. This acceptance is about the *decision principle*, not approval of a new set of personality stats or balance numbers.
+
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, evidence credibility and relationship conflicts, NPC motive weighting/dice mappings, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
