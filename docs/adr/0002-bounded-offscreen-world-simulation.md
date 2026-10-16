@@ -19,10 +19,18 @@ Use **significance-based simulation**, not a universal register of every generat
 
 Reject both purely local/personal advancement (which freezes consequential distant events) and advancement of every generated major threat (which recreates an unbounded simulation under another name). This refines the original bounded-world decision; it is not a new simulation architecture.
 
+## Consequence fairness — accepted 16 October 2026
+
+**Personally significant threats should normally provide fair warning and a meaningful opportunity for player response, but not guaranteed prevention.** Bounded off-screen development may produce irreversible outcomes, including loss of an important NPC, damage to player-owned property or the fall of a familiar settlement. Threats should have credible causes and intelligible progression; they should not randomly erase significant player investments without a realistic chance to affect the situation.
+
+The player is free to ignore, defer or decline intervention. Protection of the hometown is not mandatory, and consequences are not suspended merely because the Party travels elsewhere. An intervention may change the severity or beneficiaries of an outcome without preventing the underlying event. Warnings should convey actionable stakes rather than perfect information about the hidden world; how information arrives is an unresolved downstream decision. Serious unforeseen events elsewhere may still occur.
+
+Reject automatic protection of all important possessions and relationships: it makes off-screen threats toothless. Reject unrestricted, unheralded destruction of personally meaningful things: it makes the simulation feel arbitrary and punishes exploratory freedom. No fixed grace period, notification system, minimum rescue chance or numeric escalation schedule is decided by this record.
+
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; how frequently they advance, how competing effects resolve, how off-screen information reaches the player, and the acceptable limits of irreversible consequences. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; how frequently they advance, how competing effects resolve, the in-world channels and timing by which warnings reach the player, and how response opportunities are kept meaningful without guaranteed safety. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
