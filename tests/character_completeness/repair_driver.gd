@@ -89,7 +89,7 @@ func test_skill_approaches() -> void:
     check(found.size()==(1 if trained else 0),"trained approach rank gate "+profile.skill)
     if not trained:continue
     var row: Dictionary=found[0]
-    check(row.event==profile.event and row.provisions==profile.provisions and row.complete,"existing time/supply contract "+profile.skill)
+    check(row.get("approach_description")==profile.information and row.event==profile.event and row.provisions==profile.provisions and row.complete,"existing time/supply contract "+profile.skill)
     if row.outcome=="failed_check":
      failed+=1;check(OpportunityCycles.reward(row)==0 and row.gain==0 and not row.reveal,"failed skill has no reward/discovery")
     else:

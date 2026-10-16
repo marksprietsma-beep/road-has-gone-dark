@@ -115,7 +115,9 @@ static func choices(state: Dictionary,site: Dictionary) -> Array:
     choice.outcome=profile.outcome if success else "failed_check"
     choice.label+=" · "+str(profile.label)
    choice.information="%s check: %d + %d vs DC %d · %s."%[str(skill).capitalize(),int(rolled.total),bonus,dc,"objective completed" if success else "attempt failed; no XP"]
-   if profile.has("information"):choice.information+=" "+str(profile.information)
+   if profile.has("information"):
+    choice.information+=" "+str(profile.information)
+    choice.approach_description=str(profile.information)
    if profile.has("information"):trained.append(choice)
    else:options.append(choice)
  return trained+options

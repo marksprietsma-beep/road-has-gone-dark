@@ -119,7 +119,7 @@ func create_party() -> void:
   action_builder("builder_save",i+1,{"identity":identity,"build":CharacterBuilderRecords.definition(record)})
  action_builder("builder_ready")
  for i in 3:prepare(i)
- var resumed := service.operate(entry,slot,"resume");check(resumed.ok,"ready distinct party");state=resumed.get("state",state)
+ var resumed := service.operate(entry,slot,"resume");check(resumed.ok,"ready distinct party "+str(resumed.get("error",resumed.get("errors",[]))));state=resumed.get("state",state)
  for id in state.party_ids:check(CharacterBuilderRecords.xp(state,id)==0,"begins with no injected XP")
 func spell_selection(record: Dictionary) -> Dictionary:
  var derived := kernel.derive_character(record)
