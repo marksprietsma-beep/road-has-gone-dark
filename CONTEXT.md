@@ -50,6 +50,10 @@ _Avoid_: Every generated world event, quest objective
 A consequential development affecting a World Situation or other persistent world entity during a Playthrough; it is not necessarily a player-triggered Outcome.
 _Avoid_: Outcome, narrative flavour text
 
+**Threat**:
+A developing World Situation that can plausibly cause a harmful change if left unresolved; a Threat is not automatically a quest or a mandatory objective.
+_Avoid_: Mandatory quest, arbitrary loss
+
 ## Characters and progression
 
 **Adventurer**:
