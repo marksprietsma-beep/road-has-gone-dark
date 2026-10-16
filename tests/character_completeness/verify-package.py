@@ -11,12 +11,13 @@ manifest_bytes=(root/'data/rules/packs.json').read_bytes();manifest=json.loads(m
 expected=next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v16')
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/character_completeness/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
-env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME126_ROOT=str(base),GAME126_AUDIT_ROOT=str(base/'audit'),GAME126_REPAIR_ROOT=str(base/'repair'),GAME126_OPTIONS_ROOT=str(base/'options'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_PACK='res://data/rules/trhgd-character-v16.json');env.pop('GAME76_HELPER_ROOT',None)
+env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME126_ROOT=str(base),GAME112W5_TEST_ROOT=str(base/'legacy-v15'),GAME126_AUDIT_ROOT=str(base/'audit'),GAME126_REPAIR_ROOT=str(base/'repair'),GAME126_OPTIONS_ROOT=str(base/'options'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_PACK='res://data/rules/trhgd-character-v16.json');env.pop('GAME76_HELPER_ROOT',None)
 rows=[]
 def run(label,extra):
  result=checked_process([str(qa),'--headless','--audio-driver','Dummy'],cwd=dist,env=dict(env,**extra),log=base/(label+'.log'),timeout=3600)
  rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows[-1],flush=True)
  assert result['exit_code']==0 and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text()[-12000:]
+for restart in [False,True]:run('legacy-mechanics'+('-restart'if restart else''),dict(GAME126_PHASE='legacy_mechanics',GAME112W5_RESTART='1'if restart else'0'))
 for phase in ['repair','options','audit','compatibility']:
  for restart in [False,True]:run(phase+('-restart'if restart else''),dict(GAME126_PHASE=phase,GAME126_AUDIT_RESTART='1'if restart else'0'))
 run('legacy-routes',dict(GAME126_PHASE='legacy_routes',GAME126_AUDIT_RESTART='0'))
@@ -26,6 +27,8 @@ proofs={}
 for phase in ['repair','options','audit','compatibility']:
  for filename in ['proof.json','restart-proof.json']:
   p=json.loads((base/phase/filename).read_text());assert p['checks']>0 and p['failures']==0 and p['rules_ref']==expected;proofs[phase+'/'+filename]=p
+for filename in ['mechanics-proof.json','restart-proof.json']:
+ p=json.loads((base/'legacy-v15'/filename).read_text());assert p['failures']==0 and p['rules_ref']==next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v15');proofs['legacy-v15/'+filename]=p
 skills=set();journeys=[]
 for cohort in range(4):
  d=base/'journeys'/f'cohort-{cohort}';p=json.loads((d/'proof.json').read_text());cold=json.loads((d/'restart-proof.json').read_text())

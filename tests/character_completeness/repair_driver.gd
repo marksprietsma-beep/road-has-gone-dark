@@ -54,6 +54,7 @@ func run() -> void:
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v15.json").ok,"v15 still supported")
  var original := WorldOriginLore.read_json("res://docs/implementation/game126/evidence/archmage-v15-gap.json")
  check(RulesCharacter.new(old).available_advancement(original.record).classes.archmage.ok,"historical v15 exact qualification preserved")
+ test_actual_spell_competence()
  test_skill_approaches()
  var dusk := build("duskblade",4)
  check(not RulesCoreContent.suggested_spells(kernel.derive_character(dusk).snapshot,source).any(func(id: String):return source.definition("abilities",id).has("channel_spell")),"spell suggestions never select a channel delivery wrapper")
@@ -94,3 +95,32 @@ func test_skill_approaches() -> void:
     else:
      successes+=1;check(OpportunityCycles.reward(row)==10 and row.gain==profile.gain and row.reveal==profile.reveal,"successful skill uses original one-objective reward")
   check(successes>0 and failed>0,"both deterministic skill outcomes exercised "+profile.skill)
+
+func test_actual_spell_competence() -> void:
+ var goals := requirements("archmage",0)
+ var record := kernel.create("competence:spontaneous",{"STR":8,"DEX":13,"CON":12,"INT":14,"WIS":10,"CHA":15},"heritage-human")
+ for n in 13:
+  var next := advance(record,"sorcerer",goals)
+  check(next.ok,"lawful spontaneous Archmage prerequisites")
+  if not next.ok:return
+  record=next.candidate
+ check(not kernel.available_advancement(record).classes.archmage.ok,"spontaneous nominal slots without known seventh-tier spell do not qualify")
+ record.choices.prepared_abilities=["sorcerer-tier7-tempest"]
+ check(kernel.derive_character(record).ok and kernel.available_advancement(record).classes.archmage.ok,"actual permanent known seventh-tier spell qualifies")
+ var joined := advance(record,"archmage",goals)
+ check(joined.ok,"spontaneous explicit prestige entry with lawful casting specialisation")
+ if joined.ok:records["competence:spontaneous"]=joined.candidate
+ var temporary := kernel.create("competence:temporary",{"STR":8,"DEX":14,"CON":13,"INT":15,"WIS":12,"CHA":10},"heritage-human")
+ for n in 13:
+  var next := advance(temporary,"wizard" if n<12 else "fighter",goals)
+  check(next.ok,"temporary-tier test has legal permanent history")
+  if not next.ok:return
+  temporary=next.candidate
+ temporary.runtime.granted_features.append("wizard-casting-7")
+ var projected := kernel._replay(temporary)
+ check(projected.ok,"runtime feature is a supported temporary source")
+ if not projected.ok:return
+ temporary.runtime.resources=projected.context.capacities.duplicate()
+ check(kernel.derive_character(temporary).ok,"temporary seventh-tier grant is a valid runtime fixture")
+ check(not kernel.available_advancement(temporary).classes.archmage.ok,"temporary seventh-tier grant cannot satisfy permanent prestige access")
+ check(not advance(temporary,"archmage",goals).ok,"temporary access rejected by ordered replay as well as options")

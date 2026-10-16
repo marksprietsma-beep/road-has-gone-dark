@@ -8,7 +8,7 @@ p['provenance']['revision']='game126-character-completeness'
 def approach(skill,activities,label,information,event,outcome,provisions=0,gain=0,reveal=False,dc=0):
  return dict(skill=skill,activities=activities,min_ranks=1,label=label,information=information,event=event,outcome=outcome,provisions=provisions,gain=gain,reveal=reveal,dc_adjustment=dc)
 p['rules']['skill_approaches']=[
- approach('athletics',['lost_supplies','abandoned_shelter'],'Haul the recoverable stores','Use trained hauling to recover more of the supplies already reported here; a failed attempt completes no objective.','recover','recovered',provisions=1,gain=4,dc=2),
+ approach('athletics',['lost_supplies','abandoned_shelter'],'Haul the recoverable stores','Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.','quick','recovered',provisions=1,gain=4,dc=2),
  approach('stealth',['camp_access','salvage_dispute','road_passage'],'Seek quiet access','Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.','negotiate','peaceful_access',dc=2),
  approach('acrobatics',['old_work','unusual_traces'],'Make a quick survey','Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.','quick','investigated',reveal=True,dc=2),
  approach('spellcraft',['old_work','unusual_traces'],'Assess an arcane interpretation','Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.','inspect','investigated',reveal=True),

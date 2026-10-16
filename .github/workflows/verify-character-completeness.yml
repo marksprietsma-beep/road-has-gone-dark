@@ -31,6 +31,8 @@ jobs:
         run: python tools/release/prepare-templates.py
       - name: Exact pack and full research-ledger validation
         run: python tools/character-content/validate.py
+      - name: Historical v1-v15 bytes and pins are unchanged
+        run: python tools/character-content/check-historical-packs.py
       - name: Prepare production Godot class cache
         shell: pwsh
         run: '& $env:GODOT_BIN --headless --editor --path . --import'

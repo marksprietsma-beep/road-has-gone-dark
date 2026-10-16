@@ -84,6 +84,7 @@ static func reward(choice: Dictionary) -> int:
  return int(rules().objective_xp) if choice.complete and choice.outcome in rules().rewarded_outcomes else 0
 static func choices(state: Dictionary,site: Dictionary) -> Array:
  var options := OpportunityGenerator.choices(state,site)
+ var trained: Array=[]
  var c: Dictionary=state.adventure_cycles.cycles.back().context
  var activity := OpportunityGenerator.template(site.activity_id)
  for id in state.party_ids:
@@ -115,8 +116,9 @@ static func choices(state: Dictionary,site: Dictionary) -> Array:
     choice.label+=" · "+str(profile.label)
    choice.information="%s check: %d + %d vs DC %d · %s."%[str(skill).capitalize(),int(rolled.total),bonus,dc,"objective completed" if success else "attempt failed; no XP"]
    if profile.has("information"):choice.information+=" "+str(profile.information)
-   options.append(choice)
- return options
+   if profile.has("information"):trained.append(choice)
+   else:options.append(choice)
+ return trained+options
 static func initial_battle(state: Dictionary,site: Dictionary) -> Dictionary:
  var engine := TacticalAuras.new(state);var battle := engine.create_generated(state,site.id,site.board)
  if battle.is_empty():return {}

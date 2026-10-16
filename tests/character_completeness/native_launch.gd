@@ -2,7 +2,7 @@ extends Node
 func _ready() -> void:call_deferred("run")
 func run() -> void:
  var phase := OS.get_environment("GAME126_PHASE")
- var path: String={"audit":"audit_driver","repair":"repair_driver","options":"options_driver","compatibility":"compatibility_driver","journey":"journey_driver"}.get(phase,"")
+ var path: String={"audit":"audit_driver","repair":"repair_driver","legacy_mechanics":"legacy_mechanics","options":"options_driver","compatibility":"compatibility_driver","journey":"journey_driver"}.get(phase,"")
  if phase=="legacy_routes":
   var saved := WorldOriginLore.read_json("res://tests/character_completeness/fixtures/prestige-v15-records.json")
   var source := RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v15.json")
@@ -14,6 +14,7 @@ func run() -> void:
   FileAccess.open(OS.get_environment("GAME126_ROOT").path_join("legacy-routes-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"rules_ref":source.rules_ref(),"checks":checks,"failures":failures,"earned_xp":false,"scope":"Cold replay of485 legal v15 fixture routes, not an exhaustive search or human career acceptance."}))
   get_tree().quit(1 if failures else 0);return
  if path.is_empty():push_error("Unknown completeness QA phase");get_tree().quit(1);return
- var worker: Node=load("res://tests/character_completeness/"+path+".gd").new()
+ var script_path: String="res://tests/character_wave_five/mechanics_driver.gd" if phase=="legacy_mechanics" else "res://tests/character_completeness/"+path+".gd"
+ var worker: Node=load(script_path).new()
  worker.no_quit=true;add_child(worker);await worker.completed
  get_tree().quit(1 if worker.failures else 0)

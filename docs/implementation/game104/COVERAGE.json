@@ -28950,20 +28950,27 @@
     "including_npc_total": 760
   },
   "current_delivery": {
-    "pack_id": "trhgd-character-v13",
-    "verified_source": "5d6576102057c936f1c14fce868c70052958eb57",
-    "base_tracks": 25,
+    "pack_id": "trhgd-character-v15",
+    "rules_ref": {
+      "pack_id": "trhgd-character-v15",
+      "schema_version": 1,
+      "rules_version": "15.0.0",
+      "engine_schema": 3,
+      "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1"
+    },
+    "verified_source": "0db418283bf2f32668760b872d5908fb944b4270",
+    "base_tracks": 32,
     "base_level_cap": 20,
-    "prestige_paths": 12,
-    "prestige_caps": "five or ten by definition; new Beast Steward/Cerebremancer five",
-    "ancestry_families": 25,
-    "heritage_records": 34,
-    "feats": 50,
+    "prestige_paths": 18,
+    "prestige_caps": "3,5 or10 by definition",
+    "ancestry_families": 37,
+    "heritage_records": 50,
+    "feats": 82,
     "skills": 14,
-    "scheduled_choice_groups": 133,
-    "selectable_psychic_powers": 21,
-    "creatures": 8,
-    "status": "Windows/Linux source and native validated; bounded original adaptations; human playtest pending",
+    "scheduled_choice_groups": 228,
+    "selectable_psychic_powers": 45,
+    "creatures": 14,
+    "status": "Windows native validated; per-option human acceptance unverified",
     "programme_complete": false
   },
   "wave_two": {
@@ -29050,6 +29057,23 @@
       "skills": 14,
       "scheduled_choice_groups": 66,
       "status": "Windows/Linux source and native validated; human acceptance pending; bounded original adaptations",
+      "programme_complete": false
+    },
+    {
+      "pack_id": "trhgd-character-v13",
+      "verified_source": "5d6576102057c936f1c14fce868c70052958eb57",
+      "base_tracks": 25,
+      "base_level_cap": 20,
+      "prestige_paths": 12,
+      "prestige_caps": "five or ten by definition; new Beast Steward/Cerebremancer five",
+      "ancestry_families": 25,
+      "heritage_records": 34,
+      "feats": 50,
+      "skills": 14,
+      "scheduled_choice_groups": 133,
+      "selectable_psychic_powers": 21,
+      "creatures": 8,
+      "status": "Windows/Linux source and native validated; bounded original adaptations; human playtest pending",
       "programme_complete": false
     }
   ],
@@ -29140,5 +29164,15 @@
     "all_occurrences_preserved": true,
     "complete_wave": false,
     "complete_programme": false
+  },
+  "character_completeness": {
+    "candidate_pack": "trhgd-character-v16",
+    "issue": 116,
+    "pr": 117,
+    "status": "source validation complete in scoped witnesses; current-head Windows native verification pending",
+    "matrix": "docs/implementation/game126/current/MATRIX.json",
+    "no_new_base_classes": true,
+    "all_760_occurrences_preserved": true,
+    "programme_complete": false
   }
 }

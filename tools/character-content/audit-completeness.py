@@ -29,13 +29,21 @@ def main():
     parser.add_argument("--pack", default="data/rules/trhgd-character-v15.json")
     parser.add_argument("--output", default="docs/implementation/game126/baseline")
     parser.add_argument("--witness", type=Path)
+    parser.add_argument("--option-witness", type=Path)
+    parser.add_argument("--prestige-witness", type=Path)
+    parser.add_argument("--native-receipt", type=Path)
     args = parser.parse_args()
     pack_path = ROOT / args.pack
     pack = load(pack_path)
     ledger = load(ROOT / "docs/implementation/game104/COVERAGE.json")
     witness = load(args.witness) if args.witness else {}
+    option_witness = load(args.option_witness) if args.option_witness else {}
+    prestige_witness = load(args.prestige_witness) if args.prestige_witness else {}
+    native = load(args.native_receipt) if args.native_receipt else {}
     manifest = load(ROOT / "data/rules/packs.json")
     expected_ref = next(p["rules_ref"] for p in manifest["packs"] if p["rules_ref"]["pack_id"] == pack["pack_id"])
+    for supplied in [option_witness, prestige_witness, native]:
+        if supplied: assert supplied["rules_ref"] == expected_ref, "Evidence must name the exact pack"
     if witness:
         assert witness["rules_ref"] == expected_ref, "Witness must name the exact immutable content"
         assert witness["authority"] == "RulesCharacter/RulesEffects/TacticalCombat"
@@ -64,6 +72,13 @@ def main():
         for stage in ["selectable", "mechanically_functional", "automated_tested"]:
             if stage in dynamic:
                 claims[stage] = dynamic[stage]
+        selected = option_witness.get("options", {}).get(category, {}).get(identifier, {})
+        if selected.get("selectable"):
+            claims["selectable"] = {"status": "yes", "evidence": [str(args.option_witness)], "scope": selected["scope"]}
+            claims["mechanically_functional"] = {"status": "partial", "evidence": [str(args.option_witness)], "scope": "Derived consequences and lawful selection; conditional tactical effects need separate receipts."}
+            claims["automated_tested"] = {"status": "yes", "evidence": [str(args.option_witness)], "scope": selected["scope"]}
+        if native:
+            claims["native_windows"] = {"status": "verified_scoped_harness", "evidence": [str(args.native_receipt)], "scope": "Exact exported harness; does not imply all conditional effects or human acceptance."}
         # Automated or general Windows acceptance never implies per-option player validation.
         return claims
 
@@ -89,7 +104,7 @@ def main():
                         "recommended_equipment": row.get("recommended_equipment", []), "requirements": row["requirements"],
                         "signature_description": row.get("description", ""), "stages": stages("classes", identifier),
                         "spell_references_by_tier": {str(tier): [a["id"] for a in pack["abilities"] if a.get("casting_class") == identifier and a.get("spell_tier") == tier and "channel_spell" not in a] for tier in range(1, 10)},
-                        "prestige_routes": witness.get("prestige", {}).get(identifier, {})})
+                        "prestige_routes": {key: route for key, route in prestige_witness.get("validated", {}).items() if route["base_class"] == identifier}})
     prestige = [{"definition": c, "stages": stages("classes", c["id"])} for c in pack["classes"] if c.get("class_kind") == "prestige"]
     policy = load(ROOT / "data/sandbox/cycles-v1.json")
     skills = []
@@ -98,9 +113,10 @@ def main():
         families = [family for family, ids in policy["skill_map"].items() if identifier in ids]
         formula_refs = [path for path, node in source_nodes if node.get("op") == "skill_rank" and node.get("id") == identifier]
         prereq_refs = [path for path, node in source_nodes if node.get("op") == "skill" and node.get("id") == identifier]
+        contextual = [a for a in pack["rules"].get("skill_approaches", []) if a["skill"] == identifier]
         skills.append({"definition": skill, "class_availability": [c["id"] for c in classes if identifier in c["class_skills"]],
                        "noncombat_check_families_v1": families, "formula_consumers": formula_refs,
-                       "prerequisite_consumers": prereq_refs, "gameplay_consumer_found": bool(families or formula_refs),
+                       "prerequisite_consumers": prereq_refs, "contextual_approaches": contextual, "gameplay_consumer_found": bool(families or formula_refs or contextual),
                        "consumer_evidence": ["scripts/sandbox/opportunity_cycles.gd:choices", "data/sandbox/cycles-v1.json"] if families else [],
                        "stages": stages("skills", identifier)})
     options = {}
@@ -127,6 +143,8 @@ def main():
               "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
               "rules_ref": expected_ref, "pack_file_sha256": hashlib.sha256(pack_path.read_bytes()).hexdigest(),
               "research_ledger_sha256": hashlib.sha256((ROOT / "docs/implementation/game104/COVERAGE.json").read_bytes()).hexdigest(),
+              "stage_policy": "Native receipt scopes are explicit and never imply player validation. Unresolved research taxonomy remains unresolved.",
+              "prestige_witness_scope": prestige_witness.get("scope", "No current-pack route witness supplied"),
               "stages": STAGES, "classes": classes, "prestige_paths": prestige, "skills": skills, **options,
               "research_occurrences": occurrences,
               "witness_scope": witness.get("scope", "No dynamic witness supplied; no executable claim is inferred from JSON or source references.")}
@@ -148,7 +166,7 @@ def main():
 
 This report inventories definitions and scoped production-kernel witnesses. It does not establish tabletop equivalence, complete career mechanics, native Windows acceptance of this new harness, or player validation. Every option has separate stage/evidence fields in MATRIX.json. No per-option human receipt has been supplied.
 
-The legacy coverage ledger retains every source occurrence; unresolved taxonomy remains unresolved. Seven skills have actual opportunity checks. Nature also contributes to spell DC through Natural Scholar; Performance contributes to performance capacity. Formula consumers are not automatically claimed executed by this inventory tool. Five skills have no check/formula consumer in this scan: Athletics, Stealth, Acrobatics, Spellcraft and Animal Handling.
+The legacy coverage ledger retains every source occurrence; unresolved taxonomy remains unresolved. Seven skills have actual opportunity checks. Nature also contributes to spell DC through Natural Scholar; Performance contributes to performance capacity. Formula consumers are not automatically claimed executed by this inventory tool. Baseline v15 leaves Athletics, Stealth, Acrobatics, Spellcraft and Animal Handling without direct consumers. In v16, typed contextual approaches in the immutable pack supply those consumers. Inspect the per-skill records for the selected pack; source references alone are not execution receipts.
 
 ## Class progression and repertoire
 
@@ -157,6 +175,14 @@ The legacy coverage ledger retains every source occurrence; unresolved taxonomy 
 | Class | Kernel levels | Levels without a new owned action | Spell references by tier | Player validation |
 |---|---:|---|---|---|
 """ + "\n".join(rows) + "\n\nPrestige compatibility must use actual permanent-prerequisite witnesses, path caps and legal continuation. Bounded searches cannot prove impossibility; heavily bridged careers must not be presented as natural prestige support for a base class.\n"
+    if prestige_witness:
+        report += "\n## Prestige compatibility\n\nThese are lawful full-cap development routes with total-level20 continuation, not earned levels or an exhaustive proof of impossibility. Single-class entry is separated from bridge-heavy entry. The original bounded576-pair search retains91 missing witnesses.\n\n| Base | Single-class entry | Multiclass routes | Bridge-dominated subset |\n|---|---|---|---|\n"
+        for cls in classes:
+            routes = list(cls["prestige_routes"].values())
+            single = [r["path"] for r in routes if r["single_class_entry"]]
+            bridge = [r["path"] for r in routes if not r["single_class_entry"]]
+            dominated = [r["path"] for r in routes if r["bridge_dominates"]]
+            report += "| "+cls["name"]+" | "+(", ".join(single) or "none witnessed")+" | "+(", ".join(bridge) or "none witnessed")+" | "+(", ".join(dominated) or "none")+" |\n"
     (output / "REPORT.md").write_text(report)
     print(json.dumps(summary))
 
