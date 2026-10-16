@@ -67,7 +67,7 @@ Significance can diminish, reducing ongoing personal-event attention when the ch
 
 Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
 
-**Open decisions:** how competing NPC motives resolve, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+**Open decisions:** which personality/disposition model and stat mappings express contextual choices, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
 
 ## Sparse relationships between significant NPCs — accepted 16 October 2026
 
@@ -89,10 +89,20 @@ Do not broadcast actions to all related NPCs or every faction in a global reputa
 
 Rejected: **only firsthand observation**, which precludes meaningful rumours and indirect reputation; and **automatic opinion propagation**, which contradicts secrecy and the existing separation of world truth and character knowledge. Exact belief confidence scales, deception adjudication and evidence-resolution rules remain open.
 
+## Contextual choices with bounded uncertainty — accepted 16 October 2026
+
+When an NPC's important commitments conflict, select plausible options using their established motives, duties, relationships, **NPC Beliefs** and immediate circumstances. Do not impose one universal priority ordering for every character or substitute unrelated mood swings for causal behaviour. If the evidence strongly supports one action, the NPC can choose it without a random check. **If several plausible options are genuinely contested, a bounded, context-weighted roll may resolve the uncertainty**, with the resulting choice becoming persistent Playthrough history.
+
+Personality dispositions, strength of obligations, trust, fear, stakes and available options may shape such a check. Existing RPG abilities can affect **how** a character perceives a risk, assesses options, maintains resolve or executes an attempt. For example, Wisdom can support situational judgement, but **Wisdom is not a measure of kindness, morality, filial affection or loyalty**. Do not make a single ability score automatically dictate whom the NPC loves or betrays. Compromise options, such as negotiating a sentence instead of choosing either obedience or rescue, can arise from skills and circumstances and may have separate success checks.
+
+A consequential roll must be authoritative, bounded and reproducible: one resolution per event, with inputs, result and causal consequences retained across save/reload. Use the campaign's existing deterministic resolution and persistence boundaries; do not add an independent NPC dice engine or reroll on inspection, revisits or UI reopening. Player-visible explanations can describe motivations and circumstances without revealing hidden beliefs or the exact random draw before it resolves.
+
+The specific disposition model, influence weights, mechanical ability/skill mapping and dice expression are **not yet decided**. This acceptance is about the *decision principle*, not approval of a new set of personality stats or balance numbers.
+
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, evidence credibility and relationship conflicts, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, evidence credibility and relationship conflicts, NPC motive weighting/dice mappings, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
