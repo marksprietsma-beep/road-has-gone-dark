@@ -75,7 +75,7 @@ An agreed objective and its limits entrusted to a Delegate, allowing reasonable 
 _Avoid_: Unconditional order, total control
 
 **Significant NPC**:
-A non-player character whose established identity, ambitions or relationships are relevant enough to support consequential developments in a Playthrough. Significance is not identical to having a name, being geographically near the Party or being a Delegate.
+A non-player character selected for consequential personal development through relationships, repeated interactions, influential actions, important roles or significant World Situations. Significance can emerge or fade, but prior identity, relationships and history persist when active development stops.
 _Avoid_: Every named NPC, continuously simulated citizen
 
 **NPC Initiative**:
