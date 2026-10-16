@@ -36,6 +36,10 @@ _Avoid_: Cosmetic home, automatically founded city
 A Holding or settlement under credible player administration, supporting strategic development and governance such as infrastructure, production, labour, trade, defence and local politics. Control does not imply that every resident is individually simulated.
 _Avoid_: World Template Settlement, decorative facility list
 
+**Settlement Administrator**:
+An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
+_Avoid_: Omniscient player puppet, universal settlement AI
+
 **Hometown**:
 The settlement selected as the Playthrough's starting home and initial point of return. It need not be every Adventurer's personal place of origin.
 _Avoid_: Character origin
