@@ -1,6 +1,8 @@
 extends "res://tests/adventure_cycles/earned_driver.gd"
 signal completed
 var no_quit := false
+var skill_examples := {}
+var combat_checkpoint := false
 ## Ordinary opportunities fund manual Abjurant Champion entry. Never writes XP or synthetic history.
 func run() -> void:
  base=OS.get_environment("GAME112W5_TEST_ROOT").path_join("earned");DirAccess.make_dir_recursive_absolute(base)
@@ -30,7 +32,27 @@ func run() -> void:
    if failures>0:finish();return
    var site := SandboxRecords.site(cycle(),cycle().active.site_id)
    var before_xp := CharacterBuilderRecords.xp(state,id)
-   action("cycle_activity",{"choice":"negotiate"if OpportunityGenerator.template(site.activity_id).family=="contested"else"careful"})
+   if not combat_checkpoint and OpportunityGenerator.template(site.activity_id).family=="contested" and state.mechanics.records[id].advancement_history.size()>=3:
+    var checkpoint := GamePlaythroughStore.new();checkpoint.save_root=base.path_join("channel-opportunity")
+    check(checkpoint.save_new(slot,state,entry.world).ok,"original writer preserves actual earned channel opportunity")
+    combat_checkpoint=true
+   var before_preview := RulesJson.digest(state)
+   var options := OpportunityCycles.choices(state,site)
+   check(RulesJson.digest(options)==RulesJson.digest(OpportunityCycles.choices(state,site)) and RulesJson.digest(state)==before_preview,"skill preview has stable roll and never changes saved state")
+   var chosen: String="negotiate"if OpportunityGenerator.template(site.activity_id).family=="contested"else"careful"
+   var successful: Array=options.filter(func(o: Dictionary):return o.id.begins_with("skill:") and o.outcome!="failed_check")
+   successful.sort_custom(func(a: Dictionary,b: Dictionary):return (not skill_examples.has(a.profession)) if skill_examples.has(a.profession)!=skill_examples.has(b.profession) else str(a.id)<str(b.id))
+   var example := {}
+   if not successful.is_empty():
+    example=successful[0];chosen=example.id
+    var snapshot := RulesCharacter.new(RulesRecords.registry(state)).derive_character(state.adventure_cycles.cycles.back().context.profiles[example.participant])
+    var skill: String=str(example.profession).trim_prefix("skill:")
+    check(snapshot.ok and snapshot.snapshot.skills[skill].usable and example.label.contains("+"+str(snapshot.snapshot.skills[skill].total)+" vs DC"),"real permanent skill total controls shown opportunity check")
+   action("cycle_activity",{"choice":chosen})
+   if not example.is_empty():
+    var resolved: Dictionary=cycle().results[site.id]
+    check(resolved.outcome==example.outcome and resolved.information==example.information,"actual selected skill outcome/information persisted by existing campaign writer")
+    skill_examples[example.profession]={"choice":chosen,"outcome":resolved.outcome,"information":resolved.information}
    check(CharacterBuilderRecords.xp(state,id)==before_xp+10,"one actual objective reward")
    reject("cycle_activity",{"choice":"careful"})
    action("cycle_return")
@@ -64,11 +86,13 @@ func run() -> void:
    check(CharacterBuilderRecords.xp(state,id)==before_xp+10,"advancement selector grants no XP")
    if failures>0:finish();return
   if state.mechanics.records[id].advancement_history.size()>=7:break
+ check(skill_examples.size()>=4,"at least four distinct character skills resolved real ordinary objectives")
+ check(combat_checkpoint,"earned campaign retains genuine channel opportunity")
  var record: Dictionary=state.mechanics.records[id]
  check(record.advancement_history.size()==7 and record.advancement_history.back().class_id=="abjurant-champion","legitimate XP-funded manual prestige")
  var snapshot := RulesCharacter.new(RulesRecords.registry(state)).derive_character(record)
  check(snapshot.ok and snapshot.snapshot.abilities.has("abjurant-aegis-1"),"earned aegis becomes an actual ability")
- FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":RulesRecords.registry(state).rules_ref(),"state_hash":RulesJson.digest(state),"declined_hash":declined_hash,"slot":slot,"earned_xp":CharacterBuilderRecords.xp(state,id),"xp_injected":false,"cycles":state.adventure_cycles.cycles.size(),"history":record.advancement_history}))
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":RulesRecords.registry(state).rules_ref(),"state_hash":RulesJson.digest(state),"declined_hash":declined_hash,"slot":slot,"earned_xp":CharacterBuilderRecords.xp(state,id),"xp_injected":false,"cycles":state.adventure_cycles.cycles.size(),"history":record.advancement_history,"skill_examples":skill_examples,"channel_checkpoint":combat_checkpoint}))
  finish()
 func create_party() -> void:
  var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"source-backed origin")
