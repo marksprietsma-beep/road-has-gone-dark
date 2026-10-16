@@ -1,8 +1,10 @@
-# Wave Four integration repaired — continue Wave Five
+# Wave Four closed — continue the existing Wave Five implementation
 
-PR99mergeddc7243b; test-only PR100mergedc1d5973a88fd6ff3f9584465e10a68ea16f571f6 after all7headchecks passed. Native Windows/Linux repair38735236420 passed on a495fe14beb50f40742eeb03acaa1403817f0c03; merged tree identical. All runtime/gameplay/content bytes equal the previously verified main. See DELIVERY.md for exact artifacts, SHA256, original full-suite conclusions and the automatic post-repair runs still pending. Do not claim pending repeats passed; monitor/fix any real failure before a further merge. Do not recreate either merged PR.
+PR99mergeddc7243b and narrow test-only PR100mergedc1d5973. All six automatic post-repair main workflows passed: WaveThree38741425956, productionUI38741425975, party38741426037, WaveFour38741425954, native journey38741425966 and WaveTwo38741426013. See evidence/post-repair-main.json. No further Wave Four feature work or duplicate PR is needed.
 
-Continue on feature/game-112-character-catalogue-wave-five from verifiedc1d5973. User authorises v15 implementation, native verification, publication and normal merge after checks. The prepared proposal under /workspace/artifacts/wave-five/proposal is unverified until actually applied, compiled and tested. Preserve historicalv1–v14 and frozenTacticalCombat bytes. Keep82OPEN; observed closure aftermerge was corrected. No Linear access required. Full760occurrences/720rows remain,79 currently native-mapped/681 unresolved. Candidate WaveFive numbers are not released counts.
+Owner subsequently merged Windows-only PR102 at129e5de and synchronized WaveFive at3a098d5. Follow .github/CI-WINDOWS-ONLY.md: no new Linux CI/packages/gates. Historical Linux receipts below are preserved history. Current WaveFive source9389f00 and acceptance commit705bfe3 are pushed in draft PR103. The recovered proposal is actual applied/compiled/source-tested code, not an uncommitted plan. Its first v15 Windows-native job passed and artifact12020994313 was independently verified; full current-head compatibility and an onboarding cold-import runner correction remain to finish. Follow docs/implementation/game112-wave-five/CONTINUATION.md instead of these historical checkpoints.
+
+Preserve v1–v14/frozen tactical source. Active rich-character milestone101 and long-term programme82 remain OPEN;760indexed occurrences remain a research ledger rather than the near-term release blocker. User authorises normal publication/merge only after actual current-head required Windows checks and a verified package. No owner clicks or Linear access needed.
 
 ---
 

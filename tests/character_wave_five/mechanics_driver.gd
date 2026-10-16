@@ -205,6 +205,65 @@ func test_new_paths() -> void:
   check(kernel.derive_character(r).snapshot.class_levels.get(path)==spec[2],"intended prestige cap reached "+path)
   check(not kernel.available_advancement(r).classes[path].ok,"own class cap enforced "+path)
   check(kernel.derive_character(r).snapshot.casting_levels[spec[1]]==6+int(spec[2]),"hybrid casting advances exact selected caster "+path)
+ test_new_path_effects()
+func test_new_path_effects() -> void:
+ for spec in [["abjurant-champion","duskblade-force-rend","duskblade-slots-3"],["grove-warden","spirit-shaman-spirit-rebuke-5","spirit-shaman-slots-5"]]:
+  var r: Dictionary=fixtures[spec[0]];var spell: String=spec[1]
+  var hybrid := kernel.derive_character(r)
+  check(hybrid.ok and hybrid.snapshot.abilities.has(spell),"hybrid progression grants actual higher-tier spell "+spell)
+  var caster := prep(r,spell);var target := build("fighter",1)
+  var cast := use_at_save(caster,target,spell,1)
+  check(cast.ok and int(cast.actor.runtime.resources[spec[2]])==int(caster.runtime.resources[spec[2]])-1,"hybrid newly available tier really casts and spends slot "+spell)
+ var champion: Dictionary=fixtures["abjurant-champion"]
+ for level in [1,3,5]:
+  var ability := "abjurant-aegis-"+str(level)
+  var target := build("fighter",1)
+  var ward := use(champion,target,ability)
+  check(ward.ok,"selected prestige aegis executes "+ability)
+  if ward.ok:
+   check(ward.budget.main==0 and int(ward.actor.runtime.resources["abjurant-resolve"])==int(champion.runtime.resources["abjurant-resolve"])-1,"real aegis action and finite resolve")
+   check(int(ward.target.runtime.temporary_hp)==6+3*level and kernel.derive_character(ward.target).snapshot.stats.defence>kernel.derive_character(target).snapshot.stats.defence,"real scaling aegis HP and defence")
+ var retaliation: Dictionary=champion.duplicate(true)
+ for step in retaliation.advancement_history:
+  for group in step.specialisations:
+   if str(group).begins_with("abjurant-doctrine-"):step.specialisations[group]="retaliation"
+ check(kernel.validate_build(retaliation).ok,"explicit alternate prestige doctrine history")
+ for level in [1,3,5]:
+  var battle := encounter(retaliation);var engine := TacticalAuras.new(retaliation)
+  battle.rng=attack_seed(19);battle=engine.seal(battle)
+  var input := order(battle,"abjurant-retaliation-"+str(level))
+  var strike := engine.command(battle,input)
+  check(strike.ok,"prestige retaliation executes through actual melee authority "+str(level))
+  if not strike.ok:continue
+  check(int(strike.battle.units.a.record.runtime.temporary_hp)==4+2*level and int(strike.battle.units["bandit-blade"].record.runtime.hp)<int(battle.units["bandit-blade"].record.runtime.hp),"retaliation protects caster and really strikes enemy")
+  check(strike.battle.budget.main==0 and int(strike.battle.units.a.record.runtime.resources["abjurant-resolve"])==int(battle.units.a.record.runtime.resources["abjurant-resolve"])-1,"retaliation spends one action/resolve")
+  var replay := engine.command(JSON.parse_string(JSON.stringify(battle)),input)
+  check(replay.ok and replay.battle.state_hash==strike.battle.state_hash,"prestige weapon action exact deterministic replay")
+  fixtures["retaliation-used-"+str(level)]=strike.battle.units.a.record
+ var warden: Dictionary=fixtures["grove-warden"]
+ var engine := TacticalAuras.new(warden);var battle := encounter(warden)
+ var before_defence: int=int(engine.stats(battle.units.b).defence)
+ var protected := engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"grove-protection-1","target_id":"a"})
+ check(protected.ok,"actual maintained grove sanctuary command")
+ if protected.ok:
+  check(int(engine.stats(protected.battle.units.b).defence)==before_defence+3,"sanctuary projects actual ally defence through existing aura adapter")
+  check(engine.stats(protected.battle.units["bandit-blade"]).defence==engine.stats(battle.units["bandit-blade"]).defence,"sanctuary does not strengthen enemies")
+  fixtures["maintained-grove"]=protected.battle.units.a.record
+ var target := build("fighter",1);target.runtime.hp=1
+ var status := source.definition("statuses","weakened")
+ target.runtime.statuses=[{"id":"weakened","source":"fixture","remaining":int(status.duration.amount),"expiry":status.duration.expiry}]
+ var renewal := use(warden,target,"grove-protection-2")
+ check(renewal.ok and int(renewal.target.runtime.hp)>1 and renewal.target.runtime.statuses.is_empty(),"grove renewal actually heals and removes weakened")
+ battle=encounter(warden)
+ for id in ["b","c"]:battle.units[id].record.runtime.hp=1
+ battle=engine.seal(battle)
+ var communal := engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"grove-protection-3","target_id":"b"})
+ check(communal.ok,"actual radius-one grove renewal")
+ if communal.ok:
+  for id in ["b","c"]:check(int(communal.battle.units[id].record.runtime.hp)>1 and int(communal.battle.units[id].record.runtime.temporary_hp)==12,"communal healing and protection reaches actual adjacent ally "+id)
+ for spec in [[champion,"abjurant-resolve","abjurant-aegis-1"],[warden,"grove-favour","grove-protection-2"]]:
+  var dry: Dictionary=spec[0].duplicate(true);dry.runtime.resources[spec[1]]=0
+  check(not use(dry,target,spec[2]).ok,"prestige resource exhaustion enforced "+spec[2])
 func test_wave_five_feats() -> void:
  for spec in [["channel-training","duskblade",2,"steady-study"],["arcane-endurance","duskblade",2,"arcane-strike"],["spirit-reserve","spirit-shaman",2,"steady-study"],["ancestral-listener","spirit-shaman",2,"steady-study"],["retrieved-capacity","spirit-shaman",2,"steady-study"],["runic-veteran","duskblade",6,"steady-study"],["watchful-channel","duskblade",3,"steady-study"],["spirit-temper","spirit-shaman",2,"spirit-reserve"]]:
   var id: String=spec[0];var r := build(spec[1],spec[2],"heritage-human",spec[3])

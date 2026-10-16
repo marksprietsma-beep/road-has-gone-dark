@@ -1,8 +1,8 @@
-# Wave Five — first character cohort, Windows acceptance pending
+# Wave Five — native Windows character cohort and review delivery
 
 Recovered real implementation is pushed in draft PR [103](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/103), first source commit `9389f00df4415b193da7daac99cd099145963cb5`, on the existing `feature/game-112-character-catalogue-wave-five` branch. Parent main is the Windows-only PR102 merge `129e5de4621b0b662aa8c1999b2407d098e2fe17`; synchronized branch head was3a098d5. No existing content implementation was restarted. Later skill/capture acceptance additions are recorded in the next commit.
 
-v15 candidate pin: `65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1`. All v1–v14 pack bytes and frozen GAME-32 tactical source match HISTORICAL-PINS.json. New campaigns select v15; existing campaigns retain their exact pins. Windows is the only supported target; no Linux CI or Linux review package is introduced.
+v15 content pin: `65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1`. All v1–v14 pack bytes and frozen GAME-32 tactical source match HISTORICAL-PINS.json. New campaigns select v15; existing campaigns retain their exact pins. Windows is the only supported target; no Linux CI or Linux review package is introduced.
 
 ## Implemented first cohort
 
@@ -14,7 +14,7 @@ v15 candidate pin: `65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e144
 
 ## Inventory, not milestone acceptance
 
-| Category | Released v14 | v15 candidate |
+| Category | Released v14 | Native-validated v15 |
 |---|---:|---:|
 | Base classes |30|32|
 | Prestige paths |16|18|
@@ -32,7 +32,7 @@ v15 candidate pin: `65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e144
 | Scheduled career-choice groups |212|228|
 | Channel delivery wrappers (not new spells) |0|10|
 
-REPERTOIRE.json records identities/references. ACTIVE-MECHANICS.json separately excludes unreferenced legacy abilities, passive/automatic records, channel wrappers and psychic augmentation. It folds class gates and numeric progression into conservative structural effect/cost groups: v14 has568candidate active records/307structural groups; v15 has648/364. These are reproducible source groups and upper bounds on distinct design ideas, not proof of364individually native-validated, balanced player choices. Do not equate level labels, different names, scheduled selections or all feature records to unique mechanics. Native receipts remain the playability gate.
+REPERTOIRE.json records identities/references. ACTIVE-MECHANICS.json separately excludes unreferenced legacy abilities, passive/automatic records, channel wrappers and psychic augmentation. It folds class gates and numeric progression into conservative structural effect/cost groups: v14 has568candidate active records/307structural groups; v15 has648/364. These are reproducible source groups and upper bounds on distinct design ideas, not proof of364individually native-validated, balanced player choices. Do not equate level labels, different names, scheduled selections or all feature records to unique mechanics. Native receipts below validate the cohort; this inventory does not replace human review of mechanical variety.
 
 ## Evidence so far
 
@@ -40,9 +40,23 @@ Development-host source checks:1591mechanics/0;42exact cold snapshot/replay/0; e
 
 Frozen oracle22181/0; migration235/0; migration cold6/0; historical append-only guard9/0. Genuine production Godot renders: creator54checks/0, campaign81/0;36creator and45campaign frames at640×360/1280×720/2560×1440.13selected frames are committed under screenshots. Source runtime matches9389f00; capture harness additions are separate. Rendering used the development host’s actual Godot/OpenGL, not mockups or claimed Windows screenshots. High-level fixtures are explicitly labelled; earned sheets and combat use actual saved campaign checkpoints. The earlier failed capture correctly rejected replacing an earned history; the corrected advanced fixture starts a new normal birth through the original writer, isolated from the earned save.
 
-Current Windows CI: [dedicated Wave Five38839675605](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38839675605). Source phase has passed; native executable acceptance and remaining compatibility are still running. This document does not claim a v15 Windows artifact or merge until actual successful receipts and checksum are added. Wave Four’s known Windows download is retained in its own delivery and does not include v15.
+## Verified self-contained Windows review build
 
-## Testing the eventual Windows package
+[Windows x64 review artifact12021762807](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38841013371/artifacts/12021762807).
+
+Playable inner archive: `game112-character-catalogue-wave-five-windows-x64.zip`.
+
+SHA-256: `7fcec57b0f5f91f0297a483ac8f1b7347a2505dfc8b870017fdb4e7bf5137455`.
+
+Build source: `705bfe3344caf2c81029c1d8e96b0347ae866d69`. The Windows v15 native job succeeded with1591mechanics/0,42exact restart/0,565ordinary earned/skill checks/0 and4earned cold/0. All seven skill outcomes are present in its actual Windows proof. It starts production with emptyPATH/no checkout helper and independently restarts saved characters/campaigns. The package was separately downloaded: outer/inner ZIP integrity,7061entries, PE AMD64 game and bundled Node, sidecar SHA-256, exported v15 bytes and exact distribution source all verified. See evidence/accepted-windows-{native,audit}.json.
+
+The subsequent delivery commit changes QA/CI/docs/coverage only: it fixes the standalone onboarding runner's120second cold-import timeout and adds67focused checks for real prestige effects/hybrid-tier casts. Its gameplay/content/scene/asset/export source remains identical to this accepted build. The source helper check and focused onboarding suite pass; the final current-head Windows checks, including the additional prestige regressions, must pass before merge. [PR103 checks](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/103/checks) and its final delivery comment retain the exact last head, complete CI/merge conclusion and any newer equivalent native artifact. No failed or pending required check is bypassed.
+
+The earlier onboarding failure38841017525 occurred before gameplay assertions: fresh editor import exceeded120seconds. Its uploaded import log exactly matched the committed historical log because the old runner only wrote after success. The correction writes/truncates live UTF8 logs before launch, retains timeout output, uses the production UI600second import budget, and consistently excludes Node-only dependency examples. Runtime assertions, script-error/nonzero rejection and existing runtime budgets remain unchanged. Negative tests demonstrate timeout/current-evidence/error handling; actual source onboarding passes. evidence/onboarding-runner-repair.json preserves the failure, not a claimed green result for that failed head.
+
+The initial9389f00 native job also succeeded (1591/42/454/4) with verified artifact12020994313/SHA2560f223c33d0516a3ebb304b6bf801c459f5336cf4b07acc4541039030f61ccfa0. It is superseded by the expanded skill-proof build above. Enclosing obsolete workflows were stopped only after uploaded native receipts/artifacts were preserved, to free serial branch CI for the corrected current head; incomplete old jobs are not described as passed.
+
+## Testing the Windows package
 
 Extract the downloaded Actions ZIP, then the contained playable ZIP. Keep the entire game directory together and launch road-has-gone-dark.exe; no installed Godot or Node. Start New Game to use v15, choose world/origin/hometown, and review three distinct adventurers. Starting class lists contain base classes only. Select Duskblade/Spirit Shaman and review actual attributes, skills, feats, gear, spell selections and specialisations; save each adventurer and choose Party ready.
 
@@ -50,4 +64,6 @@ Use ordinary contextual adventures to earn XP. At home, review/explicitly commit
 
 ## Remaining scope
 
-This coherent first cohort is not the rich-character milestone’s completion. #101 and #82 remain OPEN. The approved near-term guideposts are38–45base careers,25–35prestige,45–55families/60–80heritages,100–150functional feats, broad executable ability variety and meaningful integrated build journeys/human acceptance. The760source occurrences remain the long-term research ledger. Coverage still has79previously native-mapped occurrences/681unresolved until Windows proof permits promoting the eight new bounded mappings. See CONTINUATION.md for exact remaining gates and next content priorities.
+This coherent first cohort is not the rich-character milestone’s completion. #101 and #82 remain OPEN. The approved near-term guideposts are38–45base careers,25–35prestige,45–55families/60–80heritages,100–150functional feats, broad executable ability variety and meaningful integrated build journeys/human acceptance. The760source occurrences remain the long-term research ledger. Coverage now has87native-mapped source occurrences/673unresolved after the exact705bfe3Windows receipt promoted only the eight bounded mappings. All760occurrences/720normalised rows and remaining source variants are preserved. See CONTINUATION.md for exact remaining gates and next content priorities.
+
+Known limits: neutral humanoid LPC fallback for unusual anatomy/forms/creatures; no aquatic/flight/environmental-vision claims. Long combat labels can clip at narrow widths; hover exposes full action details. Some numerical balance and build clarity still require player review. Advanced development fixtures are not earned levels, and this cohort does not close milestone101.

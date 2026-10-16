@@ -1,0 +1,12 @@
+{
+  "failed_run": 38841017525,
+  "failed_head": "705bfe3344caf2c81029c1d8e96b0347ae866d69",
+  "job": 116780858558,
+  "failed_stage": "Godot headless editor import exceeded120seconds before any gameplay assertions",
+  "uploaded_import_log_is_exact_committed_historical_file": true,
+  "historical_log_sha256": "9572934ad4d57fbab2c09b2c82f3821584fba7ba71d7e1dec5055bc7fa531f3f",
+  "correction": "Live truncated UTF8 logs survive timeout; import600seconds matches production UI; runtime assertions/error checks/120second runtime budgets unchanged; Node-only dependency examples excluded consistently",
+  "focused_source_passed": true,
+  "timeout_error_nonzero_negative_checks_passed": true,
+  "current_windows_repeat": "required before merge"
+}

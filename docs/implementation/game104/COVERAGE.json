@@ -1557,8 +1557,8 @@
         "Complete Divine"
       ],
       "category": "base_class",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
         "production_id": "spirit-shaman"
@@ -1571,15 +1571,15 @@
       "owner": "GAME-109",
       "design_key": "base_class-spirit-shaman",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "base_class-spirit-shaman:complete-divine:0",
           "source_group": "Complete Divine",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "spirit-shaman",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -3052,8 +3052,8 @@
         "Player's Handbook II"
       ],
       "category": "base_class",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_class",
         "production_id": "duskblade"
@@ -3066,15 +3066,15 @@
       "owner": "GAME-109",
       "design_key": "base_class-duskblade",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "base_class-duskblade:player-s-handbook-ii:0",
           "source_group": "Player's Handbook II",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "duskblade",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -7060,8 +7060,8 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-catfolk"
@@ -7074,15 +7074,15 @@
       "owner": "GAME-108",
       "design_key": "ancestry-catfolk",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-catfolk:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-catfolk",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -7317,8 +7317,8 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-riverborn"
@@ -7331,15 +7331,15 @@
       "owner": "GAME-108",
       "design_key": "ancestry-darfellan",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-darfellan:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-riverborn",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -10174,8 +10174,8 @@
         "Fey and fey-like"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-wildborn"
@@ -10188,15 +10188,15 @@
       "owner": "GAME-108",
       "design_key": "ancestry-killoren",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-killoren:fey-and-fey-like:0",
           "source_group": "Fey and fey-like",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-wildborn",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -15669,8 +15669,8 @@
         "Other N–P"
       ],
       "category": "ancestry",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "distinct_ancestry",
         "production_id": "heritage-ratfolk"
@@ -15683,15 +15683,15 @@
       "owner": "GAME-108",
       "design_key": "ancestry-nezumi",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-nezumi:other-n-p:0",
           "source_group": "Other N–P",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "heritage-ratfolk",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -19947,8 +19947,8 @@
         "Complete Champion"
       ],
       "category": "prestige",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
         "production_id": "grove-warden"
@@ -19961,15 +19961,15 @@
       "owner": "GAME-110",
       "design_key": "prestige-holt-warden",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "prestige-holt-warden:complete-champion:0",
           "source_group": "Complete Champion",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "grove-warden",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -20288,8 +20288,8 @@
         "Complete Mage"
       ],
       "category": "prestige",
-      "status": "implemented",
-      "playable": false,
+      "status": "playable",
+      "playable": true,
       "intended_implementation": {
         "kind": "earned_prestige_path",
         "production_id": "abjurant-champion"
@@ -20302,15 +20302,15 @@
       "owner": "GAME-110",
       "design_key": "prestige-abjurant-champion",
       "blocking_subsystems": [
-        "Source and native acceptance pending"
+        "Bounded original adaptation; remaining source-concept mechanics and human review"
       ],
       "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "prestige-abjurant-champion:complete-mage:0",
           "source_group": "Complete Mage",
-          "status": "implemented",
-          "playable": false,
+          "status": "playable",
+          "playable": true,
           "production_id": "abjurant-champion",
           "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
           "evidence": [
@@ -29120,7 +29120,7 @@
   "wave_five": {
     "candidate_pack": "trhgd-character-v15",
     "baseline_pack": "trhgd-character-v14",
-    "status": "implementation_under_validation",
+    "status": "native_validated",
     "new_source_rows": [
       "base_class-duskblade",
       "base_class-spirit-shaman",
@@ -29131,7 +29131,12 @@
       "ancestry-killoren",
       "ancestry-nezumi"
     ],
-    "native_receipts": [],
+    "native_receipts": [
+      {
+        "source_commit": "705bfe3344caf2c81029c1d8e96b0347ae866d69",
+        "sha256": "7fcec57b0f5f91f0297a483ac8f1b7347a2505dfc8b870017fdb4e7bf5137455"
+      }
+    ],
     "all_occurrences_preserved": true,
     "complete_wave": false,
     "complete_programme": false

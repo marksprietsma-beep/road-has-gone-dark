@@ -38,7 +38,7 @@ Native repair results on both:1953 entity mechanics,15 captured geometry checks 
 
 Repair Windows artifact11974396472: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38735236420/artifacts/11974396472 . Inner `game112-character-catalogue-wave-two-windows-x64.zip` contains current v14; this is its legacy-verification filename, not a content downgrade. SHA-256 `a59bd7862481edb6477bfa4dfb533556ef6879b4e0d32eaac3982bf16bb56393`. Independent CRC7061/PE binaries/exact CORE-content/sidecar/source-stamp checks passed. Native production startup and independent restart passed with empty PATH and the bundled helper.
 
-New automatic post-repair main runs are still running: focused repair38741425966; WaveFour38741425954; WaveThree38741425956; WaveTwo38741426013; productionUI38741425975; party38741426037. These are pending repeats on the identical tested tree, not new passing results. They remain monitored and must be green before merging further gameplay work. Prior successful evidence is retained rather than rerun locally.
+All automatic post-repair main runs PASSED: focused repair38741425966; WaveFour38741425954; WaveThree38741425956; WaveTwo38741426013; productionUI38741425975; party38741426037. Exact GitHub conclusions are preserved in evidence/post-repair-main.json. No unnecessary local repetition was performed.
 
 The older1115aa7 Windows artifact11950207480 is superseded by the corrected final-source11952778574 above. Earlier unreleased candidates are not silently repinned. Programme82 is OPEN; the overall catalogue remains unfinished.
 
@@ -51,3 +51,10 @@ Historicalv1–v13 files and campaign pins remain unchanged, and frozen GAME-32 
 Ancestry, form and creature sprites use disclosed neutral humanoid fallbacks; large actors still occupy one tile. No flight, aquatic exploration, environmental vision, mind-controlled AI or breath cone is claimed. Duskblade's hit-conditioned channeling and Spirit Shaman's rest-selected repertoire remain substantive follow-up mechanics. These are bounded original adaptations rather than complete sourcebook conversions.
 
 All760 research occurrences remain accounted for across720 taxonomy rows. Seventy-nine occurrences now map to native-tested adaptations;681 remain unresolved. Heritage variants, feat/spell counts and scheduled choices are tracked separately and do not inflate source coverage. The overall character programme is unfinished.
+
+
+## Closed post-repair main verification and later Windows policy
+
+All six automatic c1d5973 repeats completed SUCCESS, independently read from GitHub: WaveThree38741425956, productionUI38741425975, party38741426037, WaveFour38741425954, native journey38741425966, WaveTwo38741426013. See evidence/post-repair-main.json. Any earlier “pending repeat” text is superseded by this receipt. No Wave Four implementation remains to recreate.
+
+PR102 subsequently established Windows x64 as the only supported target and merged at129e5de. Earlier Linux proofs/links in this document are historical; do not generate new Linux CI/packages or require Linux acceptance. The existing Wave Five branch was synchronized at3a098d5 and real v15 source is now committed in PR103. See the Wave Five delivery for new content and independent Windows-native receipts; the old v14 packages above do not contain those classes.
