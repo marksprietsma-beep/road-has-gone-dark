@@ -42,6 +42,10 @@ A Playthrough-specific alteration or consequence associated with a stable world 
 A persistent, developing circumstance involving identifiable places, people or groups, capable of changing over in-game time even when the Party is elsewhere.
 _Avoid_: Quest, continuous NPC simulation
 
+**Tracked World Situation**:
+A World Situation selected for ongoing consequential advancement because of its relevance to the Party, its relationships or surroundings, or its exceptional regional or world importance. Not every generated threat or local circumstance is tracked.
+_Avoid_: Every generated world event, quest objective
+
 **World Event**:
 A consequential development affecting a World Situation or other persistent world entity during a Playthrough; it is not necessarily a player-triggered Outcome.
 _Avoid_: Outcome, narrative flavour text
