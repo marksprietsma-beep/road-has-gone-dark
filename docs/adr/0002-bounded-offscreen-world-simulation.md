@@ -67,12 +67,22 @@ Significance can diminish, reducing ongoing personal-event attention when the ch
 
 Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
 
-**Open decisions:** how competing NPC motives resolve, which relationships between NPCs receive persistent attention, and how players learn about those changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+**Open decisions:** how competing NPC motives resolve, how observed/reported social events alter relationships, and how players learn about those changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+
+## Sparse relationships between significant NPCs — accepted 16 October 2026
+
+**Significant NPCs may form, retain and change meaningful relationships with one another**, not just with the Party. Family bonds, friendships, rivalries, loyalties, debts and obligations can matter to decisions, situations and later opportunities even when neither participant is recruited or currently visible. A village guard's ties to a criminal sibling or a rival commander can influence events independently of player interaction.
+
+Persist only **consequential connections**: ties that credibly affect a choice, eligibility, access, allegiance, resource or future callback. This is a **sparse social network**, not a fully populated matrix of opinions or continuously changing affinity values for every named NPC. Being significant does not require recording every friendship or casual acquaintance. A relationship can be directional or asymmetric where appropriate; a debtor's obligation need not imply equal reciprocal affection.
+
+A significant change to a relationship requires a meaningful event or a justified decision by the participants, with durable history. Passive absence should not erode ties by default. Relationship effects must respect the previously accepted distinction between world truth, conveyed information and player knowledge; this decision does not confer automatic knowledge of an event on every friend of a participant.
+
+Reject party-centred relationships only, which would undermine independent lives, and reject an all-NPC social simulation, which would expand beyond the bounded event model. Exact trust measures, propagation/knowledge rules, competing obligations and conflict resolution remain open design questions. No relationship engine is implemented by this record.
 
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, social-event knowledge and relationship conflicts, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
