@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Run from repository root. --visual requires a graphical Godot display."""
-import argparse, hashlib, os, pathlib, subprocess
+import argparse, hashlib, os, pathlib, subprocess, sys
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
 parser = argparse.ArgumentParser()
 parser.add_argument('--visual', action='store_true')
 args = parser.parse_args()

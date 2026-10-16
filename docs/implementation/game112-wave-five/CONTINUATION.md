@@ -15,3 +15,5 @@ Next substantive cohort after this release: distinctive Warmage offensive repert
 If interrupted: commit/push verified increments, preserve partial failures and exact run/job/log IDs, update this file/PR and do not leave important code only in /workspace/artifacts. The recovered proposal is now actual committed implementation, not an ephemeral research plan.
 
 Final publication gate: the delivery/QA/CI correction commit follows705bfe3without gameplay changes. Its exact SHA and CI IDs are recorded on PR103. If any new failure appears, retrieve actual logs and fix narrowly; no fresh game features are required for this release. Keep the accepted Windows receipt from705bfe3and all raw failed onboarding evidence. Merge only after final required Windows checks; verify main and leave101/82open.
+
+Windows follow-up on bd9ca37: onboarding38843368151failed before game assertions with UnicodeEncodeError when printing correctly decoded Node U+2714 output to the CP1252 Python console. Explicit UTF8 stdout/stderr and a real Unicode positive runner test correct this. The old failed run remains failed; current corrected Windows rerun is required. No gameplay code/pins changed.

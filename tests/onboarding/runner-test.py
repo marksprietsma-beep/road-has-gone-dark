@@ -4,6 +4,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+sys.stdout.reconfigure(encoding='utf-8')
 
 # Only isolate the helper; importing run-tests.py would execute the whole suite.
 script=Path(__file__).with_name('run-tests.py')
@@ -26,4 +27,6 @@ with tempfile.TemporaryDirectory(prefix='onboarding-runner-')as directory:
   else:raise AssertionError(name+' was accepted')
  run('success',[sys.executable,'-c','print("fresh successful run")'])
  assert(logs/'success.txt').read_text(encoding='utf-8').strip()=='fresh successful run'
+ run('unicode',[sys.executable,'-X','utf8','-c','print("\u2714 caf\u00e9 \U0001f9d9")'])
+ assert(logs/'unicode.txt').read_text(encoding='utf-8').strip()=='\u2714 caf\u00e9 \U0001f9d9'
 print('PASS: live timeout evidence replaces stale logs; script errors/nonzero exits remain fatal')
