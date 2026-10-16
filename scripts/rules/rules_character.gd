@@ -248,7 +248,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   context.stats[stat]=combined.get("value",0);applied[stat]=combined.get("applied",[])
  context.stats.stride=maxi(1,int(context.stats.stride));context.stats.HP=maxi(1,int(context.stats.HP))
  if not active_form.is_empty():
-  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")))
+  context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")) and (not RulesWaveFive.enabled(registry) or not registry.definition("abilities",id).tags.has("supernatural")))
   context.body_form=active_form.duplicate(true)
  if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry)
  context.applied_modifiers=applied

@@ -51,6 +51,9 @@ static func selection_limit(cls: String,level: int,source: RulesRegistry) -> int
  return 2+level if source.definition("classes",cls).spell_mode=="prepared" else 1+int(ceil(float(level)/2.0))
 static func selection_errors(record: Dictionary,context: Dictionary,source: RulesRegistry) -> Array:
  var counts := {};var errors: Array=[]
+ if RulesWaveFive.enabled(source):
+  for id in record.choices.prepared_abilities:
+   if source.definition("abilities",id).has("channel_spell"):errors.append(RulesJson.issue("channel.known",id,"Select the original spell; its channel action is granted automatically"))
  for id in record.choices.prepared_abilities:
   var spell := source.definition("abilities",id)
   if not spell.tags.has("spell"):continue

@@ -1557,11 +1557,11 @@
         "Complete Divine"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "spirit-shaman"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -1571,20 +1571,37 @@
       "owner": "GAME-109",
       "design_key": "base_class-spirit-shaman",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "base_class-spirit-shaman:complete-divine:0",
           "source_group": "Complete Divine",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "spirit-shaman",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-ardent",
@@ -3035,11 +3052,11 @@
         "Player's Handbook II"
       ],
       "category": "base_class",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "distinct_class",
-        "production_id": null
+        "production_id": "duskblade"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -3049,20 +3066,37 @@
       "owner": "GAME-109",
       "design_key": "base_class-duskblade",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "base_class-duskblade:player-s-handbook-ii:0",
           "source_group": "Player's Handbook II",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "duskblade",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 20,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "base_class-knight",
@@ -7026,11 +7060,11 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-catfolk"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -7040,19 +7074,37 @@
       "owner": "GAME-108",
       "design_key": "ancestry-catfolk",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-catfolk:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-catfolk",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-centaur",
@@ -7265,11 +7317,11 @@
         "Other standalone / small families A–D"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-riverborn"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -7279,19 +7331,37 @@
       "owner": "GAME-108",
       "design_key": "ancestry-darfellan",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-darfellan:other-standalone-small-families-a-d:0",
           "source_group": "Other standalone / small families A–D",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-riverborn",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-cambion",
@@ -10104,11 +10174,11 @@
         "Fey and fey-like"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-wildborn"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -10118,19 +10188,37 @@
       "owner": "GAME-108",
       "design_key": "ancestry-killoren",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-killoren:fey-and-fey-like:0",
           "source_group": "Fey and fey-like",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-wildborn",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-pixie",
@@ -15581,11 +15669,11 @@
         "Other N–P"
       ],
       "category": "ancestry",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
-        "kind": "ancestry_or_heritage_review",
-        "production_id": null
+        "kind": "distinct_ancestry",
+        "production_id": "heritage-ratfolk"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -15595,19 +15683,37 @@
       "owner": "GAME-108",
       "design_key": "ancestry-nezumi",
       "blocking_subsystems": [
-        "typed inherited traits, body/size/senses/resistance, source-specific design"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "ancestry-nezumi:other-n-p:0",
           "source_group": "Other N–P",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "heritage-ratfolk",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 0,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "ancestry-nycter",
@@ -19841,11 +19947,11 @@
         "Complete Champion"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "grove-warden"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -19855,20 +19961,37 @@
       "owner": "GAME-110",
       "design_key": "prestige-holt-warden",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "prestige-holt-warden:complete-champion:0",
           "source_group": "Complete Champion",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "grove-warden",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 3,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-mythic-exemplar",
@@ -20165,11 +20288,11 @@
         "Complete Mage"
       ],
       "category": "prestige",
-      "status": "researched",
+      "status": "implemented",
       "playable": false,
       "intended_implementation": {
         "kind": "earned_prestige_path",
-        "production_id": null
+        "production_id": "abjurant-champion"
       },
       "licensing": {
         "strategy": "original_equivalent",
@@ -20179,20 +20302,37 @@
       "owner": "GAME-110",
       "design_key": "prestige-abjurant-champion",
       "blocking_subsystems": [
-        "specific feature progression and action/casting/resource support",
-        "real creation, advancement, combat and persistence proof"
+        "Source and native acceptance pending"
       ],
-      "next_action": "Write an original per-entry design preserving its distinct concepts; verify licence before any source text/data reuse.",
+      "next_action": "Review this bounded adaptation; preserve remaining source variants and Wave Five objectives.",
       "source_variants": [
         {
           "key": "prestige-abjurant-champion:complete-mage:0",
           "source_group": "Complete Mage",
-          "status": "researched",
+          "status": "implemented",
           "playable": false,
-          "production_id": null,
-          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence."
+          "production_id": "abjurant-champion",
+          "policy": "Review this source occurrence separately; share an implementation only after confirming equivalence.",
+          "evidence": [
+            "tests/character_wave_five/mechanics_driver.gd",
+            "tests/character_wave_five/earned_driver.gd",
+            "docs/implementation/game112-wave-five/TESTING.md"
+          ],
+          "bounded_original_adaptation": true,
+          "complete_sourcebook_conversion": false
         }
-      ]
+      ],
+      "evidence": [
+        "tests/character_wave_five/mechanics_driver.gd",
+        "tests/character_wave_five/earned_driver.gd",
+        "docs/implementation/game112-wave-five/TESTING.md"
+      ],
+      "implementation": {
+        "pack_id": "trhgd-character-v15",
+        "level_cap": 5,
+        "original_adaptation": true,
+        "complete_sourcebook_conversion": false
+      }
     },
     {
       "id": "prestige-eldritch-disciple",
@@ -28975,6 +29115,25 @@
       "ancestry-water-genasi"
     ],
     "all_occurrences_preserved": true,
+    "complete_programme": false
+  },
+  "wave_five": {
+    "candidate_pack": "trhgd-character-v15",
+    "baseline_pack": "trhgd-character-v14",
+    "status": "implementation_under_validation",
+    "new_source_rows": [
+      "base_class-duskblade",
+      "base_class-spirit-shaman",
+      "prestige-abjurant-champion",
+      "prestige-holt-warden",
+      "ancestry-catfolk",
+      "ancestry-darfellan",
+      "ancestry-killoren",
+      "ancestry-nezumi"
+    ],
+    "native_receipts": [],
+    "all_occurrences_preserved": true,
+    "complete_wave": false,
     "complete_programme": false
   }
 }

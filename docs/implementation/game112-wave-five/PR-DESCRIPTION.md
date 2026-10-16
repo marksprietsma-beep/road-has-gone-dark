@@ -1,0 +1,12 @@
+Duskblade now channels a selected, owned spell through one authoritative melee attack: an actual hit delivers the original spell once; misses and concealment spend the action and slot without a spell effect. Spirit Shaman retrieves a bounded repertoire, with one saved selection change after the existing eligible home-return rest. Neither path changes frozen GAME-32 combat or old campaign pins.
+
+This first v15 cohort also adds optional earned Abjurant Champion/Grove Warden progression, four ancestry families/six heritages, sixteen mechanical feats, thirty-two named spells, ten psychic powers, two creatures and three forms. Channel wrappers and repeated class references are counted separately. The rich-character milestone #101 and long-term research programme #82 remain open.
+
+Validation in progress: focused mechanics1591/0, separate-process snapshot/replay42/0, frozen kernel22181/0, historical files byte-identical; ordinary earned progression, native Windows, responsive captures and all compatibility workflows must pass before readiness/merge. Current v15 figures are candidates until native proof; the coverage ledger retains79 previously validated source mappings.
+
+Wave Four close-out is included: PR99 was already merged; PR100 narrowly repaired the test bot’s blocked psychic line-of-sight route without changing runtime code. Its native Windows checks passed and automatic main repeats are tracked in Wave Four DELIVERY.md.
+
+No unrelated world systems, new save writer, automatic prestige assignments or ancestry artwork claims. Review docs/implementation/game112-wave-five/{ASSESSMENT,TESTING,DELIVERY,CONTINUATION,REPERTOIRE}. Delivery will record actual current-source CI, Windows artifact/checksum and limitations before merge.
+
+
+Owner update16October2026: Windows x64 is the only supported target; retain PR102 and .github/CI-WINDOWS-ONLY.md. No Linux CI/review packages or Linux merge gate. Continue from synchronized branch3a098d5/main129e5de. Active delivery target is milestone#101 (rich playable characters), with the full GAME-88 occurrence ledger retained as long-term research rather than this milestone’s release blocker. First-cohort source verification: mechanics1591/0, exact cold42/0, ordinary earned454/0 and independent earned restart (see raw proof), frozen22181/0 plus migration235/0 and reload6/0. These were development-host source checks before the Windows-only sync; runtime source unchanged by that sync. Windows-native acceptance remains pending and is not inferred from these results.

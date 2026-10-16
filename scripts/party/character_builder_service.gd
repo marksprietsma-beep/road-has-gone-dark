@@ -41,8 +41,10 @@ func _operate_locked(entry: Dictionary,slot: String,operation: String,member: in
   var source := RulesRecords.registry(state)
   for id in record.choices.prepared_abilities:
    var cls: String=str(source.definition("abilities",str(id)).get("casting_class",""))
-   if source.definition("classes",cls).get("spell_mode")=="spontaneous" and not changes.spells.has(id):return fail("Known spontaneous spells cannot be forgotten by changing preparations")
+   if source.definition("classes",cls).get("spell_mode")=="spontaneous" and not RulesWaveFive.retrieval_class(cls,source) and not changes.spells.has(id):return fail("Known spontaneous spells cannot be forgotten by changing preparations")
   record.choices.prepared_abilities=changes.spells.duplicate();record.choices.spell_preparations=changes.preparations.duplicate(true);record.revision+=1
+  var retrieval := RulesWaveFive.commit_retrieval(state.mechanics.records[changes.character_id],record,source)
+  if not retrieval.ok:return retrieval
   RulesCoreContent.refill_prepared(record,source)
   var valid := RulesCharacter.new(source).derive_character(record)
   if not valid.ok:return valid

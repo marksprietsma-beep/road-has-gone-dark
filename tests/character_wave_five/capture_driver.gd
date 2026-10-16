@@ -1,0 +1,67 @@
+extends "res://tests/character_psychic/capture_driver.gd"
+## Real production creator, unchanged existing canonical world; no XP fixture grants.
+func run() -> void:
+ base=OS.get_environment("GAME112W5_CAPTURE_ROOT")
+ DirAccess.make_dir_recursive_absolute(base)
+ var source_root := OS.get_environment("GAME112W5_WORLD_ROOT")
+ service.library.library_root=source_root.path_join("library");entry=service.library.discover()[0]
+ service.cache_root=base.path_join("cache");service.store.save_root=base.path_join("saves");service.library.save_root=service.store.save_root
+ var profiles := OriginProfiles.new();check(profiles.load_world(entry.world),"existing world profiles")
+ var home: Dictionary=profiles.projection.hometowns.values()[0]
+ var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id));slot=born.state.playthrough_id
+ check(service.store.save_new(slot,born.state,entry.world).ok,"normal writer new campaign")
+ action_builder("builder_open")
+ var ui := await open_screen("res://scenes/ui/party_creation.tscn")
+ if ui==null:finish();return
+ check(ui.editor.source.rules_ref().pack_id=="trhgd-character-v15","creator exact v15 default")
+ check(not ui.editor.equipment_pickers.has("frost-fangs")and not ui.editor.equipment_pickers.has("bulwark-slam"),"actual starting equipment UI excludes creature attacks")
+ await screenshot("v15-first-open",false)
+ ui.detail_tabs.current_tab=1
+ for index in ui.editor.sections.get_tab_count():
+  if ui.editor.sections.get_tab_title(index)=="Equipment":ui.editor.sections.current_tab=index
+ await screenshot("v15-starting-equipment",false)
+ for cls in ["duskblade","spirit-shaman"]:
+  ui.editor.set_class(cls);ui._identity_changed();ui.detail_tabs.current_tab=1
+  check(ui.editor.preview.ok,"new creator legal default "+cls+JSON.stringify(ui.editor.preview.get("errors",[])))
+  for tab in ["Specialisation","Spells","Progression","Powers"]:
+   if tab=="Powers" and not ui.editor.source.definition("classes",cls).has("psychic_profile"):continue
+   if tab=="Spells" and ui.editor.source.definition("classes",cls).spell_mode.is_empty():continue
+
+   var found := false
+   for index in ui.editor.sections.get_tab_count():
+    if ui.editor.sections.get_tab_title(index)==tab:ui.editor.sections.current_tab=index;found=true
+   if found:
+    if tab=="Specialisation" and not ui.editor.career_pickers.is_empty():
+     var control: Control=ui.editor.career_pickers.values()[0]
+     control.grab_focus()
+     ui.detail_tabs.get_child(1).ensure_control_visible(control)
+     for frame in 4:await get_tree().process_frame
+    await screenshot(cls+"-"+tab.to_lower(),false)
+ for people in ["catfolk","riverborn","wildborn","ratfolk"]:
+  ui.pick(ui.people_picker,people);ui.people_picker.item_selected.emit(ui.people_picker.selected)
+  ui.editor.suggest_allocation() # An inherited INT change changes the explicit skill-rank budget.
+  ui.detail_tabs.current_tab=2
+  check(ui.editor.preview.ok,"actual inherited creator preview "+people+JSON.stringify(ui.editor.preview.get("errors",[])))
+  await screenshot(people+"-traits",false)
+ await close_screen()
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"source_commit":OS.get_environment("GAME112W5_SOURCE_SHA"),"screenshots":screenshots,"development_fixture":false}))
+ finish()
+
+func screenshot(name: String,development: bool) -> void:
+ for resolution in [Vector2i(1280,720),Vector2i(640,360),Vector2i(2560,1440)]:
+  get_tree().root.size=resolution
+  for frame in 5:await get_tree().process_frame
+  if name.ends_with("-specialisation"):
+   var ui: Control=get_tree().current_scene
+   var control: Control=ui.editor.career_pickers.values()[0]
+   var inner: ScrollContainer=ui.editor.sections.get_current_tab_control()
+   inner.ensure_control_visible(control)
+   for frame in 3:await get_tree().process_frame
+   ui.detail_tabs.get_child(1).ensure_control_visible(control)
+   for frame in 3:await get_tree().process_frame
+   check(control.get_global_rect().intersects(Rect2(Vector2.ZERO,Vector2(resolution))),"real choice control visible at "+str(resolution))
+  await RenderingServer.frame_post_draw
+  DirAccess.make_dir_recursive_absolute(base.path_join("screenshots"))
+  var file := name+"-%dx%d.png"%[resolution.x,resolution.y]
+  check(get_tree().root.get_texture().get_image().save_png(base.path_join("screenshots/"+file))==OK,"actual Godot screenshot")
+  screenshots.append({"file":file,"sha256":FileAccess.get_sha256(base.path_join("screenshots/"+file)),"development_fixture":development})

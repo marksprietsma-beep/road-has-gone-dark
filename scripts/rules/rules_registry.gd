@@ -28,14 +28,14 @@ func load_data(input: Dictionary) -> Dictionary:
  var candidate: Dictionary = RulesJson.normalize(input)
  var found: Array = []
  var categories: Array=CATEGORIES.duplicate()
- if candidate.get("pack_id") in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14"]:categories.append("creatures")
- if candidate.get("pack_id") in ["trhgd-character-v13","trhgd-character-v14"]:categories.append("psychic_powers")
+ if candidate.get("pack_id") in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:categories.append("creatures")
+ if candidate.get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:categories.append("psychic_powers")
  var required := ["pack_id","schema_version","rules_version","engine_schema","provenance","rules","role_recommendations"]+categories
  for field in required:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3],["trhgd-character-v12","12.0.0",3],["trhgd-character-v13","13.0.0",3],["trhgd-character-v14","14.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3],["trhgd-character-v12","12.0.0",3],["trhgd-character-v13","13.0.0",3],["trhgd-character-v14","14.0.0",3],["trhgd-character-v15","15.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
@@ -55,12 +55,12 @@ func load_data(input: Dictionary) -> Dictionary:
     RulesPsychic.validate_power(tables[category][id],tables,found);continue
    if category=="creatures":
     RulesEntities.validate_creature(tables[category][id],tables,found);continue
-   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14"])
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"],candidate.pack_id=="trhgd-character-v15")
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
  _check_cycles(tables,found)
- if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14"]:RulesCatalogueValidation.validate(tables,found)
+ if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:RulesCatalogueValidation.validate(tables,found)
  if not found.is_empty(): return _fail(found)
  _pack=RulesJson.freeze(candidate);_tables=RulesJson.freeze(tables);content_hash=RulesJson.digest(candidate);errors=[]
  return {"ok":true,"rules_ref":rules_ref()}
@@ -178,7 +178,7 @@ static func validate_effect(effect: Variant,tables: Dictionary,path: String,foun
   _formula(d.get("dc"),tables,path+".dc",found)
   if not d.get("save") in RulesExpressions.SAVES or not d.get("investigation_trigger") is String or not d.get("bypass_tags") is Array or not RulesJson.integer(d.get("maximum_maintained"),1,10) or not d.get("replacement") in ["cancel_prior","reject"] or not d.get("break_conditions") is Array or not d.get("success") is String or not d.get("failure") is String: found.append(RulesJson.issue("effect.observer",path,"Explicit observer/disbelief/maintenance metadata is required"))
 
-static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array,engine: int=1,wave: bool=false) -> void:
+static func _validate_definition(category: String,row: Dictionary,tables: Dictionary,found: Array,engine: int=1,wave: bool=false,wave_five: bool=false) -> void:
  var path: String = category+"."+row.id
  var allowed := {
   "classes":["id","name","max_level","requirements","hp_per_level","skill_points","bab","saves","casting","casting_tradition","features","provenance"],
@@ -193,6 +193,10 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
   "backgrounds":["id","tags","features","modifiers","provenance"]
  }
  var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment","known_spell_limits","career_choices","class_kind","attribute_priority"],"features":["description","capabilities"],"abilities":["description","casting_class","spell_tier","attack_weapon"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan","capabilities","visual_profile"],"statuses":["capabilities"]}
+ if wave_five:
+  extensions.classes.append_array(["rest_retrieval","retrieval_resource"])
+  extensions.abilities.append("channel_spell")
+  RulesWaveFive.validate_definition(category,row,tables,found)
  if tables.has("psychic_powers"):
   extensions.classes.append("psychic_profile")
   extensions.features.append_array(["known_power","companion_growth","unique_selection"])

@@ -14,10 +14,13 @@ func setup(value: Dictionary) -> void:
   if definition.get('spell_mode','').is_empty():continue
   var level: int=int(result.snapshot.get("casting_levels",result.snapshot.class_levels)[cls])
   add_child(GameUI.label(definition.name+' · '+str(definition.spell_mode).capitalize(),GameUI.SECTION))
-  add_child(GameUI.label('Select up to %d spells. %s Casting uses %s; required score is 10 + spell tier.'%[RulesCoreContent.selection_limit(cls,level,source),'Known spontaneous spells are retained; add new choices as progression permits.' if definition.spell_mode=='spontaneous' else 'Prepared selections may change at home. Current spell slots are preserved.',definition.casting_attribute],GameUI.META))
+  add_child(GameUI.label('Select up to %d spells. %s Casting uses %s; required score is 10 + spell tier.'%[RulesCoreContent.selection_limit(cls,level,source),'Retrieved spirit spells may be exchanged once after an eligible home-return rest.' if RulesWaveFive.retrieval_class(cls,source) else 'Known spontaneous spells are retained; add new choices as progression permits.' if definition.spell_mode=='spontaneous' else 'Prepared selections may change at home. Current spell slots are preserved.',definition.casting_attribute],GameUI.META))
+  var retrieval := RulesWaveFive.retrieval_class(cls,source)
+  var permit: int=int(record.runtime.resources.get(definition.get("retrieval_resource",""),0))
+  if retrieval:add_child(GameUI.label("Spirit retrieval · %d change available. Return from an expedition and rest to refresh one change; selecting spells does not restore slots."%permit,GameUI.META))
   for id in result.snapshot.abilities:
    var ability := source.definition('abilities',id)
-   if ability.get('casting_class')!=cls or not ability.tags.has('spell'):continue
+   if ability.get('casting_class')!=cls or not ability.tags.has('spell') or ability.has('channel_spell'):continue
    if ability.tags.has('prepared'):
     var row := HBoxContainer.new();add_child(row)
     var caption := GameUI.label(ability.name+' · '+', '.join(ability.tags.filter(func(tag: String):return tag.begins_with('tier_'))).replace('_',' '),GameUI.META);caption.size_flags_horizontal=Control.SIZE_EXPAND_FILL;row.add_child(caption)
@@ -26,7 +29,7 @@ func setup(value: Dictionary) -> void:
    else:
     var control := CheckBox.new();control.text=ability.name+' · '+', '.join(ability.tags.filter(func(tag: String):return tag.begins_with('tier_'))).replace('_',' ')
     control.tooltip_text=ability.get('description',ability.name);control.button_pressed=record.choices.prepared_abilities.has(id)
-    control.disabled=definition.spell_mode=='spontaneous' and control.button_pressed
+    control.disabled=permit<1 if retrieval else definition.spell_mode=='spontaneous' and control.button_pressed
     add_child(control);controls[id]=control;control.toggled.connect(func(_on: bool):changed.emit())
 
 func selection() -> Array:

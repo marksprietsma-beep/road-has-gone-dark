@@ -279,14 +279,16 @@ func refresh() -> void:
      if id in ["attack","move","departure-attack","precision"]:continue
      var ability := engine.registry.definition("abilities",id)
      if ability.has("psychic_power"):continue
-     if ability.tags.has("spell") and not actor.record.choices.prepared_abilities.has(id):continue
+     if ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor.record,ability,engine.registry):continue
      if ability.tags.has("passive") or ability.has("trigger"):continue
      if ability.targeting.kind=="self":
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
-      add_action(id,ability.name+" · range "+str(ability.targeting.get("range",1))+resource_text(ability,actor));action_buttons[id].tooltip_text=ability.get("description",ability.name)
+      var caption: String=ability.name
+      if RulesWaveFive.enabled(engine.registry) and ability.has("channel_spell"):caption+=" · "+str(engine.registry.definition("equipment",engine.active_weapon(actor)).name)
+      add_action(id,caption+" · range "+str(ability.targeting.get("range",1))+resource_text(ability,actor));action_buttons[id].tooltip_text=ability.get("description",ability.name)
    elif abilities.has("guard"):
     var guard := GameUI.action("Guard · protect adjacent ally",func():send("guard",actor.id))
     guard.disabled=thread!=null or int(b.budget.main)<1;gate_button(guard);actions.add_child(guard);action_buttons.guard=guard
@@ -335,7 +337,8 @@ func show_art_credits() -> void:
 func presentation_kind_for(kind: String) -> String:
  if engine.registry.rules_ref().get("engine_schema")!=3:return kind
  var ability := engine.registry.definition("abilities",kind)
- if ability.get("tags",[]).has("spell"):return "healing-thread" if ability.effects.any(func(effect: Dictionary):return effect.op=="heal") else "spark"
+ if RulesWaveFive.enabled(engine.registry) and ability.has("channel_spell"):return "attack"
+ if ability.get("tags",[]).has("spell") or RulesWaveFive.enabled(engine.registry) and ability.get("tags",[]).has("supernatural"):return "healing-thread" if ability.effects.any(func(effect: Dictionary):return effect.op=="heal") else "spark"
  if ability.get("tags",[]).has("weapon_strike"):return "attack"
  return kind if kind in ["attack","move","end","retreat"] else "guard"
 func resource_text(ability: Dictionary,actor: Dictionary) -> String:
