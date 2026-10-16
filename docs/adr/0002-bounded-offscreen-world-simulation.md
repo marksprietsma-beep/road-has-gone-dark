@@ -33,12 +33,20 @@ Significant developments reach the Party through **credible in-world communicati
 
 Communication can be delayed, incomplete or uncertain; knowing a warning does not imply knowing every detail or the guaranteed future outcome. Timing and reach should be plausible relative to geography, relationships and access to communications. **Do not require simulating every messenger's physical movements** to achieve this: the decision is about in-world causality and discoverable information, not a continuous courier engine.
 
-The existing fair-warning commitment still applies to personally significant threats. Designers must support normally attainable, actionable advance warnings and meaningful responses consistent with travel and communication limitations, without forcing a particular intervention or promising rescue. How long warnings take, reliability/falsehood rules, remote response actions and what happens when a channel fails remain undecided; do not invent fixed delivery times or notifications.
+The existing fair-warning commitment still applies to personally significant threats. Designers must support normally attainable, actionable advance warnings and meaningful responses consistent with travel and communication limitations, without forcing a particular intervention or promising rescue. How long warnings take, reliability/falsehood rules, the available forms and costs of remote response, and what happens when a channel fails remain undecided; do not invent fixed delivery times or notifications.
+
+## Earned remote intervention — accepted 16 October 2026
+
+The player may attempt to influence a distant tracked situation through **limited, earned remote influence**: established contacts, allies, guilds or hired agents acting within credible relationships and available authority. This provides a meaningful possible response when personal travel cannot beat an approaching deadline. A message, request, payment or commitment must be feasible in the world; time to communicate and mobilise, local resources, delegate capability, loyalty and circumstances can affect the result. Success is neither instantaneous nor guaranteed.
+
+Reject **direct intervention only**, which would make some fairly communicated warnings practically unactionable, and reject **full remote management**, which would impose global command authority and a large management simulator inconsistent with a travelling-party RPG. Personal intervention should normally afford greater immediate control, not invalidate valuable relationships and delegation.
+
+This is a **design boundary**, not implementation authorisation for a courier simulator, off-site combat engine, guild-management UI or universal NPC scheduler. Which instructions delegates may accept, how independently they interpret them, and how requests resolve and are reported remain to be decided.
 
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; how frequently they advance, how competing effects resolve, plausible delivery delays and trustworthiness of reports, remote intervention capabilities, and how response opportunities stay meaningful when messages are slow or fail. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, delegates' decision authority, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
