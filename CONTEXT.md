@@ -98,6 +98,10 @@ _Avoid_: Arbitrary personality reroll, Wisdom as morality
 An enduring but potentially revisable preference or value guiding an NPC's decisions and suggesting roleplay or story responses for a player-controlled Adventurer. It is distinct from abilities, skills, obligations and relationships and never removes the player's authority over their Adventurer's choices.
 _Avoid_: Wisdom, alignment-as-destiny, fixed moral rule
 
+**Personality Milestone**:
+A consequential, recorded experience that warrants reviewing whether a character's Personality Priorities have strengthened, shifted or been reinterpreted. For a player-controlled Adventurer, the player confirms any change; for an NPC, a bounded event may resolve the development according to that character's established motivations.
+_Avoid_: Routine action counter, automatic trait drift
+
 ## Characters and progression
 
 **Adventurer**:
