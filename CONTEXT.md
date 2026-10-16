@@ -86,6 +86,10 @@ _Avoid_: Delegated order, continuous autonomous life simulation
 A persistent, consequential connection between specific characters, including family, friendship, rivalry, loyalty, debt or obligation. Relationships may be asymmetric and change through meaningful events; an NPC need not be related to the Party for the connection to matter.
 _Avoid_: Every acquaintance, automatic reciprocal opinion
 
+**NPC Belief**:
+What a particular NPC currently considers true or likely based on firsthand experience, evidence or information received; it may be incomplete, mistaken or revised without changing actual World Events.
+_Avoid_: World truth, Player Knowledge, automatic omniscience
+
 ## Characters and progression
 
 **Adventurer**:
