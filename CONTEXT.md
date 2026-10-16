@@ -62,6 +62,14 @@ _Avoid_: World Event, omniscient notification
 A credible means by which information travels between people and places, such as messengers, travellers, established contacts or organisations.
 _Avoid_: Instant global alert
 
+**Remote Intervention**:
+An attempt to influence a distant World Situation through a credible relationship or organisation, rather than direct action by the travelling Party; communication delays and local capability limit what it can achieve.
+_Avoid_: Instant global command, direct Party action
+
+**Delegate**:
+A person or group entrusted with a bounded responsibility on the player's behalf, whose ability to act depends on existing relationships, circumstances and available resources.
+_Avoid_: Automatically obedient unit, universally controllable NPC
+
 ## Characters and progression
 
 **Adventurer**:
