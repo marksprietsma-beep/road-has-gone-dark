@@ -51,10 +51,20 @@ For example, an instructed militia captain facing an attack may divert defenders
 
 Reject strict scripted obedience, which would make established identity and relationships mechanically hollow, and reject unrestricted autonomy, which would undermine predictable delegated objectives and demand expensive continuous NPC simulation. Routine absence alone should not create a punitive relationship-decay treadmill. Exact mandate constraints, refusal handling, outcome resolution, player-facing explanation and delegation scope remain to be worked out before implementation.
 
+## Independent lives of significant NPCs — accepted 16 October 2026
+
+**Significant NPCs may pursue their own established ambitions and relationships through bounded, persistent events**, including developments that occur while the Party is away and without a player-issued Mandate. An established blacksmith might relocate, pursue a workshop, change an allegiance or develop a rivalry through meaningful circumstances. Such choices belong to the Playthrough's history, preserve character identity and may create later player-facing opportunities or consequences.
+
+This is distinct from the previously accepted **Delegate** behaviour: delegated judgement remains bounded by an agreed Mandate, while **NPC Initiative** serves that person's own motivation. An important NPC need not be recruited, personally known to the player, or geographically present for a relevant situation to develop. Equally, merely having a name does not require a schedule or evolving relationship graph.
+
+Reject purely reactive NPCs whose ambitions freeze until a player clicks them, and reject continuous independent simulation of most named NPCs. Track relevant developments at significant decision points under the existing bounded-simulation and reproducibility constraints. Never substitute freeform generated prose for committed world and relationship facts; hidden off-screen developments must still respect the Player Knowledge boundary.
+
+**Open decisions:** how NPCs become or cease to be significant, how their personal goals and obligations compete, which types of relationship change occur without player observation, and how they are surfaced and resolved. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, selection and retirement of significant NPCs, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
