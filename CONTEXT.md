@@ -36,6 +36,14 @@ _Avoid_: Cosmetic home, automatically founded city
 A Holding or settlement under credible player administration, supporting strategic development and governance such as infrastructure, production, labour, trade, defence and local politics. Control does not imply that every resident is individually simulated.
 _Avoid_: World Template Settlement, decorative facility list
 
+**Founded Settlement**:
+A new settlement established during one Playthrough at a world-grounded suitable location, rather than an original World Template Settlement. Its founding, development, location anchor and consequences persist within that Playthrough.
+_Avoid_: Mutating the World Template, unplaced town
+
+**Territorial Claim**:
+An asserted or recognised right to own, occupy or govern land that may affect settlement establishment and development. A claim can be disputed; discovering a suitable site does not automatically make it unclaimed or legally controlled.
+_Avoid_: Automatically uncontested ownership
+
 **Settlement Administrator**:
 An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
 _Avoid_: Omniscient player puppet, universal settlement AI
