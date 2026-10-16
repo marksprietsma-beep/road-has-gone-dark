@@ -44,6 +44,14 @@ _Avoid_: Mutating the World Template, unplaced town
 An asserted or recognised right to own, occupy or govern land that may affect settlement establishment and development. A claim can be disputed; discovering a suitable site does not automatically make it unclaimed or legally controlled.
 _Avoid_: Automatically uncontested ownership
 
+**Settlement District**:
+A player-planned area within a Managed Settlement with an intended role, such as residential, commercial, agricultural or industrial. Its ordinary development may be generated within the established location, access and resource constraints.
+_Avoid_: Each individual building, abstract production toggle
+
+**Landmark Construction**:
+A consequential, individually placed settlement structure or infrastructure element, including major buildings, roads and fortifications, whose location and effects persist in the Playthrough.
+_Avoid_: Every ordinary house or decoration, menu-only upgrade
+
 **Settlement Administrator**:
 An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
 _Avoid_: Omniscient player puppet, universal settlement AI
