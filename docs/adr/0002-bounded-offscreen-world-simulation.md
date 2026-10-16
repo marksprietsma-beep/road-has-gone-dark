@@ -107,7 +107,15 @@ At a consequential decision, use the NPC's established priorities, current belie
 
 Reject D&D stats/alignment alone as an adequate identity model: characters with identical statistics can value different things. Reject an expansive personality-stat engine: it would add design/balance overhead without necessarily making meaningful choices clearer. The game should not repeatedly roll or mutate personality during idle time, force arbitrary reversals, overwrite character identity or produce unrepeatable outcomes.
 
-**Unresolved:** exact priority vocabulary and cardinality, whether and how this approach applies to player-controlled Adventurers, what can revise a priority and at which consequential boundaries, the influence weights, and the mappings to specific existing rules/abilities. This decision approves neither additional personality attributes in GAME-32 nor gameplay implementation.
+**Unresolved:** exact priority vocabulary and cardinality, how and when meaningful events revise a priority for NPCs or player-controlled Adventurers, the influence weights, and the mappings to specific existing rules/abilities. This decision approves neither additional personality attributes in GAME-32 nor gameplay implementation.
+
+## Player adventurers share personality, not NPC decision control — accepted 16 October 2026
+
+Both significant NPCs and player-created **Adventurers** have compact **Personality Priorities**, preserving consistent vocabulary and allowing distinct personalities even for mechanically similar builds. For NPCs, priorities are inputs to their autonomous contextual decisions; for **player-controlled Adventurers**, priorities inform dialogue suggestions, personal hooks, reactions and roleplaying opportunities **without forbidding or overriding player choices**. A cautious, compassionate fighter remains free to choose a risky rescue. Acting against an established tendency can be intentional character development, not evidence that the game should reject the action or force a compensating obedience roll.
+
+Meaningful decisions and experiences can develop the Adventurer's personality, while the character's stable identity and prior history remain intact. Exactly **when and how** a priority is offered for revision, confirmed by the player, or changed through important events is a follow-up design decision. Do not infer permission for automatic per-action trait drift, hidden player-character disobedience, or routine decay.
+
+This extends the existing Character Life research direction: personality may colour presentation and produce grounded character-specific opportunities, but does not replace the party's player-selected D&D builds, negate sensible choices, or create a second mechanical personality ability system.
 
 ## Consequences and unresolved dependencies
 
