@@ -38,6 +38,14 @@ The Playthrough's record of what is known about world entities and sites, distin
 **World Delta**:
 A Playthrough-specific alteration or consequence associated with a stable world entity or Site, without mutating the World Template.
 
+**World Situation**:
+A persistent, developing circumstance involving identifiable places, people or groups, capable of changing over in-game time even when the Party is elsewhere.
+_Avoid_: Quest, continuous NPC simulation
+
+**World Event**:
+A consequential development affecting a World Situation or other persistent world entity during a Playthrough; it is not necessarily a player-triggered Outcome.
+_Avoid_: Outcome, narrative flavour text
+
 ## Characters and progression
 
 **Adventurer**:
