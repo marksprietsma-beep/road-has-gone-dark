@@ -67,7 +67,7 @@ Significance can diminish, reducing ongoing personal-event attention when the ch
 
 Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
 
-**Open decisions:** how competing NPC motives resolve, how observed/reported social events alter relationships, and how players learn about those changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+**Open decisions:** how competing NPC motives resolve, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
 
 ## Sparse relationships between significant NPCs — accepted 16 October 2026
 
@@ -77,12 +77,22 @@ Persist only **consequential connections**: ties that credibly affect a choice, 
 
 A significant change to a relationship requires a meaningful event or a justified decision by the participants, with durable history. Passive absence should not erode ties by default. Relationship effects must respect the previously accepted distinction between world truth, conveyed information and player knowledge; this decision does not confer automatic knowledge of an event on every friend of a participant.
 
-Reject party-centred relationships only, which would undermine independent lives, and reject an all-NPC social simulation, which would expand beyond the bounded event model. Exact trust measures, propagation/knowledge rules, competing obligations and conflict resolution remain open design questions. No relationship engine is implemented by this record.
+Reject party-centred relationships only, which would undermine independent lives, and reject an all-NPC social simulation, which would expand beyond the bounded event model. Exact relationship strengths, conflicting evidence and credibility assessment, competing obligations and conflict resolution remain open design questions. No relationship engine is implemented by this record.
+
+## NPC information, belief and relationship changes — accepted 16 October 2026
+
+**NPCs must react based on information they plausibly possess or believe**, rather than immediately responding to hidden World Events. An NPC can personally witness an action or receive evidence, rumours, correspondence or accounts through credible in-world channels. Such information may be delayed, unreliable, incomplete or false; what the NPC believes is distinct both from authoritative Playthrough truth and from what the Party knows.
+
+A relationship, loyalty or local reputation may change when a relevant NPC interprets information consistent with their knowledge, prior commitments and motivations. For example, a captain does not automatically condemn the Party for a secret prison escape they could not know about. Later rumours may make the captain suspicious, and credible evidence may change their judgement. NPCs may also act on a mistaken belief; correcting it may require investigation, diplomacy or new evidence, not rewriting the original event.
+
+Do not broadcast actions to all related NPCs or every faction in a global reputation cascade. Information follows plausible witness/report channels and audience boundaries. This does not require continuous surveillance, per-NPC courier movement or an exhaustive epistemic simulation: consequential knowledge updates can be resolved at bounded event boundaries while retaining causal history and save/replay determinism.
+
+Rejected: **only firsthand observation**, which precludes meaningful rumours and indirect reputation; and **automatic opinion propagation**, which contradicts secrecy and the existing separation of world truth and character knowledge. Exact belief confidence scales, deception adjudication and evidence-resolution rules remain open.
 
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, social-event knowledge and relationship conflicts, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, evidence credibility and relationship conflicts, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
