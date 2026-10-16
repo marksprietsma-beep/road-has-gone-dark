@@ -54,6 +54,14 @@ _Avoid_: Outcome, narrative flavour text
 A developing World Situation that can plausibly cause a harmful change if left unresolved; a Threat is not automatically a quest or a mandatory objective.
 _Avoid_: Mandatory quest, arbitrary loss
 
+**Information Report**:
+A message, rumour, warning or account of a World Event that can reach the Party through a plausible in-world source; its contents and arrival need not match the full underlying world truth.
+_Avoid_: World Event, omniscient notification
+
+**Information Channel**:
+A credible means by which information travels between people and places, such as messengers, travellers, established contacts or organisations.
+_Avoid_: Instant global alert
+
 ## Characters and progression
 
 **Adventurer**:
