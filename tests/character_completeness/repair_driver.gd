@@ -52,7 +52,9 @@ func run() -> void:
  hostile=WorldOriginLore.read_json("res://data/rules/trhgd-character-v16.json");hostile.rules.skill_approaches[0].provisions=-1
  check(not RulesRegistry.new().load_data(hostile).ok,"negative approach cost rejected")
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v15.json").ok,"v15 still supported")
- var original := WorldOriginLore.read_json("res://docs/implementation/game126/evidence/archmage-v15-gap.json")
+ var original := WorldOriginLore.read_json("res://tests/character_completeness/fixtures/archmage-v15-gap.json")
+ check(original.has("record"),"historical regression fixture bundled in exported game")
+ if not original.has("record"):done();return
  check(RulesCharacter.new(old).available_advancement(original.record).classes.archmage.ok,"historical v15 exact qualification preserved")
  test_actual_spell_competence()
  test_skill_approaches()
