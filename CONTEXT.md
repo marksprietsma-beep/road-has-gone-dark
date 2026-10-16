@@ -68,6 +68,14 @@ _Avoid_: Independently simulated citizen, interchangeable named specialist
 A settlement-associated Significant NPC whose individual competence, obligations, personality, relationships or history meaningfully affects the settlement and its future events. Residents can become significant through consequential actions or relationships; cohort-level statistics do not automatically invent individual biographies.
 _Avoid_: Every resident as a fully simulated character, anonymous worker bonus
 
+**Community Need**:
+A settlement or Population Cohort requirement or valued condition, such as food, housing, safety, fair working conditions or locally important customs, whose consequential shortfall or fulfilment can affect the Playthrough.
+_Avoid_: Universal happiness bar, individual resident maintenance meter
+
+**Social Pressure**:
+A grounded, developing settlement circumstance arising from unmet needs, perceived unfairness, conflicts or changing community priorities. It can produce consequential responses by residents, leaders or factions rather than automatic punishment at a numerical threshold.
+_Avoid_: Random unrest penalty, constant mood decay
+
 **Settlement Administrator**:
 An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
 _Avoid_: Omniscient player puppet, universal settlement AI
