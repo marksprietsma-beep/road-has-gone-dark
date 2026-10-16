@@ -49,13 +49,23 @@ Original **World Template** settlements and geography remain immutable source-wo
 
 Reject **existing-settlement-only ownership**, which would deny the approved founding capability, and **unrestricted founding anywhere**, which would undermine geography, resources, routes and political context. This does not prescribe a grid-building system, building catalogue, founding cost, minimum map distance, placement resolution or ownership procedure.
 
-**Still open:** land-rights recognition and disputes; how eligible sites are presented; founding sequence; whether new settlements can later gain full administrative/political autonomy; construction and road placement detail; relationships with existing kingdoms, guilds and neighbouring settlements; and how population, resource limits and political legitimacy affect later growth.
+**Still open:** land-rights recognition and disputes; how eligible sites are presented; founding sequence; whether new settlements can later gain full administrative/political autonomy; exact construction geometry and district constraints; relationships with existing kingdoms, guilds and neighbouring settlements; and how population, resource limits and political legitimacy affect later growth.
+
+## District planning with selected individual placement — accepted 16 October 2026 (Q18)
+
+Players **plan the functional districts of their settlements and individually place consequential buildings, roads and fortifications**. Residential, commercial, agricultural, industrial and other areas can be designated on a location-grounded town layout; their **ordinary structures develop procedurally**, subject to population, resources, access and relevant constraints. The player need not manually position every house or decoration, but should have meaningful influence over overall shape, strategic access and settlement identity.
+
+Important facilities, strongholds/castles, workshops with distinctive roles, major civic buildings and defensive works may warrant individually controlled positions when placement has material gameplay or visual meaning. A settlement's actual appearance must reflect its committed district, building, road and wall changes rather than showing static art while only internal management menus advance. The same stable Playthrough settlement data should inform gameplay and visual representations, including future integration with generated town layouts and the broader world.
+
+Procedural infill is **bounded by existing established geometry and structures**: new houses or facilities cannot silently move roads, important Sites, established buildings or original geography. New settlement entities and modifications are recorded as Playthrough-specific outcomes; the immutable World Template does not change. District access, resource availability and relationships with neighbours can constrain expansion, without requiring constant individual-house AI.
+
+Reject **purely abstract upgrade menus**, which would not deliver the user's requested physical customisation, and **mandatory per-building placement of every ordinary home**, which would turn broad strategic governance into repetitive layout work. No decision has yet been made on precise map scale, build grid, road-network representation, fortification geometry, district editing costs, procedural infill algorithm or which buildings qualify for manual placement. The choice is an interaction and fidelity boundary, not authorisation to build a construction editor or new renderer.
 
 ## Open design dependencies — not yet answered
 
 1. **Delegation is settled:** administrators operate during Party absence with strategic oversight and delayed communications. Still decide their mandate limits, player policy controls, emergency decisions and reporting detail.
 2. **Acquisition and founding are settled:** players can acquire existing holdings or found Playthrough-specific new settlements in geographically and politically plausible locations. Specific ownership mechanisms, territorial claims, founding requirements and political legitimacy remain undecided.
-3. Depth of physical placement/customisation, production/logistics, residents, taxation, factions, territorial control and conflict.
+3. **Construction layout is settled:** players plan districts and individually position important buildings, roads and defences while ordinary infill grows procedurally. Exact editor/placement geometry, visual integration, production/logistics, residents, taxation, factions, territorial control and conflict remain open.
 4. Management pacing, travel-time and information delays, simulation boundaries, balance, failure/recovery and how political legitimacy is earned.
 5. If and how personally owned properties differ from guild holdings, settlement governments, companions' property and collective faction assets.
 6. Vertical slice, performance/QA budgets and realistic sequencing relative to the existing character-first programme (GAME-123), game-world integration and basic adventure loop.
