@@ -1,0 +1,113 @@
+{
+  "source_commit": "9389f00df4415b193da7daac99cd099145963cb5",
+  "run": 38839675605,
+  "workflow_conclusion": "cancelled",
+  "native_job": {
+    "completedAt": "2026-10-16T02:36:46Z",
+    "conclusion": "success",
+    "databaseId": 116776630389,
+    "name": "wave-five-native (windows-latest)",
+    "startedAt": "2026-10-16T02:17:40Z",
+    "status": "completed",
+    "steps": [
+      {
+        "conclusion": "success",
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/checkout@v4",
+        "number": 2,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/setup-node@v4",
+        "number": 3,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Run actions/setup-python@v5",
+        "number": 4,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Frozen generator dependencies",
+        "number": 5,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Verified engine and bundled helper",
+        "number": 6,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Exclude Node-only dependency examples",
+        "number": 7,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Verified export templates",
+        "number": 8,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Wave Five channeling, spirit retrieval, earned prestige and exact restart",
+        "number": 9,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Wave Five self-contained native gameplay and cold restart",
+        "number": 10,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Wave Five playable review build",
+        "number": 11,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Wave Five exact evidence",
+        "number": 12,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/setup-python@v5",
+        "number": 22,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/setup-node@v4",
+        "number": 23,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Run actions/checkout@v4",
+        "number": 24,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Complete job",
+        "number": 25,
+        "status": "completed"
+      }
+    ],
+    "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38839675605/job/116776630389"
+  },
+  "cancellation_reason": "Superseded initial run stopped after successful v15 native evidence/artifact upload to free serial branch CI for705bfe3. Other old-head pending jobs are not claimed passed; no required current-head check bypassed."
+}

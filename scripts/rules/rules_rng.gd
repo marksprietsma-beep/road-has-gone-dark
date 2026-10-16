@@ -61,4 +61,5 @@ static func attack_roll(bonus: int,defence: int,critical: Dictionary,state: Dict
  var hit: bool=rolled.total+bonus>=defence
  var is_critical: bool=hit and rolled.total>=int(critical.natural)
  rolled.merge({"hit":hit,"critical":is_critical,"critical_bonus":int(critical.bonus_damage) if is_critical else 0,"event":{"type":"attack_resolved","roll":rolled.total,"bonus":bonus,"defence":defence,"hit":hit,"critical":is_critical}})
+ RulesAttackTrace.observe(rolled.event)
  return rolled

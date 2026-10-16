@@ -67,6 +67,11 @@ static func create(id: String,draft: Dictionary,context: Dictionary = {}) -> Dic
   if not draft.get("spell_preparations") is Dictionary:return {"ok":false,"error":"Choose prepared spell copy counts"}
   result.candidate.choices.spell_preparations=draft.spell_preparations.duplicate(true)
   RulesCoreContent.refill_prepared(result.candidate,RulesRecords.registry(context))
+ if RulesWaveFive.enabled(RulesRecords.registry(context)):
+  for cls in RulesRecords.registry(context).ids("classes"):
+   if RulesWaveFive.retrieval_class(cls,RulesRecords.registry(context)):
+    var pool: String=RulesRecords.registry(context).definition("classes",cls).retrieval_resource
+    if result.candidate.runtime.resources.has(pool):result.candidate.runtime.resources[pool]=0
  var derived := kernel(context).derive_character(result.candidate)
  if not derived.ok:return derived
  result.snapshot=derived.snapshot

@@ -1,0 +1,141 @@
+{
+  "windows": {
+    "archive": "game112-character-catalogue-wave-two-windows-x64.zip",
+    "sha256": "a59bd7862481edb6477bfa4dfb533556ef6879b4e0d32eaac3982bf16bb56393",
+    "source_helper_override": false,
+    "empty_path": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 240.61,
+        "exit_code": 0,
+        "errors": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 4.906,
+        "exit_code": 0,
+        "errors": false
+      }
+    ],
+    "proofs": {
+      "mechanics": {
+        "checks": 1953,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v12",
+          "rules_version": "12.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 7,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v12",
+          "rules_version": "12.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "checks": 171,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "blocked_surge": {
+        "checks": 15,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      }
+    }
+  },
+  "linux": {
+    "archive": "game112-character-catalogue-wave-two-linux-x64.tar.gz",
+    "sha256": "c0f465ef083201eb685005c50e28ff6a6455f37f46f89309ebd57887914058e2",
+    "source_helper_override": false,
+    "empty_path": true,
+    "timings": [
+      {
+        "phase": "native-gameplay",
+        "seconds": 150.061,
+        "exit_code": 0,
+        "errors": false
+      },
+      {
+        "phase": "native-process-restart",
+        "seconds": 3.072,
+        "exit_code": 0,
+        "errors": false
+      }
+    ],
+    "proofs": {
+      "mechanics": {
+        "checks": 1953,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v12",
+          "rules_version": "12.0.0",
+          "schema_version": 1
+        }
+      },
+      "restart": {
+        "checks": 7,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "5e8c86623f159e032f7201233c18fad9d4a033d4ae79a0959595f439c5428a0b",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v12",
+          "rules_version": "12.0.0",
+          "schema_version": 1
+        }
+      },
+      "journey": {
+        "checks": 240,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      },
+      "blocked_surge": {
+        "checks": 15,
+        "failures": 0,
+        "rules_ref": {
+          "content_hash": "3688456544f6e1c0f62e4a26faf5ec114b4ea668e4267cd1bdad3d211cdf8559",
+          "engine_schema": 3,
+          "pack_id": "trhgd-character-v14",
+          "rules_version": "14.0.0",
+          "schema_version": 1
+        }
+      }
+    }
+  },
+  "independent_windows": {
+    "source_commit": "a495fe14beb50f40742eeb03acaa1403817f0c03",
+    "sha256": "a59bd7862481edb6477bfa4dfb533556ef6879b4e0d32eaac3982bf16bb56393",
+    "crc_entries": 7061,
+    "pe_binaries": true,
+    "content_exact": true
+  }
+}

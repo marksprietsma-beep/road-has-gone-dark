@@ -36,12 +36,14 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if not t.ok: return t
  var ability := registry.definition("abilities",ability_id)
  if ability.is_empty() or not a.snapshot.abilities.has(ability_id): return RulesJson.result([RulesJson.issue("ability.unowned",ability_id,"Actor does not own the ability")])
- if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not actor.choices.prepared_abilities.has(ability_id):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
+ if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor,ability,registry):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
  if RulesWaveFour.enabled(registry):
   var access := RulesWaveFour.power_access(actor,ability,a.context,registry)
   if not access.ok:return access
+ var channel_access := RulesWaveFive.channel_access(actor,ability,a.context,registry)
+ if not channel_access.ok:return channel_access
  var cost := validate_ability_cost(ability_id,actor.runtime,budget)
  if not cost.ok: return cost
  if ability.has("trigger") and event_context.get("trigger")!=ability.trigger: return RulesJson.result([RulesJson.issue("ability.trigger",ability_id,"Required explicit trigger context is absent")])

@@ -1,0 +1,205 @@
+{
+  "target": "windows-x64",
+  "archive": "game112-character-catalogue-wave-five-windows-x64.zip",
+  "sha256": "0f223c33d0516a3ebb304b6bf801c459f5336cf4b07acc4541039030f61ccfa0",
+  "proofs": {
+    "mechanics": {
+      "checks": 1591,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    },
+    "restart": {
+      "checks": 42,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    },
+    "earned": {
+      "checks": 454,
+      "cycles": 9,
+      "declined_hash": "459c85985c5769039fe6100a16b93a91c97b49d206a7c008ddd8ea8280aaead4",
+      "earned_xp": 360,
+      "failures": 0,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "arcane-strike",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "duskblade-rune-1": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "duskblade-rune-5": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "abjurant-champion",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "abjurant-casting": "duskblade",
+            "abjurant-doctrine-1": "aegis"
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      },
+      "slot": "093b5358e341105b59961b8e3d6a6a9c",
+      "state_hash": "3c96ba65ecbd1b5d2744a26f6374842cccb45fda3bee5fac728aec2e93e0322b",
+      "xp_injected": false
+    },
+    "earned_restart": {
+      "checks": 4,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    }
+  },
+  "source_commit": "9389f00df4415b193da7daac99cd099145963cb5",
+  "source_helper_override": false,
+  "empty_path": true,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "timings": [
+    {
+      "phase": "native-gameplay",
+      "seconds": 402.672,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native-process-restart",
+      "seconds": 9.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

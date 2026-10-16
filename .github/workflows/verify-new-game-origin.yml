@@ -25,6 +25,10 @@ jobs:
         run: |
           npm ci --ignore-scripts --prefix vendor/azgaar
           python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples from Godot import
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Verify failed-process evidence is current and failures remain fatal
+        run: python tests/onboarding/runner-test.py
       - name: Verify new game source, input and persistence on Windows
         run: python tests/onboarding/run-tests.py
       - name: Upload actual run evidence

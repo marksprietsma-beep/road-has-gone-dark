@@ -1,3 +1,15 @@
+# Wave Four closed — continue the existing Wave Five implementation
+
+PR99mergeddc7243b and narrow test-only PR100mergedc1d5973. All six automatic post-repair main workflows passed: WaveThree38741425956, productionUI38741425975, party38741426037, WaveFour38741425954, native journey38741425966 and WaveTwo38741426013. See evidence/post-repair-main.json. No further Wave Four feature work or duplicate PR is needed.
+
+Owner subsequently merged Windows-only PR102 at129e5de and synchronized WaveFive at3a098d5. Follow .github/CI-WINDOWS-ONLY.md: no new Linux CI/packages/gates. Historical Linux receipts below are preserved history. Current WaveFive source9389f00 and acceptance commit705bfe3 are pushed in draft PR103. The recovered proposal is actual applied/compiled/source-tested code, not an uncommitted plan. Its first v15 Windows-native job passed and artifact12020994313 was independently verified; full current-head compatibility and an onboarding cold-import runner correction remain to finish. Follow docs/implementation/game112-wave-five/CONTINUATION.md instead of these historical checkpoints.
+
+Preserve v1–v14/frozen tactical source. Active rich-character milestone101 and long-term programme82 remain OPEN;760indexed occurrences remain a research ledger rather than the near-term release blocker. User authorises normal publication/merge only after actual current-head required Windows checks and a verified package. No owner clicks or Linear access needed.
+
+---
+
+## Superseded recovery checkpoints (audit trail)
+
 # Wave Four merged — native journey integration repair in progress
 
 PR99 is MERGED atdc7243bb34ab82791abeab52dbae9242b6676f81. Final feature source5509b7b89c8250cef02826b40066919e06d7023e and full Windows/Linux workflow38690794560 passed. Correct Windows artifact11952778574 has playable ZIP SHA256a1ef9046eae34bcf08cc5507a1ab3f6e5f4b290862bc1f662d32158d4872680c. Independent CRC, both PE binaries, exact content bytes and sidecar checksum passed. See DELIVERY.md and evidence/final-source-native.json.

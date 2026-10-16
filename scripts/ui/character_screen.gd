@@ -366,6 +366,10 @@ func _spellbook_changed() -> void:
  # Copy counts can decrease at home without invalidating the preview of the old current resources.
  RulesCoreContent.refill_prepared(r,RulesRecords.registry(state))
  var result := CharacterBuilderRecords.kernel(state).derive_character(r)
+ if result.ok:
+  var before := CharacterBuilderRecords.record(state,state.party_ids[selected-1])
+  var retrieval := RulesWaveFive.commit_retrieval(before,r,RulesRecords.registry(state))
+  if not retrieval.ok:result=retrieval
  spellbook_status.text="Review prepared or known spells; current slots remain unchanged." if result.ok else CharacterBuilderRecords.reason(result)
  spellbook_button.disabled=thread!=null or AdventureService.away(state) or not result.ok or spellbook.controls.is_empty()
 func _save_spells() -> void:
@@ -434,7 +438,7 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   for key in ["main","move","reaction"]:
    if int(ability.cost.get(key,0))>0:costs.append(str(ability.cost[key])+" "+key+" action")
   for resource in ability.cost.get("resources",{}):costs.append(str(ability.cost.resources[resource])+" "+str(resource))
-  var status_text := ("prepared/known" if r.choices.prepared_abilities.has(id) else "not selected; cannot cast") if s.rules_ref.engine_schema==3 and ability.tags.has("spell") else "available in V0 combat" if id in ["attack","move","guard","spark","slow","healing-thread"] else ("automatic combat effect" if id in ["precision","departure-attack"] else "rules implemented; tactical integration belongs to GAME-33")
+  var status_text := ("prepared/known" if RulesWaveFive.spell_selected(r,ability,RulesRecords.registry(state)) else "not selected; cannot cast") if s.rules_ref.engine_schema==3 and ability.tags.has("spell") else "available in V0 combat" if id in ["attack","move","guard","spark","slow","healing-thread"] else ("automatic combat effect" if id in ["precision","departure-attack"] else "rules implemented; tactical integration belongs to GAME-33")
   if s.rules_ref.engine_schema==3 and not ability.tags.has("spell"):status_text="automatic" if ability.has("trigger") or ability.tags.has("passive") else "available in combat"
   lines.append(str(ability.name)+" · "+(", ".join(costs) if not costs.is_empty() else "no action cost")+" · "+status_text+"\n"+str(ability.get("description","")))
  lines.append("Preparations: "+", ".join(s.prepared_abilities))

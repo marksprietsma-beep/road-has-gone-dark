@@ -1,0 +1,243 @@
+{
+  "target": "windows-x64",
+  "archive": "game112-character-catalogue-wave-five-windows-x64.zip",
+  "sha256": "7fcec57b0f5f91f0297a483ac8f1b7347a2505dfc8b870017fdb4e7bf5137455",
+  "proofs": {
+    "mechanics": {
+      "checks": 1591,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    },
+    "restart": {
+      "checks": 42,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    },
+    "earned": {
+      "channel_checkpoint": true,
+      "checks": 565,
+      "cycles": 9,
+      "declined_hash": "6e28219946583c2a0faadd35acd4f84bf9ec8cf5c924653ff8ff195b49338ada",
+      "earned_xp": 360,
+      "failures": 0,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "arcane-strike",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "duskblade-rune-1": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "duskblade-rune-5": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "abjurant-champion",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "abjurant-casting": "duskblade",
+            "abjurant-doctrine-1": "aegis"
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      },
+      "skill_examples": {
+        "skill:arcana": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:1:arcana",
+          "information": "Arcana check: 9 + 12 vs DC 13 \u00c2\u00b7 objective completed.",
+          "outcome": "investigated"
+        },
+        "skill:craft": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:1:craft",
+          "information": "Craft check: 6 + 13 vs DC 13 \u00c2\u00b7 objective completed.",
+          "outcome": "recovered"
+        },
+        "skill:insight": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:1:insight",
+          "information": "Insight check: 17 + 3 vs DC 13 \u00c2\u00b7 objective completed.",
+          "outcome": "peaceful_access"
+        },
+        "skill:perception": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:1:perception",
+          "information": "Perception check: 11 + 0 vs DC 11 \u00c2\u00b7 objective completed.",
+          "outcome": "investigated"
+        },
+        "skill:persuasion": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:2:persuasion",
+          "information": "Persuasion check: 20 + 0 vs DC 13 \u00c2\u00b7 objective completed.",
+          "outcome": "peaceful_access"
+        },
+        "skill:religion": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:2:religion",
+          "information": "Religion check: 15 + 2 vs DC 12 \u00c2\u00b7 objective completed.",
+          "outcome": "investigated"
+        },
+        "skill:survival": {
+          "choice": "skill:718496f22e31b0c62f1a219fff4daeb3:adventurer:1:survival",
+          "information": "Survival check: 16 + 0 vs DC 12 \u00c2\u00b7 objective completed.",
+          "outcome": "recovered"
+        }
+      },
+      "slot": "718496f22e31b0c62f1a219fff4daeb3",
+      "state_hash": "6fad9109a349b4ea63a969de65576a82246d35303a58714e6dd4d0ddb9fe6e50",
+      "xp_injected": false
+    },
+    "earned_restart": {
+      "checks": 4,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v15",
+        "rules_version": "15.0.0",
+        "schema_version": 1
+      }
+    }
+  },
+  "source_commit": "705bfe3344caf2c81029c1d8e96b0347ae866d69",
+  "source_helper_override": false,
+  "empty_path": true,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "timings": [
+    {
+      "phase": "native-gameplay",
+      "seconds": 427.718,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native-process-restart",
+      "seconds": 9.032,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

@@ -150,6 +150,7 @@ func spell_controls() -> void:
  var help := "Legacy preparations record granted choices."
  if source.rules_ref().engine_schema==3:
   help="Prepare copies of individual spells; copies and tier slots are spent on each cast. Copies in each tier cannot exceed its slot capacity." if cls.spell_mode=="prepared" else "Spontaneous casting: choose up to %d known spells; casts spend shared tier slots. Known spells remain learned."%RulesCoreContent.selection_limit(class_id,1,source) if cls.spell_mode=="spontaneous" else "This class has no starting spellcasting."
+ if RulesWaveFive.retrieval_class(class_id,source):help="Retrieve up to %d spirit spells. Casting spends matching tier slots. After creation the set may change once per eligible home-return rest."%RulesCoreContent.selection_limit(class_id,1,source)
  spell_section.add_child(GameUI.label(help,GameUI.META))
  var granted: Array=[]
  for tier in cls.features:
