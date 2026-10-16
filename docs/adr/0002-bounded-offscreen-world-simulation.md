@@ -59,12 +59,20 @@ This is distinct from the previously accepted **Delegate** behaviour: delegated 
 
 Reject purely reactive NPCs whose ambitions freeze until a player clicks them, and reject continuous independent simulation of most named NPCs. Track relevant developments at significant decision points under the existing bounded-simulation and reproducibility constraints. Never substitute freeform generated prose for committed world and relationship facts; hidden off-screen developments must still respect the Player Knowledge boundary.
 
-**Open decisions:** how NPCs become or cease to be significant, how their personal goals and obligations compete, which types of relationship change occur without player observation, and how they are surfaced and resolved. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+### Dynamic significance — accepted 16 October 2026
+
+An NPC becomes significant through relationships, repeated player interactions, influential actions, positions of responsibility or major World Situations, rather than membership in a fixed initial cast. A player-connected merchant can become prominent through earned trust, and a distant unknown rival can become relevant through regional events. A named NPC is not necessarily significant simply because they exist.
+
+Significance can diminish, reducing ongoing personal-event attention when the character is no longer salient. This **does not erase the character**: their stable identity, past actions, relationships, commitments and historical consequences persist and can become relevant again. Being absent from the active cast must not erase or evade unresolved consequences involving important player investments.
+
+Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
+
+**Open decisions:** how competing NPC motives resolve, which relationships between NPCs receive persistent attention, and how players learn about those changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
 
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, selection and retirement of significant NPCs, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, specific salience-prioritisation rules for NPCs, personal ambition conflicts, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
