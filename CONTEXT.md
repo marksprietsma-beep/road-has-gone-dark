@@ -82,6 +82,10 @@ _Avoid_: Every named NPC, continuously simulated citizen
 A bounded consequential action undertaken by an NPC to advance their own established ambition or relationship rather than in response to a player-issued Mandate. The action may happen while the Party is elsewhere.
 _Avoid_: Delegated order, continuous autonomous life simulation
 
+**Social Relationship**:
+A persistent, consequential connection between specific characters, including family, friendship, rivalry, loyalty, debt or obligation. Relationships may be asymmetric and change through meaningful events; an NPC need not be related to the Party for the connection to matter.
+_Avoid_: Every acquaintance, automatic reciprocal opinion
+
 ## Characters and progression
 
 **Adventurer**:
