@@ -67,7 +67,7 @@ Significance can diminish, reducing ongoing personal-event attention when the ch
 
 Reject both a permanently preselected important cast and simulating personal developments for every named NPC. The active cast remains bounded; precise prioritisation, resource limits and reactivation triggers are future implementation decisions, not fixed numbers in this ADR.
 
-**Open decisions:** which personality/disposition model and stat mappings express contextual choices, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
+**Open decisions:** precise personality-priority vocabulary and mechanical weights, how contradictory reports are evaluated, and how players learn about off-screen changes. No NPC AI implementation or scheduling cadence is authorised by this ADR.
 
 ## Sparse relationships between significant NPCs — accepted 16 October 2026
 
@@ -97,7 +97,25 @@ Personality dispositions, strength of obligations, trust, fear, stakes and avail
 
 A consequential roll must be authoritative, bounded and reproducible: one resolution per event, with inputs, result and causal consequences retained across save/reload. Use the campaign's existing deterministic resolution and persistence boundaries; do not add an independent NPC dice engine or reroll on inspection, revisits or UI reopening. Player-visible explanations can describe motivations and circumstances without revealing hidden beliefs or the exact random draw before it resolves.
 
-The specific disposition model, influence weights, mechanical ability/skill mapping and dice expression are **not yet decided**. This acceptance is about the *decision principle*, not approval of a new set of personality stats or balance numbers.
+The exact trait vocabulary and counts, influence weights, mechanical ability/skill mappings and dice expression are **not yet decided**. This acceptance is about the *decision principle*, not approval of a new set of personality stats or balance numbers.
+
+## Compact personality priorities plus existing RPG mechanics — accepted 16 October 2026
+
+Significant NPCs have a **small, enduring set of Personality Priorities** describing what they tend to value (for example, duty, family, compassion, caution or ambition). These preferences are conceptually separate from mechanical **ability scores**, trained skills, relationship obligations and situational information. They guide which outcomes a character would seek when obligations or motivations conflict; background and meaningful life events may give the same character a different set of priorities over time. This is not an extensive independent numerical personality sheet.
+
+At a consequential decision, use the NPC's established priorities, current beliefs, relationships, active obligations and circumstances to identify plausible options. Relevant existing RPG abilities and skills can shape **judgement or execution**; a bounded, recorded contextual roll can resolve genuinely uncertain choices under the already accepted decision boundary. For example, Wisdom may aid sound judgment, Intelligence planning and Charisma persuasion, but high Wisdom does not mechanically imply greater kindness, loyalty or familial devotion. No blanket ancestry-based morality or personality prescriptions.
+
+Reject D&D stats/alignment alone as an adequate identity model: characters with identical statistics can value different things. Reject an expansive personality-stat engine: it would add design/balance overhead without necessarily making meaningful choices clearer. The game should not repeatedly roll or mutate personality during idle time, force arbitrary reversals, overwrite character identity or produce unrepeatable outcomes.
+
+**Unresolved:** exact priority vocabulary and cardinality, how and when meaningful events revise a priority for NPCs or player-controlled Adventurers, the influence weights, and the mappings to specific existing rules/abilities. This decision approves neither additional personality attributes in GAME-32 nor gameplay implementation.
+
+## Player adventurers share personality, not NPC decision control — accepted 16 October 2026
+
+Both significant NPCs and player-created **Adventurers** have compact **Personality Priorities**, preserving consistent vocabulary and allowing distinct personalities even for mechanically similar builds. For NPCs, priorities are inputs to their autonomous contextual decisions; for **player-controlled Adventurers**, priorities inform dialogue suggestions, personal hooks, reactions and roleplaying opportunities **without forbidding or overriding player choices**. A cautious, compassionate fighter remains free to choose a risky rescue. Acting against an established tendency can be intentional character development, not evidence that the game should reject the action or force a compensating obedience roll.
+
+Meaningful decisions and experiences can develop the Adventurer's personality, while the character's stable identity and prior history remain intact. Exactly **when and how** a priority is offered for revision, confirmed by the player, or changed through important events is a follow-up design decision. Do not infer permission for automatic per-action trait drift, hidden player-character disobedience, or routine decay.
+
+This extends the existing Character Life research direction: personality may colour presentation and produce grounded character-specific opportunities, but does not replace the party's player-selected D&D builds, negate sensible choices, or create a second mechanical personality ability system.
 
 ## Consequences and unresolved dependencies
 
