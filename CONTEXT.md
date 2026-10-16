@@ -24,6 +24,18 @@ _Avoid_: World Cell, province
 A persistent inhabited place identified in the strategic world. Its strategic existence does not imply that a detailed street or building layout has been generated.
 _Avoid_: Detailed town map
 
+**Holding**:
+A Playthrough-specific property or place over which the player has acquired a recognised or contested ownership, lease, stewardship or governing interest. It references stable world locations without rewriting the immutable World Template.
+_Avoid_: Every Settlement, free edit of generated geography
+
+**Stronghold**:
+A Holding developed to provide substantial defensible, residential or operational capability. Its improvements, occupants and consequences persist within its Playthrough.
+_Avoid_: Cosmetic home, automatically founded city
+
+**Managed Settlement**:
+A Holding or settlement under credible player administration, supporting strategic development and governance such as infrastructure, production, labour, trade, defence and local politics. Control does not imply that every resident is individually simulated.
+_Avoid_: World Template Settlement, decorative facility list
+
 **Hometown**:
 The settlement selected as the Playthrough's starting home and initial point of return. It need not be every Adventurer's personal place of origin.
 _Avoid_: Character origin
