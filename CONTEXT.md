@@ -90,6 +90,10 @@ _Avoid_: Every acquaintance, automatic reciprocal opinion
 What a particular NPC currently considers true or likely based on firsthand experience, evidence or information received; it may be incomplete, mistaken or revised without changing actual World Events.
 _Avoid_: World truth, Player Knowledge, automatic omniscience
 
+**Motivation Conflict**:
+A consequential choice in which an NPC's established ambitions, beliefs, loyalties or obligations favour competing actions. Strongly supported choices can be clear; genuinely uncertain choices may depend on a bounded, context-informed roll.
+_Avoid_: Arbitrary personality reroll, Wisdom as morality
+
 ## Characters and progression
 
 **Adventurer**:
