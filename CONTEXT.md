@@ -60,6 +60,14 @@ _Avoid_: Passive income bonus, individual factory work-order log
 A credible economic link between settlements or facilities through which goods may move subject to access, transport constraints and disruption. Its relevant commitments and consequences persist without requiring simulation of every vehicle.
 _Avoid_: Instant global inventory, every wagon as an independently simulated agent
 
+**Population Cohort**:
+An aggregate group of residents in a Managed Settlement used to represent relevant labour capacity, occupations, needs and demographics without simulating the lives of every member. Population changes must have persistent Playthrough consequences.
+_Avoid_: Independently simulated citizen, interchangeable named specialist
+
+**Significant Resident**:
+A settlement-associated Significant NPC whose individual competence, obligations, personality, relationships or history meaningfully affects the settlement and its future events. Residents can become significant through consequential actions or relationships; cohort-level statistics do not automatically invent individual biographies.
+_Avoid_: Every resident as a fully simulated character, anonymous worker bonus
+
 **Settlement Administrator**:
 An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
 _Avoid_: Omniscient player puppet, universal settlement AI
