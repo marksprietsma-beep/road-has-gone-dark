@@ -27,9 +27,21 @@ The existing accepted **bounded consequential world simulation** (ADR 0002) stil
 
 Reject **cosmetic housing only** and **limited functional home only** as the *final intended scope*. Neither is sufficient for this long-term destination. A small incremental vertical slice may still be useful later, but that must not redefine the committed product direction. Avoid a disconnected city-builder whose resource system ignores the adventuring world.
 
+## Delegated administration with strategic player oversight — accepted 16 October 2026 (Q16)
+
+**A player-controlled settlement continues functioning while the Party travels**, under appointed NPC **Settlement Administrators**. The player establishes strategic priorities and suitable instructions, appoints or replaces people in authority, and provides resources and oversight. Administrators manage ordinary operations and can take consequential local action within their agreed **Mandates**, rather than freezing settlement progress until the player visits.
+
+Administrators are consequential characters, not perfectly obedient production optimisers. Their competencies, values, obligations, loyalties, relationships, understanding of the situation and available resources may affect responses. Circumstances can require adaptation or refusal under the already accepted bounded-NPC-judgement boundary (ADR 0002). Appointing capable people and establishing functioning institutions should matter; no universal manager AI or continuous worker-by-worker simulation follows from this decision.
+
+**Information and orders are not instantaneous across distance.** Credible channels (messengers, travellers, trusted contacts and organisations) convey delayed and possibly incomplete reports or instructions. The player may intervene from afar through established influence where travel time, access and relationships allow, or return in person for more immediate control. A local emergency may need resolution before a message can arrive. Results, resource effects and important decisions persist in the Playthrough; they are not rolled back when the Party returns.
+
+Reject both **presence-gated management**, which would make extended expeditions prohibitively disruptive to an extensive strategic settlement system, and **omniscient global remote control**, which would negate meaningful travel, communications and delegation. The principle of continuous consequential operation does not impose a calendar-tick economy, automatic daily notification system, prescribed policies or fixed administrative hierarchy.
+
+**Still unresolved:** the exact scope of administrator mandates, ways to appoint/remove or replace them, what standing policies players may define, the separation of routine and exceptional decisions, the timing/accuracy of reports, multi-settlement coordination and the handling of governance disputes. This decision is design authority only, not approval to implement an administration engine.
+
 ## Open design dependencies — not yet answered
 
-1. Whether administration must occur through direct presence, remote delegated management, or a mix; how to handle urgent decisions while the Party is away.
+1. **Delegation is settled:** administrators operate during Party absence with strategic oversight and delayed communications. Still decide their mandate limits, player policy controls, emergency decisions and reporting detail.
 2. Which kinds of Holdings can be acquired, founded, leased, conquered or governed; whether players may develop entirely new settlements versus existing locations.
 3. Depth of physical placement/customisation, production/logistics, residents, taxation, factions, territorial control and conflict.
 4. Management pacing, travel-time and information delays, simulation boundaries, balance, failure/recovery and how political legitimacy is earned.
