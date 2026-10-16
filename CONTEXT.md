@@ -52,6 +52,14 @@ _Avoid_: Each individual building, abstract production toggle
 A consequential, individually placed settlement structure or infrastructure element, including major buildings, roads and fortifications, whose location and effects persist in the Playthrough.
 _Avoid_: Every ordinary house or decoration, menu-only upgrade
 
+**Production Chain**:
+A meaningful conversion or dependency linking settlement resources, productive facilities and outputs, potentially across several settlements. Inputs, available capacity and downstream uses must be grounded in persistent Playthrough state.
+_Avoid_: Passive income bonus, individual factory work-order log
+
+**Supply Connection**:
+A credible economic link between settlements or facilities through which goods may move subject to access, transport constraints and disruption. Its relevant commitments and consequences persist without requiring simulation of every vehicle.
+_Avoid_: Instant global inventory, every wagon as an independently simulated agent
+
 **Settlement Administrator**:
 An NPC appointed to manage a Holding or Managed Settlement under an agreed Mandate, with bounded authority over ordinary operations and plausible local responses while the Party is elsewhere. Competence, obligations, relationships and available resources affect decisions.
 _Avoid_: Omniscient player puppet, universal settlement AI
