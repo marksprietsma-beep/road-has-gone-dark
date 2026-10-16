@@ -44,6 +44,14 @@ _Avoid_: Mutating the World Template, unplaced town
 An asserted or recognised right to own, occupy or govern land that may affect settlement establishment and development. A claim can be disputed; discovering a suitable site does not automatically make it unclaimed or legally controlled.
 _Avoid_: Automatically uncontested ownership
 
+**Governing Authority**:
+A context-specific right or practical mandate to make binding decisions for people, institutions or territory. It is separate from owning a Holding or physically occupying land, and may be limited, delegated, revoked or contested.
+_Avoid_: Property deed, automatic control of every resident
+
+**Political Legitimacy**:
+The grounds on which relevant people and institutions recognise, tolerate or challenge a character's or faction's Governing Authority, shaped by credible in-world claims, agreements, custom, support, power and history.
+_Avoid_: Universal reputation score, force automatically conferring lawful title
+
 **Settlement District**:
 A player-planned area within a Managed Settlement with an intended role, such as residential, commercial, agricultural or industrial. Its ordinary development may be generated within the established location, access and resource constraints.
 _Avoid_: Each individual building, abstract production toggle
