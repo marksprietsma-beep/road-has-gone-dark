@@ -39,10 +39,22 @@ Reject both **presence-gated management**, which would make extended expeditions
 
 **Still unresolved:** the exact scope of administrator mandates, ways to appoint/remove or replace them, what standing policies players may define, the separation of routine and exceptional decisions, the timing/accuracy of reports, multi-settlement coordination and the handling of governance disputes. This decision is design authority only, not approval to implement an administration engine.
 
+## Acquire existing holdings or found new settlements — accepted 16 October 2026 (Q17)
+
+Players may **acquire authority over existing holdings and settlements** and may also **found entirely new settlements** at plausible locations. A new camp or outpost can grow into a village, stronghold, town or more influential centre through subsequent development. The ability to found a new settlement is a committed product capability, not merely a cosmetic upgrade to pre-generated towns.
+
+Founding must respect **world geography, usable local resources, access and surrounding territorial or political circumstances**. A fertile valley with water and routes could be a plausible candidate; inaccessible terrain, scarce resources or competing claims can introduce meaningful constraints and consequences. Being geographically suitable is not proof of lawful ownership, neutrality or universal permission. Acquisition and founding can involve social/political paths, but exact allowed transactions (purchase, inheritance, lease, negotiated charter, conflict, etc.) remain to be agreed individually; don't silently guarantee every acquisition mechanism or unconditional conquest.
+
+Original **World Template** settlements and geography remain immutable source-world facts. **Founded Settlements** are Playthrough-specific entities anchored to legitimate world geography with stable identity, saved state and history; control changes to existing settlements and new construction are also Playthrough-specific. Development should not retcon existing Site positions, neighbours or strategic geography. Other Playthroughs sharing the World Template remain independent.
+
+Reject **existing-settlement-only ownership**, which would deny the approved founding capability, and **unrestricted founding anywhere**, which would undermine geography, resources, routes and political context. This does not prescribe a grid-building system, building catalogue, founding cost, minimum map distance, placement resolution or ownership procedure.
+
+**Still open:** land-rights recognition and disputes; how eligible sites are presented; founding sequence; whether new settlements can later gain full administrative/political autonomy; construction and road placement detail; relationships with existing kingdoms, guilds and neighbouring settlements; and how population, resource limits and political legitimacy affect later growth.
+
 ## Open design dependencies — not yet answered
 
 1. **Delegation is settled:** administrators operate during Party absence with strategic oversight and delayed communications. Still decide their mandate limits, player policy controls, emergency decisions and reporting detail.
-2. Which kinds of Holdings can be acquired, founded, leased, conquered or governed; whether players may develop entirely new settlements versus existing locations.
+2. **Acquisition and founding are settled:** players can acquire existing holdings or found Playthrough-specific new settlements in geographically and politically plausible locations. Specific ownership mechanisms, territorial claims, founding requirements and political legitimacy remain undecided.
 3. Depth of physical placement/customisation, production/logistics, residents, taxation, factions, territorial control and conflict.
 4. Management pacing, travel-time and information delays, simulation boundaries, balance, failure/recovery and how political legitimacy is earned.
 5. If and how personally owned properties differ from guild holdings, settlement governments, companions' property and collective faction assets.
