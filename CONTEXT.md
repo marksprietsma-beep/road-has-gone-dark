@@ -95,7 +95,7 @@ A consequential choice in which an NPC's established ambitions, beliefs, loyalti
 _Avoid_: Arbitrary personality reroll, Wisdom as morality
 
 **Personality Priority**:
-An enduring but potentially revisable preference or value guiding a character's choices, distinct from ability scores, learned skills, obligations and relationships. A small set of priorities helps distinguish characters with otherwise similar mechanical builds.
+An enduring but potentially revisable preference or value guiding an NPC's decisions and suggesting roleplay or story responses for a player-controlled Adventurer. It is distinct from abilities, skills, obligations and relationships and never removes the player's authority over their Adventurer's choices.
 _Avoid_: Wisdom, alignment-as-destiny, fixed moral rule
 
 ## Characters and progression
