@@ -94,6 +94,10 @@ _Avoid_: World truth, Player Knowledge, automatic omniscience
 A consequential choice in which an NPC's established ambitions, beliefs, loyalties or obligations favour competing actions. Strongly supported choices can be clear; genuinely uncertain choices may depend on a bounded, context-informed roll.
 _Avoid_: Arbitrary personality reroll, Wisdom as morality
 
+**Personality Priority**:
+An enduring but potentially revisable preference or value guiding a character's choices, distinct from ability scores, learned skills, obligations and relationships. A small set of priorities helps distinguish characters with otherwise similar mechanical builds.
+_Avoid_: Wisdom, alignment-as-destiny, fixed moral rule
+
 ## Characters and progression
 
 **Adventurer**:
