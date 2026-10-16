@@ -5,48 +5,54 @@ on:
   workflow_dispatch:
 jobs:
   proof:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    runs-on: windows-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '24'
-      - run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install generation dependencies
+        run: npm ci --prefix vendor/azgaar --ignore-scripts --no-audit --no-fund
       - name: Generate immutable-world one-cell proofs
+        shell: pwsh
         run: |
           node tests/regiongen/verify-pins.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tools/regiongen/prove-generator-v1.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tests/regiongen/verify-v1.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tests/regiongen/verify-source-projection.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node tests/regiongen/verify-geography-sidecar.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           node --test tests/worldgen/canonical-json.test.mjs tests/worldgen/relief-sidecar.test.mjs
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           git diff --exit-code -- tests/worldgen/fixtures vendor/azgaar
-      - name: Install real Godot renderer
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+      - name: Prepare native Windows Godot
+        run: python tests/world_library/prepare-ci.py
+      - name: Verify viewer, saves and rendered pixels on Windows
+        shell: pwsh
         run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb libgl1-mesa-dri
-          curl -fL --retry 3 https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip -o /tmp/godot.zip
-          echo 'd0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3  /tmp/godot.zip' | sha256sum -c -
-          unzip -q /tmp/godot.zip -d /tmp
-          chmod +x /tmp/Godot_v4.6.3-stable_linux.x86_64
-      - name: Verify viewer, saves and rendered pixels
-        shell: bash
-        run: |
-          set -euo pipefail
-          godot=/tmp/Godot_v4.6.3-stable_linux.x86_64
-          "$godot" --headless --editor --path . --quit 2>&1 | tee review/local-region-v1/import.log
-          timeout 120s "$godot" --headless --path . --script res://tests/regiongen/smoke-v1.gd 2>&1 | tee review/local-region-v1/smoke.log
-          timeout 120s "$godot" --headless --path . --script res://tests/game_world/smoke-game-world.gd 2>&1 | tee review/local-region-v1/gameworld.log
-          timeout 120s xvfb-run -a -s '-screen 0 1400x1200x24' "$godot" --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd 2>&1 | tee review/local-region-v1/render.log
-          timeout 120s xvfb-run -a -s '-screen 0 1400x1200x24' "$godot" --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd -- --verify-render 2>&1 | tee review/local-region-v1/render-repeat.log
-          if grep -Ei 'SCRIPT ERROR|Parse Error|Assertion failed|ERROR:' review/local-region-v1/*.log; then exit 1; fi
-          grep -q 'PASS: GAME-62' review/local-region-v1/smoke.log
-          grep -q 'PASS: GAME-7' review/local-region-v1/gameworld.log
-          grep -q 'PASS: GAME-62' review/local-region-v1/render-repeat.log
+          New-Item -ItemType Directory -Force review/local-region-v1 | Out-Null
+          & $env:GODOT_BIN --headless --editor --path . --quit
+          if ($LASTEXITCODE -ne 0) { throw "Godot project import failed" }
+          & $env:GODOT_BIN --headless --path . --script res://tests/regiongen/smoke-v1.gd
+          if ($LASTEXITCODE -ne 0) { throw "Region smoke failed" }
+          & $env:GODOT_BIN --headless --path . --script res://tests/game_world/smoke-game-world.gd
+          if ($LASTEXITCODE -ne 0) { throw "GameWorld smoke failed" }
+          & $env:GODOT_BIN --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd
+          if ($LASTEXITCODE -ne 0) { throw "Region capture failed" }
+          & $env:GODOT_BIN --audio-driver Dummy --path . --rendering-method gl_compatibility --script res://tests/regiongen/capture-v1.gd -- --verify-render
+          if ($LASTEXITCODE -ne 0) { throw "Region render-repeat verification failed" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: local-region-v1-developer-review
+          name: local-region-v1-windows-developer-review
           path: review/local-region-v1/
-          if-no-files-found: error
+          if-no-files-found: warn

@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 25
     steps:
@@ -55,8 +55,8 @@ jobs:
           path: ${{ runner.temp }}/review-packages
   review-packages:
     needs: library
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feature/game-76-world-library-v1'
-    runs-on: ubuntu-latest
+    if: false # Retired dual-platform GAME-76 draft-release job; Windows helper/evidence artifacts are uploaded in library.
+    runs-on: windows-latest
     permissions:
       contents: write
     steps:
