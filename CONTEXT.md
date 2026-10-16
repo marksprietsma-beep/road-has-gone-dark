@@ -74,6 +74,14 @@ _Avoid_: Automatically obedient unit, universally controllable NPC
 An agreed objective and its limits entrusted to a Delegate, allowing reasonable independent decisions without granting unrestricted control of the Delegate's behaviour.
 _Avoid_: Unconditional order, total control
 
+**Significant NPC**:
+A non-player character whose established identity, ambitions or relationships are relevant enough to support consequential developments in a Playthrough. Significance is not identical to having a name, being geographically near the Party or being a Delegate.
+_Avoid_: Every named NPC, continuously simulated citizen
+
+**NPC Initiative**:
+A bounded consequential action undertaken by an NPC to advance their own established ambition or relationship rather than in response to a player-issued Mandate. The action may happen while the Party is elsewhere.
+_Avoid_: Delegated order, continuous autonomous life simulation
+
 ## Characters and progression
 
 **Adventurer**:
