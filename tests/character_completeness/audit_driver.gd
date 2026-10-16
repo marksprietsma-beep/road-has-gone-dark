@@ -99,4 +99,5 @@ func complete_audit(restart := false) -> void:
  var proof := {"rules_ref":source.rules_ref(),"checks":checks,"failures":failures,"development_fixtures":true,"earned_xp":false}
  FileAccess.open(base.path_join("restart-proof.json" if restart else "proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("CHARACTER COMPLETENESS ",JSON.stringify(proof))
- get_tree().quit(1 if failures else 0)
+ if no_quit:completed.emit()
+ else:get_tree().quit(1 if failures else 0)

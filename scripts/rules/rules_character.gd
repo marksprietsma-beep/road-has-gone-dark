@@ -251,6 +251,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")) and (not RulesWaveFive.enabled(registry) or not registry.definition("abilities",id).tags.has("supernatural")))
   context.body_form=active_form.duplicate(true)
  if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry)
+ if not include_runtime and RulesCompleteness.enabled(registry):context.spell_tiers=RulesCompleteness.spell_tiers(record,context,registry)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()
  return context

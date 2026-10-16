@@ -415,6 +415,8 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
  lines.append("\nSkills · rank / total")
  for id in s.skills:
   var skill: Dictionary=s.skills[id];lines.append("%s: %d / %+d%s"%[RulesRecords.registry(state).definition("skills",id).name,skill.ranks,skill.total," · requires training" if not skill.usable else ""])
+  var usage := RulesCompleteness.skill_usage(RulesRecords.registry(state),str(id))
+  if not usage.is_empty():lines.append("  "+usage)
  lines.append("\nFeats: "+", ".join(s.feats.map(func(id: String):return str(RulesRecords.registry(state).definition("feats",id).name))))
  lines.append("Equipment: "+", ".join(s.equipment.map(func(id: String):return str(RulesRecords.registry(state).definition("equipment",id).name))))
  if s.has("companions"):

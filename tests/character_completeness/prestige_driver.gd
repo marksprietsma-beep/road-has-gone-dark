@@ -165,4 +165,5 @@ func checkpoint() -> void:
 func done() -> void:
  FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"earned_xp":false}))
  print("PRESTIGE AUDIT ",checks," failures ",failures)
- get_tree().quit(1 if failures else 0)
+ if no_quit:completed.emit()
+ else:get_tree().quit(1 if failures else 0)

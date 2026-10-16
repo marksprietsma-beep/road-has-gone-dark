@@ -91,10 +91,16 @@ static func choices(state: Dictionary,site: Dictionary) -> Array:
   var key := RulesJson.digest(record)
   if not _profile_cache.has(key):_profile_cache[key]=RulesCharacter.new(RulesRecords.registry(record)).derive_character(record).snapshot
   var snapshot: Dictionary=_profile_cache[key]
-  for skill in rules().skill_map[activity.family]:
+  var source := RulesRecords.registry(record)
+  var approaches: Array=[]
+  for skill in rules().skill_map[activity.family]:approaches.append({"skill":skill})
+  approaches.append_array(RulesCompleteness.approaches(source,str(site.activity_id)))
+  for profile in approaches:
+   var skill: String=profile.skill
+   if int(snapshot.skills.get(skill,{}).get("ranks",0))<int(profile.get("min_ranks",0)):continue
    if not snapshot.skills.has(skill) or not snapshot.skills[skill].usable:continue
    var bonus: int=int(snapshot.skills[skill].total)
-   var dc: int=int(rules().skill_dc_base)+int(c.threat_level)
+   var dc: int=int(rules().skill_dc_base)+int(c.threat_level)+int(profile.get("dc_adjustment",0))
    var rolled := RulesRng.roll("1d20",RulesRng.initial(RulesJson.digest([VERSION,site.id,id,skill])))
    var success: bool=int(rolled.total)+bonus>=dc
    var choice: Dictionary=activity.choices.filter(func(o: Dictionary):return o.id==("negotiate" if activity.family=="contested" else "careful"))[0].duplicate(true)
@@ -102,7 +108,13 @@ static func choices(state: Dictionary,site: Dictionary) -> Array:
    choice.label=str(state.party.members.filter(func(m: Dictionary):return m.character_id==id)[0].name)+": "+str(skill).capitalize()+" +"+str(bonus)+" vs DC "+str(dc)
    choice.provisions=int(rules().skill_provision_cost[activity.family]);choice.gain=int(choice.gain) if success else 0;choice.reveal=bool(choice.reveal) and success
    choice.outcome=choice.outcome if success else "failed_check";choice.complete=true
+   if profile.has("event"):
+    for field in ["event","provisions"]:choice[field]=profile[field]
+    choice.gain=int(profile.gain) if success else 0;choice.reveal=bool(profile.reveal) and success
+    choice.outcome=profile.outcome if success else "failed_check"
+    choice.label+=" · "+str(profile.label)
    choice.information="%s check: %d + %d vs DC %d · %s."%[str(skill).capitalize(),int(rolled.total),bonus,dc,"objective completed" if success else "attempt failed; no XP"]
+   if profile.has("information"):choice.information+=" "+str(profile.information)
    options.append(choice)
  return options
 static func initial_battle(state: Dictionary,site: Dictionary) -> Dictionary:

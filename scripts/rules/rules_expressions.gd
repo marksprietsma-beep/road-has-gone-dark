@@ -3,7 +3,7 @@ extends RefCounted
 const ATTRIBUTES := ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 const SAVES := ["fortitude", "reflex", "will"]
 const FORMULA_OPS := ["const", "attribute", "modifier", "level", "class_level", "casting_level", "skill_rank", "stat", "sum", "min", "max", "multiply", "floor_divide", "manifesting_modifier"]
-const REQUIREMENT_OPS := ["all", "any", "not", "level", "class_level", "attribute", "skill", "feat", "feature", "tag", "bab", "save", "casting", "resource", "ancestry"]
+const REQUIREMENT_OPS := ["all", "any", "not", "level", "class_level", "attribute", "skill", "feat", "feature", "tag", "bab", "save", "casting", "resource", "ancestry", "spell_tier"]
 
 static func validate_formula(node: Variant, path: String = "formula", depth: int = 0) -> Array:
  var errors: Array = []
@@ -92,9 +92,10 @@ static func validate_requirement(node: Variant, path: String = "requirements", d
    if not node.get("id") is String or node.id.is_empty(): errors.append(RulesJson.issue("requirement.reference",path,"A stable reference is required"))
    elif op == "attribute" and not node.id in ATTRIBUTES: errors.append(RulesJson.issue("requirement.attribute",path,"Unknown attribute"))
    elif op == "save" and not node.id in SAVES: errors.append(RulesJson.issue("requirement.save",path,"Unknown save"))
-  if op in ["level","class_level","attribute","skill","bab","save","casting","resource"]:
+  if op in ["level","class_level","attribute","skill","bab","save","casting","resource","spell_tier"]:
    fields.append("min")
    if not RulesJson.integer(node.get("min"),0,1000): errors.append(RulesJson.issue("requirement.minimum",path,"A bounded integer minimum is required"))
+ if op=="spell_tier" and (node.get("id") not in ["arcane","divine"] or not RulesJson.integer(node.get("min"),1,9)):errors.append(RulesJson.issue("requirement.spell_tier",path,"Permanent arcane/divine spell tier 1–9 required"))
  for field in node:
   if not field in fields: errors.append(RulesJson.issue("requirement.field",path+"."+str(field),"Unexpected requirement field"))
  return errors
@@ -124,6 +125,7 @@ static func _requirements(node: Dictionary, context: Dictionary, path: String) -
  elif op == "skill": current = context.get("skills",{}).get(node.id,0)
  elif op == "save": current = context.get("stats",{}).get(node.id,0)
  elif op == "casting": current = context.get("casting",{}).get(node.id,0)
+ elif op == "spell_tier": current = context.get("spell_tiers",{}).get(node.id,0)
  elif op == "resource": current = context.get("capacities",{}).get(node.id,0)
  elif op == "ancestry": current = context.get("ancestry_tags",[]).has(node.id)
  else: current = context.get(op+"s",[]).has(node.id)
