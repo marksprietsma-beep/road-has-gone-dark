@@ -9,11 +9,19 @@ var planner: Node
 var used_skills := {}
 var journeys := []
 var combat_actions := {}
+var failed_check := {}
 func run() -> void:
  cohort=int(OS.get_environment("GAME126_COHORT"))
  base=OS.get_environment("GAME126_JOURNEY_ROOT").path_join("cohort-"+str(cohort));DirAccess.make_dir_recursive_absolute(base)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0]
+ if OS.get_environment("GAME126_COMBAT_ONLY")=="1":
+  var saved := WorldOriginLore.read_json(base.path_join("proof.json"));slot=saved.slot
+  var loaded := service.operate(entry,slot,"resume")
+  check(loaded.ok,"load preserved earned campaign for tactical acceptance")
+  state=loaded.state;source=RulesRecords.registry(state);kernel=RulesCharacter.new(source)
+  journeys=saved.journeys;used_skills=saved.skills
+  test_real_combat();checkpoint();finish_journey();return
  if OS.get_environment("GAME126_AUDIT_RESTART")=="1":
   var saved := WorldOriginLore.read_json(base.path_join("proof.json"));slot=saved.slot
   var loaded := service.operate(entry,slot,"resume")
@@ -22,6 +30,10 @@ func run() -> void:
    for id in loaded.state.party_ids:
     check(CharacterBuilderRecords.xp(loaded.state,id)==360,"earned XP exact restart "+id)
     check(loaded.state.mechanics.records[id].advancement_history.size()==7,"earned history exact restart "+id)
+  if saved.get("failed_check",{}).has("hash"):
+   var alternate := GamePlaythroughStore.new();alternate.save_root=base.path_join("failed-check")
+   var failed := alternate.load_save(slot,entry.world)
+   check(failed.ok and RulesJson.digest(failed.state)==saved.failed_check.hash,"failed trained check exact cold restart without reward")
   finish_journey(true);return
  source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
  planner=load("res://tests/character_completeness/prestige_driver.gd").new();planner.source=source;planner.kernel=kernel
@@ -32,15 +44,23 @@ func run() -> void:
   [["psion","elan","pyrokineticist"],["warlock","tiefling", ""],["lurk","ratfolk","shadowdancer"]]
  ]
  configs=groups[cohort]
- create_party()
+ if OS.get_environment("GAME126_RESUME")=="1":
+  var saved := WorldOriginLore.read_json(base.path_join("proof.json"));slot=saved.slot
+  var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"resume existing earned fixture without rewriting history")
+  state=loaded.state;used_skills=saved.skills
+  for i in 3:prepare(i);promote(i)
+ else:create_party()
  if failures:finish_journey();return
- for n in 9:
-  action("cycle_seek")
+ for n in 12:
+  if CharacterBuilderRecords.xp(state,state.party_ids[0])>=360:break
+  if state.get("adventure_cycles",{}).get("cycles",[]).is_empty() or cycle().results.size()==4:action("cycle_seek")
   for i in 4:
+   if cycle().results.has(cycle().base.sites[i].id):continue
    travel(i)
    if failures:finish_journey();return
    var site := SandboxRecords.site(cycle(),cycle().active.site_id)
    var options := OpportunityCycles.choices(state,site)
+   test_failed_check(options)
    var before := RulesJson.digest(state)
    check(RulesJson.digest(options)==RulesJson.digest(OpportunityCycles.choices(state,site)) and before==RulesJson.digest(state),"checks deterministic without state or RNG mutation")
    var choice: String="negotiate" if OpportunityGenerator.template(site.activity_id).family=="contested" else "careful"
@@ -93,21 +113,35 @@ func create_party() -> void:
   check(step.ok,"lawful identity and starting class "+cls+JSON.stringify(step.get("errors",[])))
   if not step.ok:return
   record=step.candidate;record.equipment=source.definition("classes",cls).recommended_equipment.duplicate()
+  var initial := spell_selection(record)
+  record.choices.prepared_abilities=initial.spells;record.choices.spell_preparations=initial.preparations
   var identity := {"name":["Arin","Lysa","Doran"][i]+str(cohort),"people_id":cfg[1],"role_id":"expert","origin_burg":int(home.burg_id),"occupation_id":CharacterBuilderRecords.backgrounds(entry.world,int(home.burg_id))[0].id}
   action_builder("builder_save",i+1,{"identity":identity,"build":CharacterBuilderRecords.definition(record)})
  action_builder("builder_ready")
  for i in 3:prepare(i)
  var resumed := service.operate(entry,slot,"resume");check(resumed.ok,"ready distinct party");state=resumed.get("state",state)
  for id in state.party_ids:check(CharacterBuilderRecords.xp(state,id)==0,"begins with no injected XP")
+func spell_selection(record: Dictionary) -> Dictionary:
+ var derived := kernel.derive_character(record)
+ var copies := RulesCoreContent.starting_preparations(derived.snapshot,source)
+ var spells: Array=copies.keys()
+ # Permanent spontaneous knowledge is cumulative. Rest retrieval is explicit;
+ # this fixture keeps those selections unless a newly unlocked choice fits.
+ for id in record.choices.prepared_abilities:
+  var ability := source.definition("abilities",id)
+  var cls := source.definition("classes",str(ability.get("casting_class","")))
+  if cls.get("spell_mode")=="spontaneous" and not spells.has(id):spells.append(id)
+ for aid in RulesCoreContent.suggested_spells(derived.snapshot,source):
+  var a := source.definition("abilities",aid);var cls: String=str(a.get("casting_class",""))
+  if source.definition("classes",cls).get("spell_mode")!="spontaneous" or spells.has(aid):continue
+  var count: int=spells.filter(func(id: String):return source.definition("abilities",id).get("casting_class")==cls).size()
+  if count<RulesCoreContent.selection_limit(cls,int(derived.snapshot.casting_levels.get(cls,0)),source):spells.append(aid)
+ return {"spells":spells,"preparations":copies}
 func prepare(index: int) -> void:
  var id: String=state.party_ids[index];var record: Dictionary=state.mechanics.records[id]
- var derived := kernel.derive_character(record)
- if not derived.ok:return
- var spells: Array=[];var copies := RulesCoreContent.starting_preparations(derived.snapshot,source)
- spells=copies.keys()
- for aid in RulesCoreContent.suggested_spells(derived.snapshot,source):
-  if source.definition("abilities",aid).tags.has("spontaneous") and not spells.has(aid):spells.append(aid)
- if not spells.is_empty():action_builder("builder_spells",index+1,{"character_id":id,"spells":spells,"preparations":copies})
+ var selection := spell_selection(record)
+ if selection.spells==record.choices.prepared_abilities and selection.preparations==record.choices.spell_preparations:return
+ if not selection.spells.is_empty():action_builder("builder_spells",index+1,{"character_id":id,"spells":selection.spells,"preparations":selection.preparations})
 func promote(index: int) -> void:
  if failures:return
  var id: String=state.party_ids[index];var record: Dictionary=state.mechanics.records[id]
@@ -125,9 +159,10 @@ func promote(index: int) -> void:
  var proposal := planned(record,cls,index)
  check(proposal.ok,"lawful earned advancement "+cls+str(next)+JSON.stringify(proposal.get("errors",[])))
  if not proposal.ok:return
- var choice: Dictionary=proposal.candidate.advancement_history.back()
+ var choice: Dictionary=proposal.candidate.advancement_history.back().duplicate(true)
+ choice.erase("level")
  var preview := CharacterBuilderRecords.preview_advancement(state,id,choice)
- check(preview.ok,"original XP authority accepts funded manual choice")
+ check(preview.ok,"original XP authority accepts funded manual choice "+JSON.stringify(preview.get("errors",[]))+str(preview.get("error","")))
  if preview.ok:action_builder("builder_advance",index+1,{"character_id":id,"choice":choice,"candidate_hash":preview.candidate_hash})
  prepare(index)
 func test_real_combat() -> void:
@@ -140,6 +175,7 @@ func test_real_combat() -> void:
    var available: Array=tactical.characters.derive_character(actor.record).snapshot.abilities
    for aid in available:
     var a := source.definition("abilities",aid)
+    if source.rule("base_abilities").has(aid) or int(a.cost.main)<1:continue
     if a.tags.has("passive") or a.has("trigger") or a.tags.has("weapon_strike") or a.has("channel_spell"):continue
     var targets: Array=battle.units.values().filter(func(u: Dictionary):return tactical.eligible(battle,actor,u,aid))
     if targets.is_empty():continue
@@ -149,16 +185,32 @@ func test_real_combat() -> void:
   check(result.ok,"production tactical command "+str(command.kind))
   if not result.ok:return
   check(result.battle.state_hash==tactical.command(battle,command).battle.state_hash,"exact tactical replay/RNG")
-  if actor.team=="party":combat_actions[actor.id]=str(command.kind)
+  if actor.team=="party" and command.kind not in ["move","end"]:combat_actions[actor.id]=str(command.kind)
   battle=result.battle
   if combat_actions.size()==3:break
  check(combat_actions.size()==3,"all three earned identities act in real tactical authority")
  FileAccess.open(base.path_join("combat.json"),FileAccess.WRITE).store_string(JSON.stringify(battle))
 func checkpoint() -> void:
- FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"slot":slot,"state_hash":RulesJson.digest(state),"rules_ref":source.rules_ref(),"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"xp_injected":false,"journeys":journeys,"skills":used_skills,"combat_actions":combat_actions}))
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"slot":slot,"state_hash":RulesJson.digest(state),"rules_ref":source.rules_ref(),"earned_xp":CharacterBuilderRecords.xp(state,state.party_ids[0]),"xp_injected":false,"journeys":journeys,"skills":used_skills,"combat_actions":combat_actions,"failed_check":failed_check}))
 func finish_journey(restart := false) -> void:
  if restart:FileAccess.open(base.path_join("restart-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures}))
  print("COMPLETENESS JOURNEY ",cohort," ",checks," failures ",failures)
  if is_instance_valid(planner):planner.free()
  if no_quit:completed.emit()
  else:get_tree().quit(1 if failures else 0)
+
+func test_failed_check(options: Array) -> void:
+ if not failed_check.is_empty():return
+ var ids := ["skill:athletics","skill:stealth","skill:acrobatics","skill:spellcraft","skill:animal-handling"]
+ var failed: Array=options.filter(func(o: Dictionary):return o.outcome=="failed_check" and ids.has(o.profession))
+ if failed.is_empty():return
+ var alternate := AdventureService.new();alternate.store.save_root=base.path_join("failed-check");alternate.library=service.library;alternate.cache_root=service.cache_root
+ var before := RulesJson.digest(state)
+ check(alternate.store.save_new(slot,state,entry.world).ok,"fork uses original save owner for negative outcome")
+ var result := alternate.operate(entry,slot,"cycle_activity",1,{"revision":state.expedition.revision,"choice":failed[0].id})
+ check(result.ok,"real failed trained check commits through original campaign writer")
+ if result.ok:
+  for id in state.party_ids:check(CharacterBuilderRecords.xp(result.state,id)==CharacterBuilderRecords.xp(state,id),"failed trained check grants no XP")
+  check(OpportunityCycles.current(result.state).results[cycle().active.site_id].outcome=="failed_check","failure visibly persists")
+  failed_check={"hash":RulesJson.digest(result.state),"choice":failed[0].id,"xp":CharacterBuilderRecords.xp(result.state,state.party_ids[0])}
+ check(RulesJson.digest(state)==before,"negative fixture never alters main earned journey")

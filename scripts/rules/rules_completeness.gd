@@ -5,6 +5,19 @@ extends RefCounted
 static func enabled(source: RulesRegistry) -> bool:
  return source.rules_ref().get("pack_id")=="trhgd-character-v16"
 
+static func has_spell_gate(node: Dictionary) -> bool:
+ if node.op=="spell_tier":return true
+ if node.has("arg") and has_spell_gate(node.arg):return true
+ return node.get("args",[]).any(func(child: Dictionary):return has_spell_gate(child))
+
+static func entry_requirements(node: Dictionary,permanent: Dictionary,record: Dictionary,source: RulesRegistry) -> Dictionary:
+ if not enabled(source) or not has_spell_gate(node):return RulesExpressions.evaluate_requirements(node,permanent)
+ # Compute repertoire only where a permanent entry requirement asks for it,
+ # rather than for every historical level of every ordinary skill preview.
+ var projected := permanent.duplicate()
+ projected.spell_tiers=spell_tiers(record,permanent,source)
+ return RulesExpressions.evaluate_requirements(node,projected)
+
 static func spell_tiers(record: Dictionary,permanent: Dictionary,source: RulesRegistry) -> Dictionary:
  var tiers := {"arcane":0,"divine":0}
  for id in permanent.abilities:

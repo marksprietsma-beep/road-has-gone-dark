@@ -133,6 +133,7 @@ static func suggested_spells(snapshot: Dictionary,source: RulesRegistry) -> Arra
  for cls in snapshot.class_levels:
   var limit := selection_limit(cls,int(snapshot.get("casting_levels",snapshot.class_levels).get(cls,0)),source)
   for id in snapshot.abilities:
+   if RulesCompleteness.enabled(source) and source.definition("abilities",id).has("channel_spell"):continue
    if source.definition("abilities",id).get("casting_class")==cls and source.definition("abilities",id).tags.has("spell") and limit>0:selected.append(id);limit-=1
  return selected
 static func ancestry_rows(source: RulesRegistry) -> Array:

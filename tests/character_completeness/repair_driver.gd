@@ -26,7 +26,7 @@ func run() -> void:
   check(eligible.ok==smart,"actual spell access gates Archmage, not nominal slots")
   check(int(context.capacities["wizard-slots-7"])>0,"both fixtures have nominal tier-seven capacity")
   var permanent := kernel._context(context.attributes,context.classes,context.skills,context.feats,record,false)
-  check(int(permanent.spell_tiers.arcane)>=7 if smart else int(permanent.spell_tiers.arcane)<7,"permanent tier is projected from legal spells")
+  check(int(RulesCompleteness.spell_tiers(record,permanent,source).arcane)>=7 if smart else int(RulesCompleteness.spell_tiers(record,permanent,source).arcane)<7,"permanent tier is projected from legal spells")
   var altered: Dictionary=record.duplicate(true)
   for pool in altered.runtime.resources:altered.runtime.resources[pool]=0
   check(kernel.available_advancement(altered).classes.archmage.ok==smart,"spent resources do not change permanent entry")
@@ -54,7 +54,43 @@ func run() -> void:
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v15.json").ok,"v15 still supported")
  var original := WorldOriginLore.read_json("res://docs/implementation/game126/evidence/archmage-v15-gap.json")
  check(RulesCharacter.new(old).available_advancement(original.record).classes.archmage.ok,"historical v15 exact qualification preserved")
+ test_skill_approaches()
+ var dusk := build("duskblade",4)
+ check(not RulesCoreContent.suggested_spells(kernel.derive_character(dusk).snapshot,source).any(func(id: String):return source.definition("abilities",id).has("channel_spell")),"spell suggestions never select a channel delivery wrapper")
  var hashes := {}
  for id in records:hashes[id]=kernel.derive_character(records[id]).snapshot.snapshot_hash
  FileAccess.open(base.path_join("records.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":records,"hashes":hashes})))
  done()
+
+func skill_fixture(skill: String,trained: bool) -> Dictionary:
+ var record := kernel.create("skill-probe",{"STR":14,"DEX":13,"CON":12,"INT":15,"WIS":10,"CHA":8},"heritage-human")
+ var choice: Dictionary=kernel.suggested_choice(record,"fighter").choice
+ var points := 0
+ for n in choice.skill_allocations.values():points+=int(n)
+ choice.skill_allocations={}
+ if trained:choice.skill_allocations[skill]=1;points-=1
+ for id in source.ids("skills"):
+  if id==skill or points<=0:continue
+  choice.skill_allocations[id]=1;points-=1
+ return kernel.preview_advancement(record,choice).candidate
+func test_skill_approaches() -> void:
+ for profile in source.rule("skill_approaches"):
+  var successes := 0;var failed := 0
+  for trained in [false,true]:
+   var record := skill_fixture(profile.skill,trained)
+   var state := {"party_ids":[record.character_id],"party":{"members":[{"character_id":record.character_id,"name":"Probe","generated_facts":{"occupation_id":"none"}}]},"adventure_cycles":{"cycles":[{"context":{"profiles":{record.character_id:record},"threat_level":1}}]}}
+   for n in 24:
+    var site := {"id":"skill-probe:"+str(n),"activity_id":profile.activities[0]}
+    var before := RulesJson.digest(state)
+    var a := OpportunityCycles.choices(state,site)
+    check(RulesJson.digest(a)==RulesJson.digest(OpportunityCycles.choices(state,site)) and before==RulesJson.digest(state),"skill projection never mutates state/RNG")
+    var found: Array=a.filter(func(o: Dictionary):return o.profession=="skill:"+str(profile.skill))
+    check(found.size()==(1 if trained else 0),"trained approach rank gate "+profile.skill)
+    if not trained:continue
+    var row: Dictionary=found[0]
+    check(row.event==profile.event and row.provisions==profile.provisions and row.complete,"existing time/supply contract "+profile.skill)
+    if row.outcome=="failed_check":
+     failed+=1;check(OpportunityCycles.reward(row)==0 and row.gain==0 and not row.reveal,"failed skill has no reward/discovery")
+    else:
+     successes+=1;check(OpportunityCycles.reward(row)==10 and row.gain==profile.gain and row.reveal==profile.reveal,"successful skill uses original one-objective reward")
+  check(successes>0 and failed>0,"both deterministic skill outcomes exercised "+profile.skill)

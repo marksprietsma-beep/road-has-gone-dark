@@ -88,6 +88,13 @@ func advance(record: Dictionary,cls: String,goals: Dictionary) -> Dictionary:
   var amount: int=mini(points,maxi(0,cap-int(replay.context.skills.get(id,0))))
   if amount>0:allocation[id]=amount;points-=amount
  choice.skill_allocations=allocation
+ var cls_level: int=int(replay.context.classes.get(cls,0))+1
+ for group in RulesCareer.groups(source,cls,cls_level):
+  for option in group.options:
+   if not RulesCareer.option_eligibility(source,cls,cls_level,option,replay.context,choice.specialisations).ok:continue
+   var desired: bool=goals.nodes.any(func(n: Dictionary):return n.op=="feature" and option.features.has(n.id))
+   var bridge: bool=option.has("advance_casting") and replay.context.classes.has(option.advance_casting)
+   if desired or bridge:choice.specialisations[group.id]=option.id;break
  var choices: Array=[]
  if not choice.feat_id.is_empty():
   for id in goals.feats:
@@ -163,7 +170,7 @@ func checkpoint() -> void:
  FileAccess.open(base.path_join("records.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":records,"hashes":hashes})))
 
 func done() -> void:
- FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"earned_xp":false}))
+ FileAccess.open(base.path_join("restart-proof.json" if OS.get_environment("GAME126_AUDIT_RESTART")=="1" else "proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"earned_xp":false}))
  print("PRESTIGE AUDIT ",checks," failures ",failures)
  if no_quit:completed.emit()
  else:get_tree().quit(1 if failures else 0)
