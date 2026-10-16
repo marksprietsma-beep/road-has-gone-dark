@@ -41,12 +41,20 @@ The player may attempt to influence a distant tracked situation through **limite
 
 Reject **direct intervention only**, which would make some fairly communicated warnings practically unactionable, and reject **full remote management**, which would impose global command authority and a large management simulator inconsistent with a travelling-party RPG. Personal intervention should normally afford greater immediate control, not invalidate valuable relationships and delegation.
 
-This is a **design boundary**, not implementation authorisation for a courier simulator, off-site combat engine, guild-management UI or universal NPC scheduler. Which instructions delegates may accept, how independently they interpret them, and how requests resolve and are reported remain to be decided.
+This is a **design boundary**, not implementation authorisation for a courier simulator, off-site combat engine, guild-management UI or universal NPC scheduler. Bounded independent judgement is accepted below; exact mandate boundaries, refusal procedures and reporting remain to be decided.
+
+## Delegates' independent judgement — accepted 16 October 2026
+
+An appointed **Delegate** acts within an agreed **Mandate**, with bounded independent judgement rather than either literal obedience or continuous self-directed simulation. They may adapt tactics to circumstances, honour established obligations, and decline unreasonable demands. Material decisions must be grounded in known competence, motivations, relationships, available information, resources and situational constraints, not unexplained betrayal or random loyalty rolls.
+
+For example, an instructed militia captain facing an attack may divert defenders from a bridge to rescue trapped townsfolk when that is consistent with their documented obligations. This can change the defence outcome, costs or relationship with the player, and should be intelligible once an appropriate report reaches the Party. A Mandate does not guarantee success, perfect knowledge or unlimited authority.
+
+Reject strict scripted obedience, which would make established identity and relationships mechanically hollow, and reject unrestricted autonomy, which would undermine predictable delegated objectives and demand expensive continuous NPC simulation. Routine absence alone should not create a punitive relationship-decay treadmill. Exact mandate constraints, refusal handling, outcome resolution, player-facing explanation and delegation scope remain to be worked out before implementation.
 
 ## Consequences and unresolved dependencies
 
 - World Situations and their consequences belong to an individual **Playthrough**, not the immutable **World Template** (see ADR 0001).
 - Changes must remain compatible with stable entity identities, saved history and **Player Knowledge**. Off-screen truth is not automatically revealed to the player.
 - Simulation must be bounded enough to advance reproducibly across elapsed in-game time and saved/reloaded campaigns; this records an **outcome requirement**, not an engine, queue or event-sourcing implementation.
-- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, delegates' decision authority, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
+- **Still to decide:** precise criteria and capacity for activating/retiring tracked situations; advancement timing and conflicts, communication delays and report reliability, the limits/communication of delegates' mandates, available remote tasks/costs, and how requests conclude when messages are late or missing. Neither a scheduler nor a threshold is prescribed here.
 - No new gameplay system or character-programme reprioritisation follows automatically from this design decision.
