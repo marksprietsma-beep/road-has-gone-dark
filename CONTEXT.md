@@ -134,6 +134,14 @@ _Avoid_: Unimplemented flavour text, parallel monster-only combat engine
 A regional or local aggregate of a creature species whose plausible habitat, abundance, territorial pressure and relationships to other groups or settlements can change through significant Playthrough events. It is not a roster of individually simulated specimens.
 _Avoid_: Every creature is a persistent NPC, stateless respawn token
 
+**Recruitment Relationship**:
+A credible, voluntary and persistent arrangement through which an NPC may become a short-term hire, a travelling companion, a trusted long-term party member, an ally or a contracted specialist. The arrangement has reasons, scope and limits informed by that person's existing obligations, ambitions and knowledge.
+_Avoid_: Universal persuasion-to-recruit button, guaranteed obedience, automatic party membership
+
+**NPC Loyalty and Departure**:
+A consequential choice by a non-player person to honour, renegotiate or leave a commitment—or, in exceptional grounded circumstances, betray it—based on their motives, beliefs, relationships, treatment and opportunities. The resulting action has persistent causes and consequences, not unexplained random disloyalty.
+_Avoid_: Passive friendship decay, arbitrary betrayal roll, invisible scripted abandonment
+
 **NPC Mechanical Depth**:
 A tiered representation of a non-player person's relevant competence: ordinary residents need credible professions and usable skills; consequential specialists, companions, rivals and leaders may require full ancestry, class, level, feats, spells, equipment and persistent advancement as their role warrants. Any contested action resolves through the shared d20 authority.
 _Avoid_: Every citizen as level-20 character sheet, inconsistent simplified combat roll
