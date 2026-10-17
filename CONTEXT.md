@@ -138,6 +138,14 @@ _Avoid_: Every creature is a persistent NPC, stateless respawn token
 An individually persistent monster or animal distinguished by consequential actions, a unique role, history, relationship, threat or encounter outcome; it can survive, move, be injured or become important without treating its entire species as individual characters.
 _Avoid_: Generic population total, automatically tracking every wolf
 
+**Creature Behaviour Profile**:
+A species- and context-grounded set of instincts, intelligence limits, needs, social responses, threat assessment, and possible combat or noncombat decisions. Different creatures can stalk, warn, defend, withdraw, bargain or remain relentless according to their actual nature and circumstances.
+_Avoid_: All monsters always attack, every creature reasons like a human, cosmetic AI tag
+
+**Creature Morale**:
+A contextual willingness to continue confrontation based on injury, fear, companions, leadership, defended interests and available escape or surrender options; not a universal panic meter that overrides mindless or genuinely fearless creatures.
+_Avoid_: Mandatory flee-at-low-HP rule, perfect information, automatic surrender
+
 **World-Grounded Threat Profile**:
 A contextual estimate of a creature, group, site or region's credible danger, derived from its established capabilities, ecology, history and active circumstances rather than automatically matching the Party's current level. Player Knowledge can reveal imperfect but actionable warning signs.
 _Avoid_: Automatic level scaling, guaranteed winnable encounter, arbitrary unwarned lethal surprise
