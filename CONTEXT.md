@@ -134,6 +134,14 @@ _Avoid_: Unimplemented flavour text, parallel monster-only combat engine
 A regional or local aggregate of a creature species whose plausible habitat, abundance, territorial pressure and relationships to other groups or settlements can change through significant Playthrough events. It is not a roster of individually simulated specimens.
 _Avoid_: Every creature is a persistent NPC, stateless respawn token
 
+**Faction Affiliation**:
+A person's meaningful and potentially multiple ties to organised groups, with context-specific rights and obligations rather than compulsory loyalty based on culture or ancestry.
+_Avoid_: Single faction slot, mandatory racial allegiance
+
+**Faction Relationship**:
+A consequential alliance, rivalry, obligation or internal disagreement between groups or members, changed through grounded events and credible information rather than global reputation updates.
+_Avoid_: Uniform member opinions, universally informed factions
+
 **Recruitment Relationship**:
 A credible, voluntary and persistent arrangement through which an NPC may become a short-term hire, a travelling companion, a trusted long-term party member, an ally or a contracted specialist. The arrangement has reasons, scope and limits informed by that person's existing obligations, ambitions and knowledge.
 _Avoid_: Universal persuasion-to-recruit button, guaranteed obedience, automatic party membership
