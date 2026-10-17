@@ -1,6 +1,6 @@
 # GAME-133 continuation ledger
 
-Branch: `feature/game-133-sorcerer-druid-repertoires`; existing draft PR#133 against main3ccd089. Preserve GAME-132 and all historical pins. Initial source commit6bb2487 is pushed. Focused Windows run39043051547 is in progress; no completed build is claimed. Follow-up test improvements and archived-options pin correction are being prepared on the same branch.
+Branch: `feature/game-133-sorcerer-druid-repertoires`; existing draft PR#133 against main3ccd089. Preserve GAME-132 and all historical pins. Initial source commit6bb2487 is pushed. Initial Windows run39043051547 exposed two test-driver type declarations, corrected in618416e. Run39043409813 executed the ten spell cases, then rejected an invalid1d1 diagnostic damage fixture; replace that fixture with the supported constant10 amount, preserving the exact mitigation assertion. No completed GAME-133 build is claimed. The archived-options pin correction is committed; the pending earned-loop fix excludes owned companions from the three-adventurer action map without excluding their real turns.
 
 Ten candidate spells, v18 hash4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc. Read ASSESSMENT, COHORT, PACK-DELTA, REPERTOIRE and TESTING. Do not rerun historical generators or run Linux game tests. Native results must distinguish actual current-head checks from older evidence.
 

@@ -139,8 +139,8 @@ func test_creatures_and_forms() -> void:
  if result.ok:
   var pet: Dictionary=result.battle.units[pet_id].record
   check(kernel.derive_character(pet).snapshot.capabilities.resistances.get("physical")==5,"companion receives real physical reduction")
-  var hit := RulesEffects.new(source).resolve_rules_effect({"op":"damage","amount":{"dice":"1d1","bonus":{"op":"const","value":9}},"damage_type":"physical"},pet.runtime,pet.runtime,{"target_id":pet_id,"target_capabilities":kernel.derive_character(pet).snapshot.capabilities},RulesRng.initial("canopy-hit"))
-  check(hit.ok and hit.target.hp==pet.runtime.hp-5,"companion actually takes reduced physical packet")
+  var hit := RulesEffects.new(source).resolve_rules_effect({"op":"damage","amount":{"op":"const","value":10},"damage_type":"physical"},pet.runtime,pet.runtime,{"target_id":pet_id,"target_capabilities":kernel.derive_character(pet).snapshot.capabilities},RulesRng.initial("canopy-hit"))
+  check(hit.ok and hit.target.hp==pet.runtime.hp-5,"companion actually takes reduced physical packet "+JSON.stringify(hit.get("errors",[])))
   saved_records.companion_owner=result.battle.units.a.record;saved_battle=result.battle
  # Pre-buff, then use the existing form. It remains spell-suppressed, with original HP.
  druid=prepared(fixtures.druid,"druid-predators-rhythm")

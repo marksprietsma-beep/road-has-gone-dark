@@ -181,7 +181,7 @@ func test_real_combat() -> void:
  for n in 200:
   if battle.status!="active":break
   var actor := tactical.current(battle);var command := tactical.enemy_command(battle)
-  if actor.team=="party" and int(battle.budget.main)>0 and not combat_actions.has(actor.id):
+  if wanted.has(actor.id) and int(battle.budget.main)>0 and not combat_actions.has(actor.id):
    var aid: String=wanted[actor.id]
    for target in battle.units.values():
     if tactical.eligible(battle,actor,target,aid):
@@ -226,7 +226,7 @@ func test_known_authority() -> void:
  var id: String=state.party_ids[0];var r: Dictionary=state.mechanics.records[id]
  var raw := FileAccess.get_file_as_string(service.store._slot_path(slot))
  var builder := CharacterBuilderService.new();builder.store=service.store;builder.library=service.library
- var changed := r.choices.prepared_abilities.duplicate();changed.erase("sorcerer-crystal-reservoir")
+ var changed: Array=r.choices.prepared_abilities.duplicate();changed.erase("sorcerer-crystal-reservoir")
  var rejected := builder.operate(entry,slot,"builder_spells",1,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":changed,"preparations":{}})
  check(not rejected.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"real save authority rejects forgetting permanent spontaneous knowledge without touching bytes")
  var before := RulesJson.digest(r.runtime.resources)
