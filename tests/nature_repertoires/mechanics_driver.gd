@@ -221,15 +221,17 @@ func test_area_and_constraints() -> void:
   var a := source.definition("abilities",id);var actor := prepared(fixtures[a.casting_class],id)
   var engine := TacticalAuras.new(actor);var b := encounter(actor)
   b.units["bandit-bow"].record=fixtures.save_target.duplicate(true);b.units["bandit-bow"].record.character_id="bandit-bow"
-  b.units["bandit-bow"].position=[3,1];b.units.b.position=[2,2];b.units.c.position=[1,2]
+  b.units["bandit-bow"].position=[2,0];b.units.b.position=[2,2];b.units.c.position=[1,2]
   b=engine.seal(b)
+  for enemy in ["bandit-blade","bandit-bow"]:
+   check(engine.inside(b,b.units[enemy].position) and engine.line_clear(b,b.units["bandit-blade"].position,b.units[enemy].position),"area fixture uses clear legal enemy tiles "+enemy)
   var result := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":"bandit-blade"})
   check(result.ok,"area spell actual command "+id)
   if result.ok:
    for enemy in ["bandit-blade","bandit-bow"]:check(result.battle.units[enemy].record.runtime.hp<b.units[enemy].record.runtime.hp,"area reaches both living enemies "+id+enemy)
    check(result.battle.units.b.record==b.units.b.record,"enemy area never damages adjacent ally "+id)
    for pool in a.cost.resources:check(result.battle.units.a.record.runtime.resources[pool]==b.units.a.record.runtime.resources[pool]-1,"area pays once, not per target "+id)
-   var wall := b.duplicate(true);wall.units["bandit-blade"].position=[3,1];wall.units["bandit-bow"].position=[4,2];wall.board.blocked.append([2,1]);wall=engine.seal(wall)
+   var wall := b.duplicate(true);wall.units["bandit-blade"].position=[2,0];wall.units["bandit-bow"].position=[4,2];wall.board.blocked.append([2,1]);wall=engine.seal(wall)
    check(not engine.eligible(wall,wall.units.a,wall.units["bandit-blade"],id),"actual blocked line of sight rejected "+id)
  var known := prepared(fixtures.sorcerer,"sorcerer-crystal-reservoir")
  known.choices.spell_preparations={"sorcerer-crystal-reservoir":1}
