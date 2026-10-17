@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:
@@ -94,6 +94,7 @@ static func requirement_text(node: Dictionary,source: RulesRegistry) -> String:
  if op=="class_level":label+=" class level"
  if op=="casting":label+=" casting level"
  if op=="skill":label+=" ranks"
+ if op=="spell_tier":label="Permanent "+label.to_lower()+" spell tier"
  return label+(" ≥ "+str(int(node.min)) if node.has("min") else "")
 static func history_choices(step: Dictionary,source: RulesRegistry,class_level: int) -> Array[String]:
  var names: Array[String]=[]

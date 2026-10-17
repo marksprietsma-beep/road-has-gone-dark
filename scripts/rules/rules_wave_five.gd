@@ -2,7 +2,7 @@ class_name RulesWaveFive
 extends RefCounted
 ## v15 selected repertoire/channel adapters. Existing history, costs, effects and save owner remain authority.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")=="trhgd-character-v15"
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v15","trhgd-character-v16"]
 
 static func spell_selected(record: Dictionary,ability: Dictionary,source: RulesRegistry) -> bool:
  var id: String=str(ability.get("channel_spell",ability.get("id",""))) if enabled(source) else str(ability.get("id",""))

@@ -1,0 +1,182 @@
+{
+  "baseline": "trhgd-character-v15",
+  "candidate": "trhgd-character-v16",
+  "new_base_classes": 0,
+  "all_other_definitions_unchanged": true,
+  "changes": [
+    {
+      "path": "/classes/archmage/description",
+      "before": "Earned high arcana. Deliberately advance an existing arcane class, then select real warding or force mastery. Five prestige levels; no automatic assignment.",
+      "after": "Earned high arcana. Deliberately advance an existing arcane class, then select real warding or force mastery. Five prestige levels; no automatic assignment. Entry requires permanent access to an actual legal seventh-tier arcane spell, not nominal slot capacity or a temporary effect."
+    },
+    {
+      "path": "/classes/archmage/requirements/args",
+      "before": [
+        {
+          "op": "level",
+          "min": 13
+        },
+        {
+          "op": "skill",
+          "id": "arcana",
+          "min": 10
+        },
+        {
+          "op": "skill",
+          "id": "spellcraft",
+          "min": 10
+        },
+        {
+          "op": "feat",
+          "id": "greater-spell-focus"
+        },
+        {
+          "op": "any",
+          "args": [
+            {
+              "op": "resource",
+              "id": "wizard-slots-7",
+              "min": 1
+            },
+            {
+              "op": "resource",
+              "id": "sorcerer-slots-7",
+              "min": 1
+            },
+            {
+              "op": "resource",
+              "id": "beguiler-slots-7",
+              "min": 1
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "op": "level",
+          "min": 13
+        },
+        {
+          "op": "skill",
+          "id": "arcana",
+          "min": 10
+        },
+        {
+          "op": "skill",
+          "id": "spellcraft",
+          "min": 10
+        },
+        {
+          "op": "feat",
+          "id": "greater-spell-focus"
+        },
+        {
+          "op": "spell_tier",
+          "id": "arcane",
+          "min": 7
+        }
+      ]
+    },
+    {
+      "path": "/pack_id",
+      "before": "trhgd-character-v15",
+      "after": "trhgd-character-v16"
+    },
+    {
+      "path": "/provenance/revision",
+      "before": "game112-wave-five",
+      "after": "game126-character-completeness"
+    },
+    {
+      "path": "/rules/skill_approaches",
+      "before": null,
+      "after": [
+        {
+          "skill": "athletics",
+          "activities": [
+            "lost_supplies",
+            "abandoned_shelter"
+          ],
+          "min_ranks": 1,
+          "label": "Haul the recoverable stores",
+          "information": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "event": "quick",
+          "outcome": "recovered",
+          "provisions": 1,
+          "gain": 4,
+          "reveal": false,
+          "dc_adjustment": 2
+        },
+        {
+          "skill": "stealth",
+          "activities": [
+            "camp_access",
+            "salvage_dispute",
+            "road_passage"
+          ],
+          "min_ranks": 1,
+          "label": "Seek quiet access",
+          "information": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "event": "negotiate",
+          "outcome": "peaceful_access",
+          "provisions": 0,
+          "gain": 0,
+          "reveal": false,
+          "dc_adjustment": 2
+        },
+        {
+          "skill": "acrobatics",
+          "activities": [
+            "old_work",
+            "unusual_traces"
+          ],
+          "min_ranks": 1,
+          "label": "Make a quick survey",
+          "information": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "event": "quick",
+          "outcome": "investigated",
+          "provisions": 0,
+          "gain": 0,
+          "reveal": true,
+          "dc_adjustment": 2
+        },
+        {
+          "skill": "spellcraft",
+          "activities": [
+            "old_work",
+            "unusual_traces"
+          ],
+          "min_ranks": 1,
+          "label": "Assess an arcane interpretation",
+          "information": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "event": "inspect",
+          "outcome": "investigated",
+          "provisions": 0,
+          "gain": 0,
+          "reveal": true,
+          "dc_adjustment": 0
+        },
+        {
+          "skill": "animal-handling",
+          "activities": [
+            "unusual_traces"
+          ],
+          "min_ranks": 1,
+          "label": "Assess animal behaviour",
+          "information": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "event": "inspect",
+          "outcome": "investigated",
+          "provisions": 0,
+          "gain": 0,
+          "reveal": true,
+          "dc_adjustment": 0
+        }
+      ]
+    },
+    {
+      "path": "/rules_version",
+      "before": "15.0.0",
+      "after": "16.0.0"
+    }
+  ]
+}

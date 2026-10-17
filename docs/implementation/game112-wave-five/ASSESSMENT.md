@@ -1,3 +1,5 @@
+> Historical engineering assessment. The cohort is now merged and Windows-verified; see DELIVERY.md and CONTINUATION.md for final status. Pending statements below describe the original assessment, not current release blockers.
+
 # Wave Five — first coherent cohort
 
 Starting point: merged Wave Four dc7243bb34ab82791abeab52dbae9242b6676f81, final feature5509b7b. Preserve every v1–v14 content byte, existing saves and the frozen TacticalCombat source. Wave Four delivery is closed separately with actual main CI receipts; no new Wave Five changes are cleared by historical successes.

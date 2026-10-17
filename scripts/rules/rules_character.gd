@@ -82,7 +82,7 @@ func _replay(record: Dictionary) -> Dictionary:
   if cls.is_empty(): return RulesJson.result([RulesJson.issue("advancement.class",path,"Unknown class")])
   if i==0 and cls.get("class_kind")=="prestige":return RulesJson.result([RulesJson.issue("advancement.prestige_start",path,"Prestige paths require prior permanent class progression and an explicit advancement choice")])
   if int(classes.get(step.class_id,0))>=int(cls.max_level): return RulesJson.result([RulesJson.issue("advancement.class_cap",path,"Class level cap exceeded")])
-  var requirement := RulesExpressions.evaluate_requirements(cls.requirements,context)
+  var requirement := RulesCompleteness.entry_requirements(cls.requirements,context,record,registry)
   if not requirement.ok:
    for reason in requirement.errors: reason.path=path+"."+str(reason.path)
    return requirement
@@ -412,7 +412,7 @@ func available_advancement(record: Dictionary) -> Dictionary:
  for id in registry.ids("classes"):
   if registry.definition("classes",id).get("class_kind")=="companion":continue
   var definition := registry.definition("classes",id)
-  var result := RulesExpressions.evaluate_requirements(definition.requirements,entry_context)
+  var result := RulesCompleteness.entry_requirements(definition.requirements,entry_context,record,registry)
   if int(c.level)==0 and definition.get("class_kind")=="prestige":result=RulesJson.result([RulesJson.issue("advancement.prestige_start",id,"Prestige paths are earned advancement choices, not starting classes")])
   if int(derived.context.level)>=int(registry.rule("max_level")) or int(derived.context.classes.get(id,0))>=int(definition.max_level): result=RulesJson.result([RulesJson.issue("advancement.level_cap",id,"Progression limit reached")])
   options[id]=result

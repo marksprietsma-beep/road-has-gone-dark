@@ -378,7 +378,9 @@ func show_activity_choices(site: Dictionary) -> void:
   if choice.gain>0:effect+=" · recover up to %d provisions (maximum 4)"%choice.gain
   if state.has("adventure_cycles"):
    effect="Full objective: 10 XP each · one reward per report. Failed/partial/withdrawn: 0 XP. %d provision(s)."%int(choice.provisions)
-   if str(choice.id).begins_with("skill:"):effect+=" Skills assessed when these reports were prepared; one deterministic attempt, no retry for XP."
+   if choice.has("approach_description"):
+    effect="%d turn(s) · %d provision(s) upfront · success: 10 XP each, failure: 0. "%[int(ExpeditionRecords.EVENT_COSTS[choice.event]),int(choice.provisions)]+str(choice.approach_description)+" Skills fixed when reports were prepared; one attempt."
+   elif str(choice.id).begins_with("skill:"):effect+=" Skills assessed when these reports were prepared; one deterministic attempt, no retry for XP."
   button(key,str(choice.label),func():start("sandbox_fight") if choice.id=="fight" else start("sandbox_activity","",choice.id),effect)
   var observed: bool=not choice.complete and s.actions.any(func(action: Dictionary):return action.site_id==site.id and action.outcome==choice.outcome)
   action_buttons[key].disabled=thread!=null or observed or int(s.active.supplies)<maxi(int(choice.provisions),1 if choice.id=="fight" else 0)

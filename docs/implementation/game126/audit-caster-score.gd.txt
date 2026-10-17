@@ -1,0 +1,21 @@
+extends "res://tests/character_wave_four/mechanics_driver.gd"
+func run() -> void:
+ source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ var rows := {}
+ for ancestry in ["heritage-human","heritage-dwarf"]:
+  var record := kernel.create("spell-cap:"+ancestry,{"CHA":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"STR":8},ancestry)
+  for n in 20:
+   var choice: Dictionary=kernel.suggested_choice(record,"sorcerer").choice
+   if source.rule("attribute_increase_levels").has(n+1):choice.attribute_increase="CHA"
+   var step := kernel.preview_advancement(record,choice);check(step.ok,"legal deliberate CHA progression")
+   if not step.ok:get_tree().quit(1);return
+   record=step.candidate
+  record.choices.prepared_abilities=["sorcerer-tier9-tempest"]
+  var result := kernel.derive_character(record)
+  check(result.ok,"known high-tier selection record remains legal")
+  var requirements := RulesExpressions.evaluate_requirements(source.definition("abilities","sorcerer-tier9-tempest").requirements,result.context)
+  rows[ancestry]={"level":20,"CHA":result.snapshot.attributes.CHA,"slot9_capacity":result.snapshot.resource_capacities["sorcerer-slots-9"],"spell_requirements":requirements,"history":record.advancement_history,"development_fixture":true,"scope":"Actual owned-spell requirement and capacity. Not a tactical cast or earned level20 campaign."}
+ check(rows["heritage-human"].spell_requirements.ok and not rows["heritage-dwarf"].spell_requirements.ok,"inherited penalty can cap late-tier access with current array/increase policy")
+ FileAccess.open("/workspace/artifacts/game126/caster-cap-probe.json",FileAccess.WRITE).store_string(JSON.stringify({"source_commit":"83bc79af013a7a1ca6ec4469f49ad8275fc144fd","rules_ref":source.rules_ref(),"checks":checks,"failures":failures,"rows":rows},"  "))
+ print("CASTER CAP ",checks," failures ",failures," ",JSON.stringify({"human":rows["heritage-human"].CHA,"dwarf":rows["heritage-dwarf"].CHA}))
+ get_tree().quit(1 if failures else 0)

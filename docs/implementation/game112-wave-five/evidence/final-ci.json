@@ -1,0 +1,157 @@
+{
+  "feature_head": "193e702f681c95257afe6812144bb3dbc6ecfd6c",
+  "implementation_merge": "0db418283bf2f32668760b872d5908fb944b4270",
+  "runtime_matches_feature_tree": true,
+  "premerge_workflow": 38843879866,
+  "premerge_checks": [
+    {
+      "name": "opportunities (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843879866/job/116796651760"
+    },
+    {
+      "name": "review-packages",
+      "conclusion": "skipped",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843817999/job/116791413884"
+    },
+    {
+      "name": "wave-five-native (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843879866/job/116790514093"
+    },
+    {
+      "name": "native-restart (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843879866/job/116790513923"
+    },
+    {
+      "name": "wave-four-native (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843879866/job/116790513759"
+    },
+    {
+      "name": "party (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843818075/job/116789656892"
+    },
+    {
+      "name": "ui (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843818129/job/116789656844"
+    },
+    {
+      "name": "gameworld-smoke",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843817992/job/116789656613"
+    },
+    {
+      "name": "library (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843817999/job/116789656539"
+    },
+    {
+      "name": "rules (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843818026/job/116789656512"
+    },
+    {
+      "name": "profiles (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843817987/job/116789656495"
+    },
+    {
+      "name": "onboarding",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843818019/job/116789656483"
+    },
+    {
+      "name": "context (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843818003/job/116789656449"
+    },
+    {
+      "name": "enrichment (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38843817997/job/116789656431"
+    }
+  ],
+  "postmerge_runs": [
+    {
+      "id": 38852441170,
+      "name": "Verify GAME-83 Production UI and Native Distribution",
+      "path": ".github/workflows/verify-production-ui.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441170"
+    },
+    {
+      "id": 38852441244,
+      "name": "Production Sandbox Windows Review Build",
+      "path": ".github/workflows/first-adventure-review.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441244"
+    },
+    {
+      "id": 38852441162,
+      "name": "Verify Party and Production Expedition Native Distribution",
+      "path": ".github/workflows/verify-party-creation.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441162"
+    },
+    {
+      "id": 38852441063,
+      "name": "GAME-112 Character Catalogue Wave Two",
+      "path": ".github/workflows/verify-character-wave-two.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441063"
+    },
+    {
+      "id": 38852441096,
+      "name": "GAME-112 Character Catalogue Wave Five",
+      "path": ".github/workflows/verify-character-wave-five.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441096"
+    },
+    {
+      "id": 38852441164,
+      "name": "GAME-112 Character Catalogue Wave Four",
+      "path": ".github/workflows/verify-character-wave-four.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441164"
+    },
+    {
+      "id": 38852441260,
+      "name": "GAME-112 Character Catalogue Wave Three",
+      "path": ".github/workflows/verify-character-wave-three.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441260"
+    }
+  ],
+  "separate_docs_main_at_verification": "dd01fdf5a8f2f04634aa2aa29e99ed0c2b74e81b",
+  "separate_documentation_only_changes": [
+    "CONTEXT.md",
+    "docs/adr/0001-world-template-playthrough-boundary.md",
+    "docs/adr/0002-bounded-offscreen-world-simulation.md",
+    "docs/adr/0003-player-holdings-strongholds-and-settlement-management.md",
+    "docs/design/cross-system-design-checkpoint-2026-10-16.md"
+  ],
+  "native_build": {
+    "source_commit": "0db418283bf2f32668760b872d5908fb944b4270",
+    "run": 38852441096,
+    "artifact_id": 12026441509,
+    "artifact_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38852441096/artifacts/12026441509",
+    "archive": "game112-character-catalogue-wave-five-windows-x64.zip",
+    "sha256": "fffffaf0004f2bb94c7b1d96ace9b58879974b5afa54ee2a85c86fd26ca09651",
+    "entries": 7061,
+    "archive_integrity": true,
+    "game_and_helper_machine": "AMD64/0x8664",
+    "v15_bytes_exact": true,
+    "manifest_exact": true
+  }
+}

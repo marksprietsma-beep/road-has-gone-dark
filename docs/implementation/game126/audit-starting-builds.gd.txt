@@ -1,0 +1,24 @@
+extends "res://tests/character_wave_four/mechanics_driver.gd"
+## Supplemental read-only creator/equipment audit. All decisions use the existing kernel/builder.
+func run() -> void:
+ base=OS.get_environment("GAME126_STARTING_ROOT");DirAccess.make_dir_recursive_absolute(base)
+ source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ var rows := {}
+ for cls in kernel.starting_classes():
+  var record := build(cls,1)
+  if record.is_empty():continue
+  record.equipment=source.definition("classes",cls).recommended_equipment.duplicate()
+  var derived := kernel.derive_character(record)
+  check(derived.ok,"class recommended equipment legal "+cls)
+  if not derived.ok:continue
+  record.choices.spell_preparations=RulesCoreContent.starting_preparations(derived.snapshot,source)
+  record.choices.prepared_abilities=record.choices.spell_preparations.keys()
+  for id in RulesCoreContent.suggested_spells(derived.snapshot,source):
+   if source.definition("abilities",id).tags.has("spontaneous"):record.choices.prepared_abilities.append(id)
+  var context := {"mechanics":{"rules_ref":source.rules_ref(),"records":{}}}
+  var built := CharacterBuilderRecords.create("starting:"+cls,CharacterBuilderRecords.definition(record),context)
+  check(built.ok,"actual creator payload and class loadout "+cls+JSON.stringify(built.get("errors",[]))+str(built.get("error","")))
+  rows[cls]={"ok":built.ok,"equipment":record.equipment,"prepared_or_known":record.choices.prepared_abilities,"feat":record.advancement_history[0].feat_id,"attributes":record.base_attributes,"scope":"Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."}
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"source_commit":"7e202b1cd64f5bbaebdb5df1c8726572ebcef151","rules_ref":source.rules_ref(),"checks":checks,"failures":failures,"classes":rows},"  "))
+ print("STARTING BUILDS ",checks," failures ",failures)
+ get_tree().quit(1 if failures else 0)

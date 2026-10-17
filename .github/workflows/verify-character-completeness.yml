@@ -1,0 +1,57 @@
+name: GAME-126 Character Completeness
+concurrency:
+  group: game126-${{ github.ref }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-126-character-completeness, main]
+    paths: ['scripts/**', 'data/rules/**', 'data/sandbox/**', 'tools/**', 'tests/character_completeness/**', '.github/workflows/verify-character-completeness.yml']
+  workflow_dispatch:
+jobs:
+  windows-native:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen generator dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified engine and bundled helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only dependency examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Verified export templates
+        run: python tools/release/prepare-templates.py
+      - name: Exact pack and full research-ledger validation
+        run: python tools/character-content/validate.py
+      - name: Historical v1-v15 bytes and pins are unchanged
+        run: python tools/character-content/check-historical-packs.py
+      - name: Prepare production Godot class cache
+        shell: pwsh
+        run: '& $env:GODOT_BIN --headless --editor --path . --import'
+      - name: Native completeness, twelve earned careers and independent process restarts
+        env:
+          GAME126_ROOT: ${{ runner.temp }}/game126-native
+        run: python tests/character_completeness/verify-package.py
+      - name: Complete Windows game
+        uses: actions/upload-artifact@v4
+        with:
+          name: game126-complete-windows-x64
+          path: ${{ runner.temp }}/game126-native/distribution/*.zip*
+          retention-days: 90
+      - name: Exact native evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game126-native-evidence
+          path: |
+            ${{ runner.temp }}/game126-native/**/*.json
+            ${{ runner.temp }}/game126-native/**/*.log
+          retention-days: 90

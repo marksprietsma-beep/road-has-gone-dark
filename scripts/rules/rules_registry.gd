@@ -28,14 +28,14 @@ func load_data(input: Dictionary) -> Dictionary:
  var candidate: Dictionary = RulesJson.normalize(input)
  var found: Array = []
  var categories: Array=CATEGORIES.duplicate()
- if candidate.get("pack_id") in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:categories.append("creatures")
- if candidate.get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:categories.append("psychic_powers")
+ if candidate.get("pack_id") in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16"]:categories.append("creatures")
+ if candidate.get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16"]:categories.append("psychic_powers")
  var required := ["pack_id","schema_version","rules_version","engine_schema","provenance","rules","role_recommendations"]+categories
  for field in required:
   if not candidate.has(field): found.append(RulesJson.issue("pack.field",field,"Required pack field is absent"))
  for field in candidate:
   if not field in required: found.append(RulesJson.issue("pack.unknown",str(field),"Unknown pack field"))
- if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3],["trhgd-character-v12","12.0.0",3],["trhgd-character-v13","13.0.0",3],["trhgd-character-v14","14.0.0",3],["trhgd-character-v15","15.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
+ if [candidate.get("pack_id"),candidate.get("rules_version"),candidate.get("engine_schema")] not in [["trhgd-rules-v1","1.0.0",1],["trhgd-character-v2","2.0.0",1],["trhgd-character-v3","3.0.0",2],["trhgd-character-v4","4.0.0",3],["trhgd-character-v5","5.0.0",3],["trhgd-character-v6","6.0.0",3],["trhgd-character-v7","7.0.0",3],["trhgd-character-v8","8.0.0",3],["trhgd-character-v9","9.0.0",3],["trhgd-character-v10","10.0.0",3],["trhgd-character-v11","11.0.0",3],["trhgd-character-v12","12.0.0",3],["trhgd-character-v13","13.0.0",3],["trhgd-character-v14","14.0.0",3],["trhgd-character-v15","15.0.0",3],["trhgd-character-v16","16.0.0",3]] or candidate.get("schema_version")!=1: found.append(RulesJson.issue("pack.version","pack","Unsupported pack/schema/engine version"))
  if not candidate.get("provenance") is Dictionary or not candidate.provenance.get("origin") is String or not candidate.provenance.get("license") is String or candidate.provenance.get("origin","").is_empty() or candidate.provenance.get("license","").is_empty(): found.append(RulesJson.issue("pack.provenance","provenance","Original content provenance/licence is required"))
  var tables := {}
  var pattern := RegEx.new();pattern.compile("^[a-z][a-z0-9_-]{0,63}$")
@@ -55,12 +55,12 @@ func load_data(input: Dictionary) -> Dictionary:
     RulesPsychic.validate_power(tables[category][id],tables,found);continue
    if category=="creatures":
     RulesEntities.validate_creature(tables[category][id],tables,found);continue
-   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"],candidate.pack_id=="trhgd-character-v15")
+   _validate_definition(category,tables[category][id],tables,found,int(candidate.engine_schema),candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16"],candidate.pack_id in ["trhgd-character-v15","trhgd-character-v16"])
  if not found.is_empty(): return _fail(found)
  _validate_rules(candidate,tables,found)
  if not found.is_empty(): return _fail(found)
  _check_cycles(tables,found)
- if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15"]:RulesCatalogueValidation.validate(tables,found)
+ if candidate.pack_id in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16"]:RulesCatalogueValidation.validate(tables,found)
  if not found.is_empty(): return _fail(found)
  _pack=RulesJson.freeze(candidate);_tables=RulesJson.freeze(tables);content_hash=RulesJson.digest(candidate);errors=[]
  return {"ok":true,"rules_ref":rules_ref()}
@@ -86,7 +86,7 @@ static func _refs(node: Dictionary, tables: Dictionary, path: String, found: Arr
  var categories := {"class_level":"classes","casting_level":"classes","skill":"skills","skill_rank":"skills","feat":"feats","feature":"features","resource":"resources"}
  if categories.has(op): _reference(tables,categories[op],node.get("id"),path,found)
  if op=="stat" and not node.get("id") in STATS: found.append(RulesJson.issue("reference.stat",path,"Unknown derived statistic"))
- if op=="casting" and node.get("id") not in ["arcane","divine"]: found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))
+ if op in ["casting","spell_tier"] and node.get("id") not in ["arcane","divine"]: found.append(RulesJson.issue("reference.casting",path,"Unknown casting tradition"))
  if node.get("args") is Array:
   for i in node.args.size():
    if node.args[i] is Dictionary: _refs(node.args[i],tables,path+"."+str(i),found,requirement)
@@ -324,6 +324,9 @@ static func _validate_rules(pack: Dictionary,tables: Dictionary,found: Array) ->
  var rules: Variant=pack.get("rules")
  if not rules is Dictionary: found.append(RulesJson.issue("rules.schema","rules","Rules object required"));return
  var fields := ["max_level","base_hp","base_defence","base_stride","base_reach","shared_reaction","feat_levels","attribute_increase_levels","base_abilities","standard_array","engaged_ranged","critical","save_natural_overrides"]
+ if pack.pack_id=="trhgd-character-v16":
+  fields.append("skill_approaches")
+  RulesCompleteness.validate_approaches(rules.get("skill_approaches"),tables,found)
  for field in rules:
   if not field in fields: found.append(RulesJson.issue("rules.field",str(field),"Unknown root rule"))
  var critical: Variant=rules.get("critical")
