@@ -1,0 +1,41 @@
+{
+  "source_commit": "a5ae9072e3399c48959bcd8f38e32e004d14a0d8",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v16",
+    "schema_version": 1,
+    "rules_version": "16.0.0",
+    "engine_schema": 3,
+    "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7"
+  },
+  "archive": "game126-character-completeness-windows-x64.zip",
+  "sha256": "e7c2c1d329ae7e6e00ac00ef22e70625e04a5d389e4cb8f58f8d99e30834050f",
+  "archive_integrity": true,
+  "entries": 7061,
+  "game_and_helper_machine": "AMD64/0x8664",
+  "exact_manifest_and_content": true,
+  "production_launch": true,
+  "empty_path": true,
+  "separate_process_restart": true,
+  "source_helper_override": false,
+  "actual_adventurer_action_ids_verified": 12,
+  "level20_base_tracks": 32,
+  "prestige_full_cap_histories": 485,
+  "prestige_paths": 18,
+  "feat_selections": 82,
+  "heritage_births": 50,
+  "new_skill_outcomes": [
+    "skill:acrobatics",
+    "skill:animal-handling",
+    "skill:arcana",
+    "skill:athletics",
+    "skill:craft",
+    "skill:insight",
+    "skill:perception",
+    "skill:persuasion",
+    "skill:religion",
+    "skill:spellcraft",
+    "skill:stealth",
+    "skill:survival"
+  ],
+  "per_option_human_validation": false
+}

@@ -1,0 +1,612 @@
+{
+  "checks": 128,
+  "classes": {
+    "ardent": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 10,
+        "WIS": 15
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "barbarian": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "bard": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "bard-arcane-bolt",
+        "bard-enfeeble"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "beguiler": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 15,
+        "STR": 10,
+        "WIS": 12
+      },
+      "equipment": [
+        "staff",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "beguiler-beguiling-control-1",
+        "beguiler-beguiling-ward-1"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "binder": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 14,
+        "DEX": 13,
+        "INT": 8,
+        "STR": 12,
+        "WIS": 10
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "cleric": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 15
+      },
+      "equipment": [
+        "staff",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "cleric-bless",
+        "cleric-cure-wounds",
+        "cleric-radiance"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "crusader": {
+      "attributes": {
+        "CHA": 12,
+        "CON": 14,
+        "DEX": 13,
+        "INT": 8,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "divine-mind": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 10,
+        "WIS": 15
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "dragonfire-adept": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 15,
+        "DEX": 14,
+        "INT": 13,
+        "STR": 10,
+        "WIS": 12
+      },
+      "equipment": [
+        "staff",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "druid": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 15
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "druid-nature-cure",
+        "druid-summon-sentinel",
+        "druid-thorn-dart"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "duskblade": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 12,
+        "INT": 15,
+        "STR": 14,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "mail"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "duskblade-frost-brand",
+        "duskblade-runic-ward"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "erudite": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 15,
+        "STR": 10,
+        "WIS": 12
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "fighter": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "knight": {
+      "attributes": {
+        "CHA": 13,
+        "CON": 14,
+        "DEX": 10,
+        "INT": 8,
+        "STR": 15,
+        "WIS": 12
+      },
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "lurk": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 15,
+        "STR": 10,
+        "WIS": 12
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "marshal": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "monk": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "unarmed"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "paladin": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "psion": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 15,
+        "STR": 8,
+        "WIS": 12
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "psychic-warrior": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 14,
+        "DEX": 12,
+        "INT": 13,
+        "STR": 10,
+        "WIS": 15
+      },
+      "equipment": [
+        "shortblade",
+        "mail",
+        "shield"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "ranger": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 15
+      },
+      "equipment": [
+        "bow",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "rogue": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "scout": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 15,
+        "INT": 14,
+        "STR": 10,
+        "WIS": 12
+      },
+      "equipment": [
+        "bow",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "sorcerer": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "sorcerer-arcane-bolt",
+        "sorcerer-enfeeble"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "soulknife": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 15,
+        "INT": 10,
+        "STR": 14,
+        "WIS": 12
+      },
+      "equipment": [
+        "unarmed",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "spirit-shaman": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 10,
+        "WIS": 15
+      },
+      "equipment": [
+        "staff",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "spirit-shaman-listening-ward",
+        "spirit-shaman-spirit-rebuke-1"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "swashbuckler": {
+      "attributes": {
+        "CHA": 14,
+        "CON": 13,
+        "DEX": 15,
+        "INT": 8,
+        "STR": 12,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "swordsage": {
+      "attributes": {
+        "CHA": 12,
+        "CON": 14,
+        "DEX": 15,
+        "INT": 8,
+        "STR": 13,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "warblade": {
+      "attributes": {
+        "CHA": 8,
+        "CON": 14,
+        "DEX": 12,
+        "INT": 13,
+        "STR": 15,
+        "WIS": 10
+      },
+      "equipment": [
+        "shortblade",
+        "mail"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "warlock": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "equipment": [
+        "staff",
+        "leathers"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "wilder": {
+      "attributes": {
+        "CHA": 15,
+        "CON": 14,
+        "DEX": 13,
+        "INT": 8,
+        "STR": 12,
+        "WIS": 10
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    },
+    "wizard": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 15,
+        "STR": 8,
+        "WIS": 12
+      },
+      "equipment": [
+        "staff"
+      ],
+      "feat": "steady-study",
+      "ok": true,
+      "prepared_or_known": [
+        "wizard-mage-armour",
+        "wizard-arcane-bolt"
+      ],
+      "scope": "Lawful level1 Human, recommended gear and actual creator definition; not all ancestry/class/gear permutations or player acceptance."
+    }
+  },
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v16",
+    "rules_version": "16.0.0",
+    "schema_version": 1
+  },
+  "source_commit": "7e202b1cd64f5bbaebdb5df1c8726572ebcef151"
+}

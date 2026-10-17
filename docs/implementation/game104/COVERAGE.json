@@ -28950,15 +28950,15 @@
     "including_npc_total": 760
   },
   "current_delivery": {
-    "pack_id": "trhgd-character-v15",
+    "pack_id": "trhgd-character-v16",
     "rules_ref": {
-      "pack_id": "trhgd-character-v15",
+      "pack_id": "trhgd-character-v16",
       "schema_version": 1,
-      "rules_version": "15.0.0",
+      "rules_version": "16.0.0",
       "engine_schema": 3,
-      "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1"
+      "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7"
     },
-    "verified_source": "0db418283bf2f32668760b872d5908fb944b4270",
+    "verified_source": "a5ae9072e3399c48959bcd8f38e32e004d14a0d8",
     "base_tracks": 32,
     "base_level_cap": 20,
     "prestige_paths": 18,
@@ -28970,8 +28970,12 @@
     "scheduled_choice_groups": 228,
     "selectable_psychic_powers": 45,
     "creatures": 14,
-    "status": "Windows native validated; per-option human acceptance unverified",
-    "programme_complete": false
+    "status": "Windows native validated in scoped completeness harness; per-option human acceptance unverified",
+    "programme_complete": false,
+    "native_receipts": [
+      "docs/implementation/game126/evidence/native-distribution-proof.json",
+      "docs/implementation/game126/evidence/native-archive-audit.json"
+    ]
   },
   "wave_two": {
     "candidate_pack": "trhgd-character-v12",
@@ -29075,6 +29079,30 @@
       "creatures": 8,
       "status": "Windows/Linux source and native validated; bounded original adaptations; human playtest pending",
       "programme_complete": false
+    },
+    {
+      "pack_id": "trhgd-character-v15",
+      "rules_ref": {
+        "pack_id": "trhgd-character-v15",
+        "schema_version": 1,
+        "rules_version": "15.0.0",
+        "engine_schema": 3,
+        "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1"
+      },
+      "verified_source": "0db418283bf2f32668760b872d5908fb944b4270",
+      "base_tracks": 32,
+      "base_level_cap": 20,
+      "prestige_paths": 18,
+      "prestige_caps": "3,5 or10 by definition",
+      "ancestry_families": 37,
+      "heritage_records": 50,
+      "feats": 82,
+      "skills": 14,
+      "scheduled_choice_groups": 228,
+      "selectable_psychic_powers": 45,
+      "creatures": 14,
+      "status": "Windows native validated; per-option human acceptance unverified",
+      "programme_complete": false
     }
   ],
   "wave_three": {
@@ -29169,10 +29197,18 @@
     "candidate_pack": "trhgd-character-v16",
     "issue": 116,
     "pr": 117,
-    "status": "source validation complete in scoped witnesses; current-head Windows native verification pending",
+    "status": "Windows native verified; bounded competence/skill repair complete; broader character completeness remains open",
     "matrix": "docs/implementation/game126/current/MATRIX.json",
     "no_new_base_classes": true,
     "all_760_occurrences_preserved": true,
-    "programme_complete": false
+    "programme_complete": false,
+    "verified_source": "a5ae9072e3399c48959bcd8f38e32e004d14a0d8",
+    "native_workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/38990886978",
+    "earned_characters": 12,
+    "earned_level": 7,
+    "earned_xp_each": 360,
+    "level20_development_tracks": 32,
+    "full_cap_prestige_fixture_routes": 485,
+    "next_priority": "GAME-128 / GitHub#118"
   }
 }

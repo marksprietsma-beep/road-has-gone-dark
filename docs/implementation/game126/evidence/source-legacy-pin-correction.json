@@ -1,0 +1,22 @@
+{
+  "checks": 485,
+  "earned_xp": false,
+  "errors": [],
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "65983a234663928122e7b085af01e4d8246e1b95df67612d7236dc39e14452e1",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v15",
+    "rules_version": "15.0.0",
+    "schema_version": 1
+  },
+  "scope": "Focused source replay at correction candidate:485 unchanged v15 fixture records and exact snapshots. Separate from native release acceptance.",
+  "correction_commit": "a5ae9072e3399c48959bcd8f38e32e004d14a0d8",
+  "fixture_sha256": "b0225cff06c8b8d07e015948ae5c1e40ce9c55a79bf8f932cc1041fcf9d3e5b5",
+  "raw_json_pin_equal": false,
+  "normalized_pin_equal": true,
+  "fixture_boundary_source": {
+    "checks": 9,
+    "failures": 0
+  }
+}

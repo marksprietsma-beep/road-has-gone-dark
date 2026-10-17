@@ -1,0 +1,2058 @@
+{
+  "scope": "Actual saved ordinary-opportunity XP and builder advancement receipts. Tactical action fixtures use these earned records; do not award campaign XP or represent battle consequences.",
+  "rows": [
+    {
+      "cohort": 0,
+      "character_id": "aced59ca2946b33e0868cf9742550b78:adventurer:1",
+      "name": "Arin0",
+      "ancestry": "Human Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "dodge",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {
+            "fighter-choice-1": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "mobility",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "STR",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "animal-handling": 2.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 6.0,
+          "skill_allocations": {
+            "animal-handling": 2.0,
+            "craft": 1.0
+          },
+          "specialisations": {
+            "fighter-choice-6": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duelist",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "stealth": 5.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Fighter": 6,
+        "Duelist": 1
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "eefc7d40f888bf6926b59342a280f1e744f7d725c7c3e3575f147567d8435c98"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "80df95fcf5b7b000efcfd63695238fe138a311fff247acf34756a4b6f615ad96"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "078c074d469bab7ebf2397a81f39e7eda35032da71e35d16b85ee19c103317c4"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "a72954ee306498b3648374f05a44e29477b540b6115d64f026b75255bc675736"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "b214e2ffe07a594c5ca39762609aa64edf0ad4b1efb46525e0cbf45a247d64ef"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "bf1f49c2dde605d06ddf9063a3b36374a122417df2f397c3689141f02e1dec58"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "fighter-blade-1",
+      "state_hash": "a8fa04e39fbf7779e8bf995afdf24bb124e5cd084d488ab0d83dbe74c002e6ab",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 0,
+      "character_id": "aced59ca2946b33e0868cf9742550b78:adventurer:2",
+      "name": "Lysa0",
+      "ancestry": "Catfolk",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "rogue",
+          "feat_id": "dodge",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "rogue-choice-1": "debilitating"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "rogue",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "rogue",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "rogue",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "rogue",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "shadowdancer",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "shadowdancer",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Rogue": 5,
+        "Shadowdancer": 2
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "81ea8336c799b18da38660ab0fec852502e6041e82045b713209c49f09269785"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "e2a64d7baa4149fb49a9cc54c5496deab88224d6f7498dbb229791486be7fd62"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "9fd7051933626fa978149140ac0fb43bf3d4a8f6c61b64af58b0cb1f24990bcc"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "0765d61759460cc6de6afa858e051486016cb084bf31ac7739941d357ed3b0cb"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "5fda16d372795e81a19a17b5cd6f1c75c550d6d71a11301794bb2d59e2714ff9"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "116284ceb69b69ac276eb05acd5064d33437627ac9f3cb11d67dc0ac83e82331"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "shadowdancer-technique-1",
+      "state_hash": "a8fa04e39fbf7779e8bf995afdf24bb124e5cd084d488ab0d83dbe74c002e6ab",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 0,
+      "character_id": "aced59ca2946b33e0868cf9742550b78:adventurer:3",
+      "name": "Doran0",
+      "ancestry": "Dwarf Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "STR",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {
+            "wizard-choice-6": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Wizard": 7
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "b85a7aebf095fed32e793b2dbef2bd87a1727e08a6a6c53835eb6ea582406179"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "19cf0254946e15358c566a6e42cdf9b6272fb2a1907bca5fc0e38590b4c6705a"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "4f8092219c682ebcc53274b33cf000899ba59aba4639c2ee905400a1f7b888f5"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "35c797fbdeea627dc367e7974908685dba7e2d27154bf72ffce965fccb811d1b"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "aee3208eeadc71d55d843c96623f499cb7747a0d656248b4e178ea3b6f50504e"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "2ead3ef5174028f9fd94c516241c2aaaed65713808d9610752913ce058576d60"
+        }
+      ],
+      "known_or_prepared": [
+        "wizard-mage-armour",
+        "wizard-cleansing-ward",
+        "wizard-anchoring-ward",
+        "wizard-call-ancestor-sentinel",
+        "wizard-arcane-bolt",
+        "wizard-fracture-concentration",
+        "wizard-haste-spell",
+        "wizard-scorching-ray",
+        "wizard-lightning"
+      ],
+      "tactical_action": "scholar-ward",
+      "state_hash": "a8fa04e39fbf7779e8bf995afdf24bb124e5cd084d488ab0d83dbe74c002e6ab",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 1,
+      "character_id": "15de486a168fd11eaf2e2d770b7f501b:adventurer:1",
+      "name": "Arin1",
+      "ancestry": "Dwarf Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cleric",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "cleric-choice-1": "healing"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cleric",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cleric",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "CON",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "craft": 4.0
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 3.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 3.0,
+            "craft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "mystic-theurge",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 5.0
+          },
+          "specialisations": {
+            "mystic-theurge-arcane": "wizard",
+            "mystic-theurge-divine": "cleric"
+          }
+        }
+      ],
+      "career": {
+        "Cleric": 3,
+        "Wizard": 3,
+        "Mystic Theurge": 1
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "0a31ef1a407b49fac53398880a5ee819c6a86a9996ac86a4f70c1d7422c62672"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "c695133ad17df3bef94a51eaa2b45d19433e7d9749c659627ac3440f9c377f7d"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "87cb7053bdd45d9040f4079800fd50b54a5889e54ba15d6d2366bc6c12a166a0"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "2fb397b2fcc396a94d30f6af0ae30304d61d0ea9ec63c8b7692f55dc58f99f25"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "8a5fe14e4462c08236bce1bd960288e460d61dc61cfaec3eaa103431ce596e1e"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "db138105401193845ccb5fce310e5a2b1ac704764f0ac499597646bb40f07ccd"
+        }
+      ],
+      "known_or_prepared": [
+        "cleric-bless",
+        "cleric-cleansing-ward",
+        "wizard-mage-armour",
+        "wizard-cleansing-ward",
+        "cleric-cure-wounds",
+        "cleric-radiance",
+        "cleric-summon-sentinel",
+        "cleric-fracture-concentration",
+        "wizard-arcane-bolt",
+        "wizard-fracture-concentration",
+        "wizard-haste-spell"
+      ],
+      "tactical_action": "channel-healing",
+      "state_hash": "374069209cb46232663448bf319fd5c2f5e742efb4fbd982c46055ffa1b8dd78",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 1,
+      "character_id": "15de486a168fd11eaf2e2d770b7f501b:adventurer:2",
+      "name": "Lysa1",
+      "ancestry": "Elf Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "druid",
+          "feat_id": "beast-stewardship",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "druid-choice-1": "growth",
+            "druid-companion": "wolf"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "druid",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "druid",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "druid",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "druid",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "arcana": 5.0
+          },
+          "specialisations": {
+            "beast-steward-training": "swift"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "arcana": 2.0,
+            "perception": 2.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Druid": 5,
+        "Beast Steward": 2
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "a9030d117dca94af0393fb9512d3d51229106beddc576b562cd2d0c554369355"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "07fec0fed661ca84ccfb20dd2fc63837436aa23fc99c27d69dcd86f88a51747c"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "178755af3879006a2569f8035d48dae0e90eb906cd4d5c663714a083061c865d"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "c4c7f5ffd65009eb729251489e12917e93f57c277e235e1f93660113552d8348"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "d5284eb0a9c4af00da3d364d098ccdbdff9b29e20dccf5c1dc86f0fdb368b167"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "48bbff732d5a25a6949df525026940b5a88d6650f948f56f40a5c73aad827c5e"
+        }
+      ],
+      "known_or_prepared": [
+        "druid-nature-cure",
+        "druid-barkskin-spell",
+        "druid-anchoring-ward",
+        "druid-summon-sentinel",
+        "druid-thorn-dart",
+        "druid-storm-bolt"
+      ],
+      "tactical_action": "druid-growth-1",
+      "state_hash": "374069209cb46232663448bf319fd5c2f5e742efb4fbd982c46055ffa1b8dd78",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 1,
+      "character_id": "15de486a168fd11eaf2e2d770b7f501b:adventurer:3",
+      "name": "Doran1",
+      "ancestry": "Halfling Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "bard-choice-1": "dirge"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "performance": 1.0,
+            "persuasion": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "inspiring-performance",
+          "level": 5.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "spellcraft": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "bard",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "persuasion": 1.0,
+            "spellcraft": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "bard-choice-6": "dirge"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "war-chanter",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "acrobatics": 4,
+            "insight": 1,
+            "perception": 1,
+            "persuasion": 1
+          },
+          "specialisations": {
+            "chorus-doctrine": "courage"
+          }
+        }
+      ],
+      "career": {
+        "Bard": 6,
+        "War Chanter": 1
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "0024215c958c02149762b45fd829952cb6e0999222e0c417aed31456cd6f31a7"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "4bd7d6080eaab48d346b8bb4ccd9580d2ce443844e79fb1aed3574c2e769f7ff"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "01970ea8ecb4768e0538acd585728bef54b6b7712c00b5140d14972b794b2338"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "950213946595eac9d81e66185f416984f434c507f67b2cb9462fc047f717f4c8"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "1297921618c602e2ace319a476228eeb499819f093bf79c56504758ea7ec5060"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "1e5f5d5764c302557cf9e9cdc344a645f85d3b3cc4e2f5f99874b7d357257e09"
+        }
+      ],
+      "known_or_prepared": [
+        "bard-arcane-bolt",
+        "bard-enfeeble",
+        "bard-mage-armour",
+        "bard-cleansing-ward",
+        "bard-fracture-concentration"
+      ],
+      "tactical_action": "bard-cleansing-ward",
+      "state_hash": "374069209cb46232663448bf319fd5c2f5e742efb4fbd982c46055ffa1b8dd78",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 2,
+      "character_id": "d4596a3d3ccf8f24d6f91e21ff5c115b:adventurer:1",
+      "name": "Arin2",
+      "ancestry": "Xeph",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "monk-choice-1": "iron"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 6.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "monk-choice-6": "iron"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "monk",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Monk": 7
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "7924df6873b79d7632adf62e5282b65889109691b9a9156ccf6356543a13fc44"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "19822fdf99739028e2e5dcffc00ca9cfc91b0ffb06eb27cd5bc7bb93a0007d67"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "824d62a301cbba55896696c4cf8a068d8a79eae54d5cc8c79a1d1ea6a2d044cb"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "0fb8dc1133cb8860eb86a59ac7c1469a6120a609a4369bb6bbd008cdce1f8360"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "20b556e9fe560606dd4ad9298ee1c382a844bfafc47fae389c251c5e98545a7a"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "41a5d34a835e86e2bc2c5fa4e65b4dc2e1c5a26bbc1aff7cc32a3afde1a34fb5"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "ki-step",
+      "state_hash": "4cb5d104b2b75eedcf8af7fe917c6b79e983c6f87599d0da4e4ff2dffc9fec50",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 2,
+      "character_id": "d4596a3d3ccf8f24d6f91e21ff5c115b:adventurer:2",
+      "name": "Lysa2",
+      "ancestry": "Human Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "arcane-strike",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "duskblade-rune-1": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 2.0
+          },
+          "specialisations": {
+            "duskblade-rune-5": "sentinel"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "duskblade",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 2.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "abjurant-champion",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 2.0
+          },
+          "specialisations": {
+            "abjurant-casting": "duskblade",
+            "abjurant-doctrine-1": "aegis"
+          }
+        }
+      ],
+      "career": {
+        "Duskblade": 6,
+        "Abjurant Champion": 1
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "fae78ad5be5cb8635e06f3bf86ba382a4bc803d237d9b1668c23fa4638814c10"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "dd45de76a353e1480e535ad99ca7e3765a5682e72b297f2590e2775f58416a08"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "8b5f4df11bc1fbd6b373edafc9d6abde9a19e2df73aa8c89dcc4e6a5c8272761"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "0d2f08181d6341390b70b9197f367d491afdda4a390eb88a82093c4dd21f3240"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "2e9d29e62f864318a7732c6debe6c623b2d8cbeb2f88bf2c4e752f64ee6d60cc"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "9d105164eed4f58b89bd1163a73ef333d2f4559b12c1187450f1cace112608d6"
+        }
+      ],
+      "known_or_prepared": [
+        "duskblade-frost-brand",
+        "duskblade-runic-ward",
+        "duskblade-searing-grasp",
+        "duskblade-binding-edge",
+        "duskblade-thunderbrand"
+      ],
+      "tactical_action": "abjurant-aegis-1",
+      "state_hash": "4cb5d104b2b75eedcf8af7fe917c6b79e983c6f87599d0da4e4ff2dffc9fec50",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 2,
+      "character_id": "d4596a3d3ccf8f24d6f91e21ff5c115b:adventurer:3",
+      "name": "Doran2",
+      "ancestry": "Wildborn",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "spirit-reserve",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "spirit-guide-1": "hearth"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "insight": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "spirit-guide-5": "hearth"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "spirit-shaman",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "grove-warden",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "arcana": 5
+          },
+          "specialisations": {
+            "grove-casting": "spirit-shaman"
+          }
+        }
+      ],
+      "career": {
+        "Spirit Shaman": 6,
+        "Grove Warden": 1
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "6cfb7daa00c8897491d427bb1041d144e22dcbdad65a1a94d049a2b88f6c1eab"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "446e2c786b9d6fcac001fec708bc5c1e65a09e644a13fbf16fc620ba7210c189"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "1a3a270ed375d61f116db058c63a68acd97c96d683d99546d310fb80d94bc6b9"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "f8b27e42e2161270a24b446f954690d7268125d3f9dc17a8edbf7ed49ea25726"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "21e4df0c67ec60e52be22c4905fcf79e1790791d016c4d76b8a83250de07694b"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "4b58f0852088a4dc21a0b0b5e2578024ae26c6b9f7d797e2275551b7dd2ecad0"
+        }
+      ],
+      "known_or_prepared": [
+        "spirit-shaman-listening-ward",
+        "spirit-shaman-spirit-rebuke-1",
+        "spirit-shaman-spirit-refuge-1",
+        "spirit-shaman-spirit-rebuke-2",
+        "spirit-shaman-call-ancestor-sentinel"
+      ],
+      "tactical_action": "grove-protection-1",
+      "state_hash": "4cb5d104b2b75eedcf8af7fe917c6b79e983c6f87599d0da4e4ff2dffc9fec50",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 3,
+      "character_id": "c7a941bb6f7405df1cc640d977bab86c:adventurer:1",
+      "name": "Arin3",
+      "ancestry": "Elan",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-discipline": "assault",
+            "psion-power-1": "power-kinetic-bolt",
+            "psion-second-power": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-power-2": "power-thought-thrust"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 2.0,
+            "insight": 1.0
+          },
+          "specialisations": {
+            "psion-power-4": "power-body-renewal"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "craft": 3.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "pyrokineticist",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "athletics": 1.0,
+            "stealth": 6.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "pyrokineticist",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "animal-handling": 2.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Psion": 5,
+        "Pyrokineticist": 2
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "56835123edc12fd001690be125479e08ff427771902d45d406d6f7203b8db2f8"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "27f48286d504b618457116410f8608167bd675b68bd815800b1177081b92c97a"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "03a1635ad423fafc27b24f07a63b34f71d8ba4ca678c235579719c558d0876cc"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "4983379000bb3309d32bc922d734d66fb3204e7b099346585c2262c0483d4a58"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "50254deee70ff23ad3ee69d0b7bc1348a5566d60375924d0ae57d9647be4fcbf"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "0342cf26089a6b3fd46e9c73aa03f356a8ac0a7f4d1204552d416aebdf2e8de4"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "elan-inheritance-action",
+      "state_hash": "aa6d3391d5e920c42398daa528daee498efd2c66135feb9f48d8df8e6ebe2d68",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 3,
+      "character_id": "c7a941bb6f7405df1cc640d977bab86c:adventurer:2",
+      "name": "Lysa3",
+      "ancestry": "Tiefling Standard",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {
+            "warlock-discipline": "assault"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "warlock",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "persuasion": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Warlock": 7
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "622bfbdd1a9fa0aceb2902c1d42b98eab4e58457e72bc1fea8d0f18d9cb87636"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "35c85377fb033b6a7ed1c322ef8d7eec8327b8bbd9562cb87f191fcd44b99650"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "d2568f33d26fe588490e9d4ffe66de59da3095a67da8b9fee4029bb1c7bcc604"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "3b6a6763ce8f00a221f49c5c9ddecce06e5930e7453cafdd2e7d4d496f8092c4"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "893b3cf7784928f23324b3ea190c7c9eff148caf09a5d55099bb09bf05af2bb0"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "568dc79f98b03eb65ce07955346ce444766f5a05d5b39e40ba5df4395b19826c"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "warlock-invocation-assault",
+      "state_hash": "aa6d3391d5e920c42398daa528daee498efd2c66135feb9f48d8df8e6ebe2d68",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    },
+    {
+      "cohort": 3,
+      "character_id": "c7a941bb6f7405df1cc640d977bab86c:adventurer:3",
+      "name": "Doran3",
+      "ancestry": "Ratfolk",
+      "class_history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "lurk",
+          "feat_id": "dodge",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "lurk-power-1": "power-kinetic-bolt"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "lurk",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "lurk-power-2": "power-thought-thrust"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "lurk",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "DEX",
+          "bonus_feats": [],
+          "class_id": "lurk",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {
+            "lurk-power-4": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "lurk",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "shadowdancer",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "shadowdancer",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 1,
+            "insight": 1
+          },
+          "specialisations": {}
+        }
+      ],
+      "career": {
+        "Lurk": 5,
+        "Shadowdancer": 2
+      },
+      "earned_xp": 360,
+      "earned_advancement_receipts": [
+        {
+          "level": 2,
+          "xp": 10,
+          "choice_sha": "b39ae965f759146e84db449c152d61ac18e939ce96b47a9397eac7dd2642a5fe"
+        },
+        {
+          "level": 3,
+          "xp": 40,
+          "choice_sha": "c527b53f3b6b60f974045a37ba61d211de2d648e1d177bade1e763fb709fb82b"
+        },
+        {
+          "level": 4,
+          "xp": 90,
+          "choice_sha": "5f55a6a5f9261ddc2daf31b1308af0c436622354e2d69d4554ea7f4c634bba99"
+        },
+        {
+          "level": 5,
+          "xp": 160,
+          "choice_sha": "b7b8131d1fb22b48da214fb9437db11819a394ba2421696393d4f528ce9382ca"
+        },
+        {
+          "level": 6,
+          "xp": 250,
+          "choice_sha": "25dedd334acc2745685599535d8ab08e4c9cbc33dfb720220398b75d82bb7530"
+        },
+        {
+          "level": 7,
+          "xp": 360,
+          "choice_sha": "2e288a5abe734edcf3a8f88161ffc3da7d6d59b8600fe24855b937e962ee269f"
+        }
+      ],
+      "known_or_prepared": [],
+      "tactical_action": "lurk-focus-4",
+      "state_hash": "aa6d3391d5e920c42398daa528daee498efd2c66135feb9f48d8df8e6ebe2d68",
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1.0
+      },
+      "source_not_native": true,
+      "player_validated": false
+    }
+  ]
+}

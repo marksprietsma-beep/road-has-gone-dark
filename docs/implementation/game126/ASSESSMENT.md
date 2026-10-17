@@ -29,3 +29,11 @@ The authoritative task is TASK.md, under GAME-123 (GitHub milestone mirror #101)
 - OpportunityCycles uses a pinned family-to-skill map and saved character profiles. Source inspection finds only seven skills in that map. The other seven require consumer/effect audit, not an automatic declaration of functionality.
 
 No repair option has been selected or reported complete at this checkpoint. Detailed reproducible findings and the selected improvement follow after the source/kernel audit.
+
+## Recovery assessment (2026-10-17)
+
+The resume brief correctly prioritises the single native blocker and completion rather than new systems. Its suspected missing fixture pin is disproved: the committed485-history fixture already has the exact v15 pin. The actual defect is strict raw Godot Dictionary equality across JSON numeric types, fixed only at the QA ingestion boundary using the existing canonical integer normalization. Exact per-history hashes, complete key sets and historical source bytes remain mandatory.
+
+The current report previously omitted the witness arguments while native release acceptance was pending; its0/20 rows indicated missing attached evidence, not a regression from the v15 baseline. Matching final-hash v16 class/option/prestige witnesses now regenerate those rows. Final native release acceptance passed independently at a5ae907 (run38990886978). Legal20-level fixtures never stand in for an interesting20-level career or earned20th level.
+
+The next authorised development stage is GAME-128: richer executable repertoires for existing classes, tracked in existing GitHub#118. Do not implement it in117. GAME-123/#101 and the full character programme/#82 remain open. No callable Linear tools are available, so GitHub mirrors carry verified status; direct Linear reconciliation is an outstanding tracking limitation.
