@@ -15,9 +15,9 @@ func spell_selection(record: Dictionary) -> Dictionary:
   selected.spells.append(aid);selected.preparations[aid]=1
  return selected
 func test_real_combat() -> void:
- # The final home-return preceded the earned level7 choice. Newly unlocked
- # slots start empty; take a genuine new expedition and return/rest, never
- # grant resources from the selector or fixture code.
+ # Exercise an eligible expedition return/rest without awarding XP.
+ # New resource pools initialise under existing advancement policy; selecting
+ # preparations must never replenish spent shared slots.
  var xp_before: int=CharacterBuilderRecords.xp(state,state.party_ids[0])
  if cycle().results.size()==4:action("cycle_seek")
  travel(0);action("cycle_return")

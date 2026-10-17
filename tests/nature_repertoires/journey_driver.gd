@@ -169,9 +169,9 @@ func promote(index: int) -> void:
  if preview.ok:action_builder("builder_advance",index+1,{"character_id":id,"choice":choice,"candidate_hash":preview.candidate_hash})
  prepare(index)
 func test_real_combat() -> void:
- # The final home-return preceded the earned level8 choice. Newly unlocked
- # slots start empty; take a genuine new expedition and return/rest, never
- # grant resources from the selector or fixture code.
+ # Use a real unresolved expedition and return/rest without awarding XP.
+ # Newly earned pools initialise under existing advancement policy; selecting
+ # spells is separate and must never replenish a spent shared slot.
  var xp_before: int=CharacterBuilderRecords.xp(state,state.party_ids[0])
  if cycle().results.size()==4:action("cycle_seek")
  var unfinished := -1
@@ -235,12 +235,31 @@ func test_failed_check(options: Array) -> void:
 
 func test_known_authority() -> void:
  var id: String=state.party_ids[0];var r: Dictionary=state.mechanics.records[id]
- check(int(r.runtime.resources["sorcerer-slots-4"])==0,"newly earned Sorcerer tier4 starts empty before real rest")
+ var pool := "sorcerer-slots-4"
+ var maximum: int=int(kernel.derive_character(r).snapshot.resource_capacities[pool])
+ check(int(r.runtime.resources[pool])==maximum,"existing earned advancement initialises the newly owned pool at capacity")
  var raw := FileAccess.get_file_as_string(service.store._slot_path(slot))
  var builder := CharacterBuilderService.new();builder.store=service.store;builder.library=service.library
  var changed: Array=r.choices.prepared_abilities.duplicate();changed.erase("sorcerer-crystal-reservoir")
  var rejected := builder.operate(entry,slot,"builder_spells",1,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":changed,"preparations":{}})
  check(not rejected.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"real save authority rejects forgetting permanent spontaneous knowledge without touching bytes")
- var before := RulesJson.digest(r.runtime.resources)
- action_builder("builder_spells",1,{"character_id":id,"spells":r.choices.prepared_abilities,"preparations":{}})
- check(RulesJson.digest(state.mechanics.records[id].runtime.resources)==before,"same known-spell save never refills shared spontaneous slots")
+ # Explicit backend fixture, not a claim that production permits casting at home.
+ # RulesEffects spends the real cost; the existing trusted runtime transition
+ # and sole campaign writer construct an isolated save for the no-refill test.
+ var spent := RulesEffects.new(source).use_ability(r,r,"sorcerer-crystal-reservoir",{"main":1,"move":1,"reaction":1},RulesRng.initial("known-resource-fixture"))
+ check(spent.ok,"backend fixture uses the real spell cost")
+ if not spent.ok:return
+ check(int(spent.actor.runtime.resources[pool])==maximum-1,"fixture actually owns one spent tier4 slot")
+ var transition := RulesRecords.preview_runtime(state,id,spent.actor.runtime)
+ check(transition.ok,"fixture uses existing trusted runtime authority")
+ if not transition.ok:return
+ var fork := GamePlaythroughStore.new();fork.save_root=base.path_join("known-spell-fixture")
+ check(fork.save_new(slot,transition.candidate,entry.world).ok,"backend fixture uses the sole campaign save writer")
+ var fixture_builder := CharacterBuilderService.new();fixture_builder.store=fork;fixture_builder.library=service.library
+ var result := fixture_builder.operate(entry,slot,"builder_spells",1,{"before_hash":RulesJson.digest(transition.candidate),"character_id":id,"spells":r.choices.prepared_abilities,"preparations":{}})
+ check(result.ok,"save known choices on a genuinely depleted backend fixture")
+ if not result.ok:return
+ check(RulesJson.digest(result.state.mechanics.records[id].runtime.resources)==RulesJson.digest(spent.actor.runtime.resources),"known-spell selection cannot refill any spent resource")
+ check(CharacterBuilderRecords.xp(result.state,id)==490,"backend fixture grants no XP")
+ check(FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"backend fixture leaves original earned campaign byte-identical")
+ FileAccess.open(base.path_join("known-spell-fixture-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"development_fixture":true,"rules_ref":source.rules_ref(),"xp_injected":false,"earned_source_xp":490,"spent_before":spent.actor.runtime.resources[pool],"spent_after":result.state.mechanics.records[id].runtime.resources[pool],"primary_campaign_unchanged":true,"scope":"Isolated backend no-refill fixture using real RulesEffects cost and the existing runtime/save authority; not a claimed production out-of-combat casting action."}))
