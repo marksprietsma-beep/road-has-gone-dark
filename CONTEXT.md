@@ -126,6 +126,14 @@ _Avoid_: Biome-only monster spawn list, anything-spawns-anywhere probability
 An intelligent, socially capable population of persons, including nonhuman and historically monster-labelled peoples, whose members may have distinct cultures, communities, settlements, occupations, beliefs, personal histories and political affiliations. Shared ancestry or species-native abilities do not prescribe uniform morality, culture or hostility.
 _Avoid_: Default enemy species, uniform ancestry-based culture, cosmetic humanoid reskin
 
+**Creature Visual Identity**:
+A consistent, recognisable gameplay representation of a species' actual anatomy, scale, body plan, colours or materials, equipment compatibility and characteristic movement across relevant views, using traceable modular or original art when feasible.
+_Avoid_: Human silhouette recoloured and renamed as a spider or troll, misleading gear appearance
+
+**Combat Telegraph**:
+An accurate, timely visual or audiovisual cue communicating a relevant attack, special ability, threat area, status or impending environmental action in an accessible way, without revealing hidden information or falsely depicting an unimplemented mechanic.
+_Avoid_: Invisible lethal attacks, cosmetic effects disconnected from combat rules
+
 **Creature Species**:
 A mechanically distinct animal, monster, supernatural being or other non-player creature kind, defined by its intrinsic body, senses, movement, natural attacks, protections, weaknesses and capabilities rather than by a human combat-template reskin.
 _Avoid_: Encounter role, cosmetic skin, humanoid class name
