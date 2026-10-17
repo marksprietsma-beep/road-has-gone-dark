@@ -7,6 +7,13 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
  var result := super.command(source,input)
  return fail(_channel_error) if not _channel_error.is_empty() else result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
+ if registry.rules_ref().get("pack_id")=="trhgd-character-v17":
+  var definition := registry.definition("abilities",ability)
+  if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
+  # Recovery can reach a downed campaign character, never an expired summon or
+  # a slain enemy. Turn order, initiative and current action budgets stay intact.
+  if definition.get("tags",[]).has("recover_downed") and not alive(t):
+   return occupant(b,t.position).is_empty() and t.team==u.team and not t.has("entity") and definition.targeting.kind=="ally" and distance(u.position,t.position)<=int(definition.targeting.range) and line_clear(b,u.position,t.position)
  if RulesWaveFive.enabled(registry) and registry.definition("abilities",ability).has("channel_spell") and not RulesWaveFive.melee_weapon(u.record,active_weapon(u),registry):return false
  return super.eligible(b,u,t,ability)
 func seal(b: Dictionary) -> Dictionary:

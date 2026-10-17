@@ -1,0 +1,7 @@
+Improve the existing Wizard/Cleric tier4–7 repertoires with ten original executable spells in immutable v17. Wizard gains gravitic control, hostile ward removal, party concealment, spell suppression and split-element damage; Cleric gains movement protection, sustained martial support, cleansing, elemental protection and downed-ally recovery. Actual prerequisites replace the generic tooltip, spells can be searched by name/tier, and v17 enforces permanent preparation requirements. v1–v16 bytes, pins and campaign identities remain unchanged.
+
+Uses existing GAME-32 effects/targeting/costs/saves/durations and the existing campaign save/XP writer. The tactical adapter adds version-gated suppression and downed targeting; recovery cannot create tile collisions or restore expired creatures. No new classes, races, world systems or XP grants.
+
+Verification in progress: focused Godot mechanics, legal upper-tier development fixtures and exact cold restart; ordinary earned Wizard/Cleric/Fighter careers; dedicated Windows native export, independent startup and real Godot screens plus inherited required Windows rules/UI regressions. Full actual outcomes and artifact SHA-256 will be added before normal merge. High-level fixtures are explicitly separate from earned level7 campaigns. See docs/implementation/game130/ASSESSMENT.md, COHORT.json and TESTING.md.
+
+Closes #120 (GAME-130). Parent #118 (GAME-128), milestone #101 (GAME-123), full programme #82 remain open.

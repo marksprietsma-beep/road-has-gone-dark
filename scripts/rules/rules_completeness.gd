@@ -1,9 +1,9 @@
 class_name RulesCompleteness
 extends RefCounted
-## v16 only: permanent competence and contextual uses of existing character skills.
+## v16 onward: permanent competence and contextual uses of existing character skills.
 ## This projects existing authority; it never grants XP, casts spells or writes saves.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")=="trhgd-character-v16"
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v16","trhgd-character-v17"]
 
 static func has_spell_gate(node: Dictionary) -> bool:
  if node.op=="spell_tier":return true

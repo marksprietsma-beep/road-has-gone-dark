@@ -126,6 +126,9 @@ func choose_tile(p: Array) -> void:
  if mode=="move": send("move","",p)
  else:
   var id := engine.occupant(b,p)
+  if id.is_empty():
+   for candidate in b.order:
+    if b.units[candidate].position==p and engine.eligible(b,engine.current(b),b.units[candidate],mode):id=candidate;break
   if not id.is_empty(): send(mode,id)
 func select_mode(value: String) -> void:
  mode=value;message="";refresh()
@@ -136,6 +139,7 @@ func add_action(id: String,text: String) -> void:
   var actor: Dictionary=engine.current(battle())
   var available := engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)})
   button.disabled=button.disabled or not available.ok
+  if engine.registry.rules_ref().pack_id=="trhgd-character-v17" and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok

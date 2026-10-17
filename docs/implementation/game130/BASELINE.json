@@ -1,0 +1,888 @@
+{
+  "source": "b860d2479c4ffee46b1ba483af585dad74b887a2",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v16",
+    "schema_version": 1,
+    "rules_version": "16.0.0",
+    "engine_schema": 3,
+    "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7"
+  },
+  "tiers": [
+    {
+      "casting_class": "wizard",
+      "tier": 4,
+      "references": 4,
+      "spells": [
+        {
+          "id": "wizard-ice-lance",
+          "name": "Ice lance",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "cold"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "cold",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 14
+          }
+        },
+        {
+          "id": "wizard-greater-ward",
+          "name": "Greater arcane ward",
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "wizard-greater-ward-status"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 14
+          }
+        },
+        {
+          "id": "wizard-call-ancestor-sentinel",
+          "name": "Call Ancestor sentinel",
+          "effects": [
+            {
+              "op": "summon",
+              "id": "ancestor-sentinel",
+              "rounds": 3
+            }
+          ],
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 14
+          }
+        },
+        {
+          "id": "wizard-call-briar-beast",
+          "name": "Call Briar beast",
+          "effects": [
+            {
+              "op": "summon",
+              "id": "briar-beast",
+              "rounds": 3
+            }
+          ],
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 14
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "wizard",
+      "tier": 5,
+      "references": 2,
+      "spells": [
+        {
+          "id": "wizard-tier5-control",
+          "name": "Wizard: binding tempest 5",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 15
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "wizard-tier5-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 15
+          }
+        },
+        {
+          "id": "wizard-tier5-restoration",
+          "name": "Wizard: restorative aegis 5",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier5-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 15
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "wizard",
+      "tier": 6,
+      "references": 2,
+      "spells": [
+        {
+          "id": "wizard-tier6-control",
+          "name": "Wizard: binding tempest 6",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "wizard-tier6-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 16
+          }
+        },
+        {
+          "id": "wizard-tier6-restoration",
+          "name": "Wizard: restorative aegis 6",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier6-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 16
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "wizard",
+      "tier": 7,
+      "references": 2,
+      "spells": [
+        {
+          "id": "wizard-tier7-tempest",
+          "name": "Wizard: Tempest 7",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 17
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 17
+          }
+        },
+        {
+          "id": "wizard-tier7-sanctuary",
+          "name": "Wizard: Sanctuary 7",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier7-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 17
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "cleric",
+      "tier": 4,
+      "references": 2,
+      "spells": [
+        {
+          "id": "cleric-restoring-light",
+          "name": "Restoring light",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "dice": "4d6",
+                "bonus": {
+                  "op": "const",
+                  "value": 4
+                }
+              }
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 14
+          }
+        },
+        {
+          "id": "cleric-faith-ward",
+          "name": "Ward of faith",
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "cleric-faith-ward-status"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 14
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "cleric",
+      "tier": 5,
+      "references": 2,
+      "spells": [
+        {
+          "id": "cleric-tier5-control",
+          "name": "Cleric: binding tempest 5",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 15
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "cleric-tier5-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 15
+          }
+        },
+        {
+          "id": "cleric-tier5-restoration",
+          "name": "Cleric: restorative aegis 5",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier5-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 15
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "cleric",
+      "tier": 6,
+      "references": 2,
+      "spells": [
+        {
+          "id": "cleric-tier6-control",
+          "name": "Cleric: binding tempest 6",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "cleric-tier6-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 16
+          }
+        },
+        {
+          "id": "cleric-tier6-restoration",
+          "name": "Cleric: restorative aegis 6",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier6-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 16
+          }
+        }
+      ]
+    },
+    {
+      "casting_class": "cleric",
+      "tier": 7,
+      "references": 2,
+      "spells": [
+        {
+          "id": "cleric-tier7-tempest",
+          "name": "Cleric: Tempest 7",
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 17
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 17
+          }
+        },
+        {
+          "id": "cleric-tier7-sanctuary",
+          "name": "Cleric: Sanctuary 7",
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier7-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ],
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 17
+          }
+        }
+      ]
+    }
+  ]
+}
