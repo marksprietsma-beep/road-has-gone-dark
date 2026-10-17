@@ -118,6 +118,14 @@ _Avoid_: Outcome, narrative flavour text
 The geographically grounded distribution and interactions of creature species, habitats, territories and population groups within a World Template and its evolving Playthrough. It is represented through bounded consequential changes, not continuous simulation of every animal.
 _Avoid_: Arbitrary encounter spawn table, continuous individual creature simulation
 
+**Creature Species**:
+A mechanically distinct animal, monster, supernatural being or other non-player creature kind, defined by its intrinsic body, senses, movement, natural attacks, protections, weaknesses and capabilities rather than by a human combat-template reskin.
+_Avoid_: Encounter role, cosmetic skin, humanoid class name
+
+**Species-Native Capability**:
+An intrinsic physical or supernatural action, passive trait or limitation grounded in a Creature Species, resolved through the game's shared d20, effects and tactical-combat authority with honest requirements and observable consequences.
+_Avoid_: Unimplemented flavour text, parallel monster-only combat engine
+
 **Creature Population Group**:
 A regional or local aggregate of a creature species whose plausible habitat, abundance, territorial pressure and relationships to other groups or settlements can change through significant Playthrough events. It is not a roster of individually simulated specimens.
 _Avoid_: Every creature is a persistent NPC, stateless respawn token
