@@ -114,6 +114,18 @@ _Avoid_: Every generated world event, quest objective
 A consequential development affecting a World Situation or other persistent world entity during a Playthrough; it is not necessarily a player-triggered Outcome.
 _Avoid_: Outcome, narrative flavour text
 
+**Regional Ecology**:
+The geographically grounded distribution and interactions of creature species, habitats, territories and population groups within a World Template and its evolving Playthrough. It is represented through bounded consequential changes, not continuous simulation of every animal.
+_Avoid_: Arbitrary encounter spawn table, continuous individual creature simulation
+
+**Creature Population Group**:
+A regional or local aggregate of a creature species whose plausible habitat, abundance, territorial pressure and relationships to other groups or settlements can change through significant Playthrough events. It is not a roster of individually simulated specimens.
+_Avoid_: Every creature is a persistent NPC, stateless respawn token
+
+**Significant Creature**:
+An individually persistent monster or animal distinguished by consequential actions, a unique role, history, relationship, threat or encounter outcome; it can survive, move, be injured or become important without treating its entire species as individual characters.
+_Avoid_: Generic population total, automatically tracking every wolf
+
 **Threat**:
 A developing World Situation that can plausibly cause a harmful change if left unresolved; a Threat is not automatically a quest or a mandatory objective.
 _Avoid_: Mandatory quest, arbitrary loss
