@@ -38,7 +38,7 @@ func run() -> void:
  ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=hybrid;ui.selected=1;ui.refresh();ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 6";ui.spellbook.repertoire_search.text_changed.emit("tier 6")
  ui.title.text="DEVELOPMENT FIXTURE · Sorcerer / Druid / Mystic Theurge · not earned XP"
  await photograph_scene("fixture-hybrid-independent-tracks",true)
- # Display the exact saved post-recovery battle through the real combat scene.
+ # Display the exact saved post-canopy battle through the real combat scene.
  PartyService.handoff={}
  get_tree().change_scene_to_file("res://scenes/combat/first_adventure.tscn")
  while get_tree().current_scene==null or not get_tree().current_scene is Control or not "engine" in get_tree().current_scene:await get_tree().process_frame
@@ -51,7 +51,7 @@ func run() -> void:
  combat.engine=TacticalAuras.new(battle.units.a.record);combat.message="DEVELOPMENT FIXTURE · actual Packward canopy resolved · slot/action spent"
  combat.mode="druid-packward-canopy";combat.refresh()
  await photograph_scene("fixture-packward-combat",true)
- await photograph_scene("fixture-packward-combat-small",true,Vector2i(640,490))
+ await photograph_scene("fixture-packward-combat-small",true,Vector2i(640,360))
  var connected := OS.get_environment("GAME133_CONNECTED_ROOT")
  if connected.is_empty():connected=OS.get_environment("GAME133_ROOT").get_base_dir().path_join("connected")
  var active_state := WorldOriginLore.read_json(connected.path_join("active-state.json"))

@@ -25,7 +25,7 @@ func run() -> void:
  for id in source.ids("abilities"):
   var spell := source.definition("abilities",id)
   if spell.get("provenance",{}).get("revision")=="game133-sorcerer-druid-repertoires":test_spell(spell)
- test_distinct_effects();test_creatures_and_forms();test_hybrid();test_spellbook();test_legacy()
+ test_distinct_effects();test_creatures_and_forms();test_hybrid();test_spellbook();test_area_and_constraints();test_legacy()
  var hashes := {};var record_hashes := {}
  for id in saved_records:
   var d := kernel.derive_character(saved_records[id]);check(d.ok,"persist valid advanced fixture "+id)
@@ -155,7 +155,7 @@ func test_creatures_and_forms() -> void:
     shape=cast(buff.actor,buff.actor,id);break
  check(shape.ok,"existing leopard transformation executes after buff "+JSON.stringify(shape.get("errors",[])))
  if shape.ok:
-  var s := kernel.derive_character(shape.actor).snapshot
+  var s: Dictionary=kernel.derive_character(shape.actor).snapshot
   check(not s.body_form.is_empty() and s.stats.reach>=2,"natural-form attack gains actual reach")
   check(s.abilities.all(func(id: String):return not source.definition("abilities",id).tags.has("spell")),"form still suppresses spells; no implicit Natural Spell bypass")
   check(shape.actor.runtime.hp==buff.actor.runtime.hp,"transformation retains authoritative health")
@@ -178,7 +178,7 @@ func test_hybrid() -> void:
    check(next.ok,"deliberate CHA/WIS increase "+JSON.stringify(next.get("errors",[])))
    if not next.ok:planner.free();return
   record=next.candidate
- var s := kernel.derive_character(record).snapshot
+ var s: Dictionary=kernel.derive_character(record).snapshot
  check(s.casting_levels.sorcerer==13 and s.casting_levels.druid==12,"hybrid keeps separate effective casting tracks")
  for id in ["sorcerer-starfall-rupture","druid-packward-canopy"]:
   var chosen := prepared(record,id);var result := cast(chosen,fixtures.fighter,id)
@@ -215,3 +215,35 @@ func test_legacy() -> void:
  var archived := WorldOriginLore.read_json("res://tests/character_completeness/fixtures/prestige-v15-records.json")
  check(archived.has("records"),"archived pinned source fixtures remain installed")
  check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh New Game defaults to v18")
+
+func test_area_and_constraints() -> void:
+ for id in ["sorcerer-starfall-rupture","druid-winters-verdict"]:
+  var a := source.definition("abilities",id);var actor := prepared(fixtures[a.casting_class],id)
+  var engine := TacticalAuras.new(actor);var b := encounter(actor)
+  b.units["bandit-bow"].record=fixtures.save_target.duplicate(true);b.units["bandit-bow"].record.character_id="bandit-bow"
+  b.units["bandit-bow"].position=[3,1];b.units.b.position=[2,2];b.units.c.position=[1,2]
+  b=engine.seal(b)
+  var result := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":"bandit-blade"})
+  check(result.ok,"area spell actual command "+id)
+  if result.ok:
+   for enemy in ["bandit-blade","bandit-bow"]:check(result.battle.units[enemy].record.runtime.hp<b.units[enemy].record.runtime.hp,"area reaches both living enemies "+id+enemy)
+   check(result.battle.units.b.record==b.units.b.record,"enemy area never damages adjacent ally "+id)
+   for pool in a.cost.resources:check(result.battle.units.a.record.runtime.resources[pool]==b.units.a.record.runtime.resources[pool]-1,"area pays once, not per target "+id)
+   var wall := b.duplicate(true);wall.units["bandit-blade"].position=[3,1];wall.units["bandit-bow"].position=[4,2];wall.board.blocked.append([2,1]);wall=engine.seal(wall)
+   check(not engine.eligible(wall,wall.units.a,wall.units["bandit-blade"],id),"actual blocked line of sight rejected "+id)
+ var known := prepared(fixtures.sorcerer,"sorcerer-crystal-reservoir")
+ known.choices.spell_preparations={"sorcerer-crystal-reservoir":1}
+ check(not kernel.validate_build(known).ok,"forged prepared copies cannot turn spontaneous spell into prepared mode")
+ var over := prepared(fixtures.druid,"druid-packward-canopy",100)
+ check(not kernel.validate_build(over).ok,"preparation count cannot exceed tier-slot capacity")
+ var low := build("sorcerer",7)
+ check(not kernel.derive_character(low).snapshot.abilities.has("sorcerer-crystal-reservoir"),"Sorcerer7 does not falsely own tier4")
+ check(kernel.derive_character(build("druid",7)).snapshot.abilities.has("druid-bramble-tether"),"Druid7 genuinely owns tier4")
+ var poor := kernel.create("low-score",{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8},"heritage-human")
+ for n in 13:
+  var next := kernel.preview_advancement(poor,kernel.suggested_choice(poor,"sorcerer").choice)
+  if not next.ok:check(false,"poor-score history valid");return
+  poor=next.candidate
+ var ui := SpellbookEditor.new();ui.setup(poor)
+ check(ui.controls.has("sorcerer-starfall-rupture") and ui.controls["sorcerer-starfall-rupture"].disabled,"actual spontaneous control explains unavailable permanent attribute")
+ ui.free()

@@ -85,6 +85,7 @@ func run() -> void:
   var r: Dictionary=state.mechanics.records[id]
   journeys.append({"character_id":id,"ancestry":r.ancestry_ref,"history":r.advancement_history,"earned_xp":CharacterBuilderRecords.xp(state,id),"fixture":false,"rules_ref":r.rules_ref})
  test_real_combat()
+ test_known_authority()
  checkpoint();finish_journey()
 
 func goals_for(index: int) -> Dictionary:
@@ -220,3 +221,14 @@ func test_failed_check(options: Array) -> void:
   check(OpportunityCycles.current(result.state).results[cycle().active.site_id].outcome=="failed_check","failure visibly persists")
   failed_check={"hash":RulesJson.digest(result.state),"choice":failed[0].id,"xp":CharacterBuilderRecords.xp(result.state,state.party_ids[0])}
  check(RulesJson.digest(state)==before,"negative fixture never alters main earned journey")
+
+func test_known_authority() -> void:
+ var id: String=state.party_ids[0];var r: Dictionary=state.mechanics.records[id]
+ var raw := FileAccess.get_file_as_string(service.store._slot_path(slot))
+ var builder := CharacterBuilderService.new();builder.store=service.store;builder.library=service.library
+ var changed := r.choices.prepared_abilities.duplicate();changed.erase("sorcerer-crystal-reservoir")
+ var rejected := builder.operate(entry,slot,"builder_spells",1,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":changed,"preparations":{}})
+ check(not rejected.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"real save authority rejects forgetting permanent spontaneous knowledge without touching bytes")
+ var before := RulesJson.digest(r.runtime.resources)
+ action_builder("builder_spells",1,{"character_id":id,"spells":r.choices.prepared_abilities,"preparations":{}})
+ check(RulesJson.digest(state.mechanics.records[id].runtime.resources)==before,"same known-spell save never refills shared spontaneous slots")
