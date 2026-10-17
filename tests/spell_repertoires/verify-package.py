@@ -1,6 +1,6 @@
 """Exact Windows-export tests. No installed Node/Godot used by game processes."""
 from pathlib import Path
-import os,subprocess,json,hashlib,zipfile,shutil,sys
+import re,os,subprocess,json,hashlib,zipfile,shutil,sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'character_psychic'))
 from checked_process import checked_process
 assert os.name=='nt','Windows only; source-host checks are not Linux CI/builds'
@@ -8,6 +8,8 @@ root=Path(__file__).resolve().parents[2];base=Path(os.environ['GAME130_ROOT']).r
 release=base/'distribution';release.mkdir(exist_ok=True);name='game130-spell-repertoires-windows-x64';dist=release/name
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 manifest_bytes=(root/'data/rules/packs.json').read_bytes();manifest=json.loads(manifest_bytes)
+default_id=re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)
+default_pin=next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']==default_id)
 expected=next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v17')
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/spell_repertoires/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
@@ -36,7 +38,7 @@ for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('journey
   if phase=='mechanics':assert p['rules_ref']==expected
   if phase=='legacy':assert p['rules_ref']==next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v16')
   if phase=='journey'and file=='proof.json':
-   assert p['rules_ref']==expected and p['earned_xp']==360 and p['xp_injected']is False and len(p['journeys'])==3
+   assert p['rules_ref']==default_pin and p['earned_xp']==360 and p['xp_injected']is False and len(p['journeys'])==3
    assert set(p['combat_actions'].values())=={'wizard-gravitic-snare','cleric-freedom-path','attack'}
   proofs[phase+'/'+file]=p
 captures=json.loads((base/'captures/screenshots.json').read_text());assert captures['failures']==0 and len(captures['screenshots'])>=8
