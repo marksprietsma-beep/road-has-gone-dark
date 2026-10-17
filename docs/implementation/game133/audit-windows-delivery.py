@@ -1,7 +1,7 @@
 """Independent GAME-133 archive and native receipt checks; no rules reimplementation."""
 from pathlib import Path
 import argparse,re,json,hashlib,struct,zipfile,subprocess
-p=argparse.ArgumentParser();p.add_argument('review',type=Path);p.add_argument('evidence',type=Path);p.add_argument('--source',required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('review',type=Path);p.add_argument('evidence',type=Path);p.add_argument('--source',required=True);p.add_argument('--published',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
 archive=next(a.review.rglob('game133-spell-repertoires-windows-x64.zip'))
 with zipfile.ZipFile(archive)as z:
  assert z.testzip()is None;names=z.namelist();assert len(names)==len(set(names))
@@ -33,10 +33,18 @@ assert proof['captures']['failures']==0 and len(proof['captures']['screenshots']
 for file in ['proof.json','restart-proof.json']:
  c=proof['proofs']['connected/'+file];assert c['failures']==0 and c['checks']>0 and c['rules_ref']==pin
 assert len(proof['proofs']['connected/proof.json']['casts'])==2 and proof['proofs']['connected/proof.json']['xp_injected']is False
+published=json.loads((a.published/'screenshots.json').read_text()) if a.published else None
+if published:assert published['source_commit']==a.source and published['pixels_unchanged']
 for row in proof['captures']['screenshots']:
  f=next(a.evidence.rglob(row['file']));b=f.read_bytes();assert b[:8]==b'\x89PNG\r\n\x1a\n'and hashlib.sha256(b).hexdigest()==row['sha256']
- expected_size=tuple(map(int,re.search(r'-(\d+)x(\d+)\.png$',row['file']).groups()))
+ label=row['file']
+ if published:
+  entry=next(x for x in published['screenshots']if x['native_file']==row['file'])
+  assert (a.published/entry['file']).read_bytes()==b and entry['sha256']==row['sha256']
+  assert tuple(entry['rendered_dimensions'])==struct.unpack_from('>II',b,16)
+  label=entry['file']
+ expected_size=tuple(map(int,re.search(r'-(\d+)x(\d+)\.png$',label).groups()))
  assert struct.unpack_from('>II',b,16)==expected_size
  if not row['development_fixture']:assert row['earned_xp']==490
-result=dict(source_commit=a.source,rules_ref=pin,archive=archive.name,sha256=sha,entries=len(names),zip_crc_and_paths=True,game_and_helper_machine='AMD64/0x8664',exact_manifest_and_content=True,production_launch=True,empty_path=True,separate_process_restart=True,earned_characters=3,earned_xp_each=490,earned_level=8,high_level_histories='development fixtures, not earned level20',screenshots=len(proof['captures']['screenshots']),all_receipts_pass=True,scope='Focused Sorcerer/Druid repertoire cohort, not complete character catalogue or human acceptance.')
+result=dict(source_commit=a.source,rules_ref=pin,archive=archive.name,sha256=sha,entries=len(names),zip_crc_and_paths=True,game_and_helper_machine='AMD64/0x8664',exact_manifest_and_content=True,production_launch=True,empty_path=True,separate_process_restart=True,earned_characters=3,earned_xp_each=490,earned_level=8,high_level_histories='development fixtures, not earned level20',screenshots=len(proof['captures']['screenshots']),published_names_match_actual_pixels=True,published_pixels_match_native_hashes=True,native_window_label_limitation='1280x720 window requests yielded1280x719 content; other requested sizes exact',all_receipts_pass=True,scope='Focused Sorcerer/Druid repertoire cohort, not complete character catalogue or human acceptance.')
 a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

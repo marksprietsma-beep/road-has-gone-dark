@@ -2,11 +2,13 @@
 
 Ten original Sorcerer/Druid tier4–7 spells extend immutable v17 into v18. The base is main3ccd089, including GAME-132. Existing campaigns retain their exact original pins; fresh campaigns use18. The full GAME-128 repertoire programme and GAME-123 character milestone remain open.
 
-## Build and evidence
+## Verified Windows package
 
-[Exact Windows release workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816) · source `1ac6e6024e46efe30a974cd1b3daeba645294c2c` · [PR#133](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/133). The build artifact is `game133-complete-windows-x64`; the evidence artifact is `game133-native-evidence`. Both belong to that exact source run.
+[Download the complete Windows x64 package](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816/artifacts/12106347514) · [native workflow](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816) · source `1ac6e6024e46efe30a974cd1b3daeba645294c2c`. Inner archive: `game133-spell-repertoires-windows-x64.zip`.
 
-The literal playable-ZIP SHA-256 is supplied in its adjacent `.sha256` file, the native `distribution-proof.json`, and the live PR delivery report. Accept the package only after this run succeeds, the independent archive audit passes, and the current PR Windows checks pass. The draft is not merged before those gates. This document does not label a pending or failed run successful.
+SHA-256: `b749a7353142f869726648c9dad3a88cadc135ae84f68f2248ab296f8aa0de52`
+
+The complete native workflow passed. Independent audit verified7061 ZIP entries/CRC/paths, AMD64 game/helper, exact source manifest/v18 content, production launch with empty PATH/no source-helper override, separate-process restart and fourteen byte-identical actual Godot frames. See [raw receipt](evidence/native-distribution-proof.json) and [archive audit](evidence/native-archive-audit.json). Later documentation commits change no game, test, exporter or workflow code; current PR Windows checks remain the merge gate.
 
 Extract the outer GitHub artifact ZIP, then `game133-spell-repertoires-windows-x64.zip`. Run `road-has-gone-dark.exe`, keeping every support folder, helper and licence beside it. No installed Godot or Node is needed. Escape skips the introduction. [Exact human steps](TESTING.md).
 
@@ -35,7 +37,22 @@ Sorcerer references at tiers4/5/6/7:2/2/2/2→3/3/3/4. Druid:2/2/2/2→3/3/4/3. 
 
 All game execution/exports for this wave are Windows-only. The release run checks all ten spells, success/failure and invalid actions, spending/exhaustion/rest, known/prepared choices, legal level20/hybrid fixtures, exact cold state and next-command/log/RNG, production controls, archived v16 histories, three earned careers, actual saved battle/return, headed Godot renders, empty-PATH production launch and ZIP integrity. Its immutable receipt is the result record; check counts are assertions, not counts of unique abilities.
 
-The earned review target is three real characters at level8/490XP through49 ordinary completed objectives, with no injected XP. Sorcerer tier4 unlocks at8, Druid at7. Source1ac6e60 corrects an erroneous test assumption: existing advancement initialises newly owned pools at capacity; saving spell choices is not a rest. A separately labelled backend fixture uses a real spell cost and the sole runtime/save authority to prove depleted known-spell saves do not refill resources. It does not claim production out-of-combat casting. Actual saved battle costs and return/rest are independent gameplay checks.
+|Native phase|Checks|Failures|
+|---|---:|---:|
+|combat-input|10|0|
+|connected/proof.json|34|0|
+|connected/restart-proof.json|68|0|
+|mechanics/proof.json|598|0|
+|mechanics/restart-proof.json|31|0|
+|legacy/proof.json|818|0|
+|legacy/restart-proof.json|4|0|
+|compatibility/proof.json|1941|0|
+|compatibility/restart-proof.json|486|0|
+|journey/proof.json|655|0|
+|journey/restart-proof.json|8|0|
+|Godot capture assertions|23|0|
+
+The earned proof contains three real characters at level8/490XP through49 ordinary completed objectives, with no injected XP. Sorcerer tier4 unlocks at8, Druid at7. Source1ac6e60 corrects an erroneous test assumption: existing advancement initialises newly owned pools at capacity; saving spell choices is not a rest. A separately labelled backend fixture uses a real spell cost and the sole runtime/save authority to prove depleted known-spell saves do not refill resources. It does not claim production out-of-combat casting. Actual saved battle costs and return/rest are independent gameplay checks.
 
 Level20 and Sorcerer8/Druid7/MysticTheurge5 histories are lawful development fixtures, not earned20. The hybrid has effective Sorcerer13/Druid12, independent CHA/WIS requirements and separate resources. The legacy five-level Theurge cap is unchanged. Party hold/end-turn inputs let each caster demonstrate its spell before allies kill the low-level authored enemies; this is not AI win-rate or final balance evidence.
 
@@ -43,4 +60,4 @@ Completed earlier-source Windows evidence remains explicitly distinguished: [GAM
 
 Baseline main run39040710821 failed because its archived option audit loaded default17 while the receipt required16. All native phases had zero failures. The option audit now explicitly loads16, preserving GAME-132 and exact pin checks. Fresh connected-campaign checks use the exact current default manifest pin; archived mechanic checks remain fixed16/17. No check is skipped or weakened.
 
-[Genuine Godot evidence](SCREENSHOTS.md) · [full inventory](REPERTOIRE.json) · [limits/next cohort](REMAINING-GAPS.md). Publication status, exact download URL, checksum and merge SHA are maintained on PR#133 and the final delivery report. No callable Linear connector or credential exists in this session; GitHub mirrors#134/#118/#101 carry the verified status, without claiming direct Linear updates.
+[Genuine Godot evidence](SCREENSHOTS.md) · [full inventory](REPERTOIRE.json) · [limits/next cohort](REMAINING-GAPS.md). Publication/merge status and the main SHA are maintained on PR#133 and the final delivery report. Windows1280×720 requests produced1280×719 content; published PNG names are corrected to actual size without changing pixels.2560×1440 and640×360 are exact. See SCREENSHOTS for provenance. No callable Linear connector or credential exists in this session; GitHub mirrors#134/#118/#101 carry the verified status, without claiming direct Linear updates.

@@ -1,0 +1,366 @@
+{
+  "druid-bramble-tether": {
+    "after_hash": "10a191a99905179a4f8482ce696188b03b6ae0c003146ed3115815d047731279",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-slots-4",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-bramble-tether-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 4,
+        "dc": 19,
+        "roll": 5,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "bramble-tether",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Bramble tether on Road raider. Save 6 + 8 vs 19: failed. Bramble Tether applied."
+    ]
+  },
+  "druid-packward-canopy": {
+    "after_hash": "3b339537719064a449f3cff042f363cc1e2738ebd3217f683aa3fa559dd81c64",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-packward-canopy-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "packward-canopy",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Packward canopy on Ally. Packward Canopy applied. Packward Canopy applied."
+    ]
+  },
+  "druid-predators-rhythm": {
+    "after_hash": "d00aa0be0b955fe0af6829128cf507632fffe08e35210c037c4d6f2304b8d137",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-predators-rhythm-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "predators-rhythm",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Predator's rhythm on Ally. Predators Rhythm applied."
+    ]
+  },
+  "druid-sap-renewal": {
+    "after_hash": "b9a26cd9759f31d476dd368a4488ef2250af5185aaa0673ccc9c438e24a2282f",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-slots-5",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-sap-renewal-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 30,
+        "target": "fighter",
+        "type": "healing_applied"
+      },
+      {
+        "amount": 10,
+        "type": "temporary_hp_granted"
+      },
+      {
+        "id": "weakened",
+        "type": "status_removed"
+      },
+      {
+        "id": "off-balance",
+        "type": "status_removed"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Sap renewal on Ally. 0 HP restored."
+    ]
+  },
+  "druid-winters-verdict": {
+    "after_hash": "4b478e6d45a596da1401ae3205ad6f5cab3c70a10adff2a7717e82c2209ef8f6",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "druid",
+        "id": "druid-winters-verdict-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 6,
+        "dc": 22,
+        "roll": 5,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "amount": 18,
+        "damage_type": "cold",
+        "target": "fighter",
+        "temporary_absorbed": 0,
+        "type": "damage_applied"
+      },
+      {
+        "id": "winter-lock",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Winter's verdict on Road raider. Save 6 + 13 vs 22: failed. 25 damage. Winter Lock applied."
+    ]
+  },
+  "sorcerer-crushing-doubt": {
+    "after_hash": "f82014c583d4ae1dce464de36df9a1b50e584a89893996bf844b28005b6771ae",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "sorcerer",
+        "id": "sorcerer-slots-5",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 9,
+        "dc": 21,
+        "roll": 5,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "crushing-doubt",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Crushing doubt on Road raider. Save 6 + 26 vs 21: resisted."
+    ]
+  },
+  "sorcerer-crystal-reservoir": {
+    "after_hash": "c4fd138d93e3c48645bad65cb030d67547b4ec03e512d29890aa53df8492eb4b",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "sorcerer",
+        "id": "sorcerer-slots-4",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 18,
+        "type": "temporary_hp_granted"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Crystal reservoir on Ally. "
+    ]
+  },
+  "sorcerer-slipstream-veil": {
+    "after_hash": "7f114b462ddc6b2815a6ba175b32701841d6f832cf9efe60644efe16a71a69e2",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "sorcerer",
+        "id": "sorcerer-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "id": "slipstream-veil",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Slipstream veil on Ally. Slipstream Veil applied."
+    ]
+  },
+  "sorcerer-starfall-rupture": {
+    "after_hash": "af43e37b8813dda6c369ebfa5cc9710666217432f11d47b1abed40a19585afa7",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "sorcerer",
+        "id": "sorcerer-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 4,
+        "dc": 23,
+        "roll": 18,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "amount": 18,
+        "damage_type": "force",
+        "target": "fighter",
+        "temporary_absorbed": 0,
+        "type": "damage_applied"
+      },
+      {
+        "id": "starfall-fracture",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Starfall rupture on Road raider. Save 6 + 8 vs 23: failed. 31 damage. Starfall Fracture applied."
+    ]
+  },
+  "sorcerer-sundering-chord": {
+    "after_hash": "f83136288f39e48d27b9406c815d8cc5d98097b841fd86d8c0aa005c16b1622c",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "sorcerer",
+        "id": "sorcerer-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 6,
+        "dc": 23,
+        "roll": 5,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "warded",
+        "type": "status_removed"
+      },
+      {
+        "id": "haste",
+        "type": "status_removed"
+      },
+      {
+        "id": "wizard-greater-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "sorcerer-greater-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "cleric-faith-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "druid-oak-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "perfect-shadow",
+        "type": "status_removed"
+      },
+      {
+        "id": "beguiling-veil",
+        "type": "status_removed"
+      },
+      {
+        "id": "runic-shell",
+        "type": "status_removed"
+      },
+      {
+        "id": "spirit-shelter",
+        "type": "status_removed"
+      },
+      {
+        "id": "spirit-lattice",
+        "type": "status_removed"
+      },
+      {
+        "id": "lucid-poise",
+        "type": "status_removed"
+      },
+      {
+        "id": "sovereign-clarity",
+        "type": "status_removed"
+      },
+      {
+        "id": "elemental-covenant",
+        "type": "status_removed"
+      },
+      {
+        "id": "company-veil",
+        "type": "status_removed"
+      },
+      {
+        "id": "freedom-path",
+        "type": "status_removed"
+      },
+      {
+        "id": "slipstream-veil",
+        "type": "status_removed"
+      },
+      {
+        "id": "packward-canopy",
+        "type": "status_removed"
+      },
+      {
+        "id": "predators-rhythm",
+        "type": "status_removed"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Sundering chord on Road raider. Save 6 + 13 vs 23: failed."
+    ]
+  }
+}

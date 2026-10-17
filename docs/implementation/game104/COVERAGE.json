@@ -28969,15 +28969,16 @@
     "scheduled_choice_groups": 228,
     "selectable_psychic_powers": 45,
     "creatures": 14,
-    "status": "Bounded Sorcerer/Druid tier4–7 repertoire cohort; Windows receipt linked; per-option human acceptance pending",
+    "status": "Focused Sorcerer/Druid cohort native Windows validated; baseline scope retained; per-option human acceptance pending",
     "programme_complete": false,
     "native_receipts": [
-      "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816#artifacts"
+      "docs/implementation/game133/evidence/native-distribution-proof.json",
+      "docs/implementation/game133/evidence/native-archive-audit.json"
     ],
     "unique_named_spells": 163,
     "class_spell_references": 218,
     "implementation_source": "1ac6e6024e46efe30a974cd1b3daeba645294c2c",
-    "verification_contract": "Accept only a successful exact Windows workflow receipt/archive audit and current PR checks; linked run records actual outcomes."
+    "verified_source": "1ac6e6024e46efe30a974cd1b3daeba645294c2c"
   },
   "wave_two": {
     "candidate_pack": "trhgd-character-v12",
@@ -29325,6 +29326,14 @@
       "xp_injected": false
     },
     "high_level_scope": "Lawful development fixtures, not earned20 or full human acceptance",
-    "programme_complete": false
+    "programme_complete": false,
+    "source_commit": "1ac6e6024e46efe30a974cd1b3daeba645294c2c",
+    "windows_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816/artifacts/12106347514",
+    "sha256": "b749a7353142f869726648c9dad3a88cadc135ae84f68f2248ab296f8aa0de52",
+    "native_status": "success",
+    "earned_characters": 3,
+    "earned_level": 8,
+    "earned_xp_each": 490,
+    "earned_objectives": 49
   }
 }
