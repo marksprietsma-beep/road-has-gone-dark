@@ -33,7 +33,7 @@ The initial playable slice need not implement art for every one of the character
 - [GAME-106](https://linear.app/marksprietsma/issue/GAME-106/make-lpc-character-sprites-visibly-reflect-playable-ancestry-and): player and humanoid ancestry appearance, including visibly nonhuman orcs.
 - [GAME-107](https://linear.app/marksprietsma/issue/GAME-107/show-equipped-weapons-armour-and-gear-on-persistent-lpc): equipment-aware LPC layers.
 - [GAME-93](https://linear.app/marksprietsma/issue/GAME-93/tactical-combat-sprite-art-spike-modular-heroes-raiders-and-godot): art evidence and asset provenance.
-- [GAME-134](https://linear.app/marksprietsma/issue/GAME-134/milestone-living-bestiary-humanoid-npcs-and-meaningful-opposition): species/NPC programme. Nonhumanoid monster silhouettes and ability telegraphs need a dedicated, bounded downstream integration ticket rather than mislabelling GAME-106's player-ancestry scope.
+- [GAME-134](https://linear.app/marksprietsma/issue/GAME-134/milestone-living-bestiary-humanoid-npcs-and-meaningful-opposition): species/NPC programme. [GAME-140](https://linear.app/marksprietsma/issue/GAME-140/distinct-nonhumanoid-monster-sprites-and-truthful-combat-telegraphs) owns bounded **nonhumanoid monster silhouette, animation and ability-telegraph integration**; GAME-106 remains the player/humanoid ancestry owner.
 - [GAME-136](https://linear.app/marksprietsma/issue/GAME-136/boss-and-epic-npc-action-economy-lair-actions-and-bounded-off-turn): eventual boss and lair power timings.
 
 **Rejected:** (A) superficial recolours and labels as the primary species distinction; (C) extensive unique bespoke artwork and lengthy individual animation sets for most species as a prerequisite for gameplay.
