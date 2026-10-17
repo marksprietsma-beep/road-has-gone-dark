@@ -28,4 +28,4 @@ One supported generated situation, grounded in existing world/site facts, must e
 
 **Open:** UI, eligibility operator schema, checks, approach generation, resources, negotiation/stealth, partial outcomes, encounter time, NPC refusal, threat escalation and human gameplay acceptance. The user will test the Windows game after meaningful gameplay integration, not after each character/spell data update.
 
-**Interview follow-up:** Q11 creature/NPC visual distinctions, then implementation priority for the first integrated gameplay slice.
+**Q11 accepted:** [ADR 0007](0007-species-art-and-combat-telegraphs.md) requires recognisable species/body plans and accurate combat telegraphs, with GAME-106 for humanoid LPC ancestries and GAME-140 for distinct nonhumanoid monsters. **Final interview follow-up (Q12):** agree on the first integrated Windows gameplay slice and playtest boundary.
