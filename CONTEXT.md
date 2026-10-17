@@ -118,6 +118,10 @@ _Avoid_: Outcome, narrative flavour text
 The geographically grounded distribution and interactions of creature species, habitats, territories and population groups within a World Template and its evolving Playthrough. It is represented through bounded consequential changes, not continuous simulation of every animal.
 _Avoid_: Arbitrary encounter spawn table, continuous individual creature simulation
 
+**Creature Distribution Context**:
+A world-grounded explanation and constraint for a species' presence and rarity, based on habitat, geography, history, supernatural conditions, factions and credible movement. Its provenance is stable and distinguishable from discoveries or subsequent Playthrough changes.
+_Avoid_: Biome-only monster spawn list, anything-spawns-anywhere probability
+
 **Creature Species**:
 A mechanically distinct animal, monster, supernatural being or other non-player creature kind, defined by its intrinsic body, senses, movement, natural attacks, protections, weaknesses and capabilities rather than by a human combat-template reskin.
 _Avoid_: Encounter role, cosmetic skin, humanoid class name
