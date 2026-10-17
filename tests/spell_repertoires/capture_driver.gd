@@ -52,6 +52,20 @@ func run() -> void:
  combat.mode="cleric-return-to-breath";combat.refresh()
  await photograph_scene("fixture-recovery-combat",true)
  await photograph_scene("fixture-recovery-combat-small",true,Vector2i(640,360))
+ var connected := OS.get_environment("GAME130_CONNECTED_ROOT")
+ if connected.is_empty():connected=OS.get_environment("GAME130_ROOT").get_base_dir().path_join("connected")
+ var active_state := WorldOriginLore.read_json(connected.path_join("active-state.json"))
+ check(not active_state.is_empty(),"real committed earned mid-battle evidence exists")
+ if not active_state.is_empty():
+  PartyService.handoff={};get_tree().change_scene_to_file("res://scenes/combat/first_adventure.tscn")
+  while get_tree().current_scene==null or not "engine" in get_tree().current_scene:await get_tree().process_frame
+  combat=get_tree().current_scene;combat.set_process(false);combat.state=active_state;combat.engine=TacticalAuras.new(active_state)
+  combat.message="EARNED · Wizard / Cleric level7 · both new tier4 spells committed · 360XP"
+  combat.mode="cleric-freedom-path";combat.refresh()
+  await photograph_scene("earned-midbattle-spells-saved",false)
+  var scroll: ScrollContainer=combat.log_label.get_parent().get_parent()
+  scroll.ensure_control_visible(combat.log_label)
+  await photograph_scene("earned-midbattle-spell-log",false,Vector2i(2560,1440))
  check(RulesJson.digest(state)==before,"visual fixture overrides never alter original earned campaign")
  var resumed := service.operate(entry,slot,"resume");check(resumed.ok and RulesJson.digest(resumed.state)==before,"screenshots write no gameplay, XP or campaign save")
  finish_capture()

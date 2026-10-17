@@ -21,10 +21,15 @@ for restart in [False,True]:run('mechanics'+('-restart'if restart else''),dict(G
 run('combat-input',dict(GAME130_PHASE='input'))
 for restart in [False,True]:run('legacy-v16'+('-restart'if restart else''),dict(GAME130_PHASE='legacy',GAME126_AUDIT_RESTART='1'if restart else'0'))
 for restart in [False,True]:run('earned-journey'+('-restart'if restart else''),dict(GAME130_PHASE='journey',GAME126_AUDIT_RESTART='1'if restart else'0'))
+for restart in [False,True]:run('connected-combat'+('-restart'if restart else''),dict(GAME130_PHASE='connected',GAME130_RESTART='1'if restart else'0'))
 run('godot-captures',dict(GAME130_PHASE='capture',GAME126_AUDIT_RESTART='0'),True)
 proofs={}
 input_proof=json.loads((base/'mechanics/input-proof.json').read_text());assert input_proof['checks']>=5 and input_proof['failures']==0
 proofs['combat-input']=input_proof
+for file in ['proof.json','restart-proof.json']:
+ p=json.loads((base/'connected'/file).read_text());assert p['failures']==0 and p['checks']>0 and p['rules_ref']==expected
+ proofs['connected/'+file]=p
+assert len(proofs['connected/proof.json']['casts'])==2 and proofs['connected/proof.json']['xp_injected']is False
 for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('journey','journeys/cohort-0')]:
  for file in ['proof.json','restart-proof.json']:
   p=json.loads((base/folder/file).read_text());assert p['checks']>0 and p['failures']==0
