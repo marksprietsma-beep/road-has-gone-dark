@@ -102,7 +102,7 @@ func create_party() -> void:
  var born := service.store.create_playthrough(entry.world,int(home.state_id),int(home.burg_id),int(home.province_id));slot=born.state.playthrough_id
  check(service.store.save_new(slot,born.state,entry.world).ok,"fresh ordinary save")
  action_builder("builder_open")
- check(RulesRecords.registry(state).rules_ref()==source.rules_ref(),"fresh default exact v16")
+ check(RulesRecords.registry(state).rules_ref()==source.rules_ref(),"fresh default exact latest pin")
  for i in 3:
   var cfg: Array=configs[i];var cls: String=cfg[0];var id: String=state.party_ids[i]
   var goals := goals_for(i)

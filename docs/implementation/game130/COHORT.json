@@ -1,0 +1,873 @@
+{
+  "rules_ref": {
+    "pack_id": "trhgd-character-v17",
+    "schema_version": 1,
+    "rules_version": "17.0.0",
+    "engine_schema": 3,
+    "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0"
+  },
+  "spells": [
+    {
+      "id": "wizard-gravitic-snare",
+      "name": "Gravitic snare",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "wizard-slots-4": 1,
+          "wizard-gravitic-snare-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "reflex",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 14
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "gravitic-snare"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_4"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "INT",
+        "min": 14
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Reflex negates immobilisation for two target activations; attacks and casting remain legal. Pure area control, no damage. Main action, one tier4 slot and one prepared copy. Requires INT14. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "wizard",
+      "spell_tier": 4,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "wizard-unravel-enchantment",
+      "name": "Unravel enchantment",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "wizard-slots-5": 1,
+          "wizard-unravel-enchantment-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "will",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 15
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "remove_status",
+              "id": "warded"
+            },
+            {
+              "op": "remove_status",
+              "id": "haste"
+            },
+            {
+              "op": "remove_status",
+              "id": "wizard-greater-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "cleric-faith-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "perfect-shadow"
+            },
+            {
+              "op": "remove_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "remove_status",
+              "id": "runic-shell"
+            },
+            {
+              "op": "remove_status",
+              "id": "spirit-shelter"
+            },
+            {
+              "op": "remove_status",
+              "id": "spirit-lattice"
+            },
+            {
+              "op": "remove_status",
+              "id": "lucid-poise"
+            },
+            {
+              "op": "remove_status",
+              "id": "sovereign-clarity"
+            },
+            {
+              "op": "remove_status",
+              "id": "elemental-covenant"
+            },
+            {
+              "op": "remove_status",
+              "id": "company-veil"
+            },
+            {
+              "op": "remove_status",
+              "id": "freedom-path"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_5"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "INT",
+        "min": 15
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Will negates removal of listed temporary wards, haste, concealment and protective immunities. No damage. Does not dispel forms, maintained auras, ancestry, feats or equipment. Main action, one tier5 slot and one prepared copy. Requires INT15. Range6, line of sight.",
+      "casting_class": "wizard",
+      "spell_tier": 5,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "wizard-company-veil",
+      "name": "Veil of the company",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "wizard-slots-6": 1,
+          "wizard-company-veil-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "company-veil"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "INT",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Allies in radius1 gain50% weapon concealment for two global round boundaries. Does not prevent targeted spells or grant invisibility. Main action, one tier6 slot and one prepared copy. Requires INT16. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "wizard",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "wizard-dissonant-seal",
+      "name": "Dissonant seal",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "wizard-slots-7": 1,
+          "wizard-dissonant-seal-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "will",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "dissonant-seal"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_7"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "INT",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Will negates suppression of spell-tagged abilities for two target activations. Psychic, supernatural and weapon actions remain legal. No damage. Main action, one tier7 slot and one prepared copy. Requires INT17. Range6, line of sight.",
+      "casting_class": "wizard",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "wizard-prismatic-volley",
+      "name": "Prismatic volley",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "wizard-slots-7": 1,
+          "wizard-prismatic-volley-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "reflex",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "fire"
+            }
+          ],
+          "on_success": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "fire",
+              "save_half": true
+            }
+          ]
+        },
+        {
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "INT"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "electricity"
+            }
+          ],
+          "on_success": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "electricity",
+              "save_half": true
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_7"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "INT",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Separate fire/Reflex and electricity/Fortitude saves, each halves its own3d6+casterlevel/2 packet. Resistances and evasion apply independently. No condition riders. Main action, one tier7 slot and one prepared copy. Requires INT17. Range6, line of sight.",
+      "casting_class": "wizard",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "cleric-freedom-path",
+      "name": "Path of freedom",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "cleric-slots-4": 1,
+          "cleric-freedom-path-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "remove_status",
+          "id": "slowed"
+        },
+        {
+          "op": "remove_status",
+          "id": "entangled"
+        },
+        {
+          "op": "remove_status",
+          "id": "briar-rooted"
+        },
+        {
+          "op": "remove_status",
+          "id": "arcane-tether"
+        },
+        {
+          "op": "remove_status",
+          "id": "winter-brand"
+        },
+        {
+          "op": "remove_status",
+          "id": "mind-tether"
+        },
+        {
+          "op": "remove_status",
+          "id": "gravitic-snare"
+        },
+        {
+          "op": "apply_status",
+          "id": "freedom-path"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_4"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 14
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Remove the seven listed movement conditions and prevent their reapplication for three global round boundaries. No general terrain, flight or universal movement immunity. Main action, one tier4 slot and one prepared copy. Requires WIS14. Range6, line of sight.",
+      "casting_class": "cleric",
+      "spell_tier": 4,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "cleric-battle-litany",
+      "name": "Litany of resolve",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "cleric-slots-5": 1,
+          "cleric-battle-litany-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "battle-litany"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_5"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 15
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "The selected ally maintains a radius2 aura: melee/ranged attack and weapon damage+2 insight for three global round boundaries. Dynamic range, living allies only; typed bonuses do not stack. Main action, one tier5 slot and one prepared copy. Requires WIS15. Range6, line of sight.",
+      "casting_class": "cleric",
+      "spell_tier": 5,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "cleric-purifying-renewal",
+      "name": "Purifying renewal",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "cleric-slots-6": 1,
+          "cleric-purifying-renewal-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "heal",
+          "amount": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 8
+              },
+              {
+                "op": "casting_level",
+                "id": "cleric"
+              }
+            ]
+          }
+        },
+        {
+          "op": "remove_status",
+          "id": "slowed"
+        },
+        {
+          "op": "remove_status",
+          "id": "entangled"
+        },
+        {
+          "op": "remove_status",
+          "id": "briar-rooted"
+        },
+        {
+          "op": "remove_status",
+          "id": "arcane-tether"
+        },
+        {
+          "op": "remove_status",
+          "id": "winter-brand"
+        },
+        {
+          "op": "remove_status",
+          "id": "mind-tether"
+        },
+        {
+          "op": "remove_status",
+          "id": "gravitic-snare"
+        },
+        {
+          "op": "remove_status",
+          "id": "weakened"
+        },
+        {
+          "op": "remove_status",
+          "id": "off-balance"
+        },
+        {
+          "op": "remove_status",
+          "id": "unsteady-concentration"
+        },
+        {
+          "op": "remove_status",
+          "id": "beguiling-doubt"
+        },
+        {
+          "op": "remove_status",
+          "id": "beguiling-pressure"
+        },
+        {
+          "op": "remove_status",
+          "id": "prismatic-fracture"
+        },
+        {
+          "op": "remove_status",
+          "id": "psychic-lock"
+        },
+        {
+          "op": "remove_status",
+          "id": "psychic-confusion"
+        },
+        {
+          "op": "remove_status",
+          "id": "dissonant-seal"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Heal8+effective Cleric caster level and remove the sixteen listed tactical afflictions, including spell suppression. No resurrection, permanent curse removal, resource or slot restoration. Main action, one tier6 slot and one prepared copy. Requires WIS16. Range6, line of sight.",
+      "casting_class": "cleric",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "cleric-elemental-covenant",
+      "name": "Elemental covenant",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "cleric-slots-6": 1,
+          "cleric-elemental-covenant-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "elemental-covenant"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Allies in radius1 gain fire/cold/electricity resistance8 per packet for three global round boundaries. No physical or force resistance, healing or defence bonus. Main action, one tier6 slot and one prepared copy. Requires WIS16. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "cleric",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    {
+      "id": "cleric-return-to-breath",
+      "name": "Return to breath",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "cleric-slots-7": 1,
+          "cleric-return-to-breath-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "heal",
+          "amount": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 12
+              },
+              {
+                "op": "casting_level",
+                "id": "cleric"
+              }
+            ]
+          }
+        },
+        {
+          "op": "remove_status",
+          "id": "weakened"
+        },
+        {
+          "op": "remove_status",
+          "id": "off-balance"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_7",
+        "recover_downed"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Heal12+effective Cleric caster level and remove weakened/off-balance. May target a downed persistent ally while battle is active; no extra turn, XP, resource restoration or permanently dead/summoned creature recovery. Main action, one tier7 slot and one prepared copy. Requires WIS17. Range6, line of sight.",
+      "casting_class": "cleric",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook prose or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    }
+  ],
+  "dispel_statuses": [
+    "warded",
+    "haste",
+    "wizard-greater-ward-status",
+    "cleric-faith-ward-status",
+    "perfect-shadow",
+    "beguiling-veil",
+    "runic-shell",
+    "spirit-shelter",
+    "spirit-lattice",
+    "lucid-poise",
+    "sovereign-clarity",
+    "elemental-covenant",
+    "company-veil",
+    "freedom-path"
+  ],
+  "cleansed_statuses": [
+    "slowed",
+    "entangled",
+    "briar-rooted",
+    "arcane-tether",
+    "winter-brand",
+    "mind-tether",
+    "gravitic-snare",
+    "weakened",
+    "off-balance",
+    "unsteady-concentration",
+    "beguiling-doubt",
+    "beguiling-pressure",
+    "prismatic-fracture",
+    "psychic-lock",
+    "psychic-confusion",
+    "dissonant-seal"
+  ],
+  "scope": "Ten executable spell identities, not ten new effect opcodes. Original bounded adaptations."
+}

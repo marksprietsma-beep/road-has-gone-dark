@@ -57,6 +57,7 @@ static func selection_errors(record: Dictionary,context: Dictionary,source: Rule
  for id in record.choices.prepared_abilities:
   var spell := source.definition("abilities",id)
   if not spell.tags.has("spell"):continue
+  if source.rules_ref().pack_id=="trhgd-character-v17" and not RulesExpressions.evaluate_requirements(spell.requirements,context).ok:errors.append(RulesJson.issue("spell.requirements",id,"Permanent spell requirements are not met"))
   var cls: String=str(spell.get("casting_class",""));counts[cls]=int(counts.get(cls,0))+1
  for cls in counts:
   if not context.classes.has(cls) or int(counts[cls])>selection_limit(cls,int(context.get("casting_levels",context.classes).get(cls,0)),source):errors.append(RulesJson.issue("spell.limit",cls,"Too many prepared or known spells"))
@@ -112,6 +113,7 @@ static func _legacy_starting_preparations(snapshot: Dictionary,source: RulesRegi
   var cls: String=str(source.definition("resources",str(pool)).slot_class)
   if source.definition("classes",cls).spell_mode!="prepared":continue
   var candidates: Array=snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).cost.resources.has(pool))
+  if source.rules_ref().pack_id=="trhgd-character-v17":candidates=candidates.filter(func(id: String):return spell_eligible(snapshot,source.definition("abilities",id)))
   var remaining: int=int(snapshot.resource_capacities[pool])
   var offensive: Array=candidates.filter(func(id: String):return source.definition("abilities",id).effects.any(func(effect: Dictionary):return effect.op=="damage"))
   var wards: Array=candidates.filter(func(id: String):return source.definition("abilities",id).targeting.kind=="ally" and source.definition("abilities",id).effects.any(func(effect: Dictionary):return effect.op=="apply_status"))
@@ -134,6 +136,7 @@ static func suggested_spells(snapshot: Dictionary,source: RulesRegistry) -> Arra
   var limit := selection_limit(cls,int(snapshot.get("casting_levels",snapshot.class_levels).get(cls,0)),source)
   for id in snapshot.abilities:
    if RulesCompleteness.enabled(source) and source.definition("abilities",id).has("channel_spell"):continue
+   if source.rules_ref().pack_id=="trhgd-character-v17" and not spell_eligible(snapshot,source.definition("abilities",id)):continue
    if source.definition("abilities",id).get("casting_class")==cls and source.definition("abilities",id).tags.has("spell") and limit>0:selected.append(id);limit-=1
  return selected
 static func ancestry_rows(source: RulesRegistry) -> Array:
@@ -151,3 +154,6 @@ static func ancestry_description(row: Dictionary) -> String:
   text=pattern.sub(text,"",true).strip_edges()
   text+=" Inherited vision is recorded; darkness/low-light battlefield rules are not implemented."
  return text
+
+static func spell_eligible(snapshot: Dictionary,spell: Dictionary) -> bool:
+ return RulesExpressions.evaluate_requirements(spell.requirements,{"attributes":snapshot.attributes,"classes":snapshot.class_levels,"stats":snapshot.stats,"features":snapshot.features,"feats":snapshot.feats,"level":snapshot.level,"tags":snapshot.tags,"capacities":snapshot.resource_capacities}).ok

@@ -32,7 +32,7 @@ for filename in ['mechanics-proof.json','restart-proof.json']:
 skills=set();journeys=[]
 for cohort in range(4):
  d=base/'journeys'/f'cohort-{cohort}';p=json.loads((d/'proof.json').read_text());cold=json.loads((d/'restart-proof.json').read_text())
- assert p['failures']==cold['failures']==0 and p['rules_ref']==expected and p['earned_xp']==360 and p['xp_injected']is False
+ assert p['failures']==cold['failures']==0 and p['rules_ref']==next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v17') and p['earned_xp']==360 and p['xp_injected']is False
  assert len(p['journeys'])==3 and len(p['combat_actions'])==3
  journeys+=p['journeys'];skills.update(p['skills']);proofs[f'journey-{cohort}']=p;proofs[f'journey-{cohort}-restart']=cold
 assert len(journeys)==12
