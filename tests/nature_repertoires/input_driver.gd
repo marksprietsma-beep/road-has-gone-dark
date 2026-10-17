@@ -29,8 +29,9 @@ func run() -> void:
  if granted.ok:
   for id in battle.units.keys().duplicate():
    if battle.units[id].has("entity"):battle.units.erase(id);battle.order.erase(id)
-  battle.units.a.record=granted.actor
+  battle.units.a.record=granted.actor;battle.cursor=battle.order.find("a")
   ui.engine=TacticalAuras.new(granted.actor);battle=ui.engine.seal(battle)
+  check(ui.engine.current(battle).id=="a","buffer fixture explicitly selects the displaying actor")
   check(ui.engine.validate(battle).is_empty(),"buffer UI fixture remains an authoritative valid battle")
   ui.state.first_adventure.battle=battle;ui.mode="attack";ui.refresh()
   check("18 temporary HP"in ui.detail.text,"active character sees actual finite HP buffer")

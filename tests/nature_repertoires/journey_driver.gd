@@ -186,7 +186,13 @@ func test_real_combat() -> void:
  for n in 200:
   if battle.status!="active":break
   var actor := tactical.current(battle);var command := tactical.enemy_command(battle)
-  if wanted.has(actor.id) and int(battle.budget.main)>0 and not combat_actions.has(actor.id):
+  # Deliberate legal player inputs: hold other party actors until each caster
+  # demonstrates its selected spell. Do not let fixture autopilot end the
+  # low-level authored fight before a slower adventurer gets a turn.
+  var casters_ready: bool=combat_actions.has(state.party_ids[0]) and combat_actions.has(state.party_ids[1])
+  if actor.team=="party" and (not wanted.has(actor.id) or combat_actions.has(actor.id) or actor.id==state.party_ids[2] and not casters_ready):
+   command={"actor_id":actor.id,"revision":battle.revision,"kind":"end"}
+  elif wanted.has(actor.id) and int(battle.budget.main)>0 and not combat_actions.has(actor.id):
    var aid: String=wanted[actor.id]
    for target in battle.units.values():
     if tactical.eligible(battle,actor,target,aid):

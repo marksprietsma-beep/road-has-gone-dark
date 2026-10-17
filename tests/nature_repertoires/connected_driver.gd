@@ -82,7 +82,9 @@ func run() -> void:
   var battle := AdventureService.active_battle(state)
   if battle.status!="active":break
   var actor := tactical.current(battle);var command := tactical.enemy_command(battle)
-  if wanted.has(actor.id) and not performed.has(actor.id) and int(battle.budget.main)>0:
+  if actor.team=="party" and (not wanted.has(actor.id) or performed.has(actor.id)):
+   command={"actor_id":actor.id,"revision":battle.revision,"kind":"end"}
+  elif wanted.has(actor.id) and not performed.has(actor.id) and int(battle.budget.main)>0:
    for target in battle.units.values():
     var proposed := {"actor_id":actor.id,"revision":battle.revision,"kind":wanted[actor.id],"target_id":target.id}
     if tactical.eligible(battle,actor,target,wanted[actor.id]) and tactical.command(battle,proposed).ok:command=proposed;break
