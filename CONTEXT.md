@@ -134,6 +134,34 @@ _Avoid_: Unimplemented flavour text, parallel monster-only combat engine
 A regional or local aggregate of a creature species whose plausible habitat, abundance, territorial pressure and relationships to other groups or settlements can change through significant Playthrough events. It is not a roster of individually simulated specimens.
 _Avoid_: Every creature is a persistent NPC, stateless respawn token
 
+**Faction Affiliation**:
+A person's meaningful and potentially multiple ties to organised groups, with context-specific rights and obligations rather than compulsory loyalty based on culture or ancestry.
+_Avoid_: Single faction slot, mandatory racial allegiance
+
+**Faction Relationship**:
+A consequential alliance, rivalry, obligation or internal disagreement between groups or members, changed through grounded events and credible information rather than global reputation updates.
+_Avoid_: Uniform member opinions, universally informed factions
+
+**Recruitment Relationship**:
+A credible, voluntary and persistent arrangement through which an NPC may become a short-term hire, a travelling companion, a trusted long-term party member, an ally or a contracted specialist. The arrangement has reasons, scope and limits informed by that person's existing obligations, ambitions and knowledge.
+_Avoid_: Universal persuasion-to-recruit button, guaranteed obedience, automatic party membership
+
+**NPC Loyalty and Departure**:
+A consequential choice by a non-player person to honour, renegotiate or leave a commitment—or, in exceptional grounded circumstances, betray it—based on their motives, beliefs, relationships, treatment and opportunities. The resulting action has persistent causes and consequences, not unexplained random disloyalty.
+_Avoid_: Passive friendship decay, arbitrary betrayal roll, invisible scripted abandonment
+
+**NPC Mechanical Depth**:
+A tiered representation of a non-player person's relevant competence: ordinary residents need credible professions and usable skills; consequential specialists, companions, rivals and leaders may require full ancestry, class, level, feats, spells, equipment and persistent advancement as their role warrants. Any contested action resolves through the shared d20 authority.
+_Avoid_: Every citizen as level-20 character sheet, inconsistent simplified combat roll
+
+**Boss Action-Economy Profile**:
+A bounded, visible and testable encounter capability for a major individual to remain challenging against a multi-character Party through distinctive command opportunities, allies, reactions, phases or environment-linked actions without simply inflating hit points or adding unlimited extra turns.
+_Avoid_: Free action spam, secretly changing action rules, universal boss privilege
+
+**Lair Action**:
+A powerful encounter effect arising from a boss's credible prepared territory, stronghold or supernatural domain, with explicit triggers, telegraphing and player counterplay; its availability is conditional on that environment rather than an inherent feature the boss carries everywhere.
+_Avoid_: Portable magic whenever the boss travels, unavoidable environment damage
+
 **Significant Creature**:
 An individually persistent monster or animal distinguished by consequential actions, a unique role, history, relationship, threat or encounter outcome; it can survive, move, be injured or become important without treating its entire species as individual characters.
 _Avoid_: Generic population total, automatically tracking every wolf
