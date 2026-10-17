@@ -25,7 +25,7 @@ func run() -> void:
   var ui := await open_sheet()
   var index: int=0 if cls=="sorcerer" else 1
   var id: String=earned.party_ids[index]
-  var fixture: Dictionary=saved.records[key].duplicate(true);fixture.character_id=id
+  var fixture := render_identity(saved.records[key],id)
   ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=fixture;ui.selected=index+1;ui.refresh()
   ui.title.text="DEVELOPMENT FIXTURE · "+cls.capitalize()+"20 · not earned XP"
   for tier in [6,7]:
@@ -34,7 +34,7 @@ func run() -> void:
   ui.detail_tabs.current_tab=2
   await photograph_scene("fixture-"+cls+"-sheet",true,Vector2i(2560,1440))
  var ui := await open_sheet()
- var id: String=earned.party_ids[0];var hybrid: Dictionary=saved.records["hybrid:sorcerer-starfall-rupture"].duplicate(true);hybrid.character_id=id
+ var id: String=earned.party_ids[0];var hybrid := render_identity(saved.records["hybrid:sorcerer-starfall-rupture"],id)
  ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=hybrid;ui.selected=1;ui.refresh();ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 6";ui.spellbook.repertoire_search.text_changed.emit("tier 6")
  ui.title.text="DEVELOPMENT FIXTURE · Sorcerer / Druid / Mystic Theurge · not earned XP"
  await photograph_scene("fixture-hybrid-independent-tracks",true)
@@ -86,3 +86,15 @@ func photograph_scene(name: String,fixture: bool,resolution := Vector2i(1280,720
 func finish_capture() -> void:
  FileAccess.open(capture_folder.path_join("screenshots.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"screenshots":screenshots,"scope":"Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers."}))
  get_tree().quit(1 if failures else 0)
+
+func render_identity(record: Dictionary,id: String) -> Dictionary:
+ # Render-only fixture: keep persistent companion ownership internally valid.
+ # The actual earned campaign and saved mechanics proof are never modified.
+ var r: Dictionary=record.duplicate(true);r.character_id=id
+ var pets := {}
+ for previous in r.runtime.companions:
+  var pet: Dictionary=r.runtime.companions[previous].duplicate(true)
+  var pet_id := RulesEntities.identity(id);pet.record.character_id=pet_id;pets[pet_id]=pet
+ r.runtime.companions=pets
+ check(RulesCharacter.new(RulesRecords.registry(r)).derive_character(r).ok,"render fixture retains valid owner/companion identity "+id)
+ return r
