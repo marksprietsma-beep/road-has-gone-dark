@@ -29,7 +29,7 @@ proofs={}
 input_proof=json.loads((base/'mechanics/input-proof.json').read_text());assert input_proof['checks']>=5 and input_proof['failures']==0
 proofs['combat-input']=input_proof
 for file in ['proof.json','restart-proof.json']:
- p=json.loads((base/'connected'/file).read_text());assert p['failures']==0 and p['checks']>0 and p['rules_ref']==expected
+ p=json.loads((base/'connected'/file).read_text());assert p['failures']==0 and p['checks']>0 and p['rules_ref']==default_pin
  proofs['connected/'+file]=p
 assert len(proofs['connected/proof.json']['casts'])==2 and proofs['connected/proof.json']['xp_injected']is False
 for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('journey','journeys/cohort-0')]:
