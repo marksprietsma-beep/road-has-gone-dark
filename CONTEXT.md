@@ -281,6 +281,14 @@ A party journey from a safe return point towards a destination or Site, consumin
 A context-specific, actionable choice or challenge encountered during exploration; it need not result in tactical combat.
 _Avoid_: Quest, battle
 
+**Systemic Encounter Situation**:
+A grounded interaction among actors, competing interests, a location, available resources, risks and information, which may be approached in several different lawful ways when the circumstances support them. It can lead to combat but is not defined by combat.
+_Avoid_: Mandatory battle with cosmetic choice labels, arbitrary options unsupported by world state
+
+**Encounter Approach**:
+A feasible course of action made available by a character's actual capabilities, equipment, relationships, knowledge and environmental context, with meaningful costs, checks, risks and potential consequences. Not every approach applies to every situation.
+_Avoid_: Universal talk/sneak/fight menu, decorative skill names, disconnected dice roll
+
 **Tactical Encounter**:
 A bounded, deterministic combat situation resolved through the same character rules and resource authority used elsewhere in the Playthrough.
 
