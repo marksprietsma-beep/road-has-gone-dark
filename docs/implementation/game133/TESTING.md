@@ -1,6 +1,6 @@
 # Windows-only acceptance
 
-No Linux game tests, builds or workflow jobs are used for GAME-133. Native results will be recorded with exact source/run/artifact IDs after completion. Source inventory and generated content are not described as Windows execution.
+All Godot/game validation and exports for GAME-133 run on Windows. The exact release run and artifact names are linked in DELIVERY.md; native receipts report actual outcomes and source. Source inventory is not Windows execution, and a pending/failed workflow is never a passed release.
 
 The dedicated workflow `GAME-133 Sorcerer and Druid Repertoires` imports the production project with pinned Godot, validates the immutable manifest and v1–v17 bytes, exports the genuine Windows game and a temporary QA entry, then runs with empty PATH and no source helper override. The QA executable is removed before distribution.
 
