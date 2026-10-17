@@ -98,6 +98,22 @@ These examples illustrate the desired design vocabulary, **not production featur
 
 **Next focused question (Q9):** treatment of intelligent nonhuman/monstrous peoples as full societies and individuals rather than automatically hostile creatures.
 
+## Sapient nonhuman peoples as full societies and individuals — accepted 17 October 2026 (NPC & Monster Q9, B)
+
+**Intelligent nonhuman and historically “monstrous” peoples are inhabitants of the world with full social and individual depth, not automatically hostile enemy populations.** Orcs, goblins, giants and other sufficiently sapient beings may form settlements, families, trades, guilds, religions, governments, communities, alliances, rivalries and diverse ways of life, subject to the world’s grounded histories and their species’ actual capabilities. Their members may be merchants, farmers, wanderers, healers, raiders, rulers or adventurers, with personal motives and abilities.
+
+**Ancestry/species, culture and political allegiance remain separate.** An orc's inherited body, movement, senses or other species-native capability remains real under the same d20 mechanics; none determines universal morality, profession, politics, intelligence, cultural membership or hostility. Neither should all nonhuman societies be copied wholesale from human institutions: believable variation in settlement organisation, economy, communication, technology, customs and social structures is welcome when supported by ecology, history, body plan and culture. A hostile raiding group needs a world-grounded conflict or interest; not every other community or member of that people inherits its guilt.
+
+**Full social participation where meaningful.** Sapient nonhuman communities can offer trade, protection, information, recruitment, negotiated access, political conflict and peaceful or hostile encounters. Their named significant individuals and ordinary residents follow the same tiered NPC mechanical-depth principle, independent loyalty rules and bounded faction agency accepted in Q6–Q8, and may join or oppose the party when the individual has credible reasons. A person’s potential to negotiate does not make them automatically friendly or recruitable.
+
+**Keep important distinctions.** Animal predators, mindless undead, constrained constructs and supernatural entities lacking ordinary social or linguistic capabilities do not automatically become settlement citizens or diplomacy partners. Highly intelligent but genuinely solitary or rare monsters can retain distinctive needs, habitats, social capacities and hazards; Q9 does not require universal integration of every intelligent creature into marketplaces or player settlements. Distinguish physical/supernatural species identity from capability for social membership, and define exceptions through credible fiction and rule-supported behaviour.
+
+**World-state constraints:** Existing generated geography, cultural populations, settlements and factions have stable source provenance. Introduce nonhuman communities through compatible generated world content and Playthrough deltas, not arbitrary rewriting of Azgaar cultures or inventing a pre-existing civilisation without documented origin. Apply Q1–Q5 geography, ecology, historical/supernatural distribution and world-grounded risk; some communities may be dangerous, conflicted, hidden or culturally inaccessible, and not all encounters must be combat. Important NPC histories, faction relationships and recruitment decisions persist via the one Playthrough writer. Avoid large-scale NPC simulation or a blanket procedural town generator as prerequisites for the first gameplay slice.
+
+**Rejected:** (A) default adversarial settlements and token friendly exceptions as the predominant role for nonhuman peoples; (C) requiring almost every intelligent monster, including unusual solitary entities, to participate in expansive universal trade and politics regardless of species-specific behaviour. This is **design direction**, not delivered society, diplomacy or settlement gameplay.
+
+**Next design dependency (Q10):** how a generated encounter exposes multiple meaningful approaches and records the consequences of choices rather than being a disguised mandatory tactical fight.
+
 ## Implementation dependencies
 
 - [GAME-134](https://linear.app/marksprietsma/issue/GAME-134/milestone-living-bestiary-humanoid-npcs-and-meaningful-opposition): programme for creature/opposition/NPC systems.
@@ -108,4 +124,4 @@ These examples illustrate the desired design vocabulary, **not production featur
 
 Open particulars: exact depth threshold per NPC, whether class builds remain permanently materialised once an NPC is significant, leadership and recruitment contract, boss encounter timing model, how lair features are derived from procedural sites, UI telegraphing, action resource budgets, balance and difficulty tests. These require implementation review, not another mandatory broad design round.
 
-**Q7–Q8 resolved:** recruitment is grounded in NPC motives and independent loyalty, while multiple faction affiliations, organisational aims and internal differences can change through consequential events. **Next focused question (Q9):** how intelligent nonhuman peoples should be represented in the living world.
+**Q7–Q9 resolved:** recruitment follows NPC motives and commitments, factions have overlapping loyalties, and sapient nonhuman peoples have full social and individual depth without compulsory hostility or ancestry-based morality. **Next focused question (Q10):** meaningful approaches and persistent outcomes in procedural encounters.
