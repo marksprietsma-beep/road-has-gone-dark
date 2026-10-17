@@ -122,6 +122,10 @@ _Avoid_: Arbitrary encounter spawn table, continuous individual creature simulat
 A world-grounded explanation and constraint for a species' presence and rarity, based on habitat, geography, history, supernatural conditions, factions and credible movement. Its provenance is stable and distinguishable from discoveries or subsequent Playthrough changes.
 _Avoid_: Biome-only monster spawn list, anything-spawns-anywhere probability
 
+**Sapient People**:
+An intelligent, socially capable population of persons, including nonhuman and historically monster-labelled peoples, whose members may have distinct cultures, communities, settlements, occupations, beliefs, personal histories and political affiliations. Shared ancestry or species-native abilities do not prescribe uniform morality, culture or hostility.
+_Avoid_: Default enemy species, uniform ancestry-based culture, cosmetic humanoid reskin
+
 **Creature Species**:
 A mechanically distinct animal, monster, supernatural being or other non-player creature kind, defined by its intrinsic body, senses, movement, natural attacks, protections, weaknesses and capabilities rather than by a human combat-template reskin.
 _Avoid_: Encounter role, cosmetic skin, humanoid class name
