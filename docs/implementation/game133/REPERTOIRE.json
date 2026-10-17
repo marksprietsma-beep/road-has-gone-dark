@@ -1,0 +1,255 @@
+{
+  "before": {
+    "base_classes": 32,
+    "prestige_paths": 18,
+    "heritages": 50,
+    "ancestry_families": 37,
+    "feats": 82,
+    "skills": 14,
+    "unique_named_spells": 153,
+    "class_spell_references": 208,
+    "psychic_power_definitions": 45,
+    "creature_definitions": 14,
+    "body_forms": 15,
+    "career_choice_groups": 228,
+    "spell_reference_counting": "Exclude channel delivery wrappers; names are not unique engine effect families."
+  },
+  "candidate": {
+    "base_classes": 32,
+    "prestige_paths": 18,
+    "heritages": 50,
+    "ancestry_families": 37,
+    "feats": 82,
+    "skills": 14,
+    "unique_named_spells": 163,
+    "class_spell_references": 218,
+    "psychic_power_definitions": 45,
+    "creature_definitions": 14,
+    "body_forms": 15,
+    "career_choice_groups": 228,
+    "spell_reference_counting": "Exclude channel delivery wrappers; names are not unique engine effect families."
+  },
+  "tiers": {
+    "sorcerer": {
+      "4": {
+        "v17": [
+          {
+            "id": "sorcerer-ice-lance",
+            "name": "Ice lance"
+          },
+          {
+            "id": "sorcerer-greater-ward",
+            "name": "Greater arcane ward"
+          }
+        ],
+        "v18": [
+          {
+            "id": "sorcerer-ice-lance",
+            "name": "Ice lance"
+          },
+          {
+            "id": "sorcerer-greater-ward",
+            "name": "Greater arcane ward"
+          },
+          {
+            "id": "sorcerer-crystal-reservoir",
+            "name": "Crystal reservoir"
+          }
+        ]
+      },
+      "5": {
+        "v17": [
+          {
+            "id": "sorcerer-tier5-control",
+            "name": "Sorcerer: binding tempest 5"
+          },
+          {
+            "id": "sorcerer-tier5-restoration",
+            "name": "Sorcerer: restorative aegis 5"
+          }
+        ],
+        "v18": [
+          {
+            "id": "sorcerer-tier5-control",
+            "name": "Sorcerer: binding tempest 5"
+          },
+          {
+            "id": "sorcerer-tier5-restoration",
+            "name": "Sorcerer: restorative aegis 5"
+          },
+          {
+            "id": "sorcerer-crushing-doubt",
+            "name": "Crushing doubt"
+          }
+        ]
+      },
+      "6": {
+        "v17": [
+          {
+            "id": "sorcerer-tier6-control",
+            "name": "Sorcerer: binding tempest 6"
+          },
+          {
+            "id": "sorcerer-tier6-restoration",
+            "name": "Sorcerer: restorative aegis 6"
+          }
+        ],
+        "v18": [
+          {
+            "id": "sorcerer-tier6-control",
+            "name": "Sorcerer: binding tempest 6"
+          },
+          {
+            "id": "sorcerer-tier6-restoration",
+            "name": "Sorcerer: restorative aegis 6"
+          },
+          {
+            "id": "sorcerer-slipstream-veil",
+            "name": "Slipstream veil"
+          }
+        ]
+      },
+      "7": {
+        "v17": [
+          {
+            "id": "sorcerer-tier7-tempest",
+            "name": "Sorcerer: Tempest 7"
+          },
+          {
+            "id": "sorcerer-tier7-sanctuary",
+            "name": "Sorcerer: Sanctuary 7"
+          }
+        ],
+        "v18": [
+          {
+            "id": "sorcerer-tier7-tempest",
+            "name": "Sorcerer: Tempest 7"
+          },
+          {
+            "id": "sorcerer-tier7-sanctuary",
+            "name": "Sorcerer: Sanctuary 7"
+          },
+          {
+            "id": "sorcerer-sundering-chord",
+            "name": "Sundering chord"
+          },
+          {
+            "id": "sorcerer-starfall-rupture",
+            "name": "Starfall rupture"
+          }
+        ]
+      }
+    },
+    "druid": {
+      "4": {
+        "v17": [
+          {
+            "id": "druid-storm-lance",
+            "name": "Storm lance"
+          },
+          {
+            "id": "druid-oak-ward",
+            "name": "Oak ward"
+          }
+        ],
+        "v18": [
+          {
+            "id": "druid-storm-lance",
+            "name": "Storm lance"
+          },
+          {
+            "id": "druid-oak-ward",
+            "name": "Oak ward"
+          },
+          {
+            "id": "druid-bramble-tether",
+            "name": "Bramble tether"
+          }
+        ]
+      },
+      "5": {
+        "v17": [
+          {
+            "id": "druid-tier5-control",
+            "name": "Druid: binding tempest 5"
+          },
+          {
+            "id": "druid-tier5-restoration",
+            "name": "Druid: restorative aegis 5"
+          }
+        ],
+        "v18": [
+          {
+            "id": "druid-tier5-control",
+            "name": "Druid: binding tempest 5"
+          },
+          {
+            "id": "druid-tier5-restoration",
+            "name": "Druid: restorative aegis 5"
+          },
+          {
+            "id": "druid-sap-renewal",
+            "name": "Sap renewal"
+          }
+        ]
+      },
+      "6": {
+        "v17": [
+          {
+            "id": "druid-tier6-control",
+            "name": "Druid: binding tempest 6"
+          },
+          {
+            "id": "druid-tier6-restoration",
+            "name": "Druid: restorative aegis 6"
+          }
+        ],
+        "v18": [
+          {
+            "id": "druid-tier6-control",
+            "name": "Druid: binding tempest 6"
+          },
+          {
+            "id": "druid-tier6-restoration",
+            "name": "Druid: restorative aegis 6"
+          },
+          {
+            "id": "druid-packward-canopy",
+            "name": "Packward canopy"
+          },
+          {
+            "id": "druid-predators-rhythm",
+            "name": "Predator's rhythm"
+          }
+        ]
+      },
+      "7": {
+        "v17": [
+          {
+            "id": "druid-tier7-tempest",
+            "name": "Druid: Tempest 7"
+          },
+          {
+            "id": "druid-tier7-sanctuary",
+            "name": "Druid: Sanctuary 7"
+          }
+        ],
+        "v18": [
+          {
+            "id": "druid-tier7-tempest",
+            "name": "Druid: Tempest 7"
+          },
+          {
+            "id": "druid-tier7-sanctuary",
+            "name": "Druid: Sanctuary 7"
+          },
+          {
+            "id": "druid-winters-verdict",
+            "name": "Winter's verdict"
+          }
+        ]
+      }
+    }
+  },
+  "scope": "Inventory, not a claim of native verification or complete class repertoire."
+}

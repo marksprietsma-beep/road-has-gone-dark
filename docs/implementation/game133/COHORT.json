@@ -1,0 +1,811 @@
+{
+  "rules_ref": {
+    "pack_id": "trhgd-character-v18",
+    "schema_version": 1,
+    "rules_version": "18.0.0",
+    "engine_schema": 3,
+    "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc"
+  },
+  "spells": [
+    {
+      "id": "sorcerer-crystal-reservoir",
+      "name": "Crystal reservoir",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "sorcerer-slots-4": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "temporary_hp",
+          "amount": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 8
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "casting_level",
+                    "id": "sorcerer"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "tags": [
+        "spell",
+        "spontaneous",
+        "tier_4"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "CHA",
+        "min": 14
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Grant8+half effective Sorcerer level temporary HP. Replaces only a smaller temporary-HP buffer; never stacks, heals wounds or restores resources. Persists until consumed; no timed ward. Main action; one tier4 slot; must be permanently known; CHA14. Range6, line of sight.",
+      "casting_class": "sorcerer",
+      "spell_tier": 4,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "sorcerer-crushing-doubt",
+      "name": "Crushing doubt",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "sorcerer-slots-5": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "will",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 15
+              },
+              {
+                "op": "modifier",
+                "id": "CHA"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "crushing-doubt"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "spontaneous",
+        "tier_5"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "CHA",
+        "min": 15
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Will negates weapon attack and Will penalties of3 for two target activations. No damage, immobility or casting suppression. Main action; one tier5 slot; must be permanently known; CHA15. Range6, line of sight.",
+      "casting_class": "sorcerer",
+      "spell_tier": 5,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "sorcerer-slipstream-veil",
+      "name": "Slipstream veil",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "sorcerer-slots-6": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "slipstream-veil"
+        }
+      ],
+      "tags": [
+        "spell",
+        "spontaneous",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "CHA",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "One ally gains50% weapon concealment and stride+2 insight for two global round boundaries. Does not evade targeted spells or grant teleportation. Main action; one tier6 slot; must be permanently known; CHA16. Range6, line of sight.",
+      "casting_class": "sorcerer",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "sorcerer-sundering-chord",
+      "name": "Sundering chord",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "sorcerer-slots-7": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "CHA"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "remove_status",
+              "id": "warded"
+            },
+            {
+              "op": "remove_status",
+              "id": "haste"
+            },
+            {
+              "op": "remove_status",
+              "id": "wizard-greater-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "sorcerer-greater-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "cleric-faith-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "druid-oak-ward-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "perfect-shadow"
+            },
+            {
+              "op": "remove_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "remove_status",
+              "id": "runic-shell"
+            },
+            {
+              "op": "remove_status",
+              "id": "spirit-shelter"
+            },
+            {
+              "op": "remove_status",
+              "id": "spirit-lattice"
+            },
+            {
+              "op": "remove_status",
+              "id": "lucid-poise"
+            },
+            {
+              "op": "remove_status",
+              "id": "sovereign-clarity"
+            },
+            {
+              "op": "remove_status",
+              "id": "elemental-covenant"
+            },
+            {
+              "op": "remove_status",
+              "id": "company-veil"
+            },
+            {
+              "op": "remove_status",
+              "id": "freedom-path"
+            },
+            {
+              "op": "remove_status",
+              "id": "slipstream-veil"
+            },
+            {
+              "op": "remove_status",
+              "id": "packward-canopy"
+            },
+            {
+              "op": "remove_status",
+              "id": "predators-rhythm"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "spontaneous",
+        "tier_7"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "CHA",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Each enemy in radius1 makes its own Fortitude save; failure strips the nineteen listed temporary wards and enhancements. No damage. Cannot remove ancestry, feats, maintained auras, temporary HP or body forms. Main action; one tier7 slot; must be permanently known; CHA17. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "sorcerer",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "sorcerer-starfall-rupture",
+      "name": "Starfall rupture",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "sorcerer-slots-7": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "reflex",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "CHA"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "4d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "sorcerer"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "force"
+            },
+            {
+              "op": "apply_status",
+              "id": "starfall-fracture"
+            }
+          ],
+          "on_success": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "4d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "sorcerer"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "force",
+              "save_half": true
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "spell",
+        "spontaneous",
+        "tier_7"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "CHA",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Enemies in radius1 take4d6+half caster level force damage and Fortitude\u22122 for two activations. Reflex halves damage and prevents fracture. Existing evasion and force resistance apply separately per target. Main action; one tier7 slot; must be permanently known; CHA17. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "sorcerer",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "druid-bramble-tether",
+      "name": "Bramble tether",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "druid-slots-4": 1,
+          "druid-bramble-tether-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "reflex",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 14
+              },
+              {
+                "op": "modifier",
+                "id": "WIS"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "bramble-tether"
+            }
+          ],
+          "on_success": []
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_4"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 14
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Reflex negates rooting one enemy for two target activations. Prevents movement, not attacks or spells. No damage or impassable terrain. Main action; one tier4 slot and prepared copy; WIS14. Range6, line of sight.",
+      "casting_class": "druid",
+      "spell_tier": 4,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "druid-sap-renewal",
+      "name": "Sap renewal",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "druid-slots-5": 1,
+          "druid-sap-renewal-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "heal",
+          "amount": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 10
+              },
+              {
+                "op": "casting_level",
+                "id": "druid"
+              }
+            ]
+          }
+        },
+        {
+          "op": "temporary_hp",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "casting_level",
+                "id": "druid"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          }
+        },
+        {
+          "op": "remove_status",
+          "id": "weakened"
+        },
+        {
+          "op": "remove_status",
+          "id": "off-balance"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_5"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 15
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Heal10+effective Druid level, clear Weakened/off-balance and grant half caster level temporary HP. The buffer never stacks; no resources, downed recovery or permanent injury removal. Main action; one tier5 slot and prepared copy; WIS15. Range6, line of sight.",
+      "casting_class": "druid",
+      "spell_tier": 5,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "druid-packward-canopy",
+      "name": "Packward canopy",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "druid-slots-6": 1,
+          "druid-packward-canopy-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "packward-canopy"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Allies in radius1, including active companions and summons, gain physical resistance5 per packet and Fortitude+2 insight for three global round boundaries. Does not grant elemental resistance or revive defeated creatures. Main action; one tier6 slot and prepared copy; WIS16. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "druid",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "druid-predators-rhythm",
+      "name": "Predator's rhythm",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "druid-slots-6": 1,
+          "druid-predators-rhythm-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "apply_status",
+          "id": "predators-rhythm"
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_6"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 16
+      },
+      "targeting": {
+        "kind": "ally",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "One living ally gains melee reach+1, stride+1 and weapon damage+3 insight for three global round boundaries, including natural attacks. Does not change anatomy, restore actions or grant extra attacks. Main action; one tier6 slot and prepared copy; WIS16. Range6, line of sight.",
+      "casting_class": "druid",
+      "spell_tier": 6,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    },
+    {
+      "id": "druid-winters-verdict",
+      "name": "Winter's verdict",
+      "cost": {
+        "main": 1,
+        "move": 0,
+        "reaction": 0,
+        "resources": {
+          "druid-slots-7": 1,
+          "druid-winters-verdict-prepared": 1
+        }
+      },
+      "effects": [
+        {
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 17
+              },
+              {
+                "op": "modifier",
+                "id": "WIS"
+              },
+              {
+                "op": "stat",
+                "id": "save_dc"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "druid"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "cold"
+            },
+            {
+              "op": "apply_status",
+              "id": "winter-lock"
+            }
+          ],
+          "on_success": [
+            {
+              "op": "damage",
+              "amount": {
+                "dice": "3d6",
+                "bonus": {
+                  "op": "floor_divide",
+                  "args": [
+                    {
+                      "op": "casting_level",
+                      "id": "druid"
+                    },
+                    {
+                      "op": "const",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "damage_type": "cold",
+              "save_half": true
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "spell",
+        "prepared",
+        "tier_7"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "attribute",
+        "id": "WIS",
+        "min": 17
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 1
+      },
+      "description": "Enemies in radius1 take3d6+half caster level cold damage and become immobile for two activations. Fortitude halves damage and prevents rooting; cold resistance and existing evasion apply. No terrain or weather simulation. Main action; one tier7 slot and prepared copy; WIS17. Range6, line of sight, radius1 same-team targets.",
+      "casting_class": "druid",
+      "spell_tier": 7,
+      "provenance": {
+        "origin": "Original TRHGD tactical spell designs; no sourcebook text or spell tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      }
+    }
+  ],
+  "dispel_statuses": [
+    "warded",
+    "haste",
+    "wizard-greater-ward-status",
+    "sorcerer-greater-ward-status",
+    "cleric-faith-ward-status",
+    "druid-oak-ward-status",
+    "perfect-shadow",
+    "beguiling-veil",
+    "runic-shell",
+    "spirit-shelter",
+    "spirit-lattice",
+    "lucid-poise",
+    "sovereign-clarity",
+    "elemental-covenant",
+    "company-veil",
+    "freedom-path",
+    "slipstream-veil",
+    "packward-canopy",
+    "predators-rhythm"
+  ],
+  "scope": "Ten executable original choices using existing effect primitives; not ten new engine mechanics."
+}

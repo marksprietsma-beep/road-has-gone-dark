@@ -28950,15 +28950,14 @@
     "including_npc_total": 760
   },
   "current_delivery": {
-    "pack_id": "trhgd-character-v17",
+    "pack_id": "trhgd-character-v18",
     "rules_ref": {
-      "pack_id": "trhgd-character-v17",
+      "pack_id": "trhgd-character-v18",
       "schema_version": 1,
-      "rules_version": "17.0.0",
+      "rules_version": "18.0.0",
       "engine_schema": 3,
-      "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0"
+      "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc"
     },
-    "verified_source": "e54ffb48c42ceeb0dd172ffd0579db4d5afd9f68",
     "base_tracks": 32,
     "base_level_cap": 20,
     "prestige_paths": 18,
@@ -28970,14 +28969,16 @@
     "scheduled_choice_groups": 228,
     "selectable_psychic_powers": 45,
     "creatures": 14,
-    "status": "Focused Wizard/Cleric repertoire cohort native Windows validated; retained baseline career scope; per-option human acceptance pending",
+    "status": "Focused Sorcerer/Druid cohort native Windows validated; baseline scope retained; per-option human acceptance pending",
     "programme_complete": false,
     "native_receipts": [
-      "docs/implementation/game130/evidence/native-distribution-proof.json",
-      "docs/implementation/game130/evidence/native-archive-audit.json"
+      "docs/implementation/game133/evidence/native-distribution-proof.json",
+      "docs/implementation/game133/evidence/native-archive-audit.json"
     ],
-    "unique_named_spells": 153,
-    "class_spell_references": 208
+    "unique_named_spells": 163,
+    "class_spell_references": 218,
+    "implementation_source": "1ac6e6024e46efe30a974cd1b3daeba645294c2c",
+    "verified_source": "1ac6e6024e46efe30a974cd1b3daeba645294c2c"
   },
   "wave_two": {
     "candidate_pack": "trhgd-character-v12",
@@ -29133,6 +29134,36 @@
         "docs/implementation/game126/evidence/native-distribution-proof.json",
         "docs/implementation/game126/evidence/native-archive-audit.json"
       ]
+    },
+    {
+      "pack_id": "trhgd-character-v17",
+      "rules_ref": {
+        "pack_id": "trhgd-character-v17",
+        "schema_version": 1,
+        "rules_version": "17.0.0",
+        "engine_schema": 3,
+        "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0"
+      },
+      "verified_source": "e54ffb48c42ceeb0dd172ffd0579db4d5afd9f68",
+      "base_tracks": 32,
+      "base_level_cap": 20,
+      "prestige_paths": 18,
+      "prestige_caps": "3,5 or10 by definition",
+      "ancestry_families": 37,
+      "heritage_records": 50,
+      "feats": 82,
+      "skills": 14,
+      "scheduled_choice_groups": 228,
+      "selectable_psychic_powers": 45,
+      "creatures": 14,
+      "status": "Focused Wizard/Cleric repertoire cohort native Windows validated; retained baseline career scope; per-option human acceptance pending",
+      "programme_complete": false,
+      "native_receipts": [
+        "docs/implementation/game130/evidence/native-distribution-proof.json",
+        "docs/implementation/game130/evidence/native-archive-audit.json"
+      ],
+      "unique_named_spells": 153,
+      "class_spell_references": 208
     }
   ],
   "wave_three": {
@@ -29265,5 +29296,44 @@
     "earned_xp_each": 360,
     "high_level_scope": "Lawful development fixtures, not earned level20 or human career acceptance",
     "programme_complete": false
+  },
+  "nature_repertoires": {
+    "linear": "GAME-133",
+    "issue": 134,
+    "parent_issue": 118,
+    "pr": 133,
+    "rules_ref": {
+      "pack_id": "trhgd-character-v18",
+      "schema_version": 1,
+      "rules_version": "18.0.0",
+      "engine_schema": 3,
+      "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc"
+    },
+    "new_spell_identities": 10,
+    "class_spell_reference_delta": 10,
+    "scope": "Sorcerer/Druid4–7; no new ancestry/class source mappings",
+    "implementation_source": "1ac6e6024e46efe30a974cd1b3daeba645294c2c",
+    "native_workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816",
+    "artifact_names": [
+      "game133-complete-windows-x64",
+      "game133-native-evidence"
+    ],
+    "earned_review_target": {
+      "characters": 3,
+      "level": 8,
+      "xp_each": 490,
+      "objectives": 49,
+      "xp_injected": false
+    },
+    "high_level_scope": "Lawful development fixtures, not earned20 or full human acceptance",
+    "programme_complete": false,
+    "source_commit": "1ac6e6024e46efe30a974cd1b3daeba645294c2c",
+    "windows_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39047311816/artifacts/12106347514",
+    "sha256": "b749a7353142f869726648c9dad3a88cadc135ae84f68f2248ab296f8aa0de52",
+    "native_status": "success",
+    "earned_characters": 3,
+    "earned_level": 8,
+    "earned_xp_each": 490,
+    "earned_objectives": 49
   }
 }

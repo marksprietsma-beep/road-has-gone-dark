@@ -7,7 +7,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
  var result := super.command(source,input)
  return fail(_channel_error) if not _channel_error.is_empty() else result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if registry.rules_ref().get("pack_id")=="trhgd-character-v17":
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or

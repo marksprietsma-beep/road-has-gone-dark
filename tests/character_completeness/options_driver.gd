@@ -3,7 +3,13 @@ extends "res://tests/character_completeness/prestige_driver.gd"
 var options := {"feats":{},"ancestries":{}}
 func run() -> void:
  base=OS.get_environment("GAME126_OPTIONS_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ # Archived GAME-126 option evidence is v16, independent of the fresh default.
+ # Fresh v18 controls and campaigns are verified by GAME-133's native suite.
+ source=RulesRegistry.new()
+ var loaded := source.load_pack("res://data/rules/trhgd-character-v16.json")
+ check(loaded.ok,"load exact archived v16 options")
+ if not loaded.ok:done();return
+ kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME126_AUDIT_RESTART")=="1":
   var saved := WorldOriginLore.read_json(base.path_join("records.json"))
   for id in saved.records:
