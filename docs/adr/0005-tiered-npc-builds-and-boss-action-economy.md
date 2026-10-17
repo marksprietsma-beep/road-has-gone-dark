@@ -75,6 +75,29 @@ These examples illustrate the desired design vocabulary, **not production featur
 
 **Next interview dependency (Q8):** influence of factions, cultures and NPC-to-NPC connections on loyalties, conflicts, settlement reactions and recruitability.
 
+## Dynamic factions and overlapping loyalties — accepted 17 October 2026 (NPC & Monster Q8, B)
+
+**NPCs may hold several meaningful affiliations at once.** A mercenary may owe contractual duties to a guild, affection to family, allegiance to a settlement and friendship to an adventuring companion. Their responsibilities can compete. Individual people can disagree with leaders, question their organisation, renegotiate terms, assist outsiders, switch affiliations or take other plausible paths. No faction or culture automatically controls every member's beliefs and choices.
+
+**Factions have contextual goals and capacity.** Guilds, factions, faith organisations, households, settlements and other groups can maintain aims, alliances, rivalries, resources, hierarchies, obligations and internal differences. These affect relevant opportunities, recruitment, protection, negotiation and regional developments. Relationships may change through consequential, recorded events: defections, aid, discovered wrongdoing, disputes, alliances, leadership changes, shared threats and settlement events. Do not assume every faction pursues every possible objective constantly.
+
+**Faction standing is not a universal reputation number.** Distinguish what an organisation actually did, what each individual or faction knows or believes, and what the player has learned. News, testimony and orders must travel through credible in-world channels. An NPC may support the Party without their employer agreeing, and a faction's hostile leadership does not make all its members enemies. Reputation, recognition and sanctions are context-dependent and may vary between places, institutions and people. Accepted ADR 0002 principles for NPC beliefs, sparse relationships, bounded initiative and imperfect communication remain authoritative.
+
+**Identity, culture and species are distinct from politics and morality.** Cultural membership, religion, ancestry or monster species is not a mechanical assignment of universal virtue, hostility or allegiance. Historical and social institutions can still influence choices, opportunities and conflicts in grounded ways. Some creatures and factions may have established violent or controlling goals, but individual exceptions and political divisions should remain possible where intelligence and social context warrant them.
+
+**Bounded persistence, not continuous global politics.** Preserve relevant memberships, obligations, faction ties, decisions, world events and resulting effects in Playthrough deltas anchored to canonical World Template institutions and sites. Promote a group or relationship into tracked significance only when it can affect meaningful decisions or wider events. A distant major war may develop, but routine minor faction disputes across every remote settlement need not be simulated. Important off-screen changes follow World Situations and fair information-delivery rules; no auto-decaying friendship or always-on NPC network is required.
+
+**Examples (design intent, not claims of current gameplay):**
+- A hired guild mercenary may help expose corruption while still fearing sanctions for disobeying a superior.
+- Two local guild branches may act differently, shaped by their leadership and agreements.
+- A former enemy commander may negotiate an alliance against a mutual threat while preserving other obligations.
+
+**Not settled by Q8:** numeric faction standing, exact membership schemas, political jurisdiction, espionage mechanics, communications timing, war resolution, reputation presentation, faction resource budgets or who can found/manage an organisation. These belong to later scoped systems, including GAME-29 and the living-NPC programme. Q8 does **not** authorise broad ongoing political simulation.
+
+**Rejected:** a single primary-faction opinion imposed on each NPC (A), and continuous elaborate simulation of every faction worldwide (C). The accepted approach preserves systemic depth, contextual disagreement and reproducible consequential change.
+
+**Next focused question (Q9):** treatment of intelligent nonhuman/monstrous peoples as full societies and individuals rather than automatically hostile creatures.
+
 ## Implementation dependencies
 
 - [GAME-134](https://linear.app/marksprietsma/issue/GAME-134/milestone-living-bestiary-humanoid-npcs-and-meaningful-opposition): programme for creature/opposition/NPC systems.
@@ -85,4 +108,4 @@ These examples illustrate the desired design vocabulary, **not production featur
 
 Open particulars: exact depth threshold per NPC, whether class builds remain permanently materialised once an NPC is significant, leadership and recruitment contract, boss encounter timing model, how lair features are derived from procedural sites, UI telegraphing, action resource budgets, balance and difficulty tests. These require implementation review, not another mandatory broad design round.
 
-**Q7 resolved:** dynamic and credible recruitment plus independently motivated companions, employees, allies and rivals; see the accepted section above. **Next focused question (Q8):** how factions, cultural identity and cross-NPC relationships shape loyalties and regional consequences.
+**Q7–Q8 resolved:** recruitment is grounded in NPC motives and independent loyalty, while multiple faction affiliations, organisational aims and internal differences can change through consequential events. **Next focused question (Q9):** how intelligent nonhuman peoples should be represented in the living world.
