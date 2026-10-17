@@ -40,4 +40,4 @@ The initial playable slice need not implement art for every one of the character
 
 **Open:** exact initial species list, asset licence selection, silhouette scale/footprint art, modular animation libraries, Godot renderer integration, nonhumanoid layer rigs, VFX mapping, equipment fit and spell/status telegraph thresholds. No gameplay implementation or graphics production is authorised by Question 11 alone.
 
-**Final design interview dependency (Q12):** choose the first integrated gameplay slice and Windows playtest boundary, rather than expanding NPC/monster content indefinitely without playable evidence.
+**Q12 accepted (C):** the next user-facing Windows test is the [broader connected prototype in ADR 0008](0008-integrated-living-world-prototype-milestone.md), covering multiple species, populated settlements, NPCs, factions and encounters. Small implementation waves remain permitted, but an isolated combat or single-situation demo does not satisfy the requested playtest milestone.
