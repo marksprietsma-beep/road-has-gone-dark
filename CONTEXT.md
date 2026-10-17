@@ -138,6 +138,10 @@ _Avoid_: Every creature is a persistent NPC, stateless respawn token
 An individually persistent monster or animal distinguished by consequential actions, a unique role, history, relationship, threat or encounter outcome; it can survive, move, be injured or become important without treating its entire species as individual characters.
 _Avoid_: Generic population total, automatically tracking every wolf
 
+**World-Grounded Threat Profile**:
+A contextual estimate of a creature, group, site or region's credible danger, derived from its established capabilities, ecology, history and active circumstances rather than automatically matching the Party's current level. Player Knowledge can reveal imperfect but actionable warning signs.
+_Avoid_: Automatic level scaling, guaranteed winnable encounter, arbitrary unwarned lethal surprise
+
 **Threat**:
 A developing World Situation that can plausibly cause a harmful change if left unresolved; a Threat is not automatically a quest or a mandatory objective.
 _Avoid_: Mandatory quest, arbitrary loss
