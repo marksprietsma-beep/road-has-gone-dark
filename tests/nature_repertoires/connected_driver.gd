@@ -42,7 +42,14 @@ func run() -> void:
     before_rest[id][pool]=state.mechanics.records[id].runtime.resources[pool]
     check(before_rest[id][pool]==saved.resources[id][pool],"resolved campaign owns exact spent spell resources "+pool)
   if saved.command_operation=="battle_command":
-   action("return");travel(0)
+   action("return")
+   if cycle().results.size()==4:action("cycle_seek")
+   var unfinished := -1
+   for i in cycle().base.sites.size():
+    if not cycle().results.has(cycle().base.sites[i].id):unfinished=i;break
+   check(unfinished>=0,"unresolved real opportunity exists for return/rest")
+   if unfinished<0:finish_connected(true);return
+   travel(unfinished)
   action("cycle_return")
   for id in saved.casts:
    var snapshot: Dictionary=kernel.derive_character(state.mechanics.records[id]).snapshot
@@ -58,7 +65,7 @@ func run() -> void:
  check(service.store.save_new(slot,state,entry.world).ok,"fork uses existing campaign writer, no edits to identities/history/XP")
  var index := -1
  for i in cycle().base.sites.size():
-  if OpportunityGenerator.template(cycle().base.sites[i].activity_id).family=="contested":index=i;break
+  if not cycle().results.has(cycle().base.sites[i].id) and OpportunityGenerator.template(cycle().base.sites[i].activity_id).family=="contested":index=i;break
  if index>=0:travel(index);action("cycle_fight")
  else:
   # Peacefully resolved occupations stay peaceful. Use the untouched original

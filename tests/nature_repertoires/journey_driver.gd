@@ -84,8 +84,8 @@ func run() -> void:
   check(CharacterBuilderRecords.xp(state,id)==490 and state.mechanics.records[id].advancement_history.size()==8,"real level8 with490 earned XP, no injection")
   var r: Dictionary=state.mechanics.records[id]
   journeys.append({"character_id":id,"ancestry":r.ancestry_ref,"history":r.advancement_history,"earned_xp":CharacterBuilderRecords.xp(state,id),"fixture":false,"rules_ref":r.rules_ref})
- test_real_combat()
  test_known_authority()
+ test_real_combat()
  checkpoint();finish_journey()
 
 func goals_for(index: int) -> Dictionary:
@@ -174,7 +174,12 @@ func test_real_combat() -> void:
  # grant resources from the selector or fixture code.
  var xp_before: int=CharacterBuilderRecords.xp(state,state.party_ids[0])
  if cycle().results.size()==4:action("cycle_seek")
- travel(0);action("cycle_return")
+ var unfinished := -1
+ for i in cycle().base.sites.size():
+  if not cycle().results.has(cycle().base.sites[i].id):unfinished=i;break
+ check(unfinished>=0,"eligible unresolved opportunity for resource-recovery trip")
+ if unfinished<0:return
+ travel(unfinished);action("cycle_return")
  for id in state.party_ids:check(CharacterBuilderRecords.xp(state,id)==xp_before,"home-return rest grants resources but never XP")
  var tactical := TacticalAuras.new(state);var battle := tactical.create(state,"game133-earned-casters")
  var wanted := {state.party_ids[0]:"sorcerer-crystal-reservoir",state.party_ids[1]:"druid-bramble-tether",state.party_ids[2]:"attack"}
@@ -191,7 +196,7 @@ func test_real_combat() -> void:
   check(result.ok,"earned character production tactical action "+str(command.kind))
   if not result.ok:return
   check(result.battle.state_hash==tactical.command(battle,command).battle.state_hash,"earned new spell deterministic replay")
-  if actor.team=="party" and command.kind==wanted[actor.id]:combat_actions[actor.id]=str(command.kind)
+  if wanted.has(actor.id) and command.kind==wanted[actor.id]:combat_actions[actor.id]=str(command.kind)
   battle=result.battle
   if combat_actions.size()==3:break
  check(combat_actions.size()==3,"earned Sorcerer/Druid cast new tier4 spells and martial ally acts")
@@ -224,6 +229,7 @@ func test_failed_check(options: Array) -> void:
 
 func test_known_authority() -> void:
  var id: String=state.party_ids[0];var r: Dictionary=state.mechanics.records[id]
+ check(int(r.runtime.resources["sorcerer-slots-4"])==0,"newly earned Sorcerer tier4 starts empty before real rest")
  var raw := FileAccess.get_file_as_string(service.store._slot_path(slot))
  var builder := CharacterBuilderService.new();builder.store=service.store;builder.library=service.library
  var changed: Array=r.choices.prepared_abilities.duplicate();changed.erase("sorcerer-crystal-reservoir")
