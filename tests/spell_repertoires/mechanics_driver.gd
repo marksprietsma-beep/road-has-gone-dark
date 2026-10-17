@@ -241,4 +241,11 @@ func test_spellbook() -> void:
   if ui.controls.has(spell):
    ui.controls[spell].value=1
    check(ui.selection().has(spell) and ui.preparations().get(spell)==1,"visible production preparation control selectable "+cls)
+  ui.repertoire_search.text="tier 7";ui.repertoire_search.text_changed.emit("tier 7")
+  var visible_spells := 0
+  for child in ui.get_children():
+   if not child.has_meta("spell_search"):continue
+   check(child.visible==("tier 7" in str(child.get_meta("spell_search"))),"actual spell search filters "+cls)
+   if child.visible:visible_spells+=1
+  check(visible_spells>=3,"new upper-tier choices discoverable by search "+cls)
   ui.free()

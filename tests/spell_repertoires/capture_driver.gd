@@ -15,7 +15,7 @@ func run() -> void:
  var earned: Dictionary=state.duplicate(true)
  for i in [0,1]:
   var ui := await open_sheet()
-  ui._select_member(i);ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 4"
+  ui._select_member(i);ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 4";ui.spellbook.repertoire_search.text_changed.emit("tier 4")
   check(ui.spellbook.controls.has("wizard-gravitic-snare" if i==0 else "cleric-freedom-path"),"earned production spellbook includes newly unlocked tier4")
   await photograph_scene("earned-"+("wizard" if i==0 else "cleric")+"-tier4",false)
   ui.detail_tabs.current_tab=3
@@ -29,13 +29,13 @@ func run() -> void:
   ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=fixture;ui.selected=index+1;ui.refresh()
   ui.title.text="DEVELOPMENT FIXTURE · "+cls.capitalize()+"20 · not earned XP"
   for tier in [6,7]:
-   ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier "+str(tier)
+   ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier "+str(tier);ui.spellbook.repertoire_search.text_changed.emit("tier "+str(tier))
    await photograph_scene("fixture-"+cls+"-tier"+str(tier),true)
   ui.detail_tabs.current_tab=2
   await photograph_scene("fixture-"+cls+"-sheet",true,Vector2i(2560,1440))
  var ui := await open_sheet()
  var id: String=earned.party_ids[0];var hybrid: Dictionary=saved.records["hybrid:wizard-dissonant-seal"].duplicate(true);hybrid.character_id=id
- ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=hybrid;ui.selected=1;ui.refresh();ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 6"
+ ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=hybrid;ui.selected=1;ui.refresh();ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 6";ui.spellbook.repertoire_search.text_changed.emit("tier 6")
  ui.title.text="DEVELOPMENT FIXTURE · Wizard / Cleric / Mystic Theurge · not earned XP"
  await photograph_scene("fixture-hybrid-independent-tracks",true)
  # Display the exact saved post-recovery battle through the real combat scene.

@@ -18,10 +18,13 @@ def run(label,extra,visual=False):
  rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows[-1],flush=True)
  assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text()[-16000:]
 for restart in [False,True]:run('mechanics'+('-restart'if restart else''),dict(GAME130_PHASE='mechanics',GAME130_RESTART='1'if restart else'0'))
+run('combat-input',dict(GAME130_PHASE='input'))
 for restart in [False,True]:run('legacy-v16'+('-restart'if restart else''),dict(GAME130_PHASE='legacy',GAME126_AUDIT_RESTART='1'if restart else'0'))
 for restart in [False,True]:run('earned-journey'+('-restart'if restart else''),dict(GAME130_PHASE='journey',GAME126_AUDIT_RESTART='1'if restart else'0'))
 run('godot-captures',dict(GAME130_PHASE='capture',GAME126_AUDIT_RESTART='0'),True)
 proofs={}
+input_proof=json.loads((base/'mechanics/input-proof.json').read_text());assert input_proof['checks']>=5 and input_proof['failures']==0
+proofs['combat-input']=input_proof
 for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('journey','journeys/cohort-0')]:
  for file in ['proof.json','restart-proof.json']:
   p=json.loads((base/folder/file).read_text());assert p['checks']>0 and p['failures']==0
