@@ -2,7 +2,14 @@ extends "res://tests/character_completeness/prestige_driver.gd"
 ## Replay known legal historical fixture routes against v16. Never migrate a campaign.
 func run() -> void:
  base=OS.get_environment("GAME126_COMPATIBILITY_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRecords.new_character_registry();kernel=RulesCharacter.new(source)
+ # This archived GAME-126 compatibility witness must stay on v16 even after
+ # a newer default pack is installed (v17+). New-pack journeys belong to the
+ # newer wave's native suite; do not silently repin historical test claims.
+ source=RulesRegistry.new()
+ var loaded := source.load_pack("res://data/rules/trhgd-character-v16.json")
+ check(loaded.ok,"load the exact v16 compatibility rules pack")
+ if not loaded.ok:done();return
+ kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME126_AUDIT_RESTART")=="1":
   var saved := WorldOriginLore.read_json(base.path_join("records.json"))
   for id in saved.records:
