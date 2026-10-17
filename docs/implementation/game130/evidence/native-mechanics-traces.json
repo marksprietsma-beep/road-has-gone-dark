@@ -1,0 +1,461 @@
+{
+  "cleric-battle-litany": {
+    "after_hash": "392c8dfec5e1fe00d77f52e7825a4aeb347ed6a566fc0c857bf72c5e704eb61d",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-slots-5",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-battle-litany-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "battle-litany",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Litany of resolve on Ally. Battle Litany applied."
+    ]
+  },
+  "cleric-elemental-covenant": {
+    "after_hash": "5a7b4b1d24ef279c72393d39bbecff14e751c89e80b4573f506e803838f5daed",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-elemental-covenant-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "elemental-covenant",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Elemental covenant on Ally. Elemental Covenant applied. Elemental Covenant applied."
+    ]
+  },
+  "cleric-freedom-path": {
+    "after_hash": "44ee72523070bbd89a780aa3249e94a631163072cd416905a91e0f86f94397a4",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-slots-4",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-freedom-path-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "slowed",
+        "type": "status_removed"
+      },
+      {
+        "id": "entangled",
+        "type": "status_removed"
+      },
+      {
+        "id": "briar-rooted",
+        "type": "status_removed"
+      },
+      {
+        "id": "arcane-tether",
+        "type": "status_removed"
+      },
+      {
+        "id": "winter-brand",
+        "type": "status_removed"
+      },
+      {
+        "id": "mind-tether",
+        "type": "status_removed"
+      },
+      {
+        "id": "gravitic-snare",
+        "type": "status_removed"
+      },
+      {
+        "id": "freedom-path",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Path of freedom on Ally. Freedom Path applied."
+    ]
+  },
+  "cleric-purifying-renewal": {
+    "after_hash": "7e840501836709c3ecfa7287f99b6b524a4e9edb7a6fc995bac5b8a6be7fbd40",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-purifying-renewal-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 28,
+        "target": "fighter",
+        "type": "healing_applied"
+      },
+      {
+        "id": "slowed",
+        "type": "status_removed"
+      },
+      {
+        "id": "entangled",
+        "type": "status_removed"
+      },
+      {
+        "id": "briar-rooted",
+        "type": "status_removed"
+      },
+      {
+        "id": "arcane-tether",
+        "type": "status_removed"
+      },
+      {
+        "id": "winter-brand",
+        "type": "status_removed"
+      },
+      {
+        "id": "mind-tether",
+        "type": "status_removed"
+      },
+      {
+        "id": "gravitic-snare",
+        "type": "status_removed"
+      },
+      {
+        "id": "weakened",
+        "type": "status_removed"
+      },
+      {
+        "id": "off-balance",
+        "type": "status_removed"
+      },
+      {
+        "id": "unsteady-concentration",
+        "type": "status_removed"
+      },
+      {
+        "id": "beguiling-doubt",
+        "type": "status_removed"
+      },
+      {
+        "id": "beguiling-pressure",
+        "type": "status_removed"
+      },
+      {
+        "id": "prismatic-fracture",
+        "type": "status_removed"
+      },
+      {
+        "id": "psychic-lock",
+        "type": "status_removed"
+      },
+      {
+        "id": "psychic-confusion",
+        "type": "status_removed"
+      },
+      {
+        "id": "dissonant-seal",
+        "type": "status_removed"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Purifying renewal on Ally. 0 HP restored."
+    ]
+  },
+  "cleric-return-to-breath": {
+    "after_hash": "36c33a39c0f74674852cbdd710f8674a1ba324eeb8c27e21cc560dbd5278d783",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "cleric",
+        "id": "cleric-return-to-breath-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 30,
+        "target": "fighter",
+        "type": "healing_applied"
+      },
+      {
+        "id": "weakened",
+        "type": "status_removed"
+      },
+      {
+        "id": "off-balance",
+        "type": "status_removed"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Return to breath on Ally. 0 HP restored."
+    ]
+  },
+  "wizard-company-veil": {
+    "after_hash": "44f704021afd9b1979bee74abc1373d7c3d78aa200a9e140566e977a99d034c0",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-slots-6",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-company-veil-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "id": "company-veil",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Veil of the company on Ally. Company Veil applied. Company Veil applied."
+    ]
+  },
+  "wizard-dissonant-seal": {
+    "after_hash": "2e5322d1f4cd4ee4a1d020e5dd8167d54c847b1ee33d781902e73e053261a64a",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-dissonant-seal-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 9,
+        "dc": 22,
+        "roll": 9,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "dissonant-seal",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Dissonant seal on Road raider. Save 6 + 26 vs 22: resisted."
+    ]
+  },
+  "wizard-gravitic-snare": {
+    "after_hash": "1aa567a09c87087ce6432c190d6a0ebd777e4f439e935905f95bf92387e17b83",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-slots-4",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-gravitic-snare-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 4,
+        "dc": 19,
+        "roll": 9,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "gravitic-snare",
+        "type": "status_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Gravitic snare on Road raider. Save 6 + 8 vs 19: failed. Gravitic Snare applied."
+    ]
+  },
+  "wizard-prismatic-volley": {
+    "after_hash": "883a042d9f29deee6bdc8d41ac89d9ad9881f00e61ef4769dee9af04e425fe92",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-slots-7",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-prismatic-volley-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 4,
+        "dc": 22,
+        "roll": 9,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "amount": 18,
+        "damage_type": "fire",
+        "target": "fighter",
+        "temporary_absorbed": 0,
+        "type": "damage_applied"
+      },
+      {
+        "bonus": 6,
+        "dc": 22,
+        "roll": 6,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "amount": 0,
+        "damage_type": "electricity",
+        "target": "fighter",
+        "temporary_absorbed": 0,
+        "type": "damage_applied"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Prismatic volley on Road raider. Save 6 + 8 vs 22: failed. 25 damage. Save 18 + 13 vs 22: resisted. 10 damage."
+    ]
+  },
+  "wizard-unravel-enchantment": {
+    "after_hash": "59bead4d81a2bb1ebff1b9c9928dafab7955b77bd199fce56b5f39939d58080b",
+    "development_fixture": true,
+    "events": [
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-slots-5",
+        "type": "resource_spent"
+      },
+      {
+        "amount": 1,
+        "character_id": "wizard",
+        "id": "wizard-unravel-enchantment-prepared",
+        "type": "resource_spent"
+      },
+      {
+        "bonus": 9,
+        "dc": 20,
+        "roll": 9,
+        "success": false,
+        "type": "save_resolved"
+      },
+      {
+        "id": "warded",
+        "type": "status_removed"
+      },
+      {
+        "id": "haste",
+        "type": "status_removed"
+      },
+      {
+        "id": "wizard-greater-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "cleric-faith-ward-status",
+        "type": "status_removed"
+      },
+      {
+        "id": "perfect-shadow",
+        "type": "status_removed"
+      },
+      {
+        "id": "beguiling-veil",
+        "type": "status_removed"
+      },
+      {
+        "id": "runic-shell",
+        "type": "status_removed"
+      },
+      {
+        "id": "spirit-shelter",
+        "type": "status_removed"
+      },
+      {
+        "id": "spirit-lattice",
+        "type": "status_removed"
+      },
+      {
+        "id": "lucid-poise",
+        "type": "status_removed"
+      },
+      {
+        "id": "sovereign-clarity",
+        "type": "status_removed"
+      },
+      {
+        "id": "elemental-covenant",
+        "type": "status_removed"
+      },
+      {
+        "id": "company-veil",
+        "type": "status_removed"
+      },
+      {
+        "id": "freedom-path",
+        "type": "status_removed"
+      }
+    ],
+    "log": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Duskblade uses Unravel enchantment on Road raider. Save 6 + 26 vs 20: resisted."
+    ]
+  }
+}

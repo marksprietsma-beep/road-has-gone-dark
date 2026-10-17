@@ -1,0 +1,85 @@
+{
+  "baseline": "trhgd-character-v16",
+  "candidate": "trhgd-character-v17",
+  "scope": "Append ten spells/ten copy resources/six statuses and extend exactly eight existing casting-tier access features; all class, ancestry, feat, equipment, rule and old spell definitions remain identical.",
+  "delta": {
+    "pack_id": {
+      "before": "trhgd-character-v16",
+      "after": "trhgd-character-v17"
+    },
+    "rules_version": {
+      "before": "16.0.0",
+      "after": "17.0.0"
+    },
+    "provenance": {
+      "before": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game126-character-completeness"
+      },
+      "after": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game130-upper-tier-repertoires"
+      }
+    },
+    "features": {
+      "added": [],
+      "removed": [],
+      "changed": [
+        "cleric-casting-4",
+        "cleric-casting-5",
+        "cleric-casting-6",
+        "cleric-casting-7",
+        "wizard-casting-4",
+        "wizard-casting-5",
+        "wizard-casting-6",
+        "wizard-casting-7"
+      ]
+    },
+    "resources": {
+      "added": [
+        "cleric-battle-litany-prepared",
+        "cleric-elemental-covenant-prepared",
+        "cleric-freedom-path-prepared",
+        "cleric-purifying-renewal-prepared",
+        "cleric-return-to-breath-prepared",
+        "wizard-company-veil-prepared",
+        "wizard-dissonant-seal-prepared",
+        "wizard-gravitic-snare-prepared",
+        "wizard-prismatic-volley-prepared",
+        "wizard-unravel-enchantment-prepared"
+      ],
+      "removed": [],
+      "changed": []
+    },
+    "statuses": {
+      "added": [
+        "battle-litany",
+        "company-veil",
+        "dissonant-seal",
+        "elemental-covenant",
+        "freedom-path",
+        "gravitic-snare"
+      ],
+      "removed": [],
+      "changed": []
+    },
+    "abilities": {
+      "added": [
+        "cleric-battle-litany",
+        "cleric-elemental-covenant",
+        "cleric-freedom-path",
+        "cleric-purifying-renewal",
+        "cleric-return-to-breath",
+        "wizard-company-veil",
+        "wizard-dissonant-seal",
+        "wizard-gravitic-snare",
+        "wizard-prismatic-volley",
+        "wizard-unravel-enchantment"
+      ],
+      "removed": [],
+      "changed": []
+    }
+  }
+}
