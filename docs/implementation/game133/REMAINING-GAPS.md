@@ -1,0 +1,13 @@
+# What remains after this bounded repertoire wave
+
+GAME-128 and GAME-123 remain open. Ten new choices are not a complete spell catalogue or ten new engine primitives. Wizard/Cleric/Sorcerer/Druid tiers8–9 remain thin; Beguiler, Spirit Shaman, Bard and Duskblade need separately scoped repertoire reviews at their actual supported tiers. Existing scaled damage/heal/ward templates are retained. New choices are not a claim of final numerical parity with those templates.
+
+New spells reuse bounded project mechanics: no terrain walls/weather simulation, generic universal dispelling, permanent resurrection, spell-resistance subsystem or new enemy AI. Sundering chord removes nineteen explicit temporary statuses, not arbitrary magic or maintained auras/forms. Old cleanse/immunity lists stay explicitly bounded; they do not automatically gain every new condition. Rooted targets can still attack/cast, save against application and wait out two activations. Current weapon-heavy raider encounters do not naturally exercise every dispelling matchup; hostile-boon examples are controlled development fixtures.
+
+Druid buffs affect real existing companions/summons and natural attacks. Transformed actors still cannot cast; there is no implied Natural Spell bypass. No new creatures/forms, flight, aquatic exploration or artwork are claimed. Existing creature/form art uses its labelled humanoid fallback.
+
+The earned proof targets level8/490XP; higher tiers and total20 histories are legal development fixtures, not earned20 pacing or human acceptance. Full class richness, every conditional feat/trigger and every prestige combination are not certified by an assertion count. The760-occurrence/720-row research ledger retains its87 scoped mappings and673 unresolved occurrences; no ancestry/class occurrence is promoted by adding spells.
+
+Recommended next delivery: a bounded GAME-129/#119 signature/conditional-execution cohort, starting with Soulknife and martial-adept on-hit/reaction choices and relevant feat chains. Audit passives, formula scaling, resources and actual conditions before declaring levels empty or adding actions. Use a subsequent immutable pack, existing authority and Windows tactical/cold-save witnesses. Keep the remaining GAME-128 caster/tier gaps explicit. Do not begin GAME-141/142, NPCs, settlements, monsters or another roster expansion as part of GAME-133.
+
+Capture limitation:1280×720 window requests yielded1280×719 content on the Windows runner. Published PNGs retain exact native bytes and use actual dimensions;2560×1440 and640×360 are exact. No exact720-high content image is claimed.

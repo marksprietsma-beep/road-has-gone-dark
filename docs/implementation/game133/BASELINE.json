@@ -1,0 +1,1235 @@
+{
+  "source_commit": "3ccd089",
+  "rules_version": "17.0.0",
+  "targeted_references": {
+    "sorcerer": {
+      "4": [
+        {
+          "id": "sorcerer-ice-lance",
+          "name": "Ice lance",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-4": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "cold"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "cold",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_4"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 14
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD tactical adaptations of generic fantasy concepts; no sourcebook prose copied",
+            "license": "Original project-authored content",
+            "revision": "game118-core-continuation-1"
+          },
+          "description": "Tier 4: Reflex saves for half; Evasion applies.",
+          "casting_class": "sorcerer",
+          "spell_tier": 4
+        },
+        {
+          "id": "sorcerer-greater-ward",
+          "name": "Greater arcane ward",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-4": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "sorcerer-greater-ward-status"
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_4"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 14
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD tactical adaptations of generic fantasy concepts; no sourcebook prose copied",
+            "license": "Original project-authored content",
+            "revision": "game118-core-continuation-1"
+          },
+          "description": "Tier 4: three-round Defence/Will ward.",
+          "casting_class": "sorcerer",
+          "spell_tier": 4
+        }
+      ],
+      "5": [
+        {
+          "id": "sorcerer-tier5-control",
+          "name": "Sorcerer: binding tempest 5",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-5": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 15
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "sorcerer-tier5-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_5"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 15
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Sorcerer: binding tempest 5 \u00b7 main action; sorcerer slots 5 \u00d7 1; Reflex save: 5d6 + 5 arcane damage; apply sorcerer tier5 control status; resisted: 5d6 + 5 arcane damage (half)",
+          "casting_class": "sorcerer",
+          "spell_tier": 5
+        },
+        {
+          "id": "sorcerer-tier5-restoration",
+          "name": "Sorcerer: restorative aegis 5",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-5": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "sorcerer"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "sorcerer-tier5-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_5"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 15
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Sorcerer: restorative aegis 5 \u00b7 main action; sorcerer slots 5 \u00d7 1; heal 10 + Sorcerer casting level; apply sorcerer tier5 restoration status; remove slowed",
+          "casting_class": "sorcerer",
+          "spell_tier": 5
+        }
+      ],
+      "6": [
+        {
+          "id": "sorcerer-tier6-control",
+          "name": "Sorcerer: binding tempest 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-6": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "sorcerer-tier6-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_6"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 16
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Sorcerer: binding tempest 6 \u00b7 main action; sorcerer slots 6 \u00d7 1; Reflex save: 6d6 + 6 arcane damage; apply sorcerer tier6 control status; resisted: 6d6 + 6 arcane damage (half)",
+          "casting_class": "sorcerer",
+          "spell_tier": 6
+        },
+        {
+          "id": "sorcerer-tier6-restoration",
+          "name": "Sorcerer: restorative aegis 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-6": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "sorcerer"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "sorcerer-tier6-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_6"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 16
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Sorcerer: restorative aegis 6 \u00b7 main action; sorcerer slots 6 \u00d7 1; heal 12 + Sorcerer casting level; apply sorcerer tier6 restoration status; remove slowed",
+          "casting_class": "sorcerer",
+          "spell_tier": 6
+        }
+      ],
+      "7": [
+        {
+          "id": "sorcerer-tier7-tempest",
+          "name": "Sorcerer: Tempest 7",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-7": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 17
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "sorcerer"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "sorcerer"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_7"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 17
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "description": "Tier7: saved area damage and Slowed; resisted damage is halved.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          },
+          "casting_class": "sorcerer",
+          "spell_tier": 7
+        },
+        {
+          "id": "sorcerer-tier7-sanctuary",
+          "name": "Sorcerer: Sanctuary 7",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "sorcerer-slots-7": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "sorcerer"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "sorcerer-tier7-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ],
+          "tags": [
+            "spell",
+            "spontaneous",
+            "tier_7"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "CHA",
+            "min": 17
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "description": "Tier7: area healing, physical resistance, Weakened immunity and recovery.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          },
+          "casting_class": "sorcerer",
+          "spell_tier": 7
+        }
+      ]
+    },
+    "druid": {
+      "4": [
+        {
+          "id": "druid-storm-lance",
+          "name": "Storm lance",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-4": 1,
+              "druid-prepared-storm-lance": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "lightning"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "4d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 4
+                    }
+                  },
+                  "damage_type": "lightning",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_4"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 14
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD tactical adaptations of generic fantasy concepts; no sourcebook prose copied",
+            "license": "Original project-authored content",
+            "revision": "game118-core-continuation-1"
+          },
+          "description": "Tier 4: Reflex saves for half; Evasion applies.",
+          "casting_class": "druid",
+          "spell_tier": 4
+        },
+        {
+          "id": "druid-oak-ward",
+          "name": "Oak ward",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-4": 1,
+              "druid-prepared-oak-ward": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "druid-oak-ward-status"
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_4"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 14
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD tactical adaptations of generic fantasy concepts; no sourcebook prose copied",
+            "license": "Original project-authored content",
+            "revision": "game118-core-continuation-1"
+          },
+          "description": "Tier 4: three-round Defence/Will ward.",
+          "casting_class": "druid",
+          "spell_tier": 4
+        }
+      ],
+      "5": [
+        {
+          "id": "druid-tier5-control",
+          "name": "Druid: binding tempest 5",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-5": 1,
+              "druid-tier5-control-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 15
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "druid-tier5-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "5d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 5
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_5"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 15
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Druid: binding tempest 5 \u00b7 main action; druid slots 5 \u00d7 1, druid tier5 control copies \u00d7 1; Reflex save: 5d6 + 5 arcane damage; apply druid tier5 control status; resisted: 5d6 + 5 arcane damage (half)",
+          "casting_class": "druid",
+          "spell_tier": 5
+        },
+        {
+          "id": "druid-tier5-restoration",
+          "name": "Druid: restorative aegis 5",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-5": 1,
+              "druid-tier5-restoration-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "druid"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "druid-tier5-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_5"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 15
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Druid: restorative aegis 5 \u00b7 main action; druid slots 5 \u00d7 1, druid tier5 restoration copies \u00d7 1; heal 10 + Druid casting level; apply druid tier5 restoration status; remove slowed",
+          "casting_class": "druid",
+          "spell_tier": 5
+        }
+      ],
+      "6": [
+        {
+          "id": "druid-tier6-control",
+          "name": "Druid: binding tempest 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-6": 1,
+              "druid-tier6-control-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "druid-tier6-control-status"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "6d6",
+                    "bonus": {
+                      "op": "const",
+                      "value": 6
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_6"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 16
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Druid: binding tempest 6 \u00b7 main action; druid slots 6 \u00d7 1, druid tier6 control copies \u00d7 1; Reflex save: 6d6 + 6 arcane damage; apply druid tier6 control status; resisted: 6d6 + 6 arcane damage (half)",
+          "casting_class": "druid",
+          "spell_tier": 6
+        },
+        {
+          "id": "druid-tier6-restoration",
+          "name": "Druid: restorative aegis 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-6": 1,
+              "druid-tier6-restoration-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "druid"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "druid-tier6-restoration-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_6"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 16
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 0
+          },
+          "provenance": {
+            "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+            "license": "Original project-authored content",
+            "revision": "game119-career-1"
+          },
+          "description": "Druid: restorative aegis 6 \u00b7 main action; druid slots 6 \u00d7 1, druid tier6 restoration copies \u00d7 1; heal 12 + Druid casting level; apply druid tier6 restoration status; remove slowed",
+          "casting_class": "druid",
+          "spell_tier": 6
+        }
+      ],
+      "7": [
+        {
+          "id": "druid-tier7-tempest",
+          "name": "Druid: Tempest 7",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-7": 1,
+              "druid-tier7-tempest-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 17
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "druid"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "7d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "druid"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_7"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 17
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "description": "Tier7: saved area damage and Slowed; resisted damage is halved.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          },
+          "casting_class": "druid",
+          "spell_tier": 7
+        },
+        {
+          "id": "druid-tier7-sanctuary",
+          "name": "Druid: Sanctuary 7",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "druid-slots-7": 1,
+              "druid-tier7-sanctuary-copies": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "druid"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "druid-tier7-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ],
+          "tags": [
+            "spell",
+            "prepared",
+            "tier_7"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 17
+          },
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "description": "Tier7: area healing, physical resistance, Weakened immunity and recovery.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          },
+          "casting_class": "druid",
+          "spell_tier": 7
+        }
+      ]
+    }
+  },
+  "interpretation": "Two references per class/tier; scaled damage/control and heal/ward repeats are not separate mechanic families."
+}

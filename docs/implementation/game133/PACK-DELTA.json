@@ -1,0 +1,76 @@
+{
+  "pack_id": {
+    "before": "trhgd-character-v17",
+    "after": "trhgd-character-v18"
+  },
+  "rules_version": {
+    "before": "17.0.0",
+    "after": "18.0.0"
+  },
+  "provenance": {
+    "before": {
+      "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+      "license": "Original project-authored content",
+      "revision": "game130-upper-tier-repertoires"
+    },
+    "after": {
+      "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+      "license": "Original project-authored content",
+      "revision": "game133-sorcerer-druid-repertoires"
+    }
+  },
+  "features": {
+    "added": [],
+    "removed": [],
+    "modified": [
+      "sorcerer-casting-4",
+      "druid-casting-4",
+      "sorcerer-casting-5",
+      "sorcerer-casting-6",
+      "druid-casting-5",
+      "druid-casting-6",
+      "sorcerer-casting-7",
+      "druid-casting-7"
+    ]
+  },
+  "resources": {
+    "added": [
+      "druid-bramble-tether-prepared",
+      "druid-packward-canopy-prepared",
+      "druid-predators-rhythm-prepared",
+      "druid-sap-renewal-prepared",
+      "druid-winters-verdict-prepared"
+    ],
+    "removed": [],
+    "modified": []
+  },
+  "statuses": {
+    "added": [
+      "bramble-tether",
+      "crushing-doubt",
+      "packward-canopy",
+      "predators-rhythm",
+      "slipstream-veil",
+      "starfall-fracture",
+      "winter-lock"
+    ],
+    "removed": [],
+    "modified": []
+  },
+  "abilities": {
+    "added": [
+      "druid-bramble-tether",
+      "druid-packward-canopy",
+      "druid-predators-rhythm",
+      "druid-sap-renewal",
+      "druid-winters-verdict",
+      "sorcerer-crushing-doubt",
+      "sorcerer-crystal-reservoir",
+      "sorcerer-slipstream-veil",
+      "sorcerer-starfall-rupture",
+      "sorcerer-sundering-chord"
+    ],
+    "removed": [],
+    "modified": []
+  }
+}

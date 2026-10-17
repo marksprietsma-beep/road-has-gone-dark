@@ -139,7 +139,7 @@ func add_action(id: String,text: String) -> void:
   var actor: Dictionary=engine.current(battle())
   var available := engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)})
   button.disabled=button.disabled or not available.ok
-  if engine.registry.rules_ref().pack_id=="trhgd-character-v17" and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
@@ -234,6 +234,7 @@ func refresh() -> void:
     pawn.present(u,recipe,actor.id==id and playing,int(engine.stats(u).HP),badge)
     pawns[id]=pawn
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
+    if int(u.record.runtime.temporary_hp)>0:button.tooltip_text+=" · %d temporary HP"%int(u.record.runtime.temporary_hp)
     if not recipe.warnings.is_empty(): button.tooltip_text+=" · "+"; ".join(recipe.warnings)
    var valid_target: bool=playing and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
    var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
@@ -264,6 +265,7 @@ func refresh() -> void:
   if actor.team=="party":
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
+   if int(actor.record.runtime.temporary_hp)>0:detail.text+="\nBuffer: %d temporary HP"%int(actor.record.runtime.temporary_hp)
    if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
    var body := RulesEntities.form(actor.record,engine.registry)
    if not body.is_empty():detail.text+="\nForm: "+str(body.id).replace("-"," ")+" · "+str(body.size)+"\nCreature/form artwork: humanoid fallback"
@@ -288,7 +290,7 @@ func refresh() -> void:
      if ability.targeting.kind=="self":
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
-      if engine.registry.rules_ref().pack_id=="trhgd-character-v17" and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
       var caption: String=ability.name

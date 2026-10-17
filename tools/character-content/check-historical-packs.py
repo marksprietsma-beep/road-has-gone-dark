@@ -1,4 +1,4 @@
-"""Byte-for-byte and exact manifest-pin guard for every accepted v1-v16 pack."""
+"""Byte-for-byte and exact manifest-pin guard for every accepted v1-v17 pack."""
 from pathlib import Path
 import json,hashlib
 root=Path(__file__).resolve().parents[2]
