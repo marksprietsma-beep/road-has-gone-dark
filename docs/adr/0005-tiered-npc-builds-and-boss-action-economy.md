@@ -50,6 +50,31 @@ These examples illustrate the desired design vocabulary, **not production featur
 - **Bosses as pure stat inflation:** raising HP/damage until a 3-vs-1 match feels fair, while the opponent still takes only one ordinary action, is not the goal.
 - **Generic portable lair magic or invisible free moves:** a lair power needs a real location and counterplay; personal extraordinary responses must be disclosed, bounded and deterministic.
 
+## Dynamic recruitment, independent loyalties and credible separation — accepted 17 October 2026 (NPC & Monster Q7, B)
+
+**Many NPCs may become companions, employees, allies or rivals through believable circumstances**, rather than recruitment being limited to a hand-authored selectable cast. Availability and willingness depend on their established personality, motives, competence, relationships, duties, faction ties, knowledge, personal safety, promises, material terms and unfolding Playthrough history. It is *not* an unrestricted ability to convert nearly any NPC into a party member by passing a universal persuasion roll. NPC consent, existing commitments, social situation and practical constraints matter.
+
+**Relationships can take different forms without conflating them with permanent party membership:**
+- **Temporary hire or contract:** an agreed service with a credible duration, pay, risks, responsibilities and possible extension or negotiated ending.
+- **Travelling or long-term companion:** an NPC who journeys with the Party and may participate meaningfully in its adventures, develop skills and relationships, bring personal objectives, and choose to remain or eventually leave.
+- **Ally or contact:** helps with information, influence, local support or particular commitments without necessarily becoming a controllable combat unit.
+- **Rival, enemy or former opponent:** may oppose, bargain, reconcile, surrender or later cooperate where motives and history permit. Defeating an NPC does not itself grant recruitment rights.
+- **Employer, patron or delegate:** supports or entrusts objectives under meaningful agreements and bounded agency; a hired or appointed person retains their own judgement under the prior [ADR 0002](0002-bounded-offscreen-world-simulation.md) mandate contract.
+
+**Loyalty is earned and contextual, not a flat permanent unlock.** Trust, obligations, personal ethics, faction duties, treatment, unmet terms, compatible or conflicting aims, past sacrifices, mistakes, promises and relationships can influence an NPC's willingness to join or stay. An NPC may refuse a mission, request different terms, leave voluntarily, be called home, pursue another goal, change allegiance or—under **credible, consequential circumstances**—betray a commitment. Such changes must follow established facts and interpretable motivations, not random betrayal dice, an arbitrary friendship meter or universal passive relationship decay. Earlier fair-warning principles apply to major avoidable losses where appropriate; twists may still be uncertain and personal beliefs may be mistaken. Character-specific consent is not a mechanic that obligates loyalty.
+
+**Independence persists within and outside the Party.** A significant NPC's personal relationships, history, ambitions and beliefs do not disappear upon recruitment. Party combat commands may be handled through the same shared character and tactical authority, while longer-term acceptance, refusal, departure and delegated choices reflect the NPC's own agency; exact control boundaries and limitations on orders are **not decided here**. Player-controlled Adventurers remain governed by the accepted player-autonomy rule in ADR 0002: NPC independence must not be used to covertly seize control of a character the player already owns.
+
+**Mechanics and persistence:** identity and class/skill/equipment progression must remain consistent with Q6's tiered NPC depth; if a lightly represented person becomes recruitable or significant, retain their established traits/relationships and add supported mechanical detail without rerolling history or inventing past class levels. Employment and companionship form explicit Playthrough commitments with meaningful consequences of joining/leaving, and the same campaign journal and versioned rules remain authoritative. Named companions remain identifiable after separation; they are not removed from the world or respawned as interchangeable mercenaries.
+
+**No decision to support unlimited active party members.** Recruitment breadth, roster/storage size, active combat party count, replacement of the current three-character testing formation, wage calculations, party-leader control, defection/return conditions, progression for nonactive allies and capacity constraints need separately scoped implementation decisions. Asymmetric relationships with third parties, NPC information limits, delayed communications and bounded off-screen actions continue to follow ADR 0002. Do not equate the number of recruitable contacts with the number of simultaneous combatants.
+
+**Rejected:** (A) only designated recruits with generally simple permanent loyalty, and (C) near-universal recruitment of arbitrary inhabitants. **Accepted B** balances dynamic social possibilities with believable human agency and the existing bounded simulation model.
+
+**This is a design decision, not delivered gameplay.** Do not treat existing three-adventurer party creation or NPC generation as proof that contract negotiation, recruit acceptance, departure, betrayal, companion progression or relationship-driven recruitment exists.
+
+**Next interview dependency (Q8):** influence of factions, cultures and NPC-to-NPC connections on loyalties, conflicts, settlement reactions and recruitability.
+
 ## Implementation dependencies
 
 - [GAME-134](https://linear.app/marksprietsma/issue/GAME-134/milestone-living-bestiary-humanoid-npcs-and-meaningful-opposition): programme for creature/opposition/NPC systems.
@@ -60,4 +85,4 @@ These examples illustrate the desired design vocabulary, **not production featur
 
 Open particulars: exact depth threshold per NPC, whether class builds remain permanently materialised once an NPC is significant, leadership and recruitment contract, boss encounter timing model, how lair features are derived from procedural sites, UI telegraphing, action resource budgets, balance and difficulty tests. These require implementation review, not another mandatory broad design round.
 
-**Next focused question:** what roles NPCs can take in the Party's life—recruitment, persistent contacts, rivals, employers and companions—and the degree of agency/restrictions each has.
+**Q7 resolved:** dynamic and credible recruitment plus independently motivated companions, employees, allies and rivals; see the accepted section above. **Next focused question (Q8):** how factions, cultural identity and cross-NPC relationships shape loyalties and regional consequences.
