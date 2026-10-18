@@ -6,7 +6,7 @@ static func enabled(source: RulesRegistry) -> bool:
 static func starting_equipment_allowed(item: Dictionary,source: RulesRegistry) -> bool:
  # Natural attacks come from anatomy, forms or creatures, never a new hero's loadout.
  # Existing saved records are not reclassified by this creation-only predicate.
- return not enabled(source) or not item.get("tags",[]).has("natural")
+ return (not enabled(source) or not item.get("tags",[]).has("natural")) and (not RulesMartial.enabled(source) or not item.get("tags",[]).has("manifested"))
 static func distinct_limit(context: Dictionary,source: RulesRegistry) -> int:
  var limit := 1000
  for cls in context.classes:

@@ -20,6 +20,7 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
   if definition.get("tags",[]).has("recover_downed") and not alive(t):
    return occupant(b,t.position).is_empty() and t.team==u.team and not t.has("entity") and definition.targeting.kind=="ally" and distance(u.position,t.position)<=int(definition.targeting.range) and line_clear(b,u.position,t.position)
  if RulesMartial.enabled(registry):
+  if registry.definition("equipment",str(u.weapon)).get("tags",[]).has("manifested"):return false
   var row := registry.definition("abilities",ability)
   if row.has("requires_status") and not u.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):return false
   if row.has("requires_weapon") and active_weapon(u)!=row.requires_weapon:return false
@@ -107,3 +108,11 @@ func create_definition(state: Dictionary,site_id: String,definition: Dictionary,
   _martial_event(battle,current(battle),current(battle),"activation_start")
   return seal(battle)
  return battle
+
+func validate(b: Dictionary) -> String:
+ var why := super.validate(b)
+ if not why.is_empty():return why
+ if RulesMartial.enabled(registry):
+  for unit in b.units.values():
+   if registry.definition("equipment",str(unit.weapon)).get("tags",[]).has("manifested"):return "Manifested weapons cannot be stored as held equipment"
+ return ""

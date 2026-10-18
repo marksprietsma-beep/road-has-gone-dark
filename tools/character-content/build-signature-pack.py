@@ -23,8 +23,8 @@ def feature(id,name,abilities=None,**kw):
 
 def grant(cls,at,id):table('classes',cls)['features'].append(dict(at=at,id=id))
 # Manifestation actually selects a weapon independently of held equipment. Forms win.
-weapon=copy.deepcopy(table('equipment','unarmed'));weapon.update(id='mind-blade',name='Manifested mind blade',damage='1d8',range=1,tags=['melee'],proficiency='simple',provenance=prov);p['equipment'].append(weapon)
-thrown=copy.deepcopy(weapon);thrown.update(id='mind-blade-thrown',name='Hurled mind blade',range=4,tags=['ranged']);p['equipment'].append(thrown)
+weapon=copy.deepcopy(table('equipment','unarmed'));weapon.update(id='mind-blade',name='Manifested mind blade',damage='1d8',range=1,tags=['melee','manifested'],proficiency='simple',provenance=prov);p['equipment'].append(weapon)
+thrown=copy.deepcopy(weapon);thrown.update(id='mind-blade-thrown',name='Hurled mind blade',range=4,tags=['ranged','manifested']);p['equipment'].append(thrown)
 manifest=table('statuses','soulknife-manifested');manifest.update(weapon_override='mind-blade',modifiers=[mod('damage',add(c(1),div(cl('soulknife'),5))),mod('melee_attack',div(cl('soulknife'),5)),mod('ranged_attack',div(cl('soulknife'),5))],capabilities={'weapon_damage':{'mind-blade':'1d8','mind-blade-thrown':'1d8'}})
 table('abilities','soulknife-manifest')['description']='Main action; manifest a real mind blade for three global round boundaries. Overrides the held weapon, never a transformed natural weapon. Enhancement scales every five Soulknife levels; damage dice grow at8/16. Original equipment stays saved.'
 for at,dice in [(8,'2d6'),(16,'2d8')]:grant('soulknife',at,feature('mind-blade-growth-'+str(at).zfill(2),'Mind blade growth '+str(at),capabilities={'weapon_damage':{'mind-blade':dice,'mind-blade-thrown':dice}}))

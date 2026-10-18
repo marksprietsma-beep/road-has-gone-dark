@@ -28,7 +28,7 @@ func run() -> void:
    check(not r.is_empty(),"lawful early/middle/high "+cls+str(at))
    if not r.is_empty():records[cls+str(at)]=r
  if failures:finish_signatures();return
- test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_counter_defeat();test_legacy()
+ test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_counter_defeat();test_virtual_equipment();test_legacy()
  var hashes := {};var record_hashes := {};var after := {};var next := {}
  for id in records:
   # Lawful development records may still contain engine StringName dictionary
@@ -310,3 +310,14 @@ func test_counter_defeat() -> void:
   check(result.battle.budget=={"main":1,"move":1},"next living actor receives exactly one normal activation")
   check(engine.validate(result.battle).is_empty(),"counter defeat produces valid saved battle")
   battles.counter_defeat=result.battle;receipts.counter_defeat=result.battle.log
+
+func test_virtual_equipment() -> void:
+ for id in ["mind-blade","mind-blade-thrown"]:
+  check(not RulesWaveFour.starting_equipment_allowed(source.definition("equipment",id),source),"creator excludes virtual manifestation "+id)
+  var forged: Dictionary=records.soulknife1.duplicate(true);forged.equipment=[id]
+  check(not kernel.validate_build(forged).ok,"rules authority rejects virtual inventory even for Soulknife "+id)
+  var payload := CharacterBuilderRecords.definition(forged)
+  check(not CharacterBuilderRecords.create("forged-gear",payload,source.rules_ref()).ok,"forged creation payload cannot purchase a manifestation "+id)
+ var engine := TacticalAuras.new(records.soulknife8);var b := encounter(records.soulknife8);b.units.a.weapon="mind-blade";b=engine.seal(b)
+ check(not engine.validate(b).is_empty(),"save validation rejects a physical virtual-weapon reference")
+ check(not execute(engine,b,"attack","bandit-blade").ok,"forged held-weapon input cannot bypass manifestation")

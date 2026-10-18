@@ -134,6 +134,7 @@ func _replay(record: Dictionary) -> Dictionary:
   if not id is String: return RulesJson.result([RulesJson.issue("equipment.reference","equipment","Equipment ID must be a string")])
   var item := registry.definition("equipment",id)
   if item.is_empty(): return RulesJson.result([RulesJson.issue("equipment.reference","equipment","Unknown equipment",{"id":id})])
+  if RulesMartial.enabled(registry) and item.tags.has("manifested"):return RulesJson.result([RulesJson.issue("equipment.manifested",id,"Manifested weapons come from active abilities, never inventory or starting gear")])
   if slots.has(id): return RulesJson.result([RulesJson.issue("equipment.duplicate","equipment","Duplicate equipment reference")])
   if registry.rules_ref().engine_schema==3 and not classes.is_empty() and not RulesCoreContent.equipment_legal(item,classes,registry):return RulesJson.result([RulesJson.issue("equipment.proficiency",id,"Not proficient with this equipment, or incompatible with Monk discipline")])
   if registry.rules_ref().engine_schema==3 and item.kind=="weapon" and slots.has("slot:weapon"):return RulesJson.result([RulesJson.issue("equipment.slot",id,"Choose one active weapon")])
