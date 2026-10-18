@@ -2,6 +2,9 @@ extends "res://tests/adventure_cycles/earned_driver.gd"
 ## Native production saves plus clearly labelled advanced development fixtures.
 var used_actions: Array=[]
 func run() -> void:
+ # The campaign service uses this adapter, including v19 hit/reaction events.
+ # Predict with the same authority; TacticalCombat alone omits those events.
+ engine=TacticalAuras.new()
  base=OS.get_environment("GAME112_TEST_ROOT").path_join("fresh")
  DirAccess.make_dir_recursive_absolute(base)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
@@ -180,7 +183,11 @@ func fight_new() -> void:
   if not result.ok:break
   if command.kind not in ["attack","move","end"] and not used_actions.has(command.kind):used_actions.append(command.kind)
   action("cycle_command",{"command":command})
-  check(AdventureService.active_battle(state).state_hash==result.battle.state_hash,"new class command persists exact authority")
+  var persisted := AdventureService.active_battle(state)
+  var differing: Array=[]
+  for field in result.battle:
+   if not persisted.has(field) or RulesJson.canonical(persisted[field])!=RulesJson.canonical(result.battle[field]):differing.append(field)
+  check(persisted.state_hash==result.battle.state_hash,"new class command persists exact authority "+JSON.stringify({"command":command,"differing_fields":differing,"predicted":result.battle.state_hash,"persisted":persisted.state_hash}))
  check(AdventureService.active_battle(state).status!="active","new class battle completes")
  await capture("new-class-combat-results","combat")
 
