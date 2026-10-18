@@ -28,7 +28,7 @@ func run() -> void:
    check(not r.is_empty(),"lawful early/middle/high "+cls+str(at))
    if not r.is_empty():records[cls+str(at)]=r
  if failures:finish_signatures();return
- test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_legacy()
+ test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_legacy()
  var hashes := {};var record_hashes := {};var after := {};var next := {}
  for id in records:
   var d := kernel.derive_character(records[id]);check(d.ok,"saved candidate valid "+id)
@@ -156,7 +156,7 @@ func test_afterimage() -> void:
 func test_recovery() -> void:
  for cls in ["soulknife","warblade","crusader","swordsage"]:
   var r: Dictionary=records[cls+"8"].duplicate(true);var pool: String=cls+("-focus"if cls=="soulknife"else"-readiness");r.runtime.resources[pool]=0
-  var engine := TacticalAuras.new(r);var b := encounter(r)
+  var engine := TacticalAuras.new(r);var b := encounter(r);b.units.a.record.runtime.resources[pool]=0;b=engine.seal(b)
   var result := execute(engine,b,cls+"-recover")
   check(result.ok and result.battle.units.a.record.runtime.resources[pool]==2,"bounded main recovery "+cls)
   if result.ok:check(result.battle.budget.main==0 and result.battle.budget.move==(0 if cls=="swordsage"else 1),"distinct recovery action budget "+cls)
@@ -170,7 +170,7 @@ func test_feats() -> void:
  check(not kernel.preview_advancement(fresh,illegal).ok,"martial recovery rejected at level one")
  var r := build_with_feats("warblade",8,{7:"martial-recovery"})
  var pool := "warblade-readiness";r.runtime.resources[pool]=0
- var engine := TacticalAuras.new(r);var b := encounter(r);b.cursor=(b.order.find("a")-1+b.order.size())%b.order.size();b=engine.seal(b)
+ var engine := TacticalAuras.new(r);var b := encounter(r);b.units.a.record.runtime.resources[pool]=0;b.cursor=(b.order.find("a")-1+b.order.size())%b.order.size();b=engine.seal(b)
  var result := execute(engine,b,"end")
  check(result.ok and result.battle.units.a.record.runtime.resources[pool]==1,"feat has actual conditional recovery consumer")
  records.martial_feat=r
@@ -180,8 +180,8 @@ func test_feats() -> void:
  check(echo.ok and echo.battle.units.a.reaction==0 and echo.battle.units.a.record.runtime.temporary_hp==6,"feat chain confirmed melee hit consumes reaction for real buffer")
  if echo.ok:battles.echo=echo.battle
  records.echo=s
-func build_with_feats(cls: String,level: int,picks: Dictionary) -> Dictionary:
- var first := build(cls,1);var r := kernel.create(cls,first.base_attributes,"heritage-human")
+func build_with_feats(cls: String,level: int,picks: Dictionary,attributes: Dictionary={}) -> Dictionary:
+ var first := build(cls,1);var r := kernel.create(cls,first.base_attributes if attributes.is_empty() else attributes,"heritage-human")
  for at in range(1,level+1):
   var choice := kernel.suggested_choice(r,cls,str(picks.get(at,"steady-study")))
   check(choice.ok,"lawful feat chain suggestion "+cls+str(at))
@@ -199,8 +199,69 @@ func test_multiclass() -> void:
  check(kernel.validate_build(r).ok and r.advancement_history[0].class_id=="warblade" and r.advancement_history.back().class_id=="swordsage","ordered multiclass history preserved")
  check(not kernel.available_advancement(records.warblade1).classes.duelist.ok,"ineligible prestige still rejected")
  records.hybrid=r
+ var qualified := build_with_feats("warblade",8,{3:"dodge",5:"mobility"},{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8})
+ var before := RulesJson.digest(qualified)
+ var options := kernel.available_advancement(qualified)
+ check(options.ok and options.classes.duelist.ok,"permanent skill/feat/BAB chain recognises earned-eligible path")
+ check(RulesJson.digest(qualified)==before and not kernel.derive_character(qualified).snapshot.class_levels.has("duelist"),"eligibility never automatically assigns a path")
+ var decline := kernel.suggested_choice(qualified,"warblade","steady-study")
+ check(decline.ok and kernel.preview_advancement(qualified,decline.choice).ok,"qualified martial character can decline prestige")
+ var selected := kernel.suggested_choice(qualified,"duelist","steady-study")
+ var step := kernel.preview_advancement(qualified,selected.choice)
+ check(step.ok and step.candidate.advancement_history.back().class_id=="duelist","qualified path selected explicitly in ordered history")
+ var unfunded := {"mechanics":{"rules_ref":source.rules_ref(),"records":{qualified.character_id:qualified}}}
+ check(not CharacterBuilderRecords.preview_advancement(unfunded,qualified.character_id,selected.choice).ok,"legal class selector never manufactures XP for prestige")
+ if step.ok:records.earned_eligible_development_prestige=step.candidate
 func test_legacy() -> void:
  var legacy := RulesRegistry.new();check(legacy.load_pack("res://data/rules/trhgd-character-v18.json").ok,"accepted v18 still exact loadable")
  check(not RulesMartial.enabled(legacy),"new hooks never enter historical v18")
  var effect: Dictionary=legacy.definition("abilities","swordsage-technique-1")
  check(not effect.has("strike_effects") and not legacy.definition("abilities","swordsage-recover").cost.move,"historical pre-hit/recovery policy untouched")
+
+func test_early_late() -> void:
+ for cls in ["soulknife","warblade","crusader","swordsage"]:
+  for at in [1,20]:
+   var r: Dictionary=records[cls+str(at)]
+   if cls=="soulknife":r=manifest(r)
+   var engine := TacticalAuras.new(r);var battle := encounter(r);battle.rng=attack_seed(19);battle=engine.seal(battle)
+   var action: String=cls+("-master-20" if cls in ["soulknife","warblade"] and at==20 else "-technique-"+str(at))
+   var result := execute(engine,battle,action,"bandit-blade")
+   check(result.ok,"actual early/late signature "+action+str(result.get("error","")))
+   if result.ok:
+    check(result.battle.budget.main==0 and result.battle.units["bandit-blade"].record.runtime!=battle.units["bandit-blade"].record.runtime,"early/late actual hit/cost "+action)
+    records[cls+str(at)+":used"]=result.battle.units.a.record
+func test_actual_movement() -> void:
+ var r := build("scout",4)
+ var choice := kernel.suggested_choice(r,"swordsage","steady-study")
+ var advanced := kernel.preview_advancement(r,choice.choice);check(advanced.ok,"legal scout/adept movement interaction")
+ if not advanced.ok:return
+ r=advanced.candidate;r.equipment=["shortblade"];r.runtime.hp=kernel.derive_character(r).snapshot.stats.HP
+ var engine := TacticalAuras.new(r);var b := encounter(r)
+ var stance := execute(engine,b,"swordsage-stance-flow");check(stance.ok,"stance spends movement in multiclass")
+ if not stance.ok:return
+ var ready: Dictionary=stance.battle;ready.rng=attack_seed(19);ready=engine.seal(ready)
+ var no_travel := execute(engine,ready,"attack","bandit-blade")
+ check(no_travel.ok and not no_travel.battle.log.any(func(v: String):return v.contains("exploits movement")),"stance token spend is not actual skirmish movement")
+ var moved := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":"move","destination":[2,0]})
+ check(moved.ok,"genuine displacement command")
+ if not moved.ok:return
+ var travelled: Dictionary=moved.battle;travelled.rng=attack_seed(19);travelled=engine.seal(travelled)
+ var hit := execute(engine,travelled,"attack","bandit-blade")
+ check(hit.ok and hit.battle.log.any(func(v: String):return v.contains("exploits movement")),"actual movement enables one qualifying skirmish hit")
+ records.scout_adept=r
+func test_adamant() -> void:
+ var r := build_with_feats("warblade",8,{5:"adamant-stance"})
+ check(not r.is_empty(),"legal Adamant stance feat prerequisite")
+ if r.is_empty():return
+ var engine := TacticalAuras.new(r);var b := encounter(r)
+ var shelter := execute(engine,b,"warblade-stance-shelter");check(shelter.ok,"explicit shelter stance")
+ if not shelter.ok:return
+ var incoming: Dictionary=shelter.battle
+ var attacker := build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade"];incoming.units["bandit-blade"].record=attacker
+ incoming.cursor=incoming.order.find("bandit-blade");incoming.budget={"main":1,"move":1};incoming.rng=attack_seed(19);incoming=engine.seal(incoming)
+ var hit := execute(engine,incoming,"attack","a")
+ check(hit.ok and hit.battle.units.a.reaction==0 and hit.battle.units.a.record.runtime.temporary_hp==4,"existing feat has actual conditional shared-reaction effect")
+ var absent: Dictionary=incoming.duplicate(true);absent.units.a.record.runtime.statuses=[];absent=engine.seal(absent)
+ var ignored := execute(engine,absent,"attack","a")
+ check(ignored.ok and ignored.battle.units.a.reaction==1 and ignored.battle.units.a.record.runtime.temporary_hp==0,"Adamant answer cannot trigger without shelter")
+ records.adamant=r

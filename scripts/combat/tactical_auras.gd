@@ -94,3 +94,10 @@ func _martial_event(b: Dictionary,owner: Dictionary,other: Dictionary,event: Str
 func next_turn(b: Dictionary) -> void:
  super.next_turn(b)
  if RulesMartial.enabled(registry) and alive(current(b)):_martial_event(b,current(b),current(b),"activation_start")
+
+func create_definition(state: Dictionary,site_id: String,definition: Dictionary,pin: String) -> Dictionary:
+ var battle := super.create_definition(state,site_id,definition,pin)
+ if not battle.is_empty() and RulesMartial.enabled(registry):
+  _martial_event(battle,current(battle),current(battle),"activation_start")
+  return seal(battle)
+ return battle

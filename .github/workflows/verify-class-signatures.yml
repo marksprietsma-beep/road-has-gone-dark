@@ -33,7 +33,11 @@ jobs:
           python tools/character-content/check-historical-packs.py
       - name: Prepare production class cache
         shell: pwsh
-        run: '& $env:GODOT_BIN --headless --editor --path . --import'
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game129-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game129-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+
       - name: Focused actual class attacks and separate-process restart
         shell: pwsh
         env:

@@ -214,7 +214,7 @@ func test_legacy() -> void:
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v17.json").ok,"historical v17 loads exact pin")
  var archived := WorldOriginLore.read_json("res://tests/character_completeness/fixtures/prestige-v15-records.json")
  check(archived.has("records"),"archived pinned source fixtures remain installed")
- check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"fresh New Game defaults to v18")
+ check(RulesRecords.new_character_registry().rules_ref()==RulesRecords.registry({"pack_id":RulesRecords.NEW_PACK}).rules_ref(),"fresh New Game uses exact current default pin; archived mechanics remain v18")
 
 func test_area_and_constraints() -> void:
  for id in ["sorcerer-starfall-rupture","druid-winters-verdict"]:

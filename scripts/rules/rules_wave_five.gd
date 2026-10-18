@@ -22,7 +22,7 @@ static func channel_access(record: Dictionary,ability: Dictionary,context: Dicti
 static func melee_weapon(record: Dictionary,id: String,source: RulesRegistry) -> bool:
  var weapon := source.definition("equipment",id)
  var replay := RulesCharacter.new(source)._replay(record)
- var manifested := RulesMartial.enabled(source) and record.runtime.statuses.any(func(s: Dictionary):return source.definition("statuses",s.id).get("weapon_override")==id)
+ var manifested: bool= RulesMartial.enabled(source) and record.runtime.statuses.any(func(s: Dictionary):return source.definition("statuses",s.id).get("weapon_override")==id)
  return replay.ok and (record.equipment.has(id) or manifested) and weapon.get("kind")=="weapon" and not weapon.get("tags",[]).has("ranged") and not weapon.get("tags",[]).has("natural") and RulesEntities.form(record,source).is_empty() and RulesCoreContent.equipment_legal(weapon,replay.context.classes,source)
 
 static func channel_effects(actor: Dictionary,target: Dictionary,id: String,rng: Dictionary,source: RulesRegistry) -> Dictionary:
