@@ -1,0 +1,24 @@
+{
+  "native_evidence_source": "f9b07179df1709b2ba7fb426bc2c68238a818f7c",
+  "final_guard_source": "8f28101f9f35922e3881a41c91de051deb644082",
+  "unchanged_production_and_native_test_trees": [
+    "scripts/",
+    "data/",
+    "tools/",
+    "tests/class_signatures/",
+    "tests/nature_repertoires/",
+    "tests/spell_repertoires/",
+    "tests/character_completeness/"
+  ],
+  "only_changed_non_documentation_paths": [
+    ".github/workflows/verify-v19-regressions.yml",
+    "tests/adventure_cycles/pin_guard.py",
+    "tests/adventure_cycles/pin_guard_test.py",
+    "tests/character_catalogue/legacy-projection.json"
+  ],
+  "projection_metadata_consumers": [
+    "tests/opportunities/corpus.gd",
+    "tests/adventure_cycles/pin_guard.py"
+  ],
+  "scope": "Native129/130/133/126 evidence is retained, not claimed freshly executed on the guard source. Four affected full legacy workflows rerun after focused Windows source guards pass."
+}
