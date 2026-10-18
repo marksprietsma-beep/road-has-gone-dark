@@ -1,0 +1,38 @@
+{
+  "command": {
+    "actor_id": "a",
+    "kind": "warblade-technique-1",
+    "revision": 0,
+    "target_id": "bandit-blade"
+  },
+  "different_fields": [
+    "units",
+    "log",
+    "state_hash"
+  ],
+  "mixed_pin_errors": [
+    {
+      "code": "companion.build",
+      "detail": "Invalid pinned creature build",
+      "path": "a:companion"
+    }
+  ],
+  "original_companion": "a:companion",
+  "original_owner": "a",
+  "original_rules_ref": {
+    "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v18",
+    "rules_version": "18.0.0",
+    "schema_version": 1
+  },
+  "production_hash": "cf81977464494c21f3bd259a8c545e61199088480421dd39d9aae64b3a8b175f",
+  "render_rules_ref": {
+    "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v19",
+    "rules_version": "19.0.0",
+    "schema_version": 1
+  },
+  "stale_hash": "debda821246f28a93cf399acfa277b50951198187810e8558545930b3742c57a"
+}

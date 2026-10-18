@@ -1,0 +1,67 @@
+{
+  "source_commit": "f9b07179df1709b2ba7fb426bc2c68238a818f7c",
+  "workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39130357992",
+  "artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39130357992/artifacts/12137677017",
+  "raw_proof_sha256": "1ea8ab9d7bd187989175f87367cb682ac0e715fff53d3bd84151d18b46b2278c",
+  "native": {
+    "mechanics": {
+      "checks": 1684,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v11",
+        "rules_version": "11.0.0",
+        "schema_version": 1
+      }
+    },
+    "tactical": {
+      "checks": 2066,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "be3e1c5d2f56658abb5922f0c8a8765710ef72f36099459e65f4c7e7f8962a1d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v11",
+        "rules_version": "11.0.0",
+        "schema_version": 1
+      }
+    },
+    "fresh": {
+      "checks": 330,
+      "earned_xp": 40,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "state_sha": "7481cffe030a16a009a4697ecec6edc37bf28d5c70eea3aeea4355974ec7e2ca",
+      "used_actions": [
+        "power-kinetic-bolt",
+        "warlock-technique-1",
+        "warblade-technique-1"
+      ],
+      "development_snapshots": 9
+    },
+    "prestige-gates": {
+      "checks": 146,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      }
+    }
+  },
+  "production_launch": true,
+  "separate_process_restart": true,
+  "empty_path": true,
+  "source_helper_override": false,
+  "cold_fresh_checks": 23,
+  "cold_fresh_failures": 0,
+  "cold_log_sha256": "a9f2042b499a6e6063bd5e8e1770991c901a33ee8d6dfd56087bfcf46240a246"
+}
