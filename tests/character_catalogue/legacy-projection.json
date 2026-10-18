@@ -7,7 +7,8 @@
       "before": "  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0:\n",
       "after": "  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0 and (not RulesMartial.enabled(registry) or RulesMartial.moved_this_activation(b,a.id)):\n",
       "scope": "v19-only genuine Scout movement; v1-v18 retain the exact prior condition",
-      "baseline_main": "c2a2fdecf12480d3e383d04da1ffe988c9fcd632"
+      "baseline_main": "c2a2fdecf12480d3e383d04da1ffe988c9fcd632",
+      "restores_sha256": "842ff877739787171564ca6d9b6041229accb423bdbff97aaf967ee124ed6990"
     },
     {
       "before": "  var advanced := characters.apply_advancement(record,choice.choice,0)\n  record=advanced.candidate\n  battle.units[enemy.id]=unit(enemy.id,enemy.name,\"enemy\",enemy.position,record,enemy.weapon)\n  battle.order.append(enemy.id)\n # Stable initiative, ties resolve by authored/party order. No random initiative.\n var ranks := {};var initiative := {}\n for i in battle.order.size():\n  var id: String=battle.order[i]\n",

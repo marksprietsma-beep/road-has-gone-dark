@@ -37,6 +37,8 @@ jobs:
         env:
           GAME144_ROOT: ${{ runner.temp }}/game144-focused
         run: python tests/v19_regressions/run-tests.py
+      - name: Exact historical source and negative projection guards
+        run: python tests/adventure_cycles/pin_guard_test.py
       - name: Preserve exact focused evidence
         if: always()
         uses: actions/upload-artifact@v4
