@@ -216,9 +216,9 @@ func test_legacy() -> void:
  check(archived.has("records"),"archived pinned source fixtures remain installed")
  var expected: Dictionary={}
  for row in RulesRecords.installed_packs():
-  if row.rules_ref.pack_id==RulesRecords.NEW_PACK:expected=row.rules_ref
+  if row.rules_ref.pack_id==RulesRecords.NEW_PACK:expected=RulesJson.normalize(row.rules_ref)
  var fresh := RulesRecords.new_character_registry()
- check(expected.size()==5 and fresh.ready() and fresh.rules_ref()==expected,"fresh New Game uses exact current manifest pin; archived mechanics remain v18")
+ check(expected.size()==5 and fresh.ready() and fresh.rules_ref()==expected,"fresh New Game uses exact current manifest pin; archived mechanics remain v18: "+RulesJson.canonical({"expected":expected,"actual":fresh.rules_ref(),"errors":fresh.errors}))
 
 func test_area_and_constraints() -> void:
  for id in ["sorcerer-starfall-rupture","druid-winters-verdict"]:

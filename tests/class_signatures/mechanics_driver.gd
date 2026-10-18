@@ -219,6 +219,11 @@ func test_multiclass() -> void:
  check(not CharacterBuilderRecords.preview_advancement(unfunded,qualified.character_id,selected.choice).ok,"legal class selector never manufactures XP for prestige")
  if step.ok:records.earned_eligible_development_prestige=step.candidate
 func test_legacy() -> void:
+ var expected: Dictionary={}
+ for row in RulesRecords.installed_packs():
+  if row.rules_ref.pack_id==RulesRecords.NEW_PACK:expected=RulesJson.normalize(row.rules_ref)
+ var fresh := RulesRecords.new_character_registry()
+ check(expected.size()==5 and fresh.ready() and fresh.rules_ref()==expected,"source/export default exact full manifest pin: "+RulesJson.canonical({"expected":expected,"actual":fresh.rules_ref(),"errors":fresh.errors}))
  var legacy := RulesRegistry.new();check(legacy.load_pack("res://data/rules/trhgd-character-v18.json").ok,"accepted v18 still exact loadable")
  check(not RulesMartial.enabled(legacy),"new hooks never enter historical v18")
  var effect: Dictionary=legacy.definition("abilities","swordsage-technique-1")
