@@ -285,7 +285,7 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
    guard.reaction=0;amount=maxi(0,amount-4);b.log.append(guard.name+" protects "+t.name+": damage reduced by 4.");break
  if RulesCapabilities.enabled(registry):
   var caps: Dictionary=characters.derive_character(a.record).snapshot.capabilities
-  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0:
+  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0 and (not RulesMartial.enabled(registry) or RulesMartial.moved_this_activation(b,a.id)):
    amount+=int(caps.moving_damage);a.precision_used=true;b.log.append(a.name+" exploits movement: +"+str(caps.moving_damage)+" damage.")
   amount=RulesCapabilities.reduce_damage(amount,str(weapon.get("damage_type","physical")),characters.derive_character(t.record).snapshot.capabilities)
  amount=maxi(0,amount)

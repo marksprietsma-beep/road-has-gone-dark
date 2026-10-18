@@ -1,0 +1,174 @@
+{
+  "rules_ref": {
+    "pack_id": "trhgd-character-v19",
+    "schema_version": 1,
+    "rules_version": "19.0.0",
+    "engine_schema": 3,
+    "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a"
+  },
+  "delta": {
+    "pack_id": {
+      "before": "trhgd-character-v18",
+      "after": "trhgd-character-v19"
+    },
+    "rules_version": {
+      "before": "18.0.0",
+      "after": "19.0.0"
+    },
+    "provenance": {
+      "before": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game133-sorcerer-druid-repertoires"
+      },
+      "after": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game129-class-signatures"
+      }
+    },
+    "classes": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ]
+    },
+    "features": {
+      "added": [
+        "crusader-renewal-feature",
+        "mind-blade-growth-08",
+        "mind-blade-growth-16",
+        "mindblade-echo-feature",
+        "soulknife-hurl-feature",
+        "swordsage-afterimage-feature",
+        "swordsage-stance-cinder-feature",
+        "swordsage-stance-flow-feature",
+        "warblade-riposte-feature",
+        "warblade-stance-pressure-feature",
+        "warblade-stance-shelter-feature"
+      ],
+      "removed": [],
+      "modified": [
+        "soulknife-recovery",
+        "soulknife-blade",
+        "soulknife-technique-1-feature",
+        "soulknife-technique-4-feature",
+        "soulknife-technique-8-feature",
+        "soulknife-technique-12-feature",
+        "warblade-recovery",
+        "warblade-technique-1-feature",
+        "warblade-technique-4-feature",
+        "warblade-technique-8-feature",
+        "warblade-technique-12-feature",
+        "adamant-stance-feature",
+        "soulknife-master-13-feature",
+        "soulknife-master-16-feature",
+        "soulknife-master-20-feature",
+        "warblade-master-13-feature",
+        "warblade-master-16-feature",
+        "warblade-master-20-feature",
+        "crusader-recovery",
+        "crusader-technique-1-feature",
+        "crusader-technique-4-feature",
+        "crusader-technique-12-feature",
+        "crusader-technique-16-feature",
+        "crusader-technique-20-feature",
+        "swordsage-recovery",
+        "swordsage-technique-1-feature",
+        "swordsage-technique-4-feature",
+        "swordsage-technique-12-feature",
+        "swordsage-technique-16-feature",
+        "swordsage-technique-20-feature",
+        "martial-recovery-feature"
+      ]
+    },
+    "feats": {
+      "added": [
+        "mindblade-echo"
+      ],
+      "removed": [],
+      "modified": []
+    },
+    "statuses": {
+      "added": [
+        "swordsage-afterimage",
+        "swordsage-cinder",
+        "swordsage-evasion-ready",
+        "swordsage-flow",
+        "warblade-binding-cut",
+        "warblade-pressure",
+        "warblade-riposte-ready",
+        "warblade-shelter"
+      ],
+      "removed": [],
+      "modified": [
+        "soulknife-manifested"
+      ]
+    },
+    "abilities": {
+      "added": [
+        "adamant-answer",
+        "crusader-renewal",
+        "martial-recovery-crusader",
+        "martial-recovery-soulknife",
+        "martial-recovery-swordsage",
+        "martial-recovery-warblade",
+        "mindblade-echo",
+        "soulknife-hurl",
+        "swordsage-afterimage",
+        "swordsage-arm-afterimage",
+        "swordsage-stance-cinder",
+        "swordsage-stance-flow",
+        "warblade-arm-riposte",
+        "warblade-riposte",
+        "warblade-stance-pressure",
+        "warblade-stance-shelter"
+      ],
+      "removed": [],
+      "modified": [
+        "soulknife-recover",
+        "soulknife-manifest",
+        "soulknife-technique-1",
+        "soulknife-technique-4",
+        "soulknife-technique-8",
+        "soulknife-technique-12",
+        "warblade-recover",
+        "warblade-technique-1",
+        "warblade-technique-4",
+        "warblade-technique-8",
+        "warblade-technique-12",
+        "soulknife-master-13",
+        "soulknife-master-16",
+        "soulknife-master-20",
+        "warblade-master-13",
+        "warblade-master-16",
+        "warblade-master-20",
+        "crusader-technique-1",
+        "crusader-technique-4",
+        "crusader-technique-8",
+        "crusader-technique-12",
+        "crusader-technique-16",
+        "crusader-technique-20",
+        "swordsage-recover",
+        "swordsage-technique-1",
+        "swordsage-technique-4",
+        "swordsage-technique-8",
+        "swordsage-technique-12",
+        "swordsage-technique-16",
+        "swordsage-technique-20"
+      ]
+    },
+    "equipment": {
+      "added": [
+        "mind-blade",
+        "mind-blade-thrown"
+      ],
+      "removed": [],
+      "modified": []
+    }
+  }
+}

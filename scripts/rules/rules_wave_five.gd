@@ -2,7 +2,7 @@ class_name RulesWaveFive
 extends RefCounted
 ## v15 selected repertoire/channel adapters. Existing history, costs, effects and save owner remain authority.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"]
 
 static func spell_selected(record: Dictionary,ability: Dictionary,source: RulesRegistry) -> bool:
  var id: String=str(ability.get("channel_spell",ability.get("id",""))) if enabled(source) else str(ability.get("id",""))
@@ -22,7 +22,8 @@ static func channel_access(record: Dictionary,ability: Dictionary,context: Dicti
 static func melee_weapon(record: Dictionary,id: String,source: RulesRegistry) -> bool:
  var weapon := source.definition("equipment",id)
  var replay := RulesCharacter.new(source)._replay(record)
- return replay.ok and record.equipment.has(id) and weapon.get("kind")=="weapon" and not weapon.get("tags",[]).has("ranged") and not weapon.get("tags",[]).has("natural") and RulesEntities.form(record,source).is_empty() and RulesCoreContent.equipment_legal(weapon,replay.context.classes,source)
+ var manifested: bool= RulesMartial.enabled(source) and record.runtime.statuses.any(func(s: Dictionary):return source.definition("statuses",s.id).get("weapon_override")==id)
+ return replay.ok and (record.equipment.has(id) or manifested) and weapon.get("kind")=="weapon" and not weapon.get("tags",[]).has("ranged") and not weapon.get("tags",[]).has("natural") and RulesEntities.form(record,source).is_empty() and RulesCoreContent.equipment_legal(weapon,replay.context.classes,source)
 
 static func channel_effects(actor: Dictionary,target: Dictionary,id: String,rng: Dictionary,source: RulesRegistry) -> Dictionary:
  var kernel := RulesCharacter.new(source)

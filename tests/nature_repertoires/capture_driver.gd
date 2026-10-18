@@ -90,7 +90,7 @@ func finish_capture() -> void:
 func render_identity(record: Dictionary,id: String) -> Dictionary:
  # Render-only fixture: keep persistent companion ownership internally valid.
  # The actual earned campaign and saved mechanics proof are never modified.
- var r: Dictionary=record.duplicate(true);r.character_id=id
+ var r: Dictionary=record.duplicate(true);r.character_id=id;r.rules_ref=RulesRecords.registry(state).rules_ref()
  var pets := {}
  for previous in r.runtime.companions:
   var pet: Dictionary=r.runtime.companions[previous].duplicate(true)
