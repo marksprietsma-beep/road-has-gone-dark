@@ -40,6 +40,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
  if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor,ability,registry):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
  if RulesMartial.enabled(registry) and ability.has("requires_status") and not actor.runtime.statuses.any(func(s: Dictionary):return s.id==ability.requires_status):return RulesJson.result([RulesJson.issue("ability.stance",ability_id,"Required manifested weapon or armed stance is absent")])
+ if RulesMartial.enabled(registry) and ability.has("requires_weapon") and (not RulesEntities.form(actor,registry).is_empty() or not actor.runtime.statuses.any(func(s: Dictionary):return registry.definition("statuses",s.id).get("weapon_override")==ability.requires_weapon)):return RulesJson.result([RulesJson.issue("ability.weapon",ability_id,"Required manifested weapon is not active")])
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
  if RulesWaveFour.enabled(registry):

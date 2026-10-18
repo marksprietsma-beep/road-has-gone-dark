@@ -9,6 +9,9 @@ release=base/'distribution';release.mkdir(exist_ok=True);name='game133-spell-rep
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 manifest_bytes=(root/'data/rules/packs.json').read_bytes();manifest=json.loads(manifest_bytes)
 expected=next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v18')
+import re
+fresh_id=re.search(r'const NEW_PACK := "([^"]+)"',(root/'scripts/rules/rules_records.gd').read_text()).group(1)
+fresh=next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']==fresh_id)
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/nature_repertoires/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME133_ROOT=str(base/'mechanics'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'));env.pop('GAME76_HELPER_ROOT',None)
@@ -28,7 +31,7 @@ proofs={}
 input_proof=json.loads((base/'mechanics/input-proof.json').read_text());assert input_proof['checks']>=5 and input_proof['failures']==0
 proofs['combat-input']=input_proof
 for file in ['proof.json','restart-proof.json']:
- p=json.loads((base/'connected'/file).read_text());assert p['failures']==0 and p['checks']>0 and p['rules_ref']==expected
+ p=json.loads((base/'connected'/file).read_text());assert p['failures']==0 and p['checks']>0 and p['rules_ref']==fresh
  proofs['connected/'+file]=p
 assert len(proofs['connected/proof.json']['casts'])==2 and proofs['connected/proof.json']['xp_injected']is False
 for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('compatibility','compatibility-v16'),('journey','journeys/cohort-0')]:
@@ -37,7 +40,7 @@ for phase,folder in [('mechanics','mechanics'),('legacy','legacy-v16'),('compati
   if phase=='mechanics':assert p['rules_ref']==expected
   if phase in ['legacy','compatibility']:assert p['rules_ref']==next(x['rules_ref']for x in manifest['packs']if x['rules_ref']['pack_id']=='trhgd-character-v16')
   if phase=='journey'and file=='proof.json':
-   assert p['rules_ref']==expected and p['earned_xp']==490 and p['xp_injected']is False and len(p['journeys'])==3
+   assert p['rules_ref']==fresh and p['earned_xp']==490 and p['xp_injected']is False and len(p['journeys'])==3
    assert set(p['combat_actions'].values())=={'sorcerer-crystal-reservoir','druid-bramble-tether','attack'}
   proofs[phase+'/'+file]=p
 captures=json.loads((base/'captures/screenshots.json').read_text());assert captures['failures']==0 and len(captures['screenshots'])>=8

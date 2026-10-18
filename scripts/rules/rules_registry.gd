@@ -194,7 +194,7 @@ static func _validate_definition(category: String,row: Dictionary,tables: Dictio
  }
  var extensions := {"classes":["description","bonus_feat_levels","hit_die","class_skills","proficiencies","spell_mode","casting_attribute","recommended_equipment","known_spell_limits","career_choices","class_kind","attribute_priority"],"features":["description","capabilities"],"abilities":["description","casting_class","spell_tier","attack_weapon"],"equipment":["proficiency"],"resources":["prepared_ability","slot_class","spell_tier"],"ancestries":["name","description","attribute_adjustments","size","skill_bonuses","body_plan","capabilities","visual_profile"],"statuses":["capabilities"]}
  if martial:
-  extensions.abilities.append_array(["strike_effects","requires_status","requires_melee","counterattack"])
+  extensions.abilities.append_array(["strike_effects","requires_status","requires_weapon","requires_melee","counterattack"])
   extensions.statuses.append_array(["weapon_override","stance_group"])
   RulesMartial.validate_definition(category,row,tables,found)
  if wave_five:

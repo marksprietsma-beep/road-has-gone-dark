@@ -7,6 +7,7 @@ static func enabled(source: RulesRegistry) -> bool:
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
   if row.has("requires_status"):RulesRegistry._reference(tables,"statuses",row.requires_status,row.id,errors)
+  if row.has("requires_weapon"):RulesRegistry._reference(tables,"equipment",row.requires_weapon,row.id,errors)
   for field in ["requires_melee","counterattack"]:
    if row.has(field) and not row[field] is bool:errors.append(RulesJson.issue("martial.boolean",row.id,"Boolean tactical descriptor required"))
   if row.has("strike_effects"):
@@ -39,3 +40,12 @@ static func apply_hit(actor: Dictionary,target: Dictionary,ability: Dictionary,r
   if not result.ok:return result
   state.actor.runtime=result.actor;state.target.runtime=result.target;state.rng=result.rng;state.events.append_array(result.events)
  return state
+
+static func moved_this_activation(battle: Dictionary,id: String) -> bool:
+ # Successful movement is already sealed into the command history. Spending a
+ # movement token on a stance, arm action or meditation is not displacement.
+ for index in range(battle.commands.size()-1,-1,-1):
+  var command: Dictionary=battle.commands[index]
+  if command.kind=="end":break
+  if command.get("actor_id")==id and command.kind=="move":return true
+ return false

@@ -86,7 +86,7 @@ func test_confirmed_hits() -> void:
    var before := RulesJson.digest(b)
    var attack := execute(engine,b,"attack","bandit-blade")
    var used := execute(engine,b,pair[1],"bandit-blade")
-   check(attack.ok and used.ok,"hit/miss actual strike "+pair[1]+str(hit))
+   check(attack.ok and used.ok,"hit/miss actual strike "+pair[1]+str(hit)+str(used.get("error","")))
    if not used.ok or not attack.ok:continue
    check(RulesJson.digest(b)==before,"source battle immutable")
    check(used.battle.budget.main==0,"one real main action")
@@ -126,7 +126,7 @@ func test_riposte() -> void:
  var arm := execute(engine,b,"warblade-arm-riposte")
  check(arm.ok,"visible arm action valid")
  if not arm.ok:return
- var armed: Dictionary=arm.battle;armed.cursor=armed.order.find("bandit-blade");armed.budget={"main":1,"move":1};armed.rng=attack_seed(1);armed=engine.seal(armed)
+ var armed: Dictionary=arm.battle;var attacker := build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade"];armed.units["bandit-blade"].record=attacker;armed.cursor=armed.order.find("bandit-blade");armed.budget={"main":1,"move":1};armed.rng=attack_seed(1);armed=engine.seal(armed)
  var reply := execute(engine,armed,"attack","a")
  check(reply.ok and reply.battle.units.a.reaction==0,"melee miss spends shared reaction on armed riposte")
  if reply.ok:
@@ -146,7 +146,7 @@ func test_afterimage() -> void:
  var engine := TacticalAuras.new(records.swordsage8);var b := encounter(records.swordsage8)
  var arm := execute(engine,b,"swordsage-arm-afterimage");check(arm.ok,"afterimage explicitly armed")
  if not arm.ok:return
- var armed: Dictionary=arm.battle;armed.cursor=armed.order.find("bandit-blade");armed.budget={"main":1,"move":1};armed.rng=attack_seed(19);armed=engine.seal(armed)
+ var armed: Dictionary=arm.battle;var attacker := build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade"];armed.units["bandit-blade"].record=attacker;armed.cursor=armed.order.find("bandit-blade");armed.budget={"main":1,"move":1};armed.rng=attack_seed(19);armed=engine.seal(armed)
  var result := execute(engine,armed,"attack","a")
  check(result.ok and result.battle.units.a.record.runtime.hp<armed.units.a.record.runtime.hp,"afterimage never erases triggering hit")
  if result.ok:check(result.battle.units.a.reaction==0 and kernel.derive_character(result.battle.units.a.record).snapshot.capabilities.concealment==50,"shared reaction grants actual subsequent weapon concealment")
@@ -168,13 +168,13 @@ func test_feats() -> void:
  var illegal: Dictionary=kernel.suggested_choice(fresh,"warblade","steady-study").choice
  illegal.feat_id="martial-recovery"
  check(not kernel.preview_advancement(fresh,illegal).ok,"martial recovery rejected at level one")
- var r := build_with_feats("warblade",8,{6:"martial-recovery"})
+ var r := build_with_feats("warblade",8,{7:"martial-recovery"})
  var pool := "warblade-readiness";r.runtime.resources[pool]=0
  var engine := TacticalAuras.new(r);var b := encounter(r);b.cursor=(b.order.find("a")-1+b.order.size())%b.order.size();b=engine.seal(b)
  var result := execute(engine,b,"end")
  check(result.ok and result.battle.units.a.record.runtime.resources[pool]==1,"feat has actual conditional recovery consumer")
  records.martial_feat=r
- var s := build_with_feats("soulknife",12,{6:"iron-soul",9:"mindblade-echo"});s=manifest(s)
+ var s := build_with_feats("soulknife",12,{5:"iron-soul",9:"mindblade-echo"});s=manifest(s)
  var battle := encounter(s);battle.rng=attack_seed(19);battle=engine.seal(battle);engine=TacticalAuras.new(s)
  var echo := execute(engine,battle,"attack","bandit-blade")
  check(echo.ok and echo.battle.units.a.reaction==0 and echo.battle.units.a.record.runtime.temporary_hp==6,"feat chain confirmed melee hit consumes reaction for real buffer")
@@ -187,7 +187,7 @@ func build_with_feats(cls: String,level: int,picks: Dictionary) -> Dictionary:
   check(choice.ok,"lawful feat chain suggestion "+cls+str(at))
   if not choice.ok:return {}
   if picks.has(at):check(choice.choice.feat_id==picks[at],"requested lawful feat actually selected")
-  var step := kernel.preview_advancement(r,choice.choice);check(step.ok,"lawful feat progression")
+  var step := kernel.preview_advancement(r,choice.choice);check(step.ok,"lawful feat progression "+JSON.stringify(step.get("errors",[])))
   if not step.ok:return {}
   r=step.candidate
  r.equipment=source.definition("classes",cls).recommended_equipment.duplicate();r.runtime.hp=kernel.derive_character(r).snapshot.stats.HP;r.runtime.resources=kernel._replay(r).context.capacities.duplicate();return r

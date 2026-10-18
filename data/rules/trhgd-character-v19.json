@@ -17324,7 +17324,7 @@
         },
         {
           "at": 8,
-          "id": "mind-blade-growth-8"
+          "id": "mind-blade-growth-08"
         },
         {
           "at": 16,
@@ -17341,7 +17341,7 @@
         "revision": "game112-wave-one",
         "source_concept": "Soulknife"
       },
-      "description": "Manifest a mind blade; replenish psychic focus with a full main action and spend it on a charged strike. v19: Actual manifested weapon, scaling dice, hit-confirmed psychic strikes and ranged projection.",
+      "description": "Original v19 tactical adaptation: Actual manifested weapon, scaling dice, hit-confirmed psychic strikes and ranged projection.",
       "bonus_feat_levels": [],
       "hit_die": 10,
       "class_skills": [
@@ -18403,7 +18403,7 @@
         "revision": "game112-wave-one",
         "source_concept": "Warblade"
       },
-      "description": "Martial manoeuvres spend encounter readiness. Recover readiness with a main action; choose durable aggressive or defensive stance. v19: Exclusive stances, hit-confirmed ward disruption, armed shared-reaction riposte and main-action recovery.",
+      "description": "Original v19 tactical adaptation: Exclusive stances, hit-confirmed ward disruption, armed shared-reaction riposte and main-action recovery.",
       "bonus_feat_levels": [],
       "hit_die": 10,
       "class_skills": [
@@ -19327,7 +19327,7 @@
         "license": "Original project-authored content",
         "revision": "game112-wave-two"
       },
-      "description": "Crusader is an original bounded adaptation: selected manoeuvres, two ready charges and a main-action recovery cycle. Levels1–20; not a full sourcebook conversion. v19: Hit-confirmed restorative strikes and bounded automatic readiness at own activation.",
+      "description": "Original v19 tactical adaptation: Hit-confirmed restorative strikes and bounded automatic readiness at own activation.",
       "bonus_feat_levels": [],
       "hit_die": 10,
       "class_skills": [
@@ -19584,7 +19584,7 @@
         "license": "Original project-authored content",
         "revision": "game112-wave-two"
       },
-      "description": "Swordsage is an original bounded adaptation: selected manoeuvres, two ready charges and a main-action recovery cycle. Levels1–20; not a full sourcebook conversion. v19: Exclusive flow/cinder stances, hit-confirmed disruption/fire, armed afterimage and full-activation meditation.",
+      "description": "Original v19 tactical adaptation: Exclusive flow/cinder stances, hit-confirmed disruption/fire, armed afterimage and full-activation meditation.",
       "bonus_feat_levels": [],
       "hit_die": 10,
       "class_skills": [
@@ -94334,7 +94334,7 @@
       }
     },
     {
-      "id": "mind-blade-growth-8",
+      "id": "mind-blade-growth-08",
       "name": "Mind blade growth 8",
       "modifiers": [],
       "abilities": [],
@@ -129814,6 +129814,7 @@
         "revision": "game112-wave-one"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -129860,6 +129861,7 @@
         "revision": "game112-wave-one"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -129906,6 +129908,7 @@
         "revision": "game112-wave-one"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -129952,6 +129955,7 @@
         "revision": "game112-wave-one"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -133184,6 +133188,7 @@
         "revision": "game112-wave-two"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -133276,6 +133281,7 @@
         "revision": "game112-wave-two"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -133368,6 +133374,7 @@
         "revision": "game112-wave-two"
       },
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "requires_melee": true,
       "strike_effects": [
         {
@@ -160638,6 +160645,7 @@
       },
       "attack_weapon": "mind-blade-thrown",
       "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade",
       "strike_effects": [
         {
           "op": "damage",

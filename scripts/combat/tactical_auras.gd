@@ -17,6 +17,7 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
  if RulesMartial.enabled(registry):
   var row := registry.definition("abilities",ability)
   if row.has("requires_status") and not u.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):return false
+  if row.has("requires_weapon") and active_weapon(u)!=row.requires_weapon:return false
   if row.get("requires_melee",false) and not RulesWaveFive.melee_weapon(u.record,active_weapon(u),registry):return false
  if RulesWaveFive.enabled(registry) and registry.definition("abilities",ability).has("channel_spell") and not RulesWaveFive.melee_weapon(u.record,active_weapon(u),registry):return false
  return super.eligible(b,u,t,ability)
