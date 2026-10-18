@@ -19,15 +19,15 @@ def ability(id,name,kind,effects,description,cls,at=1,costs=None,main=1,move=0,*
  row=dict(id=id,name=name,cost=dict(main=main,move=move,reaction=0,resources=costs or{}),effects=effects,tags=[],timing=dict(kind='instant'),requirements=dict(op='class_level',id=cls,min=at),targeting=dict(kind=kind,range=0 if kind=='self'else 1,radius=0),description=description,provenance=prov);row.update(kw);p['abilities'].append(row);return id
 
 def feature(id,name,abilities=None,**kw):
- row=dict(id=id,name=name,modifiers=[],abilities=abilities or[],resources=[],tags=[],senses=[],hooks=[],grants=[],description=name,provenance=prov);row.update(kw);p['features'].append(row);return id
+ row=dict(id=id,name=name,modifiers=[],abilities=abilities or[],resources=[],tags=[],senses=[],hooks=[],grants=[],description=' '.join(table('abilities',a)['description']for a in (abilities or[]))or name,provenance=prov);row.update(kw);p['features'].append(row);return id
 
 def grant(cls,at,id):table('classes',cls)['features'].append(dict(at=at,id=id))
 # Manifestation actually selects a weapon independently of held equipment. Forms win.
 weapon=copy.deepcopy(table('equipment','unarmed'));weapon.update(id='mind-blade',name='Manifested mind blade',damage='1d8',range=1,tags=['melee','manifested'],proficiency='simple',provenance=prov);p['equipment'].append(weapon)
 thrown=copy.deepcopy(weapon);thrown.update(id='mind-blade-thrown',name='Hurled mind blade',range=4,tags=['ranged','manifested']);p['equipment'].append(thrown)
 manifest=table('statuses','soulknife-manifested');manifest.update(weapon_override='mind-blade',modifiers=[mod('damage',add(c(1),div(cl('soulknife'),5))),mod('melee_attack',div(cl('soulknife'),5)),mod('ranged_attack',div(cl('soulknife'),5))],capabilities={'weapon_damage':{'mind-blade':'1d8','mind-blade-thrown':'1d8'}})
-table('abilities','soulknife-manifest')['description']='Main action; manifest a real mind blade for three global round boundaries. Overrides the held weapon, never a transformed natural weapon. Enhancement scales every five Soulknife levels; damage dice grow at8/16. Original equipment stays saved.'
-for at,dice in [(8,'2d6'),(16,'2d8')]:grant('soulknife',at,feature('mind-blade-growth-'+str(at).zfill(2),'Mind blade growth '+str(at),capabilities={'weapon_damage':{'mind-blade':dice,'mind-blade-thrown':dice}}))
+table('abilities','soulknife-manifest')['description']='Main action; manifest a real mind blade for three global round boundaries. Overrides the held weapon, never a transformed natural weapon. Attack enhancement is floor(Soulknife level/5) and damage enhancement is1+floor(level/5), insight. Dice1d8,2d6 at8,2d8 at16. Original equipment stays saved.'
+for at,dice in [(8,'2d6'),(16,'2d8')]:grant('soulknife',at,feature('mind-blade-growth-'+str(at).zfill(2),'Mind blade growth '+str(at),description='While manifested, melee and projected mind blade damage becomes '+dice+'. This is weapon growth, not permanent inventory or an additional attack.',capabilities={'weapon_damage':{'mind-blade':dice,'mind-blade-thrown':dice}}))
 # Highest body/class override wins: status must not reset late dice. Runtime blade
 # status only chooses the weapon; permanent growth lives on class features.
 manifest.pop('capabilities')
@@ -40,7 +40,7 @@ aid=ability('soulknife-hurl','Hurl mind blade','creature',[],'Main action/one fo
 for cls,variants in [('warblade',[('pressure',[mod('damage',2),mod('defence',-1)]),('shelter',[mod('defence',2),mod('damage',-1)])]),('swordsage',[('flow',[mod('stride',1)]),('cinder',[mod('damage',1)])])]:
  for name,mods in variants:
   sid=status(cls+'-'+name,mods,stance_group='martial-stance',**({'capabilities':{'concealment':20}}if name=='flow'else{}))
-  aid=ability(cls+'-stance-'+name,name.capitalize()+' stance','self',[apply(sid)],'Spend movement, retain main action. Three global round boundaries; replaces every other martial stance, including another class stance. '+('20% weapon concealment/stride+1.'if name=='flow'else'Listed derived modifiers apply to actual weapon combat.'),cls,1,main=0,move=1)
+  aid=ability(cls+'-stance-'+name,name.capitalize()+' stance','self',[apply(sid)],'Spend movement, retain main action. Three global round boundaries; replaces every other martial stance, including another class stance. '+('20% weapon concealment/stride+1.'if name=='flow'else{'pressure':'Weapon damage+2 insight, defence−1 insight.','shelter':'Defence+2 insight, weapon damage−1 insight.','cinder':'Weapon damage+1 insight.'}.get(name,'')),cls,1,main=0,move=1)
   grant(cls,1,feature(aid+'-feature',name.capitalize()+' stance',[aid]))
 # Strikes no longer apply hostile riders before hit resolution.
 status('warblade-binding-cut',capabilities={'immobile':True},duration=dict(type='activation',amount=1,expiry='target_activation_end'))
@@ -92,6 +92,12 @@ for cls in ['soulknife','warblade','crusader','swordsage']:
 # Precise conditional feat chain for a manifested hit, not a passive always-on bonus.
 aid=ability('mindblade-echo','Mindblade echo','self',[dict(op='temporary_hp',amount=div(cl('soulknife'),2))],'After your ordinary manifested melee hit, spend the shared reaction for half Soulknife level nonstacking temporary HP. Not on ranged, miss, concealment, natural form or reaction attacks. Competes with protection/opportunity.', 'soulknife',8,main=0,trigger='weapon_hit',requires_status='soulknife-manifested',requires_weapon='mind-blade');table('abilities',aid)['cost']['reaction']=1
 fid=feature('mindblade-echo-feature','Mindblade echo',[aid]);p['feats'].append(dict(id='mindblade-echo',name='Mindblade echo',requirements=dict(op='all',args=[dict(op='class_level',id='soulknife',min=8),dict(op='feat',id='iron-soul')]),features=[fid],repeatable=False,choice_parameters=[],provenance=prov))
+table('abilities','soulknife-recover')['description']='Main action restores two psychic focus, bounded by capacity. Movement remains available; no attack from this main action.'
+table('abilities','warblade-recover')['description']='Main action restores two readiness, bounded by capacity. Movement remains available; no attack from this main action.'
+for cls in ['soulknife','warblade','crusader','swordsage']:
+ for entry in table('classes',cls)['features']:
+  f=table('features',entry['id'])
+  if f.get('abilities'):f['description']=' '.join(table('abilities',a)['description']for a in f['abilities'])
 for cls in ['soulknife','warblade','crusader','swordsage']:
  table('classes',cls)['description']='Original v19 tactical adaptation: '+{'soulknife':'Actual manifested weapon, scaling dice, hit-confirmed psychic strikes and ranged projection.','warblade':'Exclusive stances, hit-confirmed ward disruption, armed shared-reaction riposte and main-action recovery.','crusader':'Hit-confirmed restorative strikes and bounded automatic readiness at own activation.','swordsage':'Exclusive flow/cinder stances, hit-confirmed disruption/fire, armed afterimage and full-activation meditation.'}[cls]
 path=root/'data/rules/trhgd-character-v19.json';path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n')
