@@ -1,0 +1,36 @@
+{
+  "providerRevision": "d5cf3590cf59e1d382110d25a6910f12507299e2",
+  "holdingBranch": "handoff/game-63-settlemaker-upload",
+  "archiveSha256": "ba6a216632020d3b3134ca818176f484b1f2d4ca4ca5cde8441d9fda8fbf16cf",
+  "archiveCRC": "passed",
+  "internalChecksums": "37/37 passed",
+  "bundledUpstreamTar": "checksum matches, but gzip stream is truncated; not used",
+  "fixtures": [
+    {
+      "slug": "batan",
+      "originalFiles": {
+        "outputs/village.geojson": "a89715c67f3411085f75cb555fca5cbafcdfc36a46a1d2ba1fd57063a0b2feb9",
+        "inputs/village.request.json": "b0930b688f289f97deaaf712c46bd91e2a7753efd2438e9972c0b7d30477f8fc"
+      },
+      "fixtureSha256": "0279fa646c2ed0ba6cd3ac3fe46d35ceadb0e0b9ae6fdeb09dc664f9ba0c476c"
+    },
+    {
+      "slug": "albanes",
+      "originalFiles": {
+        "outputs/fortified-town.geojson": "7b04d4d778eb76ac2669dfe789b1034e23a655ba578e379f3266147cac996ead",
+        "inputs/fortified-town.request.json": "a9b26ed83c1a8826eb8474eac55fdc84ec83e8b81ef144427051d5a76058bdd9",
+        "outputs/fortified-town.scene.json": "4b7bd68b2616f632c35318f251b96851a370537b7846b1ccdff52bc5d204b2a3"
+      },
+      "fixtureSha256": "2c0d1b5ec67918880a0c27f03b0ca110172afd72530e0dea4585209d42e421ee"
+    },
+    {
+      "slug": "thilranlena",
+      "originalFiles": {
+        "outputs/coastal-port.geojson": "9b6f15206d0501b3ca36916cb8c200df1db14af09885755dcf6cbfa0e9d6c0fa",
+        "inputs/coastal-port.request.json": "51b0525b6c0709babe794fb7405ddbb477947f4282ad74436063e1097f943945",
+        "outputs/coastal-port.scene.json": "3b659a9bb7041713828204f7fd79bcc27bac1c1c378da36cacf8415a7fe9f12e"
+      },
+      "fixtureSha256": "26c08859584566a0c80126bba31d3b9a4f7e30277819eb76da3ba7b6c8d47925"
+    }
+  ]
+}
