@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     branches: [feature/game-129-class-signatures, main]
-    paths: ['scripts/**', 'data/rules/**', 'tools/**', 'tests/class_signatures/**', '.github/workflows/verify-class-signatures.yml']
+    paths: ['scripts/**', 'data/rules/**', 'tools/**', 'tests/class_signatures/**', 'tests/nature_repertoires/**', 'tests/character_completeness/**', '.github/workflows/verify-class-signatures.yml']
   workflow_dispatch:
 jobs:
   windows-native:
