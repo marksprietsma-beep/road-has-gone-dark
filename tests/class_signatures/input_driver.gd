@@ -26,6 +26,7 @@ func run() -> void:
    ui.sent={};ui.action_buttons[action].pressed.emit()
    check(ui.sent.get("kind")==action and ui.sent.get("target")=="a","visible arm action sends existing campaign command")
   if cls=="soulknife":
+   check(ui.action_buttons[action].text.contains("range 4"),"hurl displays actual authoritative range rather than generic melee range")
    ui.mode="soulknife-technique-8";ui.refresh();var p: Array=battle.units["bandit-blade"].position
    check(ui.tiles[str(p)].target_tile,"correct melee targeting hitbox")
    ui.choose_tile(p);check(ui.sent.get("kind")=="soulknife-technique-8" and ui.sent.get("target")=="bandit-blade","production target click preserves real enemy identity")

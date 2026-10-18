@@ -273,7 +273,7 @@ func refresh() -> void:
     detail.text+="\nShared reaction: "+("ready" if int(actor.reaction)>0 else "spent")
     var pools: Array[String]=[]
     for pool in actor.record.runtime.resources:
-     if str(pool).ends_with("-readiness") or pool=="soulknife-focus":pools.append(str(pool).replace("-"," ")+": "+str(actor.record.runtime.resources[pool]))
+     if str(pool).ends_with("-readiness") or pool=="soulknife-focus":pools.append(str(pool).replace("-"," ")+": "+str(int(actor.record.runtime.resources[pool])))
     if not pools.is_empty():detail.text+="\n"+" · ".join(pools)
     detail.text+="\nWeapon: "+str(engine.registry.definition("equipment",engine.active_weapon(actor)).name)
    var body := RulesEntities.form(actor.record,engine.registry)
@@ -304,7 +304,10 @@ func refresh() -> void:
      else:
       var caption: String=ability.name
       if RulesWaveFive.enabled(engine.registry) and ability.has("channel_spell"):caption+=" · "+str(engine.registry.definition("equipment",engine.active_weapon(actor)).name)
-      add_action(id,caption+" · range "+str(ability.targeting.get("range",1))+resource_text(ability,actor));action_buttons[id].tooltip_text=ability.get("description",ability.name)
+      var action_range: int=int(ability.targeting.get("range",1))
+      if RulesMartial.enabled(engine.registry) and ability.tags.has("weapon_strike"):
+       action_range=int(engine.registry.definition("equipment",ability.attack_weapon).range) if ability.has("attack_weapon") else engine.weapon_range(actor)
+      add_action(id,caption+" · range "+str(action_range)+resource_text(ability,actor));action_buttons[id].tooltip_text=ability.get("description",ability.name)
    elif abilities.has("guard"):
     var guard := GameUI.action("Guard · protect adjacent ally",func():send("guard",actor.id))
     guard.disabled=thread!=null or int(b.budget.main)<1;gate_button(guard);actions.add_child(guard);action_buttons.guard=guard
