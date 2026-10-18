@@ -90,11 +90,18 @@ func finish_capture() -> void:
 func render_identity(record: Dictionary,id: String) -> Dictionary:
  # Render-only fixture: keep persistent companion ownership internally valid.
  # The actual earned campaign and saved mechanics proof are never modified.
+ var original := RulesCharacter.new(RulesRecords.registry(record)).derive_character(record)
+ check(original.ok,"render source has valid original pinned owner/companion "+JSON.stringify(original.get("errors",[])))
+ if not original.ok:return {}
  var r: Dictionary=record.duplicate(true);r.character_id=id;r.rules_ref=RulesRecords.registry(state).rules_ref()
  var pets := {}
  for previous in r.runtime.companions:
   var pet: Dictionary=r.runtime.companions[previous].duplicate(true)
-  var pet_id := RulesEntities.identity(id);pet.record.character_id=pet_id;pets[pet_id]=pet
+  var pet_id := RulesEntities.identity(id);pet.record.character_id=pet_id
+  # The existing render-only owner projection also needs an exact nested pin.
+  # Do not recreate the creature, change its history, or touch the saved source.
+  pet.record.rules_ref=r.rules_ref.duplicate(true);pets[pet_id]=pet
  r.runtime.companions=pets
- check(RulesCharacter.new(RulesRecords.registry(r)).derive_character(r).ok,"render fixture retains valid owner/companion identity "+id)
+ var rendered := RulesCharacter.new(RulesRecords.registry(r)).derive_character(r)
+ check(rendered.ok,"render fixture retains valid owner/companion identity "+id+" "+JSON.stringify(rendered.get("errors",[])))
  return r

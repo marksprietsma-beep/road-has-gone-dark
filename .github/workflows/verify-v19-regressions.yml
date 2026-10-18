@@ -1,0 +1,55 @@
+name: GAME-144 Focused v19 Regressions
+on:
+  push:
+    branches: [fix/game-144-v19-regressions, main]
+    paths: ['tests/v19_regressions/**', 'tests/character_catalogue/**', 'tests/nature_repertoires/capture_driver.gd', 'tests/opportunities/corpus.gd', '.github/workflows/verify-v19-regressions.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: game144-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class cache import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game144-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game144-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Actual stale-adapter and mixed-pin reproductions
+        shell: pwsh
+        env:
+          GAME144_ROOT: ${{ runner.temp }}/game144-focused
+        run: |
+          & $env:GODOT_BIN --headless --audio-driver Dummy --path . res://tests/v19_regressions/review.tscn 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game144-focus.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $env:GAME144_RESTART = '1'
+          & $env:GODOT_BIN --headless --audio-driver Dummy --path . res://tests/v19_regressions/review.tscn 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game144-cold.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os,json;from pathlib import Path;p=Path(os.environ['GAME144_ROOT']);assert all((r:=json.loads((p/f).read_text()))['checks']>0 and r['failures']==0 for f in ['proof.json','restart-proof.json'])"
+      - name: Preserve exact focused evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game144-focused-windows-evidence
+          path: |
+            ${{ runner.temp }}/game144-focused/*.json
+            ${{ runner.temp }}/game144-*.log
+          retention-days: 90

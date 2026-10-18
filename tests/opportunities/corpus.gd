@@ -12,13 +12,13 @@ func run() -> void:
  for file in pins:
   var digest := FileAccess.get_sha256("res://"+file)
   if file=="scripts/combat/tactical_combat.gd":
-   # Retain the original byte oracle. Only these explicit v7-gated additions
+   # Retain the original byte oracle. Only explicit version-gated additions
    # may be removed when projecting the unchanged legacy authority.
    var legacy := FileAccess.get_file_as_string("res://"+file)
    var projection: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://tests/character_catalogue/legacy-projection.json"))
    check(legacy.sha256_text()==projection.current_sha256,"current combat source matches explicitly reviewed adapter list")
    for adapter in projection.reviewed_adapters:
-    check(legacy.count(adapter.after)==1,"exactly one approved v10/v11 capability adapter")
+    check(legacy.count(adapter.after)==1,"exactly one approved version-gated combat adapter")
     legacy=legacy.replace(adapter.after,adapter.before)
    check(legacy.sha256_text()==projection.baseline_sha256,"reviewed additions reconstruct exact GAME121 combat source")
    for stat in ["bonus","amount"]:

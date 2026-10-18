@@ -1,8 +1,14 @@
 {
   "baseline_commit": "f3c12b9a2b93a6b3bcd3cbf562faec6328b4d770",
   "baseline_sha256": "9d12a9057404e898b08f637785397eb95cedffddd162259df5483bd5525779d0",
-  "current_sha256": "842ff877739787171564ca6d9b6041229accb423bdbff97aaf967ee124ed6990",
+  "current_sha256": "cadb160093ddf62ec57b4dd97b94707ad4ddc0ac82920bdcc7f5247f91e44c5b",
   "reviewed_adapters": [
+    {
+      "before": "  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0:\n",
+      "after": "  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0 and (not RulesMartial.enabled(registry) or RulesMartial.moved_this_activation(b,a.id)):\n",
+      "scope": "v19-only genuine Scout movement; v1-v18 retain the exact prior condition",
+      "baseline_main": "c2a2fdecf12480d3e383d04da1ffe988c9fcd632"
+    },
     {
       "before": "  var advanced := characters.apply_advancement(record,choice.choice,0)\n  record=advanced.candidate\n  battle.units[enemy.id]=unit(enemy.id,enemy.name,\"enemy\",enemy.position,record,enemy.weapon)\n  battle.order.append(enemy.id)\n # Stable initiative, ties resolve by authored/party order. No random initiative.\n var ranks := {};var initiative := {}\n for i in battle.order.size():\n  var id: String=battle.order[i]\n",
       "after": "  var advanced := characters.apply_advancement(record,choice.choice,0)\n  record=advanced.candidate\n  battle.units[enemy.id]=unit(enemy.id,enemy.name,\"enemy\",enemy.position,record,enemy.weapon)\n  battle.order.append(enemy.id)\n if RulesEntities.enabled(registry):\n  battle.entities_version=1\n  if not CombatEntities.add_permanent(self,battle):return {}\n # Stable initiative, ties resolve by authored/party order. No random initiative.\n var ranks := {};var initiative := {}\n for i in battle.order.size():\n  var id: String=battle.order[i]\n",
