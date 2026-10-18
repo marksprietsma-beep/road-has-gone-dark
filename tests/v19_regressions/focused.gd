@@ -55,7 +55,7 @@ func run() -> void:
  check(not kernel.derive_character(forged).ok,"wrong companion identity still rejected")
  forged=rendered.duplicate(true);forged.runtime.companions[pet_id].record.rules_ref=archived.rules_ref
  check(not kernel.derive_character(forged).ok,"mixed nested content pins still rejected")
- var saved_records := RulesJson.string_keys({"original":archived,"rendered":rendered})
+ var saved_records: Dictionary=RulesJson.string_keys({"original":archived,"rendered":rendered})
  var hashes := {}
  for name in saved_records:hashes[name]=RulesJson.digest(saved_records[name])
  var next_command := {"actor_id":engine.current(correct.battle).id,"revision":correct.battle.revision,"kind":"end"}
