@@ -1,0 +1,56 @@
+name: GAME-129 Class Signatures
+concurrency:
+  group: game129-${{ github.ref }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+on:
+  push:
+    branches: [feature/game-129-class-signatures, main]
+    paths: ['scripts/**', 'data/rules/**', 'tools/**', 'tests/class_signatures/**', '.github/workflows/verify-class-signatures.yml']
+  workflow_dispatch:
+jobs:
+  windows-native:
+    runs-on: windows-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine and offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node-only examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Immutable pack and historical byte guards
+        run: |
+          python tools/character-content/validate.py
+          python tools/character-content/check-historical-packs.py
+      - name: Prepare production class cache
+        shell: pwsh
+        run: '& $env:GODOT_BIN --headless --editor --path . --import'
+      - name: Focused actual class attacks and separate-process restart
+        shell: pwsh
+        env:
+          GAME129_ROOT: ${{ runner.temp }}/game129-focused
+        run: |
+          & $env:GODOT_BIN --headless --path . res://tests/class_signatures/review.tscn 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game129-focus.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $env:GAME129_RESTART = '1'
+          & $env:GODOT_BIN --headless --path . res://tests/class_signatures/review.tscn 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game129-cold.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import json,os;from pathlib import Path;p=Path(os.environ['GAME129_ROOT']);r=[json.loads((p/n).read_text())for n in ['proof.json','restart-proof.json']];assert all(x['checks']>0 and x['failures']==0 for x in r)"
+      - name: Actual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game129-focused-windows-evidence
+          path: |
+            ${{ runner.temp }}/game129-focused/**/*.json
+            ${{ runner.temp }}/game129-*.log
+          retention-days: 90

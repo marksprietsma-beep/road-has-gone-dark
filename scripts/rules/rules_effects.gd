@@ -37,8 +37,9 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  var ability := registry.definition("abilities",ability_id)
  if ability.is_empty() or not a.snapshot.abilities.has(ability_id): return RulesJson.result([RulesJson.issue("ability.unowned",ability_id,"Actor does not own the ability")])
  # v17 suppression is a derived tactical condition, never a change to owned spells.
- if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
+ if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
  if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor,ability,registry):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
+ if RulesMartial.enabled(registry) and ability.has("requires_status") and not actor.runtime.statuses.any(func(s: Dictionary):return s.id==ability.requires_status):return RulesJson.result([RulesJson.issue("ability.stance",ability_id,"Required manifested weapon or armed stance is absent")])
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
  if RulesWaveFour.enabled(registry):
@@ -189,6 +190,8 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   if RulesCapabilities.enabled(registry) and context.get("target_capabilities",{}).get("immunities",[]).has(effect.id):
    state.events.append({"type":"status_resisted","id":effect.id});return {"ok":true}
   var definition := registry.definition("statuses",effect.id)
+  if RulesMartial.enabled(registry) and definition.has("stance_group"):
+   target.statuses=target.statuses.filter(func(s: Dictionary):return registry.definition("statuses",s.id).get("stance_group","")!=definition.stance_group)
   if definition.has("body_form"):
    target.statuses=target.statuses.filter(func(s: Dictionary):return not registry.definition("statuses",s.id).has("body_form"))
   var existing: Array=target.statuses.filter(func(s: Dictionary): return s.id==effect.id)

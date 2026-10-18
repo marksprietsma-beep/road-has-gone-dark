@@ -1,5 +1,5 @@
 {
-  "baseline_commit": "3ccd089df8f1cdb789a03869065d2b58781e597e",
+  "baseline_commit": "ea1344c5ddae86bfb62af057fa102f8141d97519",
   "packs": [
     {
       "path": "data/rules/trhgd-rules-v1.json",
@@ -186,6 +186,17 @@
         "rules_version": "17.0.0",
         "engine_schema": 3,
         "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0"
+      }
+    },
+    {
+      "path": "data/rules/trhgd-character-v18.json",
+      "sha256": "bfacff195f10d44923ad91b97a5c2eaedad51743f14078b7eb7e14c5b7404bc7",
+      "rules_ref": {
+        "pack_id": "trhgd-character-v18",
+        "schema_version": 1,
+        "rules_version": "18.0.0",
+        "engine_schema": 3,
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc"
       }
     }
   ]
