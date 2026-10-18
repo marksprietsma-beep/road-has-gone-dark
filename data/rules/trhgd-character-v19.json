@@ -81105,7 +81105,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 2 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81126,7 +81126,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 4 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81147,7 +81147,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 6 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81168,7 +81168,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 8 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81926,7 +81926,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Also disrupt footing. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Also disrupt footing. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81947,7 +81947,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding and Warded. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Strip Guarding and Warded. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81968,7 +81968,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates one-activation rooting; attacks/casts remain legal. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Fortitude negates one-activation rooting; attacks/casts remain legal. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81989,7 +81989,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates Weakened. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Fortitude negates Weakened. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -83298,7 +83298,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83317,7 +83317,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83336,7 +83336,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83848,7 +83848,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83867,7 +83867,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing; clear own off-balance and Weakened before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Disrupt footing; clear own off-balance and Weakened before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83886,7 +83886,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing and strip Guarding/Warded; clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Disrupt footing and strip Guarding/Warded; clear own off-balance before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84033,7 +84033,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4.  A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84054,7 +84054,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4. Also remove own Weakened. A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84096,7 +84096,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Rally the company; main action, {'crusader-readiness': 2}. Actual effects: heal, remove_status weakened.",
+      "description": "Main action/two readiness. Select a living ally within3 and line of sight; allies within1 of that target heal Crusader level HP and clear Weakened. No attack roll or damage; cannot revive downed allies. Does not restore readiness.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84117,7 +84117,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4. Also gain Warded: defence+3 armor for3 global boundaries; does not stack with stronger armor. A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84138,7 +84138,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/two readiness; melee hit adds Crusader level radiant damage in a separate resistance-tested packet. Miss/concealment spends readiness without radiant damage.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84277,7 +84277,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries).  No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84298,7 +84298,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also gain Warded: defence+3 armor for3 global boundaries; does not stack with stronger armor. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84340,7 +84340,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also deal floor(Swordsage level/2) fire damage, separately reduced by fire resistance. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84361,7 +84361,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also clear own Slowed and Weakened. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -84382,7 +84382,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/2 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also gain20% weapon concealment for2 global boundaries. Shadow step is concealment, not teleportation. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -94391,7 +94391,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Main action/one focus; manifested blade only. One genuine ranged attack within4 and line of sight; threatened ranged penalty and concealment apply. Blade persists; no second melee strike. Psychic rider only on hit.",
+      "description": "Main action/one focus; manifested blade only. One genuine ranged attack within4 and line of sight; threatened ranged penalty and concealment apply. Blade persists; no second melee strike. Psychic damage floor(Soulknife level/2) only on hit, independently reduced by psychic resistance.",
       "provenance": {
         "origin": "Original TRHGD tactical class adaptations; no sourcebook prose or tables copied",
         "license": "Original project-authored content",
@@ -129827,7 +129827,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 2 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -129874,7 +129874,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 4 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -129921,7 +129921,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 6 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -129968,7 +129968,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
+      "description": "Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds 8 psychic damage, reduced by psychic resistance; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131178,7 +131178,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Also disrupt footing. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Also disrupt footing. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131236,7 +131236,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding and Warded. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Strip Guarding and Warded. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131298,7 +131298,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates one-activation rooting; attacks/casts remain legal. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Fortitude negates one-activation rooting; attacks/casts remain legal. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131389,7 +131389,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates Weakened. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Fortitude negates Weakened. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -133307,7 +133307,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -133400,7 +133400,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -133493,7 +133493,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will DC10+floor(Soulknife level/2)+Wisdom modifier negates Weakened (13: melee attack/damage−2 for3 global boundaries) or Off Balance (16/20: defence−2 for2). No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134416,7 +134416,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134526,7 +134526,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing; clear own off-balance and Weakened before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Disrupt footing; clear own off-balance and Weakened before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134590,7 +134590,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing and strip Guarding/Warded; clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (floor(class level/4) at1, floor(half level) at4–16, full level at20), independently reduced by resistance. Disrupt footing and strip Guarding/Warded; clear own off-balance before attack. Fortitude DC10+floor(Warblade level/2)+Strength modifier where stated. Off Balance is defence−2 for2 global boundaries; Weakened is melee attack/damage−2 for3. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134732,7 +134732,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4.  A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134800,7 +134800,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4. Also remove own Weakened. A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134956,7 +134956,7 @@
         "range": 3,
         "radius": 1
       },
-      "description": "Rally the company; main action, {'crusader-readiness': 2}. Actual effects: heal, remove_status weakened.",
+      "description": "Main action/two readiness. Select a living ally within3 and line of sight; allies within1 of that target heal Crusader level HP and clear Weakened. No attack roll or damage; cannot revive downed allies. Does not restore readiness.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134990,7 +134990,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/one readiness; melee hit required. Heal self max(1,floor(Crusader level/3)) HP and enable adjacent-ally Guarding until next global round boundary: shared reaction can reduce one ally weapon hit by4. Also gain Warded: defence+3 armor for3 global boundaries; does not stack with stronger armor. A miss or concealment grants none of these effects; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135063,7 +135063,7 @@
         "range": 1,
         "radius": 1
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Self restoration/protection does not revive a downed character.",
+      "description": "Main action/two readiness; melee hit adds Crusader level radiant damage in a separate resistance-tested packet. Miss/concealment spends readiness without radiant damage.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135191,7 +135191,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries).  No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135232,7 +135232,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also gain Warded: defence+3 armor for3 global boundaries; does not stack with stronger armor. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135323,7 +135323,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also deal floor(Swordsage level/2) fire damage, separately reduced by fire resistance. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135381,7 +135381,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/1 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also clear own Slowed and Weakened. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -135432,7 +135432,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. Fire riders are separate resistance-tested packets.",
+      "description": "Main action/2 readiness; melee hit gives Off Balance (defence−2 condition for2 global boundaries). Also gain20% weapon concealment for2 global boundaries. Shadow step is concealment, not teleportation. No rider, self ward or recovery on a miss/concealment; action/readiness remain spent.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -160826,7 +160826,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/one focus; manifested blade only. One genuine ranged attack within4 and line of sight; threatened ranged penalty and concealment apply. Blade persists; no second melee strike. Psychic rider only on hit.",
+      "description": "Main action/one focus; manifested blade only. One genuine ranged attack within4 and line of sight; threatened ranged penalty and concealment apply. Blade persists; no second melee strike. Psychic damage floor(Soulknife level/2) only on hit, independently reduced by psychic resistance.",
       "provenance": {
         "origin": "Original TRHGD tactical class adaptations; no sourcebook prose or tables copied",
         "license": "Original project-authored content",
