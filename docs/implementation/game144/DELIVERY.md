@@ -14,7 +14,7 @@ The failed render's displayed owner was `51f11c116f417755b21f95ea0bdf05ff:advent
 
 ## Focused Windows evidence
 
-[Run39133067045](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39130096235) passed62 focused assertions and7 independent cold-restart assertions, zero failures. Actual phases took7.813s/4.219s. [Reproduction](evidence/focused-reproduction.json) records the actual Warblade command, differing fields and `companion.build` error; original18 and render19 complete records, histories, resources and next-command/log/RNG survive restart exactly. These are development fixtures, not earned-level claims.
+[Run39133067045](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39133067045) passed62 focused assertions and7 independent cold-restart assertions, zero failures. Exact phase timings are preserved in evidence/focused-timings.json. [Reproduction](evidence/focused-reproduction.json) records the actual Warblade command, differing fields and `companion.build` error; original18 and render19 complete records, histories, resources and next-command/log/RNG survive restart exactly. These are development fixtures, not earned-level claims.
 
 The first added focused harness had a Variant-inference parse error and was cancelled before full suites. Explicit typing corrected it; the runner now reuses the existing error-watching `checked_process` helper, retains errors and enforces a180s timeout. Cancelled run39129565371 is not counted as successful validation. No expensive complete suite was launched until focused reproduction/cold passed.
 
