@@ -49,6 +49,28 @@ jobs:
           & $env:GODOT_BIN --headless --path . res://tests/class_signatures/review.tscn 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game129-cold.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import json,os;from pathlib import Path;p=Path(os.environ['GAME129_ROOT']);r=[json.loads((p/n).read_text())for n in ['proof.json','restart-proof.json']];assert all(x['checks']>0 and x['failures']==0 for x in r)"
+      - name: Verified Windows export templates
+        run: python tools/release/prepare-templates.py
+      - name: Complete native class, historical, earned-campaign, GUI and cold acceptance
+        env:
+          GAME129_RELEASE_ROOT: ${{ runner.temp }}/game129-native
+        run: python tests/class_signatures/verify-package.py
+      - name: Complete self-contained Windows game
+        uses: actions/upload-artifact@v4
+        with:
+          name: game129-complete-windows-x64
+          path: ${{ runner.temp }}/game129-native/distribution/*.zip*
+          retention-days: 90
+      - name: Native release evidence and Godot screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game129-native-evidence
+          path: |
+            ${{ runner.temp }}/game129-native/**/*.json
+            ${{ runner.temp }}/game129-native/**/*.log
+            ${{ runner.temp }}/game129-native/captures/*.png
+          retention-days: 90
       - name: Actual evidence
         if: always()
         uses: actions/upload-artifact@v4

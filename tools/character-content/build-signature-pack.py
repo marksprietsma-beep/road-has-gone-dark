@@ -34,7 +34,7 @@ manifest.pop('capabilities')
 for at in [1,4,8,12]:
  a=table('abilities','soulknife-technique-'+str(at));a.update(effects=[],requires_status='soulknife-manifested',requires_weapon='mind-blade',requires_melee=True,strike_effects=[dict(op='damage',amount=c(2+at//2),damage_type='psychic')],description='Main action; focus cost shown. Requires manifested mind blade and melee. A confirmed hit adds psychic damage; miss/concealment spends the action/focus but produces no charge effect. No lingering weapon-damage bonus.')
 for at in [13,16,20]:
- a=table('abilities','soulknife-master-'+str(at));a.update(effects=[],requires_status='soulknife-manifested',requires_weapon='mind-blade',requires_melee=True,strike_effects=[dict(op='damage',amount=div(cl('soulknife'),2),damage_type='psychic'),dict(op='save',save='will',dc=add(c(10),div(cl('soulknife'),2),dict(op='modifier',id='WIS')),on_failure=[apply('weakened'if at==13 else'off-balance')],on_success=[])],description='Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage, then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.')
+ a=table('abilities','soulknife-master-'+str(at));a.update(effects=[],requires_status='soulknife-manifested',requires_weapon='mind-blade',requires_melee=True,strike_effects=[dict(op='damage',amount=cl('soulknife')if at==20 else div(cl('soulknife'),2),damage_type='psychic'),dict(op='save',save='will',dc=add(c(10),div(cl('soulknife'),2),dict(op='modifier',id='WIS')),on_failure=[apply('weakened'if at==13 else'off-balance')],on_success=[])],description='Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.')
 aid=ability('soulknife-hurl','Hurl mind blade','creature',[],'Main action/one focus; manifested blade only. One genuine ranged attack within4 and line of sight; threatened ranged penalty and concealment apply. Blade persists; no second melee strike. Psychic rider only on hit.','soulknife',4,{'soulknife-focus':1},tags=['weapon_strike'],attack_weapon='mind-blade-thrown',requires_status='soulknife-manifested',requires_weapon='mind-blade',strike_effects=[dict(op='damage',amount=div(cl('soulknife'),2),damage_type='psychic')]);grant('soulknife',4,feature('soulknife-hurl-feature','Projected mind blade',[aid]))
 # A shared stance slot stops multiclass stacking and is actual tactical choice.
 for cls,variants in [('warblade',[('pressure',[mod('damage',2),mod('defence',-1)]),('shelter',[mod('defence',2),mod('damage',-1)])]),('swordsage',[('flow',[mod('stride',1)]),('cinder',[mod('damage',1)])])]:
@@ -43,14 +43,27 @@ for cls,variants in [('warblade',[('pressure',[mod('damage',2),mod('defence',-1)
   aid=ability(cls+'-stance-'+name,name.capitalize()+' stance','self',[apply(sid)],'Spend movement, retain main action. Three global round boundaries; replaces every other martial stance, including another class stance. '+('20% weapon concealment/stride+1.'if name=='flow'else'Listed derived modifiers apply to actual weapon combat.'),cls,1,main=0,move=1)
   grant(cls,1,feature(aid+'-feature',name.capitalize()+' stance',[aid]))
 # Strikes no longer apply hostile riders before hit resolution.
+status('warblade-binding-cut',capabilities={'immobile':True},duration=dict(type='activation',amount=1,expiry='target_activation_end'))
 for cls in ['warblade','crusader','swordsage']:
  for a in p['abilities']:
   if not a['id'].startswith(cls+'-')or 'weapon_strike'not in a['tags']:continue
   a['requires_melee']=True
   if cls=='warblade':
    a['effects']=[own(dict(op='remove_status',id='off-balance'))]if 'master'in a['id']else[]
-   a['strike_effects']=[dict(op='remove_status',id='guarding'),dict(op='remove_status',id='warded'),apply('off-balance')]
-   a['description']='Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.'
+   tier=int(a['id'].split('-')[-1])
+   wound=dict(op='damage',amount=cl('warblade')if tier==20 else div(cl('warblade'),2 if tier>=4 else 4),damage_type='physical')
+   gate=lambda id:dict(op='save',save='fortitude',dc=add(c(10),div(cl('warblade'),2),dict(op='modifier',id='STR')),on_failure=[apply(id)],on_success=[])
+   if tier==1:riders=[wound,apply('off-balance')]
+   elif tier==4:riders=[wound,dict(op='remove_status',id='guarding'),dict(op='remove_status',id='warded')]
+   elif tier==8:riders=[wound,gate('warblade-binding-cut')]
+   elif tier==12:riders=[wound,gate('weakened')]
+   elif tier==13:riders=[wound,dict(op='remove_status',id='guarding'),dict(op='remove_status',id='warded'),gate('weakened')]
+   elif tier==16:
+    a['effects'].append(own(dict(op='remove_status',id='weakened')))
+    riders=[wound,apply('off-balance')]
+   else:riders=[wound,apply('off-balance'),dict(op='remove_status',id='guarding'),dict(op='remove_status',id='warded')]
+   a['strike_effects']=riders
+   a['description']='Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. '+{1:'Also disrupt footing.',4:'Strip Guarding and Warded.',8:'Fortitude negates one-activation rooting; attacks/casts remain legal.',12:'Fortitude negates Weakened.',13:'Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack.',16:'Disrupt footing; clear own off-balance and Weakened before attack.',20:'Disrupt footing and strip Guarding/Warded; clear own off-balance before attack.'}[tier]+' Miss/concealment produces no target rider or rider save.'
   else:
    a['strike_effects']=a['effects'];a['effects']=[]
    a['description']='Main action/readiness shown; melee only. Listed restoration, protection or disruption occurs only after a confirmed weapon hit, never before accuracy or on concealment/miss. '+('Self restoration/protection does not revive a downed character.'if cls=='crusader'else'Fire riders are separate resistance-tested packets.')
@@ -77,7 +90,7 @@ for cls in ['soulknife','warblade','crusader','swordsage']:
  pool=cls+('-focus'if cls=='soulknife'else'-readiness')
  aid=ability('martial-recovery-'+cls,'Trained '+cls+' recovery','self',[dict(op='restore_resource',id=pool,amount=c(1))],'Martial recovery feat: one owned point at actual activation start, bounded by capacity; no manual invocation.',cls,1,main=0,trigger='activation_start');f['abilities'].append(aid)
 # Precise conditional feat chain for a manifested hit, not a passive always-on bonus.
-aid=ability('mindblade-echo','Mindblade echo','self',[dict(op='temporary_hp',amount=div(cl('soulknife'),2))],'After your ordinary manifested melee hit, spend the shared reaction for half Soulknife level nonstacking temporary HP. Not on ranged, miss, concealment, natural form or reaction attacks. Competes with protection/opportunity.', 'soulknife',8,main=0,trigger='weapon_hit',requires_status='soulknife-manifested');table('abilities',aid)['cost']['reaction']=1
+aid=ability('mindblade-echo','Mindblade echo','self',[dict(op='temporary_hp',amount=div(cl('soulknife'),2))],'After your ordinary manifested melee hit, spend the shared reaction for half Soulknife level nonstacking temporary HP. Not on ranged, miss, concealment, natural form or reaction attacks. Competes with protection/opportunity.', 'soulknife',8,main=0,trigger='weapon_hit',requires_status='soulknife-manifested',requires_weapon='mind-blade');table('abilities',aid)['cost']['reaction']=1
 fid=feature('mindblade-echo-feature','Mindblade echo',[aid]);p['feats'].append(dict(id='mindblade-echo',name='Mindblade echo',requirements=dict(op='all',args=[dict(op='class_level',id='soulknife',min=8),dict(op='feat',id='iron-soul')]),features=[fid],repeatable=False,choice_parameters=[],provenance=prov))
 for cls in ['soulknife','warblade','crusader','swordsage']:
  table('classes',cls)['description']='Original v19 tactical adaptation: '+{'soulknife':'Actual manifested weapon, scaling dice, hit-confirmed psychic strikes and ranged projection.','warblade':'Exclusive stances, hit-confirmed ward disruption, armed shared-reaction riposte and main-action recovery.','crusader':'Hit-confirmed restorative strikes and bounded automatic readiness at own activation.','swordsage':'Exclusive flow/cinder stances, hit-confirmed disruption/fire, armed afterimage and full-activation meditation.'}[cls]

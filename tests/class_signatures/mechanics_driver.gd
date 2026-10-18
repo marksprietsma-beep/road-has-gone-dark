@@ -31,6 +31,12 @@ func run() -> void:
  test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_legacy()
  var hashes := {};var record_hashes := {};var after := {};var next := {}
  for id in records:
+  # Lawful development records may still contain engine StringName dictionary
+  # keys from builder literals. Establish the same primitive JSON boundary used
+  # by the production writer BEFORE hashing; no mechanical field is changed.
+  var before_record: Dictionary=records[id]
+  records[id]=RulesJson.string_keys(before_record)
+  check(before_record==records[id],"primitive fixture canonicalisation preserves every field "+id)
   var d := kernel.derive_character(records[id]);check(d.ok,"saved candidate valid "+id)
   if d.ok:hashes[id]=d.snapshot.snapshot_hash;record_hashes[id]=RulesJson.digest(records[id])
  for id in battles:
@@ -160,7 +166,7 @@ func test_recovery() -> void:
   var result := execute(engine,b,cls+"-recover")
   check(result.ok and result.battle.units.a.record.runtime.resources[pool]==2,"bounded main recovery "+cls)
   if result.ok:check(result.battle.budget.main==0 and result.battle.budget.move==(0 if cls=="swordsage"else 1),"distinct recovery action budget "+cls)
-  var next: Dictionary=b.duplicate(true);next.cursor=(next.order.find("a")-1+next.order.size())%next.order.size();next=engine.seal(next)
+  var next: Dictionary=b.duplicate(true);next.units.a.record.runtime.resources[pool]=0;next.cursor=(next.order.find("a")-1+next.order.size())%next.order.size();next=engine.seal(next)
   var turn := execute(engine,next,"end")
   check(turn.ok and turn.battle.units.a.record.runtime.resources[pool]==(1 if cls=="crusader"else 0),"own activation recovery class identity "+cls)
 func test_feats() -> void:

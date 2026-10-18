@@ -17,6 +17,7 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   if row.get("counterattack",false) and (row.get("trigger")!="melee_miss" or row.get("cost",{}).get("reaction")!=1):errors.append(RulesJson.issue("martial.counter",row.id,"Counters require an actual melee miss and the shared reaction"))
   if row.get("trigger") in ["weapon_hit","melee_hit","melee_miss","activation_start"]:
    if row.cost.main!=0 or row.cost.move!=0 or row.timing.kind!="instant":errors.append(RulesJson.issue("martial.trigger",row.id,"Triggered effects cannot consume another actor's main or movement"))
+   if row.trigger=="activation_start" and (row.targeting.kind!="self" or row.cost.reaction!=0):errors.append(RulesJson.issue("martial.activation",row.id,"Activation recovery is self-only and cannot borrow a reaction"))
    if row.trigger!="activation_start" and row.cost.reaction!=1:errors.append(RulesJson.issue("martial.trigger",row.id,"Combat triggers must spend the shared reaction"))
  elif category=="statuses":
   if row.has("weapon_override"):

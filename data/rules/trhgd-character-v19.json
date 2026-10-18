@@ -113278,6 +113278,26 @@
       "stance_group": "martial-stance"
     },
     {
+      "id": "warblade-binding-cut",
+      "tags": [],
+      "duration": {
+        "type": "activation",
+        "amount": 1,
+        "expiry": "target_activation_end"
+      },
+      "stacking": "refresh",
+      "modifiers": [],
+      "effects": [],
+      "provenance": {
+        "origin": "Original TRHGD tactical class adaptations; no sourcebook prose or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game129-class-signatures"
+      },
+      "capabilities": {
+        "immobile": true
+      }
+    },
+    {
       "id": "warblade-riposte-ready",
       "tags": [],
       "duration": {
@@ -131158,7 +131178,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Also disrupt footing. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131167,12 +131187,21 @@
       "requires_melee": true,
       "strike_effects": [
         {
-          "op": "remove_status",
-          "id": "guarding"
-        },
-        {
-          "op": "remove_status",
-          "id": "warded"
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 4
+              }
+            ]
+          },
+          "damage_type": "physical"
         },
         {
           "op": "apply_status",
@@ -131207,7 +131236,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding and Warded. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131216,16 +131245,29 @@
       "requires_melee": true,
       "strike_effects": [
         {
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          },
+          "damage_type": "physical"
+        },
+        {
           "op": "remove_status",
           "id": "guarding"
         },
         {
           "op": "remove_status",
           "id": "warded"
-        },
-        {
-          "op": "apply_status",
-          "id": "off-balance"
         }
       ]
     },
@@ -131256,7 +131298,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates one-activation rooting; attacks/casts remain legal. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131265,16 +131307,58 @@
       "requires_melee": true,
       "strike_effects": [
         {
-          "op": "remove_status",
-          "id": "guarding"
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          },
+          "damage_type": "physical"
         },
         {
-          "op": "remove_status",
-          "id": "warded"
-        },
-        {
-          "op": "apply_status",
-          "id": "off-balance"
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 10
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "warblade"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "op": "modifier",
+                "id": "STR"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "warblade-binding-cut"
+            }
+          ],
+          "on_success": []
         }
       ]
     },
@@ -131305,7 +131389,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Fortitude negates Weakened. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -131314,16 +131398,58 @@
       "requires_melee": true,
       "strike_effects": [
         {
-          "op": "remove_status",
-          "id": "guarding"
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          },
+          "damage_type": "physical"
         },
         {
-          "op": "remove_status",
-          "id": "warded"
-        },
-        {
-          "op": "apply_status",
-          "id": "off-balance"
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 10
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "warblade"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "op": "modifier",
+                "id": "STR"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "weakened"
+            }
+          ],
+          "on_success": []
         }
       ]
     },
@@ -133181,7 +133307,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage, then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -133274,7 +133400,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage, then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -133367,7 +133493,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage, then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
+      "description": "Main action/two focus. Manifested melee hit deals half Soulknife level psychic damage (full level at20), then Will negates disruption. No rider or rider save on a missed/concealed strike; ordinary psychic resistance applies.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -133380,17 +133506,8 @@
         {
           "op": "damage",
           "amount": {
-            "op": "floor_divide",
-            "args": [
-              {
-                "op": "class_level",
-                "id": "soulknife"
-              },
-              {
-                "op": "const",
-                "value": 2
-              }
-            ]
+            "op": "class_level",
+            "id": "soulknife"
           },
           "damage_type": "psychic"
         },
@@ -134299,7 +134416,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Strip Guarding/Warded; Fortitude negates Weakened. Clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134307,6 +134424,23 @@
       },
       "requires_melee": true,
       "strike_effects": [
+        {
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          },
+          "damage_type": "physical"
+        },
         {
           "op": "remove_status",
           "id": "guarding"
@@ -134316,8 +134450,41 @@
           "id": "warded"
         },
         {
-          "op": "apply_status",
-          "id": "off-balance"
+          "op": "save",
+          "save": "fortitude",
+          "dc": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 10
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "warblade"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "op": "modifier",
+                "id": "STR"
+              }
+            ]
+          },
+          "on_failure": [
+            {
+              "op": "apply_status",
+              "id": "weakened"
+            }
+          ],
+          "on_success": []
         }
       ]
     },
@@ -134337,6 +134504,11 @@
           "op": "remove_status",
           "id": "off-balance",
           "recipient": "actor"
+        },
+        {
+          "op": "remove_status",
+          "id": "weakened",
+          "recipient": "actor"
         }
       ],
       "tags": [
@@ -134354,7 +134526,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing; clear own off-balance and Weakened before attack. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134363,12 +134535,21 @@
       "requires_melee": true,
       "strike_effects": [
         {
-          "op": "remove_status",
-          "id": "guarding"
-        },
-        {
-          "op": "remove_status",
-          "id": "warded"
+          "op": "damage",
+          "amount": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warblade"
+              },
+              {
+                "op": "const",
+                "value": 2
+              }
+            ]
+          },
+          "damage_type": "physical"
         },
         {
           "op": "apply_status",
@@ -134409,7 +134590,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action/readiness shown. Melee hit removes Guarding/Warded and disrupts footing. Miss/concealment cannot strip a ward or apply disruption. Master versions also clear own off-balance before attacking.",
+      "description": "Main action/readiness shown; melee only. Hit confirms a separate physical packet (class level divided by4 at1, half at4–16, full at20), independently reduced by resistance. Disrupt footing and strip Guarding/Warded; clear own off-balance before attack. Miss/concealment produces no target rider or rider save.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134418,16 +134599,24 @@
       "requires_melee": true,
       "strike_effects": [
         {
+          "op": "damage",
+          "amount": {
+            "op": "class_level",
+            "id": "warblade"
+          },
+          "damage_type": "physical"
+        },
+        {
+          "op": "apply_status",
+          "id": "off-balance"
+        },
+        {
           "op": "remove_status",
           "id": "guarding"
         },
         {
           "op": "remove_status",
           "id": "warded"
-        },
-        {
-          "op": "apply_status",
-          "id": "off-balance"
         }
       ]
     },
@@ -161262,7 +161451,8 @@
         "revision": "game129-class-signatures"
       },
       "trigger": "weapon_hit",
-      "requires_status": "soulknife-manifested"
+      "requires_status": "soulknife-manifested",
+      "requires_weapon": "mind-blade"
     }
   ],
   "equipment": [
