@@ -10,7 +10,7 @@ func run() -> void:
  if not loaded.ok:finish_signatures();return
  kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME129_RESTART")=="1":
-  var saved := RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
+  var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
   for id in saved.records:
    var r: Dictionary=saved.records[id];var d := kernel.derive_character(r)
    check(d.ok and d.snapshot.snapshot_hash==saved.hashes[id],"cold exact derived history/resources/features "+id)
@@ -165,7 +165,7 @@ func test_recovery() -> void:
   check(turn.ok and turn.battle.units.a.record.runtime.resources[pool]==(1 if cls=="crusader"else 0),"own activation recovery class identity "+cls)
 func test_feats() -> void:
  var fresh := kernel.create("negative-feat",records.warblade1.base_attributes,"heritage-human")
- var illegal := kernel.suggested_choice(fresh,"warblade","steady-study").choice
+ var illegal: Dictionary=kernel.suggested_choice(fresh,"warblade","steady-study").choice
  illegal.feat_id="martial-recovery"
  check(not kernel.preview_advancement(fresh,illegal).ok,"martial recovery rejected at level one")
  var r := build_with_feats("warblade",8,{6:"martial-recovery"})
