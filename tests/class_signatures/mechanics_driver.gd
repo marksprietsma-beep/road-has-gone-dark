@@ -28,7 +28,7 @@ func run() -> void:
    check(not r.is_empty(),"lawful early/middle/high "+cls+str(at))
    if not r.is_empty():records[cls+str(at)]=r
  if failures:finish_signatures();return
- test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_legacy()
+ test_blade();test_confirmed_hits();test_stances();test_riposte();test_afterimage();test_recovery();test_feats();test_multiclass();test_early_late();test_actual_movement();test_adamant();test_counter_defeat();test_legacy()
  var hashes := {};var record_hashes := {};var after := {};var next := {}
  for id in records:
   # Lawful development records may still contain engine StringName dictionary
@@ -271,3 +271,37 @@ func test_adamant() -> void:
  var ignored := execute(engine,absent,"attack","a")
  check(ignored.ok and ignored.battle.units.a.reaction==1 and ignored.battle.units.a.record.runtime.temporary_hp==0,"Adamant answer cannot trigger without shelter")
  records.adamant=r
+
+func encounter(record: Dictionary) -> Dictionary:
+ var battle := super.encounter(record)
+ if not battle.is_empty():
+  battle.units.a.name=source.definition("classes",record.advancement_history[0].class_id).name+" fixture"
+  return TacticalAuras.new(record).seal(battle)
+ return battle
+func test_counter_defeat() -> void:
+ var actor := build("monk",1);actor.runtime.hp=1
+ var engine := TacticalAuras.new(actor);var battle := encounter(actor)
+ var defender: Dictionary=records.warblade8.duplicate(true);defender.character_id="bandit-blade";defender.equipment=["shortblade","mail"]
+ var arm := use(defender,defender,"warblade-arm-riposte");check(arm.ok,"opponent legally arms a counter")
+ if not arm.ok:return
+ battle.units["bandit-blade"].record=arm.actor;battle.units["bandit-blade"].name="Warblade fixture"
+ var found := false
+ for n in 1000:
+  var rng := RulesRng.initial("counter-defeat-"+str(n))
+  var first := RulesRng.attack_roll(int(engine.stats(battle.units.a).melee_attack)-2,int(engine.stats(battle.units["bandit-blade"]).defence),source.rule("critical"),rng)
+  var reply := RulesRng.attack_roll(int(engine.stats(battle.units["bandit-blade"]).melee_attack),int(engine.stats(battle.units.a).defence),source.rule("critical"),first.rng)
+  if not first.hit and reply.hit:battle.rng=rng;found=true;break
+ check(found,"numeric miss followed by genuine counter hit fixture")
+ if not found:return
+ battle=engine.seal(battle)
+ var once: Dictionary=battle.duplicate(true)
+ engine.weapon_attack(once,once.units.a,once.units["bandit-blade"],false,"flurry")
+ check(not engine.alive(once.units.a),"one wounded attacker actually defeated by counter")
+ var result := execute(engine,battle,"flurry","bandit-blade")
+ check(result.ok,"flurry command resolves despite lethal counter")
+ if result.ok:
+  check(not engine.alive(result.battle.units.a) and engine.current(result.battle).id!="a" and engine.alive(engine.current(result.battle)),"dead actor cannot keep active turn")
+  check(result.battle.rng==once.rng,"lethal counter prevents the remaining flurry strike and its RNG")
+  check(result.battle.budget=={"main":1,"move":1},"next living actor receives exactly one normal activation")
+  check(engine.validate(result.battle).is_empty(),"counter defeat produces valid saved battle")
+  battles.counter_defeat=result.battle;receipts.counter_defeat=result.battle.log

@@ -5,7 +5,12 @@ var _channel_error := ""
 func command(source: Dictionary,input: Dictionary) -> Dictionary:
  _channel_error=""
  var result := super.command(source,input)
- return fail(_channel_error) if not _channel_error.is_empty() else result
+ if not _channel_error.is_empty():return fail(_channel_error)
+ # A newly supported counter may defeat the currently acting character. Finish
+ # that activation through the same turn authority, never leave a dead cursor.
+ if result.ok and RulesMartial.enabled(registry) and result.battle.status=="active" and not alive(current(result.battle)):
+  next_turn(result.battle);result.battle=seal(result.battle)
+ return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
  if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"]:
   var definition := registry.definition("abilities",ability)
@@ -51,6 +56,7 @@ func active_weapon(u: Dictionary) -> String:
 func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,technique: String="") -> void:
  if not RulesMartial.enabled(registry):
   _historical_attack(b,a,t,reaction,technique);return
+ if not alive(a):return # A previous flurry strike may have provoked a lethal counter.
  RulesWaveFour.project_auras(self,b)
  var ability := registry.definition("abilities",technique)
  var weapon := registry.definition("equipment",ability.get("attack_weapon",active_weapon(a)))
