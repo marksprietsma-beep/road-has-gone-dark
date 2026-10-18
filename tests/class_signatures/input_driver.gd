@@ -20,6 +20,7 @@ func run() -> void:
   check(ui.detail.text.contains("Shared reaction:") and ui.detail.text.contains("Weapon:"),"production resource/weapon/reaction feedback "+cls)
   var action: String={"soulknife":"soulknife-hurl","warblade":"warblade-arm-riposte","crusader":"crusader-recover","swordsage":"swordsage-arm-afterimage"}[cls]
   check(ui.action_buttons.has(action),"production visible signature control "+action)
+  check(ui.action_buttons[action].text.contains("Movement") if cls in ["warblade","swordsage"] else ui.action_buttons[action].text.contains("Action"),"visible actual action cost "+cls)
   check(not ui.action_buttons.has("warblade-riposte") and not ui.action_buttons.has("swordsage-afterimage") and not ui.action_buttons.has("crusader-renewal"),"trigger-only effects never manually invokable")
   if cls=="warblade" or cls=="swordsage":
    ui.sent={};ui.action_buttons[action].pressed.emit()

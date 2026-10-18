@@ -358,6 +358,13 @@ func presentation_kind_for(kind: String) -> String:
  if ability.get("tags",[]).has("weapon_strike"):return "attack"
  return kind if kind in ["attack","move","end","retreat"] else "guard"
 func resource_text(ability: Dictionary,actor: Dictionary) -> String:
+ if RulesMartial.enabled(engine.registry):
+  var costs: Array[String]=[]
+  for token in ["main","move","reaction"]:
+   if int(ability.cost[token])>0:costs.append(str({"main":"Action","move":"Movement","reaction":"Shared reaction"}[token]))
+  for pool in ability.cost.resources:
+   costs.append("%s %d · cost%d"%[engine.registry.definition("resources",pool).name,int(actor.record.runtime.resources.get(pool,0)),int(ability.cost.resources[pool])])
+  return " · "+" / ".join(costs) if not costs.is_empty() else ""
  var values: Array=[]
  for id in ability.cost.resources:values.append(("copies" if engine.registry.definition("resources",id).has("prepared_ability") else "tier "+str(engine.registry.definition("resources",id).get("spell_tier",0)) if engine.registry.definition("resources",id).has("slot_class") else engine.registry.definition("resources",id).name)+": "+str(int(actor.record.runtime.resources.get(id,0))))
  return " · "+", ".join(values) if not values.is_empty() else ""
