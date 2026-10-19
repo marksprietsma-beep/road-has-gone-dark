@@ -130601,12 +130601,7 @@
           "scout-resolve": 1
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "off-balance"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -130622,12 +130617,18 @@
         "range": 6,
         "radius": 0
       },
-      "description": "Mark the opening 1; main action; 1 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
         "revision": "game112-wave-one"
-      }
+      },
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "off-balance"
+        }
+      ]
     },
     {
       "id": "scout-technique-4",
@@ -130640,12 +130641,7 @@
           "scout-resolve": 1
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "off-balance"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -130661,12 +130657,18 @@
         "range": 6,
         "radius": 0
       },
-      "description": "Mark the opening 4; main action; 1 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
         "revision": "game112-wave-one"
-      }
+      },
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "off-balance"
+        }
+      ]
     },
     {
       "id": "scout-technique-8",
@@ -130679,17 +130681,7 @@
           "scout-resolve": 2
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "off-balance"
-        },
-        {
-          "op": "remove_status",
-          "id": "slowed",
-          "recipient": "actor"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -130705,12 +130697,23 @@
         "range": 6,
         "radius": 0
       },
-      "description": "Mark the opening 8; main action; 2 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
         "revision": "game112-wave-one"
-      }
+      },
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "off-balance"
+        },
+        {
+          "op": "remove_status",
+          "id": "slowed",
+          "recipient": "actor"
+        }
+      ]
     },
     {
       "id": "scout-technique-12",
@@ -130723,17 +130726,7 @@
           "scout-resolve": 2
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "off-balance"
-        },
-        {
-          "op": "remove_status",
-          "id": "slowed",
-          "recipient": "actor"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -130749,12 +130742,23 @@
         "range": 6,
         "radius": 0
       },
-      "description": "Mark the opening 12; main action; 2 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
         "revision": "game112-wave-one"
-      }
+      },
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "off-balance"
+        },
+        {
+          "op": "remove_status",
+          "id": "slowed",
+          "recipient": "actor"
+        }
+      ]
     },
     {
       "id": "swashbuckler-technique-1",
@@ -133877,7 +133881,29 @@
           "scout-resolve": 2
         }
       },
-      "effects": [
+      "effects": [],
+      "tags": [
+        "weapon_strike"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
+      "provenance": {
+        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+        "license": "Original project-authored content",
+        "revision": "game112-wave-two"
+      },
+      "strike_effects": [
         {
           "op": "apply_status",
           "id": "weakened"
@@ -133895,28 +133921,7 @@
           "id": "slowed",
           "recipient": "actor"
         }
-      ],
-      "tags": [
-        "weapon_strike"
-      ],
-      "timing": {
-        "kind": "instant"
-      },
-      "requirements": {
-        "op": "all",
-        "args": []
-      },
-      "targeting": {
-        "kind": "creature",
-        "range": 6,
-        "radius": 0
-      },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
-      "provenance": {
-        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
-        "license": "Original project-authored content",
-        "revision": "game112-wave-two"
-      }
+      ]
     },
     {
       "id": "scout-master-16",
@@ -133929,7 +133934,29 @@
           "scout-resolve": 2
         }
       },
-      "effects": [
+      "effects": [],
+      "tags": [
+        "weapon_strike"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
+      "provenance": {
+        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+        "license": "Original project-authored content",
+        "revision": "game112-wave-two"
+      },
+      "strike_effects": [
         {
           "op": "apply_status",
           "id": "weakened"
@@ -133947,28 +133974,7 @@
           "id": "slowed",
           "recipient": "actor"
         }
-      ],
-      "tags": [
-        "weapon_strike"
-      ],
-      "timing": {
-        "kind": "instant"
-      },
-      "requirements": {
-        "op": "all",
-        "args": []
-      },
-      "targeting": {
-        "kind": "creature",
-        "range": 6,
-        "radius": 0
-      },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
-      "provenance": {
-        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
-        "license": "Original project-authored content",
-        "revision": "game112-wave-two"
-      }
+      ]
     },
     {
       "id": "scout-master-20",
@@ -133981,7 +133987,29 @@
           "scout-resolve": 2
         }
       },
-      "effects": [
+      "effects": [],
+      "tags": [
+        "weapon_strike"
+      ],
+      "timing": {
+        "kind": "instant"
+      },
+      "requirements": {
+        "op": "all",
+        "args": []
+      },
+      "targeting": {
+        "kind": "creature",
+        "range": 6,
+        "radius": 0
+      },
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
+      "provenance": {
+        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+        "license": "Original project-authored content",
+        "revision": "game112-wave-two"
+      },
+      "strike_effects": [
         {
           "op": "apply_status",
           "id": "weakened"
@@ -133999,28 +134027,7 @@
           "id": "slowed",
           "recipient": "actor"
         }
-      ],
-      "tags": [
-        "weapon_strike"
-      ],
-      "timing": {
-        "kind": "instant"
-      },
-      "requirements": {
-        "op": "all",
-        "args": []
-      },
-      "targeting": {
-        "kind": "creature",
-        "range": 6,
-        "radius": 0
-      },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
-      "provenance": {
-        "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
-        "license": "Original project-authored content",
-        "revision": "game112-wave-two"
-      }
+      ]
     },
     {
       "id": "scout-career-recovery",
@@ -134079,20 +134086,7 @@
           "swashbuckler-resolve": 2
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "weakened"
-        },
-        {
-          "op": "temporary_hp",
-          "amount": {
-            "op": "class_level",
-            "id": "swashbuckler"
-          },
-          "recipient": "actor"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -134108,12 +134102,28 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
+      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
         "revision": "game112-wave-two"
-      }
+      },
+      "requires_fencing": true,
+      "requires_melee": true,
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "weakened"
+        },
+        {
+          "op": "temporary_hp",
+          "amount": {
+            "op": "class_level",
+            "id": "swashbuckler"
+          },
+          "recipient": "actor"
+        }
+      ]
     },
     {
       "id": "swashbuckler-master-16",
@@ -134126,20 +134136,7 @@
           "swashbuckler-resolve": 2
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "weakened"
-        },
-        {
-          "op": "temporary_hp",
-          "amount": {
-            "op": "class_level",
-            "id": "swashbuckler"
-          },
-          "recipient": "actor"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -134155,12 +134152,28 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
+      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
         "revision": "game112-wave-two"
-      }
+      },
+      "requires_fencing": true,
+      "requires_melee": true,
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "weakened"
+        },
+        {
+          "op": "temporary_hp",
+          "amount": {
+            "op": "class_level",
+            "id": "swashbuckler"
+          },
+          "recipient": "actor"
+        }
+      ]
     },
     {
       "id": "swashbuckler-master-20",
@@ -134173,20 +134186,7 @@
           "swashbuckler-resolve": 2
         }
       },
-      "effects": [
-        {
-          "op": "apply_status",
-          "id": "weakened"
-        },
-        {
-          "op": "temporary_hp",
-          "amount": {
-            "op": "class_level",
-            "id": "swashbuckler"
-          },
-          "recipient": "actor"
-        }
-      ],
+      "effects": [],
       "tags": [
         "weapon_strike"
       ],
@@ -134202,12 +134202,28 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Two resolve and main action; attack/control, temporary survival and class-specific movement or adjacent guard consequences.",
+      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
         "revision": "game112-wave-two"
-      }
+      },
+      "requires_fencing": true,
+      "requires_melee": true,
+      "strike_effects": [
+        {
+          "op": "apply_status",
+          "id": "weakened"
+        },
+        {
+          "op": "temporary_hp",
+          "amount": {
+            "op": "class_level",
+            "id": "swashbuckler"
+          },
+          "recipient": "actor"
+        }
+      ]
     },
     {
       "id": "swashbuckler-career-recovery",

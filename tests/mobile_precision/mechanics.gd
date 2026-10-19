@@ -22,7 +22,7 @@ func run() -> void:
    var r := build(cls,at);check(not r.is_empty(),"lawful career "+cls+str(at))
    if not r.is_empty():records[cls+str(at)]=r
  if failures:finish_mobile();return
- test_fencing();test_openings();test_scout_movement();test_knight_protection();test_prestige();test_pin_isolation()
+ test_fencing();test_rider_levels();test_hit_boundaries();test_openings();test_scout_movement();test_knight_protection();test_prestige();test_pin_isolation()
  var hashes := {};var after := {};var next := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var d := kernel.derive_character(records[id])
@@ -146,7 +146,9 @@ func test_prestige() -> void:
  for pair in [["swashbuckler","duelist"],["rogue","arcane-trickster"]]:
   var path: String=pair[1]
   check(not kernel.starting_classes().has(path),"prestige absent from creation "+path)
-  check(not kernel.suggested_choice(kernel.create("forged",{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8},"heritage-human"),path).ok,"forged first prestige rejected "+path)
+  var empty := kernel.create("forged",{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8},"heritage-human")
+  var forged: Dictionary=kernel.suggested_choice(empty,"fighter").choice;forged.class_id=path
+  check(not kernel.preview_advancement(empty,forged).ok,"authoritative forged first prestige rejected "+path)
   var route: Dictionary=planner.search_route(pair[0],path,5,0)
   check(route.get("complete",false),"legitimate permanent prerequisites/full development route "+str(pair)+JSON.stringify(route.get("blocker",{})))
   if not route.get("complete",false):continue
@@ -167,3 +169,48 @@ func test_pin_isolation() -> void:
  check(not RulesMartial.mobile_enabled(old),"v19 cannot enter changed combat semantics")
  check(old.definition("abilities","swashbuckler-technique-4").name=="Disarming flourish 4","historical advertised content preserved")
  check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"new campaigns use exact v20")
+
+func test_hit_boundaries() -> void:
+ for pair in [["swashbuckler20","swashbuckler-master-20"],["rogue8","attack"]]:
+  var r: Dictionary=records[pair[0]].duplicate(true);r.equipment=["shortblade","leathers"]
+  var engine := TacticalAuras.new(r)
+  var b := encounter(r);b.units.b.position=[2,2];b.units.c.position=[0,0]
+  b.units["bandit-blade"].record.runtime.statuses.append({"id":"swordsage-afterimage","source":"concealment-fixture","remaining":1,"expiry":"global_round_start"})
+  b.rng=attack_seed(1,0,true);b=engine.seal(b)
+  var result := execute(engine,b,pair[1],"bandit-blade")
+  check(result.ok,"concealed action remains legal "+pair[0])
+  if not result.ok:continue
+  check(result.battle.log.any(func(s: String):return s.contains("concealment")),"real concealment blocks attack roll")
+  check(result.battle.units["bandit-blade"].record.runtime.hp==b.units["bandit-blade"].record.runtime.hp,"concealed attack deals no damage")
+  check(not result.battle.units.a.precision_used,"concealment does not consume opening")
+  if pair[1]!="attack":check(not result.battle.units["bandit-blade"].record.runtime.statuses.any(func(v: Dictionary):return v.id=="weakened"),"late flourish hit rider cannot bypass concealment")
+ var rogue: Dictionary=records.rogue8.duplicate(true);rogue.equipment=["shortblade","leathers"]
+ var engine := TacticalAuras.new(rogue);var b := encounter(rogue);b.units.b.position=[2,2];b.units.c.position=[0,0];b.rng=attack_seed(19)
+ engine.weapon_attack(b,b.units.a,b.units["bandit-blade"],true)
+ check(not b.units.a.precision_used and not b.log.any(func(s: String):return s.contains("finds an opening")),"reaction attack cannot deliver ordinary activation precision")
+ var scout := build_with_feats("scout",8,{1:"dodge",3:"mobility",5:"mobile-skirmisher"})
+ check(not scout.is_empty(),"legal mobile-skirmisher prerequisite chain")
+ if not scout.is_empty():
+  var d: Dictionary=kernel.derive_character(scout).snapshot
+  check(d.feats.has("mobile-skirmisher") and d.stats.stride>0,"mobile feat has actual stride consumer, no invented extra damage")
+  records.scout_feat=scout
+
+func test_rider_levels() -> void:
+ for cls in ["scout","swashbuckler"]:
+  for at in [1,8,20]:
+   var r: Dictionary=records[cls+str(at)].duplicate(true)
+   r.equipment=["bow","leathers"]if cls=="scout"else["shortblade","leathers"]
+   var action: String=cls+("-master-20"if at==20 else"-technique-"+str(at))
+   var engine := TacticalAuras.new(r)
+   for hit in [false,true]:
+    var b := encounter(r)
+    if not hit:b.units["bandit-blade"].record.runtime.modifiers.append({"stat":"defence","value":100,"type":"untyped","source":"explicit-miss-development-fixture"})
+    b.rng=attack_seed(19 if hit else 1);b=engine.seal(b)
+    var result := execute(engine,b,action,"bandit-blade")
+    check(result.ok,"lawful early/mid/late signature "+action+str(hit))
+    if not result.ok:continue
+    var status: String="off-balance"if cls=="scout"and at<20 else"weakened"
+    check(result.battle.units["bandit-blade"].record.runtime.statuses.any(func(v: Dictionary):return v.id==status)==hit,"actual confirmed-hit rider "+action+str(hit))
+    check(result.battle.budget.main==0,"early/mid/late action cost "+action)
+    var pool: String=cls+"-resolve"
+    check(result.battle.units.a.record.runtime.resources[pool]==int(r.runtime.resources[pool])-int(source.definition("abilities",action).cost.resources[pool]),"early/mid/late exact resource cost "+action)
