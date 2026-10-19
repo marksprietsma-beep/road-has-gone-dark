@@ -54,13 +54,18 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
 static func mobile_enabled(source: RulesRegistry) -> bool:
  return source.rules_ref().get("pack_id")=="trhgd-character-v20"
 
-static func fencing_equipment(record: Dictionary,source: RulesRegistry) -> bool:
- if not RulesEntities.form(record,source).is_empty():return false
+static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
+ if include_runtime and not RulesEntities.form(record,source).is_empty():return false
  var weapon := false
  for id in record.equipment:
   var item := source.definition("equipment",str(id))
-  if item.kind=="shield" or item.tags.has("medium_armor") or item.tags.has("heavy_armor"):return false
+  if item.is_empty():return false
+  if item.kind=="shield" or (item.kind=="armor" and item.get("proficiency")!="light"):return false
   if item.kind=="weapon":weapon=item.tags.has("fencing_weapon")
+ if include_runtime:
+  for status in record.runtime.statuses:
+   var row := source.definition("statuses",str(status.get("id","")))
+   if row.has("weapon_override"):return source.definition("equipment",row.weapon_override).tags.has("fencing_weapon")
  return weapon
 
 static func precision_damage(record: Dictionary,source: RulesRegistry) -> int:

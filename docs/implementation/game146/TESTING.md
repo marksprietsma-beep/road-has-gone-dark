@@ -21,3 +21,9 @@ Higher-level/prestige histories are lawful development fixtures, never claimed a
 ## Manual review path
 
 Extract outer GitHub artifact ZIP, then inner playable ZIP. Keep all helper/assets/licences beside `road-has-gone-dark.exe`. Fresh New Game uses v20; old saves retain exact pins. Create characters, complete ordinary opportunities, return home for advancement, enter Old Road/generated combat. With Travel Blade/light armour use Fencing Flourish: misses spend resolve without weakening/parry; hits apply effects. Scout must actually move before skirmish. Rogue needs a living adjacent allied melee threat. Knight challenge weakens and enables adjacent guarding, with one shared reaction. No full disarm/AI taunt is promised.
+
+## First successful focused receipt
+
+`e8701c8`, run [39184470585](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39184470585):549 mechanics checks and29 separate-process cold checks, zero failures; source guards15 zero failures; all19 pack byte/manifest pins unchanged. Candidate v20 hash at this receipt was `2bb84382e48e0cdb80785509e06eb86cbaf22101763fb219d2e497c52bd62b0b`. Later active-weapon finesse and extra talent/path tests require their own receipt; this success is not falsely relabelled as final source validation.
+
+Superseded, still-running PR jobs on older commits were cancelled to release CI capacity. Current-head requirements were left intact. Failed focused attempts remain recorded above; no failed assertion was removed.

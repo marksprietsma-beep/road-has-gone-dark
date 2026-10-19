@@ -243,6 +243,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
      if not context.tags.has(tag): context.tags.append(tag)
   for m in record.runtime.modifiers:
    if m is Dictionary and modifiers.has(m.get("stat")): modifiers[m.stat].append(m)
+ if RulesMartial.mobile_enabled(registry) and RulesMartial.fencing_equipment(record,registry,include_runtime):context.tags.append("fencing_ready")
  var applied := {}
  for stat in RulesRegistry.STATS:
   var combined := RulesModifiers.combine(int(base.get(stat,0)),modifiers[stat],context)

@@ -22,7 +22,7 @@ func run() -> void:
    var r := build(cls,at);check(not r.is_empty(),"lawful career "+cls+str(at))
    if not r.is_empty():records[cls+str(at)]=r
  if failures:finish_mobile();return
- test_fencing();test_rider_levels();test_hit_boundaries();test_openings();test_scout_movement();test_knight_protection();test_prestige();test_pin_isolation()
+ test_fencing();test_talents();test_rider_levels();test_hit_boundaries();test_openings();test_scout_movement();test_knight_protection();test_prestige();test_pin_isolation()
  var hashes := {};var after := {};var next := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var d := kernel.derive_character(records[id])
@@ -85,6 +85,11 @@ func test_fencing() -> void:
   check(d.ok and not d.snapshot.typed_modifiers.melee_attack.any(func(m: Dictionary):return m.source.contains("swashbuckler-finesse")),"proficient medium armour suppresses numerical finesse")
   check(not execute(TacticalAuras.new(heavy),encounter(heavy),"swashbuckler-technique-4","bandit-blade").ok,"proficient medium-armoured character cannot fence")
   records.armoured_multiclass=heavy
+ var manifested: Dictionary=r.duplicate(true)
+ manifested.runtime.statuses.append({"id":"soulknife-manifested","source":"explicit-weapon-override-development-fixture","remaining":3,"expiry":"global_round_start"})
+ check(not RulesMartial.fencing_equipment(manifested,source),"active virtual weapon overrides held fencing blade")
+ var projected := kernel.derive_character(manifested)
+ check(projected.ok and not projected.snapshot.typed_modifiers.melee_attack.any(func(m: Dictionary):return m.source.contains("swashbuckler-finesse")),"active non-fencing weapon suppresses numerical finesse too")
 func test_openings() -> void:
  var r: Dictionary=records.rogue8.duplicate(true);r.equipment=["shortblade","leathers"]
  var engine := TacticalAuras.new(r)
@@ -157,6 +162,14 @@ func test_prestige() -> void:
   if path=="arcane-trickster":
    var d: Dictionary=kernel.derive_character(r).snapshot
    check(d.abilities.has("precision") and RulesMartial.precision_damage(r,source)==2*int(ceil(float(int(d.class_levels.rogue)+int(d.class_levels[path]))/2.0)),"prestige contributes to real shared precision consumer")
+   var engine := TacticalAuras.new(r);var b := encounter(r)
+   b.units.b.position=[2,2];b.units.c.position=[0,0];b.rng=attack_seed(19);b=engine.seal(b)
+   var hit := execute(engine,b,"attack","bandit-blade")
+   check(hit.ok and hit.battle.log.any(func(v: String):return v.contains("Precision +"+str(RulesMartial.precision_damage(r,source)))),"actual Trickster weapon hit uses combined precision scaling")
+   if hit.ok:battles.trickster=hit.battle
+   b=encounter(r);var power := execute(engine,b,"arcane-trickster-power-1","bandit-blade")
+   check(power.ok and power.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp,"actual ranged legerdemain has executable save/damage effect")
+
   else:
    r=r.duplicate(true);r.equipment=["shortblade","leathers"]
    var engine := TacticalAuras.new(r);var b := encounter(r)
@@ -216,3 +229,20 @@ func test_rider_levels() -> void:
     check(result.battle.budget.main==0,"early/mid/late action cost "+action)
     var pool: String=cls+"-resolve"
     check(result.battle.units.a.record.runtime.resources[pool]==int(r.runtime.resources[pool])-int(source.definition("abilities",action).cost.resources[pool]),"early/mid/late exact resource cost "+action)
+
+func test_talents() -> void:
+ for option in ["debilitating","escape"]:
+  var r := kernel.create("talent-"+option,{"STR":10,"DEX":15,"CON":14,"INT":13,"WIS":12,"CHA":8},"heritage-human")
+  var choice: Dictionary=kernel.suggested_choice(r,"rogue").choice;choice.specialisations["rogue-choice-1"]=option
+  var next := kernel.preview_advancement(r,choice);check(next.ok,"deliberate Rogue talent "+option)
+  if not next.ok:continue
+  r=next.candidate;r.equipment=["shortblade","leathers"];r.runtime.hp=kernel.derive_character(r).snapshot.stats.HP;r.runtime.resources=kernel._replay(r).context.capacities.duplicate()
+  var action: String="rogue-"+option+"-1";var other: String="rogue-"+("escape"if option=="debilitating"else"debilitating")+"-1"
+  check(kernel.derive_character(r).snapshot.abilities.has(action) and not kernel.derive_character(r).snapshot.abilities.has(other),"talent choice changes actual owned actions")
+  var engine := TacticalAuras.new(r);var b := encounter(r);var target: String="a"if option=="escape"else"bandit-blade"
+  var result := execute(engine,b,action,target);check(result.ok,"actual tactical talent "+option)
+  if result.ok:
+   check(result.battle.units.a.record.runtime.resources["rogue-talent-uses"]==r.runtime.resources["rogue-talent-uses"]-1,"talent spends actual resource")
+   var before: int=engine.stats(b.units[target]).defence;var after: int=engine.stats(result.battle.units[target]).defence
+   check(after>before if option=="escape"else after<before,"talent changes real defence "+option)
+  records["talent-"+option]=r

@@ -9,7 +9,7 @@ def row(cat,id):return next(x for x in p[cat] if x['id']==id)
 # Equipment descriptors, not ancestry/class enums.
 row('equipment','shortblade')['tags'].append('fencing_weapon')
 row('equipment','mail')['tags'].append('medium_armor')
-condition={'op':'all','args':[{'op':'tag','id':'fencing_weapon'},{'op':'not','arg':{'op':'tag','id':'medium_armor'}},{'op':'not','arg':{'op':'tag','id':'shield'}}]}
+condition={'op':'tag','id':'fencing_ready'}
 f=row('features','swashbuckler-finesse')
 for m in f['modifiers']:m['when']=condition
 f['description']='Use Dexterity instead of lower Strength for Travel Blade attack accuracy in light/no armour without a shield. No ranged or natural-weapon benefit.'

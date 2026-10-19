@@ -81590,27 +81590,8 @@
             ]
           },
           "when": {
-            "op": "all",
-            "args": [
-              {
-                "op": "tag",
-                "id": "fencing_weapon"
-              },
-              {
-                "op": "not",
-                "arg": {
-                  "op": "tag",
-                  "id": "medium_armor"
-                }
-              },
-              {
-                "op": "not",
-                "arg": {
-                  "op": "tag",
-                  "id": "shield"
-                }
-              }
-            ]
+            "op": "tag",
+            "id": "fencing_ready"
           }
         }
       ],
