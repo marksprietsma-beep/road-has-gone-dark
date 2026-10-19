@@ -212,16 +212,16 @@ func test_hit_boundaries() -> void:
   if not baseline.is_empty():
    var plain: Dictionary=kernel.derive_character(baseline).snapshot
    check(d.feats.has("mobile-skirmisher") and int(d.stats.stride)==int(plain.stats.stride)+1,"mobile feat adds one real tile beyond existing Scout training")
-   var engine := TacticalAuras.new(scout);var b := encounter(scout);b.units["bandit-blade"].position=[6,2];b=engine.seal(b)
-   var without := encounter(baseline);without.units["bandit-blade"].position=[6,2];without=engine.seal(without)
-   var reachable := engine.paths(b,b.units.a);var ordinary := engine.paths(without,without.units.a)
+   var movement_engine := TacticalAuras.new(scout);var movement_battle := encounter(scout);movement_battle.units["bandit-blade"].position=[6,2];movement_battle=movement_engine.seal(movement_battle)
+   var without := encounter(baseline);without.units["bandit-blade"].position=[6,2];without=movement_engine.seal(without)
+   var reachable := movement_engine.paths(movement_battle,movement_battle.units.a);var ordinary := movement_engine.paths(without,without.units.a)
    var keys: Array=reachable.keys();keys.sort();var tile: Array=[]
    for key in keys:
     if not ordinary.has(key):tile=reachable[key].back();break
    check(not tile.is_empty(),"actual reachable-tile boundary changes by one")
    if tile.is_empty():return
-   var order := {"actor_id":"a","revision":b.revision,"kind":"move","destination":tile}
-   var moved := engine.command(b,order);var denied := engine.command(without,order)
+   var movement_command := {"actor_id":"a","revision":movement_battle.revision,"kind":"move","destination":tile}
+   var moved := movement_engine.command(movement_battle,movement_command);var denied := movement_engine.command(without,movement_command)
    check(moved.ok and moved.battle.units.a.position==tile and moved.battle.budget.move==0 and moved.battle.budget.main==1,"real feat movement uses one movement token, preserves main")
    check(not denied.ok,"same destination rejected without feat")
    var legacy := RulesRegistry.new();check(legacy.load_pack("res://data/rules/trhgd-character-v19.json").ok,"historical mobile fixture source")
