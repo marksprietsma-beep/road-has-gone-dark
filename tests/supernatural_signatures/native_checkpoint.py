@@ -17,7 +17,7 @@ def prepare(root,base,pins):
  changed=subprocess.check_output(['git','diff','--name-only',old_sha,head],cwd=root,text=True).splitlines()
  # Only CI/reporting and the previously failed (always rerun) journey/preflight
  # may differ. No reused driver or production file receives a hash waiver.
- allowed={'tests/supernatural_signatures/journey.gd','tests/supernatural_signatures/compile_driver.gd','tests/supernatural_signatures/native_checkpoint.py','tests/supernatural_signatures/run-tests.py','tests/supernatural_signatures/verify-package.py','.github/workflows/verify-supernatural-signatures.yml'}
+ allowed={'tests/nature_repertoires/mechanics_driver.gd','tests/supernatural_signatures/journey.gd','tests/supernatural_signatures/compile_driver.gd','tests/supernatural_signatures/native_checkpoint.py','tests/supernatural_signatures/run-tests.py','tests/supernatural_signatures/verify-package.py','.github/workflows/verify-supernatural-signatures.yml'}
  forbidden=[p for p in changed if not p.startswith(('docs/','tools/character-content/'))and p not in allowed]
  assert not forbidden,('Runtime or reused driver changed; run a fresh full suite',forbidden)
  previous=base.parent/'game148-previous'
@@ -28,6 +28,7 @@ def prepare(root,base,pins):
  phases=[('mechanics','mechanics','trhgd-character-v21'),('input','mechanics','trhgd-character-v21'),('current-signatures','current-signatures','trhgd-character-v21'),('current-mobile','current-mobile','trhgd-character-v21'),('v20','v20','trhgd-character-v20'),('v19','v19','trhgd-character-v19'),('v18','v18','trhgd-character-v18'),('legacy','legacy-v16','trhgd-character-v16'),('compatibility','compatibility-v16','trhgd-character-v16'),('audit','readiness-audit','trhgd-character-v21')]
  reused=[];receipts=[];copied=set()
  for phase,folder,pack in phases:
+  if phase=='v18' and 'tests/nature_repertoires/mechanics_driver.gd' in changed:continue
   labels=[phase]if phase=='input'else[phase,phase+'-cold']
   for label in labels:
    matches=[t for t in times if t['phase']==label];assert len(matches)==1
@@ -41,7 +42,7 @@ def prepare(root,base,pins):
   if folder not in copied:shutil.copytree(previous/folder,base/folder);copied.add(folder)
   reused.append(phase)
  assert (base/'mechanics/saved.json').is_file()
- metadata=dict(workflow_run=int(run),workflow_url=old['html_url'],source_commit=old_sha,source_workflow_conclusion=old['conclusion'],phase_sources={p:old_sha for p in reused},changed_paths=changed,unchanged_runtime_and_reused_drivers=True,policy='Completed native prefix receipts reused with exact pins/zero failures and an explicit source diff. Failed journey, connected battle, captures, new production startup and final archive are rerun; no fresh testing claimed for reused phases.',original_export=anchor)
+ metadata=dict(workflow_run=int(run),workflow_url=old['html_url'],source_commit=old_sha,source_workflow_conclusion=old['conclusion'],phase_sources={p:old_sha for p in reused},changed_paths=changed,unchanged_runtime_and_reused_drivers=True,policy='Completed native prefix receipts reused with exact pins/zero failures and an explicit source diff. Changed v18 driver, failed journey, connected battle, captures, new production startup and final archive are rerun; no fresh testing claimed for reused phases.',original_export=anchor)
  (base/'native-reuse.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf-8')
  print('Verified native checkpoint reuse:',json.dumps(metadata),flush=True)
  return dict(phases=reused,timings=receipts,metadata=metadata)
