@@ -14,7 +14,7 @@ func run() -> void:
    check(RulesJson.digest(saved.records[id])==saved.record_hashes[id],"cold exact character resources/choices "+id)
   for id in saved.battles:
    var engine := TacticalAuras.new(saved.battles[id].units.a.record)
-   check(engine.validate(saved.battles[id]).is_empty(),"cold legal battle "+id)
+   validate_witness(engine,saved.battles[id],"cold",id)
    var next := engine.command(saved.battles[id],saved.next[id])
    check(next.ok and next.battle.state_hash==saved.after[id],"cold exact next log/command/RNG "+id)
   finish_supernatural(true);return
@@ -32,6 +32,7 @@ func run() -> void:
   if d.ok:hashes[id]=d.snapshot.snapshot_hash;record_hashes[id]=RulesJson.digest(records[id])
  for id in battles:
   var engine := TacticalAuras.new(battles[id].units.a.record)
+  validate_witness(engine,battles[id],"fresh",id)
   next[id]={"actor_id":engine.current(battles[id]).id,"revision":battles[id].revision,"kind":"end"}
   var result := engine.command(battles[id],next[id]);check(result.ok,"predict next command "+id)
   if result.ok:after[id]=result.battle.state_hash
@@ -321,3 +322,11 @@ func test_dragon_levels() -> void:
    if row.targeting.kind=="ally":check(not execute(tactical,board,action,"bandit-blade").ok,"ally invocation cannot be aimed at an enemy")
    if tier==16 and kind=="hindrance":check(has_status(used.battle.units[target].record,"weakened"),"late control has distinct additional attack debuff")
    battles["dragon-"+action]=used.battle
+
+func validate_witness(engine: TacticalAuras,b: Dictionary,boundary: String,id: String) -> void:
+ var why := engine.validate(b)
+ check(why.is_empty(),boundary+" legal battle "+id+": "+why)
+ if not why.is_empty():
+  for key in b.units:
+   var u: Dictionary=b.units[key];var valid := engine.characters.validate_build(u.record)
+   if not valid.ok:print("FIELD DIAGNOSTIC ",boundary," ",id,"/",key," ",JSON.stringify(valid.errors))
