@@ -87,7 +87,7 @@ func test_warlock() -> void:
  check(pinned.ok and has_status(pinned.target,"mind-tether"),"Pressure grants actual defining control rather than weapon-only bonus")
  check(not use(records.warlock20,defender(false),"warlock-career-pressure").ok,"unselected high invocation rejected")
  records.warlock_pressure=pressure
- var b := encounter(pressure);b.board.blocked=[]
+ var b := encounter(pressure)
  var engine := TacticalAuras.new(pressure)
  b.units["bandit-blade"].record=defender(false);b.units["bandit-blade"].record.character_id="bandit-blade"
  b=engine.seal(b)
@@ -116,7 +116,7 @@ func test_binder() -> void:
    var rest := effects.refresh_resources(spent.runtime,kernel.derive_character(spent).snapshot.resource_capacities,"eligible_rest")
    check(rest.ok and int(rest.runtime.resources["binder-commitments"])>0,"eligible rest restores pact commitments")
   if at==20:records.binder_sentinel=sentinel
- var r: Dictionary=records.binder_sentinel;var b := encounter(r);b.board.blocked=[]
+ var r: Dictionary=records.binder_sentinel;var b := encounter(r)
  b.units.b.position=[1,2];var engine := TacticalAuras.new(r);b=engine.seal(b)
  check(not execute(engine,b,"binder-sentinel","bandit-blade").ok,"support cannot target enemy through tactical authority")
  var cast := execute(engine,b,"binder-sentinel","b")
@@ -157,13 +157,13 @@ func test_dragon() -> void:
   check(broad.ok and int(broad.actor.runtime.resources["draconic-resolve"])==int(wide.runtime.resources["draconic-resolve"])-1,"wide breath finite invocation cost")
   records["dragon-"+element]=cast.actor
   if element=="fire":
-   var focus_engine := TacticalAuras.new(r);var focus_battle := encounter(r);focus_battle.board.blocked=[];focus_battle=focus_engine.seal(focus_battle)
+   var focus_engine := TacticalAuras.new(r);var focus_battle := encounter(r);focus_battle=focus_engine.seal(focus_battle)
    var focus_command := execute(focus_engine,focus_battle,id,"bandit-blade")
    check(focus_command.ok,"actual focused breath starts recovery even when saved")
    if focus_command.ok:battles.dragon_focused=focus_command.battle
  var wide_record := alternative(records["dragonfire-adept12"],{"draconic-breath-shape":"fire-wide"})
- var engine := TacticalAuras.new(wide_record);var b := encounter(wide_record);b.board.blocked=[]
- b.units["bandit-bow"].position=[4,1];b.units["bandit-bow"].record=defender(false);b.units["bandit-bow"].record.character_id="bandit-bow";b.units["bandit-bow"].record.equipment=["bow","leathers"]
+ var engine := TacticalAuras.new(wide_record);var b := encounter(wide_record)
+ b.units["bandit-bow"].position=[2,3];b.units["bandit-bow"].record=defender(false);b.units["bandit-bow"].record.character_id="bandit-bow";b.units["bandit-bow"].record.equipment=["bow","leathers"]
  b=engine.seal(b);var before := RulesJson.digest(b)
  var preview := engine.area_preview(b,b.units.a,b.units["bandit-blade"],"dragon-wide-fire")
  check(preview.has("bandit-blade") and preview.has("bandit-bow") and not preview.has("b"),"area preview shares enemy/radius/line-of-sight restrictions")
@@ -226,14 +226,14 @@ func test_counterplay() -> void:
  var concealed := defender(false);concealed.runtime.statuses.append({"id":"beguiling-veil","source":"fixture","remaining":3,"expiry":"global_round_start"})
  var veil_cast := use(breath,concealed,"dragon-focused-fire")
  check(veil_cast.ok and veil_cast.target.runtime.hp==normal_breath.target.runtime.hp and veil_cast.rng==normal_breath.rng,"save-based breath bypasses weapon concealment without an attack roll or extra RNG")
- var engine := TacticalAuras.new(breath);var b := encounter(breath);b.board.blocked=[]
+ var engine := TacticalAuras.new(breath);var b := encounter(breath)
  b.units["bandit-blade"].position=[7,5];b=engine.seal(b)
  check(not execute(engine,b,"dragon-focused-fire","bandit-blade").ok,"breath rejects out-of-range command")
- b.units["bandit-blade"].position=[3,1];b.board.blocked=[[2,1]];b=engine.seal(b)
+ b.units["bandit-blade"].position=[4,1];b=engine.seal(b)
  check(not execute(engine,b,"dragon-focused-fire","bandit-blade").ok,"breath rejects blocked line of sight")
 
 func test_binder_late() -> void:
- var r: Dictionary=records.binder20;var engine := TacticalAuras.new(r);var b := encounter(r);b.board.blocked=[];b=engine.seal(b)
+ var r: Dictionary=records.binder20;var engine := TacticalAuras.new(r);var b := encounter(r);b=engine.seal(b)
  var summoned := execute(engine,b,"binder-technique-16","a")
  check(summoned.ok,"late Binder summons through existing tactical authority")
  if summoned.ok:
@@ -300,7 +300,7 @@ func encounter(record: Dictionary) -> Dictionary:
 func test_dragon_levels() -> void:
  for at in [1,6,12,20]:
   var r: Dictionary=records["dragonfire-adept"+str(at)]
-  var engine := TacticalAuras.new(r);var b := encounter(r);b.board.blocked=[]
+  var engine := TacticalAuras.new(r);var b := encounter(r)
   b.units["bandit-blade"].record=defender(false);b.units["bandit-blade"].record.character_id="bandit-blade";b=engine.seal(b)
   var basic := execute(engine,b,"dragon-breath-fire","bandit-blade")
   check(basic.ok and basic.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp,"actual basic breath early/middle/high "+str(at))
@@ -309,7 +309,7 @@ func test_dragon_levels() -> void:
   for kind in ["ward","veil","hindrance"]:
    var variant := alternative(r,{"draconic-invocation-"+str(tier):kind})
    var action: String="draconic-"+kind+"-"+str(tier)
-   var tactical := TacticalAuras.new(variant);var board := encounter(variant);board.board.blocked=[]
+   var tactical := TacticalAuras.new(variant);var board := encounter(variant)
    board.units["bandit-blade"].record=defender(false);board.units["bandit-blade"].record.character_id="bandit-blade";board=tactical.seal(board)
    var row := source.definition("abilities",action)
    var target: String="a"if row.targeting.kind=="self"else"b"if row.targeting.kind=="ally"else"bandit-blade"

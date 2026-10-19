@@ -4,7 +4,7 @@ Only exact selected-pack zero-failure native receipts promote technical status. 
 """
 from pathlib import Path
 import argparse,json,hashlib
-root=Path(__file__).resolve().parents[2];parser=argparse.ArgumentParser();parser.add_argument('--native',type=Path);parser.add_argument('--pack',default='trhgd-character-v20');args=parser.parse_args()
+root=Path(__file__).resolve().parents[2];parser=argparse.ArgumentParser();parser.add_argument('--native',type=Path);parser.add_argument('--pack',default='trhgd-character-v21');args=parser.parse_args()
 p=json.loads((root/('data/rules/'+args.pack+'.json')).read_text(encoding='utf-8'));t={k:{x['id']:x for x in v}for k,v in p.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
 pin=next(x['rules_ref']for x in json.loads((root/'data/rules/packs.json').read_text(encoding='utf-8'))['packs']if x['rules_ref']['pack_id']==p['pack_id'])
 prior=json.loads((root/'docs/implementation/game126/current/MATRIX.json').read_text(encoding='utf-8'));base={x['id']:x for x in prior['classes']}
@@ -15,15 +15,32 @@ if args.native:
  assert all(x['checks']>0 and x['failures']==0 for x in native['proofs'].values())
  assert native['production_launch'] and native['separate_process_restart']
  assert native['captures']['failures']==0 and native['captures']['screenshots']
- if args.pack=='trhgd-character-v20':
+ if args.pack in ['trhgd-character-v20','trhgd-character-v21']:
   required=['mechanics','current-signatures','v19','v18','legacy','compatibility','audit','journey','prestige-journey','connected']
+  if args.pack=='trhgd-character-v21':required=[x for x in required if x!='prestige-journey']+['current-mobile','v20']
   for phase in required:
    for file in ['proof.json','restart-proof.json']:assert native['proofs'][phase+'/'+file]['failures']==0
-  assert native['proofs']['prestige-journey/proof.json']['earned_xp']==490
+  if args.pack=='trhgd-character-v20':assert native['proofs']['prestige-journey/proof.json']['earned_xp']==490
+  else:
+   for phase in ['mechanics','current-signatures','current-mobile','audit','journey','connected']:
+    assert native['proofs'][phase+'/proof.json']['rules_ref']==pin
+   journey=native['proofs']['journey/proof.json'];assert journey['earned_xp']==490 and journey['xp_injected']is False
+   assert {x['history'][0]['class_id']for x in journey['journeys']}=={'warlock','binder','dragonfire-adept'}
+   assert native['proofs']['input']['checks']>=17
+   cohort+=['warlock','binder','dragonfire-adept']
   cohort+=['scout','rogue','swashbuckler','knight','duelist','arcane-trickster']
   historical=json.loads((root/'docs/implementation/game146/evidence/historical-aura-readiness-review.json').read_text(encoding='utf-8'))
   assert historical['workflow_conclusion']=='success'and historical['comparison']['project_auras_function_unchanged']
   assert all(v['class_row_identical']and v['unchanged_non_equipment_records']for v in historical['comparison']['classes'].values())
+  if args.pack=='trhgd-character-v21':
+   old_pack=json.loads((root/'data/rules/trhgd-character-v20.json').read_text(encoding='utf-8'))
+   old_tables={k:{x['id']:x for x in v}for k,v in old_pack.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
+   for id,comparison in historical['comparison']['classes'].items():
+    assert t['classes'][id]==old_tables['classes'][id]
+    for key in comparison['record_keys']:
+     category,record_id=key.split('/',1);assert t[category][record_id]==old_tables[category][record_id]
+   text=(root/'scripts/rules/rules_wave_four.gd').read_text(encoding='utf-8');start=text.index('static func project_auras(');end=text.find('\nstatic func ',start+1)
+   assert hashlib.sha256(text[start:end if end>=0 else len(text)].encode()).hexdigest()==historical['comparison']['project_auras_sha256']
   cohort+=historical['classes']
 # Each item is a specific remaining acceptance gap, not a request for extra counts.
 gaps={
@@ -94,10 +111,14 @@ for cls in p['classes']:
  routes=[v for v in prestige['validated'].values()if v['path']==id]if kind=='prestige'else[]
  row=dict(id=id,name=cls['name'],kind=kind,level_cap=cls['max_level'],status='COMPLETE'if current else'PARTIAL',status_scope='Bounded original class identity has native tactical positive/negative, costs, progression, input and cold witnesses; human balance is separate.'if current else'Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.',creation=dict(legal_at_level_one=kind=='base',historical_native=old.get('stages',{}).get('selectable',{})if kind=='base'else'Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only'),advancement=dict(cap=cls['max_level'],historical_kernel_levels=len(old.get('levels',[])),current_native_levels=[1,4,8,13,20]if current else[],ordered_history=True),defining_features=dict(description=cls['description'],source_features=sorted(features),owned_possible_abilities=abilities,scope='Union of alternatives, not one build owning every career choice.'),early_mid_high=dict(historical_level_witnesses=[1,8,20]if old else[],current_tactical=current,scope='Current native receipts identify actual action/hit/cost; level tables alone never promote status.'),resources=[dict(id=a,capacity=t['resources'][a]['capacity'],refresh=t['resources'][a]['refresh'])for a in pools if a in t['resources']],selections=dict(class_skills=cls['class_skills'],career_groups=[g['id']for g in cls.get('career_choices',[])],spell_refs_by_tier=refs),noncombat=dict(scope='Only existing fourteen skills/contextual opportunities; no new class-specific world mechanics.',evidence='scripts/rules/rules_completeness.gd'),persistence=dict(current_native=current,historical_evidence=old.get('stages',{}).get('automated_tested',{})if kind=='base'else'docs/implementation/game126/evidence/native-prestige-witnesses.json',historical_pin=prior['rules_ref']),prestige=dict(requirements=cls['requirements'],historical_reachable_routes=len(routes),historical_pin=prestige['rules_ref'],automatic_entry=False,starting_class=False)if kind=='prestige'else None,evidence=['data/rules/'+args.pack+'.json#classes/'+id,'docs/implementation/game126/current/MATRIX.json#'+('classes/'if kind=='base'else'prestige_paths/')+id],remaining=gaps[id]if kind=='base'else[pgaps[id]])
  if current:
-  wave='game146'if args.pack=='trhgd-character-v20'else'game129'
-  row['evidence']+=['docs/implementation/'+wave+'/evidence/native-distribution-proof.json','tests/mobile_precision/mechanics.gd'if wave=='game146'else'tests/class_signatures/mechanics_driver.gd']
+  wave='game148'if args.pack=='trhgd-character-v21'else'game146'if args.pack=='trhgd-character-v20'else'game129'
+  row['evidence']+=['docs/implementation/'+wave+'/evidence/'+('final-distribution-proof.json'if wave in ['game146','game148']else'native-distribution-proof.json'),'tests/supernatural_signatures/mechanics.gd'if id in ['warlock','binder','dragonfire-adept']and wave=='game148'else'tests/mobile_precision/mechanics.gd'if id in ['scout','rogue','swashbuckler','knight','duelist','arcane-trickster']else'tests/class_signatures/mechanics_driver.gd']
   row['verified_source']=native['source_commit'];row['remaining']=[]
   row['limitations']=['Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.']
+  if id in ['warlock','binder','dragonfire-adept']:
+   row['advancement']['current_native_levels']=[1,6,12,20]
+   row['early_mid_high']['scope']='Current native lawful1/6/12/20 histories/effects; actual late board control/protection/breath, selected choices, costs/counterplay, cold replay and separate earned level8 campaign. Not every sourcebook power.'
+   row['limitations'].append('Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight.')
   if id in ['scout','rogue','swashbuckler','knight']:
    row['advancement']['current_native_levels']=[1,8,20]
    row['early_mid_high']['scope']='Current native lawful1/8/20 histories; actual Scout/Swashbuckler early/mid/late strikes, Rogue/Knight tactical8, earned level8 and full-process restart. Not every talent permutation.'
@@ -105,7 +126,7 @@ for cls in p['classes']:
    row['advancement']['current_native_levels']=list(range(1,cls['max_level']+1))
    row['early_mid_high']['scope']='Permanent prerequisite-directed development route through every path level and total20; separately real XP-funded level8 prestige careers. These scopes are not conflated.'
   if id in ['marshal','war-chanter']:
-   row['status_scope']='Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining v19→v20 data/consumer, plus current v20 kernel audit. Not a new v20 targeted aura claim.'
+   row['status_scope']='Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining historical-to-current data/consumer, plus current kernel audit. Not a fresh targeted aura claim.'
    row['early_mid_high']['current_tactical']=False
    row['advancement']['current_native_levels']=list(range(1,21))if id=='marshal'else[]
    row['advancement']['historical_native_path_levels']=list(range(1,6))if id=='war-chanter'else[]
@@ -114,19 +135,26 @@ for cls in p['classes']:
    row['evidence']+=['tests/character_wave_four/mechanics_driver.gd','tests/character_wave_four/cohort_driver.gd','tests/character_wave_four/earned_driver.gd']
    row['early_mid_high']['scope']='Historical native aura radius/line-of-sight/replacement/source-defeat tests and actual Marshal6/WarChanter1 at360XP; current base kernel/cold audit. Source versions are explicit.'
    row['evidence']+=['docs/implementation/game146/evidence/historical-aura-readiness-review.json','docs/implementation/game146/evidence/historical-aura-native-proof.json','docs/implementation/game146/evidence/historical-aura-earned-proof.json']
-   row['limitations'].append('No new v20-specific aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused.')
+   row['limitations'].append('No fresh selected-pack aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused.')
   if id=='knight':row['limitations'].append('Protection is adjacent Guarding with a shared reaction; challenge weakens an enemy. No forced AI targeting is advertised or required.')
   if id in ['swashbuckler','duelist']:row['limitations'].append('Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion.')
  rows.append(row)
 assert len(rows)==50 and sum(r['kind']=='base'for r in rows)==32 and sum(r['kind']=='prestige'for r in rows)==18
 queue=[dict(priority=1,cohort=['scout','swashbuckler','rogue','knight','duelist','arcane-trickster'],goal='Resolve actual movement, precision, equipment/control and shared-reaction trigger acceptance; reuse v19 authoritative event consumers.'),dict(priority=2,cohort=['warlock','binder','dragonfire-adept','metamind','pyrokineticist'],goal='Distinct pact/invocation signature actions, finite/at-will boundaries and late conditional consumers.'),dict(priority=3,cohort=['bard','beguiler','spirit-shaman','duskblade','wizard','cleric','sorcerer','druid'],goal='Close actual supported-tier repertoire and specialist restrictions under GAME-128; no arbitrary spell count target.'),dict(priority=4,cohort=['psion','psychic-warrior','wilder','ardent','lurk','erudite','divine-mind','marshal','cerebremancer','cognition-adept','war-chanter'],goal='Native selected-power/point/aura and hybrid interaction acceptance; fix only observed deficits.'),dict(priority=5,cohort=['barbarian','fighter','monk','paladin','ranger','dragon-disciple','dwarven-defender','warshaper','bonded-summoner','beast-steward','archmage','eldritch-knight','shadowdancer','mystic-theurge','abjurant-champion','grove-warden'],goal='Close remaining explicit feature/gear/creature/path witnesses, then human acceptance and milestone exit review.' )]
-if native and args.pack=='trhgd-character-v20':
+if native and args.pack in ['trhgd-character-v20','trhgd-character-v21']:
  queue=queue[1:]
  for i,q in enumerate(queue,1):
   q['priority']=i;q['cohort']=[id for id in q['cohort']if id not in ['marshal','war-chanter']]
  queue[0]['cohort']=['warlock','binder','dragonfire-adept']
  queue[0]['goal']='Audit defining pact/invocation/breath consumers and fix the strongest2–4 actual gaps; real at-will/finite resource boundaries, selected specialisations and native tactical counterplay. No roster growth or decorative powers.'
  queue[2]['cohort']+=['metamind','pyrokineticist']
+if native and args.pack=='trhgd-character-v21':
+ queue=queue[1:]
+ queue.insert(1,dict(cohort=['wizard','cleric','sorcerer','druid','duskblade'],goal='Audit remaining upper supported-tier repertoire and real school/domain/bloodline/channel restrictions; fix material gaps rather than expanding counts.'))
+ queue[0]['cohort']=['bard','beguiler','spirit-shaman']
+ queue[0]['goal']='Audit maintained performance, save-aware illusion/control and rest-bound retrieval; repair2–4 strongest executable identity/repertoire gaps using existing authority.'
+ for i,q in enumerate(queue,1):q['priority']=i;q['cohort']=[id for id in q['cohort']if id not in cohort]
+ assert {x['id']for x in rows if x['status']=='PARTIAL'}<=set(id for q in queue for id in q['cohort'])
 report=dict(schema_version=1,rules_ref=pin,source_pack_sha256=hashlib.sha256((root/('data/rules/'+args.pack+'.json')).read_bytes()).hexdigest(),policy=dict(COMPLETE='Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.',PARTIAL='Playable but material mechanics or practical acceptance missing.',BLOCKED='A defining advertised capability is broken/absent; requires a reproduced blocker, not merely no new action at a level.'),classes=rows,repair_queue=queue,milestone_complete=False,programme_source_occurrences=760,world_transition='GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.')
 out=root/'docs/implementation/game129';(out/'READINESS.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 lines=['# Supported character readiness','', 'Generated by tools/character-content/build-readiness.py. All50 supported careers are reassessed from their definitions and labelled evidence. Historical v16 source/kernel evidence is labelled and never substituted for current native tactical proof. COMPLETE means the scoped original identity, not every tabletop rule or final human balance. The research index is a separate ledger.','', '| Class | Kind | Status | Remaining acceptance |','|---|---|---|---|']
