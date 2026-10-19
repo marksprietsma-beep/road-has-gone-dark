@@ -16,7 +16,7 @@ func run() -> void:
  var d := kernel.derive_character(pressure);check(d.ok,"legal pressure selection")
  check(d.snapshot.stats.save_dc==kernel.derive_character(warlock).snapshot.stats.save_dc,"v20 pressure has no effect on defining save-based invocations")
  var late := use(warlock,target,"warlock-master-20")
- check(late.ok and not late.events.any(func(e: Dictionary):return e.get("type")=="saving_throw_resolved"),"v20 late invocation executes without a saving throw")
+ check(late.ok and not late.events.any(func(e: Dictionary):return e.get("type")=="save_resolved"),"v20 late invocation executes without a saving throw")
  check(late.ok and late.target.runtime.hp<target.runtime.hp,"v20 late unavoidable damage is real")
  # The alternative covenant is durable, but control is unavoidable and has no
  # distinct later support action: every base class level grants the same shelter.

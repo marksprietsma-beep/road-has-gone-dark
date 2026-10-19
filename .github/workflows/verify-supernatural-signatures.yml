@@ -1,5 +1,8 @@
 name: GAME-148 Supernatural Signatures
 on:
+  push:
+    branches: [feature/game-148-supernatural-signatures]
+    paths: ["tests/supernatural_signatures/**", ".github/workflows/verify-supernatural-signatures.yml"]
   workflow_dispatch:
 permissions:
   contents: read
