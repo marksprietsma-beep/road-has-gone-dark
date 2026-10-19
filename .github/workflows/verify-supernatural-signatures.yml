@@ -1,15 +1,23 @@
 name: GAME-148 Supernatural Signatures
 on:
   push:
-    branches: [feature/game-148-supernatural-signatures]
-    paths: ["tests/supernatural_signatures/**", ".github/workflows/verify-supernatural-signatures.yml"]
+    branches: [feature/game-148-supernatural-signatures, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/supernatural_signatures/**', '.github/workflows/verify-supernatural-signatures.yml']
   workflow_dispatch:
+    inputs:
+      release:
+        description: Run the complete self-contained Windows release gate after focused checks
+        type: boolean
+        default: false
 permissions:
   contents: read
+concurrency:
+  group: game148-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 100
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,24 +26,63 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: npm ci --ignore-scripts --prefix vendor/azgaar
-      - run: python tests/world_library/prepare-ci.py
-      - run: python -c "from pathlib import Path;Path('vendor/azgaar/node_modules/.gdignore').touch()"
-      - name: Checked Godot import
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class cache import
         shell: pwsh
         run: |
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game148-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game148-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Reproduce v20 supernatural identity gaps
+      - name: Preserve reproduced frozen v20 outcomes
         env:
           GAME148_ROOT: ${{ runner.temp }}/game148-baseline
         run: python tests/supernatural_signatures/run-baseline.py
-      - uses: actions/upload-artifact@v4
+      - name: Actual selected invocation, covenant, breath and cold tests
+        env:
+          GAME148_ROOT: ${{ runner.temp }}/game148-focused
+        run: python tests/supernatural_signatures/run-tests.py
+      - name: Exact historical source and negative projection guards
+        run: python tests/adventure_cycles/pin_guard_test.py
+      - name: Freeze every accepted pre-v21 pack and manifest row
+        run: python tests/supernatural_signatures/check-history.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native game, earned progression, compatibility, controls and capture
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME148_RELEASE_ROOT: ${{ runner.temp }}/game148-native
+        run: python tests/supernatural_signatures/verify-package.py
+      - name: Complete Windows x64 review game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game148-complete-windows-x64
+          path: ${{ runner.temp }}/game148-native/distribution/*.zip*
+          retention-days: 90
+      - name: Release receipts and genuine Godot renders
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game148-native-evidence
+          path: |
+            ${{ runner.temp }}/game148-native/**/*.json
+            ${{ runner.temp }}/game148-native/**/*.log
+            ${{ runner.temp }}/game148-native/captures/*.png
+          retention-days: 90
+      - name: Preserve exact focused evidence
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: game148-focused-windows-evidence
           path: |
             ${{ runner.temp }}/game148-baseline/*
-            ${{ runner.temp }}/game148-import.log
+            ${{ runner.temp }}/game148-focused/*.json
+            ${{ runner.temp }}/game148-focused/*.log
+            ${{ runner.temp }}/game148-*.log
           retention-days: 90

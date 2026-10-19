@@ -13,3 +13,5 @@ An earlier baseline attempt used literal effect equality, which was too strong f
 ## Required next witnesses
 
 Candidate v21 must prove selected/unselected actions, early/middle/high progression, legal/illegal targets, hit/save/resistance/immunity counterplay, at-will versus finite costs, recovery, rest, selected breath shape and footprint, multiclass/feat interactions, source immutability, exact saved/cold command/RNG replay and real production controls. Full Windows x64 export, actual Godot captures, archive/source/pin/checksum and final-head CI are pending. Do not promote readiness or claim a native v21 release yet.
+
+Parent gate completed: all13 distinct post-merge Windows workflows passed on1645a713. Exact API receipts are in evidence/parent-windows-ci.json; these are reused historical parent tests, not fresh candidate results. Only after that gate, installed the v21 candidate and explicit adapters. Host source checks preserve all20 historical bytes/manifest rows,15 negative projection/pin checks passed, and TacticalCombat remains byte-identical to main. No Linux game execution occurred. Candidate native validation is pending.
