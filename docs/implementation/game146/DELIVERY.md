@@ -2,7 +2,7 @@
 
 Branch `feature/game-146-mobile-precision`, draft [PR139](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/139), baseline main `a10f533`.
 
-Current production candidate v20 hash: `63e8860ab0e0910768824da471aed39d75d0f8e18fb5b549b0dd31df36d4723a`. All nineteen historical pack bytes and manifest rows are unchanged. No new classes, paths, ancestries, feats, spells or world systems are added.
+Current production candidate v20 hash: `c6e5f6cf6ca7e99bc2519cf2ddf55c4b4e6f73cc229bbb78f16befc83f24bf09`. All nineteen historical pack bytes and manifest rows are unchanged. No new classes, paths, ancestries, feats, spells or world systems are added.
 
 Earlier candidate (before the Scout feat correction), `03fc70a`:582 native Windows mechanics/33 independent cold checks, zero failures; run39184788280. See TESTING.md for exact successful and failed attempts. These are focused source tests, not yet a complete exported Windows release.
 

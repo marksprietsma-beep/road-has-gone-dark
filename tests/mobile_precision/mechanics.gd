@@ -43,6 +43,15 @@ func test_fencing() -> void:
  var r: Dictionary=records.swashbuckler8.duplicate(true);r.equipment=["shortblade","leathers"]
  var engine := TacticalAuras.new(r)
  check(RulesMartial.fencing_equipment(r,source),"light blade fencing legal")
+ var novice: Dictionary=records.swashbuckler1.duplicate(true);novice.equipment=["shortblade","leathers"]
+ var accuracy: int=kernel.derive_character(novice).snapshot.stats.melee_attack
+ novice.runtime.modifiers.append({"stat":"melee_attack","type":"training","value":2,"source":"explicit-training-development-fixture"})
+ check(int(kernel.derive_character(novice).snapshot.stats.melee_attack)==accuracy+2,"Dexterity substitution must not swallow independent attack training")
+ var historical := RulesRegistry.new();check(historical.load_pack("res://data/rules/trhgd-character-v19.json").ok,"historical finesse fixture pin")
+ var prior: Dictionary=records.swashbuckler1.duplicate(true);prior.equipment=["shortblade","leathers"];prior.rules_ref=historical.rules_ref()
+ var old_kernel := RulesCharacter.new(historical);var original_accuracy: int=old_kernel.derive_character(prior).snapshot.stats.melee_attack
+ prior.runtime.modifiers.append({"stat":"melee_attack","type":"training","value":2,"source":"explicit-training-development-fixture"})
+ check(int(old_kernel.derive_character(prior).snapshot.stats.melee_attack)==original_accuracy+1,"v19 preserves original same-type finesse/training maximum; v20 fixes substitution only")
  for hit in [false,true]:
   var b := encounter(r);b.rng=attack_seed(19 if hit else 1);b=engine.seal(b)
   var old := RulesJson.digest(b)

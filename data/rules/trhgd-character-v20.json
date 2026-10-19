@@ -81557,7 +81557,7 @@
       "modifiers": [
         {
           "stat": "melee_attack",
-          "type": "training",
+          "type": "untyped",
           "value": {
             "op": "max",
             "args": [
@@ -81599,7 +81599,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Use Dexterity instead of lower Strength for Travel Blade attack accuracy in light/no armour without a shield. No ranged or natural-weapon benefit.",
+      "description": "Use Dexterity instead of lower Strength for Travel Blade attack accuracy in light/no armour without a shield. This attribute substitution stacks with ordinary attack training. No ranged or natural-weapon benefit.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -123393,7 +123393,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +2 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm.",
       "requires_fencing": true,
       "requires_melee": true,
       "strike_effects": [
@@ -123436,7 +123436,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +4 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm.",
       "requires_fencing": true,
       "requires_melee": true,
       "strike_effects": [
@@ -123479,7 +123479,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +6 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm.",
       "requires_fencing": true,
       "requires_melee": true,
       "strike_effects": [
@@ -130768,7 +130768,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/1 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +1 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -130815,7 +130815,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/1 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +2 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -130862,7 +130862,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +3 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -130909,7 +130909,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +4 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -134083,7 +134083,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134133,7 +134133,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -134183,7 +134183,7 @@
         "range": 1,
         "radius": 0
       },
-      "description": "Main action and listed resolve/uses; light/no armour, Travel Blade, no shield, no transformed body. Only a confirmed melee hit delivers the listed fencing/weakening effects. A miss or concealment spends the action/resource without effects. Does not disarm.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",

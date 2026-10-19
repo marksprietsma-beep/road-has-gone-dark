@@ -1,0 +1,85 @@
+{
+  "baseline_main": "a10f533126104df566202cb58e6970f0d3c6a8e1",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v20",
+    "schema_version": 1,
+    "rules_version": "20.0.0",
+    "engine_schema": 3,
+    "content_hash": "c6e5f6cf6ca7e99bc2519cf2ddf55c4b4e6f73cc229bbb78f16befc83f24bf09"
+  },
+  "unchanged_core_rules": true,
+  "classes_added": 0,
+  "prestige_paths_added": 0,
+  "feats_added": 0,
+  "delta": {
+    "pack_id": {
+      "before": "trhgd-character-v19",
+      "after": "trhgd-character-v20"
+    },
+    "rules_version": {
+      "before": "19.0.0",
+      "after": "20.0.0"
+    },
+    "provenance": {
+      "before": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game129-class-signatures"
+      },
+      "after": {
+        "origin": "Original bounded TRHGD character adaptations; research names identify concepts, no sourcebook prose, setting lore or tables copied",
+        "license": "Original project-authored content",
+        "revision": "game146-mobile-precision"
+      }
+    },
+    "classes": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        "arcane-trickster"
+      ]
+    },
+    "features": {
+      "added": [
+        "arcane-trickster-opening"
+      ],
+      "removed": [],
+      "modified": [
+        "swashbuckler-finesse",
+        "mobile-skirmisher-feature"
+      ]
+    },
+    "abilities": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        "precision",
+        "duelist-power-1",
+        "duelist-power-3",
+        "duelist-power-5",
+        "scout-technique-1",
+        "scout-technique-4",
+        "scout-technique-8",
+        "scout-technique-12",
+        "swashbuckler-technique-1",
+        "swashbuckler-technique-4",
+        "swashbuckler-technique-8",
+        "swashbuckler-technique-12",
+        "scout-master-13",
+        "scout-master-16",
+        "scout-master-20",
+        "swashbuckler-master-13",
+        "swashbuckler-master-16",
+        "swashbuckler-master-20"
+      ]
+    },
+    "equipment": {
+      "added": [],
+      "removed": [],
+      "modified": [
+        "shortblade",
+        "mail"
+      ]
+    }
+  }
+}

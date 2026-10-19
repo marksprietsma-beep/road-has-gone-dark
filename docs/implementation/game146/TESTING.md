@@ -45,3 +45,11 @@ A source review after the582-check receipt found the Mobile Skirmisher assertion
 Run39185531550 at `ded169d` was cancelled as superseded before publishing a package; its completed phase receipts are historical intermediate evidence, not a final release. Candidate v20 after this correction has hash `63e8860ab0e0910768824da471aed39d75d0f8e18fb5b549b0dd31df36d4723a`. All v1–v19 bytes and manifest rows remain unchanged. No public Windows playtest ZIP with the earlier candidate was delivered.
 
 `0814f84`, focused run39188126694: the new regression did not execute because its nested fixture redeclared the outer local`engine`/`b`. The runtime loader reported the parse error and the checked process failed immediately. Renamed those fixture locals; no gameplay change or assertion removal. The checked editor import alone does not prove dynamically loaded test scripts execute.
+
+## Confirmed Mobile fix and final finesse substitution
+
+`46501c4`, focused run39188548527:618 native checks/33 cold checks, zero failures, candidate hash63e8860a. This includes the stronger numeric/path/legal-command Mobile regression and preservation of v19 stacking.
+
+The same stacking review found Finesse was represented as a training bonus instead of an attribute substitution, so independent attack training could erase part of its contribution. Candidate v20 now uses an untyped Dexterity-minus-Strength correction, still restricted to the actual fencing weapon/light gear and suppressed for forms/overrides. The new regression requires independent+2 training to contribute its full+2, and explicitly verifies v19 retains the original maximum-only result. Concrete fencing tooltips now state actual defence values and status durations from the existing definitions (Weakened3 round starts; parry/fencing2), with no false disarm claim. This remains the same bounded finesse repair, not a new rules engine.
+
+The intermediate complete release39188548435 was cancelled as superseded. No complete playtest ZIP was published from it. Final current pin is in PACK-DELTA.json; earlier candidate receipts are never presented as final source results.

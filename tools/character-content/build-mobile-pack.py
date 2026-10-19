@@ -11,8 +11,8 @@ row('equipment','shortblade')['tags'].append('fencing_weapon')
 row('equipment','mail')['tags'].append('medium_armor')
 condition={'op':'tag','id':'fencing_ready'}
 f=row('features','swashbuckler-finesse')
-for m in f['modifiers']:m['when']=condition
-f['description']='Use Dexterity instead of lower Strength for Travel Blade attack accuracy in light/no armour without a shield. No ranged or natural-weapon benefit.'
+for m in f['modifiers']:m['when']=condition;m['type']='untyped'
+f['description']='Use Dexterity instead of lower Strength for Travel Blade attack accuracy in light/no armour without a shield. This attribute substitution stacks with ordinary attack training. No ranged or natural-weapon benefit.'
 for a in p['abilities']:
  if a['id'].startswith(('swashbuckler-technique-','swashbuckler-master-')) or a['id'].startswith('duelist-power-'):
   a['requires_fencing']=True;a['requires_melee']=True
@@ -29,6 +29,23 @@ for a in p['abilities']:
 mobile=row('features','mobile-skirmisher-feature')
 mobile['modifiers'][0]['type']='untyped'
 mobile['description']='One additional tile of stride, stacking with Scout movement training. Does not grant another movement action or skirmish damage without actual movement.'
+# Concrete effect descriptions remain visible on the actual mechanical sheet.
+for a in p['abilities']:
+ if a['id'].startswith(('swashbuckler-technique-','swashbuckler-master-','duelist-power-')):
+  gear='Travel Blade, light/no armour, no shield/form. '
+  weak=int(row('statuses','weakened')['duration']['amount'])
+  if a['id'].startswith('swashbuckler-technique-'):
+   defence=row('statuses',a['id']+'-fencing')['modifiers'][0]['value']['value']
+   duration=int(row('statuses',a['id']+'-fencing')['duration']['amount'])
+   outcome=f'Hit: enemy Weakened (-2 melee accuracy and weapon damage) for {weak} round starts; self +{defence} training Defence for {duration} starts. '
+  elif a['id'].startswith('swashbuckler-master-'):
+   outcome=f'Hit: enemy Weakened (-2 melee accuracy and weapon damage) for {weak} round starts; self nonstacking temporary HP equal to Swashbuckler level. '
+  else:
+   defence=row('statuses',a['id']+'-stance')['modifiers'][0]['value']['value']
+   outcome=f'Hit: +{defence} training Defence and +2 training Melee for 2 round starts; normal training stacking applies. '
+  pool=next(iter(a['cost']['resources']));cost=a['cost']['resources'][pool]
+  label='Duelist use'if pool=='duelist-uses'else'Swashbuckler resolve'
+  a['description']=f'Main action/{cost} {label}. '+gear+outcome+'Miss/concealment spends action/resource without the effects. No general disarm.'
 row('abilities','precision')['description']='First confirmed ordinary weapon hit per activation against an enemy threatened by an adjacent allied melee combatant. +2 damage per two combined Rogue/Arcane Trickster levels (rounded up); concealment and misses do not qualify. Reactions do not trigger it. Can combine with actual-movement skirmish on that same hit.'
 # Prestige progression grants the same executable consumer, not an independent proc.
 fid='arcane-trickster-opening'
