@@ -55,3 +55,5 @@ The same stacking review found Finesse was represented as a training bonus inste
 The intermediate complete release39188548435 was cancelled as superseded. No complete playtest ZIP was published from it. Final current pin is in PACK-DELTA.json; earlier candidate receipts are never presented as final source results.
 
 The final wording review removed the remaining false “disarming control” claim from the Swashbuckler class card and its owning feature names/descriptions, and removed Rogue's obsolete levels-three/five-only summary. IDs, progression and mechanics are unchanged by that wording correction. The authoritative pin in PACK-DELTA.json includes these visible descriptions; this is not a new class/content cohort.
+
+Source-tool repeatability check: regenerating v20 with explicit UTF-8 decoding and LF writing leaves both the pack bytes and manifest bytes identical. This is host source inspection, not a Linux game test. Native Windows verification remains authoritative.

@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,hashlib,copy
 root=Path(__file__).resolve().parents[2]
-p=copy.deepcopy(json.loads((root/'data/rules/trhgd-character-v19.json').read_text()))
+p=copy.deepcopy(json.loads((root/'data/rules/trhgd-character-v19.json').read_text(encoding='utf-8')))
 p.update(pack_id='trhgd-character-v20',rules_version='20.0.0')
 p['provenance']['revision']='game146-mobile-precision'
 def row(cat,id):return next(x for x in p[cat] if x['id']==id)
@@ -60,7 +60,7 @@ for feature in p['features']:
  if affected:
   feature['name']=feature['name'].replace('Disarming flourish','Fencing flourish')
   feature['description']=' '.join(a['description']for a in affected)
-path=root/'data/rules/trhgd-character-v20.json';path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n')
+path=root/'data/rules/trhgd-character-v20.json';path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
 pin={k:p[k]for k in ['pack_id','schema_version','rules_version','engine_schema']};pin['content_hash']=hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-mp=root/'data/rules/packs.json';m=json.loads(mp.read_text());m['packs']=[x for x in m['packs']if x['rules_ref']['pack_id']!=p['pack_id']]+[dict(path='res://data/rules/'+path.name,rules_ref=pin)];mp.write_text(json.dumps(m,indent=2)+'\n')
+mp=root/'data/rules/packs.json';m=json.loads(mp.read_text(encoding='utf-8'));m['packs']=[x for x in m['packs']if x['rules_ref']['pack_id']!=p['pack_id']]+[dict(path='res://data/rules/'+path.name,rules_ref=pin)];mp.write_text(json.dumps(m,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps(pin))
