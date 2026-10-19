@@ -26,12 +26,13 @@ func run() -> void:
  check(stopped.ok and stopped.target.runtime.statuses.any(func(s: Dictionary):return s.id=="slowed"),"v20 sentinel applies Slowed without a save")
  check(stopped.ok and int(stopped.actor.runtime.resources["binder-commitments"])==int(binder.runtime.resources["binder-commitments"])-1,"v20 covenant spends actual finite commitment")
  check(not use(binder,target,"binder-embers").ok,"v20 already rejects unselected covenant; preserve it")
- # All four schedules reuse exactly the level-one ward/veil/hindrance payloads.
+ # Later schedules reuse the same effect structure/targets; Ward and Hindrance
+ # scale numbers, while Veil is byte-identical.
  for kind in ["ward","veil","hindrance"]:
   var first := source.definition("abilities","draconic-"+kind+"-1")
   for at in [6,11,16]:
    var later := source.definition("abilities","draconic-"+kind+"-"+str(at))
-   check(first.effects==later.effects and first.targeting==later.targeting,"v20 repeated invocation payload "+kind+str(at))
+   check(effect_shape(first.effects)==effect_shape(later.effects) and first.targeting==later.targeting,"v20 repeated invocation structure "+kind+str(at))
  var breath := use(dragon,target,"dragon-breath-fire")
  check(breath.ok and breath.actor.runtime.resources==dragon.runtime.resources,"v20 repeatable breath already has no finite cost")
  finish_baseline()
@@ -39,3 +40,12 @@ func finish_baseline() -> void:
  var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"scope":"v20 Windows deficiency reproduction; no production changes or release claim"}
  FileAccess.open(base.path_join("baseline-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("GAME148 BASELINE ",JSON.stringify(proof));get_tree().quit(1 if failures else 0)
+
+func effect_shape(value: Variant) -> Variant:
+ if value is Array:return value.map(effect_shape)
+ if value is Dictionary:
+  var out := {}
+  for key in value:
+   if key not in ["amount","dc","value"]:out[key]=effect_shape(value[key])
+  return out
+ return value
