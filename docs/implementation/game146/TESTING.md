@@ -27,3 +27,9 @@ Extract outer GitHub artifact ZIP, then inner playable ZIP. Keep all helper/asse
 `e8701c8`, run [39184470585](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39184470585):549 mechanics checks and29 separate-process cold checks, zero failures; source guards15 zero failures; all19 pack byte/manifest pins unchanged. Candidate v20 hash at this receipt was `2bb84382e48e0cdb80785509e06eb86cbaf22101763fb219d2e497c52bd62b0b`. Later active-weapon finesse and extra talent/path tests require their own receipt; this success is not falsely relabelled as final source validation.
 
 Superseded, still-running PR jobs on older commits were cancelled to release CI capacity. Current-head requirements were left intact. Failed focused attempts remain recorded above; no failed assertion was removed.
+
+## Current production-code focused receipt
+
+`03fc70a`, run [39184788280](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39184788280):582 native mechanics and33 cold checks, zero failures, including active virtual-weapon finesse suppression, talent choices/effects and actual Trickster precision/control. Pack hash `79fa1f89a785b37fe651d422755ac9634dbfef8e9b9f959bdc08f510ebba8483`. Exact focused receipts are preserved under `evidence/`.
+
+The historical main129 receipt was downloaded and inspected (not rerun):15 zero-failure native phase receipts at exact main `a10f533` and v19. It is separately labelled historical. The active GAME-129 package verifier also requires the same archived-vs-default distinction already used by GAME-130/133: archived mechanics/audit remain v19, fresh earned/connected campaigns use the actual configured default. This narrowly fixes a stale expected-pin assumption before the v20 merge; it does not migrate campaigns or waive exact equality.
