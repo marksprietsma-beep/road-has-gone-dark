@@ -162,14 +162,14 @@ func test_dragon() -> void:
    if focus_command.ok:battles.dragon_focused=focus_command.battle
  var wide_record := alternative(records["dragonfire-adept12"],{"draconic-breath-shape":"fire-wide"})
  var engine := TacticalAuras.new(wide_record);var b := encounter(wide_record);b.board.blocked=[]
- b.units["bandit-archer"].position=[4,1];b.units["bandit-archer"].record=defender(false);b.units["bandit-archer"].record.character_id="bandit-archer"
+ b.units["bandit-bow"].position=[4,1];b.units["bandit-bow"].record=defender(false);b.units["bandit-bow"].record.character_id="bandit-bow";b.units["bandit-bow"].record.equipment=["bow","leathers"]
  b=engine.seal(b);var before := RulesJson.digest(b)
  var preview := engine.area_preview(b,b.units.a,b.units["bandit-blade"],"dragon-wide-fire")
- check(preview.has("bandit-blade") and preview.has("bandit-archer") and not preview.has("b"),"area preview shares enemy/radius/line-of-sight restrictions")
+ check(preview.has("bandit-blade") and preview.has("bandit-bow") and not preview.has("b"),"area preview shares enemy/radius/line-of-sight restrictions")
  var used := execute(engine,b,"dragon-wide-fire","bandit-blade")
  check(used.ok,"wide breath executes real area command")
  if used.ok:
-  check(used.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp and used.battle.units["bandit-archer"].record.runtime.hp<b.units["bandit-archer"].record.runtime.hp,"wide breath affects both enemies")
+  check(used.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp and used.battle.units["bandit-bow"].record.runtime.hp<b.units["bandit-bow"].record.runtime.hp,"wide breath affects both enemies")
   check(used.battle.units.b.record==b.units.b.record,"wide enemy burst excludes allies")
   check(int(used.battle.units.a.record.runtime.resources["draconic-resolve"])==int(b.units.a.record.runtime.resources["draconic-resolve"])-1,"area spends resource once, not per target")
   check(engine.command(JSON.parse_string(JSON.stringify(b)),used.battle.commands.back()).battle.state_hash==used.battle.state_hash,"area exact command/RNG replay")

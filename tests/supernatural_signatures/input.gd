@@ -21,6 +21,8 @@ func run() -> void:
   check(ui.targeting.text.contains("Affects:"),"actual hover gives affected character preview "+pair[1])
   ui.choose_tile(p);check(ui.sent.get("kind")==pair[1] and ui.sent.get("target")==pair[2],"actual click emits chosen identity "+pair[1])
   check(ui.detail.text.contains("Weapon:") and ui.detail.text.contains("Shared reaction:"),"existing production feedback retained")
+  var summary: String="Warlock: at will"if pair[0]=="warlock"else"Binder Commitments:"if pair[0]=="binder"else"Draconic Resolve:"
+  check(ui.detail.text.contains(summary),"actual at-will versus rest-limited pool summary "+pair[0])
  var recovering: Dictionary=saved.battles.dragon_focused.duplicate(true)
  recovering.cursor=recovering.order.find("a");recovering.budget={"main":1,"move":1}
  ui.engine=TacticalAuras.new(recovering.units.a.record);recovering=ui.engine.seal(recovering)

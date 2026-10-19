@@ -72,6 +72,15 @@ for at in [6,11,16]:
  if at>=11:a['effects'][0]['on_failure'].append(status('weakened'))
  a['description']=f'Main action/{a["cost"]["resources"]["draconic-resolve"]} rest-limited resolve. Enemy centre range{a["targeting"]["range"]}/clear sight, radius{a["targeting"]["radius"]}; each enemy saves Will or takes{at+3} fire damage and Mind Tether (-2 stride/Will for2 global starts).'+(' Also Weakened (-2 melee/weapon damage for3 starts) on failure.'if at>=11 else'')+' Successful saves negate all effects; fire resistance/condition immunity apply; cost once for the group.'
 row('classes','dragonfire-adept')['description']='Repeatable chosen-element enemy-centred burst with resistance; at6 choose a focused range6 breath with2-boundary recovery or finite-resolve radius2 wide breath. Selected later invocations add ally/group wards, concealment/relief and saved enemy-area control. No cones, flight or new elemental ancestry mechanics.'
+# The actual career selector reads option prose, not only feature prose.
+for group in row('classes','dragonfire-adept')['career_choices']:
+ if group['id'].startswith('draconic-invocation-'):
+  for option in group['options']:
+   owner=row('features',option['features'][0]);option['description']=row('abilities',owner['abilities'][0])['description']
+for option in row('classes','warlock')['career_choices'][1]['options']:
+ if option['id']=='resilience':option['name']='Resilient recovery';option['description']=row('abilities','warlock-career-recovery')['description']+' At will, no finite pool.'
+for option in row('classes','binder')['career_choices'][1]['options']:
+ option['description']=row('abilities','binder-master-ward')['description'] if option['id']=='recovery'else'Persistent +2 training Defence; normal strongest-of-type stacking applies. No active action or commitment cost.'
 # Owning feature prose must agree with the executable action, not an old template.
 changed={'warlock-invocation-assault','warlock-invocation-ward','binder-embers','binder-sentinel'}
 changed.update('warlock-master-'+str(n)for n in [13,16,20]);changed.update('draconic-'+k+'-'+str(n)for k in ['ward','veil','hindrance']for n in [6,11,16])
