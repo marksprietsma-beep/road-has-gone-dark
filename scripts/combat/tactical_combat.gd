@@ -269,23 +269,27 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
   if technique=="smite":amount+=int(snap.class_levels.get("paladin",0))
  else:
   if not ranged:amount+=maxi(0,int(floor((int(a.record.base_attributes.STR)-10)/2.0)))
+ var opening_available: bool=not a.precision_used
+ var mobile: bool=RulesMartial.mobile_enabled(registry)
  var allied_threat := false
  for id in b.order:
   var ally: Dictionary=b.units[id]
-  if ally.id!=a.id and ally.team==a.team and alive(ally) and distance(ally.position,t.position)==1: allied_threat=true
- if not a.precision_used and allied_threat and characters.derive_character(a.record).snapshot.abilities.has("precision"):
+  if ally.id!=a.id and ally.team==a.team and alive(ally) and distance(ally.position,t.position)==1:
+   if not mobile or (RulesWaveFive.melee_weapon(ally.record,active_weapon(ally),registry) and line_clear(b,ally.position,t.position)):allied_threat=true
+ if not a.precision_used and (not mobile or not reaction) and allied_threat and characters.derive_character(a.record).snapshot.abilities.has("precision"):
   var precision := effects.use_ability(a.record,t.record,"precision",{"move":1,"main":1,"reaction":a.reaction},b.rng,{"trigger":"qualifying_hit","tags":["allied_melee_threat"],"event_id":str(b.revision)})
   if precision.ok:
+   var opening_damage: int=RulesMartial.precision_damage(a.record,registry) if mobile else 2*int(ceil(float(characters.derive_character(a.record).snapshot.class_levels.get("rogue",0))/2.0))
    for event in precision.events:
-    if event.type=="event_modifier" and event.stat=="damage": amount+=int(event.value) if registry.rules_ref().engine_schema!=3 else 2*int(ceil(float(characters.derive_character(a.record).snapshot.class_levels.get("rogue",0))/2.0))
-   a.precision_used=true;b.log.append(a.name+" finds an opening: Precision +"+str(2*int(ceil(float(characters.derive_character(a.record).snapshot.class_levels.get("rogue",0))/2.0)))+"." if registry.rules_ref().engine_schema==3 else a.name+" finds an opening: Precision +4.")
+    if event.type=="event_modifier" and event.stat=="damage": amount+=int(event.value) if registry.rules_ref().engine_schema!=3 else opening_damage
+   a.precision_used=true;b.log.append(a.name+" finds an opening: Precision +"+str(opening_damage)+"." if registry.rules_ref().engine_schema==3 else a.name+" finds an opening: Precision +4.")
  for id in b.order:
   var guard: Dictionary=b.units[id]
   if guard.id!=t.id and guard.team==t.team and alive(guard) and int(guard.reaction)>0 and distance(guard.position,t.position)==1 and guard.record.runtime.statuses.any(func(v: Dictionary):return v.id=="guarding"):
    guard.reaction=0;amount=maxi(0,amount-4);b.log.append(guard.name+" protects "+t.name+": damage reduced by 4.");break
  if RulesCapabilities.enabled(registry):
   var caps: Dictionary=characters.derive_character(a.record).snapshot.capabilities
-  if not reaction and b.budget.move==0 and not a.precision_used and int(caps.moving_damage)>0 and (not RulesMartial.enabled(registry) or RulesMartial.moved_this_activation(b,a.id)):
+  if not reaction and b.budget.move==0 and (opening_available if mobile else not a.precision_used) and int(caps.moving_damage)>0 and (not RulesMartial.enabled(registry) or RulesMartial.moved_this_activation(b,a.id)):
    amount+=int(caps.moving_damage);a.precision_used=true;b.log.append(a.name+" exploits movement: +"+str(caps.moving_damage)+" damage.")
   amount=RulesCapabilities.reduce_damage(amount,str(weapon.get("damage_type","physical")),characters.derive_character(t.record).snapshot.capabilities)
  amount=maxi(0,amount)

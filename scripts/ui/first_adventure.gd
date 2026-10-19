@@ -141,7 +141,7 @@ func add_action(id: String,text: String) -> void:
   button.disabled=button.disabled or not available.ok
   var row := engine.registry.definition("abilities",id)
   if RulesMartial.enabled(engine.registry) and row.has("requires_status") and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):button.disabled=true
-  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
@@ -299,7 +299,7 @@ func refresh() -> void:
      if ability.targeting.kind=="self":
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
-      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
       var caption: String=ability.name
