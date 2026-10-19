@@ -82544,7 +82544,7 @@
       "modifiers": [
         {
           "stat": "stride",
-          "type": "training",
+          "type": "untyped",
           "value": {
             "op": "const",
             "value": 1
@@ -82555,7 +82555,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Original mechanical feat; displayed modifiers/capabilities apply to actual rules.",
+      "description": "One additional tile of stride, stacking with Scout movement training. Does not grant another movement action or skirmish damage without actual movement.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",

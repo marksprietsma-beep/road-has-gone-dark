@@ -25,6 +25,10 @@ for a in p['abilities']:
  if a['id'].startswith('scout-') and 'weapon_strike' in a['tags']:
   a['strike_effects']=a['effects'];a['effects']=[]
   a['description']='Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.'
+# A same-type+1 was completely shadowed by Scout's own+1 training.
+mobile=row('features','mobile-skirmisher-feature')
+mobile['modifiers'][0]['type']='untyped'
+mobile['description']='One additional tile of stride, stacking with Scout movement training. Does not grant another movement action or skirmish damage without actual movement.'
 row('abilities','precision')['description']='First confirmed ordinary weapon hit per activation against an enemy threatened by an adjacent allied melee combatant. +2 damage per two combined Rogue/Arcane Trickster levels (rounded up); concealment and misses do not qualify. Reactions do not trigger it. Can combine with actual-movement skirmish on that same hit.'
 # Prestige progression grants the same executable consumer, not an independent proc.
 fid='arcane-trickster-opening'

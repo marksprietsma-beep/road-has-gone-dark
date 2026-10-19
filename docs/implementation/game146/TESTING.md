@@ -37,3 +37,9 @@ The historical main129 receipt was downloaded and inspected (not rerun):15 zero-
 ## First release attempt
 
 `35cc2ed`, run39185176113: focused Windows checks passed again. Native production export completed, then the QA export correctly rejected the new GAME-146 entry point because it was missing from the explicit diagnostic allowlist. Added only `res://tests/mobile_precision/review.tscn` to that existing list; no wildcard or guard removal. No complete playable archive was published from the failed attempt. Re-run the release gate after this narrow packaging correction.
+
+## Strengthened Scout feat acceptance
+
+A source review after the582-check receipt found the Mobile Skirmisher assertion (`stride>0`) did not prove an additional benefit. Both its+1 training modifier and Scout's intrinsic+1 training modifier were subject to the same maximum-only stacking rule, making the feat inert for every eligible Scout. Candidate v20 now uses an additional untyped+1 stride, with an explicit player-facing explanation; no new feat or movement token is introduced. The strengthened regression compares otherwise legal with/without-feat histories, checks a real reachable-tile boundary and successful/rejected movement commands, and verifies the same-history v19 development fixture retains its original stacking.
+
+Run39185531550 at `ded169d` was cancelled as superseded before publishing a package; its completed phase receipts are historical intermediate evidence, not a final release. Candidate v20 after this correction has hash `63e8860ab0e0910768824da471aed39d75d0f8e18fb5b549b0dd31df36d4723a`. All v1–v19 bytes and manifest rows remain unchanged. No public Windows playtest ZIP with the earlier candidate was delivered.

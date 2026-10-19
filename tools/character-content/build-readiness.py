@@ -21,6 +21,10 @@ if args.native:
    for file in ['proof.json','restart-proof.json']:assert native['proofs'][phase+'/'+file]['failures']==0
   assert native['proofs']['prestige-journey/proof.json']['earned_xp']==490
   cohort+=['scout','rogue','swashbuckler','knight','duelist','arcane-trickster']
+  historical=json.loads((root/'docs/implementation/game146/evidence/historical-aura-readiness-review.json').read_text())
+  assert historical['workflow_conclusion']=='success'and historical['comparison']['project_auras_function_unchanged']
+  assert all(v['class_row_identical']and v['unchanged_non_equipment_records']for v in historical['comparison']['classes'].values())
+  cohort+=historical['classes']
 # Each item is a specific remaining acceptance gap, not a request for extra counts.
 gaps={
 'barbarian':['Verify rage-power choices in early/mid/late native combat, including defence trade-offs and expiry; earned journey alone is not every rage variant.'],
@@ -100,6 +104,17 @@ for cls in p['classes']:
   if kind=='prestige':
    row['advancement']['current_native_levels']=list(range(1,cls['max_level']+1))
    row['early_mid_high']['scope']='Permanent prerequisite-directed development route through every path level and total20; separately real XP-funded level8 prestige careers. These scopes are not conflated.'
+  if id in ['marshal','war-chanter']:
+   row['status_scope']='Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining v19→v20 data/consumer, plus current v20 kernel audit. Not a new v20 targeted aura claim.'
+   row['early_mid_high']['current_tactical']=False
+   row['advancement']['current_native_levels']=list(range(1,21))if id=='marshal'else[]
+   row['advancement']['historical_native_path_levels']=list(range(1,6))if id=='war-chanter'else[]
+   row['persistence']['current_native']=id=='marshal'
+   row['evidence']=[e for e in row['evidence']if e!='tests/mobile_precision/mechanics.gd']
+   row['evidence']+=['tests/character_wave_four/mechanics_driver.gd','tests/character_wave_four/cohort_driver.gd','tests/character_wave_four/earned_driver.gd']
+   row['early_mid_high']['scope']='Historical native aura radius/line-of-sight/replacement/source-defeat tests and actual Marshal6/WarChanter1 at360XP; current base kernel/cold audit. Source versions are explicit.'
+   row['evidence']+=['docs/implementation/game146/evidence/historical-aura-readiness-review.json','docs/implementation/game146/evidence/historical-aura-native-proof.json','docs/implementation/game146/evidence/historical-aura-earned-proof.json']
+   row['limitations'].append('No new v20-specific aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused.')
   if id=='knight':row['limitations'].append('Protection is adjacent Guarding with a shared reaction; challenge weakens an enemy. No forced AI targeting is advertised or required.')
   if id in ['swashbuckler','duelist']:row['limitations'].append('Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion.')
  rows.append(row)
@@ -107,7 +122,11 @@ assert len(rows)==50 and sum(r['kind']=='base'for r in rows)==32 and sum(r['kind
 queue=[dict(priority=1,cohort=['scout','swashbuckler','rogue','knight','duelist','arcane-trickster'],goal='Resolve actual movement, precision, equipment/control and shared-reaction trigger acceptance; reuse v19 authoritative event consumers.'),dict(priority=2,cohort=['warlock','binder','dragonfire-adept','metamind','pyrokineticist'],goal='Distinct pact/invocation signature actions, finite/at-will boundaries and late conditional consumers.'),dict(priority=3,cohort=['bard','beguiler','spirit-shaman','duskblade','wizard','cleric','sorcerer','druid'],goal='Close actual supported-tier repertoire and specialist restrictions under GAME-128; no arbitrary spell count target.'),dict(priority=4,cohort=['psion','psychic-warrior','wilder','ardent','lurk','erudite','divine-mind','marshal','cerebremancer','cognition-adept','war-chanter'],goal='Native selected-power/point/aura and hybrid interaction acceptance; fix only observed deficits.'),dict(priority=5,cohort=['barbarian','fighter','monk','paladin','ranger','dragon-disciple','dwarven-defender','warshaper','bonded-summoner','beast-steward','archmage','eldritch-knight','shadowdancer','mystic-theurge','abjurant-champion','grove-warden'],goal='Close remaining explicit feature/gear/creature/path witnesses, then human acceptance and milestone exit review.' )]
 if native and args.pack=='trhgd-character-v20':
  queue=queue[1:]
- for i,q in enumerate(queue,1):q['priority']=i
+ for i,q in enumerate(queue,1):
+  q['priority']=i;q['cohort']=[id for id in q['cohort']if id not in ['marshal','war-chanter']]
+ queue[0]['cohort']=['warlock','binder','dragonfire-adept']
+ queue[0]['goal']='Audit defining pact/invocation/breath consumers and fix the strongest2–4 actual gaps; real at-will/finite resource boundaries, selected specialisations and native tactical counterplay. No roster growth or decorative powers.'
+ queue[2]['cohort']+=['metamind','pyrokineticist']
 report=dict(schema_version=1,rules_ref=pin,source_pack_sha256=hashlib.sha256((root/('data/rules/'+args.pack+'.json')).read_bytes()).hexdigest(),policy=dict(COMPLETE='Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.',PARTIAL='Playable but material mechanics or practical acceptance missing.',BLOCKED='A defining advertised capability is broken/absent; requires a reproduced blocker, not merely no new action at a level.'),classes=rows,repair_queue=queue,milestone_complete=False,programme_source_occurrences=760,world_transition='GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.')
 out=root/'docs/implementation/game129';(out/'READINESS.json').write_text(json.dumps(report,indent=2)+'\n')
 lines=['# Supported character readiness','', 'Generated by tools/character-content/build-readiness.py. All50 supported careers are reassessed from their definitions and labelled evidence. Historical v16 source/kernel evidence is labelled and never substituted for current native tactical proof. COMPLETE means the scoped original identity, not every tabletop rule or final human balance. The research index is a separate ledger.','', '| Class | Kind | Status | Remaining acceptance |','|---|---|---|---|']

@@ -207,7 +207,27 @@ func test_hit_boundaries() -> void:
  check(not scout.is_empty(),"legal mobile-skirmisher prerequisite chain")
  if not scout.is_empty():
   var d: Dictionary=kernel.derive_character(scout).snapshot
-  check(d.feats.has("mobile-skirmisher") and d.stats.stride>0,"mobile feat has actual stride consumer, no invented extra damage")
+  var baseline := build_with_feats("scout",8,{1:"dodge",3:"mobility",5:"steady-study",7:"quick-start"})
+  check(not baseline.is_empty(),"lawful Scout comparison without mobile feat")
+  if not baseline.is_empty():
+   var plain: Dictionary=kernel.derive_character(baseline).snapshot
+   check(d.feats.has("mobile-skirmisher") and int(d.stats.stride)==int(plain.stats.stride)+1,"mobile feat adds one real tile beyond existing Scout training")
+   var engine := TacticalAuras.new(scout);var b := encounter(scout);b.units["bandit-blade"].position=[6,2];b=engine.seal(b)
+   var without := encounter(baseline);without.units["bandit-blade"].position=[6,2];without=engine.seal(without)
+   var reachable := engine.paths(b,b.units.a);var ordinary := engine.paths(without,without.units.a)
+   var keys: Array=reachable.keys();keys.sort();var tile: Array=[]
+   for key in keys:
+    if not ordinary.has(key):tile=reachable[key].back();break
+   check(not tile.is_empty(),"actual reachable-tile boundary changes by one")
+   if tile.is_empty():return
+   var order := {"actor_id":"a","revision":b.revision,"kind":"move","destination":tile}
+   var moved := engine.command(b,order);var denied := engine.command(without,order)
+   check(moved.ok and moved.battle.units.a.position==tile and moved.battle.budget.move==0 and moved.battle.budget.main==1,"real feat movement uses one movement token, preserves main")
+   check(not denied.ok,"same destination rejected without feat")
+   var legacy := RulesRegistry.new();check(legacy.load_pack("res://data/rules/trhgd-character-v19.json").ok,"historical mobile fixture source")
+   var pinned: Dictionary=scout.duplicate(true);pinned.rules_ref=legacy.rules_ref()
+   var old := RulesCharacter.new(legacy).derive_character(pinned)
+   check(old.ok and int(old.snapshot.stats.stride)==int(plain.stats.stride),"explicit same-history v19 development fixture retains old exact stacking; no campaign migration")
   records.scout_feat=scout
 
 func test_rider_levels() -> void:

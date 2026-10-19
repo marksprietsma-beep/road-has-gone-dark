@@ -11,7 +11,7 @@ func run() -> void:
  for i in 3:
   var sheet := await open_sheet();sheet._select_member(i);sheet.detail_tabs.current_tab=2
   await photograph_scene("earned-"+["scout","rogue","knight"][i]+"-sheet",false)
- for key in ["scout20","rogue20","swashbuckler20","knight20","duelist","arcane-trickster"]:
+ for key in ["scout20","scout_feat","rogue20","swashbuckler20","knight20","duelist","arcane-trickster"]:
   var sheet := await open_sheet();var id: String=state.party_ids[0]
   var fixture := render_identity(saved.records[key],id)
   sheet.state=state.duplicate(true);sheet.state.mechanics.records[id]=fixture;sheet.selected=1;sheet.refresh();sheet.detail_tabs.current_tab=2

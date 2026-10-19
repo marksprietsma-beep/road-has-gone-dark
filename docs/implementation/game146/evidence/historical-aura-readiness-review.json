@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "classes": [
+    "marshal",
+    "war-chanter"
+  ],
+  "workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39143271747",
+  "workflow_conclusion": "success",
+  "source_commit": "a10f533126104df566202cb58e6970f0d3c6a8e1",
+  "artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39143271747/artifacts/12143161102",
+  "artifact_native_proof_sha256": "f96ccef9f3cd404b53e87f3a98a387eb20e77a9e5d7352dddab506e70fc327c2",
+  "native_scopes": {
+    "mechanics_pack": "trhgd-character-v14",
+    "earned_pack": "trhgd-character-v19",
+    "earned_xp": 360,
+    "earned_levels": 7,
+    "manual_path": "Marshal6/WarChanter1",
+    "new_testing_claimed": false
+  },
+  "comparison": {
+    "from_pack": "trhgd-character-v19",
+    "to_pack": "trhgd-character-v20",
+    "classes": {
+      "marshal": {
+        "class_row_identical": true,
+        "reachable_records": 40,
+        "unchanged_non_equipment_records": true,
+        "equipment_descriptor_additions": [
+          {
+            "category": "equipment",
+            "id": "mail",
+            "added_tags": [
+              "medium_armor"
+            ]
+          },
+          {
+            "category": "equipment",
+            "id": "shortblade",
+            "added_tags": [
+              "fencing_weapon"
+            ]
+          }
+        ],
+        "record_keys": [
+          "abilities/chorus-courage",
+          "abilities/chorus-shelter",
+          "abilities/divine-mind-aura-assault",
+          "abilities/divine-mind-aura-bulwark",
+          "abilities/divine-mind-aura-stride",
+          "abilities/marshal-aura-assault",
+          "abilities/marshal-aura-bulwark",
+          "abilities/marshal-aura-stride",
+          "abilities/marshal-rally-12",
+          "abilities/marshal-rally-16",
+          "abilities/marshal-rally-2",
+          "abilities/marshal-rally-20",
+          "abilities/marshal-rally-6",
+          "abilities/move",
+          "equipment/mail",
+          "equipment/shield",
+          "equipment/shortblade",
+          "features/marshal-aura-assault-access",
+          "features/marshal-aura-bulwark-access",
+          "features/marshal-aura-stride-access",
+          "features/marshal-rally-12-feature",
+          "features/marshal-rally-16-feature",
+          "features/marshal-rally-2-feature",
+          "features/marshal-rally-20-feature",
+          "features/marshal-rally-6-feature",
+          "features/marshal-resolve-feature",
+          "resources/chorus-resolve",
+          "resources/divine-mind-resolve",
+          "resources/marshal-resolve",
+          "statuses/ancestral-sanctuary",
+          "statuses/chorus-courage",
+          "statuses/chorus-shelter",
+          "statuses/divine-mind-aura-assault",
+          "statuses/divine-mind-aura-bulwark",
+          "statuses/divine-mind-aura-stride",
+          "statuses/marshal-aura-assault",
+          "statuses/marshal-aura-bulwark",
+          "statuses/marshal-aura-stride",
+          "statuses/off-balance",
+          "statuses/psychic-harmonic-aura"
+        ]
+      },
+      "war-chanter": {
+        "class_row_identical": true,
+        "reachable_records": 40,
+        "unchanged_non_equipment_records": true,
+        "equipment_descriptor_additions": [
+          {
+            "category": "equipment",
+            "id": "shortblade",
+            "added_tags": [
+              "fencing_weapon"
+            ]
+          }
+        ],
+        "record_keys": [
+          "abilities/chorus-courage",
+          "abilities/chorus-rally-2",
+          "abilities/chorus-rally-4",
+          "abilities/chorus-rally-5",
+          "abilities/chorus-shelter",
+          "abilities/divine-mind-aura-assault",
+          "abilities/divine-mind-aura-bulwark",
+          "abilities/divine-mind-aura-stride",
+          "abilities/marshal-aura-assault",
+          "abilities/marshal-aura-bulwark",
+          "abilities/marshal-aura-stride",
+          "abilities/move",
+          "equipment/leathers",
+          "equipment/shortblade",
+          "feats/commanding-presence",
+          "feats/inspiring-performance",
+          "features/chorus-courage-access",
+          "features/chorus-rally-2-access",
+          "features/chorus-rally-4-access",
+          "features/chorus-rally-5-access",
+          "features/chorus-reserve",
+          "features/chorus-shelter-access",
+          "features/commanding-presence-feature",
+          "features/inspiring-performance-feature",
+          "resources/chorus-resolve",
+          "resources/divine-mind-resolve",
+          "resources/marshal-resolve",
+          "resources/performance",
+          "statuses/ancestral-sanctuary",
+          "statuses/chorus-courage",
+          "statuses/chorus-shelter",
+          "statuses/divine-mind-aura-assault",
+          "statuses/divine-mind-aura-bulwark",
+          "statuses/divine-mind-aura-stride",
+          "statuses/marshal-aura-assault",
+          "statuses/marshal-aura-bulwark",
+          "statuses/marshal-aura-stride",
+          "statuses/off-balance",
+          "statuses/psychic-harmonic-aura",
+          "statuses/weakened"
+        ]
+      }
+    },
+    "project_auras_function_unchanged": true,
+    "project_auras_sha256": "611384e67ffe1a9f565f23aa161fa4ceeb52f203f2351c73447b9ccadb62aabd"
+  },
+  "acceptance": "Original aura/limited-command identity; source range, line-of-sight, replacement, defeat and shared stacking witnesses already exist. Reuse labelled historical native evidence plus unchanged defining data/consumer and current v20 kernel/cold audit; do not claim a fresh v20 targeted aura test."
+}
