@@ -1,0 +1,38 @@
+name: GAME-148 Supernatural Signatures
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - run: python tests/world_library/prepare-ci.py
+      - run: python -c "from pathlib import Path;Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked Godot import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game148-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game148-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Reproduce v20 supernatural identity gaps
+        env:
+          GAME148_ROOT: ${{ runner.temp }}/game148-baseline
+        run: python tests/supernatural_signatures/run-baseline.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: game148-focused-windows-evidence
+          path: |
+            ${{ runner.temp }}/game148-baseline/*
+            ${{ runner.temp }}/game148-import.log
+          retention-days: 90
