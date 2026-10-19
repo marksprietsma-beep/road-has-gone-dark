@@ -127,12 +127,14 @@ func test_knight_protection() -> void:
  var guarded: Dictionary=challenge.battle.duplicate(true)
  var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="b";target.equipment=["shortblade"]
  guarded.units.b.record=target;guarded.units.b.position=[1,2];guarded.units["bandit-blade"].position=[2,2];guarded.units.c.position=[0,0]
+ var attacker := build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade"]
+ guarded.units["bandit-blade"].record=attacker
  for accuracy in [1,19]:
-  var copy: Dictionary=guarded.duplicate(true);copy.rng=attack_seed(accuracy)
+  var copy: Dictionary=guarded.duplicate(true);copy.rng=attack_seed(accuracy,6)
   engine.weapon_attack(copy,copy.units["bandit-blade"],copy.units.b,false)
   check(copy.units.a.reaction==(1 if accuracy==1 else 0),"guard reaction spent only on actual hit "+str(accuracy))
   if accuracy==19:
-   var control: Dictionary=guarded.duplicate(true);control.units.a.reaction=0;control.rng=attack_seed(accuracy)
+   var control: Dictionary=guarded.duplicate(true);control.units.a.reaction=0;control.rng=attack_seed(accuracy,6)
    engine.weapon_attack(control,control.units["bandit-blade"],control.units.b,false)
    check(copy.units.b.record.runtime.hp==control.units.b.record.runtime.hp+4,"adjacent guard actually prevents four damage")
    copy.rng=attack_seed(19);control.rng=attack_seed(19)
