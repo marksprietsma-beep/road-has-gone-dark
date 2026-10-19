@@ -1,14 +1,11 @@
-Scout and fencing strikes previously applied their control/defence effects even on a miss. Swashbuckler finesse also leaked through incompatible equipment, while Arcane Trickster levels did not contribute to the existing Rogue precision consumer.
+Scout/fencing techniques granted hit riders on misses; precision omitted Arcane Trickster levels and accepted non-melee allied threats; finesse leaked through active equipment overrides and swallowed independent training; Mobile Skirmisher duplicated an existing maximum-only modifier and provided no benefit.
 
-This bounded GAME-146 wave appends candidate v20, preserves every v1–v19 byte/pin, and uses the existing combat/effects/save authority:
+GAME-146 fixes those four bounded groups through the existing combat/effects/save authority and immutable v20 for fresh campaigns. Historical v1–v19 bytes/pins and campaign mechanics are unchanged. Knight adjacent Guarding/shared-reaction and permanent optional prestige entry are verified; no general disarm or AI taunt is claimed.
 
-- Confirmed-hit riders for Scout, Swashbuckler and Duelist, including late strikes; misses/concealment still spend actions/resources.
-- Shared Rogue/Arcane Trickster precision: real adjacent allied melee threat, ordinary hit only, once per activation, compatible with actual-movement skirmish on the same hit.
-- Finesse and fencing use actual active weapon/light-armour/no-shield/no-form restrictions, including virtual weapon overrides. No general disarm or AI taunt is claimed.
-- Windows tests verify existing Knight adjacent protection/shared reaction, lawful progression, costs/rest, production controls, cold deterministic replay and historical compatibility. Real earned prestige journeys and a complete native release are required before merging.
+The complete Windows release passed at b2cb64c:621 mechanics/33 cold plus current/historical signatures, all32 base kernels, exact save/replay, production input, real490XP level8 and optional prestige journeys, independent startup and16 actual Godot renders. All nine companion Windows workflows passed. Later delivery/tooling changes preserve exact exported runtime inputs; final-head checks remain required.
 
-The first focused candidate passed549 mechanics/29 cold checks (run39184470585). Later active-equipment corrections and added talent/path witnesses require their own current-source receipts. Final Windows package, source SHA/checksum, actual Godot renders and readiness reassessment are pending; see the committed GAME-146 testing/continuation ledger. This PR must remain unmerged while release/required checks are pending or failing.
+[Windows build](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39190333104/artifacts/12160967657) — inner ZIP SHA-256`72a2bc9cbf64dc64da7b9cd3de6f748e47f52737fb58f33983556f988e3cc052`.
 
-No classes, races, prestige paths or unrelated world systems are added. GAME-123 and the broader catalogue programme remain open.
+See docs/implementation/game146/DELIVERY.md for receipts, source/pin, unmodified screenshots, exact launch/review steps and honest limits. Readiness is12 scoped COMPLETE/38 PARTIAL; no roster expansion or claim that GAME-123/the catalogue is finished. Long combat labels still clip at small widths. High20 witnesses are explicitly development fixtures; earned campaigns reach8.
 
-Fixes #138 only after verified delivery and merge.
+Fixes #138. Parent #101 stays open. Next cohort: Warlock/Binder/Dragonfire Adept functional signatures.

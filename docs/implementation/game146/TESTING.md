@@ -57,3 +57,7 @@ The intermediate complete release39188548435 was cancelled as superseded. No com
 The final wording review removed the remaining false “disarming control” claim from the Swashbuckler class card and its owning feature names/descriptions, and removed Rogue's obsolete levels-three/five-only summary. IDs, progression and mechanics are unchanged by that wording correction. The authoritative pin in PACK-DELTA.json includes these visible descriptions; this is not a new class/content cohort.
 
 Source-tool repeatability check: regenerating v20 with explicit UTF-8 decoding and LF writing leaves both the pack bytes and manifest bytes identical. This is host source inspection, not a Linux game test. Native Windows verification remains authoritative.
+
+## Final native release verified after authentication recovery
+
+Run[39190333104](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39190333104), source`b2cb64c776d776156afd4793fc1742bb42d6256b`, final27d34787 v20 pin, completed successfully. Downloaded the existing artifacts rather than rerunning successful suites. See DELIVERY.md for all21 zero-failure receipts, actual XP scope and companion workflow IDs. Independent host archive/PNG inspection passed; this is artifact inspection, not Linux gameplay validation. Actual Godot renders are committed unchanged. Local recovery commit a5108b4 makes source tooling UTF-8/LF and does not change the tested runtime. Final current-head PR checks remain mandatory before normal merge.
