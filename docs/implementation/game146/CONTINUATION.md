@@ -1,0 +1,7 @@
+# GAME-146 publication handoff
+
+Implementation is finished; do not restart it or expand the cohort. Branch`feature/game-146-mobile-precision`, PR139. Final native release source`b2cb64c776d776156afd4793fc1742bb42d6256b`, v20 pin27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9. Run39190333104 and all nine source-head regression workflows passed. Windows artifact12160967657; native evidence12160329100. Full details/SHA in DELIVERY.md. All1–19 bytes/pins preserved.
+
+After access was restored, preserved tooling commit a5108b4 was pushed; release artifacts were downloaded and audited, actual Godot renders inspected/copied, and readiness regenerated:12 COMPLETE/38 PARTIAL/0 BLOCKED. Remaining publication steps: commit/push these records, inspect all final-head Windows checks and reviews, verify runtime/native-input equivalence with the tested source, mark ready and normal-merge PR139 only when checks pass. Record actual merge/main SHA and post-merge CI. Close138 referencing139, leave parent101 and broader82 open. No Linear connector.
+
+If interrupted, inspect latest PR/CI before doing anything expensive. Existing complete release does not need regeneration for docs/tooling-only commits. Never describe a historical pack receipt as current testing. No new gameplay work is required unless a real final/integration check fails. Next separate bounded cohort: Warlock/Binder/Dragonfire Adept executable signatures under GAME-123; not living-world work.

@@ -2,13 +2,13 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")=="trhgd-character-v19"
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
   if row.has("requires_status"):RulesRegistry._reference(tables,"statuses",row.requires_status,row.id,errors)
   if row.has("requires_weapon"):RulesRegistry._reference(tables,"equipment",row.requires_weapon,row.id,errors)
-  for field in ["requires_melee","counterattack"]:
+  for field in ["requires_melee","counterattack","requires_fencing"]:
    if row.has(field) and not row[field] is bool:errors.append(RulesJson.issue("martial.boolean",row.id,"Boolean tactical descriptor required"))
   if row.has("strike_effects"):
    if not row.strike_effects is Array or not row.get("tags",[]).has("weapon_strike"):errors.append(RulesJson.issue("martial.strike",row.id,"Only actual weapon strikes can declare hit riders"))
@@ -50,3 +50,24 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
   if command.kind=="end":break
   if command.get("actor_id")==id and command.kind=="move":return true
  return false
+
+static func mobile_enabled(source: RulesRegistry) -> bool:
+ return source.rules_ref().get("pack_id")=="trhgd-character-v20"
+
+static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
+ if include_runtime and not RulesEntities.form(record,source).is_empty():return false
+ var weapon := false
+ for id in record.equipment:
+  var item := source.definition("equipment",str(id))
+  if item.is_empty():return false
+  if item.kind=="shield" or (item.kind=="armor" and item.get("proficiency")!="light"):return false
+  if item.kind=="weapon":weapon=item.tags.has("fencing_weapon")
+ if include_runtime:
+  for status in record.runtime.statuses:
+   var row := source.definition("statuses",str(status.get("id","")))
+   if row.has("weapon_override"):return source.definition("equipment",row.weapon_override).tags.has("fencing_weapon")
+ return weapon
+
+static func precision_damage(record: Dictionary,source: RulesRegistry) -> int:
+ var levels: Dictionary=RulesCharacter.new(source).derive_character(record).snapshot.class_levels
+ return 2*int(ceil(float(int(levels.get("rogue",0))+int(levels.get("arcane-trickster",0)))/2.0))

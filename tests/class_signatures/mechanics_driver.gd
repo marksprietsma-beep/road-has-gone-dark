@@ -5,7 +5,7 @@ var battles := {}
 var receipts := {}
 func run() -> void:
  base=OS.get_environment("GAME129_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v19.json")
+ source=RulesRegistry.new();var loaded := source.load_pack(signature_pack_path())
  check(loaded.ok,"v19 schema "+JSON.stringify(loaded.get("errors",[])))
  if not loaded.ok:finish_signatures();return
  kernel=RulesCharacter.new(source)
@@ -321,3 +321,5 @@ func test_virtual_equipment() -> void:
  var engine := TacticalAuras.new(records.soulknife8);var b := encounter(records.soulknife8);b.units.a.weapon="mind-blade";b=engine.seal(b)
  check(not engine.validate(b).is_empty(),"save validation rejects a physical virtual-weapon reference")
  check(not execute(engine,b,"attack","bandit-blade").ok,"forged held-weapon input cannot bypass manifestation")
+
+func signature_pack_path() -> String:return "res://data/rules/trhgd-character-v19.json"

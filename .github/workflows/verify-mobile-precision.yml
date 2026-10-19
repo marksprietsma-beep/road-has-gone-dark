@@ -1,0 +1,83 @@
+name: GAME-146 Mobile Precision
+on:
+  push:
+    branches: [feature/game-146-mobile-precision, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/mobile_precision/**', '.github/workflows/verify-mobile-precision.yml']
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Run the complete self-contained Windows release gate after focused checks
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: game146-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class cache import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game146-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game146-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Actual confirmed-hit, precision, equipment and cold tests
+        env:
+          GAME146_ROOT: ${{ runner.temp }}/game146-focused
+        run: python tests/mobile_precision/run-tests.py
+      - name: Exact historical source and negative projection guards
+        run: python tests/adventure_cycles/pin_guard_test.py
+      - name: Freeze every pre-v20 pack and manifest row
+        run: python tests/mobile_precision/check-history.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native game, earned progression, compatibility, controls and capture
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME146_RELEASE_ROOT: ${{ runner.temp }}/game146-native
+        run: python tests/mobile_precision/verify-package.py
+      - name: Complete Windows x64 review game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game146-complete-windows-x64
+          path: ${{ runner.temp }}/game146-native/distribution/*.zip*
+          retention-days: 90
+      - name: Release receipts and genuine Godot renders
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game146-native-evidence
+          path: |
+            ${{ runner.temp }}/game146-native/**/*.json
+            ${{ runner.temp }}/game146-native/**/*.log
+            ${{ runner.temp }}/game146-native/captures/*.png
+          retention-days: 90
+      - name: Preserve exact focused evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game146-focused-windows-evidence
+          path: |
+            ${{ runner.temp }}/game146-focused/*.json
+            ${{ runner.temp }}/game146-focused/*.log
+            ${{ runner.temp }}/game146-*.log
+          retention-days: 90

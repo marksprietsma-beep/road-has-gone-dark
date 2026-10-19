@@ -1,0 +1,12 @@
+{
+  "tested_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+  "compared_files": 2277,
+  "tree_digest": "fe6831b4421ae1c6a01acebd4ddd3d3377a5f91f0f89a7295640a5dcc66dafa3",
+  "all_equal": true,
+  "excluded": [
+    "docs/** (excluded by native export)",
+    "tools/character-content/** (source generators; not runtime; generated data remains compared)"
+  ],
+  "includes": "All other tracked files, including runtime scripts, assets, rules data, tests, helper and native release tooling. Version metadata continues to state the actual tested source.",
+  "source_tooling_followup": "a5108b4 explicitly sets UTF-8/LF, byte-identical generated pack/manifest"
+}

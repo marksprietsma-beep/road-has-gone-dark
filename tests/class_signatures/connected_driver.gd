@@ -77,7 +77,7 @@ func run() -> void:
   action("travel");action("begin_battle")
  var command_operation: String=AdventureService.command_operation(state)
  var tactical := TacticalAuras.new(state)
- var wanted := {state.party_ids[0]:"soulknife-technique-1",state.party_ids[1]:"warblade-arm-riposte",state.party_ids[2]:"swordsage-arm-afterimage"}
+ var wanted := wanted_actions()
  for n in 150:
   var battle := AdventureService.active_battle(state)
   if battle.status!="active":break
@@ -88,7 +88,7 @@ func run() -> void:
    for target in battle.units.values():
     var proposed := {"actor_id":actor.id,"revision":battle.revision,"kind":wanted[actor.id],"target_id":target.id}
     if tactical.eligible(battle,actor,target,wanted[actor.id]) and tactical.command(battle,proposed).ok:command=proposed;break
-  if actor.id==state.party_ids[0] and not performed.has(actor.id) and int(battle.budget.main)>0 and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="soulknife-manifested"):
+  if requires_manifestation() and actor.id==state.party_ids[0] and not performed.has(actor.id) and int(battle.budget.main)>0 and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="soulknife-manifested"):
    command={"actor_id":actor.id,"revision":battle.revision,"kind":"soulknife-manifest","target_id":actor.id}
   var expected := tactical.command(battle,command);check(expected.ok,"pure generated encounter command preview")
   action(command_operation,{"command":command})
@@ -114,3 +114,7 @@ func finish_connected(restart := false) -> void:
  print("GAME129 CONNECTED ",checks," failures ",failures)
  if no_quit:completed.emit()
  else:get_tree().quit(1 if failures else 0)
+
+func wanted_actions() -> Dictionary:
+ return {state.party_ids[0]:"soulknife-technique-1",state.party_ids[1]:"warblade-arm-riposte",state.party_ids[2]:"swordsage-arm-afterimage"}
+func requires_manifestation() -> bool:return true

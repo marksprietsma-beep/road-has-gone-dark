@@ -150,7 +150,7 @@ func _replay(record: Dictionary) -> Dictionary:
  for id in record.choices.prepared_abilities:
   if not id is String or not (context.abilities.has(id) or RulesEntities.enabled(registry) and not RulesEntities.form(record,registry).is_empty() and _context(attributes,classes,ranks,feats,record,false).abilities.has(id)): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
  if registry.rules_ref().engine_schema==3:
-  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"] else context,registry)
+  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"] else context,registry)
   if not spell_errors.is_empty():return RulesJson.result(spell_errors)
  return {"ok":true,"context":context}
 
@@ -243,6 +243,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
      if not context.tags.has(tag): context.tags.append(tag)
   for m in record.runtime.modifiers:
    if m is Dictionary and modifiers.has(m.get("stat")): modifiers[m.stat].append(m)
+ if RulesMartial.mobile_enabled(registry) and RulesMartial.fencing_equipment(record,registry,include_runtime):context.tags.append("fencing_ready")
  var applied := {}
  for stat in RulesRegistry.STATS:
   var combined := RulesModifiers.combine(int(base.get(stat,0)),modifiers[stat],context)

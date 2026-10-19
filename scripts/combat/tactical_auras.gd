@@ -12,7 +12,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19"]:
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
@@ -22,6 +22,7 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
  if RulesMartial.enabled(registry):
   if registry.definition("equipment",str(u.weapon)).get("tags",[]).has("manifested"):return false
   var row := registry.definition("abilities",ability)
+  if RulesMartial.mobile_enabled(registry) and row.get("requires_fencing",false) and not RulesMartial.fencing_equipment(u.record,registry):return false
   if row.has("requires_status") and not u.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):return false
   if row.has("requires_weapon") and active_weapon(u)!=row.requires_weapon:return false
   if row.get("requires_melee",false) and not RulesWaveFive.melee_weapon(u.record,active_weapon(u),registry):return false
