@@ -1,0 +1,54 @@
+{
+  "workflow_run": 39226588983,
+  "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39226588983",
+  "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+  "source_workflow_conclusion": "failure",
+  "phase_sources": {
+    "mechanics": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "input": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "current-signatures": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "current-mobile": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "v20": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "v19": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "legacy": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "compatibility": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "audit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91"
+  },
+  "changed_paths": [
+    ".github/workflows/verify-supernatural-signatures.yml",
+    "docs/implementation/game148/CONTINUATION.md",
+    "docs/implementation/game148/DELIVERY.md",
+    "docs/implementation/game148/PACK-DELTA.json",
+    "docs/implementation/game148/REVIEW.md",
+    "docs/implementation/game148/TESTING.md",
+    "docs/implementation/game148/evidence/focused-input-proof.json",
+    "docs/implementation/game148/evidence/focused-proof.json",
+    "docs/implementation/game148/evidence/focused-provenance.json",
+    "docs/implementation/game148/evidence/focused-restart-proof.json",
+    "docs/implementation/game148/evidence/focused-timings.json",
+    "docs/implementation/game148/evidence/native-prefix-proof.json",
+    "tests/nature_repertoires/mechanics_driver.gd",
+    "tests/supernatural_signatures/compile_driver.gd",
+    "tests/supernatural_signatures/journey.gd",
+    "tests/supernatural_signatures/native_checkpoint.py",
+    "tests/supernatural_signatures/run-tests.py",
+    "tests/supernatural_signatures/verify-package.py",
+    "tools/character-content/build-readiness.py"
+  ],
+  "unchanged_runtime_and_reused_drivers": true,
+  "policy": "Completed native prefix receipts reused with exact pins/zero failures and an explicit source diff. Changed v18 driver, failed journey, connected battle, captures, new production startup and final archive are rerun; no fresh testing claimed for reused phases.",
+  "original_export": {
+    "schema_version": 1,
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "win32",
+    "arch": "x64",
+    "enrichmentRuntimes": {
+      "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+      "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+      "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+      "expedition-v1": "1dae5f09e5d4ff16f71204077d505f30fcd882d353d10e6d8f18a12373d651b2"
+    },
+    "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "executable_sha256": "b6d19790622a4f6b65f3d69ae40f61c25fb234c5262346e77ff28707370d5b81"
+  }
+}

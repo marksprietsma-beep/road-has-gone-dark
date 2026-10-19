@@ -1,0 +1,74 @@
+{
+  "proof.json": {
+    "campaign_xp_injected": false,
+    "checks": 988,
+    "classes": [
+      "warlock",
+      "binder",
+      "dragonfire-adept"
+    ],
+    "development_fixtures": true,
+    "failures": 0,
+    "rules_ref": {
+      "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+      "engine_schema": 3,
+      "pack_id": "trhgd-character-v21",
+      "rules_version": "21.0.0",
+      "schema_version": 1
+    }
+  },
+  "restart-proof.json": {
+    "campaign_xp_injected": false,
+    "checks": 77,
+    "classes": [
+      "warlock",
+      "binder",
+      "dragonfire-adept"
+    ],
+    "development_fixtures": true,
+    "failures": 0,
+    "rules_ref": {
+      "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+      "engine_schema": 3,
+      "pack_id": "trhgd-character-v21",
+      "rules_version": "21.0.0",
+      "schema_version": 1
+    }
+  },
+  "input-proof.json": {
+    "checks": 20,
+    "failures": 0,
+    "scope": "Actual production Godot buttons, target hitboxes and affected-unit hover"
+  },
+  "timings.json": [
+    {
+      "phase": "mechanics",
+      "restart": false,
+      "seconds": 64.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "restart": true,
+      "seconds": 6.812,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "restart": false,
+      "seconds": 6.422,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "source_commit": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+  "workflow_run": 39232725869,
+  "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39232725869",
+  "conclusion": "success",
+  "preflight_scripts": 13
+}

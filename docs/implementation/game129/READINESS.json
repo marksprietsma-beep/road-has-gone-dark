@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "rules_ref": {
-    "pack_id": "trhgd-character-v20",
+    "pack_id": "trhgd-character-v21",
     "schema_version": 1,
-    "rules_version": "20.0.0",
+    "rules_version": "21.0.0",
     "engine_schema": 3,
-    "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9"
+    "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab"
   },
-  "source_pack_sha256": "28574526275105f3361f2bee1711ceb012daadb5b9dcc3e576d661c180b4f22a",
+  "source_pack_sha256": "432f80212161e7f300725e1a878882d0b303938d20d97e05d20431e7812eeda1",
   "policy": {
     "COMPLETE": "Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.",
     "PARTIAL": "Playable but material mechanics or practical acceptance missing.",
@@ -182,7 +182,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/barbarian",
+        "data/rules/trhgd-character-v21.json#classes/barbarian",
         "docs/implementation/game126/current/MATRIX.json#classes/barbarian"
       ],
       "remaining": [
@@ -754,7 +754,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/bard",
+        "data/rules/trhgd-character-v21.json#classes/bard",
         "docs/implementation/game126/current/MATRIX.json#classes/bard"
       ],
       "remaining": [
@@ -1772,7 +1772,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/cleric",
+        "data/rules/trhgd-character-v21.json#classes/cleric",
         "docs/implementation/game126/current/MATRIX.json#classes/cleric"
       ],
       "remaining": [
@@ -2841,7 +2841,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/druid",
+        "data/rules/trhgd-character-v21.json#classes/druid",
         "docs/implementation/game126/current/MATRIX.json#classes/druid"
       ],
       "remaining": [
@@ -3015,7 +3015,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/fighter",
+        "data/rules/trhgd-character-v21.json#classes/fighter",
         "docs/implementation/game126/current/MATRIX.json#classes/fighter"
       ],
       "remaining": [
@@ -3201,7 +3201,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/monk",
+        "data/rules/trhgd-character-v21.json#classes/monk",
         "docs/implementation/game126/current/MATRIX.json#classes/monk"
       ],
       "remaining": [
@@ -3873,7 +3873,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/paladin",
+        "data/rules/trhgd-character-v21.json#classes/paladin",
         "docs/implementation/game126/current/MATRIX.json#classes/paladin"
       ],
       "remaining": [
@@ -4523,7 +4523,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/ranger",
+        "data/rules/trhgd-character-v21.json#classes/ranger",
         "docs/implementation/game126/current/MATRIX.json#classes/ranger"
       ],
       "remaining": [
@@ -4706,16 +4706,20 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/rogue",
+        "data/rules/trhgd-character-v21.json#classes/rogue",
         "docs/implementation/game126/current/MATRIX.json#classes/rogue",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "sorcerer",
@@ -5457,7 +5461,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/sorcerer",
+        "data/rules/trhgd-character-v21.json#classes/sorcerer",
         "docs/implementation/game126/current/MATRIX.json#classes/sorcerer"
       ],
       "remaining": [
@@ -6500,7 +6504,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/wizard",
+        "data/rules/trhgd-character-v21.json#classes/wizard",
         "docs/implementation/game126/current/MATRIX.json#classes/wizard"
       ],
       "remaining": [
@@ -6547,7 +6551,7 @@
       "early_mid_high": {
         "historical_level_witnesses": [],
         "current_tactical": true,
-        "scope": "Permanent prerequisite-directed development route through every path level and total20; separately real XP-funded level8 prestige careers. These scopes are not conflated."
+        "scope": "Current21 permanent-prerequisite development route through every path level/total20 and cold replay; explicitly reused unchanged historical20 earned490XP/level8 prestige choice/decline. No fresh21 earned-prestige claim."
       },
       "resources": [
         {
@@ -6635,17 +6639,22 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/duelist",
+        "data/rules/trhgd-character-v21.json#classes/duelist",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/duelist",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/mobile_precision/mechanics.gd",
+        "docs/implementation/game146/evidence/final-distribution-proof.json"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "eldritch-knight",
@@ -6781,7 +6790,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/eldritch-knight",
+        "data/rules/trhgd-character-v21.json#classes/eldritch-knight",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/eldritch-knight"
       ],
       "remaining": [
@@ -6830,7 +6839,7 @@
       "early_mid_high": {
         "historical_level_witnesses": [],
         "current_tactical": true,
-        "scope": "Permanent prerequisite-directed development route through every path level and total20; separately real XP-funded level8 prestige careers. These scopes are not conflated."
+        "scope": "Current21 permanent-prerequisite development route through every path level/total20 and cold replay; explicitly reused unchanged historical20 earned490XP/level8 prestige choice/decline. No fresh21 earned-prestige claim."
       },
       "resources": [
         {
@@ -6923,16 +6932,21 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/arcane-trickster",
+        "data/rules/trhgd-character-v21.json#classes/arcane-trickster",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/arcane-trickster",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/mobile_precision/mechanics.gd",
+        "docs/implementation/game146/evidence/final-distribution-proof.json"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "mystic-theurge",
@@ -7063,7 +7077,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/mystic-theurge",
+        "data/rules/trhgd-character-v21.json#classes/mystic-theurge",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/mystic-theurge"
       ],
       "remaining": [
@@ -7531,7 +7545,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/psion",
+        "data/rules/trhgd-character-v21.json#classes/psion",
         "docs/implementation/game126/current/MATRIX.json#classes/psion"
       ],
       "remaining": [
@@ -8001,7 +8015,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/psychic-warrior",
+        "data/rules/trhgd-character-v21.json#classes/psychic-warrior",
         "docs/implementation/game126/current/MATRIX.json#classes/psychic-warrior"
       ],
       "remaining": [
@@ -8126,24 +8140,28 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/soulknife",
+        "data/rules/trhgd-character-v21.json#classes/soulknife",
         "docs/implementation/game126/current/MATRIX.json#classes/soulknife",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/class_signatures/mechanics_driver.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "warlock",
       "name": "Warlock",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original class identity has native tactical positive/negative, costs, progression, input and cold witnesses; human balance is separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -8157,11 +8175,16 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          6,
+          12,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
-        "description": "Repeatable eldritch blast and durable invocation choices. No spell slots/points: sustained damage trades against main-action wards/control.",
+        "description": "Action-limited at-will eldritch blasts and a permanent control-versus-veil invocation choice. Later choose resilient recovery or enemy-area Dread pressure. No spell slots or power points; saves and immunities provide counterplay.",
         "source_features": [
           "warlock-career-precision",
           "warlock-career-recovery-feature",
@@ -8176,6 +8199,7 @@
           "warlock-technique-8-feature"
         ],
         "owned_possible_abilities": [
+          "warlock-career-pressure",
           "warlock-career-recovery",
           "warlock-invocation-assault",
           "warlock-invocation-ward",
@@ -8195,8 +8219,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Current native lawful1/6/12/20 histories/effects; actual late board control/protection/breath, selected choices, costs/counterplay, cold replay and separate earned level8 campaign. Not every sourcebook power."
       },
       "resources": [],
       "selections": {
@@ -8215,7 +8239,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -8234,11 +8258,16 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/warlock",
-        "docs/implementation/game126/current/MATRIX.json#classes/warlock"
+        "data/rules/trhgd-character-v21.json#classes/warlock",
+        "docs/implementation/game126/current/MATRIX.json#classes/warlock",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/supernatural_signatures/mechanics.gd"
       ],
-      "remaining": [
-        "Late invocations largely share damage/ward scaling; audit distinctive control/utility consumers and at-will versus limited uses."
+      "remaining": [],
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+      "limitations": [
+        "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
+        "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ]
     },
     {
@@ -8369,16 +8398,20 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/scout",
+        "data/rules/trhgd-character-v21.json#classes/scout",
         "docs/implementation/game126/current/MATRIX.json#classes/scout",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "swashbuckler",
@@ -8507,17 +8540,21 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/swashbuckler",
+        "data/rules/trhgd-character-v21.json#classes/swashbuckler",
         "docs/implementation/game126/current/MATRIX.json#classes/swashbuckler",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "knight",
@@ -8647,17 +8684,21 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/knight",
+        "data/rules/trhgd-character-v21.json#classes/knight",
         "docs/implementation/game126/current/MATRIX.json#classes/knight",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Protection is adjacent Guarding with a shared reaction; challenge weakens an enemy. No forced AI targeting is advertised or required."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "warblade",
@@ -8778,16 +8819,20 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/warblade",
+        "data/rules/trhgd-character-v21.json#classes/warblade",
         "docs/implementation/game126/current/MATRIX.json#classes/warblade",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/class_signatures/mechanics_driver.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "shadowdancer",
@@ -8910,7 +8955,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/shadowdancer",
+        "data/rules/trhgd-character-v21.json#classes/shadowdancer",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/shadowdancer"
       ],
       "remaining": [
@@ -9042,7 +9087,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/dragon-disciple",
+        "data/rules/trhgd-character-v21.json#classes/dragon-disciple",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/dragon-disciple"
       ],
       "remaining": [
@@ -9169,7 +9214,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/dwarven-defender",
+        "data/rules/trhgd-character-v21.json#classes/dwarven-defender",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/dwarven-defender"
       ],
       "remaining": [
@@ -9272,7 +9317,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/pyrokineticist",
+        "data/rules/trhgd-character-v21.json#classes/pyrokineticist",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/pyrokineticist"
       ],
       "remaining": [
@@ -9396,16 +9441,20 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/crusader",
+        "data/rules/trhgd-character-v21.json#classes/crusader",
         "docs/implementation/game126/current/MATRIX.json#classes/crusader",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/class_signatures/mechanics_driver.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "swordsage",
@@ -9529,16 +9578,20 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/swordsage",
+        "data/rules/trhgd-character-v21.json#classes/swordsage",
         "docs/implementation/game126/current/MATRIX.json#classes/swordsage",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
-        "tests/mobile_precision/mechanics.gd"
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/class_signatures/mechanics_driver.gd"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
-      ]
+      ],
+      "acceptance_sources": {
+        "current": "Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.",
+        "reused": "Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation."
+      }
     },
     {
       "id": "wilder",
@@ -10002,7 +10055,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/wilder",
+        "data/rules/trhgd-character-v21.json#classes/wilder",
         "docs/implementation/game126/current/MATRIX.json#classes/wilder"
       ],
       "remaining": [
@@ -10014,8 +10067,8 @@
       "name": "Binder",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original class identity has native tactical positive/negative, costs, progression, input and cold witnesses; human balance is separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -10029,11 +10082,16 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          6,
+          12,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
-        "description": "Binder is an original bounded adaptation: one persistent covenant, distinct pact powers and limited daily commitments. Levels1\u201320; not a full sourcebook conversion.",
+        "description": "One durable Embers offence or Sentinel ally-protection covenant; actions spend a rest-limited commitment pool and scale with Binder level. Shared shelter, later spirit/form and master alternatives remain. No daily rebinding or external pact-world system is claimed.",
         "source_features": [
           "binder-embers-pact",
           "binder-master-defence",
@@ -10066,8 +10124,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Current native lawful1/6/12/20 histories/effects; actual late board control/protection/breath, selected choices, costs/counterplay, cold replay and separate earned level8 campaign. Not every sourcebook power."
       },
       "resources": [
         {
@@ -10115,7 +10173,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -10134,11 +10192,16 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/binder",
-        "docs/implementation/game126/current/MATRIX.json#classes/binder"
+        "data/rules/trhgd-character-v21.json#classes/binder",
+        "docs/implementation/game126/current/MATRIX.json#classes/binder",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/supernatural_signatures/mechanics.gd"
       ],
-      "remaining": [
-        "Pact/covenant actions exist but later signature diversity and persistent pact-choice restrictions need full tactical parity witnesses."
+      "remaining": [],
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+      "limitations": [
+        "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
+        "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ]
     },
     {
@@ -10262,7 +10325,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/warshaper",
+        "data/rules/trhgd-character-v21.json#classes/warshaper",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/warshaper"
       ],
       "remaining": [
@@ -10404,7 +10467,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/bonded-summoner",
+        "data/rules/trhgd-character-v21.json#classes/bonded-summoner",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/bonded-summoner"
       ],
       "remaining": [
@@ -10876,7 +10939,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/ardent",
+        "data/rules/trhgd-character-v21.json#classes/ardent",
         "docs/implementation/game126/current/MATRIX.json#classes/ardent"
       ],
       "remaining": [
@@ -11367,7 +11430,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/lurk",
+        "data/rules/trhgd-character-v21.json#classes/lurk",
         "docs/implementation/game126/current/MATRIX.json#classes/lurk"
       ],
       "remaining": [
@@ -11837,7 +11900,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/cerebremancer",
+        "data/rules/trhgd-character-v21.json#classes/cerebremancer",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/cerebremancer"
       ],
       "remaining": [
@@ -11978,7 +12041,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/beast-steward",
+        "data/rules/trhgd-character-v21.json#classes/beast-steward",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/beast-steward"
       ],
       "remaining": [
@@ -12438,7 +12501,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/erudite",
+        "data/rules/trhgd-character-v21.json#classes/erudite",
         "docs/implementation/game126/current/MATRIX.json#classes/erudite"
       ],
       "remaining": [
@@ -12953,7 +13016,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/divine-mind",
+        "data/rules/trhgd-character-v21.json#classes/divine-mind",
         "docs/implementation/game126/current/MATRIX.json#classes/divine-mind"
       ],
       "remaining": [
@@ -12966,7 +13029,7 @@
       "kind": "base",
       "level_cap": 20,
       "status": "COMPLETE",
-      "status_scope": "Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining v19\u2192v20 data/consumer, plus current v20 kernel audit. Not a new v20 targeted aura claim.",
+      "status_scope": "Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining historical-to-current data/consumer, plus current kernel audit. Not a fresh targeted aura claim.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -13105,9 +13168,9 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/marshal",
+        "data/rules/trhgd-character-v21.json#classes/marshal",
         "docs/implementation/game126/current/MATRIX.json#classes/marshal",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/character_wave_four/mechanics_driver.gd",
         "tests/character_wave_four/cohort_driver.gd",
         "tests/character_wave_four/earned_driver.gd",
@@ -13116,10 +13179,10 @@
         "docs/implementation/game146/evidence/historical-aura-earned-proof.json"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
-        "No new v20-specific aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused."
+        "No fresh selected-pack aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused."
       ]
     },
     {
@@ -13595,7 +13658,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/cognition-adept",
+        "data/rules/trhgd-character-v21.json#classes/cognition-adept",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/cognition-adept"
       ],
       "remaining": [
@@ -14183,7 +14246,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/beguiler",
+        "data/rules/trhgd-character-v21.json#classes/beguiler",
         "docs/implementation/game126/current/MATRIX.json#classes/beguiler"
       ],
       "remaining": [
@@ -14195,8 +14258,8 @@
       "name": "Dragonfire Adept",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original class identity has native tactical positive/negative, costs, progression, input and cold witnesses; human balance is separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -14210,11 +14273,16 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          6,
+          12,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
-        "description": "A repeatable elemental breath specialist. Breath spends a main action, uses a Reflex save and affects enemies in a radius-one burst around a legal target. Selected invocations spend finite resolve. No cone, flight or friendly-fire mechanics are claimed.",
+        "description": "Repeatable chosen-element enemy-centred burst with resistance; at6 choose a focused range6 breath with2-boundary recovery or finite-resolve radius2 wide breath. Selected later invocations add ally/group wards, concealment/relief and saved enemy-area control. No cones, flight or new elemental ancestry mechanics.",
         "source_features": [
           "draconic-element-cold",
           "draconic-element-electricity",
@@ -14231,7 +14299,13 @@
           "draconic-ward-1-access",
           "draconic-ward-11-access",
           "draconic-ward-16-access",
-          "draconic-ward-6-access"
+          "draconic-ward-6-access",
+          "dragon-focused-cold-access",
+          "dragon-focused-electricity-access",
+          "dragon-focused-fire-access",
+          "dragon-wide-cold-access",
+          "dragon-wide-electricity-access",
+          "dragon-wide-fire-access"
         ],
         "owned_possible_abilities": [
           "draconic-hindrance-1",
@@ -14248,7 +14322,13 @@
           "draconic-ward-6",
           "dragon-breath-cold",
           "dragon-breath-electricity",
-          "dragon-breath-fire"
+          "dragon-breath-fire",
+          "dragon-focused-cold",
+          "dragon-focused-electricity",
+          "dragon-focused-fire",
+          "dragon-wide-cold",
+          "dragon-wide-electricity",
+          "dragon-wide-fire"
         ],
         "scope": "Union of alternatives, not one build owning every career choice."
       },
@@ -14258,8 +14338,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Current native lawful1/6/12/20 histories/effects; actual late board control/protection/breath, selected choices, costs/counterplay, cold replay and separate earned level8 campaign. Not every sourcebook power."
       },
       "resources": [
         {
@@ -14301,7 +14381,8 @@
           "draconic-invocation-1",
           "draconic-invocation-6",
           "draconic-invocation-11",
-          "draconic-invocation-16"
+          "draconic-invocation-16",
+          "draconic-breath-shape"
         ],
         "spell_refs_by_tier": {}
       },
@@ -14310,7 +14391,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -14329,11 +14410,16 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/dragonfire-adept",
-        "docs/implementation/game126/current/MATRIX.json#classes/dragonfire-adept"
+        "data/rules/trhgd-character-v21.json#classes/dragonfire-adept",
+        "docs/implementation/game126/current/MATRIX.json#classes/dragonfire-adept",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
+        "tests/supernatural_signatures/mechanics.gd"
       ],
-      "remaining": [
-        "Verify breath choices/resistance/area targeting and invocation alternatives at native early/mid/late tiers."
+      "remaining": [],
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+      "limitations": [
+        "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
+        "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ]
     },
     {
@@ -14342,7 +14428,7 @@
       "kind": "prestige",
       "level_cap": 5,
       "status": "COMPLETE",
-      "status_scope": "Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining v19\u2192v20 data/consumer, plus current v20 kernel audit. Not a new v20 targeted aura claim.",
+      "status_scope": "Original aura/limited-command identity: explicitly reused v14 native tactics and v19 earned/cold path, unchanged defining historical-to-current data/consumer, plus current kernel audit. Not a fresh targeted aura claim.",
       "creation": {
         "legal_at_level_one": false,
         "historical_native": "Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only"
@@ -14483,9 +14569,9 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/war-chanter",
+        "data/rules/trhgd-character-v21.json#classes/war-chanter",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/war-chanter",
-        "docs/implementation/game146/evidence/native-distribution-proof.json",
+        "docs/implementation/game148/evidence/final-distribution-proof.json",
         "tests/character_wave_four/mechanics_driver.gd",
         "tests/character_wave_four/cohort_driver.gd",
         "tests/character_wave_four/earned_driver.gd",
@@ -14494,10 +14580,10 @@
         "docs/implementation/game146/evidence/historical-aura-earned-proof.json"
       ],
       "remaining": [],
-      "verified_source": "b2cb64c776d776156afd4793fc1742bb42d6256b",
+      "verified_source": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
-        "No new v20-specific aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused."
+        "No fresh selected-pack aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused."
       ]
     },
     {
@@ -14642,7 +14728,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/archmage",
+        "data/rules/trhgd-character-v21.json#classes/archmage",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/archmage"
       ],
       "remaining": [
@@ -15145,7 +15231,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/metamind",
+        "data/rules/trhgd-character-v21.json#classes/metamind",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/metamind"
       ],
       "remaining": [
@@ -15531,7 +15617,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/duskblade",
+        "data/rules/trhgd-character-v21.json#classes/duskblade",
         "docs/implementation/game126/current/MATRIX.json#classes/duskblade"
       ],
       "remaining": [
@@ -16179,7 +16265,7 @@
       },
       "prestige": null,
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/spirit-shaman",
+        "data/rules/trhgd-character-v21.json#classes/spirit-shaman",
         "docs/implementation/game126/current/MATRIX.json#classes/spirit-shaman"
       ],
       "remaining": [
@@ -16318,7 +16404,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/abjurant-champion",
+        "data/rules/trhgd-character-v21.json#classes/abjurant-champion",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/abjurant-champion"
       ],
       "remaining": [
@@ -16449,7 +16535,7 @@
         "starting_class": false
       },
       "evidence": [
-        "data/rules/trhgd-character-v20.json#classes/grove-warden",
+        "data/rules/trhgd-character-v21.json#classes/grove-warden",
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/grove-warden"
       ],
       "remaining": [
@@ -16461,25 +16547,22 @@
     {
       "priority": 1,
       "cohort": [
-        "warlock",
-        "binder",
-        "dragonfire-adept"
-      ],
-      "goal": "Audit defining pact/invocation/breath consumers and fix the strongest2\u20134 actual gaps; real at-will/finite resource boundaries, selected specialisations and native tactical counterplay. No roster growth or decorative powers."
-    },
-    {
-      "priority": 2,
-      "cohort": [
         "bard",
         "beguiler",
-        "spirit-shaman",
-        "duskblade",
+        "spirit-shaman"
+      ],
+      "goal": "Audit maintained performance, save-aware illusion/control and rest-bound retrieval; repair2\u20134 strongest executable identity/repertoire gaps using existing authority."
+    },
+    {
+      "cohort": [
         "wizard",
         "cleric",
         "sorcerer",
-        "druid"
+        "druid",
+        "duskblade"
       ],
-      "goal": "Close actual supported-tier repertoire and specialist restrictions under GAME-128; no arbitrary spell count target."
+      "goal": "Audit remaining upper supported-tier repertoire and real school/domain/bloodline/channel restrictions; fix material gaps rather than expanding counts.",
+      "priority": 2
     },
     {
       "priority": 3,
