@@ -76,6 +76,8 @@ gaps={
 'dragonfire-adept':['Verify breath choices/resistance/area targeting and invocation alternatives at native early/mid/late tiers.'],
 'duskblade':['Hit-conditioned channeling is implemented; audit the full eligible spell cohort and late slot/channel combinations in production controls.'],
 'spirit-shaman':['Eligible-rest retrieval exists; upper-tier repertoire and spirit-feature interactions need a focused diversity/GUI wave.']}
+if args.pack=='trhgd-character-v21':
+ for id in ['warlock','binder','dragonfire-adept']:gaps[id]=['The v21 candidate implements new defining choices/effects; matching complete native tactical, input, earned and cold acceptance must be supplied before promotion.']
 pgaps={
 'duelist':'Verify actual finesse/defensive path powers and their equipment limitations in native earned career combat.',
 'eldritch-knight':'Verify martial/spell resource interplay and path action delivery in actual native combat, beyond caster-level derivation.',
@@ -131,11 +133,16 @@ for cls in p['classes']:
    row['advancement']['current_native_levels']=list(range(1,21))if id=='marshal'else[]
    row['advancement']['historical_native_path_levels']=list(range(1,6))if id=='war-chanter'else[]
    row['persistence']['current_native']=id=='marshal'
-   row['evidence']=[e for e in row['evidence']if e!='tests/mobile_precision/mechanics.gd']
+   row['evidence']=[e for e in row['evidence']if e not in ['tests/mobile_precision/mechanics.gd','tests/class_signatures/mechanics_driver.gd','tests/supernatural_signatures/mechanics.gd']]
    row['evidence']+=['tests/character_wave_four/mechanics_driver.gd','tests/character_wave_four/cohort_driver.gd','tests/character_wave_four/earned_driver.gd']
    row['early_mid_high']['scope']='Historical native aura radius/line-of-sight/replacement/source-defeat tests and actual Marshal6/WarChanter1 at360XP; current base kernel/cold audit. Source versions are explicit.'
    row['evidence']+=['docs/implementation/game146/evidence/historical-aura-readiness-review.json','docs/implementation/game146/evidence/historical-aura-native-proof.json','docs/implementation/game146/evidence/historical-aura-earned-proof.json']
    row['limitations'].append('No fresh selected-pack aura interaction receipt; unchanged defining data/consumer and labelled historical native proof are reused.')
+  if args.pack=='trhgd-character-v21' and id in ['duelist','arcane-trickster']:
+   row['early_mid_high']['scope']='Current21 permanent-prerequisite development route through every path level/total20 and cold replay; explicitly reused unchanged historical20 earned490XP/level8 prestige choice/decline. No fresh21 earned-prestige claim.'
+   row['evidence'].append('docs/implementation/game146/evidence/final-distribution-proof.json')
+  if args.pack=='trhgd-character-v21' and id not in ['warlock','binder','dragonfire-adept','marshal','war-chanter']:
+   row['acceptance_sources']=dict(current='Matching21 signature/mobile tactical and cold fixtures plus all-base kernel audit.',reused='Earlier earned/creator/input acceptance for unchanged definitions and shared controller, with source versions retained. Current21 input witnesses target the new cohort, not every historical button permutation.')
   if id=='knight':row['limitations'].append('Protection is adjacent Guarding with a shared reaction; challenge weakens an enemy. No forced AI targeting is advertised or required.')
   if id in ['swashbuckler','duelist']:row['limitations'].append('Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion.')
  rows.append(row)
