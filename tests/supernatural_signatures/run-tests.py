@@ -6,6 +6,8 @@ root=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(root/'tests/character_psychic'))
 from checked_process import checked_process
 base=Path(os.environ['GAME148_ROOT']);base.mkdir(parents=True,exist_ok=True)
+preflight=checked_process([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'--script','res://tests/supernatural_signatures/compile_driver.gd'],cwd=root,env=os.environ.copy(),log=base/'compile.log',timeout=90)
+assert preflight['exit_code']==0 and not preflight['errors']and not preflight['timeout'],preflight
 timings=[]
 for phase,restart,file in [('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json')]:
  log=base/('input.log'if phase=='input'else'cold.log'if restart else'focused.log')

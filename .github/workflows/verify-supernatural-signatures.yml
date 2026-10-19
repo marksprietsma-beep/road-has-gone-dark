@@ -9,8 +9,13 @@ on:
         description: Run the complete self-contained Windows release gate after focused checks
         type: boolean
         default: false
+      reuse_run:
+        description: Optional completed native run with identical game and reused-driver sources
+        type: string
+        default: ''
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: game148-${{ github.ref }}
   cancel-in-progress: false
@@ -57,6 +62,8 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.release
         env:
           GAME148_RELEASE_ROOT: ${{ runner.temp }}/game148-native
+          GAME148_REUSE_RUN: ${{ inputs.reuse_run }}
+          GH_TOKEN: ${{ github.token }}
         run: python tests/supernatural_signatures/verify-package.py
       - name: Complete Windows x64 review game
         if: github.event_name == 'workflow_dispatch' && inputs.release

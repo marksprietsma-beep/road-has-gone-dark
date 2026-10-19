@@ -8,16 +8,19 @@ root=Path(__file__).resolve().parents[2];base=Path(os.environ['GAME148_RELEASE_R
 release=base/'distribution';release.mkdir(exist_ok=True);name='game148-supernatural-signatures-windows-x64';dist=release/name
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 manifest_bytes=(root/'data/rules/packs.json').read_bytes();manifest=json.loads(manifest_bytes);pins={r['rules_ref']['pack_id']:r['rules_ref']for r in manifest['packs']};expected=pins['trhgd-character-v21']
+from native_checkpoint import prepare
+checkpoint=prepare(root,base,pins)
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/supernatural_signatures/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
-env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME148_ROOT=str(base/'mechanics'),GAME146_ROOT=str(base/'v20'),GAME129_ROOT=str(base/'v19'),GAME133_ROOT=str(base/'v18'),GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'),GAME126_AUDIT_ROOT=str(base/'readiness-audit'),GAME126_PACK='res://data/rules/trhgd-character-v21.json');env.pop('GAME76_HELPER_ROOT',None)
-rows=[]
+env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME148_ROOT=str(base/'mechanics'),GAME146_ROOT=str(base/'v20'),GAME129_ROOT=str(base/'v19'),GAME133_ROOT=str(base/'v18'),GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'),GAME126_AUDIT_ROOT=str(base/'readiness-audit'),GAME126_PACK='res://data/rules/trhgd-character-v21.json');env.pop('GAME76_HELPER_ROOT',None);env.pop('GH_TOKEN',None);env.pop('GITHUB_TOKEN',None)
+rows=checkpoint['timings'].copy()
 def run(phase,restart=False,visual=False):
  extra=dict(GAME148_PHASE=phase,GAME148_RESTART='1'if restart else'0',GAME146_RESTART='1'if restart else'0',GAME129_RESTART='1'if restart else'0',GAME133_RESTART='1'if restart else'0',GAME126_AUDIT_RESTART='1'if restart else'0');label=phase+('-cold'if restart else'');extra['GAME129_ROOT']=str(base/('current-signatures'if phase=='current-signatures'else'v19'));extra['GAME146_ROOT']=str(base/('current-mobile'if phase=='current-mobile'else'v20'))
  result=checked_process([str(qa)]+([]if visual else['--headless'])+['--audio-driver','Dummy'],cwd=dist,env=dict(env,**extra),log=base/(label+'.log'),timeout=3600)
  rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows[-1],flush=True)
  assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-14000:]
 for phase in ['mechanics','input','current-signatures','current-mobile','v20','v19','v18','legacy','compatibility','audit','journey','connected']:
+ if phase in checkpoint['phases']:continue
  run(phase)
  if phase!='input':run(phase,True)
 run('capture',visual=True)
@@ -48,5 +51,5 @@ with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED)as z:
   if p.is_file():z.write(p,Path(name)/p.relative_to(dist))
 with zipfile.ZipFile(archive)as z:assert z.testzip()is None
 sha=hashlib.file_digest(archive.open('rb'),'sha256').hexdigest();Path(str(archive)+'.sha256').write_text(sha+'  '+archive.name+'\n')
-(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=commit,rules_ref=expected,archive=archive.name,sha256=sha,proofs=proofs,timings=rows,empty_path=True,source_helper_override=False,production_launch=True,separate_process_restart=True,captures=captures,earned_characters=3),indent=2)+'\n')
+(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=commit,native_reuse=checkpoint['metadata'],rules_ref=expected,archive=archive.name,sha256=sha,proofs=proofs,timings=rows,empty_path=True,source_helper_override=False,production_launch=True,separate_process_restart=True,captures=captures,earned_characters=3),indent=2)+'\n')
 print(json.dumps(dict(archive=str(archive),sha256=sha)),flush=True)

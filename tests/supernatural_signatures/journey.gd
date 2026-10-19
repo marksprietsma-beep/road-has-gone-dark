@@ -8,7 +8,7 @@ func goals_for(index: int) -> Dictionary:
  return {"nodes":nodes,"feats":[]}
 func test_known_authority() -> void:
  for id in state.party_ids:check(kernel.validate_build(state.mechanics.records[id]).ok,"earned supernatural identity valid")
- var bound := kernel.derive_character(state.mechanics.records[state.party_ids[1]]).snapshot
+ var bound: Dictionary= kernel.derive_character(state.mechanics.records[state.party_ids[1]]).snapshot
  check(bound.abilities.has("binder-sentinel") and not bound.abilities.has("binder-embers"),"deliberate permanent Sentinel covenant selected through ordinary creator")
 func test_real_combat() -> void:
  # The connected phase enters and cold-resolves an actual saved campaign battle.
