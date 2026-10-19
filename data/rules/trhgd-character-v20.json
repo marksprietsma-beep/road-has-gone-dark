@@ -2717,7 +2717,7 @@
         "license": "Original project-authored content",
         "revision": "game118-core-1"
       },
-      "description": "A versatile skill expert whose ally-assisted sneak attacks improve at levels three and five.",
+      "description": "Skill expert: an ally-assisted precision opening on the first confirmed ordinary weapon hit each activation, scaling with Rogue and Arcane Trickster levels; choose debilitating or escape talents.",
       "bonus_feat_levels": [],
       "hit_die": 8,
       "class_skills": [
@@ -17980,7 +17980,7 @@
         "revision": "game112-wave-one",
         "source_concept": "Swashbuckler"
       },
-      "description": "Dexterous blade fighting: finesse accuracy, limited panache for attack-and-ward or disarming control. Not a Fighter feat progression.",
+      "description": "Dexterity finesse with a Travel Blade and light gear; resolve-cost flourishes weaken foes and grant protection only on confirmed hits. No weapon removal.",
       "bonus_feat_levels": [],
       "hit_die": 10,
       "class_skills": [
@@ -78638,7 +78638,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Parrying precision 1 · main action; duelist uses × 1; apply duelist power 1 stance to self"
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +2 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm."
     },
     {
       "id": "duelist-power-3-feature",
@@ -78659,7 +78659,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Parrying precision 3 · main action; duelist uses × 1; apply duelist power 3 stance to self"
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +4 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm."
     },
     {
       "id": "duelist-power-5-feature",
@@ -78680,7 +78680,7 @@
         "license": "Original project-authored content",
         "revision": "game119-career-1"
       },
-      "description": "Parrying precision 5 · main action; duelist uses × 1; apply duelist power 5 stance to self"
+      "description": "Main action/1 Duelist use. Travel Blade, light/no armour, no shield/form. Hit: +6 training Defence and +2 training Melee for 2 round starts; normal training stacking applies. Miss/concealment spends action/resource without the effects. No general disarm."
     },
     {
       "id": "eldritch-knight-power-1-feature",
@@ -81427,7 +81427,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Mark the opening 1; main action; 1 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81448,7 +81448,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Mark the opening 4; main action; 1 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81469,7 +81469,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Mark the opening 8; main action; 2 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81490,7 +81490,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Mark the opening 12; main action; 2 scout resolve; Weapon strike creates Off Balance; actual movement enables the first-hit skirmish bonus.",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81608,7 +81608,7 @@
     },
     {
       "id": "swashbuckler-technique-1-feature",
-      "name": "Disarming flourish 1",
+      "name": "Fencing flourish 1",
       "abilities": [
         "swashbuckler-technique-1"
       ],
@@ -81620,7 +81620,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Disarming flourish 1; main action; 1 swashbuckler resolve; Weapon strike weakens the target and guards the fencer for2 rounds.",
+      "description": "Main action/1 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +1 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81629,7 +81629,7 @@
     },
     {
       "id": "swashbuckler-technique-4-feature",
-      "name": "Disarming flourish 4",
+      "name": "Fencing flourish 4",
       "abilities": [
         "swashbuckler-technique-4"
       ],
@@ -81641,7 +81641,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Disarming flourish 4; main action; 1 swashbuckler resolve; Weapon strike weakens the target and guards the fencer for2 rounds.",
+      "description": "Main action/1 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +2 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81650,7 +81650,7 @@
     },
     {
       "id": "swashbuckler-technique-8-feature",
-      "name": "Disarming flourish 8",
+      "name": "Fencing flourish 8",
       "abilities": [
         "swashbuckler-technique-8"
       ],
@@ -81662,7 +81662,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Disarming flourish 8; main action; 2 swashbuckler resolve; Weapon strike weakens the target and guards the fencer for2 rounds.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +3 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -81671,7 +81671,7 @@
     },
     {
       "id": "swashbuckler-technique-12-feature",
-      "name": "Disarming flourish 12",
+      "name": "Fencing flourish 12",
       "abilities": [
         "swashbuckler-technique-12"
       ],
@@ -81683,7 +81683,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Disarming flourish 12; main action; 2 swashbuckler resolve; Weapon strike weakens the target and guards the fencer for2 rounds.",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self +4 training Defence for 2 starts. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
         "license": "Original project-authored content",
@@ -83526,7 +83526,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 13 scout",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83545,7 +83545,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 16 scout",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83564,7 +83564,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 20 scout",
+      "description": "Main action and listed Scout resolve; weapon targeting/range apply. Only a confirmed hit delivers the listed control, recovery or temporary-HP effects. Misses/concealment still spend action and resolve. Skirmish additionally requires actual movement this activation.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83636,7 +83636,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 13 swashbuckler",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83655,7 +83655,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 16 swashbuckler",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",
@@ -83674,7 +83674,7 @@
       "senses": [],
       "hooks": [],
       "grants": [],
-      "description": "Class 20 swashbuckler",
+      "description": "Main action/2 Swashbuckler resolve. Travel Blade, light/no armour, no shield/form. Hit: enemy Weakened (-2 melee accuracy and weapon damage) for 3 round starts; self nonstacking temporary HP equal to Swashbuckler level. Miss/concealment spends action/resource without the effects. No general disarm.",
       "provenance": {
         "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
         "license": "Original project-authored content",

@@ -53,6 +53,13 @@ p['features'].append(dict(id=fid,name='Trickster opening',abilities=['precision'
 cls=row('classes','arcane-trickster')
 # Class feature schedule uses {at,id} records.
 cls['features'].append(dict(at=1,id=fid))
+row('classes','swashbuckler')['description']='Dexterity finesse with a Travel Blade and light gear; resolve-cost flourishes weaken foes and grant protection only on confirmed hits. No weapon removal.'
+row('classes','rogue')['description']='Skill expert: an ally-assisted precision opening on the first confirmed ordinary weapon hit each activation, scaling with Rogue and Arcane Trickster levels; choose debilitating or escape talents.'
+for feature in p['features']:
+ affected=[row('abilities',id)for id in feature.get('abilities',[])if id.startswith(('swashbuckler-technique-','swashbuckler-master-','duelist-power-','scout-technique-','scout-master-'))]
+ if affected:
+  feature['name']=feature['name'].replace('Disarming flourish','Fencing flourish')
+  feature['description']=' '.join(a['description']for a in affected)
 path=root/'data/rules/trhgd-character-v20.json';path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n')
 pin={k:p[k]for k in ['pack_id','schema_version','rules_version','engine_schema']};pin['content_hash']=hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 mp=root/'data/rules/packs.json';m=json.loads(mp.read_text());m['packs']=[x for x in m['packs']if x['rules_ref']['pack_id']!=p['pack_id']]+[dict(path='res://data/rules/'+path.name,rules_ref=pin)];mp.write_text(json.dumps(m,indent=2)+'\n')

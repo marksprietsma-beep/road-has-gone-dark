@@ -5,7 +5,7 @@
     "schema_version": 1,
     "rules_version": "20.0.0",
     "engine_schema": 3,
-    "content_hash": "c6e5f6cf6ca7e99bc2519cf2ddf55c4b4e6f73cc229bbb78f16befc83f24bf09"
+    "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9"
   },
   "unchanged_core_rules": true,
   "classes_added": 0,
@@ -36,7 +36,9 @@
       "added": [],
       "removed": [],
       "modified": [
-        "arcane-trickster"
+        "rogue",
+        "arcane-trickster",
+        "swashbuckler"
       ]
     },
     "features": {
@@ -45,8 +47,25 @@
       ],
       "removed": [],
       "modified": [
+        "duelist-power-1-feature",
+        "duelist-power-3-feature",
+        "duelist-power-5-feature",
+        "scout-technique-1-feature",
+        "scout-technique-4-feature",
+        "scout-technique-8-feature",
+        "scout-technique-12-feature",
         "swashbuckler-finesse",
-        "mobile-skirmisher-feature"
+        "swashbuckler-technique-1-feature",
+        "swashbuckler-technique-4-feature",
+        "swashbuckler-technique-8-feature",
+        "swashbuckler-technique-12-feature",
+        "mobile-skirmisher-feature",
+        "scout-master-13-feature",
+        "scout-master-16-feature",
+        "scout-master-20-feature",
+        "swashbuckler-master-13-feature",
+        "swashbuckler-master-16-feature",
+        "swashbuckler-master-20-feature"
       ]
     },
     "abilities": {
