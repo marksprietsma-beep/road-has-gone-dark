@@ -159,7 +159,9 @@ func test_prestige() -> void:
    check(d.abilities.has("precision") and RulesMartial.precision_damage(r,source)==2*int(ceil(float(int(d.class_levels.rogue)+int(d.class_levels[path]))/2.0)),"prestige contributes to real shared precision consumer")
   else:
    r=r.duplicate(true);r.equipment=["shortblade","leathers"]
-   var engine := TacticalAuras.new(r);var b := encounter(r);b.rng=attack_seed(1);b=engine.seal(b)
+   var engine := TacticalAuras.new(r);var b := encounter(r)
+   b.units["bandit-blade"].record.runtime.modifiers.append({"stat":"defence","value":100,"type":"untyped","source":"explicit-Duelist-miss-development-fixture"})
+   b.rng=attack_seed(1);b=engine.seal(b)
    var missed := execute(engine,b,"duelist-power-1","bandit-blade")
    check(missed.ok and not missed.battle.units.a.record.runtime.statuses.any(func(v: Dictionary):return v.id=="duelist-power-1-stance"),"Duelist parry stance requires confirmed hit")
  check(planner.failures==0,"prestige planner retains exact production validations")

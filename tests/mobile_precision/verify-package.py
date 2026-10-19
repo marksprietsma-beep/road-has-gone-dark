@@ -13,16 +13,16 @@ qa=dist/'road-has-gone-dark-qa.exe'
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME146_ROOT=str(base/'mechanics'),GAME129_ROOT=str(base/'v19'),GAME133_ROOT=str(base/'v18'),GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'),GAME126_AUDIT_ROOT=str(base/'readiness-audit'),GAME126_PACK='res://data/rules/trhgd-character-v20.json');env.pop('GAME76_HELPER_ROOT',None)
 rows=[]
 def run(phase,restart=False,visual=False):
- extra=dict(GAME146_PHASE=phase,GAME146_RESTART='1'if restart else'0',GAME129_RESTART='1'if restart else'0',GAME133_RESTART='1'if restart else'0',GAME126_AUDIT_RESTART='1'if restart else'0');label=phase+('-cold'if restart else'')
+ extra=dict(GAME146_PHASE=phase,GAME146_RESTART='1'if restart else'0',GAME129_RESTART='1'if restart else'0',GAME133_RESTART='1'if restart else'0',GAME126_AUDIT_RESTART='1'if restart else'0');label=phase+('-cold'if restart else'');extra['GAME129_ROOT']=str(base/('current-signatures'if phase=='current-signatures'else'v19'));extra['GAME126_COHORT']='1'if phase=='prestige-journey'else'0'
  result=checked_process([str(qa)]+([]if visual else['--headless'])+['--audio-driver','Dummy'],cwd=dist,env=dict(env,**extra),log=base/(label+'.log'),timeout=3600)
  rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows[-1],flush=True)
  assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text()[-14000:]
-for phase in ['mechanics','input','v19','v18','legacy','compatibility','audit','journey','connected']:
+for phase in ['mechanics','input','current-signatures','v19','v18','legacy','compatibility','audit','journey','prestige-journey','connected']:
  run(phase)
  if phase!='input':run(phase,True)
 run('capture',visual=True)
 proofs={}
-for phase,folder,pin in [('mechanics','mechanics',expected),('v19','v19',pins['trhgd-character-v19']),('v18','v18',pins['trhgd-character-v18']),('legacy','legacy-v16',pins['trhgd-character-v16']),('compatibility','compatibility-v16',pins['trhgd-character-v16']),('audit','readiness-audit',expected),('journey','journeys/cohort-0',expected),('connected','connected',expected)]:
+for phase,folder,pin in [('mechanics','mechanics',expected),('current-signatures','current-signatures',expected),('v19','v19',pins['trhgd-character-v19']),('v18','v18',pins['trhgd-character-v18']),('legacy','legacy-v16',pins['trhgd-character-v16']),('compatibility','compatibility-v16',pins['trhgd-character-v16']),('audit','readiness-audit',expected),('journey','journeys/cohort-0',expected),('prestige-journey','journeys/cohort-1',expected),('connected','connected',expected)]:
  for file in ['proof.json','restart-proof.json']:
   p=json.loads((base/folder/file).read_text());assert p['checks']>0 and p['failures']==0
   if 'rules_ref'in p:assert p['rules_ref']==pin
@@ -30,6 +30,8 @@ for phase,folder,pin in [('mechanics','mechanics',expected),('v19','v19',pins['t
 p=json.loads((base/'mechanics/input-proof.json').read_text());assert p['checks']>=8 and p['failures']==0;proofs['input']=p
 journey=proofs['journey/proof.json'];assert journey['earned_xp']==490 and journey['xp_injected']is False and len(journey['journeys'])==3
 assert {r['history'][0]['class_id']for r in journey['journeys']}=={'scout','rogue','knight'}
+prestige=proofs['prestige-journey/proof.json'];assert prestige['earned_xp']==490 and prestige['xp_injected']is False
+paths={s['class_id']for r in prestige['journeys']for s in r['history']};assert {'duelist','arcane-trickster'}<=paths
 assert len(proofs['connected/proof.json']['casts'])==3 and proofs['connected/proof.json']['xp_injected']is False
 captures=json.loads((base/'captures/screenshots.json').read_text());assert captures['failures']==0 and len(captures['screenshots'])>=10
 for row in captures['screenshots']:
