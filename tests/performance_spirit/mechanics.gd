@@ -21,7 +21,7 @@ func run() -> void:
   for at in [1,6,12,20]:
    var r := build(cls,at);check(not r.is_empty(),"lawful1/6/12/20 "+cls+str(at));records[cls+str(at)]=r
  if failures:finish_cohort();return
- test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes();test_casting_competition();test_basic_illusions()
+ test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes();test_casting_competition();test_basic_illusions();test_descriptor_guards()
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var d := kernel.derive_character(records[id]);check(d.ok,"persist lawful candidate "+id)
@@ -174,3 +174,12 @@ func test_basic_illusions() -> void:
   check(failed.ok and saved.ok and has_status(failed.target,"beguiling-doubt") and not has_status(saved.target,"beguiling-doubt"),"original early/mid/late doubt has save counterplay "+str(at))
   r=selected_spell(r,"beguiler-beguiling-ward-1");var veil := use(r,r,"beguiler-beguiling-ward-1")
   check(veil.ok and kernel.derive_character(veil.actor).snapshot.capabilities.concealment==25,"owned allied illusion has real weapon concealment "+str(at))
+
+func test_descriptor_guards() -> void:
+ var errors: Array=[]
+ RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"unknown-group"},source.tables,errors)
+ check(not errors.is_empty(),"unknown exclusive group still rejects")
+ errors=[];RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"maintained-performance"},source.tables,errors)
+ check(not errors.is_empty(),"maintained group without declared upkeep rejects")
+ errors=[];RulesWaveFour.validate_definition("statuses",{"id":"forged","aura":{},"upkeep":{"resource":"performance","amount":0}},source.tables,errors)
+ check(not errors.is_empty(),"zero-cost upkeep descriptor rejects")

@@ -41,26 +41,6 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   RulesRegistry._modifiers(aura.modifiers,tables,row.id,errors)
   for modifier in aura.modifiers:
    if modifier.get("stat")=="HP" or modifier.has("when") or RulesRegistry._contains_stat(modifier.get("value",{})):errors.append(RulesJson.issue("aura.formula",row.id,"Aura magnitude must use unconditional permanent progression, never projected stats"))
-static func project_auras(combat: TacticalCombat,battle: Dictionary) -> void:
- # Recomputed from live positions; never advances RNG or persists a new authority.
- for unit in battle.units.values():
-  unit.record.runtime.modifiers=unit.record.runtime.modifiers.filter(func(m: Dictionary):return not str(m.source).begins_with("aura:"))
- if battle.status!="active":return
- for id in battle.order:
-  var owner: Dictionary=battle.units[id]
-  if not combat.alive(owner) or not RulesEntities.form(owner.record,combat.registry).is_empty():continue
-  var instances: Array=owner.record.runtime.statuses.filter(func(instance: Dictionary):return combat.registry.definition("statuses",instance.id).has("aura"))
-  if instances.is_empty():continue
-  var context: Dictionary=combat.characters.derive_character(owner.record).context
-  for instance in instances:
-   var definition := combat.registry.definition("statuses",instance.id)
-   for ally in battle.units.values():
-    if not combat.alive(ally) or ally.team!=owner.team or combat.distance(owner.position,ally.position)>int(definition.aura.radius) or not combat.line_clear(battle,owner.position,ally.position):continue
-    for modifier in definition.aura.modifiers:
-     var value := RulesExpressions.evaluate_formula(modifier.value,context)
-     ally.record.runtime.modifiers.append({"stat":modifier.stat,"type":modifier.type,"value":int(value.value),"source":"aura:"+id+":"+instance.id})
-
-
 static func maintained_cleanup(combat: TacticalCombat,battle: Dictionary) -> void:
  if combat.registry.rules_ref().pack_id!="trhgd-character-v22":return
  for unit in battle.units.values():
@@ -80,3 +60,22 @@ static func maintained_activation(combat: TacticalCombat,battle: Dictionary) -> 
   else:
    unit.record.runtime.resources[pool]=int(unit.record.runtime.resources[pool])-amount
    battle.log.append(unit.name+" maintains "+definition.id+"; "+pool+" -"+str(amount)+". Main action remains available.")
+
+static func project_auras(combat: TacticalCombat,battle: Dictionary) -> void:
+ # Recomputed from live positions; never advances RNG or persists a new authority.
+ for unit in battle.units.values():
+  unit.record.runtime.modifiers=unit.record.runtime.modifiers.filter(func(m: Dictionary):return not str(m.source).begins_with("aura:"))
+ if battle.status!="active":return
+ for id in battle.order:
+  var owner: Dictionary=battle.units[id]
+  if not combat.alive(owner) or not RulesEntities.form(owner.record,combat.registry).is_empty():continue
+  var instances: Array=owner.record.runtime.statuses.filter(func(instance: Dictionary):return combat.registry.definition("statuses",instance.id).has("aura"))
+  if instances.is_empty():continue
+  var context: Dictionary=combat.characters.derive_character(owner.record).context
+  for instance in instances:
+   var definition := combat.registry.definition("statuses",instance.id)
+   for ally in battle.units.values():
+    if not combat.alive(ally) or ally.team!=owner.team or combat.distance(owner.position,ally.position)>int(definition.aura.radius) or not combat.line_clear(battle,owner.position,ally.position):continue
+    for modifier in definition.aura.modifiers:
+     var value := RulesExpressions.evaluate_formula(modifier.value,context)
+     ally.record.runtime.modifiers.append({"stat":modifier.stat,"type":modifier.type,"value":int(value.value),"source":"aura:"+id+":"+instance.id})
