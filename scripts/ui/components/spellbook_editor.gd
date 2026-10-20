@@ -30,7 +30,7 @@ func setup(value: Dictionary) -> void:
   var summary := GameUI.label("",GameUI.META);selection_summaries[cls]=summary;add_child(summary)
   if definition.spell_mode=="prepared":
    var tiers := GameUI.label("",GameUI.META);preparation_summaries[cls]=tiers;add_child(tiers)
-   tiers.tooltip_text="Staged copies share each tier's daily capacity. Rules reject excess copies. Saving preserves current slots and spent copies; only an eligible rest refills them."
+   tiers.tooltip_text="Staged copies share each tier's daily capacity. Rules reject excess copies. Saving preparations at home refills selected copy allocations, while current shared slots stay spent. Eligible rest refills the daily slots."
   var ordered: Array=result.snapshot.abilities.duplicate()
   ordered.sort_custom(func(a: String,b: String):
    var left := source.definition("abilities",a);var right := source.definition("abilities",b)
