@@ -1,0 +1,5 @@
+# GAME-150 implementation checkpoint
+
+Branch feature/game-150-upper-tier-prepared-casting from verified86b03ab main. No150 PR yet. Initial23 candidate (not frozen/native accepted) contains four spells, three statuses and four prepared pools; no roster growth. Generator build-upper-prepared-pack.py only writes23/new manifest row. Native source changes and focused mechanics/production GUI/cold harness are implemented; Windows verification has not yet run. No Linux game execution.
+
+Next: push initial source/tests, inspect first focused Windows result, fix actual failures. Then implement production earned Wizard/Cleric/Fighter journeys, connected save/rest/cold, actual captures, current/archived compatibility and complete native build using established149 release harness. Extend phase preflight to every added script before export. Do not call the dangling release=true stage until verify-package.py/full phases exist. Only after matching final native proof regenerate50-career readiness (currently still18/32/0 on22), publish PR, verify current-head Windows CI, normal merge and verify postmerge. Keep101/GAME123 open; no Linear access claimed.

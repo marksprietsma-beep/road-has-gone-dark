@@ -1,0 +1,3 @@
+# GAME-150 Windows verification
+
+Pending first focused Windows run. No native pass, release, checksum or promotion is claimed. Host operations so far are source/JSON/hash inspection only. Historical22-file/pin guard is committed. New focused drivers exercise actual primitives, full tactical commands, chosen1/6/15/17/20 histories, mixed/Theurge tracks, invalid budgets/attributes/targets, costs, saves, immunity/dispelling, activation expiry, GUI copies/slot summaries and exact separate-process reload. Genuine earned, connected, screenshots and standalone release phases remain to be integrated before the full gate.

@@ -12,8 +12,9 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if registry.rules_ref().pack_id=="trhgd-character-v22" and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]:
+ if registry.rules_ref().pack_id=="trhgd-character-v23" and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
+ if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
@@ -103,12 +104,14 @@ func _martial_event(b: Dictionary,owner: Dictionary,other: Dictionary,event: Str
 
 func next_turn(b: Dictionary) -> void:
  super.next_turn(b)
+ RulesMartial.start_activation(self,b)
  RulesWaveFour.maintained_activation(self,b)
  if RulesMartial.enabled(registry) and alive(current(b)):_martial_event(b,current(b),current(b),"activation_start")
 
 func create_definition(state: Dictionary,site_id: String,definition: Dictionary,pin: String) -> Dictionary:
  var battle := super.create_definition(state,site_id,definition,pin)
  if not battle.is_empty() and RulesMartial.enabled(registry):
+  RulesMartial.start_activation(self,battle)
   _martial_event(battle,current(battle),current(battle),"activation_start")
   return seal(battle)
  return battle

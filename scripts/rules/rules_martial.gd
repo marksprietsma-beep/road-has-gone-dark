@@ -2,7 +2,7 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
@@ -20,6 +20,15 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
    if row.trigger=="activation_start" and (row.targeting.kind!="self" or row.cost.reaction!=0):errors.append(RulesJson.issue("martial.activation",row.id,"Activation recovery is self-only and cannot borrow a reaction"))
    if row.trigger!="activation_start" and row.cost.reaction!=1:errors.append(RulesJson.issue("martial.trigger",row.id,"Combat triggers must spend the shared reaction"))
  elif category=="statuses":
+  if row.has("activation_effects"):
+   var periodic: Variant=row.activation_effects
+   if not periodic is Array or periodic.size()!=1:
+    errors.append(RulesJson.issue("activation.schema",row.id,"One bounded activation healing effect required"))
+   else:
+    var effect: Variant=periodic[0]
+    if not effect is Dictionary or effect.size()!=2 or effect.get("op")!="heal" or not effect.get("amount") is Dictionary or effect.amount.size()!=2 or effect.amount.get("op")!="const" or not RulesJson.integer(effect.amount.get("value"),1,50):
+     errors.append(RulesJson.issue("activation.effect",row.id,"Activation healing must be constant1–50; no actions, resources or arbitrary scripts"))
+    else:RulesRegistry.validate_effect(effect,tables,row.id,errors,0,3)
   if row.has("weapon_override"):
    RulesRegistry._reference(tables,"equipment",row.weapon_override,row.id,errors)
    if tables.equipment.get(row.weapon_override,{}).get("kind")!="weapon":errors.append(RulesJson.issue("martial.weapon",row.id,"Actual weapon required"))
@@ -52,7 +61,7 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
  return false
 
 static func mobile_enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]
 
 static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
  if include_runtime and not RulesEntities.form(record,source).is_empty():return false
@@ -71,3 +80,23 @@ static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_r
 static func precision_damage(record: Dictionary,source: RulesRegistry) -> int:
  var levels: Dictionary=RulesCharacter.new(source).derive_character(record).snapshot.class_levels
  return 2*int(ceil(float(int(levels.get("rogue",0))+int(levels.get("arcane-trickster",0)))/2.0))
+
+static func start_activation(combat: TacticalCombat,battle: Dictionary) -> void:
+ # v23 descriptors execute at the existing turn boundary. Cold loading never ticks.
+ if combat.registry.rules_ref().pack_id!="trhgd-character-v23" or battle.status!="active":return
+ var unit: Dictionary=combat.current(battle)
+ if not combat.alive(unit):return
+ var derived := combat.characters.derive_character(unit.record)
+ if derived.snapshot.tags.has("main_action_suppressed"):
+  battle.budget.main=0
+  battle.log.append(unit.name+" loses this main action to Stillness; movement and the shared reaction remain available.")
+ for instance in unit.record.runtime.statuses.duplicate(true):
+  for effect in combat.registry.definition("statuses",instance.id).get("activation_effects",[]):
+   var context: Dictionary=derived.context.duplicate(true)
+   context.character_id=unit.id;context.source_character_id=instance.source
+   context.target_id=unit.id;context.target_stats=derived.snapshot.stats
+   var result := combat.effects.resolve_rules_effect(effect,unit.record.runtime,unit.record.runtime,context,battle.rng)
+   if not result.ok:push_error("Validated activation effect failed: "+JSON.stringify(result.errors));return
+   unit.record.runtime=result.target;battle.rng=result.rng
+   for event in result.events:
+    if event.type=="healing_applied":battle.log.append(unit.name+" receives "+str(event.amount)+" HP from Renewing benediction.")

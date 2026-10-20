@@ -1,0 +1,86 @@
+name: GAME-150 Upper Prepared Casting
+on:
+  push:
+    branches: [feature/game-150-upper-tier-prepared-casting, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/upper_prepared/**', '.github/workflows/verify-upper-prepared.yml']
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Run the complete self-contained Windows release gate after focused checks
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: game150-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class cache import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game150-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game150-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Actual upper-tier control, recovery, preparation and cold tests
+        env:
+          GAME150_ROOT: ${{ runner.temp }}/game150-focused
+        run: python tests/upper_prepared/run-tests.py
+      - name: Exact historical packs and negative guards
+        run: |
+          python tests/upper_prepared/check-history.py
+          python tests/adventure_cycles/pin_guard_test.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native game, earned progression, compatibility, controls and capture
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME150_RELEASE_ROOT: ${{ runner.temp }}/game150-native
+          GH_TOKEN: ${{ github.token }}
+        run: python tests/upper_prepared/verify-package.py
+      - name: Complete Windows x64 review game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game150-complete-windows-x64
+          path: ${{ runner.temp }}/game150-native/distribution/*.zip*
+          retention-days: 90
+      - name: Release receipts and genuine Godot renders
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game150-native-evidence
+          path: |
+            ${{ runner.temp }}/game150-native/**/*.json
+            ${{ runner.temp }}/game150-native/**/*.log
+            ${{ runner.temp }}/game150-native/captures/*.png
+          retention-days: 90
+      - name: Preserve exact focused evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game150-focused-windows-evidence
+          path: |
+            ${{ runner.temp }}/game150-baseline/*
+            ${{ runner.temp }}/game150-focused/*.json
+            ${{ runner.temp }}/game150-focused/*.log
+            ${{ runner.temp }}/game150-*.log
+          retention-days: 90

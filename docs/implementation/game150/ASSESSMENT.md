@@ -1,0 +1,14 @@
+# GAME-150 bounded implementation assessment
+
+Verified main86b03ab0e9fb8254f0672e98c963b281ae3b63ce, PR141 merged and all20 postmerge Windows checks successful. No remote150 branch or exact-title/head PR found. Existing50-career matrix18 COMPLETE/32 PARTIAL/0 BLOCKED. No callable Linear tool; existing GitHub101 is the explicit fallback, never a claim of a Linear update.
+
+Actual22 upper tiers8/9 each offer Tempest (saved area damage/Slowed) and Sanctuary (area heal/ward/relief) for Wizard and Cleric. Damage type differs arcane/radiant, numerical payloads scale, so these are not byte-identical spells; their tactical topology is narrow and highly shared. GAME130 tiers4–7 already function and must not be repeated. Existing Evocation/Abjuration and Healing/War actions and permanent15 bonuses are real consumers, requiring verification rather than replacement.
+
+Four focused gap groups:
+
+1. Wizard upper-tier decisions: add tier8 saved area removal of an explicit boon set (an expansion of the existing unravelling family, not a new dispel engine), and tier9 one-activation main-action denial. Movement/shared reactions remain legal; saves, condition immunity/cleansing and finite slot/copy costs provide counterplay.
+2. Cleric upper-tier support: tier8 group cleanse/prevention for five explicit control conditions; tier9 immediate20 and subsequent own-activation12 healing while a finite three-global-boundary boon survives. No extra actions, slot recovery or resurrection. Both have meaningful timing/counterplay rather than another scaled damage/heal template.
+3. Audited specialisation defects: Cleric6 lacks a matching original domain requirement; Wizard Abjuration6/Cleric War6 give temporary HP to the caster despite targeting another ally. Fix in23 only, prove historical22 semantics remain unchanged, and verify every existing branch1/6/20 with actual actions/resources.
+4. Preparation feedback: current copy controls hide shared per-tier ceilings/current slots. Add live staged-copy/capacity/current-slot summaries and over-budget indication through the existing editor. Rules and the single campaign writer remain authoritative; selecting/preparing never mints slots or XP.
+
+Append immutable23; preserve every published1–22 byte and manifest row and frozen GAME32 TacticalCombat. Two bounded consumers attach to existing activation boundaries/effect primitives inside TacticalAuras/RulesMartial; no alternate engine, save writer, deity system, roster or world expansion. No Linux game validation. Compile new dynamic drivers and run focused Windows mechanics/GUI/cold checks before the one complete release gate. High tier/history fixtures are development evidence; genuine earned advancement is separate. Existing caption/tooltip/layout shortcomings must remain honestly described, not waved away by assertion totals.
