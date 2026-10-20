@@ -1,0 +1,1290 @@
+{
+  "scope": "Exact class spell references and executable payloads, not a count of unique effect families. The new four selections add one widened dispel family plus action-denial, condition-protection and sustained-healing decisions through shared primitives.",
+  "before": {
+    "wizard": {
+      "8": [
+        {
+          "id": "wizard-tier8-tempest",
+          "name": "Wizard: Tempest 8",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-8": 1,
+              "wizard-tier8-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wizard-tier8-sanctuary",
+          "name": "Wizard: Sanctuary 8",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-8": 1,
+              "wizard-tier8-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier8-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        }
+      ],
+      "9": [
+        {
+          "id": "wizard-tier9-tempest",
+          "name": "Wizard: Tempest 9",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-9": 1,
+              "wizard-tier9-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wizard-tier9-sanctuary",
+          "name": "Wizard: Sanctuary 9",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-9": 1,
+              "wizard-tier9-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier9-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        }
+      ]
+    },
+    "cleric": {
+      "8": [
+        {
+          "id": "cleric-tier8-tempest",
+          "name": "Cleric: Tempest 8",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-8": 1,
+              "cleric-tier8-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cleric-tier8-sanctuary",
+          "name": "Cleric: Sanctuary 8",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-8": 1,
+              "cleric-tier8-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier8-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        }
+      ],
+      "9": [
+        {
+          "id": "cleric-tier9-tempest",
+          "name": "Cleric: Tempest 9",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-9": 1,
+              "cleric-tier9-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cleric-tier9-sanctuary",
+          "name": "Cleric: Sanctuary 9",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-9": 1,
+              "cleric-tier9-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier9-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "candidate": {
+    "wizard": {
+      "8": [
+        {
+          "id": "wizard-tier8-tempest",
+          "name": "Wizard: Tempest 8",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-8": 1,
+              "wizard-tier8-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wizard-tier8-sanctuary",
+          "name": "Wizard: Sanctuary 8",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-8": 1,
+              "wizard-tier8-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier8-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        },
+        {
+          "id": "wizard-unweaving-tide",
+          "name": "Unweaving tide",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-8": 1,
+              "wizard-unweaving-tide-prepared": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "remove_status",
+                  "id": "warded"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "haste"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "wizard-greater-ward-status"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "cleric-faith-ward-status"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "perfect-shadow"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "beguiling-veil"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "runic-shell"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "spirit-shelter"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "spirit-lattice"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "lucid-poise"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "sovereign-clarity"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "elemental-covenant"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "company-veil"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "freedom-path"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "concord-release"
+                },
+                {
+                  "op": "remove_status",
+                  "id": "renewing-benediction"
+                }
+              ],
+              "on_success": []
+            }
+          ]
+        }
+      ],
+      "9": [
+        {
+          "id": "wizard-tier9-tempest",
+          "name": "Wizard: Tempest 9",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-9": 1,
+              "wizard-tier9-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "wizard"
+                    }
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wizard-tier9-sanctuary",
+          "name": "Wizard: Sanctuary 9",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-9": 1,
+              "wizard-tier9-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "wizard"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "wizard-tier9-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        },
+        {
+          "id": "wizard-stillness-lattice",
+          "name": "Stillness lattice",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 0
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "wizard-slots-9": 1,
+              "wizard-stillness-lattice-prepared": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "INT",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "INT"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "apply_status",
+                  "id": "stillness-lattice"
+                }
+              ],
+              "on_success": []
+            }
+          ]
+        }
+      ]
+    },
+    "cleric": {
+      "8": [
+        {
+          "id": "cleric-tier8-tempest",
+          "name": "Cleric: Tempest 8",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-8": 1,
+              "cleric-tier8-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "8d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cleric-tier8-sanctuary",
+          "name": "Cleric: Sanctuary 8",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-8": 1,
+              "cleric-tier8-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier8-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        },
+        {
+          "id": "cleric-concord-release",
+          "name": "Concord of release",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-8": 1,
+              "cleric-concord-release-prepared": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 18
+          },
+          "effects": [
+            {
+              "op": "remove_status",
+              "id": "stillness-lattice"
+            },
+            {
+              "op": "remove_status",
+              "id": "dissonant-seal"
+            },
+            {
+              "op": "remove_status",
+              "id": "gravitic-snare"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            },
+            {
+              "op": "apply_status",
+              "id": "concord-release"
+            }
+          ]
+        }
+      ],
+      "9": [
+        {
+          "id": "cleric-tier9-tempest",
+          "name": "Cleric: Tempest 9",
+          "targeting": {
+            "kind": "creature",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-9": 1,
+              "cleric-tier9-tempest-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "WIS"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "slowed"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "9d6",
+                    "bonus": {
+                      "op": "casting_level",
+                      "id": "cleric"
+                    }
+                  },
+                  "damage_type": "radiant",
+                  "save_half": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cleric-tier9-sanctuary",
+          "name": "Cleric: Sanctuary 9",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-9": 1,
+              "cleric-tier9-sanctuary-copies": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 18
+                  },
+                  {
+                    "op": "casting_level",
+                    "id": "cleric"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "cleric-tier9-sanctuary-status"
+            },
+            {
+              "op": "remove_status",
+              "id": "off-balance"
+            }
+          ]
+        },
+        {
+          "id": "cleric-renewing-benediction",
+          "name": "Renewing benediction",
+          "targeting": {
+            "kind": "ally",
+            "range": 6,
+            "radius": 1
+          },
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "cleric-slots-9": 1,
+              "cleric-renewing-benediction-prepared": 1
+            }
+          },
+          "requirements": {
+            "op": "attribute",
+            "id": "WIS",
+            "min": 19
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "const",
+                "value": 20
+              }
+            },
+            {
+              "op": "apply_status",
+              "id": "renewing-benediction"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

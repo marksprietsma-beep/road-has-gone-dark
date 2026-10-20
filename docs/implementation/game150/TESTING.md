@@ -9,3 +9,5 @@ Focused39421114670/d19845d: source/import/two scripts compiled; actual mechanics
 Focused Windows run39421660328 / d834d6ff284f417116b8ee9f6f8fdc422011354b passed: 1,634 mechanics checks, 97 exact separate-process restart checks and 26 actual production-control checks, all zero failures. Historical22-pack/pin guards passed. These are focused native receipts, not the complete standalone release.
 
 The next checkpoint adds all18 release-phase compile checks, actual earned Wizard/Cleric/Fighter progression, connected allied buffers, current/archived cohort regression, actual captures and independent executable/archive verification. Home preparation follows the existing copy-allocation refill policy; shared daily slots never refill through preparation. The new tooltip describes that distinction.
+
+Current complete-harness source7ff0e27: Windows39423053334 SUCCESS. All18 dynamic review phases compile; focused1,634 mechanics /97 exact cold /26 production controls and historical guards pass again. The next complete release uses the same runtime, rules, drivers and exporter; intervening changes are documentation only.
