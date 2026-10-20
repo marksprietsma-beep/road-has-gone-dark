@@ -99,8 +99,8 @@ func test_upper_spells() -> void:
 
 func test_area_dispel() -> void:
  var r := prepare_upper(records.wizard20,"wizard-unweaving-tide");var engine := TacticalAuras.new(r);var b := encounter(r)
- b.units["bandit-archer"].position=[2,0];b.units.b.position=[2,2]
- for id in ["bandit-blade","bandit-archer"]:
+ b.units["bandit-bow"].position=[2,0];b.units.b.position=[2,2]
+ for id in ["bandit-blade","bandit-bow"]:
   var target := defender(false);target.character_id=id;target.runtime.statuses.append({"id":"warded","source":"fixture","remaining":3,"expiry":"global_round_start"})
   b.units[id].record=target
  b.units.b.record.runtime.statuses.append({"id":"warded","source":"fixture","remaining":3,"expiry":"global_round_start"})
@@ -109,12 +109,12 @@ func test_area_dispel() -> void:
  var dc: int=RulesExpressions.evaluate_formula(source.definition("abilities","wizard-unweaving-tide").effects[0].dc,context).value
  for n in 100:
   var rng := RulesRng.initial("area-dispel-"+str(n));var first := RulesRng.saving_throw(engine.stats(b.units["bandit-blade"]).will,dc,rng)
-  var second := RulesRng.saving_throw(engine.stats(b.units["bandit-archer"]).will,dc,first.rng)
+  var second := RulesRng.saving_throw(engine.stats(b.units["bandit-bow"]).will,dc,first.rng)
   if not first.success and not second.success:b.rng=rng;break
  b=engine.seal(b);var casted := execute(engine,b,"wizard-unweaving-tide","bandit-blade")
  check(casted.ok,"saved area boon counter actually executes")
  if not casted.ok:return
- check(not has_status(casted.battle.units["bandit-blade"].record,"warded") and not has_status(casted.battle.units["bandit-archer"].record,"warded") and has_status(casted.battle.units.b.record,"warded"),"two enemy wards removed with independent saves; nearby allied ward retained")
+ check(not has_status(casted.battle.units["bandit-blade"].record,"warded") and not has_status(casted.battle.units["bandit-bow"].record,"warded") and has_status(casted.battle.units.b.record,"warded"),"two enemy wards removed with independent saves; nearby allied ward retained")
  for pool in source.definition("abilities","wizard-unweaving-tide").cost.resources:check(casted.battle.units.a.record.runtime.resources[pool]==b.units.a.record.runtime.resources[pool]-1,"area targets share one slot/copy cost")
  battles.unweaving_area=casted.battle.duplicate(true)
 
