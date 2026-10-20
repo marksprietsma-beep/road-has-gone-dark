@@ -1,5 +1,9 @@
 name: GAME-150 Corrected Godot Captures
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/game-150-upper-tier-prepared-casting]
+    paths: ['.github/workflows/capture-upper-prepared.yml']
 permissions:
   contents: read
   actions: read
