@@ -12,6 +12,11 @@ func run() -> void:
  for cls in ["wizard","cleric"]:
   var record: Dictionary=saved.records[cls+"20"].duplicate(true);var source := RulesRecords.registry(record);var kernel := RulesCharacter.new(source)
   var before := RulesJson.digest(record);book.setup(record)
+  book.repertoire_search.text="tier 8";book.repertoire_search.text_changed.emit("tier 8")
+  var upper: String="wizard-unweaving-tide" if cls=="wizard" else "cleric-concord-release"
+  var first: String=book.controls.keys().filter(func(aid: String):return source.definition("abilities",aid).get("spell_tier")==1)[0]
+  check(book.controls[upper].get_parent().visible,"actual typed tier search exposes new upper choice")
+  check(not book.controls[first].get_parent().visible,"actual typed tier search hides unrelated early choices")
   check(book.preparation_summaries.has(cls),"actual prepared-tier budget summary "+cls)
   for id in book.controls:
    if book.controls[id] is SpinBox:book.controls[id].value=0

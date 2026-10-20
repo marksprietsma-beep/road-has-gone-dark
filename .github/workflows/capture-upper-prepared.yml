@@ -1,0 +1,55 @@
+name: GAME-150 Corrected Godot Captures
+on: workflow_dispatch
+permissions:
+  contents: read
+  actions: read
+jobs:
+  windows-captures:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original successful source and saved native fixtures
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin 8b37e0d03ed38df138bc6bf2fdf6bba221673d85 --depth=1
+          gh run download 39423972908 -R marksprietsma-beep/road-has-gone-dark -n game150-native-evidence -D "$env:RUNNER_TEMP/game150-native"
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified native engine and helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class import and all review phases
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game150-recapture-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game150-recapture-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+          & $env:GODOT_BIN --headless --path . --script res://tests/upper_prepared/compile_driver.gd
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verified Windows export templates
+        run: python tools/release/prepare-templates.py
+      - name: Only actual controls and corrected visual evidence
+        env:
+          GAME150_RECAPTURE_ROOT: ${{ runner.temp }}/game150-native
+        run: python tests/upper_prepared/recapture.py
+      - name: Preserve original Godot pixels and exact source receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game150-corrected-captures
+          path: |
+            ${{ runner.temp }}/game150-native/recapture-*.json
+            ${{ runner.temp }}/game150-native/recapture-*.log
+            ${{ runner.temp }}/game150-native/mechanics/input-proof.json
+            ${{ runner.temp }}/game150-native/captures/*
+            ${{ runner.temp }}/game150-recapture-import.log
+          retention-days: 90
