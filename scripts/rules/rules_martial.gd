@@ -2,7 +2,7 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
@@ -52,7 +52,7 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
  return false
 
 static func mobile_enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 
 static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
  if include_runtime and not RulesEntities.form(record,source).is_empty():return false

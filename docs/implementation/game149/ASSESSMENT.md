@@ -1,0 +1,13 @@
+# GAME-149 — bounded implementation assessment
+
+Parent main9eaba7c4f2e1d985a0e6c14326c49514c15c069b verified;13 postmerge workflow runs succeeded (the owner’s19 job checks), no existing149 remote branch or PR found. Existing branch feature/game-149-performance-illusion-spirit. No callable Linear connector; existing GitHub101 is the tracking fallback.
+
+Three scoped gap groups, using existing RulesCharacter/RulesEffects, party aura projection, action/resource/save authority and single campaign writer:
+
+1. Bard rally statuses were three-global-start snapshot buffs, not maintained performances; dirge had no save. v22 proposes live ally rally projection, one song per bard, automatic finite upkeep each later own activation, free deliberate stop, exhaustion/defeat/form/battle-end cleanup, main-action start competition and later spellcasting. Dirge becomes saved enemy control; tier3 gains condition relief rather than the sole Lightning spell. This is an original bounded performance, not a tabletop music/concentration system.
+2. Beguiler tier7 Prismatic Doubt applies beneficial Warded to a failed enemy. v22 removes that hostile buff and adds saved status-concealment removal. A new selected tier2 non-damaging counter-veil action adds an actual different build decision; spontaneous known limits persist. No general antimagic/world illusion system.
+3. Spirit Shaman already has authoritative once-per-eligible-rest retrieval, permanent guide choices and finite spirit favour. Preserve/reuse those. The existing SpellbookEditor applies spontaneous eligibility disabling only to v18; later pins let players click unavailable spells. Correct that UI gate, show staged counts and verify actual controls, durable versus retrieved choices, rest, no slot/XP recovery and cold persistence. Improve guide-choice prose from internal labels using actual effects. No replacement retrieval system.
+
+No new class/race/feat/creature/skill catalogue. Historical1–21 and frozen TacticalCombat must remain byte-identical; only fresh campaigns default22. Focused Windows first, compile dynamic phases before running; full Windows export only after stable focused candidate. No Linux Godot/game tests. Baseline structural witnesses and real candidate commands are in the focused driver; do not describe pending tests as passed. Candidate can change until native accepted hash is frozen.
+
+Readiness remains15/35/0 until matching complete native proof justifies promotion. Human readability/balance remains separate. Existing missing-glyph/blank-build captures and compact caption clipping are unrelated known limits, not clean visual acceptance. No149 merge or release is claimed yet.

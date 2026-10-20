@@ -1,0 +1,9 @@
+# GAME-149 active implementation checkpoint
+
+Existing feature/game-149-performance-illusion-spirit frommain9eaba7c. Do not create another branch or redo prior waves. Candidate generatorbuild-performance-spirit-pack.py appends22; all21 older packs remain unchanged. Production changes implement bounded Bard maintenance via existing aura adapter, saved dirge/tier3 relief, Beguiler hostile-buff correction/counter-concealment and existing Spirit retrieval UI eligibility/staged counts. No second combat/save engine.
+
+First focused Windows run must inspect actual logs; none passed yet. New test scripts under tests/performance_spirit compile before execution. Actual lawful early/mid/late fixtures, saved/cold hashes/commands, spontaneous/guide/retrieval gates and production input checks are proposed. Full native journey/connected/capture/export harness and matching readiness promotion are still to finish. Do not dispatch release=true until those files and focused checks are ready. Do not claim existing21 native tests prove22.
+
+Continue with actual Windows errors only; preserve exact invariants, history bytes and frozen TacticalCombat. Complete actual490XP/level8 Bard/Beguiler/Spirit careers, actual production retrieval save/return/rest and connected actions/cold; label20 fixtures. Then single full native Windows release, audit/checksum/screenshots, evidence-driven50-career readiness, PR/current-head Windows checks/normal merge/postmerge. GitHub101 fallback; no Linear connector. No next wave/world expansion.
+
+Auth: unset GH_TOKEN/GITHUB_TOKEN; GH_CONFIG_DIR=/workspace/scratch/game146/gh-auth. Scoped git helper. Never print credentials. Incidental __pycache__ stays untracked. Push meaningful work before long tests.
