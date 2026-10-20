@@ -1,0 +1,13 @@
+# GAME-148 final publication checkpoint
+
+Do not restart implementation. Existing branchfeature/game-148-supernatural-signatures, parentmain1645a713. Runtime implementation0f404cf; successfully exported/tested0f469c9ae24bb0f29372eb92b239b848fe6b5be7; v21 hashb3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab. All historical20 packs and frozen TacticalCombat preserved. Later changes are documentation/evidence/readiness only.
+
+Complete Windows run39232732845 SUCCESS, buildartifact12179465231/nativeevidence12179475242. Inner playable ZIP SHA25616f4b926cdcb9b129592e974251747818fd71177f9edb93fc2deabcff4c014ea. Download/audit already complete,14 unchanged PNGs and final proof/provenance/timing/reuse/archive records saved. Reused nine unchanged completed phases from0f404cf/run39226588983; changedv18, journey/cold, connected/cold, captures, new production startup/archive fresh. No need rerun complete release for docs-only changes. TESTING retains failed harness attempts and exact receipt counts.
+
+Readiness generator ran successfully against matching native evidence:15 COMPLETE/35 PARTIAL/0 BLOCKED. Captures have real visual limitations (missing sheet glyphs, blank build detail, compact clipping); preserve them, do not imply clean visual acceptance. Human balance/visual review separate. No new wave is authorised during publication.
+
+NEXT: commit/push final docs/evidence/readiness; verify source equivalence to tested0f469c9; create ONE PR against main (check for existing first), review actual current-head required Windows checks and normal merge when green. Confirm actual merge/main SHA; inspect postmergeCI and report pending accurately if still running. Update existing GitHub101 fallback (no Linear connector), keep101/82 OPEN. Add actual PR/merge evidence there. Do not rerun expensive release unless runtime/test input changes or an actual failure requires it.
+
+Recommended next bounded cohort after publication: Bard/Beguiler/Spirit Shaman; verify concrete performance/control/retrieval gaps before a new implementation. Remaining35 rows and finite repair queue are in game129/READINESS. No sourcebook-complete prerequisite; living-world142/141 only after supported-character functional acceptance. No implementation of next wave here.
+
+Auth: unset injected GH_TOKEN/GITHUB_TOKEN and GH_CONFIG_DIR=/workspace/scratch/game146/gh-auth. Use scoped git credential helper. Never print tokens. Incidental __pycache__ is untracked and must stay out of commits. Local final artifacts under/workspace/scratch/game148/final-native andfinal-build. Use structured REST JSON for gh PR edits if old gh GraphQL Projects deprecation occurs.

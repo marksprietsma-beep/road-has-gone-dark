@@ -1,0 +1,428 @@
+{
+  "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+  "workflow": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39226588983",
+  "overall_workflow_conclusion": "failure",
+  "failed_phase": "journey: test-script type inference",
+  "scope": "Successful unchanged Windows native prefix only; not a completed game release or a fresh follow-up run",
+  "proofs": {
+    "mechanics/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 988,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 77,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-signatures/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-signatures/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-mobile/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 622,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-mobile/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 33,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "v20/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 622,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v20",
+        "rules_version": "20.0.0",
+        "schema_version": 1
+      }
+    },
+    "v20/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 33,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v20",
+        "rules_version": "20.0.0",
+        "schema_version": 1
+      }
+    },
+    "v19/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "v19/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "v18/proof.json": {
+      "checks": 598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "v18/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "legacy-v16/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy-v16/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility-v16/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility-v16/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "readiness-audit/proof.json": {
+      "checks": 2594,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "readiness-audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 20,
+      "failures": 0,
+      "scope": "Actual production Godot buttons, target hitboxes and affected-unit hover"
+    }
+  },
+  "timings": [
+    {
+      "phase": "mechanics",
+      "seconds": 51.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 5.422,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 5.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-signatures",
+      "seconds": 50.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-signatures-cold",
+      "seconds": 4.015,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-mobile",
+      "seconds": 48.141,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-mobile-cold",
+      "seconds": 4.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v20",
+      "seconds": 49.343,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v20-cold",
+      "seconds": 4.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v19",
+      "seconds": 53.766,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v19-cold",
+      "seconds": 4.203,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v18",
+      "seconds": 100.125,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v18-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 1.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 99.094,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 57.843,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "seconds": 831.829,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 6.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 0.406,
+      "exit_code": 1,
+      "errors": true,
+      "timeout": false
+    }
+  ]
+}

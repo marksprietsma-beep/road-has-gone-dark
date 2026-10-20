@@ -2,7 +2,7 @@ class_name RulesPsychic
 extends RefCounted
 ## v13 presentation/qualification adapter. Ordered history and GAME-32 effects own state.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
 static func level(context: Dictionary,source: RulesRegistry) -> int:
  var total := 0
  for id in context.classes:

@@ -7,7 +7,7 @@ func run() -> void:
  if not loaded.ok:complete();return
  kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME133_RESTART")=="1":
-  var saved := RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
+  var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
   for id in saved.records:
    var s := kernel.derive_character(saved.records[id])
    check(s.ok and s.snapshot.snapshot_hash==saved.hashes[id],"exact cold derived state "+id)

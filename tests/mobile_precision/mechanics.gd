@@ -2,7 +2,7 @@ extends "res://tests/class_signatures/mechanics_driver.gd"
 ## Lawful high-level fixtures; no campaign XP injected. Actual native Windows only.
 func run() -> void:
  base=OS.get_environment("GAME146_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v20.json")
+ source=RulesRegistry.new();var loaded := source.load_pack(mobile_pack_path())
  check(loaded.ok,"v20 schema "+JSON.stringify(loaded.get("errors",[])))
  if not loaded.ok:finish_mobile();return
  kernel=RulesCharacter.new(source)
@@ -192,7 +192,9 @@ func test_pin_isolation() -> void:
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v19.json").ok,"historical v19 load")
  check(not RulesMartial.mobile_enabled(old),"v19 cannot enter changed combat semantics")
  check(old.definition("abilities","swashbuckler-technique-4").name=="Disarming flourish 4","historical advertised content preserved")
- check(RulesRecords.new_character_registry().rules_ref()==source.rules_ref(),"new campaigns use exact v20")
+ var fresh := RulesRecords.new_character_registry();var expected := RulesRegistry.new()
+ check(expected.load_pack("res://data/rules/"+RulesRecords.NEW_PACK+".json").ok,"configured fresh source loads independently of archived fixture")
+ check(fresh.rules_ref()==expected.rules_ref(),"fresh campaigns use exact configured pin; archived fixtures keep their original pin")
 
 func test_hit_boundaries() -> void:
  for pair in [["swashbuckler20","swashbuckler-master-20"],["rogue8","attack"]]:
@@ -275,3 +277,5 @@ func test_talents() -> void:
    var before: int=engine.stats(b.units[target]).defence;var after: int=engine.stats(result.battle.units[target]).defence
    check(after>before if option=="escape"else after<before,"talent changes real defence "+option)
   records["talent-"+option]=r
+
+func mobile_pack_path() -> String:return "res://data/rules/trhgd-character-v20.json"

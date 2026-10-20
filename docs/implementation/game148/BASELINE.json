@@ -1,0 +1,3833 @@
+{
+  "source": "1645a71364ee6ff583eac24ccdefe853861329c2",
+  "pack": "trhgd-character-v20",
+  "classes": {
+    "warlock": {
+      "class": {
+        "id": "warlock",
+        "name": "Warlock",
+        "max_level": 20,
+        "requirements": {
+          "op": "all",
+          "args": []
+        },
+        "hp_per_level": 4,
+        "skill_points": 4,
+        "bab": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "multiply",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "warlock"
+                },
+                {
+                  "op": "const",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": 4
+            }
+          ]
+        },
+        "saves": {
+          "fortitude": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warlock"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "reflex": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "warlock"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "will": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 2
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "warlock"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "casting": {
+          "op": "const",
+          "value": 0
+        },
+        "casting_tradition": "",
+        "features": [
+          {
+            "at": 1,
+            "id": "warlock-technique-1-feature"
+          },
+          {
+            "at": 4,
+            "id": "warlock-technique-4-feature"
+          },
+          {
+            "at": 8,
+            "id": "warlock-technique-8-feature"
+          },
+          {
+            "at": 12,
+            "id": "warlock-technique-12-feature"
+          },
+          {
+            "at": 13,
+            "id": "warlock-master-13-feature"
+          },
+          {
+            "at": 16,
+            "id": "warlock-master-16-feature"
+          },
+          {
+            "at": 20,
+            "id": "warlock-master-20-feature"
+          }
+        ],
+        "provenance": {
+          "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+          "license": "Original project-authored content",
+          "revision": "game112-wave-one",
+          "source_concept": "Warlock"
+        },
+        "description": "Repeatable eldritch blast and durable invocation choices. No spell slots/points: sustained damage trades against main-action wards/control.",
+        "bonus_feat_levels": [],
+        "hit_die": 10,
+        "class_skills": [
+          "arcana",
+          "persuasion"
+        ],
+        "proficiencies": [
+          "simple",
+          "light"
+        ],
+        "spell_mode": "",
+        "casting_attribute": "",
+        "recommended_equipment": [
+          "staff",
+          "leathers"
+        ],
+        "career_choices": [
+          {
+            "id": "warlock-discipline",
+            "name": "Invocation",
+            "at": 1,
+            "options": [
+              {
+                "id": "assault",
+                "name": "Assault",
+                "description": "Persistent save_dc +2; mutually exclusive discipline.",
+                "features": [
+                  "warlock-discipline-assault"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "ward",
+                "name": "Ward",
+                "description": "Persistent defence +2; mutually exclusive discipline.",
+                "features": [
+                  "warlock-discipline-ward"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "warlock-career-16",
+            "name": "Master career approach",
+            "at": 16,
+            "options": [
+              {
+                "id": "resilience",
+                "name": "Resilience",
+                "description": "Resilience",
+                "features": [
+                  "warlock-career-recovery-feature"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "pressure",
+                "name": "Pressure",
+                "description": "Pressure",
+                "features": [
+                  "warlock-career-precision"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          }
+        ],
+        "class_kind": "base",
+        "attribute_priority": [
+          "CHA",
+          "DEX",
+          "CON",
+          "INT",
+          "WIS",
+          "STR"
+        ]
+      },
+      "features": [
+        {
+          "id": "warlock-career-precision",
+          "name": "Disciplined pressure",
+          "modifiers": [
+            {
+              "stat": "melee_attack",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 1
+              }
+            },
+            {
+              "stat": "ranged_attack",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 1
+              }
+            }
+          ],
+          "abilities": [],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Disciplined pressure",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-career-recovery-feature",
+          "name": "Resilient career",
+          "modifiers": [],
+          "abilities": [
+            "warlock-career-recovery"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Resilient career",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-discipline-assault",
+          "name": "Assault discipline",
+          "abilities": [
+            "warlock-invocation-assault"
+          ],
+          "resources": [],
+          "modifiers": [
+            {
+              "stat": "save_dc",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 2
+              }
+            }
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Persistent save_dc +2; mutually exclusive discipline.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-discipline-ward",
+          "name": "Ward discipline",
+          "abilities": [
+            "warlock-invocation-ward"
+          ],
+          "resources": [],
+          "modifiers": [
+            {
+              "stat": "defence",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 2
+              }
+            }
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Persistent defence +2; mutually exclusive discipline.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-master-13-feature",
+          "name": "Class 13 warlock",
+          "modifiers": [],
+          "abilities": [
+            "warlock-master-13"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Class 13 warlock",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-master-16-feature",
+          "name": "Class 16 warlock",
+          "modifiers": [],
+          "abilities": [
+            "warlock-master-16"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Class 16 warlock",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-master-20-feature",
+          "name": "Class 20 warlock",
+          "modifiers": [],
+          "abilities": [
+            "warlock-master-20"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Class 20 warlock",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-technique-1-feature",
+          "name": "Eldritch blast",
+          "abilities": [
+            "warlock-technique-1"
+          ],
+          "resources": [],
+          "modifiers": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Eldritch blast; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-12-feature",
+          "name": "Shaping blast 12",
+          "abilities": [
+            "warlock-technique-12"
+          ],
+          "resources": [],
+          "modifiers": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Shaping blast 12; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-4-feature",
+          "name": "Shaping blast 4",
+          "abilities": [
+            "warlock-technique-4"
+          ],
+          "resources": [],
+          "modifiers": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Shaping blast 4; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-8-feature",
+          "name": "Shaping blast 8",
+          "abilities": [
+            "warlock-technique-8"
+          ],
+          "resources": [],
+          "modifiers": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Shaping blast 8; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "warlock-career-recovery",
+          "name": "Regain composure",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            },
+            {
+              "op": "remove_status",
+              "id": "weakened"
+            },
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "class_level",
+                "id": "warlock"
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Main action: shed Slowed/Weakened and gain temporary HP equal to class level; cannot stack temporary HP.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-invocation-assault",
+          "name": "Assault invocation",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "warlock-invocation-assault"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "At-will main action;2-round save_dc +3 invocation. Choosing it replaces the other invocation.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-invocation-ward",
+          "name": "Ward invocation",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "warlock-invocation-ward"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "At-will main action;2-round defence +3 invocation. Choosing it replaces the other invocation.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-master-13",
+          "name": "Sapping invocation 13",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "damage",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 6
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "warlock"
+                  }
+                ]
+              },
+              "damage_type": "arcane"
+            },
+            {
+              "op": "apply_status",
+              "id": "weakened"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "At-will main action: eldritch damage and weakened attacks; no spell slot or psychic point pool.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-master-16",
+          "name": "Sapping invocation 16",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "damage",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 8
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "warlock"
+                  }
+                ]
+              },
+              "damage_type": "arcane"
+            },
+            {
+              "op": "apply_status",
+              "id": "weakened"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "At-will main action: eldritch damage and weakened attacks; no spell slot or psychic point pool.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-master-20",
+          "name": "Sapping invocation 20",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "damage",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "warlock"
+                  }
+                ]
+              },
+              "damage_type": "arcane"
+            },
+            {
+              "op": "apply_status",
+              "id": "weakened"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "At-will main action: eldritch damage and weakened attacks; no spell slot or psychic point pool.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "warlock-technique-1",
+          "name": "Eldritch blast",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 11
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Eldritch blast; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-12",
+          "name": "Shaping blast 12",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 15
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 12
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "off-balance"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 12
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Shaping blast 12; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-4",
+          "name": "Shaping blast 4",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 4
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 4
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Shaping blast 4; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        },
+        {
+          "id": "warlock-technique-8",
+          "name": "Shaping blast 8",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 13
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CHA"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 8
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane"
+                },
+                {
+                  "op": "apply_status",
+                  "id": "off-balance"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "op": "const",
+                        "value": 2
+                      },
+                      {
+                        "op": "floor_divide",
+                        "args": [
+                          {
+                            "op": "class_level",
+                            "id": "warlock"
+                          },
+                          {
+                            "op": "const",
+                            "value": 2
+                          }
+                        ]
+                      },
+                      {
+                        "op": "const",
+                        "value": 8
+                      }
+                    ]
+                  },
+                  "damage_type": "arcane",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Shaping blast 8; main action; at will; Reflex save against eldritch damage; half on success. Higher blasts also disrupt footing.",
+          "provenance": {
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-one"
+          }
+        }
+      ]
+    },
+    "binder": {
+      "class": {
+        "id": "binder",
+        "name": "Binder",
+        "max_level": 20,
+        "requirements": {
+          "op": "all",
+          "args": []
+        },
+        "hp_per_level": 4,
+        "skill_points": 4,
+        "bab": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "multiply",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "binder"
+                },
+                {
+                  "op": "const",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": 4
+            }
+          ]
+        },
+        "saves": {
+          "fortitude": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "binder"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "reflex": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "binder"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "will": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 2
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "casting": {
+          "op": "const",
+          "value": 0
+        },
+        "casting_tradition": "",
+        "features": [
+          {
+            "at": 1,
+            "id": "binder-technique-1-feature"
+          },
+          {
+            "at": 4,
+            "id": "binder-technique-4-feature"
+          },
+          {
+            "at": 8,
+            "id": "binder-technique-8-feature"
+          },
+          {
+            "at": 12,
+            "id": "binder-technique-12-feature"
+          },
+          {
+            "at": 16,
+            "id": "binder-technique-16-feature"
+          },
+          {
+            "at": 20,
+            "id": "binder-technique-20-feature"
+          }
+        ],
+        "provenance": {
+          "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+          "license": "Original project-authored content",
+          "revision": "game112-wave-two"
+        },
+        "description": "Binder is an original bounded adaptation: one persistent covenant, distinct pact powers and limited daily commitments. Levels1\u201320; not a full sourcebook conversion.",
+        "bonus_feat_levels": [],
+        "hit_die": 10,
+        "class_skills": [
+          "athletics",
+          "perception",
+          "insight",
+          "arcana"
+        ],
+        "proficiencies": [
+          "simple",
+          "light"
+        ],
+        "spell_mode": "",
+        "casting_attribute": "",
+        "recommended_equipment": [
+          "staff"
+        ],
+        "career_choices": [
+          {
+            "id": "binder-pact",
+            "name": "Binding covenant",
+            "at": 1,
+            "options": [
+              {
+                "id": "embers",
+                "name": "Embers",
+                "description": "Embers",
+                "features": [
+                  "binder-embers-pact"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "sentinel",
+                "name": "Sentinel",
+                "description": "Sentinel",
+                "features": [
+                  "binder-sentinel-pact"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "binder-master-choice",
+            "name": "Master technique",
+            "at": 16,
+            "options": [
+              {
+                "id": "recovery",
+                "name": "Recovery",
+                "description": "Recovery",
+                "features": [
+                  "binder-master-recovery"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "focus",
+                "name": "Focused defence",
+                "description": "Focused defence",
+                "features": [
+                  "binder-master-defence"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          }
+        ],
+        "class_kind": "base",
+        "attribute_priority": [
+          "CHA",
+          "CON",
+          "DEX",
+          "STR",
+          "WIS",
+          "INT"
+        ]
+      },
+      "features": [
+        {
+          "id": "binder-embers-pact",
+          "name": "Covenant: embers",
+          "modifiers": [],
+          "abilities": [
+            "binder-embers"
+          ],
+          "resources": [],
+          "tags": [
+            "pact_embers"
+          ],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Covenant: embers",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-master-defence",
+          "name": "Focused defence",
+          "modifiers": [
+            {
+              "stat": "defence",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 2
+              }
+            }
+          ],
+          "abilities": [],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Focused defence",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-master-recovery",
+          "name": "Master recovery",
+          "modifiers": [],
+          "abilities": [
+            "binder-master-ward"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Master recovery",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-sentinel-pact",
+          "name": "Covenant: sentinel",
+          "modifiers": [],
+          "abilities": [
+            "binder-sentinel"
+          ],
+          "resources": [],
+          "tags": [
+            "pact_sentinel"
+          ],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Covenant: sentinel",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-1-feature",
+          "name": "Binder level 1",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-1"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 1",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-12-feature",
+          "name": "Binder level 12",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-12"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 12",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-16-feature",
+          "name": "Binder level 16",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-16"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 16",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-20-feature",
+          "name": "Binder level 20",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-20",
+            "revert-form"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 20",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-4-feature",
+          "name": "Binder level 4",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-4"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 4",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-8-feature",
+          "name": "Binder level 8",
+          "modifiers": [],
+          "abilities": [
+            "binder-technique-8"
+          ],
+          "resources": [
+            "binder-commitments"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Binder level 8",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "binder-embers",
+          "name": "Pact of embers",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "damage",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 2
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  }
+                ]
+              },
+              "damage_type": "fire"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Persistent covenant, one daily commitment and main action; fire damage. One covenant may be chosen at class1; original identity survives multiclassing.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-master-ward",
+          "name": "Master recovery",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "heal",
+              "amount": {
+                "op": "class_level",
+                "id": "binder"
+              }
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Class16 choice; one owned resource and main action to restore real HP and clear Slowed.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-sentinel",
+          "name": "Pact of sentinel",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 5,
+            "radius": 0
+          },
+          "description": "Persistent covenant, one daily commitment and main action; restrict target movement. One covenant may be chosen at class1; original identity survives multiclassing.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-1",
+          "name": "Covenant shelter 1",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 1
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "remove_status",
+              "id": "weakened"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Spend one daily commitment and a main action: recover from Weakened and gain nonstacking temporary health. Selected pact powers create distinct offence/control.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-12",
+          "name": "Covenant shelter 12",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 12
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "remove_status",
+              "id": "weakened"
+            },
+            {
+              "op": "heal",
+              "amount": {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Covenant shelter 12; main action, {'binder-commitments': 1}. Actual effects: temporary_hp, remove_status weakened, heal.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-16",
+          "name": "Covenant sentinel",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "summon",
+              "id": "sentinel-spirit",
+              "rounds": 4
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Covenant sentinel; main action, {'binder-commitments': 2}. Actual effects: summon sentinel-spirit.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-20",
+          "name": "Covenant metamorphosis",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "wolf-form"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Covenant metamorphosis; main action, {'binder-commitments': 2}. Actual effects: apply_status wolf-form.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-4",
+          "name": "Covenant shelter 4",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 4
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "remove_status",
+              "id": "weakened"
+            },
+            {
+              "op": "remove_status",
+              "id": "slowed"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Covenant shelter 4; main action, {'binder-commitments': 1}. Actual effects: temporary_hp, remove_status weakened, remove_status slowed.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "binder-technique-8",
+          "name": "Covenant shelter 8",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "binder-commitments": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 8
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "binder"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "remove_status",
+              "id": "weakened"
+            },
+            {
+              "op": "apply_status",
+              "id": "warded"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Covenant shelter 8; main action, {'binder-commitments': 1}. Actual effects: temporary_hp, remove_status weakened, apply_status warded.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        },
+        {
+          "id": "revert-form",
+          "name": "Return to original form",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "remove_status",
+              "id": "bear-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "wolf-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "druid-master-13-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "druid-master-16-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "druid-master-20-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "warshaper-technique-1-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "warshaper-technique-3-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "warshaper-technique-5-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "leopard-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "boar-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "stone-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "scaled-guardian-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "moon-stag-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "iron-tortoise-form"
+            },
+            {
+              "op": "remove_status",
+              "id": "briar-cat-form"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 1,
+            "radius": 0
+          },
+          "description": "Main action, no resource cost; removes body form without healing or removing other conditions.",
+          "provenance": {
+            "origin": "Original TRHGD mechanics and prose; research concepts are indexing references only",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-two"
+          }
+        }
+      ]
+    },
+    "dragonfire-adept": {
+      "class": {
+        "id": "dragonfire-adept",
+        "name": "Dragonfire Adept",
+        "max_level": 20,
+        "requirements": {
+          "op": "all",
+          "args": []
+        },
+        "hp_per_level": 6,
+        "skill_points": 4,
+        "bab": {
+          "op": "floor_divide",
+          "args": [
+            {
+              "op": "class_level",
+              "id": "dragonfire-adept"
+            },
+            {
+              "op": "const",
+              "value": 2
+            }
+          ]
+        },
+        "saves": {
+          "fortitude": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "dragonfire-adept"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "reflex": {
+            "op": "floor_divide",
+            "args": [
+              {
+                "op": "class_level",
+                "id": "dragonfire-adept"
+              },
+              {
+                "op": "const",
+                "value": 3
+              }
+            ]
+          },
+          "will": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "const",
+                "value": 2
+              },
+              {
+                "op": "floor_divide",
+                "args": [
+                  {
+                    "op": "class_level",
+                    "id": "dragonfire-adept"
+                  },
+                  {
+                    "op": "const",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "casting": {
+          "op": "const",
+          "value": 0
+        },
+        "casting_tradition": "",
+        "features": [
+          {
+            "at": 1,
+            "id": "draconic-reserve"
+          }
+        ],
+        "provenance": {
+          "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+          "license": "Original project-authored content",
+          "revision": "game112-wave-four"
+        },
+        "description": "A repeatable elemental breath specialist. Breath spends a main action, uses a Reflex save and affects enemies in a radius-one burst around a legal target. Selected invocations spend finite resolve. No cone, flight or friendly-fire mechanics are claimed.",
+        "bonus_feat_levels": [],
+        "hit_die": 8,
+        "class_skills": [
+          "arcana",
+          "persuasion",
+          "insight",
+          "perception"
+        ],
+        "proficiencies": [
+          "simple",
+          "light"
+        ],
+        "spell_mode": "",
+        "casting_attribute": "",
+        "recommended_equipment": [
+          "staff",
+          "leathers"
+        ],
+        "career_choices": [
+          {
+            "id": "draconic-element",
+            "name": "Breath element",
+            "at": 1,
+            "options": [
+              {
+                "id": "fire",
+                "name": "Fire",
+                "description": "Repeatable fire burst and resistance3.",
+                "features": [
+                  "draconic-element-fire"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "cold",
+                "name": "Cold",
+                "description": "Repeatable cold burst and resistance3.",
+                "features": [
+                  "draconic-element-cold"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "electricity",
+                "name": "Electricity",
+                "description": "Repeatable electricity burst and resistance3.",
+                "features": [
+                  "draconic-element-electricity"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "draconic-invocation-1",
+            "name": "Invocation selection",
+            "at": 1,
+            "options": [
+              {
+                "id": "ward",
+                "name": "Ward",
+                "description": "Ward",
+                "features": [
+                  "draconic-ward-1-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "veil",
+                "name": "Veil",
+                "description": "Veil",
+                "features": [
+                  "draconic-veil-1-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "hindrance",
+                "name": "Hindrance",
+                "description": "Hindrance",
+                "features": [
+                  "draconic-hindrance-1-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "draconic-invocation-6",
+            "name": "Invocation selection",
+            "at": 6,
+            "options": [
+              {
+                "id": "ward",
+                "name": "Ward",
+                "description": "Ward",
+                "features": [
+                  "draconic-ward-6-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "veil",
+                "name": "Veil",
+                "description": "Veil",
+                "features": [
+                  "draconic-veil-6-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "hindrance",
+                "name": "Hindrance",
+                "description": "Hindrance",
+                "features": [
+                  "draconic-hindrance-6-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "draconic-invocation-11",
+            "name": "Invocation selection",
+            "at": 11,
+            "options": [
+              {
+                "id": "ward",
+                "name": "Ward",
+                "description": "Ward",
+                "features": [
+                  "draconic-ward-11-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "veil",
+                "name": "Veil",
+                "description": "Veil",
+                "features": [
+                  "draconic-veil-11-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "hindrance",
+                "name": "Hindrance",
+                "description": "Hindrance",
+                "features": [
+                  "draconic-hindrance-11-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "draconic-invocation-16",
+            "name": "Invocation selection",
+            "at": 16,
+            "options": [
+              {
+                "id": "ward",
+                "name": "Ward",
+                "description": "Ward",
+                "features": [
+                  "draconic-ward-16-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "veil",
+                "name": "Veil",
+                "description": "Veil",
+                "features": [
+                  "draconic-veil-16-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              },
+              {
+                "id": "hindrance",
+                "name": "Hindrance",
+                "description": "Hindrance",
+                "features": [
+                  "draconic-hindrance-16-access"
+                ],
+                "requirements": {
+                  "op": "all",
+                  "args": []
+                }
+              }
+            ]
+          }
+        ],
+        "class_kind": "base",
+        "attribute_priority": [
+          "CON",
+          "DEX",
+          "INT",
+          "WIS",
+          "STR",
+          "CHA"
+        ]
+      },
+      "features": [
+        {
+          "id": "draconic-element-cold",
+          "name": "Cold draconic inheritance",
+          "modifiers": [],
+          "abilities": [
+            "dragon-breath-cold"
+          ],
+          "resources": [],
+          "tags": [
+            "draconic_breath"
+          ],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Cold draconic inheritance",
+          "capabilities": {
+            "resistances": {
+              "cold": 3
+            }
+          },
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-element-electricity",
+          "name": "Electricity draconic inheritance",
+          "modifiers": [],
+          "abilities": [
+            "dragon-breath-electricity"
+          ],
+          "resources": [],
+          "tags": [
+            "draconic_breath"
+          ],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Electricity draconic inheritance",
+          "capabilities": {
+            "resistances": {
+              "electricity": 3
+            }
+          },
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-element-fire",
+          "name": "Fire draconic inheritance",
+          "modifiers": [],
+          "abilities": [
+            "dragon-breath-fire"
+          ],
+          "resources": [],
+          "tags": [
+            "draconic_breath"
+          ],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Fire draconic inheritance",
+          "capabilities": {
+            "resistances": {
+              "fire": 3
+            }
+          },
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-1-access",
+          "name": "Hindrance invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-hindrance-1"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Hindrance invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-11-access",
+          "name": "Hindrance invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-hindrance-11"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Hindrance invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-16-access",
+          "name": "Hindrance invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-hindrance-16"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Hindrance invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-6-access",
+          "name": "Hindrance invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-hindrance-6"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Hindrance invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-reserve",
+          "name": "Invocation resolve",
+          "modifiers": [],
+          "abilities": [],
+          "resources": [
+            "draconic-resolve"
+          ],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Invocation resolve",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-1-access",
+          "name": "Veil invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-veil-1"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Veil invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-11-access",
+          "name": "Veil invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-veil-11"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Veil invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-16-access",
+          "name": "Veil invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-veil-16"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Veil invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-6-access",
+          "name": "Veil invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-veil-6"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Veil invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-1-access",
+          "name": "Ward invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-ward-1"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Ward invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-11-access",
+          "name": "Ward invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-ward-11"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Ward invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-16-access",
+          "name": "Ward invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-ward-16"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Ward invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-6-access",
+          "name": "Ward invocation",
+          "modifiers": [],
+          "abilities": [
+            "draconic-ward-6"
+          ],
+          "resources": [],
+          "tags": [],
+          "senses": [],
+          "hooks": [],
+          "grants": [],
+          "description": "Ward invocation",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "draconic-hindrance-1",
+          "name": "Draconic hindrance 1",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 11
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "apply_status",
+                  "id": "mind-tether"
+                },
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "const",
+                    "value": 4
+                  },
+                  "damage_type": "fire"
+                }
+              ],
+              "on_success": []
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Will negates tether and fire damage.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-11",
+          "name": "Draconic hindrance 11",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "apply_status",
+                  "id": "mind-tether"
+                },
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "const",
+                    "value": 14
+                  },
+                  "damage_type": "fire"
+                }
+              ],
+              "on_success": []
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Will negates tether and fire damage.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-16",
+          "name": "Draconic hindrance 16",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 16
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "apply_status",
+                  "id": "mind-tether"
+                },
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "const",
+                    "value": 19
+                  },
+                  "damage_type": "fire"
+                }
+              ],
+              "on_success": []
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Will negates tether and fire damage.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-hindrance-6",
+          "name": "Draconic hindrance 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "will",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 13
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "apply_status",
+                  "id": "mind-tether"
+                },
+                {
+                  "op": "damage",
+                  "amount": {
+                    "op": "const",
+                    "value": 9
+                  },
+                  "damage_type": "fire"
+                }
+              ],
+              "on_success": []
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Will negates tether and fire damage.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-1",
+          "name": "Draconic veil 1",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "apply_status",
+              "id": "psychic-haste"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Weapon concealment25% and stride+2.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-11",
+          "name": "Draconic veil 11",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "apply_status",
+              "id": "psychic-haste"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Weapon concealment25% and stride+2.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-16",
+          "name": "Draconic veil 16",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "apply_status",
+              "id": "psychic-haste"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Weapon concealment25% and stride+2.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-veil-6",
+          "name": "Draconic veil 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "beguiling-veil"
+            },
+            {
+              "op": "apply_status",
+              "id": "psychic-haste"
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Weapon concealment25% and stride+2.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-1",
+          "name": "Draconic ward 1",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "draconic-ward"
+            },
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 4
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "dragonfire-adept"
+                  }
+                ]
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Elemental ward and scaling temporary HP.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-11",
+          "name": "Draconic ward 11",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "draconic-ward"
+            },
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 14
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "dragonfire-adept"
+                  }
+                ]
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Elemental ward and scaling temporary HP.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-16",
+          "name": "Draconic ward 16",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 2
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "draconic-ward"
+            },
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 19
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "dragonfire-adept"
+                  }
+                ]
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and two invocation resolve. Elemental ward and scaling temporary HP.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "draconic-ward-6",
+          "name": "Draconic ward 6",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {
+              "draconic-resolve": 1
+            }
+          },
+          "effects": [
+            {
+              "op": "apply_status",
+              "id": "draconic-ward"
+            },
+            {
+              "op": "temporary_hp",
+              "amount": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 9
+                  },
+                  {
+                    "op": "class_level",
+                    "id": "dragonfire-adept"
+                  }
+                ]
+              }
+            }
+          ],
+          "tags": [],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "self",
+            "range": 0,
+            "radius": 0
+          },
+          "description": "Main action and one invocation resolve. Elemental ward and scaling temporary HP.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "dragon-breath-cold",
+          "name": "Cold breath",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "floor_divide",
+                    "args": [
+                      {
+                        "op": "class_level",
+                        "id": "dragonfire-adept"
+                      },
+                      {
+                        "op": "const",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "cold"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "cold",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "breath"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 1
+          },
+          "description": "Repeatable main action; 1d6 + half adept level cold damage; Reflex halves. Enemy-centred radius1, range4, clear line of sight. No point or spell cost.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "dragon-breath-electricity",
+          "name": "Electricity breath",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "floor_divide",
+                    "args": [
+                      {
+                        "op": "class_level",
+                        "id": "dragonfire-adept"
+                      },
+                      {
+                        "op": "const",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "electricity"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "electricity",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "breath"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 1
+          },
+          "description": "Repeatable main action; 1d6 + half adept level electricity damage; Reflex halves. Enemy-centred radius1, range4, clear line of sight. No point or spell cost.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        },
+        {
+          "id": "dragon-breath-fire",
+          "name": "Fire breath",
+          "cost": {
+            "main": 1,
+            "move": 0,
+            "reaction": 0,
+            "resources": {}
+          },
+          "effects": [
+            {
+              "op": "save",
+              "save": "reflex",
+              "dc": {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": 10
+                  },
+                  {
+                    "op": "floor_divide",
+                    "args": [
+                      {
+                        "op": "class_level",
+                        "id": "dragonfire-adept"
+                      },
+                      {
+                        "op": "const",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "op": "modifier",
+                    "id": "CON"
+                  },
+                  {
+                    "op": "stat",
+                    "id": "save_dc"
+                  }
+                ]
+              },
+              "on_failure": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "fire"
+                }
+              ],
+              "on_success": [
+                {
+                  "op": "damage",
+                  "amount": {
+                    "dice": "1d6",
+                    "bonus": {
+                      "op": "floor_divide",
+                      "args": [
+                        {
+                          "op": "class_level",
+                          "id": "dragonfire-adept"
+                        },
+                        {
+                          "op": "const",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  },
+                  "damage_type": "fire",
+                  "save_half": true
+                }
+              ]
+            }
+          ],
+          "tags": [
+            "breath"
+          ],
+          "timing": {
+            "kind": "instant"
+          },
+          "requirements": {
+            "op": "all",
+            "args": []
+          },
+          "targeting": {
+            "kind": "creature",
+            "range": 4,
+            "radius": 1
+          },
+          "description": "Repeatable main action; 1d6 + half adept level fire damage; Reflex halves. Enemy-centred radius1, range4, clear line of sight. No point or spell cost.",
+          "provenance": {
+            "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
+            "license": "Original project-authored content",
+            "revision": "game112-wave-four"
+          }
+        }
+      ]
+    }
+  }
+}

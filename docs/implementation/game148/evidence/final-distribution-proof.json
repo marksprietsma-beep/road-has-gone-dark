@@ -1,0 +1,1330 @@
+{
+  "source_commit": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+  "native_reuse": {
+    "workflow_run": 39226588983,
+    "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39226588983",
+    "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "source_workflow_conclusion": "failure",
+    "phase_sources": {
+      "mechanics": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "input": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "current-signatures": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "current-mobile": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "v20": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "v19": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "legacy": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "compatibility": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "audit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91"
+    },
+    "changed_paths": [
+      ".github/workflows/verify-supernatural-signatures.yml",
+      "docs/implementation/game148/CONTINUATION.md",
+      "docs/implementation/game148/DELIVERY.md",
+      "docs/implementation/game148/PACK-DELTA.json",
+      "docs/implementation/game148/REVIEW.md",
+      "docs/implementation/game148/TESTING.md",
+      "docs/implementation/game148/evidence/focused-input-proof.json",
+      "docs/implementation/game148/evidence/focused-proof.json",
+      "docs/implementation/game148/evidence/focused-provenance.json",
+      "docs/implementation/game148/evidence/focused-restart-proof.json",
+      "docs/implementation/game148/evidence/focused-timings.json",
+      "docs/implementation/game148/evidence/native-prefix-proof.json",
+      "tests/nature_repertoires/mechanics_driver.gd",
+      "tests/supernatural_signatures/compile_driver.gd",
+      "tests/supernatural_signatures/journey.gd",
+      "tests/supernatural_signatures/native_checkpoint.py",
+      "tests/supernatural_signatures/run-tests.py",
+      "tests/supernatural_signatures/verify-package.py",
+      "tools/character-content/build-readiness.py"
+    ],
+    "unchanged_runtime_and_reused_drivers": true,
+    "policy": "Completed native prefix receipts reused with exact pins/zero failures and an explicit source diff. Changed v18 driver, failed journey, connected battle, captures, new production startup and final archive are rerun; no fresh testing claimed for reused phases.",
+    "original_export": {
+      "schema_version": 1,
+      "godot": "4.6.3.stable.official.7d41c59c4",
+      "platform": "win32",
+      "arch": "x64",
+      "enrichmentRuntimes": {
+        "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+        "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+        "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+        "expedition-v1": "1dae5f09e5d4ff16f71204077d505f30fcd882d353d10e6d8f18a12373d651b2"
+      },
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "executable_sha256": "b6d19790622a4f6b65f3d69ae40f61c25fb234c5262346e77ff28707370d5b81"
+    }
+  },
+  "rules_ref": {
+    "pack_id": "trhgd-character-v21",
+    "schema_version": 1,
+    "rules_version": "21.0.0",
+    "engine_schema": 3,
+    "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab"
+  },
+  "archive": "game148-supernatural-signatures-windows-x64.zip",
+  "sha256": "16f4b926cdcb9b129592e974251747818fd71177f9edb93fc2deabcff4c014ea",
+  "proofs": {
+    "mechanics/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 988,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 77,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-signatures/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-signatures/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-mobile/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 622,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-mobile/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 33,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "v20/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 622,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v20",
+        "rules_version": "20.0.0",
+        "schema_version": 1
+      }
+    },
+    "v20/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 33,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "27d34787937d48f72bcd8710808d837a6eec5c4f3d93fcfe7ae3fccf336683a9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v20",
+        "rules_version": "20.0.0",
+        "schema_version": 1
+      }
+    },
+    "v19/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "v19/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "v18/proof.json": {
+      "checks": 598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "v18/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/proof.json": {
+      "checks": 2594,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "journey/proof.json": {
+      "checks": 611,
+      "combat_actions": {},
+      "earned_xp": 490,
+      "failed_check": {
+        "choice": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:animal-handling",
+        "hash": "9a6006c5ecb4826872b0f3e3dfb2332490f5a17aee4c81d7abb42778ca423187",
+        "xp": 10
+      },
+      "failures": 0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "warlock-discipline": "assault"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "warlock",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v21",
+            "rules_version": "21.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:2",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "binder-pact": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "binder",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v21",
+            "rules_version": "21.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:3",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "draconic-element": "fire",
+                "draconic-invocation-1": "ward"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CON",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "draconic-breath-shape": "fire-focused",
+                "draconic-invocation-6": "ward"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CON",
+              "bonus_feats": [],
+              "class_id": "dragonfire-adept",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v21",
+            "rules_version": "21.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 19 + 9 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +9 vs DC 19 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:animal-handling",
+          "information": "Animal Handling check: 16 + 10 vs DC 17 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Arin0: Animal Handling +10 vs DC 17 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:animal-handling",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:arcana",
+          "information": "Arcana check: 16 + 7 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +7 vs DC 17",
+          "outcome": "investigated",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:athletics",
+          "information": "Athletics check: 13 + 6 vs DC 19 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Arin0: Athletics +6 vs DC 19 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:craft",
+          "information": "Craft check: 11 + 6 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Craft +6 vs DC 17",
+          "outcome": "recovered",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:craft",
+          "provisions": 0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:insight",
+          "information": "Insight check: 19 + 0 vs DC 15 \u00b7 objective completed.",
+          "label": "Arin0: Insight +0 vs DC 15",
+          "outcome": "peaceful_access",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:perception",
+          "information": "Perception check: 19 + 0 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Perception +0 vs DC 11",
+          "outcome": "investigated",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:persuasion",
+          "information": "Persuasion check: 13 + 14 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Persuasion +14 vs DC 17",
+          "outcome": "peaceful_access",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:religion",
+          "information": "Religion check: 20 + 0 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Religion +0 vs DC 16",
+          "outcome": "investigated",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1:survival",
+          "information": "Survival check: 19 + 0 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Survival +0 vs DC 17",
+          "outcome": "recovered",
+          "participant": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0,
+          "reveal": false
+        }
+      },
+      "slot": "902f78b5d4ff0d0bd04eced8aba00be9",
+      "state_hash": "70e7522dbf703c846b07fec94bbf01457e17ac9ea1950fcdf3d60452cadbc580",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "0f7c3bd49d01fecb6dfcc3990fbfcd94425e7dba48ad382022a1d96eb556f278",
+      "casts": {
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1": "warlock-invocation-assault",
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:2": "binder-sentinel",
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:3": "draconic-ward-6"
+      },
+      "checks": 34,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 490,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:2",
+        "kind": "end",
+        "revision": 8
+      },
+      "next_hash": "6082709cfddec09f920f770f70c17c5d905dd45031d2bd64169594775c7aa747",
+      "resources": {
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:1": {},
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:2": {
+          "binder-commitments": 2
+        },
+        "902f78b5d4ff0d0bd04eced8aba00be9:adventurer:3": {
+          "draconic-resolve": 2
+        }
+      },
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "902f78b5d4ff0d0bd04eced8aba00be9",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "3d3d75704b750428c5c4853cc51b98fca1acf2233bc03f9096ce892074903cb4",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 84,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v21",
+        "rules_version": "21.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 20,
+      "failures": 0,
+      "scope": "Actual production Godot buttons, target hitboxes and affected-unit hover"
+    }
+  },
+  "timings": [
+    {
+      "phase": "mechanics",
+      "seconds": 51.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 5.422,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "input",
+      "seconds": 5.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "current-signatures",
+      "seconds": 50.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "current-signatures-cold",
+      "seconds": 4.015,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "current-mobile",
+      "seconds": 48.141,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "current-mobile-cold",
+      "seconds": 4.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "v20",
+      "seconds": 49.343,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "v20-cold",
+      "seconds": 4.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "v19",
+      "seconds": 53.766,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "v19-cold",
+      "seconds": 4.203,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 1.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 99.094,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 57.843,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "audit",
+      "seconds": 831.829,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 6.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false,
+      "reused": true,
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "workflow_run": 39226588983
+    },
+    {
+      "phase": "v18",
+      "seconds": 98.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "v18-cold",
+      "seconds": 5.015,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 349.141,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 4.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 30.313,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 129.781,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 28.719,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "captures": {
+    "checks": 24,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-warlock-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "2c82eefb6d31ad709afaa6aec207925b0fb9fd0fb3c158fef0b6cf78c3ffbd0d",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-binder-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "f2b9338edb6930c0847f41c1de326fe4dca7aa1fea7a9b98e80a3c0b94bcf9a5",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-dragonfire-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8804614294a704ef85dc8a78af14dec1973411efe1ab8a64d26d8fb04efea3c4",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-warlock_pressure-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cec4197835ddef434f98b1ee2d7854ab9db5df09b6608aad1ba0db863bdbe1d4",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-binder_sentinel-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "2d632b6a58f89d9f9086c258560b080b701bec711f86ca4433b7f3734543bc41",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-dragon-fire-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8a14f8490be9573e59935856140a31f2f0094e335ad7da32790eb8080440f0d6",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-draconic_feat-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1aae5ec13b0143e237e00ec04f091fda7284e9536f1d7aa3d803cac002460508",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-dragonfire-build-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "12bf028f905e7342cb750305978fdf21197edcd098fd745ca135209df77d31bc",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-warlock-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "127e7bbeec08a3a4585b619e2490494b784e55b02e0efea11cc3d6ae53f2407d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-binder-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "aa2e5dcd7eb64388abacbdee9cca31ff2d5a97460a72401cb56a7230c6f5ec62",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-dragon-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "bd84f1b88574bcf776eea01d35683a5215ec869565ee74dea92ab595456219ed",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a0b6efac2182eba08037f042b6ea6b6548588f9bda0019c40dae96c27f0816fe",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cdd7b9446af8290be5fc130a89b8b787c690f4f1436708f8ba94bca5fc082633",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "4209680b9082249a880d3570c18f2a496d5888924f8cc583f2efe76d7eab94fd",
+        "width": 640
+      }
+    ]
+  },
+  "earned_characters": 3
+}

@@ -1,0 +1,221 @@
+{
+  "workflow_run": 39232732845,
+  "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39232732845",
+  "source_commit": "0f469c9ae24bb0f29372eb92b239b848fe6b5be7",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v21",
+    "schema_version": 1,
+    "rules_version": "21.0.0",
+    "engine_schema": 3,
+    "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab"
+  },
+  "build_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39232732845/artifacts/12179465231",
+  "evidence_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39232732845/artifacts/12179475242",
+  "captures": {
+    "checks": 24,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-warlock-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "2c82eefb6d31ad709afaa6aec207925b0fb9fd0fb3c158fef0b6cf78c3ffbd0d",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-binder-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "f2b9338edb6930c0847f41c1de326fe4dca7aa1fea7a9b98e80a3c0b94bcf9a5",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-dragonfire-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8804614294a704ef85dc8a78af14dec1973411efe1ab8a64d26d8fb04efea3c4",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-warlock_pressure-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cec4197835ddef434f98b1ee2d7854ab9db5df09b6608aad1ba0db863bdbe1d4",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-binder_sentinel-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "2d632b6a58f89d9f9086c258560b080b701bec711f86ca4433b7f3734543bc41",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-dragon-fire-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8a14f8490be9573e59935856140a31f2f0094e335ad7da32790eb8080440f0d6",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-draconic_feat-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1aae5ec13b0143e237e00ec04f091fda7284e9536f1d7aa3d803cac002460508",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-dragonfire-build-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "12bf028f905e7342cb750305978fdf21197edcd098fd745ca135209df77d31bc",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-warlock-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "127e7bbeec08a3a4585b619e2490494b784e55b02e0efea11cc3d6ae53f2407d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-binder-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "aa2e5dcd7eb64388abacbdee9cca31ff2d5a97460a72401cb56a7230c6f5ec62",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-dragon-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "bd84f1b88574bcf776eea01d35683a5215ec869565ee74dea92ab595456219ed",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a0b6efac2182eba08037f042b6ea6b6548588f9bda0019c40dae96c27f0816fe",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cdd7b9446af8290be5fc130a89b8b787c690f4f1436708f8ba94bca5fc082633",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-breath-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "4209680b9082249a880d3570c18f2a496d5888924f8cc583f2efe76d7eab94fd",
+        "width": 640
+      }
+    ]
+  },
+  "native_reuse": {
+    "workflow_run": 39226588983,
+    "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39226588983",
+    "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+    "source_workflow_conclusion": "failure",
+    "phase_sources": {
+      "mechanics": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "input": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "current-signatures": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "current-mobile": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "v20": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "v19": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "legacy": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "compatibility": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "audit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91"
+    },
+    "changed_paths": [
+      ".github/workflows/verify-supernatural-signatures.yml",
+      "docs/implementation/game148/CONTINUATION.md",
+      "docs/implementation/game148/DELIVERY.md",
+      "docs/implementation/game148/PACK-DELTA.json",
+      "docs/implementation/game148/REVIEW.md",
+      "docs/implementation/game148/TESTING.md",
+      "docs/implementation/game148/evidence/focused-input-proof.json",
+      "docs/implementation/game148/evidence/focused-proof.json",
+      "docs/implementation/game148/evidence/focused-provenance.json",
+      "docs/implementation/game148/evidence/focused-restart-proof.json",
+      "docs/implementation/game148/evidence/focused-timings.json",
+      "docs/implementation/game148/evidence/native-prefix-proof.json",
+      "tests/nature_repertoires/mechanics_driver.gd",
+      "tests/supernatural_signatures/compile_driver.gd",
+      "tests/supernatural_signatures/journey.gd",
+      "tests/supernatural_signatures/native_checkpoint.py",
+      "tests/supernatural_signatures/run-tests.py",
+      "tests/supernatural_signatures/verify-package.py",
+      "tools/character-content/build-readiness.py"
+    ],
+    "unchanged_runtime_and_reused_drivers": true,
+    "policy": "Completed native prefix receipts reused with exact pins/zero failures and an explicit source diff. Changed v18 driver, failed journey, connected battle, captures, new production startup and final archive are rerun; no fresh testing claimed for reused phases.",
+    "original_export": {
+      "schema_version": 1,
+      "godot": "4.6.3.stable.official.7d41c59c4",
+      "platform": "win32",
+      "arch": "x64",
+      "enrichmentRuntimes": {
+        "origin-v1": "1a27bed30916e8ac2b76749279a23639836fb98e5f42831bfdb04943b8a3beaa",
+        "profiles-v2": "18280f3f22ab5fb027e0c29c288ffe579b503138793495bbdd6abb039f221d58",
+        "party-v1": "9ef66189f9ac16324e68eb71df1e1d336513011e9c59e0fdad627e4538769c4e",
+        "expedition-v1": "1dae5f09e5d4ff16f71204077d505f30fcd882d353d10e6d8f18a12373d651b2"
+      },
+      "source_commit": "0f404cf1c48441b2efd5a9d4b7c563a78735ee91",
+      "executable_sha256": "b6d19790622a4f6b65f3d69ae40f61c25fb234c5262346e77ff28707370d5b81"
+    }
+  },
+  "inspection": "Host artifact inspection only; Windows execution comes from the workflow receipts. PNG files copied unchanged.",
+  "visual_limitations": [
+    "Some earned sheet captures contain missing glyphs, and earned-dragonfire-build is blank in its detail panel. These do not prove clean visual acceptance.",
+    "640x360 combat action captions clip horizontally; 2560x1440 combat capture shows full affected-target and battle-log information.",
+    "Requested1280x720 resulted in actual1280x719 client images; actual dimensions and pixel hashes are preserved."
+  ]
+}

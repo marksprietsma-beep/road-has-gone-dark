@@ -1,0 +1,381 @@
+{
+  "baseline": "trhgd-character-v20",
+  "candidate": "trhgd-character-v21",
+  "content_hash": "b3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab",
+  "core_rules_identical": true,
+  "frozen_tactical_source_identical": true,
+  "counts": {
+    "classes": {
+      "before": 51,
+      "after": 51
+    },
+    "features": {
+      "before": 872,
+      "after": 878
+    },
+    "feats": {
+      "before": 83,
+      "after": 83
+    },
+    "skills": {
+      "before": 14,
+      "after": 14
+    },
+    "resources": {
+      "before": 266,
+      "after": 266
+    },
+    "statuses": {
+      "before": 234,
+      "after": 235
+    },
+    "abilities": {
+      "before": 838,
+      "after": 845
+    },
+    "equipment": {
+      "before": 25,
+      "after": 25
+    },
+    "ancestries": {
+      "before": 50,
+      "after": 50
+    },
+    "backgrounds": {
+      "before": 1,
+      "after": 1
+    },
+    "creatures": {
+      "before": 14,
+      "after": 14
+    },
+    "psychic_powers": {
+      "before": 45,
+      "after": 45
+    }
+  },
+  "changes": {
+    "classes": {
+      "added": [],
+      "changed": [
+        {
+          "id": "warlock",
+          "fields": [
+            "career_choices",
+            "description"
+          ]
+        },
+        {
+          "id": "binder",
+          "fields": [
+            "career_choices",
+            "description"
+          ]
+        },
+        {
+          "id": "dragonfire-adept",
+          "fields": [
+            "career_choices",
+            "description"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "added": [
+        "dragon-focused-cold-access",
+        "dragon-focused-electricity-access",
+        "dragon-focused-fire-access",
+        "dragon-wide-cold-access",
+        "dragon-wide-electricity-access",
+        "dragon-wide-fire-access"
+      ],
+      "changed": [
+        {
+          "id": "warlock-discipline-assault",
+          "fields": [
+            "description",
+            "name"
+          ]
+        },
+        {
+          "id": "warlock-discipline-ward",
+          "fields": [
+            "description",
+            "name"
+          ]
+        },
+        {
+          "id": "warlock-master-13-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "warlock-master-16-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "warlock-master-20-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "warlock-career-precision",
+          "fields": [
+            "abilities",
+            "description",
+            "modifiers",
+            "name"
+          ]
+        },
+        {
+          "id": "binder-embers-pact",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "binder-sentinel-pact",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-ward-6-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-veil-6-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-6-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-ward-11-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-veil-11-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-11-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-ward-16-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-veil-16-access",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-16-access",
+          "fields": [
+            "description"
+          ]
+        }
+      ]
+    },
+    "feats": {
+      "added": [],
+      "changed": []
+    },
+    "skills": {
+      "added": [],
+      "changed": []
+    },
+    "resources": {
+      "added": [],
+      "changed": []
+    },
+    "statuses": {
+      "added": [
+        "breath-recovering"
+      ],
+      "changed": []
+    },
+    "abilities": {
+      "added": [
+        "dragon-focused-cold",
+        "dragon-focused-electricity",
+        "dragon-focused-fire",
+        "dragon-wide-cold",
+        "dragon-wide-electricity",
+        "dragon-wide-fire",
+        "warlock-career-pressure"
+      ],
+      "changed": [
+        {
+          "id": "warlock-invocation-assault",
+          "fields": [
+            "description",
+            "effects",
+            "name",
+            "targeting"
+          ]
+        },
+        {
+          "id": "warlock-invocation-ward",
+          "fields": [
+            "description",
+            "effects",
+            "name"
+          ]
+        },
+        {
+          "id": "warlock-master-13",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "warlock-master-16",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "warlock-master-20",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "binder-embers",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "binder-sentinel",
+          "fields": [
+            "description",
+            "effects",
+            "name",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-ward-6",
+          "fields": [
+            "description",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-veil-6",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-6",
+          "fields": [
+            "description",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-ward-11",
+          "fields": [
+            "description",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-veil-11",
+          "fields": [
+            "cost",
+            "description",
+            "effects",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-11",
+          "fields": [
+            "cost",
+            "description",
+            "effects",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-ward-16",
+          "fields": [
+            "description",
+            "effects",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-veil-16",
+          "fields": [
+            "description",
+            "effects",
+            "targeting"
+          ]
+        },
+        {
+          "id": "draconic-hindrance-16",
+          "fields": [
+            "description",
+            "effects",
+            "targeting"
+          ]
+        }
+      ]
+    },
+    "equipment": {
+      "added": [],
+      "changed": []
+    },
+    "ancestries": {
+      "added": [],
+      "changed": []
+    },
+    "backgrounds": {
+      "added": [],
+      "changed": []
+    },
+    "creatures": {
+      "added": [],
+      "changed": []
+    },
+    "psychic_powers": {
+      "added": [],
+      "changed": []
+    }
+  },
+  "spell_rows_unchanged": true,
+  "new_action_scope": "Six element-specific definitions implement two selectable breath modes; one optional Pressure action. These are not seven different spells."
+}

@@ -12,7 +12,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"]:
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
@@ -117,3 +117,12 @@ func validate(b: Dictionary) -> String:
   for unit in b.units.values():
    if registry.definition("equipment",str(unit.weapon)).get("tags",[]).has("manifested"):return "Manifested weapons cannot be stored as held equipment"
  return ""
+
+func area_preview(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> Array:
+ var row := registry.definition("abilities",ability)
+ if row.is_empty() or not eligible(b,u,t,ability):return []
+ var result: Array=[]
+ for id in b.order:
+  var other: Dictionary=b.units[id]
+  if id==t.id or (other.team==t.team and alive(other) and distance(t.position,other.position)<=int(row.targeting.get("radius",0)) and line_clear(b,t.position,other.position)):result.append(id)
+ return result

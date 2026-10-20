@@ -4,7 +4,7 @@ extends RefCounted
 const FIELDS := ["resistances", "immunities", "blocked_equipment", "weapon_damage", "concealment", "moving_damage", "immobile", "resource_bonuses"]
 const DAMAGE_TYPES := ["physical", "arcane", "fire", "cold", "electricity", "acid", "radiant", "psychic", "necrotic", "force"]
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
 static func validate(value: Variant,tables: Dictionary,path: String,errors: Array) -> void:
  if not value is Dictionary:errors.append(RulesJson.issue("capability.schema",path,"Expected typed inherited/class capabilities"));return
  for field in value:

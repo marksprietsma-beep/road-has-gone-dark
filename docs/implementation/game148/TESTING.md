@@ -1,0 +1,66 @@
+# GAME-148 verification ledger
+
+No Linux game validation is authorised or performed. Source inspection and artifact inspection on the cloud host are not described as Windows execution.
+
+## Reproduced baseline
+
+Run [39218751009](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39218751009), source2298149, completed successfully on native Windows/Godot with155 checks and zero failures at exact immutable v20 pin27d34787. The count includes lawful fixture construction, not155 separate gameplay defects. Exact receipt is in evidence/v20-baseline-proof.json.
+
+This deliberately asserts historical behaviour before changing it: late Warlock damage has no save; level16 weapon-oriented Pressure cannot affect defining save-based powers; Sentinel applies Slowed without a save but properly spends its finite commitment and rejects the unselected Embers power. Dragonfire reuses effect structures and targeting at later schedules (Ward/Hindrance numbers scale; Veil is identical), and breath already executes at will without a pool cost. Preserve all historical outputs rather than “repairing” the frozen v20 file.
+
+An earlier baseline attempt used literal effect equality, which was too strong for numeric-scaled Ward/Hindrance payloads. The source audit corrected that expectation to structural equality before using the latest receipt. No inherited compatibility assertion was weakened. Initial dispatch of a workflow absent from the default branch returned404; its feature-branch push trigger provides the supported first invocation. These are harness/publication events, not claimed mechanics failures.
+
+## Planned witnesses (historical checkpoint)
+
+Candidate v21 must prove selected/unselected actions, early/middle/high progression, legal/illegal targets, hit/save/resistance/immunity counterplay, at-will versus finite costs, recovery, rest, selected breath shape and footprint, multiclass/feat interactions, source immutability, exact saved/cold command/RNG replay and real production controls. At that checkpoint full export/captures were pending. The successful final gate below supersedes this checkpoint.
+
+Parent gate completed: all13 distinct post-merge Windows workflows passed on1645a713. Exact API receipts are in evidence/parent-windows-ci.json; these are reused historical parent tests, not fresh candidate results. Only after that gate, installed the v21 candidate and explicit adapters. Host source checks preserve all20 historical bytes/manifest rows,15 negative projection/pin checks passed, and TacticalCombat remains byte-identical to main. No Linux game execution occurred. Candidate native validation was pending at this earlier checkpoint.
+
+First candidate focused run39223589367 at961ef70: checked import and frozen v20 baseline155 passed. The new mechanics driver then correctly failed on a fixture reference to nonexistent `bandit-archer`; actual authored identity is `bandit-bow`. Corrected that exact fixture ID and matching held equipment; no assertion or production rule was removed. This run is not a passing candidate receipt.
+
+Before full export, improved real career-option prose (previous later invocation dropdowns only said Ward/Veil/Hindrance) and checked at-will/rest-pool summaries in production controls. The earned campaign explicitly selects Sentinel through the lawful feature-goal/creator pipeline, then uses non-damaging Binding utterance, Covenant intercession and ally Draconic ward6. This prevents a low-HP encounter ending before all three actions can be saved; damage, focused-breath cooldown and owned late summons/forms remain separate labelled development witnesses. Candidate hash nowb3417a02264a64204482b022e211b26bf013ae7bc27bc1d1aa2f668879bdddab; this wording refinement did not change the earlier candidate's mechanics.
+
+Run39224364689 at49042a9: frozen v20 baseline155 passed; candidate b341 mechanics969 passed/0 failures in60.375s. Cold restart rejected three Binder battle witnesses (`binder`, `binder_form`, `binder_summon`); exact character snapshots and predicted commands were not reported failing. This is NOT accepted as a save/release pass. Added the exact battle-validator reason and field-level invalid-record diagnostics, and the same validation before serialisation, to distinguish invalid development fixtures from persistence/production defects. No invariant is removed.
+
+Run39225266644 atb7f6188: the strengthened fresh validator immediately identified `Battlefield pin mismatch`. The development fixtures had cleared the registered8×6 map's blocked cells; they were invalid before serialisation. This was not evidence of a save-system defect. Removed terrain edits, kept the exact registered board/pin and placed the wide-burst secondary enemy at a legal clear tile within radius2. The blocked-sight negative now uses the map's actual wall. Fresh and cold validators remain required; no production geometry or validator was changed.
+
+Readiness tooling now accepts v21 promotion only with matching complete native receipts, current21 signature/mobile/kernel/input/earned/cold witnesses, and explicit unchanged historical aura closure/consumer evidence. A host-only negative check confirmed the old v20 release cannot promote a v21 matrix and leaves the existing matrix untouched. No readiness promotion or Windows release is claimed yet.
+
+## Focused candidate accepted
+
+Run[39226024322](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39226024322), source0f404cf and candidate b341, PASSED:988 mechanics,77 exact cold-process checks,20 production Godot control/hover checks, zero failures. Both fresh and loaded battle validation are now required. Frozen v20 baseline155 and all20 pack/source negative guards passed as well. Exact receipts/provenance under evidence/. Complete self-contained native run39226588983 was dispatched at this source; do not claim its outcome until inspected.
+
+Final host source audit (not Linux gameplay): regenerating b341 v21 and the appended manifest is byte-identical; all spell rows remain exactly equal to v20, core rules are identical and the frozen tactical file is unchanged. PACK-DELTA.json lists the three changed classes, changed fields and six elemental shape variants plus the one Pressure record. REVIEW.md provides ordinary Windows playtest steps. The readiness generator separately labels current21 tactical/cold witnesses, reused historical earned/input acceptance and unchanged historical aura evidence, and does not cite unrelated signature tests as aura proof.
+
+## First native prefix and narrow continuation
+
+Complete run39226588983 at0f404cf exported the game and passed all19 native processes through the current21 all32-class audit/cold restart, plus its initial focused/baseline/guards. It then failed before earned play because `journey.gd` could not infer the dynamic snapshot's `bound` type. Added explicit Dictionary typing; production game/data did not change. The successful prefix receipts/timings are preserved in evidence/native-prefix-proof.json, clearly labelled as a prefix of a FAILED overall run.
+
+Added an actual Windows Godot preflight that loads every dynamic phase script before expensive export. A narrow native-checkpoint continuation may reuse only the completed10 phase groups: exact source-run/workflow/branch/export anchor, all original pins, nonzero/zero-failure receipts and clean timings are required. Git diff must prove every production file and reused driver unchanged; only the unexecuted journey/test/preflight/CI/reporting files may differ. The failed journey, connected saved combat, captures, new exported production startup and final ZIP are always run fresh. Native proof records per-phase source/run and reused timings rather than claiming old results are fresh. QA game processes do not receive the workflow's GitHub credential.
+
+## Windows preflight correction
+
+Run39231673004 failed before candidate mechanics: the new dynamic-script preflight treated an inferred Variant in historical nature_repertoires/mechanics_driver.gd:10 as a parse error. Explicit Dictionary typing preserves the saved JSON and assertions. The changed v18 driver is excluded from checkpoint reuse and must run fresh; every other reused driver and all production files still require exact source equivalence. No warning or invariant was disabled. Correction0f469c9 is being validated by focused run39232725869 and complete continuation39232732845. Both have now completed successfully; final results follow.
+
+## Final accepted Windows gate
+
+Run[39232732845](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39232732845), exported source`0f469c9ae24bb0f29372eb92b239b848fe6b5be7`, SUCCESS. All13 dynamic scripts compile. Focused run39232725869 also SUCCESS:988 mechanics/77 cold/20 actual production control checks. Final native receipts:
+
+| Phase | Main / cold checks | Evidence source |
+|---|---|---|
+| mechanics | 988 / 77; zero failures | Reused unchanged0f404cf prefix |
+| current-signatures | 956 / 83; zero failures | Reused unchanged0f404cf prefix |
+| current-mobile | 622 / 33; zero failures | Reused unchanged0f404cf prefix |
+| v20 | 622 / 33; zero failures | Reused unchanged0f404cf prefix |
+| v19 | 956 / 83; zero failures | Reused unchanged0f404cf prefix |
+| v18 | 598 / 31; zero failures | Fresh0f469c9 final native run |
+| legacy | 818 / 4; zero failures | Reused unchanged0f404cf prefix |
+| compatibility | 1941 / 486; zero failures | Reused unchanged0f404cf prefix |
+| audit | 2594 / 65; zero failures | Reused unchanged0f404cf prefix |
+| journey | 611 / 8; zero failures | Fresh0f469c9 final native run |
+| connected | 34 / 84; zero failures | Fresh0f469c9 final native run |
+| Production input |20; zero failures | Unchanged prefix, also freshly executed by final focused step |
+
+Capture24/0,14 actual PNGs. Earned490XP/level8; connected34/84 proves production writer/commands, spent resources, resolution/rest and cold replay. No production XP injection. Exported production startup and archive integrity pass. Final SHA/source/artifact in DELIVERY.md. All previous failed attempts remain in this ledger and are not relabelled successful. Source-equivalent phase reuse and fresh final export are recorded in native-reuse.json/final-distribution-proof.json.
+
+Host artifact inspection verifies7,061 ZIP entries, AMD64 executables/dependencies, canonical v21 content hash, licence/credit presence, QA removal and14 PNG hashes/dimensions/copied pixels. This is not Linux gameplay validation. The generator with this matching proof produces15 COMPLETE/35 PARTIAL/0 BLOCKED. Visual review limitations are documented in SCREENSHOTS.md; zero script errors or hashes do not imply clean pixels in every capture.
