@@ -1,0 +1,26 @@
+{
+  "native_build_source": "8b37e0d03ed38df138bc6bf2fdf6bba221673d85",
+  "reviewed_source": "3462c93e3001995c10b7cd70ba9c9e97df9a5bcb",
+  "identical_gameplay_and_pack_paths": [
+    "scripts",
+    "data",
+    "assets",
+    "scenes",
+    "themes",
+    "project.godot",
+    "export_presets.cfg",
+    "icon.svg",
+    "vendor",
+    "tools/release",
+    "tools/worldgen"
+  ],
+  "changed_runtime_paths": [],
+  "diagnostic_capture_source": "3462c93e3001995c10b7cd70ba9c9e97df9a5bcb",
+  "scope": "Post-build changes are diagnostic capture/input/workflow, readiness reporting and documentation; no gameplay/rules/helper/exporter changes. Complete native release receipts retain their actual source. Corrected Windows visual controls/25 renders have their own separate receipt.",
+  "all50_evidence_paths_exist": true,
+  "readiness": {
+    "PARTIAL": 30,
+    "COMPLETE": 20
+  },
+  "original_and_corrected_png_bytes_retained": true
+}

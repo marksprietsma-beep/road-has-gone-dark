@@ -89,7 +89,7 @@ func run() -> void:
   if actor.team=="party" and (not wanted.has(actor.id) or performed.has(actor.id)):
    command={"actor_id":actor.id,"revision":battle.revision,"kind":"end"}
   elif wanted.has(actor.id) and not performed.has(actor.id) and int(battle.budget.main)>0:
-   for target in battle.units.values():
+   for target in candidate_targets(battle,actor,str(wanted[actor.id])):
     var proposed := {"actor_id":actor.id,"revision":battle.revision,"kind":wanted[actor.id],"target_id":target.id}
     if tactical.eligible(battle,actor,target,wanted[actor.id]) and tactical.command(battle,proposed).ok:command=proposed;break
   if requires_manifestation() and actor.id==state.party_ids[0] and not performed.has(actor.id) and int(battle.budget.main)>0 and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="soulknife-manifested"):
@@ -126,3 +126,6 @@ func requires_manifestation() -> bool:return true
 func expected_resolved_pool(saved: Dictionary,_battle: Dictionary,id: String,pool: String) -> int:
  # Historical one-shot cohorts keep the original exact equality invariant.
  return int(saved.resources[id][pool])
+
+func candidate_targets(battle: Dictionary,_actor: Dictionary,_ability: String) -> Array:
+ return battle.units.values()
