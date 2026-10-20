@@ -21,7 +21,7 @@ func run() -> void:
   for at in [1,6,12,20]:
    var r := build(cls,at);check(not r.is_empty(),"lawful1/6/12/20 "+cls+str(at));records[cls+str(at)]=r
  if failures:finish_cohort();return
- test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes()
+ test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes();test_casting_competition();test_basic_illusions()
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var d := kernel.derive_character(records[id]);check(d.ok,"persist lawful candidate "+id)
@@ -105,6 +105,11 @@ func test_retrieval() -> void:
  var again: Dictionary=after.duplicate(true);again.choices.prepared_abilities=before.choices.prepared_abilities.duplicate()
  check(not RulesWaveFive.commit_retrieval(after,again,source).ok,"cannot exchange again without eligible rest")
  var same: Dictionary=after.duplicate(true);check(RulesWaveFive.commit_retrieval(after,same,source).ok and same.runtime.resources==after.runtime.resources,"unchanged selection is free and order independent")
+ var caps: Dictionary=kernel.derive_character(after).snapshot.resource_capacities
+ var no_rest := RulesEffects.new(source).refresh_resources(after.runtime,caps,"encounter")
+ check(no_rest.runtime.resources[pool]==0,"encounter boundary does not refresh retrieval")
+ var rested := RulesEffects.new(source).refresh_resources(after.runtime,caps,"eligible_rest")
+ check(rested.runtime.resources[pool]==1 and rested.runtime.resources["spirit-shaman-slots-1"]==caps["spirit-shaman-slots-1"],"eligible rest recovers permit and actual shared slots")
  records.retrieved=after
 func test_guides() -> void:
  for at in [1,6,12,20]:
@@ -118,6 +123,11 @@ func test_guides() -> void:
    if result.ok:check(result.actor.runtime.resources["spirit-favour"]==r.runtime.resources["spirit-favour"]-int(source.definition("abilities",action).cost.resources["spirit-favour"]),"guide spends favour not spell slot")
    var other: String="watcher"if guide=="storm"else"storm";check(not use(r,target,"spirit-guide-"+other+"-1").ok,"unselected guide cannot execute")
    records[guide+str(at)]=r
+   if at in [1,12,20]:
+    var engine := TacticalAuras.new(r);var b := encounter(r);var target_id: String="bandit-blade"if guide=="storm"else"b"
+    b.units[target_id].record.runtime.hp=maxi(1,int(b.units[target_id].record.runtime.hp)-2);b=engine.seal(b)
+    var casted := execute(engine,b,action,target_id);check(casted.ok,"actual tactical spirit guide "+guide+str(at))
+    if casted.ok:battles["spirit-"+guide+str(at)]=casted.battle
 func test_mixed() -> void:
  var r := build("bard",4)
  for n in 4:
@@ -137,3 +147,30 @@ func test_low_attributes() -> void:
   var r := build_with_feats(cls,20,{},attrs)
   check(not r.is_empty(),"lawful low-attribute advanced history "+cls)
   records["low-"+cls]=r
+
+func test_casting_competition() -> void:
+ var r := selected_spell(alternative(records.bard12,{"bard-choice-1":"rally","bard-choice-6":"rally"}),"bard-unbinding-refrain")
+ var engine := TacticalAuras.new(r);var b := encounter(r);var started := execute(engine,b,"bard-rally-6")
+ check(started.ok,"rally/spell shared authority")
+ if not started.ok:return
+ check(not execute(engine,started.battle,"bard-unbinding-refrain","b").ok,"starting a rally competes with casting")
+ var active: Dictionary=started.battle
+ for i in active.order.size():engine.next_turn(active)
+ active=engine.seal(active);var cost: int=int(active.units.a.record.runtime.resources.performance)
+ var casted := execute(engine,active,"bard-unbinding-refrain","b")
+ check(casted.ok and has_status(casted.battle.units.a.record,"bard-rally-6-status") and casted.battle.units.a.record.runtime.resources.performance==cost,"later spell works during maintained song without a second upkeep")
+ var formed: Dictionary=r.duplicate(true);formed.runtime.statuses.append({"id":"leopard-form","source":"fixture","remaining":3,"expiry":"global_round_start"})
+ check(not use(formed,formed,"bard-rally-6").ok,"transformed body cannot start vocal rally")
+ var down: Dictionary=started.battle.duplicate(true);down.units.a.record.runtime.hp=0;down=engine.seal(down)
+ check(not has_status(down.units.a.record,"bard-rally-6-status") and engine.stats(down.units.b).defence==engine.stats(b.units.b).defence,"defeated performer loses aura immediately")
+ var ended: Dictionary=started.battle.duplicate(true);ended.status="victory";ended=engine.seal(ended)
+ check(not has_status(ended.units.a.record,"bard-rally-6-status"),"battle end clears maintained state")
+ records.performance_caster=r;battles.performance_cast=casted.battle if casted.ok else active
+
+func test_basic_illusions() -> void:
+ for at in [1,6,12,20]:
+  var r := selected_spell(records["beguiler"+str(at)],"beguiler-beguiling-control-1")
+  var failed := use(r,defender(false),"beguiler-beguiling-control-1");var saved := use(r,defender(true),"beguiler-beguiling-control-1")
+  check(failed.ok and saved.ok and has_status(failed.target,"beguiling-doubt") and not has_status(saved.target,"beguiling-doubt"),"original early/mid/late doubt has save counterplay "+str(at))
+  r=selected_spell(r,"beguiler-beguiling-ward-1");var veil := use(r,r,"beguiler-beguiling-ward-1")
+  check(veil.ok and kernel.derive_character(veil.actor).snapshot.capabilities.concealment==25,"owned allied illusion has real weapon concealment "+str(at))

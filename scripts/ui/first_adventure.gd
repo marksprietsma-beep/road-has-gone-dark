@@ -315,6 +315,7 @@ func refresh() -> void:
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
       if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+      if engine.registry.rules_ref().pack_id=="trhgd-character-v22":button.disabled=button.disabled or not engine.eligible(b,actor,actor,id)
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
       var caption: String=ability.name

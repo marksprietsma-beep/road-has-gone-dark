@@ -23,7 +23,7 @@ func test_known_authority() -> void:
  check(state.mechanics.records[state.party_ids[0]].choices.prepared_abilities.has("bard-unbinding-refrain"),"real level8 Bard learned distinct tier3 relief")
  check(state.mechanics.records[state.party_ids[1]].choices.prepared_abilities.has("beguiler-unmasking-chime"),"real Beguiler learned selected counter-veil")
  var id: String=state.party_ids[2];var r: Dictionary=state.mechanics.records[id]
- var before := r.runtime.resources.duplicate(true);var xp := CharacterBuilderRecords.xp(state,id)
+ var before: Dictionary=r.runtime.resources.duplicate(true);var xp := CharacterBuilderRecords.xp(state,id)
  var writer := CharacterBuilderService.new();writer.store=service.store;writer.library=service.library
  var spells: Array=["spirit-shaman-spirit-refuge-1"]
  var result := writer.operate(entry,slot,"builder_spells",3,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":spells,"preparations":{}})

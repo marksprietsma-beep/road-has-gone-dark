@@ -36,6 +36,7 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if not t.ok: return t
  var ability := registry.definition("abilities",ability_id)
  if ability.is_empty() or not a.snapshot.abilities.has(ability_id): return RulesJson.result([RulesJson.issue("ability.unowned",ability_id,"Actor does not own the ability")])
+ if registry.rules_ref().pack_id=="trhgd-character-v22" and ability.tags.has("maintained_performance") and not RulesEntities.form(actor,registry).is_empty():return RulesJson.result([RulesJson.issue("performance.form",ability_id,"A transformed body cannot start this maintained vocal performance")])
  # v17 suppression is a derived tactical condition, never a change to owned spells.
  if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
  if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor,ability,registry):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])

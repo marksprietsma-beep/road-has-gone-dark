@@ -18,7 +18,7 @@ func run() -> void:
   await photograph_scene("fixture-"+key+"-sheet",true,Vector2i(2560,1440))
  var sheet := await open_sheet();sheet._select_member(2);sheet.detail_tabs.current_tab=4
  await photograph_scene("earned-spirit-retrieval",false)
- for key in ["bard6","beguiler12"]:
+ for key in ["bard6","beguiler12","spirit-watcher20"]:
   var combat := await open_combat();var b: Dictionary=saved.battles[key].duplicate(true)
   combat.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}}
   for i in 3:
