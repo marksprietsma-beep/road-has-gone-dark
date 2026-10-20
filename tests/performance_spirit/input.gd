@@ -35,6 +35,15 @@ func run() -> void:
  check(book.selection_summaries["spirit-shaman"].text.begins_with("Proposed selection: 2"),"staged summary follows actual checkbox")
  r.runtime.resources["spirit-retrieval"]=0;book.setup(r)
  check(book.controls.values().all(func(c: Control):return c.disabled),"all retrieved choices lock when actual permit exhausted")
+ var wizard: Dictionary=saved.records.wizard_regression.duplicate(true);wizard.choices.prepared_abilities=[];wizard.choices.spell_preparations={}
+ var source := RulesRecords.registry(wizard);RulesCoreContent.refill_prepared(wizard,source);book.setup(wizard)
+ var available: Array=book.controls.keys().filter(func(id: String):return book.controls[id] is SpinBox and book.controls[id].editable)
+ check(not available.is_empty(),"shared prepared-caster regression has a legal existing option")
+ if not available.is_empty():
+  book.controls[available[0]].value=1
+  check(book.selection_summaries.wizard.text.begins_with("Proposed selection: 1"),"actual prepared-copy control refreshes the new staged summary")
+  book.controls[available[0]].value=0
+  check(book.selection_summaries.wizard.text.begins_with("Proposed selection: 0"),"clearing the last prepared copy refreshes staged summary")
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  var b: Dictionary=saved.battles.bard6.duplicate(true);b.cursor=b.order.find("a");b.budget={"main":1,"move":1}
  ui.engine=TacticalAuras.new(b.units.a.record);b=ui.engine.seal(b);ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.mode="attack";ui.refresh()

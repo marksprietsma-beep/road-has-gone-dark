@@ -18,6 +18,7 @@ func run() -> void:
    var next := engine.command(saved.battles[id],saved.next[id]);check(next.ok and next.battle.state_hash==saved.after[id],"exact cold command/log/RNG "+id)
   finish_cohort(true);return
  fixtures.fighter=build("fighter",20)
+ records.wizard_regression=build("wizard",6)
  for cls in ["bard","beguiler","spirit-shaman"]:
   for at in [1,6,12,20]:
    var r := build(cls,at);check(not r.is_empty(),"lawful1/6/12/20 "+cls+str(at));records[cls+str(at)]=r
