@@ -3,7 +3,7 @@ extends "res://tests/supernatural_signatures/mechanics.gd"
 var executable_spell_witnesses: Array=[]
 func run() -> void:
  base=OS.get_environment("GAME149_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v22.json")
+ source=RulesRegistry.new();var loaded := source.load_pack(performance_pack_path())
  check(loaded.ok,"v22 schema "+JSON.stringify(loaded.get("errors",[])))
  if not loaded.ok:finish_cohort();return
  kernel=RulesCharacter.new(source)
@@ -42,6 +42,7 @@ func finish_cohort(restart := false) -> void:
 func selected_spell(r: Dictionary,id: String) -> Dictionary:
  var result: Dictionary=r.duplicate(true);result.choices.prepared_abilities=[id];result.choices.spell_preparations={}
  check(kernel.validate_build(result).ok,"lawful selected development repertoire "+id);return result
+func performance_pack_path() -> String:return "res://data/rules/trhgd-character-v22.json"
 func test_baseline() -> void:
  var old := RulesRegistry.new();check(old.load_pack("res://data/rules/trhgd-character-v21.json").ok,"exact frozen21 loads")
  check(not old.definition("statuses","bard-rally-1-status").has("aura") and not old.definition("statuses","bard-rally-1-status").has("upkeep"),"21 rally is a timed snapshot, not a maintained aura")

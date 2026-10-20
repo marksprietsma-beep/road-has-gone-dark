@@ -25,7 +25,7 @@ func run() -> void:
    records[cls+str(at)]=build(cls,at)
    check(not records[cls+str(at)].is_empty(),"lawful class progression "+cls+str(at))
  if failures:finish_upper();return
- test_upper_spells();test_main_control();test_periodic_healing();test_specialisations();test_historical();test_upper_hybrids();test_descriptors();test_attributes_and_mitigation();test_repertoire()
+ test_upper_spells();test_area_dispel();test_main_control();test_periodic_healing();test_specialisations();test_historical();test_upper_hybrids();test_descriptors();test_attributes_and_mitigation();test_repertoire()
  if failures:finish_upper();return
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
@@ -89,11 +89,34 @@ func test_upper_spells() -> void:
   check(not engine.eligible(b,b.units.a,b.units["b" if enemy else "bandit-blade"],id),"wrong-team targeting rejects "+id)
   b.units[target_id].position=[7,5];b=engine.seal(b);check(not execute(engine,b,id,target_id).ok,"range and sight authority reject unreachable target")
   if tactical.ok:battles[id]=tactical.battle.duplicate(true);records[id]=tactical.battle.units.a.record
+  if tactical.ok and id=="cleric-concord-release":
+   check(has_status(tactical.battle.units.b.record,"concord-release") and has_status(tactical.battle.units.c.record,"concord-release") and not has_status(tactical.battle.units["bandit-blade"].record,"concord-release"),"area release protects actual nearby allies, never enemies")
   if enemy:
    var saved := use(r,defender(true),id)
    check(saved.ok and saved.events.any(func(e: Dictionary):return e.type=="save_resolved" and e.success),"real Will counterplay "+id)
    if saved.ok:
     for pool in a.cost.resources:check(saved.actor.runtime.resources[pool]==r.runtime.resources[pool]-1,"successful save still costs slot/copy")
+
+func test_area_dispel() -> void:
+ var r := prepare_upper(records.wizard20,"wizard-unweaving-tide");var engine := TacticalAuras.new(r);var b := encounter(r)
+ b.units["bandit-archer"].position=[2,0];b.units.b.position=[2,2]
+ for id in ["bandit-blade","bandit-archer"]:
+  var target := defender(false);target.character_id=id;target.runtime.statuses.append({"id":"warded","source":"fixture","remaining":3,"expiry":"global_round_start"})
+  b.units[id].record=target
+ b.units.b.record.runtime.statuses.append({"id":"warded","source":"fixture","remaining":3,"expiry":"global_round_start"})
+ # Explicit save-outcome development seed: both are ordinary saving throws.
+ var context: Dictionary=kernel.derive_character(r).context
+ var dc: int=RulesExpressions.evaluate_formula(source.definition("abilities","wizard-unweaving-tide").effects[0].dc,context).value
+ for n in 100:
+  var rng := RulesRng.initial("area-dispel-"+str(n));var first := RulesRng.saving_throw(engine.stats(b.units["bandit-blade"]).will,dc,rng)
+  var second := RulesRng.saving_throw(engine.stats(b.units["bandit-archer"]).will,dc,first.rng)
+  if not first.success and not second.success:b.rng=rng;break
+ b=engine.seal(b);var casted := execute(engine,b,"wizard-unweaving-tide","bandit-blade")
+ check(casted.ok,"saved area boon counter actually executes")
+ if not casted.ok:return
+ check(not has_status(casted.battle.units["bandit-blade"].record,"warded") and not has_status(casted.battle.units["bandit-archer"].record,"warded") and has_status(casted.battle.units.b.record,"warded"),"two enemy wards removed with independent saves; nearby allied ward retained")
+ for pool in source.definition("abilities","wizard-unweaving-tide").cost.resources:check(casted.battle.units.a.record.runtime.resources[pool]==b.units.a.record.runtime.resources[pool]-1,"area targets share one slot/copy cost")
+ battles.unweaving_area=casted.battle.duplicate(true)
 
 func test_main_control() -> void:
  var r := prepare_upper(records.wizard20,"wizard-stillness-lattice");var victim := defender(false)
@@ -133,6 +156,9 @@ func test_periodic_healing() -> void:
  engine.next_turn(b);b=engine.seal(b)
  check(b.units.b.record.runtime.hp==before+12 and b.budget.main==1 and b.budget.move==1,"own activation heals12 without consuming/granting actions")
  check(RulesJson.digest(b.rng)==rng,"fixed periodic healing consumes no RNG")
+ var sealed: Dictionary=b.duplicate(true);var stable := RulesJson.digest(sealed)
+ for i in 3:sealed=engine.seal(sealed)
+ check(RulesJson.digest(sealed)==stable,"repeated seal/preview never ticks activation healing")
  var capped: Dictionary=b.duplicate(true);capped.units.b.record.runtime.hp=int(engine.stats(capped.units.b).HP)-2
  RulesMartial.start_activation(engine,capped)
  check(capped.units.b.record.runtime.hp==int(engine.stats(capped.units.b).HP),"periodic recovery respects actual HP cap")

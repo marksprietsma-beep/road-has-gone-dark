@@ -1,5 +1,6 @@
 extends Node
-func _ready() -> void:
+func _ready() -> void:call_deferred("run")
+func run() -> void:
  var phase := OS.get_environment("GAME150_PHASE")
  var paths := {"mechanics":"res://tests/upper_prepared/mechanics.gd","input":"res://tests/upper_prepared/input.gd"}
  if not paths.has(phase):get_tree().quit(1);return
