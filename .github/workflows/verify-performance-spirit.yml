@@ -2,7 +2,7 @@ name: GAME-149 Performance, Illusion and Spirit
 on:
   push:
     branches: [feature/game-149-performance-illusion-spirit, main]
-    paths: ['scripts/**', 'data/rules/**', 'tests/performance_spirit/**', '.github/workflows/verify-supernatural-signatures.yml']
+    paths: ['scripts/**', 'data/rules/**', 'tests/performance_spirit/**', '.github/workflows/verify-performance-spirit.yml']
   workflow_dispatch:
     inputs:
       release:
