@@ -3,7 +3,7 @@ extends RefCounted
 ## v16 onward: permanent competence and contextual uses of existing character skills.
 ## This projects existing authority; it never grants XP, casts spells or writes saves.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 
 static func has_spell_gate(node: Dictionary) -> bool:
  if node.op=="spell_tier":return true

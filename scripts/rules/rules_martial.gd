@@ -2,7 +2,7 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
@@ -23,7 +23,7 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   if row.has("weapon_override"):
    RulesRegistry._reference(tables,"equipment",row.weapon_override,row.id,errors)
    if tables.equipment.get(row.weapon_override,{}).get("kind")!="weapon":errors.append(RulesJson.issue("martial.weapon",row.id,"Actual weapon required"))
-  if row.has("stance_group") and row.stance_group!="martial-stance":errors.append(RulesJson.issue("martial.stance",row.id,"Registered exclusive stance group required"))
+  if row.has("stance_group") and (row.stance_group not in ["martial-stance","maintained-performance"] or row.stance_group=="maintained-performance" and not row.has("upkeep")):errors.append(RulesJson.issue("martial.stance",row.id,"Registered exclusive stance group required"))
 
 static func apply_hit(actor: Dictionary,target: Dictionary,ability: Dictionary,rng: Dictionary,source: RulesRegistry) -> Dictionary:
  var a := RulesCharacter.new(source).derive_character(actor)
@@ -52,7 +52,7 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
  return false
 
 static func mobile_enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 
 static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
  if include_runtime and not RulesEntities.form(record,source).is_empty():return false

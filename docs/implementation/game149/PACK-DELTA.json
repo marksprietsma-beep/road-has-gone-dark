@@ -1,0 +1,215 @@
+{
+  "baseline": "trhgd-character-v21",
+  "candidate": "trhgd-character-v22",
+  "counts_and_changes": {
+    "classes": {
+      "before": 51,
+      "after": 51,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "id": "bard",
+          "fields": [
+            "career_choices",
+            "description",
+            "features"
+          ]
+        },
+        {
+          "id": "spirit-shaman",
+          "fields": [
+            "career_choices"
+          ]
+        },
+        {
+          "id": "beguiler",
+          "fields": [
+            "description"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "before": 878,
+      "after": 879,
+      "added": [
+        "bard-stop-performance-access"
+      ],
+      "removed": [],
+      "changed": [
+        {
+          "id": "beguiler-beguiling-control-2-access",
+          "fields": [
+            "abilities"
+          ]
+        },
+        {
+          "id": "bard-casting-3",
+          "fields": [
+            "abilities"
+          ]
+        },
+        {
+          "id": "bard-dirge-6-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "bard-rally-1-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "bard-dirge-1-feature",
+          "fields": [
+            "description"
+          ]
+        },
+        {
+          "id": "bard-rally-6-feature",
+          "fields": [
+            "description"
+          ]
+        }
+      ]
+    },
+    "feats": {
+      "before": 83,
+      "after": 83,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "skills": {
+      "before": 14,
+      "after": 14,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "resources": {
+      "before": 266,
+      "after": 266,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "statuses": {
+      "before": 235,
+      "after": 235,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "id": "bard-rally-1-status",
+          "fields": [
+            "aura",
+            "duration",
+            "modifiers",
+            "stance_group",
+            "upkeep"
+          ]
+        },
+        {
+          "id": "bard-rally-6-status",
+          "fields": [
+            "aura",
+            "duration",
+            "modifiers",
+            "stance_group",
+            "upkeep"
+          ]
+        }
+      ]
+    },
+    "abilities": {
+      "before": 845,
+      "after": 848,
+      "added": [
+        "bard-stop-performance",
+        "bard-unbinding-refrain",
+        "beguiler-unmasking-chime"
+      ],
+      "removed": [],
+      "changed": [
+        {
+          "id": "bard-dirge-6",
+          "fields": [
+            "description",
+            "effects",
+            "targeting"
+          ]
+        },
+        {
+          "id": "bard-dirge-1",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "beguiler-beguiling-control-7",
+          "fields": [
+            "description",
+            "effects"
+          ]
+        },
+        {
+          "id": "bard-rally-1",
+          "fields": [
+            "description",
+            "tags",
+            "targeting"
+          ]
+        },
+        {
+          "id": "bard-rally-6",
+          "fields": [
+            "description",
+            "effects",
+            "tags",
+            "targeting"
+          ]
+        }
+      ]
+    },
+    "equipment": {
+      "before": 25,
+      "after": 25,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "ancestries": {
+      "before": 50,
+      "after": 50,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "backgrounds": {
+      "before": 1,
+      "after": 1,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "creatures": {
+      "before": 14,
+      "after": 14,
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "psychic_powers": {
+      "before": 45,
+      "after": 45,
+      "added": [],
+      "removed": [],
+      "changed": []
+    }
+  }
+}

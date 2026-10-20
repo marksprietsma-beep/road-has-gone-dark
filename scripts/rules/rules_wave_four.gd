@@ -2,7 +2,7 @@ class_name RulesWaveFour
 extends RefCounted
 ## v14 adapters only. Ordinary effects, history, action costs and saves remain authoritative.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"]
 static func starting_equipment_allowed(item: Dictionary,source: RulesRegistry) -> bool:
  # Natural attacks come from anatomy, forms or creatures, never a new hero's loadout.
  # Existing saved records are not reclassified by this creation-only predicate.
@@ -31,12 +31,36 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   if category!="classes":errors.append(RulesJson.issue("psychic.distinct_schema",row.id,"Limit belongs to a class"))
   RulesRegistry._formula(row.distinct_power_limit,tables,row.id,errors)
   if RulesRegistry._contains_stat(row.distinct_power_limit):errors.append(RulesJson.issue("psychic.distinct_schema",row.id,"Limit must use permanent progression"))
+ if row.has("upkeep"):
+  var upkeep: Variant=row.upkeep
+  if category!="statuses" or not row.has("aura") or not upkeep is Dictionary or upkeep.size()!=2 or not RulesJson.integer(upkeep.get("amount"),1,10):errors.append(RulesJson.issue("upkeep.schema",row.id,"Aura upkeep requires one bounded resource cost"))
+  else:RulesRegistry._reference(tables,"resources",upkeep.get("resource"),row.id,errors)
  if row.has("aura"):
   var aura: Variant=row.aura
   if category!="statuses" or not aura is Dictionary or aura.size()!=2 or not RulesJson.integer(aura.get("radius"),1,6) or not aura.get("modifiers") is Array or aura.modifiers.is_empty():errors.append(RulesJson.issue("aura.schema",row.id,"Bounded radius and typed party modifiers required"));return
   RulesRegistry._modifiers(aura.modifiers,tables,row.id,errors)
   for modifier in aura.modifiers:
    if modifier.get("stat")=="HP" or modifier.has("when") or RulesRegistry._contains_stat(modifier.get("value",{})):errors.append(RulesJson.issue("aura.formula",row.id,"Aura magnitude must use unconditional permanent progression, never projected stats"))
+static func maintained_cleanup(combat: TacticalCombat,battle: Dictionary) -> void:
+ if combat.registry.rules_ref().pack_id!="trhgd-character-v22":return
+ for unit in battle.units.values():
+  if battle.status!="active" or not combat.alive(unit) or not RulesEntities.form(unit.record,combat.registry).is_empty():
+   unit.record.runtime.statuses=unit.record.runtime.statuses.filter(func(s: Dictionary):return not combat.registry.definition("statuses",s.id).has("upkeep"))
+
+static func maintained_activation(combat: TacticalCombat,battle: Dictionary) -> void:
+ if combat.registry.rules_ref().pack_id!="trhgd-character-v22" or battle.status!="active":return
+ var unit: Dictionary=combat.current(battle)
+ if not combat.alive(unit):return
+ for instance in unit.record.runtime.statuses.duplicate():
+  var definition := combat.registry.definition("statuses",instance.id)
+  if not definition.has("upkeep"):continue
+  var pool: String=definition.upkeep.resource;var amount: int=int(definition.upkeep.amount)
+  if int(unit.record.runtime.resources.get(pool,0))<amount:
+   unit.record.runtime.statuses.erase(instance);battle.log.append(unit.name+" stops the maintained performance: reserve exhausted.")
+  else:
+   unit.record.runtime.resources[pool]=int(unit.record.runtime.resources[pool])-amount
+   battle.log.append(unit.name+" maintains the performance; "+str(combat.registry.definition("resources",pool).name)+" -"+str(amount)+". Main action remains available.")
+
 static func project_auras(combat: TacticalCombat,battle: Dictionary) -> void:
  # Recomputed from live positions; never advances RNG or persists a new authority.
  for unit in battle.units.values():

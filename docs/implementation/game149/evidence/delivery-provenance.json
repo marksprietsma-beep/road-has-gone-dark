@@ -1,0 +1,25 @@
+{
+  "workflow_run": 39384408604,
+  "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39384408604",
+  "workflow_conclusion": "success",
+  "source_commit": "5970b4911b238293c5da9bf3f5158a5d5c685305",
+  "production_implementation_commit": "c1468faa2e9b0d2d3e951b602934649f24d42b48",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v22",
+    "schema_version": 1,
+    "rules_version": "22.0.0",
+    "engine_schema": 3,
+    "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85"
+  },
+  "build_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39384408604/artifacts/12248666805",
+  "evidence_artifact": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39384408604/artifacts/12248941129",
+  "sha256": "8ade2f6ff7a9338bf3110c9c73ff4cfff47224fe174f72855d68a742b96006e8",
+  "native_reuse": null,
+  "scope": "All final gate phases freshly executed on Windows; older failed/cancelled runs are not final-release evidence. Host ZIP/hash inspection is not Linux game validation.",
+  "visual_limitations": [
+    "Actual requested1280x720 client captures are1280x719; original dimensions/hashes retained.",
+    "Long action captions clip in compact layouts (640x360 and high-level Spirit Shaman actions at1280). A hover tooltip crosses the battlefield in the Spirit combat capture. General action-layout polish remains; no clean visual-completeness claim.",
+    "Labelled level20/mixed and forced save-outcome combat fixtures are development evidence; actual earned campaigns reach level8 with490XP, not20.",
+    "Human balance, world illusion AI, spirit dialogue and sourcebook-complete powers are outside this bounded implementation."
+  ]
+}

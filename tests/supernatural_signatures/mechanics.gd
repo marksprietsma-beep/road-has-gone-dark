@@ -2,7 +2,7 @@ extends "res://tests/class_signatures/mechanics_driver.gd"
 ## Lawful advanced fixtures; separate from the earned campaign phase.
 func run() -> void:
  base=OS.get_environment("GAME148_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v21.json")
+ source=RulesRegistry.new();var loaded := source.load_pack(supernatural_pack_path())
  check(loaded.ok,"v21 schema "+JSON.stringify(loaded.get("errors",[])))
  if not loaded.ok:finish_supernatural();return
  kernel=RulesCharacter.new(source)
@@ -330,3 +330,5 @@ func validate_witness(engine: TacticalAuras,b: Dictionary,boundary: String,id: S
   for key in b.units:
    var u: Dictionary=b.units[key];var valid := engine.characters.validate_build(u.record)
    if not valid.ok:print("FIELD DIAGNOSTIC ",boundary," ",id,"/",key," ",JSON.stringify(valid.errors))
+
+func supernatural_pack_path() -> String:return "res://data/rules/trhgd-character-v21.json"

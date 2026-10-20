@@ -28,7 +28,11 @@ func run() -> void:
   for n in 250:
    battle=AdventureService.active_battle(state)
    if battle.status!="active":break
-   action(saved.command_operation,{"command":tactical.enemy_command(battle)})
+   var proposed := tactical.enemy_command(battle);var predicted := tactical.command(battle,proposed)
+   check(predicted.ok,"remaining resolution command predicts through the pure authority")
+   if not predicted.ok:finish_connected(true);return
+   action(saved.command_operation,{"command":proposed})
+   check(AdventureService.active_battle(state).state_hash==predicted.battle.state_hash,"remaining campaign command/resources/RNG match exact pure outcome")
    if failures:finish_connected(true);return
   battle=AdventureService.active_battle(state)
   check(battle.status in ["victory","defeat"],"connected battle resolves normally")
@@ -40,7 +44,7 @@ func run() -> void:
    var spell := source.definition("abilities",saved.casts[id]);before_rest[id]={}
    for pool in spell.cost.resources:
     before_rest[id][pool]=state.mechanics.records[id].runtime.resources[pool]
-    check(before_rest[id][pool]==saved.resources[id][pool],"resolved campaign owns exact spent class resources "+pool)
+    check(before_rest[id][pool]==expected_resolved_pool(saved,battle,id,pool),"resolved campaign owns exact spent class resources "+pool)
   if saved.command_operation=="battle_command":
    action("return")
    if cycle().results.size()==4:action("cycle_seek")
@@ -107,7 +111,7 @@ func run() -> void:
  var resumed := service.operate(entry,slot,"resume")
  check(resumed.ok and RulesJson.digest(resumed.state)==RulesJson.digest(state),"actual mid-battle save is exact before cold restart")
  FileAccess.open(connected_folder.path_join("active-state.json"),FileAccess.WRITE).store_string(JSON.stringify(state))
- FileAccess.open(connected_folder.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"slot":slot,"state_hash":RulesJson.digest(state),"battle_hash":battle.state_hash,"casts":performed,"resources":resources,"next_command":next_command,"next_hash":expected.get("battle",{}).get("state_hash",""),"earned_xp_before_combat":490,"xp_injected":false,"command_operation":command_operation,"source":"AdventureService/"+command_operation+"/GamePlaythroughStore","scope":"Verification fork of actual earned campaign; primary campaign remains unchanged."}))
+ FileAccess.open(connected_folder.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"slot":slot,"state_hash":RulesJson.digest(state),"battle_hash":battle.state_hash,"casts":performed,"resources":resources,"battle_log_length":battle.log.size(),"next_command":next_command,"next_hash":expected.get("battle",{}).get("state_hash",""),"earned_xp_before_combat":490,"xp_injected":false,"command_operation":command_operation,"source":"AdventureService/"+command_operation+"/GamePlaythroughStore","scope":"Verification fork of actual earned campaign; primary campaign remains unchanged."}))
  finish_connected()
 func finish_connected(restart := false) -> void:
  if restart:FileAccess.open(connected_folder.path_join("restart-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"resolved_and_returned":failures==0}))
@@ -118,3 +122,7 @@ func finish_connected(restart := false) -> void:
 func wanted_actions() -> Dictionary:
  return {state.party_ids[0]:"soulknife-technique-1",state.party_ids[1]:"warblade-arm-riposte",state.party_ids[2]:"swordsage-arm-afterimage"}
 func requires_manifestation() -> bool:return true
+
+func expected_resolved_pool(saved: Dictionary,_battle: Dictionary,id: String,pool: String) -> int:
+ # Historical one-shot cohorts keep the original exact equality invariant.
+ return int(saved.resources[id][pool])

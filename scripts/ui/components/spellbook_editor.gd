@@ -5,8 +5,9 @@ var source: RulesRegistry
 var record := {}
 var controls := {}
 var repertoire_search: LineEdit
+var selection_summaries := {}
 func setup(value: Dictionary) -> void:
- record=value.duplicate(true);source=RulesRecords.registry(value);controls={}
+ record=value.duplicate(true);source=RulesRecords.registry(value);controls={};selection_summaries={}
  for child in get_children():remove_child(child);child.queue_free()
  var result := RulesCharacter.new(source).derive_character(record)
  if not result.ok:return
@@ -23,6 +24,7 @@ func setup(value: Dictionary) -> void:
   var retrieval := RulesWaveFive.retrieval_class(cls,source)
   var permit: int=int(record.runtime.resources.get(definition.get("retrieval_resource",""),0))
   if retrieval:add_child(GameUI.label("Spirit retrieval · %d change available. Return from an expedition and rest to refresh one change; selecting spells does not restore slots."%permit,GameUI.META))
+  var summary := GameUI.label("",GameUI.META);selection_summaries[cls]=summary;add_child(summary)
   var ordered: Array=result.snapshot.abilities.duplicate()
   ordered.sort_custom(func(a: String,b: String):
    var left := source.definition("abilities",a);var right := source.definition("abilities",b)
@@ -34,14 +36,20 @@ func setup(value: Dictionary) -> void:
     var row := HBoxContainer.new();row.set_meta("spell_search",(ability.name+" tier "+str(ability.spell_tier)+" "+ability.get("description","")).to_lower());add_child(row)
     var caption := GameUI.label(ability.name+' · '+RulesCareer.requirement_text(ability.requirements,source)+' · '+', '.join(ability.tags.filter(func(tag: String):return tag.begins_with('tier_'))).replace('_',' '),GameUI.META);caption.size_flags_horizontal=Control.SIZE_EXPAND_FILL;row.add_child(caption)
     var spin := SpinBox.new();spin.min_value=0;spin.max_value=30;spin.step=1;spin.custom_minimum_size.x=88;spin.tooltip_text=ability.get('description',ability.name);row.add_child(spin)
-    if source.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21"] and not RulesCoreContent.spell_eligible(result.snapshot,ability):spin.editable=false;spin.tooltip_text+="\nUnavailable: "+RulesCareer.requirement_text(ability.requirements,source)
-    spin.value=int(record.choices.spell_preparations.get(id,0));controls[id]=spin;spin.value_changed.connect(func(_value: float):changed.emit())
+    if source.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"] and not RulesCoreContent.spell_eligible(result.snapshot,ability):spin.editable=false;spin.tooltip_text+="\nUnavailable: "+RulesCareer.requirement_text(ability.requirements,source)
+    spin.value=int(record.choices.spell_preparations.get(id,0));controls[id]=spin;spin.value_changed.connect(func(_value: float):update_selection_summaries();changed.emit())
    else:
     var control := CheckBox.new();control.text=ability.name+' · '+RulesCareer.requirement_text(ability.requirements,source)+' · '+', '.join(ability.tags.filter(func(tag: String):return tag.begins_with('tier_'))).replace('_',' ')
     control.tooltip_text=ability.get('description',ability.name);control.button_pressed=record.choices.prepared_abilities.has(id)
     control.disabled=permit<1 if retrieval else definition.spell_mode=='spontaneous' and control.button_pressed
-    if source.rules_ref().pack_id=="trhgd-character-v18" and not RulesCoreContent.spell_eligible(result.snapshot,ability):control.disabled=true;control.tooltip_text+="\nUnavailable: "+RulesCareer.requirement_text(ability.requirements,source)
-    control.set_meta("spell_search",(ability.name+" tier "+str(ability.spell_tier)+" "+ability.get("description","")).to_lower());add_child(control);controls[id]=control;control.toggled.connect(func(_on: bool):changed.emit())
+    if source.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22"] and not RulesCoreContent.spell_eligible(result.snapshot,ability):control.disabled=true;control.tooltip_text+="\nUnavailable: "+RulesCareer.requirement_text(ability.requirements,source)
+    control.set_meta("spell_search",(ability.name+" tier "+str(ability.spell_tier)+" "+ability.get("description","")).to_lower());add_child(control);controls[id]=control;control.toggled.connect(func(_on: bool):update_selection_summaries();changed.emit())
+
+ update_selection_summaries()
+func update_selection_summaries() -> void:
+ for cls in selection_summaries:
+  var count: int=selection().filter(func(id: String):return source.definition("abilities",id).get("casting_class")==cls).size()
+  selection_summaries[cls].text="Proposed selection: "+str(count)+" · commit saves choices; current spell slots are preserved."
 
 func selection() -> Array:
  return controls.keys().filter(func(id: String):return int(controls[id].value)>0 if controls[id] is SpinBox else controls[id].button_pressed)
