@@ -18,11 +18,10 @@ def run(phase,restart=False,visual=False):
  result=checked_process([str(qa)]+([]if visual else['--headless'])+['--audio-driver','Dummy'],cwd=dist,env=dict(env,**extra),log=base/(label+'.log'),timeout=3600)
  rows.append(dict(phase=label,**result));(base/'native-timings.json').write_text(json.dumps(rows,indent=2)+'\n');print(rows[-1],flush=True)
  assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-14000:]
-for phase in ['mechanics','input','current-supernatural','v21','current-signatures','current-mobile','v20','v19','v18','legacy','compatibility','audit','journey','connected']:
+for phase in ['mechanics','input','journey','connected','capture','current-supernatural','v21','current-signatures','current-mobile','v20','v19','v18','legacy','compatibility','audit']:
  if phase in checkpoint['phases']:continue
- run(phase)
- if phase!='input':run(phase,True)
-run('capture',visual=True)
+ run(phase,visual=phase=='capture')
+ if phase not in ['input','capture']:run(phase,True)
 proofs={}
 for phase,folder,pin in [('mechanics','mechanics',expected),('current-supernatural','current-supernatural',expected),('v21','v21',pins['trhgd-character-v21']),('current-signatures','current-signatures',expected),('current-mobile','current-mobile',expected),('v20','v20',pins['trhgd-character-v20']),('v19','v19',pins['trhgd-character-v19']),('v18','v18',pins['trhgd-character-v18']),('legacy','legacy-v16',pins['trhgd-character-v16']),('compatibility','compatibility-v16',pins['trhgd-character-v16']),('audit','readiness-audit',expected),('journey','journeys/cohort-0',expected),('connected','connected',expected)]:
  for file in ['proof.json','restart-proof.json']:

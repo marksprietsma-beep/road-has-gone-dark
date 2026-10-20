@@ -48,7 +48,7 @@ func test_baseline() -> void:
  check(not source.definition("abilities","beguiler-beguiling-control-7").effects[0].on_failure.any(func(e: Dictionary):return e.get("id")=="warded"),"22 preserves21 but removes hostile buff")
 func test_performance() -> void:
  for at in [1,6,12,20]:
-  var r := alternative(records["bard"+str(at)],{"bard-choice-1":"rally","bard-choice-6":"rally"})
+  var r := alternative(records["bard"+str(at)],{"bard-choice-1":"rally","bard-choice-6":"rally","bard-choice-15":"rally"})
   var engine := TacticalAuras.new(r);var b := encounter(r);var ability: String="bard-rally-6"if at>=6 else"bard-rally-1"
   var before := RulesJson.digest(b);var started := execute(engine,b,ability)
   check(started.ok,"real maintained rally "+str(at))
@@ -149,7 +149,7 @@ func test_low_attributes() -> void:
   records["low-"+cls]=r
 
 func test_casting_competition() -> void:
- var r := selected_spell(alternative(records.bard12,{"bard-choice-1":"rally","bard-choice-6":"rally"}),"bard-unbinding-refrain")
+ var r := selected_spell(alternative(records.bard12,{"bard-choice-1":"rally","bard-choice-6":"rally","bard-choice-15":"rally"}),"bard-unbinding-refrain")
  var engine := TacticalAuras.new(r);var b := encounter(r);var started := execute(engine,b,"bard-rally-6")
  check(started.ok,"rally/spell shared authority")
  if not started.ok:return
