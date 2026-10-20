@@ -110,6 +110,12 @@ func test_retrieval() -> void:
  check(no_rest.runtime.resources[pool]==0,"encounter boundary does not refresh retrieval")
  var rested := RulesEffects.new(source).refresh_resources(after.runtime,caps,"eligible_rest")
  check(rested.runtime.resources[pool]==1 and rested.runtime.resources["spirit-shaman-slots-1"]==caps["spirit-shaman-slots-1"],"eligible rest recovers permit and actual shared slots")
+ check(not use(after,defender(false),"spirit-shaman-spirit-refuge-1").ok,"retrieved but exhausted spell still cannot cast")
+ var refreshed: Dictionary=after.duplicate(true);refreshed.runtime=rested.runtime
+ var wounded := defender(false);wounded.runtime.hp=maxi(1,int(wounded.runtime.hp)-12)
+ var healed := use(refreshed,wounded,"spirit-shaman-spirit-refuge-1")
+ check(healed.ok and healed.target.runtime.hp>wounded.runtime.hp and healed.actor.runtime.resources["spirit-shaman-slots-1"]==refreshed.runtime.resources["spirit-shaman-slots-1"]-1,"rested retrieved spirit spell actually heals and spends a shared slot")
+ check(not use(refreshed,wounded,"spirit-shaman-spirit-rebuke-1").ok,"unretrieved spirit spell cannot cast")
  records.retrieved=after
 func test_guides() -> void:
  for at in [1,6,12,20]:
@@ -120,7 +126,16 @@ func test_guides() -> void:
    var target := defender(false);var action: String="spirit-guide-"+guide+"-"+str(tier)
    target.runtime.hp=maxi(1,int(target.runtime.hp)-15)
    var result := use(r,target,action);check(result.ok,"actual selected guide "+guide+str(at))
-   if result.ok:check(result.actor.runtime.resources["spirit-favour"]==r.runtime.resources["spirit-favour"]-int(source.definition("abilities",action).cost.resources["spirit-favour"]),"guide spends favour not spell slot")
+   if result.ok:
+    check(result.actor.runtime.resources["spirit-favour"]==r.runtime.resources["spirit-favour"]-int(source.definition("abilities",action).cost.resources["spirit-favour"]),"guide spends favour not spell slot")
+    if guide=="hearth":check(result.target.runtime.hp>target.runtime.hp,"Hearth actually restores health")
+    elif guide=="watcher":check(has_status(result.target,"ancestor-guard") and kernel.derive_character(result.target).snapshot.stats.will>kernel.derive_character(target).snapshot.stats.will and result.target.runtime.temporary_hp>0,"Watcher actually protects saves and buffers")
+    else:
+     check(result.target.runtime.hp<target.runtime.hp,"Storm actually damages after a failed save")
+     var resistant := defender(true);var negated := use(r,resistant,action)
+     check(negated.ok and negated.target.runtime.hp==resistant.runtime.hp,"Storm has actual Reflex counterplay")
+   var empty: Dictionary=r.duplicate(true);empty.runtime.resources["spirit-favour"]=0
+   check(not use(empty,target,action).ok,"exhausted spirit favour prevents guide action")
    var other: String="watcher"if guide=="storm"else"storm";check(not use(r,target,"spirit-guide-"+other+"-1").ok,"unselected guide cannot execute")
    records[guide+str(at)]=r
    if at in [1,12,20]:
@@ -131,12 +146,25 @@ func test_guides() -> void:
 func test_mixed() -> void:
  var r := build("bard",4)
  for n in 4:
-  var choice := kernel.suggested_choice(r,"beguiler","");check(choice.ok,"multiclass choice")
+  var choice := kernel.suggested_choice(r,"beguiler","steady-study");check(choice.ok,"multiclass choice")
   if not choice.ok:return
-  var advanced := kernel.preview_advancement(r,choice.choice);check(advanced.ok,"mixed history")
+  var advanced := kernel.preview_advancement(r,choice.choice);check(advanced.ok,"mixed history "+JSON.stringify(advanced.get("errors",[])))
   if not advanced.ok:return
   r=advanced.candidate
  check(kernel.derive_character(r).snapshot.class_levels.bard==4 and kernel.derive_character(r).snapshot.class_levels.beguiler==4,"ordered distinct caster histories")
+ r=selected_spell(alternative(r,{"bard-choice-1":"rally"}),"beguiler-unmasking-chime")
+ var engine := TacticalAuras.new(r);var b := encounter(r);var started := execute(engine,b,"bard-rally-1")
+ check(started.ok,"multiclass starts actual Bard performance")
+ if started.ok:
+  var active: Dictionary=started.battle
+  for i in active.order.size():
+   var ended := execute(engine,active,"end");check(ended.ok,"normal end commands advance mixed activation")
+   if not ended.ok:return
+   active=ended.battle
+  var pool: int=int(active.units.a.record.runtime.resources.performance)
+  var spell := execute(engine,active,"beguiler-unmasking-chime","bandit-blade")
+  check(spell.ok and spell.battle.units.a.record.runtime.resources.performance==pool and has_status(spell.battle.units.a.record,"bard-rally-1-status"),"mixed spontaneous casting and maintained song use distinct reserves")
+  if spell.ok:battles.mixed=spell.battle
  records.mixed=r
 
 func test_low_attributes() -> void:

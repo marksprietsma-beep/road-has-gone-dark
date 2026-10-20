@@ -26,6 +26,7 @@ func test_known_authority() -> void:
  var before: Dictionary=r.runtime.resources.duplicate(true);var xp := CharacterBuilderRecords.xp(state,id)
  var writer := CharacterBuilderService.new();writer.store=service.store;writer.library=service.library
  var spells: Array=["spirit-shaman-spirit-refuge-1"]
+ if r.choices.prepared_abilities==spells:spells.append("spirit-shaman-listening-ward")
  var result := writer.operate(entry,slot,"builder_spells",3,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":spells,"preparations":{}})
  check(result.ok,"production writer accepts real home-rest retrieval "+JSON.stringify(result.get("errors",[])))
  if not result.ok:return
@@ -36,10 +37,10 @@ func test_known_authority() -> void:
  check(CharacterBuilderRecords.xp(state,id)==xp,"no XP from retrieval")
  var raw := FileAccess.get_file_as_string(service.store._slot_path(slot))
  result=writer.operate(entry,slot,"builder_spells",3,{"before_hash":RulesJson.digest(state),"character_id":id,"spells":["spirit-shaman-spirit-rebuke-1"],"preparations":{}})
- check(not result.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"second exchange rejects without changing exact saved bytes")
+ check(not result.ok and RulesJson.canonical(result).contains("spell.retrieval_rest") and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"second exchange rejects without changing exact saved bytes")
  # Permanent spontaneous choices cannot be exchanged like a Spirit repertoire.
  result=writer.operate(entry,slot,"builder_spells",2,{"before_hash":RulesJson.digest(state),"character_id":state.party_ids[1],"spells":[],"preparations":{}})
- check(not result.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"actual Beguiler known spells cannot be forgotten")
+ check(not result.ok and RulesJson.canonical(result).contains("cannot be forgotten") and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"actual Beguiler known spells cannot be forgotten")
 func test_real_combat() -> void:
  for id in state.party_ids:
   check(CharacterBuilderRecords.xp(state,id)==490 and state.mechanics.records[id].advancement_history.size()==8,"real earned490XP/level8, not20")
