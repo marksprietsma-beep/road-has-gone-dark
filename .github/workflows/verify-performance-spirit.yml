@@ -9,10 +9,6 @@ on:
         description: Run the complete self-contained Windows release gate after focused checks
         type: boolean
         default: false
-      reuse_run:
-        description: Optional completed native run with identical game and reused-driver sources
-        type: string
-        default: ''
 permissions:
   contents: read
   actions: read
@@ -43,10 +39,14 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game149-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game149-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Actual selected invocation, covenant, breath and cold tests
+      - name: Actual performances, illusions, retrieval and cold tests
         env:
           GAME149_ROOT: ${{ runner.temp }}/game149-focused
         run: python tests/performance_spirit/run-tests.py
+      - name: Exact historical packs and negative guards
+        run: |
+          python tests/performance_spirit/check-history.py
+          python tests/adventure_cycles/pin_guard_test.py
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release
         run: python tools/release/prepare-templates.py
@@ -54,7 +54,6 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.release
         env:
           GAME149_RELEASE_ROOT: ${{ runner.temp }}/game149-native
-          GAME149_REUSE_RUN: ${{ inputs.reuse_run }}
           GH_TOKEN: ${{ github.token }}
         run: python tests/performance_spirit/verify-package.py
       - name: Complete Windows x64 review game

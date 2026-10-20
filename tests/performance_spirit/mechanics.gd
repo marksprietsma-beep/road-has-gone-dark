@@ -78,7 +78,7 @@ func test_refrain() -> void:
  check(used.ok and not has_status(used.target,"slowed") and used.target.runtime.hp==target.runtime.hp,"tier3 relief differs from lightning damage")
  check(used.ok and used.actor.runtime.resources["bard-slots-3"]==r.runtime.resources["bard-slots-3"]-1 and used.budget.main==0,"relief costs real slot/main")
  var unknown: Dictionary=r.duplicate(true);unknown.choices.prepared_abilities=[];check(not use(unknown,target,"bard-unbinding-refrain").ok,"unknown spontaneous relief rejected")
- var low := selected_spell(records.bard1,"bard-spark") if source.definition("abilities","bard-spark").size()>0 else records.bard1
+ var low: Dictionary=selected_spell(records.bard1,"bard-spark") if source.definition("abilities","bard-spark").size()>0 else records.bard1
  check(not use(low,target,"bard-unbinding-refrain").ok,"low character cannot use higher spell")
  records.bard_refrain=r
 func test_illusion() -> void:
