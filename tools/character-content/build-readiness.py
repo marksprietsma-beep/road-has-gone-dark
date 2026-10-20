@@ -1,15 +1,15 @@
 """Reproducible all-supported-class readiness, separate from research coverage.
-Usage: python tools/character-content/build-readiness.py [--native DIR]
+Usage: python tools/character-content/build-readiness.py [--native DIR] [--visual-native DIR]
 Only exact selected-pack zero-failure native receipts promote technical status. Human balance and sourcebook breadth are separate.
 """
 from pathlib import Path
 import argparse,json,hashlib
-root=Path(__file__).resolve().parents[2];parser=argparse.ArgumentParser();parser.add_argument('--native',type=Path);parser.add_argument('--pack',default='trhgd-character-v23');args=parser.parse_args()
+root=Path(__file__).resolve().parents[2];parser=argparse.ArgumentParser();parser.add_argument('--native',type=Path);parser.add_argument('--visual-native',type=Path);parser.add_argument('--pack',default='trhgd-character-v23');args=parser.parse_args()
 p=json.loads((root/('data/rules/'+args.pack+'.json')).read_text(encoding='utf-8'));t={k:{x['id']:x for x in v}for k,v in p.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
 pin=next(x['rules_ref']for x in json.loads((root/'data/rules/packs.json').read_text(encoding='utf-8'))['packs']if x['rules_ref']['pack_id']==p['pack_id'])
 prior=json.loads((root/'docs/implementation/game126/current/MATRIX.json').read_text(encoding='utf-8'));base={x['id']:x for x in prior['classes']}
 prestige=json.loads((root/'docs/implementation/game126/evidence/native-prestige-witnesses.json').read_text(encoding='utf-8'))
-cohort=['soulknife','warblade','crusader','swordsage'];native=None
+cohort=['soulknife','warblade','crusader','swordsage'];native=None;visual=None
 if args.native:
  native=json.loads((args.native/'distribution-proof.json').read_text(encoding='utf-8'));assert native['rules_ref']==pin
  assert all(x['checks']>0 and x['failures']==0 for x in native['proofs'].values())
@@ -37,6 +37,12 @@ if args.native:
    assert all(any(x['class_id']==cls and x['level']==at for x in witnessed)for cls in ['bard','beguiler','spirit-shaman']for at in [1,6,20])
    cohort+=['bard','beguiler','spirit-shaman']
    if args.pack=='trhgd-character-v23':
+    assert args.visual_native is not None,'v23 needs the corrected actual Windows control/capture receipt'
+    visual=json.loads((args.visual_native/'recapture-proof.json').read_text(encoding='utf-8'))
+    assert visual['rules_ref']==pin and visual['original_release_source']==native['source_commit']and visual['runtime_and_rules_unchanged']
+    assert visual['controls']['checks']>=30 and visual['controls']['failures']==0
+    assert visual['captures']['failures']==0 and len(visual['captures']['screenshots'])>=25
+    for image in visual['captures']['screenshots']:assert hashlib.sha256((args.visual_native/'captures'/image['file']).read_bytes()).hexdigest()==image['sha256']
     for file in ['proof.json','restart-proof.json']:
      assert native['proofs']['current-performance/'+file]['rules_ref']==pin and native['proofs']['current-performance/'+file]['failures']==0
      assert native['proofs']['v22/'+file]['rules_ref']['pack_id']=='trhgd-character-v22'and native['proofs']['v22/'+file]['failures']==0
@@ -142,6 +148,8 @@ for cls in p['classes']:
    row['advancement']['current_native_levels']=[1,5,6,14,15,16,17,20]
    row['early_mid_high']['scope']='Current23 lawful unlock/attribute/copy boundaries; actual tier8/9 dispelling, saved main-action control, immunity/cleansing and activation healing, all school/domain branches1/6/20, independent Theurge17/8 casting, production GUI and exact cold; separately490XP/level8 earned campaigns.'
    row['evidence']+=['tests/upper_prepared/input.gd','tests/upper_prepared/journey.gd','tests/upper_prepared/connected.gd']
+   row['evidence'].append('docs/implementation/game150/evidence/recapture-proof.json')
+   row['visual_source']=visual['source_commit']
    row['limitations'].append('Bounded original preparation policy: home preparation refills selected copies but never shared daily slots. No universal dispel, extra actions, deity system or complete tabletop spell list; high20 examples are development fixtures.')
   if args.pack=='trhgd-character-v23'and id in ['bard','beguiler','spirit-shaman']:
    row['acceptance_sources']=dict(current='Matching23 current-performance mechanics/cold and72-control GUI acceptance.',reused='Explicit GAME-149490XP/level8 earned campaign and connected cold proof; current23 earned campaign targets Wizard/Cleric/Fighter.')
