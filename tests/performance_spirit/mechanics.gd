@@ -177,9 +177,9 @@ func test_basic_illusions() -> void:
 
 func test_descriptor_guards() -> void:
  var errors: Array=[]
- RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"unknown-group"},source.tables,errors)
+ RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"unknown-group"},{},errors)
  check(not errors.is_empty(),"unknown exclusive group still rejects")
- errors=[];RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"maintained-performance"},source.tables,errors)
+ errors=[];RulesMartial.validate_definition("statuses",{"id":"forged","stance_group":"maintained-performance"},{},errors)
  check(not errors.is_empty(),"maintained group without declared upkeep rejects")
- errors=[];RulesWaveFour.validate_definition("statuses",{"id":"forged","aura":{},"upkeep":{"resource":"performance","amount":0}},source.tables,errors)
+ errors=[];RulesWaveFour.validate_definition("statuses",{"id":"forged","aura":{},"upkeep":{"resource":"performance","amount":0}},{},errors)
  check(not errors.is_empty(),"zero-cost upkeep descriptor rejects")

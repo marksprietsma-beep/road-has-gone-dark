@@ -49,7 +49,7 @@ func setup(value: Dictionary) -> void:
 func update_selection_summaries() -> void:
  for cls in selection_summaries:
   var count: int=selection().filter(func(id: String):return source.definition("abilities",id).get("casting_class")==cls).size()
-  selection_summaries[cls].text="Proposed selection: "+str(count)+" · saved choices and spent slots change only when committed."
+  selection_summaries[cls].text="Proposed selection: "+str(count)+" · commit saves choices; current spell slots are preserved."
 
 func selection() -> Array:
  return controls.keys().filter(func(id: String):return int(controls[id].value)>0 if controls[id] is SpinBox else controls[id].button_pressed)
