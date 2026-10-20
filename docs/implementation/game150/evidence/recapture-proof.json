@@ -1,0 +1,325 @@
+{
+  "source_commit": "3462c93e3001995c10b7cd70ba9c9e97df9a5bcb",
+  "original_release_source": "8b37e0d03ed38df138bc6bf2fdf6bba221673d85",
+  "original_release_run": 39423972908,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v23",
+    "schema_version": 1,
+    "rules_version": "23.0.0",
+    "engine_schema": 3,
+    "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+  },
+  "runtime_and_rules_unchanged": true,
+  "changed_paths": [
+    ".github/workflows/capture-upper-prepared.yml",
+    "docs/implementation/game150/CONTINUATION.md",
+    "docs/implementation/game150/DELIVERY.md",
+    "docs/implementation/game150/TESTING.md",
+    "docs/implementation/game150/evidence/archive-audit.json",
+    "docs/implementation/game150/evidence/final-distribution-proof.json",
+    "docs/implementation/game150/evidence/native-timings.json",
+    "docs/implementation/game150/evidence/original-captures/earned-cleric-sheet-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/earned-saved-prepared-careers-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/earned-wizard-sheet-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-cleric-concord-release-combat-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-cleric-permanent-choice-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-cleric-tier8-preparation-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-cleric-tier9-preparation-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-cleric20-sheet-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-control-large-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-control-small-640x360.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-controlled_player-combat-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-renewal-combat-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-unweaving_area-combat-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-wizard-permanent-choice-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-wizard-stillness-lattice-combat-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-wizard-tier8-preparation-1280x719.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-wizard-tier9-preparation-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/fixture-wizard20-sheet-2560x1440.png",
+    "docs/implementation/game150/evidence/original-captures/screenshots.json",
+    "tests/upper_prepared/capture.gd",
+    "tests/upper_prepared/input.gd",
+    "tests/upper_prepared/recapture.py",
+    "tools/character-content/build-readiness.py"
+  ],
+  "restored_fixture_packet_checksum": "88abd250068c1d97273df0f860f8646deef66284645509ae4d7717b423f8ab8a",
+  "controls": {
+    "checks": 30,
+    "failures": 0,
+    "scope": "Actual production prepared-copy, tier budgets, permanent requirements, advancement pickers and combat controls; no OS automation claim"
+  },
+  "captures": {
+    "checks": 43,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-wizard-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "fd9d7811ffdded52a218e8a6b281ecfe03c4850322465d8863b12a6dd1633fb9",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "672afa6e2a36ceeef5cf2a43afcd33617e3315e7c7837b6286e653a688ae203e",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-tier8-preparation-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "66f82b563161322c42a29bae238a5150f506d51925920c256e3e314fd2274fe1",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-tier9-preparation-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "7f7414bdaaec7be0dea130967b4653a9dcf35f60f1e655f869b67a13b83b11ef",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-permanent-choice-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "37c1e4ace19fd0aca85f5e8df1d1ed116f062610d9eb6381f3ef14acf7d5773d",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-cleric-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "fe5db1d64a8b79120450928d63c76a7377fc67b4ec1b6596513c03b65c5ca6d2",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "43fd489c048fc8edcee59e88afa27c197947033dec5d107d7e272a9e3171f39e",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-tier8-preparation-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8645f3e89bda74d86973e7a38e22032cc7645ddd86a6d32a224a4464759c8003",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-tier9-preparation-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "07a51cbe97dcdad42f1c38180803b1533989faac9b1f33729e5fb12e9d8077a2",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-permanent-choice-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "6257d7821441c7f0a0c63d5f7f6e8a80f3a04fefa6e1398b120aa5baa13f218b",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unweaving_area-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "5f0f9f2539c2ceb214d51bf6ddcd14374ddbe99e97034cf5002c18d4ef396ed9",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unweaving_area-spell-control-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "d286ad5608fb46fa8f2c274c1382c7249bc7ad97504c31d620d4295a9af18e9c",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-stillness-lattice-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "c21bb241ea3ce7a14b4d00e2f4426801d96887451d75b62fb447ee894402407d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-stillness-lattice-spell-control-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "494958ebf47f7bc0f4b4f620cda37d59f7c7ded479598705ae267a1fcd7db856",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-stillness-lattice-effect-log-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "969a92b06cb88c49603a6c4623250f419cc349ba39551f4c694f114d6422d8fb",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-controlled_player-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "165e62e7a5a6f4f134aea70ca3bbfbf6ea0c28213b7e4e77327d8d3d65b0fa4a",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-control-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "5f3d1d3e13d9b0189f110108ac4f5b2f5cacbbca36eed16b803dd27d34fee7c0",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-control-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "aff4ed3ffddaf8eef8e053bd15e5c8e92cfc651dfada64d1e4072e7d846c83c0",
+        "width": 640
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-concord-release-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "fdd58b8b160d9926a5bbea50619e6172084f9ddce7633f3c55e9db55fa86d1dc",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-concord-release-spell-control-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "4c13b06b9417dd2cd8d3ffdacfa4ab5f0d4aca512c31b78b4cf6ed703644f54c",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-renewing-benediction-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "95c888af14624399949aa4c390ab72cfcc898e667a04000497050ab84087855f",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cleric-renewing-benediction-spell-control-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "97ed2a11bc83925cdc1acd64c6a7b0f84e275c6be22f80c43f31e9fe3b31c5a2",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-renewal-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "879f08c2c31678031336cebd229bfa040a552cb3af20cabe7cb3bb10c93fa68c",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-renewal-effect-log-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8de6f3a675cf7b90ae97d7c859a90c4f90421e195fee9b49e3bf9a596a417b30",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-saved-prepared-careers-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e33c02d4bbdd0c2fc5bbd40bac1978da8b932d0d600ea16b4dda4ed475d25219",
+        "width": 2560
+      }
+    ]
+  },
+  "timings": [
+    {
+      "phase": "input",
+      "seconds": 6.079,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 57.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "scope": "Windows-only correction of capture interactions: emit actual typing signal, open visible specialisation tab, scroll actual spell controls/logs. Existing complete release and gameplay results retained, not rerun or claimed fresh."
+}
