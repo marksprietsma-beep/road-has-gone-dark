@@ -14,7 +14,7 @@ func run() -> void:
    check(RulesJson.digest(saved.records[id])==saved.record_hashes[id],"exact cold known/retrieved/resources "+id)
   for id in saved.battles:
    var engine := TacticalAuras.new(saved.battles[id].units.a.record)
-   check(engine.validate(saved.battles[id]).is_empty(),"exact cold legal battle "+id)
+   validate_witness(engine,saved.battles[id],"cold",id)
    var next := engine.command(saved.battles[id],saved.next[id]);check(next.ok and next.battle.state_hash==saved.after[id],"exact cold command/log/RNG "+id)
   finish_cohort(true);return
  fixtures.fighter=build("fighter",20)
@@ -29,7 +29,7 @@ func run() -> void:
   if d.ok:hashes[id]=d.snapshot.snapshot_hash;record_hashes[id]=RulesJson.digest(records[id])
  for id in battles:
   var engine := TacticalAuras.new(battles[id].units.a.record)
-  check(engine.validate(battles[id]).is_empty(),"fresh battle validates "+id)
+  validate_witness(engine,battles[id],"fresh",id)
   next[id]={"actor_id":engine.current(battles[id]).id,"revision":battles[id].revision,"kind":"end"}
   var result := engine.command(battles[id],next[id]);check(result.ok,"predict persisted command "+id)
   if result.ok:after[id]=result.battle.state_hash
@@ -55,7 +55,7 @@ func test_performance() -> void:
   check(started.ok,"real maintained rally "+str(at))
   if not started.ok:continue
   check(RulesJson.digest(b)==before,"start is pure")
-  var active: Dictionary=started.battle;var pool: int=int(active.units.a.record.runtime.resources.performance)
+  var active: Dictionary=started.battle.duplicate(true);var pool: int=int(active.units.a.record.runtime.resources.performance)
   check(active.budget.main==0 and pool==int(r.runtime.resources.performance)-1,"starting competes for main and finite use")
   check(engine.stats(active.units.b).defence>engine.stats(b.units.b).defence,"live ally receives projected defence")
   var repeated := engine.seal(active.duplicate(true));check(repeated.units.a.record.runtime.resources.performance==pool and repeated.rng==active.rng,"projection spends no resource/RNG")
@@ -157,7 +157,7 @@ func test_mixed() -> void:
  var engine := TacticalAuras.new(r);var b := encounter(r);var started := execute(engine,b,"bard-rally-1")
  check(started.ok,"multiclass starts actual Bard performance")
  if started.ok:
-  var active: Dictionary=started.battle
+  var active: Dictionary=started.battle.duplicate(true)
   for i in active.order.size():
    var ended := execute(engine,active,"end");check(ended.ok,"normal end commands advance mixed activation")
    if not ended.ok:return
@@ -183,7 +183,7 @@ func test_casting_competition() -> void:
  check(started.ok,"rally/spell shared authority")
  if not started.ok:return
  check(not execute(engine,started.battle,"bard-unbinding-refrain","b").ok,"starting a rally competes with casting")
- var active: Dictionary=started.battle
+ var active: Dictionary=started.battle.duplicate(true)
  for i in active.order.size():engine.next_turn(active)
  active=engine.seal(active);var cost: int=int(active.units.a.record.runtime.resources.performance)
  var casted := execute(engine,active,"bard-unbinding-refrain","b")

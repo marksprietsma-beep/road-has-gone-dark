@@ -56,10 +56,10 @@ static func maintained_activation(combat: TacticalCombat,battle: Dictionary) -> 
   if not definition.has("upkeep"):continue
   var pool: String=definition.upkeep.resource;var amount: int=int(definition.upkeep.amount)
   if int(unit.record.runtime.resources.get(pool,0))<amount:
-   unit.record.runtime.statuses.erase(instance);battle.log.append(unit.name+" stops "+definition.id+": performance exhausted.")
+   unit.record.runtime.statuses.erase(instance);battle.log.append(unit.name+" stops the maintained performance: reserve exhausted.")
   else:
    unit.record.runtime.resources[pool]=int(unit.record.runtime.resources[pool])-amount
-   battle.log.append(unit.name+" maintains "+definition.id+"; "+pool+" -"+str(amount)+". Main action remains available.")
+   battle.log.append(unit.name+" maintains the performance; "+str(combat.registry.definition("resources",pool).name)+" -"+str(amount)+". Main action remains available.")
 
 static func project_auras(combat: TacticalCombat,battle: Dictionary) -> void:
  # Recomputed from live positions; never advances RNG or persists a new authority.
