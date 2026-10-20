@@ -1,5 +1,6 @@
 extends "res://tests/supernatural_signatures/mechanics.gd"
 ## Lawful development fixtures. Earned careers run separately through production services.
+var executable_spell_witnesses: Array=[]
 func run() -> void:
  base=OS.get_environment("GAME149_ROOT");DirAccess.make_dir_recursive_absolute(base)
  source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v22.json")
@@ -21,7 +22,7 @@ func run() -> void:
   for at in [1,6,12,20]:
    var r := build(cls,at);check(not r.is_empty(),"lawful1/6/12/20 "+cls+str(at));records[cls+str(at)]=r
  if failures:finish_cohort();return
- test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes();test_casting_competition();test_basic_illusions();test_descriptor_guards()
+ test_baseline();test_performance();test_refrain();test_illusion();test_retrieval();test_guides();test_mixed();test_low_attributes();test_casting_competition();test_basic_illusions();test_descriptor_guards();test_available_repertoires()
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var d := kernel.derive_character(records[id]);check(d.ok,"persist lawful candidate "+id)
@@ -35,7 +36,7 @@ func run() -> void:
  FileAccess.open(base.path_join("saved.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":records,"hashes":hashes,"record_hashes":record_hashes,"battles":battles,"next":next,"after":after})))
  finish_cohort()
 func finish_cohort(restart := false) -> void:
- var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"campaign_xp_injected":false,"classes":["bard","beguiler","spirit-shaman"]}
+ var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"campaign_xp_injected":false,"classes":["bard","beguiler","spirit-shaman"],"executable_spells":executable_spell_witnesses}
  FileAccess.open(base.path_join("restart-proof.json"if restart else"proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof));print("GAME149 ",JSON.stringify(proof));get_tree().quit(1 if failures else 0)
 func selected_spell(r: Dictionary,id: String) -> Dictionary:
  var result: Dictionary=r.duplicate(true);result.choices.prepared_abilities=[id];result.choices.spell_preparations={}
@@ -113,8 +114,8 @@ func test_retrieval() -> void:
  check(not use(after,defender(false),"spirit-shaman-spirit-refuge-1").ok,"retrieved but exhausted spell still cannot cast")
  var refreshed: Dictionary=after.duplicate(true);refreshed.runtime=rested.runtime
  var wounded := defender(false);wounded.runtime.hp=maxi(1,int(wounded.runtime.hp)-12)
- var healed := use(refreshed,wounded,"spirit-shaman-spirit-refuge-1")
- check(healed.ok and healed.target.runtime.hp>wounded.runtime.hp and healed.actor.runtime.resources["spirit-shaman-slots-1"]==refreshed.runtime.resources["spirit-shaman-slots-1"]-1,"rested retrieved spirit spell actually heals and spends a shared slot")
+ var sheltered := use(refreshed,wounded,"spirit-shaman-spirit-refuge-1")
+ check(sheltered.ok and sheltered.target.runtime.temporary_hp>0 and sheltered.target.runtime.hp==wounded.runtime.hp and sheltered.actor.runtime.resources["spirit-shaman-slots-1"]==refreshed.runtime.resources["spirit-shaman-slots-1"]-1,"rested retrieved shelter grants a buffer, preserves health and spends a shared slot")
  check(not use(refreshed,wounded,"spirit-shaman-spirit-rebuke-1").ok,"unretrieved spirit spell cannot cast")
  records.retrieved=after
 func test_guides() -> void:
@@ -211,3 +212,20 @@ func test_descriptor_guards() -> void:
  check(not errors.is_empty(),"maintained group without declared upkeep rejects")
  errors=[];RulesWaveFour.validate_definition("statuses",{"id":"forged","aura":{},"upkeep":{"resource":"performance","amount":0}},{},errors)
  check(not errors.is_empty(),"zero-cost upkeep descriptor rejects")
+
+func test_available_repertoires() -> void:
+ for cls in ["bard","beguiler","spirit-shaman"]:
+  for at in [1,6,20]:
+   var record: Dictionary=records[cls+str(at)];var snapshot: Dictionary=kernel.derive_character(record).snapshot
+   for id in snapshot.abilities:
+    var ability := source.definition("abilities",id)
+    if ability.get("casting_class")!=cls or not ability.tags.has("spell") or not RulesCoreContent.spell_eligible(snapshot,ability):continue
+    var selected := selected_spell(record,id);var engine := TacticalAuras.new(selected);var b := encounter(selected)
+    var target: String="a"if ability.targeting.kind=="self"else"b"if ability.targeting.kind=="ally"else"bandit-blade"
+    b.units[target].record.runtime.hp=maxi(1,int(b.units[target].record.runtime.hp)-2);b=engine.seal(b)
+    var result := execute(engine,b,id,target)
+    check(result.ok,"actual executable owned/eligible repertoire "+cls+str(at)+"/"+id+JSON.stringify(result.get("errors",[])))
+    if not result.ok:return
+    check(result.battle.budget.main==0,"repertoire action spent "+id)
+    for pool in ability.cost.resources:check(int(result.battle.units.a.record.runtime.resources[pool])==int(b.units.a.record.runtime.resources[pool])-int(ability.cost.resources[pool]),"one repertoire slot cost "+id)
+    executable_spell_witnesses.append({"class_id":cls,"level":at,"ability":id})

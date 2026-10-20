@@ -33,6 +33,8 @@ if args.native:
     for file in ['proof.json','restart-proof.json']:assert native['proofs'][phase+'/'+file]['rules_ref']==pin and native['proofs'][phase+'/'+file]['failures']==0
    for file in ['proof.json','restart-proof.json']:
     assert native['proofs']['v21/'+file]['failures']==0 and native['proofs']['v21/'+file]['rules_ref']['pack_id']=='trhgd-character-v21'
+   witnessed=native['proofs']['mechanics/proof.json']['executable_spells']
+   assert all(any(x['class_id']==cls and x['level']==at for x in witnessed)for cls in ['bard','beguiler','spirit-shaman']for at in [1,6,20])
    cohort+=['bard','beguiler','spirit-shaman']
   cohort+=['scout','rogue','swashbuckler','knight','duelist','arcane-trickster']
   historical=json.loads((root/'docs/implementation/game146/evidence/historical-aura-readiness-review.json').read_text(encoding='utf-8'))
