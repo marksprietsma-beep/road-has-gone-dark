@@ -1,0 +1,1400 @@
+{
+  "source_commit": "81dd242bc8fdd619d55790ceb1ff64d4d6047e93",
+  "workflow_run": 39382303437,
+  "workflow_url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39382303437",
+  "overall_conclusion": "cancelled",
+  "reason": "Rebuild final package after fixing new shared staged-count refresh for prepared-copy controls. This is prior-source partial evidence, not a complete release.",
+  "timings": [
+    {
+      "phase": "mechanics",
+      "seconds": 67.985,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 4.609,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 2.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 287.875,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 3.609,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 26.282,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 106.515,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 23.875,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "completed": {
+    "mechanics/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1547,
+      "classes": [
+        "bard",
+        "beguiler",
+        "spirit-shaman"
+      ],
+      "development_fixtures": true,
+      "executable_spells": [
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-cleansing-ward",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-fracture-concentration",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-haste-spell",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-lightning",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-scorching-ray",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-unbinding-refrain",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-cleansing-ward",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-fracture-concentration",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-haste-spell",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-lightning",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-scorching-ray",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier4-control",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier4-restoration",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier5-sanctuary",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier5-tempest",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier6-sanctuary",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier6-tempest",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-unbinding-refrain",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 1
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 1
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-2",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-3",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-2",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-3",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-unmasking-chime",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-2",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-3",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-4",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-5",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-6",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-7",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-8",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-9",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-2",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-3",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-4",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-5",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-6",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-7",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-8",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-9",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-unmasking-chime",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-call-ancestor-sentinel",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-call-briar-beast",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-2",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-3",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-2",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-3",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-call-ancestor-sentinel",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-call-briar-beast",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-2",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-3",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-4",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-5",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-6",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-7",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-8",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-9",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-2",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-3",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-4",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-5",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-6",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-7",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-8",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-9",
+          "class_id": "spirit-shaman",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v22",
+        "rules_version": "22.0.0",
+        "schema_version": 1
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 113,
+      "classes": [
+        "bard",
+        "beguiler",
+        "spirit-shaman"
+      ],
+      "development_fixtures": true,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v22",
+        "rules_version": "22.0.0",
+        "schema_version": 1
+      }
+    },
+    "journeys/cohort-0/proof.json": {
+      "checks": 623,
+      "combat_actions": {},
+      "earned_xp": 490,
+      "failed_check": {
+        "choice": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:2:animal-handling",
+        "hash": "7ee97e3079429bafb28de5048e9291582ffcd1ef19d9aefc5adc0ed044214191",
+        "xp": 50
+      },
+      "failures": 0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "performance": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "bard-choice-1": "rally"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "performance": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "performance": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "bard-choice-6": "dirge"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "bard",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v22",
+            "rules_version": "22.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "f1f83575cf3c637e13efcd2bced57f00:adventurer:2",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "beguiler-discipline-1": "subtle"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "beguiler-discipline-5": "subtle"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "beguiler",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v22",
+            "rules_version": "22.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "f1f83575cf3c637e13efcd2bced57f00:adventurer:3",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "watcher"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-5": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v22",
+            "rules_version": "22.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v22",
+        "rules_version": "22.0.0",
+        "schema_version": 1
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:2:acrobatics",
+          "information": "Acrobatics check: 12 + 8 vs DC 15 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Lysa0: Acrobatics +8 vs DC 15 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:2",
+          "profession": "skill:acrobatics",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:3:animal-handling",
+          "information": "Animal Handling check: 10 + 6 vs DC 14 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Doran0: Animal Handling +6 vs DC 14 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:3",
+          "profession": "skill:animal-handling",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:arcana",
+          "information": "Arcana check: 20 + 11 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +11 vs DC 17",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:2:athletics",
+          "information": "Athletics check: 15 + 3 vs DC 15 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Lysa0: Athletics +3 vs DC 15 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:2",
+          "profession": "skill:athletics",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:2:craft",
+          "information": "Craft check: 8 + 11 vs DC 17 \u00b7 objective completed.",
+          "label": "Lysa0: Craft +11 vs DC 17",
+          "outcome": "recovered",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:2",
+          "profession": "skill:craft",
+          "provisions": 0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:insight",
+          "information": "Insight check: 14 + 9 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Insight +9 vs DC 16",
+          "outcome": "peaceful_access",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:perception",
+          "information": "Perception check: 16 + 10 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Perception +10 vs DC 17",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:persuasion",
+          "information": "Persuasion check: 19 + 13 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Persuasion +13 vs DC 16",
+          "outcome": "peaceful_access",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:religion",
+          "information": "Religion check: 14 + 0 vs DC 13 \u00b7 objective completed.",
+          "label": "Arin0: Religion +0 vs DC 13",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 13 + 5 vs DC 14 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +5 vs DC 14 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:stealth": {
+          "approach_description": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:stealth",
+          "information": "Stealth check: 15 + 8 vs DC 15 \u00b7 objective completed. Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "label": "Arin0: Stealth +8 vs DC 15 \u00b7 Seek quiet access",
+          "outcome": "peaceful_access",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:stealth",
+          "provisions": 0,
+          "reveal": false
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:f1f83575cf3c637e13efcd2bced57f00:adventurer:1:survival",
+          "information": "Survival check: 17 + 0 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Survival +0 vs DC 11",
+          "outcome": "recovered",
+          "participant": "f1f83575cf3c637e13efcd2bced57f00:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0,
+          "reveal": false
+        }
+      },
+      "slot": "f1f83575cf3c637e13efcd2bced57f00",
+      "state_hash": "bb3574945dd95299633200820cc8a811985bca37fb615057a964487a932ed4d9",
+      "xp_injected": false
+    },
+    "journeys/cohort-0/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "afa46e2c630275a8a5a820ec8bb704cf1ca95899353a97259148e785f29b820c",
+      "battle_log_length": 6,
+      "casts": {
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:1": "bard-rally-1",
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:2": "beguiler-unmasking-chime",
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:3": "spirit-shaman-spirit-refuge-1"
+      },
+      "checks": 34,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 490,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "f1f83575cf3c637e13efcd2bced57f00:adventurer:3",
+        "destination": [
+          6,
+          4
+        ],
+        "kind": "move",
+        "revision": 8
+      },
+      "next_hash": "c083b33882383811e4b48cdbf48aa782103ade2314a0270c325c4f83773cd9ad",
+      "resources": {
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:1": {
+          "performance": 11
+        },
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:2": {
+          "beguiler-slots-2": 3
+        },
+        "f1f83575cf3c637e13efcd2bced57f00:adventurer:3": {
+          "spirit-shaman-slots-1": 4
+        }
+      },
+      "rules_ref": {
+        "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v22",
+        "rules_version": "22.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "f1f83575cf3c637e13efcd2bced57f00",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "636e952a69453a2bd526a584141fdce3a4d8540540aa539070144097a3f775a0",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 179,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "b52fc8dc0fde612b9d87da451e6a01715ef593935dd0a3dcebadf4a915409c85",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v22",
+        "rules_version": "22.0.0",
+        "schema_version": 1
+      }
+    }
+  },
+  "captures": {
+    "checks": 24,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-bard-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "01d3318ab2287f2be3a6f5a95a6d431c8f76db9f01a5e293ba63638985950daf",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-beguiler-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0472d13d39a2f90ed1e958cb45f2a4f3fa52ad755e8fd1f32addd1d9ddd55ae3",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-spirit-shaman-sheet-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "1966cc67428b96415ebe4d1b0ccad11cd69d69c9e4dd299deb3fdb3cfd96b26a",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-rally20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "d343f1b1400521ca6df94d7056ca9c006fd3cdeb5b3cb16db5bf551e94b2f0c9",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unmask20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "83e4458b50d19cb7a4c9a5bb0a42054bce402d7f2a109c80b591ce4dd9ca3c1d",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-watcher20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "d4f8d9536d7ace6a9fee7ef0f26cfd37aa21db79e244dc77edaf5d7d6b30bef8",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-mixed-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "b4869e67c47cb88b199e5035fa53c979eaa9cc2a7f8bf4c786a4682c98c91f15",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-spirit-retrieval-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "790e81b3aebec4dfc5f0d58e14a3c806b63dc5593cf3521922525d2b6884953d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bard6-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "1738ae867ec21d68a2d0c960247170b1d1cb6b7f58479aa1fd8ef0fa15779365",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-beguiler12-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "7742dee5dd6217b335e30d416083ea34b654f45d4ef384bda4af6d6154ffa871",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unmask-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "90310f283dcc75bde14b1ba8d7a6c23b68a07ee020859bcd949d2d68b0909fb1",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unmask-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "ff008bd0d54ad1ba093728ec4b00ac50313a516f924b19dcb96bfcba3987544e",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-unmask-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "75a24f6bd3ca6e9078da7381673642986c0111ae577049e53e33d16fafd02b51",
+        "width": 640
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-spirit-watcher20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "619c4ca3e09fc0edfbcc0e98d655095118c8973ac39c26e73a1bf189d20e9873",
+        "width": 1280
+      }
+    ]
+  }
+}
