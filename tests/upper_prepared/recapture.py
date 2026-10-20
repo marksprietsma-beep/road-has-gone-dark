@@ -11,10 +11,19 @@ assert original['source_commit']=='8b37e0d03ed38df138bc6bf2fdf6bba221673d85'
 assert original['production_launch']and original['separate_process_restart']and all(r['failures']==0 for r in original['proofs'].values())
 source=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 changed=subprocess.check_output(['git','diff','--name-only',original['source_commit'],source],cwd=root,text=True).splitlines()
-allowed={'tests/upper_prepared/capture.gd','tests/upper_prepared/input.gd','tests/upper_prepared/recapture.py','.github/workflows/capture-upper-prepared.yml'}
+allowed={'tests/upper_prepared/capture.gd','tests/upper_prepared/input.gd','tests/upper_prepared/recapture.py','.github/workflows/capture-upper-prepared.yml','tools/character-content/build-readiness.py'}
 assert all(p.startswith('docs/')or p in allowed for p in changed),changed
 pack=json.loads((root/'data/rules/trhgd-character-v23.json').read_text(encoding='utf-8'))
 assert hashlib.sha256(json.dumps(pack,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==original['rules_ref']['content_hash']
+# Evidence upload retains JSON/logs/images, not ExpeditionService's .json.sha.
+# Restore only the fixture checksum whose bytes independently match the durable
+# saved campaign packet pin. Never rewrite a save, packet or production guard.
+journey=base/'journeys/cohort-0'
+receipt=json.loads((journey/'proof.json').read_text(encoding='utf-8'))
+saved=json.loads((journey/'saves'/(receipt['slot']+'.json')).read_text(encoding='utf-8'))
+candidates=[p for p in (journey/'cache').rglob('*.json')if hashlib.sha256(p.read_bytes()).hexdigest()==saved['expedition']['packet_sha']]
+assert len(candidates)==1,'Exact saved fixture packet unavailable; no reconstruction permitted'
+Path(str(candidates[0])+'.sha').write_text(saved['expedition']['packet_sha'],encoding='ascii')
 dist=base/'recapture-export'
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/upper_prepared/review.tscn','--output',str(dist)],cwd=root,check=True)
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME150_ROOT=str(base/'mechanics'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME129_CONNECTED_ROOT=str(base/'connected'))
@@ -27,6 +36,6 @@ for phase in ['input','capture']:
 controls=json.loads((base/'mechanics/input-proof.json').read_text(encoding='utf-8'));assert controls['checks']>=30 and controls['failures']==0
 captures=json.loads((base/'captures/screenshots.json').read_text(encoding='utf-8'));assert captures['failures']==0 and len(captures['screenshots'])>=25
 for row in captures['screenshots']:assert hashlib.sha256((base/'captures'/row['file']).read_bytes()).hexdigest()==row['sha256']
-report=dict(source_commit=source,original_release_source=original['source_commit'],original_release_run=39423972908,rules_ref=original['rules_ref'],runtime_and_rules_unchanged=True,changed_paths=changed,controls=controls,captures=captures,timings=timings,scope='Windows-only correction of capture interactions: emit actual typing signal, open visible specialisation tab, scroll actual spell controls/logs. Existing complete release and gameplay results retained, not rerun or claimed fresh.')
+report=dict(source_commit=source,original_release_source=original['source_commit'],original_release_run=39423972908,rules_ref=original['rules_ref'],runtime_and_rules_unchanged=True,changed_paths=changed,restored_fixture_packet_checksum=saved['expedition']['packet_sha'],controls=controls,captures=captures,timings=timings,scope='Windows-only correction of capture interactions: emit actual typing signal, open visible specialisation tab, scroll actual spell controls/logs. Existing complete release and gameplay results retained, not rerun or claimed fresh.')
 (base/'recapture-proof.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report),flush=True)

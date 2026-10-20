@@ -4,7 +4,7 @@ func run() -> void:
  capture_folder=OS.get_environment("GAME150_ROOT").get_base_dir().path_join("captures");DirAccess.make_dir_recursive_absolute(capture_folder)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0];slot=WorldOriginLore.read_json(base.path_join("proof.json")).slot
- var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"actual earned prepared-caster campaign reload")
+ var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"actual earned prepared-caster campaign reload: "+str(loaded.get("error",loaded.get("errors",[]))))
  if not loaded.ok:finish_capture();return
  state=loaded.state;var before := RulesJson.digest(state)
  var saved := WorldOriginLore.read_json(OS.get_environment("GAME150_ROOT").path_join("saved.json"))
