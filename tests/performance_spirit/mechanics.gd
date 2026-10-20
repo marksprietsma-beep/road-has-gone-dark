@@ -86,9 +86,9 @@ func test_illusion() -> void:
  for at in [6,12,20]:
   var r := selected_spell(records["beguiler"+str(at)],"beguiler-unmasking-chime");var target := defender(false)
   target.runtime.statuses.append({"id":"beguiling-veil","source":"fixture","remaining":3,"expiry":"global_round_start"})
-  var revealed := use(r,target,"beguiler-unmasking-chime");check(revealed.ok and not has_status(revealed.target,"beguiling-veil") and revealed.target.runtime.hp==target.runtime.hp,"selected nondamaging counter concealment "+str(at))
+  var revealed := use(r,target,"beguiler-unmasking-chime");check(revealed.ok and not has_status(revealed.target,"beguiling-veil") and has_status(revealed.target,"off-balance") and kernel.derive_character(revealed.target).snapshot.stats.defence==kernel.derive_character(target).snapshot.stats.defence-2 and revealed.target.runtime.hp==target.runtime.hp,"selected nondamaging counter concealment "+str(at))
   var resistant := defender(true);resistant.runtime.statuses=target.runtime.statuses.duplicate(true)
-  var saved := use(r,resistant,"beguiler-unmasking-chime");check(saved.ok and has_status(saved.target,"beguiling-veil"),"Will save preserves real concealment")
+  var saved := use(r,resistant,"beguiler-unmasking-chime");check(saved.ok and has_status(saved.target,"beguiling-veil") and not has_status(saved.target,"off-balance"),"Will save preserves concealment and negates exposure")
   check(revealed.ok and revealed.actor.runtime.resources["beguiler-slots-2"]==r.runtime.resources["beguiler-slots-2"]-1,"saved or failed cast spends matching slot")
   var engine := TacticalAuras.new(r);var b := encounter(r);target.character_id="bandit-blade";b.units["bandit-blade"].record=target;b=engine.seal(b)
   var casted := execute(engine,b,"beguiler-unmasking-chime","bandit-blade");check(casted.ok and not has_status(casted.battle.units["bandit-blade"].record,"beguiling-veil"),"actual tactical unmask uses spell save, not weapon concealment")

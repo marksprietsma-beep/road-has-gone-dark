@@ -163150,6 +163150,10 @@
             {
               "op": "remove_status",
               "id": "swordsage-afterimage"
+            },
+            {
+              "op": "apply_status",
+              "id": "off-balance"
             }
           ],
           "on_success": []
@@ -163173,7 +163177,7 @@
         "range": 4,
         "radius": 0
       },
-      "description": "Known tier2/INT12; main action and one tier2 slot. Enemy range4/clear sight; Will negates removal of the supported status-based concealment veils. No damage and no weapon concealment roll. Does not remove permanent ancestry concealment or unrelated buffs. Subsequent weapon attacks still use normal accuracy.",
+      "description": "Known tier2/INT12; main action and one tier2 slot. Enemy range4/clear sight; Will negates removal of the supported status-based concealment veils and Off Balance (-2 Defence for2 global starts). Exposure helps allied weapon attacks even against an unveiled enemy. No damage and no weapon concealment roll. Does not remove permanent ancestry concealment or unrelated buffs. Subsequent weapon attacks still use normal accuracy.",
       "casting_class": "beguiler",
       "spell_tier": 2,
       "provenance": {
