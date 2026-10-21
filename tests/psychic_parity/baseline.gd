@@ -9,20 +9,24 @@ func check(value: bool,message: String) -> void:
  checks+=1
  if not value:failures+=1;push_error(message)
 func _initialize() -> void:call_deferred("run")
-func build(identity: String,route: Array,attributes: Dictionary,options: Dictionary={}) -> Dictionary:
+func build(identity: String,route: Array,attributes: Dictionary,options: Dictionary={},increase := "") -> Dictionary:
  var record := kernel.create(identity,attributes,"heritage-human")
  for cls in route:
   var suggested := kernel.suggested_choice(record,cls)
-  check(suggested.ok,"lawful fixture suggestion "+cls)
+  check(suggested.ok,"lawful fixture suggestion "+cls+JSON.stringify(suggested.get("errors",[])))
   if not suggested.ok:return {}
   var choice: Dictionary=suggested.choice
+  if not increase.is_empty() and not choice.attribute_increase.is_empty():choice.attribute_increase=increase
   for group in options:
    if choice.specialisations.has(group):choice.specialisations[group]=options[group]
   var advanced := kernel.preview_advancement(record,choice)
   check(advanced.ok,"lawful fixture advancement "+cls+JSON.stringify(advanced.get("errors",[])))
   if not advanced.ok:return {}
   record=advanced.candidate
- record.runtime.hp=int(kernel.derive_character(record).snapshot.stats.HP)
+ var derived := kernel.derive_character(record)
+ check(derived.ok,"complete fixture validates "+JSON.stringify(derived.get("errors",[])))
+ if not derived.ok:return {}
+ record.runtime.hp=int(derived.snapshot.stats.HP)
  record.runtime.resources=kernel._replay(record).context.capacities.duplicate(true)
  return record
 func use(actor: Dictionary,target: Dictionary,id: String) -> Dictionary:
@@ -33,16 +37,15 @@ func lost(result: Dictionary,before: Dictionary) -> int:
 func run() -> void:
  check(source.load_pack("res://data/rules/trhgd-character-v23.json").ok,"frozen v23 source")
  kernel=RulesCharacter.new(source)
- var attrs := {"STR":8,"DEX":14,"CON":12,"INT":16,"WIS":12,"CHA":13}
- var foe := build("foe",Array().duplicate(),attrs)
+ var attrs := {"STR":8,"DEX":13,"CON":14,"INT":15,"WIS":12,"CHA":10}
  # Enough health for an independent surge and a later activation's power.
- foe=build("foe",["fighter","fighter","fighter","fighter","fighter","fighter","fighter","fighter"],attrs)
+ var foe := build("foe",["fighter","fighter","fighter","fighter","fighter","fighter","fighter","fighter"],attrs)
  var options := {"psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen","psion-discipline":"assault"}
  var assault := build("assault",["psion","psion","psion"],attrs,options)
  options["psion-discipline"]="ward"
  var ward := build("ward",["psion","psion","psion"],attrs,options)
- var wilder := build("wilder",["wilder","wilder","wilder"],{"STR":8,"DEX":14,"CON":12,"INT":13,"WIS":12,"CHA":16},{"wilder-power-1":"power-kinetic-bolt"})
- var mixed := build("mixed",["psion","wilder","wilder","wilder"],{"STR":8,"DEX":12,"CON":12,"INT":18,"WIS":10,"CHA":13},{"psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen","wilder-power-1":"power-thought-thrust"})
+ var wilder := build("wilder",["wilder","wilder","wilder"],{"STR":8,"DEX":13,"CON":14,"INT":12,"WIS":10,"CHA":15},{"wilder-power-1":"power-kinetic-bolt"})
+ var mixed := build("mixed",["psion","wilder","wilder","wilder"],{"STR":8,"DEX":12,"CON":14,"INT":15,"WIS":10,"CHA":13},{"psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen","wilder-power-1":"power-thought-thrust"},"INT")
  if foe.is_empty()or assault.is_empty()or ward.is_empty()or wilder.is_empty()or mixed.is_empty():finish();return
  var assault_hit := lost(use(assault,foe,"power-kinetic-bolt"),foe)
  var ward_hit := lost(use(ward,foe,"power-kinetic-bolt"),foe)
