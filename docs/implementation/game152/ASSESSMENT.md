@@ -19,3 +19,5 @@ Windows candidate39570422732 at4c852ef passed503 mechanics,55 separate-process c
 GUI run39571178449 passed mechanics/cold but stopped on my dynamically typed ui.engine return inference in input.gd. Give the result an explicit Dictionary type and compile every focused script before executing mechanics; no production UI defect is claimed from this parse failure.
 
 Compile preflight39572085345 exposed another dynamic planner return in the unexecuted earned-journey probe. Explicit Dictionary typing corrects the probe; wire earned and connected phases only after preflight. No production change or claimed journey success from this failure.
+
+Production GUI defect reproduced39573360926: empty search was treated as a nonmatching substring, so each first-open known-power selector contained only its selected option. Explicitly skip filtering when the power query is empty; preserve selected visibility and legal disabled tiers. Add first-open/search/clear assertions. This repairs actual existing controls without changing historical rules or saved choices.

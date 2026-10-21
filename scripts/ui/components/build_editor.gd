@@ -357,7 +357,7 @@ func refresh_power_options() -> void:
   if control==null:continue
   control.clear()
   for option in group.options:
-   if option.id!=specialisations.get(group.id) and not power_query.to_lower() in str(option.name).to_lower():continue
+   if option.id!=specialisations.get(group.id) and not power_query.is_empty() and not power_query.to_lower() in str(option.name).to_lower():continue
    var why := CharacterBuilderRecords.reason(RulesCareer.option_eligibility(source,class_id,class_level,option,replay.context,specialisations))
    control.add_item(option.name+(" · locked" if not why.is_empty() else ""));var i := control.item_count-1
    control.set_item_metadata(i,option.id);control.set_item_disabled(i,not why.is_empty());control.get_popup().set_item_tooltip(i,why+"\n"+option.description)

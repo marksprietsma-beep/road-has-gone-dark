@@ -22,6 +22,11 @@ func run() -> void:
   check(editor.class_id==cls and editor.preview.ok,"actual class-one creator is valid "+cls)
   check(not editor.class_options().has("cerebremancer"),"prestige absent from actual creation selector")
   var picker: OptionButton=editor.career_pickers[cls+"-power-1"]
+  check(picker.item_count>1,"blank actual power search shows available alternatives on first open")
+  editor.power_query="Thought";editor.refresh_power_options()
+  check(picker.item_count>1,"actual power search retains selection and matching alternatives")
+  editor.power_query="";editor.refresh_power_options()
+  check(picker.item_count==editor.source.definition("classes",cls).career_choices.filter(func(g: Dictionary):return g.id==cls+"-power-1")[0].options.size(),"clearing actual power search restores the complete class list")
   for i in picker.item_count:
    var id: String=str(picker.get_item_metadata(i));var tier: int=int(editor.source.definition("psychic_powers",id).tier)
    if tier>1:check(picker.is_item_disabled(i),"actual higher-tier power is locked at birth "+id)
