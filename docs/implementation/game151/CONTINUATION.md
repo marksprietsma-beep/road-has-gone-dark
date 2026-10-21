@@ -1,0 +1,5 @@
+# GAME-151 checkpoint
+
+Branch fix/game-151-windows-regressions from813bf519 main. Test-only historical capture projection, exact archived3-record Windows regression/cold probe, and review timeout40→60 implemented. Production scripts/data/pins/readiness untouched; candidate not yet Windows-verified. Check new focused workflow before claiming the expected missing-resource root cause is proven. Original domain choices actually match; do not respec or silently migrate them.
+
+Next: push initial checkpoint, inspect focused native result/errors, correct narrowly if necessary. Start first-adventure-review workflow manually on this branch to prove60-minute completion. Publish a narrow PR, verify current-head checks and merge normally only after green. Inspect postmerge actual GAME130 and review jobs; retain19 historical successful parent checks/source equivalence and do not repeat full GAME150 native gate. Read NEXT-WAVE from150 only as recommendation; no psychic implementation here. Keep101/GAME123 open, readiness20/30/0. No Linear connector; no access request.
