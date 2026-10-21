@@ -27,7 +27,10 @@ func run() -> void:
   var ui := await open_sheet()
   var index: int=0 if cls=="wizard" else 1
   var id: String=earned.party_ids[index]
-  var fixture: Dictionary=saved.records[key].duplicate(true);fixture.character_id=id;fixture.rules_ref=RulesRecords.registry(earned).rules_ref()
+  var projected := render_record(saved.records[key],id,RulesRecords.registry(earned))
+  check(projected.ok,"historical render route remains legal under current display pin: "+JSON.stringify(projected.get("errors",[])))
+  if not projected.ok:finish_capture();return
+  var fixture: Dictionary=projected.candidate
   check(RulesCharacter.new(RulesRecords.registry(earned)).derive_character(fixture).ok,"historical render route remains legal under current display pin")
   ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=fixture;ui.selected=index+1;ui.refresh()
   ui.title.text="DEVELOPMENT FIXTURE · "+cls.capitalize()+"20 · not earned XP"
@@ -37,7 +40,10 @@ func run() -> void:
   ui.detail_tabs.current_tab=2
   await photograph_scene("fixture-"+cls+"-sheet",true,Vector2i(2560,1440))
  var ui := await open_sheet()
- var id: String=earned.party_ids[0];var hybrid: Dictionary=saved.records["hybrid:wizard-dissonant-seal"].duplicate(true);hybrid.character_id=id;hybrid.rules_ref=RulesRecords.registry(earned).rules_ref()
+ var id: String=earned.party_ids[0];var projected := render_record(saved.records["hybrid:wizard-dissonant-seal"],id,RulesRecords.registry(earned))
+ check(projected.ok,"historical hybrid render route remains legal under current display pin: "+JSON.stringify(projected.get("errors",[])))
+ if not projected.ok:finish_capture();return
+ var hybrid: Dictionary=projected.candidate
  check(RulesCharacter.new(RulesRecords.registry(earned)).derive_character(hybrid).ok,"historical hybrid render route remains legal under current display pin")
  ui.state=earned.duplicate(true);ui.state.mechanics.records[id]=hybrid;ui.selected=1;ui.refresh();ui.detail_tabs.current_tab=4;ui.spellbook.repertoire_search.text="tier 6";ui.spellbook.repertoire_search.text_changed.emit("tier 6")
  ui.title.text="DEVELOPMENT FIXTURE · Wizard / Cleric / Mystic Theurge · not earned XP"
@@ -90,3 +96,26 @@ func photograph_scene(name: String,fixture: bool,resolution := Vector2i(1280,720
 func finish_capture() -> void:
  FileAccess.open(capture_folder.path_join("screenshots.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"screenshots":screenshots,"scope":"Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers."}))
  get_tree().quit(1 if failures else 0)
+
+static func render_record(original: Dictionary,identity: String,display: RulesRegistry) -> Dictionary:
+ # Diagnostic projection only. Validate the archived record under its own pin,
+ # replay permanent choices under the display pin, and never rewrite the input.
+ var historical := RulesRecords.registry(original)
+ if not historical.ready():return RulesJson.result(historical.errors)
+ var valid := RulesCharacter.new(historical).derive_character(original)
+ if not valid.ok:return valid
+ var candidate: Dictionary=original.duplicate(true)
+ candidate.character_id=identity;candidate.rules_ref=display.rules_ref()
+ var kernel := RulesCharacter.new(display);var replay := kernel._replay(candidate)
+ if not replay.ok:return replay
+ var added: Array=[]
+ for pool in replay.context.capacities:
+  if candidate.runtime.resources.has(pool):continue
+  # Newly granted, unselected prepared-copy pools require explicit zero values.
+  # Refuse every other missing pool; never refill slots or change career choices.
+  if int(replay.context.capacities[pool])!=0 or not display.definition("resources",pool).has("prepared_ability") or not historical.definition("resources",pool).is_empty():
+   return RulesJson.result([RulesJson.issue("render.resource",pool,"Only new zero-capacity prepared-copy pools may be projected")])
+  candidate.runtime.resources[pool]=0;added.append(pool)
+ var derived := kernel.derive_character(candidate)
+ if not derived.ok:return derived
+ return {"ok":true,"candidate":candidate,"added_zero_pools":added}
