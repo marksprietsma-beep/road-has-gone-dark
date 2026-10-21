@@ -34,10 +34,41 @@ def generate(root,pack,pin,native_root):
  rows=copy.deepcopy(baseline['classes']);tables={k:{r['id']:r for r in v}for k,v in pack.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
  cohort_map={'current-signatures':['soulknife','warblade','crusader','swordsage'],'current-mobile':['scout','rogue','swashbuckler','knight','duelist','arcane-trickster'],'current-supernatural':['warlock','binder','dragonfire-adept'],'current-performance':['bard','beguiler','spirit-shaman'],'current-upper':['wizard','cleric'],'mechanics':['psion','wilder','cerebremancer']}
  oldpack=json.loads((root/'data/rules/trhgd-character-v23.json').read_text());oldclasses={x['id']:x for x in oldpack['classes']}
+ def class_contract(value):
+  result=copy.deepcopy(value)
+  for group in result.get('career_choices',[]):
+   for option in group['options']:
+    if option['features']==['psion-discipline-assault']or any('known_power'in tables['features'][feature]for feature in option['features']):option.pop('description',None)
+  return result
+ historical=json.loads((root/'docs/implementation/game146/evidence/historical-aura-readiness-review.json').read_text())
+ assert historical['workflow_conclusion']=='success'and historical['comparison']['project_auras_function_unchanged']
+ historical_pack=json.loads((root/'data/rules/trhgd-character-v20.json').read_text())
+ historical_tables={k:{x['id']:x for x in v}for k,v in historical_pack.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
+ text=(root/'scripts/rules/rules_wave_four.gd').read_text();start=text.index('static func project_auras(');end=text.find('\nstatic func ',start+1)
+ assert hashlib.sha256(text[start:end if end>=0 else len(text)].encode()).hexdigest()==historical['comparison']['project_auras_sha256']
+ aura_review=dict(source_commit=native['source_commit'],rules_ref=pin,projection_function_unchanged=True,classes={},scope='Reuse only unchanged aura function/data. The documented shared Weakened extension is freshly tested by the native psychic suite, not claimed byte-identical or a new targeted War Chanter encounter.')
+ for cls,comparison in historical['comparison']['classes'].items():
+  assert tables['classes'][cls]==historical_tables['classes'][cls]
+  changes=[]
+  for key in comparison['record_keys']:
+   category,identity=key.split('/',1);before=historical_tables[category][identity];after=tables[category][identity]
+   if before==after:continue
+   assert key=='statuses/weakened'
+   projected=copy.deepcopy(after);assert projected.pop('capabilities')=={'ability_damage':{'psychic':-2}}
+   projected['provenance']['revision']=before['provenance']['revision'];assert projected==before
+   assert mechanics['traces']['damage']['weakened']==1;changes.append(key)
+  aura_review['classes'][cls]=dict(unchanged_references=len(comparison['record_keys'])-len(changes),documented_changes=changes,fresh_changed_consumer='final-distribution-proof.json#proofs/mechanics'if changes else None)
+ (root/'docs/implementation/game152/evidence/aura-reuse-review.json').write_text(json.dumps(aura_review,indent=2)+'\n',encoding='utf-8')
  for row in rows:
   cls=row['id'];definition=tables['classes'][cls]
-  assert cls in oldclasses and (cls=='cerebremancer'or definition==oldclasses[cls]),cls
+  assert cls in oldclasses
+  expected=copy.deepcopy(oldclasses[cls])
+  if cls=='cerebremancer':
+   expected['requirements']['args'].append(dict(op='spell_tier',id='arcane',min=1))
+   expected['description']=definition['description'];expected['provenance']['revision']='game152-psychic-resource-parity'
+  assert class_contract(definition)==class_contract(expected),cls
   row['evidence']=[x for x in row['evidence']if not x.startswith('data/rules/trhgd-character-v23.json')]+['data/rules/trhgd-character-v24.json#classes/'+cls]
+  row['defining_features']['description']=definition['description']
   row['previous_acceptance_pin']=baseline['rules_ref'];row['current_kernel_evidence']='docs/implementation/game152/evidence/current-native-witnesses.json#classes/'+cls if row['kind']=='base'else'Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence.'
   phase=next((phase for phase,classes in cohort_map.items()if cls in classes),None)
   if phase:
@@ -52,7 +83,11 @@ def generate(root,pack,pin,native_root):
    row['evidence']+=['tests/psychic_parity/input.gd','tests/psychic_parity/journey.gd','tests/psychic_parity/connected.gd','docs/implementation/game152/evidence/screenshots.json']
    if cls=='cerebremancer':row['prestige']['requirements']=definition['requirements']
   elif cls in ['marshal','war-chanter']:
-   row['acceptance_sources']={'current':'v24 all-base kernel/cold audit where applicable, unchanged class data.','reused':'Labelled historical native aura and earned path acceptance; no new v24 targeted aura proof.'}
+   row['status_scope']='Original aura/limited-command identity: labelled historical native aura/earned path, unchanged aura projection and referenced data except the documented freshly tested generic Weakened extension. No fresh targeted v24 aura encounter is claimed.'
+   row['acceptance_sources']={'current':'v24 kernel/cold audit where applicable; fresh generic Weakened damage/expiry consumer if referenced.','reused':'Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json.'}
+   row['limitations']=[x for x in row.get('limitations',[])if 'unchanged defining data/consumer'not in x]
+   row['limitations'].append('No fresh targeted v24 aura encounter; only unchanged historical portions are reused, with the changed generic Weakened consumer separately native-tested.')
+   row['evidence'].append('docs/implementation/game152/evidence/aura-reuse-review.json')
  assert len(rows)==50 and len({r['id']for r in rows})==50
  # Finite acceptance cohorts, covering every remaining PARTIAL exactly once. No roster growth.
  queue=[dict(cohort=['psychic-warrior','ardent','lurk','erudite','divine-mind','cognition-adept','metamind','pyrokineticist'],goal='Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.'),dict(cohort=['sorcerer','druid','duskblade','archmage','mystic-theurge','abjurant-champion'],goal='Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.'),dict(cohort=['barbarian','fighter','monk','paladin','ranger','eldritch-knight','shadowdancer','dwarven-defender'],goal='Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.'),dict(cohort=['dragon-disciple','warshaper','bonded-summoner','beast-steward','grove-warden'],goal='Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.')]

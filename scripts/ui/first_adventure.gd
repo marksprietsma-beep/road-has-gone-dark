@@ -187,6 +187,7 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
  if ability.targeting.kind=="self":
   var button := GameUI.action("Manifest "+ability.name,func():send(selected_id,actor.id))
   button.disabled=thread!=null or not engine.effects.validate_ability_cost(selected_id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)}).ok
+  if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or not engine.eligible(battle(),actor,actor,selected_id)
   button.tooltip_text=ability.description;gate_button(button);actions.add_child(button);action_buttons[selected_id]=button
  else:add_action(selected_id,"Manifest "+ability.name+" · select target");action_buttons[selected_id].tooltip_text=ability.description
  actions.add_child(GameUI.label(ability.description,GameUI.META))
