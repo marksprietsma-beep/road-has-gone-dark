@@ -16,7 +16,7 @@ func build(identity: String,route: Array,attributes: Dictionary,options: Diction
   check(suggested.ok,"lawful fixture suggestion "+cls+JSON.stringify(suggested.get("errors",[])))
   if not suggested.ok:return {}
   var choice: Dictionary=suggested.choice
-  if feats.has(int(choice.level)):choice.feat_id=feats[int(choice.level)]
+  if feats.has(record.advancement_history.size()+1):choice.feat_id=feats[record.advancement_history.size()+1]
   if not increase.is_empty() and not choice.attribute_increase.is_empty():choice.attribute_increase=increase
   for group in options:
    if choice.specialisations.has(group):choice.specialisations[group]=options[group]
