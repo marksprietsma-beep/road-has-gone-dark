@@ -19,7 +19,7 @@ if os.environ.get('GAME152_REUSE_RUN'):
  assert all(p.startswith('docs/')or p in allowed for p in changed),changed
  previous=subprocess.check_output(['git','show',original['source_commit']+':scripts/ui/first_adventure.gd'],cwd=root,text=True,encoding='utf-8')
  current=(root/'scripts/ui/first_adventure.gd').read_text(encoding='utf-8')
- line='  if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or not engine.eligible(battle(),actor,actor,selected_id)\n'
+ line='  if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or snapshot.tags.has("main_action_suppressed") or not engine.eligible(battle(),actor,actor,selected_id)\n'
  assert current.count(line)==1 and current.replace(line,'',1)==previous,'Only the exact self-power display gate may differ; all authority/rules/service/other UI source must remain unchanged'
  # Evidence retains JSON but not the expedition packet's .json.sha. Restore only
  # the exact fixture checksum matching the already-saved packet pin; never edit saves.
