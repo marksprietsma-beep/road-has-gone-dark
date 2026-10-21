@@ -11,8 +11,13 @@ on:
         description: Complete native Windows release after focused parity and earned/cold checks
         type: boolean
         default: false
+      reuse_native_run:
+        description: Optional completed39578198867 receipt; only exact self-power UI gate may differ
+        type: string
+        default: ''
 permissions:
   contents: read
+  actions: read
 jobs:
   focused-windows:
     runs-on: windows-latest
@@ -48,10 +53,18 @@ jobs:
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release
         run: python tools/release/prepare-templates.py
+      - name: Verify and retrieve complete native evidence for a presentation-only recheck
+        if: github.event_name == 'workflow_dispatch' && inputs.release && inputs.reuse_native_run != ''
+        env:
+          GAME152_RELEASE_ROOT: ${{ runner.temp }}/game152-native
+          GAME152_REUSE_RUN: ${{ inputs.reuse_native_run }}
+          GH_TOKEN: ${{ github.token }}
+        run: python tests/psychic_parity/reuse-native.py
       - name: Native exported game, current/historical mechanics, earned journey, cold state and real renders
         if: github.event_name == 'workflow_dispatch' && inputs.release
         env:
           GAME152_RELEASE_ROOT: ${{ runner.temp }}/game152-native
+          GAME152_REUSE_RUN: ${{ inputs.reuse_native_run }}
         run: python tests/psychic_parity/verify-package.py
       - name: Self-contained Windows x64 game
         if: github.event_name == 'workflow_dispatch' && inputs.release

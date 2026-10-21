@@ -1,4 +1,4 @@
-"""One complete native Windows GAME-152 gate. No host/Linux game validation."""
+"""Complete Windows gate, or exact-source-guarded native presentation recheck."""
 from pathlib import Path
 import os,subprocess,json,hashlib,zipfile,shutil,sys
 assert os.name=='nt','Native Windows only'
@@ -9,6 +9,26 @@ base=Path(os.environ['GAME152_RELEASE_ROOT']).resolve();base.mkdir(parents=True,
 release=base/'distribution';release.mkdir(exist_ok=True);name='game152-psychic-parity-windows-x64';dist=release/name
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 manifest_bytes=(root/'data/rules/packs.json').read_bytes();pins={x['rules_ref']['pack_id']:x['rules_ref']for x in json.loads(manifest_bytes)['packs']};pin=pins['trhgd-character-v24']
+reuse=None;original=None
+if os.environ.get('GAME152_REUSE_RUN'):
+ reuse=json.loads((base/'reuse-manifest.json').read_text(encoding='utf-8'));original=json.loads((base/'reuse-original-distribution-proof.json').read_text(encoding='utf-8'))
+ assert reuse['run_id']==39578198867 and reuse['conclusion']=='success'and original['source_commit']==reuse['source_commit']=='59f1b20b8bbb2a4a7029ee71b10190e774b9ed74'
+ assert original['rules_ref']==pin and original['production_launch']and original['separate_process_restart']and all(p['checks']>0 and p['failures']==0 for p in original['proofs'].values())
+ changed=subprocess.check_output(['git','diff','--name-only',original['source_commit'],commit],cwd=root,text=True).splitlines()
+ allowed={'scripts/ui/first_adventure.gd','tests/psychic_parity/input.gd','tests/psychic_parity/verify-package.py','tests/psychic_parity/reuse-native.py','.github/workflows/verify-psychic-parity.yml','tools/character-content/build-readiness.py','tools/character-content/readiness_psychic.py'}
+ assert all(p.startswith('docs/')or p in allowed for p in changed),changed
+ previous=subprocess.check_output(['git','show',original['source_commit']+':scripts/ui/first_adventure.gd'],cwd=root,text=True,encoding='utf-8')
+ current=(root/'scripts/ui/first_adventure.gd').read_text(encoding='utf-8')
+ line='  if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or not engine.eligible(battle(),actor,actor,selected_id)\n'
+ assert current.count(line)==1 and current.replace(line,'',1)==previous,'Only the exact self-power display gate may differ; all authority/rules/service/other UI source must remain unchanged'
+ # Evidence retains JSON but not the expedition packet's .json.sha. Restore only
+ # the exact fixture checksum matching the already-saved packet pin; never edit saves.
+ journey=base/'journeys/cohort-0';receipt=json.loads((journey/'proof.json').read_text(encoding='utf-8'))
+ saved=json.loads((journey/'saves'/(receipt['slot']+'.json')).read_text(encoding='utf-8'))
+ packet=saved['expedition']['packet_sha'];candidates=[p for p in (journey/'cache').rglob('*.json')if hashlib.sha256(p.read_bytes()).hexdigest()==packet]
+ assert len(candidates)==1,'Saved fixture packet unavailable; no save/packet reconstruction permitted'
+ Path(str(candidates[0])+'.sha').write_text(packet,encoding='ascii')
+ reuse.update(changed_paths=changed,authority_and_rules_unchanged=True,presentation_change='Self-power button also consults existing authority; no combat semantics change',fresh_phases=['baseline','mechanics','input','capture'],restored_fixture_packet_checksum=packet)
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/psychic_parity/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME152_ROOT=str(base/'mechanics'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'),GAME126_AUDIT_ROOT=str(base/'readiness-audit'),GAME126_PACK='res://data/rules/trhgd-character-v24.json',GAME112W3_TEST_ROOT=str(base/'historical13'))
@@ -21,7 +41,8 @@ def run(phase,restart=False,visual=False):
  timings.append(dict(phase=label,**r));(base/'native-timings.json').write_text(json.dumps(timings,indent=2)+'\n')
  print(json.dumps(timings[-1]),flush=True)
  assert not r['exit_code']and not r['errors']and not r['timeout'],log.read_text(encoding='utf-8')[-14000:]
-for phase in ['baseline','mechanics','input','journey','connected','capture','current-upper','current-upper-input','current-performance','current-performance-input','current-supernatural','current-signatures','current-mobile','historical23','historical13','legacy','compatibility','audit']:
+phases=['baseline','mechanics','input','capture']if reuse else['baseline','mechanics','input','journey','connected','capture','current-upper','current-upper-input','current-performance','current-performance-input','current-supernatural','current-signatures','current-mobile','historical23','historical13','legacy','compatibility','audit']
+for phase in phases:
  run(phase,visual=phase=='capture')
  if phase not in ['baseline','input','capture','current-upper-input','current-performance-input']:run(phase,True)
 proofs={}
@@ -41,10 +62,15 @@ captures=json.loads((base/'captures/screenshots.json').read_text(encoding='utf-8
 for row in captures['screenshots']:
  image=base/'captures'/row['file'];assert hashlib.sha256(image.read_bytes()).hexdigest()==row['sha256']
 # Same source, frozen GAME-32 oracle/migration on Windows; isolated evidence, not tracked files.
-frozen_env=dict(os.environ,GAME32_EVIDENCE=str(base/'frozen-rules'))
-result=checked_process([sys.executable,'tests/rules/run-tests.py'],cwd=root,env=frozen_env,log=base/'frozen-rules.log',timeout=600)
-assert not result['exit_code']and not result['errors']and not result['timeout'],(base/'frozen-rules.log').read_text(encoding='utf-8')[-12000:]
-proofs['frozen-rules']=json.loads((base/'frozen-rules/kernel-results.json').read_text());assert proofs['frozen-rules']['checks']==22181 and proofs['frozen-rules']['failures']==0
+if reuse:
+ proofs['frozen-rules']=original['proofs']['frozen-rules']
+else:
+ frozen_env=dict(os.environ,GAME32_EVIDENCE=str(base/'frozen-rules'))
+ result=checked_process([sys.executable,'tests/rules/run-tests.py'],cwd=root,env=frozen_env,log=base/'frozen-rules.log',timeout=600)
+ assert not result['exit_code']and not result['errors']and not result['timeout'],(base/'frozen-rules.log').read_text(encoding='utf-8')[-12000:]
+ proofs['frozen-rules']=json.loads((base/'frozen-rules/kernel-results.json').read_text())
+assert proofs['frozen-rules']['checks']==22181 and proofs['frozen-rules']['failures']==0
+proof_sources={key:original['source_commit']if reuse and key.split('/')[0]not in phases else commit for key in proofs}
 assert (root/'data/rules/packs.json').read_bytes()==manifest_bytes
 assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()==commit
 assert json.loads((dist/'distribution.json').read_text(encoding='utf-8'))['source_commit']==commit
@@ -59,5 +85,5 @@ with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED)as z:
   if p.is_file():z.write(p,Path(name)/p.relative_to(dist))
 with zipfile.ZipFile(archive)as z:assert z.testzip()is None
 sha=hashlib.file_digest(archive.open('rb'),'sha256').hexdigest();Path(str(archive)+'.sha256').write_text(sha+'  '+archive.name+'\n')
-(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=commit,rules_ref=pin,archive=archive.name,sha256=sha,proofs=proofs,timings=timings,empty_path=True,source_helper_override=False,production_launch=True,separate_process_restart=True,captures=captures,earned_characters=3,historical_scope='Fresh affected v13/v23 native mechanics/cold, v16 repair/compatibility, all23 exact historical bytes/pins; earlier cohort earned/GUI receipts reused only for unchanged definitions/controllers and explicitly labelled.'),indent=2)+'\n')
+(base/'distribution-proof.json').write_text(json.dumps(dict(source_commit=commit,native_reuse=reuse,proof_sources=proof_sources,rules_ref=pin,archive=archive.name,sha256=sha,proofs=proofs,timings=timings,empty_path=True,source_helper_override=False,production_launch=True,separate_process_restart=True,captures=captures,earned_characters=3,historical_scope='Fresh affected v13/v23 native mechanics/cold, v16 repair/compatibility, all23 exact historical bytes/pins; earlier cohort earned/GUI receipts reused only for unchanged definitions/controllers and explicitly labelled.'),indent=2)+'\n')
 print(json.dumps(dict(archive=str(archive),sha256=sha)),flush=True)

@@ -72,9 +72,9 @@ def generate(root,pack,pin,native_root):
   row['previous_acceptance_pin']=baseline['rules_ref'];row['current_kernel_evidence']='docs/implementation/game152/evidence/current-native-witnesses.json#classes/'+cls if row['kind']=='base'else'Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence.'
   phase=next((phase for phase,classes in cohort_map.items()if cls in classes),None)
   if phase:
-   row['status']='COMPLETE';row['verified_source']=native['source_commit'];row['persistence']['current_native']=True;row['early_mid_high']['current_tactical']=True
+   row['status']='COMPLETE';row['verified_source']=native.get('proof_sources',{}).get(phase+'/proof.json',native['source_commit']);row['persistence']['current_native']=True;row['early_mid_high']['current_tactical']=True
    row['evidence']+=['docs/implementation/game152/evidence/final-distribution-proof.json#proofs/'+phase,'tests/psychic_parity/'+('mechanics.gd'if phase=='mechanics'else phase.replace('-','_')+'.gd')]
-   row['acceptance_sources']={'current':'Fresh v24 '+phase+' native tactics and exact cold replay; all-base legal1–20 audit.','reused':'Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured.'}
+   row['acceptance_sources']={'current':'Matching v24 '+phase+' native tactics and exact cold replay; all-base legal1–20 audit.','reused':'Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured.'}
   if cls in ['psion','wilder','cerebremancer']:
    row['remaining']=[];row['status_scope']='Bounded original psychic/dual-casting identity: real known-power GUI, augmentation/costs, saves/resistance, finite resources/recovery, permanent optional prestige, legal progressions and cold combat; human balance separate.'
    row['advancement']['current_native_levels']=[1,3,8,15,20]if cls!='cerebremancer'else[1,2,3,4,5]
