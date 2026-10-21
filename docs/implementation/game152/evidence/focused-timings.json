@@ -1,26 +1,78 @@
-[
-  {
-    "phase": "baseline",
-    "restart": false,
-    "seconds": 3.813,
-    "exit_code": 0,
-    "errors": false,
-    "timeout": false
-  },
-  {
-    "phase": "mechanics",
-    "restart": false,
-    "seconds": 43.734,
-    "exit_code": 0,
-    "errors": false,
-    "timeout": false
-  },
-  {
-    "phase": "mechanics",
-    "restart": true,
-    "seconds": 5.61,
-    "exit_code": 0,
-    "errors": false,
-    "timeout": false
-  }
-]
+{
+  "source_commit": "e2e1daa04b21aa360a773551f64d3cb659b88d4f",
+  "workflow_run": 39574286811,
+  "phases": [
+    {
+      "phase": "baseline",
+      "restart": false,
+      "seconds": 2.61,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "restart": false,
+      "seconds": 31.093,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "restart": true,
+      "seconds": 4.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "restart": false,
+      "seconds": 7.015,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "restart": false,
+      "seconds": 364.063,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "restart": true,
+      "seconds": 4.61,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "restart": false,
+      "seconds": 37.5,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "restart": true,
+      "seconds": 96.093,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "restart": false,
+      "seconds": 30.36,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

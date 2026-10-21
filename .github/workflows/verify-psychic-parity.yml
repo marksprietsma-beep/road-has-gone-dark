@@ -37,7 +37,9 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game152-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game152-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      # The complete release runs these same assertions inside the exported executable.
       - name: Psychic mechanics, frozen observations and exact cold restart
+        if: github.event_name != 'workflow_dispatch' || !inputs.release
         env:
           GAME152_ROOT: ${{ runner.temp }}/game152-focused
         run: python tests/psychic_parity/run-tests.py
