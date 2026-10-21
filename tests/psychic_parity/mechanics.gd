@@ -9,7 +9,7 @@ const WILD := {"STR":8,"DEX":13,"CON":14,"INT":12,"WIS":10,"CHA":15}
 func run() -> void:
  base=OS.get_environment("GAME152_ROOT");DirAccess.make_dir_recursive_absolute(base)
  check(source.load_pack("res://data/rules/trhgd-character-v24.json").ok,"immutable24 schema")
- if failures:finish();return
+ if failures:finish_parity();return
  kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME152_RESTART")=="1":cold();return
  records.foe=build("foe",route("fighter",20),PSI)
@@ -19,13 +19,13 @@ func run() -> void:
    if cls=="psion":options["psion-second-power"]="power-thought-thrust"
    var r := build(cls+str(at),route(cls,at),PSI if cls=="psion" else WILD,options)
    records[cls+str(at)]=r
-   if r.is_empty():finish();return
+   if r.is_empty():finish_parity();return
    var snapshot: Dictionary=kernel.derive_character(r).snapshot
    check(int(snapshot.manifesting_level)==at,"actual shared manifesting cap "+cls+str(at))
    check(snapshot.power_origins.size()==snapshot.known_powers.size(),"every selected power has a durable owning class")
    levels[cls+str(at)]={"history":r.advancement_history.size(),"known":snapshot.known_powers,"points":snapshot.resource_capacities["psychic-points"],"origins":snapshot.power_origins}
  test_damage();test_costs();test_origins();test_hybrid();test_tactical();test_guards()
- if failures:finish();return
+ if failures:finish_parity();return
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
   records[id]=RulesJson.string_keys(records[id]);var registry := RulesRecords.registry(records[id]);var derived := RulesCharacter.new(registry).derive_character(records[id])
@@ -39,7 +39,7 @@ func run() -> void:
   if result.ok:after[id]=result.battle.state_hash
  FileAccess.open(base.path_join("saved.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":records,"hashes":hashes,"record_hashes":record_hashes,"battles":battles,"next":next,"after":after})))
  FileAccess.open(base.path_join("traces.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(traces),"  "))
- finish()
+ finish_parity()
 func route(cls: String,count: int) -> Array:
  var result: Array=[]
  for n in count:result.append(cls)
@@ -196,8 +196,8 @@ func cold() -> void:
   var engine := TacticalAuras.new(saved.battles[id].units.a.record)
   check(engine.validate(saved.battles[id]).is_empty(),"cold tactical state valid "+id)
   var next := engine.command(saved.battles[id],saved.next[id]);check(next.ok and next.battle.state_hash==saved.after[id],"cold exact next HP/status/log/RNG "+id)
- finish(true)
-func finish(restart := false) -> void:
+ finish_parity(true)
+func finish_parity(restart := false) -> void:
  var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"classes":["psion","wilder","cerebremancer"],"levels":levels,"traces":traces,"development_fixtures":true,"campaign_xp_injected":false}
  FileAccess.open(base.path_join("restart-proof.json"if restart else"proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(proof)))
  print("GAME152 ",checks," checks; ",failures," failures");get_tree().quit(1 if failures else 0)
