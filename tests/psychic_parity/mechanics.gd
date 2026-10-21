@@ -177,6 +177,26 @@ func test_tactical() -> void:
  var miss := use(records.psion3,saved,"power-thought-thrust");var hit := use(records.psion3,failed,"power-thought-thrust")
  check(miss.ok and hit.ok and lost(miss,saved)==0 and lost(hit,failed)>0,"actual successful and failed enemy saves change psychic results")
  if miss.ok:check(int(miss.actor.runtime.resources["psychic-points"])==int(records.psion3.runtime.resources["psychic-points"])-1,"successful save still consumes actual point/main")
+ var protector := build("protector",route("psion",8),PSI,{"psion-power-1":"power-kinetic-bolt","psion-second-power":"power-thought-thrust","psion-power-6":"power-phase-guard"})
+ if protector.is_empty():return
+ protector.runtime.modifiers.append({"stat":"will","type":"untyped","value":-100,"source":"forced-save-development-fixture"})
+ var warded := use(protector,protector,"power-phase-guard");check(warded.ok,"selected defensive psychic power actually executes")
+ if warded.ok:
+  var unprotected := lost(use(records.psion3,protector,"power-thought-thrust"),protector)
+  var protected := lost(use(records.psion3,warded.actor,"power-thought-thrust"),warded.actor)
+  check(unprotected==5 and protected==1,"actual resistance reduces damage after the discipline bonus")
+  check(lost(use(records.psion3,warded.actor,"power-kinetic-bolt"),warded.actor)==5,"psychic resistance does not block a force-typed psychic ability")
+  records.protected=warded.actor
+ var locked := use(records.psion8,failed,"power-mind-lock");check(locked.ok,"chosen mid-tier control executes")
+ if locked.ok:check(lost(locked,failed)==0 and locked.target.runtime.statuses.any(func(s: Dictionary):return s.id=="psychic-lock"),"Assault never turns zero-damage control into a damage spell")
+ for cls in ["psion","wilder"]:
+  var late: Dictionary=records[cls+"20"];var late_engine := TacticalAuras.new(late);var late_battle := encounter(late)
+  var support := command(late_engine,late_battle,"power-perfect-unity","b")
+  check(support.ok,"actual chosen tier9 support and attribute requirement execute "+cls)
+  if support.ok:
+   check(int(support.battle.units.a.record.runtime.resources["psychic-points"])==int(late_battle.units.a.record.runtime.resources["psychic-points"])-17,"actual tier9 support spends17 points "+cls)
+   check(support.battle.units.b.record.runtime.temporary_hp==27 and support.battle.units.b.record.runtime.statuses.any(func(st: Dictionary):return st.id=="psychic-unity"),"late support is an ally boon, not renamed damage "+cls)
+   battles["support-"+cls]=support.battle
 func test_guards() -> void:
  var malformed := source.source_data();malformed.features.filter(func(f: Dictionary):return f.id=="psion-discipline-assault")[0].capabilities.ability_damage.psychic=31
  check(not RulesRegistry.new().load_data(malformed).ok,"unbounded ability-tag damage capability rejects")

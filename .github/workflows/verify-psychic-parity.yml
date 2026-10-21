@@ -74,6 +74,6 @@ jobs:
         with:
           name: game152-focused-windows
           path: |
-            ${{ runner.temp }}/game152-focused/*
+            ${{ runner.temp }}/game152-focused/**
             ${{ runner.temp }}/game152-import.log
           retention-days: 90

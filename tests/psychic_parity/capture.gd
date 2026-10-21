@@ -2,7 +2,9 @@ extends "res://tests/class_signatures/capture_driver.gd"
 ## Original Windows Godot viewport pixels. Fixtures do not rewrite earned saves.
 func run() -> void:
  base=OS.get_environment("GAME126_JOURNEY_ROOT").path_join("cohort-0")
- capture_folder=OS.get_environment("GAME152_ROOT").get_base_dir().path_join("captures");DirAccess.make_dir_recursive_absolute(capture_folder)
+ capture_folder=OS.get_environment("GAME152_CAPTURE_ROOT")
+ if capture_folder.is_empty():capture_folder=OS.get_environment("GAME152_ROOT").get_base_dir().path_join("captures")
+ DirAccess.make_dir_recursive_absolute(capture_folder)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0];slot=WorldOriginLore.read_json(base.path_join("proof.json")).slot
  var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"actual earned psychic campaign reload for original renders")
