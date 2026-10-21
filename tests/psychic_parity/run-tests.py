@@ -7,7 +7,7 @@ sys.path.insert(0,str(root/'tests/character_psychic'))
 from checked_process import checked_process
 base=Path(os.environ['GAME152_ROOT']);base.mkdir(parents=True,exist_ok=True)
 timings=[]
-for phase,restart,file in [('baseline',False,'baseline-proof.json'),('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json')]:
+for phase,restart,file in [('baseline',False,'baseline-proof.json'),('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json')]:
  log=base/(phase+('-cold'if restart else'')+'.log')
  r=checked_process([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'res://tests/psychic_parity/review.tscn'],cwd=root,env=dict(os.environ,GAME152_PHASE=phase,GAME152_RESTART='1'if restart else'0'),log=log,timeout=600)
  timings.append(dict(phase=phase,restart=restart,**r));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n')

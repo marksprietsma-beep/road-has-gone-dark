@@ -154,6 +154,7 @@ func test_tactical() -> void:
   for at in [1,8,20]:
    var r: Dictionary=records[cls+str(at)];var engine := TacticalAuras.new(r);var b := encounter(r)
    var id := "power-kinetic-bolt" if at==1 else "power-kinetic-bolt-aug2"
+   battles["ready-"+cls+str(at)]=b.duplicate(true)
    var before := RulesJson.digest(b);var result := command(engine,b,id)
    check(result.ok,"actual tactical psychic target/cost "+cls+str(at))
    if not result.ok:continue
