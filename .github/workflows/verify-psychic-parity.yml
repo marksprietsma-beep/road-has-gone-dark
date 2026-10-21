@@ -24,6 +24,8 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # complete history required by exact native-release source comparison
       - uses: actions/setup-node@v4
         with:
           node-version: '24.19.0'
