@@ -1,4 +1,4 @@
-extends SceneTree
+extends Node
 ## Frozen v23 reproductions. No progression here is claimed as earned.
 var source := RulesRegistry.new()
 var kernel: RulesCharacter
@@ -8,14 +8,15 @@ var traces := {}
 func check(value: bool,message: String) -> void:
  checks+=1
  if not value:failures+=1;push_error(message)
-func _initialize() -> void:call_deferred("run")
-func build(identity: String,route: Array,attributes: Dictionary,options: Dictionary={},increase := "") -> Dictionary:
+func _ready() -> void:call_deferred("run")
+func build(identity: String,route: Array,attributes: Dictionary,options: Dictionary={},increase := "",feats: Dictionary={},spells: Array=[]) -> Dictionary:
  var record := kernel.create(identity,attributes,"heritage-human")
  for cls in route:
   var suggested := kernel.suggested_choice(record,cls)
   check(suggested.ok,"lawful fixture suggestion "+cls+JSON.stringify(suggested.get("errors",[])))
   if not suggested.ok:return {}
   var choice: Dictionary=suggested.choice
+  if feats.has(int(choice.level)):choice.feat_id=feats[int(choice.level)]
   if not increase.is_empty() and not choice.attribute_increase.is_empty():choice.attribute_increase=increase
   for group in options:
    if choice.specialisations.has(group):choice.specialisations[group]=options[group]
@@ -23,6 +24,9 @@ func build(identity: String,route: Array,attributes: Dictionary,options: Diction
   check(advanced.ok,"lawful fixture advancement "+cls+JSON.stringify(advanced.get("errors",[])))
   if not advanced.ok:return {}
   record=advanced.candidate
+  if not spells.is_empty():
+   var owned: Array=kernel.derive_character(record).get("snapshot",{}).get("abilities",[])
+   if spells.all(func(id: String):return owned.has(id)):record.choices.prepared_abilities=spells.duplicate()
  var derived := kernel.derive_character(record)
  check(derived.ok,"complete fixture validates "+JSON.stringify(derived.get("errors",[])))
  if not derived.ok:return {}
@@ -53,6 +57,10 @@ func run() -> void:
  if not surge.ok:finish();return
  var fresh := lost(use(wilder,foe,"power-kinetic-bolt"),foe)
  var weakened := lost(use(surge.actor,foe,"power-kinetic-bolt"),foe)
+ var hollow := build("hollow",["psion","psion","psion","sorcerer","sorcerer","sorcerer"],{"STR":10,"DEX":14,"CON":13,"INT":15,"WIS":12,"CHA":8},{},"INT",{3:"psychic-discipline"})
+ if hollow.is_empty():finish();return
+ var actual_arcane := int(RulesCompleteness.spell_tiers(hollow,kernel._replay(hollow).context,source).arcane)
+ check(actual_arcane==0 and kernel.available_advancement(hollow).classes.cerebremancer.ok,"reproduce nominal arcane levels qualifying without usable arcane magic")
  var casted := use(mixed,foe,"power-thought-thrust");check(casted.ok,"mixed-origin power executes")
  if not casted.ok:finish();return
  var save: Dictionary=casted.events.filter(func(e: Dictionary):return e.type=="save_resolved")[0]
@@ -61,10 +69,10 @@ func run() -> void:
  check(assault_hit==ward_hit and kernel.derive_character(assault).snapshot.stats.damage>kernel.derive_character(ward).snapshot.stats.damage,"reproduce projected Assault bonus missing from psychic damage")
  check(fresh==weakened and kernel.derive_character(surge.actor).snapshot.stats.damage==-2,"reproduce established Weakened damage penalty missing from psychic damage")
  check(int(save.dc)>expected_dc,"reproduce unrelated Psion INT inflating Wilder-known power DC")
- traces={"assault_damage":assault_hit,"ward_damage":ward_hit,"fresh_psychic_damage":fresh,"weakened_psychic_damage":weakened,"actual_wilder_power_dc":save.dc,"expected_wilder_attribute_dc":expected_dc,"mixed_attributes":attrs_now,"surge_point_cost":int(wilder.runtime.resources["psychic-points"])-int(surge.actor.runtime.resources["psychic-points"])}
+ traces={"assault_damage":assault_hit,"ward_damage":ward_hit,"fresh_psychic_damage":fresh,"weakened_psychic_damage":weakened,"actual_wilder_power_dc":save.dc,"expected_wilder_attribute_dc":expected_dc,"mixed_attributes":attrs_now,"hollow_arcane_tier":actual_arcane,"hollow_prestige_eligible":kernel.available_advancement(hollow).classes.cerebremancer.ok,"surge_point_cost":int(wilder.runtime.resources["psychic-points"])-int(surge.actor.runtime.resources["psychic-points"])}
  finish()
 func finish() -> void:
  var base := OS.get_environment("GAME152_ROOT");DirAccess.make_dir_recursive_absolute(base)
  var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"traces":traces,"development_fixtures":true,"earned_xp":false}
  FileAccess.open(base.path_join("baseline-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
- print("GAME152_BASELINE ",JSON.stringify(proof));quit(1 if failures else 0)
+ print("GAME152_BASELINE ",JSON.stringify(proof));get_tree().quit(1 if failures else 0)

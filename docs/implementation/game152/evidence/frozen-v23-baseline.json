@@ -1,0 +1,32 @@
+{
+  "checks": 57,
+  "development_fixtures": true,
+  "earned_xp": false,
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v23",
+    "rules_version": "23.0.0",
+    "schema_version": 1
+  },
+  "traces": {
+    "actual_wilder_power_dc": 14,
+    "assault_damage": 3,
+    "expected_wilder_attribute_dc": 12,
+    "fresh_psychic_damage": 3,
+    "mixed_attributes": {
+      "CHA": 13,
+      "CON": 14,
+      "DEX": 12,
+      "INT": 16,
+      "STR": 8,
+      "WIS": 10
+    },
+    "surge_point_cost": 4,
+    "ward_damage": 3,
+    "weakened_psychic_damage": 3
+  },
+  "source_commit": "566647032bcc884324f07ec7c4769ff3838431e8",
+  "workflow_run": 39567270536
+}

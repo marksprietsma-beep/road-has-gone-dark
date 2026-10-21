@@ -36,14 +36,16 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
  if not t.ok: return t
  var ability := registry.definition("abilities",ability_id)
  if ability.is_empty() or not a.snapshot.abilities.has(ability_id): return RulesJson.result([RulesJson.issue("ability.unowned",ability_id,"Actor does not own the ability")])
- if registry.rules_ref().pack_id=="trhgd-character-v23" and int(ability.cost.main)>0 and a.snapshot.tags.has("main_action_suppressed"):return RulesJson.result([RulesJson.issue("ability.main_suppressed",ability_id,"Stillness prevents this main action; movement and reactions remain available")])
- if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23"] and ability.tags.has("maintained_performance") and not RulesEntities.form(actor,registry).is_empty():return RulesJson.result([RulesJson.issue("performance.form",ability_id,"A transformed body cannot start this maintained vocal performance")])
+ if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24"] and int(ability.cost.main)>0 and a.snapshot.tags.has("main_action_suppressed"):return RulesJson.result([RulesJson.issue("ability.main_suppressed",ability_id,"Stillness prevents this main action; movement and reactions remain available")])
+ if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"] and ability.tags.has("maintained_performance") and not RulesEntities.form(actor,registry).is_empty():return RulesJson.result([RulesJson.issue("performance.form",ability_id,"A transformed body cannot start this maintained vocal performance")])
  # v17 suppression is a derived tactical condition, never a change to owned spells.
- if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
+ if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"] and ability.tags.has("spell") and a.snapshot.tags.has("spell_suppressed"):return RulesJson.result([RulesJson.issue("spell.suppressed",ability_id,"Spellcasting is temporarily suppressed")])
  if registry.rules_ref().engine_schema==3 and ability.tags.has("spell") and not RulesWaveFive.spell_selected(actor,ability,registry):return RulesJson.result([RulesJson.issue("spell.selection",ability_id,"Spell is not prepared or known")])
  if RulesMartial.enabled(registry) and ability.has("requires_status") and not actor.runtime.statuses.any(func(s: Dictionary):return s.id==ability.requires_status):return RulesJson.result([RulesJson.issue("ability.stance",ability_id,"Required manifested weapon or armed stance is absent")])
  if RulesMartial.enabled(registry) and ability.has("requires_weapon") and (not RulesEntities.form(actor,registry).is_empty() or not actor.runtime.statuses.any(func(s: Dictionary):return registry.definition("statuses",s.id).get("weapon_override")==ability.requires_weapon)):return RulesJson.result([RulesJson.issue("ability.weapon",ability_id,"Required manifested weapon is not active")])
  if RulesMartial.mobile_enabled(registry) and ability.get("requires_fencing",false) and not RulesMartial.fencing_equipment(actor,registry):return RulesJson.result([RulesJson.issue("ability.fencing",ability_id,"Requires a fencing weapon, light/no armour, no shield and no transformed body")])
+ var power_access := RulesPsychic.casting_access(ability,a.context,registry)
+ if not power_access.ok:return power_access
  var requirements := RulesExpressions.evaluate_requirements(ability.requirements,a.context)
  if not requirements.ok: return requirements
  if RulesWaveFour.enabled(registry):
@@ -84,6 +86,9 @@ func use_ability(actor: Dictionary,target: Dictionary,ability_id: String,budget:
   context.target_capabilities=t.snapshot.capabilities
   context.capabilities=a.snapshot.capabilities
  context.stats=a.snapshot.stats;context.capacities=a.snapshot.resource_capacities
+ if RulesPsychic.parity_enabled(registry):
+  context.ability_tags=ability.tags.duplicate()
+  if ability.has("psychic_power"):context.manifesting_modifier=int(a.context.power_origins[ability.psychic_power].modifier)
  if ability.timing.kind!="instant":
   events.append({"type":"ability_deferred","ability_id":ability_id,"timing":ability.timing.duplicate(true)})
   # Only an intent descriptor. GAME-33 owns scheduling, targets and pending effects.
@@ -147,6 +152,12 @@ func _apply(effect: Dictionary,state: Dictionary,context: Dictionary) -> Diction
   var amount: int=int(evaluated.value)
   if amount<0 or amount>100000: return RulesJson.result([RulesJson.issue("effect.amount",op,"Effect amount must be nonnegative and bounded")])
   if op=="damage":
+   if RulesPsychic.parity_enabled(registry) and amount>0:
+    var bonus := RulesCapabilities.ability_damage_bonus(context.get("capabilities",{}),context.get("ability_tags",[]))
+    if bonus!=0:
+     var adjusted := maxi(0,amount+bonus)
+     if adjusted>100000:return RulesJson.result([RulesJson.issue("effect.amount",op,"Modified damage must remain bounded")])
+     state.events.append({"type":"ability_damage_adjusted","base":amount,"modifier":bonus,"amount":adjusted});amount=adjusted
    if effect.get("save_half",false):
     if not context.get("saving_throw_success",false):return RulesJson.result([RulesJson.issue("effect.save_half",op,"Half damage requires a successful authoritative save")])
     amount=0 if context.get("target_tags",[]).has("evasion") else int(floor(float(amount)/2.0))

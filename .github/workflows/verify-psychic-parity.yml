@@ -2,16 +2,16 @@ name: GAME-152 Psychic Resource Parity
 on:
   push:
     branches: [feature/game-152-psychic-resource-parity, main]
-    paths: ['tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
   pull_request:
-    paths: ['tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,10 +32,12 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game152-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game152-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Frozen baseline reproductions before versioned correction
+      - name: Psychic mechanics, frozen observations and exact cold restart
         env:
           GAME152_ROOT: ${{ runner.temp }}/game152-focused
         run: python tests/psychic_parity/run-tests.py
+      - name: Exact historical bytes, pins and bounded roster
+        run: python tests/psychic_parity/check-history.py
       - name: Preserve exact Windows diagnostics
         if: always()
         uses: actions/upload-artifact@v4

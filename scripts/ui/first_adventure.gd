@@ -141,7 +141,7 @@ func add_action(id: String,text: String) -> void:
   button.disabled=button.disabled or not available.ok
   var row := engine.registry.definition("abilities",id)
   if RulesMartial.enabled(engine.registry) and row.has("requires_status") and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):button.disabled=true
-  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
@@ -178,6 +178,12 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
   if int(definition.augmentation)==selected_augmentation:augmentation.select(augmentation.item_count-1);selected_id=id
  augmentation.item_selected.connect(func(index: int):mode=str(augmentation.get_item_metadata(index));selected_augmentation=int(source.definition("abilities",mode).augmentation);refresh())
  var ability := source.definition("abilities",selected_id)
+ if RulesPsychic.parity_enabled(source):
+  var origin := RulesPsychic.origin_text(snapshot.power_origins.get(selected_power,{}),source)
+  var bonus := RulesCapabilities.ability_damage_bonus(snapshot.capabilities,ability.tags)
+  var detail := GameUI.label(origin+" · psychic damage "+("+" if bonus>=0 else "")+str(bonus),GameUI.META)
+  detail.tooltip_text="Applies only to positive psychic ability damage, before saves/resistance. Healing and barriers do not gain damage modifiers. "+origin
+  actions.add_child(detail)
  if ability.targeting.kind=="self":
   var button := GameUI.action("Manifest "+ability.name,func():send(selected_id,actor.id))
   button.disabled=thread!=null or not engine.effects.validate_ability_cost(selected_id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)}).ok
@@ -252,7 +258,7 @@ func refresh() -> void:
    button.mouse_entered.connect(func():
     if not id.is_empty():
      targeting.text=button.tooltip_text
-     if valid_target and engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]:
+     if valid_target and engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]:
       var affected: Array=engine.area_preview(b,actor,b.units[id],mode)
       targeting.text+=" · Affects: "+", ".join(affected.map(func(key: String):return str(b.units[key].name)))
     elif valid_move: targeting.text="Move here · %d tiles"%(reachable[str(p)].size()-1)
@@ -281,14 +287,14 @@ func refresh() -> void:
      if str(pool).ends_with("-readiness") or pool=="soulknife-focus":pools.append(str(pool).replace("-"," ")+": "+str(int(actor.record.runtime.resources[pool])))
     if not pools.is_empty():detail.text+="\n"+" · ".join(pools)
     detail.text+="\nWeapon: "+str(engine.registry.definition("equipment",engine.active_weapon(actor)).name)
-   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]:
+   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]:
     if int(character_snapshot.class_levels.get("warlock",0))>0:detail.text+="\nWarlock: at will · main action"
     for pool in ["binder-commitments","draconic-resolve"]:
      if character_snapshot.resource_capacities.has(pool):detail.text+="\n"+str(engine.registry.definition("resources",pool).name)+": %d/%d · rest"%[actor.record.runtime.resources[pool],character_snapshot.resource_capacities[pool]]
     for effect in actor.record.runtime.statuses:
      if effect.id=="breath-recovering":detail.text+="\nFocused breath: %d global starts to recover"%int(effect.remaining)
-   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v22","trhgd-character-v23"]:
-    if engine.registry.rules_ref().pack_id=="trhgd-character-v23" and character_snapshot.tags.has("main_action_suppressed"):detail.text+="\nStillness prevents this main action; movement and shared reactions remain available."
+   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]:
+    if engine.registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24"] and character_snapshot.tags.has("main_action_suppressed"):detail.text+="\nStillness prevents this main action; movement and shared reactions remain available."
     for pool in ["performance","spirit-favour"]:
      if character_snapshot.resource_capacities.has(pool):detail.text+="\n"+str(engine.registry.definition("resources",pool).name)+": %d/%d · rest"%[actor.record.runtime.resources[pool],character_snapshot.resource_capacities[pool]]
     if actor.record.runtime.statuses.any(func(s: Dictionary):return engine.registry.definition("statuses",s.id).has("upkeep")):detail.text+="\nMaintained rally: 1 performance each own activation; Stop is free."
@@ -315,8 +321,8 @@ func refresh() -> void:
      if ability.targeting.kind=="self":
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
-      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
-      if engine.registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23"]:button.disabled=button.disabled or not engine.eligible(b,actor,actor,id)
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]:button.disabled=button.disabled or not engine.eligible(b,actor,actor,id)
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
       var caption: String=ability.name

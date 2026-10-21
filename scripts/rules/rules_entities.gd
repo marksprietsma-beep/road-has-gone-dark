@@ -2,7 +2,7 @@ class_name RulesEntities
 extends RefCounted
 ## v12+ body/owned-creature records. GAME-32 still derives every actor and action.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]
 static func form(record: Dictionary,source: RulesRegistry) -> Dictionary:
  if not enabled(source):return {}
  for status in record.runtime.statuses:
