@@ -6,12 +6,17 @@ on:
   pull_request:
     paths: ['scripts/**', 'data/rules/**', 'tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
   workflow_dispatch:
+    inputs:
+      release:
+        description: Complete native Windows release after focused parity and earned/cold checks
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -38,6 +43,31 @@ jobs:
         run: python tests/psychic_parity/run-tests.py
       - name: Exact historical bytes, pins and bounded roster
         run: python tests/psychic_parity/check-history.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Native exported game, current/historical mechanics, earned journey, cold state and real renders
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME152_RELEASE_ROOT: ${{ runner.temp }}/game152-native
+        run: python tests/psychic_parity/verify-package.py
+      - name: Self-contained Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game152-complete-windows-x64
+          path: ${{ runner.temp }}/game152-native/distribution/*.zip*
+          retention-days: 90
+      - name: Native receipts and original Godot pixels
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game152-native-evidence
+          path: |
+            ${{ runner.temp }}/game152-native/**/*.json
+            ${{ runner.temp }}/game152-native/**/*.log
+            ${{ runner.temp }}/game152-native/captures/*.png
+          retention-days: 90
       - name: Preserve exact Windows diagnostics
         if: always()
         uses: actions/upload-artifact@v4

@@ -10,7 +10,9 @@ func choose(control: OptionButton,identity: String) -> bool:
   if str(control.get_item_metadata(index))==identity:
    check(not control.is_item_disabled(index),"actual option is selectable "+identity)
    control.select(index);control.item_selected.emit(index);return true
- check(false,"actual option exists "+identity);return false
+ var rows: Array=[]
+ for index in control.item_count:rows.append({"metadata":control.get_item_metadata(index),"text":control.get_item_text(index),"disabled":control.is_item_disabled(index)})
+ check(false,"actual option exists "+identity+"; available="+JSON.stringify(rows));return false
 func run() -> void:
  var base := OS.get_environment("GAME152_ROOT")
  var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
