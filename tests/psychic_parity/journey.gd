@@ -6,7 +6,7 @@ func create_party() -> void:
 func goals_for(index: int) -> Dictionary:
  return {"nodes":[{"op":"skill","id":"arcana","min":4},{"op":"skill","id":"spellcraft","min":3}],"feats":["psychic-discipline"] if index==2 else []}
 func planned(record: Dictionary,cls: String,index: int) -> Dictionary:
- var proposed := planner.advance(record,cls,goals_for(index))
+ var proposed: Dictionary=planner.advance(record,cls,goals_for(index))
  if not proposed.ok:return proposed
  var choice: Dictionary=proposed.candidate.advancement_history.back().duplicate(true);choice.erase("level")
  var options := {"psion-discipline":"assault" if index==0 else "ward","psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen","psion-power-2":"power-thought-thrust","psion-power-4":"power-mind-lock","psion-power-6":"power-energy-surge","psion-power-8":"power-vital-exchange","wilder-power-1":"power-kinetic-bolt","wilder-power-2":"power-force-screen","wilder-power-4":"power-mind-lock","wilder-power-6":"power-energy-surge","wilder-power-8":"power-vital-exchange","cerebremancer-casting":"wizard","cerebremancer-power-1":"power-electric-lance"}
