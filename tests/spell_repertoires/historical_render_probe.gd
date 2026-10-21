@@ -68,7 +68,7 @@ func run() -> void:
  crossed.advancement_history[5].specialisations["cleric-choice-6"]="war"
  check(RulesCharacter.new(RulesRecords.registry(crossed)).derive_character(crossed).ok,"v17 cross-domain fixture remains legal under its original pin")
  var cross_hash := RulesJson.digest(crossed);var rejected := Capture.render_record(crossed,"crossed",display)
- check(not rejected.ok and rejected.errors.any(func(e: Dictionary):return str(e.path).contains("specialisations")),"v23 domain prerequisite rejects rather than respecs historical choices: "+JSON.stringify(rejected.get("errors",[])))
+ check(not rejected.ok and rejected.errors.any(func(e: Dictionary):return e.code=="requirement.feature" and e.id=="cleric-war-1-feature" and e.path=="requirements"),"v23 domain prerequisite rejects rather than respecs historical choices: "+JSON.stringify(rejected.get("errors",[])))
  check(RulesJson.digest(crossed)==cross_hash,"negative projection retains exact original choice history")
  var bad_pin: Dictionary=archived.records["wizard-dissonant-seal"].duplicate(true);bad_pin.rules_ref.content_hash="0".repeat(64)
  check(not Capture.render_record(bad_pin,"bad-pin",display).ok,"forged historical version pin still rejects")

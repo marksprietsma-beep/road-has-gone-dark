@@ -101,6 +101,7 @@ static func render_record(original: Dictionary,identity: String,display: RulesRe
  # Diagnostic projection only. Validate the archived record under its own pin,
  # replay permanent choices under the display pin, and never rewrite the input.
  var historical := RulesRecords.registry(original)
+ if not historical.ready():return RulesJson.result(historical.errors)
  var valid := RulesCharacter.new(historical).derive_character(original)
  if not valid.ok:return valid
  var candidate: Dictionary=original.duplicate(true)
