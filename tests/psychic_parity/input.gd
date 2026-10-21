@@ -57,7 +57,7 @@ func run() -> void:
   check(ui.tiles[str(position)].target_tile,"actual target tile matches tactical hitbox")
   ui.tiles[str(position)].pressed.emit()
   check(ui.sent.get("kind")==id and ui.sent.get("target")=="bandit-blade","actual button/tile intent contains selected variant and correct enemy")
-  var used := ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":ui.sent.get("kind",""),"target_id":ui.sent.get("target","")})
+  var used: Dictionary=ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":ui.sent.get("kind",""),"target_id":ui.sent.get("target","")})
   check(used.ok and int(used.battle.units.a.record.runtime.resources["psychic-points"])==int(b.units.a.record.runtime.resources["psychic-points"])-3,"actual GUI intent executes with exactly three points")
  check(RulesJson.digest(b)==before,"selector/target feedback consumes no RNG/state/resources")
  var empty: Dictionary=b.duplicate(true);empty.units.a.record.runtime.resources["psychic-points"]=0;empty=ui.engine.seal(empty)

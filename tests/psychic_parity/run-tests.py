@@ -6,6 +6,8 @@ root=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(root/'tests/character_psychic'))
 from checked_process import checked_process
 base=Path(os.environ['GAME152_ROOT']);base.mkdir(parents=True,exist_ok=True)
+preflight=checked_process([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'--script','res://tests/psychic_parity/compile.gd'],cwd=root,env=os.environ.copy(),log=base/'compile.log',timeout=90)
+assert not preflight['exit_code']and not preflight['errors']and not preflight['timeout'],(base/'compile.log').read_text(encoding='utf-8')
 timings=[]
 for phase,restart,file in [('baseline',False,'baseline-proof.json'),('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json')]:
  log=base/(phase+('-cold'if restart else'')+'.log')
