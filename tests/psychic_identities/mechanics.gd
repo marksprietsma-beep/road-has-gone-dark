@@ -77,9 +77,6 @@ func test_ambush() -> void:
   b=veiled.battle;b.cursor=b.order.find("a");b.budget={"move":1,"main":1};b=engine.seal(b)
   check(kernel.derive_character(b.units.a.record).snapshot.capabilities.concealment==25,"veil provides concealment, not invisibility")
   battles["veiled-lurk"+str(at)]=b
-  if at==1:
-   check(not command(engine,b,"lurk-psychic-ambush").ok,"one starting focus pays veil, cannot fund immediate ambush")
-   continue
   var distant: Dictionary=b.duplicate(true);distant.units["bandit-blade"].position=[2,2];distant=engine.seal(distant)
   check(engine.validate(distant).is_empty() and not command(engine,distant,"lurk-psychic-ambush").ok,"melee ambush remains adjacent on valid free tiles")
   for attack_bonus in [-100,100]:
@@ -92,6 +89,15 @@ func test_ambush() -> void:
    check(used.battle.log.any(func(line: String):return "miss." in line) if attack_bonus<0 else used.battle.log.any(func(line: String):return " damage" in line),"actual weapon roll is separately visible")
    check(command(engine,attempt,"lurk-psychic-ambush").battle.state_hash==used.battle.state_hash,"ambush exact RNG replay")
    battles["lurk"+str(at)+str(attack_bonus)]=used.battle
+  var exhausted: Dictionary=r.duplicate(true)
+  var focus: int=exhausted.runtime.resources["lurk-focus"]
+  for n in focus:
+   var spent := use(exhausted,exhausted,"lurk-veil");check(spent.ok,"each veil spends one actual focus")
+   if spent.ok:exhausted=spent.actor
+  check(not use(exhausted,exhausted,"lurk-veil").ok and not use(exhausted,records.foe,"lurk-psychic-ambush").ok,"Lurk exhausted focus blocks veil and ambush")
+  var rest := RulesEffects.new(source).refresh_resources(exhausted.runtime,kernel.derive_character(exhausted).snapshot.resource_capacities,"eligible_rest")
+  check(rest.ok and int(rest.runtime.resources["lurk-focus"])==focus,"eligible rest restores actual Lurk focus")
+  records["exhausted-lurk"+str(at)]=exhausted
  var ogre := kernel.create("ogre-lurk",PSI,"heritage-ogre")
  for n in 4:
   var suggestion := kernel.suggested_choice(ogre,"lurk");check(suggestion.ok,"legal large Lurk suggestion")
