@@ -6,7 +6,10 @@ root=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(root/'tests/character_psychic'))
 from checked_process import checked_process
 base=Path(os.environ['GAME152_RELEASE_ROOT']).resolve();base.mkdir(parents=True,exist_ok=True)
-release=base/'distribution';release.mkdir(exist_ok=True);name='game152-psychic-parity-windows-x64';dist=release/name
+release=base/'distribution';release.mkdir(exist_ok=True);name='game152-psychic-parity-windows-x64'
+# Downloaded receipts include the original distribution.json under distribution/.
+# Retain that evidence and export elsewhere; never bypass the exporter's no-overwrite guard.
+dist=(base/'fresh-export'/name)if os.environ.get('GAME152_REUSE_RUN')else release/name
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
 manifest_bytes=(root/'data/rules/packs.json').read_bytes();pins={x['rules_ref']['pack_id']:x['rules_ref']for x in json.loads(manifest_bytes)['packs']};pin=pins['trhgd-character-v24']
 reuse=None;original=None
