@@ -1,0 +1,49 @@
+{
+  "battle_hash": "652a49d1baf3f5f5d718617035a9c1bdd4842c34cf9270e7b5beb3a324081c67",
+  "battle_log_length": 6,
+  "casts": {
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:1": "power-force-screen-aug2",
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:2": "wilder-surge",
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:3": "wizard-mage-armour"
+  },
+  "checks": 34,
+  "command_operation": "battle_command",
+  "earned_xp_before_combat": 490,
+  "failures": 0,
+  "next_command": {
+    "actor_id": "49c73a552ab17ba74e5f5d413da15947:adventurer:2",
+    "destination": [
+      6,
+      3
+    ],
+    "kind": "move",
+    "revision": 8
+  },
+  "next_hash": "3134247bfe86ceb0444ef0fa73c0f52bcde95c12b158b3db7484364b19a8faee",
+  "resources": {
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:1": {
+      "psychic-points": 15
+    },
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:2": {
+      "psychic-points": 14
+    },
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:3": {
+      "wizard-prepared-mage-armour": 0,
+      "wizard-slots-1": 5
+    }
+  },
+  "rules_ref": {
+    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v24",
+    "rules_version": "24.0.0",
+    "schema_version": 1
+  },
+  "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+  "slot": "49c73a552ab17ba74e5f5d413da15947",
+  "source": "AdventureService/battle_command/GamePlaythroughStore",
+  "state_hash": "204781b301a19e92f2873bbde37029ed613af46b9ca8b53a008be6dcb59ba1b9",
+  "xp_injected": false,
+  "source_commit": "8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3",
+  "workflow_run": 39701555387
+}

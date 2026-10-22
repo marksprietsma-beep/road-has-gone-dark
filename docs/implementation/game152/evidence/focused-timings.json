@@ -1,0 +1,78 @@
+{
+  "source_commit": "8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3",
+  "workflow_run": 39701555387,
+  "phases": [
+    {
+      "phase": "baseline",
+      "restart": false,
+      "seconds": 2.422,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "restart": false,
+      "seconds": 30.875,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "restart": true,
+      "seconds": 4.828,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "restart": false,
+      "seconds": 13.437,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "restart": false,
+      "seconds": 361.454,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "restart": true,
+      "seconds": 4.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "restart": false,
+      "seconds": 37.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "restart": true,
+      "seconds": 95.687,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "restart": false,
+      "seconds": 33.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

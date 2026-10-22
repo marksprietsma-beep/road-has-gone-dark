@@ -1,0 +1,590 @@
+{
+  "checks": 633,
+  "combat_actions": {},
+  "earned_xp": 490,
+  "failed_check": {
+    "choice": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:3:athletics",
+    "hash": "c1177ae7551b7c759393b2f881fcc605c5e8fcca6fe8e57b599d75f498cb33af",
+    "xp": 0
+  },
+  "failures": 0,
+  "journeys": [
+    {
+      "ancestry": "heritage-human",
+      "character_id": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "earned_xp": 490,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-discipline": "assault",
+            "psion-power-1": "power-kinetic-bolt",
+            "psion-second-power": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-power-2": "power-thought-thrust"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "craft": 2.0,
+            "insight": 1.0
+          },
+          "specialisations": {
+            "psion-power-4": "power-mind-lock"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "craft": 3.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "nature": 2.0
+          },
+          "specialisations": {
+            "psion-power-6": "power-energy-surge"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "nature": 2.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "craft": 1.0,
+            "insight": 1.0,
+            "nature": 2.0
+          },
+          "specialisations": {
+            "psion-power-8": "power-vital-exchange"
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v24",
+        "rules_version": "24.0.0",
+        "schema_version": 1.0
+      }
+    },
+    {
+      "ancestry": "heritage-human",
+      "character_id": "49c73a552ab17ba74e5f5d413da15947:adventurer:2",
+      "earned_xp": 490,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "wilder-power-1": "power-kinetic-bolt"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "wilder-power-2": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "perception": 1.0
+          },
+          "specialisations": {
+            "wilder-power-4": "power-mind-lock"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "athletics": 1.0,
+            "perception": 2.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "athletics": 1.0,
+            "perception": 2.0
+          },
+          "specialisations": {
+            "wilder-power-6": "power-energy-surge"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "athletics": 1.0,
+            "perception": 2.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "wilder",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "athletics": 1.0,
+            "insight": 1.0,
+            "perception": 1.0
+          },
+          "specialisations": {
+            "wilder-power-8": "power-vital-exchange"
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v24",
+        "rules_version": "24.0.0",
+        "schema_version": 1.0
+      }
+    },
+    {
+      "ancestry": "heritage-human",
+      "character_id": "49c73a552ab17ba74e5f5d413da15947:adventurer:3",
+      "earned_xp": 490,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "psychic-discipline",
+          "level": 1.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-discipline": "ward",
+            "psion-power-1": "power-kinetic-bolt",
+            "psion-second-power": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {
+            "psion-power-2": "power-thought-thrust"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "arcana": 1.0,
+            "athletics": 1.0,
+            "insight": 1.0,
+            "spellcraft": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "arcana": 1.0,
+            "craft": 4.0
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "craft": 1.0,
+            "insight": 2.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 2.0,
+            "craft": 1.0,
+            "insight": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "perception": 7.0
+          },
+          "specialisations": {
+            "cerebremancer-casting": "wizard",
+            "cerebremancer-power-1": "power-electric-lance"
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "nature": 6.0,
+            "perception": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v24",
+        "rules_version": "24.0.0",
+        "schema_version": 1.0
+      }
+    }
+  ],
+  "rules_ref": {
+    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v24",
+    "rules_version": "24.0.0",
+    "schema_version": 1
+  },
+  "skills": {
+    "skill:acrobatics": {
+      "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+      "complete": true,
+      "event": "quick",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:acrobatics",
+      "information": "Acrobatics check: 13 + 9 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+      "label": "Arin0: Acrobatics +9 vs DC 19 \u00b7 Make a quick survey",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:acrobatics",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:animal-handling": {
+      "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+      "complete": true,
+      "event": "inspect",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:animal-handling",
+      "information": "Animal Handling check: 11 + 3 vs DC 13 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+      "label": "Arin0: Animal Handling +3 vs DC 13 \u00b7 Assess animal behaviour",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:animal-handling",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:arcana": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:arcana",
+      "information": "Arcana check: 20 + 10 vs DC 16 \u00b7 objective completed.",
+      "label": "Arin0: Arcana +10 vs DC 16",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:arcana",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:athletics": {
+      "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+      "complete": true,
+      "event": "quick",
+      "gain": 4,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:athletics",
+      "information": "Athletics check: 19 + 6 vs DC 19 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+      "label": "Arin0: Athletics +6 vs DC 19 \u00b7 Haul the recoverable stores",
+      "outcome": "recovered",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:athletics",
+      "provisions": 1,
+      "reveal": false
+    },
+    "skill:craft": {
+      "complete": true,
+      "event": "recover",
+      "gain": 3,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:craft",
+      "information": "Craft check: 10 + 11 vs DC 17 \u00b7 objective completed.",
+      "label": "Arin0: Craft +11 vs DC 17",
+      "outcome": "recovered",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:craft",
+      "provisions": 0,
+      "reveal": false
+    },
+    "skill:insight": {
+      "complete": true,
+      "event": "negotiate",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:insight",
+      "information": "Insight check: 17 + 11 vs DC 17 \u00b7 objective completed.",
+      "label": "Arin0: Insight +11 vs DC 17",
+      "outcome": "peaceful_access",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:insight",
+      "provisions": 1,
+      "reveal": false
+    },
+    "skill:perception": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:perception",
+      "information": "Perception check: 16 + 1 vs DC 15 \u00b7 objective completed.",
+      "label": "Arin0: Perception +1 vs DC 15",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:perception",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:persuasion": {
+      "complete": true,
+      "event": "negotiate",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:2:persuasion",
+      "information": "Persuasion check: 16 + 3 vs DC 13 \u00b7 objective completed.",
+      "label": "Lysa0: Persuasion +3 vs DC 13",
+      "outcome": "peaceful_access",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:2",
+      "profession": "skill:persuasion",
+      "provisions": 1,
+      "reveal": false
+    },
+    "skill:religion": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:religion",
+      "information": "Religion check: 16 + 1 vs DC 15 \u00b7 objective completed.",
+      "label": "Arin0: Religion +1 vs DC 15",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:religion",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:spellcraft": {
+      "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+      "complete": true,
+      "event": "inspect",
+      "gain": 0,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:spellcraft",
+      "information": "Spellcraft check: 19 + 9 vs DC 16 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+      "label": "Arin0: Spellcraft +9 vs DC 16 \u00b7 Assess an arcane interpretation",
+      "outcome": "investigated",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:spellcraft",
+      "provisions": 0,
+      "reveal": true
+    },
+    "skill:survival": {
+      "complete": true,
+      "event": "recover",
+      "gain": 3,
+      "id": "skill:49c73a552ab17ba74e5f5d413da15947:adventurer:1:survival",
+      "information": "Survival check: 20 + 1 vs DC 15 \u00b7 objective completed.",
+      "label": "Arin0: Survival +1 vs DC 15",
+      "outcome": "recovered",
+      "participant": "49c73a552ab17ba74e5f5d413da15947:adventurer:1",
+      "profession": "skill:survival",
+      "provisions": 0,
+      "reveal": false
+    }
+  },
+  "slot": "49c73a552ab17ba74e5f5d413da15947",
+  "state_hash": "3759885fdfc7a61ae1a4a1be78a846e2e3efa37201b657bdd62e394a48f83967",
+  "xp_injected": false,
+  "source_commit": "8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3",
+  "workflow_run": 39701555387
+}

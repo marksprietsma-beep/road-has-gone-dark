@@ -1,0 +1,717 @@
+{
+  "campaign_xp_injected": false,
+  "checks": 564,
+  "classes": [
+    "psion",
+    "wilder",
+    "cerebremancer"
+  ],
+  "development_fixtures": true,
+  "failures": 0,
+  "levels": {
+    "psion1": {
+      "history": 1,
+      "known": [
+        "power-kinetic-bolt",
+        "power-thought-thrust"
+      ],
+      "origins": {
+        "power-kinetic-bolt": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 2
+        },
+        "power-thought-thrust": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 2
+        }
+      },
+      "points": 4
+    },
+    "psion15": {
+      "history": 15,
+      "known": [
+        "power-energy-surge",
+        "power-force-screen",
+        "power-iron-carapace",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-purifying-concord",
+        "power-thought-thrust",
+        "power-vital-exchange",
+        "power-void-detonation"
+      ],
+      "origins": {
+        "power-energy-surge": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 13,
+          "modifier": 4
+        },
+        "power-force-screen": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 4
+        },
+        "power-iron-carapace": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 15,
+          "modifier": 4
+        },
+        "power-kinetic-bolt": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 4
+        },
+        "power-mind-lock": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 12,
+          "modifier": 4
+        },
+        "power-purifying-concord": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 16,
+          "modifier": 4
+        },
+        "power-thought-thrust": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 4
+        },
+        "power-vital-exchange": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 14,
+          "modifier": 4
+        },
+        "power-void-detonation": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 17,
+          "modifier": 4
+        }
+      },
+      "points": 32
+    },
+    "psion20": {
+      "history": 20,
+      "known": [
+        "power-body-renewal",
+        "power-energy-surge",
+        "power-force-screen",
+        "power-iron-carapace",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-perfect-unity",
+        "power-purifying-concord",
+        "power-severing-tempest",
+        "power-thought-thrust",
+        "power-vital-exchange",
+        "power-void-detonation"
+      ],
+      "origins": {
+        "power-body-renewal": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-energy-surge": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 13,
+          "modifier": 5
+        },
+        "power-force-screen": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-iron-carapace": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 15,
+          "modifier": 5
+        },
+        "power-kinetic-bolt": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-mind-lock": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 12,
+          "modifier": 5
+        },
+        "power-perfect-unity": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 19,
+          "modifier": 5
+        },
+        "power-purifying-concord": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 16,
+          "modifier": 5
+        },
+        "power-severing-tempest": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 18,
+          "modifier": 5
+        },
+        "power-thought-thrust": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-vital-exchange": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 14,
+          "modifier": 5
+        },
+        "power-void-detonation": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 17,
+          "modifier": 5
+        }
+      },
+      "points": 42
+    },
+    "psion3": {
+      "history": 3,
+      "known": [
+        "power-force-screen",
+        "power-kinetic-bolt",
+        "power-thought-thrust"
+      ],
+      "origins": {
+        "power-force-screen": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 2
+        },
+        "power-kinetic-bolt": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 2
+        },
+        "power-thought-thrust": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 2
+        }
+      },
+      "points": 8
+    },
+    "psion8": {
+      "history": 8,
+      "known": [
+        "power-energy-surge",
+        "power-force-screen",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-thought-thrust",
+        "power-vital-exchange"
+      ],
+      "origins": {
+        "power-energy-surge": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 13,
+          "modifier": 3
+        },
+        "power-force-screen": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 3
+        },
+        "power-kinetic-bolt": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 3
+        },
+        "power-mind-lock": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 12,
+          "modifier": 3
+        },
+        "power-thought-thrust": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 11,
+          "modifier": 3
+        },
+        "power-vital-exchange": {
+          "attribute": "INT",
+          "class_id": "psion",
+          "minimum": 14,
+          "modifier": 3
+        }
+      },
+      "points": 18
+    },
+    "wilder1": {
+      "history": 1,
+      "known": [
+        "power-kinetic-bolt"
+      ],
+      "origins": {
+        "power-kinetic-bolt": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 2
+        }
+      },
+      "points": 4
+    },
+    "wilder15": {
+      "history": 15,
+      "known": [
+        "power-energy-surge",
+        "power-force-screen",
+        "power-iron-carapace",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-purifying-concord",
+        "power-vital-exchange",
+        "power-void-detonation"
+      ],
+      "origins": {
+        "power-energy-surge": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 13,
+          "modifier": 4
+        },
+        "power-force-screen": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 4
+        },
+        "power-iron-carapace": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 15,
+          "modifier": 4
+        },
+        "power-kinetic-bolt": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 4
+        },
+        "power-mind-lock": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 12,
+          "modifier": 4
+        },
+        "power-purifying-concord": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 16,
+          "modifier": 4
+        },
+        "power-vital-exchange": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 14,
+          "modifier": 4
+        },
+        "power-void-detonation": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 17,
+          "modifier": 4
+        }
+      },
+      "points": 32
+    },
+    "wilder20": {
+      "history": 20,
+      "known": [
+        "power-energy-surge",
+        "power-force-screen",
+        "power-iron-carapace",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-perfect-unity",
+        "power-purifying-concord",
+        "power-severing-tempest",
+        "power-thought-thrust",
+        "power-vital-exchange",
+        "power-void-detonation"
+      ],
+      "origins": {
+        "power-energy-surge": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 13,
+          "modifier": 5
+        },
+        "power-force-screen": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-iron-carapace": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 15,
+          "modifier": 5
+        },
+        "power-kinetic-bolt": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-mind-lock": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 12,
+          "modifier": 5
+        },
+        "power-perfect-unity": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 19,
+          "modifier": 5
+        },
+        "power-purifying-concord": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 16,
+          "modifier": 5
+        },
+        "power-severing-tempest": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 18,
+          "modifier": 5
+        },
+        "power-thought-thrust": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 5
+        },
+        "power-vital-exchange": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 14,
+          "modifier": 5
+        },
+        "power-void-detonation": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 17,
+          "modifier": 5
+        }
+      },
+      "points": 42
+    },
+    "wilder3": {
+      "history": 3,
+      "known": [
+        "power-force-screen",
+        "power-kinetic-bolt"
+      ],
+      "origins": {
+        "power-force-screen": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 2
+        },
+        "power-kinetic-bolt": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 2
+        }
+      },
+      "points": 8
+    },
+    "wilder8": {
+      "history": 8,
+      "known": [
+        "power-energy-surge",
+        "power-force-screen",
+        "power-kinetic-bolt",
+        "power-mind-lock",
+        "power-vital-exchange"
+      ],
+      "origins": {
+        "power-energy-surge": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 13,
+          "modifier": 3
+        },
+        "power-force-screen": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 3
+        },
+        "power-kinetic-bolt": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 11,
+          "modifier": 3
+        },
+        "power-mind-lock": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 12,
+          "modifier": 3
+        },
+        "power-vital-exchange": {
+          "attribute": "CHA",
+          "class_id": "wilder",
+          "minimum": 14,
+          "modifier": 3
+        }
+      },
+      "points": 18
+    }
+  },
+  "rules_ref": {
+    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v24",
+    "rules_version": "24.0.0",
+    "schema_version": 1
+  },
+  "traces": {
+    "damage": {
+      "assault": 5,
+      "ward": 3,
+      "weakened": 1
+    },
+    "hybrid": {
+      "casting_levels": {
+        "cerebremancer": 5,
+        "psion": 3,
+        "sorcerer": 8
+      },
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "psion-discipline": "assault",
+            "psion-power-1": "power-kinetic-bolt",
+            "psion-second-power": "power-force-screen"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "psion-power-2": "power-thought-thrust"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "psion",
+          "feat_id": "psychic-discipline",
+          "level": 3,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 3
+          },
+          "specialisations": {
+            "sorcerer-choice-1": "draconic"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 2,
+            "spellcraft": 1
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 2
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "arcana": 1,
+            "perception": 5
+          },
+          "specialisations": {
+            "cerebremancer-casting": "sorcerer",
+            "cerebremancer-power-1": "power-body-renewal"
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "",
+          "level": 8,
+          "skill_allocations": {
+            "arcana": 1,
+            "nature": 3,
+            "perception": 3
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "steady-study",
+          "level": 9,
+          "skill_allocations": {
+            "arcana": 1,
+            "nature": 5,
+            "perception": 1
+          },
+          "specialisations": {
+            "cerebremancer-power-3": "power-burst-step"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "",
+          "level": 10,
+          "skill_allocations": {
+            "animal-handling": 3,
+            "arcana": 1,
+            "nature": 2,
+            "perception": 1
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "cerebremancer",
+          "feat_id": "steady-study",
+          "level": 11,
+          "skill_allocations": {
+            "animal-handling": 4,
+            "arcana": 1,
+            "nature": 1,
+            "perception": 1
+          },
+          "specialisations": {
+            "cerebremancer-power-5": "power-thought-fog"
+          }
+        }
+      ],
+      "manifesting_level": 8,
+      "resources": {
+        "bloodline-uses": 2,
+        "psychic-points": 18,
+        "sorcerer-slots-1": 7,
+        "sorcerer-slots-2": 6,
+        "sorcerer-slots-3": 5,
+        "sorcerer-slots-4": 4
+      }
+    },
+    "origins": {
+      "actual_dc": 12,
+      "origin": {
+        "attribute": "CHA",
+        "class_id": "wilder",
+        "minimum": 11,
+        "modifier": 1
+      },
+      "power": "power-thought-thrust"
+    }
+  },
+  "source_commit": "8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3",
+  "workflow_run": 39701555387
+}

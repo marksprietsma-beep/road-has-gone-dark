@@ -3,7 +3,7 @@ extends "res://tests/performance_spirit/mechanics.gd"
 var upper_casts: Array=[]
 func run() -> void:
  base=OS.get_environment("GAME150_ROOT");DirAccess.make_dir_recursive_absolute(base)
- source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v23.json")
+ source=RulesRegistry.new();var loaded := source.load_pack(upper_pack_path())
  check(loaded.ok,"v23 schema "+JSON.stringify(loaded.get("errors",[])))
  if not loaded.ok:finish_upper();return
  kernel=RulesCharacter.new(source)
@@ -269,3 +269,5 @@ func test_repertoire() -> void:
     check(outcome.ok,"real selected early/middle/late spell "+cls+str(at)+"/"+id+str(outcome.get("error","")))
     if not outcome.ok:return
     upper_casts.append({"class_id":cls,"level":at,"ability":id})
+
+func upper_pack_path() -> String:return "res://data/rules/trhgd-character-v23.json"

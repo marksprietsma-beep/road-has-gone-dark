@@ -2,7 +2,9 @@ class_name RulesPsychic
 extends RefCounted
 ## v13 presentation/qualification adapter. Ordered history and GAME-32 effects own state.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]
+static func parity_enabled(source: RulesRegistry) -> bool:
+ return source.rules_ref().get("pack_id")=="trhgd-character-v24"
 static func level(context: Dictionary,source: RulesRegistry) -> int:
  var total := 0
  for id in context.classes:
@@ -33,17 +35,42 @@ static func eligibility(power_id: String,cls: String,class_level: int,context: D
       if not tags.has(tag):tags.append(tag)
   if not power.mantle_tags.any(func(tag: String):return tags.has(tag)):return RulesJson.result([RulesJson.issue("psychic.mantle",power_id,"Requires one of the selected mantles: "+", ".join(power.mantle_tags))])
  return {"ok":true}
-static func project(context: Dictionary,source: RulesRegistry) -> void:
+static func project(context: Dictionary,source: RulesRegistry,record: Dictionary={}) -> void:
  context.manifesting_level=level(context,source);context.known_powers=known(context,source)
  context.manifesting_modifier=-5
  for cls in context.classes:
   var profile: Dictionary=source.definition("classes",cls).get("psychic_profile",{})
   if not profile.is_empty():context.manifesting_modifier=maxi(int(context.manifesting_modifier),int(floor(float(int(context.attributes[profile.attribute])-10)/2.0)))
  if int(context.manifesting_level)==0:context.manifesting_modifier=0
+ if parity_enabled(source):
+  context.power_origins={}
+  var counts := {}
+  for step in record.get("advancement_history",[]):
+   if not step is Dictionary or not step.get("class_id") is String or not step.get("specialisations") is Dictionary:continue
+   var cls: String=step.class_id;counts[cls]=int(counts.get(cls,0))+1
+   if int(counts[cls])>int(context.classes.get(cls,0)):continue
+   var profile: Dictionary=source.definition("classes",cls).get("psychic_profile",{})
+   if profile.is_empty():continue
+   for group in RulesCareer.groups(source,cls,int(counts[cls])):
+    for option in group.options:
+     if step.specialisations.get(group.id)!=option.id:continue
+     for feature in option.features:
+      var power: String=str(source.definition("features",feature).get("known_power",""))
+      if power.is_empty() or not context.known_powers.has(power):continue
+      context.power_origins[power]={"class_id":cls,"attribute":profile.attribute,"modifier":int(floor(float(int(context.attributes[profile.attribute])-10)/2.0)),"minimum":10+int(source.definition("psychic_powers",power).tier)}
  context.abilities=context.abilities.filter(func(id: String):
   var row := source.definition("abilities",id)
   if not row.has("psychic_power"):return true
   return context.known_powers.has(row.psychic_power) and int(row.cost.resources.get("psychic-points",0))<=int(context.manifesting_level))
+static func casting_access(ability: Dictionary,context: Dictionary,source: RulesRegistry) -> Dictionary:
+ if not parity_enabled(source) or not ability.has("psychic_power"):return {"ok":true}
+ var origin: Dictionary=context.get("power_origins",{}).get(ability.psychic_power,{})
+ if origin.is_empty():return RulesJson.result([RulesJson.issue("psychic.origin",ability.id,"A permanent learned class origin is required")])
+ if int(context.attributes[origin.attribute])<int(origin.minimum):return RulesJson.result([RulesJson.issue("psychic.attribute",ability.id,"Requires "+str(origin.attribute)+" "+str(origin.minimum)+" from "+str(origin.class_id))])
+ return {"ok":true}
+static func origin_text(origin: Dictionary,source: RulesRegistry) -> String:
+ if origin.is_empty():return ""
+ return str(source.definition("classes",origin.class_id).name)+" · "+str(origin.attribute)+" "+("+" if int(origin.modifier)>=0 else "")+str(origin.modifier)+" save DC · requires "+str(origin.attribute)+" "+str(origin.minimum)
 static func validate_power(row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if row.size()!=10 or not row.has_all(["id","name","description","tier","discipline","class_ids","mantle_tags","feature_id","variants","provenance"]):errors.append(RulesJson.issue("psychic.schema",row.id,"Typed power repertoire required"));return
  if not row.name is String or not row.description is String or not RulesJson.integer(row.tier,1,9) or row.discipline not in ["energy","mind","body","insight","unity"] or not row.class_ids is Array or row.class_ids.is_empty() or not row.mantle_tags is Array or not row.mantle_tags.all(func(id: Variant):return id is String) or not row.variants is Array or row.variants.is_empty() or not row.provenance is Dictionary or not row.provenance.get("license") is String:errors.append(RulesJson.issue("psychic.schema",row.id,"Valid tiers, discipline, eligibility and provenance required"));return

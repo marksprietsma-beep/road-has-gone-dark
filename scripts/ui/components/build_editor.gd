@@ -357,7 +357,7 @@ func refresh_power_options() -> void:
   if control==null:continue
   control.clear()
   for option in group.options:
-   if option.id!=specialisations.get(group.id) and not power_query.to_lower() in str(option.name).to_lower():continue
+   if option.id!=specialisations.get(group.id) and not power_query.is_empty() and not power_query.to_lower() in str(option.name).to_lower():continue
    var why := CharacterBuilderRecords.reason(RulesCareer.option_eligibility(source,class_id,class_level,option,replay.context,specialisations))
    control.add_item(option.name+(" · locked" if not why.is_empty() else ""));var i := control.item_count-1
    control.set_item_metadata(i,option.id);control.set_item_disabled(i,not why.is_empty());control.get_popup().set_item_tooltip(i,why+"\n"+option.description)
@@ -371,6 +371,8 @@ func career_controls() -> void:
   for child in power_section.get_children():power_section.remove_child(child);child.queue_free()
   power_section.add_child(GameUI.label("Powers known",GameUI.SECTION))
   power_section.add_child(GameUI.label("Choose distinct powers. Base cost is 2 × tier − 1 points; augmentation spends additional points. Total expenditure cannot exceed shared manifesting level. Choices persist in class history.",GameUI.META))
+  if RulesPsychic.parity_enabled(source) and source.definition("classes",class_id).has("psychic_profile"):
+   power_section.add_child(GameUI.label("Powers learned in this class use "+str(source.definition("classes",class_id).psychic_profile.attribute)+" (minimum 10 + tier). Arcane slots and casting attributes stay separate from shared psychic points.",GameUI.META))
   if RulesWaveFour.enabled(source) and source.definition("classes",class_id).has("distinct_power_limit"):
    power_section.add_child(GameUI.label("Distinct powers per home rest: 1 + floor(class level / 4). Recasting or augmenting a used power shares that identity. Saving or starting another encounter never resets this limit.",GameUI.META))
   var search := LineEdit.new();search.placeholder_text="Search powers · selected choice stays visible";search.text=power_query;power_section.add_child(search)

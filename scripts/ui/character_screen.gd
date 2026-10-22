@@ -433,6 +433,7 @@ func sheet(r: Dictionary,m: Dictionary) -> String:
   for id in s.known_powers:
    var power := source.definition("psychic_powers",id)
    lines.append("%s · tier%d · %s · base%d PP"%[power.name,int(power.tier),power.discipline,2*int(power.tier)-1])
+   if RulesPsychic.parity_enabled(source):lines.append("  "+RulesPsychic.origin_text(s.power_origins.get(id,{}),source))
  lines.append("\nKnown abilities · current tactical availability")
  for id in s.abilities:
   var ability := RulesRecords.registry(state).definition("abilities",id)

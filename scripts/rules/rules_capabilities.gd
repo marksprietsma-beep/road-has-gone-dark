@@ -4,12 +4,16 @@ extends RefCounted
 const FIELDS := ["resistances", "immunities", "blocked_equipment", "weapon_damage", "concealment", "moving_damage", "immobile", "resource_bonuses"]
 const DAMAGE_TYPES := ["physical", "arcane", "fire", "cold", "electricity", "acid", "radiant", "psychic", "necrotic", "force"]
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23"]
-static func validate(value: Variant,tables: Dictionary,path: String,errors: Array) -> void:
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24"]
+static func validate(value: Variant,tables: Dictionary,path: String,errors: Array,tagged_damage := false) -> void:
  if not value is Dictionary:errors.append(RulesJson.issue("capability.schema",path,"Expected typed inherited/class capabilities"));return
  for field in value:
-  if field not in FIELDS:errors.append(RulesJson.issue("capability.field",path+"."+str(field),"Unknown capability"));continue
-  if field=="resistances":
+  if field not in FIELDS and not (tagged_damage and field=="ability_damage"):errors.append(RulesJson.issue("capability.field",path+"."+str(field),"Unknown capability"));continue
+  if field=="ability_damage":
+   if not value[field] is Dictionary or value[field].is_empty():errors.append(RulesJson.issue("capability.ability_damage",path,"Typed ability-tag damage modifiers required"));continue
+   for tag in value[field]:
+    if not tag is String or tag.is_empty() or tag.length()>64 or not RulesJson.integer(value[field][tag],-30,30):errors.append(RulesJson.issue("capability.ability_damage",path,"Ability tag and bounded signed damage modifier required"))
+  elif field=="resistances":
    if not value[field] is Dictionary:errors.append(RulesJson.issue("capability.resistance",path,"Typed damage reductions required"));continue
    for kind in value[field]:
     if kind not in DAMAGE_TYPES or not RulesJson.integer(value[field][kind],0,30):errors.append(RulesJson.issue("capability.resistance",path,"Unknown damage type or unbounded resistance"))
@@ -36,6 +40,7 @@ static func validate(value: Variant,tables: Dictionary,path: String,errors: Arra
   elif field=="moving_damage":RulesRegistry._formula(value[field],tables,path,errors)
 static func derive(context: Dictionary,record: Dictionary,source: RulesRegistry,include_runtime: bool) -> Dictionary:
  var result := {"resistances":{},"immunities":[],"blocked_equipment":[],"weapon_damage":{},"concealment":0,"moving_damage":0,"immobile":false,"resource_bonuses":{}}
+ if RulesPsychic.parity_enabled(source):result.ability_damage={}
  var rows: Array=[source.definition("ancestries",record.ancestry_ref)]
  for id in context.features:rows.append(source.definition("features",id))
  if include_runtime:
@@ -43,7 +48,10 @@ static func derive(context: Dictionary,record: Dictionary,source: RulesRegistry,
  for row in rows:
   var caps: Dictionary=row.get("capabilities",{})
   for field in caps:
-   if field=="resistances":
+   if field=="ability_damage":
+    if not RulesPsychic.parity_enabled(source):continue
+    for tag in caps[field]:result.ability_damage[tag]=int(result.ability_damage.get(tag,0))+int(caps[field][tag])
+   elif field=="resistances":
     for kind in caps[field]:result[field][kind]=maxi(int(result[field].get(kind,0)),int(caps[field][kind]))
    elif field=="resource_bonuses":
     for id in caps[field]:result[field][id]=int(result[field].get(id,0))+int(RulesExpressions.evaluate_formula(caps[field][id],context).get("value",0))
@@ -56,10 +64,17 @@ static func derive(context: Dictionary,record: Dictionary,source: RulesRegistry,
    elif field=="moving_damage":result.moving_damage=maxi(int(result.moving_damage),int(RulesExpressions.evaluate_formula(caps[field],context).get("value",0)))
    else:result[field]=maxi(int(result[field]),int(caps[field]))
  return result
+static func ability_damage_bonus(caps: Dictionary,tags: Array) -> int:
+ var amount := 0
+ for tag in caps.get("ability_damage",{}):
+  if tags.has(tag):amount+=int(caps.ability_damage[tag])
+ return amount
 static func reduce_damage(amount: int,kind: String,caps: Dictionary) -> int:
  return maxi(0,amount-int(caps.get("resistances",{}).get(kind,0)))
 static func summary(caps: Dictionary) -> String:
  var words: Array[String]=[]
+ for tag in caps.get("ability_damage",{}):
+  var value: int=int(caps.ability_damage[tag]);words.append(str(tag)+" ability damage "+("+" if value>=0 else "")+str(value))
  for kind in caps.get("resistances",{}):words.append(str(kind)+" resistance "+str(caps.resistances[kind]))
  for id in caps.get("immunities",[]):words.append("immune to "+str(id).replace("-"," "))
  for id in caps.get("blocked_equipment",[]):words.append("incompatible "+str(id))

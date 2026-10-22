@@ -1,0 +1,96 @@
+name: GAME-152 Psychic Resource Parity
+on:
+  push:
+    branches: [feature/game-152-psychic-resource-parity, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_parity/**', '.github/workflows/verify-psychic-parity.yml']
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Complete native Windows release after focused parity and earned/cold checks
+        type: boolean
+        default: false
+      reuse_native_run:
+        description: Optional completed39578198867 receipt; only exact self/targeted display gates may differ
+        type: string
+        default: ''
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # complete history required by exact native-release source comparison
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game152-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game152-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      # The complete release runs these same assertions inside the exported executable.
+      - name: Psychic mechanics, frozen observations and exact cold restart
+        if: github.event_name != 'workflow_dispatch' || !inputs.release
+        env:
+          GAME152_ROOT: ${{ runner.temp }}/game152-focused
+        run: python tests/psychic_parity/run-tests.py
+      - name: Exact historical bytes, pins and bounded roster
+        run: python tests/psychic_parity/check-history.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Verify and retrieve complete native evidence for a presentation-only recheck
+        if: github.event_name == 'workflow_dispatch' && inputs.release && inputs.reuse_native_run != ''
+        env:
+          GAME152_RELEASE_ROOT: ${{ runner.temp }}/game152-native
+          GAME152_REUSE_RUN: ${{ inputs.reuse_native_run }}
+          GH_TOKEN: ${{ github.token }}
+        run: python tests/psychic_parity/reuse-native.py
+      - name: Native exported game, current/historical mechanics, earned journey, cold state and real renders
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME152_RELEASE_ROOT: ${{ runner.temp }}/game152-native
+          GAME152_REUSE_RUN: ${{ inputs.reuse_native_run }}
+        run: python tests/psychic_parity/verify-package.py
+      - name: Self-contained Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game152-complete-windows-x64
+          path: ${{ runner.temp }}/game152-native/distribution/*.zip*
+          retention-days: 90
+      - name: Native receipts and original Godot pixels
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game152-native-evidence
+          path: |
+            ${{ runner.temp }}/game152-native/**/*.json
+            ${{ runner.temp }}/game152-native/**/*.log
+            ${{ runner.temp }}/game152-native/captures/*.png
+          retention-days: 90
+      - name: Preserve exact Windows diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game152-focused-windows
+          path: |
+            ${{ runner.temp }}/game152-focused/**
+            ${{ runner.temp }}/game152-import.log
+          retention-days: 90
