@@ -145,7 +145,7 @@ func add_action(id: String,text: String) -> void:
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
-   if RulesPsychic.identity_enabled(engine.registry) and not psychic_identity_access(actor,row).ok:button.disabled=true
+   if RulesWaveFour.enabled(engine.registry) and not psychic_identity_access(actor,row).ok:button.disabled=true
    if RulesPsychic.identity_enabled(engine.registry) and row.get("requires_melee",false) and not battle().units.values().any(func(t: Dictionary):return engine.eligible(battle(),actor,t,id)):button.disabled=true
    if RulesPsychic.parity_enabled(engine.registry) and derived.ok and int(row.get("cost",{}).get("main",0))>0 and derived.snapshot.tags.has("main_action_suppressed"):button.disabled=true
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
@@ -154,7 +154,7 @@ func add_action(id: String,text: String) -> void:
  button.tooltip_text=text
  actions.add_child(button);action_buttons[id]=button
 func psychic_identity_access(actor: Dictionary,ability: Dictionary) -> Dictionary:
- if not RulesPsychic.identity_enabled(engine.registry):return {"ok":true}
+ if not RulesWaveFour.enabled(engine.registry):return {"ok":true}
  var derived := engine.characters.derive_character(actor.record)
  if not derived.ok:return derived
  return RulesWaveFour.power_access(actor.record,ability,derived.context,engine.registry)
@@ -195,11 +195,11 @@ func psychic_controls(actor: Dictionary,abilities: Array) -> void:
  if ability.targeting.kind=="self":
   var button := GameUI.action("Manifest "+ability.name,func():send(selected_id,actor.id))
   button.disabled=thread!=null or not engine.effects.validate_ability_cost(selected_id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)}).ok
-  if RulesPsychic.identity_enabled(source):button.disabled=button.disabled or not psychic_identity_access(actor,ability).ok
+  if RulesWaveFour.enabled(source):button.disabled=button.disabled or not psychic_identity_access(actor,ability).ok
   if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or snapshot.tags.has("main_action_suppressed") or not engine.eligible(battle(),actor,actor,selected_id)
   button.tooltip_text=ability.description;gate_button(button);actions.add_child(button);action_buttons[selected_id]=button
  else:add_action(selected_id,"Manifest "+ability.name+" · select target");action_buttons[selected_id].tooltip_text=ability.description
- if RulesPsychic.identity_enabled(source):
+ if RulesWaveFour.enabled(source):
   var access := psychic_identity_access(actor,ability)
   if not access.ok:
    var why := CharacterBuilderRecords.reason(access)

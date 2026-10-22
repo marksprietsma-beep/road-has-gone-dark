@@ -1,5 +1,5 @@
 extends "res://tests/psychic_parity/mechanics.gd"
-## Reproduces v24 defects without changing its immutable rules or saves.
+## Current historical24 continuation. Original pre-fix reproduction is retained at d5a611d and in committed evidence.
 func run() -> void:
  base=OS.get_environment("GAME127_ROOT");DirAccess.make_dir_recursive_absolute(base)
  check(source.load_pack("res://data/rules/trhgd-character-v24.json").ok,"historical24 loads")
@@ -30,9 +30,9 @@ func run() -> void:
  check(not command(engine,b,"power-force-screen","a").ok,"authority correctly rejects second identity")
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  ui.engine=engine;ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.selected_power="power-force-screen";ui.mode="attack";ui.refresh()
- check(ui.action_buttons.has("power-force-screen") and not ui.action_buttons["power-force-screen"].disabled,"REPRODUCTION: exhausted distinct identity remains actionable in actual UI")
+ check(ui.action_buttons.has("power-force-screen") and ui.action_buttons["power-force-screen"].disabled,"historical24 continuation receives accurate presentation without migrating its rules")
  traces={"reach_ambush_accepted":ranged.ok,"distinct_backend_rejected":not command(engine,b,"power-force-screen","a").ok,"distinct_button_enabled":ui.action_buttons.has("power-force-screen") and not ui.action_buttons["power-force-screen"].disabled}
  ui.queue_free();finish_baseline()
 func finish_baseline() -> void:
- FileAccess.open(base.path_join("baseline-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"traces":traces,"source":"immutable v24; development fixtures, no earned XP"}))
+ FileAccess.open(base.path_join("baseline-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"traces":traces,"source":"Current v24 continuation: historical ambush mechanics retained, display-only distinct gate corrected; original pre-fix reproduction is separately source-pinned. Development fixtures, no earned XP"}))
  get_tree().quit(1 if failures else 0)

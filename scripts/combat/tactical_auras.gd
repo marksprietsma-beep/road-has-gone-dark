@@ -12,12 +12,12 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if RulesPsychic.identity_enabled(registry):
+ if RulesWaveFour.enabled(registry):
   var row := registry.definition("abilities",ability)
   if row.has("psychic_power"):
    var derived := characters.derive_character(u.record)
    if not derived.ok or not RulesWaveFour.power_access(u.record,row,derived.context,registry).ok:return false
-  if row.get("requires_adjacent",false) and distance(u.position,t.position)!=1:return false
+  if RulesPsychic.identity_enabled(registry) and row.get("requires_adjacent",false) and distance(u.position,t.position)!=1:return false
  if RulesPsychic.parity_enabled(registry) and registry.definition("abilities",ability).has("psychic_power"):
   var derived := characters.derive_character(u.record)
   if not derived.ok or not RulesPsychic.casting_access(registry.definition("abilities",ability),derived.context,registry).ok:return false

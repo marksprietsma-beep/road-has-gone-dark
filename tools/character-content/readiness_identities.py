@@ -17,7 +17,7 @@ def generate(root,pack,pin,native_root):
  for phase in ['input','current-upper-input','current-performance-input','historical24-input','frozen-rules','baseline']:
   assert proofs[phase]['checks']>0 and proofs[phase]['failures']==0 and native['proof_sources'][phase]==source
  assert proofs['frozen-rules']['checks']==22181
- assert proofs['baseline']['traces']==dict(distinct_backend_rejected=True,distinct_button_enabled=True,reach_ambush_accepted=True)
+ assert proofs['baseline']['traces']==dict(distinct_backend_rejected=True,distinct_button_enabled=False,reach_ambush_accepted=True)
  assert proofs['historical24/proof.json']['rules_ref']['pack_id']=='trhgd-character-v24'
  mechanics=proofs['mechanics/proof.json'];assert set(mechanics['classes'])=={'ardent','lurk','erudite'}
  for cls in mechanics['classes']:

@@ -14,3 +14,5 @@ Ardent mantle restrictions and all three classes' existing progression, resource
 Linear has no callable connector in this session; GitHub101 and committed delivery records will carry verified status. Human balance/readability acceptance remains separate from technical readiness.
 
 The first reproduction attempt used two active weapons and was correctly rejected by the existing equipment validator. That invalid fixture is not evidence of a production bow exploit. The corrected reproduction uses a lawful Ogre Lurk with inherited reach and one equipped shortblade.
+
+The Erudite display-only correction also applies to older eligible packs (v14+): their existing distinct-access validator already rejects the action. Current historical24 continuation requires disabled controls while preserving its old ambush mechanics. The original pre-fix reproduction remains at d5a611d and evidence/v24-baseline-proof.json; no historical rules are changed.
