@@ -47,6 +47,22 @@ func test_mantles() -> void:
  check(kernel.preview_advancement(birth,choice).ok,"real energy/mind selections unlock different offensive powers")
  choice.specialisations["ardent-second-mantle"]="energy"
  check(not kernel.preview_advancement(birth,choice).ok,"duplicate starting mantles rejected")
+ # Every pair of authored mantles and every starting power uses the same durable predicate.
+ var mapping := {"energy":"power-kinetic-bolt","body":"power-force-screen","mind":"power-thought-thrust","insight":"power-burst-step","unity":"power-fellowship"}
+ for first in mapping:
+  for second in mapping:
+   if first==second:continue
+   var original := kernel.create("mantle-"+first+"-"+second,WISDOM,"heritage-human")
+   var selected: Dictionary=kernel.suggested_choice(original,"ardent").choice
+   selected.specialisations["ardent-mantle"]=first;selected.specialisations["ardent-second-mantle"]=second
+   selected.specialisations["ardent-power-1"]=mapping[first];selected.specialisations["ardent-second-power"]=mapping[second]
+   check(kernel.preview_advancement(original,selected).ok,"every distinct mantle pair is attainable "+first+"/"+second)
+   var context: Dictionary=kernel._replay(original).context
+   for power in source.ids("psychic_powers"):
+    var row := source.definition("psychic_powers",power)
+    if int(row.tier)!=1 or not row.class_ids.has("ardent"):continue
+    var allowed: bool=row.mantle_tags.has("mantle_"+first)or row.mantle_tags.has("mantle_"+second)
+    check(RulesPsychic.eligibility(power,"ardent",1,context,source,selected.specialisations).ok==allowed,"exact mantle union eligibility "+first+"/"+second+":"+power)
  var mixed := build("mixed",["ardent","psion","psion","psion"],{"STR":8,"DEX":13,"CON":14,"INT":12,"WIS":15,"CHA":10}, {"ardent-mantle":"energy","ardent-second-mantle":"body","ardent-power-1":"power-kinetic-bolt","ardent-second-power":"power-force-screen","psion-power-1":"power-thought-thrust","psion-second-power":"power-burst-step"},"WIS")
  if mixed.is_empty():return
  var snap: Dictionary=kernel.derive_character(mixed).snapshot
@@ -74,7 +90,15 @@ func test_ambush() -> void:
   check(not command(engine,b,"lurk-psychic-ambush").ok,"ambush needs prior veil "+str(at))
   var veiled := command(engine,b,"lurk-veil","a");check(veiled.ok,"veil activation "+str(at))
   if not veiled.ok:continue
-  b=veiled.battle;b.cursor=b.order.find("a");b.budget={"move":1,"main":1};b=engine.seal(b)
+  b=veiled.battle
+  check(not command(engine,b,"lurk-psychic-ambush").ok,"veil and ambush cannot share a main action")
+  for turn in b.order.size():
+   var ended := engine.command(b,{"actor_id":engine.current(b).id,"revision":b.revision,"kind":"end"})
+   check(ended.ok,"authoritative end-turn reaches next Lurk activation")
+   if not ended.ok:return
+   b=ended.battle
+   if engine.current(b).id=="a":break
+  check(engine.current(b).id=="a" and int(b.budget.main)==1,"normal next activation restores only action tokens")
   check(kernel.derive_character(b.units.a.record).snapshot.capabilities.concealment==25,"veil provides concealment, not invisibility")
   battles["veiled-lurk"+str(at)]=b
   var distant: Dictionary=b.duplicate(true);distant.units["bandit-blade"].position=[2,2];distant=engine.seal(distant)
@@ -84,6 +108,9 @@ func test_ambush() -> void:
    var used := command(engine,attempt,"lurk-psychic-ambush");check(used.ok,"costed adjacent ambush resolves "+str(attack_bonus))
    if not used.ok:continue
    check(used.battle.units["bandit-blade"].record.runtime.hp<attempt.units["bandit-blade"].record.runtime.hp,"authored direct psychic component applies independently of weapon roll")
+   if attack_bonus<0:check(int(attempt.units["bandit-blade"].record.runtime.hp)-int(used.battle.units["bandit-blade"].record.runtime.hp)==2+at/2,"miss retains exactly the authored class-scaled psychic component")
+   else:check(int(attempt.units["bandit-blade"].record.runtime.hp)-int(used.battle.units["bandit-blade"].record.runtime.hp)>2+at/2,"weapon hit adds separate actual weapon damage")
+   check(used.battle.units["bandit-blade"].record.runtime.statuses.any(func(st: Dictionary):return st.id=="off-balance"),"authored ambush debuff is visible after hit or miss")
    check(not kernel.derive_character(used.battle.units.a.record).snapshot.tags.has("psychic_ambush_ready"),"ambush consumes veil on hit or miss")
    check(int(used.battle.units.a.record.runtime.resources["psychic-points"])==int(attempt.units.a.record.runtime.resources["psychic-points"])-1 and int(used.battle.units.a.record.runtime.resources["lurk-focus"])==int(attempt.units.a.record.runtime.resources["lurk-focus"])-1,"ambush spends one focus and PP even on miss")
    check(used.battle.log.any(func(line: String):return "miss." in line) if attack_bonus<0 else used.battle.log.any(func(line: String):return " damage" in line),"actual weapon roll is separately visible")
@@ -161,6 +188,9 @@ func test_distinct() -> void:
   check(not use(empty,records.foe,repeat).ok,"repetition is not free; exhausted PP rejects")
   records["erudite-spent"+str(at)]=current
   b=encounter(current);battles["spent-erudite"+str(at)]=b
+  var repeated_command := command(engine,b,repeat,"bandit-blade" if source.definition("abilities",repeat).targeting.kind=="creature" else "a")
+  check(repeated_command.ok and int(repeated_command.battle.budget.main)==0,"a repeated identity still spends a real main action")
+  if repeated_command.ok:check(not command(engine,repeated_command.battle,repeat,"bandit-blade" if source.definition("abilities",repeat).targeting.kind=="creature" else "a").ok,"repeat cannot reuse an already spent action token")
   check(not command(engine,b,blocked,"a" if source.definition("abilities",blocked).targeting.kind!="creature" else "bandit-blade").ok,"new encounter still cannot bypass distinct limit")
   traces["erudite"+str(at)]={"limit":limit,"used":current.runtime.manifested_powers,"blocked":blocked,"repeat":repeat,"points":current.runtime.resources["psychic-points"]}
 func identity_cold() -> void:
