@@ -4,6 +4,8 @@ Complete native Windows run 39744145580 passed at a4ac918a18ed58b9e53e86fe6bcd62
 
 Focused gate: `.github/workflows/verify-psychic-identities.yml` / `tests/psychic_identities/run-focused.py`. Historical v24 reproduction runs first; v25 mechanics, independent-process cold restart and production controls follow. Dispatch `journey=true` for three actual 490 XP / level 8 campaigns, connected saved combat/cold and original Godot captures. The successful `release=true` dispatch already verified the stable candidate for the complete self-contained native executable, inherited current/historical suites, frozen GAME-32 oracle, screenshots and archive/source checks. No reused native source receipts substitute for the changed v25 authority.
 
+Production scenes are `res://scenes/ui/party_creation.tscn` and `res://scenes/combat/first_adventure.tscn`. Use the normal New Game / Resume journey to populate their real world, character and save context.
+
 ## Manual review
 
 1. Extract the outer GitHub artifact and the inner playable ZIP; retain all support/helper/art/licence files beside `road-has-gone-dark.exe`. Launch it without Godot/Node installed. Escape skips intro.

@@ -11,8 +11,8 @@ Complete native Windows release [39744145580](https://github.com/marksprietsma-b
 Inner playable ZIP SHA-256:
 `083bb82f6018f00ff6985064cfe51f187a5d411e6b8383891e4857bb8b7a254c`
 
-[Delivery/testing](docs/implementation/game127/DELIVERY.md) · [23 original Godot renders](docs/implementation/game127/screenshots/README.md) · [full native receipt](docs/implementation/game127/evidence/native-proof.json) · [readiness](docs/implementation/game129/READINESS.md).
+[Delivery/testing](DELIVERY.md) · [23 original Godot renders](screenshots/README.md) · [full native receipt](evidence/native-proof.json) · [readiness](../game129/READINESS.md).
 
-Readiness is **26 COMPLETE / 24 PARTIAL / 0 BLOCKED** across the unchanged 32-base/18-prestige roster. COMPLETE is bounded original functional acceptance, not full tabletop conversion or human balance approval. Small panels still require scrolling; the large Lurk render shows both class actions. [The next finite cohort](docs/implementation/game127/NEXT-WAVE.md) is Psychic Warrior / Divine Mind / Cognition Adept; no world or roster expansion was started.
+Readiness is **26 COMPLETE / 24 PARTIAL / 0 BLOCKED** across the unchanged 32-base/18-prestige roster. COMPLETE is bounded original functional acceptance, not full tabletop conversion or human balance approval. Small panels still require scrolling; the large Lurk render shows both class actions. [The next finite cohort](NEXT-WAVE.md) is Psychic Warrior / Divine Mind / Cognition Adept; no world or roster expansion was started.
 
 Tracks GAME-127 and parent GAME-123 / GitHub #101, which remains open. Native source is pinned above; final delivery commits are documentation/evidence/readiness only, verified without rebuilding the successful native release. Current-head required checks and normal merge remain enforced. No callable Linear connector was available, so no direct Linear update is claimed.
