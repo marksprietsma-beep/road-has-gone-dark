@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
       reuse_native_run:
-        description: Optional completed39578198867 receipt; only exact self-power UI gate may differ
+        description: Optional completed39578198867 receipt; only exact self/targeted display gates may differ
         type: string
         default: ''
 permissions:
