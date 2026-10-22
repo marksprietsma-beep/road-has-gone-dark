@@ -13,7 +13,7 @@ Baseline main e96c235c6dfe244801b9d4ef09d8dcfd929f0e2f. Candidate implementation
 
 Ardent's existing permanent mantle/power restrictions and learned-class attributes were retained. Energy/body versus energy/mind choices, temporary-feature rejection, distinct mantles, multi-manifester origins, tactical attack/ally support, finite points and eligible rest are exercised. Level20 includes an executable tier9 ally-support alternative.
 
-Lurk still spends main/focus to veil, grants25% weapon concealment for two global round starts, then pays main/focus/PP and consumes veil for adjacent ambush. Its **existing direct psychic damage/off-balance precede a separate weapon attack**: the weapon can miss; this wave does not turn the direct component into a hit rider. Starting focus is2, enough for one sequence. Exhaustion, duration expiry, owned equipment, inherited reach, actual target tiles, hit/miss and exact replay are tested. No invisibility/general stealth engine is claimed.
+Lurk still spends main/focus to veil, grants25% weapon concealment for two global round starts, then pays main/focus/PP and consumes veil for adjacent ambush. Its **existing direct psychic damage/off-balance precede a separate weapon attack**: the weapon can miss; this wave does not turn the direct component into a hit rider. Starting focus is2, enough for one sequence. Exhaustion, duration expiry, owned equipment, inherited reach, actual target tiles, hit/miss and exact replay are tested. At smaller viewports the existing scrollable actions column is needed to reach the class actions below longer power descriptions; this wave does not redesign that layout. No invisibility/general stealth engine is claimed.
 
 Erudite retains `1 + floor(Erudite level/4)` distinct identities per eligible rest across augmentation, repeated casts, encounter changes and cold restart. Repeats still require PP/actions. Exhaustion and home recovery are tested without free production resources.
 
@@ -21,7 +21,7 @@ Erudite retains `1 + floor(Erudite level/4)` distinct identities per eligible re
 
 Historical v24 reproduction: run39739126204,71 checks /0 failures.
 
-Current focused Windows: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39740020116
+Initial focused Windows: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39740020116
 
 - V25 mechanics752/0.
 - Separate-process exact restart102/0.
@@ -29,7 +29,7 @@ Current focused Windows: https://github.com/marksprietsma-beep/road-has-gone-dar
 - Retained historical baseline71/0.
 - Development histories1/4/8/15/20 for all three; these are not earned level20 characters.
 
-Earned/connected/capture run39740803359 is pending. One complete native release has not yet run. Windows build URL/SHA and final source/main SHA will be recorded only after genuine verification. Readiness remains23 COMPLETE /27 PARTIAL /0 BLOCKED until the native-gated generator runs.
+Earned/connected/capture run39740803359 passed:617 campaign,8 campaign-cold,34 connected,133 connected-cold and34 capture checks, all zero failures. Three real careers each earned490XP and reached level8;22 original Godot PNGs were produced and inspected (actual client sizes640×360,1280×719,2560×1440). Focused follow-up39742269760 at9ee80f1 passed1,015 mechanics /102 cold /147 controls /71 historical continuation, all zero failures. One complete native release has not yet run. The final capture driver additionally moves the real pointer away before rendering and focuses the actual scrollable Lurk action in an extra view; it never edits screenshot pixels. Windows build URL/SHA and final source/main SHA will be recorded only after genuine verification. Readiness remains23 COMPLETE /27 PARTIAL /0 BLOCKED until the native-gated generator runs.
 
 ## Counts and limits
 

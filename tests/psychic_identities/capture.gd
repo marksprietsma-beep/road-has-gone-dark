@@ -49,9 +49,20 @@ func run() -> void:
   combat.refresh()
   await photograph_scene("fixture-"+key+"-combat",true)
   await photograph_scene("fixture-"+key+"-large",true,Vector2i(2560,1440))
+  if "lurk" in key and combat.action_buttons.has("lurk-psychic-ambush"):
+   # Production ScrollContainer follows keyboard focus; show the real class action.
+   combat.action_buttons["lurk-psychic-ambush"].grab_focus()
+   await photograph_scene("fixture-"+key+"-ambush-action",true)
  var active := WorldOriginLore.read_json(OS.get_environment("GAME129_CONNECTED_ROOT").path_join("active-state.json"))
  var combat := await open_combat();combat.state=active;combat.engine=TacticalAuras.new(active);combat.mode="attack";combat.message="EARNED · real saved Ardent power / Lurk veil / Erudite power · actual costs";combat.refresh()
  await photograph_scene("earned-saved-cohort-combat",false,Vector2i(2560,1440))
  var resumed := service.operate(entry,slot,"resume")
  check(resumed.ok and RulesJson.digest(resumed.state)==before,"captures preserve earned characters, XP and save bytes")
  finish_capture()
+
+func photograph_scene(name: String,fixture: bool,resolution := Vector2i(1280,720)) -> void:
+ # Move the real pointer off the battlefield before rendering; no pixel edits.
+ get_tree().root.size=resolution
+ get_tree().root.warp_mouse(Vector2(2,2))
+ await get_tree().process_frame
+ await super.photograph_scene(name,fixture,resolution)
