@@ -52,7 +52,9 @@ func run() -> void:
  # (Force Screen is not self-only) and the actual self-only Burst Step route.
  b.units.a.record.advancement_history[3].specialisations["psion-power-4"]="power-burst-step"
  check(RulesCharacter.new(RulesRecords.registry(b.units.a.record)).validate_build(b.units.a.record).ok,"GUI fixture lawfully knows both ally-targeted and self-only powers")
- ui.engine=TacticalAuras.new(b.units.a.record);ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.mode="attack";ui.refresh()
+ ui.engine=TacticalAuras.new(b.units.a.record);b=ui.engine.seal(b)
+ check(ui.engine.validate(b).is_empty(),"alternate permanent power selection has a valid sealed battle")
+ ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.mode="attack";ui.refresh()
  before=RulesJson.digest(b)
  var powers: OptionButton=ui.find_child("PsychicPowerSelector",true,false)
  check(powers!=null,"actual in-combat known-power selector exists")
