@@ -86,8 +86,8 @@ func run() -> void:
   check(ui.engine.validate(blocked).is_empty(),"temporary main suppression preserves a valid tactical fixture")
   var digest := RulesJson.digest(blocked)
   ui.state.first_adventure.battle=blocked;ui.refresh()
-  var display_diagnostic := {"selected_power":ui.selected_power,"buttons":ui.action_buttons.keys(),"actor":ui.engine.current(blocked).id,"tags":ui.engine.characters.derive_character(ui.engine.current(blocked).record).snapshot.tags,"statuses":ui.engine.current(blocked).record.runtime.statuses,"has_button":ui.action_buttons.has("power-force-screen")}
-  if ui.action_buttons.has("power-force-screen"):display_diagnostic.disabled=ui.action_buttons["power-force-screen"].disabled
+  var display_diagnostic := {"pin":ui.engine.registry.rules_ref(),"parity":RulesPsychic.parity_enabled(ui.engine.registry),"display_matches_battle":RulesJson.digest(ui.battle())==digest,"selected_power":ui.selected_power,"buttons":ui.action_buttons.keys(),"actor":ui.engine.current(blocked).id,"tags":ui.engine.characters.derive_character(ui.engine.current(blocked).record).snapshot.tags,"statuses":ui.engine.current(blocked).record.runtime.statuses,"display_tags":ui.engine.characters.derive_character(ui.engine.current(ui.battle()).record).snapshot.tags,"has_button":ui.action_buttons.has("power-force-screen")}
+  if ui.action_buttons.has("power-force-screen"):display_diagnostic.disabled=ui.action_buttons["power-force-screen"].disabled;display_diagnostic.ready_disabled=ui.action_buttons["power-force-screen"].get_meta("ready_disabled")
   check(ui.action_buttons.has("power-force-screen") and ui.action_buttons["power-force-screen"].disabled,"actual self-power button respects main suppression despite affordable points; "+JSON.stringify(display_diagnostic))
   check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":"power-force-screen","target_id":"a"}).ok,"authoritative command rejects a temporarily suppressed self manifestation")
   check(RulesJson.digest(blocked)==digest,"suppressed self manifestation consumes no points/main/RNG")
