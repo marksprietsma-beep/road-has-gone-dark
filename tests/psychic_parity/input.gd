@@ -80,11 +80,15 @@ func run() -> void:
  check(control_helper.failures==0 and controlled.ok,"real legal Wizard cast suppresses an otherwise valid psychic character")
  control_helper.free()
  if controlled.ok:
+  var control_snapshot: Dictionary=ui.engine.characters.derive_character(controlled.target).snapshot
+  check(control_snapshot.tags.has("main_action_suppressed"),"real Stillness cast applied main suppression; events="+JSON.stringify(controlled.events)+"; statuses="+JSON.stringify(controlled.target.runtime.statuses))
   var blocked: Dictionary=b.duplicate(true);blocked.units.a.record=controlled.target;ui.engine=TacticalAuras.new(controlled.target);blocked=ui.engine.seal(blocked)
   check(ui.engine.validate(blocked).is_empty(),"temporary main suppression preserves a valid tactical fixture")
   var digest := RulesJson.digest(blocked)
   ui.state.first_adventure.battle=blocked;ui.refresh()
-  check(ui.action_buttons.has("power-force-screen") and ui.action_buttons["power-force-screen"].disabled,"actual self-power button respects main suppression despite affordable points")
+  var display_diagnostic := {"selected_power":ui.selected_power,"buttons":ui.action_buttons.keys(),"actor":ui.engine.current(blocked).id,"tags":ui.engine.characters.derive_character(ui.engine.current(blocked).record).snapshot.tags,"statuses":ui.engine.current(blocked).record.runtime.statuses,"has_button":ui.action_buttons.has("power-force-screen")}
+  if ui.action_buttons.has("power-force-screen"):display_diagnostic.disabled=ui.action_buttons["power-force-screen"].disabled
+  check(ui.action_buttons.has("power-force-screen") and ui.action_buttons["power-force-screen"].disabled,"actual self-power button respects main suppression despite affordable points; "+JSON.stringify(display_diagnostic))
   check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":"power-force-screen","target_id":"a"}).ok,"authoritative command rejects a temporarily suppressed self manifestation")
   check(RulesJson.digest(blocked)==digest,"suppressed self manifestation consumes no points/main/RNG")
  ui.queue_free()
