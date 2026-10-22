@@ -6,9 +6,10 @@ var base := ""
 var levels := {}
 const PSI := {"STR":8,"DEX":13,"CON":14,"INT":15,"WIS":12,"CHA":10}
 const WILD := {"STR":8,"DEX":13,"CON":14,"INT":12,"WIS":10,"CHA":15}
+func psychic_pack_path() -> String:return "res://data/rules/trhgd-character-v24.json"
 func run() -> void:
  base=OS.get_environment("GAME152_ROOT");DirAccess.make_dir_recursive_absolute(base)
- check(source.load_pack("res://data/rules/trhgd-character-v24.json").ok,"immutable24 schema")
+ check(source.load_pack(psychic_pack_path()).ok,"immutable24 schema")
  if failures:finish_parity();return
  kernel=RulesCharacter.new(source)
  if OS.get_environment("GAME152_RESTART")=="1":cold();return

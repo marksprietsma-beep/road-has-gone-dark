@@ -1,0 +1,11 @@
+# GAME-127 implementation checkpoint
+
+Branch `feature/game-127-psychic-identity-parity`, draft PR145 targeting main e96c235c6dfe244801b9d4ef09d8dcfd929f0e2f. Preserve the existing implementation; do not duplicate it.
+
+Historical v24 baseline Windows run39739126204 passed71 checks, zero failures. It proves a lawful large-ancestry Lurk can ambush from distance2 despite authored range1, and actual Erudite controls offer an identity the existing authority rejects at the per-rest cap. Earlier baseline fixtures were corrected (two active weapons invalid; blocked/occupied target cells invalid); these failures are fixture diagnostics, not waived regressions. Superseded runs39738974348/39739100020 were cancelled, retaining logs.
+
+Candidate v25 adds only explicit melee/adjacent ambush descriptors plus an accurate description. Existing direct psychic damage then separate weapon-roll semantics remain. Generic current-pack presentation uses existing distinct-access authority; no new resource, RNG or save engine. All24 historical bytes/pins and all roster IDs are guarded. Ardent's existing mantle and multiclass mechanics are covered without speculative new features.
+
+Current focused Windows mechanics/UI checks are pending. The one complete native release has NOT been dispatched. Next: fix any genuine focused failures; run source `journey=true` for actual earned/cold/connected/screenshots; dispatch the complete native `release=true` only after stable. Verify artefact bytes/source/PE/hash and actual evidence, regenerate50-career readiness with native receipts, complete DELIVERY, update GitHub101, review PR145 and merge normally only after required green checks; verify postmerge Windows CI. No Linear connector is callable, so do not claim Linear updates.
+
+Do not promote any row or claim this wave complete before verified native evidence. No roster/world expansion. GAME-123 and programme tracking stay open.
