@@ -145,6 +145,7 @@ func add_action(id: String,text: String) -> void:
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
+   if RulesPsychic.parity_enabled(engine.registry) and derived.ok and int(row.get("cost",{}).get("main",0))>0 and derived.snapshot.tags.has("main_action_suppressed"):button.disabled=true
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
  button.clip_text=true
  gate_button(button)

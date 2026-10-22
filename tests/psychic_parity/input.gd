@@ -48,6 +48,10 @@ func run() -> void:
  advance.queue_free()
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  var b: Dictionary=saved.battles["ready-psion8"].duplicate(true)
+ # A lawful alternate permanent selection exercises both targeted ally powers
+ # (Force Screen is not self-only) and the actual self-only Burst Step route.
+ b.units.a.record.advancement_history[3].specialisations["psion-power-4"]="power-burst-step"
+ check(RulesCharacter.new(RulesRecords.registry(b.units.a.record)).validate_build(b.units.a.record).ok,"GUI fixture lawfully knows both ally-targeted and self-only powers")
  ui.engine=TacticalAuras.new(b.units.a.record);ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.mode="attack";ui.refresh()
  before=RulesJson.digest(b)
  var powers: OptionButton=ui.find_child("PsychicPowerSelector",true,false)
@@ -70,8 +74,9 @@ func run() -> void:
  var empty: Dictionary=b.duplicate(true);empty.units.a.record.runtime.resources["psychic-points"]=0;empty=ui.engine.seal(empty)
  ui.state.first_adventure.battle=empty;ui.refresh()
  check(ui.action_buttons.has(id) and ui.action_buttons[id].disabled,"actual exhausted manifestation button is disabled")
- ui.state.first_adventure.battle=b;ui.selected_power="power-force-screen";ui.selected_augmentation=0;ui.refresh()
- check(ui.action_buttons.has("power-force-screen") and not ui.action_buttons["power-force-screen"].disabled,"legal affordable self-manifestation stays enabled")
+ for power in ["power-force-screen","power-burst-step"]:
+  ui.state.first_adventure.battle=b;ui.selected_power=power;ui.selected_augmentation=0;ui.refresh()
+  check(ui.action_buttons.has(power) and not ui.action_buttons[power].disabled,"legal affordable targeted/self manifestation stays enabled "+power)
  var control_helper: Node=load("res://tests/upper_prepared/mechanics.gd").new();control_helper.source=ui.engine.registry;control_helper.kernel=RulesCharacter.new(control_helper.source)
  var caster: Dictionary=control_helper.prepare_upper(control_helper.build("wizard",20),"wizard-stillness-lattice")
  var target: Dictionary=b.units.a.record.duplicate(true)
@@ -85,12 +90,12 @@ func run() -> void:
   var blocked: Dictionary=b.duplicate(true);blocked.units.a.record=controlled.target;ui.engine=TacticalAuras.new(controlled.target);blocked=ui.engine.seal(blocked)
   check(ui.engine.validate(blocked).is_empty(),"temporary main suppression preserves a valid tactical fixture")
   var digest := RulesJson.digest(blocked)
-  ui.state.first_adventure.battle=blocked;ui.refresh()
-  var display_diagnostic := {"pin":ui.engine.registry.rules_ref(),"parity":RulesPsychic.parity_enabled(ui.engine.registry),"display_matches_battle":RulesJson.digest(ui.battle())==digest,"selected_power":ui.selected_power,"buttons":ui.action_buttons.keys(),"actor":ui.engine.current(blocked).id,"tags":ui.engine.characters.derive_character(ui.engine.current(blocked).record).snapshot.tags,"statuses":ui.engine.current(blocked).record.runtime.statuses,"display_tags":ui.engine.characters.derive_character(ui.engine.current(ui.battle()).record).snapshot.tags,"has_button":ui.action_buttons.has("power-force-screen")}
-  if ui.action_buttons.has("power-force-screen"):display_diagnostic.disabled=ui.action_buttons["power-force-screen"].disabled;display_diagnostic.ready_disabled=ui.action_buttons["power-force-screen"].get_meta("ready_disabled")
-  check(ui.action_buttons.has("power-force-screen") and ui.action_buttons["power-force-screen"].disabled,"actual self-power button respects main suppression despite affordable points; "+JSON.stringify(display_diagnostic))
-  check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":"power-force-screen","target_id":"a"}).ok,"authoritative command rejects a temporarily suppressed self manifestation")
-  check(RulesJson.digest(blocked)==digest,"suppressed self manifestation consumes no points/main/RNG")
+  for power in ["power-force-screen","power-burst-step"]:
+   ui.state.first_adventure.battle=blocked;ui.selected_power=power;ui.selected_augmentation=0;ui.refresh()
+   var display_diagnostic := {"power":power,"targeting":ui.engine.registry.definition("abilities",power).targeting,"buttons":ui.action_buttons.keys(),"tags":ui.engine.characters.derive_character(ui.engine.current(ui.battle()).record).snapshot.tags}
+   check(ui.action_buttons.has(power) and ui.action_buttons[power].disabled,"actual targeted/self power button respects main suppression despite affordable points; "+JSON.stringify(display_diagnostic))
+   check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":power,"target_id":"a"}).ok,"authoritative command rejects temporarily suppressed manifestation "+power)
+   check(RulesJson.digest(blocked)==digest,"suppressed manifestation consumes no points/main/RNG "+power)
  ui.queue_free()
  FileAccess.open(base.path_join("input-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"scope":"Real production Godot creator/power/discipline/prestige and battle selector/augmentation/buttons/target tiles. Signal-based controls, not OS/human input acceptance."}))
  get_tree().quit(1 if failures else 0)

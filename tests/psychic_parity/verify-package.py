@@ -20,7 +20,8 @@ if os.environ.get('GAME152_REUSE_RUN'):
  previous=subprocess.check_output(['git','show',original['source_commit']+':scripts/ui/first_adventure.gd'],cwd=root,text=True,encoding='utf-8')
  current=(root/'scripts/ui/first_adventure.gd').read_text(encoding='utf-8')
  line='  if RulesPsychic.parity_enabled(source):button.disabled=button.disabled or snapshot.tags.has("main_action_suppressed") or not engine.eligible(battle(),actor,actor,selected_id)\n'
- assert current.count(line)==1 and current.replace(line,'',1)==previous,'Only the exact self-power display gate may differ; all authority/rules/service/other UI source must remain unchanged'
+ targeted='   if RulesPsychic.parity_enabled(engine.registry) and derived.ok and int(row.get("cost",{}).get("main",0))>0 and derived.snapshot.tags.has("main_action_suppressed"):button.disabled=true\n'
+ assert current.count(line)==1 and current.count(targeted)==1 and current.replace(line,'',1).replace(targeted,'',1)==previous,'Only the two exact self/targeted display gates may differ; all authority/rules/service/other UI source must remain unchanged'
  # Evidence retains JSON but not the expedition packet's .json.sha. Restore only
  # the exact fixture checksum matching the already-saved packet pin; never edit saves.
  journey=base/'journeys/cohort-0';receipt=json.loads((journey/'proof.json').read_text(encoding='utf-8'))
@@ -28,7 +29,7 @@ if os.environ.get('GAME152_REUSE_RUN'):
  packet=saved['expedition']['packet_sha'];candidates=[p for p in (journey/'cache').rglob('*.json')if hashlib.sha256(p.read_bytes()).hexdigest()==packet]
  assert len(candidates)==1,'Saved fixture packet unavailable; no save/packet reconstruction permitted'
  Path(str(candidates[0])+'.sha').write_text(packet,encoding='ascii')
- reuse.update(changed_paths=changed,authority_and_rules_unchanged=True,presentation_change='Self-power button also consults existing authority; no combat semantics change',fresh_phases=['baseline','mechanics','input','capture'],restored_fixture_packet_checksum=packet)
+ reuse.update(changed_paths=changed,authority_and_rules_unchanged=True,presentation_change='Self-power eligibility and targeted main-suppression display gates; no combat semantics change',fresh_phases=['baseline','mechanics','input','capture'],restored_fixture_packet_checksum=packet)
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],'--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/psychic_parity/review.tscn','--output',str(dist)],cwd=root,check=True)
 qa=dist/'road-has-gone-dark-qa.exe'
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',GAME152_ROOT=str(base/'mechanics'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'),GAME126_AUDIT_ROOT=str(base/'readiness-audit'),GAME126_PACK='res://data/rules/trhgd-character-v24.json',GAME112W3_TEST_ROOT=str(base/'historical13'))
