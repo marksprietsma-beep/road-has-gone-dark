@@ -14,7 +14,7 @@ def generate(root,pack,pin,native_root):
    if phase.startswith('current-')or phase in ['mechanics','audit','journey','connected']:
     if 'rules_ref'in proof:assert proof['rules_ref']==pin,(phase,name)
  for phase in ['input','current-upper-input','current-performance-input','frozen-rules','baseline']:assert proofs[phase]['checks']>0 and proofs[phase]['failures']==0
- assert proofs['input']['checks']>=107,'Require the positive/actual temporary-suppression self-control witnesses'
+ assert proofs['input']['checks']>=114,'Require positive/actual temporary-suppression witnesses for both targeted and self-only controls'
  assert native.get('proof_sources',{}).get('input')==native['source_commit'],'Current presentation needs fresh native controls'
  assert proofs['frozen-rules']['checks']==22181
  assert proofs['historical13/proof.json']['rules_ref']['pack_id']=='trhgd-character-v13'

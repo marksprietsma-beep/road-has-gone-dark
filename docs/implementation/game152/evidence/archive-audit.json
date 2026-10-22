@@ -1,0 +1,25 @@
+{
+  "source_commit": "46eaaa6608810c124aaa89e2547d326fc8995896",
+  "archive": "game152-psychic-parity-windows-x64.zip",
+  "sha256": "3546b4e0ca2d9ce45c6b8c7e9c1ecebe18293109f2d08738f3391affd8c526d5",
+  "archive_entries": 7022,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "game152-psychic-parity-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "65d82d909161e37a2be6830d0eb7dfe330a29ac5e24b0278e88b89aa706b81b1",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v24",
+    "schema_version": 1,
+    "rules_version": "24.0.0",
+    "engine_schema": 3,
+    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

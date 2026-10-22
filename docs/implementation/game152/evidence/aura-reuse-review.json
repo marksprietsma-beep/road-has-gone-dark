@@ -1,0 +1,26 @@
+{
+  "source_commit": "46eaaa6608810c124aaa89e2547d326fc8995896",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v24",
+    "schema_version": 1,
+    "rules_version": "24.0.0",
+    "engine_schema": 3,
+    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
+  },
+  "projection_function_unchanged": true,
+  "classes": {
+    "marshal": {
+      "unchanged_references": 40,
+      "documented_changes": [],
+      "fresh_changed_consumer": null
+    },
+    "war-chanter": {
+      "unchanged_references": 39,
+      "documented_changes": [
+        "statuses/weakened"
+      ],
+      "fresh_changed_consumer": "final-distribution-proof.json#proofs/mechanics"
+    }
+  },
+  "scope": "Reuse only unchanged aura function/data. The documented shared Weakened extension is freshly tested by the native psychic suite, not claimed byte-identical or a new targeted War Chanter encounter."
+}

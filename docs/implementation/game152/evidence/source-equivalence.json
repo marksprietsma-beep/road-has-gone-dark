@@ -1,0 +1,40 @@
+{
+  "artifact_source": "46eaaa6608810c124aaa89e2547d326fc8995896",
+  "complete_native_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+  "full_native_run": 39578198867,
+  "presentation_native_run": 39703183260,
+  "source_focused_runs": [
+    39701555387,
+    39701550078
+  ],
+  "native_source_guard": {
+    "run_id": 39578198867,
+    "source_commit": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+    "conclusion": "success",
+    "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39578198867",
+    "original_proof_sha256": "753cd99ac341b6c81f760614781ba30b7cbf94d1643ef793af1acf642bb56795",
+    "changed_paths": [
+      ".github/workflows/verify-psychic-parity.yml",
+      "docs/implementation/game152/ASSESSMENT.md",
+      "docs/implementation/game152/CONTINUATION.md",
+      "docs/implementation/game152/DELIVERY.md",
+      "docs/implementation/game152/TESTING.md",
+      "scripts/ui/first_adventure.gd",
+      "tests/psychic_parity/input.gd",
+      "tests/psychic_parity/reuse-native.py",
+      "tests/psychic_parity/verify-package.py",
+      "tools/character-content/build-readiness.py",
+      "tools/character-content/readiness_psychic.py"
+    ],
+    "authority_and_rules_unchanged": true,
+    "presentation_change": "Self-power eligibility and targeted main-suppression display gates; no combat semantics change",
+    "fresh_phases": [
+      "baseline",
+      "mechanics",
+      "input",
+      "capture"
+    ],
+    "restored_fixture_packet_checksum": "88abd250068c1d97273df0f860f8646deef66284645509ae4d7717b423f8ab8a"
+  },
+  "delivery_scope": "Only docs/evidence/screenshots and host-only readiness generation after the artifact source; verify final git diff before merge. No runtime/content/export/test changes are permitted by this delivery comparison."
+}

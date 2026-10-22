@@ -1,17 +1,17 @@
 {
-  "battle_hash": "1719237dd5a3702985613e7440f59768add8e60f92b4a30db6c2c82b1cd9c5b7",
+  "battle_hash": "652a49d1baf3f5f5d718617035a9c1bdd4842c34cf9270e7b5beb3a324081c67",
   "battle_log_length": 6,
   "casts": {
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:1": "power-force-screen-aug2",
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:2": "wilder-surge",
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:3": "wizard-mage-armour"
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:1": "power-force-screen-aug2",
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:2": "wilder-surge",
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:3": "wizard-mage-armour"
   },
   "checks": 34,
   "command_operation": "battle_command",
   "earned_xp_before_combat": 490,
   "failures": 0,
   "next_command": {
-    "actor_id": "ef6e678427cf0135049c1d0e9c6071c9:adventurer:2",
+    "actor_id": "49c73a552ab17ba74e5f5d413da15947:adventurer:2",
     "destination": [
       6,
       3
@@ -19,15 +19,15 @@
     "kind": "move",
     "revision": 8
   },
-  "next_hash": "9073a0691a60348da181b81781c5482d28e9559d98be8a2ed857bd101f8d6e88",
+  "next_hash": "3134247bfe86ceb0444ef0fa73c0f52bcde95c12b158b3db7484364b19a8faee",
   "resources": {
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:1": {
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:1": {
       "psychic-points": 15
     },
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:2": {
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:2": {
       "psychic-points": 14
     },
-    "ef6e678427cf0135049c1d0e9c6071c9:adventurer:3": {
+    "49c73a552ab17ba74e5f5d413da15947:adventurer:3": {
       "wizard-prepared-mage-armour": 0,
       "wizard-slots-1": 5
     }
@@ -40,10 +40,10 @@
     "schema_version": 1
   },
   "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
-  "slot": "ef6e678427cf0135049c1d0e9c6071c9",
+  "slot": "49c73a552ab17ba74e5f5d413da15947",
   "source": "AdventureService/battle_command/GamePlaythroughStore",
-  "state_hash": "42bd898c426a189d1ced4d6c176f2a4484b8558b153a30ce362db760fde93fb4",
+  "state_hash": "204781b301a19e92f2873bbde37029ed613af46b9ca8b53a008be6dcb59ba1b9",
   "xp_injected": false,
-  "source_commit": "e2e1daa04b21aa360a773551f64d3cb659b88d4f",
-  "workflow_run": 39574286811
+  "source_commit": "8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3",
+  "workflow_run": 39701555387
 }

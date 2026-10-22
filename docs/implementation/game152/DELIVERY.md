@@ -1,6 +1,6 @@
 # GAME-152 — psychic resource parity
 
-Delivery is pending the fresh Windows self-manifestation control and exact-source presentation recheck. PR [#144](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/144) remains unmerged until these checks pass. The earlier complete native release is evidence for unchanged mechanics, not the final corrected download.
+The corrected Windows package passed the exact-source-guarded native recheck [39703183260](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39703183260). PR [#144](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/144) contains the implementation and final evidence. Its GitHub merge record and final milestone comment record publication/postmerge outcomes; they must be verified before claiming the merge.
 
 ## Playable changes
 
@@ -15,13 +15,37 @@ Fresh campaigns use immutable `trhgd-character-v24`, content hash `fa919e9413c7e
 
 The [complete Windows run 39578198867](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39578198867) succeeded at `59f1b20b8bbb2a4a7029ee71b10190e774b9ed74`. It tested exported current and historical mechanics, exact separate-process restart, actual earned campaigns, connected combat, controls, rendering, the frozen 22,181-assertion GAME-32 oracle and production startup without installed Godot/Node dependencies.
 
-The final presentation recheck must verify this successful receipt and exact unchanged authority/data/service/other-UI source, allowing only the specified self-button presentation line. It must freshly export, execute mechanics/cold restart and current controls, capture actual Godot pixels and launch the production executable. Its per-phase `proof_sources` must distinguish reused full-release observations from freshly executed checks. A fixture cache checksum may only be restored when its bytes match the already-saved packet fingerprint; no campaign or geometry is recreated.
+The successful presentation recheck verified this receipt and unchanged authority/data/service/other-UI source. Removing exactly the two specified self/targeted display guards reproduces the original entire UI file. It freshly exported the corrected game, executed564 mechanics/73 cold/114 actual control checks with zero failures, captured19 actual Godot renders and launched the production executable with an empty PATH and no source-helper override. Per-phase `proof_sources` distinguishes reused full-release observations from fresh checks. A missing fixture cache checksum was restored only after its bytes matched the already-saved packet fingerprint; no campaign or geometry was recreated. Original metadata was retained and the new game exported to a separate fresh directory, preserving the no-overwrite safeguard.
 
 Three normal campaigns earned 490 XP per character and reached level 8, including Psion 3 / Wizard 3 / Cerebremancer 2. Separate development fixtures prove Psion/Wilder through level 20 and all five implemented Cerebremancer levels. These fixtures did not earn level 20 through ordinary adventures. Connected combat, rewards, rest and exact reload are separately verified.
 
 ## Windows review and limitations
 
-The final artifact URL, source, SHA-256, source-equivalence audit, native results, screenshots and regenerated readiness totals will be recorded here after the fresh recheck succeeds. Do not use the earlier pre-correction package as the final delivery.
+[Download the self-contained Windows x64 package](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39703183260/artifacts/12393627401). GitHub sign-in/repository access may be required; artifact retention is90days.
+
+Playable inner ZIP: `game152-psychic-parity-windows-x64.zip`.
+
+SHA-256: `3546b4e0ca2d9ce45c6b8c7e9c1ecebe18293109f2d08738f3391affd8c526d5`.
+
+Exact artifact source: `46eaaa6608810c124aaa89e2547d326fc8995896`; gameplay/controls match verified `8cd5a8ace4e4ac42b8c153e123dd8dcda618a8f3`, followed only by the fresh-export producer correction. Subsequent delivery changes are documentation/evidence and the host-only readiness gate, with no exported runtime change. The archive audit confirms7022 entries, ZIP CRC integrity, AMD64 game and bundled Node, exact source/content manifest,121 licence/credit files and no QA executable. It independently checks metadata and executable hashes; native execution evidence comes from Windows, not this host.
+
+Evidence-backed50-career readiness is now **23 COMPLETE /27 PARTIAL /0 BLOCKED**, up from20/30/0. Psion, Wilder and Cerebremancer are newly accepted bounded original adaptations. The [matrix](../game129/READINESS.md) retains explicit limitations and historical evidence labels. The unchanged aura paths use documented compositional historical reuse; there is no claim of a new targeted v24 War Chanter encounter.
+
+[Native receipt](evidence/native-proof.json), [full-release receipt](evidence/full-release-proof.json), [archive audit](evidence/archive-audit.json), [source-equivalence audit](evidence/source-equivalence.json), [timings](evidence/presentation-timings.json) and [all19 original screenshots](screenshots/README.md) are committed. The complete native timings are retained separately; counts from overlapping suites/reruns are not added together as unique tests.
+
+| Windows evidence | Checks / cold | Source |
+|---|---:|---|
+| Focused source controls / mechanics / cold |114 /564 /73; zero failures |8cd5a8a, runs39701555387 and39701550078 |
+| Fresh exported mechanics and exact restart |564 /73 |46eaaa6, run39703183260 |
+| Fresh exported actual controls / captures |114 /30;19 PNGs |46eaaa6, run39703183260 |
+| Real earned journeys |633 /8; three490XP characters |59f1b20, full39578198867, unchanged-source reuse |
+| Connected battle / exact restart |34 /124 |59f1b20, full39578198867, unchanged-source reuse |
+| All-base native audit |2598 /65 |59f1b20, full39578198867, unchanged-source reuse |
+| Historical v23 / v13 |1634+97 /1792+6 |59f1b20, full39578198867, unchanged-source reuse |
+| v16 repair / compatibility |818+4 /1941+486 |59f1b20, full39578198867, unchanged-source reuse |
+| Frozen GAME-32 oracle |22,181; zero failures |59f1b20, full39578198867, unchanged-source reuse |
+
+Current upper-casting, performance, supernatural, signature and mobile cohorts also passed in the complete native run; their exact proofs, controls and source provenance remain in the native receipt. All Windows checks must be green before merging; postmerge results are recorded on PR144/#101.
 
 Extract both archive layers, retaining all support, helper, asset and licence files beside `road-has-gone-dark.exe`. Launch that executable; no Godot or Node installation is required. Follow [TESTING.md](TESTING.md) for the ordinary creator, power choices, tactical augmentation/surge, earned advancement, optional prestige and full exit/reload checks. Existing campaigns retain their exact rules version.
 
