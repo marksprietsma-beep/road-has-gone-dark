@@ -4,7 +4,7 @@ Recovered main e96c235c6dfe244801b9d4ef09d8dcfd929f0e2f, v24, 23 COMPLETE / 27 P
 
 Existing authority already implements permanent mantle/power choices, owning-class casting attributes, shared manifesting expenditure, veil/ambush costs, Erudite distinct-per-rest identities, eligible rest, ordered advancement and exact pinned saves. Preserve those mechanisms.
 
-Two defects were reproduced on native Windows before release validation (run39739126204:71 checks, zero failures):
+Two defects were reproduced on native Windows before release validation (run 39739126204:71 checks, zero failures):
 
 1. Lurk's authored adjacent melee ambush uses generic weapon-strike reach. A lawful large-ancestry character can ambush from two tiles despite the authored one-tile targeting range. Fix only the actual weapon/range gate, preserving the explicitly authored psychic effect followed by a separate attack roll.
 2. Erudite's authority rejects a new distinct power after exhaustion, but actual combat controls and target highlights still offer it. Repeated identities must remain available; failed previews must not spend resources or RNG. Reuse the existing distinct-access authority for presentation.

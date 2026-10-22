@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Generated from complete v24 Windows receipts and explicitly labelled historical acceptance. Technical COMPLETE is a bounded original adaptation, not sourcebook completeness or human balance approval.
+Generated from fresh v25 Windows receipts and explicitly labelled historical acceptance. Technical COMPLETE is a bounded original adaptation, not sourcebook completeness or human acceptance.
 
-{'COMPLETE': 23, 'PARTIAL': 27, 'BLOCKED': 0}
+{'COMPLETE': 26, 'PARTIAL': 24, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -39,11 +39,11 @@ Generated from complete v24 Windows receipts and explicitly labelled historical 
 | Binder | base | COMPLETE |  |
 | Warshaper | prestige | PARTIAL | Verify form-dependent benefits, natural weapon reach and reversion/equipment restoration. |
 | Bonded Summoner | prestige | PARTIAL | Verify actual owned summon growth/action/duration/duplication limits beyond catalogue definitions. |
-| Ardent | base | PARTIAL | Mantles/power eligibility are implemented; verify all advertised mantle restrictions in actual native advancement/UI and multi-manifester builds. |
-| Lurk | base | PARTIAL | Verify veil then melee ambush across hit/miss/visibility and resource exhaustion at representative levels; do not imply a general stealth engine. |
+| Ardent | base | COMPLETE |  |
+| Lurk | base | COMPLETE |  |
 | Cerebremancer | prestige | COMPLETE |  |
 | Beast Steward | prestige | PARTIAL | Verify owned companion growth/special actions, owner defeat and permanent identity across an earned path. |
-| Erudite | base | PARTIAL | Verify distinct-per-rest limit with augmented/repeated identities, cold restart and production selector at representative levels. |
+| Erudite | base | COMPLETE |  |
 | Divine Mind | base | PARTIAL | Verify aura source, range, refresh, incapacitation and psychic casting interactions, not just derived ally bonuses. |
 | Marshal | base | COMPLETE |  |
 | Cognition Adept | prestige | PARTIAL | Verify chosen psychic identities/augmentation and actual advanced path powers, not just resource scaling. |
@@ -59,7 +59,7 @@ Generated from complete v24 Windows receipts and explicitly labelled historical 
 
 ## Finite exit plan
 
-1. psychic-warrior, ardent, lurk, erudite, divine-mind, cognition-adept, metamind, pyrokineticist: Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.
+1. psychic-warrior, divine-mind, cognition-adept, metamind, pyrokineticist: Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.
 2. sorcerer, druid, duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
 3. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
 4. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
