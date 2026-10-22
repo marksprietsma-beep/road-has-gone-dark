@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "rules_ref": {
-    "pack_id": "trhgd-character-v24",
+    "pack_id": "trhgd-character-v25",
     "schema_version": 1,
-    "rules_version": "24.0.0",
+    "rules_version": "25.0.0",
     "engine_schema": 3,
-    "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
+    "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
   },
-  "source_pack_sha256": "ca589493e8d5e6742943a014976d16d4ca5687154e21ab3174dcf6009b9dff62",
+  "source_pack_sha256": "71c7af4cef2763dea85d8e9f4d4e6241f270fee0e0daaf2f577b826a443b52a1",
   "policy": {
     "COMPLETE": "Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.",
     "PARTIAL": "Playable but material mechanics or practical acceptance missing.",
@@ -183,19 +183,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/barbarian",
-        "data/rules/trhgd-character-v24.json#classes/barbarian"
+        "data/rules/trhgd-character-v25.json#classes/barbarian"
       ],
       "remaining": [
         "Verify rage-power choices in early/mid/late native combat, including defence trade-offs and expiry; earned journey alone is not every rage variant."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/barbarian"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/barbarian"
     },
     {
       "id": "bard",
@@ -777,28 +777,29 @@
         "tests/performance_spirit/journey.gd",
         "tests/performance_spirit/connected.gd",
         "docs/implementation/game149/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/bard",
+        "data/rules/trhgd-character-v25.json#classes/bard",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-performance",
-        "tests/psychic_parity/current_performance.gd"
+        "tests/psychic_parity/current_performance.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-performance"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded song/illusion/spirit adaptation; no world illusion engine, dialogue or exhaustive sourcebook powers. Human visual/balance review remains separate."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-performance native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-performance native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/bard"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/bard"
     },
     {
       "id": "cleric",
@@ -1845,28 +1846,29 @@
         "tests/upper_prepared/journey.gd",
         "tests/upper_prepared/connected.gd",
         "docs/implementation/game150/evidence/recapture-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/cleric",
+        "data/rules/trhgd-character-v25.json#classes/cleric",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-upper",
-        "tests/psychic_parity/current_upper.gd"
+        "tests/psychic_parity/current_upper.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-upper"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Bounded original preparation policy: home preparation refills selected copies but never shared daily slots. No universal dispel, extra actions, deity system or complete tabletop spell list; high20 examples are development fixtures."
       ],
       "visual_source": "3462c93e3001995c10b7cd70ba9c9e97df9a5bcb",
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/cleric",
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/cleric",
       "acceptance_sources": {
-        "current": "Matching v24 current-upper native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-upper native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       }
     },
     {
@@ -2932,19 +2934,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/druid",
-        "data/rules/trhgd-character-v24.json#classes/druid"
+        "data/rules/trhgd-character-v25.json#classes/druid"
       ],
       "remaining": [
         "Tiers8\u20139 and permanent companion/form interactions beyond the v18 cohort need targeted acceptance; transformed casting remains explicitly unsupported."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/druid"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/druid"
     },
     {
       "id": "fighter",
@@ -3114,19 +3116,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/fighter",
-        "data/rules/trhgd-character-v24.json#classes/fighter"
+        "data/rules/trhgd-character-v25.json#classes/fighter"
       ],
       "remaining": [
         "Verify equipment-specialisation/feat alternatives in actual mid/late native attacks and protection; legal feat counts alone are insufficient."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/fighter"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/fighter"
     },
     {
       "id": "monk",
@@ -3308,19 +3310,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/monk",
-        "data/rules/trhgd-character-v24.json#classes/monk"
+        "data/rules/trhgd-character-v25.json#classes/monk"
       ],
       "remaining": [
         "Verify late flurry/ki with unarmed/armour restrictions and reaction competition in actual native combat."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/monk"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/monk"
     },
     {
       "id": "paladin",
@@ -3988,19 +3990,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/paladin",
-        "data/rules/trhgd-character-v24.json#classes/paladin"
+        "data/rules/trhgd-character-v25.json#classes/paladin"
       ],
       "remaining": [
         "Audit smite/divine-grace and touch-healing combinations against actual resources, targets and high-level spell options."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/paladin"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/paladin"
     },
     {
       "id": "ranger",
@@ -4646,19 +4648,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/ranger",
-        "data/rules/trhgd-character-v24.json#classes/ranger"
+        "data/rules/trhgd-character-v25.json#classes/ranger"
       ],
       "remaining": [
         "Quarry selection uses a bounded raider target profile; verify alternate styles/companion and low-tier nature repertoire before claiming broader enemy typing."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/ranger"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/ranger"
     },
     {
       "id": "rogue",
@@ -4839,27 +4841,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/rogue",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
-        "data/rules/trhgd-character-v24.json#classes/rogue",
+        "data/rules/trhgd-character-v25.json#classes/rogue",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/rogue"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/rogue"
     },
     {
       "id": "sorcerer",
@@ -5602,19 +5605,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/sorcerer",
-        "data/rules/trhgd-character-v24.json#classes/sorcerer"
+        "data/rules/trhgd-character-v25.json#classes/sorcerer"
       ],
       "remaining": [
         "Tiers8\u20139 and bloodline alternatives remain materially thinner than the v18 tier4\u20137 cohort."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/sorcerer"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/sorcerer"
     },
     {
       "id": "wizard",
@@ -6686,28 +6689,29 @@
         "tests/upper_prepared/journey.gd",
         "tests/upper_prepared/connected.gd",
         "docs/implementation/game150/evidence/recapture-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/wizard",
+        "data/rules/trhgd-character-v25.json#classes/wizard",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-upper",
-        "tests/psychic_parity/current_upper.gd"
+        "tests/psychic_parity/current_upper.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-upper"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Bounded original preparation policy: home preparation refills selected copies but never shared daily slots. No universal dispel, extra actions, deity system or complete tabletop spell list; high20 examples are development fixtures."
       ],
       "visual_source": "3462c93e3001995c10b7cd70ba9c9e97df9a5bcb",
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/wizard",
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/wizard",
       "acceptance_sources": {
-        "current": "Matching v24 current-upper native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-upper native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       }
     },
     {
@@ -6842,28 +6846,29 @@
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
         "docs/implementation/game146/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/duelist",
+        "data/rules/trhgd-character-v25.json#classes/duelist",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "eldritch-knight",
@@ -7000,19 +7005,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/eldritch-knight",
-        "data/rules/trhgd-character-v24.json#classes/eldritch-knight"
+        "data/rules/trhgd-character-v25.json#classes/eldritch-knight"
       ],
       "remaining": [
         "Verify martial/spell resource interplay and path action delivery in actual native combat, beyond caster-level derivation."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "arcane-trickster",
@@ -7153,27 +7158,28 @@
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
         "docs/implementation/game146/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/arcane-trickster",
+        "data/rules/trhgd-character-v25.json#classes/arcane-trickster",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "mystic-theurge",
@@ -7305,19 +7311,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/mystic-theurge",
-        "data/rules/trhgd-character-v24.json#classes/mystic-theurge"
+        "data/rules/trhgd-character-v25.json#classes/mystic-theurge"
       ],
       "remaining": [
         "v18 independently validates arcane/divine casting levels/resources; broader path feature combinations and earned continuation need parity review."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "psion",
@@ -7787,27 +7793,28 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/psion",
-        "data/rules/trhgd-character-v24.json#classes/psion",
+        "data/rules/trhgd-character-v25.json#classes/psion",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/mechanics",
         "tests/psychic_parity/mechanics.gd",
         "tests/psychic_parity/input.gd",
         "tests/psychic_parity/journey.gd",
         "tests/psychic_parity/connected.gd",
-        "docs/implementation/game152/evidence/screenshots.json"
+        "docs/implementation/game152/evidence/screenshots.json",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-psychic"
       ],
       "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/psion",
-      "verified_source": "46eaaa6608810c124aaa89e2547d326fc8995896",
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/psion",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "acceptance_sources": {
-        "current": "Matching v24 mechanics native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-psychic native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
@@ -8278,19 +8285,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/psychic-warrior",
-        "data/rules/trhgd-character-v24.json#classes/psychic-warrior"
+        "data/rules/trhgd-character-v25.json#classes/psychic-warrior"
       ],
       "remaining": [
         "Audit manifested strikes versus physical augmentations and natural forms, including independent multiclass power reserves."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/psychic-warrior"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/psychic-warrior"
     },
     {
       "id": "soulknife",
@@ -8413,27 +8420,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/soulknife",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/class_signatures/mechanics_driver.gd",
-        "data/rules/trhgd-character-v24.json#classes/soulknife",
+        "data/rules/trhgd-character-v25.json#classes/soulknife",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-signatures",
-        "tests/psychic_parity/current_signatures.gd"
+        "tests/psychic_parity/current_signatures.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-signatures"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-signatures native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-signatures native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/soulknife"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/soulknife"
     },
     {
       "id": "warlock",
@@ -8542,28 +8550,29 @@
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/supernatural_signatures/mechanics.gd",
         "docs/implementation/game148/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/warlock",
+        "data/rules/trhgd-character-v25.json#classes/warlock",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-supernatural",
-        "tests/psychic_parity/current_supernatural.gd"
+        "tests/psychic_parity/current_supernatural.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-supernatural"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-supernatural native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-supernatural native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/warlock"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/warlock"
     },
     {
       "id": "scout",
@@ -8696,27 +8705,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/scout",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
-        "data/rules/trhgd-character-v24.json#classes/scout",
+        "data/rules/trhgd-character-v25.json#classes/scout",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/scout"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/scout"
     },
     {
       "id": "swashbuckler",
@@ -8848,28 +8858,29 @@
         "docs/implementation/game126/current/MATRIX.json#classes/swashbuckler",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
-        "data/rules/trhgd-character-v24.json#classes/swashbuckler",
+        "data/rules/trhgd-character-v25.json#classes/swashbuckler",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Travel Blade/light armour fencing; hit-conditioned control/parry. No general disarm engine or sourcebook panache conversion."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/swashbuckler"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/swashbuckler"
     },
     {
       "id": "knight",
@@ -9002,28 +9013,29 @@
         "docs/implementation/game126/current/MATRIX.json#classes/knight",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/mobile_precision/mechanics.gd",
-        "data/rules/trhgd-character-v24.json#classes/knight",
+        "data/rules/trhgd-character-v25.json#classes/knight",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-mobile",
-        "tests/psychic_parity/current_mobile.gd"
+        "tests/psychic_parity/current_mobile.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-mobile"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Protection is adjacent Guarding with a shared reaction; challenge weakens an enemy. No forced AI targeting is advertised or required."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-mobile native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-mobile native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/knight"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/knight"
     },
     {
       "id": "warblade",
@@ -9147,27 +9159,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/warblade",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/class_signatures/mechanics_driver.gd",
-        "data/rules/trhgd-character-v24.json#classes/warblade",
+        "data/rules/trhgd-character-v25.json#classes/warblade",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-signatures",
-        "tests/psychic_parity/current_signatures.gd"
+        "tests/psychic_parity/current_signatures.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-signatures"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-signatures native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-signatures native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/warblade"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/warblade"
     },
     {
       "id": "shadowdancer",
@@ -9291,19 +9304,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/shadowdancer",
-        "data/rules/trhgd-character-v24.json#classes/shadowdancer"
+        "data/rules/trhgd-character-v25.json#classes/shadowdancer"
       ],
       "remaining": [
         "Verify maintained concealment, disruption and resource expiry; do not imply unimplemented teleportation/world stealth."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "dragon-disciple",
@@ -9431,19 +9444,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/dragon-disciple",
-        "data/rules/trhgd-character-v24.json#classes/dragon-disciple"
+        "data/rules/trhgd-character-v25.json#classes/dragon-disciple"
       ],
       "remaining": [
         "Verify inherited/body/natural-weapon progression with armour suppression and existing transformations."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "dwarven-defender",
@@ -9566,19 +9579,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/dwarven-defender",
-        "data/rules/trhgd-character-v24.json#classes/dwarven-defender"
+        "data/rules/trhgd-character-v25.json#classes/dwarven-defender"
       ],
       "remaining": [
         "Verify actual defensive stance, movement trade-offs and shared protection in native encounters."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "pyrokineticist",
@@ -9677,19 +9690,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/pyrokineticist",
-        "data/rules/trhgd-character-v24.json#classes/pyrokineticist"
+        "data/rules/trhgd-character-v25.json#classes/pyrokineticist"
       ],
       "remaining": [
         "Verify fire riders/resistances and psychic resource interaction across all supported path levels."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "crusader",
@@ -9811,27 +9824,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/crusader",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/class_signatures/mechanics_driver.gd",
-        "data/rules/trhgd-character-v24.json#classes/crusader",
+        "data/rules/trhgd-character-v25.json#classes/crusader",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-signatures",
-        "tests/psychic_parity/current_signatures.gd"
+        "tests/psychic_parity/current_signatures.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-signatures"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-signatures native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-signatures native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/crusader"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/crusader"
     },
     {
       "id": "swordsage",
@@ -9958,27 +9972,28 @@
         "docs/implementation/game126/current/MATRIX.json#classes/swordsage",
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/class_signatures/mechanics_driver.gd",
-        "data/rules/trhgd-character-v24.json#classes/swordsage",
+        "data/rules/trhgd-character-v25.json#classes/swordsage",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-signatures",
-        "tests/psychic_parity/current_signatures.gd"
+        "tests/psychic_parity/current_signatures.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-signatures"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-signatures native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-signatures native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/swordsage"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/swordsage"
     },
     {
       "id": "wilder",
@@ -10449,27 +10464,28 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/wilder",
-        "data/rules/trhgd-character-v24.json#classes/wilder",
+        "data/rules/trhgd-character-v25.json#classes/wilder",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/mechanics",
         "tests/psychic_parity/mechanics.gd",
         "tests/psychic_parity/input.gd",
         "tests/psychic_parity/journey.gd",
         "tests/psychic_parity/connected.gd",
-        "docs/implementation/game152/evidence/screenshots.json"
+        "docs/implementation/game152/evidence/screenshots.json",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-psychic"
       ],
       "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/wilder",
-      "verified_source": "46eaaa6608810c124aaa89e2547d326fc8995896",
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/wilder",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "acceptance_sources": {
-        "current": "Matching v24 mechanics native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-psychic native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
@@ -10610,28 +10626,29 @@
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/supernatural_signatures/mechanics.gd",
         "docs/implementation/game148/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/binder",
+        "data/rules/trhgd-character-v25.json#classes/binder",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-supernatural",
-        "tests/psychic_parity/current_supernatural.gd"
+        "tests/psychic_parity/current_supernatural.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-supernatural"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-supernatural native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-supernatural native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/binder"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/binder"
     },
     {
       "id": "warshaper",
@@ -10755,19 +10772,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/warshaper",
-        "data/rules/trhgd-character-v24.json#classes/warshaper"
+        "data/rules/trhgd-character-v25.json#classes/warshaper"
       ],
       "remaining": [
         "Verify form-dependent benefits, natural weapon reach and reversion/equipment restoration."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "bonded-summoner",
@@ -10905,27 +10922,27 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/bonded-summoner",
-        "data/rules/trhgd-character-v24.json#classes/bonded-summoner"
+        "data/rules/trhgd-character-v25.json#classes/bonded-summoner"
       ],
       "remaining": [
         "Verify actual owned summon growth/action/duration/duplication limits beyond catalogue definitions."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "ardent",
       "name": "Ardent",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original psychic identity: permanent choices, meaningful legal power/veil/ambush/identity use, resources and counterplay, actual production controls, lawful advancement and exact cold persistence; human balance/readability separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -10939,7 +10956,13 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          4,
+          8,
+          15,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -11184,8 +11207,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Development1/4/8/15/20, separately three actual490XP/level8 careers and saved generated encounter. No earned20 claim."
       },
       "resources": [
         {
@@ -11365,7 +11388,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -11385,27 +11408,40 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/ardent",
-        "data/rules/trhgd-character-v24.json#classes/ardent"
+        "data/rules/trhgd-character-v25.json#classes/ardent",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/mechanics",
+        "tests/psychic_identities/input.gd",
+        "tests/psychic_identities/journey.gd",
+        "tests/psychic_identities/connected.gd",
+        "docs/implementation/game127/evidence/screenshots.json"
       ],
-      "remaining": [
-        "Mantles/power eligibility are implemented; verify all advertised mantle restrictions in actual native advancement/UI and multi-manifester builds."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/ardent"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/ardent",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
+      "acceptance_sources": {
+        "current": "Fresh matching-source v25 mechanics native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
+      },
+      "limitations": [
+        "Original finite shared manifesting pool, not complete tabletop conversion.",
+        "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
+        "Human Windows balance/readability acceptance remains pending."
+      ]
     },
     {
       "id": "lurk",
       "name": "Lurk",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original psychic identity: permanent choices, meaningful legal power/veil/ambush/identity use, resources and counterplay, actual production controls, lawful advancement and exact cold persistence; human balance/readability separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -11419,7 +11455,13 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          4,
+          8,
+          15,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -11662,8 +11704,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Development1/4/8/15/20, separately three actual490XP/level8 careers and saved generated encounter. No earned20 claim."
       },
       "resources": [
         {
@@ -11864,7 +11906,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -11884,19 +11926,32 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/lurk",
-        "data/rules/trhgd-character-v24.json#classes/lurk"
+        "data/rules/trhgd-character-v25.json#classes/lurk",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/mechanics",
+        "tests/psychic_identities/input.gd",
+        "tests/psychic_identities/journey.gd",
+        "tests/psychic_identities/connected.gd",
+        "docs/implementation/game127/evidence/screenshots.json"
       ],
-      "remaining": [
-        "Verify veil then melee ambush across hit/miss/visibility and resource exhaustion at representative levels; do not imply a general stealth engine."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/lurk"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/lurk",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
+      "acceptance_sources": {
+        "current": "Fresh matching-source v25 mechanics native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
+      },
+      "limitations": [
+        "Original finite shared manifesting pool, not complete tabletop conversion.",
+        "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
+        "Human Windows balance/readability acceptance remains pending."
+      ]
     },
     {
       "id": "cerebremancer",
@@ -12373,27 +12428,28 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/cerebremancer",
-        "data/rules/trhgd-character-v24.json#classes/cerebremancer",
+        "data/rules/trhgd-character-v25.json#classes/cerebremancer",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/mechanics",
         "tests/psychic_parity/mechanics.gd",
         "tests/psychic_parity/input.gd",
         "tests/psychic_parity/journey.gd",
         "tests/psychic_parity/connected.gd",
-        "docs/implementation/game152/evidence/screenshots.json"
+        "docs/implementation/game152/evidence/screenshots.json",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-psychic"
       ],
       "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence.",
-      "verified_source": "46eaaa6608810c124aaa89e2547d326fc8995896",
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs.",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "acceptance_sources": {
-        "current": "Matching v24 mechanics native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-psychic native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
@@ -12535,27 +12591,27 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/beast-steward",
-        "data/rules/trhgd-character-v24.json#classes/beast-steward"
+        "data/rules/trhgd-character-v25.json#classes/beast-steward"
       ],
       "remaining": [
         "Verify owned companion growth/special actions, owner defeat and permanent identity across an earned path."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "erudite",
       "name": "Erudite",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original psychic identity: permanent choices, meaningful legal power/veil/ambush/identity use, resources and counterplay, actual production controls, lawful advancement and exact cold persistence; human balance/readability separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -12569,7 +12625,13 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          4,
+          8,
+          15,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -12799,8 +12861,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Development1/4/8/15/20, separately three actual490XP/level8 careers and saved generated encounter. No earned20 claim."
       },
       "resources": [
         {
@@ -12983,7 +13045,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -13003,19 +13065,32 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/erudite",
-        "data/rules/trhgd-character-v24.json#classes/erudite"
+        "data/rules/trhgd-character-v25.json#classes/erudite",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/mechanics",
+        "tests/psychic_identities/input.gd",
+        "tests/psychic_identities/journey.gd",
+        "tests/psychic_identities/connected.gd",
+        "docs/implementation/game127/evidence/screenshots.json"
       ],
-      "remaining": [
-        "Verify distinct-per-rest limit with augmented/repeated identities, cold restart and production selector at representative levels."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/erudite"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/erudite",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
+      "acceptance_sources": {
+        "current": "Fresh matching-source v25 mechanics native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
+      },
+      "limitations": [
+        "Original finite shared manifesting pool, not complete tabletop conversion.",
+        "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
+        "Human Windows balance/readability acceptance remains pending."
+      ]
     },
     {
       "id": "divine-mind",
@@ -13526,19 +13601,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/divine-mind",
-        "data/rules/trhgd-character-v24.json#classes/divine-mind"
+        "data/rules/trhgd-character-v25.json#classes/divine-mind"
       ],
       "remaining": [
         "Verify aura source, range, refresh, incapacitation and psychic casting interactions, not just derived ally bonuses."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/divine-mind"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/divine-mind"
     },
     {
       "id": "marshal",
@@ -13693,7 +13768,7 @@
         "docs/implementation/game146/evidence/historical-aura-readiness-review.json",
         "docs/implementation/game146/evidence/historical-aura-native-proof.json",
         "docs/implementation/game146/evidence/historical-aura-earned-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/marshal",
+        "data/rules/trhgd-character-v25.json#classes/marshal",
         "docs/implementation/game152/evidence/aura-reuse-review.json"
       ],
       "remaining": [],
@@ -13703,16 +13778,17 @@
         "No fresh targeted v24 aura encounter; only unchanged historical portions are reused, with the changed generic Weakened consumer separately native-tested."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/marshal",
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/marshal",
       "acceptance_sources": {
         "current": "v24 kernel/cold audit where applicable; fresh generic Weakened damage/expiry consumer if referenced.",
-        "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json."
+        "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json.",
+        "v25_reuse": "Unchanged class/referenced data and exact aura projection versus v24; fresh current-psychic Weakened consumer and all-base audit. No new targeted aura encounter claimed."
       }
     },
     {
@@ -14189,19 +14265,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/cognition-adept",
-        "data/rules/trhgd-character-v24.json#classes/cognition-adept"
+        "data/rules/trhgd-character-v25.json#classes/cognition-adept"
       ],
       "remaining": [
         "Verify chosen psychic identities/augmentation and actual advanced path powers, not just resource scaling."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "beguiler",
@@ -14797,28 +14873,29 @@
         "tests/performance_spirit/journey.gd",
         "tests/performance_spirit/connected.gd",
         "docs/implementation/game149/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/beguiler",
+        "data/rules/trhgd-character-v25.json#classes/beguiler",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-performance",
-        "tests/psychic_parity/current_performance.gd"
+        "tests/psychic_parity/current_performance.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-performance"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded song/illusion/spirit adaptation; no world illusion engine, dialogue or exhaustive sourcebook powers. Human visual/balance review remains separate."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-performance native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-performance native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/beguiler"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/beguiler"
     },
     {
       "id": "dragonfire-adept",
@@ -14981,28 +15058,29 @@
         "docs/implementation/game150/evidence/final-distribution-proof.json",
         "tests/supernatural_signatures/mechanics.gd",
         "docs/implementation/game148/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/dragonfire-adept",
+        "data/rules/trhgd-character-v25.json#classes/dragonfire-adept",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-supernatural",
-        "tests/psychic_parity/current_supernatural.gd"
+        "tests/psychic_parity/current_supernatural.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-supernatural"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded invocations/covenants and enemy/ally-centred radius breath. No general stealth/world pacts, daily rebinding, cones or flight."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-supernatural native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-supernatural native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/dragonfire-adept"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/dragonfire-adept"
     },
     {
       "id": "war-chanter",
@@ -15159,7 +15237,7 @@
         "docs/implementation/game146/evidence/historical-aura-readiness-review.json",
         "docs/implementation/game146/evidence/historical-aura-native-proof.json",
         "docs/implementation/game146/evidence/historical-aura-earned-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/war-chanter",
+        "data/rules/trhgd-character-v25.json#classes/war-chanter",
         "docs/implementation/game152/evidence/aura-reuse-review.json"
       ],
       "remaining": [],
@@ -15169,16 +15247,17 @@
         "No fresh targeted v24 aura encounter; only unchanged historical portions are reused, with the changed generic Weakened consumer separately native-tested."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence.",
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs.",
       "acceptance_sources": {
         "current": "v24 kernel/cold audit where applicable; fresh generic Weakened damage/expiry consumer if referenced.",
-        "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json."
+        "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json.",
+        "v25_reuse": "Unchanged class/referenced data and exact aura projection versus v24; fresh current-psychic Weakened consumer and all-base audit. No new targeted aura encounter claimed."
       }
     },
     {
@@ -15324,19 +15403,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/archmage",
-        "data/rules/trhgd-character-v24.json#classes/archmage"
+        "data/rules/trhgd-character-v25.json#classes/archmage"
       ],
       "remaining": [
         "Verify permanent selected spell-tier prerequisites and each advanced spell option in native battle."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "metamind",
@@ -15835,19 +15914,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/metamind",
-        "data/rules/trhgd-character-v24.json#classes/metamind"
+        "data/rules/trhgd-character-v25.json#classes/metamind"
       ],
       "remaining": [
         "Verify finite reclaim reserve and no-rest bypass across cold process restart and earned path combat."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "duskblade",
@@ -16229,19 +16308,19 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/duskblade",
-        "data/rules/trhgd-character-v24.json#classes/duskblade"
+        "data/rules/trhgd-character-v25.json#classes/duskblade"
       ],
       "remaining": [
         "Hit-conditioned channeling is implemented; audit the full eligible spell cohort and late slot/channel combinations in production controls."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/duskblade"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/duskblade"
     },
     {
       "id": "spirit-shaman",
@@ -16896,28 +16975,29 @@
         "tests/performance_spirit/journey.gd",
         "tests/performance_spirit/connected.gd",
         "docs/implementation/game149/evidence/final-distribution-proof.json",
-        "data/rules/trhgd-character-v24.json#classes/spirit-shaman",
+        "data/rules/trhgd-character-v25.json#classes/spirit-shaman",
         "docs/implementation/game152/evidence/final-distribution-proof.json#proofs/current-performance",
-        "tests/psychic_parity/current_performance.gd"
+        "tests/psychic_parity/current_performance.gd",
+        "docs/implementation/game127/evidence/native-proof.json#proofs/current-performance"
       ],
       "remaining": [],
-      "verified_source": "59f1b20b8bbb2a4a7029ee71b10190e774b9ed74",
+      "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
       "limitations": [
         "Scoped original adaptation; final human balance/readability acceptance remains separate. No exhaustive tabletop ability catalogue is claimed.",
         "Original bounded song/illusion/spirit adaptation; no world illusion engine, dialogue or exhaustive sourcebook powers. Human visual/balance review remains separate."
       ],
       "acceptance_sources": {
-        "current": "Matching v24 current-performance native tactics and exact cold replay; all-base legal1\u201320 audit.",
-        "reused": "Previous source-labelled earned/GUI evidence for unchanged class definitions; fresh GUI targets psychic/prepared/performance cohorts. No claim every historical control permutation was recaptured."
+        "current": "Fresh matching-source v25 current-performance native tactics and exact cold replay, plus all-base legal1\u201320 native audit.",
+        "reused": "Prior source-labelled GUI/earned acceptance only where unchanged. This wave freshly captures Ardent/Lurk/Erudite plus inherited prepared/performance native controls; not every historical UI permutation."
       },
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "docs/implementation/game152/evidence/current-native-witnesses.json#classes/spirit-shaman"
+      "current_kernel_evidence": "docs/implementation/game127/evidence/current-native-witnesses.json#classes/spirit-shaman"
     },
     {
       "id": "abjurant-champion",
@@ -17052,19 +17132,19 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/abjurant-champion",
-        "data/rules/trhgd-character-v24.json#classes/abjurant-champion"
+        "data/rules/trhgd-character-v25.json#classes/abjurant-champion"
       ],
       "remaining": [
         "Verify channel/ward interactions on real hit/miss and independent spell-resource exhaustion."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     },
     {
       "id": "grove-warden",
@@ -17191,28 +17271,25 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/grove-warden",
-        "data/rules/trhgd-character-v24.json#classes/grove-warden"
+        "data/rules/trhgd-character-v25.json#classes/grove-warden"
       ],
       "remaining": [
         "Verify owned creatures/forms/rest retrieval with actual path benefits; no unsupported terrain engine."
       ],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v23",
+        "pack_id": "trhgd-character-v24",
         "schema_version": 1,
-        "rules_version": "23.0.0",
+        "rules_version": "24.0.0",
         "engine_schema": 3,
-        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd"
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de"
       },
-      "current_kernel_evidence": "Inherited prerequisite/history evidence remains explicitly pinned; only targeted paths gain current tactical evidence."
+      "current_kernel_evidence": "Inherited exact prerequisite/history evidence remains labelled; supported targeted paths also have current tactical/cold proofs."
     }
   ],
   "repair_queue": [
     {
       "cohort": [
         "psychic-warrior",
-        "ardent",
-        "lurk",
-        "erudite",
         "divine-mind",
         "cognition-adept",
         "metamind",
@@ -17266,6 +17343,6 @@
   "milestone_complete": false,
   "programme_source_occurrences": 760,
   "world_transition": "GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.",
-  "verified_source": "46eaaa6608810c124aaa89e2547d326fc8995896",
+  "verified_source": "a4ac918a18ed58b9e53e86fe6bcd62824cdf567d",
   "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141."
 }

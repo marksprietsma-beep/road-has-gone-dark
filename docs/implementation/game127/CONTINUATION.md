@@ -1,0 +1,17 @@
+# GAME-127 — verified delivery and integration checkpoint
+
+Do not restart this implementation or run another complete release without a demonstrated runtime change/failure.
+
+Existing branch: `feature/game-127-psychic-identity-parity`. Existing PR: [#145](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/145), targeting main. Baseline main `e96c235c6dfe244801b9d4ef09d8dcfd929f0e2f`. Complete tested/package source **`a4ac918a18ed58b9e53e86fe6bcd62824cdf567d`**; subsequent delivery changes contain documentation, original screenshots and generated readiness/evidence only.
+
+The complete Windows native run [39744145580](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39744145580) **succeeded**. Full receipts and timings are committed under `evidence/`. Native acceptance: 1,015 mechanics, 102 exact cold, 147 actual controls, 617/8 earned campaign/cold, 34/133 connected combat/cold, 35 capture checks and 23 original PNGs, all zero failures. Current inherited consumers, historical v24/v23/v13 and v16 compatibility, all-base legal tracks and the 22,181-assertion frozen GAME-32 oracle also passed. Every native phase belongs to the actual delivered source, not an old receipt substituted for a changed rules engine.
+
+Self-contained Windows artifact [12412669328](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/39744145580/artifacts/12412669328). Inner ZIP SHA-256 `083bb82f6018f00ff6985064cfe51f187a5d411e6b8383891e4857bb8b7a254c`. Independent archive/source/PE audit passed. Raw local downloads are retained in `/workspace/scratch/game127/native-final` and `/workspace/scratch/game127/package-final`; recovery notes are in `/workspace/scratch/game127/RECOVERY.md`.
+
+Exactly two defects were fixed: v25's Lurk ambush obeys explicit adjacent/melee restrictions while ordinary reach remains; Erudite buttons/target feedback reflect the existing distinct-access authority, including historically pinned campaigns. Original direct psychic damage before the separately rolled weapon attack is retained. Ardent's existing system was verified, not replaced. All 24 historical pack bytes/pins and the roster remain unchanged. Default fresh content is v25; old saves are never repinned.
+
+The native-gated readiness generator completed: **26 COMPLETE / 24 PARTIAL / 0 BLOCKED**, 50 careers, no roster expansion. Three actual careers earned 490 XP / level 8; level-20 histories/renders remain labelled development fixtures. Original pre-fix reproduction remains at d5a611d / run 39739126204; current historical continuation proves preserved old mechanics and corrected display. Earlier invalid reproduction fixtures are retained transparently in history, not counted as production defects.
+
+Final publication is tracked live on PR145 and GitHub101. On recovery, inspect the actual current PR/main/CI before any action: if not already merged, verify delivery-only runtime equivalence and current-head required checks, mark the existing draft ready and merge normally when green. Then verify all post-merge main Windows workflows. If already merged and green, do not repeat publication or successful expensive tests. Record actual merge/main SHA and final outcomes in the PR/issue ledger and final report. Keep GitHub101/GAME-123 open; use NEXT-WAVE.md's finite 24-career queue. No next cohort or world work is authorized here.
+
+No callable Linear connector exists in this session. Do not claim a direct Linear write. GitHub tracking and committed records carry verified status.
