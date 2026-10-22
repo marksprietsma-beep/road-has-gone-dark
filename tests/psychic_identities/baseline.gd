@@ -18,7 +18,9 @@ func run() -> void:
  var b := encounter(veiled.actor);var engine := TacticalAuras.new(lurk)
  b.units.a.weapon="shortblade";b.units.a.record.equipment=["shortblade"]
  b.units["bandit-blade"].position=[3,1];b=engine.seal(b)
- check(engine.validate(b).is_empty(),"legal inherited-reach fixture: "+engine.validate(b)+"")
+ var diagnoses := {}
+ for id in b.units:diagnoses[id]={"record":kernel.validate_build(b.units[id].record),"weapon":b.units[id].weapon,"position":b.units[id].position,"id":b.units[id].record.character_id}
+ check(engine.validate(b).is_empty(),"legal inherited-reach fixture: "+engine.validate(b)+JSON.stringify(diagnoses))
  var ranged := command(engine,b,"lurk-psychic-ambush")
  check(ranged.ok,"REPRODUCTION: adjacent ambush incorrectly inherits two-tile ancestry reach")
  var erudite := build("erudite",["erudite"],PSI,{"erudite-power-1":"power-kinetic-bolt","erudite-second-power":"power-force-screen"})
