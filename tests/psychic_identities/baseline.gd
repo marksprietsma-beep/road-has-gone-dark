@@ -17,7 +17,7 @@ func run() -> void:
  if not veiled.ok:finish_baseline();return
  var b := encounter(veiled.actor);var engine := TacticalAuras.new(lurk)
  b.units.a.weapon="shortblade";b.units.a.record.equipment=["shortblade"]
- b.units["bandit-blade"].position=[1,3];b.units.b.position=[0,3];b=engine.seal(b)
+ b.units["bandit-blade"].position=[2,2];b=engine.seal(b)
  var diagnoses := {}
  for id in b.units:diagnoses[id]={"record":kernel.validate_build(b.units[id].record),"weapon":b.units[id].weapon,"position":b.units[id].position,"id":b.units[id].record.character_id}
  check(engine.validate(b).is_empty(),"legal inherited-reach fixture: "+engine.validate(b)+JSON.stringify(diagnoses))
