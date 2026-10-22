@@ -1,0 +1,50 @@
+name: GAME-127 Psychic Identity Acceptance
+on:
+  push:
+    branches: [feature/game-127-psychic-identity-parity, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_identities/**', '.github/workflows/verify-psychic-identities.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_identities/**', '.github/workflows/verify-psychic-identities.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # complete history required by exact native-release source comparison
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game127-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game127-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Reproductions and focused identity contracts
+        env:
+          GAME127_ROOT: ${{ runner.temp }}/game127-focused
+        run: python tests/psychic_identities/run-focused.py
+      - name: Preserve Windows diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game127-focused-windows
+          path: |
+            ${{ runner.temp }}/game127-focused/**
+            ${{ runner.temp }}/game127-import.log
+          retention-days: 90
