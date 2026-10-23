@@ -1,0 +1,338 @@
+[
+  {
+    "phase": "baseline",
+    "cold": false,
+    "seconds": 8.672,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics",
+    "cold": false,
+    "seconds": 140.281,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics",
+    "cold": true,
+    "seconds": 11.031,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "input",
+    "cold": false,
+    "seconds": 22.063,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "journey",
+    "cold": false,
+    "seconds": 502.437,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "journey",
+    "cold": true,
+    "seconds": 5.829,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "connected",
+    "cold": false,
+    "seconds": 59.781,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "connected",
+    "cold": true,
+    "seconds": 85.672,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "capture",
+    "cold": false,
+    "seconds": 62.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-upper",
+    "cold": false,
+    "seconds": 179.75,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-upper",
+    "cold": true,
+    "seconds": 8.437,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-upper-input",
+    "cold": false,
+    "seconds": 6.813,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-performance",
+    "cold": false,
+    "seconds": 123.781,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-performance",
+    "cold": true,
+    "seconds": 7.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-performance-input",
+    "cold": false,
+    "seconds": 3.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-supernatural",
+    "cold": false,
+    "seconds": 64.828,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-supernatural",
+    "cold": true,
+    "seconds": 7.234,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-signatures",
+    "cold": false,
+    "seconds": 69.922,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-signatures",
+    "cold": true,
+    "seconds": 4.813,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-mobile",
+    "cold": false,
+    "seconds": 54.578,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-mobile",
+    "cold": true,
+    "seconds": 4.406,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-psychic",
+    "cold": false,
+    "seconds": 44.547,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-psychic",
+    "cold": true,
+    "seconds": 6.031,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-identities",
+    "cold": false,
+    "seconds": 86.907,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-identities",
+    "cold": true,
+    "seconds": 8.218,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "current-identities-input",
+    "cold": false,
+    "seconds": 22.469,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical25",
+    "cold": false,
+    "seconds": 79.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical25",
+    "cold": true,
+    "seconds": 8.016,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical25-input",
+    "cold": false,
+    "seconds": 21.875,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical24",
+    "cold": false,
+    "seconds": 41.922,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical24",
+    "cold": true,
+    "seconds": 5.609,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical24-input",
+    "cold": false,
+    "seconds": 19.469,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical23",
+    "cold": false,
+    "seconds": 165.281,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical23",
+    "cold": true,
+    "seconds": 7.828,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical13",
+    "cold": false,
+    "seconds": 151.047,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "historical13",
+    "cold": true,
+    "seconds": 1.203,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "legacy",
+    "cold": false,
+    "seconds": 12.25,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "legacy",
+    "cold": true,
+    "seconds": 1.797,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "compatibility",
+    "cold": false,
+    "seconds": 100.5,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "compatibility",
+    "cold": true,
+    "seconds": 56.375,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "audit",
+    "cold": false,
+    "seconds": 892.781,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "audit",
+    "cold": true,
+    "seconds": 7.422,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+]

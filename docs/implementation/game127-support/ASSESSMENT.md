@@ -9,3 +9,7 @@ Append26 only if the Cognition targeting defect is confirmed. Preserve every1–
 Linear has no callable tool in this session. GitHub101 and committed records remain the auditable GAME123 ledger; do not claim a direct Linear update.
 
 Native Windows run39875760460 at a04042b confirmed86 checks, zero failures: valid Ogre Cognition strike accepted at distance2; ordinary range2; v25 Lurk backend rejected distance2 while its actual control advertised range2. Exact proof/source is retained in evidence/v25-reproduction.json. Append26 restricts only five Cognition strike definitions; the original direct psychic effect before the separate weapon roll is preserved. Shared caption now respects existing adjacent descriptors, including historical25 Lurk; no historical command semantics change.
+
+## Final acceptance
+
+The single full native Windows release39882645495 passed at exact e65d098 source. Matching raw receipts, original PNGs, earned490XP/total8 journeys, current/historical cold continuation and archive/source guards now support promotion of this cohort to bounded technical COMPLETE. The guarded50-career matrix is29 COMPLETE/21 PARTIAL/0 BLOCKED. See DELIVERY.md for actual counts/scopes; human playtest acceptance remains separate. No additional mechanics or cohort were introduced during recovery. Final merge/post-main status is recorded on PR146 and open GitHub101.
