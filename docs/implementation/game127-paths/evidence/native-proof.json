@@ -1,0 +1,2430 @@
+{
+  "acceptance_cohort": "metamind-pyrokineticist",
+  "source_commit": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v26",
+    "schema_version": 1,
+    "rules_version": "26.0.0",
+    "engine_schema": 3,
+    "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+  },
+  "archive": "game127-advanced-psychic-paths-windows-x64.zip",
+  "sha256": "d3b931a11c74efea668ce244f94352cdada53a93e04eba76778cd3aced00ae72",
+  "proofs": {
+    "mechanics/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1130,
+      "classes": [
+        "metamind",
+        "pyrokineticist"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "metamind0": {
+          "capacities": {
+            "psychic-points": 26
+          },
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 0
+        },
+        "metamind1": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 29
+          },
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 1
+        },
+        "metamind10": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 42
+          },
+          "history": 18,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 10
+        },
+        "metamind2": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 30
+          },
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 2
+        },
+        "metamind3": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 31
+          },
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 3
+        },
+        "metamind4": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 32
+          },
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 4
+        },
+        "metamind5": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 35
+          },
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 5
+        },
+        "metamind6": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 36
+          },
+          "history": 14,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 6
+        },
+        "metamind7": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 37
+          },
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 7
+        },
+        "metamind8": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 38
+          },
+          "history": 16,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 8
+        },
+        "metamind9": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 39
+          },
+          "history": 17,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 9
+        },
+        "pyrokineticist0": {
+          "capacities": {
+            "psychic-points": 12
+          },
+          "history": 5,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 0
+        },
+        "pyrokineticist1": {
+          "capacities": {
+            "psychic-points": 13
+          },
+          "history": 6,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 1
+        },
+        "pyrokineticist10": {
+          "capacities": {
+            "psychic-points": 22
+          },
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 10
+        },
+        "pyrokineticist2": {
+          "capacities": {
+            "psychic-points": 14
+          },
+          "history": 7,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 2
+        },
+        "pyrokineticist3": {
+          "capacities": {
+            "psychic-points": 15
+          },
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 3
+        },
+        "pyrokineticist4": {
+          "capacities": {
+            "psychic-points": 16
+          },
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 4
+        },
+        "pyrokineticist5": {
+          "capacities": {
+            "psychic-points": 17
+          },
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 5
+        },
+        "pyrokineticist6": {
+          "capacities": {
+            "psychic-points": 18
+          },
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 6
+        },
+        "pyrokineticist7": {
+          "capacities": {
+            "psychic-points": 19
+          },
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 7
+        },
+        "pyrokineticist8": {
+          "capacities": {
+            "psychic-points": 20
+          },
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 8
+        },
+        "pyrokineticist9": {
+          "capacities": {
+            "psychic-points": 21
+          },
+          "history": 14,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 9
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "arcane_reclaim": {
+          "points_after": 14,
+          "wizard_slot_after": 0
+        },
+        "counterplay": {
+          "actual_fire_resistance": 8,
+          "elemental_immunity_claimed": false,
+          "weakened_immunity": true
+        },
+        "fire": {
+          "1": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist1",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 14,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 7,
+                "base": 5,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 7,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 7,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist1",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 14,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 7,
+                "base": 5,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 3,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 3
+          },
+          "10": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist10",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 20,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 28,
+                "base": 26,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 28,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 28,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist10",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 20,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 28,
+                "base": 26,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 14,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 14
+          },
+          "4": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist4",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 16,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 13,
+                "base": 11,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 13,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 13,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist4",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 16,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 13,
+                "base": 11,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 6,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 6
+          },
+          "7": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist7",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 18,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 21,
+                "base": 19,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 21,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 21,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist7",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 18,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 21,
+                "base": 19,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 10,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 10
+          }
+        },
+        "origins": {
+          "power-body-renewal": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-burst-step": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-force-screen": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-keen-mind": {
+            "attribute": "INT",
+            "class_id": "metamind",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power-kinetic-bolt": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-thought-fog": {
+            "attribute": "INT",
+            "class_id": "metamind",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power-thought-thrust": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          }
+        },
+        "owning_class_casts": {
+          "metamind": {
+            "attribute": "INT",
+            "dc": 12,
+            "power": "power-thought-fog"
+          },
+          "wilder": {
+            "attribute": "CHA",
+            "dc": 14,
+            "power": "power-thought-thrust"
+          }
+        },
+        "reserve": {
+          "1": {
+            "cap": 29,
+            "restores": 5,
+            "uses": 1
+          },
+          "10": {
+            "cap": 42,
+            "restores": 14,
+            "uses": 3
+          },
+          "4": {
+            "cap": 32,
+            "restores": 8,
+            "uses": 2
+          },
+          "5": {
+            "cap": 35,
+            "restores": 9,
+            "uses": 2
+          },
+          "8": {
+            "cap": 38,
+            "restores": 12,
+            "uses": 3
+          }
+        },
+        "tactical": {
+          "metamind": true,
+          "pyrokineticist": true
+        }
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 129,
+      "classes": [
+        "metamind",
+        "pyrokineticist"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "journey/proof.json": {
+      "checks": 989.0,
+      "combat_actions": {},
+      "earned_entries": {
+        "metamind": {
+          "character_id": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "earned_xp": 640,
+          "fixture": false,
+          "member": 0,
+          "next_level": 9,
+          "save_root": "D:\\a\\_temp\\psychic-paths-native\\journeys/cohort-0/entry-metamind/saves",
+          "state_hash": "5f3b23943e67f6d53b00071025627f8a853514a2b83c976b084db6fdb0cb6075"
+        },
+        "pyrokineticist": {
+          "character_id": "7677aac98e613660d4d14b0f35a50205:adventurer:2",
+          "earned_xp": 250,
+          "fixture": false,
+          "member": 1,
+          "next_level": 6,
+          "save_root": "D:\\a\\_temp\\psychic-paths-native\\journeys/cohort-0/entry-pyrokineticist/saves",
+          "state_hash": "57392c95dc29a2781159ccae96204a715b3fed1f1ddfd08cf4b29f26f3fd6416"
+        }
+      },
+      "earned_xp": 810.0,
+      "failed_check": {
+        "choice": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:2:athletics",
+        "hash": "5916ef4c72ff27cb99c4c6251cc4844104c2568defc6eb6f77ef02d39b5f1347",
+        "xp": 0.0
+      },
+      "failures": 0.0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "expanded-psychic-reserve",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-discipline": "assault",
+                "psion-power-1": "power-kinetic-bolt",
+                "psion-second-power": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-2": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "deep-reserve",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-4": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-6": "power-burst-step"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-8": "power-thought-fog"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "metamind",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "perception": 5.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "metamind-discipline-1": "reserve",
+                "metamind-power-1": "power-mind-lock"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "metamind",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "perception": 5.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "7677aac98e613660d4d14b0f35a50205:adventurer:2",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-discipline": "assault",
+                "psion-power-1": "power-kinetic-bolt",
+                "psion-second-power": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-2": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-4": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "pyrokineticist",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "stealth": 6.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "pyrokineticist",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 2.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "pyrokineticist",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 3.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "pyrokineticist",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "insight": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "pyrokineticist",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "7677aac98e613660d4d14b0f35a50205:adventurer:3",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-discipline": "assault",
+                "psion-power-1": "power-kinetic-bolt",
+                "psion-second-power": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-2": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-4": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-6": "power-burst-step"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 2.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-8": "power-thought-fog"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "psion-power-10": "power-keen-mind"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1.0
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 19 + 10 vs DC 21 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +10 vs DC 21 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:animal-handling",
+          "information": "Animal Handling check: 14 + 8 vs DC 18 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Arin0: Animal Handling +8 vs DC 18 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:animal-handling",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:arcana",
+          "information": "Arcana check: 19 + 14 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +14 vs DC 19",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:athletics",
+          "information": "Athletics check: 17 + 7 vs DC 21 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Arin0: Athletics +7 vs DC 21 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:craft",
+          "information": "Craft check: 17 + 9 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Craft +9 vs DC 19",
+          "outcome": "recovered",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:craft",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:insight",
+          "information": "Insight check: 8 + 12 vs DC 18 \u00b7 objective completed.",
+          "label": "Arin0: Insight +12 vs DC 18",
+          "outcome": "peaceful_access",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:perception",
+          "information": "Perception check: 19 + 1 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Perception +1 vs DC 16",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:persuasion",
+          "information": "Persuasion check: 12 + 1 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Persuasion +1 vs DC 11",
+          "outcome": "peaceful_access",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:religion",
+          "information": "Religion check: 18 + 1 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Religion +1 vs DC 17",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 14 + 13 vs DC 17 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +13 vs DC 17 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:stealth": {
+          "approach_description": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:2:stealth",
+          "information": "Stealth check: 7 + 12 vs DC 19 \u00b7 objective completed. Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "label": "Lysa0: Stealth +12 vs DC 19 \u00b7 Seek quiet access",
+          "outcome": "peaceful_access",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:2",
+          "profession": "skill:stealth",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:7677aac98e613660d4d14b0f35a50205:adventurer:1:survival",
+          "information": "Survival check: 19 + 1 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Survival +1 vs DC 19",
+          "outcome": "recovered",
+          "participant": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0.0,
+          "reveal": false
+        }
+      },
+      "slot": "7677aac98e613660d4d14b0f35a50205",
+      "state_hash": "91e103847af24ff5f7835f181c7412a1579724b23cacdd9cedd9ccd2706daf58",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 10,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "a4bb34da47cd06d57b562a7281730024e9a23a80be9aba0c53ba4326f9162fa7",
+      "battle_log_length": 11,
+      "casts": {
+        "7677aac98e613660d4d14b0f35a50205:adventurer:1": "metamind-reclaim",
+        "7677aac98e613660d4d14b0f35a50205:adventurer:2": "pyrokineticist-technique-4",
+        "7677aac98e613660d4d14b0f35a50205:adventurer:3": "power-force-screen-aug2"
+      },
+      "checks": 58,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 810,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "7677aac98e613660d4d14b0f35a50205:adventurer:1",
+        "kind": "end",
+        "revision": 16
+      },
+      "next_hash": "6a40014e24b4e0a30dabcd8f49184f9b845c092c43d302403a44fb129ccc61ce",
+      "resources": {
+        "7677aac98e613660d4d14b0f35a50205:adventurer:1": {
+          "metamind-reserve": 0
+        },
+        "7677aac98e613660d4d14b0f35a50205:adventurer:2": {
+          "psychic-points": 15
+        },
+        "7677aac98e613660d4d14b0f35a50205:adventurer:3": {
+          "psychic-points": 19
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "7677aac98e613660d4d14b0f35a50205",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "fa38cb428fadc30676f5dc56dee248a1e7a9b46ea0049b0e8ef5107c4380ccbf",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 136,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-support/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1159,
+      "classes": [
+        "psychic-warrior",
+        "divine-mind",
+        "cognition-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "cognition0": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10,
+          "prestige_levels": 0
+        },
+        "cognition1": {
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 12,
+          "prestige_levels": 1
+        },
+        "cognition2": {
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 14,
+          "prestige_levels": 2
+        },
+        "cognition3": {
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 16,
+          "prestige_levels": 3
+        },
+        "cognition4": {
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 18,
+          "prestige_levels": 4
+        },
+        "cognition5": {
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 20,
+          "prestige_levels": 5
+        },
+        "divine-mind1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "divine-mind15": {
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-concord",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "divine-mind20": {
+          "history": 20,
+          "known": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-concord",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-iron-vigor",
+            "power-kinetic-bolt",
+            "power-mental-dampening",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-rallying-thought",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-synaptic-collapse",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "divine-mind4": {
+          "history": 4,
+          "known": [
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 6
+        },
+        "divine-mind8": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-phase-guard",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        },
+        "psychic-warrior1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "psychic-warrior15": {
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "psychic-warrior20": {
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "psychic-warrior4": {
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 6
+        },
+        "psychic-warrior8": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock"
+          ],
+          "points": 10
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "cognition": {
+          "actual_strikes_and_augmentation": true,
+          "adjacent_melee": true,
+          "levels": 5,
+          "optional_entry": true
+        },
+        "mind": {
+          "casting_independent": true,
+          "incapacitation": true,
+          "resolve_not_upkeep": true,
+          "source_range_los": true,
+          "switch_refresh": true
+        },
+        "warrior": {
+          "hit_miss": true,
+          "levels": [
+            1,
+            4,
+            8,
+            15,
+            20
+          ],
+          "resource_exhaustion": true,
+          "strike_and_support": true
+        }
+      }
+    },
+    "current-support/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 135,
+      "classes": [
+        "psychic-warrior",
+        "divine-mind",
+        "cognition-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 24,
+      "failures": 0,
+      "scope": "Actual Godot base creator, optional prestige/discipline advancement and tactical self/fire target controls. High-level input fixtures are separate from earned progression."
+    },
+    "current-support-input": {
+      "checks": 108,
+      "failures": 0,
+      "scope": "Actual Godot production creator/advancement, mantle/doctrine/power/augmentation controls and tactical targeting. Human Windows usability acceptance separate."
+    },
+    "frozen-rules": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1819371,
+        "effects_1000_us": 8555833,
+        "progression_2000_us": 12542457,
+        "reference_progression_us": 4702134,
+        "registry_load_us": 13249,
+        "requirements_5000_us": 441753,
+        "serialization_1000_us": 21941525,
+        "validation_1000_us": 1192721
+      }
+    }
+  },
+  "proof_sources": {
+    "mechanics/proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "mechanics/restart-proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "journey/proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "journey/restart-proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "connected/proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "connected/restart-proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "current-support/proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "current-support/restart-proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "legacy/proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "legacy/restart-proof.json": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "input": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "current-support-input": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "frozen-rules": "239358f1e234059dd4e1a8ca447bf5455e9cd268"
+  },
+  "timings": [
+    {
+      "phase": "mechanics",
+      "cold": false,
+      "seconds": 108.734,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "cold": true,
+      "seconds": 8.235,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "cold": false,
+      "seconds": 9.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "cold": false,
+      "seconds": 869.093,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "cold": true,
+      "seconds": 8.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "cold": false,
+      "seconds": 91.281,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "cold": true,
+      "seconds": 174.719,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "cold": false,
+      "seconds": 58.094,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-support",
+      "cold": false,
+      "seconds": 132.594,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-support",
+      "cold": true,
+      "seconds": 10.64,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-support-input",
+      "cold": false,
+      "seconds": 21.266,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "cold": false,
+      "seconds": 12.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "cold": true,
+      "seconds": 1.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "captures": {
+    "checks": 31,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-psion-creator-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "1150b223e4ccafabc96c7603ae06a70f56aabc413dca7885b1a0d8fe76828346",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-psion-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "74b7ac7c50b4c9494877af99c0d3a4101be76b8df9a7374a866e7dcc0ea88aba",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640.0,
+        "file": "earned-metamind-entry-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "15e91a58e7eb4455365c7076820d93723d1a4ba64f9849598b0af34cd7774ba8",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640.0,
+        "file": "earned-metamind-entry-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "23b786f5d34efe45cddb934786dd83855cdb4567d7019325308f24445e9358e8",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 250.0,
+        "file": "earned-pyrokineticist-entry-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "c6887b691a63a1c14df1c51477c4c73fd45cb0265e2bf8afcc50420ec246c132",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 250.0,
+        "file": "earned-pyrokineticist-entry-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "2ee2ce24e2c3caa5af154aa5f984bdd474824af2595d4974405e3b246eea3dec",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-metamind-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "eb47efa434f37344c2fe5b478850dbef5b2329039ccade30d862f2ce6b411b1a",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-metamind-advanced-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "bdb5e4fa2a744e430676534cded9d3d45f512294b92636b79029140c37ab3341",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-pyrokineticist-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e18b792e07aa60e1d8f636ea0e67fdbd6d39ea4c9b742495b11a2eaf247d5e6b",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-pyrokineticist-advanced-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "0ddae9f5e42721c7166ed24ebc6b8ce2455e42911a3108794ba9aef515d2d3c9",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-ready-metamind10-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "5ff4edb8819ae9c13dbb468e9d361c206fbab7993dd355a61dd314c74384fa5e",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-ready-metamind10-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "ff7ef43fbfaa269bcfa970e032aee648b6ce4a43c1068415492bdc47fcbfb75e",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-metamind10-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "18158bf06f2d11b407ef2fa5d1cebdb02c9bc3c6893cffad332b8646a429fcb0",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-metamind10-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "3a202af71de9fa336a071ff2641e8ced061b3e7ab0e034631e3c956db0c742b7",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-pyrokineticist1-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "18c021dc4bea128cdb77b7193fca58ba57047df7c2b2c82f03de914a158bdd15",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-pyrokineticist1-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "c1edc9d941f5922650b84c4fb91244c606dd896f363d126de51753a67b008597",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-pyrokineticist10-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8c732fec8df07c6711844dfd36b0aeea7d7f223f3355cd1fb7a034d96850f1f6",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-pyrokineticist10-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "a26697f19afdfc4ec438f7f0a2166cd03fbeba592ad0d0b9b4c33230ff773772",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-saved-path-combat-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "937ead273625a44f3f25f96002f1ba02429423db18ca2091e8c8b83485f51a02",
+        "width": 2560
+      }
+    ]
+  },
+  "reused_previous_native": {
+    "baseline": "aab717eaf8ee1e59c5e8394920c6716aadb362ea",
+    "previous_native_source": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "previous_native_run": 39882645495,
+    "unchanged_production_scopes": [
+      "scripts",
+      "data",
+      "scenes",
+      "assets",
+      "vendor",
+      "project.godot",
+      "export_presets.cfg"
+    ],
+    "historical_packs": 26,
+    "exporter_delta": "One approved diagnostic scene only",
+    "prior_native_receipt_sha256": "5f3a33350905626e69af4c3f4daa489504995a6308517b0852cc2824ba068cc5",
+    "reuse_scope": "Labelled prior v26 full-native historical/current acceptance only. This cohort must supply fresh mechanics, controls, earned/connected cold and renders."
+  },
+  "earned_characters": 3
+}

@@ -9631,8 +9631,8 @@
       "name": "Pyrokineticist",
       "kind": "prestige",
       "level_cap": 10,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original ten-level prestige identity: permanent optional earned entry, real finite resources/effects/counterplay, production controls and exact cold continuation. Human balance/usability remains separate.",
       "creation": {
         "legal_at_level_one": false,
         "historical_native": "Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only"
@@ -9640,7 +9640,18 @@
       "advancement": {
         "cap": 10,
         "historical_kernel_levels": 0,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -9662,8 +9673,8 @@
       },
       "early_mid_high": {
         "historical_level_witnesses": [],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "All ten lawful path levels; actual tactical1/4/7/10; total20 development histories. Genuine810XP/total10 gives Metamind2 and Pyrokineticist5, not earned20."
       },
       "resources": [],
       "selections": {
@@ -9680,7 +9691,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": "docs/implementation/game126/evidence/native-prestige-witnesses.json",
         "historical_pin": {
           "pack_id": "trhgd-character-v16",
@@ -9723,11 +9734,15 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/pyrokineticist",
-        "data/rules/trhgd-character-v26.json#classes/pyrokineticist"
+        "data/rules/trhgd-character-v26.json#classes/pyrokineticist",
+        "tests/psychic_paths/mechanics.gd",
+        "tests/psychic_paths/input.gd",
+        "tests/psychic_paths/journey.gd",
+        "tests/psychic_paths/connected.gd",
+        "docs/implementation/game127-paths/evidence/native-proof.json",
+        "docs/implementation/game127-paths/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify fire riders/resistances and psychic resource interaction across all supported path levels."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
         "pack_id": "trhgd-character-v25",
         "schema_version": 1,
@@ -9735,7 +9750,17 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "verified_source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+      "acceptance_sources": {
+        "current": "239358f1e234059dd4e1a8ca447bf5455e9cd268 native two-path mechanics/controls/earned/connected/cold/render contracts.",
+        "retained": "Other career acceptance remains explicitly source-labelled v26 evidence, guarded by identical production inputs and frozen1\u201326 bytes/pins."
+      },
+      "limitations": [
+        "Original finite shared psychic pool; independent arcane resources and owning-class power attributes.",
+        "Pyrokineticist uses save-based fire ignitions, not weapon-flame riders or a general elemental immunity system.",
+        "Natural-form suppression and existing art/scrolling limitations remain; GAME89/92/140 and human balance/readability are separate."
+      ]
     },
     {
       "id": "crusader",
@@ -15505,8 +15530,8 @@
       "name": "Metamind",
       "kind": "prestige",
       "level_cap": 10,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original ten-level prestige identity: permanent optional earned entry, real finite resources/effects/counterplay, production controls and exact cold continuation. Human balance/usability remains separate.",
       "creation": {
         "legal_at_level_one": false,
         "historical_native": "Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only"
@@ -15514,7 +15539,18 @@
       "advancement": {
         "cap": 10,
         "historical_kernel_levels": 0,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -15748,8 +15784,8 @@
       },
       "early_mid_high": {
         "historical_level_witnesses": [],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "All ten lawful path levels; actual tactical1/4/7/10; total20 development histories. Genuine810XP/total10 gives Metamind2 and Pyrokineticist5, not earned20."
       },
       "resources": [
         {
@@ -15946,7 +15982,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": "docs/implementation/game126/evidence/native-prestige-witnesses.json",
         "historical_pin": {
           "pack_id": "trhgd-character-v16",
@@ -15997,11 +16033,15 @@
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/metamind",
-        "data/rules/trhgd-character-v26.json#classes/metamind"
+        "data/rules/trhgd-character-v26.json#classes/metamind",
+        "tests/psychic_paths/mechanics.gd",
+        "tests/psychic_paths/input.gd",
+        "tests/psychic_paths/journey.gd",
+        "tests/psychic_paths/connected.gd",
+        "docs/implementation/game127-paths/evidence/native-proof.json",
+        "docs/implementation/game127-paths/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify finite reclaim reserve and no-rest bypass across cold process restart and earned path combat."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
         "pack_id": "trhgd-character-v25",
         "schema_version": 1,
@@ -16009,7 +16049,17 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "verified_source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+      "acceptance_sources": {
+        "current": "239358f1e234059dd4e1a8ca447bf5455e9cd268 native two-path mechanics/controls/earned/connected/cold/render contracts.",
+        "retained": "Other career acceptance remains explicitly source-labelled v26 evidence, guarded by identical production inputs and frozen1\u201326 bytes/pins."
+      },
+      "limitations": [
+        "Original finite shared psychic pool; independent arcane resources and owning-class power attributes.",
+        "Pyrokineticist uses save-based fire ignitions, not weapon-flame riders or a general elemental immunity system.",
+        "Natural-form suppression and existing art/scrolling limitations remain; GAME89/92/140 and human balance/readability are separate."
+      ]
     },
     {
       "id": "duskblade",
@@ -17373,15 +17423,6 @@
   "repair_queue": [
     {
       "cohort": [
-        "metamind",
-        "pyrokineticist"
-      ],
-      "goal": "Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2\u20134 reproducible defects per bounded cohort, then accept demonstrated existing functionality.",
-      "priority": 1,
-      "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
-    },
-    {
-      "cohort": [
         "sorcerer",
         "druid",
         "duskblade",
@@ -17390,7 +17431,7 @@
         "abjurant-champion"
       ],
       "goal": "Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.",
-      "priority": 2,
+      "priority": 1,
       "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
     },
     {
@@ -17405,7 +17446,7 @@
         "dwarven-defender"
       ],
       "goal": "Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.",
-      "priority": 3,
+      "priority": 2,
       "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
     },
     {
@@ -17417,13 +17458,35 @@
         "grove-warden"
       ],
       "goal": "Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.",
-      "priority": 4,
+      "priority": 3,
       "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
     }
   ],
   "milestone_complete": false,
   "programme_source_occurrences": 760,
   "world_transition": "GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.",
-  "verified_source": "e65d098a68858ef9247a7644a94b2485f671a323",
-  "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141."
+  "verified_source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+  "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.",
+  "current_acceptance_cohort": [
+    "metamind",
+    "pyrokineticist"
+  ],
+  "unchanged_runtime_native_inheritance": {
+    "baseline": "aab717eaf8ee1e59c5e8394920c6716aadb362ea",
+    "previous_native_source": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "previous_native_run": 39882645495,
+    "unchanged_production_scopes": [
+      "scripts",
+      "data",
+      "scenes",
+      "assets",
+      "vendor",
+      "project.godot",
+      "export_presets.cfg"
+    ],
+    "historical_packs": 26,
+    "exporter_delta": "One approved diagnostic scene only",
+    "prior_native_receipt_sha256": "5f3a33350905626e69af4c3f4daa489504995a6308517b0852cc2824ba068cc5",
+    "reuse_scope": "Labelled prior v26 full-native historical/current acceptance only. This cohort must supply fresh mechanics, controls, earned/connected cold and renders."
+  }
 }

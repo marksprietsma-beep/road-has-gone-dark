@@ -1,8 +1,8 @@
 # Windows acceptance and human review
 
-Current source-focused receipt: run39966642865, source304ab8f, 725 mechanics /121 exact cold /24 actual Godot controls, zero failures. New earned810XP/total10, capture and native package phases remain pending until their actual receipts are recorded. No Linux game validation.
+Native39972423768 at `239358f1e234059dd4e1a8ca447bf5455e9cd268` passed1130 mechanics/129cold/24 actual controls,989 earned/10cold,58connected/136cold and31capturechecks/19PNGs, plus current26support,legacy16 and the frozen22181 oracle. The complete self-contained package, source identity and SHA are in [DELIVERY.md](DELIVERY.md). No Linux game validation.
 
-The new native release will freshly execute these two careers, actual controls, earned/connected cold campaign continuation, original renders, prior v26 support mechanics/controls/cold and v16 legacy continuation. The frozen22,181-assertion oracle runs in the Windows source harness. Unrelated complete v26 native scopes are explicitly reused from39882645495 only under exact production-input, immutable26-pack, exporter-delta and original-receipt guards. They are never reported as freshly executed on a later commit.
+The native release freshly executed these two careers, actual controls, earned/connected cold campaign continuation, original renders, prior v26 support mechanics/controls/cold and v16 legacy continuation. The frozen22,181-assertion oracle runs in the Windows source harness. Unrelated complete v26 native scopes are explicitly reused from39882645495 only under exact production-input, immutable26-pack, exporter-delta and original-receipt guards. They are never reported as freshly executed on a later commit.
 
 The existing nature journey keeps default490XP/level8/16-cycle assertions. Only the new child overrides the target to810XP/level10 with a24-cycle bound. Existing connected cohorts retain490XP and no setup action; this child performs a real three-point ward before reclamation. There are no free levels, XP buttons, alternate rules or save writers.
 
@@ -16,6 +16,8 @@ Production scenes: `res://scenes/ui/party_creation.tscn`, `res://scenes/ui/chara
 6. Pyrokineticist fire ignitions at path1/4/7/10 cost2 points and one main action. Reflex success halves fire damage; failure applies Weakened. Fire resistance reduces the damage component; supported condition immunity can prevent Weakened separately. No weapon-hit flame rider or general elemental-immunity system is claimed. Natural forms suppress psychic fire actions; reversion restores access without refilling points.
 7. Exhaust resources, finish encounters, return home for eligible rest, save, exit the process and Resume. Verify exact history, selected powers, finite reserves, statuses, active combat and next-command/RNG continuation. Save loading and selectors grant neither XP nor resources.
 
-The ordinary acceptance target is810 genuinely earned XP /total10: Psion8/Metamind2 and Psion5/Pyrokineticist5, plus a third Psion. Funded pre-entry states at640XP/250XP are preserved through the original writer and cold-loaded. Total20/full ten-level path images are development fixtures, clearly labelled. Actual native PNG hashes/dimensions and final package source/SHA belong in DELIVERY.md when verified.
+The ordinary acceptance target is810 genuinely earned XP /total10: Psion8/Metamind2 and Psion5/Pyrokineticist5, plus a third Psion. Funded pre-entry states at640XP/250XP are preserved through the original writer and cold-loaded. Total20/full ten-level path images are development fixtures, clearly labelled. Actual native PNG hashes/dimensions and final package source/SHA belong in DELIVERY.md as verified.
 
 Human balance/readability remains separate. Existing scrolling and nonhumanoid sprite limits, GAME89/92/140 findings and living-world work are outside this cohort.
+
+Existing compact roster text may clip long multiclass names; use the tooltip or scroll the full sheet/history. Native PNGs preserve this limitation honestly; no tooltip/art/UI overhaul is claimed.

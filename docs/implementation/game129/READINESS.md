@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Generated from matching-source v26 native Windows contracts and explicitly labelled historical evidence. Technical acceptance is bounded; human review and the wider catalogue remain unfinished.
+Matching-source native Windows evidence accepts the current two paths; unchanged v26 acceptance for other careers remains explicitly source-labelled. Technical COMPLETE does not replace human playtest acceptance or imply full sourcebook conversion.
 
-{'COMPLETE': 29, 'PARTIAL': 21, 'BLOCKED': 0}
+{'COMPLETE': 31, 'PARTIAL': 19, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Generated from matching-source v26 native Windows contracts and explicitly label
 | Shadowdancer | prestige | PARTIAL | Verify maintained concealment, disruption and resource expiry; do not imply unimplemented teleportation/world stealth. |
 | Dragon Disciple | prestige | PARTIAL | Verify inherited/body/natural-weapon progression with armour suppression and existing transformations. |
 | Dwarven Defender | prestige | PARTIAL | Verify actual defensive stance, movement trade-offs and shared protection in native encounters. |
-| Pyrokineticist | prestige | PARTIAL | Verify fire riders/resistances and psychic resource interaction across all supported path levels. |
+| Pyrokineticist | prestige | COMPLETE |  |
 | Crusader | base | COMPLETE |  |
 | Swordsage | base | COMPLETE |  |
 | Wilder | base | COMPLETE |  |
@@ -51,7 +51,7 @@ Generated from matching-source v26 native Windows contracts and explicitly label
 | Dragonfire Adept | base | COMPLETE |  |
 | War Chanter | prestige | COMPLETE |  |
 | Archmage | prestige | PARTIAL | Verify permanent selected spell-tier prerequisites and each advanced spell option in native battle. |
-| Metamind | prestige | PARTIAL | Verify finite reclaim reserve and no-rest bypass across cold process restart and earned path combat. |
+| Metamind | prestige | COMPLETE |  |
 | Duskblade | base | PARTIAL | Hit-conditioned channeling is implemented; audit the full eligible spell cohort and late slot/channel combinations in production controls. |
 | Spirit Shaman | base | COMPLETE |  |
 | Abjurant Champion | prestige | PARTIAL | Verify channel/ward interactions on real hit/miss and independent spell-resource exhaustion. |
@@ -59,9 +59,8 @@ Generated from matching-source v26 native Windows contracts and explicitly label
 
 ## Finite exit plan
 
-1. metamind, pyrokineticist: Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.
-2. sorcerer, druid, duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
-3. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
-4. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
+1. sorcerer, druid, duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
+2. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
+3. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 
 Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.

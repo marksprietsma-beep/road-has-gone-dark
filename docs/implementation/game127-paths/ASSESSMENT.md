@@ -11,3 +11,7 @@ Prefer retaining26 if no rules-content defect is demonstrated. Any actual conten
 No defects or readiness promotions are claimed before Windows evidence. GitHub101 remains OPEN/GAME123 InProgress. No callable Linear tools are available; GitHub and committed records provide the status handoff.
 
 First focused Windows run39965762666 at3dfc11b executed621 mechanics assertions with0 failures, but the unchanged strict process guard correctly rejected a test-helper Node/resource leak at exit. Free the prerequisite planner before quitting; do not count this run as a full focused pass or a production defect. Exact cold restart was not reached. Counterplay cases add actual ash-heritage fire resistance, Aasimar Weakened immunity, Erudite distinct-limit non-reset and total20 capped-path continuation; production control checks are separate. No runtime/rules changes yet.
+
+## Final native acceptance
+
+No production rules defect was reproduced. Native39972423768 passed at239358f; the original v26 mechanics are retained. Guarded matching receipts now support only the two path promotions, yielding31/19/0. Actual810XP/total10 includes funded640XP/250XP entry, exact cold saves and real connected combat. Full10-level/total20 fixtures remain labelled. The pre-export Windows git-show path failure was fixed with as_posix without relaxing assertions. See DELIVERY.md for actual native/fresh-versus-reused scopes, hashes and remaining human limits. Final GitHub merge/post-main status is recorded on PR147/open101.
