@@ -1,0 +1,17 @@
+# Metamind / Pyrokineticist bounded acceptance
+
+Baseline main aab717eaf8ee1e59c5e8394920c6716aadb362ea is the normal PR146 merge. All18 post-main Windows workflows and24 check runs passed. Immutable26;29 COMPLETE/21 PARTIAL/0 BLOCKED. Worktree had only preserved incidental Python caches, no stashes or existing advanced-path branch/PR. Current branch feature/game-127-advanced-psychic-paths. Existing research PRs are unrelated and untouched.
+
+Both existing prestige paths support10 levels. Metamind already has main-action finite reserve reclamation, reserve/resilience choices and persistent selected powers. Its entry requires total8, INT13, Arcana8, Deep Reserve (including its feat chain) and permanent manifesting. Pyrokineticist already has four Reflex-save fire ignitions, half damage on success, Weakened on failure, finite shared PP and increasing fire resistance. No weapon-hit flame rider is assumed; no general elemental immunity system is advertised.
+
+Sequence: reproduce actual contracts under current26 first; fix only observed high-impact failures. Cover all supported path levels, optional manual permanent entry, main-action/resource competition, exhaustion/rest, multiclass owning-class powers and exact cold combat. Then production controls, genuinely earned entry and saved connected combat. Metamind first entry is total9, so490XP/total8 from the prior cohort is insufficient: earn additional actual opportunities rather than inject XP or change thresholds. High-level total20 fixtures remain explicitly separate.
+
+Prefer retaining26 if no rules-content defect is demonstrated. Any actual content correction must append27 with frozen1–26 guards; do not mutate historical campaigns. Existing GAME32 authority, effects, TacticalAuras, campaign writer, creator and test infrastructure are reused. Focused Windows first; one stable native release only when needed by new acceptance scope. Reuse prior receipts only under explicit source/scope guards. No Linux game validation, roster/world expansion, tooltip overhaul or nonhumanoid artwork work. Human GAME89/92/140 findings remain separate.
+
+No defects or readiness promotions are claimed before Windows evidence. GitHub101 remains OPEN/GAME123 InProgress. No callable Linear tools are available; GitHub and committed records provide the status handoff.
+
+First focused Windows run39965762666 at3dfc11b executed621 mechanics assertions with0 failures, but the unchanged strict process guard correctly rejected a test-helper Node/resource leak at exit. Free the prerequisite planner before quitting; do not count this run as a full focused pass or a production defect. Exact cold restart was not reached. Counterplay cases add actual ash-heritage fire resistance, Aasimar Weakened immunity, Erudite distinct-limit non-reset and total20 capped-path continuation; production control checks are separate. No runtime/rules changes yet.
+
+## Final native acceptance
+
+No production rules defect was reproduced. Native39972423768 passed at239358f; the original v26 mechanics are retained. Guarded matching receipts now support only the two path promotions, yielding31/19/0. Actual810XP/total10 includes funded640XP/250XP entry, exact cold saves and real connected combat. Full10-level/total20 fixtures remain labelled. The pre-export Windows git-show path failure was fixed with as_posix without relaxing assertions. See DELIVERY.md for actual native/fresh-versus-reused scopes, hashes and remaining human limits. Final GitHub merge/post-main status is recorded on PR147/open101.
