@@ -23,7 +23,7 @@ def verify():
     current=(ROOT/'tools/release/export-game.mjs').read_text(encoding='utf-8')
     assert current.replace(",\x27res://tests/psychic_paths/review.tscn\x27",'')==previous,'Only the approved diagnostic entry may change exporter code'
     old=ROOT/'docs/implementation/game127-support/evidence/native-proof.json'
-    old_blob=subprocess.check_output(['git','show',BASELINE+':'+str(old.relative_to(ROOT))],cwd=ROOT)
+    old_blob=subprocess.check_output(['git','show',BASELINE+':'+old.relative_to(ROOT).as_posix()],cwd=ROOT)
     assert json.loads(old.read_text(encoding='utf-8'))==json.loads(old_blob)
     receipt=json.loads(old.read_text(encoding='utf-8'));assert receipt['source_commit']==NATIVE_SOURCE
     assert receipt['production_launch']and receipt['empty_path']and receipt['separate_process_restart']
