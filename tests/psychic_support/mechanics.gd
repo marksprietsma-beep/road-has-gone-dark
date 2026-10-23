@@ -1,7 +1,7 @@
 extends "res://tests/psychic_support/helpers.gd"
 ## Legal development histories, real existing authority. Earned XP is tested separately.
 const POWERS := {"psychic-warrior-power-1":"power-kinetic-bolt","psychic-warrior-power-2":"power-force-screen","psychic-warrior-power-4":"power-body-renewal","psychic-warrior-power-6":"power-mind-lock","psychic-warrior-power-8":"power-energy-surge"}
-const MIND := {"divine-mind-mantle":"energy","divine-mind-mantle-4":"body","divine-mind-mantle-8":"mind","divine-mind-mantle-12":"unity","divine-mind-doctrine":"assault","divine-mind-doctrine-5":"bulwark","divine-mind-doctrine-10":"stride","divine-mind-power-1":"power-kinetic-bolt","divine-mind-power-2":"power-crystal-shard","divine-mind-power-3":"power-electric-lance","divine-mind-power-4":"power-force-screen"}
+const MIND := {"divine-mind-mantle":"energy","divine-mind-mantle-4":"body","divine-mind-mantle-8":"mind","divine-mind-mantle-12":"unity","divine-mind-doctrine":"assault","divine-mind-doctrine-5":"bulwark","divine-mind-doctrine-10":"stride","divine-mind-power-1":"power-kinetic-bolt","divine-mind-power-2":"power-crystal-shard","divine-mind-power-3":"power-electric-lance","divine-mind-power-4":"power-force-screen","divine-mind-power-8":"power-thought-thrust","divine-mind-power-12":"power-concord"}
 func run() -> void:
  base=OS.get_environment("GAME127_ROOT");DirAccess.make_dir_recursive_absolute(base)
  check(source.load_pack("res://data/rules/trhgd-character-v26.json").ok,"immutable26 validates")
@@ -129,6 +129,13 @@ func test_mind() -> void:
     check(has(changed.units.a.record,"divine-mind-aura-bulwark") and not has(changed.units.a.record,"divine-mind-aura-assault"),"switch explicitly replaces previous aura")
     check(engine.stats(changed.units.b).defence==original.defence+1+at/5 and engine.stats(changed.units.b).melee_attack==original.melee_attack,"switch removes old attack support and adds actual defence")
     battles["bulwark"+str(at)]=changed
+  if at>=4:
+   var milestone: int=2 if at<6 else 6 if at<12 else 12 if at<16 else 16 if at<20 else 20
+   var rally := assert_cast(b,"divine-mind-rally-"+str(milestone),"b")
+   if not rally.is_empty():
+    check(rally.units.b.record.runtime.temporary_hp==at+milestone,"actual higher-level ally rally changes temporary HP")
+    check(rally.units.a.record.runtime.resources["psychic-points"]==b.units.a.record.runtime.resources["psychic-points"],"rally uses resolve, never psychic points")
+    battles["rally"+str(at)]=rally
   battles["aura"+str(at)]=out
   records["aura-source"+str(at)]=out.units.a.record
  var r: Dictionary=records["divine-mind20"];var engine := TacticalAuras.new(r);var b := encounter(r)
