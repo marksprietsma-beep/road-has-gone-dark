@@ -6,6 +6,10 @@ on:
         description: Genuine earned total10 paths, original campaign combat and cold restart
         type: boolean
         default: false
+      release:
+        description: One stable complete Windows package with native path acceptance
+        type: boolean
+        default: false
   pull_request:
     paths: ['scripts/**', 'data/rules/**', 'tests/psychic_paths/**', '.github/workflows/verify-psychic-paths.yml']
   push:
@@ -16,7 +20,7 @@ permissions:
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,10 +44,36 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'psychic-paths-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       - name: Frozen pins and current path mechanics with exact cold continuation
+        if: github.event_name != 'workflow_dispatch' || !inputs.release
         env:
           GAME127_PATH_ROOT: ${{ runner.temp }}/psychic-paths-focused
           GAME127_PATH_JOURNEY: ${{ inputs.journey && '1' || '0' }}
         run: python tests/psychic_paths/run-focused.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Native paths, earned play, cold continuation, captures and package integrity
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME127_PATH_RELEASE_ROOT: ${{ runner.temp }}/psychic-paths-native
+        run: python tests/psychic_paths/verify-package.py
+      - name: Complete self-contained Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: psychic-paths-complete-windows-x64
+          path: ${{ runner.temp }}/psychic-paths-native/distribution/*.zip*
+          retention-days: 90
+      - name: Native receipts and original Godot renders
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: psychic-paths-native-evidence
+          path: |
+            ${{ runner.temp }}/psychic-paths-native/**/*.json
+            ${{ runner.temp }}/psychic-paths-native/**/*.log
+            ${{ runner.temp }}/psychic-paths-native/captures/*.png
+          retention-days: 90
       - name: Preserve exact Windows evidence
         if: always()
         uses: actions/upload-artifact@v4

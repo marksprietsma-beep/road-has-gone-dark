@@ -135,6 +135,19 @@ func test_multiclass() -> void:
  for id in snap.known_powers:
   var origin: Dictionary=snap.power_origins[id]
   check(origin.attribute==("INT" if origin.class_id=="metamind" else "CHA"),"powers retain original owning class attributes")
+ var cast_dcs := {}
+ for cls in ["wilder","metamind"]:
+  var candidates: Array=snap.known_powers.filter(func(id: String):return snap.power_origins[id].class_id==cls and source.definition("abilities",source.definition("psychic_powers",id).variants[0]).effects.any(func(e: Dictionary):return e.op=="save"))
+  check(not candidates.is_empty(),"mixed history has an actual save power owned by "+cls)
+  if candidates.is_empty():return
+  var power: Dictionary=source.definition("psychic_powers",candidates[0]);var out := use(r,records.foe,power.variants[0]);check(out.ok,"actual owning-class save power executes "+cls)
+  if not out.ok:return
+  var origin: Dictionary=snap.power_origins[power.id]
+  var saved: Dictionary=out.events.filter(func(e: Dictionary):return e.type=="save_resolved")[0]
+  var expected: int=10+int(power.tier)+int(origin.modifier)+int(snap.stats.save_dc)
+  check(int(saved.dc)==expected,"actual save DC follows the learned class rather than the larger unrelated attribute")
+  cast_dcs[cls]={"power":power.id,"attribute":origin.attribute,"dc":saved.dc}
+ traces.owning_class_casts=cast_dcs
  records.mixed=r;traces.origins=snap.power_origins
  for cls in ["metamind","pyrokineticist"]:
   var advanced: Dictionary=records[cls+"10"].duplicate(true)
@@ -147,6 +160,22 @@ func test_multiclass() -> void:
   check(final_snapshot.level==20 and int(final_snapshot.class_levels[cls])==10,"total20 history preserves ten-level prestige cap "+cls)
   advanced.runtime.hp=int(final_snapshot.stats.HP);advanced.runtime.resources=final_snapshot.resource_capacities.duplicate(true)
   records[cls+"-total20"]=advanced
+ var arcane: Dictionary=records.metamind10.duplicate(true)
+ for n in 2:
+  var wizard: Dictionary=planner.advance(arcane,"wizard",planner.requirements("metamind",0));check(wizard.ok,"legal independent Wizard bridge")
+  if not wizard.ok:return
+  arcane=wizard.candidate
+ arcane.choices.prepared_abilities=["wizard-arcane-bolt"];arcane.choices.spell_preparations={"wizard-arcane-bolt":1}
+ var prepared := kernel._replay(arcane);check(prepared.ok,"one legal copy of the Wizard spell")
+ if not prepared.ok:return
+ arcane.runtime.resources=prepared.context.capacities.duplicate(true);arcane.runtime.hp=int(kernel.derive_character(arcane).snapshot.stats.HP)
+ arcane.runtime.resources["psychic-points"]=0;arcane.runtime.resources["wizard-slots-1"]=0
+ var reclaim := use(arcane,arcane,"metamind-reclaim");check(reclaim.ok,"arcane hybrid can spend a finite psychic reserve")
+ if reclaim.ok:
+  check(reclaim.actor.runtime.resources["wizard-slots-1"]==0 and int(reclaim.actor.runtime.resources["psychic-points"])>0,"reclaim restores psychic points without converting/refilling arcane slots")
+  check(not use(reclaim.actor,records.foe,"wizard-arcane-bolt").ok,"reclaimed psychic points cannot pay for an exhausted prepared arcane slot")
+  records.arcane_reclaimed=reclaim.actor
+  traces.arcane_reclaim={"wizard_slot_after":0,"points_after":reclaim.actor.runtime.resources["psychic-points"]}
  var erudite := path_record("metamind",1,"erudite")
  if erudite.is_empty():return
  var context: Dictionary=kernel._replay(erudite).context
