@@ -11,7 +11,7 @@ for row in json.loads((root/'tests/psychic_paths/historical-pins.json').read_tex
  assert hashlib.sha256((root/row['path']).read_bytes()).hexdigest()==row['sha256']
  assert installed[row['rules_ref']['pack_id']]==dict(path='res://'+row['path'],rules_ref=row['rules_ref'])
 timings=[]
-for phase,cold,file in [('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json')]:
+for phase,cold,file in [('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json')]:
  log=base/(phase+('-cold'if cold else'')+'.log')
  r=checked_process([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'--script','res://tests/psychic_paths/scene_runner.gd','--',phase,'cold'if cold else'warm'],cwd=root,env=os.environ.copy(),log=log,timeout=1800)
  timings.append(dict(phase=phase,cold=cold,**r));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n')

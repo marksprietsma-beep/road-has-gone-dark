@@ -17,7 +17,8 @@ func run() -> void:
    var snap: Dictionary=kernel.derive_character(r).snapshot
    check(snap.level==starting+at and int(snap.class_levels.get(cls,0))==at,"ordered permanent path levels "+cls+str(at))
    levels[cls+str(at)]={"history":snap.level,"prestige_levels":at,"capacities":snap.resource_capacities,"known":snap.known_powers}
- test_entry();test_reserve();test_fire();test_multiclass();test_tactical_paths()
+ records.psion1=build("psion1",["psion"],PSI)
+ test_entry();test_reserve();test_fire();test_counterplay();test_multiclass();test_tactical_paths()
  if failures:finish_parity();return
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
@@ -119,6 +120,58 @@ func test_multiclass() -> void:
   var origin: Dictionary=snap.power_origins[id]
   check(origin.attribute==("INT" if origin.class_id=="metamind" else "CHA"),"powers retain original owning class attributes")
  records.mixed=r;traces.origins=snap.power_origins
+ for cls in ["metamind","pyrokineticist"]:
+  var advanced: Dictionary=records[cls+"10"].duplicate(true)
+  while advanced.advancement_history.size()<20:
+   var step: Dictionary=planner.advance(advanced,"psion",planner.requirements(cls,0))
+   check(step.ok,"legitimate base continuation after capped path "+cls)
+   if not step.ok:return
+   advanced=step.candidate
+  var final_snapshot: Dictionary=kernel.derive_character(advanced).snapshot
+  check(final_snapshot.level==20 and int(final_snapshot.class_levels[cls])==10,"total20 history preserves ten-level prestige cap "+cls)
+  advanced.runtime.hp=int(final_snapshot.stats.HP);advanced.runtime.resources=final_snapshot.resource_capacities.duplicate(true)
+  records[cls+"-total20"]=advanced
+ var erudite := path_record("metamind",1,"erudite")
+ if erudite.is_empty():return
+ var context: Dictionary=kernel._replay(erudite).context
+ var limit := RulesWaveFour.distinct_limit(context,source)
+ check(context.known_powers.size()>limit,"Erudite hybrid has a genuine next unmanifested choice")
+ erudite.runtime.manifested_powers=context.known_powers.slice(0,limit)
+ erudite.runtime.resources["psychic-points"]=0
+ var reclaimed := use(erudite,erudite,"metamind-reclaim");check(reclaimed.ok,"Erudite hybrid can spend its finite reserve")
+ if reclaimed.ok:
+  check(reclaimed.actor.runtime.manifested_powers==erudite.runtime.manifested_powers,"reclamation never resets distinct identities per rest")
+  var next: String=source.definition("psychic_powers",context.known_powers[limit]).variants[0]
+  check(not use(reclaimed.actor,records.foe,next).ok,"reclaimed points cannot bypass exhausted distinct-power allowance")
+  records.erudite_reclaimed=reclaimed.actor
+
+func ancestry_defender(heritage: String) -> Dictionary:
+ var r := kernel.create("foe-"+heritage,PSI,heritage)
+ for n in 20:
+  var step := kernel.preview_advancement(r,kernel.suggested_choice(r,"fighter").choice)
+  check(step.ok,"lawful inherited defender "+heritage+str(n))
+  if not step.ok:return {}
+  r=step.candidate
+ r.runtime.hp=int(kernel.derive_character(r).snapshot.stats.HP)
+ r.runtime.resources=kernel._replay(r).context.capacities.duplicate(true)
+ r.runtime.modifiers.append({"stat":"reflex","type":"untyped","value":-100,"source":"controlled-save-development-fixture"})
+ return r
+
+func test_counterplay() -> void:
+ var resistant := ancestry_defender("heritage-tiefling-ash")
+ var immune := ancestry_defender("heritage-aasimar")
+ if resistant.is_empty() or immune.is_empty():return
+ var human: Dictionary=records.foe.duplicate(true);human.runtime.modifiers.append({"stat":"reflex","type":"untyped","value":-100,"source":"controlled-save-development-fixture"})
+ for at in [1,4,7,10]:
+  var actor: Dictionary=records["pyrokineticist"+str(at)];var id := "pyrokineticist-technique-"+str(at)
+  var plain := use(actor,human,id);var reduced := use(actor,resistant,id);var guarded := use(actor,immune,id)
+  check(plain.ok and reduced.ok and guarded.ok,"actual inherited fire/condition counterplay "+str(at))
+  if not plain.ok or not reduced.ok or not guarded.ok:return
+  check(lost(reduced,resistant)==maxi(0,lost(plain,human)-8),"actual ash heritage reduces only fire component by8")
+  check(reduced.target.runtime.statuses.any(func(s: Dictionary):return s.id=="weakened"),"fire resistance does not fabricate condition immunity")
+  check(lost(guarded,immune)==lost(plain,human) and not guarded.target.runtime.statuses.any(func(s: Dictionary):return s.id=="weakened"),"Aasimar condition immunity blocks Weakened, not fire damage")
+ records.resistant=resistant;records.condition_immune=immune
+ traces.counterplay={"actual_fire_resistance":8,"weakened_immunity":true,"elemental_immunity_claimed":false}
 
 func test_tactical_paths() -> void:
  for cls in ["metamind","pyrokineticist"]:
@@ -136,4 +189,5 @@ func test_tactical_paths() -> void:
 func finish_parity(restart := false) -> void:
  var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"classes":["metamind","pyrokineticist"],"levels":levels,"traces":traces,"development_fixtures":true,"campaign_xp_injected":false}
  FileAccess.open(base.path_join("restart-proof.json" if restart else "proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(proof)))
+ if is_instance_valid(planner):planner.free()
  print("PSYCHIC_PATHS ",checks," checks; ",failures," failures");get_tree().quit(1 if failures else 0)
