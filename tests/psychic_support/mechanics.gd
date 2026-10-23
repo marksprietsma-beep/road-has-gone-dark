@@ -191,8 +191,13 @@ func test_cognition() -> void:
  traces.cognition={"optional_entry":true,"levels":5,"adjacent_melee":true,"actual_strikes_and_augmentation":true}
 func test_multiclass() -> void:
  var options := {"psychic-warrior-power-1":"power-thought-thrust","psion-power-1":"power-kinetic-bolt","psion-second-power":"power-force-screen"}
- var mixed := build("mixed",["psychic-warrior","psion","wizard","wizard","wizard"],{"STR":8,"DEX":12,"CON":14,"INT":15,"WIS":13,"CHA":10},options,"INT",{},["wizard-arcane-bolt"])
+ var mixed := build("mixed",["psychic-warrior","psion","wizard","wizard","wizard"],{"STR":8,"DEX":12,"CON":14,"INT":15,"WIS":13,"CHA":10},options,"INT")
  if mixed.is_empty():return
+ mixed.choices.prepared_abilities=["wizard-arcane-bolt"];mixed.choices.spell_preparations={"wizard-arcane-bolt":1}
+ var prepared := kernel._replay(mixed);check(prepared.ok,"actual one-copy Wizard preparation in psychic multiclass")
+ if not prepared.ok:return
+ mixed.runtime.resources=prepared.context.capacities.duplicate(true)
+ check(kernel.validate_build(mixed).ok,"prepared multiclass fixture fully validates")
  var snap: Dictionary=kernel.derive_character(mixed).snapshot
  check(snap.power_origins["power-thought-thrust"].attribute=="WIS" and snap.power_origins["power-kinetic-bolt"].attribute=="INT","learned owning classes retain independent casting attributes")
  check(snap.manifesting_level==2 and snap.resource_capacities["psychic-points"]==5,"only psychic class levels contribute to finite shared reserve and manifesting cap")
