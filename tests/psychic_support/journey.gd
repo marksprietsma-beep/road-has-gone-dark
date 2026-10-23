@@ -14,7 +14,7 @@ func create_party() -> void:
   var cls: String=configs[i][0];var id: String=state.party_ids[i]
   var attrs: Dictionary=planner.attributes_for(cls,goals_for(i).nodes)
   var initial := kernel.create(id,attrs,"heritage-human")
-  var proposed := planned(initial,cls,i);check(proposed.ok,"ordinary lawful creation "+cls)
+  var proposed := planned(initial,cls,i);check(proposed.ok,"ordinary lawful creation "+cls+" index="+str(i)+" attributes="+JSON.stringify(attrs)+" validation="+JSON.stringify(proposed))
   if not proposed.ok:return
   var record: Dictionary=proposed.candidate;record.equipment=source.definition("classes",cls).recommended_equipment.duplicate()
   var identity := {"name":["Kerin","Mara","Tovan"][i],"people_id":"human","role_id":"expert","origin_burg":int(home.burg_id),"occupation_id":CharacterBuilderRecords.backgrounds(entry.world,int(home.burg_id))[0].id}
