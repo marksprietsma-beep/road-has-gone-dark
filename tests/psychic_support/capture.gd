@@ -57,5 +57,12 @@ func photograph_scene(name: String,fixture: bool,resolution := Vector2i(1280,720
  # Move the real pointer off the battlefield before rendering; no pixel edits.
  get_tree().root.size=resolution
  get_tree().root.warp_mouse(Vector2(2,2))
- await get_tree().process_frame
+ for frame in 5:await get_tree().process_frame
+ var scene: Node=get_tree().current_scene
+ if "cognition" in name and scene!=null and "action_buttons" in scene:
+  var action_id := "cognition-strike-5" if "cognition-strike5" in name else "cognition-strike-1"
+  if scene.action_buttons.has(action_id):
+   var container: Node=scene.action_buttons[action_id].get_parent()
+   while container!=null and not container is ScrollContainer:container=container.get_parent()
+   if container is ScrollContainer:container.ensure_control_visible(scene.action_buttons[action_id])
  await super.photograph_scene(name,fixture,resolution)
