@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Generated from fresh v25 Windows receipts and explicitly labelled historical acceptance. Technical COMPLETE is a bounded original adaptation, not sourcebook completeness or human acceptance.
+Generated from matching-source v26 native Windows contracts and explicitly labelled historical evidence. Technical acceptance is bounded; human review and the wider catalogue remain unfinished.
 
-{'COMPLETE': 26, 'PARTIAL': 24, 'BLOCKED': 0}
+{'COMPLETE': 29, 'PARTIAL': 21, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -22,7 +22,7 @@ Generated from fresh v25 Windows receipts and explicitly labelled historical acc
 | Arcane Trickster | prestige | COMPLETE |  |
 | Mystic Theurge | prestige | PARTIAL | v18 independently validates arcane/divine casting levels/resources; broader path feature combinations and earned continuation need parity review. |
 | Psion | base | COMPLETE |  |
-| Psychic Warrior | base | PARTIAL | Audit manifested strikes versus physical augmentations and natural forms, including independent multiclass power reserves. |
+| Psychic Warrior | base | COMPLETE |  |
 | Soulknife | base | COMPLETE |  |
 | Warlock | base | COMPLETE |  |
 | Scout | base | COMPLETE |  |
@@ -44,9 +44,9 @@ Generated from fresh v25 Windows receipts and explicitly labelled historical acc
 | Cerebremancer | prestige | COMPLETE |  |
 | Beast Steward | prestige | PARTIAL | Verify owned companion growth/special actions, owner defeat and permanent identity across an earned path. |
 | Erudite | base | COMPLETE |  |
-| Divine Mind | base | PARTIAL | Verify aura source, range, refresh, incapacitation and psychic casting interactions, not just derived ally bonuses. |
+| Divine Mind | base | COMPLETE |  |
 | Marshal | base | COMPLETE |  |
-| Cognition Adept | prestige | PARTIAL | Verify chosen psychic identities/augmentation and actual advanced path powers, not just resource scaling. |
+| Cognition Adept | prestige | COMPLETE |  |
 | Beguiler | base | COMPLETE |  |
 | Dragonfire Adept | base | COMPLETE |  |
 | War Chanter | prestige | COMPLETE |  |
@@ -59,7 +59,7 @@ Generated from fresh v25 Windows receipts and explicitly labelled historical acc
 
 ## Finite exit plan
 
-1. psychic-warrior, divine-mind, cognition-adept, metamind, pyrokineticist: Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.
+1. metamind, pyrokineticist: Audit actual mantle, distinct-per-rest, psychic strike/veil, aura and finite advanced resource consumers. Repair strongest2–4 reproducible defects per bounded cohort, then accept demonstrated existing functionality.
 2. sorcerer, druid, duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
 3. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
 4. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.

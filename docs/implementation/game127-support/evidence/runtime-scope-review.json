@@ -1,0 +1,29 @@
+{
+  "baseline": "0a01cea0088bb48af177cb71d2a7c098340a45bb",
+  "candidate": "e65d098a68858ef9247a7644a94b2485f671a323",
+  "runtime_files": [
+    "scripts/combat/tactical_auras.gd",
+    "scripts/rules/rules_capabilities.gd",
+    "scripts/rules/rules_career.gd",
+    "scripts/rules/rules_character.gd",
+    "scripts/rules/rules_completeness.gd",
+    "scripts/rules/rules_core_content.gd",
+    "scripts/rules/rules_effects.gd",
+    "scripts/rules/rules_entities.gd",
+    "scripts/rules/rules_martial.gd",
+    "scripts/rules/rules_psychic.gd",
+    "scripts/rules/rules_records.gd",
+    "scripts/rules/rules_registry.gd",
+    "scripts/rules/rules_wave_five.gd",
+    "scripts/rules/rules_wave_four.gd",
+    "scripts/ui/components/spellbook_editor.gd",
+    "scripts/ui/first_adventure.gd"
+  ],
+  "only_runtime_deltas": [
+    "Append v26 to existing explicit version gates/registry",
+    "Default fresh records to26; existing pins retained",
+    "Use existing adjacent descriptor for displayed action range"
+  ],
+  "frozen_tactical_authority_unchanged": true,
+  "scope": "Host static source audit only; native Windows tests are separately linked."
+}

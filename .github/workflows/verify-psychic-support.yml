@@ -1,0 +1,88 @@
+name: GAME-127 Psychic Support Acceptance
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_support/**', '.github/workflows/verify-psychic-support.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/psychic_support/**', '.github/workflows/verify-psychic-support.yml']
+  workflow_dispatch:
+    inputs:
+      release:
+        description: One complete native Windows release after focused acceptance
+        type: boolean
+        default: false
+      journey:
+        description: Source Windows earned campaign, connected combat, cold restart and actual captures
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # complete history required by exact native-release source comparison
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked class import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/game127-support-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'game127-support-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Frozen historical pack bytes and roster
+        run: python tests/psychic_support/check-history.py
+      - name: Reproductions and focused identity contracts
+        if: github.event_name != 'workflow_dispatch' || !inputs.release
+        env:
+          GAME127_ROOT: ${{ runner.temp }}/game127-support-focused
+          GAME127_JOURNEY: ${{ inputs.journey && '1' || '0' }}
+        run: python tests/psychic_support/run-focused.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native game, current and historical rules, earned play, cold restart and renders
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GAME127_RELEASE_ROOT: ${{ runner.temp }}/game127-support-native
+        run: python tests/psychic_support/verify-package.py
+      - name: Self-contained Windows x64 playable game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game127-support-complete-windows-x64
+          path: ${{ runner.temp }}/game127-support-native/distribution/*.zip*
+          retention-days: 90
+      - name: Native receipts and original Godot pixels
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: game127-support-native-evidence
+          path: |
+            ${{ runner.temp }}/game127-support-native/**/*.json
+            ${{ runner.temp }}/game127-support-native/**/*.log
+            ${{ runner.temp }}/game127-support-native/captures/*.png
+          retention-days: 90
+      - name: Preserve Windows diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game127-support-focused-windows
+          path: |
+            ${{ runner.temp }}/game127-support-focused/**
+            ${{ runner.temp }}/game127-support-import.log
+          retention-days: 90

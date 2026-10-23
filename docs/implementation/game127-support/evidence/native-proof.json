@@ -1,0 +1,5786 @@
+{
+  "source_commit": "e65d098a68858ef9247a7644a94b2485f671a323",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v26",
+    "schema_version": 1,
+    "rules_version": "26.0.0",
+    "engine_schema": 3,
+    "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+  },
+  "archive": "game127-psychic-support-windows-x64.zip",
+  "sha256": "3e2a7b76d3e503cebc0014087c1f4a006d76b2e49febc0d0038d9f371f400c18",
+  "proofs": {
+    "mechanics/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1159,
+      "classes": [
+        "psychic-warrior",
+        "divine-mind",
+        "cognition-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "cognition0": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10,
+          "prestige_levels": 0
+        },
+        "cognition1": {
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 12,
+          "prestige_levels": 1
+        },
+        "cognition2": {
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 14,
+          "prestige_levels": 2
+        },
+        "cognition3": {
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 16,
+          "prestige_levels": 3
+        },
+        "cognition4": {
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 18,
+          "prestige_levels": 4
+        },
+        "cognition5": {
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 20,
+          "prestige_levels": 5
+        },
+        "divine-mind1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "divine-mind15": {
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-concord",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "divine-mind20": {
+          "history": 20,
+          "known": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-concord",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-iron-vigor",
+            "power-kinetic-bolt",
+            "power-mental-dampening",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-rallying-thought",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-synaptic-collapse",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "divine-mind4": {
+          "history": 4,
+          "known": [
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 6
+        },
+        "divine-mind8": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-crystal-shard",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-phase-guard",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        },
+        "psychic-warrior1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "psychic-warrior15": {
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "psychic-warrior20": {
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "psychic-warrior4": {
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 6
+        },
+        "psychic-warrior8": {
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock"
+          ],
+          "points": 10
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "cognition": {
+          "actual_strikes_and_augmentation": true,
+          "adjacent_melee": true,
+          "levels": 5,
+          "optional_entry": true
+        },
+        "mind": {
+          "casting_independent": true,
+          "incapacitation": true,
+          "resolve_not_upkeep": true,
+          "source_range_los": true,
+          "switch_refresh": true
+        },
+        "warrior": {
+          "hit_miss": true,
+          "levels": [
+            1,
+            4,
+            8,
+            15,
+            20
+          ],
+          "resource_exhaustion": true,
+          "strike_and_support": true
+        }
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 135,
+      "classes": [
+        "psychic-warrior",
+        "divine-mind",
+        "cognition-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "journey/proof.json": {
+      "checks": 620,
+      "combat_actions": {},
+      "earned_xp": 490,
+      "failed_check": {
+        "choice": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:athletics",
+        "hash": "0f2abe9b95f8cfdb6265ea420c3e65d4558c1173dea16fceba9a80726ec061c8",
+        "xp": 0
+      },
+      "failures": 0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-discipline": "assault",
+                "psychic-warrior-power-1": "power-kinetic-bolt"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-2": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-4": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-6": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-8": "power-burst-step"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:2",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-doctrine": "assault",
+                "divine-mind-mantle": "energy",
+                "divine-mind-power-1": "power-kinetic-bolt"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-power-2": "power-crystal-shard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-power-3": "power-electric-lance"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-mantle-4": "body",
+                "divine-mind-power-4": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-doctrine-5": "bulwark",
+                "divine-mind-power-5": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-power-6": "power-energy-surge"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-power-7": "power-phase-guard"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "divine-mind",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "divine-mind-mantle-8": "mind",
+                "divine-mind-power-8": "power-thought-thrust"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:3",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "psychic-discipline",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-discipline": "assault",
+                "psychic-warrior-power-1": "power-kinetic-bolt"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-2": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-4": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psychic-warrior",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0
+              },
+              "specialisations": {
+                "psychic-warrior-power-6": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cognition-adept",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "nature": 5.0
+              },
+              "specialisations": {
+                "cognition-power-1": "power-burst-step"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "cognition-adept",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "animal-handling": 2.0,
+                "arcana": 1.0,
+                "nature": 3.0
+              },
+              "specialisations": {
+                "cognition-power-2": "power-thought-fog"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v26",
+            "rules_version": "26.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:2:acrobatics",
+          "information": "Acrobatics check: 15 + 9 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Mara: Acrobatics +9 vs DC 19 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:2",
+          "profession": "skill:acrobatics",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:2:animal-handling",
+          "information": "Animal Handling check: 20 + 1 vs DC 15 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Mara: Animal Handling +1 vs DC 15 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:2",
+          "profession": "skill:animal-handling",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:arcana",
+          "information": "Arcana check: 18 + 6 vs DC 17 \u00b7 objective completed.",
+          "label": "Kerin: Arcana +6 vs DC 17",
+          "outcome": "investigated",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:athletics",
+          "information": "Athletics check: 11 + 12 vs DC 19 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Kerin: Athletics +12 vs DC 19 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:insight",
+          "information": "Insight check: 15 + 3 vs DC 17 \u00b7 objective completed.",
+          "label": "Kerin: Insight +3 vs DC 17",
+          "outcome": "peaceful_access",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:perception",
+          "information": "Perception check: 17 + 3 vs DC 17 \u00b7 objective completed.",
+          "label": "Kerin: Perception +3 vs DC 17",
+          "outcome": "investigated",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:persuasion",
+          "information": "Persuasion check: 14 + 0 vs DC 13 \u00b7 objective completed.",
+          "label": "Kerin: Persuasion +0 vs DC 13",
+          "outcome": "peaceful_access",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:religion",
+          "information": "Religion check: 17 + 2 vs DC 13 \u00b7 objective completed.",
+          "label": "Kerin: Religion +2 vs DC 13",
+          "outcome": "investigated",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:a797a1e4b101cacd4d27b4b7594f80df:adventurer:1:survival",
+          "information": "Survival check: 17 + 3 vs DC 15 \u00b7 objective completed.",
+          "label": "Kerin: Survival +3 vs DC 15",
+          "outcome": "recovered",
+          "participant": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0,
+          "reveal": false
+        }
+      },
+      "slot": "a797a1e4b101cacd4d27b4b7594f80df",
+      "state_hash": "c0752667ecbe270df495d62663dcd78e95ca8001a9fd66b7ba549a30450ab18c",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "fc45a75c130893ee20d83078c1136c477107cb1160130dd4e08a5c815c4e5ceb",
+      "battle_log_length": 8,
+      "casts": {
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1": "psychic-warrior-technique-8",
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:2": "divine-mind-aura-assault",
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:3": "cognition-strike-1"
+      },
+      "checks": 40,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 490,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "a797a1e4b101cacd4d27b4b7594f80df:adventurer:3",
+        "kind": "end",
+        "revision": 10
+      },
+      "next_hash": "2dbd7193b5fe1a61431d8e9732184fb5ca9e938ed4759643319e666508d7a574",
+      "resources": {
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:1": {
+          "psychic-points": 8
+        },
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:2": {
+          "divine-mind-resolve": 3
+        },
+        "a797a1e4b101cacd4d27b4b7594f80df:adventurer:3": {
+          "psychic-points": 11
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "a797a1e4b101cacd4d27b4b7594f80df",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "5d80d195657d2e6da0a5506b8e2d5f9ba71bcc07c57b4cb70f018ad8c898e3a3",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 76,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/proof.json": {
+      "checks": 1634,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-ancestor-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-briar-beast",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-company-veil",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-dissonant-seal",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-gravitic-snare",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-greater-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-ice-lance",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-prismatic-volley",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-stillness-lattice",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unravel-enchantment",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unweaving-tide",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-battle-litany",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-concord-release",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-elemental-covenant",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-faith-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-freedom-path",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-purifying-renewal",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-renewing-benediction",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restoring-light",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-return-to-breath",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-tempest",
+          "class_id": "cleric",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/restart-proof.json": {
+      "checks": 97,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-performance/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1560,
+      "classes": [
+        "bard",
+        "beguiler",
+        "spirit-shaman"
+      ],
+      "development_fixtures": true,
+      "executable_spells": [
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 1
+        },
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-cleansing-ward",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-fracture-concentration",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-haste-spell",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-lightning",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-scorching-ray",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-unbinding-refrain",
+          "class_id": "bard",
+          "level": 6
+        },
+        {
+          "ability": "bard-arcane-bolt",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-cleansing-ward",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-enfeeble",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-fracture-concentration",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-haste-spell",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-lightning",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-mage-armour",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-scorching-ray",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier4-control",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier4-restoration",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier5-sanctuary",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier5-tempest",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier6-sanctuary",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-tier6-tempest",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "bard-unbinding-refrain",
+          "class_id": "bard",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 1
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 1
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-2",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-3",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-2",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-ward-3",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-unmasking-chime",
+          "class_id": "beguiler",
+          "level": 6
+        },
+        {
+          "ability": "beguiler-beguiling-control-1",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-2",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-3",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-4",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-5",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-6",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-7",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-8",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-control-9",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-1",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-2",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-3",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-4",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-5",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-6",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-7",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-8",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-beguiling-ward-9",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "beguiler-unmasking-chime",
+          "class_id": "beguiler",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 1
+        },
+        {
+          "ability": "spirit-shaman-call-ancestor-sentinel",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-call-briar-beast",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-2",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-3",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-2",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-3",
+          "class_id": "spirit-shaman",
+          "level": 6
+        },
+        {
+          "ability": "spirit-shaman-call-ancestor-sentinel",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-call-briar-beast",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-listening-ward",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-1",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-2",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-3",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-4",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-5",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-6",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-7",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-8",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-rebuke-9",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-1",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-2",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-3",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-4",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-5",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-6",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-7",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-8",
+          "class_id": "spirit-shaman",
+          "level": 20
+        },
+        {
+          "ability": "spirit-shaman-spirit-refuge-9",
+          "class_id": "spirit-shaman",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-performance/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 115,
+      "classes": [
+        "bard",
+        "beguiler",
+        "spirit-shaman"
+      ],
+      "development_fixtures": true,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-supernatural/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 988,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-supernatural/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 77,
+      "classes": [
+        "warlock",
+        "binder",
+        "dragonfire-adept"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-signatures/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-signatures/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "current-mobile/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 622,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-mobile/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 33,
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-psychic/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 564,
+      "classes": [
+        "psion",
+        "wilder",
+        "cerebremancer"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "psion1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "origins": {
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 4
+        },
+        "psion15": {
+          "history": 15,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 4
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-iron-carapace": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 15,
+              "modifier": 4
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 4
+            },
+            "power-purifying-concord": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 16,
+              "modifier": 4
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 4
+            },
+            "power-void-detonation": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 17,
+              "modifier": 4
+            }
+          },
+          "points": 32
+        },
+        "psion20": {
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-body-renewal": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 5
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-iron-carapace": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 15,
+              "modifier": 5
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 5
+            },
+            "power-perfect-unity": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 19,
+              "modifier": 5
+            },
+            "power-purifying-concord": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 16,
+              "modifier": 5
+            },
+            "power-severing-tempest": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 18,
+              "modifier": 5
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 5
+            },
+            "power-void-detonation": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 17,
+              "modifier": 5
+            }
+          },
+          "points": 42
+        },
+        "psion3": {
+          "history": 3,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "origins": {
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 8
+        },
+        "psion8": {
+          "history": 8,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-thrust",
+            "power-vital-exchange"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 3
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 3
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 3
+            }
+          },
+          "points": 18
+        },
+        "wilder1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "origins": {
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 4
+        },
+        "wilder15": {
+          "history": 15,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 4
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-iron-carapace": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 15,
+              "modifier": 4
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 4
+            },
+            "power-purifying-concord": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 16,
+              "modifier": 4
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 4
+            },
+            "power-void-detonation": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 17,
+              "modifier": 4
+            }
+          },
+          "points": 32
+        },
+        "wilder20": {
+          "history": 20,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 5
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-iron-carapace": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 15,
+              "modifier": 5
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 5
+            },
+            "power-perfect-unity": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 19,
+              "modifier": 5
+            },
+            "power-purifying-concord": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 16,
+              "modifier": 5
+            },
+            "power-severing-tempest": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 18,
+              "modifier": 5
+            },
+            "power-thought-thrust": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 5
+            },
+            "power-void-detonation": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 17,
+              "modifier": 5
+            }
+          },
+          "points": 42
+        },
+        "wilder3": {
+          "history": 3,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "origins": {
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 8
+        },
+        "wilder8": {
+          "history": 8,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-vital-exchange"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 3
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 3
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 3
+            }
+          },
+          "points": 18
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "damage": {
+          "assault": 5,
+          "ward": 3,
+          "weakened": 1
+        },
+        "hybrid": {
+          "casting_levels": {
+            "cerebremancer": 5,
+            "psion": 3,
+            "sorcerer": 8
+          },
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 1,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "psion-discipline": "assault",
+                "psion-power-1": "power-kinetic-bolt",
+                "psion-second-power": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 2,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "psion-power-2": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "psychic-discipline",
+              "level": 3,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 4,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 3
+              },
+              "specialisations": {
+                "sorcerer-choice-1": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 5,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 2,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 6,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 1,
+                "spellcraft": 2
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 7,
+              "skill_allocations": {
+                "arcana": 1,
+                "perception": 5
+              },
+              "specialisations": {
+                "cerebremancer-casting": "sorcerer",
+                "cerebremancer-power-1": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "",
+              "level": 8,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 3,
+                "perception": 3
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 9,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 5,
+                "perception": 1
+              },
+              "specialisations": {
+                "cerebremancer-power-3": "power-burst-step"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "",
+              "level": 10,
+              "skill_allocations": {
+                "animal-handling": 3,
+                "arcana": 1,
+                "nature": 2,
+                "perception": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 11,
+              "skill_allocations": {
+                "animal-handling": 4,
+                "arcana": 1,
+                "nature": 1,
+                "perception": 1
+              },
+              "specialisations": {
+                "cerebremancer-power-5": "power-thought-fog"
+              }
+            }
+          ],
+          "manifesting_level": 8,
+          "resources": {
+            "bloodline-uses": 2,
+            "psychic-points": 18,
+            "sorcerer-slots-1": 7,
+            "sorcerer-slots-2": 6,
+            "sorcerer-slots-3": 5,
+            "sorcerer-slots-4": 4
+          }
+        },
+        "origins": {
+          "actual_dc": 12,
+          "origin": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power": "power-thought-thrust"
+        }
+      }
+    },
+    "current-psychic/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 73,
+      "classes": [
+        "psion",
+        "wilder",
+        "cerebremancer"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "current-identities/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1015,
+      "classes": [
+        "ardent",
+        "lurk",
+        "erudite"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "ardent1": {
+          "distinct_limit": 1000,
+          "history": 1,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 4
+        },
+        "ardent15": {
+          "distinct_limit": 1000,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "points": 32
+        },
+        "ardent20": {
+          "distinct_limit": 1000,
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "points": 42
+        },
+        "ardent4": {
+          "distinct_limit": 1000,
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock"
+          ],
+          "points": 10
+        },
+        "ardent8": {
+          "distinct_limit": 1000,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-vital-exchange"
+          ],
+          "points": 18
+        },
+        "erudite1": {
+          "distinct_limit": 1,
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 4
+        },
+        "erudite15": {
+          "distinct_limit": 4,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 32
+        },
+        "erudite20": {
+          "distinct_limit": 6,
+          "history": 20,
+          "known": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-phase-guard",
+            "power-radiant-cascade",
+            "power-renewal-nexus",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-synaptic-collapse",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 42
+        },
+        "erudite4": {
+          "distinct_limit": 2,
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        },
+        "erudite8": {
+          "distinct_limit": 3,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 18
+        },
+        "lurk1": {
+          "distinct_limit": 1000,
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "lurk15": {
+          "distinct_limit": 1000,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "lurk20": {
+          "distinct_limit": 1000,
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "lurk4": {
+          "distinct_limit": 1000,
+          "history": 4,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 6
+        },
+        "lurk8": {
+          "distinct_limit": 1000,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "erudite1": {
+          "blocked": "power-thought-thrust",
+          "limit": 1,
+          "points": 3,
+          "repeat": "power-kinetic-bolt",
+          "used": [
+            "power-kinetic-bolt"
+          ]
+        },
+        "erudite15": {
+          "blocked": "power-energy-surge",
+          "limit": 4,
+          "points": 18,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance"
+          ]
+        },
+        "erudite20": {
+          "blocked": "power-fellowship",
+          "limit": 6,
+          "points": 14,
+          "repeat": "power-astral-guardian",
+          "used": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge"
+          ]
+        },
+        "erudite4": {
+          "blocked": "power-force-screen",
+          "limit": 2,
+          "points": 8,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step"
+          ]
+        },
+        "erudite8": {
+          "blocked": "power-fellowship",
+          "limit": 3,
+          "points": 13,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance"
+          ]
+        }
+      }
+    },
+    "current-identities/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 102,
+      "classes": [
+        "ardent",
+        "lurk",
+        "erudite"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "historical25/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1015,
+      "classes": [
+        "ardent",
+        "lurk",
+        "erudite"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "ardent1": {
+          "distinct_limit": 1000,
+          "history": 1,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "points": 4
+        },
+        "ardent15": {
+          "distinct_limit": 1000,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "points": 32
+        },
+        "ardent20": {
+          "distinct_limit": 1000,
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "points": 42
+        },
+        "ardent4": {
+          "distinct_limit": 1000,
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock"
+          ],
+          "points": 10
+        },
+        "ardent8": {
+          "distinct_limit": 1000,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-vital-exchange"
+          ],
+          "points": 18
+        },
+        "erudite1": {
+          "distinct_limit": 1,
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 4
+        },
+        "erudite15": {
+          "distinct_limit": 4,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-phase-guard",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 32
+        },
+        "erudite20": {
+          "distinct_limit": 6,
+          "history": 20,
+          "known": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-crush",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-phase-guard",
+            "power-radiant-cascade",
+            "power-renewal-nexus",
+            "power-restorative-weave",
+            "power-shared-barrier",
+            "power-synaptic-collapse",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 42
+        },
+        "erudite4": {
+          "distinct_limit": 2,
+          "history": 4,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        },
+        "erudite8": {
+          "distinct_limit": 3,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 18
+        },
+        "lurk1": {
+          "distinct_limit": 1000,
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "points": 3
+        },
+        "lurk15": {
+          "distinct_limit": 1000,
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 17
+        },
+        "lurk20": {
+          "distinct_limit": 1000,
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "points": 22
+        },
+        "lurk4": {
+          "distinct_limit": 1000,
+          "history": 4,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 6
+        },
+        "lurk8": {
+          "distinct_limit": 1000,
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "points": 10
+        }
+      },
+      "rules_ref": {
+        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v25",
+        "rules_version": "25.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "erudite1": {
+          "blocked": "power-thought-thrust",
+          "limit": 1,
+          "points": 3,
+          "repeat": "power-kinetic-bolt",
+          "used": [
+            "power-kinetic-bolt"
+          ]
+        },
+        "erudite15": {
+          "blocked": "power-energy-surge",
+          "limit": 4,
+          "points": 18,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance"
+          ]
+        },
+        "erudite20": {
+          "blocked": "power-fellowship",
+          "limit": 6,
+          "points": 14,
+          "repeat": "power-astral-guardian",
+          "used": [
+            "power-astral-guardian",
+            "power-body-renewal",
+            "power-burst-step",
+            "power-concord",
+            "power-electric-lance",
+            "power-energy-surge"
+          ]
+        },
+        "erudite4": {
+          "blocked": "power-force-screen",
+          "limit": 2,
+          "points": 8,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step"
+          ]
+        },
+        "erudite8": {
+          "blocked": "power-fellowship",
+          "limit": 3,
+          "points": 13,
+          "repeat": "power-body-renewal",
+          "used": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance"
+          ]
+        }
+      }
+    },
+    "historical25/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 102,
+      "classes": [
+        "ardent",
+        "lurk",
+        "erudite"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v25",
+        "rules_version": "25.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "historical24/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 564,
+      "classes": [
+        "psion",
+        "wilder",
+        "cerebremancer"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "psion1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "origins": {
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 4
+        },
+        "psion15": {
+          "history": 15,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 4
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-iron-carapace": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 15,
+              "modifier": 4
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 4
+            },
+            "power-purifying-concord": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 16,
+              "modifier": 4
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 4
+            },
+            "power-void-detonation": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 17,
+              "modifier": 4
+            }
+          },
+          "points": 32
+        },
+        "psion20": {
+          "history": 20,
+          "known": [
+            "power-body-renewal",
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-body-renewal": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 5
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-iron-carapace": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 15,
+              "modifier": 5
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 5
+            },
+            "power-perfect-unity": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 19,
+              "modifier": 5
+            },
+            "power-purifying-concord": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 16,
+              "modifier": 5
+            },
+            "power-severing-tempest": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 18,
+              "modifier": 5
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 5
+            },
+            "power-void-detonation": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 17,
+              "modifier": 5
+            }
+          },
+          "points": 42
+        },
+        "psion3": {
+          "history": 3,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "origins": {
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 8
+        },
+        "psion8": {
+          "history": 8,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-thought-thrust",
+            "power-vital-exchange"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 13,
+              "modifier": 3
+            },
+            "power-force-screen": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-kinetic-bolt": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-mind-lock": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 12,
+              "modifier": 3
+            },
+            "power-thought-thrust": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-vital-exchange": {
+              "attribute": "INT",
+              "class_id": "psion",
+              "minimum": 14,
+              "modifier": 3
+            }
+          },
+          "points": 18
+        },
+        "wilder1": {
+          "history": 1,
+          "known": [
+            "power-kinetic-bolt"
+          ],
+          "origins": {
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 4
+        },
+        "wilder15": {
+          "history": 15,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-purifying-concord",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 4
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-iron-carapace": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 15,
+              "modifier": 4
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 4
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 4
+            },
+            "power-purifying-concord": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 16,
+              "modifier": 4
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 4
+            },
+            "power-void-detonation": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 17,
+              "modifier": 4
+            }
+          },
+          "points": 32
+        },
+        "wilder20": {
+          "history": 20,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-iron-carapace",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-perfect-unity",
+            "power-purifying-concord",
+            "power-severing-tempest",
+            "power-thought-thrust",
+            "power-vital-exchange",
+            "power-void-detonation"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 5
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-iron-carapace": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 15,
+              "modifier": 5
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 5
+            },
+            "power-perfect-unity": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 19,
+              "modifier": 5
+            },
+            "power-purifying-concord": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 16,
+              "modifier": 5
+            },
+            "power-severing-tempest": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 18,
+              "modifier": 5
+            },
+            "power-thought-thrust": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 5
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 5
+            },
+            "power-void-detonation": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 17,
+              "modifier": 5
+            }
+          },
+          "points": 42
+        },
+        "wilder3": {
+          "history": 3,
+          "known": [
+            "power-force-screen",
+            "power-kinetic-bolt"
+          ],
+          "origins": {
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 2
+            }
+          },
+          "points": 8
+        },
+        "wilder8": {
+          "history": 8,
+          "known": [
+            "power-energy-surge",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-vital-exchange"
+          ],
+          "origins": {
+            "power-energy-surge": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 13,
+              "modifier": 3
+            },
+            "power-force-screen": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-kinetic-bolt": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 11,
+              "modifier": 3
+            },
+            "power-mind-lock": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 12,
+              "modifier": 3
+            },
+            "power-vital-exchange": {
+              "attribute": "CHA",
+              "class_id": "wilder",
+              "minimum": 14,
+              "modifier": 3
+            }
+          },
+          "points": 18
+        }
+      },
+      "rules_ref": {
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v24",
+        "rules_version": "24.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "damage": {
+          "assault": 5,
+          "ward": 3,
+          "weakened": 1
+        },
+        "hybrid": {
+          "casting_levels": {
+            "cerebremancer": 5,
+            "psion": 3,
+            "sorcerer": 8
+          },
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "steady-study",
+              "level": 1,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "psion-discipline": "assault",
+                "psion-power-1": "power-kinetic-bolt",
+                "psion-second-power": "power-force-screen"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "",
+              "level": 2,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "psion-power-2": "power-thought-thrust"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "psion",
+              "feat_id": "psychic-discipline",
+              "level": 3,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "arcana": 1,
+                "athletics": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 4,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 3
+              },
+              "specialisations": {
+                "sorcerer-choice-1": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 5,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 2,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 6,
+              "skill_allocations": {
+                "arcana": 1,
+                "persuasion": 1,
+                "spellcraft": 2
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 7,
+              "skill_allocations": {
+                "arcana": 1,
+                "perception": 5
+              },
+              "specialisations": {
+                "cerebremancer-casting": "sorcerer",
+                "cerebremancer-power-1": "power-body-renewal"
+              }
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "",
+              "level": 8,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 3,
+                "perception": 3
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 9,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 5,
+                "perception": 1
+              },
+              "specialisations": {
+                "cerebremancer-power-3": "power-burst-step"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "",
+              "level": 10,
+              "skill_allocations": {
+                "animal-handling": 3,
+                "arcana": 1,
+                "nature": 2,
+                "perception": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cerebremancer",
+              "feat_id": "steady-study",
+              "level": 11,
+              "skill_allocations": {
+                "animal-handling": 4,
+                "arcana": 1,
+                "nature": 1,
+                "perception": 1
+              },
+              "specialisations": {
+                "cerebremancer-power-5": "power-thought-fog"
+              }
+            }
+          ],
+          "manifesting_level": 8,
+          "resources": {
+            "bloodline-uses": 2,
+            "psychic-points": 18,
+            "sorcerer-slots-1": 7,
+            "sorcerer-slots-2": 6,
+            "sorcerer-slots-3": 5,
+            "sorcerer-slots-4": 4
+          }
+        },
+        "origins": {
+          "actual_dc": 12,
+          "origin": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power": "power-thought-thrust"
+        }
+      }
+    },
+    "historical24/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 73,
+      "classes": [
+        "psion",
+        "wilder",
+        "cerebremancer"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "fa919e9413c7eaa669ee00304a44bb61ee89b71a2835c38f2c23c2cde6e5f4de",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v24",
+        "rules_version": "24.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "historical23/proof.json": {
+      "checks": 1634,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-ancestor-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-briar-beast",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-company-veil",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-dissonant-seal",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-gravitic-snare",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-greater-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-ice-lance",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-prismatic-volley",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-stillness-lattice",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unravel-enchantment",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unweaving-tide",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-battle-litany",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-concord-release",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-elemental-covenant",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-faith-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-freedom-path",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-purifying-renewal",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-renewing-benediction",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restoring-light",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-return-to-breath",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-tempest",
+          "class_id": "cleric",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v23",
+        "rules_version": "23.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical23/restart-proof.json": {
+      "checks": 97,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "e47c16b87f175d589b040984067146a13db4625fdfa2cada130815c730da8ffd",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v23",
+        "rules_version": "23.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical13/proof.json": {
+      "checks": 1792,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v13",
+        "rules_version": "13.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical13/restart-proof.json": {
+      "checks": 6,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "e6c2a203f9930033922a1551c4d86edd0672f698eceee5eae2bbeb806d1193aa",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v13",
+        "rules_version": "13.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/proof.json": {
+      "checks": 2598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      }
+    },
+    "baseline": {
+      "checks": 86,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v25",
+        "rules_version": "25.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "adjacent_caption": "Psychic ambush \u00b7 range 1 \u00b7 Action / Psychic Points 6 \u00b7 cost1 / Lurk Focus 2 \u00b7 cost1",
+        "distance": 2,
+        "distant_lurk_rejected": true,
+        "nonadjacent_cognition_accepted": true,
+        "ordinary_weapon_range": 2
+      }
+    },
+    "input": {
+      "checks": 108,
+      "failures": 0,
+      "scope": "Actual Godot production creator/advancement, mantle/doctrine/power/augmentation controls and tactical targeting. Human Windows usability acceptance separate."
+    },
+    "current-identities-input": {
+      "checks": 147,
+      "failures": 0,
+      "scope": "Actual production Godot creator and combat controls/signals, mantle options, powers, augmentation, disabled reasons and tile targeting. Human and OS input review remains separate."
+    },
+    "historical25-input": {
+      "checks": 147,
+      "failures": 0,
+      "scope": "Actual production Godot creator and combat controls/signals, mantle options, powers, augmentation, disabled reasons and tile targeting. Human and OS input review remains separate."
+    },
+    "historical24-input": {
+      "checks": 114,
+      "failures": 0,
+      "scope": "Real production Godot creator/power/discipline/prestige and battle selector/augmentation/buttons/target tiles. Signal-based controls, not OS/human input acceptance."
+    },
+    "current-upper-input": {
+      "checks": 30,
+      "failures": 0,
+      "scope": "Actual production prepared-copy, tier budgets, permanent requirements, advancement pickers and combat controls; no OS automation claim"
+    },
+    "current-performance-input": {
+      "checks": 72,
+      "failures": 0,
+      "scope": "Actual production spellbook checkboxes, staged summaries, permanent eligibility and combat controls"
+    },
+    "frozen-rules": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1824510,
+        "effects_1000_us": 8705193,
+        "progression_2000_us": 12636544,
+        "reference_progression_us": 4722716,
+        "registry_load_us": 13787,
+        "requirements_5000_us": 451852,
+        "serialization_1000_us": 22153737,
+        "validation_1000_us": 1213359
+      }
+    }
+  },
+  "proof_sources": {
+    "mechanics/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "mechanics/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "journey/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "journey/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "connected/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "connected/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-upper/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-upper/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-performance/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-performance/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-supernatural/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-supernatural/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-signatures/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-signatures/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-mobile/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-mobile/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-psychic/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-psychic/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-identities/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-identities/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical25/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical25/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical24/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical24/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical23/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical23/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical13/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical13/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "legacy/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "legacy/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "compatibility/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "compatibility/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "audit/proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "audit/restart-proof.json": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "baseline": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-identities-input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical25-input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "historical24-input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-upper-input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "current-performance-input": "e65d098a68858ef9247a7644a94b2485f671a323",
+    "frozen-rules": "e65d098a68858ef9247a7644a94b2485f671a323"
+  },
+  "timings": [
+    {
+      "phase": "baseline",
+      "cold": false,
+      "seconds": 8.672,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "cold": false,
+      "seconds": 140.281,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "cold": true,
+      "seconds": 11.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "cold": false,
+      "seconds": 22.063,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "cold": false,
+      "seconds": 502.437,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "cold": true,
+      "seconds": 5.829,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "cold": false,
+      "seconds": 59.781,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "cold": true,
+      "seconds": 85.672,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "cold": false,
+      "seconds": 62.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "cold": false,
+      "seconds": 179.75,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "cold": true,
+      "seconds": 8.437,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper-input",
+      "cold": false,
+      "seconds": 6.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-performance",
+      "cold": false,
+      "seconds": 123.781,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-performance",
+      "cold": true,
+      "seconds": 7.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-performance-input",
+      "cold": false,
+      "seconds": 3.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-supernatural",
+      "cold": false,
+      "seconds": 64.828,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-supernatural",
+      "cold": true,
+      "seconds": 7.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-signatures",
+      "cold": false,
+      "seconds": 69.922,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-signatures",
+      "cold": true,
+      "seconds": 4.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-mobile",
+      "cold": false,
+      "seconds": 54.578,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-mobile",
+      "cold": true,
+      "seconds": 4.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-psychic",
+      "cold": false,
+      "seconds": 44.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-psychic",
+      "cold": true,
+      "seconds": 6.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-identities",
+      "cold": false,
+      "seconds": 86.907,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-identities",
+      "cold": true,
+      "seconds": 8.218,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-identities-input",
+      "cold": false,
+      "seconds": 22.469,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical25",
+      "cold": false,
+      "seconds": 79.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical25",
+      "cold": true,
+      "seconds": 8.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical25-input",
+      "cold": false,
+      "seconds": 21.875,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical24",
+      "cold": false,
+      "seconds": 41.922,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical24",
+      "cold": true,
+      "seconds": 5.609,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical24-input",
+      "cold": false,
+      "seconds": 19.469,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical23",
+      "cold": false,
+      "seconds": 165.281,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical23",
+      "cold": true,
+      "seconds": 7.828,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical13",
+      "cold": false,
+      "seconds": 151.047,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical13",
+      "cold": true,
+      "seconds": 1.203,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "cold": false,
+      "seconds": 12.25,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "cold": true,
+      "seconds": 1.797,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "cold": false,
+      "seconds": 100.5,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "cold": true,
+      "seconds": 56.375,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "cold": false,
+      "seconds": 892.781,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "cold": true,
+      "seconds": 7.422,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "captures": {
+    "checks": 35,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-creator-psychic-warrior-powers-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "2bcc55ad67e615c655a3dff892089db2c71c4d381183906c9c851552c6155d5e",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-creator-psychic-warrior-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "bda4ec8e9f86dd26ea425c34ed8c95b39cbb61b90d508e316288ae4e042a0328",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-creator-divine-mind-powers-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "08c80773e2c3f60bbdac13e0af6d63a82818381644e6d744ad7eef5803044f44",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-creator-divine-mind-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "47d8e9429d278313c6093176336dce49e52b5f15a70f093a072d2cd4c21172d8",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-psychic-warrior-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "7e6445f6bd9b04fd09c99d782105fd241f24a6cc74e271bf4895fe74f82372ca",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-psychic-warrior-advancement-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4122f25bbbdb4e7589ef6da80219101fe439d4339a2a6c44eef5109e91615bc1",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-psychic-warrior-advanced-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "0d34f868f2c586ae5fd421e8f125a94401ca434383e54613b00ade644831cad5",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-divine-mind-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "9376462c6514b11d003735cf691c30ba8d2a30e3f24e59700966a58440825874",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-divine-mind-advancement-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "f7625781b6efeb89f1f712b9a9a9dafe98caf79c6522dfb2025c10ae08a801d3",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-divine-mind-advanced-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "6c6f404f4ecf2f70f8d01d66e63ffffe4bb378f2255ff3ac8870bb8798dac3ef",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-cognition-adept-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "958c68f28de69f9ab85dbe758f797d84727a405b0b15acff28fef93fbdef264f",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-cognition-adept-advancement-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "68fe414071df116df3390311dca689e5fe1e144110cdf34cba636595a804490d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cognition-adept-advanced-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "7eaaae349611631732d7340b59732c29a8d1d2d145526ccf962a0998aeac4ab8",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-augmented_warrior-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "c7483f23c78cd96934a05cb0c5784fbeac5bd76f7f85602470595537592455d2",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-augmented_warrior-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "9c6cc45a895f80775a5eb6eec493a0ac451bbd3a6bb5c6f4ba5168655c8a1ed9",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bulwark8-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "62c7112cf367263da66392731fb5517659ea143c7887fa56cb7f17e09e54d438",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bulwark8-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "87da9eeb965ae8b55d1ac0863dc1d082fdf79e582bb9268ea4a3a386f66e3858",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cognition-strike5-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4af8bc268bc604dd54b22f58917c77d7ddd5e04e1692313841258ff34ffe2d7e",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cognition-strike5-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cb46498ae8888d3311841b30b430416da11dc93f05ab65d5630172dfae49b257",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-reach-cognition-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a6090466d98a52bcbe3c7d4a1e3b1975beb262ee6b28282772dc59d8c48abe71",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-reach-cognition-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "99ddd525402cced4e93d8f70216f308acb92f85642e1ea89c591ab19a994214f",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-transformed-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4e329b23758394ed21cd9cee88735ad3a57b5750f96706269f9f55f3c6060f81",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-transformed-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e7bf6763cd892c8e643d3201532940bd7928b25e15a79d3c6424e90821ded61b",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-saved-cohort-combat-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "f71dc9033f5bbb6eddb584ae9c9360c4a476ed6bb3af38aee32cbaf791441b5a",
+        "width": 2560
+      }
+    ]
+  },
+  "earned_characters": 3,
+  "historical_scope": "Fresh native historical24 mechanics/input/cold, historical23/13 mechanics/cold and v16 legacy/compatibility. All25 historical source bytes/pins unchanged; fresh historical25 identities/input/cold included."
+}
