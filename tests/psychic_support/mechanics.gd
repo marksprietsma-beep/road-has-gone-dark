@@ -204,7 +204,7 @@ func test_multiclass() -> void:
  if arcane.ok:check(arcane.actor.runtime.resources["psychic-points"]==mixed.runtime.resources["psychic-points"],"arcane action spends no psychic reserve")
  records.mixed=mixed
 func test_forms() -> void:
- var hybrid := build("form-hybrid",route("druid",5)+route("psychic-warrior",2),WISDOM,POWERS,"WIS")
+ var hybrid := build("a",route("druid",5)+route("psychic-warrior",2),WISDOM,POWERS,"WIS")
  if hybrid.is_empty():return
  var shaped := use(hybrid,hybrid,"wild-shape");check(shaped.ok,"lawful existing Druid/Psychic Warrior transform")
  if not shaped.ok:return
@@ -213,7 +213,7 @@ func test_forms() -> void:
  check(engine.active_weapon(b.units.a)=="bear-claws" and command(engine,b,"attack").ok,"ordinary attack uses actual natural weapon while gear is suppressed")
  records.transformed=shaped.actor;battles.transformed=b
  var reverted := use(shaped.actor,shaped.actor,"revert-form");check(reverted.ok and kernel.derive_character(reverted.actor).snapshot.abilities.has("psychic-warrior-technique-1"),"reversion restores original identity/equipment and psychic abilities")
- var source_hybrid := build("aura-form",route("druid",5)+route("divine-mind",1),WISDOM,{"divine-mind-mantle":"energy","divine-mind-doctrine":"assault","divine-mind-power-1":"power-kinetic-bolt"},"WIS")
+ var source_hybrid := build("a",route("druid",5)+route("divine-mind",1),WISDOM,{"divine-mind-mantle":"energy","divine-mind-doctrine":"assault","divine-mind-power-1":"power-kinetic-bolt"},"WIS")
  if source_hybrid.is_empty():return
  var active := use(source_hybrid,source_hybrid,"divine-mind-aura-assault");check(active.ok,"hybrid starts genuine aura before shaping")
  if not active.ok:return
