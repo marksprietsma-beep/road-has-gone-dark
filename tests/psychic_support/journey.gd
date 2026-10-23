@@ -12,7 +12,9 @@ func create_party() -> void:
  check(RulesRecords.registry(state).rules_ref()==source.rules_ref(),"fresh campaign default exact current pin")
  for i in 3:
   var cls: String=configs[i][0];var id: String=state.party_ids[i]
-  var attrs: Dictionary=planner.attributes_for(cls,goals_for(i).nodes)
+  var attribute_goals: Array=goals_for(i).nodes.duplicate(true)
+  attribute_goals.push_front({"op":"attribute","id":source.definition("classes",cls).psychic_profile.attribute,"min":11})
+  var attrs: Dictionary=planner.attributes_for(cls,attribute_goals)
   var initial := kernel.create(id,attrs,"heritage-human")
   var proposed := planned(initial,cls,i);check(proposed.ok,"ordinary lawful creation "+cls+" index="+str(i)+" attributes="+JSON.stringify(attrs)+" validation="+JSON.stringify(proposed))
   if not proposed.ok:return

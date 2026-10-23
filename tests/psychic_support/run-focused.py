@@ -10,7 +10,7 @@ phases=[('baseline',False,'baseline-proof.json')]
 if (root/'tests/psychic_support/mechanics.gd').exists():
  phases += [('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json')]
 if os.environ.get('GAME127_JOURNEY')=='1':
- phases += [('journey',False,'journeys/cohort-0/proof.json'),('journey',True,'journeys/cohort-0/restart-proof.json'),('connected',False,'connected/proof.json'),('connected',True,'connected/restart-proof.json'),('capture',False,'captures/screenshots.json')]
+ phases = [('journey',False,'journeys/cohort-0/proof.json'),('journey',True,'journeys/cohort-0/restart-proof.json')]+phases+[('connected',False,'connected/proof.json'),('connected',True,'connected/restart-proof.json'),('capture',False,'captures/screenshots.json')]
 receipts=[]
 if (root/'tests/psychic_support/mechanics.gd').exists():
  r=checked_process([os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'--script','res://tests/psychic_support/compile.gd'],cwd=root,env=os.environ.copy(),log=base/'compile.log',timeout=90)
