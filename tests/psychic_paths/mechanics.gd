@@ -18,7 +18,7 @@ func run() -> void:
    check(snap.level==starting+at and int(snap.class_levels.get(cls,0))==at,"ordered permanent path levels "+cls+str(at))
    levels[cls+str(at)]={"history":snap.level,"prestige_levels":at,"capacities":snap.resource_capacities,"known":snap.known_powers}
  records.psion1=build("psion1",["psion"],PSI)
- test_entry();test_reserve();test_fire();test_counterplay();test_multiclass();test_tactical_paths()
+ test_entry();test_reserve();test_fire();test_counterplay();test_multiclass();test_forms();test_tactical_paths()
  if failures:finish_parity();return
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in records:
@@ -34,7 +34,7 @@ func run() -> void:
  FileAccess.open(base.path_join("saved.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":records,"hashes":hashes,"record_hashes":record_hashes,"battles":battles,"next":next,"after":after})))
  finish_parity()
 
-func path_record(cls: String,count: int,first := "psion",attrs: Dictionary=PSI) -> Dictionary:
+func path_record(cls: String,count: int,first := "psion",attrs: Dictionary=PSI,options: Dictionary={}) -> Dictionary:
  var r := kernel.create(cls+str(count),attrs,"heritage-human")
  var goals: Dictionary=planner.requirements(cls,0)
  var start := 8 if cls=="metamind" else 5
@@ -42,6 +42,11 @@ func path_record(cls: String,count: int,first := "psion",attrs: Dictionary=PSI) 
   var chosen: String=first if index<start else cls
   var advanced: Dictionary=planner.advance(r,chosen,goals)
   check(advanced.ok,"lawful prerequisite-directed history "+chosen+str(index)+JSON.stringify(advanced.get("errors",[])))
+  if not advanced.ok:return {}
+  var choice: Dictionary=advanced.candidate.advancement_history.back().duplicate(true);choice.erase("level")
+  for group in options:
+   if choice.specialisations.has(group):choice.specialisations[group]=options[group]
+  advanced=kernel.preview_advancement(r,choice);check(advanced.ok,"permanent path option validates")
   if not advanced.ok:return {}
   r=advanced.candidate
  r.equipment=["shortblade"]
@@ -84,12 +89,23 @@ func test_reserve() -> void:
    r=out.actor
   var before := RulesJson.digest(r)
   check(not use(r,r,"metamind-reclaim").ok and RulesJson.digest(r)==before,"exhausted reserve rejects atomically")
+  for scope in ["encounter","short_rest","daily","explicit"]:
+   var boundary := RulesEffects.new(source).refresh_resources(r.runtime,caps,scope)
+   check(boundary.ok and boundary.runtime.resources["metamind-reserve"]==0 and boundary.runtime.resources["psychic-points"]==r.runtime.resources["psychic-points"],"unrelated boundary never refills reserve/PP "+scope)
+  var encounter_state := encounter(r)
+  check(encounter_state.units.a.record.runtime.resources==r.runtime.resources,"actual encounter entry preserves finite spent reserves")
   var rested := RulesEffects.new(source).refresh_resources(r.runtime,caps,"eligible_rest");check(rested.ok,"eligible reserve recovery")
   if rested.ok:check(rested.runtime.resources==caps,"eligible rest exactly restores finite capacities")
   var full: Dictionary=records["metamind"+str(at)].duplicate(true);var bounded := use(full,full,"metamind-reclaim")
   check(bounded.ok and bounded.actor.runtime.resources["psychic-points"]==caps["psychic-points"],"reclaim cannot exceed maximum")
   records["reserve-spent"+str(at)]=r;counts[str(at)]={"uses":attempts,"restores":4+at,"cap":caps["psychic-points"]}
  traces.reserve=counts
+ var resilient := path_record("metamind",10,"psion",PSI,{"metamind-discipline-1":"resilience","metamind-discipline-5":"resilience","metamind-discipline-10":"resilience"})
+ if not resilient.is_empty():
+  var snap: Dictionary=kernel.derive_character(resilient).snapshot
+  check(snap.capabilities.resistances.psychic==4,"selected late resilience gives actual psychic resistance4")
+  check(int(kernel.derive_character(records.metamind10).snapshot.resource_capacities["psychic-points"])-int(snap.resource_capacities["psychic-points"])==6,"three deliberate reserve versus resilience choices differ by six finite points")
+  records.resilient=resilient
 
 func test_fire() -> void:
  var outcomes := {}
@@ -142,7 +158,8 @@ func test_multiclass() -> void:
  if reclaimed.ok:
   check(reclaimed.actor.runtime.manifested_powers==erudite.runtime.manifested_powers,"reclamation never resets distinct identities per rest")
   var next: String=source.definition("psychic_powers",context.known_powers[limit]).variants[0]
-  check(not use(reclaimed.actor,records.foe,next).ok,"reclaimed points cannot bypass exhausted distinct-power allowance")
+  var blocked := use(reclaimed.actor,records.foe,next)
+  check(not blocked.ok and RulesJson.canonical(blocked).contains("psychic.distinct_limit"),"reclaimed points cannot bypass exhausted distinct-power allowance")
   records.erudite_reclaimed=reclaimed.actor
 
 func ancestry_defender(heritage: String) -> Dictionary:
@@ -172,6 +189,21 @@ func test_counterplay() -> void:
   check(lost(guarded,immune)==lost(plain,human) and not guarded.target.runtime.statuses.any(func(s: Dictionary):return s.id=="weakened"),"Aasimar condition immunity blocks Weakened, not fire damage")
  records.resistant=resistant;records.condition_immune=immune
  traces.counterplay={"actual_fire_resistance":8,"weakened_immunity":true,"elemental_immunity_claimed":false}
+
+func test_forms() -> void:
+ var goals: Dictionary=planner.requirements("pyrokineticist",0)
+ var r := kernel.create("a",{"STR":8,"DEX":12,"CON":13,"INT":15,"WIS":14,"CHA":10},"heritage-human")
+ for cls in route("psion",5)+route("druid",5)+["pyrokineticist"]:
+  var step: Dictionary=planner.advance(r,cls,goals);check(step.ok,"lawful psychic/nature path interaction")
+  if not step.ok:return
+  r=step.candidate
+ r.runtime.hp=int(kernel.derive_character(r).snapshot.stats.HP);r.runtime.resources=kernel._replay(r).context.capacities.duplicate(true)
+ var shaped := use(r,r,"wild-shape");check(shaped.ok,"actual eligible natural form")
+ if not shaped.ok:return
+ check(not kernel.derive_character(shaped.actor).snapshot.abilities.has("pyrokineticist-technique-1") and not use(shaped.actor,records.foe,"pyrokineticist-technique-1").ok,"supported natural forms suppress psychic fire actions")
+ var reverted := use(shaped.actor,shaped.actor,"revert-form");check(reverted.ok,"actual reversion")
+ if reverted.ok:check(kernel.derive_character(reverted.actor).snapshot.abilities.has("pyrokineticist-technique-1") and reverted.actor.runtime.resources["psychic-points"]==r.runtime.resources["psychic-points"],"reversion restores identity/fire access without refilling points")
+ records.transformed=shaped.actor;battles.transformed=encounter(shaped.actor)
 
 func test_tactical_paths() -> void:
  for cls in ["metamind","pyrokineticist"]:

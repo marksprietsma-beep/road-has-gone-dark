@@ -28,8 +28,8 @@ func run() -> void:
   check(loaded.ok and RulesJson.digest(loaded.state)==saved.state_hash,"all three earned careers exact cold campaign restart")
   if loaded.ok:
    for id in loaded.state.party_ids:
-    check(CharacterBuilderRecords.xp(loaded.state,id)==490,"earned XP exact restart "+id)
-    check(loaded.state.mechanics.records[id].advancement_history.size()==8,"earned history exact restart "+id)
+    check(CharacterBuilderRecords.xp(loaded.state,id)==journey_xp(),"earned XP exact restart "+id)
+    check(loaded.state.mechanics.records[id].advancement_history.size()==journey_level(),"earned history exact restart "+id)
   if saved.get("failed_check",{}).has("hash"):
    var alternate := GamePlaythroughStore.new();alternate.save_root=base.path_join("failed-check")
    var failed := alternate.load_save(slot,entry.world)
@@ -51,11 +51,11 @@ func run() -> void:
   for i in 3:prepare(i);promote(i)
  else:create_party()
  if failures:finish_journey();return
- for n in 16:
-  if CharacterBuilderRecords.xp(state,state.party_ids[0])>=490:break
+ for n in journey_cycles():
+  if CharacterBuilderRecords.xp(state,state.party_ids[0])>=journey_xp():break
   if state.get("adventure_cycles",{}).get("cycles",[]).is_empty() or cycle().results.size()==4:action("cycle_seek")
   for i in 4:
-   if CharacterBuilderRecords.xp(state,state.party_ids[0])>=490:break
+   if CharacterBuilderRecords.xp(state,state.party_ids[0])>=journey_xp():break
    if cycle().results.has(cycle().base.sites[i].id):continue
    travel(i)
    if failures:finish_journey();return
@@ -81,12 +81,16 @@ func run() -> void:
    checkpoint()
    if failures:finish_journey();return
  for id in state.party_ids:
-  check(CharacterBuilderRecords.xp(state,id)==490 and state.mechanics.records[id].advancement_history.size()==8,"real level8 with490 earned XP, no injection")
+  check(CharacterBuilderRecords.xp(state,id)==journey_xp() and state.mechanics.records[id].advancement_history.size()==journey_level(),"real total%d with%d earned XP, no injection"%[journey_level(),journey_xp()])
   var r: Dictionary=state.mechanics.records[id]
   journeys.append({"character_id":id,"ancestry":r.ancestry_ref,"history":r.advancement_history,"earned_xp":CharacterBuilderRecords.xp(state,id),"fixture":false,"rules_ref":r.rules_ref})
  test_known_authority()
  test_real_combat()
  checkpoint();finish_journey()
+
+func journey_xp() -> int:return 490
+func journey_level() -> int:return 8
+func journey_cycles() -> int:return 16
 
 func goals_for(index: int) -> Dictionary:
  var cfg: Array=configs[index]
@@ -149,7 +153,7 @@ func promote(index: int) -> void:
  if failures:return
  var id: String=state.party_ids[index];var record: Dictionary=state.mechanics.records[id]
  var next: int=record.advancement_history.size()+1
- if next>8 or CharacterBuilderRecords.xp(state,id)<CharacterBuilderRecords.threshold(next,state):return
+ if next>journey_level() or CharacterBuilderRecords.xp(state,id)<CharacterBuilderRecords.threshold(next,state):return
  var cfg: Array=configs[index];var cls: String=cfg[0]
  if cfg[2]=="mystic-theurge" and next in [4,5,6]:cls="wizard"
  var path: String=cfg[2]

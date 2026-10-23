@@ -36,7 +36,7 @@ func run() -> void:
    if failures:finish_connected(true);return
   battle=AdventureService.active_battle(state)
   check(battle.status in ["victory","defeat"],"connected battle resolves normally")
-  var xp: int=490+(10 if battle.status=="victory" else 0)
+  var xp: int=earned_source_xp()+(10 if battle.status=="victory" else 0)
   for id in state.party_ids:check(CharacterBuilderRecords.xp(state,id)==xp,"only normal victory reward, no fixture XP")
   reject(saved.command_operation,{"command":saved.next_command})
   var before_rest := {}
@@ -63,7 +63,7 @@ func run() -> void:
   check(resumed.ok and RulesJson.digest(resumed.state)==RulesJson.digest(state),"resolved/rested campaign reload exact through production writer")
   finish_connected(true);return
  var original := GamePlaythroughStore.new();original.save_root=earned_base.path_join("saves")
- var loaded := original.load_save(slot,entry.world);check(loaded.ok,"load earned490XP primary campaign "+str(loaded.get("error","")))
+ var loaded := original.load_save(slot,entry.world);check(loaded.ok,"load earned%dXP primary campaign "%earned_source_xp()+str(loaded.get("error","")))
  if not loaded.ok:finish_connected();return
  state=loaded.state;source=RulesRecords.registry(state);kernel=RulesCharacter.new(source)
  check(service.store.save_new(slot,state,entry.world).ok,"fork uses existing campaign writer, no edits to identities/history/XP")
@@ -94,6 +94,8 @@ func run() -> void:
     if tactical.eligible(battle,actor,target,wanted[actor.id]) and tactical.command(battle,proposed).ok:command=proposed;break
   if requires_manifestation() and actor.id==state.party_ids[0] and not performed.has(actor.id) and int(battle.budget.main)>0 and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="soulknife-manifested"):
    command={"actor_id":actor.id,"revision":battle.revision,"kind":"soulknife-manifest","target_id":actor.id}
+  var setup := signature_setup(battle,actor)
+  if not setup.is_empty():command=setup
   var expected := tactical.command(battle,command);check(expected.ok,"pure generated encounter command preview")
   action(command_operation,{"command":command})
   if failures:finish_connected();return
@@ -111,7 +113,7 @@ func run() -> void:
  var resumed := service.operate(entry,slot,"resume")
  check(resumed.ok and RulesJson.digest(resumed.state)==RulesJson.digest(state),"actual mid-battle save is exact before cold restart")
  FileAccess.open(connected_folder.path_join("active-state.json"),FileAccess.WRITE).store_string(JSON.stringify(state))
- FileAccess.open(connected_folder.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"slot":slot,"state_hash":RulesJson.digest(state),"battle_hash":battle.state_hash,"casts":performed,"resources":resources,"battle_log_length":battle.log.size(),"next_command":next_command,"next_hash":expected.get("battle",{}).get("state_hash",""),"earned_xp_before_combat":490,"xp_injected":false,"command_operation":command_operation,"source":"AdventureService/"+command_operation+"/GamePlaythroughStore","scope":"Verification fork of actual earned campaign; primary campaign remains unchanged."}))
+ FileAccess.open(connected_folder.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"slot":slot,"state_hash":RulesJson.digest(state),"battle_hash":battle.state_hash,"casts":performed,"resources":resources,"battle_log_length":battle.log.size(),"next_command":next_command,"next_hash":expected.get("battle",{}).get("state_hash",""),"earned_xp_before_combat":earned_source_xp(),"xp_injected":false,"command_operation":command_operation,"source":"AdventureService/"+command_operation+"/GamePlaythroughStore","scope":"Verification fork of actual earned campaign; primary campaign remains unchanged."}))
  finish_connected()
 func finish_connected(restart := false) -> void:
  if restart:FileAccess.open(connected_folder.path_join("restart-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"resolved_and_returned":failures==0}))
@@ -129,3 +131,6 @@ func expected_resolved_pool(saved: Dictionary,_battle: Dictionary,id: String,poo
 
 func candidate_targets(battle: Dictionary,_actor: Dictionary,_ability: String) -> Array:
  return battle.units.values()
+
+func earned_source_xp() -> int:return 490
+func signature_setup(_battle: Dictionary,_actor: Dictionary) -> Dictionary:return {}

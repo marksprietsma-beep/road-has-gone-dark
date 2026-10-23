@@ -1,6 +1,11 @@
 name: GAME-127 Advanced Psychic Paths
 on:
   workflow_dispatch:
+    inputs:
+      journey:
+        description: Genuine earned total10 paths, original campaign combat and cold restart
+        type: boolean
+        default: false
   pull_request:
     paths: ['scripts/**', 'data/rules/**', 'tests/psychic_paths/**', '.github/workflows/verify-psychic-paths.yml']
   push:
@@ -37,6 +42,7 @@ jobs:
       - name: Frozen pins and current path mechanics with exact cold continuation
         env:
           GAME127_PATH_ROOT: ${{ runner.temp }}/psychic-paths-focused
+          GAME127_PATH_JOURNEY: ${{ inputs.journey && '1' || '0' }}
         run: python tests/psychic_paths/run-focused.py
       - name: Preserve exact Windows evidence
         if: always()
