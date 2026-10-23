@@ -70,8 +70,11 @@ func test_warrior() -> void:
   var id := "psychic-warrior-technique-"+str(milestone)
   for hit in [false,true]:
    var branch: Dictionary=b.duplicate(true)
-   branch.units["bandit-blade"].record.runtime.modifiers.append({"stat":"defence","type":"untyped","value":-100 if hit else 100,"source":"forced-hit-miss-development-fixture"})
-   branch=engine.seal(branch);var out := assert_cast(branch,id)
+   var controlled: Dictionary=branch.units.a.record if hit else branch.units["bandit-blade"].record
+   controlled.runtime.modifiers.append({"stat":"melee_attack" if hit else "defence","type":"untyped","value":100,"source":"forced-hit-miss-development-fixture"})
+   branch=engine.seal(branch)
+   check(int(engine.stats(branch.units["bandit-blade"]).defence)>=0 and int(engine.stats(branch.units["bandit-blade"]).defence)<=1000,"controlled contest stays inside frozen defence bounds")
+   var out := assert_cast(branch,id)
    if out.is_empty():continue
    check(has(out.units.a.record,id+"-augmentation") and out.units.a.record.runtime.temporary_hp==at,"actor augmentation applies before separate weapon roll, including misses")
    check((out.units["bandit-blade"].record.runtime.hp<branch.units["bandit-blade"].record.runtime.hp)==hit,"physical weapon roll independently hits or misses")
