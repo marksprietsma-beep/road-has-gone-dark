@@ -2,9 +2,10 @@ extends "res://tests/psychic_parity/mechanics.gd"
 ## Lawful standard-array development fixtures. Earned campaign acceptance is separate.
 const WISDOM := {"STR":8,"DEX":13,"CON":14,"INT":12,"WIS":15,"CHA":10}
 const ARDENT := {"ardent-mantle":"energy","ardent-second-mantle":"body","ardent-mantle-4":"mind","ardent-mantle-8":"insight","ardent-mantle-12":"unity","ardent-power-1":"power-kinetic-bolt","ardent-second-power":"power-force-screen","ardent-power-2":"power-body-renewal","ardent-power-4":"power-mind-lock","ardent-power-6":"power-energy-surge","ardent-power-8":"power-vital-exchange","ardent-power-10":"power-iron-carapace","ardent-power-12":"power-purifying-concord","ardent-power-14":"power-void-detonation","ardent-power-16":"power-severing-tempest","ardent-power-18":"power-perfect-unity"}
+func identity_pack_path() -> String:return "res://data/rules/trhgd-character-v25.json"
 func run() -> void:
  base=OS.get_environment("GAME127_ROOT");DirAccess.make_dir_recursive_absolute(base)
- check(source.load_pack("res://data/rules/trhgd-character-v25.json").ok,"immutable25 validates")
+ check(source.load_pack(identity_pack_path()).ok,"immutable25 validates")
  kernel=RulesCharacter.new(source)
  if failures:finish_identity();return
  if OS.get_environment("GAME127_RESTART")=="1":identity_cold();return

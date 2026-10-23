@@ -150,7 +150,7 @@ func _replay(record: Dictionary) -> Dictionary:
  for id in record.choices.prepared_abilities:
   if not id is String or not (context.abilities.has(id) or RulesEntities.enabled(registry) and not RulesEntities.form(record,registry).is_empty() and _context(attributes,classes,ranks,feats,record,false).abilities.has(id)): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
  if registry.rules_ref().engine_schema==3:
-  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25"] else context,registry)
+  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"] else context,registry)
   if not spell_errors.is_empty():return RulesJson.result(spell_errors)
  return {"ok":true,"context":context}
 

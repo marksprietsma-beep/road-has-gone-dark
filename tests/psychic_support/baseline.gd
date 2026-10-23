@@ -29,7 +29,7 @@ func run() -> void:
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  ui.engine=engine;ui.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}};ui.mode="lurk-psychic-ambush";ui.refresh()
  var caption: String=ui.action_buttons["lurk-psychic-ambush"].text
- check("range 2" in caption,"REPRODUCTION: adjacent-only action advertises range2")
+ check("range 1" in caption,"historical25 receives corrected display only, with original combat pin unchanged")
  traces["adjacent_caption"]=caption;traces["distant_lurk_rejected"]=true
  ui.queue_free();finish_reproduction()
 func finish_reproduction() -> void:

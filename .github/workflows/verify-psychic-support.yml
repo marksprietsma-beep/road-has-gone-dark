@@ -1,7 +1,7 @@
 name: GAME-127 Psychic Support Acceptance
 on:
   push:
-    branches: [feature/game-127-psychic-support-parity, main]
+    branches: [main]
     paths: ['scripts/**', 'data/rules/**', 'tests/psychic_support/**', '.github/workflows/verify-psychic-support.yml']
   pull_request:
     paths: ['scripts/**', 'data/rules/**', 'tests/psychic_support/**', '.github/workflows/verify-psychic-support.yml']

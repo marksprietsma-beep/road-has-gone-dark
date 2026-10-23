@@ -21,9 +21,9 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
  if RulesPsychic.parity_enabled(registry) and registry.definition("abilities",ability).has("psychic_power"):
   var derived := characters.derive_character(u.record)
   if not derived.ok or not RulesPsychic.casting_access(registry.definition("abilities",ability),derived.context,registry).ok:return false
- if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
- if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25"]:
+ if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
+ if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
