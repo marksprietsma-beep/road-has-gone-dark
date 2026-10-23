@@ -14,7 +14,6 @@ func cognition(heritage := "heritage-human",count := 5) -> Dictionary:
     var first: String=str(allocation.keys()[0]);allocation[first]-=1
     if allocation[first]==0:allocation.erase(first)
     allocation.perception=1
-  if not choice.attribute_increase.is_empty():choice.attribute_increase="INT"
   var step := kernel.preview_advancement(record,choice)
   check(step.ok,"lawful cognition history "+str(index)+JSON.stringify(step.get("errors",[])))
   if not step.ok:return {}
