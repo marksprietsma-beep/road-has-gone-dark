@@ -48,7 +48,7 @@ func run() -> void:
  b=saved.battles["reach-cognition"].duplicate(true);b.units["bandit-blade"].position=[2,1];ui.engine=TacticalAuras.new(b.units.a.record);b=ui.engine.seal(b);ui.state.first_adventure.battle=b;ui.refresh()
  check(not ui.action_buttons["cognition-strike-1"].disabled,"actual adjacent prestige action available")
  ui.tiles[str(b.units["bandit-blade"].position)].pressed.emit()
- var used := ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":ui.sent.get("kind",""),"target_id":ui.sent.get("target","")})
+ var used: Dictionary=ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":ui.sent.get("kind",""),"target_id":ui.sent.get("target","")})
  check(used.ok,"actual prestige targeting intent accepted")
  b=saved.battles.aura8.duplicate(true);ui.engine=TacticalAuras.new(b.units.a.record);ui.state.first_adventure.battle=b;ui.refresh()
  check(ui.action_buttons.has("divine-mind-aura-bulwark") and not ui.action_buttons["divine-mind-aura-bulwark"].disabled,"actual aura switch control available")
