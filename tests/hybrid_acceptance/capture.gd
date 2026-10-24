@@ -8,7 +8,7 @@ func run() -> void:
  var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"original1690XP/14 campaign resumes for real captures")
  if not loaded.ok:finish_capture();return
  state=loaded.state;var before := RulesJson.digest(state)
- var saved := RulesJson.normalize(WorldOriginLore.read_json(OS.get_environment("HYBRID_ROOT").path_join("saved.json")))
+ var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(OS.get_environment("HYBRID_ROOT").path_join("saved.json")))
  var born := service.store.create_playthrough(entry.world,int(state.origin.state_id),int(state.origin.home_burg_id),int(state.origin.get("province_id",0)))
  check(born.ok and service.store.save_new(born.state.playthrough_id,born.state,entry.world).ok,"fresh ordinary creator original writer")
  if born.ok:
