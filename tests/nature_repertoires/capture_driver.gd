@@ -102,6 +102,19 @@ func render_identity(record: Dictionary,id: String) -> Dictionary:
   # Do not recreate the creature, change its history, or touch the saved source.
   pet.record.rules_ref=r.rules_ref.duplicate(true);pets[pet_id]=pet
  r.runtime.companions=pets
- var rendered := RulesCharacter.new(RulesRecords.registry(r)).derive_character(r)
+ var display := RulesRecords.registry(r)
+ var kernel := RulesCharacter.new(display)
+ var replay := kernel._replay(r)
+ check(replay.ok,"render choices remain legal under display pin "+JSON.stringify(replay.get("errors",[])))
+ if not replay.ok:return {}
+ for pool in replay.context.capacities:
+  if r.runtime.resources.has(pool):continue
+  # Display only: never refill a slot or normalise a historical campaign.
+  # New, unselected prepared-copy pools must be explicit zeroes, as in GAME151.
+  var allowed: bool=int(replay.context.capacities[pool])==0 and display.definition("resources",pool).has("prepared_ability") and RulesRecords.registry(record).definition("resources",pool).is_empty()
+  check(allowed,"only new zero-capacity prepared pools may be projected: "+pool)
+  if not allowed:return {}
+  r.runtime.resources[pool]=0
+ var rendered := kernel.derive_character(r)
  check(rendered.ok,"render fixture retains valid owner/companion identity "+id+" "+JSON.stringify(rendered.get("errors",[])))
  return r

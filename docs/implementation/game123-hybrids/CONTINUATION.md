@@ -1,0 +1,9 @@
+# Active checkpoint
+
+Main c48d6df merged PR148; this new cohort branch is `feature/game-123-duskblade-archmage`. No cohort PR yet. Do not reopen148, recreate Sorcerer/Druid, run Linux game validation or start Abjurant Champion/Theurge.
+
+First inspect latest feature-head Windows `Duskblade and Archmage Acceptance`. Initial commit contains the actual archived18-to27 render correction, immutable native fixtures and pinned27 diagnostic witnesses for selected-caster DC, transformed high arcana and enabled bow-channel controls. No new rules pack or production mechanics change yet;33/17/0 remains unchanged. See ASSESSMENT.md. Fix real fixture/parser defects without weakening checks. Confirm diagnostic outcomes before implementing28.
+
+Baseline main run40068624106 failed only the historical Godot capture (two missing new zero prepared pools); source/native mechanics, earned and connected/cold phases passed. Other main catalogue runs were still active at recovery; inspect actual outcomes. Existing verified Windows release40051404313 and artifact12543979802 must be preserved, not rebuilt as another Sorcerer/Druid release.
+
+Next after focused success: generic permanent selected-caster modifier and proper supernatural typing only if actual Windows witnesses confirm, production channel UI legality through existing channel_access, then complete positive/negative/hit/miss/critical/resource/prestige/body/cold/control acceptance. Genuine XP-funded Archmage entry is total14/1690XP; separately label20/path5 development fixtures. Finally one complete cohort Windows package, source/hash/archive/capture audit, evidence-gated readiness, focused PR/green checks/normal merge/post-main verification. Commit/push meaningful increments. No direct Linear connector is available; maintain GitHub101 accurately.
