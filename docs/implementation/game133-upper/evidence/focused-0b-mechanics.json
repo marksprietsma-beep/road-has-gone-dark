@@ -1,0 +1,692 @@
+{
+  "checks": 1749,
+  "classes": [
+    "sorcerer",
+    "druid"
+  ],
+  "contracts": {
+    "bloodlines": true,
+    "companions": true,
+    "decoys": true,
+    "exchange": true,
+    "forms": true,
+    "hybrid": true,
+    "owned_forms": 12,
+    "permanent_choices": true,
+    "renewal": true
+  },
+  "development_fixtures": true,
+  "earned_level20": false,
+  "failures": 0,
+  "new_spells": [
+    "sorcerer-refraction-guard",
+    "sorcerer-cascade-well",
+    "druid-heartwood-renewal",
+    "druid-wildheart-mantle"
+  ],
+  "rules_ref": {
+    "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v27",
+    "rules_version": "27.0.0",
+    "schema_version": 1
+  },
+  "traces": {
+    "druid-bramble-tether": {
+      "after_hash": "4d2a6f18feeaf3113dd1a65f45856c38284501952e074a6d0e74c486000da813",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-4",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-bramble-tether-prepared",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 4,
+          "dc": 19,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "id": "bramble-tether",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Bramble tether on Road raider. Save 6 + 8 vs 19: failed. Bramble Tether applied."
+      ]
+    },
+    "druid-heartwood-renewal": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Druid · development fixture uses Heartwood renewal on Ally. Heartwood Renewal applied."
+    ],
+    "druid-packward-canopy": {
+      "after_hash": "2b8b7a2491c0872d43837830b07805c6b6cc490657b4eb0795ff22dedffee7ca",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-6",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-packward-canopy-prepared",
+          "type": "resource_spent"
+        },
+        {
+          "id": "packward-canopy",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Packward canopy on Ally. Packward Canopy applied. Packward Canopy applied."
+      ]
+    },
+    "druid-predators-rhythm": {
+      "after_hash": "ab0770b7bdc6485e07ab4e2b2cbf579f51f67e6f51a4638b416daba63307bacd",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-6",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-predators-rhythm-prepared",
+          "type": "resource_spent"
+        },
+        {
+          "id": "predators-rhythm",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Predator's rhythm on Ally. Predators Rhythm applied."
+      ]
+    },
+    "druid-sap-renewal": {
+      "after_hash": "586dbaaec3a7494c2c7fe2aee62823dfe95f7dcc32aea20241dd4b553a9f56af",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-5",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-sap-renewal-prepared",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 30,
+          "target": "fighter",
+          "type": "healing_applied"
+        },
+        {
+          "amount": 10,
+          "type": "temporary_hp_granted"
+        },
+        {
+          "id": "weakened",
+          "type": "status_removed"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Sap renewal on Ally. 0 HP restored."
+      ]
+    },
+    "druid-tier8-sanctuary": {
+      "after_hash": "08acf6fe6ed12d6b42587cd8996093d0ef80e7d12c46cf75d370f15221771d74",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-8",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-tier8-sanctuary-copies",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 30,
+          "target": "upper-save-defender",
+          "type": "healing_applied"
+        },
+        {
+          "id": "druid-tier8-sanctuary-status",
+          "type": "status_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Druid: Sanctuary 8 on Ally. 0 HP restored. Druid Tier 8 Sanctuary Status applied. 0 HP restored. Druid Tier 8 Sanctuary Status applied."
+      ]
+    },
+    "druid-tier8-tempest": {
+      "after_hash": "3452f77b0e70f2b791dfe5ae9c77bea353d4f73e4c51d7048d8c2fd7084e7ad5",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-8",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-tier8-tempest-copies",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 16,
+          "dc": 23,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 53,
+          "damage_type": "radiant",
+          "target": "upper-save-defender",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "slowed",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Druid: Tempest 8 on Road raider. Save 6 + 8 vs 23: failed. 53 damage. Slowed applied."
+      ]
+    },
+    "druid-tier9-sanctuary": {
+      "after_hash": "a5fae5a23c387dc7a724524288b65a6b88855e84d01e8227061b5828a2bfb11a",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-9",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-tier9-sanctuary-copies",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 30,
+          "target": "upper-save-defender",
+          "type": "healing_applied"
+        },
+        {
+          "id": "druid-tier9-sanctuary-status",
+          "type": "status_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Druid: Sanctuary 9 on Ally. 0 HP restored. Druid Tier 9 Sanctuary Status applied. 0 HP restored. Druid Tier 9 Sanctuary Status applied."
+      ]
+    },
+    "druid-tier9-tempest": {
+      "after_hash": "9b75684152e82df45d0929325c2be1636fe2c0c3bd39a1acd48583c0e9cede0a",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-9",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-tier9-tempest-copies",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 16,
+          "dc": 24,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 58,
+          "damage_type": "radiant",
+          "target": "upper-save-defender",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "slowed",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Druid: Tempest 9 on Road raider. Save 6 + 8 vs 24: failed. 58 damage. Slowed applied."
+      ]
+    },
+    "druid-wildheart-mantle": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Druid · development fixture uses Wildheart mantle on Ally. Bear Form applied."
+    ],
+    "druid-winters-verdict": {
+      "after_hash": "4bc8baae2f264a29304a59584da167b13bb76f93b7f4b3938e5ccfb4448d091b",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-slots-7",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 1,
+          "character_id": "druid",
+          "id": "druid-winters-verdict-prepared",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 6,
+          "dc": 22,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 18,
+          "damage_type": "cold",
+          "target": "fighter",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "winter-lock",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Druid · development fixture uses Winter's verdict on Road raider. Save 6 + 13 vs 22: failed. 25 damage. Winter Lock applied."
+      ]
+    },
+    "sorcerer-cascade-well": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Sorcerer · development fixture uses Cascade well on Sorcerer · development fixture. "
+    ],
+    "sorcerer-crushing-doubt": {
+      "after_hash": "e2a1385d5efefe22414a200003d840b75987be70ee6a1d5e76dfe52c3a70cb3c",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-5",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 9,
+          "dc": 21,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "id": "crushing-doubt",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Crushing doubt on Road raider. Save 6 + 26 vs 21: resisted."
+      ]
+    },
+    "sorcerer-crystal-reservoir": {
+      "after_hash": "a55465b5e652203e2ad42515c9507b6d3320f735110e96088b124101c7a8a0e1",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-4",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 18,
+          "type": "temporary_hp_granted"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Crystal reservoir on Ally. "
+      ]
+    },
+    "sorcerer-refraction-guard": [
+      "The party meets armed raiders on the approach to this local site.",
+      "Sorcerer · development fixture uses Refraction guard on Sorcerer · development fixture. Refraction Shell 1 applied. Refraction Shell 2 applied. Refraction Shell 3 applied."
+    ],
+    "sorcerer-slipstream-veil": {
+      "after_hash": "93d1e4522c4227c3019f4d767e3a30be252ee129aebba1204d35debbb5cb2b25",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-6",
+          "type": "resource_spent"
+        },
+        {
+          "id": "slipstream-veil",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Slipstream veil on Ally. Slipstream Veil applied."
+      ]
+    },
+    "sorcerer-starfall-rupture": {
+      "after_hash": "906e6330853806f0b79c228054e95d9b9b1561aa3f7548bf39e1c307c4244ab4",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-7",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 4,
+          "dc": 23,
+          "roll": 18,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 18,
+          "damage_type": "force",
+          "target": "fighter",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "starfall-fracture",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Starfall rupture on Road raider. Save 6 + 8 vs 23: failed. 31 damage. Starfall Fracture applied."
+      ]
+    },
+    "sorcerer-sundering-chord": {
+      "after_hash": "fe4ec7a490a2b64c5341b60dae20bb7e76aec73e7a41cf01520aa36c8664e544",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-7",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 6,
+          "dc": 23,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "id": "warded",
+          "type": "status_removed"
+        },
+        {
+          "id": "haste",
+          "type": "status_removed"
+        },
+        {
+          "id": "wizard-greater-ward-status",
+          "type": "status_removed"
+        },
+        {
+          "id": "sorcerer-greater-ward-status",
+          "type": "status_removed"
+        },
+        {
+          "id": "cleric-faith-ward-status",
+          "type": "status_removed"
+        },
+        {
+          "id": "druid-oak-ward-status",
+          "type": "status_removed"
+        },
+        {
+          "id": "perfect-shadow",
+          "type": "status_removed"
+        },
+        {
+          "id": "beguiling-veil",
+          "type": "status_removed"
+        },
+        {
+          "id": "runic-shell",
+          "type": "status_removed"
+        },
+        {
+          "id": "spirit-shelter",
+          "type": "status_removed"
+        },
+        {
+          "id": "spirit-lattice",
+          "type": "status_removed"
+        },
+        {
+          "id": "lucid-poise",
+          "type": "status_removed"
+        },
+        {
+          "id": "sovereign-clarity",
+          "type": "status_removed"
+        },
+        {
+          "id": "elemental-covenant",
+          "type": "status_removed"
+        },
+        {
+          "id": "company-veil",
+          "type": "status_removed"
+        },
+        {
+          "id": "freedom-path",
+          "type": "status_removed"
+        },
+        {
+          "id": "slipstream-veil",
+          "type": "status_removed"
+        },
+        {
+          "id": "packward-canopy",
+          "type": "status_removed"
+        },
+        {
+          "id": "predators-rhythm",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Sundering chord on Road raider. Save 6 + 13 vs 23: failed."
+      ]
+    },
+    "sorcerer-tier8-sanctuary": {
+      "after_hash": "bd609da503bcb1064ac746bd96485086452322ebe1a0377d4a853f270a5a8655",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-8",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 30,
+          "target": "upper-save-defender",
+          "type": "healing_applied"
+        },
+        {
+          "id": "sorcerer-tier8-sanctuary-status",
+          "type": "status_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Sorcerer: Sanctuary 8 on Ally. 0 HP restored. Sorcerer Tier 8 Sanctuary Status applied. 0 HP restored. Sorcerer Tier 8 Sanctuary Status applied."
+      ]
+    },
+    "sorcerer-tier8-tempest": {
+      "after_hash": "351fd60ff0cc9cf8d9431d3663655f9235f8cf0d488de7fb322cd873d70d0841",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-8",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 16,
+          "dc": 24,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 53,
+          "damage_type": "arcane",
+          "target": "upper-save-defender",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "slowed",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Sorcerer: Tempest 8 on Road raider. Save 6 + 8 vs 24: failed. 53 damage. Slowed applied."
+      ]
+    },
+    "sorcerer-tier9-sanctuary": {
+      "after_hash": "cf16f3678b0e0bc91d70223b9acdc026d52108b62cc3cf5e351c0814448fb010",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-9",
+          "type": "resource_spent"
+        },
+        {
+          "amount": 30,
+          "target": "upper-save-defender",
+          "type": "healing_applied"
+        },
+        {
+          "id": "sorcerer-tier9-sanctuary-status",
+          "type": "status_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_removed"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Sorcerer: Sanctuary 9 on Ally. 0 HP restored. Sorcerer Tier 9 Sanctuary Status applied. 0 HP restored. Sorcerer Tier 9 Sanctuary Status applied."
+      ]
+    },
+    "sorcerer-tier9-tempest": {
+      "after_hash": "acf3fe616bcf962a22daa63c12b5d307e0f15b5f58d156c3fd0529bf1ddc8477",
+      "development_fixture": true,
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "sorcerer-slots-9",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 16,
+          "dc": 25,
+          "roll": 5,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 58,
+          "damage_type": "arcane",
+          "target": "upper-save-defender",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "slowed",
+          "type": "status_applied"
+        }
+      ],
+      "log": [
+        "The party meets armed raiders on the approach to this local site.",
+        "Sorcerer · development fixture uses Sorcerer: Tempest 9 on Road raider. Save 6 + 8 vs 25: failed. 58 damage. Slowed applied."
+      ]
+    }
+  }
+}
