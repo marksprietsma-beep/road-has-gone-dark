@@ -78,18 +78,33 @@ func run() -> void:
    var choice := kernel.suggested_choice(r,str(r.advancement_history.back().class_id))
    check(choice.ok and CharacterBuilderRecords.preview_advancement(state,id,choice.choice).ok,"actual earned qualifying/ineligible characters can keep advancing their legal base class")
   check(RulesJson.digest(state)==before,"funded previews preserve the archived actual campaign")
- var hashes := {};var snapshots := {}
+ var hashes := {};var snapshots := {};var boundary := {}
  for key in rows:
+  var before: Dictionary=rows[key];var original := kernel.derive_character(before)
+  var key_types := [];non_string_keys(before,"record",key_types)
+  rows[key]=RulesJson.string_keys(before)
   var d := kernel.derive_character(rows[key]);check(d.ok,"all diagnostic/planned histories are valid")
+  check(original.ok and d.ok and original.snapshot.snapshot_hash==d.snapshot.snapshot_hash,"canonical fixture boundary preserves the actual authoritative snapshot "+key)
+  boundary[key]={"non_string_keys":key_types,"before_digest":RulesJson.digest(before),"serialized_digest":RulesJson.digest(rows[key]),"snapshot_unchanged":original.ok and d.ok and original.snapshot.snapshot_hash==d.snapshot.snapshot_hash}
   hashes[key]=RulesJson.digest(rows[key]);snapshots[key]=d.snapshot.snapshot_hash
  FileAccess.open(base.path_join("planner-saved.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":rows,"hashes":hashes,"snapshots":snapshots})))
+ evidence.serialization_boundary=boundary
  FileAccess.open(base.path_join("planner-diagnostics.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(evidence),"  "))
  finish()
+func non_string_keys(value: Variant,path: String,result: Array) -> void:
+ if value is Dictionary:
+  for key in value:
+   if not key is String:result.append({"path":path+"."+str(key),"type":type_string(typeof(key))})
+   non_string_keys(value[key],path+"."+str(key),result)
+ elif value is Array:
+  for i in value.size():non_string_keys(value[i],path+"["+str(i)+"]",result)
 func cold() -> void:
  var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("planner-saved.json")))
  for key in saved.records:
   var d := kernel.derive_character(saved.records[key])
-  check(d.ok and d.snapshot.snapshot_hash==saved.snapshots[key] and RulesJson.digest(saved.records[key])==saved.hashes[key],"exact diagnostic/choice cold restart "+key)
+  check(d.ok,"cold diagnostic record remains valid "+key+JSON.stringify(d.get("errors",[])))
+  if d.ok:check(d.snapshot.snapshot_hash==saved.snapshots[key],"exact authoritative diagnostic snapshot after cold restart "+key)
+  check(RulesJson.digest(saved.records[key])==saved.hashes[key],"exact serializable diagnostic record after cold restart "+key)
  finish(true)
 func finish(restart := false) -> void:
  var p := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"scope":"Exact failed1690XP records and small lawful corrected13→14 planning; corrected histories are development fixtures, not yet an earned campaign."}
