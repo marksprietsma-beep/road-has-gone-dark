@@ -32,6 +32,16 @@ func run() -> void:
   if out.ok:predicted[key]={"command":next,"hash":out.battle.state_hash}
  FileAccess.open(base.path_join("saved.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"records":saved_records,"hashes":hashes,"record_hashes":records,"battles":battles,"predicted":predicted})))
  finish_acceptance()
+func encounter(record: Dictionary) -> Dictionary:
+ # The inherited channel fixture names every caster Duskblade. Give this
+ # development fixture its actual class label before any commands/logs exist;
+ # real generated campaign identities are never changed.
+ var b := super.encounter(record);var names := []
+ for step in record.advancement_history:
+  var label: String=source.definition("classes",step.class_id).name
+  if not names.has(label):names.append(label)
+ b.units.a.name=" / ".join(names)
+ return TacticalAuras.new(record).seal(b)
 func arch_path(cls: String,variant: String) -> Dictionary:
  var r := career_fixture(cls,13,["spell-focus","greater-spell-focus"])
  if r.is_empty():return {}

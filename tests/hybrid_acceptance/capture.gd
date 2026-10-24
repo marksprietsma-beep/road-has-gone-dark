@@ -36,8 +36,12 @@ func run() -> void:
   var picker: OptionButton=sheet.advance_editor.class_picker
   select_option(picker,"archmage")
   check(sheet.advance_editor.career_pickers.has("archmage-casting") and sheet.advance_editor.career_pickers.has("high-arcana-1") and not sheet.advancement_button.disabled,"earned1690XP enables explicit optional Archmage and its choices "+cls)
+  sheet.advance_editor.sections.current_tab=4 # Actual Specialisation controls, rather than the empty non-score-increase tab.
+  select_option(sheet.advance_editor.career_pickers["high-arcana-1"],"ward" if cls=="sorcerer" else "force")
   sheet.title.text="EARNED · "+cls+"13 · 1690XP · optional Archmage preview, not committed"
   await photograph_scene("earned-"+cls+"-prestige-entry",false,Vector2i(2560,1440));screenshots.back().earned_xp=1690
+  sheet.advance_editor.sections.current_tab=3
+  await photograph_scene("earned-"+cls+"-prestige-prerequisites",false,Vector2i(2560,1440));screenshots.back().earned_xp=1690
   check(RulesJson.digest(fork.load_save(slot,entry.world).state)==RulesJson.digest(earned),"preview/capture never commits advancement")
  service.store.save_root=original_root;service.library.save_root=original_root;slot=original_slot
  for key in ["duskblade20","sorcerer:force","wizard:ward"]:
