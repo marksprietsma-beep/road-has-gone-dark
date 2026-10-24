@@ -1,9 +1,29 @@
-# In-progress source checkpoint
+# Exact recovery checkpoint — upper-tier cohort in progress
 
-Branch feature/game-123-sorcerer-druid-upper-tiers, based on main3e62d5c. Four-spell immutable v27 cohort, existing capability gates, small v27-only weapon-shell interception and allied-form reversion are implemented. No1–26 pack changed; static source guard passes. Windows validation has **not yet passed**. Do not promote either career or claim a playable release yet.
+Branch: `feature/game-123-sorcerer-druid-upper-tiers`, based on verified main `3e62d5cfc4959269f607ee7f64008842882f1c48`.
 
-Focused workflow: `.github/workflows/verify-upper-nature.yml`. It runs on this feature branch, PR and main, Windows only. First diagnose actual import/compile/mechanics/control failures, preserving assertions. `tests/upper_nature/run-focused.py` never executes a game on Linux. `check-source.py` is static host inspection only.
+Latest gameplay/test source: `ae917f89e348038b478448b19ec33b3278686732`. Later documentation-only commits do not alter native inputs. Four original upper-tier choices and the existing capability gates, finite weapon-attempt interception, allied-form reversion and compact shell feedback are implemented. Immutable candidate27 hash: `1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84`. All1–26 bytes/pins and frozen TacticalCombat remain unchanged; static source guard passes. No roster/world expansion.
 
-After focused success: finish earned ordinary Sorcerer/Druid/Fighter campaigns using the existing nature journey; saved encounter/cold continuation; production-scene captures at supported sizes; full native package/independent archive/source/hash/licence audit; evidence-gated31→33 readiness only if actual criteria pass. Release packaging script and captures are still pending. Preserve source checkpoints before expensive tests. Update stale game127-support/NEXT-WAVE.md and reassess the remaining hybrid queue; do not implement another cohort.
+## Current required next action
 
-Create one reviewable PR, inspect all changes, wait required Windows checks, merge normally, verify actual main/post-merge outcomes. Keep GAME123/#101 InProgress/OPEN; no direct Linear write is available. No new roster/world development.
+Focused **Windows** run [40048413027](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40048413027) is running on ae917. Inspect its actual conclusion before doing anything else. No successful native release, readiness promotion or merge is claimed. No PR exists yet; do not duplicate one if a later execution publishes it.
+
+Prior focused failures were isolated and corrected without weakening invariants:
+
+-40046351371/source52858db: test-driver Variant type declarations, before mechanics.
+-40046702266/sourcefea6c2f: malformed Slowed fixture with remaining2 although its immutable duration is1.
+-40047139495/sourcea5475af: negative score fixture retroactively changed base scores and invalidated prior feats. Now builds a lawful low-casting20 history instead.
+-40047604548/sourcea79b9c6: a level7 Fighter cannot succeed against the highest tier9 DC. Upper save witnesses now use a lawful level20 Monk with real Reflex/evasion; lower-tier legacy witnesses remain unchanged. No DC/rules assertion was relaxed.
+
+GitHub sometimes returns503 for combined logs/artifact downloads. Retry the read or use the preserved per-run evidence artifact; never relaunch expensive tests merely because metadata download failed. Credentials work with `env -u GH_TOKEN -u GITHUB_TOKEN GH_CONFIG_DIR=/workspace/scratch/game146/gh-auth gh ...`.
+
+## After focused success
+
+1. Confirm runtime/test/workflow/export inputs match the passing source. The dedicated workflow ID is394715811 (`verify-upper-nature.yml`), already registered/active by feature pushes. Dispatch `release=true` once stable, using this branch. Full native script, approved QA export scene, ordinary490XP/8 journeys, actual saved class-action combat, capture worker and source/archive audit are implemented. Do not rebuild them from scratch.
+2. Complete native gate runs fresh27 mechanics/cold/controls/earned/connected/renders/all32 base20/current Wizard-Cleric and pinned26/18/16/compatibility/frozen22181. Inspect real failures first. Release uses empty PATH, bundled helper, checked startup and removes the QA executable.
+3. Download `upper-nature-complete-windows-x64` and `upper-nature-windows-evidence`. Verify CRC/AMD64/source/manifest/content/canonical pin/credits/checksum with audit-windows-delivery.py. Preserve original PNG bytes and exact dimensions; 1280x720 requests may render1280x719. Clearly label upper20 as development fixtures; ordinary earned characters are490XP/8.
+4. Generate readiness only from the matching successful receipt: `python tools/character-content/build-readiness.py --pack trhgd-character-v27 --native <native-root>`. New guard `readiness_upper_nature.py` preserves31 prior source-labelled acceptances, requires actual current contracts and only then promotes Sorcerer/Druid, targeting33/17/0. Do not force totals or claim every old career freshly accepted.
+5. Finalise DELIVERY/TESTING/PR description, actual native/evidence/source/checksum, screenshot README and next-wave document. `game127-support/NEXT-WAVE.md` now correctly identifies the active cohort and31/19 baseline; after acceptance update it to the actual remaining hybrid queue. No next cohort implementation.
+6. Publish one reviewable PR against latest main, inspect full logical delta, run/review required Windows checks, merge normally only when green, verify actual merge/main and post-merge workflows. Keep GAME123/#101 InProgress/OPEN; issue101 already has an active upper-nature marker. No callable Linear connector; never claim a direct Linear update.
+
+All important source is pushed. Preserve incidental untracked __pycache__ directories. No Linux game validation, no force-push/check bypass, no silent save migration or extra content roster. Stop after this cohort.
