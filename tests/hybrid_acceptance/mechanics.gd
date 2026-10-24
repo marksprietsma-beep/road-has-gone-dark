@@ -256,7 +256,7 @@ func test_ward_progression() -> void:
  contracts.ward_progression=true
 func test_beguiler_route() -> void:
  # The existing third casting option is an integration route, not another cohort.
- var r := career_fixture("beguiler",13,["spell-focus","greater-spell-focus"])
+ var r := career_fixture("beguiler",14,["spell-focus","greater-spell-focus"])
  var available: Array=kernel.derive_character(r).snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).get("casting_class")=="beguiler" and source.definition("abilities",id).get("spell_tier")==7)
  check(not available.is_empty(),"existing Beguiler has a real legal upper arcane tier")
  if available.is_empty():return
@@ -271,7 +271,7 @@ func test_beguiler_route() -> void:
   if not advanced.ok:return
   r=advanced.candidate
  var d := kernel.derive_character(r);r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,d.snapshot.resource_capacities,"eligible_rest").runtime
- check(d.snapshot.casting_levels.beguiler==18 and d.context.casting_modifiers.archmage==int(floor(float(int(d.snapshot.attributes.INT)-10)/2.0)),"selected Beguiler progression and primary attribute remain exact")
+ check(d.snapshot.casting_levels.beguiler==19 and d.context.casting_modifiers.archmage==int(floor(float(int(d.snapshot.attributes.INT)-10)/2.0)),"selected Beguiler progression and primary attribute remain exact")
  check(use(r,fixtures.fighter,"high-arcana-force-5").ok and use(r,fixtures.fighter,"high-arcana-ward-3").ok,"third existing parent executes its actually selected force and cleansing choices")
  saved_records["beguiler:archmage"]=r
  contracts.existing_beguiler_route=true

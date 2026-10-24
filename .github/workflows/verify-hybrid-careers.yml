@@ -2,6 +2,10 @@ name: Duskblade and Archmage Acceptance
 on:
   workflow_dispatch:
     inputs:
+      release:
+        description: One stable complete self-contained Windows release
+        type: boolean
+        default: false
       journey:
         description: Focused genuine1690XP/14 prestige entry and connected cold campaign
         type: boolean
@@ -11,7 +15,9 @@ on:
         type: boolean
         default: false
   push:
-    branches: [feature/game-123-duskblade-archmage]
+    branches: [main, feature/game-123-duskblade-archmage]
+    paths: ['scripts/**', 'data/rules/**', 'tests/hybrid_acceptance/**', 'tests/nature_repertoires/capture_driver.gd', '.github/workflows/verify-hybrid-careers.yml']
+  pull_request:
     paths: ['scripts/**', 'data/rules/**', 'tests/hybrid_acceptance/**', 'tests/nature_repertoires/capture_driver.gd', '.github/workflows/verify-hybrid-careers.yml']
 permissions:
   contents: read
@@ -19,7 +25,7 @@ permissions:
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +51,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'hybrid-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       - name: Actual archived display legality and baseline career diagnostics
-        if: github.event_name != 'workflow_dispatch' || (!inputs.journey && !inputs.historical_capture)
+        if: github.event_name != 'workflow_dispatch' || (!inputs.release && !inputs.journey && !inputs.historical_capture)
         env:
           HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
         run: python tests/hybrid_acceptance/run-focused.py
@@ -68,6 +74,14 @@ jobs:
           HYBRID_HISTORICAL_INPUT: ${{ runner.temp }}/historical-native-input
           HYBRID_HISTORICAL_ROOT: ${{ runner.temp }}/historical-native-recheck
         run: python tests/hybrid_acceptance/recheck-historical.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native Windows cohort release
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          HYBRID_RELEASE_ROOT: ${{ runner.temp }}/hybrid-native
+        run: python tests/hybrid_acceptance/verify-package.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -79,5 +93,14 @@ jobs:
             ${{ runner.temp }}/historical-native-recheck/**/*.json
             ${{ runner.temp }}/historical-native-recheck/**/*.log
             ${{ runner.temp }}/historical-native-recheck/captures/*.png
+            ${{ runner.temp }}/hybrid-native/**/*.json
+            ${{ runner.temp }}/hybrid-native/**/*.log
+            ${{ runner.temp }}/hybrid-native/captures/*.png
             ${{ runner.temp }}/hybrid-import.log
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        with:
+          name: hybrid-complete-windows-x64
+          path: ${{ runner.temp }}/hybrid-native/distribution/*.zip*
           retention-days: 90
