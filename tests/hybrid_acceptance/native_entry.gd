@@ -36,7 +36,7 @@ func run() -> void:
    var out := builder.operate(entry,state.playthrough_id,"builder_advance",index+1,{"character_id":id,"before_hash":preview.before_hash,"candidate_hash":preview.candidate_hash,"choice":preview.choice})
    check(out.ok,"exported actual production commit "+name+str(out.get("error","")))
    if not out.ok:continue
-   var r: Dictionary=out.state.mechanics.records[id];var d := driver.kernel.derive_character(r)
+   var r: Dictionary=out.state.mechanics.records[id];var d: Dictionary=driver.kernel.derive_character(r)
    check(d.ok and r.advancement_history.size()==14 and r.advancement_history.back().class_id==chosen and CharacterBuilderRecords.xp(out.state,id)==1690,"native ordered manual history and unchanged legitimate XP")
    check(int(d.snapshot.class_levels.get("archmage",0))==(1 if accept else 0),"qualification never automatically assigns prestige "+name)
    results[name]={"slot":state.playthrough_id,"character_id":id,"state_hash":RulesJson.digest(out.state),"snapshot_hash":d.snapshot.snapshot_hash,"chosen":chosen}
