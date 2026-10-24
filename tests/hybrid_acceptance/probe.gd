@@ -39,7 +39,7 @@ func run() -> void:
   check(ui.action_buttons[wrapper].disabled and not rejected.ok,"corrected production UI disables bow channel; pinned27 command semantics still reject")
  var melee := select(build("duskblade",3),"duskblade-searing-grasp")
  var ready := encounter(melee);ui.engine=TacticalAuras.new(melee)
- var spent := ui.engine.command(ready,order(ready,wrapper))
+ var spent: Dictionary=ui.engine.command(ready,order(ready,wrapper))
  check(spent.ok,"real channel consumes the main action for targeting diagnostic")
  if spent.ok:
   ui.state.first_adventure.battle=spent.battle;ui.mode=wrapper;ui.refresh()
