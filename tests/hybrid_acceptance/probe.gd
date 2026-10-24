@@ -45,7 +45,7 @@ func run() -> void:
   ui.state.first_adventure.battle=spent.battle;ui.mode=wrapper;ui.refresh()
   var stale: bool=ui.tiles[str(spent.battle.units["bandit-blade"].position)].target_tile
   evidence.spent_channel_highlight={"main":spent.battle.budget.main,"button_disabled":ui.action_buttons[wrapper].disabled,"target_highlighted":stale}
-  check(stale and ui.action_buttons[wrapper].disabled,"reproduced presentation mismatch: unavailable channel still highlights target after actual action")
+  check(not stale and ui.action_buttons[wrapper].disabled,"corrected presentation: unavailable channel has no target highlight after actual action")
  ui.queue_free()
  FileAccess.open(base.path_join("probe-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"scope":"Pinned27 baseline defects and historical display repair only; no career readiness promotion.","evidence":evidence}),"  "))
  print("HYBRID_PROBE ",checks," failures ",failures);get_tree().quit(1 if failures else 0)

@@ -18,7 +18,7 @@ func run() -> void:
    if not r.is_empty():saved_records[cls+":"+variant]=r
  if failures:finish_acceptance();return
  fixtures.defender=warded_defender()
- test_channel_cohort();test_archmage();test_permanent_gates();test_forms();test_resource_boundaries()
+ test_channel_cohort();test_multiclass_channels();test_refraction_counter();test_archmage();test_permanent_gates();test_forms();test_resource_boundaries()
  var hashes := {};var records := {};var predicted := {}
  for key in saved_records:
   saved_records[key]=RulesJson.string_keys(saved_records[key]);var d := kernel.derive_character(saved_records[key])
@@ -117,6 +117,51 @@ func test_channel_cohort() -> void:
  check(not kernel.derive_character(first).snapshot.abilities.has("channel-duskblade-searing-grasp"),"channel not granted before class3")
  check(not source.definition("abilities","channel-duskblade-runic-ward").has("id"),"self ward cannot be channelled")
  contracts.channels=count
+func test_multiclass_channels() -> void:
+ var r: Dictionary=saved_records.duskblade17.duplicate(true)
+ for i in 3:
+  var proposed := kernel.suggested_choice(r,"wizard")
+  if (r.advancement_history.size()+1)%4==0:proposed.choice.attribute_increase="INT"
+  var advanced := kernel.preview_advancement(r,proposed.choice);check(advanced.ok,"lawful Duskblade17/Wizard3 ordered history")
+  if not advanced.ok:return
+  r=advanced.candidate
+ r.choices.prepared_abilities=["duskblade-ruinous-touch","wizard-arcane-bolt"];r.choices.spell_preparations={"wizard-arcane-bolt":1}
+ var d := kernel.derive_character(r);check(d.ok,"legal independent known/prepared multiclass selections")
+ if not d.ok:return
+ r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,d.snapshot.resource_capacities,"eligible_rest").runtime
+ check(d.snapshot.casting_levels.duskblade==17 and d.snapshot.casting_levels.wizard==3 and not d.snapshot.abilities.has("wizard-tier9-tempest"),"aggregate arcane levels do not grant a different class's upper spells")
+ var engine := TacticalAuras.new(r);var b := encounter(r);var before: Dictionary=b.units.a.record.runtime.resources.duplicate()
+ var ch := engine.command(b,order(b,"channel-duskblade-ruinous-touch"));check(ch.ok,"late multiclass channel executes")
+ if not ch.ok:return
+ check(ch.battle.units.a.record.runtime.resources["wizard-slots-1"]==before["wizard-slots-1"] and ch.battle.units.a.record.runtime.resources["wizard-prepared-arcane-bolt"]==1,"channel spends only original Duskblade pool, never Wizard slot/copy")
+ check(not engine.command(ch.battle,order(ch.battle,"wizard-arcane-bolt")).ok,"separate class spell still competes for the same main action")
+ b=ch.battle
+ for n in 10:
+  var ended := engine.command(b,{"actor_id":engine.current(b).id,"revision":b.revision,"kind":"end"});check(ended.ok,"actual turn authority advances multiclass fixture")
+  if not ended.ok:return
+  b=ended.battle
+  if engine.current(b).id=="a":break
+ var cast := engine.command(b,order(b,"wizard-arcane-bolt"));check(cast.ok,"actual next-activation Wizard spell executes independently")
+ if cast.ok:
+  check(cast.battle.units.a.record.runtime.resources["wizard-slots-1"]==before["wizard-slots-1"]-1 and cast.battle.units.a.record.runtime.resources["wizard-prepared-arcane-bolt"]==0,"Wizard spell consumes its actual slot and prepared copy")
+  check(cast.battle.units.a.record.runtime.resources["duskblade-slots-5"]==ch.battle.units.a.record.runtime.resources["duskblade-slots-5"],"ordinary Wizard spell cannot spend/refill Duskblade resources")
+  battles["multiclass-independent"]=cast.battle;saved_records["duskblade:wizard"]=cast.battle.units.a.record
+ contracts.multiclass=true
+func test_refraction_counter() -> void:
+ var target: Dictionary=saved_records["sorcerer:force"].duplicate(true);target.character_id="bandit-blade";target.equipment=["staff"]
+ target.choices.prepared_abilities.append("sorcerer-refraction-guard")
+ var guard := use(target,target,"sorcerer-refraction-guard");check(guard.ok,"actual existing Sorcerer8 refraction casts under28")
+ if not guard.ok:return
+ var caster := select(saved_records.duskblade17,"duskblade-ruinous-touch");var b := encounter(caster);var engine := TacticalAuras.new(caster)
+ b.units["bandit-blade"].record=guard.actor;b.units["bandit-blade"].weapon="staff";b=engine.seal(b)
+ var old_rng := RulesJson.digest(b.rng);var hp: int=int(guard.actor.runtime.hp)
+ var out := engine.command(b,order(b,"channel-duskblade-ruinous-touch"));check(out.ok,"real finite-illusion channel counterplay")
+ if out.ok:
+  check(out.battle.units["bandit-blade"].record.runtime.hp==hp and RulesJson.digest(out.battle.rng)==old_rng,"intercepted weapon delivers no channel damage/save/RNG")
+  check(out.battle.units["bandit-blade"].record.runtime.statuses.filter(func(s: Dictionary):return source.definition("statuses",s.id).tags.has("weapon_decoy")).size()==2,"exactly one existing refraction shell consumed")
+  check(out.battle.budget.main==0 and out.battle.units.a.record.runtime.resources["duskblade-slots-5"]==b.units.a.record.runtime.resources["duskblade-slots-5"]-1,"countered channel still pays action and original slot")
+  battles["refraction-counter"]=out.battle
+ contracts.refraction=true
 func test_archmage() -> void:
  for cls in ["wizard","sorcerer"]:
   for variant in ["force","ward"]:
@@ -158,6 +203,7 @@ func test_permanent_gates() -> void:
  for cls in ["wizard","sorcerer"]:
   var qualified := career_fixture(cls,13,["spell-focus","greater-spell-focus"])
   if cls=="sorcerer":qualified=prep(qualified,"sorcerer-tier7-tempest")
+  saved_records[cls+":qualified13"]=qualified
   var before := RulesJson.digest(qualified);var offered := kernel.available_advancement(qualified)
   check(offered.classes.archmage.ok and RulesJson.digest(qualified)==before,"qualification is permanent and never automatic "+cls)
   check(not kernel.derive_character(qualified).snapshot.class_levels.has("archmage"),"qualifying character still has no prestige level")
@@ -171,6 +217,10 @@ func test_permanent_gates() -> void:
    check(kernel.validate_build(unknown).ok and not kernel.available_advancement(unknown).classes.archmage.ok,"nominal caster13 without permanent tier7 knowledge cannot enter")
  var missing_feat := career_fixture("wizard",13)
  check(not kernel.available_advancement(missing_feat).classes.archmage.ok,"missing actual feat chain rejects prestige")
+ var temporary: Dictionary=missing_feat.duplicate(true);temporary.runtime.granted_features.append("greater-spell-focus-feature")
+ check(kernel.validate_build(temporary).ok,"real temporary focus feature is a valid runtime bonus")
+ check(not kernel.available_advancement(temporary).classes.archmage.ok,"temporary feature/DC bonus cannot replace permanent feat prerequisite")
+ saved_records["wizard:temporary-focus"]=temporary
  var fresh := kernel.create("forged",{"INT":15,"STR":14,"DEX":13,"CON":12,"WIS":10,"CHA":8},"heritage-human")
  check(not kernel.preview_choices(fresh,"archmage").ok,"forged first prestige level cannot enter")
  contracts.permanent_entry=true

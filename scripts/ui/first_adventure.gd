@@ -123,6 +123,9 @@ func _process(delta: float) -> void:
 func choose_tile(p: Array) -> void:
  var b := battle()
  if b.is_empty() or b.status!="active": return
+ if not channel_action_available(b,engine.current(b),mode):
+  message="Channel unavailable: requires a known eligible spell, one equipped melee weapon, a slot and the main action."
+  refresh();return
  if mode=="move": send("move","",p)
  else:
   var id := engine.occupant(b,p)
@@ -132,6 +135,14 @@ func choose_tile(p: Array) -> void:
   if not id.is_empty(): send(mode,id)
 func select_mode(value: String) -> void:
  mode=value;message="";refresh()
+func channel_action_available(b: Dictionary,actor: Dictionary,id: String,derived: Dictionary={}) -> bool:
+ var row := engine.registry.definition("abilities",id)
+ if not row.has("channel_spell"):return true
+ if actor.team!="party":return false
+ var current: Dictionary=derived if not derived.is_empty() else engine.characters.derive_character(actor.record)
+ if not current.ok or not current.snapshot.abilities.has(id):return false
+ if not RulesWaveFive.channel_access(actor.record,row,current.context,engine.registry).ok:return false
+ return engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
 func add_action(id: String,text: String) -> void:
  var button := GameUI.action(text,func():select_mode(id),mode==id)
  button.disabled=thread!=null or engine.current(battle()).team!="party" or int(battle().budget.move if id=="move" else battle().budget.main)<1
@@ -146,8 +157,7 @@ func add_action(id: String,text: String) -> void:
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
    if row.has("channel_spell"):
-    var channel_access := RulesWaveFive.channel_access(actor.record,row,derived.get("context",{}),engine.registry)
-    button.disabled=button.disabled or not channel_access.ok
+    button.disabled=button.disabled or not channel_action_available(battle(),actor,id,derived)
    if RulesWaveFour.enabled(engine.registry) and not psychic_identity_access(actor,row).ok:button.disabled=true
    if RulesPsychic.identity_enabled(engine.registry) and row.get("requires_melee",false) and not battle().units.values().any(func(t: Dictionary):return engine.eligible(battle(),actor,t,id)):button.disabled=true
    if RulesPsychic.parity_enabled(engine.registry) and derived.ok and int(row.get("cost",{}).get("main",0))>0 and derived.snapshot.tags.has("main_action_suppressed"):button.disabled=true
@@ -237,6 +247,7 @@ func refresh() -> void:
  if not playing: targeting.text="Encounter complete · return to the region."
  if is_presenting():targeting.text="Watching "+presentation_actor+" · "+presentation_kind.capitalize()
  var reachable := engine.paths(b,actor) if playing and mode=="move" and int(b.budget.move)>0 else {}
+ var selected_channel_ready := channel_action_available(b,actor,mode)
  for y in int(b.board.height):
   for x in int(b.board.width):
    var p := [x,y];var id := engine.occupant(b,p)
@@ -263,7 +274,7 @@ func refresh() -> void:
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
     if int(u.record.runtime.temporary_hp)>0:button.tooltip_text+=" · %d temporary HP"%int(u.record.runtime.temporary_hp)
     if not recipe.warnings.is_empty(): button.tooltip_text+=" · "+"; ".join(recipe.warnings)
-   var valid_target: bool=playing and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
+   var valid_target: bool=playing and selected_channel_ready and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
    var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
    button.active_tile=actor.position==p and playing;button.target_tile=valid_target;button.move_tile=valid_move
    var style := GameUI.box(Color.TRANSPARENT)
