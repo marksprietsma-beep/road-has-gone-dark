@@ -42,7 +42,7 @@ func run() -> void:
    var position: Array=b.units.b.position;check(ui.tiles[str(position)].target_tile,"actual ally target hitbox")
    ui.tiles[str(position)].pressed.emit()
   check(ui.sent.get("kind")==id and ui.sent.get("target")==target,"production spell intent "+id)
-  var result := ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":target})
+  var result: Dictionary=ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":target})
   check(result.ok,"production intent executes "+id)
  ui.queue_free()
  FileAccess.open(base.path_join("input-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"scope":"Actual Godot creator, known/prepared spellbook, tactical action buttons and tile targeting"}))

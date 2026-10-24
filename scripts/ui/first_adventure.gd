@@ -295,6 +295,9 @@ func refresh() -> void:
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
    if int(actor.record.runtime.temporary_hp)>0:detail.text+="\nBuffer: %d temporary HP"%int(actor.record.runtime.temporary_hp)
+   if engine.registry.rules_ref().pack_id=="trhgd-character-v27":
+    var shells: int=actor.record.runtime.statuses.filter(func(s: Dictionary):return engine.registry.definition("statuses",s.id).tags.has("weapon_decoy")).size()
+    if shells>0:detail.text+="\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells
    if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
    if RulesMartial.enabled(engine.registry):
     detail.text+="\nShared reaction: "+("ready" if int(actor.reaction)>0 else "spent")

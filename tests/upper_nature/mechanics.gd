@@ -17,7 +17,7 @@ func run() -> void:
   fixtures[cls]=saved_records[cls+"20"]
   check(not fixtures[cls].is_empty(),"lawful full level20 "+cls)
  if failures:complete();return
- test_new_spells();test_decoys();test_exchange();test_renewal();test_shared_form();test_choices();test_bloodlines();test_multiclass_upper()
+ test_new_spells();test_decoys();test_exchange();test_renewal();test_shared_form();test_choices();test_bloodlines();test_druid_bonds();test_multiclass_upper()
  # Reuse GAME-133's executable tier4–7/owned-creature tests on the new pin.
  for aid in source.ids("abilities"):
   var row := source.definition("abilities",aid)
@@ -97,6 +97,9 @@ func test_decoys() -> void:
  check(casted.ok,"refraction tactical setup")
  if not casted.ok:return
  b=casted.battle;var hp: int=int(b.units.a.record.runtime.hp);var rng := RulesJson.digest(b.rng)
+ var commanded: Dictionary=b.duplicate(true);commanded.cursor=commanded.order.find("bandit-blade");commanded.budget={"main":1,"move":1};commanded=engine.seal(commanded)
+ var actual := engine.command(commanded,{"actor_id":"bandit-blade","revision":commanded.revision,"kind":"attack","target_id":"a"})
+ check(actual.ok and actual.battle.budget.main==0 and shells(actual.battle.units.a.record)==2,"intercepted real command still pays its main action")
  for n in 3:
   engine.weapon_attack(b,b.units["bandit-blade"],b.units.a,false)
   check(b.units.a.record.runtime.hp==hp and shells(b.units.a.record)==2-n,"each legal weapon attempt consumes exactly one shell")
@@ -104,13 +107,13 @@ func test_decoys() -> void:
   check(not b.log.back().contains("hits"),"no weapon hit or rider claimed")
  engine.weapon_attack(b,b.units["bandit-blade"],b.units.a,false)
  check(RulesJson.digest(b.rng)!=rng,"fourth attempt reaches actual d20 authority")
- var guarded := cast(actor,actor,"sorcerer-refraction-guard").actor
+ var guarded: Dictionary=cast(actor,actor,"sorcerer-refraction-guard").actor
  var refreshed := cast(guarded,guarded,"sorcerer-refraction-guard")
  check(refreshed.ok and shells(refreshed.actor)==3,"no six-shell stacking")
  var true_board := encounter(guarded);true_board.units["bandit-blade"].record.runtime.senses.append("true_sight");var initial := RulesJson.digest(true_board.rng)
  engine.weapon_attack(true_board,true_board.units["bandit-blade"],true_board.units.a,false)
  check(shells(true_board.units.a.record)==3 and RulesJson.digest(true_board.rng)!=initial,"true sight bypasses without consuming shell")
- var target := guarded.duplicate(true);target.character_id="protected-sorcerer"
+ var target: Dictionary=guarded.duplicate(true);target.character_id="protected-sorcerer"
  var spellcaster := prepared(fixtures.sorcerer,"sorcerer-arcane-bolt")
  var spell := cast(spellcaster,target,"sorcerer-arcane-bolt")
  check(spell.ok and spell.target.runtime.hp<target.runtime.hp and shells(spell.target)==3,"direct spell damage bypasses weapon-only decoys")
@@ -140,7 +143,7 @@ func test_exchange() -> void:
  saved_records.cascade_spent=out.actor;contracts.exchange=true
 
 func test_renewal() -> void:
- var actor := prepared(fixtures.druid,"druid-heartwood-renewal");var target := fixtures.fighter.duplicate(true);target.character_id="recovering";target.runtime.hp-=50
+ var actor := prepared(fixtures.druid,"druid-heartwood-renewal");var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="recovering";target.runtime.hp-=50
  for sid in ["bramble-tether","winter-lock","slowed"]:target.runtime.statuses.append({"id":sid,"source":"controlled-fixture","remaining":2,"expiry":source.definition("statuses",sid).duration.expiry})
  var out := cast(actor,target,"druid-heartwood-renewal");check(out.ok,"delayed renewal executes")
  if not out.ok:return
@@ -160,7 +163,7 @@ func test_renewal() -> void:
  saved_records.renewing=out.target;battles.renewal=engine.seal(b);contracts.renewal=true
 
 func test_shared_form() -> void:
- var actor := prepared(fixtures.druid,"druid-wildheart-mantle");var target := fixtures.fighter.duplicate(true);target.character_id="willing-fighter";target.equipment=["shortblade","leather","shield"]
+ var actor := prepared(fixtures.druid,"druid-wildheart-mantle");var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="willing-fighter";target.equipment=["shortblade","leather","shield"]
  # Use only installed equipment identifiers; no custom body/equipment system.
  target.equipment=target.equipment.filter(func(id: String):return not source.definition("equipment",id).is_empty())
  var before: Dictionary=kernel.derive_character(target).snapshot;var out := cast(actor,target,"druid-wildheart-mantle")
@@ -211,12 +214,13 @@ func test_choices() -> void:
   check(not kernel.derive_character(prepared(poor,aid)).ok,"permanent score gate cannot be bypassed by high total level "+cls)
  contracts.permanent_choices=true
 
-func branch(record: Dictionary,cls: String,choice: String) -> Dictionary:
+func branch(record: Dictionary,cls: String,choice: String,companion := "") -> Dictionary:
  var r := kernel.create(cls+choice+str(record.advancement_history.size()),record.base_attributes,record.ancestry_ref)
  for step in record.advancement_history:
   var planned: Dictionary=step.duplicate(true);planned.erase("level")
   for group in planned.specialisations:
    if group in [cls+"-choice-1",cls+"-choice-6",cls+"-choice-15"]:planned.specialisations[group]=choice
+   if group=="druid-companion" and not companion.is_empty():planned.specialisations[group]=companion
   var next := kernel.preview_advancement(r,planned);check(next.ok,"lawful permanent branch "+cls+choice+str(r.advancement_history.size()))
   if not next.ok:return {}
   r=next.candidate
@@ -238,6 +242,32 @@ func test_bloodlines() -> void:
  var a: Dictionary=kernel.derive_character(saved_records.draconic20).snapshot;var b: Dictionary=kernel.derive_character(saved_records.fey20).snapshot
  check(a.stats.defence==b.stats.defence+2 and b.stats.save_dc==a.stats.save_dc+2,"late bloodline alternatives retain distinct permanent defence/DC")
  contracts.bloodlines=true
+
+func test_druid_bonds() -> void:
+ for choice in ["growth","storm"]:
+  for at in [1,6,20]:
+   var r := branch(saved_records["druid"+str(at)],"druid",choice)
+   if r.is_empty():return
+   var id: String="druid-"+choice+"-"+str(1 if at==1 else 6)
+   var out := cast(r,fixtures.save_target,id)
+   check(out.ok,"actual nature specialisation "+choice+str(at))
+   if out.ok:check(out.actor.runtime.resources["nature-bond-uses"]==r.runtime.resources["nature-bond-uses"]-1,"nature action has its own finite reserve")
+   saved_records["nature-"+choice+str(at)]=r
+ for companion in ["wolf","ancestor-sentinel"]:
+  var actor := prepared(branch(fixtures.druid,"druid","growth",companion),"druid-heartwood-renewal")
+  var engine := TacticalAuras.new(actor);var b := encounter(actor);var pid := RulesEntities.identity("a")
+  check(b.units.has(pid),"chosen permanent companion exists "+companion)
+  if not b.units.has(pid):continue
+  b.units[pid].position=[1,2];b.units[pid].record.runtime.hp-=10;b=engine.seal(b)
+  var out := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":"druid-heartwood-renewal","target_id":pid})
+  check(out.ok,"new recovery targets actual chosen creature "+companion)
+  if not out.ok:continue
+  var hp: int=int(out.battle.units[pid].record.runtime.hp)
+  out.battle.cursor=out.battle.order.find(pid);RulesMartial.start_activation(engine,out.battle);out.battle=engine.seal(out.battle)
+  check(out.battle.units[pid].record.runtime.hp>hp,"actual creature activation receives capped recovery "+companion)
+  check(out.battle.units.a.record.runtime.companions.size()==1 and out.battle.units.a.record.runtime.companions[pid].record==out.battle.units[pid].record,"single owner retains exact creature state "+companion)
+  saved_records["renewing-owner-"+companion]=out.battle.units.a.record;battles["renewing-pet-"+companion]=out.battle
+ contracts.companions=true
 
 func test_multiclass_upper() -> void:
  # The existing five-level Theurge cannot unlock tier9 on both tracks in20.
