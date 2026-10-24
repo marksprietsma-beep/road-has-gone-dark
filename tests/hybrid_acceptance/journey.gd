@@ -77,7 +77,9 @@ func test_known_authority() -> void:
  check(not result.ok and FileAccess.get_file_as_string(service.store._slot_path(slot))==raw,"real writer rejects forgetting permanent Sorcerer tier7 knowledge without changing saved bytes")
  var proposed := kernel.suggested_choice(record,"archmage")
  check(proposed.ok,"further prestige remains a legal optional kernel choice")
- if proposed.ok:check(not CharacterBuilderRecords.preview_advancement(state,id,proposed.choice).ok,"class selector cannot grant next level without actual earned XP")
+ if proposed.ok:
+  check(kernel.preview_advancement(record,proposed.choice).ok,"next prestige choice meets permanent rules before the separate XP denial")
+  check(not CharacterBuilderRecords.preview_advancement(state,id,proposed.choice).ok,"class selector cannot grant next level without actual earned XP")
 func test_real_combat() -> void:
  # Connected worker forks this exact campaign through the one save writer;
  # this trip only proves eligible home recovery, never awards a fixture reward.

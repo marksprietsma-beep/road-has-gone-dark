@@ -29,7 +29,8 @@ func run() -> void:
   for node in source.definition("classes","archmage").requirements.args:
    if not RulesCompleteness.entry_requirements(node,d.context,r,source).ok:missed.append(node)
   check(missed==[{"op":"skill","id":"spellcraft","min":10}],"Spellcraft is the precise sole failed permanent predicate")
-  check(not kernel.suggested_choice(r,"archmage").ok and RulesJson.digest(r)==before,"no forged eligibility or original build mutation")
+  var draft := kernel.suggested_choice(r,"archmage")
+  check(draft.ok and not kernel.preview_advancement(r,draft.choice).ok and not kernel.preview_choices(r,"archmage").ok and RulesJson.digest(r)==before,"generated draft cannot bypass actual preview/UI eligibility or mutate the original build")
   evidence[key]={"attributes":d.snapshot.attributes,"ranks":d.context.skills,"eligibility":eligible,"failed_predicates":missed,"record_hash":before}
  var driver: Node=load("res://tests/hybrid_acceptance/journey.gd").new()
  driver.source=source;driver.kernel=kernel;driver.configs=[["duskblade","human",""],["wizard","human","archmage"],["sorcerer","human","archmage"]]
@@ -73,7 +74,7 @@ func run() -> void:
    if index==1:
     check(offered.ok,"actual earned Wizard13 qualifies")
     if offered.ok:check(CharacterBuilderRecords.preview_advancement(state,id,offered.choice).ok,"actual1690XP funds legitimate Wizard prestige")
-   else:check(not offered.ok,"real1690XP cannot override missing Sorcerer rank prerequisites")
+   else:check(offered.ok and not CharacterBuilderRecords.preview_advancement(state,id,offered.choice).ok,"real1690XP cannot override missing Sorcerer rank prerequisites")
    var choice := kernel.suggested_choice(r,str(r.advancement_history.back().class_id))
    check(choice.ok and CharacterBuilderRecords.preview_advancement(state,id,choice.choice).ok,"actual earned qualifying/ineligible characters can keep advancing their legal base class")
   check(RulesJson.digest(state)==before,"funded previews preserve the archived actual campaign")
