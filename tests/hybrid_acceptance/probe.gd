@@ -36,7 +36,7 @@ func run() -> void:
  var rejected := engine.command(b,order(b,wrapper))
  if ui.action_buttons.has(wrapper):
   evidence.channel_bow_ui={"button_enabled":not ui.action_buttons[wrapper].disabled,"target_eligible":engine.eligible(b,b.units.a,b.units["bandit-blade"],wrapper),"command_accepted":rejected.ok}
-  check(not ui.action_buttons[wrapper].disabled and not rejected.ok,"reproduced27: production channel button enabled despite authoritative bow rejection")
+  check(ui.action_buttons[wrapper].disabled and not rejected.ok,"corrected production UI disables bow channel; pinned27 command semantics still reject")
  ui.queue_free()
  FileAccess.open(base.path_join("probe-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"scope":"Pinned27 baseline defects and historical display repair only; no career readiness promotion.","evidence":evidence}),"  "))
  print("HYBRID_PROBE ",checks," failures ",failures);get_tree().quit(1 if failures else 0)
