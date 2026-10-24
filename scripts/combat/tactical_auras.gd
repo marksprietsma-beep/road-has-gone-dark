@@ -21,9 +21,9 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
  if RulesPsychic.parity_enabled(registry) and registry.definition("abilities",ability).has("psychic_power"):
   var derived := characters.derive_character(u.record)
   if not derived.ok or not RulesPsychic.casting_access(registry.definition("abilities",ability),derived.context,registry).ok:return false
- if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
- if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26"]:
+ if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
+ if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
@@ -71,6 +71,7 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
  if not RulesMartial.enabled(registry):
   _historical_attack(b,a,t,reaction,technique);return
  if not alive(a):return # A previous flurry strike may have provoked a lethal counter.
+ if registry.rules_ref().pack_id=="trhgd-character-v27" and _intercept_weapon(b,a,t):return
  RulesWaveFour.project_auras(self,b)
  var ability := registry.definition("abilities",technique)
  var weapon := registry.definition("equipment",ability.get("attack_weapon",active_weapon(a)))
@@ -96,6 +97,18 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
  if reaction or not melee:return
  if hit:_martial_event(b,a,t,"weapon_hit")
  _martial_event(b,t,a,"melee_hit" if hit else "melee_miss")
+
+func _intercept_weapon(b: Dictionary,a: Dictionary,t: Dictionary) -> bool:
+ # Finite typed status layers, not extra units or another attack/RNG authority.
+ # The inherited command already paid the action/reaction and technique cost.
+ var snapshot: Dictionary=characters.derive_character(a.record).snapshot
+ if snapshot.tags.has("true_sight") or snapshot.senses.has("true_sight"):return false
+ for instance in t.record.runtime.statuses:
+  if registry.definition("statuses",instance.id).tags.has("weapon_decoy"):
+   t.record.runtime.statuses.erase(instance)
+   b.log.append(t.name+" loses one refraction shell; "+a.name+"'s weapon attempt is intercepted before its accuracy roll. No hit or rider.")
+   return true
+ return false
 
 func _martial_event(b: Dictionary,owner: Dictionary,other: Dictionary,event: String) -> void:
  if not alive(owner):return
