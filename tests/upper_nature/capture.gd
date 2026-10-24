@@ -35,7 +35,7 @@ func run() -> void:
    await photograph_scene("fixture-"+cls+"-tier"+str(tier)+"-large",true,Vector2i(2560,1440))
   sheet.detail_tabs.current_tab=2
   await photograph_scene("fixture-"+cls+"-sheet",true,Vector2i(2560,1440))
- for key in ["sorcerer-refraction-guard","sorcerer-cascade-well","druid-heartwood-renewal","druid-wildheart-mantle","companion_form","renewing-pet-wolf"]:
+ for key in ["sorcerer-refraction-guard","cascade_conversion","druid-heartwood-renewal","druid-wildheart-mantle","companion_form","renewing-pet-wolf"]:
   var combat := await open_combat();var b: Dictionary=saved.battles[key].duplicate(true)
   combat.state={"first_adventure":{"battle":b},"party_ids":["a","b","c"],"party":{"members":[]}}
   for i in 3:

@@ -44,6 +44,9 @@ func run() -> void:
   check(ui.sent.get("kind")==id and ui.sent.get("target")==target,"production spell intent "+id)
   var result: Dictionary=ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":target})
   check(result.ok,"production intent executes "+id)
+  var empty: Dictionary=b.duplicate(true);empty.units.a.record.runtime.resources[cls+"-slots-"+("8" if id in ["sorcerer-refraction-guard","druid-heartwood-renewal"] else "9")]=0
+  ui.state.first_adventure.battle=ui.engine.seal(empty);ui.refresh()
+  check(ui.action_buttons.has(id) and ui.action_buttons[id].disabled,"actual exhausted spell button disabled "+id)
  ui.queue_free()
  FileAccess.open(base.path_join("input-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"scope":"Actual Godot creator, known/prepared spellbook, tactical action buttons and tile targeting"}))
  get_tree().quit(1 if failures else 0)

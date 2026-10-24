@@ -3,6 +3,10 @@ extends "res://tests/nature_repertoires/mechanics_driver.gd"
 const NEW := ["sorcerer-refraction-guard","sorcerer-cascade-well","druid-heartwood-renewal","druid-wildheart-mantle"]
 var battles := {}
 var contracts := {}
+func encounter(record: Dictionary) -> Dictionary:
+ var battle := super.encounter(record)
+ battle.units.a.name=source.definition("classes",record.advancement_history[0].class_id).name+" · development fixture"
+ return TacticalAuras.new(record).seal(battle)
 func run() -> void:
  base=OS.get_environment("UPPER_NATURE_ROOT");DirAccess.make_dir_recursive_absolute(base)
  source=RulesRegistry.new();var loaded := source.load_pack("res://data/rules/trhgd-character-v27.json")
@@ -17,7 +21,7 @@ func run() -> void:
   fixtures[cls]=saved_records[cls+"20"]
   check(not fixtures[cls].is_empty(),"lawful full level20 "+cls)
  if failures:complete();return
- test_new_spells();test_decoys();test_exchange();test_renewal();test_shared_form();test_choices();test_bloodlines();test_druid_bonds();test_multiclass_upper()
+ test_new_spells();test_decoys();test_exchange();test_renewal();test_shared_form();test_choices();test_bloodlines();test_druid_bonds();test_owned_forms();test_multiclass_upper()
  # Reuse GAME-133's executable tier4–7/owned-creature tests on the new pin.
  for aid in source.ids("abilities"):
   var row := source.definition("abilities",aid)
@@ -127,10 +131,17 @@ func shells(record: Dictionary) -> int:
 
 func test_exchange() -> void:
  var actor := prepared(fixtures.sorcerer,"sorcerer-cascade-well");actor.runtime.resources["sorcerer-slots-4"]=0;actor.runtime.resources["sorcerer-slots-6"]=0
+ actor.choices.prepared_abilities.append("sorcerer-crystal-reservoir")
  var before: Dictionary=actor.runtime.resources.duplicate(true);var out := cast(actor,actor,"sorcerer-cascade-well")
  check(out.ok,"finite cascade exchange executes")
  if not out.ok:return
  check(out.actor.runtime.resources["sorcerer-slots-4"]==2 and out.actor.runtime.resources["sorcerer-slots-6"]==1,"exact lower-tier conversion")
+ var useful := cast(out.actor,out.actor,"sorcerer-crystal-reservoir")
+ check(useful.ok and useful.actor.runtime.resources["sorcerer-slots-4"]==1 and useful.actor.runtime.temporary_hp>0,"converted slot actually pays for a permanently known lower spell on a later main action")
+ var engine := TacticalAuras.new(actor);var board := encounter(actor)
+ var converted := engine.command(board,{"actor_id":"a","revision":board.revision,"kind":"sorcerer-cascade-well","target_id":"a"})
+ check(converted.ok,"conversion delivers through real tactical command")
+ if converted.ok:battles.cascade_conversion=converted.battle
  for pool in before:
   if pool not in ["sorcerer-slots-4","sorcerer-slots-6","sorcerer-slots-9"]:check(out.actor.runtime.resources[pool]==before[pool],"exchange never refills unrelated pool "+pool)
  var cap: Dictionary=kernel.derive_character(out.actor).snapshot.resource_capacities
@@ -163,9 +174,10 @@ func test_renewal() -> void:
  saved_records.renewing=out.target;battles.renewal=engine.seal(b);contracts.renewal=true
 
 func test_shared_form() -> void:
- var actor := prepared(fixtures.druid,"druid-wildheart-mantle");var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="willing-fighter";target.equipment=["shortblade","leather","shield"]
- # Use only installed equipment identifiers; no custom body/equipment system.
- target.equipment=target.equipment.filter(func(id: String):return not source.definition("equipment",id).is_empty())
+ var actor := prepared(fixtures.druid,"druid-wildheart-mantle");var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="willing-fighter";target.equipment=["shortblade"]
+ for kind in ["armor","shield"]:
+  var legal: Array=source.ids("equipment").filter(func(id: String):return source.definition("equipment",id).kind==kind)
+  if not legal.is_empty():target.equipment.append(legal[0])
  var before: Dictionary=kernel.derive_character(target).snapshot;var out := cast(actor,target,"druid-wildheart-mantle")
  check(out.ok,"actual allied transformation "+JSON.stringify(out.get("errors",[])))
  if not out.ok:return
@@ -206,11 +218,22 @@ func test_choices() -> void:
     if row.casting_class==cls:check(available.has(aid)==(at>=(15 if row.spell_tier==8 else 17)),"actual unlock boundary "+cls+str(at)+aid)
   var aid: String=NEW[1] if cls=="sorcerer" else NEW[3]
   check(not kernel.derive_character(prepared(saved_records[cls+"14"],aid)).ok,"forged early high-tier choice rejected "+cls)
-  var poor: Dictionary=fixtures[cls].duplicate(true)
-  var attr: String="CHA" if cls=="sorcerer" else "WIS"
-  for step in poor.advancement_history:
-   if step.attribute_increase==attr:step.attribute_increase="STR"
-  poor.base_attributes[attr]=8;poor.choices.prepared_abilities=[];poor.choices.spell_preparations={};poor.runtime.resources=kernel._replay(poor).context.capacities.duplicate()
+  var attrs := {"STR":12,"DEX":14,"CON":13,"INT":15,"WIS":10,"CHA":8}
+  if cls=="druid":attrs.WIS=8;attrs.CHA=10
+  var poor := kernel.create("lawful-low-casting-"+cls,attrs,"heritage-human")
+  for n in 20:
+   var suggested := kernel.suggested_choice(poor,cls)
+   check(suggested.ok,"lawful low-casting advancement suggestion")
+   if not suggested.ok:return
+   if (n+1)%4==0:suggested.choice.attribute_increase="INT"
+   var next := kernel.preview_advancement(poor,suggested.choice)
+   check(next.ok,"valid low-casting history; no retrospective feat/score mutation "+JSON.stringify(next.get("errors",[])))
+   if not next.ok:return
+   poor=next.candidate
+  var lawful := kernel.derive_character(poor)
+  check(lawful.ok,"low-casting negative fixture is a legal permanent character")
+  if not lawful.ok:return
+  poor.runtime.resources=lawful.snapshot.resource_capacities.duplicate()
   check(not kernel.derive_character(prepared(poor,aid)).ok,"permanent score gate cannot be bypassed by high total level "+cls)
  contracts.permanent_choices=true
 
@@ -268,6 +291,24 @@ func test_druid_bonds() -> void:
   check(out.battle.units.a.record.runtime.companions.size()==1 and out.battle.units.a.record.runtime.companions[pid].record==out.battle.units[pid].record,"single owner retains exact creature state "+companion)
   saved_records["renewing-owner-"+companion]=out.battle.units.a.record;battles["renewing-pet-"+companion]=out.battle
  contracts.companions=true
+
+func test_owned_forms() -> void:
+ var actor: Dictionary=fixtures.druid;var before: Dictionary=kernel.derive_character(actor).snapshot;var count := 0
+ for aid in before.abilities:
+  var row := source.definition("abilities",aid)
+  if row.tags.has("spell"):continue
+  var forms: Array=row.effects.filter(func(e: Dictionary):return e.op=="apply_status" and source.definition("statuses",e.id).has("body_form"))
+  if forms.is_empty():continue
+  var out := cast(actor,actor,aid);check(out.ok,"owned Druid form actually executes "+aid+JSON.stringify(out.get("errors",[])))
+  if not out.ok:continue
+  var snap: Dictionary=kernel.derive_character(out.actor).snapshot
+  check(not snap.body_form.is_empty() and snap.attributes!=before.attributes,"owned form changes physical build "+aid)
+  check(out.actor.runtime.hp==actor.runtime.hp and snap.abilities.has("revert-form"),"owned form preserves HP and deliberate return "+aid)
+  var restored := cast(out.actor,out.actor,"revert-form")
+  check(restored.ok and kernel.derive_character(restored.actor).snapshot.stats==before.stats,"owned form restores original statistics "+aid)
+  saved_records["owned-form-"+aid]=out.actor;count+=1
+ check(count>=4,"multiple genuinely different owned Druid forms verified")
+ contracts.owned_forms=count
 
 func test_multiclass_upper() -> void:
  # The existing five-level Theurge cannot unlock tier9 on both tracks in20.

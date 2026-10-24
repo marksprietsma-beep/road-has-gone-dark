@@ -7,6 +7,10 @@ import argparse,json,hashlib
 root=Path(__file__).resolve().parents[2];parser=argparse.ArgumentParser();parser.add_argument('--native',type=Path);parser.add_argument('--visual-native',type=Path);parser.add_argument('--pack',default='trhgd-character-v26');args=parser.parse_args()
 p=json.loads((root/('data/rules/'+args.pack+'.json')).read_text(encoding='utf-8'));t={k:{x['id']:x for x in v}for k,v in p.items()if isinstance(v,list)and v and isinstance(v[0],dict)and'id'in v[0]}
 pin=next(x['rules_ref']for x in json.loads((root/'data/rules/packs.json').read_text(encoding='utf-8'))['packs']if x['rules_ref']['pack_id']==p['pack_id'])
+if args.pack=='trhgd-character-v27':
+ from readiness_upper_nature import generate
+ generate(root,p,pin,args.native)
+ raise SystemExit(0)
 if args.pack=='trhgd-character-v26' and args.native and json.loads((args.native/'distribution-proof.json').read_text(encoding='utf-8')).get('acceptance_cohort')=='metamind-pyrokineticist':
  from readiness_paths import generate
  generate(root,p,pin,args.native)
