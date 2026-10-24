@@ -13,7 +13,17 @@ def verify():
     assert len(rows)==26
     manifest = json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))
     original = json.loads(subprocess.check_output(['git','show',BASE+':data/rules/packs.json'], cwd=ROOT))
-    assert manifest['packs'][:26]==original['packs'] and len(manifest['packs'])==27
+    assert manifest['packs'][:26]==original['packs']
+    # This historical suite remains pinned to27 when later packs are appended.
+    # Protect the exact released prefix/bytes rather than assuming it is last.
+    released = json.loads(subprocess.check_output(['git','show','c48d6df:data/rules/packs.json'],cwd=ROOT))
+    assert manifest['packs'][:27]==released['packs'] and len(manifest['packs'])>=27
+    assert (ROOT/'data/rules/trhgd-character-v27.json').read_bytes()==subprocess.check_output(['git','show','c48d6df:data/rules/trhgd-character-v27.json'],cwd=ROOT)
+    assert len({r['rules_ref']['pack_id']for r in manifest['packs']})==len(manifest['packs'])
+    for appended in manifest['packs'][27:]:
+        data=json.loads((ROOT/appended['path'].removeprefix('res://')).read_text(encoding='utf-8'))
+        assert data['pack_id']==appended['rules_ref']['pack_id']
+        assert hashlib.sha256(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==appended['rules_ref']['content_hash']
     for row in rows:
         content = (ROOT/row['path']).read_bytes()
         assert content==subprocess.check_output(['git','show',BASE+':'+row['path']], cwd=ROOT)
@@ -35,7 +45,7 @@ def verify():
                 assert new[i]['resources'][:len(old[i]['resources'])]==old[i]['resources']
     assert len(delta['abilities'])==4 and len(delta['resources'])==2 and len(delta['statuses'])==4
     assert all(not delta[c] for c in ['classes','ancestries','feats','equipment','creatures','psychic_powers','skills'])
-    pin = manifest['packs'][-1]['rules_ref']
+    pin = next(r['rules_ref'] for r in manifest['packs'] if r['rules_ref']['pack_id']=='trhgd-character-v27')
     assert pin['pack_id']=='trhgd-character-v27'
     assert hashlib.sha256(json.dumps(after,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
     assert subprocess.check_output(['git','diff',BASE,'--','scripts/combat/tactical_combat.gd'],cwd=ROOT)==b''
