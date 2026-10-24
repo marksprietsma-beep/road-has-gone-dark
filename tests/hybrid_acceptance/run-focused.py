@@ -10,7 +10,7 @@ for phase,cold in [('compile',False),('probe',False),('mechanics',False),('mecha
  label=phase+('-cold'if cold else'');command=[os.environ['GODOT_BIN'],'--headless','--audio-driver','Dummy','--path',str(root),'--script']
  command+=['res://tests/hybrid_acceptance/compile.gd']if phase=='compile'else['res://tests/hybrid_acceptance/scene_runner.gd','--',phase]
  result=checked_process(command,cwd=root,env=dict(os.environ,HYBRID_RESTART='1'if cold else'0'),log=base/(label+'.log'),timeout=1200)
- timings.append(dict(phase=label,**result));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n');print(json.dumps(timings[-1]),flush=True)
+ timings.append(dict(phase=label,**result));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps(timings[-1]),flush=True)
  assert not result['exit_code']and not result['errors']and not result['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-16000:]
  if phase!='compile':
   file='probe-proof.json'if phase=='probe'else 'input-proof.json'if phase=='input'else 'restart-proof.json'if cold else'proof.json'

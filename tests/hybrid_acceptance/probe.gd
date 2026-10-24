@@ -8,6 +8,7 @@ func run() -> void:
  kernel=RulesCharacter.new(source)
  test_historical_projection()
  fixtures.fighter=build("fighter",20)
+ test_late_ward_equivalence()
  var sorcerer := archmage("sorcerer")
  var wizard := archmage("wizard")
  if not sorcerer.is_empty() and not wizard.is_empty():
@@ -61,6 +62,37 @@ func archmage(cls: String) -> Dictionary:
  var advanced := kernel.preview_advancement(r,choice.choice)
  check(advanced.ok,"manual legal prestige choice "+cls+JSON.stringify(advanced.get("errors",[])))
  return advanced.candidate if advanced.ok else {}
+func test_late_ward_equivalence() -> void:
+ # Pinned27 reproducer: all three advertised ward choices have identical DSL
+ # and outcomes, even on a living ally affected by real supported debuffs.
+ var r := career_fixture("wizard",13,["spell-focus","greater-spell-focus"])
+ for i in 5:
+  var suggested := kernel.suggested_choice(r,"archmage")
+  for key in suggested.choice.specialisations:
+   if str(key).begins_with("high-arcana-"):suggested.choice.specialisations[key]="ward"
+  if i==0:suggested.choice.specialisations["archmage-casting"]="wizard"
+  var advanced := kernel.preview_advancement(r,suggested.choice);check(advanced.ok,"lawful old five-level Ward path")
+  if not advanced.ok:return
+  r=advanced.candidate
+ r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,kernel.derive_character(r).snapshot.resource_capacities,"eligible_rest").runtime
+ var target := build("fighter",7);var attacker := build("duskblade",17)
+ attacker.choices.prepared_abilities=["duskblade-binding-edge","duskblade-sapping-touch"]
+ attacker.runtime.resources=kernel._replay(attacker).context.capacities.duplicate()
+ var tied := use_at_save(attacker,target,"duskblade-binding-edge",1)
+ check(tied.ok,"real binding effect creates the Ward counterplay fixture")
+ if not tied.ok:return
+ var weak := use_at_save(tied.actor,tied.target,"duskblade-sapping-touch",1)
+ check(weak.ok,"real weakening effect creates the Ward counterplay fixture")
+ if not weak.ok:return
+ check(weak.target.runtime.statuses.any(func(v: Dictionary):return v.id=="arcane-tether") and weak.target.runtime.statuses.any(func(v: Dictionary):return v.id=="weakened"),"actual supported debuffs landed; no invented statuses")
+ var results := [];var definitions := []
+ for i in [1,3,5]:
+  var id: String="high-arcana-ward-"+str(i);var out := use(r,weak.target,id)
+  check(out.ok,"old Ward choice executes "+id)
+  if not out.ok:return
+  results.append(out.target.runtime);definitions.append(source.definition("abilities",id).effects)
+ check(definitions[0]==definitions[1] and definitions[1]==definitions[2] and results[0]==results[1] and results[1]==results[2],"reproduced27: later Ward choices provide identical effects, not distinct advanced support")
+ evidence.duplicate_wards={"actual_outcomes_equal":true,"effect_bodies_equal":true,"target_debuffs":weak.target.runtime.statuses,"powers":["high-arcana-ward-1","high-arcana-ward-3","high-arcana-ward-5"]}
 func test_historical_projection() -> void:
  var file := "res://tests/hybrid_acceptance/historical-render-fixtures.json"
  var archived: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(file));var capture := Capture.new()
