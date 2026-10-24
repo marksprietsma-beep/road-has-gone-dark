@@ -10,10 +10,10 @@ Focused run40048413027 on ae917 reached final saved-battle validation and reject
 
 Prior focused failures were isolated and corrected without weakening invariants:
 
--40046351371/source52858db: test-driver Variant type declarations, before mechanics.
--40046702266/sourcefea6c2f: malformed Slowed fixture with remaining2 although its immutable duration is1.
--40047139495/sourcea5475af: negative score fixture retroactively changed base scores and invalidated prior feats. Now builds a lawful low-casting20 history instead.
--40047604548/sourcea79b9c6: a level7 Fighter cannot succeed against the highest tier9 DC. Upper save witnesses now use a lawful level20 Monk with real Reflex/evasion; lower-tier legacy witnesses remain unchanged. No DC/rules assertion was relaxed.
+- 40046351371/source52858db: test-driver Variant type declarations, before mechanics.
+- 40046702266/sourcefea6c2f: malformed Slowed fixture with remaining2 although its immutable duration is1.
+- 40047139495/sourcea5475af: negative score fixture retroactively changed base scores and invalidated prior feats. Now builds a lawful low-casting20 history instead.
+- 40047604548/sourcea79b9c6: a level7 Fighter cannot succeed against the highest tier9 DC. Upper save witnesses now use a lawful level20 Monk with real Reflex/evasion; lower-tier legacy witnesses remain unchanged. No DC/rules assertion was relaxed.
 
 GitHub sometimes returns503 for combined logs/artifact downloads. Retry the read or use the preserved per-run evidence artifact; never relaunch expensive tests merely because metadata download failed. Credentials work with `env -u GH_TOKEN -u GITHUB_TOKEN GH_CONFIG_DIR=/workspace/scratch/game146/gh-auth gh ...`.
 
