@@ -1,11 +1,24 @@
 extends "res://tests/nature_repertoires/journey_driver.gd"
 ##169 ordinary paid objectives; no injected XP, records or automatic prestige.
+var entry_witnesses := {}
 func journey_xp() -> int:return 1690
 func journey_level() -> int:return 14
 func journey_cycles() -> int:return 50
 func create_party() -> void:
  configs=[["duskblade","human",""],["wizard","human","archmage"],["sorcerer","human","archmage"]]
  super.create_party()
+func promote(index: int) -> void:
+ if not failures and index in [1,2]:
+  var id: String=state.party_ids[index];var record: Dictionary=state.mechanics.records[id]
+  if record.advancement_history.size()==13 and CharacterBuilderRecords.xp(state,id)>=CharacterBuilderRecords.threshold(14,state) and kernel.available_advancement(record).classes.archmage.ok:
+   var file: String="earned-qualified-"+str(configs[index][0])+".json"
+   FileAccess.open(base.path_join(file),FileAccess.WRITE).store_string(JSON.stringify(state))
+   entry_witnesses[str(configs[index][0])]={"file":file,"state_hash":RulesJson.digest(state),"character_id":id,"earned_xp":CharacterBuilderRecords.xp(state,id),"current_level":13,"next_level":14,"class_assigned":false}
+ super.promote(index)
+func checkpoint() -> void:
+ super.checkpoint()
+ var proof := WorldOriginLore.read_json(base.path_join("proof.json"));proof.earned_entry_witnesses=entry_witnesses
+ FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
 func spell_selection(record: Dictionary) -> Dictionary:
  var d := kernel.derive_character(record)
  if not d.ok:return {"spells":[],"preparations":{}}
