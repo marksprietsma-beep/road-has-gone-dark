@@ -1,0 +1,7 @@
+## Upper-tier choices for two existing careers
+
+Sorcerer/Druid tiers8–9 previously offered only scaled Tempest/Sanctuary templates. Immutable27 adds finite weapon interception and deliberate high-to-lower-slot conversion for Sorcerer; delayed root-cleansing recovery and a shared existing natural form for Druid. Known/prepared, CHA/WIS, actual resources/targets, ownership and the single combat/save authority remain decisive.
+
+All1–26 pack bytes/manifest rows and frozen TacticalCombat remain unchanged. Narrow27-only adapter support consumes finite shell statuses and permits a transformed ally's existing reversion action. No roster, world, creature, equipment or sourcebook expansion. No transformed casting, universal dispelling or custom bear sprites.
+
+Focused Windows mechanics, negative choices, real controls and exact cold continuation precede the one complete self-contained native release. Native source/artifact/checksum, actual outcomes, original Godot captures and evidence-gated readiness remain **pending** and will be updated before normal merge. Level20/upper-tier examples are development fixtures; ordinary earned campaigns are separate. Keep GAME123/#101 OPEN/InProgress. No direct Linear update is available. [Assessment](docs/implementation/game133-upper/ASSESSMENT.md) · [testing/limits](docs/implementation/game133-upper/TESTING.md) · [delivery](docs/implementation/game133-upper/DELIVERY.md).
