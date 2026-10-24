@@ -28,7 +28,7 @@ env=dict(os.environ,HYBRID_ROOT=str(base/'mechanics'),HYBRID_CAPTURE_ROOT=str(ca
 result=checked_process([os.environ['GODOT_BIN'],'--audio-driver','Dummy','--path',str(root),'--script','res://tests/hybrid_acceptance/scene_runner.gd','--','capture'],cwd=root,env=env,log=base/'capture.log',timeout=900)
 assert not result['exit_code']and not result['errors']and not result['timeout'],(base/'capture.log').read_text(encoding='utf-8')[-20000:]
 for file,sha in protected.items():assert hashlib.sha256((base/file).read_bytes()).hexdigest()==sha,file
-p=json.loads((captures/'screenshots.json').read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0 and len(p['screenshots'])>=18
+p=json.loads((captures/'screenshots.json').read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0 and len(p['screenshots'])>=21
 for image in p['screenshots']:assert hashlib.sha256((captures/image['file']).read_bytes()).hexdigest()==image['sha256']
 proof=dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),input_runs=[40081154951,earned_run],production_and_rules_unchanged=True,source_evidence_not_native_export=True,protected_bytes=protected,captures=p,timing=result)
 (base/'presentation-proof.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf-8');print('HYBRID_WINDOWS_PRESENTATION_PASS',flush=True)

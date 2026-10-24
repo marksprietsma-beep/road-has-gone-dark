@@ -43,7 +43,7 @@ def generate(root, pack, pin, native_root):
     assert all(r['checks']>0 and r['failures']==0 for r in reused['proofs'].values())
     for file,sha in reused['raw_files_unchanged'].items():assert hashlib.sha256((native_root/'source-earned'/file).read_bytes()).hexdigest()==sha
     assert set(native['proofs']['connected/proof.json']['casts'].values())=={'channel-duskblade-searing-grasp','high-arcana-force-1','high-arcana-ward-1'}
-    captures=native['captures'];assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=18
+    captures=native['captures'];assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=21
     for image in captures['screenshots']:
         assert hashlib.sha256((native_root/'captures'/image['file']).read_bytes()).hexdigest()==image['sha256']
     assert native['source_guard']['historical_pack_bytes_and_pins']==27

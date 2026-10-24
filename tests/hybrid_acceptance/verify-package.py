@@ -95,7 +95,7 @@ audit = json.loads((base/'all-base/witnesses.json').read_text(encoding='utf-8'))
 for file,sha in protected.items():assert hashlib.sha256((imported/file).read_bytes()).hexdigest()==sha
 assert len(audit['classes'])==32 and all(r['complete_track'] for r in audit['classes'].values())
 captures = json.loads((base/'captures/screenshots.json').read_text(encoding='utf-8'))
-assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=18
+assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=21
 for image in captures['screenshots']:
     assert hashlib.sha256((base/'captures'/image['file']).read_bytes()).hexdigest()==image['sha256']
 frozen = base/'frozen'

@@ -1,3 +1,13 @@
+# Stable source gates passed — complete the one native Windows release
+
+Existing PR149 / same branch. Source1690XP40107828256 (9d35df7) PASSED1971/8 earned/cold and37/79 connected/cold/resolution/home-rest. Current actual Godot capture40113020677 (5058956) PASSED41 checks /21 original PNGs with real Specialisation and prerequisite controls. Continuation preflight40112681249 (efcbbf1) PASSED actual entry/decline/cold plus270 additional ordinary XP to1960/15, connected/cold and home recovery. This is SOURCE GODOT evidence, not an exported-native release.
+
+All required source gate receipts are under evidence/. Before the full release, original imported JSON hash keys now use portable POSIX separators (same raw bytes/verification), and native capture minimum is strengthened to21. No production/rules/planner input changed from the passed source1690XP. Candidate28 hashfc35 unchanged;1–27 immutable.
+
+NEXT: dispatch existing Duskblade/Archmage workflow `release=true`, `earned_run=40107828256` on the current pushed branch. This must be the ONE complete stable self-contained Windows build. It verifies exact source/runtime/planner identity, imports untouched source1690XP, actually commits AND declines both first prestige entries in four real funded native forks, cold-restarts them, earns270 more XP natively to1960/15 (Archmage2), runs native mechanics/controls/connected/cold/21 captures/all32base20/current/historical/frozen22181/startup/ZIP. Source earning and exported-native continuation remain explicitly separate. Do not mark readiness35/15 or merge until actual native receipt/current-head checks pass.
+
+Then download/inspect native artifact and actual PNGs; run static archive/PE/SHA/source audit, evidence-gated readiness generator with --pack trhgd-character-v28 --native <download-root>. Finish delivery/testing/PR/issue101, review current diff/green checks, mark149 ready and normal-merge, verify actual main/post-merge Windows. Keep GAME123/#101 open, no next cohort or new roster/world work. No callable Linear connector; accurate GitHub handoff. Preserve all untracked old Python caches.
+
 # Fresh earned source succeeded; native preflight resume correction
 
 Source9d35df7909f65e60ef8e56d0f9e56bfd1edc3812 / run40107828256 SUCCEEDED:1971 genuine earned checks (1690XP/14),8 cold,37 connected and79 connected-cold/resolution/rest, zero failures. Both Wizard/Sorcerer explicitly selected Archmage1. Actual source timings2702.922/13.844/110.140/162.688 seconds. Do NOT re-earn these169 objectives.

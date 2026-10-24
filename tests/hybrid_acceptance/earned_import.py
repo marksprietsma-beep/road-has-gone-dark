@@ -10,7 +10,7 @@ def prepare(root,base,pin):
     assert subprocess.check_output(['git','diff',earned_source,'HEAD','--',*protected_inputs],cwd=root)==b'', 'Source earned runtime/planner changed'
     imported=base/'source-earned'
     shutil.copytree(Path(os.environ['HYBRID_IMPORTED_INPUT'])/'hybrid-earned',imported)
-    protected={str(p.relative_to(imported)):hashlib.sha256(p.read_bytes()).hexdigest()for p in imported.rglob('*.json')}
+    protected={p.relative_to(imported).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in imported.rglob('*.json')}
     source_proofs={}
     for folder in ['journeys/cohort-0','connected']:
         for file in ['proof.json','restart-proof.json']:
