@@ -1,3 +1,11 @@
+# Fresh earned source succeeded; native preflight resume correction
+
+Source9d35df7909f65e60ef8e56d0f9e56bfd1edc3812 / run40107828256 SUCCEEDED:1971 genuine earned checks (1690XP/14),8 cold,37 connected and79 connected-cold/resolution/rest, zero failures. Both Wizard/Sorcerer explicitly selected Archmage1. Actual source timings2702.922/13.844/110.140/162.688 seconds. Do NOT re-earn these169 objectives.
+
+Presentation/native-continuation preflight40111932688 at348786b: actual source Godot captures PASSED; actual first prestige accept/decline commits and cold PASSED; continuation stopped at an existing negative-fork filename. Source negative save was copied, but the resume driver had not restored failed_check metadata, so it attempted save_new again. Fix loads that original metadata and preserves exact negative cold verification, with no deletion, overwrite, XP/state alteration or skipped legacy assertion. Re-dispatch native_progress_probe=true, earned_run=40107828256 WITHOUT presentation (unchanged already-passed captures), and inspect actual results before one release.
+
+Current native plan: exact-source import of unchanged1690XP source campaign, direct native first-entry/decline commits in four original earned13 witnesses, then270 MORE normal objective XP to1960/15 (Archmage2), native connected/cold/recovery, mechanics/controls/captures/all32base20/current/historical/frozen/ZIP/PE/hash. Original source earning stays explicitly source evidence. No exported-native release yet, readiness33/17/0, PR149 draft. Preserve branch, no duplicate PR/roster/world work.
+
 # Verified small reproduction and fresh earned campaign
 
 Existing PR149 / branch feature/game-123-duskblade-archmage. Pushed gameplay/test source9d35df7909f65e60ef8e56d0f9e56bfd1edc3812; candidate28fc35 unchanged. No final native release, readiness promotion or merge yet;33/17/0.

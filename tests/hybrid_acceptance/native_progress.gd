@@ -27,6 +27,7 @@ func run() -> void:
    histories[id]=loaded.state.mechanics.records[id].advancement_history.duplicate(true)
   imported={"original_state_hash":proof.state_hash,"original_earned_xp":1690,"original_histories":histories,"source_run":OS.get_environment("HYBRID_EARNED_RUN"),"source_commit":OS.get_environment("HYBRID_EARNED_SOURCE")}
   entry_witnesses=proof.earned_entry_witnesses.duplicate(true)
+  failed_check=proof.get("failed_check",{}).duplicate(true) # Retain the actual prior negative fork and its exact cold invariant.
   FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  super.run()
 func prepare(index: int) -> void:
