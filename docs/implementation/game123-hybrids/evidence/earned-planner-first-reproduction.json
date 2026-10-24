@@ -1,0 +1,41 @@
+{
+  "run_id": 40106771671,
+  "source_commit": "765377e09c4ea5bfd5caba62c0f983b82eb9be0b",
+  "workflow_conclusion": "failure",
+  "warm": {
+    "checks": 99,
+    "failures": 0,
+    "rules_ref": {
+      "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+      "engine_schema": 3,
+      "pack_id": "trhgd-character-v28",
+      "rules_version": "28.0.0",
+      "schema_version": 1
+    },
+    "scope": "Exact failed1690XP records and small lawful corrected13\u219214 planning; corrected histories are development fixtures, not yet an earned campaign."
+  },
+  "timings": [
+    {
+      "phase": "compile",
+      "seconds": 2.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "earned_probe",
+      "seconds": 18.859,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "earned_probe-cold",
+      "seconds": 2.406,
+      "exit_code": 1,
+      "errors": true,
+      "timeout": false
+    }
+  ],
+  "scope": "Warm reproduction passed; cold fixture hash failed. Not successful acceptance."
+}

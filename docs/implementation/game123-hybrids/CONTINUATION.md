@@ -1,3 +1,13 @@
+# Verified small reproduction and fresh earned campaign
+
+Existing PR149 / branch feature/game-123-duskblade-archmage. Pushed gameplay/test source9d35df7909f65e60ef8e56d0f9e56bfd1edc3812; candidate28fc35 unchanged. No final native release, readiness promotion or merge yet;33/17/0.
+
+Windows planner_probe40107478630 PASSED106 warm/22 exact cold checks. Exact failed Sorcerer13/14 records correctly fail Spellcraft10 only; actual archived1690XP cannot override it, while Wizard's actual funded choice/decline succeeds. Corrected ordinary starting arrays plan both Wizard13 and Sorcerer13 into chosen Archmage1 through the original kernel. Positive dry-run histories are development fixtures, not earned XP.
+
+Cold fixture hashing correction is confirmed by field diagnostics: raw script keys choices.spell_preparations, runtime.manifested_powers and runtime.companions were StringName. Canonical serialization changes only key types/raw dictionary digest; every authoritative snapshot is identical before/after. Full serializable records and snapshots pass exact separate-process restart. No engine/save/pin change.
+
+Fresh ordinary journey40107828256 is RUNNING at9d35df7, initiated only after the small probe passed. It must earn1690XP through169 objectives, fund both optional paths (or legal decline previews), then pass connected/cold and real home recovery. Do NOT claim success while pending. Original failed40080757725 stays preserved unchanged; do not reuse it as positive. After new run succeeds, dispatch presentation=true with earned_run=<successful ID>, then ONE complete native release=true after actual renders pass. Native reader/readiness require matching proofs, old/current regressions, all32base20 and frozen22181.
+
 # Latest recovery checkpoint — earned planner blocker
 
 Existing branch/PR149 unchanged; recovered HEADa1a5e61 has16 successful applicable checks (plus one skipped package job), but **earned source40080757725 FAILED** after2598 seconds. Its0-failure proof is an intermediate checkpoint, not final success. Full native release has NOT run; readiness remains33/17/0.

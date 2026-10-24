@@ -1,0 +1,254 @@
+{
+  "serialization_boundary": {
+    "sorcerer13": {
+      "before_digest": "302218298583b2e757a43bbebd6e225e6e39db13ed6fe7f904fd523d179dac73",
+      "non_string_keys": [],
+      "serialized_digest": "302218298583b2e757a43bbebd6e225e6e39db13ed6fe7f904fd523d179dac73",
+      "snapshot_unchanged": true
+    },
+    "sorcerer14": {
+      "before_digest": "94f4c5eb8153c3ad713ce1be38044562247b7aa55cfcf6f2675f4886148f1a2e",
+      "non_string_keys": [],
+      "serialized_digest": "94f4c5eb8153c3ad713ce1be38044562247b7aa55cfcf6f2675f4886148f1a2e",
+      "snapshot_unchanged": true
+    },
+    "sorcerer:planned13": {
+      "before_digest": "f3d8b734df03b10f5842d2c586c848d304c70bc247fe6e13d61abccab8c6baa1",
+      "non_string_keys": [
+        {
+          "path": "record.choices.spell_preparations",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.manifested_powers",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.companions",
+          "type": "StringName"
+        }
+      ],
+      "serialized_digest": "c787d6293afbc8a2366f0745a1b2ae23b63b5a6e67d18102613e487051781324",
+      "snapshot_unchanged": true
+    },
+    "sorcerer:selected": {
+      "before_digest": "93d989959d0cba2c2074e04a75c03bd4c418c0f7d8f50f4252a9eb3428528804",
+      "non_string_keys": [
+        {
+          "path": "record.choices.spell_preparations",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.manifested_powers",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.companions",
+          "type": "StringName"
+        }
+      ],
+      "serialized_digest": "d7b8db028c970bd1b5444c1d118c62437da01f2bb7139c05242e8cff6ce37ead",
+      "snapshot_unchanged": true
+    },
+    "wizard13": {
+      "before_digest": "6d362b2db0b948a72c86c2e90068232a6e3cea0bb673058fc135295c2207dcab",
+      "non_string_keys": [],
+      "serialized_digest": "6d362b2db0b948a72c86c2e90068232a6e3cea0bb673058fc135295c2207dcab",
+      "snapshot_unchanged": true
+    },
+    "wizard:planned13": {
+      "before_digest": "1fa648ccc7431861105bfcba59bc28b734e6912632fd3a373f492e55b4e78bcd",
+      "non_string_keys": [
+        {
+          "path": "record.choices.spell_preparations",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.manifested_powers",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.companions",
+          "type": "StringName"
+        }
+      ],
+      "serialized_digest": "09c2c1206ce0025f4f41f6b3289e437bbb5af63e8018372abc75fc1ff5de45f7",
+      "snapshot_unchanged": true
+    },
+    "wizard:selected": {
+      "before_digest": "fc0e2e2922f6fe00f008a946dfc2f003a9c47236a32a7fbfb47100a007836af1",
+      "non_string_keys": [
+        {
+          "path": "record.choices.spell_preparations",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.manifested_powers",
+          "type": "StringName"
+        },
+        {
+          "path": "record.runtime.companions",
+          "type": "StringName"
+        }
+      ],
+      "serialized_digest": "56a5d34c465caaee5c142a13f94c5fda466e9da6868f5019dc893b5efe245e35",
+      "snapshot_unchanged": true
+    }
+  },
+  "sorcerer13": {
+    "attributes": {
+      "CHA": 18,
+      "CON": 12,
+      "DEX": 13,
+      "INT": 8,
+      "STR": 14,
+      "WIS": 10
+    },
+    "eligibility": {
+      "errors": [
+        {
+          "code": "requirement.skill",
+          "current": 3,
+          "detail": "Prerequisite is not met",
+          "expected": 10,
+          "id": "spellcraft",
+          "path": "requirements.2"
+        }
+      ],
+      "ok": false
+    },
+    "failed_predicates": [
+      {
+        "id": "spellcraft",
+        "min": 10,
+        "op": "skill"
+      }
+    ],
+    "ranks": {
+      "acrobatics": 0,
+      "animal-handling": 0,
+      "arcana": 10,
+      "athletics": 0,
+      "craft": 0,
+      "insight": 0,
+      "nature": 0,
+      "perception": 0,
+      "performance": 0,
+      "persuasion": 0,
+      "religion": 0,
+      "spellcraft": 3,
+      "stealth": 0,
+      "survival": 0
+    },
+    "record_hash": "302218298583b2e757a43bbebd6e225e6e39db13ed6fe7f904fd523d179dac73"
+  },
+  "sorcerer14": {
+    "attributes": {
+      "CHA": 18,
+      "CON": 12,
+      "DEX": 13,
+      "INT": 8,
+      "STR": 14,
+      "WIS": 10
+    },
+    "eligibility": {
+      "errors": [
+        {
+          "code": "requirement.skill",
+          "current": 4,
+          "detail": "Prerequisite is not met",
+          "expected": 10,
+          "id": "spellcraft",
+          "path": "requirements.2"
+        }
+      ],
+      "ok": false
+    },
+    "failed_predicates": [
+      {
+        "id": "spellcraft",
+        "min": 10,
+        "op": "skill"
+      }
+    ],
+    "ranks": {
+      "acrobatics": 0,
+      "animal-handling": 0,
+      "arcana": 10,
+      "athletics": 0,
+      "craft": 0,
+      "insight": 0,
+      "nature": 0,
+      "perception": 0,
+      "performance": 0,
+      "persuasion": 0,
+      "religion": 0,
+      "spellcraft": 4,
+      "stealth": 0,
+      "survival": 0
+    },
+    "record_hash": "94f4c5eb8153c3ad713ce1be38044562247b7aa55cfcf6f2675f4886148f1a2e"
+  },
+  "sorcerer:planned13": {
+    "attributes": {
+      "CHA": 15,
+      "CON": 13,
+      "DEX": 14,
+      "INT": 12,
+      "STR": 8,
+      "WIS": 10
+    },
+    "eligibility": {
+      "errors": [],
+      "ok": true
+    },
+    "ranks": {
+      "acrobatics": 6,
+      "animal-handling": 0,
+      "arcana": 10,
+      "athletics": 0,
+      "craft": 0,
+      "insight": 0,
+      "nature": 0,
+      "perception": 0,
+      "performance": 0,
+      "persuasion": 13,
+      "religion": 0,
+      "spellcraft": 10,
+      "stealth": 0,
+      "survival": 0
+    },
+    "scope": "Lawful development fixture, no earned-XP claim. Fresh full earned campaign still required."
+  },
+  "wizard:planned13": {
+    "attributes": {
+      "CHA": 8,
+      "CON": 12,
+      "DEX": 13,
+      "INT": 15,
+      "STR": 14,
+      "WIS": 10
+    },
+    "eligibility": {
+      "errors": [],
+      "ok": true
+    },
+    "ranks": {
+      "acrobatics": 13,
+      "animal-handling": 5,
+      "arcana": 10,
+      "athletics": 0,
+      "craft": 13,
+      "insight": 13,
+      "nature": 0,
+      "perception": 0,
+      "performance": 0,
+      "persuasion": 0,
+      "religion": 0,
+      "spellcraft": 10,
+      "stealth": 0,
+      "survival": 0
+    },
+    "scope": "Lawful development fixture, no earned-XP claim. Fresh full earned campaign still required."
+  }
+}
