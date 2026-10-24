@@ -30,15 +30,18 @@ def generate(root, pack, pin, native_root):
     contracts=native['proofs']['mechanics/proof.json']['contracts']
     assert contracts['channels']==10 and all(contracts[k] is True for k in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])
     journey=native['proofs']['journey/proof.json']
-    assert journey['earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
-    assert all(len(r['history'])==14 for r in journey['journeys'])
+    assert journey['earned_xp']==1960 and journey['native_earned_xp']==270 and journey['source_import']['original_earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
+    assert all(len(r['history'])==15 for r in journey['journeys'])
     assert set(journey['earned_entry_witnesses'])=={'wizard','sorcerer'}
     for cls,w in journey['earned_entry_witnesses'].items():
         assert w['current_level']==13 and w['next_level']==14 and w['earned_xp']==1690 and w['class_assigned'] is False
     for row in journey['journeys']:
         if row['history'][0]['class_id'] in ['wizard','sorcerer']:
             assert row['history'][-1]['class_id']=='archmage'
-            assert sum(s['class_id']=='archmage' for s in row['history'])==1
+            assert sum(s['class_id']=='archmage' for s in row['history'])==2
+    reused=native['reused_source_earned'];assert reused['original_xp']==1690 and reused['native_additional_xp']==270
+    assert all(r['checks']>0 and r['failures']==0 for r in reused['proofs'].values())
+    for file,sha in reused['raw_files_unchanged'].items():assert hashlib.sha256((native_root/'source-earned'/file).read_bytes()).hexdigest()==sha
     assert set(native['proofs']['connected/proof.json']['casts'].values())=={'channel-duskblade-searing-grasp','high-arcana-force-1','high-arcana-ward-1'}
     captures=native['captures'];assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=18
     for image in captures['screenshots']:
@@ -56,7 +59,7 @@ def generate(root, pack, pin, native_root):
         row.update(status='COMPLETE',remaining=[],verified_source=source,status_scope='Bounded supported original identity, actual choices/costs/targets/counterplay, production controls, legitimate earned advancement and exact cold continuation. Not exhaustive tabletop conversion or human balance.')
         row['previous_acceptance_pin']=baseline['rules_ref']
         row['advancement']['current_native_levels']=list(range(1,21)) if row['id']=='duskblade' else list(range(1,6))
-        row['early_mid_high'].update(current_tactical=True,scope='Duskblade1/3/5/9/13/17/20 and all10 original legal channels; Archmage every supported path level1–5, Wizard/Sorcerer total20 and existing Beguiler14/Arch5 integration. Development fixtures, separate from actual1690XP/14 earned paths.')
+        row['early_mid_high'].update(current_tactical=True,scope='Duskblade1/3/5/9/13/17/20 and all10 original legal channels; Archmage every supported path level1–5, Wizard/Sorcerer total20 and existing Beguiler14/Arch5 integration. Development fixtures, separate source1690XP/14 and exported-native additional270XP/1960XP total15 paths.')
         row['persistence']['current_native']=True
         row['evidence']+=['tests/hybrid_acceptance/mechanics.gd','tests/hybrid_acceptance/input.gd','tests/hybrid_acceptance/journey.gd','tests/hybrid_acceptance/connected.gd','docs/implementation/game123-hybrids/evidence/native-proof.json','docs/implementation/game123-hybrids/screenshots/README.md']
         row['limitations']=['Finite original tactical adaptations, not a full tabletop repertoire conversion.','Historical pins retain original mechanics, including prior advanced DC/body/Ward behavior. No automatic migration.','Human balance/readability and GAME89/92/140 remain separate.']

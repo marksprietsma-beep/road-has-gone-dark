@@ -2,6 +2,10 @@ name: Duskblade and Archmage Acceptance
 on:
   workflow_dispatch:
     inputs:
+      native_progress_probe:
+        description: Source-Godot preflight of unchanged earned-save continuation, not a native export
+        type: boolean
+        default: false
       planner_probe:
         description: Small deterministic reproduction and lawful correction of failed earned Sorcerer build
         type: boolean
@@ -78,7 +82,7 @@ jobs:
           HYBRID_FAILED_ROOT: ${{ runner.temp }}/hybrid-failed-earned
         run: python tests/hybrid_acceptance/run-focused.py
       - name: Actual archived display legality and baseline career diagnostics
-        if: github.event_name != 'workflow_dispatch' || (!inputs.planner_probe && !inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
+        if: github.event_name != 'workflow_dispatch' || (!inputs.native_progress_probe && !inputs.planner_probe && !inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
         env:
           HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
         run: python tests/hybrid_acceptance/run-focused.py
@@ -110,7 +114,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ runner.temp }}/hybrid-presentation-input
       - name: Verify completed earned source before presentation reuse
-        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        if: github.event_name == 'workflow_dispatch' && (inputs.presentation || inputs.release || inputs.native_progress_probe)
         uses: actions/github-script@v7
         env:
           HYBRID_REQUESTED_EARNED_RUN: ${{ inputs.earned_run }}
@@ -136,6 +140,20 @@ jobs:
           HYBRID_PRESENTATION_INPUT: ${{ runner.temp }}/hybrid-presentation-input
           HYBRID_PRESENTATION_ROOT: ${{ runner.temp }}/hybrid-presentation
         run: python tests/hybrid_acceptance/recheck-presentation.py
+      - name: Restore successful source earned campaign for native continuation
+        if: github.event_name == 'workflow_dispatch' && (inputs.release || inputs.native_progress_probe)
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: ${{ inputs.earned_run }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-native-input
+      - name: Source preflight of actual earned-save continuation and cold combat
+        if: github.event_name == 'workflow_dispatch' && inputs.native_progress_probe
+        env:
+          HYBRID_IMPORTED_INPUT: ${{ runner.temp }}/hybrid-native-input
+          HYBRID_NATIVE_PROGRESS_ROOT: ${{ runner.temp }}/hybrid-native-progress
+        run: python tests/hybrid_acceptance/run-native-progress.py
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release
         run: python tools/release/prepare-templates.py
@@ -143,6 +161,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.release
         env:
           HYBRID_RELEASE_ROOT: ${{ runner.temp }}/hybrid-native
+          HYBRID_IMPORTED_INPUT: ${{ runner.temp }}/hybrid-native-input
         run: python tests/hybrid_acceptance/verify-package.py
       - uses: actions/upload-artifact@v4
         if: always()
@@ -158,6 +177,8 @@ jobs:
             ${{ runner.temp }}/hybrid-presentation/**/*.json
             ${{ runner.temp }}/hybrid-presentation/**/*.log
             ${{ runner.temp }}/hybrid-presentation/captures/*.png
+            ${{ runner.temp }}/hybrid-native-progress/**/*.json
+            ${{ runner.temp }}/hybrid-native-progress/**/*.log
             ${{ runner.temp }}/hybrid-native/**/*.json
             ${{ runner.temp }}/hybrid-native/**/*.log
             ${{ runner.temp }}/hybrid-native/captures/*.png

@@ -22,7 +22,8 @@ func run() -> void:
   await photograph_scene("ordinary-duskblade-small",false,Vector2i(640,360));screenshots.back().earned_xp=0
  for i in 3:
   var sheet := await open_sheet();sheet._select_member(i);sheet.detail_tabs.current_tab=2
-  sheet.title.text="EARNED · "+["Duskblade14","Wizard13 / Archmage1","Sorcerer13 / Archmage1"][i]+" · 1690 journey XP"
+  var r: Dictionary=state.mechanics.records[state.party_ids[i]];var d := CharacterBuilderRecords.kernel(state).derive_character(r)
+  sheet.title.text="EARNED · "+str(r.advancement_history.size())+" total levels · "+str(d.snapshot.class_levels)+" · "+str(proof.earned_xp)+" journey XP"
   await photograph_scene("earned-"+["duskblade","wizard-archmage","sorcerer-archmage"][i]+"-sheet",false,Vector2i(2560,1440))
  var original_slot: String=slot;var original_root: String=service.store.save_root
  for cls in ["wizard","sorcerer"]:
@@ -36,7 +37,7 @@ func run() -> void:
   select_option(picker,"archmage")
   check(sheet.advance_editor.career_pickers.has("archmage-casting") and sheet.advance_editor.career_pickers.has("high-arcana-1") and not sheet.advancement_button.disabled,"earned1690XP enables explicit optional Archmage and its choices "+cls)
   sheet.title.text="EARNED · "+cls+"13 · 1690XP · optional Archmage preview, not committed"
-  await photograph_scene("earned-"+cls+"-prestige-entry",false,Vector2i(2560,1440))
+  await photograph_scene("earned-"+cls+"-prestige-entry",false,Vector2i(2560,1440));screenshots.back().earned_xp=1690
   check(RulesJson.digest(fork.load_save(slot,entry.world).state)==RulesJson.digest(earned),"preview/capture never commits advancement")
  service.store.save_root=original_root;service.library.save_root=original_root;slot=original_slot
  for key in ["duskblade20","sorcerer:force","wizard:ward"]:
@@ -56,7 +57,7 @@ func run() -> void:
   await photograph_scene("fixture-"+key.replace(":","-")+"-combat",true)
   if key=="sorcerer:liberation":await photograph_scene("fixture-liberation-large",true,Vector2i(2560,1440))
  var active := WorldOriginLore.read_json(OS.get_environment("GAME129_CONNECTED_ROOT").path_join("active-state.json"))
- var combat := await open_combat();combat.state=active;combat.engine=TacticalAuras.new(active);combat.mode="attack";combat.message="EARNED · Duskblade14 / Wizard13-Archmage1 / Sorcerer13-Archmage1 · actual three class actions saved";combat.refresh()
+ var combat := await open_combat();combat.state=active;combat.engine=TacticalAuras.new(active);combat.mode="attack";combat.message="EARNED · "+str(proof.earned_xp)+"XP · actual Duskblade / Wizard-Archmage / Sorcerer-Archmage actions saved";combat.refresh()
  await photograph_scene("earned-connected-class-actions",false,Vector2i(2560,1440))
  var resumed := service.operate(entry,slot,"resume");check(resumed.ok and RulesJson.digest(resumed.state)==before,"all captures preserve original campaign XP/history/resources/save")
  finish_capture()
@@ -66,4 +67,4 @@ func select_option(picker: OptionButton,id: String) -> void:
  check(false,"actual production option missing "+id)
 func photograph_scene(name: String,fixture: bool,resolution := Vector2i(1280,720)) -> void:
  await super.photograph_scene(name,fixture,resolution)
- screenshots.back().earned_xp=false if fixture else 1690
+ screenshots.back().earned_xp=false if fixture else CharacterBuilderRecords.xp(state,state.party_ids[0])

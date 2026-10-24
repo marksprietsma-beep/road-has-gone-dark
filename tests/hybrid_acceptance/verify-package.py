@@ -27,12 +27,16 @@ commit = subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True
 manifest_bytes = (ROOT/'data/rules/packs.json').read_bytes()
 pins = {r['rules_ref']['pack_id']:r['rules_ref'] for r in json.loads(manifest_bytes)['packs']}
 pin = pins['trhgd-character-v28']
+from earned_import import prepare
+reuse=prepare(ROOT,base,pin)
+imported=reuse['imported'];earned_source=reuse['source'];earned_run=reuse['run']
+protected=reuse['protected'];source_proofs=reuse['proofs'];source_timings=reuse['timings']
 subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GAME76_HELPER_ROOT'],
                 '--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/hybrid_acceptance/review.tscn',
                 '--output',str(dist)], cwd=ROOT, check=True)
 env = dict(os.environ, PATH='', NODE_PATH='', NODE_OPTIONS='', HYBRID_ROOT=str(base/'mechanics'),
            HYBRID_CAPTURE_ROOT=str(base/'captures'), GAME126_JOURNEY_ROOT=str(base/'journeys'),
-           GAME126_COHORT='0', GAME129_CONNECTED_ROOT=str(base/'connected'),
+           GAME126_COHORT='0', GAME126_RESUME='1', HYBRID_IMPORTED_EARNED=str(imported), GAME129_CONNECTED_ROOT=str(base/'connected'),
            GAME126_AUDIT_ROOT=str(base/'all-base'), GAME126_PACK='res://data/rules/trhgd-character-v28.json',
            GAME150_ROOT=str(base/'current-upper'), UPPER_NATURE_ROOT=str(base/'historical27'),
            GAME133_ROOT=str(base/'historical18'), GAME126_REPAIR_ROOT=str(base/'legacy-v16'),
@@ -80,12 +84,13 @@ mechanics = proofs['mechanics/proof.json']
 assert mechanics['contracts']['channels']==10
 assert all(mechanics['contracts'][key] is True for key in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])
 journey = proofs['journey/proof.json']
-assert journey['earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
+assert journey['earned_xp']==1960 and journey['native_earned_xp']==270 and journey['source_import']['original_earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
 assert {r['history'][0]['class_id'] for r in journey['journeys']}=={'duskblade','wizard','sorcerer'}
-assert all(len(r['history'])==14 for r in journey['journeys'])
+assert all(len(r['history'])==15 for r in journey['journeys'])
 assert set(journey['earned_entry_witnesses'])=={'wizard','sorcerer'}
 assert set(proofs['connected/proof.json']['casts'].values())=={'channel-duskblade-searing-grasp','high-arcana-force-1','high-arcana-ward-1'}
 audit = json.loads((base/'all-base/witnesses.json').read_text(encoding='utf-8'))
+for file,sha in protected.items():assert hashlib.sha256((imported/file).read_bytes()).hexdigest()==sha
 assert len(audit['classes'])==32 and all(r['complete_track'] for r in audit['classes'].values())
 captures = json.loads((base/'captures/screenshots.json').read_text(encoding='utf-8'))
 assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=18
@@ -106,7 +111,7 @@ result = checked_process([str(dist/'road-has-gone-dark.exe'),'--headless','--aud
 assert not result['exit_code'] and not result['errors'] and not result['timeout']
 shutil.copy2(ROOT/'data/rules/packs.json', dist/'CHARACTER-RULES-MANIFEST.json')
 shutil.copy2(ROOT/'data/rules/trhgd-character-v28.json', dist/'CORE-CHARACTER-CONTENT.json')
-(dist/'START-HERE.txt').write_text('DUSKBLADE AND ARCHMAGE ACCEPTANCE\n\nExtract both ZIP layers, retaining every file. Launch road-has-gone-dark.exe. No installed Godot or Node is needed; Escape skips intro. Fresh campaigns use v28; existing saves keep their exact original rules pins.\n\nDuskblade: create with INT for casting and a melee weapon. Select original known spells, not separate channel wrappers. From class3 channel a known single-target enemy spell through an adjacent weapon attack: one main action and its original Duskblade slot are spent even on a miss; only a hit delivers the spell. Bow, range, exhausted slots, spent actions and concealment retain their real restrictions. Later tiers unlock at class5/9/13/17; Wizard multiclass pools remain independent.\n\nArchmage is earned optional advancement, never a starting class or an automatic award. Meet permanent level13, Arcana10, Spellcraft10, the actual Spell focus / Greater spell focus feat chain, and genuine arcane tier7 access (known for spontaneous casters). Earn1690XP through objectives to fund total14. At home select Archmage deliberately, choose the parent casting track and Force or Ward. Continue the base class instead if desired. Path maximum5.\n\nForce uses the selected Wizard/Beguiler INT or Sorcerer CHA. Advanced powers spend one main action and finite high-arcana use. Existing forms which suppress supernatural casting also suppress these abilities. Ward1 protects; Ward3 additionally clears Weakened and Arcane tether; Ward5 additionally clears Slowed, Unsteady concentration and Stillness lattice. Other effects remain; no healing, resurrection, free actions or restored slots. The three-boundary ward status and separate nonstacking temporary-HP buffer follow existing policies. Eligible home return restores resources.\n\nAcceptance journeys earned1690XP/level14 and explicitly chose Wizard/Sorcerer Archmage1. Total20/path5 and attack-roll/status screenshots are labelled development fixtures, not claimed earned20. Save completely, exit, relaunch and Resume. No QA executable or XP button ships. GAME89/92 combat usability and GAME140 humanoid art fallbacks remain separate.\n', encoding='utf-8')
+(dist/'START-HERE.txt').write_text('DUSKBLADE AND ARCHMAGE ACCEPTANCE\n\nExtract both ZIP layers, retaining every file. Launch road-has-gone-dark.exe. No installed Godot or Node is needed; Escape skips intro. Fresh campaigns use v28; existing saves keep their exact original rules pins.\n\nDuskblade: create with INT for casting and a melee weapon. Select original known spells, not separate channel wrappers. From class3 channel a known single-target enemy spell through an adjacent weapon attack: one main action and its original Duskblade slot are spent even on a miss; only a hit delivers the spell. Bow, range, exhausted slots, spent actions and concealment retain their real restrictions. Later tiers unlock at class5/9/13/17; Wizard multiclass pools remain independent.\n\nArchmage is earned optional advancement, never a starting class or an automatic award. Meet permanent level13, Arcana10, Spellcraft10, the actual Spell focus / Greater spell focus feat chain, and genuine arcane tier7 access (known for spontaneous casters). Earn1690XP through objectives to fund total14. At home select Archmage deliberately, choose the parent casting track and Force or Ward. Continue the base class instead if desired. Path maximum5.\n\nForce uses the selected Wizard/Beguiler INT or Sorcerer CHA. Advanced powers spend one main action and finite high-arcana use. Existing forms which suppress supernatural casting also suppress these abilities. Ward1 protects; Ward3 additionally clears Weakened and Arcane tether; Ward5 additionally clears Slowed, Unsteady concentration and Stillness lattice. Other effects remain; no healing, resurrection, free actions or restored slots. The three-boundary ward status and separate nonstacking temporary-HP buffer follow existing policies. Eligible home return restores resources.\n\nAcceptance first earned1690XP/level14 in Windows source Godot, with explicit Wizard/Sorcerer Archmage1. The exported executable loaded that unchanged save and earned270 additional XP through real opportunities, funding1960XP/level15 and Archmage2. These evidence scopes are separate. Total20/path5 and attack-roll/status screenshots are labelled development fixtures, not claimed earned20. Save completely, exit, relaunch and Resume. No QA executable or XP button ships. GAME89/92 combat usability and GAME140 humanoid art fallbacks remain separate.\n', encoding='utf-8')
 for file in dist.glob('road-has-gone-dark-qa*'):
     file.unlink()
 archive = release/(name+'.zip')
@@ -120,7 +125,7 @@ sha = hashlib.file_digest(archive.open('rb'),'sha256').hexdigest()
 Path(str(archive)+'.sha256').write_text(sha+'  '+archive.name+'\n')
 receipt = dict(acceptance_cohort='duskblade-archmage', source_commit=commit, rules_ref=pin,
     archive=archive.name, sha256=sha, proofs=proofs, proof_sources={key:commit for key in proofs},
-    timings=timings, captures=captures, source_guard=source_guard, empty_path=True,
+    timings=timings, captures=captures, source_guard=source_guard, reused_source_earned=dict(run_id=earned_run,source_commit=earned_source,original_xp=1690,native_additional_xp=270,raw_files_unchanged=protected,proofs=source_proofs,timings=source_timings), empty_path=True,
     source_helper_override=False, production_launch=True, separate_process_restart=True, earned_characters=3)
 (base/'distribution-proof.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(dict(archive=str(archive), sha256=sha)), flush=True)
