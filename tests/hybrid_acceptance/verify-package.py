@@ -76,7 +76,7 @@ assert probe['checks']>0 and probe['failures']==0
 proofs['pinned27-probe'] = probe
 mechanics = proofs['mechanics/proof.json']
 assert mechanics['contracts']['channels']==10
-assert all(mechanics['contracts'][key] is True for key in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','permanent_entry','body_suppression','resources'])
+assert all(mechanics['contracts'][key] is True for key in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])
 journey = proofs['journey/proof.json']
 assert journey['earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
 assert {r['history'][0]['class_id'] for r in journey['journeys']}=={'duskblade','wizard','sorcerer'}

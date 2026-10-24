@@ -28,7 +28,7 @@ def generate(root, pack, pin, native_root):
         assert native['proofs'][key]['checks']>0 and native['proofs'][key]['failures']==0
     assert native['proofs']['frozen']['checks']==22181
     contracts=native['proofs']['mechanics/proof.json']['contracts']
-    assert contracts['channels']==10 and all(contracts[k] is True for k in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','permanent_entry','body_suppression','resources'])
+    assert contracts['channels']==10 and all(contracts[k] is True for k in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])
     journey=native['proofs']['journey/proof.json']
     assert journey['earned_xp']==1690 and journey['xp_injected'] is False and len(journey['journeys'])==3
     assert all(len(r['history'])==14 for r in journey['journeys'])

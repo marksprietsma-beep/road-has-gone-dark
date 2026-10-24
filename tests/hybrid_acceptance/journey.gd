@@ -11,12 +11,19 @@ func promote(index: int) -> void:
  if not failures and index in [1,2]:
   var id: String=state.party_ids[index];var record: Dictionary=state.mechanics.records[id]
   if record.advancement_history.size()==13 and CharacterBuilderRecords.xp(state,id)>=CharacterBuilderRecords.threshold(14,state) and kernel.available_advancement(record).classes.archmage.ok:
+   var decline := planned(record,str(configs[index][0]),index)
+   check(decline.ok,"actual earned qualifying base-class continuation remains available")
+   if decline.ok:
+    var choice: Dictionary=decline.candidate.advancement_history.back().duplicate(true);choice.erase("level")
+    check(CharacterBuilderRecords.preview_advancement(state,id,choice).ok,"real1690XP also funds deliberately declining prestige without committing it")
    var file: String="earned-qualified-"+str(configs[index][0])+".json"
    FileAccess.open(base.path_join(file),FileAccess.WRITE).store_string(JSON.stringify(state))
    entry_witnesses[str(configs[index][0])]={"file":file,"state_hash":RulesJson.digest(state),"character_id":id,"earned_xp":CharacterBuilderRecords.xp(state,id),"current_level":13,"next_level":14,"class_assigned":false}
  super.promote(index)
 func checkpoint() -> void:
  super.checkpoint()
+ var xp: int=CharacterBuilderRecords.xp(state,state.party_ids[0])
+ if xp%100==0 or xp==1690:print("EARNED_HYBRID_CHECKPOINT XP=",xp," level=",state.mechanics.records[state.party_ids[0]].advancement_history.size()," failures=",failures)
  var proof := WorldOriginLore.read_json(base.path_join("proof.json"));proof.earned_entry_witnesses=entry_witnesses
  FileAccess.open(base.path_join("proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
 func spell_selection(record: Dictionary) -> Dictionary:

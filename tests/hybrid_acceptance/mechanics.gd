@@ -18,7 +18,7 @@ func run() -> void:
    if not r.is_empty():saved_records[cls+":"+variant]=r
  if failures:finish_acceptance();return
  fixtures.defender=warded_defender()
- test_channel_cohort();test_multiclass_channels();test_refraction_counter();test_archmage();test_ward_progression();test_beguiler_route();test_permanent_gates();test_forms();test_resource_boundaries()
+ test_channel_cohort();test_multiclass_channels();test_refraction_counter();test_archmage();test_ward_progression();test_beguiler_route();test_archmage_independent_tracks();test_permanent_gates();test_forms();test_resource_boundaries()
  var hashes := {};var records := {};var predicted := {}
  for key in saved_records:
   saved_records[key]=RulesJson.string_keys(saved_records[key]);var d := kernel.derive_character(saved_records[key])
@@ -275,6 +275,42 @@ func test_beguiler_route() -> void:
  check(use(r,fixtures.fighter,"high-arcana-force-5").ok and use(r,fixtures.fighter,"high-arcana-ward-3").ok,"third existing parent executes its actually selected force and cleansing choices")
  saved_records["beguiler:archmage"]=r
  contracts.existing_beguiler_route=true
+func test_archmage_independent_tracks() -> void:
+ var r := prep(career_fixture("sorcerer",13,["spell-focus","greater-spell-focus"]),"sorcerer-tier7-tempest")
+ var proposed := kernel.suggested_choice(r,"wizard")
+ var advanced := kernel.preview_advancement(r,proposed.choice);check(advanced.ok,"actual Sorcerer13/Wizard1 multiclass")
+ if not advanced.ok:return
+ r=advanced.candidate;r.choices.prepared_abilities.append("wizard-arcane-bolt");r.choices.spell_preparations={"wizard-arcane-bolt":1}
+ for at in 5:
+  proposed=kernel.suggested_choice(r,"archmage")
+  if at==0:proposed.choice.specialisations["archmage-casting"]="sorcerer"
+  for key in proposed.choice.specialisations:
+   if str(key).begins_with("high-arcana-"):proposed.choice.specialisations[key]="force"
+  if (r.advancement_history.size()+1)%4==0:proposed.choice.attribute_increase="CHA"
+  advanced=kernel.preview_advancement(r,proposed.choice);check(advanced.ok,"lawful selected-parent dual-caster path")
+  if not advanced.ok:return
+  r=advanced.candidate
+ proposed=kernel.suggested_choice(r,"sorcerer");proposed.choice.attribute_increase="CHA"
+ advanced=kernel.preview_advancement(r,proposed.choice);check(advanced.ok,"dual-caster path reaches lawful total20")
+ if not advanced.ok:return
+ r=advanced.candidate
+ var d := kernel.derive_character(r);check(d.ok and d.snapshot.casting_levels.sorcerer==19 and d.snapshot.casting_levels.wizard==1,"Archmage advances selected Sorcerer only, not every arcane track")
+ if not d.ok:return
+ r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,d.snapshot.resource_capacities,"eligible_rest").runtime
+ var before: Dictionary=r.runtime.resources.duplicate()
+ var force := use(r,fixtures.fighter,"high-arcana-force-5");check(force.ok,"dual-caster actual selected-parent Force")
+ if not force.ok:return
+ for pool in before:
+  if pool!="high-arcana":check(force.actor.runtime.resources[pool]==before[pool],"advanced power leaves both spell tracks independent "+pool)
+ var wizard := use(force.actor,fixtures.fighter,"wizard-arcane-bolt");check(wizard.ok,"unadvanced Wizard1 still actually casts its prepared spell")
+ if wizard.ok:
+  check(wizard.actor.runtime.resources["wizard-slots-1"]==before["wizard-slots-1"]-1 and wizard.actor.runtime.resources["wizard-prepared-arcane-bolt"]==0,"actual nonselected Wizard slot/copy consumption")
+  check(wizard.actor.runtime.resources["sorcerer-slots-7"]==before["sorcerer-slots-7"] and wizard.actor.runtime.resources["high-arcana"]==force.actor.runtime.resources["high-arcana"],"Wizard casting cannot spend or refund Sorcerer/high-arcana pools")
+  var sorcerer := use(wizard.actor,fixtures.fighter,"sorcerer-tier7-tempest");check(sorcerer.ok,"permanent known upper Sorcerer spell executes on selected track")
+  if sorcerer.ok:
+   check(sorcerer.actor.runtime.resources["sorcerer-slots-7"]==before["sorcerer-slots-7"]-1 and sorcerer.actor.runtime.resources["wizard-slots-1"]==wizard.actor.runtime.resources["wizard-slots-1"],"actual spontaneous cast spends only its own tier")
+   saved_records["sorcerer:wizard:archmage"]=sorcerer.actor
+ contracts.independent_archmage_tracks=true
 func test_permanent_gates() -> void:
  for cls in ["wizard","sorcerer"]:
   var qualified := career_fixture(cls,13,["spell-focus","greater-spell-focus"])
