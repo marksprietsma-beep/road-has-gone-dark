@@ -27,7 +27,7 @@ func run() -> void:
   check(r.choices.prepared_abilities.any(func(id: String):return source.definition("abilities",id).get("casting_class")=="sorcerer" and source.definition("abilities",id).get("spell_tier")==7),"actual permanent tier7 knowledge was present")
   var missed := []
   for node in source.definition("classes","archmage").requirements.args:
-   if not RulesExpressions.evaluate_requirements(node,d.context).ok:missed.append(node)
+   if not RulesCompleteness.entry_requirements(node,d.context,r,source).ok:missed.append(node)
   check(missed==[{"op":"skill","id":"spellcraft","min":10}],"Spellcraft is the precise sole failed permanent predicate")
   check(not kernel.suggested_choice(r,"archmage").ok and RulesJson.digest(r)==before,"no forged eligibility or original build mutation")
   evidence[key]={"attributes":d.snapshot.attributes,"ranks":d.context.skills,"eligibility":eligible,"failed_predicates":missed,"record_hash":before}
