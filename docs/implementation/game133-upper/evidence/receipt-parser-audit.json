@@ -1,0 +1,31 @@
+{
+  "scope": "Host-only metadata reader; no Godot/game execution on this host. Original Windows receipts remain unchanged. Positive actual native proof generates33/17/0; these corrupt copies must reject.",
+  "negative_cases": [
+    {
+      "case": "wrong_release_pin",
+      "rejected": true
+    },
+    {
+      "case": "failed_mechanics",
+      "rejected": true
+    },
+    {
+      "case": "failed_cold_journey",
+      "rejected": true
+    },
+    {
+      "case": "wrong_warm_journey_pin",
+      "rejected": true
+    },
+    {
+      "case": "wrong_saved_campaign_pin",
+      "rejected": true
+    },
+    {
+      "case": "different_runtime_source",
+      "rejected": true
+    }
+  ],
+  "positive_native_run": 40051404313,
+  "historical_native_assertions_unchanged": true
+}

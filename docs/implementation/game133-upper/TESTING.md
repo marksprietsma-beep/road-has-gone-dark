@@ -1,6 +1,6 @@
 # Windows upper-tier acceptance
 
-Candidate source is preserved on `feature/game-123-sorcerer-druid-upper-tiers`. No Windows release is declared passed until DELIVERY links its successful exact-source workflow/artifact and checksum.
+Native Windows release40051404313 passed at `e048332e868a12711d685e79652dec063f0045bf`. [DELIVERY](DELIVERY.md) links the actual artifact, inner-ZIP checksum, original captures and exact phase receipts. Later changes affect delivery/readiness documents and the host-only readiness receipt parser; gameplay, tests and export inputs remain unchanged.
 
 ## Automated sequence
 
@@ -25,3 +25,5 @@ Interception happens before accuracy is rolled, so even an attempt that would ha
 Bloodline/nature actions retain their authored mechanics. In particular Fey's current finite debuff is unsaved, while Draconic/Storm use saving throws; late choices affect actual typed defence/DC. Growth mastery grants its ward to the ally and its existing buffer to the caster. These are project adaptations, not claims of exact tabletop implementation.
 
 Five-level Mystic Theurge can provide independent17/7 effective tracks in a lawful total20 fixture, not dual tier9. Duskblade, Archmage, Abjurant Champion and Theurge completion remain separate cohorts. Human balance/usability, compact text/scrolling and GAME89/92/140 remain separate. Creatures/forms keep the existing labelled humanoid fallback; no flight, water/terrain simulation or race expansion.
+
+The unchanged earned-journey cold driver emits counts after asserting the full loaded state equals the warm hash. The host readiness reader binds that receipt to the warm pin/hash and independently checks the actual saved campaign and all party-record pins. Six deliberately corrupted receipt copies are rejected: wrong release pin, failed mechanics, failed cold journey, wrong warm pin, wrong saved pin and different runtime source. [Metadata-only audit](evidence/receipt-parser-audit.json). No native receipt was edited and no historical/native assertion was relaxed.

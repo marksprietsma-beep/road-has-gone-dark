@@ -1,0 +1,90 @@
+{
+  "baseline": "3e62d5cfc4959269f607ee7f64008842882f1c48",
+  "source_commit": "0359e4a2931fef3b36cc1ad97e312ece97481236",
+  "historical_pins": "v1\u2013v26",
+  "historical_execution_branches_project_exactly": true,
+  "changed_scripts": {
+    "scripts/combat/tactical_auras.gd": {
+      "original_sha256": "44c70ff8a201307c4993f9a22e31b43e66ddc517a8e116c14046bddcfc3e6933",
+      "current_sha256": "b9f8fe285b1b165cfccc8c2aac9cc8410c3ced6a5faa4a9f434c0ec9038fa2ef",
+      "projected_legacy_sha256": "44c70ff8a201307c4993f9a22e31b43e66ddc517a8e116c14046bddcfc3e6933"
+    },
+    "scripts/rules/rules_capabilities.gd": {
+      "original_sha256": "c27703002e49002c52be9035baab80624d73f5690b9a61e26e43069b641854d0",
+      "current_sha256": "2631e526797dd697764e448d54be1d5d2a54a58f3072e644c789c1ade85a7c19",
+      "projected_legacy_sha256": "c27703002e49002c52be9035baab80624d73f5690b9a61e26e43069b641854d0"
+    },
+    "scripts/rules/rules_career.gd": {
+      "original_sha256": "c7e1b6105a99f51b20181b5efa6c40e9ef36876fdea1f11a8fc6e1667ded0870",
+      "current_sha256": "53e228f1120a1fad73015697652271e5825fe849602041fe6edae8dd1f5698cc",
+      "projected_legacy_sha256": "c7e1b6105a99f51b20181b5efa6c40e9ef36876fdea1f11a8fc6e1667ded0870"
+    },
+    "scripts/rules/rules_character.gd": {
+      "original_sha256": "988346a290e50afd56ac885861832dd6ab6cf8eabf50acea961caa8b6b9b0d58",
+      "current_sha256": "01d21ed04a48574e06c7c965b6ef38bf41c88795c10c577f2d090af4297fd1da",
+      "projected_legacy_sha256": "988346a290e50afd56ac885861832dd6ab6cf8eabf50acea961caa8b6b9b0d58"
+    },
+    "scripts/rules/rules_completeness.gd": {
+      "original_sha256": "ba87cded59123ddda3c9fcbb7b0151378ff87d0555d9810d96ca30b455187de3",
+      "current_sha256": "2bc4a87389b11ed00e2443123c252675f5115b1a00a517826857fcbd6ae941af",
+      "projected_legacy_sha256": "ba87cded59123ddda3c9fcbb7b0151378ff87d0555d9810d96ca30b455187de3"
+    },
+    "scripts/rules/rules_core_content.gd": {
+      "original_sha256": "f38e4d44dff5da96e3b4597991c5734ab0d56cc58780ef7c01e530ff5e6ad804",
+      "current_sha256": "c900cc3e73713740c48a45a2d6bce66620a0f749ec7b44923bca1d9b3efb47ef",
+      "projected_legacy_sha256": "f38e4d44dff5da96e3b4597991c5734ab0d56cc58780ef7c01e530ff5e6ad804"
+    },
+    "scripts/rules/rules_effects.gd": {
+      "original_sha256": "50fde42b93863574c11c101631e8f5c948e20b1f64ec4b875ca85064ea25de40",
+      "current_sha256": "cb6c87f1af9774257f626b682e55b799972f964c01b83fde3c9f074608bdd706",
+      "projected_legacy_sha256": "50fde42b93863574c11c101631e8f5c948e20b1f64ec4b875ca85064ea25de40"
+    },
+    "scripts/rules/rules_entities.gd": {
+      "original_sha256": "e81c8a81f7dc098f047f03a77e0c03418195abc7976b3ac3d10dcfbe456bce75",
+      "current_sha256": "715ea787ca5689d5d06f9160f3a70a5c8d414e6a983d57da3e4994a6ba9e0a96",
+      "projected_legacy_sha256": "e81c8a81f7dc098f047f03a77e0c03418195abc7976b3ac3d10dcfbe456bce75"
+    },
+    "scripts/rules/rules_martial.gd": {
+      "original_sha256": "6ac2fe99ba10bfa316f1fb7cfe2422b2498e1a85f22852ea1979eb0b4f62265c",
+      "current_sha256": "4bffb50177fd8c988bffc07ca26e8d844063f5d031c7153cbd8d3fbb4ed47e07",
+      "projected_legacy_sha256": "6ac2fe99ba10bfa316f1fb7cfe2422b2498e1a85f22852ea1979eb0b4f62265c"
+    },
+    "scripts/rules/rules_psychic.gd": {
+      "original_sha256": "da17b04df3114a3ab066a0c417816b64a81b8e23189640be52587998c17b9223",
+      "current_sha256": "e389290bbaa4365630aea5cd85b111be6abc6cf7b1e1e8798c2029644ec8a263",
+      "projected_legacy_sha256": "da17b04df3114a3ab066a0c417816b64a81b8e23189640be52587998c17b9223"
+    },
+    "scripts/rules/rules_records.gd": {
+      "original_sha256": "16c35c1a9a87837a7500156a04c61ecf7be5191a51922d73b98a963d769a3d96",
+      "current_sha256": "bb537deafe99174e7f5498224776bbde4a80402ac2ac3807d7752ec8f60400ce",
+      "projected_legacy_sha256": "16c35c1a9a87837a7500156a04c61ecf7be5191a51922d73b98a963d769a3d96"
+    },
+    "scripts/rules/rules_registry.gd": {
+      "original_sha256": "e9ed7b8a5bedfcdad37202e3374f8d08e778d36ba5316155838038a29138cf3d",
+      "current_sha256": "4e013135011fdca21872cc5dbd139c3442d5247072ff137d1a70686a22d4bbb0",
+      "projected_legacy_sha256": "e9ed7b8a5bedfcdad37202e3374f8d08e778d36ba5316155838038a29138cf3d"
+    },
+    "scripts/rules/rules_wave_five.gd": {
+      "original_sha256": "9912e20d0ed90c2e80a9d5c2b10db46306976e0190148fb4e8eb17c4c019d7aa",
+      "current_sha256": "9ad7b94116f934ab9063247fdda0658f4331a48d8e4738a25d66ce2b5bfc9c08",
+      "projected_legacy_sha256": "9912e20d0ed90c2e80a9d5c2b10db46306976e0190148fb4e8eb17c4c019d7aa"
+    },
+    "scripts/rules/rules_wave_four.gd": {
+      "original_sha256": "da89c90756d597b8604119e3225e3a49fe2f11eb1dcf6521008e933bac897b1a",
+      "current_sha256": "93f3c5af05a5d3f239a0b4907f6a6076cf7b3264fc963aa43943dc7d09be9bdb",
+      "projected_legacy_sha256": "da89c90756d597b8604119e3225e3a49fe2f11eb1dcf6521008e933bac897b1a"
+    },
+    "scripts/ui/components/spellbook_editor.gd": {
+      "original_sha256": "6c3c9d97867fd33ad5381f7c4d1fc26e9371fb93ef0e312d148593a249e6f944",
+      "current_sha256": "68319dd3602822bcad6f29a811ac09f188f54fd35f81e827a1c791ba46240773",
+      "projected_legacy_sha256": "6c3c9d97867fd33ad5381f7c4d1fc26e9371fb93ef0e312d148593a249e6f944"
+    },
+    "scripts/ui/first_adventure.gd": {
+      "original_sha256": "df48b1ad15c7409373053d36722a3743ee44dccf4db199fafb7341be2c4c70cb",
+      "current_sha256": "e3ad7fc653d8f05ef5e49d7dd423df46cfa0c94a0ffb814c20137e99729a51ed",
+      "projected_legacy_sha256": "df48b1ad15c7409373053d36722a3743ee44dccf4db199fafb7341be2c4c70cb"
+    }
+  },
+  "exclusions": "Only27 membership/registration, the new-campaign default,27-only interception/reversion/status feedback. Factory default intentionally changes for new unpinned campaigns; this is not a claim that all runtime inputs are identical.",
+  "scope": "Static byte projection for unchanged pinned branches. Fresh Windows historical/native/oracle checks are independent evidence, not replaced by this audit."
+}

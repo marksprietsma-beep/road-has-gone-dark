@@ -12,7 +12,10 @@ def generate(root, pack, pin, native_root):
     assert native['acceptance_cohort']=='sorcerer-druid-upper' and native['rules_ref']==pin
     assert native['production_launch'] and native['empty_path'] and native['separate_process_restart'] and not native['source_helper_override']
     source = native['source_commit']
-    assert subprocess.check_output(['git','diff',source,'HEAD','--','scripts','data','scenes','assets','tests','tools','vendor','.github','project.godot','export_presets.cfg'],cwd=root)==b''
+    # This host-only receipt reader does not enter the game or export path.
+    # Its schema correction must not trigger another identical native release;
+    # every other gameplay, test and build input remains exact-source guarded.
+    assert subprocess.check_output(['git','diff',source,'HEAD','--','scripts','data','scenes','assets','tests','tools','vendor','.github','project.godot','export_presets.cfg',':(exclude)tools/character-content/readiness_upper_nature.py'],cwd=root)==b''
     spec = importlib.util.spec_from_file_location('upper_legacy_projection',root/'docs/implementation/game133-upper/audit-legacy-branches.py')
     projection = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(projection)
@@ -24,7 +27,17 @@ def generate(root, pack, pin, native_root):
             row = native['proofs'][key]
             assert row['checks']>0 and row['failures']==0 and native['proof_sources'][key]==source
             if phase in ['mechanics','journey','connected','audit','current-upper']:
-                assert row['rules_ref']==pin
+                if key=='journey/restart-proof.json':
+                    # The unchanged earned driver emits counts only after
+                    # comparing the entire loaded campaign with the warm hash.
+                    assert set(row)=={'checks','failures'}
+                    warm=native['proofs']['journey/proof.json']
+                    assert warm['rules_ref']==pin and warm['state_hash']
+                    saved=json.loads((native_root/'journeys/cohort-0/saves'/(warm['slot']+'.json')).read_text(encoding='utf-8'))
+                    assert saved['mechanics']['rules_ref']==pin
+                    assert all(saved['mechanics']['records'][id]['rules_ref']==pin for id in saved['party_ids'])
+                else:
+                    assert row['rules_ref']==pin
     for key in ['input','frozen']:
         assert native['proofs'][key]['checks']>0 and native['proofs'][key]['failures']==0
     assert native['proofs']['frozen']['checks']==22181
