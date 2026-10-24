@@ -18,7 +18,7 @@ func run() -> void:
    if not r.is_empty():saved_records[cls+":"+variant]=r
  if failures:finish_acceptance();return
  fixtures.defender=warded_defender()
- test_channel_cohort();test_multiclass_channels();test_refraction_counter();test_archmage();test_permanent_gates();test_forms();test_resource_boundaries()
+ test_channel_cohort();test_multiclass_channels();test_refraction_counter();test_archmage();test_ward_progression();test_beguiler_route();test_permanent_gates();test_forms();test_resource_boundaries()
  var hashes := {};var records := {};var predicted := {}
  for key in saved_records:
   saved_records[key]=RulesJson.string_keys(saved_records[key]);var d := kernel.derive_character(saved_records[key])
@@ -48,6 +48,7 @@ func arch_path(cls: String,variant: String) -> Dictionary:
   check(out.ok,"explicit optional path level "+cls+str(level)+JSON.stringify(out.get("errors",[])))
   if not out.ok:return {}
   r=out.candidate
+  saved_records[cls+":"+variant+":path"+str(level+1)]=r.duplicate(true)
   check(kernel.derive_character(r).snapshot.class_levels.archmage==level+1,"ordered actual prestige level, no automatic assignment")
  for i in 2:
   var proposal := kernel.suggested_choice(r,cls)
@@ -199,6 +200,81 @@ func test_archmage() -> void:
  var absent := RulesExpressions.evaluate_formula({"op":"casting_modifier","id":"mystic-theurge"},kernel.derive_character(r).context)
  check(not absent.ok,"missing permanent selected track rejects; no arbitrary highest-score fallback")
  contracts.high_arcana=true
+func controlled(record: Dictionary,ids: Array) -> Dictionary:
+ # Explicit valid development status fixture, never a production XP/save edit.
+ var r: Dictionary=record.duplicate(true)
+ for id in ids:
+  var status := source.definition("statuses",id)
+  r.runtime.statuses.append({"id":id,"source":"registered-control-fixture","remaining":int(status.duration.amount),"expiry":status.duration.expiry})
+ check(kernel.validate_build(r).ok,"registered finite control fixture remains a lawful character")
+ return r
+func test_ward_progression() -> void:
+ var controls: Array=["weakened","arcane-tether","slowed","unsteady-concentration","stillness-lattice","mind-tether"]
+ var target := controlled(build("fighter",7),controls)
+ for cls in ["wizard","sorcerer"]:
+  for at in [1,3,5]:
+   var actor: Dictionary=saved_records[cls+":ward:path"+str(at)].duplicate(true)
+   var caps: Dictionary=kernel.derive_character(actor).snapshot.resource_capacities
+   actor.runtime=RulesEffects.new(source).refresh_resources(actor.runtime,caps,"eligible_rest").runtime
+   var aid: String="high-arcana-ward-"+str(at);var out := use(actor,target,aid)
+   check(out.ok,"actual early/middle/late ward choice "+cls+str(at))
+   if not out.ok:continue
+   var removed: Array=[]
+   if at>=3:removed=["weakened","arcane-tether"]
+   if at==5:removed.append_array(["slowed","unsteady-concentration","stillness-lattice"])
+   for id in controls:check(out.target.runtime.statuses.any(func(v: Dictionary):return v.id==id)== (not removed.has(id)),"precise ward cleanup/non-universal counterplay "+aid+id)
+   check(out.target.runtime.temporary_hp==10+2*at,"real supported path-level buffer scaling "+str(at))
+   check(out.target.runtime.resources==target.runtime.resources and out.target.runtime.hp==target.runtime.hp,"ward never grants actions/resources, healing or revival")
+   check(out.actor.runtime.resources["high-arcana"]==actor.runtime.resources["high-arcana"]-1 and out.budget.main==0,"advanced cleansing uses the same finite action/pool")
+  var r: Dictionary=saved_records[cls+":ward"]
+  var blocked := controlled(r,["stillness-lattice"]);var before := RulesJson.digest(blocked)
+  check(not use(blocked,target,"high-arcana-ward-5").ok and RulesJson.digest(blocked)==before,"main-action suppression cannot self-cleanse or bypass cost")
+  var ward := use(r,fixtures.fighter,"high-arcana-ward-5")
+  check(ward.ok,"late defensive ward for actual damage test")
+  if not ward.ok:continue
+  var attacker := select(saved_records.duskblade17,"duskblade-searing-grasp")
+  var plain := use(attacker,fixtures.fighter,"duskblade-searing-grasp")
+  var resisted := use(attacker,ward.target,"duskblade-searing-grasp")
+  check(plain.ok and resisted.ok,"same real elemental spell against plain and warded target")
+  if plain.ok and resisted.ok:
+   var raw: int=int(fixtures.fighter.runtime.hp)-int(plain.target.runtime.hp)
+   check(raw>3 and resisted.target.runtime.hp==fixtures.fighter.runtime.hp and resisted.target.runtime.temporary_hp==20-(raw-3),"actual resistance3 then separate buffer absorbs remaining fire damage")
+   check(resisted.events.any(func(e: Dictionary):return e.get("type")=="damage_resisted" and e.amount==3),"observable exact elemental resistance event")
+  var expired: Dictionary=ward.target.duplicate(true)
+  for i in 3:expired.runtime=RulesEffects.new(source).expire_statuses(expired.runtime,"global_round_start").runtime
+  check(not expired.runtime.statuses.any(func(v: Dictionary):return v.id=="draconic-ward"),"finite three-boundary ward status expires")
+  check(kernel.derive_character(expired).snapshot.stats.defence==kernel.derive_character(fixtures.fighter).snapshot.stats.defence and expired.runtime.temporary_hp==20,"expiry removes ward defence; separate buffer follows shared temporary-HP policy")
+  saved_records[cls+":cleansed"]=use(r,target,"high-arcana-ward-5").target
+  saved_records[cls+":ward-expired"]=expired
+  var b := encounter(r);b.units.b.record=target.duplicate(true);b.units.b.record.character_id="b";b.units.b.record.equipment=["shortblade"]
+  var engine := TacticalAuras.new(r);b=engine.seal(b)
+  var cast := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":"high-arcana-ward-5","target_id":"b"})
+  check(cast.ok,"real battlefield ally liberation and ward "+cls)
+  if cast.ok:
+   check(cast.battle.budget.main==0 and not cast.battle.units.b.record.runtime.statuses.any(func(v: Dictionary):return v.id=="stillness-lattice"),"cleansing resolves without a free caster action or invented turn")
+   battles[cls+":liberation"]=cast.battle
+ contracts.ward_progression=true
+func test_beguiler_route() -> void:
+ # The existing third casting option is an integration route, not another cohort.
+ var r := career_fixture("beguiler",13,["spell-focus","greater-spell-focus"])
+ var available: Array=kernel.derive_character(r).snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).get("casting_class")=="beguiler" and source.definition("abilities",id).get("spell_tier")==7)
+ check(not available.is_empty(),"existing Beguiler has a real legal upper arcane tier")
+ if available.is_empty():return
+ r=prep(r,str(available[0]))
+ for at in 5:
+  var suggested := kernel.suggested_choice(r,"archmage")
+  if at==0:suggested.choice.specialisations["archmage-casting"]="beguiler"
+  for key in suggested.choice.specialisations:
+   if str(key).begins_with("high-arcana-"):suggested.choice.specialisations[key]="ward" if at==2 else "force"
+  if (r.advancement_history.size()+1)%4==0:suggested.choice.attribute_increase="INT"
+  var advanced := kernel.preview_advancement(r,suggested.choice);check(advanced.ok,"existing Beguiler integration path advances legally")
+  if not advanced.ok:return
+  r=advanced.candidate
+ var d := kernel.derive_character(r);r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,d.snapshot.resource_capacities,"eligible_rest").runtime
+ check(d.snapshot.casting_levels.beguiler==18 and d.context.casting_modifiers.archmage==int(floor(float(int(d.snapshot.attributes.INT)-10)/2.0)),"selected Beguiler progression and primary attribute remain exact")
+ check(use(r,fixtures.fighter,"high-arcana-force-5").ok and use(r,fixtures.fighter,"high-arcana-ward-3").ok,"third existing parent executes its actually selected force and cleansing choices")
+ saved_records["beguiler:archmage"]=r
+ contracts.existing_beguiler_route=true
 func test_permanent_gates() -> void:
  for cls in ["wizard","sorcerer"]:
   var qualified := career_fixture(cls,13,["spell-focus","greater-spell-focus"])

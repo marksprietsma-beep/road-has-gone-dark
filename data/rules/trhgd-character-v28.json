@@ -69324,7 +69324,7 @@
             {
               "id": "force",
               "name": "Force",
-              "description": "Force",
+              "description": "Main action and one High Arcana use: range5, enemy burst radius1; Reflex negates 11 force damage and off-balance. DC15 + your permanently selected caster modifier + save-DC bonuses.",
               "features": [
                 "high-arcana-force-1-access"
               ],
@@ -69336,7 +69336,7 @@
             {
               "id": "ward",
               "name": "Ward",
-              "description": "Ward",
+              "description": "Main action and one High Arcana use: range5, allied radius1. Defence+2 and elemental resistance3 for three global boundaries; separate nonstacking buffer10+2 per Archmage level.",
               "features": [
                 "high-arcana-ward-1-access"
               ],
@@ -69355,7 +69355,7 @@
             {
               "id": "force",
               "name": "Force",
-              "description": "Force",
+              "description": "Main action and one High Arcana use: range5, enemy burst radius1; Reflex negates 17 force damage and off-balance. DC15 + your permanently selected caster modifier + save-DC bonuses.",
               "features": [
                 "high-arcana-force-3-access"
               ],
@@ -69367,7 +69367,7 @@
             {
               "id": "ward",
               "name": "Ward",
-              "description": "Ward",
+              "description": "Main action and one High Arcana use: range5, allied radius1. Defence+2 and elemental resistance3 for three global boundaries; separate nonstacking buffer10+2 per Archmage level. Clears Weakened and Arcane tether.",
               "features": [
                 "high-arcana-ward-3-access"
               ],
@@ -69386,7 +69386,7 @@
             {
               "id": "force",
               "name": "Force",
-              "description": "Force",
+              "description": "Main action and one High Arcana use: range5, enemy burst radius1; Reflex negates 23 force damage and off-balance. DC15 + your permanently selected caster modifier + save-DC bonuses.",
               "features": [
                 "high-arcana-force-5-access"
               ],
@@ -69398,7 +69398,7 @@
             {
               "id": "ward",
               "name": "Ward",
-              "description": "Ward",
+              "description": "Main action and one High Arcana use: range5, allied radius1. Defence+2 and elemental resistance3 for three global boundaries; separate nonstacking buffer10+2 per Archmage level. Clears Weakened and Arcane tether. Also clears Slowed, Unsteady concentration and Stillness lattice. It does not restore spent actions; a caster whose main action is suppressed needs an ally.",
               "features": [
                 "high-arcana-ward-5-access"
               ],
@@ -151051,7 +151051,7 @@
         "range": 5,
         "radius": 1
       },
-      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting.",
+      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting. Ward lasts three global boundaries: Defence+2 and fire/cold/electricity resistance3. The separate temporary-HP buffer is10+2 per Archmage level and never stacks.",
       "provenance": {
         "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
         "license": "Original project-authored content",
@@ -151131,7 +151131,7 @@
     },
     {
       "id": "high-arcana-ward-3",
-      "name": "High arcana: ward 3",
+      "name": "High arcana: cleansing ward",
       "cost": {
         "main": 1,
         "move": 0,
@@ -151141,6 +151141,14 @@
         }
       },
       "effects": [
+        {
+          "op": "remove_status",
+          "id": "weakened"
+        },
+        {
+          "op": "remove_status",
+          "id": "arcane-tether"
+        },
         {
           "op": "apply_status",
           "id": "draconic-ward"
@@ -151186,7 +151194,7 @@
         "range": 5,
         "radius": 1
       },
-      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting.",
+      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting. Also clears weakened, arcane tether. No universal dispel, resurrection, restored actions or resources. Ward lasts three global boundaries: Defence+2 and fire/cold/electricity resistance3. The separate temporary-HP buffer is10+2 per Archmage level and never stacks.",
       "provenance": {
         "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
         "license": "Original project-authored content",
@@ -151266,7 +151274,7 @@
     },
     {
       "id": "high-arcana-ward-5",
-      "name": "High arcana: ward 5",
+      "name": "High arcana: liberating ward",
       "cost": {
         "main": 1,
         "move": 0,
@@ -151276,6 +151284,26 @@
         }
       },
       "effects": [
+        {
+          "op": "remove_status",
+          "id": "weakened"
+        },
+        {
+          "op": "remove_status",
+          "id": "arcane-tether"
+        },
+        {
+          "op": "remove_status",
+          "id": "slowed"
+        },
+        {
+          "op": "remove_status",
+          "id": "unsteady-concentration"
+        },
+        {
+          "op": "remove_status",
+          "id": "stillness-lattice"
+        },
         {
           "op": "apply_status",
           "id": "draconic-ward"
@@ -151321,7 +151349,7 @@
         "range": 5,
         "radius": 1
       },
-      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting.",
+      "description": "Main action and one high-arcana use: Nearby allies gain elemental wards and temporary HP. Supernatural; unavailable while a form suppresses supernatural casting. Also clears weakened, arcane tether, slowed, unsteady concentration, stillness lattice. No universal dispel, resurrection, restored actions or resources. Ward lasts three global boundaries: Defence+2 and fire/cold/electricity resistance3. The separate temporary-HP buffer is10+2 per Archmage level and never stacks.",
       "provenance": {
         "origin": "Original bounded TRHGD adaptations; research names only, no sourcebook prose or settings copied",
         "license": "Original project-authored content",

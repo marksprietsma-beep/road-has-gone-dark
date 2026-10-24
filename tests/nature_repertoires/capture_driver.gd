@@ -7,7 +7,7 @@ func run() -> void:
  capture_folder=OS.get_environment("GAME133_ROOT").get_base_dir().path_join("captures");DirAccess.make_dir_recursive_absolute(capture_folder)
  service.store.save_root=base.path_join("saves");service.library.library_root=base.path_join("library");service.library.save_root=service.store.save_root;service.cache_root=base.path_join("cache")
  entry=service.library.discover()[0];var proof := WorldOriginLore.read_json(base.path_join("proof.json"));slot=proof.slot
- var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"original earned campaign reload for real Godot evidence")
+ var loaded := service.operate(entry,slot,"resume");check(loaded.ok,"original earned campaign reload for real Godot evidence: "+str(loaded.get("error",loaded.get("errors",[])))+" · world "+JSON.stringify(entry.world.world_ref))
  if not loaded.ok:finish_capture();return
  state=loaded.state
  var before := RulesJson.digest(state)
