@@ -1,3 +1,13 @@
+# Active native release checkpoint — do not restart implementation
+
+Focused Windows [40050636251](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40050636251) **SUCCESS** at `bee8ac56bf2688427b83ab4d1f70cc4e8ebddc02`:1749 mechanics,175 exact cold and28 actual production-control checks, zero failures. These exact successful receipts are committed under evidence/focused-bee-*.json. All12 owned Druid forms executed/reverted; saved allied natural attack caused19 damage.
+
+The one complete native Windows release is now running: [40051404313](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40051404313), exact source **`e048332e868a12711d685e79652dec063f0045bf`**. Runtime/tests/workflows/export inputs are identical to passing bee8; e048 only adds preserved documentation/evidence. Inspect this run first; do not start another full release unless a genuine failure requires it. Artifact names: upper-nature-complete-windows-x64 and upper-nature-windows-evidence. No native success/checksum is declared yet.
+
+Current branch feature/game-123-sorcerer-druid-upper-tiers. No PR yet. Source is safely pushed; new commits after e048 are documentation/evidence only. The remaining work is actual native verification, independent archive/hash/credits/source/capture audit, evidence-gated33/17/0 readiness, delivery docs, one PR, required Windows checks, normal merge and actual post-main results. Keep GAME123/#101 OPEN/InProgress. Do not add another cohort.
+
+--- Detailed recovery/commands (earlier pending notes are superseded above) ---
+
 # Exact recovery checkpoint — upper-tier cohort in progress
 
 Branch: `feature/game-123-sorcerer-druid-upper-tiers`, based on verified main `3e62d5cfc4959269f607ee7f64008842882f1c48`.
