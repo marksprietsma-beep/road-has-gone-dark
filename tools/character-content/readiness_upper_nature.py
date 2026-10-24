@@ -1,6 +1,7 @@
 """Evidence-gated two-career promotion; historical acceptance remains source-labelled."""
 import copy
 import hashlib
+import importlib.util
 import json
 import subprocess
 
@@ -12,6 +13,11 @@ def generate(root, pack, pin, native_root):
     assert native['production_launch'] and native['empty_path'] and native['separate_process_restart'] and not native['source_helper_override']
     source = native['source_commit']
     assert subprocess.check_output(['git','diff',source,'HEAD','--','scripts','data','scenes','assets','tests','tools','vendor','.github','project.godot','export_presets.cfg'],cwd=root)==b''
+    spec = importlib.util.spec_from_file_location('upper_legacy_projection',root/'docs/implementation/game133-upper/audit-legacy-branches.py')
+    projection = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(projection)
+    legacy_projection = projection.verify()
+    assert legacy_projection['historical_execution_branches_project_exactly']
     for phase in ['mechanics','journey','connected','audit','current-upper','historical26','historical18','legacy','compatibility']:
         for file in ['proof.json','restart-proof.json']:
             key = phase+'/'+file
@@ -64,7 +70,7 @@ def generate(root, pack, pin, native_root):
     assert {c for q in queue for c in q['cohort']}==partial
     report = dict(baseline,classes=rows,rules_ref=pin,source_pack_sha256=hashlib.sha256((root/'data/rules/trhgd-character-v27.json').read_bytes()).hexdigest(),repair_queue=queue,verified_source=source,current_acceptance_cohort=['sorcerer','druid'],milestone_complete=False)
     report.pop('unchanged_runtime_native_inheritance',None)
-    report['historical_acceptance_carry_forward'] = dict(source=baseline['verified_source'],pin=baseline['rules_ref'],scope='Prior evidence remains labelled. New27 has narrowly scoped additions; no claim that all production inputs are identical to26 or every career was freshly accepted.')
+    report['historical_acceptance_carry_forward'] = dict(source=baseline['verified_source'],pin=baseline['rules_ref'],legacy_branch_projection=legacy_projection,scope='Prior evidence remains labelled. New27 has narrowly scoped additions; no claim that all production inputs are identical to26 or every career was freshly accepted.')
     out = root/'docs/implementation/game129'
     (out/'READINESS.json').write_text(json.dumps(report,indent=2)+'\n')
     totals = {s:sum(r['status']==s for r in rows) for s in ['COMPLETE','PARTIAL','BLOCKED']}
