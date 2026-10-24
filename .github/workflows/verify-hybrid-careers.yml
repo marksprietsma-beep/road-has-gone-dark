@@ -1,0 +1,135 @@
+name: Duskblade and Archmage Acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      presentation:
+        description: Fresh source Godot renders of verified earned/focused artifacts, before native release
+        type: boolean
+        default: false
+      release:
+        description: One stable complete self-contained Windows release
+        type: boolean
+        default: false
+      journey:
+        description: Focused genuine1690XP/14 prestige entry and connected cold campaign
+        type: boolean
+        default: false
+      historical_capture:
+        description: Recheck the actual failed40068624106 archived Godot capture without rebuilding its game
+        type: boolean
+        default: false
+  push:
+    branches: [main, feature/game-123-duskblade-archmage]
+    paths: ['scripts/**', 'data/rules/**', 'tests/hybrid_acceptance/**', 'tests/nature_repertoires/capture_driver.gd', '.github/workflows/verify-hybrid-careers.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/hybrid_acceptance/**', 'tests/nature_repertoires/capture_driver.gd', '.github/workflows/verify-hybrid-careers.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact historical packs and bounded candidate data delta
+        run: python tests/hybrid_acceptance/check-source.py
+      - name: Checked Godot import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/hybrid-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'hybrid-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Actual archived display legality and baseline career diagnostics
+        if: github.event_name != 'workflow_dispatch' || (!inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
+        env:
+          HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
+        run: python tests/hybrid_acceptance/run-focused.py
+      - name: Genuine earned prestige, campaign commands and separate-process continuation
+        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        env:
+          HYBRID_JOURNEY_ROOT: ${{ runner.temp }}/hybrid-earned
+        run: python tests/hybrid_acceptance/run-journey.py
+      - name: Restore exact failed historical native evidence
+        if: github.event_name == 'workflow_dispatch' && inputs.historical_capture
+        uses: actions/download-artifact@v4
+        with:
+          name: game133-native-evidence
+          run-id: 40068624106
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/historical-native-input
+      - name: Actual archived campaign render with unchanged source records
+        if: github.event_name == 'workflow_dispatch' && inputs.historical_capture
+        env:
+          HYBRID_HISTORICAL_INPUT: ${{ runner.temp }}/historical-native-input
+          HYBRID_HISTORICAL_ROOT: ${{ runner.temp }}/historical-native-recheck
+        run: python tests/hybrid_acceptance/recheck-historical.py
+      - name: Restore verified focused records for presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: 40081154951
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-presentation-input
+      - name: Restore actually earned1690XP campaign for presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: 40080757725
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-presentation-input
+      - name: Actual source-guarded Windows Godot presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        env:
+          HYBRID_PRESENTATION_INPUT: ${{ runner.temp }}/hybrid-presentation-input
+          HYBRID_PRESENTATION_ROOT: ${{ runner.temp }}/hybrid-presentation
+        run: python tests/hybrid_acceptance/recheck-presentation.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete native Windows cohort release
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          HYBRID_RELEASE_ROOT: ${{ runner.temp }}/hybrid-native
+        run: python tests/hybrid_acceptance/verify-package.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hybrid-windows-evidence
+          path: |
+            ${{ runner.temp }}/hybrid-focused/**
+            ${{ runner.temp }}/hybrid-earned/**/*.json
+            ${{ runner.temp }}/hybrid-earned/**/*.log
+            ${{ runner.temp }}/historical-native-recheck/**/*.json
+            ${{ runner.temp }}/historical-native-recheck/**/*.log
+            ${{ runner.temp }}/historical-native-recheck/captures/*.png
+            ${{ runner.temp }}/hybrid-presentation/**/*.json
+            ${{ runner.temp }}/hybrid-presentation/**/*.log
+            ${{ runner.temp }}/hybrid-presentation/captures/*.png
+            ${{ runner.temp }}/hybrid-native/**/*.json
+            ${{ runner.temp }}/hybrid-native/**/*.log
+            ${{ runner.temp }}/hybrid-native/captures/*.png
+            ${{ runner.temp }}/hybrid-import.log
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        with:
+          name: hybrid-complete-windows-x64
+          path: ${{ runner.temp }}/hybrid-native/distribution/*.zip*
+          retention-days: 90

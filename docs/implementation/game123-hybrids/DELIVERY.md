@@ -1,0 +1,13 @@
+# Duskblade / Archmage delivery — verification in progress
+
+PR149: https://github.com/marksprietsma-beep/road-has-gone-dark/pull/149 . Branch `feature/game-123-duskblade-archmage`, based on merged mainc48d6df/PR148. No merge or final native build is claimed in this checkpoint. Readiness remains33 COMPLETE/17 PARTIAL/0 BLOCKED until matching evidence passes.
+
+Existing Duskblade progression/channel mechanics and optional Archmage entry/progression are retained. Four reproduced deficiencies are corrected narrowly: selected-parent casting DC, high-arcana transformed-body suppression, channel control availability, and duplicate later Ward effects. Candidate immutable28 hash `fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f`. Six existing abilities change; no new roster/spell/feat/creature definitions. Historical1–27 bytes/pins and original combat/RNG/save authorities remain unchanged.
+
+Historical main40068624106 display regression is corrected: actual archived18 records are validated under their original pin before render-only projection, with only new unselected zero-capacity prepared-copy resources added. Original hashes/resources/choices and saved campaigns remain unchanged. Fresh Windows source-Godot replay40080945336 at9842278 PASSED31 checks and14 actual screenshots. Its isolated copy restored omitted `.sha` cache sidecars from exact archived JSON bytes, recorded in `evidence/historical-recheck.json`; semantic validation remains enabled. This is a fresh render of preserved native evidence, not a newly claimed old native release. All other19 baseline main Windows workflows passed.
+
+Final current28 focused acceptance,1690XP/14 earned campaigns, exported-native package/cold continuation and original captures are running or pending. Earlier intermediate receipts remain source-labelled and must not substitute for the final release. Final artifact URL, source, SHA256, native counts and matrix promotion will be added only from actual successful results.
+
+`TESTING.md` contains exact intended human extraction/launch/character/advancement/reload steps. `ASSESSMENT.md` records reproduction and technical decisions. `CONTINUATION.md` preserves failures and exact checkpoints. `NEXT-WAVE.md` recommends the next bounded cohort without starting it.
+
+No callable Linear connector exists; GitHub101 is the accurate GAME123 status handoff. GAME123 stays In Progress and issue101 OPEN. Human balance/usability and GAME89/92/140 art/downed/target presentation remain separate. No living-world work or new roster entries are included.
