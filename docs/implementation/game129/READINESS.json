@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "rules_ref": {
-    "pack_id": "trhgd-character-v26",
+    "pack_id": "trhgd-character-v27",
     "schema_version": 1,
-    "rules_version": "26.0.0",
+    "rules_version": "27.0.0",
     "engine_schema": 3,
-    "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+    "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84"
   },
-  "source_pack_sha256": "54894e79e7567c01a733c727cd501c7e4f2f3afbe83d66c03c05789e9fea1592",
+  "source_pack_sha256": "4c4e12d3f5a496d854e8dc6fc5747bb128c83a0a20dbff312ba0ed5deecbc739",
   "policy": {
     "COMPLETE": "Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.",
     "PARTIAL": "Playable but material mechanics or practical acceptance missing.",
@@ -195,7 +195,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/barbarian"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/barbarian",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "bard",
@@ -800,7 +811,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/bard"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/bard",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "cleric",
@@ -1871,6 +1893,17 @@
       "acceptance_sources": {
         "current": "Fresh matching-source v26 current-upper native tactical/cold proof plus all-base legal1\u201320 audit.",
         "reused": "Prior specifically labelled GUI/earned acceptance only where unchanged; this wave captures Psychic Warrior/Divine Mind/Cognition and reruns inherited identity/prepared/performance native controls."
+      },
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
       }
     },
     {
@@ -1878,8 +1911,8 @@
       "name": "Druid",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded supported original identity: executable upper tiers, permanent known/prepared and bloodline/nature choices, actual creatures/forms/resources/counterplay, production controls and cold continuation. Not exhaustive tabletop conversion or human balance.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -1893,7 +1926,28 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -2007,8 +2061,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Actual1/6/20 specialisations, tier8/9 unlock/score boundaries and real effects; lawful total20/hybrid17/7 development fixtures. Separate ordinary490XP/8 journeys, not earned20."
       },
       "resources": [
         {
@@ -2916,7 +2970,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -2936,19 +2990,29 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/druid",
-        "data/rules/trhgd-character-v26.json#classes/druid"
+        "data/rules/trhgd-character-v26.json#classes/druid",
+        "tests/upper_nature/mechanics.gd",
+        "tests/upper_nature/input.gd",
+        "tests/upper_nature/journey.gd",
+        "tests/upper_nature/connected.gd",
+        "docs/implementation/game133-upper/evidence/native-proof.json",
+        "docs/implementation/game133-upper/screenshots/README.md"
       ],
-      "remaining": [
-        "Tiers8\u20139 and permanent companion/form interactions beyond the v18 cohort need targeted acceptance; transformed casting remains explicitly unsupported."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v26",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "26.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/druid"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/druid",
+      "verified_source": "e048332e868a12711d685e79652dec063f0045bf",
+      "limitations": [
+        "Finite original tactical repertoire, not full sourcebook spell conversion.",
+        "Transformed casting is unsupported; creature/form art remains the existing labelled humanoid fallback.",
+        "Human balance/readability, scrolling and GAME89/92/140 remain separate."
+      ]
     },
     {
       "id": "fighter",
@@ -3130,7 +3194,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/fighter"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/fighter",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "monk",
@@ -3324,7 +3399,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/monk"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/monk",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "paladin",
@@ -4004,7 +4090,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/paladin"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/paladin",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "ranger",
@@ -4662,7 +4759,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/ranger"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/ranger",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "rogue",
@@ -4865,15 +4973,26 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/rogue"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/rogue",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "sorcerer",
       "name": "Sorcerer",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded supported original identity: executable upper tiers, permanent known/prepared and bloodline/nature choices, actual creatures/forms/resources/counterplay, production controls and cold continuation. Not exhaustive tabletop conversion or human balance.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -4887,7 +5006,28 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -4963,8 +5103,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Actual1/6/20 specialisations, tier8/9 unlock/score boundaries and real effects; lawful total20/hybrid17/7 development fixtures. Separate ordinary490XP/8 journeys, not earned20."
       },
       "resources": [
         {
@@ -5588,7 +5728,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -5608,19 +5748,29 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/sorcerer",
-        "data/rules/trhgd-character-v26.json#classes/sorcerer"
+        "data/rules/trhgd-character-v26.json#classes/sorcerer",
+        "tests/upper_nature/mechanics.gd",
+        "tests/upper_nature/input.gd",
+        "tests/upper_nature/journey.gd",
+        "tests/upper_nature/connected.gd",
+        "docs/implementation/game133-upper/evidence/native-proof.json",
+        "docs/implementation/game133-upper/screenshots/README.md"
       ],
-      "remaining": [
-        "Tiers8\u20139 and bloodline alternatives remain materially thinner than the v18 tier4\u20137 cohort."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v26",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "26.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/sorcerer"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/sorcerer",
+      "verified_source": "e048332e868a12711d685e79652dec063f0045bf",
+      "limitations": [
+        "Finite original tactical repertoire, not full sourcebook spell conversion.",
+        "Transformed casting is unsupported; creature/form art remains the existing labelled humanoid fallback.",
+        "Human balance/readability, scrolling and GAME89/92/140 remain separate."
+      ]
     },
     {
       "id": "wizard",
@@ -6716,6 +6866,17 @@
       "acceptance_sources": {
         "current": "Fresh matching-source v26 current-upper native tactical/cold proof plus all-base legal1\u201320 audit.",
         "reused": "Prior specifically labelled GUI/earned acceptance only where unchanged; this wave captures Psychic Warrior/Divine Mind/Cognition and reruns inherited identity/prepared/performance native controls."
+      },
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
       }
     },
     {
@@ -6873,7 +7034,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "eldritch-knight",
@@ -7022,7 +7194,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "arcane-trickster",
@@ -7185,7 +7368,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "mystic-theurge",
@@ -7329,7 +7523,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "psion",
@@ -7826,7 +8031,18 @@
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
         "Cerebremancer-authored powers retain its existing INT profile; earlier class-owned powers retain that class attribute. Human balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "psychic-warrior",
@@ -8324,7 +8540,18 @@
         "Cognition direct psychic damage precedes a separate weapon roll; no hit-rider conversion.",
         "Divine Mind aura has no per-turn upkeep; living untransformed source, radius3 and clear line of sight are required.",
         "Natural forms suppress psychic actions; original humanoid art fallback and human usability/balance review remain."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "soulknife",
@@ -8469,7 +8696,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/soulknife"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/soulknife",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "warlock",
@@ -8601,7 +8839,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warlock"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warlock",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "scout",
@@ -8756,7 +9005,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/scout"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/scout",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "swashbuckler",
@@ -8911,7 +9171,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swashbuckler"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swashbuckler",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "knight",
@@ -9067,7 +9338,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/knight"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/knight",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "warblade",
@@ -9213,7 +9495,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warblade"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warblade",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "shadowdancer",
@@ -9349,7 +9642,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "dragon-disciple",
@@ -9489,7 +9793,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "dwarven-defender",
@@ -9624,7 +9939,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "pyrokineticist",
@@ -9760,7 +10086,18 @@
         "Original finite shared psychic pool; independent arcane resources and owning-class power attributes.",
         "Pyrokineticist uses save-based fire ignitions, not weapon-flame riders or a general elemental immunity system.",
         "Natural-form suppression and existing art/scrolling limitations remain; GAME89/92/140 and human balance/readability are separate."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "crusader",
@@ -9904,7 +10241,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/crusader"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/crusader",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "swordsage",
@@ -10053,7 +10401,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swordsage"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swordsage",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "wilder",
@@ -10551,7 +10910,18 @@
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
         "Cerebremancer-authored powers retain its existing INT profile; earlier class-owned powers retain that class attribute. Human balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "binder",
@@ -10710,7 +11080,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/binder"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/binder",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "warshaper",
@@ -10846,7 +11227,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "bonded-summoner",
@@ -10996,7 +11388,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "ardent",
@@ -11496,7 +11899,18 @@
         "Original finite shared manifesting pool, not complete tabletop conversion.",
         "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
         "Human Windows balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "lurk",
@@ -12015,7 +12429,18 @@
         "Original finite shared manifesting pool, not complete tabletop conversion.",
         "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
         "Human Windows balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "cerebremancer",
@@ -12519,7 +12944,18 @@
       "limitations": [
         "Original finite shared manifesting pool and five-level Cerebremancer adaptation; no exhaustive tabletop psychic catalogue or new surge randomness.",
         "Cerebremancer-authored powers retain its existing INT profile; earlier class-owned powers retain that class attribute. Human balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "beast-steward",
@@ -12668,7 +13104,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "erudite",
@@ -13156,7 +13603,18 @@
         "Original finite shared manifesting pool, not complete tabletop conversion.",
         "Lurk direct psychic effect precedes a separate weapon roll; veil is25% weapon concealment, not invisibility.",
         "Human Windows balance/readability acceptance remains pending."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "divine-mind",
@@ -13699,7 +14157,18 @@
         "Cognition direct psychic damage precedes a separate weapon roll; no hit-rider conversion.",
         "Divine Mind aura has no per-turn upkeep; living untransformed source, radius3 and clear line of sight are required.",
         "Natural forms suppress psychic actions; original humanoid art fallback and human usability/balance review remain."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "marshal",
@@ -13875,6 +14344,17 @@
         "current": "v24 kernel/cold audit where applicable; fresh generic Weakened damage/expiry consumer if referenced.",
         "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json.",
         "v25_reuse": "Unchanged class/referenced data and exact aura projection versus v24; fresh current-psychic Weakened consumer and all-base audit. No new targeted aura encounter claimed."
+      },
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
       }
     },
     {
@@ -14383,7 +14863,18 @@
         "Cognition direct psychic damage precedes a separate weapon roll; no hit-rider conversion.",
         "Divine Mind aura has no per-turn upkeep; living untransformed source, radius3 and clear line of sight are required.",
         "Natural forms suppress psychic actions; original humanoid art fallback and human usability/balance review remain."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "beguiler",
@@ -15002,7 +15493,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/beguiler"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/beguiler",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "dragonfire-adept",
@@ -15188,7 +15690,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/dragonfire-adept"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/dragonfire-adept",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "war-chanter",
@@ -15366,6 +15879,17 @@
         "current": "v24 kernel/cold audit where applicable; fresh generic Weakened damage/expiry consumer if referenced.",
         "reused": "Labelled historical native aura/earned path, exact unchanged projection and remaining dependency rows; see aura-reuse-review.json.",
         "v25_reuse": "Unchanged class/referenced data and exact aura projection versus v24; fresh current-psychic Weakened consumer and all-base audit. No new targeted aura encounter claimed."
+      },
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
       }
     },
     {
@@ -15523,7 +16047,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "metamind",
@@ -16059,7 +16594,18 @@
         "Original finite shared psychic pool; independent arcane resources and owning-class power attributes.",
         "Pyrokineticist uses save-based fire ignitions, not weapon-flame riders or a general elemental immunity system.",
         "Natural-form suppression and existing art/scrolling limitations remain; GAME89/92/140 and human balance/readability are separate."
-      ]
+      ],
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "duskblade",
@@ -16453,7 +16999,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/duskblade"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/duskblade",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "spirit-shaman",
@@ -17131,7 +17688,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/spirit-shaman"
+      "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/spirit-shaman",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "abjurant-champion",
@@ -17278,7 +17846,18 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     },
     {
       "id": "grove-warden",
@@ -17417,14 +17996,23 @@
         "engine_schema": 3,
         "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases."
+      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
+      "acceptance_carry_forward": {
+        "pin": {
+          "pack_id": "trhgd-character-v26",
+          "schema_version": 1,
+          "rules_version": "26.0.0",
+          "engine_schema": 3,
+          "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+        },
+        "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+        "scope": "Retained source-labelled prior acceptance, unchanged career definitions; fresh v27 all-base20 audit/current Wizard-Cleric and frozen/historical checks supplement it. Not every other career choice freshly reaccepted."
+      }
     }
   ],
   "repair_queue": [
     {
       "cohort": [
-        "sorcerer",
-        "druid",
         "duskblade",
         "archmage",
         "mystic-theurge",
@@ -17465,28 +18053,111 @@
   "milestone_complete": false,
   "programme_source_occurrences": 760,
   "world_transition": "GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.",
-  "verified_source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+  "verified_source": "e048332e868a12711d685e79652dec063f0045bf",
   "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.",
   "current_acceptance_cohort": [
-    "metamind",
-    "pyrokineticist"
+    "sorcerer",
+    "druid"
   ],
-  "unchanged_runtime_native_inheritance": {
-    "baseline": "aab717eaf8ee1e59c5e8394920c6716aadb362ea",
-    "previous_native_source": "e65d098a68858ef9247a7644a94b2485f671a323",
-    "previous_native_run": 39882645495,
-    "unchanged_production_scopes": [
-      "scripts",
-      "data",
-      "scenes",
-      "assets",
-      "vendor",
-      "project.godot",
-      "export_presets.cfg"
-    ],
-    "historical_packs": 26,
-    "exporter_delta": "One approved diagnostic scene only",
-    "prior_native_receipt_sha256": "5f3a33350905626e69af4c3f4daa489504995a6308517b0852cc2824ba068cc5",
-    "reuse_scope": "Labelled prior v26 full-native historical/current acceptance only. This cohort must supply fresh mechanics, controls, earned/connected cold and renders."
+  "historical_acceptance_carry_forward": {
+    "source": "239358f1e234059dd4e1a8ca447bf5455e9cd268",
+    "pin": {
+      "pack_id": "trhgd-character-v26",
+      "schema_version": 1,
+      "rules_version": "26.0.0",
+      "engine_schema": 3,
+      "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d"
+    },
+    "legacy_branch_projection": {
+      "baseline": "3e62d5cfc4959269f607ee7f64008842882f1c48",
+      "source_commit": "0359e4a2931fef3b36cc1ad97e312ece97481236",
+      "historical_pins": "v1\u2013v26",
+      "historical_execution_branches_project_exactly": true,
+      "changed_scripts": {
+        "scripts/combat/tactical_auras.gd": {
+          "original_sha256": "44c70ff8a201307c4993f9a22e31b43e66ddc517a8e116c14046bddcfc3e6933",
+          "current_sha256": "b9f8fe285b1b165cfccc8c2aac9cc8410c3ced6a5faa4a9f434c0ec9038fa2ef",
+          "projected_legacy_sha256": "44c70ff8a201307c4993f9a22e31b43e66ddc517a8e116c14046bddcfc3e6933"
+        },
+        "scripts/rules/rules_capabilities.gd": {
+          "original_sha256": "c27703002e49002c52be9035baab80624d73f5690b9a61e26e43069b641854d0",
+          "current_sha256": "2631e526797dd697764e448d54be1d5d2a54a58f3072e644c789c1ade85a7c19",
+          "projected_legacy_sha256": "c27703002e49002c52be9035baab80624d73f5690b9a61e26e43069b641854d0"
+        },
+        "scripts/rules/rules_career.gd": {
+          "original_sha256": "c7e1b6105a99f51b20181b5efa6c40e9ef36876fdea1f11a8fc6e1667ded0870",
+          "current_sha256": "53e228f1120a1fad73015697652271e5825fe849602041fe6edae8dd1f5698cc",
+          "projected_legacy_sha256": "c7e1b6105a99f51b20181b5efa6c40e9ef36876fdea1f11a8fc6e1667ded0870"
+        },
+        "scripts/rules/rules_character.gd": {
+          "original_sha256": "988346a290e50afd56ac885861832dd6ab6cf8eabf50acea961caa8b6b9b0d58",
+          "current_sha256": "01d21ed04a48574e06c7c965b6ef38bf41c88795c10c577f2d090af4297fd1da",
+          "projected_legacy_sha256": "988346a290e50afd56ac885861832dd6ab6cf8eabf50acea961caa8b6b9b0d58"
+        },
+        "scripts/rules/rules_completeness.gd": {
+          "original_sha256": "ba87cded59123ddda3c9fcbb7b0151378ff87d0555d9810d96ca30b455187de3",
+          "current_sha256": "2bc4a87389b11ed00e2443123c252675f5115b1a00a517826857fcbd6ae941af",
+          "projected_legacy_sha256": "ba87cded59123ddda3c9fcbb7b0151378ff87d0555d9810d96ca30b455187de3"
+        },
+        "scripts/rules/rules_core_content.gd": {
+          "original_sha256": "f38e4d44dff5da96e3b4597991c5734ab0d56cc58780ef7c01e530ff5e6ad804",
+          "current_sha256": "c900cc3e73713740c48a45a2d6bce66620a0f749ec7b44923bca1d9b3efb47ef",
+          "projected_legacy_sha256": "f38e4d44dff5da96e3b4597991c5734ab0d56cc58780ef7c01e530ff5e6ad804"
+        },
+        "scripts/rules/rules_effects.gd": {
+          "original_sha256": "50fde42b93863574c11c101631e8f5c948e20b1f64ec4b875ca85064ea25de40",
+          "current_sha256": "cb6c87f1af9774257f626b682e55b799972f964c01b83fde3c9f074608bdd706",
+          "projected_legacy_sha256": "50fde42b93863574c11c101631e8f5c948e20b1f64ec4b875ca85064ea25de40"
+        },
+        "scripts/rules/rules_entities.gd": {
+          "original_sha256": "e81c8a81f7dc098f047f03a77e0c03418195abc7976b3ac3d10dcfbe456bce75",
+          "current_sha256": "715ea787ca5689d5d06f9160f3a70a5c8d414e6a983d57da3e4994a6ba9e0a96",
+          "projected_legacy_sha256": "e81c8a81f7dc098f047f03a77e0c03418195abc7976b3ac3d10dcfbe456bce75"
+        },
+        "scripts/rules/rules_martial.gd": {
+          "original_sha256": "6ac2fe99ba10bfa316f1fb7cfe2422b2498e1a85f22852ea1979eb0b4f62265c",
+          "current_sha256": "4bffb50177fd8c988bffc07ca26e8d844063f5d031c7153cbd8d3fbb4ed47e07",
+          "projected_legacy_sha256": "6ac2fe99ba10bfa316f1fb7cfe2422b2498e1a85f22852ea1979eb0b4f62265c"
+        },
+        "scripts/rules/rules_psychic.gd": {
+          "original_sha256": "da17b04df3114a3ab066a0c417816b64a81b8e23189640be52587998c17b9223",
+          "current_sha256": "e389290bbaa4365630aea5cd85b111be6abc6cf7b1e1e8798c2029644ec8a263",
+          "projected_legacy_sha256": "da17b04df3114a3ab066a0c417816b64a81b8e23189640be52587998c17b9223"
+        },
+        "scripts/rules/rules_records.gd": {
+          "original_sha256": "16c35c1a9a87837a7500156a04c61ecf7be5191a51922d73b98a963d769a3d96",
+          "current_sha256": "bb537deafe99174e7f5498224776bbde4a80402ac2ac3807d7752ec8f60400ce",
+          "projected_legacy_sha256": "16c35c1a9a87837a7500156a04c61ecf7be5191a51922d73b98a963d769a3d96"
+        },
+        "scripts/rules/rules_registry.gd": {
+          "original_sha256": "e9ed7b8a5bedfcdad37202e3374f8d08e778d36ba5316155838038a29138cf3d",
+          "current_sha256": "4e013135011fdca21872cc5dbd139c3442d5247072ff137d1a70686a22d4bbb0",
+          "projected_legacy_sha256": "e9ed7b8a5bedfcdad37202e3374f8d08e778d36ba5316155838038a29138cf3d"
+        },
+        "scripts/rules/rules_wave_five.gd": {
+          "original_sha256": "9912e20d0ed90c2e80a9d5c2b10db46306976e0190148fb4e8eb17c4c019d7aa",
+          "current_sha256": "9ad7b94116f934ab9063247fdda0658f4331a48d8e4738a25d66ce2b5bfc9c08",
+          "projected_legacy_sha256": "9912e20d0ed90c2e80a9d5c2b10db46306976e0190148fb4e8eb17c4c019d7aa"
+        },
+        "scripts/rules/rules_wave_four.gd": {
+          "original_sha256": "da89c90756d597b8604119e3225e3a49fe2f11eb1dcf6521008e933bac897b1a",
+          "current_sha256": "93f3c5af05a5d3f239a0b4907f6a6076cf7b3264fc963aa43943dc7d09be9bdb",
+          "projected_legacy_sha256": "da89c90756d597b8604119e3225e3a49fe2f11eb1dcf6521008e933bac897b1a"
+        },
+        "scripts/ui/components/spellbook_editor.gd": {
+          "original_sha256": "6c3c9d97867fd33ad5381f7c4d1fc26e9371fb93ef0e312d148593a249e6f944",
+          "current_sha256": "68319dd3602822bcad6f29a811ac09f188f54fd35f81e827a1c791ba46240773",
+          "projected_legacy_sha256": "6c3c9d97867fd33ad5381f7c4d1fc26e9371fb93ef0e312d148593a249e6f944"
+        },
+        "scripts/ui/first_adventure.gd": {
+          "original_sha256": "df48b1ad15c7409373053d36722a3743ee44dccf4db199fafb7341be2c4c70cb",
+          "current_sha256": "e3ad7fc653d8f05ef5e49d7dd423df46cfa0c94a0ffb814c20137e99729a51ed",
+          "projected_legacy_sha256": "df48b1ad15c7409373053d36722a3743ee44dccf4db199fafb7341be2c4c70cb"
+        }
+      },
+      "exclusions": "Only27 membership/registration, the new-campaign default,27-only interception/reversion/status feedback. Factory default intentionally changes for new unpinned campaigns; this is not a claim that all runtime inputs are identical.",
+      "scope": "Static byte projection for unchanged pinned branches. Fresh Windows historical/native/oracle checks are independent evidence, not replaced by this audit."
+    },
+    "scope": "Prior evidence remains labelled. New27 has narrowly scoped additions; no claim that all production inputs are identical to26 or every career was freshly accepted."
   }
 }

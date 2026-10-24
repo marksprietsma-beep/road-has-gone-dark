@@ -1,21 +1,21 @@
 # Supported character readiness
 
-Matching-source native Windows evidence accepts the current two paths; unchanged v26 acceptance for other careers remains explicitly source-labelled. Technical COMPLETE does not replace human playtest acceptance or imply full sourcebook conversion.
+Matching-source native Windows evidence accepts Sorcerer/Druid upper tiers. Other career acceptance remains source-labelled, with fresh all-base20 and relevant legacy/current regressions. Technical COMPLETE is separate from human playtest acceptance and sourcebook breadth.
 
-{'COMPLETE': 31, 'PARTIAL': 19, 'BLOCKED': 0}
+{'COMPLETE': 33, 'PARTIAL': 17, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
 | Barbarian | base | PARTIAL | Verify rage-power choices in early/mid/late native combat, including defence trade-offs and expiry; earned journey alone is not every rage variant. |
 | Bard | base | COMPLETE |  |
 | Cleric | base | COMPLETE |  |
-| Druid | base | PARTIAL | Tiers8–9 and permanent companion/form interactions beyond the v18 cohort need targeted acceptance; transformed casting remains explicitly unsupported. |
+| Druid | base | COMPLETE |  |
 | Fighter | base | PARTIAL | Verify equipment-specialisation/feat alternatives in actual mid/late native attacks and protection; legal feat counts alone are insufficient. |
 | Monk | base | PARTIAL | Verify late flurry/ki with unarmed/armour restrictions and reaction competition in actual native combat. |
 | Paladin | base | PARTIAL | Audit smite/divine-grace and touch-healing combinations against actual resources, targets and high-level spell options. |
 | Ranger | base | PARTIAL | Quarry selection uses a bounded raider target profile; verify alternate styles/companion and low-tier nature repertoire before claiming broader enemy typing. |
 | Rogue | base | COMPLETE |  |
-| Sorcerer | base | PARTIAL | Tiers8–9 and bloodline alternatives remain materially thinner than the v18 tier4–7 cohort. |
+| Sorcerer | base | COMPLETE |  |
 | Wizard | base | COMPLETE |  |
 | Duelist | prestige | COMPLETE |  |
 | Eldritch Knight | prestige | PARTIAL | Verify martial/spell resource interplay and path action delivery in actual native combat, beyond caster-level derivation. |
@@ -59,7 +59,7 @@ Matching-source native Windows evidence accepts the current two paths; unchanged
 
 ## Finite exit plan
 
-1. sorcerer, druid, duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
+1. duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
 2. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
 3. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 

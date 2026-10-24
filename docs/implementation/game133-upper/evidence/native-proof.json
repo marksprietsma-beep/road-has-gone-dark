@@ -1,0 +1,3435 @@
+{
+  "acceptance_cohort": "sorcerer-druid-upper",
+  "source_commit": "e048332e868a12711d685e79652dec063f0045bf",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v27",
+    "schema_version": 1,
+    "rules_version": "27.0.0",
+    "engine_schema": 3,
+    "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84"
+  },
+  "archive": "sorcerer-druid-upper-tiers-windows-x64.zip",
+  "sha256": "aa92c337b94abdc222844f07e281bead4eec0ed324e62a04f74c36d5b67b530a",
+  "proofs": {
+    "mechanics/proof.json": {
+      "checks": 1749,
+      "classes": [
+        "sorcerer",
+        "druid"
+      ],
+      "contracts": {
+        "bloodlines": true,
+        "companions": true,
+        "decoys": true,
+        "exchange": true,
+        "forms": true,
+        "hybrid": true,
+        "owned_forms": 12,
+        "permanent_choices": true,
+        "renewal": true
+      },
+      "development_fixtures": true,
+      "earned_level20": false,
+      "failures": 0,
+      "new_spells": [
+        "sorcerer-refraction-guard",
+        "sorcerer-cascade-well",
+        "druid-heartwood-renewal",
+        "druid-wildheart-mantle"
+      ],
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "druid-bramble-tether": {
+          "after_hash": "4d2a6f18feeaf3113dd1a65f45856c38284501952e074a6d0e74c486000da813",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-4",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-bramble-tether-prepared",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 4,
+              "dc": 19,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "id": "bramble-tether",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Bramble tether on Road raider. Save 6 + 8 vs 19: failed. Bramble Tether applied."
+          ]
+        },
+        "druid-heartwood-renewal": [
+          "The party meets armed raiders on the approach to this local site.",
+          "Druid \u00b7 development fixture uses Heartwood renewal on Ally. Heartwood Renewal applied."
+        ],
+        "druid-packward-canopy": {
+          "after_hash": "2b8b7a2491c0872d43837830b07805c6b6cc490657b4eb0795ff22dedffee7ca",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-6",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-packward-canopy-prepared",
+              "type": "resource_spent"
+            },
+            {
+              "id": "packward-canopy",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Packward canopy on Ally. Packward Canopy applied. Packward Canopy applied."
+          ]
+        },
+        "druid-predators-rhythm": {
+          "after_hash": "ab0770b7bdc6485e07ab4e2b2cbf579f51f67e6f51a4638b416daba63307bacd",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-6",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-predators-rhythm-prepared",
+              "type": "resource_spent"
+            },
+            {
+              "id": "predators-rhythm",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Predator's rhythm on Ally. Predators Rhythm applied."
+          ]
+        },
+        "druid-sap-renewal": {
+          "after_hash": "586dbaaec3a7494c2c7fe2aee62823dfe95f7dcc32aea20241dd4b553a9f56af",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-5",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-sap-renewal-prepared",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 30,
+              "target": "fighter",
+              "type": "healing_applied"
+            },
+            {
+              "amount": 10,
+              "type": "temporary_hp_granted"
+            },
+            {
+              "id": "weakened",
+              "type": "status_removed"
+            },
+            {
+              "id": "off-balance",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Sap renewal on Ally. 0 HP restored."
+          ]
+        },
+        "druid-tier8-sanctuary": {
+          "after_hash": "08acf6fe6ed12d6b42587cd8996093d0ef80e7d12c46cf75d370f15221771d74",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-8",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-tier8-sanctuary-copies",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 30,
+              "target": "upper-save-defender",
+              "type": "healing_applied"
+            },
+            {
+              "id": "druid-tier8-sanctuary-status",
+              "type": "status_applied"
+            },
+            {
+              "id": "off-balance",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Druid: Sanctuary 8 on Ally. 0 HP restored. Druid Tier 8 Sanctuary Status applied. 0 HP restored. Druid Tier 8 Sanctuary Status applied."
+          ]
+        },
+        "druid-tier8-tempest": {
+          "after_hash": "3452f77b0e70f2b791dfe5ae9c77bea353d4f73e4c51d7048d8c2fd7084e7ad5",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-8",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-tier8-tempest-copies",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 16,
+              "dc": 23,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 53,
+              "damage_type": "radiant",
+              "target": "upper-save-defender",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "slowed",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Druid: Tempest 8 on Road raider. Save 6 + 8 vs 23: failed. 53 damage. Slowed applied."
+          ]
+        },
+        "druid-tier9-sanctuary": {
+          "after_hash": "a5fae5a23c387dc7a724524288b65a6b88855e84d01e8227061b5828a2bfb11a",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-9",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-tier9-sanctuary-copies",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 30,
+              "target": "upper-save-defender",
+              "type": "healing_applied"
+            },
+            {
+              "id": "druid-tier9-sanctuary-status",
+              "type": "status_applied"
+            },
+            {
+              "id": "off-balance",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Druid: Sanctuary 9 on Ally. 0 HP restored. Druid Tier 9 Sanctuary Status applied. 0 HP restored. Druid Tier 9 Sanctuary Status applied."
+          ]
+        },
+        "druid-tier9-tempest": {
+          "after_hash": "9b75684152e82df45d0929325c2be1636fe2c0c3bd39a1acd48583c0e9cede0a",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-9",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-tier9-tempest-copies",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 16,
+              "dc": 24,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 58,
+              "damage_type": "radiant",
+              "target": "upper-save-defender",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "slowed",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Druid: Tempest 9 on Road raider. Save 6 + 8 vs 24: failed. 58 damage. Slowed applied."
+          ]
+        },
+        "druid-wildheart-mantle": [
+          "The party meets armed raiders on the approach to this local site.",
+          "Druid \u00b7 development fixture uses Wildheart mantle on Ally. Bear Form applied."
+        ],
+        "druid-winters-verdict": {
+          "after_hash": "4bc8baae2f264a29304a59584da167b13bb76f93b7f4b3938e5ccfb4448d091b",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-slots-7",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 1,
+              "character_id": "druid",
+              "id": "druid-winters-verdict-prepared",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 6,
+              "dc": 22,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 18,
+              "damage_type": "cold",
+              "target": "fighter",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "winter-lock",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Druid \u00b7 development fixture uses Winter's verdict on Road raider. Save 6 + 13 vs 22: failed. 25 damage. Winter Lock applied."
+          ]
+        },
+        "sorcerer-cascade-well": [
+          "The party meets armed raiders on the approach to this local site.",
+          "Sorcerer \u00b7 development fixture uses Cascade well on Sorcerer \u00b7 development fixture. "
+        ],
+        "sorcerer-crushing-doubt": {
+          "after_hash": "e2a1385d5efefe22414a200003d840b75987be70ee6a1d5e76dfe52c3a70cb3c",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-5",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 9,
+              "dc": 21,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "id": "crushing-doubt",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Crushing doubt on Road raider. Save 6 + 26 vs 21: resisted."
+          ]
+        },
+        "sorcerer-crystal-reservoir": {
+          "after_hash": "a55465b5e652203e2ad42515c9507b6d3320f735110e96088b124101c7a8a0e1",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-4",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 18,
+              "type": "temporary_hp_granted"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Crystal reservoir on Ally. "
+          ]
+        },
+        "sorcerer-refraction-guard": [
+          "The party meets armed raiders on the approach to this local site.",
+          "Sorcerer \u00b7 development fixture uses Refraction guard on Sorcerer \u00b7 development fixture. Refraction Shell 1 applied. Refraction Shell 2 applied. Refraction Shell 3 applied."
+        ],
+        "sorcerer-slipstream-veil": {
+          "after_hash": "93d1e4522c4227c3019f4d767e3a30be252ee129aebba1204d35debbb5cb2b25",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-6",
+              "type": "resource_spent"
+            },
+            {
+              "id": "slipstream-veil",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Slipstream veil on Ally. Slipstream Veil applied."
+          ]
+        },
+        "sorcerer-starfall-rupture": {
+          "after_hash": "906e6330853806f0b79c228054e95d9b9b1561aa3f7548bf39e1c307c4244ab4",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-7",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 4,
+              "dc": 23,
+              "roll": 18,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 18,
+              "damage_type": "force",
+              "target": "fighter",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "starfall-fracture",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Starfall rupture on Road raider. Save 6 + 8 vs 23: failed. 31 damage. Starfall Fracture applied."
+          ]
+        },
+        "sorcerer-sundering-chord": {
+          "after_hash": "fe4ec7a490a2b64c5341b60dae20bb7e76aec73e7a41cf01520aa36c8664e544",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-7",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 6,
+              "dc": 23,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "id": "warded",
+              "type": "status_removed"
+            },
+            {
+              "id": "haste",
+              "type": "status_removed"
+            },
+            {
+              "id": "wizard-greater-ward-status",
+              "type": "status_removed"
+            },
+            {
+              "id": "sorcerer-greater-ward-status",
+              "type": "status_removed"
+            },
+            {
+              "id": "cleric-faith-ward-status",
+              "type": "status_removed"
+            },
+            {
+              "id": "druid-oak-ward-status",
+              "type": "status_removed"
+            },
+            {
+              "id": "perfect-shadow",
+              "type": "status_removed"
+            },
+            {
+              "id": "beguiling-veil",
+              "type": "status_removed"
+            },
+            {
+              "id": "runic-shell",
+              "type": "status_removed"
+            },
+            {
+              "id": "spirit-shelter",
+              "type": "status_removed"
+            },
+            {
+              "id": "spirit-lattice",
+              "type": "status_removed"
+            },
+            {
+              "id": "lucid-poise",
+              "type": "status_removed"
+            },
+            {
+              "id": "sovereign-clarity",
+              "type": "status_removed"
+            },
+            {
+              "id": "elemental-covenant",
+              "type": "status_removed"
+            },
+            {
+              "id": "company-veil",
+              "type": "status_removed"
+            },
+            {
+              "id": "freedom-path",
+              "type": "status_removed"
+            },
+            {
+              "id": "slipstream-veil",
+              "type": "status_removed"
+            },
+            {
+              "id": "packward-canopy",
+              "type": "status_removed"
+            },
+            {
+              "id": "predators-rhythm",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Sundering chord on Road raider. Save 6 + 13 vs 23: failed."
+          ]
+        },
+        "sorcerer-tier8-sanctuary": {
+          "after_hash": "bd609da503bcb1064ac746bd96485086452322ebe1a0377d4a853f270a5a8655",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-8",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 30,
+              "target": "upper-save-defender",
+              "type": "healing_applied"
+            },
+            {
+              "id": "sorcerer-tier8-sanctuary-status",
+              "type": "status_applied"
+            },
+            {
+              "id": "off-balance",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Sorcerer: Sanctuary 8 on Ally. 0 HP restored. Sorcerer Tier 8 Sanctuary Status applied. 0 HP restored. Sorcerer Tier 8 Sanctuary Status applied."
+          ]
+        },
+        "sorcerer-tier8-tempest": {
+          "after_hash": "351fd60ff0cc9cf8d9431d3663655f9235f8cf0d488de7fb322cd873d70d0841",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-8",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 16,
+              "dc": 24,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 53,
+              "damage_type": "arcane",
+              "target": "upper-save-defender",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "slowed",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Sorcerer: Tempest 8 on Road raider. Save 6 + 8 vs 24: failed. 53 damage. Slowed applied."
+          ]
+        },
+        "sorcerer-tier9-sanctuary": {
+          "after_hash": "cf16f3678b0e0bc91d70223b9acdc026d52108b62cc3cf5e351c0814448fb010",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-9",
+              "type": "resource_spent"
+            },
+            {
+              "amount": 30,
+              "target": "upper-save-defender",
+              "type": "healing_applied"
+            },
+            {
+              "id": "sorcerer-tier9-sanctuary-status",
+              "type": "status_applied"
+            },
+            {
+              "id": "off-balance",
+              "type": "status_removed"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Sorcerer: Sanctuary 9 on Ally. 0 HP restored. Sorcerer Tier 9 Sanctuary Status applied. 0 HP restored. Sorcerer Tier 9 Sanctuary Status applied."
+          ]
+        },
+        "sorcerer-tier9-tempest": {
+          "after_hash": "acf3fe616bcf962a22daa63c12b5d307e0f15b5f58d156c3fd0529bf1ddc8477",
+          "development_fixture": true,
+          "events": [
+            {
+              "amount": 1,
+              "character_id": "sorcerer",
+              "id": "sorcerer-slots-9",
+              "type": "resource_spent"
+            },
+            {
+              "bonus": 16,
+              "dc": 25,
+              "roll": 5,
+              "success": false,
+              "type": "save_resolved"
+            },
+            {
+              "amount": 58,
+              "damage_type": "arcane",
+              "target": "upper-save-defender",
+              "temporary_absorbed": 0,
+              "type": "damage_applied"
+            },
+            {
+              "id": "slowed",
+              "type": "status_applied"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Sorcerer \u00b7 development fixture uses Sorcerer: Tempest 9 on Road raider. Save 6 + 8 vs 25: failed. 58 damage. Slowed applied."
+          ]
+        }
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "checks": 175,
+      "classes": [
+        "sorcerer",
+        "druid"
+      ],
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_level20": false,
+      "failures": 0,
+      "new_spells": [
+        "sorcerer-refraction-guard",
+        "sorcerer-cascade-well",
+        "druid-heartwood-renewal",
+        "druid-wildheart-mantle"
+      ],
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "journey/proof.json": {
+      "checks": 636,
+      "combat_actions": {},
+      "earned_xp": 490,
+      "failed_check": {
+        "choice": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:3:acrobatics",
+        "hash": "7ea2bff447440347c08ab77e643dfb86fd874b43723098ad150a4a5df5b89ce0",
+        "xp": 30
+      },
+      "failures": 0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-1": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-6": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v27",
+            "rules_version": "27.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "11f92708811193a4288db4f61fe4ed60:adventurer:2",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {
+                "druid-choice-1": "growth",
+                "druid-companion": "wolf"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {
+                "druid-choice-6": "growth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v27",
+            "rules_version": "27.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "11f92708811193a4288db4f61fe4ed60:adventurer:3",
+          "earned_xp": 490,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {
+                "fighter-choice-6": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v27",
+            "rules_version": "27.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 17 + 6 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +6 vs DC 19 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:2:animal-handling",
+          "information": "Animal Handling check: 9 + 5 vs DC 13 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Lysa0: Animal Handling +5 vs DC 13 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:2",
+          "profession": "skill:animal-handling",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:arcana",
+          "information": "Arcana check: 19 + 10 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +10 vs DC 16",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:3:athletics",
+          "information": "Athletics check: 9 + 8 vs DC 15 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Doran0: Athletics +8 vs DC 15 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:3",
+          "profession": "skill:athletics",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:3:craft",
+          "information": "Craft check: 13 + 12 vs DC 17 \u00b7 objective completed.",
+          "label": "Doran0: Craft +12 vs DC 17",
+          "outcome": "recovered",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:3",
+          "profession": "skill:craft",
+          "provisions": 0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:insight",
+          "information": "Insight check: 18 + 0 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Insight +0 vs DC 17",
+          "outcome": "peaceful_access",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:perception",
+          "information": "Perception check: 19 + 0 vs DC 13 \u00b7 objective completed.",
+          "label": "Arin0: Perception +0 vs DC 13",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:persuasion",
+          "information": "Persuasion check: 7 + 13 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Persuasion +13 vs DC 16",
+          "outcome": "peaceful_access",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:religion",
+          "information": "Religion check: 15 + 0 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Religion +0 vs DC 11",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 16 + 7 vs DC 13 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +7 vs DC 13 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0,
+          "reveal": true
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3,
+          "id": "skill:11f92708811193a4288db4f61fe4ed60:adventurer:2:survival",
+          "information": "Survival check: 12 + 13 vs DC 17 \u00b7 objective completed.",
+          "label": "Lysa0: Survival +13 vs DC 17",
+          "outcome": "recovered",
+          "participant": "11f92708811193a4288db4f61fe4ed60:adventurer:2",
+          "profession": "skill:survival",
+          "provisions": 0,
+          "reveal": false
+        }
+      },
+      "slot": "11f92708811193a4288db4f61fe4ed60",
+      "state_hash": "0a444648ca5b3b326d05a77b54ccd96e046e5bf568030fc5a9039c6f60334824",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "29f9c4658f91efaac8c0395c620decf6b8864a7f7412fa7c90e6266dcdce8394",
+      "battle_log_length": 9,
+      "casts": {
+        "11f92708811193a4288db4f61fe4ed60:adventurer:1": "sorcerer-draconic-6",
+        "11f92708811193a4288db4f61fe4ed60:adventurer:2": "druid-growth-6",
+        "11f92708811193a4288db4f61fe4ed60:adventurer:3": "attack"
+      },
+      "checks": 52,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 490,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "11f92708811193a4288db4f61fe4ed60:adventurer:3",
+        "kind": "end",
+        "revision": 14
+      },
+      "next_hash": "685467f2760c72a21758b11cd45b0dde4085f1a2db0074d618b23ed68453511f",
+      "resources": {
+        "11f92708811193a4288db4f61fe4ed60:adventurer:1": {
+          "bloodline-uses": 2
+        },
+        "11f92708811193a4288db4f61fe4ed60:adventurer:2": {
+          "nature-bond-uses": 2
+        },
+        "11f92708811193a4288db4f61fe4ed60:adventurer:3": {}
+      },
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "11f92708811193a4288db4f61fe4ed60",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "b3f1cfd78b3dcbb234d0727b3abfb3c498dc3a075d477f19c55dcb72b87f3a66",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 67,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/proof.json": {
+      "checks": 2600,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/proof.json": {
+      "checks": 1634,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-ancestor-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-briar-beast",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-company-veil",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-dissonant-seal",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-gravitic-snare",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-greater-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-ice-lance",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-prismatic-volley",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-stillness-lattice",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unravel-enchantment",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unweaving-tide",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-battle-litany",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-concord-release",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-elemental-covenant",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-faith-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-freedom-path",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-purifying-renewal",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-renewing-benediction",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restoring-light",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-return-to-breath",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-tempest",
+          "class_id": "cleric",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/restart-proof.json": {
+      "checks": 97,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v27",
+        "rules_version": "27.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical26/proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 1130,
+      "classes": [
+        "metamind",
+        "pyrokineticist"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {
+        "metamind0": {
+          "capacities": {
+            "psychic-points": 26
+          },
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 0
+        },
+        "metamind1": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 29
+          },
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 1
+        },
+        "metamind10": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 42
+          },
+          "history": 18,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 10
+        },
+        "metamind2": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 30
+          },
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 2
+        },
+        "metamind3": {
+          "capacities": {
+            "metamind-reserve": 1,
+            "psychic-points": 31
+          },
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 3
+        },
+        "metamind4": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 32
+          },
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 4
+        },
+        "metamind5": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 35
+          },
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 5
+        },
+        "metamind6": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 36
+          },
+          "history": 14,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 6
+        },
+        "metamind7": {
+          "capacities": {
+            "metamind-reserve": 2,
+            "psychic-points": 37
+          },
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 7
+        },
+        "metamind8": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 38
+          },
+          "history": 16,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 8
+        },
+        "metamind9": {
+          "capacities": {
+            "metamind-reserve": 3,
+            "psychic-points": 39
+          },
+          "history": 17,
+          "known": [
+            "power-body-renewal",
+            "power-burst-step",
+            "power-electric-lance",
+            "power-fellowship",
+            "power-force-screen",
+            "power-keen-mind",
+            "power-kinetic-bolt",
+            "power-mind-lock",
+            "power-shared-barrier",
+            "power-thought-fog",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 9
+        },
+        "pyrokineticist0": {
+          "capacities": {
+            "psychic-points": 12
+          },
+          "history": 5,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 0
+        },
+        "pyrokineticist1": {
+          "capacities": {
+            "psychic-points": 13
+          },
+          "history": 6,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 1
+        },
+        "pyrokineticist10": {
+          "capacities": {
+            "psychic-points": 22
+          },
+          "history": 15,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 10
+        },
+        "pyrokineticist2": {
+          "capacities": {
+            "psychic-points": 14
+          },
+          "history": 7,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 2
+        },
+        "pyrokineticist3": {
+          "capacities": {
+            "psychic-points": 15
+          },
+          "history": 8,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 3
+        },
+        "pyrokineticist4": {
+          "capacities": {
+            "psychic-points": 16
+          },
+          "history": 9,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 4
+        },
+        "pyrokineticist5": {
+          "capacities": {
+            "psychic-points": 17
+          },
+          "history": 10,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 5
+        },
+        "pyrokineticist6": {
+          "capacities": {
+            "psychic-points": 18
+          },
+          "history": 11,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 6
+        },
+        "pyrokineticist7": {
+          "capacities": {
+            "psychic-points": 19
+          },
+          "history": 12,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 7
+        },
+        "pyrokineticist8": {
+          "capacities": {
+            "psychic-points": 20
+          },
+          "history": 13,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 8
+        },
+        "pyrokineticist9": {
+          "capacities": {
+            "psychic-points": 21
+          },
+          "history": 14,
+          "known": [
+            "power-body-renewal",
+            "power-force-screen",
+            "power-kinetic-bolt",
+            "power-thought-thrust"
+          ],
+          "prestige_levels": 9
+        }
+      },
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {
+        "arcane_reclaim": {
+          "points_after": 14,
+          "wizard_slot_after": 0
+        },
+        "counterplay": {
+          "actual_fire_resistance": 8,
+          "elemental_immunity_claimed": false,
+          "weakened_immunity": true
+        },
+        "fire": {
+          "1": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist1",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 14,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 7,
+                "base": 5,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 7,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 7,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist1",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 14,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 7,
+                "base": 5,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 3,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 3
+          },
+          "10": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist10",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 20,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 28,
+                "base": 26,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 28,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 28,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist10",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 20,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 28,
+                "base": 26,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 14,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 14
+          },
+          "4": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist4",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 16,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 13,
+                "base": 11,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 13,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 13,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist4",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 16,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 13,
+                "base": 11,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 6,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 6
+          },
+          "7": {
+            "events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist7",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": -93,
+                "dc": 18,
+                "roll": 4,
+                "success": false,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 21,
+                "base": 19,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 21,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              },
+              {
+                "id": "weakened",
+                "type": "status_applied"
+              }
+            ],
+            "failed_damage": 21,
+            "save_events": [
+              {
+                "amount": 2,
+                "character_id": "pyrokineticist7",
+                "id": "psychic-points",
+                "type": "resource_spent"
+              },
+              {
+                "bonus": 107,
+                "dc": 18,
+                "roll": 4,
+                "success": true,
+                "type": "save_resolved"
+              },
+              {
+                "amount": 21,
+                "base": 19,
+                "modifier": 2,
+                "type": "ability_damage_adjusted"
+              },
+              {
+                "amount": 10,
+                "damage_type": "fire",
+                "target": "foe",
+                "temporary_absorbed": 0,
+                "type": "damage_applied"
+              }
+            ],
+            "saved_damage": 10
+          }
+        },
+        "origins": {
+          "power-body-renewal": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-burst-step": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-force-screen": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-keen-mind": {
+            "attribute": "INT",
+            "class_id": "metamind",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power-kinetic-bolt": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          },
+          "power-thought-fog": {
+            "attribute": "INT",
+            "class_id": "metamind",
+            "minimum": 11,
+            "modifier": 1
+          },
+          "power-thought-thrust": {
+            "attribute": "CHA",
+            "class_id": "wilder",
+            "minimum": 11,
+            "modifier": 3
+          }
+        },
+        "owning_class_casts": {
+          "metamind": {
+            "attribute": "INT",
+            "dc": 12,
+            "power": "power-thought-fog"
+          },
+          "wilder": {
+            "attribute": "CHA",
+            "dc": 14,
+            "power": "power-thought-thrust"
+          }
+        },
+        "reserve": {
+          "1": {
+            "cap": 29,
+            "restores": 5,
+            "uses": 1
+          },
+          "10": {
+            "cap": 42,
+            "restores": 14,
+            "uses": 3
+          },
+          "4": {
+            "cap": 32,
+            "restores": 8,
+            "uses": 2
+          },
+          "5": {
+            "cap": 35,
+            "restores": 9,
+            "uses": 2
+          },
+          "8": {
+            "cap": 38,
+            "restores": 12,
+            "uses": 3
+          }
+        },
+        "tactical": {
+          "metamind": true,
+          "pyrokineticist": true
+        }
+      }
+    },
+    "historical26/restart-proof.json": {
+      "campaign_xp_injected": false,
+      "checks": 129,
+      "classes": [
+        "metamind",
+        "pyrokineticist"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "levels": {},
+      "rules_ref": {
+        "content_hash": "8eabc528b857b7d001ff9be1c5e34a963538c7f140cc544eb304844b73b2805d",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v26",
+        "rules_version": "26.0.0",
+        "schema_version": 1
+      },
+      "traces": {}
+    },
+    "historical18/proof.json": {
+      "checks": 598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical18/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 28,
+      "failures": 0,
+      "scope": "Actual Godot creator, known/prepared spellbook, tactical action buttons and tile targeting"
+    },
+    "frozen": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1849479,
+        "effects_1000_us": 8711077,
+        "progression_2000_us": 12748751,
+        "reference_progression_us": 4748818,
+        "registry_load_us": 13653,
+        "requirements_5000_us": 450412,
+        "serialization_1000_us": 22340661,
+        "validation_1000_us": 1214193
+      }
+    }
+  },
+  "proof_sources": {
+    "mechanics/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "mechanics/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "journey/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "journey/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "connected/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "connected/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "audit/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "audit/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "current-upper/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "current-upper/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "historical26/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "historical26/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "historical18/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "historical18/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "legacy/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "legacy/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "compatibility/proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "compatibility/restart-proof.json": "e048332e868a12711d685e79652dec063f0045bf",
+    "input": "e048332e868a12711d685e79652dec063f0045bf",
+    "frozen": "e048332e868a12711d685e79652dec063f0045bf"
+  },
+  "timings": [
+    {
+      "phase": "mechanics",
+      "seconds": 367.969,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 15.859,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 73.828,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 465.578,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 64.188,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 64.593,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 65.985,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "seconds": 887.062,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 7.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "seconds": 168.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper-cold",
+      "seconds": 8.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical26",
+      "seconds": 106.719,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical26-cold",
+      "seconds": 8.031,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18",
+      "seconds": 98.485,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18-cold",
+      "seconds": 5.218,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.047,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 1.61,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 97.687,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 55.766,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "captures": {
+    "checks": 34,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-sorcerer-creator-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "49e70bdf6181315b1a675bbe7956ab477790c6585f2aa3703d3c34ce35bcc5d3",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-sorcerer-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "2c7b188d7a64e5f744c53e5f2ba6d117a2e941e7a44fa009059e15f826dcd3e9",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-sorcerer-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "44d62a8ea5ec80d78625777476e65346f9fd07c3df5c1f7388c63900581ae3be",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-tier8-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "6a2a695f36aaa1b758e9b134b1e29b75b8b5f65a1982709a2fec9b50b305ca5e",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-tier8-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "932bce4098223d68383aa426dd23d6e6af2e09bee1e7614ff006bd5c3b439415",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-tier9-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "6a3c54cd5e70ef17e6a5fa73b160d78c39a2d490aa1593b237542d5ebe2ab10d",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-tier9-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "99304cbdce1f6e065ff17115eac50066bf666f997ab46bbd8dfddfb565196da9",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "b6e5891a9634c21fbc6ded885146c5f4a8e748b53573cdadb01ae8d92946eec2",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-druid-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "a0d9d7de58774f3ffa48a11656fa075798b7af6105ad6a6f0daa808dea0abd46",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-tier8-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "ff41dbfe8819f4f3ede9d7a57af8e4c1219a87bcb374c3ed16d5302b8813dcd4",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-tier8-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8dba90ada6540d6e2e0bddb359b728352a34359345201fd4d1322e2fe03591de",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-tier9-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8d977f20626fd6c08bc1b5da46a6f7c92f6a6f7d944c93e1aa5e141bc78aa348",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-tier9-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1a13002cf1fd8683417af80a1f548ff7560885e8b0362ae859620693574e66b0",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "951861ea082970753f22328030b490fa97c61fad8f75cf7bae4d8632c19f2952",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-refraction-guard-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4d51a2e5da6231d5a03f9783c91971256d814cc93e3a5b79a4fbb54f4fc0e032",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-refraction-guard-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "32561f571e4b2a17bb58f524b38f1a2e45653df1e02b6dca31eec58f70a9f718",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-cascade_conversion-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "3e5ae92a16a98de51c929eb4f5f09e580cc6025bb2fc62e03dfd335f81c96520",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-heartwood-renewal-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "b91167546f85aff63186cf1775e537d32bac96c18f6f6a0bd8d6dabee90d0507",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-druid-wildheart-mantle-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "3110f3c9d07243e824e466d1949fcc94f6567370ddeab24aec26bed787a3c6bb",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-companion_form-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "5606caf4e8aae5a12e9c0ecce10a12481a29f9afcfd62e1b73d82285296ede9f",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-companion_form-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "c42679ab0debe3c20fbf1579eb7ae13ad62e71243b0ea40d5037daf6413fbccc",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-renewing-pet-wolf-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "1a5e36d6a65a66bce77177cd5e401f1d08d4e58fe655e337eb3186f55ca73876",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-connected-class-actions-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "c55957836953de615d5ef86ce6c10cc230b21ee7d74843f50c295de23c5162a1",
+        "width": 2560
+      }
+    ]
+  },
+  "source_guard": {
+    "baseline": "3e62d5cfc4959269f607ee7f64008842882f1c48",
+    "historical_packs": 26,
+    "roster_unchanged": true,
+    "frozen_tactical_authority": true,
+    "delta": {
+      "classes": [],
+      "abilities": [
+        "druid-heartwood-renewal",
+        "druid-wildheart-mantle",
+        "sorcerer-cascade-well",
+        "sorcerer-refraction-guard"
+      ],
+      "features": [],
+      "resources": [
+        "druid-heartwood-renewal-prepared",
+        "druid-wildheart-mantle-prepared"
+      ],
+      "statuses": [
+        "heartwood-renewal",
+        "refraction-shell-1",
+        "refraction-shell-2",
+        "refraction-shell-3"
+      ],
+      "ancestries": [],
+      "feats": [],
+      "equipment": [],
+      "creatures": [],
+      "psychic_powers": [],
+      "skills": []
+    },
+    "rules_ref": {
+      "pack_id": "trhgd-character-v27",
+      "schema_version": 1,
+      "rules_version": "27.0.0",
+      "engine_schema": 3,
+      "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84"
+    }
+  },
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "earned_characters": 3
+}

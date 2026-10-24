@@ -1,0 +1,20 @@
+{
+  "scope": "Historical successful focused Windows source-Godot mechanics/cold phases, not exported native release or completed UI gate.",
+  "run": 40049537815,
+  "run_conclusion": "failure",
+  "source_commit": "0b7023d661aeb892811cf06584b89f236671a102",
+  "phases": {
+    "focused-0b-mechanics.json": {
+      "checks": 1749,
+      "failures": 0,
+      "sha256": "f42e0ef74b30ce5012c61f8bdbbc5727b4c06c3efd36e3d098f20a82293d705a"
+    },
+    "focused-0b-cold.json": {
+      "checks": 175,
+      "failures": 0,
+      "sha256": "56d92abbed73233b70b456bee5b9c30af15d08ebccaad11d33ad6d55e4428afe"
+    }
+  },
+  "remaining_failure": "The test inspected the parent of a searchable CheckBox; corrected separately.",
+  "readiness_promoted": false
+}

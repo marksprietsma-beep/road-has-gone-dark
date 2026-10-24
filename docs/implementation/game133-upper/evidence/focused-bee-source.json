@@ -1,0 +1,23 @@
+{
+  "scope": "Successful focused Windows source-Godot gate; not the compiled native release.",
+  "run": 40050636251,
+  "conclusion": "success",
+  "source_commit": "bee8ac56bf2688427b83ab4d1f70cc4e8ebddc02",
+  "phases": {
+    "focused-bee-mechanics.json": {
+      "checks": 1749,
+      "failures": 0,
+      "sha256": "f42e0ef74b30ce5012c61f8bdbbc5727b4c06c3efd36e3d098f20a82293d705a"
+    },
+    "focused-bee-cold.json": {
+      "checks": 175,
+      "failures": 0,
+      "sha256": "56d92abbed73233b70b456bee5b9c30af15d08ebccaad11d33ad6d55e4428afe"
+    },
+    "focused-bee-controls.json": {
+      "checks": 28,
+      "failures": 0,
+      "sha256": "57ebfa68bc132e547cf854c3e32ebb89d6c7c13ada791cd667eb2a5039e24455"
+    }
+  }
+}
