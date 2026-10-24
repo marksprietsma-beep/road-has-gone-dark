@@ -45,7 +45,8 @@ func run() -> void:
   if d.ok:hashes[id]=d.snapshot.snapshot_hash;record_hashes[id]=RulesJson.digest(saved_records[id])
  for id in battles:
   var engine := TacticalAuras.new(battles[id].units.a.record)
-  check(engine.validate(battles[id]).is_empty(),"saved battle validates "+id)
+  var why := engine.validate(battles[id])
+  check(why.is_empty(),"saved battle validates "+id+": "+why)
   next[id]={"actor_id":engine.current(battles[id]).id,"revision":battles[id].revision,"kind":"end"}
   var out := engine.command(battles[id],next[id]);check(out.ok,"predict saved next command "+id)
   if out.ok:after[id]=out.battle.state_hash
@@ -207,7 +208,8 @@ func test_shared_form() -> void:
  var pet_id := RulesEntities.identity("a");var pet_board := encounter(actor)
  check(pet_board.units.has(pet_id),"permanent owned companion present")
  if pet_board.units.has(pet_id):
-  pet_board.units[pet_id].position=[1,2];pet_board=engine.seal(pet_board)
+  pet_board.units[pet_id].position=[0,1];pet_board=engine.seal(pet_board)
+  check(engine.validate(pet_board).is_empty(),"companion form fixture begins as a valid nonoverlapping battle: "+engine.validate(pet_board))
   var original: Dictionary=pet_board.units[pet_id].record.duplicate(true)
   var transformed := engine.command(pet_board,{"actor_id":"a","revision":pet_board.revision,"kind":"druid-wildheart-mantle","target_id":pet_id})
   check(transformed.ok,"wildheart targets real owned creature")
@@ -289,7 +291,8 @@ func test_druid_bonds() -> void:
   var engine := TacticalAuras.new(actor);var b := encounter(actor);var pid := RulesEntities.identity("a")
   check(b.units.has(pid),"chosen permanent companion exists "+companion)
   if not b.units.has(pid):continue
-  b.units[pid].position=[1,2];b.units[pid].record.runtime.hp-=10;b=engine.seal(b)
+  b.units[pid].position=[0,1];b.units[pid].record.runtime.hp-=10;b=engine.seal(b)
+  check(engine.validate(b).is_empty(),"companion recovery fixture is a valid nonoverlapping battle: "+engine.validate(b))
   var out := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":"druid-heartwood-renewal","target_id":pid})
   check(out.ok,"new recovery targets actual chosen creature "+companion)
   if not out.ok:continue

@@ -2,11 +2,11 @@
 
 Branch: `feature/game-123-sorcerer-druid-upper-tiers`, based on verified main `3e62d5cfc4959269f607ee7f64008842882f1c48`.
 
-Latest gameplay/test source: `ae917f89e348038b478448b19ec33b3278686732`. Later documentation-only commits do not alter native inputs. Four original upper-tier choices and the existing capability gates, finite weapon-attempt interception, allied-form reversion and compact shell feedback are implemented. Immutable candidate27 hash: `1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84`. All1–26 bytes/pins and frozen TacticalCombat remain unchanged; static source guard passes. No roster/world expansion.
+Prior gameplay/test source: `ae917f89e348038b478448b19ec33b3278686732`; the following fixture-placement commit supersedes it (use actual branch HEAD). Later documentation-only commits do not alter native inputs. Four original upper-tier choices and the existing capability gates, finite weapon-attempt interception, allied-form reversion and compact shell feedback are implemented. Immutable candidate27 hash: `1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84`. All1–26 bytes/pins and frozen TacticalCombat remain unchanged; static source guard passes. No roster/world expansion.
 
 ## Current required next action
 
-Focused **Windows** run [40048413027](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40048413027) is running on ae917. Inspect its actual conclusion before doing anything else. No successful native release, readiness promotion or merge is claimed. No PR exists yet; do not duplicate one if a later execution publishes it.
+Focused run40048413027 on ae917 reached final saved-battle validation and rejected the companion fixture: it had been moved onto an ally's occupied tile. The fixture now uses the verified free0,1 tile and asserts validity before casting; final save assertions include the precise validator error. The next focused run must pass; inspect its actual current result before further release work. No successful native release, readiness promotion or merge is claimed. No PR exists yet; do not duplicate one if a later execution publishes it.
 
 Prior focused failures were isolated and corrected without weakening invariants:
 
