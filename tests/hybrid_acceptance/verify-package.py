@@ -35,7 +35,7 @@ subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GA
                 '--godot',os.environ['GODOT_BIN'],'--qa','--qa-scene','res://tests/hybrid_acceptance/review.tscn',
                 '--output',str(dist)], cwd=ROOT, check=True)
 env = dict(os.environ, PATH='', NODE_PATH='', NODE_OPTIONS='', HYBRID_ROOT=str(base/'mechanics'),
-           HYBRID_CAPTURE_ROOT=str(base/'captures'), GAME126_JOURNEY_ROOT=str(base/'journeys'),
+           HYBRID_CAPTURE_ROOT=str(base/'captures'), HYBRID_NATIVE_ENTRY_ROOT=str(base/'entry'), GAME126_JOURNEY_ROOT=str(base/'journeys'),
            GAME126_COHORT='0', GAME126_RESUME='1', HYBRID_IMPORTED_EARNED=str(imported), GAME129_CONNECTED_ROOT=str(base/'connected'),
            GAME126_AUDIT_ROOT=str(base/'all-base'), GAME126_PACK='res://data/rules/trhgd-character-v28.json',
            GAME150_ROOT=str(base/'current-upper'), UPPER_NATURE_ROOT=str(base/'historical27'),
@@ -45,7 +45,7 @@ for key in ['GAME76_HELPER_ROOT','GODOT_BIN','GH_TOKEN','GITHUB_TOKEN']:
     env.pop(key, None)
 timings = []
 proofs = {}
-phases = ['probe','earned_probe','mechanics','input','journey','connected','capture','audit','current-upper','historical27','historical18','legacy','compatibility']
+phases = ['entry','probe','earned_probe','mechanics','input','journey','connected','capture','audit','current-upper','historical27','historical18','legacy','compatibility']
 for phase in phases:
     for cold in ([False] if phase in ['probe','input','capture'] else [False,True]):
         label = phase + ('-cold' if cold else '')
@@ -80,6 +80,8 @@ assert probe['checks']>0 and probe['failures']==0
 proofs['pinned27-probe'] = probe
 for key,file in [('planner','planner-proof.json'),('planner-cold','planner-restart-proof.json')]:
     p=json.loads((base/'mechanics'/file).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0 and p['rules_ref']==pin;proofs[key]=p
+for key,file in [('entry','entry-proof.json'),('entry-cold','entry-restart-proof.json')]:
+    p=json.loads((base/'entry'/file).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0;proofs[key]=p
 mechanics = proofs['mechanics/proof.json']
 assert mechanics['contracts']['channels']==10
 assert all(mechanics['contracts'][key] is True for key in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])

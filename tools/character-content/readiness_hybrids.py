@@ -24,7 +24,7 @@ def generate(root, pack, pin, native_root):
                     assert saved['mechanics']['rules_ref']==pin
                     assert all(saved['mechanics']['records'][id]['rules_ref']==pin for id in saved['party_ids'])
                 else:assert row['rules_ref']==pin
-    for key in ['input','frozen','pinned27-probe','planner','planner-cold']:
+    for key in ['input','frozen','pinned27-probe','planner','planner-cold','entry','entry-cold']:
         assert native['proofs'][key]['checks']>0 and native['proofs'][key]['failures']==0
     assert native['proofs']['frozen']['checks']==22181
     contracts=native['proofs']['mechanics/proof.json']['contracts']
