@@ -12,15 +12,17 @@ func run() -> void:
   var record: Dictionary=saved.records[cls+"20"];var book := SpellbookEditor.new();add_child(book);book.setup(record)
   var first: String="sorcerer-refraction-guard" if cls=="sorcerer" else "druid-heartwood-renewal"
   var second: String="sorcerer-cascade-well" if cls=="sorcerer" else "druid-wildheart-mantle"
+  var first_row: Control=book.controls[first].get_parent() if cls=="druid" else book.controls[first]
+  var second_row: Control=book.controls[second].get_parent() if cls=="druid" else book.controls[second]
   book.repertoire_search.text="tier 8";book.repertoire_search.text_changed.emit("tier 8")
-  check(book.controls.has(first) and book.controls[first].get_parent().visible,"actual tier8 search exposes choice "+cls)
-  check(not book.controls[second].get_parent().visible,"actual tier search hides other tier")
+  check(book.controls.has(first) and first_row.visible,"actual tier8 search exposes choice "+cls)
+  check(not second_row.visible,"actual tier search hides other tier")
   if cls=="sorcerer":
    book.controls[first].button_pressed=true;check(book.selection().has(first),"actual spontaneous known checkbox")
   else:
    book.controls[first].value=1;check(book.selection().has(first) and book.preparations()[first]==1,"actual prepared-copy selector")
   var original := RulesJson.digest(record);book.repertoire_search.text="tier 9";book.repertoire_search.text_changed.emit("tier 9")
-  check(book.controls[second].get_parent().visible and RulesJson.digest(record)==original,"search/staging changes no saved state")
+  check(second_row.visible and RulesJson.digest(record)==original,"search/staging changes no saved state")
   book.queue_free()
   var creator := BuildEditor.new();add_child(creator);creator.setup(saved.records[cls+"1"],false)
   check(creator.class_options().has(cls),"actual starting base class "+cls)

@@ -6,7 +6,7 @@ Prior gameplay/test source: `ae917f89e348038b478448b19ec33b3278686732`; the foll
 
 ## Current required next action
 
-Focused run40048413027 on ae917 reached final saved-battle validation and rejected the companion fixture: it had been moved onto an ally's occupied tile. The fixture now uses the verified free0,1 tile and asserts validity before casting; final save assertions include the precise validator error. The next focused run must pass; inspect its actual current result before further release work. No successful native release, readiness promotion or merge is claimed. No PR exists yet; do not duplicate one if a later execution publishes it.
+Focused run40048413027 on ae917 reached final saved-battle validation and rejected the companion fixture: it had been moved onto an ally's occupied tile. The fixture now uses the verified free0,1 tile and asserts validity before casting; final save assertions include the precise validator error. Run40049537815 then PASSED1749 mechanics and175 exact cold checks with zero failures. Its only remaining failure is the new UI test checking a CheckBox parent rather than the actual searchable CheckBox (prepared SpinBoxes do use a parent row). That locator is corrected in the following commit; inspect the latest focused run before release. No successful native release, readiness promotion or merge is claimed. No PR exists yet; do not duplicate one if a later execution publishes it.
 
 Prior focused failures were isolated and corrected without weakening invariants:
 
