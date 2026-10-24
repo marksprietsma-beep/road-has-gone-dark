@@ -37,6 +37,15 @@ func run() -> void:
  if ui.action_buttons.has(wrapper):
   evidence.channel_bow_ui={"button_enabled":not ui.action_buttons[wrapper].disabled,"target_eligible":engine.eligible(b,b.units.a,b.units["bandit-blade"],wrapper),"command_accepted":rejected.ok}
   check(ui.action_buttons[wrapper].disabled and not rejected.ok,"corrected production UI disables bow channel; pinned27 command semantics still reject")
+ var melee := select(build("duskblade",3),"duskblade-searing-grasp")
+ var ready := encounter(melee);ui.engine=TacticalAuras.new(melee)
+ var spent := ui.engine.command(ready,order(ready,wrapper))
+ check(spent.ok,"real channel consumes the main action for targeting diagnostic")
+ if spent.ok:
+  ui.state.first_adventure.battle=spent.battle;ui.mode=wrapper;ui.refresh()
+  var stale: bool=ui.tiles[str(spent.battle.units["bandit-blade"].position)].target_tile
+  evidence.spent_channel_highlight={"main":spent.battle.budget.main,"button_disabled":ui.action_buttons[wrapper].disabled,"target_highlighted":stale}
+  check(stale and ui.action_buttons[wrapper].disabled,"reproduced presentation mismatch: unavailable channel still highlights target after actual action")
  ui.queue_free()
  FileAccess.open(base.path_join("probe-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"scope":"Pinned27 baseline defects and historical display repair only; no career readiness promotion.","evidence":evidence}),"  "))
  print("HYBRID_PROBE ",checks," failures ",failures);get_tree().quit(1 if failures else 0)

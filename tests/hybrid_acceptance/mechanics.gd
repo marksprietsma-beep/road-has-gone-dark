@@ -57,6 +57,7 @@ func arch_path(cls: String,variant: String) -> Dictionary:
   r=out.candidate
  var d := kernel.derive_character(r)
  check(r.advancement_history.size()==20 and d.snapshot.class_levels.archmage==5 and d.snapshot.casting_levels[cls]==20,"five supported path levels; actual20 effective casting "+cls)
+ r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,d.snapshot.resource_capacities,"eligible_rest").runtime
  return r
 func warded_defender() -> Dictionary:
  # A lawful Fighter17/Duskblade3, not an invented defence bonus. DEX growth,
