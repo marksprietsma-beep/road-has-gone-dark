@@ -2,6 +2,10 @@ name: Duskblade and Archmage Acceptance
 on:
   workflow_dispatch:
     inputs:
+      presentation:
+        description: Fresh source Godot renders of verified earned/focused artifacts, before native release
+        type: boolean
+        default: false
       release:
         description: One stable complete self-contained Windows release
         type: boolean
@@ -51,7 +55,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'hybrid-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       - name: Actual archived display legality and baseline career diagnostics
-        if: github.event_name != 'workflow_dispatch' || (!inputs.release && !inputs.journey && !inputs.historical_capture)
+        if: github.event_name != 'workflow_dispatch' || (!inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
         env:
           HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
         run: python tests/hybrid_acceptance/run-focused.py
@@ -74,6 +78,28 @@ jobs:
           HYBRID_HISTORICAL_INPUT: ${{ runner.temp }}/historical-native-input
           HYBRID_HISTORICAL_ROOT: ${{ runner.temp }}/historical-native-recheck
         run: python tests/hybrid_acceptance/recheck-historical.py
+      - name: Restore verified focused records for presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: 40081154951
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-presentation-input
+      - name: Restore actually earned1690XP campaign for presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: 40080757725
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-presentation-input
+      - name: Actual source-guarded Windows Godot presentation
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        env:
+          HYBRID_PRESENTATION_INPUT: ${{ runner.temp }}/hybrid-presentation-input
+          HYBRID_PRESENTATION_ROOT: ${{ runner.temp }}/hybrid-presentation
+        run: python tests/hybrid_acceptance/recheck-presentation.py
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release
         run: python tools/release/prepare-templates.py
@@ -93,6 +119,9 @@ jobs:
             ${{ runner.temp }}/historical-native-recheck/**/*.json
             ${{ runner.temp }}/historical-native-recheck/**/*.log
             ${{ runner.temp }}/historical-native-recheck/captures/*.png
+            ${{ runner.temp }}/hybrid-presentation/**/*.json
+            ${{ runner.temp }}/hybrid-presentation/**/*.log
+            ${{ runner.temp }}/hybrid-presentation/captures/*.png
             ${{ runner.temp }}/hybrid-native/**/*.json
             ${{ runner.temp }}/hybrid-native/**/*.log
             ${{ runner.temp }}/hybrid-native/captures/*.png
