@@ -16,7 +16,7 @@ func run() -> void:
   entry=service.library.discover()[0];slot=proof.slot
   var original := GamePlaythroughStore.new();original.save_root=original_root.path_join("saves")
   var loaded := original.load_save(slot,entry.world)
-  check(loaded.ok,"exported native loads original exact-pinned earned campaign "+str(loaded.get("error","")))
+  check(loaded.ok,"runtime loads original exact-pinned earned campaign "+str(loaded.get("error","")))
   if not loaded.ok:finish_journey();return
   check(RulesJson.digest(loaded.state)==proof.state_hash,"imported complete campaign hash exact")
   service.store.save_root=base.path_join("saves");service.library.save_root=service.store.save_root
