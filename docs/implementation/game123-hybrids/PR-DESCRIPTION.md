@@ -1,0 +1,7 @@
+Duskblade's channel controls now consistently respect the existing melee-weapon, known-spell, action and slot authority. Appended immutable v28 corrects Archmage Force DCs to use the permanently selected caster's attribute, suppresses high arcana in casting-suppressed forms, and makes existing later Ward choices meaningfully different: bounded condition cleansing at path3 and5. No new careers, spells or alternate combat/save authority; all v1–v27 bytes and pins remain unchanged.
+
+Acceptance covers all10 supported channel spells, actual hit/miss/critical effects, independent multiclass pools, all five Archmage levels, chosen/unowned abilities, permanent prerequisites/decline, saves/counterplay, resources/rest, production controls and exact cold replay. A separate ordinary1690XP/14 campaign must fund Wizard/Sorcerer Archmage1 manually; total20/path5 fixtures are explicitly labelled development data. The historical main GAME133 capture is repaired narrowly and replayed from its original evidence.
+
+Windows-only final focused, earned, exported-native, capture and package verification is in progress. Earlier intermediate receipts are retained and source-labelled; no final native success/readiness promotion is claimed yet. See `docs/implementation/game123-hybrids/ASSESSMENT.md`, `TESTING.md` and `CONTINUATION.md` for actual checkpoints. GAME123/#101 remains open; no subsequent cohort starts in this PR.
+
+Refs #101.
