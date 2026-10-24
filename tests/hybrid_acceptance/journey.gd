@@ -4,7 +4,13 @@ var entry_witnesses := {}
 func journey_xp() -> int:return 1690
 func journey_level() -> int:return 14
 func journey_cycles() -> int:return 50
+func configure_planner() -> void:
+ # An explicit lawful starting array, not a bonus or retrospective respec.
+ # The inherited arcane heuristic dumped INT to8 when moving15 to CHA;
+ # one skill point/level cannot buy both rank10 prerequisites by13.
+ planner.starting_arrays={"sorcerer":{"STR":8,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":15}}
 func create_party() -> void:
+ configure_planner()
  configs=[["duskblade","human",""],["wizard","human","archmage"],["sorcerer","human","archmage"]]
  super.create_party()
 func promote(index: int) -> void:

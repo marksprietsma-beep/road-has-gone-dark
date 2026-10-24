@@ -2,6 +2,14 @@ name: Duskblade and Archmage Acceptance
 on:
   workflow_dispatch:
     inputs:
+      planner_probe:
+        description: Small deterministic reproduction and lawful correction of failed earned Sorcerer build
+        type: boolean
+        default: false
+      earned_run:
+        description: Successful earned workflow run ID required for presentation reuse
+        type: string
+        default: ''
       presentation:
         description: Fresh source Godot renders of verified earned/focused artifacts, before native release
         type: boolean
@@ -54,8 +62,23 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/hybrid-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'hybrid-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Restore actual failed earned source for the small reproduction
+        if: github.event_name == 'workflow_dispatch' && inputs.planner_probe
+        uses: actions/download-artifact@v4
+        with:
+          name: hybrid-windows-evidence
+          run-id: 40080757725
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/hybrid-failed-earned
+      - name: Small deterministic earned-planner reproduction and exact cold restart
+        if: github.event_name == 'workflow_dispatch' && inputs.planner_probe
+        env:
+          HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
+          HYBRID_PLANNER_PROBE: '1'
+          HYBRID_FAILED_ROOT: ${{ runner.temp }}/hybrid-failed-earned
+        run: python tests/hybrid_acceptance/run-focused.py
       - name: Actual archived display legality and baseline career diagnostics
-        if: github.event_name != 'workflow_dispatch' || (!inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
+        if: github.event_name != 'workflow_dispatch' || (!inputs.planner_probe && !inputs.presentation && !inputs.release && !inputs.journey && !inputs.historical_capture)
         env:
           HYBRID_ROOT: ${{ runner.temp }}/hybrid-focused
         run: python tests/hybrid_acceptance/run-focused.py
@@ -86,12 +109,25 @@ jobs:
           run-id: 40081154951
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ runner.temp }}/hybrid-presentation-input
+      - name: Verify completed earned source before presentation reuse
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/github-script@v7
+        env:
+          HYBRID_REQUESTED_EARNED_RUN: ${{ inputs.earned_run }}
+        with:
+          script: |
+            const id = Number(process.env.HYBRID_REQUESTED_EARNED_RUN);
+            if (!Number.isSafeInteger(id) || id <= 0) throw Error('Successful earned run ID required');
+            const {data} = await github.rest.actions.getWorkflowRun({...context.repo, run_id:id});
+            if (data.status !== 'completed' || data.conclusion !== 'success') throw Error('Earned run must have actually succeeded');
+            core.exportVariable('HYBRID_EARNED_RUN', String(id));
+            core.exportVariable('HYBRID_EARNED_SOURCE', data.head_sha);
       - name: Restore actually earned1690XP campaign for presentation
         if: github.event_name == 'workflow_dispatch' && inputs.presentation
         uses: actions/download-artifact@v4
         with:
           name: hybrid-windows-evidence
-          run-id: 40080757725
+          run-id: ${{ inputs.earned_run }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ runner.temp }}/hybrid-presentation-input
       - name: Actual source-guarded Windows Godot presentation

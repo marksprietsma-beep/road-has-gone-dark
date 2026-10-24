@@ -1,3 +1,13 @@
+# Latest recovery checkpoint — earned planner blocker
+
+Existing branch/PR149 unchanged; recovered HEADa1a5e61 has16 successful applicable checks (plus one skipped package job), but **earned source40080757725 FAILED** after2598 seconds. Its0-failure proof is an intermediate checkpoint, not final success. Full native release has NOT run; readiness remains33/17/0.
+
+Read EARNED-FAILURE.md. Actual saved Sorcerer13 has INT8, Arcana10/Spellcraft3; focus chain/CHA18/tier7 knowledge present. Permanent Spellcraft10 correctly blocks Archmage. It legally became Sorcerer14 instead (Spellcraft4). Test starting-array heuristic caused insufficient skill budget. New explicit lawful Sorcerer standard array (INT12/CHA15) changes only the new test cohort; no rules/save change. All archived records/campaigns remain unchanged.
+
+FIRST run/inspect dispatch planner_probe=true: a small Windows reproduction using original failed records and exact archived earned Wizard/Sorcerer preview plus corrected lawful13→14 development fixtures and cold restart. Do NOT start another40-minute earned journey until this passes. Default focused suite also runs the compact probe. Then run one fresh genuine1690XP campaign, connected/cold and actual presentation; presentation requires earned_run=<ACTUAL_SUCCESS_ID> and checks GitHub success plus exact planner/runtime source. The failed400807 source is never admissible as successful input. Native release includes the planner probe as well as the original full gate. Do not weaken assertions or retrofit the rejected character.
+
+Preserve all current code, new uncommitted focused receipts and previous historical capture success. No new branch, PR, roster, living-world cohort or readiness promotion. Publish/merge149 only after native/current-head/post-main verification. No callable Linear connector.
+
 # Current checkpoint — continue this branch
 
 Branch `feature/game-123-duskblade-archmage`, based on merged mainc48d6df/PR148. No cohort PR yet. All preserved source is pushed. Keep GAME123 InProgress/#101 OPEN and readiness33 COMPLETE/17 PARTIAL/0 BLOCKED. No Linux game validation, duplicate PR148, new roster, Abjurant Champion or Mystic Theurge implementation.

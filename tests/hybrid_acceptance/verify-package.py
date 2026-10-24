@@ -41,7 +41,7 @@ for key in ['GAME76_HELPER_ROOT','GODOT_BIN','GH_TOKEN','GITHUB_TOKEN']:
     env.pop(key, None)
 timings = []
 proofs = {}
-phases = ['probe','mechanics','input','journey','connected','capture','audit','current-upper','historical27','historical18','legacy','compatibility']
+phases = ['probe','earned_probe','mechanics','input','journey','connected','capture','audit','current-upper','historical27','historical18','legacy','compatibility']
 for phase in phases:
     for cold in ([False] if phase in ['probe','input','capture'] else [False,True]):
         label = phase + ('-cold' if cold else '')
@@ -74,6 +74,8 @@ proofs['input'] = controls
 probe = json.loads((base/'mechanics/probe-proof.json').read_text(encoding='utf-8'))
 assert probe['checks']>0 and probe['failures']==0
 proofs['pinned27-probe'] = probe
+for key,file in [('planner','planner-proof.json'),('planner-cold','planner-restart-proof.json')]:
+    p=json.loads((base/'mechanics'/file).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0 and p['rules_ref']==pin;proofs[key]=p
 mechanics = proofs['mechanics/proof.json']
 assert mechanics['contracts']['channels']==10
 assert all(mechanics['contracts'][key] is True for key in ['multiclass','refraction','high_arcana','ward_progression','existing_beguiler_route','independent_archmage_tracks','permanent_entry','body_suppression','resources'])
