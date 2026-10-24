@@ -144,8 +144,8 @@ func test_exchange() -> void:
 
 func test_renewal() -> void:
  var actor := prepared(fixtures.druid,"druid-heartwood-renewal");var target: Dictionary=fixtures.fighter.duplicate(true);target.character_id="recovering";target.runtime.hp-=50
- for sid in ["bramble-tether","winter-lock","slowed"]:target.runtime.statuses.append({"id":sid,"source":"controlled-fixture","remaining":2,"expiry":source.definition("statuses",sid).duration.expiry})
- var out := cast(actor,target,"druid-heartwood-renewal");check(out.ok,"delayed renewal executes")
+ for sid in ["bramble-tether","winter-lock","slowed"]:target.runtime.statuses.append({"id":sid,"source":"controlled-fixture","remaining":int(source.definition("statuses",sid).duration.amount),"expiry":source.definition("statuses",sid).duration.expiry})
+ var out := cast(actor,target,"druid-heartwood-renewal");check(out.ok,"delayed renewal executes "+JSON.stringify(out.get("errors",[])))
  if not out.ok:return
  check(out.target.runtime.hp==target.runtime.hp and out.target.runtime.statuses.size()==1,"cleanses exact three roots/slow without burst healing")
  var engine := TacticalAuras.new(actor);var b := encounter(actor);out.target.character_id="b";b.units.b.record=out.target
