@@ -101,10 +101,10 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
 func _intercept_weapon(b: Dictionary,a: Dictionary,t: Dictionary) -> bool:
  # Finite typed status layers, not extra units or another attack/RNG authority.
  # The inherited command already paid the action/reaction and technique cost.
- var snapshot: Dictionary=characters.derive_character(a.record).snapshot
- if snapshot.tags.has("true_sight") or snapshot.senses.has("true_sight"):return false
  for instance in t.record.runtime.statuses:
   if registry.definition("statuses",instance.id).tags.has("weapon_decoy"):
+   var snapshot: Dictionary=characters.derive_character(a.record).snapshot
+   if snapshot.tags.has("true_sight") or snapshot.senses.has("true_sight"):return false
    t.record.runtime.statuses.erase(instance)
    b.log.append(t.name+" loses one refraction shell; "+a.name+"'s weapon attempt is intercepted before its accuracy roll. No hit or rider.")
    return true

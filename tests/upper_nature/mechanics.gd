@@ -27,9 +27,17 @@ func run() -> void:
   var row := source.definition("abilities",aid)
   if row.get("provenance",{}).get("revision")=="game133-sorcerer-druid-repertoires":test_spell(row)
  test_creatures_and_forms();test_hybrid();test_spellbook();test_legacy()
+ # Tier9 DCs can exceed every possible roll of the old level7 Fighter fixture.
+ # A lawful high-level Monk can both fail and succeed, with actual evasion.
+ fixtures.save_target=build("monk",20);fixtures.save_target.character_id="upper-save-defender"
  for cls in ["sorcerer","druid"]:
   for tier in [8,9]:
-   for family in ["tempest","sanctuary"]:test_spell(source.definition("abilities",cls+"-tier"+str(tier)+"-"+family))
+   for family in ["tempest","sanctuary"]:
+    var row := source.definition("abilities",cls+"-tier"+str(tier)+"-"+family)
+    test_spell(row)
+    if family=="tempest":
+     var defended := cast(prepared(fixtures[cls],row.id),fixtures.save_target,row.id,save_seed(row,true,fixtures.save_target))
+     check(defended.ok and defended.target.runtime.hp==fixtures.save_target.runtime.hp,"actual high-tier successful Reflex/evasion counterplay "+row.id)
  var hashes := {};var record_hashes := {};var next := {};var after := {}
  for id in saved_records:
   saved_records[id]=RulesJson.string_keys(saved_records[id]);var d := kernel.derive_character(saved_records[id])
