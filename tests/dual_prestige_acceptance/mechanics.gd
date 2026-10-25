@@ -12,9 +12,9 @@ func run() -> void:
  fixtures.miss_defender=warded_defender()
  saved_records.fighter=fixtures.fighter
  test_historical_projection()
- test_entry();test_dual_progression();test_champion_progression()
+ test_entry();test_dual_progression();test_champion_progression();test_twenty_level_builds()
  if failures:finish_dual();return
- test_independent_casts();test_restoration_choices();test_martial_outcomes();test_dual_forms();test_resources()
+ test_independent_casts();test_casting_attributes();test_restoration_choices();test_martial_outcomes();test_dual_forms();test_resources()
  var payload := {"records":{},"hashes":{},"record_hashes":{},"battles":battles,"next":{}}
  for key in saved_records:
   var r: Dictionary=RulesJson.string_keys(saved_records[key]);var d := kernel.derive_character(r)
@@ -126,6 +126,24 @@ func test_champion_progression() -> void:
    saved_records["champion:"+variant+str(at+1)]=r.duplicate(true)
   if not r.is_empty():check(not kernel.available_advancement(r).classes["abjurant-champion"].ok,"Champion cap5 preserved")
  contracts.champion_progression=true
+func test_twenty_level_builds() -> void:
+ var balanced := {"STR":8,"DEX":12,"CON":13,"INT":14,"WIS":15,"CHA":10}
+ var sequence := repeated("wizard",5)+repeated("cleric",5)+repeated("mystic-theurge",10)
+ var r := route(sequence,balanced,"mystic-theurge",{},{4:"INT",8:"INT",12:"WIS",16:"WIS",20:"INT"})
+ check(not r.is_empty(),"lawful standard-array balanced total20 Theurge10")
+ if not r.is_empty():
+  var d := kernel.derive_character(r)
+  check(d.ok and d.snapshot.level==20 and d.snapshot.class_levels["mystic-theurge"]==10 and d.snapshot.casting_levels.wizard==15 and d.snapshot.casting_levels.cleric==15,"total20 retains exact independent dual progression")
+  check(d.snapshot.attributes.INT==17 and d.snapshot.attributes.WIS==17,"only real scheduled increases, no invented dual high attributes")
+  check(not kernel.available_advancement(r).classes.wizard.ok,"global level20 cap cannot be bypassed through another class")
+  saved_records.theurge20=r
+ r=route(repeated("duskblade",15)+repeated("abjurant-champion",5),MARTIAL_ARRAY,"abjurant-champion",{"abjurant-doctrine-1":"retaliation","abjurant-doctrine-3":"aegis","abjurant-doctrine-5":"retaliation"})
+ check(not r.is_empty(),"lawful total20 Champion5 combined martial/caster history")
+ if not r.is_empty():
+  var d := kernel.derive_character(r)
+  check(d.snapshot.level==20 and d.snapshot.casting_levels.duskblade==20 and d.snapshot.class_levels.duskblade==15,"prestige grants casting20, not Duskblade20 class powers")
+  saved_records.champion20=r
+ contracts.total20=true
 func spell_pair(record: Dictionary,first: String,second: String) -> Dictionary:
  var r := record.duplicate(true)
  for id in [first,second]:
@@ -159,6 +177,45 @@ func test_independent_casts() -> void:
    check(not use(dry,fixtures.fighter,aid).ok,"other full pools cannot fund exhausted class "+empty)
   saved_records[cls+":independent"]=support.actor if support.ok else attack.actor
  contracts.independent_resources=true
+func test_casting_attributes() -> void:
+ var r: Dictionary=saved_records.theurge20.duplicate(true)
+ var cases := []
+ for cls in ["wizard","cleric"]:
+  var options: Array=kernel.derive_character(r).snapshot.abilities.filter(func(id: String):
+   var a := source.definition("abilities",id)
+   return a.get("casting_class")==cls and int(a.get("spell_tier",0))==7 and a.effects.any(func(e: Dictionary):return e.op=="save"))
+  check(not options.is_empty(),"real late saving-throw spell owned for each tradition "+cls)
+  if not options.is_empty():cases.append(options[0])
+ for id in cases:
+  var a := source.definition("abilities",id);var prepared := r.duplicate(true)
+  for previous in prepared.choices.prepared_abilities.duplicate():
+   var old := source.definition("abilities",previous)
+   if old.get("casting_class")==a.casting_class and old.get("spell_tier")==a.spell_tier:prepared.choices.prepared_abilities.erase(previous);prepared.choices.spell_preparations.erase(previous)
+  prepared.choices.prepared_abilities.append(id);prepared.choices.spell_preparations[id]=1
+  var replay := kernel._replay(prepared);check(replay.ok,"deliberate legal late preparation "+id)
+  if not replay.ok:continue
+  RulesCoreContent.refill_prepared(prepared,source)
+  var rest := RulesEffects.new(source).refresh_resources(prepared.runtime,replay.context.capacities,"eligible_rest");check(rest.ok,"late spell recovery remains legal")
+  if not rest.ok:continue
+  prepared.runtime=rest.runtime
+  for roll in [1,20]:
+   var cast := use_at_save(prepared,fixtures.fighter,id,roll)
+   check(cast.ok,"actual late cast/save "+id+str(roll))
+   if not cast.ok:continue
+   var saves: Array=cast.events.filter(func(e: Dictionary):return e.type=="save_resolved")
+   var expected := RulesExpressions.evaluate_formula(a.effects.filter(func(e: Dictionary):return e.op=="save")[0].dc,kernel.derive_character(prepared).context)
+   check(not saves.is_empty() and saves[0].dc==expected.value and saves[0].success==(roll==20),"actual success/failure and correct per-class attribute DC "+id)
+   for pool in a.cost.resources:check(cast.actor.runtime.resources[pool]==prepared.runtime.resources[pool]-int(a.cost.resources[pool]),"save never refunds correct slot/copy "+pool)
+   saved_records[id+":spent"]=cast.actor
+ # High virtual slots alone do not permit borrowing a different mental score.
+ var limited: Dictionary=saved_records["wizard:theurge10"].duplicate(true)
+ var forbidden: Array=kernel.derive_character(limited).snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).get("casting_class")=="cleric" and int(source.definition("abilities",id).get("spell_tier",0))==7)
+ check(not forbidden.is_empty(),"high divine ownership exists independently of usability")
+ if not forbidden.is_empty():
+  limited.choices.prepared_abilities.append(forbidden[0]);limited.choices.spell_preparations[forbidden[0]]=1
+  var invalid := kernel.derive_character(limited)
+  check(not invalid.ok and invalid.errors.any(func(e: Dictionary):return e.code=="spell.requirements"),"high INT cannot satisfy Cleric WIS17")
+ contracts.casting_attributes=true
 func test_restoration_choices() -> void:
  var r: Dictionary=saved_records["wizard:theurge10"]
  var target := build("fighter",20);target.runtime.hp=1
@@ -177,6 +234,24 @@ func test_restoration_choices() -> void:
   check(out.budget.main==0 and out.actor.runtime.resources["mystic-theurge-uses"]==r.runtime.resources["mystic-theurge-uses"]-1,"one main and one shared finite path use")
   check(out.actor.choices==r.choices,"support never rewrites either casting tradition")
  saved_records.release_spent=release.actor;saved_records.refuge_target=refuge.target
+ for spec in [["mystic-theurge-power-5","large"],["mystic-theurge-power-7","release"],["mystic-theurge-power-9","refuge"]]:
+  var b := encounter(r)
+  for ally in ["b","c"]:
+   b.units[ally].record=target.duplicate(true);b.units[ally].record.character_id=ally;b.units[ally].position=[1,2] if ally=="b" else[2,2]
+  b.units["bandit-blade"].record.runtime.hp=1
+  var engine := TacticalAuras.new(r);b=engine.seal(b)
+  var enemy_before := RulesJson.digest(b.units["bandit-blade"].record)
+  var out := engine.command(b,{"actor_id":"a","revision":b.revision,"kind":spec[0],"target_id":"a"})
+  check(out.ok,"real self-centred allied tactical support "+spec[1])
+  if not out.ok:continue
+  check(RulesJson.digest(out.battle.units["bandit-blade"].record)==enemy_before,"allied burst never heals or protects enemy")
+  check(out.battle.units.a.record.runtime.resources["mystic-theurge-uses"]==b.units.a.record.runtime.resources["mystic-theurge-uses"]-1,"one shared resource cost for whole radius, not per target")
+  for ally in ["b","c"]:
+   var actor: Dictionary=out.battle.units[ally].record
+   if spec[1]=="refuge":check(actor.runtime.hp==1 and actor.runtime.temporary_hp==14,"actual allied prevention without healing")
+   elif spec[1]=="release":check(actor.runtime.hp==15 and not actor.runtime.statuses.any(func(s: Dictionary):return s.id in ["weakened","arcane-tether"]),"actual allied bounded cleansing and smaller recovery")
+   else:check(actor.runtime.hp==31 and actor.runtime.statuses.any(func(s: Dictionary):return s.id=="weakened"),"actual allied larger recovery retains conditions")
+  battles["theurge:"+spec[1]]=out.battle
  contracts.distinct_support=true
 func test_martial_outcomes() -> void:
  var r: Dictionary=saved_records["champion:retaliation5"]

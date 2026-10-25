@@ -7,7 +7,7 @@ func repeated(id: String,count: int) -> Array:
  var result := []
  for n in count:result.append(id)
  return result
-func route(sequence: Array,attrs: Dictionary=WIZARD_ARRAY,path := "mystic-theurge",options: Dictionary={}) -> Dictionary:
+func route(sequence: Array,attrs: Dictionary=WIZARD_ARRAY,path := "mystic-theurge",options: Dictionary={},increases: Dictionary={}) -> Dictionary:
  var planner: Node=load("res://tests/nature_repertoires/caster_planner.gd").new()
  planner.source=source;planner.kernel=kernel
  var goals: Dictionary=planner.requirements(path,0)
@@ -24,6 +24,8 @@ func route(sequence: Array,attrs: Dictionary=WIZARD_ARRAY,path := "mystic-theurg
   var changed := false
   for group in choice.specialisations:
    if options.has(group) and choice.specialisations[group]!=options[group]:choice.specialisations[group]=options[group];changed=true
+  var next_level: int=r.advancement_history.size()+1
+  if increases.has(next_level) and choice.attribute_increase!=increases[next_level]:choice.attribute_increase=increases[next_level];changed=true
   if changed:
    out=kernel.preview_advancement(r,choice)
    check(out.ok,"deliberate persistent fixture choices "+str(cls)+JSON.stringify(out.get("errors",[])))
@@ -54,7 +56,11 @@ func learn(record: Dictionary,preview_snapshot: Dictionary={}) -> Dictionary:
   candidates.sort_custom(func(a: String,b: String):return int(source.definition("abilities",a).spell_tier)>int(source.definition("abilities",b).spell_tier) if source.definition("abilities",a).spell_tier!=source.definition("abilities",b).spell_tier else a<b)
   var limit: int=RulesCoreContent.selection_limit(cls,int(snapshot.casting_levels[cls]),source)
   for id in candidates:
-   if not spells.has(id) and spells.filter(func(known: String):return source.definition("abilities",known).get("casting_class")==cls).size()<limit:spells.append(id)
+   # A deliberate known spell per tier leaves room for later player choices.
+   # Preserve all already learned spells; never erase knowledge to fit a test.
+   var tier: int=int(source.definition("abilities",id).spell_tier)
+   var already := spells.any(func(known: String):return source.definition("abilities",known).get("casting_class")==cls and int(source.definition("abilities",known).get("spell_tier",0))==tier)
+   if not already and not spells.has(id) and spells.filter(func(known: String):return source.definition("abilities",known).get("casting_class")==cls).size()<limit:spells.append(id)
  r.choices.prepared_abilities=spells;r.choices.spell_preparations=copies
  var replay := kernel._replay(r);check(replay.ok,"owned selected spells remain legal "+JSON.stringify(replay.get("errors",[])))
  if not replay.ok:return {}
