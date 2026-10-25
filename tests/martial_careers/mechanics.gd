@@ -63,7 +63,7 @@ func test_disciplines() -> void:
     for pair in [[raw,raw_trace[0]],[buff,buff_trace[0]]]:
      var event: Dictionary=pair[1]
      check(event.roll==die and event.hit==(int(event.roll)+int(event.bonus)>=int(event.defence)),"original numeric attack authority, including high-bonus die1")
-     var expected := RulesRng.roll("1d20",control.rng).rng
+     var expected: Dictionary=RulesRng.roll("1d20",control.rng).rng
      if event.hit:expected=RulesRng.roll("1d6",expected).rng
      check(pair[0].battle.rng==expected,"exact authoritative attack/damage RNG consumption")
      outcomes["hits"if event.hit else"misses"]+=1
