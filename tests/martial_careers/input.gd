@@ -1,4 +1,6 @@
 extends "res://tests/hybrid_acceptance/input.gd"
+signal completed
+var no_quit := false
 func run() -> void:
  var folder := OS.get_environment("MARTIAL_ROOT")
  var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(folder.path_join("saved.json")))
