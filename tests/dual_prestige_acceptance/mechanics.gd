@@ -67,6 +67,22 @@ func test_entry() -> void:
    var forged: Dictionary=choice.choice.duplicate(true);forged.specialisations["mystic-theurge-arcane"]=wrong
    check(not kernel.preview_advancement(r,forged).ok,"psychic/divine class cannot be forged as arcane parent "+wrong)
  contracts.permanent_entry=true
+func test_historical_projection() -> void:
+ # Exercise the original archived18 -> released28 contract unchanged. An old
+ # legal history is not silently upgraded to stricter29 entry requirements.
+ var current_source := source;var current_kernel := kernel
+ source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v28.json").ok,"historical display pin28 remains installed")
+ kernel=RulesCharacter.new(source);super.test_historical_projection()
+ source=current_source;kernel=current_kernel
+ var archived := WorldOriginLore.read_json("res://tests/hybrid_acceptance/historical-render-fixtures.json")
+ for key in archived.records:
+  if not str(key).begins_with("hybrid:"):continue
+  var original: Dictionary=archived.records[key];var copy := original.duplicate(true);copy.rules_ref=source.rules_ref()
+  for pet in copy.runtime.companions.values():pet.record.rules_ref=source.rules_ref().duplicate(true)
+  var denied := kernel._replay(copy)
+  check(not denied.ok and denied.errors.any(func(e: Dictionary):return e.code=="requirement.spell_tier"),"unmigrated legacy career is correctly incompatible with stricter current entry "+key)
+  check(RulesJson.digest(original)==archived.record_hashes[key],"legacy source record/pin/knowledge remains exact "+key)
+ contracts.historical_pins=true
 func test_dual_progression() -> void:
  for cls in ["wizard","sorcerer"]:
   var count: int=3 if cls=="wizard" else 4

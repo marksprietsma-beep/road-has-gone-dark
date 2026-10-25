@@ -1,3 +1,7 @@
+# Historical projection corrected without migration or relaxed validation
+
+Candidate run40154789332 failed correctly when an archived18 high-level Theurge recipe (only final Sorcerer4-tier spell selected) was projected under29: at its historical entry, no permanent tier2 Sorcerer spell was known. Original18 record and hash remain unchanged/valid. New acceptance now runs the exact original archived18→released28 projection assertions unchanged, then explicitly proves29 rejects incompatible un-migrated histories. The actual render helper is NOT loosened. Newly generated GAME133 development recipes deliberately learn Sorcerer tier2 before prestige and retain it when preparing later spells, so fresh current display fixtures can be legal without rewriting archived saves or inventing entry knowledge. All cold/source assertions remain. Re-run focused Windows and inspect actual next failure.
+
 # Pinned reproduction passed; candidate29 focused validation next
 
 Windows40154175290 / b013027 passed251 diagnostic checks, zero failures. Source receipts committed. Candidate29 generated only after this proof, hashd82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e. Static guard confirms historical1–28 exact and original combat/RNG/save authority unchanged; source changes only existing version enablement. No class-scope requirement subsystem was added; preserve lawful junior-parent progression. Shared historical28 guard now validates its exact released prefix/bytes and chooses28 explicitly when29 is appended, retaining all assertions.
