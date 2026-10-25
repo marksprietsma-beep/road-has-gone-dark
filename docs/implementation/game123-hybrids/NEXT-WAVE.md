@@ -1,7 +1,17 @@
-# Finite continuation after these two careers
+# Finite continuation after Duskblade / Archmage acceptance
 
-Stop after Duskblade and Archmage publication/integration verification. GAME123/#101 remains In Progress/OPEN; no living-world or new roster work starts here.
+Stop after PR149 publication and post-merge Windows verification. GAME123 stays In Progress and GitHub101 OPEN. COMPLETE means bounded technical acceptance of supported original mechanics; human usability/balance is still required. No new roster or living-world work begins here.
 
-The next bounded candidate is **Mystic Theurge and Abjurant Champion**: audit real dual-track eligibility, selected casting progression, prepared/spontaneous pool independence, defensive/channel interactions, earned optional prestige entry, actual production choices and exact cold continuation. Reproduce only2–4 highest-impact gaps; preserve functioning consumers and historical pins. Neither is implemented as a new cohort in this branch.
+The next bounded pair is **Mystic Theurge and Abjurant Champion**. Audit existing functionality first, reproduce only2–4 highest-impact gaps, then verify real dual-track prerequisites, selected casting progression, independent prepared/spontaneous pools, defensive interactions, deliberate earned prestige entry, production controls and exact cold continuation. Preserve working consumers, XP authority and all historical pins. Neither class is a new implementation cohort in PR149.
 
-After that, the existing finite queue retains martial/defensive and body/creature careers. Re-evaluate actual remaining matrix entries rather than adding classes or pursuing all historical sourcebook occurrences as the milestone exit gate. Once all50 supported careers have defensible technical acceptance, perform the human Windows usability/balance checkpoint before GAME142/141 living-world integration.
+After accepting Duskblade/Archmage, the remaining15 careers are:
+
+- Mystic Theurge and Abjurant Champion.
+- Barbarian, Fighter, Monk, Paladin, Ranger, Eldritch Knight, Shadowdancer and Dwarven Defender.
+- Dragon Disciple, Warshaper, Bonded Summoner, Beast Steward and Grove Warden.
+
+Use `docs/implementation/game129/READINESS.json` for each specific outstanding acceptance gap and evidence scope. Do not substitute class/progression-table counts for real choices, costs, tactical behaviour, ordinary earned progression and native restart. Current source1690XP/14 plus exported-native continuation to1960XP/15 must remain distinct from high20/path5 development fixtures.
+
+If a later immutable pack is needed, adapt the current v28 source guard to preserve its exact released bytes/pin and select it explicitly, as the historical v27 guard already does. Never mutate v1–v28 or make an old test silently run the latest pin. Existing historical pins intentionally retain their old mechanics.
+
+Once all50 supported careers have defensible technical acceptance, hold the human Windows character usability/balance checkpoint before GAME142/GAME141 living-world integration. GAME89/92 targeting/downed presentation and GAME140 nonhumanoid art remain separately tracked. No callable Linear connector is available in this environment; use accurate GitHub101 handoff without claiming direct Linear writes.

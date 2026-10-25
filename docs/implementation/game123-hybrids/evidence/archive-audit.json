@@ -1,0 +1,25 @@
+{
+  "source_commit": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
+  "archive": "duskblade-archmage-windows-x64.zip",
+  "sha256": "c34345dab51eb6672ad646b20fdb797677814709ee9dda5a12ba3743f3f3f40f",
+  "archive_entries": 7022,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "duskblade-archmage-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "2717ccb6744de4b5160e0fcff0dc45bb918509eb799050f4f2db3c95dd153c0b",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v28",
+    "schema_version": 1,
+    "rules_version": "28.0.0",
+    "engine_schema": 3,
+    "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

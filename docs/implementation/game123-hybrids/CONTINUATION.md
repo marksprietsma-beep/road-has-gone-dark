@@ -1,3 +1,9 @@
+# Native release verified — finish publication, then GitHub150
+
+Recovered original sourceee7d29a, successful native40115102249; downloaded exact build/evidence. Independent ZIP/PE/CRC/source/content/credits audit PASSED; evidence-gated readiness35 COMPLETE/15 PARTIAL/0 BLOCKED. No new native release was run. Delivery,21 genuine PNGs, raw proof/timings and exact SHA are now recorded. Production/test/export inputs remain identical to successful release.
+
+NEXT: commit/push these delivery/readiness changes, inspect current-head Windows checks, mark existing149 ready and normal-merge when green. Verify actual main/post-merge Windows and update GitHub101 OPEN; no Linear connector. Then execute GitHub150 on one new branch from verified main: existing Mystic Theurge/Abjurant Champion only, audit first,2–4 real gaps, focused Windows before native, no new roster or living-world work. Expected next readiness37/13 only with matching native proof. Original chronology follows; older pending statements are superseded by this checkpoint.
+
 # Stable source gates passed — complete the one native Windows release
 
 Existing PR149 / same branch. Source1690XP40107828256 (9d35df7) PASSED1971/8 earned/cold and37/79 connected/cold/resolution/home-rest. Current actual Godot capture40113020677 (5058956) PASSED41 checks /21 original PNGs with real Specialisation and prerequisite controls. Continuation preflight40112681249 (efcbbf1) PASSED actual entry/decline/cold plus270 additional ordinary XP to1960/15, connected/cold and home recovery. This is SOURCE GODOT evidence, not an exported-native release.
