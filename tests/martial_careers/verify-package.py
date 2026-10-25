@@ -13,14 +13,14 @@ subprocess.run(['node','tools/release/export-game.mjs','--helper',os.environ['GA
 env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',MARTIAL_ROOT=str(base/'mechanics'),MARTIAL_CAPTURE_ROOT=str(base/'captures'),GAME126_JOURNEY_ROOT=str(base/'journeys'),GAME126_COHORT='0',GAME126_RESUME='0',GAME129_CONNECTED_ROOT=str(base/'connected'),GAME126_AUDIT_ROOT=str(base/'all-base'),GAME126_PACK='res://data/rules/trhgd-character-v30.json',GAME150_ROOT=str(base/'current-upper'),DUAL_ROOT=str(base/'historical29'),GAME133_ROOT=str(base/'historical18'),GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'))
 for key in ['GAME76_HELPER_ROOT','GODOT_BIN','GH_TOKEN','GITHUB_TOKEN']:env.pop(key,None)
 timings=[];proofs={}
-for phase in ['probe','mechanics','input','journey','connected','capture','audit','current-upper','historical29','historical18','legacy','compatibility']:
+for phase in ['probe','mechanics','input','extended','journey','connected','capture','audit','current-upper','historical29','historical18','legacy','compatibility']:
  for cold in ([False]if phase in ['probe','input','capture']else[False,True]):
   label=phase+('-cold'if cold else'');active=dict(env,MARTIAL_PHASE=phase)
   for key in ['MARTIAL_RESTART','GAME126_AUDIT_RESTART','GAME129_RESTART','GAME150_RESTART','DUAL_RESTART','GAME133_RESTART']:active[key]='1'if cold else'0'
   out=checked_process([str(dist/'road-has-gone-dark-qa.exe')]+([]if phase=='capture'else['--headless'])+['--audio-driver','Dummy'],cwd=dist,env=active,log=base/(label+'.log'),timeout=3600)
   timings.append(dict(phase=label,**out));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n',encoding='utf-8');print(timings[-1],flush=True)
   assert not out['exit_code']and not out['errors']and not out['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-18000:]
-for phase,folder,version in [('mechanics','mechanics','v30'),('journey','journeys/cohort-0','v30'),('connected','connected','v30'),('audit','all-base','v30'),('current-upper','current-upper','v30'),('historical29','historical29','v29'),('historical18','historical18','v18'),('legacy','legacy-v16','v16'),('compatibility','compatibility-v16','v16')]:
+for phase,folder,version in [('mechanics','mechanics','v30'),('extended','mechanics/extended','v30'),('journey','journeys/cohort-0','v30'),('connected','connected','v30'),('audit','all-base','v30'),('current-upper','current-upper','v30'),('historical29','historical29','v29'),('historical18','historical18','v18'),('legacy','legacy-v16','v16'),('compatibility','compatibility-v16','v16')]:
  for filename in ['proof.json','restart-proof.json']:
   p=json.loads((base/folder/filename).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0,(phase,filename)
   if 'rules_ref'in p:assert p['rules_ref']==pins['trhgd-character-'+version],(phase,filename)
@@ -28,6 +28,7 @@ for phase,folder,version in [('mechanics','mechanics','v30'),('journey','journey
 for key,filename in [('pinned29-probe','probe-proof.json'),('input','input-proof.json')]:
  p=json.loads((base/'mechanics'/filename).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0;proofs[key]=p
 assert all(proofs['mechanics/proof.json']['contracts'][k]is True for k in ['training','equipment_disciplines','actual_attacks','resilient_mastery','rage_tradeoffs','resources_and_expiry','feat_choices','weapon_overrides'])
+assert all(proofs['extended/proof.json']['contracts'][k]is True for k in ['guard_reactions','power_strike','higher_features','exhaustion','exact_rage_duration','reaction_weapon'])
 j=proofs['journey/proof.json'];assert j['earned_xp']==490 and not j['xp_injected']and len(j['journeys'])==3 and {r['role']for r in j['builds'].values()}=={'blade','bow','rage'}
 assert all(len(r['history'])==8 for r in j['journeys'])
 assert set(proofs['connected/proof.json']['casts'].values())=={'fighter-blade-6','fighter-bow-6','barbarian-resilient-6'}
