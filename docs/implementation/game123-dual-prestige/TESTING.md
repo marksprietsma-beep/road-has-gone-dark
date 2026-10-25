@@ -1,4 +1,4 @@
-# Windows acceptance plan and human review
+# Confirmed Windows acceptance and human review
 
 No Linux Godot execution. High Theurge10/Champion5/total20 examples are explicitly development fixtures. Ordinary earned campaign target is640XP/total9; six optional-entry forks and two connected combat forks are isolated verification saves, not repeatable primary rewards.
 
@@ -9,7 +9,7 @@ No Linux Godot execution. High Theurge10/Champion5/total20 examples are explicit
 3. Source-guarded presentation preflight restores successful source receipts and photographs original production scenes. It cannot alter protected original earned JSON. Native capture repeats these actual scenes in the export.
 4. `verify-package.py`: once stable, one complete self-contained Windows export; empty PATH and no source helper/engine override. Fresh real earned campaign, mechanics/input/cold/entry/connected/captures, all32 base1–20, current upper, historical28/18/16 and frozen22181 source-Windows oracle. Ordinary shipped executable independently starts. QA executables are removed; full resources/helper/art licences and manifest remain. ZIP checksum/CRC/source checks are mandatory.
 
-Actual run conclusions and counts will be recorded in DELIVERY.md only after observed success. Readiness promotion requires exact matching native source, not this plan.
+Full native Windows release40176120502 PASSED. Actual per-phase counts, archive/source audit and the evidence-gated37/13 result are recorded in [DELIVERY.md](DELIVERY.md) and its linked original receipts. The procedures below describe the gates that actually ran; no Linux Godot validation was performed.
 
 ## Human playable journey
 
@@ -27,4 +27,4 @@ For source-editor review, run the project normally (intro_sequence.tscn → main
 
 ## Presentation limits
 
-Original Godot screenshots will be supplied after native success. Some runners render a requested1280×720 client as1280×719; metadata records actual dimensions. Actual captures also show long combat action labels extending/clipping beyond the action column at1280 and640. Large dual-caster repertoires require scrolling; not every named ability is visible in a single battle frame. These shared presentation defects are not claimed fixed by this mechanics acceptance. Existing long sheet/selection text, small-screen density, targeting/downed usability (GAME89/92) and humanoid LPC fallbacks (GAME140) remain separate. No new art/body-coverage claim.
+The21 original exported-game Godot screenshots are in [screenshots/README.md](screenshots/README.md). Some runners render a requested1280×720 client as1280×719; metadata records actual dimensions. Actual captures also show long combat action labels extending/clipping beyond the action column at1280 and640. Large dual-caster repertoires require scrolling; not every named ability is visible in a single battle frame. These shared presentation defects are not claimed fixed by this mechanics acceptance. Existing long sheet/selection text, small-screen density, targeting/downed usability (GAME89/92) and humanoid LPC fallbacks (GAME140) remain separate. No new art/body-coverage claim.
