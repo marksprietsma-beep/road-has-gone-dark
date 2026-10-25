@@ -5,6 +5,7 @@ const Capture = preload("res://tests/spell_repertoires/capture_driver.gd")
 var checks := 0
 var failures := 0
 var diagnostics := {}
+var new_campaign_pin := {}
 func check(value: bool,message: String) -> void:
  checks+=1
  if not value:failures+=1;push_error(message)
@@ -13,8 +14,14 @@ func run() -> void:
  var base := OS.get_environment("GAME151_ROOT");DirAccess.make_dir_recursive_absolute(base)
  var archived: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(FIXTURES))
  var original_bytes := FileAccess.get_sha256(FIXTURES)
- var display := RulesRecords.new_character_registry();var kernel := RulesCharacter.new(display)
- check(display.rules_ref().pack_id=="trhgd-character-v23","current display remains immutable23")
+ # This is the exact archived v17 -> v23 incident reproduction, not a claim
+ # that v23 is still the New Game default. Production captures independently
+ # project using their actual campaign pin in capture_driver.gd.
+ new_campaign_pin=RulesRecords.new_character_registry().rules_ref()
+ var display := RulesRegistry.new()
+ check(display.load_pack("res://data/rules/trhgd-character-v23.json").ok,"historical display fixture loads immutable23")
+ var kernel := RulesCharacter.new(display)
+ check(display.rules_ref().pack_id=="trhgd-character-v23","historical display remains immutable23")
  if OS.get_environment("GAME151_RESTART")=="1":
   var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
   check(original_bytes==saved.fixture_sha256,"archived source bytes unchanged across processes")
@@ -76,6 +83,7 @@ func run() -> void:
  FileAccess.open(base.path_join("saved.json"),FileAccess.WRITE).store_string(JSON.stringify({"originals":archived.records,"rendered":rendered,"hashes":hashes,"record_hashes":record_hashes,"fixture_sha256":original_bytes}))
  finish(base)
 func finish(base: String,restart := false) -> void:
- var proof := {"checks":checks,"failures":failures,"diagnostics":diagnostics,"source_rules":"trhgd-character-v17","display_rules":"trhgd-character-v23","fixture_file_sha256":FileAccess.get_sha256(FIXTURES),"production_changed":false}
+ check(RulesRecords.new_character_registry().rules_ref()==new_campaign_pin,"archived display projection never changes the current New Game pin")
+ var proof := {"checks":checks,"failures":failures,"diagnostics":diagnostics,"source_rules":"trhgd-character-v17","display_rules":"trhgd-character-v23","new_campaign_rules_ref":new_campaign_pin,"fixture_file_sha256":FileAccess.get_sha256(FIXTURES),"production_changed":false}
  FileAccess.open(base.path_join("restart-proof.json" if restart else "proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("GAME151 ",JSON.stringify(proof));quit(1 if failures else 0)

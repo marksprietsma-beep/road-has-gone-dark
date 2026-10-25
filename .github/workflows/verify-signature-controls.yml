@@ -1,0 +1,46 @@
+name: Historical Production Combat Controls
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, fix/game-123-historical-signature-controls]
+    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', 'tests/spell_repertoires/input_driver.gd', 'tests/nature_repertoires/input_driver.gd', '.github/workflows/verify-signature-controls.yml']
+  pull_request:
+    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', 'tests/spell_repertoires/input_driver.gd', 'tests/nature_repertoires/input_driver.gd', '.github/workflows/verify-signature-controls.yml']
+permissions:
+  contents: read
+jobs:
+  historical-controls-windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Checked engine import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/signature-input-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'signature-input-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Historical mechanics, exact cold restart and actual production controls
+        env:
+          GAME129_ROOT: ${{ runner.temp }}/signature-controls
+        run: python tests/class_signatures/run-input.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: historical-signature-controls-windows
+          path: |
+            ${{ runner.temp }}/signature-controls/**
+            ${{ runner.temp }}/signature-input-import.log
+          retention-days: 90

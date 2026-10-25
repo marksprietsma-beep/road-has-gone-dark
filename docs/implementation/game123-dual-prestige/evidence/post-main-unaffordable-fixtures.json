@@ -1,0 +1,149 @@
+{
+  "scope": "Read-only extraction from original failed native Windows artifacts; no simulated game execution. Full logs retained by their GitHub runs.",
+  "fixtures": [
+    {
+      "run": 40183632608,
+      "source": "354995bd49a58676347417045fba7276e34c3eae",
+      "fixture": "soulknife",
+      "budget": {
+        "main": 0,
+        "move": 1
+      },
+      "resources": {
+        "soulknife-focus": 0
+      },
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      }
+    },
+    {
+      "run": 40183632588,
+      "source": "354995bd49a58676347417045fba7276e34c3eae",
+      "fixture": "cleric-return-to-breath",
+      "budget": {
+        "main": 0,
+        "move": 1
+      },
+      "resources": {
+        "channel": 4,
+        "cleric-battle-litany-prepared": 0,
+        "cleric-elemental-covenant-prepared": 0,
+        "cleric-freedom-path-prepared": 0,
+        "cleric-prepared-anchoring-ward": 0,
+        "cleric-prepared-bless": 0,
+        "cleric-prepared-cleansing-ward": 0,
+        "cleric-prepared-cure-wounds": 0,
+        "cleric-prepared-faith-ward": 0,
+        "cleric-prepared-fracture-concentration": 0,
+        "cleric-prepared-greater-cure": 0,
+        "cleric-prepared-prayer": 0,
+        "cleric-prepared-radiance": 0,
+        "cleric-prepared-restorative-circle": 0,
+        "cleric-prepared-restoring-light": 0,
+        "cleric-prepared-summon-boar": 0,
+        "cleric-prepared-summon-bulwark-construct": 0,
+        "cleric-prepared-summon-frost-hound": 0,
+        "cleric-prepared-summon-leopard": 0,
+        "cleric-prepared-summon-renewal-spirit": 0,
+        "cleric-prepared-summon-sentinel": 0,
+        "cleric-prepared-summon-stone-guardian": 0,
+        "cleric-prepared-sunburst": 0,
+        "cleric-purifying-renewal-prepared": 0,
+        "cleric-return-to-breath-prepared": 0,
+        "cleric-slots-1": 15,
+        "cleric-slots-2": 14,
+        "cleric-slots-3": 13,
+        "cleric-slots-4": 12,
+        "cleric-slots-5": 11,
+        "cleric-slots-6": 10,
+        "cleric-slots-7": 8,
+        "cleric-slots-8": 8,
+        "cleric-slots-9": 7,
+        "cleric-tier5-control-copies": 0,
+        "cleric-tier5-restoration-copies": 0,
+        "cleric-tier6-control-copies": 0,
+        "cleric-tier6-restoration-copies": 0,
+        "cleric-tier7-sanctuary-copies": 0,
+        "cleric-tier7-tempest-copies": 0,
+        "cleric-tier8-sanctuary-copies": 0,
+        "cleric-tier8-tempest-copies": 0,
+        "cleric-tier9-sanctuary-copies": 0,
+        "cleric-tier9-tempest-copies": 0
+      },
+      "rules_ref": {
+        "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v17",
+        "rules_version": "17.0.0",
+        "schema_version": 1
+      }
+    },
+    {
+      "run": 40183632644,
+      "source": "354995bd49a58676347417045fba7276e34c3eae",
+      "fixture": "druid-packward-canopy",
+      "budget": {
+        "main": 0,
+        "move": 1
+      },
+      "resources": {
+        "druid-bramble-tether-prepared": 0,
+        "druid-call-ancestor-sentinel-prepared": 0,
+        "druid-call-briar-beast-prepared": 0,
+        "druid-packward-canopy-prepared": 0,
+        "druid-predators-rhythm-prepared": 0,
+        "druid-prepared-anchoring-ward": 0,
+        "druid-prepared-barkskin-spell": 0,
+        "druid-prepared-nature-cure": 0,
+        "druid-prepared-oak-ward": 0,
+        "druid-prepared-restorative-circle": 0,
+        "druid-prepared-roots": 0,
+        "druid-prepared-storm-bolt": 0,
+        "druid-prepared-storm-lance": 0,
+        "druid-prepared-summon-boar": 0,
+        "druid-prepared-summon-bulwark-construct": 0,
+        "druid-prepared-summon-frost-hound": 0,
+        "druid-prepared-summon-leopard": 0,
+        "druid-prepared-summon-renewal-spirit": 0,
+        "druid-prepared-summon-sentinel": 0,
+        "druid-prepared-summon-stone-guardian": 0,
+        "druid-prepared-thorn-dart": 0,
+        "druid-prepared-vine-snare": 0,
+        "druid-sap-renewal-prepared": 0,
+        "druid-slots-1": 15,
+        "druid-slots-2": 14,
+        "druid-slots-3": 13,
+        "druid-slots-4": 12,
+        "druid-slots-5": 11,
+        "druid-slots-6": 9,
+        "druid-slots-7": 9,
+        "druid-slots-8": 8,
+        "druid-slots-9": 7,
+        "druid-tier5-control-copies": 0,
+        "druid-tier5-restoration-copies": 0,
+        "druid-tier6-control-copies": 0,
+        "druid-tier6-restoration-copies": 0,
+        "druid-tier7-sanctuary-copies": 0,
+        "druid-tier7-tempest-copies": 0,
+        "druid-tier8-sanctuary-copies": 0,
+        "druid-tier8-tempest-copies": 0,
+        "druid-tier9-sanctuary-copies": 0,
+        "druid-tier9-tempest-copies": 0,
+        "druid-winters-verdict-prepared": 0,
+        "nature-bond-uses": 7,
+        "wildshape": 7
+      },
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      }
+    }
+  ]
+}
