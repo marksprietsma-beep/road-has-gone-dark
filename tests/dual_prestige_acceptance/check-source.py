@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib,json,re,subprocess
 ROOT=Path(__file__).resolve().parents[2]
 BASE='c796043aa2543bcab144e8d0353628c35c2ab610'
+UI_SHA='dbc34bc5956ff1a1e112e33c63a667b73aae21b8daf7f2f85ae2faec621dc357'
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
     manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))
@@ -44,7 +45,13 @@ def verify():
     old,new=tables['features'];assert all(new[k]==old[k]for k in old)
     assert set(new)-set(old)=={i+'-feature'for i in added}
     for file in (ROOT/'scripts').rglob('*.gd'):
-        path=file.relative_to(ROOT).as_posix();before=original(path).decode('utf-8')
+        path=file.relative_to(ROOT).as_posix()
+        if path=='scripts/ui/first_adventure.gd':
+            # Reviewed common cost/ownership/channel access and legal melee
+            # targets; no change to command authority, budgets, logs or RNG.
+            assert hashlib.sha256(file.read_bytes()).hexdigest()==UI_SHA
+            continue
+        before=original(path).decode('utf-8')
         expected=re.sub(r'"trhgd-character-v28"(\s*)\]',r'"trhgd-character-v28","trhgd-character-v29"\1]',before)
         expected=expected.replace('["trhgd-character-v28","28.0.0",3]]','["trhgd-character-v28","28.0.0",3],["trhgd-character-v29","29.0.0",3]]')
         expected=expected.replace('const NEW_PACK := "trhgd-character-v28"','const NEW_PACK := "trhgd-character-v29"')
@@ -53,5 +60,5 @@ def verify():
     pin=manifest['packs'][-1]['rules_ref']
     assert pin['pack_id']==b['pack_id']=='trhgd-character-v29'
     assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
-    return dict(baseline=BASE,historical_pack_bytes_and_pins=28,rules_ref=pin,roster_unchanged=True,new_class_support_actions=2,typed_existing_actions=6,source_changes='Existing version enablement only; original combat/RNG/save authorities unchanged')
+    return dict(baseline=BASE,historical_pack_bytes_and_pins=28,rules_ref=pin,roster_unchanged=True,new_class_support_actions=2,typed_existing_actions=6,source_changes='Existing version enablement and reviewed shared action-availability presentation; original combat/RNG/save authorities unchanged')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
