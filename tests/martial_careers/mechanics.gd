@@ -29,6 +29,16 @@ func encounter(record: Dictionary) -> Dictionary:
  var b := super.encounter(record)
  b.units.a.name=str(source.definition("classes",record.advancement_history[0].class_id).name)+" development adventurer"
  return TacticalAuras.new(record).seal(b)
+func attack_expectation(engine: TacticalAuras,b: Dictionary) -> Dictionary:
+ # Ask the frozen numeric authority with the actual displayed stats. The
+ # adapter's nested trace is private to its own rider delivery; do not change
+ # production observation semantics merely to inspect an outer test scope.
+ var actor: Dictionary=b.units.a;var target: Dictionary=b.units["bandit-blade"]
+ var weapon := source.definition("equipment",engine.active_weapon(actor))
+ var ranged: bool=weapon.tags.has("ranged");var stats: Dictionary=engine.stats(actor)
+ var bonus: int=stats.ranged_attack if ranged else stats.melee_attack
+ if ranged and engine.engaged(b,actor):bonus-=4
+ return RulesRng.attack_roll(bonus,int(engine.stats(target).defence),source.rule("critical"),b.rng)
 func test_training() -> void:
  var a := stats_of(variant("fighter",4));var b := stats_of(variant("fighter",5))
  check(b.melee_attack-a.melee_attack-(b.BAB-a.BAB)==1 and b.ranged_attack-a.ranged_attack-(b.BAB-a.BAB)==1,"Veteran adds one actual attack beyond BAB in both modes")
@@ -54,18 +64,20 @@ func test_disciplines() -> void:
    for die in [1,19,20]:
     var control := encounter(r);var enhanced := encounter(used.actor)
     control.rng=attack_seed(die);enhanced.rng=control.rng.duplicate(true);control=engine.seal(control);enhanced=engine.seal(enhanced)
-    var result := {}
-    var raw_trace := RulesAttackTrace.capture(func():result.raw=execute(engine,control,"attack","bandit-blade"))
-    var buff_trace := RulesAttackTrace.capture(func():result.buff=execute(engine,enhanced,"attack","bandit-blade"))
-    var raw: Dictionary=result.raw;var buff: Dictionary=result.buff
-    check(raw.ok and buff.ok and raw_trace.size()==1 and buff_trace.size()==1,"actual numeric weapon command "+style+str(die))
-    if not raw.ok or not buff.ok or raw_trace.is_empty() or buff_trace.is_empty():continue
+    var raw_expected := attack_expectation(engine,control)
+    var buff_expected := attack_expectation(engine,enhanced)
+    var raw := execute(engine,control,"attack","bandit-blade");var buff := execute(engine,enhanced,"attack","bandit-blade")
+    var raw_trace: Array=[raw_expected.event];var buff_trace: Array=[buff_expected.event]
+    check(raw.ok and buff.ok,"actual numeric weapon command "+style+str(die)+str(raw.get("error",""))+str(buff.get("error","")))
+    if not raw.ok or not buff.ok:continue
     for pair in [[raw,raw_trace[0]],[buff,buff_trace[0]]]:
      var event: Dictionary=pair[1]
      check(event.roll==die and event.hit==(int(event.roll)+int(event.bonus)>=int(event.defence)),"original numeric attack authority, including high-bonus die1")
      var expected: Dictionary=RulesRng.roll("1d20",control.rng).rng
      if event.hit:expected=RulesRng.roll("1d6",expected).rng
      check(pair[0].battle.rng==expected,"exact authoritative attack/damage RNG consumption")
+     var messages: String="\n".join(pair[0].battle.log.slice(control.log.size()))
+     check(("%d + %d vs %d"%[event.roll,event.bonus,event.defence])in messages,"actual combat log confirms original numeric contest")
      outcomes["hits"if event.hit else"misses"]+=1
      if event.get("critical",false):outcomes.criticals+=1
     if not raw_trace[0].hit and not buff_trace[0].hit:
