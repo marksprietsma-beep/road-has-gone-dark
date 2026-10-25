@@ -1,0 +1,23 @@
+2026-10-25T03:28:17.2062380Z SCRIPT ERROR: Invalid access to property or key 'tags' on a base object of type 'Dictionary'.
+2026-10-25T03:28:17.2065826Z    at: prepared (res://tests/nature_repertoires/mechanics_driver.gd:52)
+2026-10-25T03:28:17.2066710Z    GDScript backtrace (most recent call first):
+2026-10-25T03:28:17.2067352Z        [0] prepared (res://tests/nature_repertoires/mechanics_driver.gd:52)
+2026-10-25T03:28:17.2068090Z        [1] test_hybrid (res://tests/nature_repertoires/mechanics_driver.gd:187)
+2026-10-25T03:28:17.2068780Z        [2] run (res://tests/upper_nature/mechanics.gd:29)
+2026-10-25T03:28:17.2069575Z ERROR: deliberate tier2 spontaneous knowledge precedes prestige entry
+2026-10-25T03:28:17.2070324Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-25T03:28:17.2070924Z    GDScript backtrace (most recent call first):
+2026-10-25T03:28:17.2071576Z        [0] check (res://tests/character_wave_four/mechanics_driver.gd:13)
+2026-10-25T03:28:17.2072349Z        [1] test_hybrid (res://tests/nature_repertoires/mechanics_driver.gd:188)
+2026-10-25T03:28:17.2073103Z        [2] run (res://tests/upper_nature/mechanics.gd:29)
+2026-10-25T03:28:17.2084526Z ERROR: legal Sorcerer/Druid/Theurge advancement druid[{"code":"build.schema","detail":"Unsupported mechanical record","path":"build"},{"code":"build.field","detail":"Required field is absent","path":"schema_version"},{"code":"build.field","detail":"Required field is absent","path":"character_id"},{"code":"build.field","detail":"Required field is absent","path":"rules_ref"},{"code":"build.field","detail":"Required field is absent","path":"base_attributes"},{"code":"build.field","detail":"Required field is absent","path":"ancestry_ref"},{"code":"build.field","detail":"Required field is absent","path":"background_ref"},{"code":"build.field","detail":"Required field is absent","path":"advancement_history"},{"code":"build.field","detail":"Required field is absent","path":"equipment"},{"code":"build.field","detail":"Required field is absent","path":"choices"},{"code":"build.field","detail":"Required field is absent","path":"runtime"},{"code":"build.field","detail":"Required field is absent","path":"revision"},{"code":"build.rules_pin","detail":"Exact rules pack/version/content is required","path":"rules_ref"},{"code":"build.identity","detail":"Stable character identity required","path":"character_id"},{"code":"build.attributes","detail":"Exactly six base attributes required","path":"attributes"},{"code":"build.reference","detail":"Unknown mechanical heritage/background","path":"ancestry_ref"},{"code":"build.reference","detail":"Unknown mechanical heritage/background","path":"background_ref"},{"code":"build.array","detail":"Expected array","path":"advancement_history"},{"code":"build.array","detail":"Expected array","path":"equipment"},{"code":"build.revision","detail":"Integer revision required","path":"revision"},{"code":"build.choices","detail":"Explicit prepared-ability choices required","path":"choices"},{"code":"build.preparations","detail":"Typed prepared copy counts required","path":"choices"},{"code":"build.runtime","detail":"Mutable mechanical record required","path":"runtime"}]
+2026-10-25T03:28:17.2094478Z    at: push_error (core/variant/variant_utility.cpp:1024)
+2026-10-25T03:28:17.2095078Z    GDScript backtrace (most recent call first):
+2026-10-25T03:28:17.2095730Z        [0] check (res://tests/character_wave_four/mechanics_driver.gd:13)
+2026-10-25T03:28:17.2096543Z        [1] test_hybrid (res://tests/nature_repertoires/mechanics_driver.gd:177)
+2026-10-25T03:28:17.2097241Z        [2] run (res://tests/upper_nature/mechanics.gd:29)
+2026-10-25T03:28:17.2097572Z 
+2026-10-25T03:28:17.3183169Z ##[error]Process completed with exit code 1.
+2026-10-25T03:28:17.3453842Z ##[group]Run actions/upload-artifact@v4
+2026-10-25T03:28:17.3454556Z with:
+2026-10-25T03:28:17.3454901Z   name: upper-nature-windows-evidence
