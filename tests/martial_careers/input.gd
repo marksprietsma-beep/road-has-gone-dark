@@ -23,10 +23,12 @@ func run() -> void:
    for id in editor.equipment_pickers:
     var selected: bool=id in ["bow","leathers"]
     if editor.equipment_pickers[id].button_pressed!=selected:editor.equipment_pickers[id].button_pressed=selected
-   var feat := find(editor.feat_picker,"point-blank-shot");check(feat>=0 and not editor.feat_picker.is_item_disabled(feat),"real ranged feat choice")
-   if feat>=0:editor.feat_picker.select(feat);editor.feat_picker.item_selected.emit(feat)
    var dex: OptionButton=editor.attribute_pickers.DEX;var high := find(dex,"15")
+   check(high>=0,"real standard-array score option")
    if high>=0:dex.select(high);dex.item_selected.emit(high)
+   var feat := find(editor.feat_picker,"point-blank-shot")
+   check(feat>=0 and not editor.feat_picker.is_item_disabled(feat),"real ranged feat choice "+JSON.stringify({"index":feat,"budget":editor.budget.text,"preview":editor.preview,"attributes":editor.attributes,"allocation":editor.allocation,"items":range(editor.feat_picker.item_count).map(func(n: int):return [editor.feat_picker.get_item_metadata(n),editor.feat_picker.is_item_disabled(n),editor.feat_picker.get_popup().get_item_tooltip(n)])}))
+   if feat>=0:editor.feat_picker.select(feat);editor.feat_picker.item_selected.emit(feat)
   var payload := editor.definition()
   var created := CharacterBuilderRecords.create(r.character_id,payload,r)
   check(created.ok,"real creator controls produce a legal persistent character "+str(spec)+JSON.stringify(created.get("errors",[])))
