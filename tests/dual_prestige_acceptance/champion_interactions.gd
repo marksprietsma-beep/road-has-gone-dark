@@ -45,7 +45,7 @@ func run() -> void:
   var expired: Dictionary=ward.target.duplicate(true)
   for n in 3:expired.runtime=RulesEffects.new(source).expire_statuses(expired.runtime,"global_round_start").runtime
   check(not expired.runtime.statuses.any(func(s: Dictionary):return s.id in ["runic-shell","spirit-shelter"]),"actual Aegis status duration expires after three global boundaries")
-  var after := kernel.derive_character(expired).snapshot;var before := kernel.derive_character(fixtures.fighter).snapshot
+  var after: Dictionary=kernel.derive_character(expired).snapshot;var before: Dictionary=kernel.derive_character(fixtures.fighter).snapshot
   check(after.stats.defence==before.stats.defence and after.stats.will==before.stats.will and expired.runtime.temporary_hp==9,"expiry removes defence/mental protection; separate buffer follows existing policy")
   saved_records.ward_expired=expired
  var healing := use(saved.records["wizard:theurge3"],fixtures.fighter,"mystic-theurge-power-3");check(healing.ok,"middle Theurge restoration executes at its real path level3")
