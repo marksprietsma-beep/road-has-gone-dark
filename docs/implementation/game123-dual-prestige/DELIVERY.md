@@ -1,0 +1,7 @@
+# Mystic Theurge / Abjurant Champion delivery — native gate pending
+
+Existing [PR151](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/151) / GitHub150. Rules29.0.0 candidate hash `d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e`. Roster unchanged:32 base classes /18 prestige careers. Theurge supports10 path levels; Champion5; total character cap20. Technical readiness remains35/15 until the matching-source native gate passes.
+
+[Source Windows40173767865](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40173767865) passed focused mechanics1290, cold125, controls29, pinned diagnostics251; ordinary earned campaign825/8 cold, manual entry46/19 cold, connected-A58/139 cold and connected-B52/166 cold, zero failures. Source earned640XP/9 and high-level development fixtures are explicitly separate. This is NOT an exported-native release claim. Historical upper regression40173770976 also passed after correcting the real spell ID. [Audit and exact corrections](ASSESSMENT.md); [human steps](TESTING.md).
+
+Windows package URL, SHA256, exact native source, original screenshots, archive/PE/source/credits audit and final37/13 matrix will be recorded only after actual success. No new native release has been claimed here. Prior PR149 is merged and all22 post-main workflows passed; its original build is separate and not passed off as this29 cohort.

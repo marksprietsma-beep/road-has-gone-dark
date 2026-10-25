@@ -1,0 +1,27 @@
+{
+  "checks": 1290,
+  "contracts": {
+    "body_suppression": true,
+    "casting_attributes": true,
+    "champion_progression": true,
+    "distinct_support": true,
+    "dual_casting": true,
+    "historical_pins": true,
+    "independent_resources": true,
+    "martial_outcomes": true,
+    "permanent_entry": true,
+    "recovery": true,
+    "total20": true
+  },
+  "development_fixtures": true,
+  "earned_xp": false,
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v29",
+    "rules_version": "29.0.0",
+    "schema_version": 1
+  },
+  "source": "RulesCharacter/RulesEffects/TacticalAuras"
+}

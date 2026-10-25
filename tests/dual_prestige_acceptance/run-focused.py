@@ -7,7 +7,7 @@ sys.path.insert(0,str(root/'tests/character_psychic'))
 from checked_process import checked_process
 base=Path(os.environ['DUAL_ROOT']);base.mkdir(parents=True,exist_ok=True)
 timings=[]
-phases=[('probe',False,'probe-proof.json')]
+phases=[('compile',False,''),('probe',False,'probe-proof.json')]
 if (root/'data/rules/trhgd-character-v29.json').exists():
     phases += [('mechanics',False,'proof.json'),('mechanics',True,'restart-proof.json'),('input',False,'input-proof.json'),('interactions',False,'interactions-proof.json'),('interactions',True,'interactions-restart-proof.json')]
 for phase,cold,file in phases:
@@ -16,5 +16,6 @@ for phase,cold,file in phases:
     timings.append(dict(phase=label,**result));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(timings[-1]),flush=True)
     assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-16000:]
-    proof=json.loads((base/file).read_text(encoding='utf-8'));assert proof['checks']>0 and proof['failures']==0
+    if file:
+        proof=json.loads((base/file).read_text(encoding='utf-8'));assert proof['checks']>0 and proof['failures']==0
 print('DUAL_PRESTIGE_SOURCE_FOCUSED_PASS')
