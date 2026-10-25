@@ -61,7 +61,11 @@ func test_disciplines() -> void:
    check(after.damage==before.damage+1 if style=="bow" else after.defence==before.defence+1,"actual advertised damage/defence bonus")
    if level>=6:check(used.actor.runtime.temporary_hp==level,"mastery finite nonstacking buffer")
    var engine := TacticalAuras.new(r)
-   for die in [1,19,20]:
+   var dice: Array=[1,19,20]
+   var example := attack_expectation(engine,encounter(r))
+   var boundary: int=int(example.event.defence)-int(example.event.bonus)-1
+   if boundary>=1 and boundary<=20 and not dice.has(boundary):dice.append(boundary)
+   for die in dice:
     var control := encounter(r);var enhanced := encounter(used.actor)
     control.rng=attack_seed(die);enhanced.rng=control.rng.duplicate(true);control=engine.seal(control);enhanced=engine.seal(enhanced)
     var raw_expected := attack_expectation(engine,control)
@@ -97,7 +101,7 @@ func test_disciplines() -> void:
    var unbuffed := wrong.duplicate(true)
    check(stats_of(swapped).damage==stats_of(unbuffed).damage if style=="bow"else stats_of(swapped).melee_attack==stats_of(unbuffed).melee_attack,"existing discipline bonus follows actual equipped weapon")
    records[style+str(level)]=used.actor
- check(outcomes.misses>0 and outcomes.hits>0 and outcomes.criticals>0,"genuine numeric misses, hits and criticals were observed")
+ check(outcomes.misses>0 and outcomes.hits>0 and outcomes.criticals>0 and outcomes.changed_hits>0,"genuine numeric misses, hits, criticals and accuracy-converted hits were observed")
  contracts.equipment_disciplines=true;contracts.actual_attacks=true
 func test_mastery() -> void:
  for style in ["reckless","resilient"]:
