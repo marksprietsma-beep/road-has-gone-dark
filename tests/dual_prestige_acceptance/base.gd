@@ -58,5 +58,11 @@ func learn(record: Dictionary,preview_snapshot: Dictionary={}) -> Dictionary:
  r.choices.prepared_abilities=spells;r.choices.spell_preparations=copies
  var replay := kernel._replay(r);check(replay.ok,"owned selected spells remain legal "+JSON.stringify(replay.get("errors",[])))
  if not replay.ok:return {}
- r.runtime=RulesEffects.new(source).refresh_resources(r.runtime,replay.context.capacities,"eligible_rest").runtime
+ # Match the existing home-preparation policy before daily recovery. Old
+ # prepared-copy balances cannot survive a deliberately changed loadout.
+ RulesCoreContent.refill_prepared(r,source)
+ var rested := RulesEffects.new(source).refresh_resources(r.runtime,replay.context.capacities,"eligible_rest")
+ check(rested.ok,"actual preparation/rest policy accepts fixture "+JSON.stringify(rested.get("errors",[])))
+ if not rested.ok:return {}
+ r.runtime=rested.runtime
  return r

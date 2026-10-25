@@ -1,3 +1,7 @@
+# Home-preparation fixture correction
+
+Corrected SceneTree runner40153683656 executed actual probe in7 seconds, then failed in learn(): changing a prepared loadout left old prepared-copy balances above the new capacities. RulesEffects.refresh_resources correctly refused that invalid runtime. Fixture now calls existing RulesCoreContent.refill_prepared before eligible_rest, exactly as home preparation requires, checks the rest result, and retains strict capacity validation. No production/rules change. Re-run the small pinned probe before generating29. New candidate mechanics worker is prepared but cannot be claimed executed until29 and focused acceptance exist.
+
 # Correct diagnostic entry point, then inspect Windows evidence
 
 Initial diagnostic40152749539 at64b7e13 was cancelled after identifying that the Python launcher targeted a Node script directly rather than the existing SceneTree pattern. This is a test-harness error, not claimed gameplay evidence. Keep its actual logs/conclusion. New scene_runner attaches the same probe to SceneTree. Progress markers identify each phase; helper reuses the already-authoritative planner preview and snapshot unless choices change, eliminating duplicate derivations without removing behavioral assertions. No rules or campaign data have changed.

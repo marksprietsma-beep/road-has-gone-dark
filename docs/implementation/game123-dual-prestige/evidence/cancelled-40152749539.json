@@ -1,0 +1,9 @@
+{
+  "run": 40152749539,
+  "source_commit": "64b7e13c7accab89c1d4888b470eba552bf76c06",
+  "conclusion": "cancelled",
+  "accepted_gameplay_evidence": false,
+  "artifact_id": 12583462202,
+  "cause": "Diagnostic targeted a Node script as --script instead of attaching it to a SceneTree. No phase/proof output was produced. Actual saved log contains engine startup plus thread/RID cleanup errors at cancellation.",
+  "correction": "Use scene_runner.gd extending SceneTree to attach the unchanged probe; keep strict errors and behavioral assertions."
+}
