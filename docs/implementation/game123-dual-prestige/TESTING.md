@@ -13,7 +13,7 @@ Full native Windows release40176120502 PASSED. Actual per-phase counts, archive/
 
 ## Human playable journey
 
-Download the eventual Windows Actions artifact, extract its outer ZIP and inner playable ZIP, keep the complete directory and launch road-has-gone-dark.exe. Escape skips intro. No installed Godot/Node required. Existing saves keep exact old pins; use a fresh New Game to review29 without resetting an old campaign.
+Download the [verified Windows Actions artifact](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40176120502/artifacts/12594211325), extract its outer ZIP and inner playable ZIP, keep the complete directory and launch road-has-gone-dark.exe. Escape skips intro. No installed Godot/Node required. Existing saves keep exact old pins; use a fresh New Game to review29 without resetting an old campaign.
 
 Use New Game → world → origin → hometown → three character creation. Starting lists contain base classes only. Consider Wizard (INT15/WIS14), Sorcerer (CHA15/WIS14/INT13) and Duskblade (INT15/DEX14), with lawful standard arrays/skills/feats. Read actual prerequisite explanations in the home advancement tab; class selection never grants XP.
 

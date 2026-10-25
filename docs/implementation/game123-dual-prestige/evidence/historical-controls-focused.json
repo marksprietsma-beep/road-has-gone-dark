@@ -1,0 +1,187 @@
+{
+  "source": "93d601d8e3eb4dda835e8ff2b5020c3b095c8bdd",
+  "run": 40185477433,
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40185477433",
+  "platform": "native Windows Godot",
+  "conclusion": "success",
+  "proofs": {
+    "class_signatures/input-proof.json": {
+      "checks": 34,
+      "failures": 0,
+      "scope": "Actual production combat controls/targeting; authority tested separately."
+    },
+    "class_signatures/proof.json": {
+      "checks": 956,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "class_signatures/restart-proof.json": {
+      "checks": 83,
+      "classes": [
+        "soulknife",
+        "warblade",
+        "crusader",
+        "swordsage"
+      ],
+      "development_fixtures": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "55ba9ce55b4dcc39e691711e0caf9732050c2f4b1b38e50bba565c05e5416e6a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v19",
+        "rules_version": "19.0.0",
+        "schema_version": 1
+      },
+      "xp_injected_into_campaign": false
+    },
+    "nature_repertoires/input-proof.json": {
+      "checks": 17,
+      "failures": 0,
+      "scope": "Production combat click/highlights and persistent known-spell controls."
+    },
+    "nature_repertoires/proof.json": {
+      "checks": 599,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "nature_repertoires/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "spell_repertoires/input-proof.json": {
+      "checks": 12,
+      "failures": 0,
+      "scope": "Actual production combat UI click/highlight/action controls; intent captured before campaign writer."
+    },
+    "spell_repertoires/proof.json": {
+      "checks": 592,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v17",
+        "rules_version": "17.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "spell_repertoires/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "020acf6f873824308cbbed4755b5a1d4a55a470c96deb5561eb7b09823e2c1d0",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v17",
+        "rules_version": "17.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    }
+  },
+  "timings": [
+    {
+      "phase": "spell_repertoires-mechanics",
+      "seconds": 55.172,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "spell_repertoires-mechanics-cold",
+      "seconds": 4.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "spell_repertoires-input",
+      "seconds": 13.453,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "nature_repertoires-mechanics",
+      "seconds": 86.25,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "nature_repertoires-mechanics-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "nature_repertoires-input",
+      "seconds": 18.656,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "class_signatures-mechanics",
+      "seconds": 47.141,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "class_signatures-mechanics-cold",
+      "seconds": 4.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "class_signatures-input",
+      "seconds": 7.828,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}
