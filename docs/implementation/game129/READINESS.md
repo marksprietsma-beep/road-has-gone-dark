@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Matching-source native Windows evidence accepts Sorcerer/Druid upper tiers. Other career acceptance remains source-labelled, with fresh all-base20 and relevant legacy/current regressions. Technical COMPLETE is separate from human playtest acceptance and sourcebook breadth.
+Matching-source native Windows evidence accepts Duskblade/Archmage. Other career acceptance remains source-labelled; technical COMPLETE remains separate from human playtest and sourcebook breadth.
 
-{'COMPLETE': 33, 'PARTIAL': 17, 'BLOCKED': 0}
+{'COMPLETE': 35, 'PARTIAL': 15, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -50,16 +50,16 @@ Matching-source native Windows evidence accepts Sorcerer/Druid upper tiers. Othe
 | Beguiler | base | COMPLETE |  |
 | Dragonfire Adept | base | COMPLETE |  |
 | War Chanter | prestige | COMPLETE |  |
-| Archmage | prestige | PARTIAL | Verify permanent selected spell-tier prerequisites and each advanced spell option in native battle. |
+| Archmage | prestige | COMPLETE |  |
 | Metamind | prestige | COMPLETE |  |
-| Duskblade | base | PARTIAL | Hit-conditioned channeling is implemented; audit the full eligible spell cohort and late slot/channel combinations in production controls. |
+| Duskblade | base | COMPLETE |  |
 | Spirit Shaman | base | COMPLETE |  |
 | Abjurant Champion | prestige | PARTIAL | Verify channel/ward interactions on real hit/miss and independent spell-resource exhaustion. |
 | Grove Warden | prestige | PARTIAL | Verify owned creatures/forms/rest retrieval with actual path benefits; no unsupported terrain engine. |
 
 ## Finite exit plan
 
-1. duskblade, archmage, mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
+1. mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
 2. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
 3. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 

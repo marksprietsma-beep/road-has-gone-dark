@@ -1,0 +1,1677 @@
+{
+  "source_commit": "efcbbf19d065645e2a55cec9fe7da1154103a845",
+  "source_godot_preflight_not_exported_native": true,
+  "reused_run": 40107828256,
+  "proofs": {
+    "journeys/cohort-0/proof.json": {
+      "checks": 408,
+      "combat_actions": {},
+      "earned_entry_witnesses": {
+        "sorcerer": {
+          "character_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3",
+          "class_assigned": false,
+          "current_level": 13.0,
+          "earned_xp": 1690.0,
+          "file": "earned-qualified-sorcerer.json",
+          "next_level": 14.0,
+          "state_hash": "2625429959a01bd3590ae302adb1f3a39effa1f24e2f2fd0f887897eb8dd5a46"
+        },
+        "wizard": {
+          "character_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2",
+          "class_assigned": false,
+          "current_level": 13.0,
+          "earned_xp": 1690.0,
+          "file": "earned-qualified-wizard.json",
+          "next_level": 14.0,
+          "state_hash": "42b8cea09235a1803927d9b37a4977398356a4fc6673c0802a7c0df6e7ff2766"
+        }
+      },
+      "earned_xp": 1960.0,
+      "failed_check": {
+        "choice": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:animal-handling",
+        "hash": "7fd0a0745aeb90682b0c3d150624081f6b3774040cb274b2805b91a0f16d3908",
+        "xp": 10.0
+      },
+      "failures": 0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "earned_xp": 1960.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "duskblade-rune-1": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {
+                "duskblade-rune-5": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {
+                "duskblade-rune-9": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {
+                "duskblade-rune-13": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 15.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v28",
+            "rules_version": "28.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2",
+          "earned_xp": 1960.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "spell-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "greater-spell-focus",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-6": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 2.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 3.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "craft": 1.0,
+                "perception": 7.0
+              },
+              "specialisations": {
+                "archmage-casting": "wizard",
+                "high-arcana-1": "force"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "steady-study",
+              "level": 15.0,
+              "skill_allocations": {
+                "craft": 1.0,
+                "perception": 7.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v28",
+            "rules_version": "28.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3",
+          "earned_xp": 1960.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "spell-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-1": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "greater-spell-focus",
+              "level": 5.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-6": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "craft": 5.0
+              },
+              "specialisations": {
+                "archmage-casting": "sorcerer",
+                "high-arcana-1": "ward"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "steady-study",
+              "level": 15.0,
+              "skill_allocations": {
+                "craft": 5.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v28",
+            "rules_version": "28.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "native_earned_xp": 270,
+      "rules_ref": {
+        "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v28",
+        "rules_version": "28.0.0",
+        "schema_version": 1.0
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 20 + 15 vs DC 24 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +15 vs DC 24 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:animal-handling",
+          "information": "Animal Handling check: 17 + 13 vs DC 22 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Arin0: Animal Handling +13 vs DC 22 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:animal-handling",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:arcana",
+          "information": "Arcana check: 20 + 21 vs DC 22 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +21 vs DC 22",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:athletics",
+          "information": "Athletics check: 17 + 19 vs DC 24 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Arin0: Athletics +19 vs DC 24 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:craft",
+          "information": "Craft check: 13 + 22 vs DC 22 \u00b7 objective completed.",
+          "label": "Arin0: Craft +22 vs DC 22",
+          "outcome": "recovered",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:craft",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:insight",
+          "information": "Insight check: 20 + 7 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Insight +7 vs DC 17",
+          "outcome": "peaceful_access",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2:perception",
+          "information": "Perception check: 20 + 0 vs DC 15 \u00b7 objective completed.",
+          "label": "Lysa0: Perception +0 vs DC 15",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2",
+          "profession": "skill:perception",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3:persuasion",
+          "information": "Persuasion check: 20 + 17 vs DC 20 \u00b7 objective completed.",
+          "label": "Doran0: Persuasion +17 vs DC 20",
+          "outcome": "peaceful_access",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3",
+          "profession": "skill:persuasion",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:religion",
+          "information": "Religion check: 13 + 0 vs DC 13 \u00b7 objective completed.",
+          "label": "Arin0: Religion +0 vs DC 13",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 19 + 9 vs DC 14 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +9 vs DC 14 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1:survival",
+          "information": "Survival check: 17 + 0 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Survival +0 vs DC 11",
+          "outcome": "recovered",
+          "participant": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0.0,
+          "reveal": false
+        }
+      },
+      "slot": "172b3c946fbaa4c5b2d368adeb745e5c",
+      "source_import": {
+        "original_earned_xp": 1690,
+        "original_histories": {
+          "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "duskblade-rune-1": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {
+                "duskblade-rune-5": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {
+                "duskblade-rune-9": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {
+                "duskblade-rune-13": "sentinel"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "duskblade",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 2.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "spell-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "greater-spell-focus",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-6": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 2.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 3.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "craft": 1.0,
+                "perception": 7.0
+              },
+              "specialisations": {
+                "archmage-casting": "wizard",
+                "high-arcana-1": "force"
+              }
+            }
+          ],
+          "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "spell-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-1": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "greater-spell-focus",
+              "level": 5.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "sorcerer-choice-6": "draconic"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "persuasion": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 11.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "",
+              "level": 12.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "sorcerer",
+              "feat_id": "steady-study",
+              "level": 13.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "archmage",
+              "feat_id": "",
+              "level": 14.0,
+              "skill_allocations": {
+                "craft": 5.0
+              },
+              "specialisations": {
+                "archmage-casting": "sorcerer",
+                "high-arcana-1": "ward"
+              }
+            }
+          ]
+        },
+        "original_state_hash": "c1bdeb92f790e5f3303fa13aff263f1deadde99817443954abf490b314b72756",
+        "source_commit": "9d35df7909f65e60ef8e56d0f9e56bfd1edc3812",
+        "source_run": "40107828256"
+      },
+      "state_hash": "2a8535369dacdfa2d90e37839bc54212bfcee204af821c4581635fb5bbb81987",
+      "xp_injected": false
+    },
+    "journeys/cohort-0/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "f24e4b36e2daa9694b08aacc676d9af41cdbfc4d679ac5dc19be37f2454fef39",
+      "battle_log_length": 8,
+      "casts": {
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1": "channel-duskblade-searing-grasp",
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2": "high-arcana-force-1",
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3": "high-arcana-ward-1"
+      },
+      "checks": 37,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 1960,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2",
+        "destination": [
+          6,
+          3
+        ],
+        "kind": "move",
+        "revision": 9
+      },
+      "next_hash": "ab85baa85938839055d80d9f17afad5b388d09228cddbfada0a3dbbbfd873055",
+      "resources": {
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:1": {
+          "duskblade-slots-1": 7
+        },
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:2": {
+          "high-arcana": 1
+        },
+        "172b3c946fbaa4c5b2d368adeb745e5c:adventurer:3": {
+          "high-arcana": 1
+        }
+      },
+      "rules_ref": {
+        "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v28",
+        "rules_version": "28.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "172b3c946fbaa4c5b2d368adeb745e5c",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "2527b3369e6ce03bb0226e18a319628b2d7ce0914cc4f7fdc0bf90b7919af70a",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 79,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v28",
+        "rules_version": "28.0.0",
+        "schema_version": 1
+      }
+    },
+    "entry/entry-proof.json": {
+      "checks": 30,
+      "failures": 0,
+      "scope": "Actual source-earned13/1690XP witnesses; native production writer explicitly commits or declines first Archmage level. Separate forks, original source untouched."
+    },
+    "entry/entry-restart-proof.json": {
+      "checks": 13,
+      "failures": 0,
+      "scope": "Actual source-earned13/1690XP witnesses; native production writer explicitly commits or declines first Archmage level. Separate forks, original source untouched."
+    }
+  },
+  "timings": [
+    {
+      "phase": "native_entry",
+      "seconds": 50.75,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native_entry-cold",
+      "seconds": 21.672,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native_progress",
+      "seconds": 726.594,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native_progress-cold",
+      "seconds": 15.656,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native_connected",
+      "seconds": 121.75,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "native_connected-cold",
+      "seconds": 177.328,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "source_commit": "505895680a16b39f1a7bc25549557fd07e54769a",
+  "input_runs": [
+    40081154951,
+    40107828256
+  ],
+  "production_and_rules_unchanged": true,
+  "source_evidence_not_native_export": true,
+  "protected_bytes": {
+    "earned\\earned-proof.json": "ea7933d7888bfff9f076f1a8291e83ecdde7f61f135222bf630633df20eda408",
+    "earned\\timings.json": "b8cae831a32befb0bc89922dcefcb55b1684533be3fa344fd3bdd2c78f6981a7",
+    "mechanics\\input-proof.json": "4989348bcabbb029e7fac65cf8078f27037b3f25836bc16218e20ec25452170f",
+    "mechanics\\probe-proof.json": "a14b96c2ec0efe7a3b4aace40ef5eb3d57368ba0223b523ba1d2dfc574c95108",
+    "mechanics\\proof.json": "3cfc03a7e51fc6453be7c650422c7cccb62624ef1a252427289cda99069b0b61",
+    "mechanics\\restart-proof.json": "94d0a4523eb40a1c469e9440ae7fa33e6d3da8e58e80a82842d922dcbcd6e519",
+    "mechanics\\saved.json": "ca460564767ef53582cb13f984ba76e24796c47dcbf05b94d01c48cc1e10333a",
+    "mechanics\\timings.json": "ecc28cbe9235127d8397e115ec2c7572f5dcc5803e65fe4c30404bdcb6a8557e",
+    "earned\\connected\\active-state.json": "44ccab98574588bdf5be5ce493c0da0119675e24d8e651ce449868f1d6de1be4",
+    "earned\\connected\\proof.json": "b3843f433b3bb40bb4664589e41fb66f90ab784baad9fb41e6e5cb6f05143e4d",
+    "earned\\connected\\restart-proof.json": "17ef8aff38e0b8397dfb0a264dda4ecaf04f89e816295f37a594339e5c79ba6a",
+    "earned\\connected\\saves\\172b3c946fbaa4c5b2d368adeb745e5c.json": "76936a1fcb40f1623b2455500e87102071a6784962738a77871c9a635a028e56",
+    "earned\\journeys\\cohort-0\\earned-qualified-sorcerer.json": "ef818bb373df9515c97beef679eac05ca635909d83d172d1a7c51847eea65aa3",
+    "earned\\journeys\\cohort-0\\earned-qualified-wizard.json": "c2ce80352e4420d86de8ea7d634dadba88f9a867579a85f28b9d141333fac328",
+    "earned\\journeys\\cohort-0\\proof.json": "2b5d4ffd13163245ba942163158bb4c78315a3da38b6dc6492750ffd35646ba4",
+    "earned\\journeys\\cohort-0\\restart-proof.json": "cbe4fbd0b8ec2f748809905ed80c3c664eee95e5890c1cca0dad07342f618bcd",
+    "earned\\journeys\\cohort-0\\failed-check\\172b3c946fbaa4c5b2d368adeb745e5c.json": "7b0b5fabf32af2d3a525d2ed6d4ce9659caaa6e7d3153664a0be139191c4363a",
+    "earned\\journeys\\cohort-0\\saves\\172b3c946fbaa4c5b2d368adeb745e5c.json": "360b6a2985d666e2c0f0a69654dbd21606dda1d113fe9a00ca9b2573f9062e55",
+    "earned\\journeys\\cohort-0\\cache\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5\\101.json": "88abd250068c1d97273df0f860f8646deef66284645509ae4d7717b423f8ab8a",
+    "earned\\journeys\\cohort-0\\cache\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5.geography.json": "86f288aa7cb2f73a20566c85abae76e037a5a92e470501fa26c1b505ae2756ac"
+  },
+  "captures": {
+    "checks": 41,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-duskblade-creator-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "51537cd3bd4c64a23e098e96726d51904b56172322850a9d726b106abaf0697e",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-duskblade-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "26db27ea4c17e6a60dead6078da96ca4585e6aef0574bc9f4287d4b747f5abb9",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-duskblade-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "505b0061b04691afeba92cf6ea9ba7691ee0213e305a6e1003516dd9ccb835fa",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-wizard-archmage-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "259ab3cf1b575ed5e2c142c4add15e17204fb7e9301419392dcc7a95367df036",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-sorcerer-archmage-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "b5403d98c60aaa452cbada6f9ba58e4495360481d52f17010e13af68b4312cd1",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-wizard-prestige-entry-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "4634d346db9c553af3266f0f024a1857db4ca7465852b4fbe3eb2f9244bb0dcc",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-wizard-prestige-prerequisites-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "27880bb75e9bd7eecdc5b868365b75005d94c077eae8274b247d0ae01526210e",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-sorcerer-prestige-entry-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "7b3e36ff8b33d9752276a10be880da89e2c6fed598e0e48dd94a41732e766035",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-sorcerer-prestige-prerequisites-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e3d2a2b3a732af12e55b0922a21d6a1199422ad3503da9ab138d32709d442b20",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-duskblade20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "7c0dbeec51b357dabd304f2b364b7dfc02714f8d8e6fd68339cd4d8e2547e4e1",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-duskblade-tier5-choices-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "258dae869523b60c67bd61d7f05d7173ec3a59754294df1ec3578c20f49e2e8a",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-force-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "830b46b2c5c6f0e71244298d9c98caab0e200c8dc7b76b21a1a6f0c2d503f7d7",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wizard-ward-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e851bfca6e2dc4c865437e7247183f055d053572b5e3c139ce2af390b66f6af1",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-duskblade-searing-grasp-1-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "acef0d26a705ede652e60eeffcc0c51a006c0ffeb30b446064ed0c99c1e46460",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-duskblade-searing-grasp-19-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "ee3c63c1045a91eee0b7ffe3ea558145e38c0c917df92103452940df65c2d12f",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-duskblade-ruinous-touch-20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "5a968f43036d601576b5edca8c32e8978f7283ef84076d760b63a759e961c985",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-refraction-counter-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "7f28c872045e5d771294da1d19576cf8ec4f7562bdbb0c77ef95b1572c676634",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-liberation-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "ef4843da309ae23c798989d8eeeb225c207fd0e229c8abeecea3dcec53620b13",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-liberation-large-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "3299da478c35f29fcee5fe1a8faa7e77af2e34a93a27438051a1c576f49ab92c",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sorcerer-high-arcana-force-5-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "ca1c83bc736ba6340453972b931c5e2b5b2885da9814e267674e27474fdbb74f",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 1690,
+        "file": "earned-connected-class-actions-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "713c9fe4f6214c734b19513385e343b30586570cb86987085c995554d33de28a",
+        "width": 2560
+      }
+    ]
+  },
+  "timing": {
+    "seconds": 109.375,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+}

@@ -2,7 +2,7 @@ class_name RulesCareer
 extends RefCounted
 ## Ordered, durable player choices. No runtime grants qualify historical entry.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v7","trhgd-character-v8","trhgd-character-v9","trhgd-character-v10","trhgd-character-v11","trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"]
 static func groups(source: RulesRegistry,cls: String,level: int) -> Array:
  return source.definition("classes",cls).get("career_choices",[]).filter(func(row: Dictionary):return int(row.at)==level)
 static func feat_count(source: RulesRegistry,level: int,cls: String,class_level: int) -> int:
@@ -77,6 +77,24 @@ static func validate_definition(row: Dictionary,tables: Dictionary,errors: Array
    if option.has("advance_casting"):
     RulesRegistry._reference(tables,"classes",option.advance_casting,group.id,errors)
     if option.get("progression_class")!=row.id or tables.classes.get(option.advance_casting,{}).get("spell_mode","").is_empty():errors.append(RulesJson.issue("career.casting",group.id,"Casting must advance an actual caster from this prestige track"))
+
+static func casting_modifiers(record: Dictionary,classes: Dictionary,attributes: Dictionary,source: RulesRegistry) -> Dictionary:
+ # Derive from ordered permanent choices, never runtime grants or highest score.
+ var result := {};var targets := {}
+ for id in classes:
+  var attribute: String=str(source.definition("classes",id).get("casting_attribute",""))
+  if not attribute.is_empty():result[id]=int(floor(float(int(attributes[attribute])-10)/2.0))
+ for option in selections(record,classes,source):
+  if not option.has("advance_casting"):continue
+  var path: String=option.progression_class
+  if not targets.has(path):targets[path]=[]
+  if not targets[path].has(option.advance_casting):targets[path].append(option.advance_casting)
+ for path in targets:
+  # A multi-track path must name a base track, not choose an arbitrary one.
+  if targets[path].size()!=1:continue
+  var attribute: String=str(source.definition("classes",targets[path][0]).get("casting_attribute",""))
+  if not attribute.is_empty():result[path]=int(floor(float(int(attributes[attribute])-10)/2.0))
+ return result
 
 static func quarry_matches(snapshot: Dictionary,target: Dictionary,source: RulesRegistry) -> bool:
  return enabled(source) and snapshot.tags.has("quarry_archer") and target.team=="enemy" and source.definition("equipment",target.weapon).tags.has("ranged")

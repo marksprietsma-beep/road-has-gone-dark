@@ -1,0 +1,601 @@
+{
+  "checks": 290,
+  "evidence": {
+    "channel_bow_ui": {
+      "button_enabled": false,
+      "command_accepted": false,
+      "target_eligible": false
+    },
+    "historical_projection": {
+      "companion_owner": {
+        "added_zero_pools": [
+          "druid-heartwood-renewal-prepared",
+          "druid-wildheart-mantle-prepared"
+        ],
+        "original_hash": "7efa3fd5227c7e6c49a3843c875f98ebe5e042f3dd8d657471bc1736966d5e85",
+        "projected_hash": "d53e4497785643c22e758435d766349f1a3e0252becb1ddce39e2e54e56cc536",
+        "projected_snapshot": "63f765bfe38e7968a5ad2cff0af6d9508b89e2501642bdce47238641344d3830"
+      },
+      "druid-winters-verdict": {
+        "added_zero_pools": [
+          "druid-heartwood-renewal-prepared",
+          "druid-wildheart-mantle-prepared"
+        ],
+        "original_hash": "63a7103b85152ec271e12a9c5eb3d36e350730770a035ff68b3d38d88f14d9ca",
+        "projected_hash": "e7ccca7080263320e6020b2d4592e7f622ec05b5b829481f7340c12fd92a8491",
+        "projected_snapshot": "93a120135cb14e5f416039557b87ed734c3f6ffe5662598f1e715c8c7dc127cb"
+      },
+      "hybrid:sorcerer-starfall-rupture": {
+        "added_zero_pools": [],
+        "original_hash": "ad58957f72e4d9fac3ef82e68f4eda504587ec5025705be645c022a769bb63cb",
+        "projected_hash": "9b7c470c443a4f164edc8f87fd56eb5048fbe88699344d53e19c5aaef30b7d51",
+        "projected_snapshot": "a1b23956bce2763966a8e944591a5ce694d382cb8ffef1e676454d792c245185"
+      }
+    },
+    "sorcerer_force": {
+      "attributes": {
+        "CHA": 18,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 12,
+        "STR": 8,
+        "WIS": 10
+      },
+      "dc": {
+        "ok": true,
+        "value": 20
+      },
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "sorcerer",
+          "id": "high-arcana",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 8,
+          "dc": 20,
+          "roll": 1,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 11,
+          "damage_type": "force",
+          "target": "fighter",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_applied"
+        }
+      ],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "spell-focus",
+          "level": 1,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "sorcerer-choice-1": "draconic"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 3,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "greater-spell-focus",
+          "level": 5,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "sorcerer-choice-6": "draconic"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 8,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 9,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 10,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 11,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "CHA",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 12,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 13,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "archmage",
+          "feat_id": "",
+          "level": 14,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 3,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "archmage-casting": "sorcerer",
+            "high-arcana-1": "force"
+          }
+        }
+      ]
+    },
+    "spent_channel_highlight": {
+      "button_disabled": true,
+      "main": 0,
+      "target_highlighted": true
+    },
+    "transformed_high_arcana": {
+      "accepted": true,
+      "errors": [],
+      "form": {
+        "art_status": "neutral_humanoid_fallback",
+        "attributes": {
+          "DEX": -2,
+          "STR": 4
+        },
+        "body_plan": "quadruped",
+        "feature_id": "bear-form-body",
+        "id": "bear-form",
+        "size": "large",
+        "suppressed_equipment": [
+          "weapon",
+          "armor",
+          "shield"
+        ],
+        "weapon_id": "bear-claws"
+      }
+    },
+    "wizard_force": {
+      "attributes": {
+        "CHA": 10,
+        "CON": 13,
+        "DEX": 14,
+        "INT": 18,
+        "STR": 8,
+        "WIS": 12
+      },
+      "dc": {
+        "ok": true,
+        "value": 22
+      },
+      "events": [
+        {
+          "amount": 1,
+          "character_id": "wizard",
+          "id": "high-arcana",
+          "type": "resource_spent"
+        },
+        {
+          "bonus": 8,
+          "dc": 22,
+          "roll": 1,
+          "success": false,
+          "type": "save_resolved"
+        },
+        {
+          "amount": 11,
+          "damage_type": "force",
+          "target": "fighter",
+          "temporary_absorbed": 0,
+          "type": "damage_applied"
+        },
+        {
+          "id": "off-balance",
+          "type": "status_applied"
+        }
+      ],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "spell-focus",
+          "level": 1,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 3,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "greater-spell-focus",
+          "level": 5,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "wizard-choice-6": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 8,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 9,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 10,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 11,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 12,
+          "skill_allocations": {
+            "acrobatics": 2,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 13,
+          "skill_allocations": {
+            "acrobatics": 2,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "archmage",
+          "feat_id": "",
+          "level": 14,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "perception": 5,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "archmage-casting": "wizard",
+            "high-arcana-1": "force"
+          }
+        }
+      ]
+    }
+  },
+  "failures": 0,
+  "rules_ref": {
+    "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v27",
+    "rules_version": "27.0.0",
+    "schema_version": 1
+  },
+  "scope": "Pinned27 baseline defects and historical display repair only; no career readiness promotion."
+}
