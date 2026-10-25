@@ -28,7 +28,7 @@ for phase,folder,version in [('mechanics','mechanics','v30'),('extended','mechan
 for key,filename in [('pinned29-probe','probe-proof.json'),('input','input-proof.json')]:
  p=json.loads((base/'mechanics'/filename).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0;proofs[key]=p
 assert all(proofs['mechanics/proof.json']['contracts'][k]is True for k in ['training','equipment_disciplines','actual_attacks','resilient_mastery','rage_tradeoffs','resources_and_expiry','feat_choices','weapon_overrides'])
-assert all(proofs['extended/proof.json']['contracts'][k]is True for k in ['guard_reactions','power_strike','higher_features','exhaustion','exact_rage_duration','reaction_weapon'])
+assert all(proofs['extended/proof.json']['contracts'][k]is True for k in ['guard_reactions','power_strike','higher_features','exhaustion','exact_rage_duration','reaction_weapon','rage_combat'])
 j=proofs['journey/proof.json'];assert j['earned_xp']==490 and not j['xp_injected']and len(j['journeys'])==3 and {r['role']for r in j['builds'].values()}=={'blade','bow','rage'}
 assert all(len(r['history'])==8 for r in j['journeys'])
 assert set(proofs['connected/proof.json']['casts'].values())=={'fighter-blade-6','fighter-bow-6','barbarian-resilient-6'}

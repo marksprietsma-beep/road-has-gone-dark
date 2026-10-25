@@ -6,7 +6,7 @@ func run() -> void:
  if OS.get_environment("MARTIAL_RESTART")=="1":cold();return
  fixtures.fighter=variant("fighter",20)
  fixtures.fighter.character_id="external-target"
- test_guard();test_power_strike();test_higher_features();test_exact_rage_expiry();test_reaction_weapon()
+ test_guard();test_power_strike();test_higher_features();test_exact_rage_expiry();test_reaction_weapon();test_rage_combat()
  persist();finish_martial()
 func enemy_activation(engine: TacticalAuras,b: Dictionary,id: String) -> Dictionary:
  # A controlled authored starting activation, as in the existing encounter
@@ -105,3 +105,29 @@ func test_reaction_weapon() -> void:
  check(plain.units["bandit-blade"].record.runtime.hp==enhanced.units["bandit-blade"].record.runtime.hp and plain.rng==enhanced.rng,"ranged bonus never leaks into the inherited melee reaction fallback")
  check(engine._attack_weapon_context.is_empty(),"reaction context restores after nested resolver")
  contracts.reaction_weapon=true
+func test_rage_combat() -> void:
+ for level in [1,6,20]:
+  var barbarian := variant("barbarian",level,step_options("barbarian","reckless"))
+  var raging := use(barbarian,barbarian,"rage");check(raging.ok,"actual base Rage for combat "+str(level))
+  if not raging.ok:continue
+  var engine := TacticalAuras.new(barbarian)
+  var plain := encounter(barbarian);var enhanced := encounter(raging.actor)
+  plain.rng=attack_seed(19);enhanced.rng=plain.rng.duplicate(true);plain=engine.seal(plain);enhanced=engine.seal(enhanced)
+  var raw := execute(engine,plain,"attack","bandit-blade");var hit := execute(engine,enhanced,"attack","bandit-blade")
+  check(raw.ok and hit.ok,"ordinary early/mid/late raging melee attack")
+  if raw.ok and hit.ok:
+   check(raw.battle.units["bandit-blade"].record.runtime.hp-hit.battle.units["bandit-blade"].record.runtime.hp==2,"paid Rage adds exactly two real weapon damage")
+   check(raw.battle.rng==hit.battle.rng,"Rage damage adds no extra random consumption")
+  var enemy := variant("fighter",1);enemy.character_id="bandit-blade"
+  plain.units["bandit-blade"].record=enemy;enhanced.units["bandit-blade"].record=enemy.duplicate(true)
+  var bonus: int=engine.stats(plain.units["bandit-blade"]).melee_attack
+  var die: int=int(engine.stats(plain.units.a).defence)-bonus-1
+  check(die>=1 and die<=20,"lawful die witnesses actual Rage defensive vulnerability")
+  if die<1 or die>20:continue
+  plain=enemy_activation(engine,plain,"bandit-blade");enhanced=enemy_activation(engine,enhanced,"bandit-blade")
+  plain.rng=attack_seed(die);enhanced.rng=plain.rng.duplicate(true);plain=engine.seal(plain);enhanced=engine.seal(enhanced)
+  var command := {"actor_id":"bandit-blade","revision":plain.revision,"kind":"attack","target_id":"a"}
+  raw=engine.command(plain,command);hit=engine.command(enhanced,command)
+  check(raw.ok and hit.ok,"ordinary enemy attack tests actual defensive counterplay")
+  if raw.ok and hit.ok:check(raw.battle.units.a.record.runtime.hp==plain.units.a.record.runtime.hp and hit.battle.units.a.record.runtime.hp<enhanced.units.a.record.runtime.hp,"paid Rage makes a real previously missed attack hit the Barbarian")
+ contracts.rage_combat=true
