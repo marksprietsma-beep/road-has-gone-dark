@@ -28,8 +28,10 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Exclude Node examples
         run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
-      - name: Historical packs and unchanged candidate28
-        run: python tests/hybrid_acceptance/check-source.py
+      - name: Exact historical packs and bounded candidate29
+        run: |
+          python tests/hybrid_acceptance/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked Godot import
         shell: pwsh
         run: |

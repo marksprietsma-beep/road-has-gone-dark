@@ -3,6 +3,7 @@ from pathlib import Path
 import copy
 import hashlib
 import json
+import re
 
 ROOT=Path(__file__).resolve().parents[2]
 p=json.loads((ROOT/'data/rules/trhgd-character-v28.json').read_text(encoding='utf-8'))
@@ -69,4 +70,13 @@ path=ROOT/'data/rules/packs.json';manifest=json.loads(path.read_text(encoding='u
 manifest['packs']=[r for r in manifest['packs']if r['rules_ref']['pack_id']!=p['pack_id']]
 manifest['packs'].append(dict(path='res://data/rules/'+out.name,rules_ref=pin))
 path.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\n')
+# Existing version gates retain every older branch. No combat implementation,
+# RNG, save authority, or new expression/requirement engine is introduced.
+for file in (ROOT/'scripts').rglob('*.gd'):
+    before=file.read_text(encoding='utf-8')
+    after=re.sub(r'"trhgd-character-v28"(\s*)\]',r'"trhgd-character-v28","trhgd-character-v29"\1]',before)
+    after=after.replace('["trhgd-character-v28","28.0.0",3]]','["trhgd-character-v28","28.0.0",3],["trhgd-character-v29","29.0.0",3]]')
+    after=after.replace('const NEW_PACK := "trhgd-character-v28"','const NEW_PACK := "trhgd-character-v29"')
+    after=after.replace('pack_id=="trhgd-character-v28":context.casting_modifiers','pack_id in ["trhgd-character-v28","trhgd-character-v29"]:context.casting_modifiers')
+    if after!=before:file.write_text(after,encoding='utf-8',newline='\n')
 print(json.dumps(pin))

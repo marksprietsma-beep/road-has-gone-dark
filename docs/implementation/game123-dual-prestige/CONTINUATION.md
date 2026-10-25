@@ -1,3 +1,9 @@
+# Pinned reproduction passed; candidate29 focused validation next
+
+Windows40154175290 / b013027 passed251 diagnostic checks, zero failures. Source receipts committed. Candidate29 generated only after this proof, hashd82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e. Static guard confirms historical1–28 exact and original combat/RNG/save authority unchanged; source changes only existing version enablement. No class-scope requirement subsystem was added; preserve lawful junior-parent progression. Shared historical28 guard now validates its exact released prefix/bytes and chooses28 explicitly when29 is appended, retaining all assertions.
+
+Next inspect current focused Windows run, fix actual mechanics/fixture/UI failures without weakening tests, then complete earned campaigns/entry-decline/connected-cold/rest and genuine captures. Full native release and readiness37/13 are NOT yet complete; baseline35/15 remains. Mainc796043 integration still running (18/22 successful at last check); no cohort merge until dependency and own checks green. No new cohort PR yet. Existing149 already merged/delivered and must not be recreated or rebuilt. No Linear connector.
+
 # Home-preparation fixture correction
 
 Corrected SceneTree runner40153683656 executed actual probe in7 seconds, then failed in learn(): changing a prepared loadout left old prepared-copy balances above the new capacities. RulesEffects.refresh_resources correctly refused that invalid runtime. Fixture now calls existing RulesCoreContent.refill_prepared before eligible_rest, exactly as home preparation requires, checks the rest result, and retains strict capacity validation. No production/rules change. Re-run the small pinned probe before generating29. New candidate mechanics worker is prepared but cannot be claimed executed until29 and focused acceptance exist.

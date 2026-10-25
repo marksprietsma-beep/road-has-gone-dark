@@ -150,7 +150,7 @@ func _replay(record: Dictionary) -> Dictionary:
  for id in record.choices.prepared_abilities:
   if not id is String or not (context.abilities.has(id) or RulesEntities.enabled(registry) and not RulesEntities.form(record,registry).is_empty() and _context(attributes,classes,ranks,feats,record,false).abilities.has(id)): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
  if registry.rules_ref().engine_schema==3:
-  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"] else context,registry)
+  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] else context,registry)
   if not spell_errors.is_empty():return RulesJson.result(spell_errors)
  return {"ok":true,"context":context}
 
@@ -203,7 +203,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  if not active_form.is_empty():
   for id in active_form.attributes:context.attributes[id]+=int(active_form.attributes[id])
   _feature(context,active_form.feature_id,"form:"+active_form.id)
- if registry.rules_ref().pack_id=="trhgd-character-v28":context.casting_modifiers=RulesCareer.casting_modifiers(record,classes,context.attributes,registry)
+ if registry.rules_ref().pack_id in ["trhgd-character-v28","trhgd-character-v29"]:context.casting_modifiers=RulesCareer.casting_modifiers(record,classes,context.attributes,registry)
  var physical: Dictionary=context.attributes
  var con := int(floor(float(int(attributes.CON)-10)/2.0))
  var dex := int(floor(float(int(physical.DEX)-10)/2.0))
@@ -254,7 +254,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  if not active_form.is_empty():
   context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")) and (not RulesWaveFive.enabled(registry) or not registry.definition("abilities",id).tags.has("supernatural")))
   context.body_form=active_form.duplicate(true)
-  if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28"] and not context.abilities.has("revert-form"):context.abilities.append("revert-form")
+  if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] and not context.abilities.has("revert-form"):context.abilities.append("revert-form")
  if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry,record)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()

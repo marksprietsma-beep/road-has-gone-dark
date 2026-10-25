@@ -10,6 +10,8 @@ func run() -> void:
  if OS.get_environment("DUAL_RESTART")=="1":cold_dual();return
  fixtures.fighter=build("fighter",20)
  fixtures.miss_defender=warded_defender()
+ saved_records.fighter=fixtures.fighter
+ test_historical_projection()
  test_entry();test_dual_progression();test_champion_progression()
  if failures:finish_dual();return
  test_independent_casts();test_restoration_choices();test_martial_outcomes();test_dual_forms();test_resources()
@@ -33,6 +35,7 @@ func test_entry() -> void:
  var prefix := repeated("wizard",3)+repeated("cleric",3)
  var eligible := route(prefix)
  if eligible.is_empty():return
+ saved_records.wizard_qualified=eligible
  var before := RulesJson.digest(eligible)
  check(kernel.available_advancement(eligible).classes["mystic-theurge"].ok,"actual independent tier2 arcane/divine entry")
  check(not kernel.derive_character(eligible).snapshot.class_levels.has("mystic-theurge") and RulesJson.digest(eligible)==before,"qualification never assigns prestige or mutates history")
@@ -69,6 +72,7 @@ func test_dual_progression() -> void:
   var count: int=3 if cls=="wizard" else 4
   var r := route(repeated(cls,count)+repeated("cleric",3),WIZARD_ARRAY if cls=="wizard" else SORCERER_ARRAY)
   if r.is_empty():continue
+  saved_records[cls+"_qualified"]=r.duplicate(true)
   for at in 10:
    var proposed := kernel.suggested_choice(r,"mystic-theurge")
    if at==0:proposed.choice.specialisations={"mystic-theurge-arcane":cls,"mystic-theurge-divine":"cleric"}
@@ -88,6 +92,7 @@ func test_champion_progression() -> void:
  for variant in ["aegis","retaliation"]:
   var r := route(repeated("duskblade",6),MARTIAL_ARRAY,"abjurant-champion")
   if r.is_empty():continue
+  saved_records.champion_qualified=r.duplicate(true)
   check(kernel.available_advancement(r).classes["abjurant-champion"].ok,"durable martial/arcane/feat/skill entry")
   check(kernel.preview_advancement(r,kernel.suggested_choice(r,"duskblade").choice).ok,"Champion eligibility leaves base advancement available")
   for at in 5:
