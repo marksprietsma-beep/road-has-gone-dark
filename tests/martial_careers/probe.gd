@@ -1,8 +1,8 @@
 extends "res://tests/class_signatures/mechanics_driver.gd"
 ## Pinned v29 development witnesses. No campaign or earned XP is manufactured.
 var observations := {}
-func variant(cls: String,levels: int,options: Dictionary={},first_feat := "steady-study") -> Dictionary:
- var r := kernel.create("martial-probe",{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8},"heritage-human")
+func variant(cls: String,levels: int,options: Dictionary={},first_feat := "steady-study",ancestry := "heritage-human") -> Dictionary:
+ var r := kernel.create("martial-probe",{"STR":15,"DEX":14,"CON":13,"INT":12,"WIS":10,"CHA":8},ancestry)
  for n in levels:
   var suggestion := kernel.suggested_choice(r,cls,first_feat if n==0 else "steady-study")
   check(suggestion.ok,"lawful proposed level "+cls+str(n+1))

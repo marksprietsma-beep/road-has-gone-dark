@@ -33,6 +33,11 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Exclude Node examples
         run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Immutable content and reviewed source scope
+        run: |
+          python tools/character-content/validate.py
+          python tests/martial_careers/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked engine import
         shell: pwsh
         run: |

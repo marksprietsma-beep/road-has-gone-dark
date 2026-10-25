@@ -1,6 +1,6 @@
 """Static immutable-content and bounded source guard; does not execute a game."""
 from pathlib import Path
-import hashlib,json,re,subprocess
+import hashlib,importlib.util,json,re,subprocess
 ROOT=Path(__file__).resolve().parents[2]
 BASE='c796043aa2543bcab144e8d0353628c35c2ab610'
 UI_SHA='dbc34bc5956ff1a1e112e33c63a667b73aae21b8daf7f2f85ae2faec621dc357'
@@ -8,7 +8,18 @@ def original(path):return subprocess.check_output(['git','show',BASE+':'+path],c
 def verify():
     manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))
     released=json.loads(original('data/rules/packs.json'))
-    assert manifest['packs'][:28]==released['packs'] and len(manifest['packs'])==29
+    assert manifest['packs'][:28]==released['packs'] and len(manifest['packs'])>=29
+    archived_source='a583939cb111778d350df137d0691839da39ee30'
+    released29=json.loads(subprocess.check_output(['git','show',archived_source+':data/rules/packs.json'],cwd=ROOT))
+    assert manifest['packs'][:29]==released29['packs']
+    newer=len(manifest['packs'])>29
+    if newer:
+        # Keep every original29 data/source assertion against its exact released
+        # source. Current30 source is independently and strictly scope-guarded;
+        # real pinned29 runtime tests still execute on the current engine.
+        assert len(manifest['packs'])==30
+        spec=importlib.util.spec_from_file_location('current_martial_source',ROOT/'tests/martial_careers/check-source.py')
+        current=importlib.util.module_from_spec(spec);spec.loader.exec_module(current);current.verify()
     for row in released['packs']:
         path=row['path'].removeprefix('res://');assert (ROOT/path).read_bytes()==original(path),path
     a=json.loads(original('data/rules/trhgd-character-v28.json'))
@@ -49,16 +60,18 @@ def verify():
         if path=='scripts/ui/first_adventure.gd':
             # Reviewed common cost/ownership/channel access and legal melee
             # targets; no change to command authority, budgets, logs or RNG.
-            assert hashlib.sha256(file.read_bytes()).hexdigest()==UI_SHA
+            actual=subprocess.check_output(['git','show',archived_source+':'+path],cwd=ROOT) if newer else file.read_bytes()
+            assert hashlib.sha256(actual).hexdigest()==UI_SHA
             continue
         before=original(path).decode('utf-8')
         expected=re.sub(r'"trhgd-character-v28"(\s*)\]',r'"trhgd-character-v28","trhgd-character-v29"\1]',before)
         expected=expected.replace('["trhgd-character-v28","28.0.0",3]]','["trhgd-character-v28","28.0.0",3],["trhgd-character-v29","29.0.0",3]]')
         expected=expected.replace('const NEW_PACK := "trhgd-character-v28"','const NEW_PACK := "trhgd-character-v29"')
         expected=expected.replace('pack_id=="trhgd-character-v28":context.casting_modifiers','pack_id in ["trhgd-character-v28","trhgd-character-v29"]:context.casting_modifiers')
-        assert file.read_text(encoding='utf-8')==expected,path
-    pin=manifest['packs'][-1]['rules_ref']
+        actual=subprocess.check_output(['git','show',archived_source+':'+path],cwd=ROOT).decode('utf-8') if newer else file.read_text(encoding='utf-8')
+        assert actual==expected,path
+    pin=next(row['rules_ref']for row in manifest['packs']if row['rules_ref']['pack_id']=='trhgd-character-v29')
     assert pin['pack_id']==b['pack_id']=='trhgd-character-v29'
     assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
-    return dict(baseline=BASE,historical_pack_bytes_and_pins=28,rules_ref=pin,roster_unchanged=True,new_class_support_actions=2,typed_existing_actions=6,source_changes='Existing version enablement and reviewed shared action-availability presentation; original combat/RNG/save authorities unchanged')
+    return dict(baseline=BASE,historical_pack_bytes_and_pins=28,rules_ref=pin,roster_unchanged=True,new_class_support_actions=2,typed_existing_actions=6,source_changes='Existing version enablement and reviewed shared action-availability presentation; original combat/RNG/save authorities unchanged',source_audit_scope='Exact released29 source plus separately verified current30 source; pinned29 runtime tests still execute on the current engine' if newer else 'Current29 source')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
