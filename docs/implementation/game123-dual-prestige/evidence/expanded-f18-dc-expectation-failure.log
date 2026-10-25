@@ -1,0 +1,30 @@
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	﻿2026-10-25T03:10:04.6265325Z ##[group]Run python tests/dual_prestige_acceptance/run-focused.py
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6265876Z [36;1mpython tests/dual_prestige_acceptance/run-focused.py[0m
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6343479Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6344078Z env:
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6344358Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6344842Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6345313Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6345719Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6346124Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6346545Z   GODOT_BIN: D:\a\_temp\godot\Godot_v4.6.3-stable_win64_console.exe
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6346907Z   GAME76_HELPER_ROOT: D:\a\_temp\worldgen-helper
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6347263Z   GAME76_GENERATED_TEST_DIR: D:\a\_temp\generated worlds with spaces
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6347658Z   DUAL_ROOT: D:\a\_temp/dual-focused
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:04.6347893Z ##[endgroup]
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:10:37.8994197Z {"phase": "probe", "seconds": 32.906, "exit_code": 0, "errors": false, "timeout": false}
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6813913Z {"phase": "mechanics", "seconds": 55.782, "exit_code": 1, "errors": true, "timeout": false}
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6815820Z Traceback (most recent call last):
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6817300Z   File "D:\a\road-has-gone-dark\road-has-gone-dark\tests\dual_prestige_acceptance\run-focused.py", line 18, in <module>
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6830711Z     assert not result['exit_code'] and not result['errors'] and not result['timeout'],(base/(label+'.log')).read_text(encoding='utf-8')[-16000:]
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6888477Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6889475Z AssertionError: Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6890101Z 
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6890599Z ERROR: actual success/failure and correct per-class attribute DC wizard-dissonant-seal
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6891431Z    at: push_error (core/variant/variant_utility.cpp:1024)
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6891997Z    GDScript backtrace (most recent call first):
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6892631Z        [0] check (res://tests/character_wave_four/mechanics_driver.gd:13)
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6893491Z        [1] test_casting_attributes (res://tests/dual_prestige_acceptance/mechanics.gd:207)
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6894296Z        [2] run (res://tests/dual_prestige_acceptance/mechanics.gd:17)
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.6894722Z 
+focused-windows	Pinned/current mechanics, exact cold restart and actual controls	2026-10-25T03:11:33.7978680Z ##[error]Process completed with exit code 1.

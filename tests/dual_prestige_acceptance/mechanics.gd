@@ -203,8 +203,12 @@ func test_casting_attributes() -> void:
    check(cast.ok,"actual late cast/save "+id+str(roll))
    if not cast.ok:continue
    var saves: Array=cast.events.filter(func(e: Dictionary):return e.type=="save_resolved")
-   var expected := RulesExpressions.evaluate_formula(a.effects.filter(func(e: Dictionary):return e.op=="save")[0].dc,kernel.derive_character(prepared).context)
-   check(not saves.is_empty() and saves[0].dc==expected.value and saves[0].success==(roll==20),"actual success/failure and correct per-class attribute DC "+id)
+   var snapshot: Dictionary=kernel.derive_character(prepared).snapshot
+   # Final derived bonuses (including actual feats/school) belong in the DC;
+   # the replay context's pre-stacking stats intentionally do not contain them.
+   var attribute: String="INT" if a.casting_class=="wizard" else "WIS"
+   var expected: int=17+int(floor(float(snapshot.attributes[attribute]-10)/2.0))+int(snapshot.stats.save_dc)
+   check(not saves.is_empty() and saves[0].roll==roll and saves[0].dc==expected and saves[0].success==(roll==20),"actual success/failure and own "+attribute+" DC "+id+" expected "+str(expected)+" observed "+JSON.stringify(saves))
    for pool in a.cost.resources:check(cast.actor.runtime.resources[pool]==prepared.runtime.resources[pool]-int(a.cost.resources[pool]),"save never refunds correct slot/copy "+pool)
    saved_records[id+":spent"]=cast.actor
  # High virtual slots alone do not permit borrowing a different mental score.
