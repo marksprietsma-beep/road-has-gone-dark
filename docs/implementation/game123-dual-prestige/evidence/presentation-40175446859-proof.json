@@ -1,0 +1,265 @@
+{
+  "source_commit": "8d94541a454728b78357e7c5c41a3904e824a2a2",
+  "input_run": 40173767865,
+  "input_source": "5db4a3892e014c5b7fa584ec372aeff789427ac7",
+  "source_evidence_not_native_export": true,
+  "protected_bytes": {
+    "earned\\earned-proof.json": "3120066cd7c78f589b2ab5866c670995b4fcbfefa79c4d8632ac556bd0bb2153",
+    "earned\\timings.json": "16e944bddee4917a72e1f445f1414eb713d6b9ec54b8b4da89c9411080a731d1",
+    "mechanics\\input-proof.json": "572c57cec86c2346aa48c9d1b527d8b89ffd7c1881f05a076696e22324762e5d",
+    "mechanics\\probe-proof.json": "4f039f371ee94884463c39da09a923d21d00309e9b3e290295f9fd5475f445e6",
+    "mechanics\\proof.json": "23709b8569fe3685ac7d5d4e6a4c6adfef7676f359f461c6aacfe17e932a2dfd",
+    "mechanics\\restart-proof.json": "246729782cb6d649c66f2a0f3c38fab17a75285038028b2b31104156a3baf822",
+    "mechanics\\saved.json": "dd72dcb5527cbc36c49110ee5e3f8a0d51b8cc7ac540945d4d26ac9cfc7085c5",
+    "mechanics\\timings.json": "32f69ab25cffda6b0e73911882274c6e8622ade27266397811a98ad7d4c2977f",
+    "earned\\connected-a\\active-state.json": "a9dcbc02ed80aa3a8e646935263ac87841f5a24033f9f989e2a9025a4eb19532",
+    "earned\\connected-a\\proof.json": "ec02510c40ce4bf2f1eb0ad1d937e94ced81a49652d46f6a2e43e2189ab78e48",
+    "earned\\connected-a\\restart-proof.json": "20c102f04de9b62c9a034536372c3e854aa1bd984866243edca1e1acb598b683",
+    "earned\\connected-b\\active-state.json": "be736e89a88b659267e95355a7af6a0c026768d9b2be9605c347cf683ece8f3e",
+    "earned\\connected-b\\proof.json": "adb4c58a376f4449d6bf79d511f9a55c37bc468d749291e9cd369499e1327e5a",
+    "earned\\connected-b\\restart-proof.json": "bd4a55ddc515ec1b0a65687bc310b53c2727380ad5cb64969c079413088a6b0c",
+    "earned\\entry\\entry-proof.json": "74cd5268e417dca5e8199bbcb112bea3559a8c2de6d2bf15a2e14a3ce82ba2ca",
+    "earned\\entry\\entry-restart-proof.json": "0646e3f483c27ef75596b9c667bb34f19f31d6fd6b18174771d5a47e3eb0acea",
+    "earned\\entry\\entry-saved.json": "841aef1dcf55d48b29d30a1144ef77da786ab9b9716e73b03ca06c0023bdabef",
+    "earned\\connected-a\\saves\\b66c901bda6acb485da8be0b8d2c434b.json": "f955bbe969df7048b3822bba6ab8a7ae2238d8bdbbaaca615fa6b006f9900037",
+    "earned\\connected-b\\saves\\b66c901bda6acb485da8be0b8d2c434b.json": "e03ac96596a2465080dabe597401e3843ae0e89125ae32a21d09c8cc0bddc74c",
+    "earned\\entry\\duskblade-accept\\b66c901bda6acb485da8be0b8d2c434b.json": "52920c73c00dd60058fa2092dd2113e6fd24b0c6d41d597d637c7849692d461b",
+    "earned\\entry\\duskblade-decline\\b66c901bda6acb485da8be0b8d2c434b.json": "a5a98596696a0da2ead1d3d19f1a22c12288aef80bc8634a5a14884518715627",
+    "earned\\entry\\sorcerer-accept\\b66c901bda6acb485da8be0b8d2c434b.json": "f5bb205df38d7ba2d2e362774f0feaec5a50391faaff45fb9d0f8b8f3a5ec4d1",
+    "earned\\entry\\sorcerer-decline\\b66c901bda6acb485da8be0b8d2c434b.json": "57ad8bb62477e39ca7028db5d0014892eb7d0b9d48eab94ba73588f18962b9f4",
+    "earned\\entry\\wizard-accept\\b66c901bda6acb485da8be0b8d2c434b.json": "73f69109d9a6d55f5fc79fb6c488bb10a902aad14bf047adbf93d4f58f0465a8",
+    "earned\\entry\\wizard-decline\\b66c901bda6acb485da8be0b8d2c434b.json": "f678f52108794be510cca46d57d0623ff5edef0585423c748051cff938f6a49e",
+    "earned\\journeys\\cohort-0\\earned-qualified-duskblade.json": "ad75fab7aa916b96b4b6630867ae31b70d79af3ac1ce684ec41645a906f70f66",
+    "earned\\journeys\\cohort-0\\earned-qualified-sorcerer.json": "589361b7a2ba636fa5e676f0751f65b4edf5654ea14b1ef66eb7fcba41814ff7",
+    "earned\\journeys\\cohort-0\\earned-qualified-wizard.json": "7c7603a9a176cf976c7edfb8bba33834b8c5000f51d2c2be7c0dadb026d5d148",
+    "earned\\journeys\\cohort-0\\proof.json": "43c9aa973936e48d070fbecfcbc3f116512d6d1e2646820a5d8cab7183226d35",
+    "earned\\journeys\\cohort-0\\restart-proof.json": "cbe4fbd0b8ec2f748809905ed80c3c664eee95e5890c1cca0dad07342f618bcd",
+    "earned\\journeys\\cohort-0\\failed-check\\b66c901bda6acb485da8be0b8d2c434b.json": "717bb4970f04a8196ca35399ab1ab4cb367140c23a327ee89a5fa83de62bcdb7",
+    "earned\\journeys\\cohort-0\\saves\\b66c901bda6acb485da8be0b8d2c434b.json": "1b83a30ea53f7f7c5706ecb3fb4b4e90ef248af770323b8f0da3378488bfee01",
+    "earned\\journeys\\cohort-0\\cache\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5\\101.json": "88abd250068c1d97273df0f860f8646deef66284645509ae4d7717b423f8ab8a",
+    "earned\\journeys\\cohort-0\\cache\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5\\2eb428e783101dc1c99213c31816dbd50f3a68370094917949a88bfbb5811fa5.geography.json": "86f288aa7cb2f73a20566c85abae76e037a5a92e470501fa26c1b505ae2756ac"
+  },
+  "captures": {
+    "checks": 45,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-base-classes-only-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8147544599b19e7a4d0d8d5a1b5c67d0a2fe136dfb2ab71ebd83348885653871",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-wizard-theurge-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "98b7bbe47d689f02fc9c4d560f662cebc304cfd67ae6cf48e1da92ce62824065",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-prepared-dual-traditions-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "d8f273ea19bf28766497692d5df24e5be5397574a78ca9a9a1653ffd3c7e4d63",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-sorcerer-theurge-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "e1fe9c490e77058241d7f1056503e4ae6f520a0f901b2e385da75d3160baadb8",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-spontaneous-and-divine-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "37d58ea8f66938b3f610b0ebfd4cb62c4a96e02fac031f1c222859300763ba20",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-duskblade-champion-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "0e7adfeaa599839f743ca24d1e31851a27305e1a2ee812814376651566fe7386",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-wizard-optional-entry-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "894651bd3099d0c25e9869d4d7945e76fb8d05c5ef684a43e7e0cdcd134054bb",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-permanent-prestige-prerequisites-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "84ac4f9a438c1f15911610682f40ae0e44dee3800940918179236738f11825de",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490.0,
+        "file": "earned-sorcerer-optional-entry-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "f2532a496aa39d6ef8baf04eaf2879f452ae4e22a476812f677dd5f7cdcc271a",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-duskblade-optional-entry-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cef7fb09871920ee448cbe46427497cd3ad1aefc8a4af083a93fd49f8a6ac4d6",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-theurge20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "d6e15d81fcdd080d4af3a3027d01e823c06ebaa8d9c2c5e9c21101a2549c2b2f",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-champion20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "82366f114ade53e99f46ef97b5ff136302786b3b66ef410d6e207e101b848b65",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-theurge-large-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0c76a3d2872d5970685967663b15164bf314112ec91dbc446b0af4ba037b0693",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-theurge-release-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "cb141fc8aaf6a2c47fb955a29f0bf1bf2d015b77f160f4473ef4ba4091948081",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-theurge-refuge-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "3ef562efee7b8ab9b4166c9a4537de29c9c28c1de9184e1c9ac5bda9bf59045f",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-refuge-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "4bd597126ced675ab6cdfb6b03f3b1dd64b1736466bb3e09d12acf3a8ae99912",
+        "width": 640
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-retaliation-5-1-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4f324b16d2cd9c660d8395912f84be9be223e11126634de67106466b5cbba3a0",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-retaliation-5-19-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "685ea45dda2fb8a0f8391a4cd0c254b12d6b92a60754449745b466c9c1c09ad8",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-retaliation-5-20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "e1a69fa1b91a7a50ca002ba5e299c45c615d8e8c3ce38eaed1378ea069a58c36",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-connected-a-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "6ddfd4013e4013124ede098e80551d9476f63484a7f9bc72c7c8c5275a64694f",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 640,
+        "file": "earned-connected-b-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "4db7646784d99554f30c84a6cd4455f039b369c772a9c113ae1b234a28d45e79",
+        "width": 2560
+      }
+    ]
+  },
+  "timing": {
+    "seconds": 142.953,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+}

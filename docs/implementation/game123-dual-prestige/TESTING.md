@@ -23,6 +23,8 @@ For Champion, a Duskblade6 with genuine Arcane strike/Spellcraft/BAB/casting req
 
 Enter an opportunity fight, cast spells from both own traditions, inspect separate costs, target highlights, actual damage/status/ward outcomes and exhaustion. Return home for legitimate recovery. Save fully, exit the process, relaunch and Resume; verify XP, chosen classes/parents, spells, equipment and exact ongoing battle continuation. Historical campaigns retain original rules (including their original Theurge cap), with no automatic migration.
 
+For source-editor review, run the project normally (intro_sequence.tscn → main menu) or open `res://scenes/ui/main_menu.tscn`. The real creator, sheet and fight scenes are `res://scenes/ui/party_creation.tscn`, `res://scenes/ui/character_sheet.tscn` and `res://scenes/combat/first_adventure.tscn`; they need a valid campaign handoff, so use the normal journey rather than launching them with empty state.
+
 ## Presentation limits
 
-Original Godot screenshots will be supplied after native success. Some runners render a requested1280×720 client as1280×719; metadata records actual dimensions. Existing long sheet/selection text, small-screen density, targeting/downed usability (GAME89/92) and humanoid LPC fallbacks (GAME140) remain separate. No new art/body-coverage claim.
+Original Godot screenshots will be supplied after native success. Some runners render a requested1280×720 client as1280×719; metadata records actual dimensions. Actual captures also show long combat action labels extending/clipping beyond the action column at1280 and640. Large dual-caster repertoires require scrolling; not every named ability is visible in a single battle frame. These shared presentation defects are not claimed fixed by this mechanics acceptance. Existing long sheet/selection text, small-screen density, targeting/downed usability (GAME89/92) and humanoid LPC fallbacks (GAME140) remain separate. No new art/body-coverage claim.
