@@ -9,7 +9,7 @@ func check(value: bool,label: String) -> void:
 func _ready() -> void:call_deferred("run")
 func run() -> void:
  var base := OS.get_environment("GAME133_ROOT")
- var saved := RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
+ var saved: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(base.path_join("saved.json")))
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  var battle: Dictionary=saved.battle.duplicate(true)
  ui.state={"first_adventure":{"battle":battle},"party_ids":["a","b","c"],"party":{"members":[]}}
