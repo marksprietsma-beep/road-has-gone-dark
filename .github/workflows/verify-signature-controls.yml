@@ -1,11 +1,11 @@
-name: Historical Martial Production Controls
+name: Historical Production Combat Controls
 on:
   workflow_dispatch:
   push:
     branches: [main, fix/game-123-historical-signature-controls]
-    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', '.github/workflows/verify-signature-controls.yml']
+    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', 'tests/spell_repertoires/input_driver.gd', 'tests/nature_repertoires/input_driver.gd', '.github/workflows/verify-signature-controls.yml']
   pull_request:
-    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', '.github/workflows/verify-signature-controls.yml']
+    paths: ['scripts/ui/first_adventure.gd', 'scripts/combat/**', 'scripts/rules/**', 'data/rules/**', 'tests/class_signatures/**', 'tests/spell_repertoires/input_driver.gd', 'tests/nature_repertoires/input_driver.gd', '.github/workflows/verify-signature-controls.yml']
 permissions:
   contents: read
 jobs:

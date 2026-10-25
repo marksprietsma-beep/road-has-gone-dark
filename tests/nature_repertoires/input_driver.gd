@@ -13,11 +13,31 @@ func run() -> void:
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  var battle: Dictionary=saved.battle.duplicate(true)
  ui.state={"first_adventure":{"battle":battle},"party_ids":["a","b","c"],"party":{"members":[]}}
- ui.engine=TacticalAuras.new(battle.units.a.record);ui.mode="druid-packward-canopy";ui.refresh()
+ ui.engine=TacticalAuras.new(battle.units.a.record);battle=ui.engine.seal(battle)
+ ui.state.first_adventure.battle=battle;ui.mode="druid-packward-canopy";ui.sent={};ui.refresh()
+ var blocked_position: Array=battle.units[RulesEntities.identity("a")].position
+ var exhausted_hash := RulesJson.digest(battle)
+ check(int(battle.budget.main)==0,"original saved cast has already spent its main action")
+ check(ui.action_buttons["druid-packward-canopy"].disabled and not ui.tiles[str(blocked_position)].target_tile,"spent spell has no misleading action or target")
+ ui.choose_tile(blocked_position)
+ check(ui.sent.is_empty() and RulesJson.digest(battle)==exhausted_hash,"unavailable spell click preserves exact battle/log/RNG and emits no intent")
+ # A separate lawful development encounter after the existing eligible-rest
+ # boundary supplies a genuinely affordable positive targeting case.
+ var source := RulesRecords.registry(battle.units.a.record)
+ var derived := RulesCharacter.new(source).derive_character(battle.units.a.record)
+ check(derived.ok,"original historical caster remains valid")
+ var rested := RulesEffects.new(source).refresh_resources(battle.units.a.record.runtime,derived.snapshot.resource_capacities,"eligible_rest")
+ check(rested.ok,"actual eligible-rest policy restores daily slots and prepared copies")
+ if not rested.ok:
+  ui.queue_free();get_tree().quit(1);return
+ battle.units.a.record.runtime=rested.runtime;battle.cursor=battle.order.find("a");battle.budget={"main":1,"move":1};battle=ui.engine.seal(battle)
+ check(ui.engine.validate(battle).is_empty(),"fresh historical encounter is authoritative and valid")
+ ui.state.first_adventure.battle=battle;ui.mode="druid-packward-canopy";ui.sent={};ui.refresh()
  var pet_id := RulesEntities.identity("a");var p: Array=battle.units[pet_id].position
  check(ui.tiles.has(str(p)) and ui.tiles[str(p)].target_tile,"actual pet tile highlighted")
  ui.choose_tile(p)
  check(ui.sent.get("kind")=="druid-packward-canopy" and ui.sent.get("target")==pet_id,"production click selects companion identity")
+ check(ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"druid-packward-canopy","target_id":pet_id}).ok,"positive UI spell intent is genuinely executable")
  check(ui.action_buttons.has("druid-packward-canopy"),"real combat action exposes new spell")
  var spellbook := SpellbookEditor.new();var record: Dictionary=saved.records["sorcerer-crystal-reservoir"]
  spellbook.setup(record)

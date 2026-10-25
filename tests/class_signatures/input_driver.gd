@@ -39,7 +39,7 @@ func run() -> void:
    check(ui.sent.is_empty() and not ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":strike,"target_id":"bandit-blade"}).ok,"exhausted click emits no intent and authority rejects it")
    print("SOULKNIFE_EXHAUSTED_CONTROL ",JSON.stringify({"focus":battle.units.a.record.runtime.resources["soulknife-focus"],"main":battle.budget.main,"button_disabled":ui.action_buttons[strike].disabled,"target":ui.tiles[str(p)].target_tile,"intent":ui.sent}))
    check(RulesJson.digest(battle)==original_hash,"unavailable controls preserve exact battle/RNG/log")
-   var recovered := ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"soulknife-recover","target_id":"a"})
+   var recovered: Dictionary=ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"soulknife-recover","target_id":"a"})
    check(recovered.ok,"actual main-action Focus recovery")
    if recovered.ok:
     battle=recovered.battle
@@ -48,7 +48,7 @@ func run() -> void:
     for turn in battle.order.size()+1:
      var actor: Dictionary=ui.engine.current(battle)
      if actor.id=="a" and int(battle.budget.main)==1:break
-     var ended := ui.engine.command(battle,{"actor_id":actor.id,"revision":battle.revision,"kind":"end"})
+     var ended: Dictionary=ui.engine.command(battle,{"actor_id":actor.id,"revision":battle.revision,"kind":"end"})
      check(ended.ok,"ordinary turn advance after recovery")
      if not ended.ok:break
      battle=ended.battle
