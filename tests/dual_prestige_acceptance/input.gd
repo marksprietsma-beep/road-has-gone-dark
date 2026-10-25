@@ -36,7 +36,7 @@ func run() -> void:
  check(book.controls.has("wizard-arcane-bolt") and book.controls.has("cleric-bless"),"actual spellbook exposes both independent traditions")
  book.queue_free()
  book=SpellbookEditor.new();add_child(book);book.setup(saved.records.junior_parent)
- check(not book.controls.has("sorcerer-tier2-tempest"),"junior Sorcerer spellbook cannot borrow qualifying Wizard's tier2")
+ check(not book.controls.has("sorcerer-scorching-ray"),"junior Sorcerer spellbook cannot borrow qualifying Wizard's tier2")
  book.queue_free()
  var helper: Node=load("res://tests/dual_prestige_acceptance/base.gd").new();helper.source=source;helper.kernel=kernel;helper.fixtures.fighter=saved.records.fighter
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)

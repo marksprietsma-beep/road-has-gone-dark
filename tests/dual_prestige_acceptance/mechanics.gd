@@ -179,6 +179,7 @@ func test_independent_casts() -> void:
  contracts.independent_resources=true
 func test_casting_attributes() -> void:
  var r: Dictionary=saved_records.theurge20.duplicate(true)
+ var defender := build("fighter",1)
  var cases := []
  for cls in ["wizard","cleric"]:
   var options: Array=kernel.derive_character(r).snapshot.abilities.filter(func(id: String):
@@ -199,7 +200,7 @@ func test_casting_attributes() -> void:
   if not rest.ok:continue
   prepared.runtime=rest.runtime
   for roll in [1,20]:
-   var cast := use_at_save(prepared,fixtures.fighter,id,roll)
+   var cast := use_at_save(prepared,defender,id,roll)
    check(cast.ok,"actual late cast/save "+id+str(roll))
    if not cast.ok:continue
    var saves: Array=cast.events.filter(func(e: Dictionary):return e.type=="save_resolved")
@@ -211,6 +212,13 @@ func test_casting_attributes() -> void:
    check(not saves.is_empty() and saves[0].roll==roll and saves[0].dc==expected and saves[0].success==(roll==20),"actual success/failure and own "+attribute+" DC "+id+" expected "+str(expected)+" observed "+JSON.stringify(saves))
    for pool in a.cost.resources:check(cast.actor.runtime.resources[pool]==prepared.runtime.resources[pool]-int(a.cost.resources[pool]),"save never refunds correct slot/copy "+pool)
    saved_records[id+":spent"]=cast.actor
+  # No automatic natural-one failure: a genuinely high permanent save can
+  # beat this DC even on1. Retain that frozen-engine counterplay explicitly.
+  var veteran := use_at_save(prepared,fixtures.fighter,id,1)
+  check(veteran.ok,"high permanent save remains valid counterplay "+id)
+  if veteran.ok:
+   var events: Array=veteran.events.filter(func(e: Dictionary):return e.type=="save_resolved")
+   check(not events.is_empty() and events[0].roll==1 and events[0].success==(1+int(events[0].bonus)>=int(events[0].dc)),"numeric save authority, no invented automatic roll-one failure "+id)
  # High virtual slots alone do not permit borrowing a different mental score.
  var limited: Dictionary=saved_records["wizard:theurge10"].duplicate(true)
  var forbidden: Array=kernel.derive_character(limited).snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).get("casting_class")=="cleric" and int(source.definition("abilities",id).get("spell_tier",0))==7)
