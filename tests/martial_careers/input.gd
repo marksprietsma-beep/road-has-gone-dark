@@ -37,11 +37,11 @@ func run() -> void:
   editor.queue_free()
  var qualified: Dictionary=helper.variant("fighter",5,{},"weapon-focus")
  var editor := BuildEditor.new();add_child(editor);editor.setup(qualified,true)
- check(editor.bonus_picker!=null,"actual Fighter bonus-feat advancement control")
- if editor.bonus_picker!=null:
-  var feat := find(editor.bonus_picker,"veteran-weapon-training")
-  check(feat>=0 and not editor.bonus_picker.is_item_disabled(feat),"legitimate feat chain is available at its earned class level")
-  if feat>=0:editor.bonus_picker.select(feat);editor.bonus_picker.item_selected.emit(feat)
+ check(editor.feat_picker!=null,"actual Fighter scheduled feat advancement control")
+ if editor.feat_picker!=null:
+  var feat := find(editor.feat_picker,"veteran-weapon-training")
+  check(feat>=0 and not editor.feat_picker.is_item_disabled(feat),"legitimate feat chain is available at its earned class level")
+  if feat>=0:editor.feat_picker.select(feat);editor.feat_picker.item_selected.emit(feat)
   check(kernel.preview_advancement(qualified,editor.choice()).ok,"actual selected feat control produces lawful next level")
  editor.queue_free()
  var resilient: Dictionary=helper.variant("barbarian",14,helper.step_options("barbarian","resilient"))

@@ -150,12 +150,12 @@ func test_rage() -> void:
 func test_feat_chain() -> void:
  var r := variant("fighter",5,{},"weapon-focus")
  var choice: Dictionary=kernel.suggested_choice(r,"fighter").choice
- choice.bonus_feats=["veteran-weapon-training"]
- var step := kernel.preview_advancement(r,choice);check(step.ok,"genuine bonus feat meets BAB/Focus chain")
+ choice.feat_id="veteran-weapon-training"
+ var step := kernel.preview_advancement(r,choice);check(step.ok,"genuine level6 Fighter feat meets BAB/Focus chain "+JSON.stringify(step.get("errors",[])))
  if step.ok:
   check(step.snapshot.stats.damage==stats_of(r).damage+2,"chosen chain changes actual weapon damage")
   records.feat_chain=step.candidate
- var invalid: Dictionary=kernel.suggested_choice(variant("fighter",3),"fighter").choice;invalid.bonus_feats=["veteran-weapon-training"]
+ var invalid: Dictionary=kernel.suggested_choice(variant("fighter",3),"fighter").choice;invalid.feat_id="veteran-weapon-training"
  check(not kernel.preview_advancement(variant("fighter",3),invalid).ok,"forged early/prerequisite-free bonus feat rejects")
  contracts.feat_choices=true
 func test_weapon_overrides() -> void:
