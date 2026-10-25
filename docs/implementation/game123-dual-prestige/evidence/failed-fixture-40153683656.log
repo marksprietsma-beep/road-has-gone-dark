@@ -1,0 +1,12 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+DUAL_PROBE aggregate 4817
+DUAL_PROBE parents 5352
+DUAL_PROBE cap 6095
+SCRIPT ERROR: Invalid access to property or key 'runtime' on a base object of type 'Dictionary'.
+   at: learn (res://tests/dual_prestige_acceptance/base.gd:61)
+   GDScript backtrace (most recent call first):
+       [0] learn (res://tests/dual_prestige_acceptance/base.gd:61)
+       [1] route (res://tests/dual_prestige_acceptance/base.gd:31)
+       [2] run (res://tests/dual_prestige_acceptance/probe.gd:26)
+DUAL_PROBE junior 6603

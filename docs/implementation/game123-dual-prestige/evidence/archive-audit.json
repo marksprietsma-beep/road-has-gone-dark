@@ -1,0 +1,25 @@
+{
+  "source_commit": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+  "archive": "theurge-abjurant-windows-x64.zip",
+  "sha256": "3d75a0dd441901f32b31913ace8b6ee82fcfe448be0ffeee5afb7ff8c687cf64",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "theurge-abjurant-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "0d01095a2b8e16b93fe4f80c2c8d7451bb63ad55f31e134a437bf646a63b0cea",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v29",
+    "schema_version": 1,
+    "rules_version": "29.0.0",
+    "engine_schema": 3,
+    "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

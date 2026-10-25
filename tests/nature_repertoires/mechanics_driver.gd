@@ -44,6 +44,11 @@ func complete(restart := false) -> void:
  else:get_tree().quit(1 if failures else 0)
 func prepared(record: Dictionary,id: String,copies := 1) -> Dictionary:
  var r: Dictionary=record.duplicate(true);r.choices.prepared_abilities=[id];r.choices.spell_preparations={}
+ # This newly generated development recipe retains its actual early known
+ # spell. Never strip permanent entry knowledge just to isolate a later cast.
+ if record.advancement_history.any(func(s: Dictionary):return s.class_id=="mystic-theurge"):
+  for known in record.choices.prepared_abilities:
+   if known=="sorcerer-scorching-ray" and not r.choices.prepared_abilities.has(known):r.choices.prepared_abilities.append(known)
  if source.definition("abilities",id).tags.has("prepared"):r.choices.spell_preparations[id]=copies
  r.runtime.resources=kernel._replay(r).get("context",{}).get("capacities",{}).duplicate()
  return r
@@ -178,6 +183,9 @@ func test_hybrid() -> void:
    check(next.ok,"deliberate CHA/WIS increase "+JSON.stringify(next.get("errors",[])))
    if not next.ok:planner.free();return
   record=next.candidate
+  if record.advancement_history.size()==4:
+   record=prepared(record,"sorcerer-scorching-ray")
+   check(kernel.derive_character(record).ok,"legal original tier2 spontaneous choice in new fixture recipe; old pins retain their own entry policy")
  var s: Dictionary=kernel.derive_character(record).snapshot
  check(s.casting_levels.sorcerer==13 and s.casting_levels.druid==12,"hybrid keeps separate effective casting tracks")
  for id in ["sorcerer-starfall-rupture","druid-packward-canopy"]:

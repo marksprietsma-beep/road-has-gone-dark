@@ -1,0 +1,44 @@
+[
+  {
+    "phase": "probe",
+    "seconds": 23.265,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics",
+    "seconds": 102.5,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics-cold",
+    "seconds": 8.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "input",
+    "seconds": 15.454,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "interactions",
+    "seconds": 13.046,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "interactions-cold",
+    "seconds": 2.797,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+]

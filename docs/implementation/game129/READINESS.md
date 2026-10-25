@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Matching-source native Windows evidence accepts Duskblade/Archmage. Other career acceptance remains source-labelled; technical COMPLETE remains separate from human playtest and sourcebook breadth.
+Matching-source native Windows accepts Mystic Theurge / Abjurant Champion. Technical acceptance remains separate from human balance and research breadth.
 
-{'COMPLETE': 35, 'PARTIAL': 15, 'BLOCKED': 0}
+{'COMPLETE': 37, 'PARTIAL': 13, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -20,7 +20,7 @@ Matching-source native Windows evidence accepts Duskblade/Archmage. Other career
 | Duelist | prestige | COMPLETE |  |
 | Eldritch Knight | prestige | PARTIAL | Verify martial/spell resource interplay and path action delivery in actual native combat, beyond caster-level derivation. |
 | Arcane Trickster | prestige | COMPLETE |  |
-| Mystic Theurge | prestige | PARTIAL | v18 independently validates arcane/divine casting levels/resources; broader path feature combinations and earned continuation need parity review. |
+| Mystic Theurge | prestige | COMPLETE |  |
 | Psion | base | COMPLETE |  |
 | Psychic Warrior | base | COMPLETE |  |
 | Soulknife | base | COMPLETE |  |
@@ -54,13 +54,12 @@ Matching-source native Windows evidence accepts Duskblade/Archmage. Other career
 | Metamind | prestige | COMPLETE |  |
 | Duskblade | base | COMPLETE |  |
 | Spirit Shaman | base | COMPLETE |  |
-| Abjurant Champion | prestige | PARTIAL | Verify channel/ward interactions on real hit/miss and independent spell-resource exhaustion. |
+| Abjurant Champion | prestige | COMPLETE |  |
 | Grove Warden | prestige | PARTIAL | Verify owned creatures/forms/rest retrieval with actual path benefits; no unsupported terrain engine. |
 
 ## Finite exit plan
 
-1. mystic-theurge, abjurant-champion: Finish supported high-tier spontaneous/nature/channel and hybrid-path restrictions, not full sourcebook spell conversion; prove real choices/costs/targets/counterplay.
-2. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
-3. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
+1. barbarian, fighter, monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
+2. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 
 Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.

@@ -1,3 +1,7 @@
+# Published and verified
+
+PR149 normally merged as `c796043aa2543bcab144e8d0353628c35c2ab610`; all22 post-main Windows workflows PASSED. The delivered native build and35/15 matrix are preserved. GitHub150 work continues separately in PR151 and docs/implementation/game123-dual-prestige/CONTINUATION.md. Do not rerun or recreate this completed cohort. Older chronology below is superseded.
+
 # Native release verified — finish publication, then GitHub150
 
 Recovered original sourceee7d29a, successful native40115102249; downloaded exact build/evidence. Independent ZIP/PE/CRC/source/content/credits audit PASSED; evidence-gated readiness35 COMPLETE/15 PARTIAL/0 BLOCKED. No new native release was run. Delivery,21 genuine PNGs, raw proof/timings and exact SHA are now recorded. Production/test/export inputs remain identical to successful release.

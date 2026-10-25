@@ -3,7 +3,15 @@ from pathlib import Path
 import hashlib,json,subprocess
 root=Path(__file__).resolve().parents[2];base='c48d6df3e08fe17d8893294aab029e02a7be20e9'
 def verify():
- manifest=json.loads((root/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(subprocess.check_output(['git','show',base+':data/rules/packs.json'],cwd=root));assert manifest['packs'][:27]==old['packs'] and len(manifest['packs'])==28
+ manifest=json.loads((root/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(subprocess.check_output(['git','show',base+':data/rules/packs.json'],cwd=root));assert manifest['packs'][:27]==old['packs'] and len(manifest['packs'])>=28
+ released=json.loads(subprocess.check_output(['git','show','c796043:data/rules/packs.json'],cwd=root))
+ assert manifest['packs'][:28]==released['packs']
+ assert (root/'data/rules/trhgd-character-v28.json').read_bytes()==subprocess.check_output(['git','show','c796043:data/rules/trhgd-character-v28.json'],cwd=root)
+ assert len({r['rules_ref']['pack_id']for r in manifest['packs']})==len(manifest['packs'])
+ for appended in manifest['packs'][28:]:
+  data=json.loads((root/appended['path'].removeprefix('res://')).read_text(encoding='utf-8'))
+  assert data['pack_id']==appended['rules_ref']['pack_id']
+  assert hashlib.sha256(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==appended['rules_ref']['content_hash']
  for row in old['packs']:
   file=row['path'].removeprefix('res://');assert (root/file).read_bytes()==subprocess.check_output(['git','show',base+':'+file],cwd=root)
  before=json.loads((root/'data/rules/trhgd-character-v27.json').read_text(encoding='utf-8'));after=json.loads((root/'data/rules/trhgd-character-v28.json').read_text(encoding='utf-8'));assert set(before)==set(after)
@@ -29,7 +37,7 @@ def verify():
    statuses=['weakened','arcane-tether']+(['slowed','unsteady-concentration','stillness-lattice']if key.endswith('-5')else[])
    expected_effects=[{'op':'remove_status','id':sid}for sid in statuses]+expected_effects
   assert candidate['effects']==expected_effects
- pin=manifest['packs'][-1]['rules_ref'];actual=hashlib.sha256(json.dumps(after,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode('utf-8')).hexdigest();assert pin['content_hash']==actual, {'expected':pin['content_hash'],'actual':actual,'decoder':'utf-8'}
+ pin=next(r['rules_ref']for r in manifest['packs']if r['rules_ref']['pack_id']=='trhgd-character-v28');actual=hashlib.sha256(json.dumps(after,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode('utf-8')).hexdigest();assert pin['content_hash']==actual, {'expected':pin['content_hash'],'actual':actual,'decoder':'utf-8'}
  frozen=['scripts/combat/tactical_combat.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']
  for file in frozen:
   assert (root/file).is_file()

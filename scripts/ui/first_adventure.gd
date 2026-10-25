@@ -123,8 +123,8 @@ func _process(delta: float) -> void:
 func choose_tile(p: Array) -> void:
  var b := battle()
  if b.is_empty() or b.status!="active": return
- if not channel_action_available(b,engine.current(b),mode):
-  message="Channel unavailable: requires a known eligible spell, one equipped melee weapon, a slot and the main action."
+ if not action_available(b,engine.current(b),mode):
+  message="Action unavailable: check action points, resources and equipment."
   refresh();return
  if mode=="move": send("move","",p)
  else:
@@ -132,16 +132,17 @@ func choose_tile(p: Array) -> void:
   if id.is_empty():
    for candidate in b.order:
     if b.units[candidate].position==p and engine.eligible(b,engine.current(b),b.units[candidate],mode):id=candidate;break
-  if not id.is_empty(): send(mode,id)
+  if not id.is_empty() and engine.eligible(b,engine.current(b),b.units[id],mode):send(mode,id)
 func select_mode(value: String) -> void:
  mode=value;message="";refresh()
-func channel_action_available(b: Dictionary,actor: Dictionary,id: String,derived: Dictionary={}) -> bool:
+func action_available(b: Dictionary,actor: Dictionary,id: String,derived: Dictionary={}) -> bool:
+ if b.is_empty() or actor.is_empty() or actor.team!="party":return false
+ if id=="move":return int(b.budget.move)>0
  var row := engine.registry.definition("abilities",id)
- if not row.has("channel_spell"):return true
- if actor.team!="party":return false
+ if row.is_empty():return false
  var current: Dictionary=derived if not derived.is_empty() else engine.characters.derive_character(actor.record)
  if not current.ok or not current.snapshot.abilities.has(id):return false
- if not RulesWaveFive.channel_access(actor.record,row,current.context,engine.registry).ok:return false
+ if row.has("channel_spell") and not RulesWaveFive.channel_access(actor.record,row,current.context,engine.registry).ok:return false
  return engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
 func add_action(id: String,text: String) -> void:
  var button := GameUI.action(text,func():select_mode(id),mode==id)
@@ -152,14 +153,13 @@ func add_action(id: String,text: String) -> void:
   button.disabled=button.disabled or not available.ok
   var row := engine.registry.definition("abilities",id)
   if RulesMartial.enabled(engine.registry) and row.has("requires_status") and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):button.disabled=true
-  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+  if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):
    var derived := engine.characters.derive_character(actor.record)
    button.disabled=button.disabled or not derived.ok or not RulesExpressions.evaluate_requirements(engine.registry.definition("abilities",id).requirements,derived.get("context",{})).ok
-   if row.has("channel_spell"):
-    button.disabled=button.disabled or not channel_action_available(battle(),actor,id,derived)
+   button.disabled=button.disabled or not action_available(battle(),actor,id,derived)
    if RulesWaveFour.enabled(engine.registry) and not psychic_identity_access(actor,row).ok:button.disabled=true
-   if RulesPsychic.identity_enabled(engine.registry) and row.get("requires_melee",false) and not battle().units.values().any(func(t: Dictionary):return engine.eligible(battle(),actor,t,id)):button.disabled=true
+   if (row.get("requires_melee",false) or row.tags.has("weapon_strike")) and not battle().units.values().any(func(t: Dictionary):return engine.eligible(battle(),actor,t,id)):button.disabled=true
    if RulesPsychic.parity_enabled(engine.registry) and derived.ok and int(row.get("cost",{}).get("main",0))>0 and derived.snapshot.tags.has("main_action_suppressed"):button.disabled=true
  if id in ["slow","healing-thread"]: button.disabled=button.disabled or int(engine.current(battle()).record.runtime.resources.get("focus",0))<1
  button.clip_text=true
@@ -247,7 +247,7 @@ func refresh() -> void:
  if not playing: targeting.text="Encounter complete · return to the region."
  if is_presenting():targeting.text="Watching "+presentation_actor+" · "+presentation_kind.capitalize()
  var reachable := engine.paths(b,actor) if playing and mode=="move" and int(b.budget.move)>0 else {}
- var selected_channel_ready := channel_action_available(b,actor,mode)
+ var selected_action_ready := action_available(b,actor,mode)
  for y in int(b.board.height):
   for x in int(b.board.width):
    var p := [x,y];var id := engine.occupant(b,p)
@@ -274,7 +274,7 @@ func refresh() -> void:
     button.tooltip_text="%s · %d / %d HP · %s"%[u.name,u.record.runtime.hp,engine.stats(u).HP,u.weapon]
     if int(u.record.runtime.temporary_hp)>0:button.tooltip_text+=" · %d temporary HP"%int(u.record.runtime.temporary_hp)
     if not recipe.warnings.is_empty(): button.tooltip_text+=" · "+"; ".join(recipe.warnings)
-   var valid_target: bool=playing and selected_channel_ready and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
+   var valid_target: bool=playing and selected_action_ready and not id.is_empty() and mode!="move" and engine.eligible(b,actor,b.units[id],mode)
    var valid_move: bool=playing and mode=="move" and reachable.has(str(p)) and actor.position!=p
    button.active_tile=actor.position==p and playing;button.target_tile=valid_target;button.move_tile=valid_move
    var style := GameUI.box(Color.TRANSPARENT)
@@ -288,7 +288,7 @@ func refresh() -> void:
    button.mouse_entered.connect(func():
     if not id.is_empty():
      targeting.text=button.tooltip_text
-     if valid_target and engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"]:
+     if valid_target and engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]:
       var affected: Array=engine.area_preview(b,actor,b.units[id],mode)
       targeting.text+=" · Affects: "+", ".join(affected.map(func(key: String):return str(b.units[key].name)))
     elif valid_move: targeting.text="Move here · %d tiles"%(reachable[str(p)].size()-1)
@@ -309,7 +309,7 @@ func refresh() -> void:
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
    if int(actor.record.runtime.temporary_hp)>0:detail.text+="\nBuffer: %d temporary HP"%int(actor.record.runtime.temporary_hp)
-   if engine.registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28"]:
+   if engine.registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]:
     var shells: int=actor.record.runtime.statuses.filter(func(s: Dictionary):return engine.registry.definition("statuses",s.id).tags.has("weapon_decoy")).size()
     if shells>0:detail.text+="\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells
    if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
@@ -320,14 +320,14 @@ func refresh() -> void:
      if str(pool).ends_with("-readiness") or pool=="soulknife-focus":pools.append(str(pool).replace("-"," ")+": "+str(int(actor.record.runtime.resources[pool])))
     if not pools.is_empty():detail.text+="\n"+" · ".join(pools)
     detail.text+="\nWeapon: "+str(engine.registry.definition("equipment",engine.active_weapon(actor)).name)
-   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"]:
+   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]:
     if int(character_snapshot.class_levels.get("warlock",0))>0:detail.text+="\nWarlock: at will · main action"
     for pool in ["binder-commitments","draconic-resolve"]:
      if character_snapshot.resource_capacities.has(pool):detail.text+="\n"+str(engine.registry.definition("resources",pool).name)+": %d/%d · rest"%[actor.record.runtime.resources[pool],character_snapshot.resource_capacities[pool]]
     for effect in actor.record.runtime.statuses:
      if effect.id=="breath-recovering":detail.text+="\nFocused breath: %d global starts to recover"%int(effect.remaining)
-   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"]:
-    if engine.registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"] and character_snapshot.tags.has("main_action_suppressed"):detail.text+="\nStillness prevents this main action; movement and shared reactions remain available."
+   if engine.registry.rules_ref().get("pack_id") in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]:
+    if engine.registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] and character_snapshot.tags.has("main_action_suppressed"):detail.text+="\nStillness prevents this main action; movement and shared reactions remain available."
     for pool in ["performance","spirit-favour"]:
      if character_snapshot.resource_capacities.has(pool):detail.text+="\n"+str(engine.registry.definition("resources",pool).name)+": %d/%d · rest"%[actor.record.runtime.resources[pool],character_snapshot.resource_capacities[pool]]
     if actor.record.runtime.statuses.any(func(s: Dictionary):return engine.registry.definition("statuses",s.id).has("upkeep")):detail.text+="\nMaintained rally: 1 performance each own activation; Stop is free."
@@ -354,8 +354,8 @@ func refresh() -> void:
      if ability.targeting.kind=="self":
       var button := GameUI.action(ability.name+resource_text(ability,actor),func():send(id,actor.id))
       button.disabled=thread!=null or not engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(b.budget.move),"main":int(b.budget.main),"reaction":int(actor.reaction)}).ok
-      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
-      if engine.registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28"]:button.disabled=button.disabled or not engine.eligible(b,actor,actor,id)
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] and ability.tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
+      if engine.registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]:button.disabled=button.disabled or not engine.eligible(b,actor,actor,id)
       button.tooltip_text=ability.get("description",ability.name);gate_button(button);actions.add_child(button);action_buttons[id]=button
      else:
       var caption: String=ability.name

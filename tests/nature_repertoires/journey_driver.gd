@@ -112,8 +112,7 @@ func create_party() -> void:
  for i in 3:
   var cfg: Array=configs[i];var cls: String=cfg[0];var id: String=state.party_ids[i]
   var goals := goals_for(i)
-  var attrs: Dictionary=planner.attributes_for(cls,goals.nodes)
-  if cfg[2]=="mystic-theurge":attrs={"STR":8,"DEX":10,"CON":13,"INT":15,"WIS":14,"CHA":12}
+  var attrs: Dictionary=creation_attributes(i,goals)
   var record := kernel.create(id,attrs,"heritage-"+str(cfg[1]))
   var step := planned(record,cls,i)
   check(step.ok,"lawful identity and starting class "+cls+JSON.stringify(step.get("errors",[])))
@@ -127,6 +126,12 @@ func create_party() -> void:
  for i in 3:prepare(i)
  var resumed := service.operate(entry,slot,"resume");check(resumed.ok,"ready distinct party "+str(resumed.get("error",resumed.get("errors",[]))));state=resumed.get("state",state)
  for id in state.party_ids:check(CharacterBuilderRecords.xp(state,id)==0,"begins with no injected XP")
+func creation_attributes(index: int,goals: Dictionary) -> Dictionary:
+ # Historical fixtures retain their exact original policy. New cohorts may
+ # supply lawful arrays without copying or replacing the real creation flow.
+ var cfg: Array=configs[index]
+ if cfg[2]=="mystic-theurge":return {"STR":8,"DEX":10,"CON":13,"INT":15,"WIS":14,"CHA":12}
+ return planner.attributes_for(str(cfg[0]),goals.nodes)
 func spell_selection(record: Dictionary) -> Dictionary:
  var snapshot: Dictionary=kernel.derive_character(record).snapshot
  var copies := RulesCoreContent.starting_preparations(snapshot,source)

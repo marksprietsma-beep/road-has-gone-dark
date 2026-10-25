@@ -1,6 +1,6 @@
 # Duskblade / Archmage Windows delivery
 
-Existing [PR149](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/149), based on merged mainc48d6df. Complete native Windows [release40115102249](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40115102249) PASSED at exact source `ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b`. Later delivery/readiness edits do not alter gameplay/test/export inputs; the evidence gate checks this. The actual merge SHA and post-main conclusions are recorded in PR149 and GitHub101 after publication, rather than inferred from this build source.
+Existing [PR149](https://github.com/marksprietsma-beep/road-has-gone-dark/pull/149), based on merged mainc48d6df. Complete native Windows [release40115102249](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40115102249) PASSED at exact source `ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b`. Later delivery/readiness edits do not alter gameplay/test/export inputs; the evidence gate checks this. PR149 was normally merged as `c796043aa2543bcab144e8d0353628c35c2ab610`; all22 post-main Windows workflows passed, including historical Wave4 run40150066253 and Wave5 run40150066255. No native release was repeated.
 
 [Self-contained Windows x64 download](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40115102249/artifacts/12569448673) · [native evidence](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40115102249/artifacts/12570473438) · [original screenshots](screenshots/README.md).
 
