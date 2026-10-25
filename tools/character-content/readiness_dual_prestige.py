@@ -13,7 +13,7 @@ def generate(root,pack,pin,native_root):
    key=phase+'/'+filename;p=proofs[key];assert p['checks']>0 and p['failures']==0 and native['proof_sources'][key]==source
    if phase in ['mechanics','journey','connected-a','connected-b','audit','current-upper']:
     if 'rules_ref'in p:assert p['rules_ref']==pin
- for key in ['input','frozen','pinned28-probe','entry','entry-cold']:assert proofs[key]['checks']>0 and proofs[key]['failures']==0 and native['proof_sources'][key]==source
+ for key in ['input','interactions','interactions-cold','frozen','pinned28-probe','entry','entry-cold']:assert proofs[key]['checks']>0 and proofs[key]['failures']==0 and native['proof_sources'][key]==source
  assert proofs['frozen']['checks']==22181
  assert all(proofs['mechanics/proof.json']['contracts'][k]is True for k in ['permanent_entry','historical_pins','dual_casting','champion_progression','total20','independent_resources','casting_attributes','distinct_support','martial_outcomes','body_suppression','recovery'])
  j=proofs['journey/proof.json'];assert j['earned_xp']==640 and not j['xp_injected']and len(j['journeys'])==3 and all(len(r['history'])==9 for r in j['journeys'])

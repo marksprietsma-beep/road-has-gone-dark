@@ -17,7 +17,7 @@ env=dict(os.environ,PATH='',NODE_PATH='',NODE_OPTIONS='',DUAL_ROOT=str(base/'mec
  GAME150_ROOT=str(base/'current-upper'),GAME133_ROOT=str(base/'historical18'),GAME126_REPAIR_ROOT=str(base/'legacy-v16'),GAME126_COMPATIBILITY_ROOT=str(base/'compatibility-v16'))
 for key in ['GAME76_HELPER_ROOT','GODOT_BIN','GH_TOKEN','GITHUB_TOKEN']:env.pop(key,None)
 timings=[];proofs={}
-for phase in ['probe','mechanics','input','journey','entry','connected-a','connected-b','capture','audit','current-upper','historical28','historical18','legacy','compatibility']:
+for phase in ['probe','mechanics','input','interactions','journey','entry','connected-a','connected-b','capture','audit','current-upper','historical28','historical18','legacy','compatibility']:
  for cold in ([False]if phase in ['probe','input','capture']else[False,True]):
   label=phase+('-cold'if cold else'');active=dict(env,DUAL_PHASE=phase,DUAL_CONNECTED_VARIANT='b'if phase=='connected-b'else'a',GAME129_CONNECTED_ROOT=str(base/('connected-b'if phase=='connected-b'else'connected-a')))
   if phase=='historical28':active['GAME150_ROOT']=str(base/'historical28')
@@ -31,7 +31,7 @@ for phase,folder,version in [('mechanics','mechanics','v29'),('journey','journey
   p=json.loads((base/folder/filename).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0,(phase,filename)
   if 'rules_ref'in p:assert p['rules_ref']==pins['trhgd-character-'+version],(phase,filename)
   proofs[phase+'/'+filename]=p
-for key,folder,filename in [('input','mechanics','input-proof.json'),('pinned28-probe','mechanics','probe-proof.json'),('entry','entry','entry-proof.json'),('entry-cold','entry','entry-restart-proof.json')]:
+for key,folder,filename in [('input','mechanics','input-proof.json'),('interactions','mechanics','interactions-proof.json'),('interactions-cold','mechanics','interactions-restart-proof.json'),('pinned28-probe','mechanics','probe-proof.json'),('entry','entry','entry-proof.json'),('entry-cold','entry','entry-restart-proof.json')]:
  p=json.loads((base/folder/filename).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0;proofs[key]=p
 m=proofs['mechanics/proof.json'];assert all(m['contracts'][k]is True for k in ['permanent_entry','historical_pins','dual_casting','champion_progression','total20','independent_resources','casting_attributes','distinct_support','martial_outcomes','body_suppression','recovery'])
 j=proofs['journey/proof.json'];assert j['earned_xp']==640 and not j['xp_injected']and len(j['journeys'])==3
