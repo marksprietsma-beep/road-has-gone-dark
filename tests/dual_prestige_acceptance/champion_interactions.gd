@@ -33,8 +33,8 @@ func run() -> void:
   battles[str(roll)]=out.battle
  var ward := use(saved.records["champion:aegis5"],fixtures.fighter,"abjurant-aegis-1");check(ward.ok,"actual paid defensive equipment-compatible Aegis")
  if ward.ok:
-  var caster := prep(build("wizard",20),"wizard-arcane-bolt")
-  var plain := use(caster,fixtures.fighter,"wizard-arcane-bolt");var protected := use(caster,ward.target,"wizard-arcane-bolt")
+  var caster := select(saved.records.champion20,"duskblade-force-rend")
+  var plain := use(caster,fixtures.fighter,"duskblade-force-rend");var protected := use(caster,ward.target,"duskblade-force-rend")
   check(plain.ok and protected.ok,"same real force spell against original and warded armoured target")
   if plain.ok and protected.ok:
    var raw: int=int(fixtures.fighter.runtime.hp)-int(plain.target.runtime.hp)
