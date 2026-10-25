@@ -1,6 +1,7 @@
 extends "res://tests/martial_careers/probe.gd"
 ## Lawful development builds; separately earned campaign acceptance is mandatory.
 var contracts := {}
+var outcomes := {"misses":0,"hits":0,"criticals":0,"changed_hits":0}
 func run() -> void:
  base=OS.get_environment("MARTIAL_ROOT");DirAccess.make_dir_recursive_absolute(base)
  source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v30.json").ok,"candidate30 exact registry")
@@ -24,6 +25,10 @@ func advance_more(record: Dictionary,cls: String,count: int) -> Dictionary:
  if not d.ok:return {}
  r.runtime.hp=int(d.snapshot.stats.HP);r.runtime.resources=d.snapshot.resource_capacities.duplicate()
  return RulesJson.string_keys(r)
+func encounter(record: Dictionary) -> Dictionary:
+ var b := super.encounter(record)
+ b.units.a.name=str(source.definition("classes",record.advancement_history[0].class_id).name)+" development adventurer"
+ return TacticalAuras.new(record).seal(b)
 func test_training() -> void:
  var a := stats_of(variant("fighter",4));var b := stats_of(variant("fighter",5))
  check(b.melee_attack-a.melee_attack-(b.BAB-a.BAB)==1 and b.ranged_attack-a.ranged_attack-(b.BAB-a.BAB)==1,"Veteran adds one actual attack beyond BAB in both modes")
@@ -49,12 +54,27 @@ func test_disciplines() -> void:
    for die in [1,19,20]:
     var control := encounter(r);var enhanced := encounter(used.actor)
     control.rng=attack_seed(die);enhanced.rng=control.rng.duplicate(true);control=engine.seal(control);enhanced=engine.seal(enhanced)
-    var raw := execute(engine,control,"attack","bandit-blade");var buff := execute(engine,enhanced,"attack","bandit-blade")
-    check(raw.ok and buff.ok,"actual miss/hit/critical weapon command "+style+str(die))
-    if not raw.ok or not buff.ok:continue
-    if die==1:check(raw.battle.units["bandit-blade"].record.runtime.hp==control.units["bandit-blade"].record.runtime.hp and buff.battle.units["bandit-blade"].record.runtime.hp==enhanced.units["bandit-blade"].record.runtime.hp,"miss delivers no extra damage")
-    elif style=="bow":check(raw.battle.units["bandit-blade"].record.runtime.hp-buff.battle.units["bandit-blade"].record.runtime.hp==1,"ranged hit/critical gains exactly one weapon damage")
-    check(raw.battle.rng==buff.battle.rng and engine._attack_weapon_context.is_empty(),"modifier adds no RNG and leaves no transient attack context")
+    var result := {}
+    var raw_trace := RulesAttackTrace.capture(func():result.raw=execute(engine,control,"attack","bandit-blade"))
+    var buff_trace := RulesAttackTrace.capture(func():result.buff=execute(engine,enhanced,"attack","bandit-blade"))
+    var raw: Dictionary=result.raw;var buff: Dictionary=result.buff
+    check(raw.ok and buff.ok and raw_trace.size()==1 and buff_trace.size()==1,"actual numeric weapon command "+style+str(die))
+    if not raw.ok or not buff.ok or raw_trace.is_empty() or buff_trace.is_empty():continue
+    for pair in [[raw,raw_trace[0]],[buff,buff_trace[0]]]:
+     var event: Dictionary=pair[1]
+     check(event.roll==die and event.hit==(int(event.roll)+int(event.bonus)>=int(event.defence)),"original numeric attack authority, including high-bonus die1")
+     var expected := RulesRng.roll("1d20",control.rng).rng
+     if event.hit:expected=RulesRng.roll("1d6",expected).rng
+     check(pair[0].battle.rng==expected,"exact authoritative attack/damage RNG consumption")
+     outcomes["hits"if event.hit else"misses"]+=1
+     if event.get("critical",false):outcomes.criticals+=1
+    if not raw_trace[0].hit and not buff_trace[0].hit:
+     check(raw.battle.units["bandit-blade"].record.runtime.hp==control.units["bandit-blade"].record.runtime.hp and buff.battle.units["bandit-blade"].record.runtime.hp==enhanced.units["bandit-blade"].record.runtime.hp,"genuine misses deliver no damage")
+    elif raw_trace[0].hit and buff_trace[0].hit and style=="bow":check(raw.battle.units["bandit-blade"].record.runtime.hp-buff.battle.units["bandit-blade"].record.runtime.hp==1,"ranged hit/critical gains exactly one weapon damage")
+    elif not raw_trace[0].hit and buff_trace[0].hit:
+     check(buff.battle.units["bandit-blade"].record.runtime.hp<raw.battle.units["bandit-blade"].record.runtime.hp,"real accuracy bonus converts a miss into a hit")
+     outcomes.changed_hits+=1
+    check(engine._attack_weapon_context.is_empty(),"transient weapon context is always restored")
     var replay := execute(engine,RulesJson.normalize(JSON.parse_string(JSON.stringify(enhanced))),"attack","bandit-blade")
     check(replay.ok and replay.battle.state_hash==buff.battle.state_hash,"exact deterministic attack replay")
     if level==20 and die==19:battles[style]=buff.battle
@@ -65,6 +85,7 @@ func test_disciplines() -> void:
    var unbuffed := wrong.duplicate(true)
    check(stats_of(swapped).damage==stats_of(unbuffed).damage if style=="bow"else stats_of(swapped).melee_attack==stats_of(unbuffed).melee_attack,"existing discipline bonus follows actual equipped weapon")
    records[style+str(level)]=used.actor
+ check(outcomes.misses>0 and outcomes.hits>0 and outcomes.criticals>0,"genuine numeric misses, hits and criticals were observed")
  contracts.equipment_disciplines=true;contracts.actual_attacks=true
 func test_mastery() -> void:
  for style in ["reckless","resilient"]:
@@ -168,7 +189,7 @@ func cold() -> void:
   var out := engine.command(saved.battles[key],saved.next[key]);check(out.ok and out.battle.state_hash==saved.after[key],"cold next command/log/RNG "+key)
  finish_martial(true)
 func finish_martial(restart := false) -> void:
- var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"contracts":contracts,"development_fixtures":true,"earned_xp":false,"supported_level":20}
+ var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"contracts":contracts,"attack_outcomes":outcomes,"development_fixtures":true,"earned_xp":false,"supported_level":20}
  FileAccess.open(base.path_join("restart-proof.json"if restart else"proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("MARTIAL_MECHANICS ",checks," failures ",failures)
  if no_quit:completed.emit()
