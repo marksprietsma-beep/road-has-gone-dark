@@ -6,11 +6,13 @@ func run() -> void:
  source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v28.json").ok,"original immutable28 diagnostic source")
  kernel=RulesCharacter.new(source)
  fixtures.fighter=build("fighter",20)
+ print("DUAL_PROBE aggregate ",Time.get_ticks_msec())
  var aggregate := route(["wizard","sorcerer","sorcerer","cleric","cleric","cleric"],DUAL_ARRAY)
  if not aggregate.is_empty():
   var permanent: Dictionary=kernel._replay(aggregate).context
   observed.aggregate={"casting":permanent.casting,"actual_tiers":RulesCompleteness.spell_tiers(aggregate,permanent,source),"offered":kernel.available_advancement(aggregate).classes["mystic-theurge"].ok}
   check(observed.aggregate.casting.arcane>=3 and observed.aggregate.actual_tiers.arcane==1 and observed.aggregate.offered,"reproduce aggregate arcane score qualifying without real tier2 access")
+ print("DUAL_PROBE parents ",Time.get_ticks_msec())
  var parents := route(repeated("beguiler",6)+repeated("cleric",3),WIZARD_ARRAY)
  if not parents.is_empty():
   var groups := RulesCareer.groups(source,"mystic-theurge",1)
@@ -19,17 +21,20 @@ func run() -> void:
    if RulesCareer.option_eligibility(source,"mystic-theurge",1,option,kernel._replay(parents).context).ok:legal.append(option.id)
   observed.missing_parent={"offered":kernel.available_advancement(parents).classes["mystic-theurge"].ok,"legal_arcane_parents":legal}
   check(observed.missing_parent.offered and legal.is_empty(),"reproduce eligible Beguiler/divine build without a selectable arcane parent")
+ print("DUAL_PROBE cap ",Time.get_ticks_msec())
  var prefix := repeated("wizard",3)+repeated("cleric",3)
  var advanced := route(prefix+repeated("mystic-theurge",5))
  if not advanced.is_empty():
   var proposed := kernel.suggested_choice(advanced,"mystic-theurge")
   observed.cap={"max_level":source.definition("classes","mystic-theurge").max_level,"sixth_rejected":not kernel.preview_advancement(advanced,proposed.choice).ok}
   check(observed.cap.max_level==5 and observed.cap.sixth_rejected,"original Theurge really stops at5, not10")
+ print("DUAL_PROBE junior ",Time.get_ticks_msec())
  var junior := route(prefix+["sorcerer","mystic-theurge"],DUAL_ARRAY,"mystic-theurge",{"mystic-theurge-arcane":"sorcerer"})
  if not junior.is_empty():
   var d := kernel.derive_character(junior)
   observed.junior={"casting_levels":d.snapshot.casting_levels,"sorcerer_tier2_slots":int(d.snapshot.resource_capacities.get("sorcerer-slots-2",0))}
   check(d.snapshot.casting_levels.wizard==3 and d.snapshot.casting_levels.sorcerer==2 and observed.junior.sorcerer_tier2_slots==0,"preserve legitimate junior-parent advancement without borrowing Wizard tiers or slots")
+ print("DUAL_PROBE forms ",Time.get_ticks_msec())
  var theurge := route(prefix+["mystic-theurge"])
  var champion := route(repeated("duskblade",6)+["abjurant-champion"],MARTIAL_ARRAY,"abjurant-champion",{"abjurant-doctrine-1":"retaliation"})
  var druid := prep(build("druid",20),"druid-wildheart-mantle")
