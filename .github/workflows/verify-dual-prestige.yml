@@ -1,0 +1,50 @@
+name: Mystic Theurge and Abjurant Champion Acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feature/game-123-theurge-abjurant-acceptance]
+    paths: ['scripts/**', 'data/rules/**', 'tests/dual_prestige_acceptance/**', '.github/workflows/verify-dual-prestige.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/dual_prestige_acceptance/**', '.github/workflows/verify-dual-prestige.yml']
+permissions:
+  contents: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Historical packs and unchanged candidate28
+        run: python tests/hybrid_acceptance/check-source.py
+      - name: Checked Godot import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/dual-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'dual-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Small pinned diagnostic before gameplay changes
+        env:
+          DUAL_ROOT: ${{ runner.temp }}/dual-focused
+        run: python tests/dual_prestige_acceptance/run-focused.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dual-prestige-windows-evidence
+          path: |
+            ${{ runner.temp }}/dual-focused/**
+            ${{ runner.temp }}/dual-import.log
+          retention-days: 90

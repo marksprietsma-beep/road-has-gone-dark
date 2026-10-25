@@ -1,0 +1,3 @@
+# Initial diagnostic checkpoint
+
+Branch feature/game-123-theurge-abjurant-acceptance, based on mergedmainc796043. Existing149 merged and native40115102249 delivered, readiness35/15/0. Post-main22 Windows workflows still being monitored; no production change before their success. No new cohort PR yet. New code is diagnostic tests only, unverified until Windows runs. First inspect dedicated workflow result, fix genuine fixture/compile issues without altering original mechanics to force a hypothesis. Then reproduce gaps before append29 and follow ASSESSMENT acceptance sequence. No new classes/world, no Linux game execution, no duplicate149 or full28native rerun. Maintain milestoneopen.
