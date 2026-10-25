@@ -5,6 +5,7 @@ func run() -> void:
  source=RulesRegistry.new();check(source.load_pack("res://data/rules/trhgd-character-v30.json").ok,"extended30 registry");kernel=RulesCharacter.new(source)
  if OS.get_environment("MARTIAL_RESTART")=="1":cold();return
  fixtures.fighter=variant("fighter",20)
+ fixtures.fighter.character_id="external-target"
  test_guard();test_power_strike();test_higher_features();test_exact_rage_expiry();test_reaction_weapon()
  persist();finish_martial()
 func enemy_activation(engine: TacticalAuras,b: Dictionary,id: String) -> Dictionary:
@@ -67,7 +68,7 @@ func test_higher_features() -> void:
    check(RulesJson.digest(actor)==before,"higher power keeps source immutable")
    if id in ["second-wind","fighter-career-9","fighter-career-11"]:check(out.actor.runtime.hp>actor.runtime.hp and out.actor.runtime.hp<=stats_of(actor).HP,"real bounded recovery "+id)
    if id.begins_with("barbarian-master-"):
-    var amount: int=3 if id.ends_with("13")else4 if id.ends_with("16")else5
+    var amount: int=3 if id.ends_with("13") else 4 if id.ends_with("16") else 5
     check(kernel.derive_character(out.actor).snapshot.capabilities.resistances.physical==amount and out.actor.runtime.temporary_hp==40,"actual Titan fury resistance and nonstacking buffer "+id)
    records[id]=out.actor
   var paid := r.duplicate(true);var id: String="fighter-master-20"if cls=="fighter"else"barbarian-master-20"
