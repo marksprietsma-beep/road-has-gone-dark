@@ -3,7 +3,7 @@ func _initialize() -> void:call_deferred("launch")
 func launch() -> void:
  var args := OS.get_cmdline_user_args()
  var phase: String=args[0] if not args.is_empty() else "probe"
- var paths := {"probe":"res://tests/martial_careers/probe.gd","mechanics":"res://tests/martial_careers/mechanics.gd"}
+ var paths := {"probe":"res://tests/martial_careers/probe.gd","mechanics":"res://tests/martial_careers/mechanics.gd","input":"res://tests/martial_careers/input.gd"}
  if phase=="compile":
   for path in paths.values():
    var script: GDScript=load(path)
