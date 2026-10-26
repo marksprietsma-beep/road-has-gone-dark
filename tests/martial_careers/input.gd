@@ -75,14 +75,15 @@ func run() -> void:
  check(control_helper.failures==0,"lawful development caster for real temporary control")
  control_helper.free()
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
- for spec in [["bow20","fighter-bow-6"],["blade20","fighter-blade-6"],["barbarian-resilient20","barbarian-resilient-6"]]:
+ var suppressed_cases := 0;var resisted_cases := 0
+ for spec in [["bow6","fighter-bow-6"],["blade6","fighter-blade-6"],["bow20","fighter-bow-6"],["blade20","fighter-blade-6"],["barbarian-resilient20","barbarian-resilient-6"]]:
   var r: Dictionary=saved.records[spec[0]];var b: Dictionary=helper.encounter(r);var id: String=spec[1]
   ui.engine=TacticalAuras.new(r);show(ui,b,id);ui.sent={};var p: Array=b.units.a.position
   check(ui.action_buttons.has(id) and not ui.action_buttons[id].disabled and ui.tiles[str(p)].target_tile,"affordable real class action has a self-target highlight "+id)
   ui.choose_tile(p)
   check(ui.sent.get("kind")==id and ui.sent.get("target")=="a","production tile selects the exact actor/action")
   check(ui.engine.command(b,{"actor_id":"a","revision":b.revision,"kind":id,"target_id":"a"}).ok,"real UI intent executes through inherited authority")
-  for reason in ["spent-main","empty-resource","suppressed"]+(["wrong-weapon"]if spec[0]in ["bow20","blade20"]else[]):
+  for reason in ["spent-main","empty-resource","suppressed"]+(["wrong-weapon"]if id.begins_with("fighter-")else[]):
    var blocked := b.duplicate(true)
    match reason:
     "spent-main":blocked.budget.main=0
@@ -91,10 +92,20 @@ func run() -> void:
      var controlled := RulesEffects.new(source).use_ability(controller,blocked.units.a.record,"wizard-stillness-lattice",{"main":1,"move":1,"reaction":1},helper.attack_seed(1))
      check(controlled.ok,"real paid Stillness cast for negative martial input "+JSON.stringify(controlled.get("errors",[])))
      if not controlled.ok:continue
+     check(controlled.actor.runtime.resources["wizard-slots-9"]==controller.runtime.resources["wizard-slots-9"]-1 and controlled.actor.runtime.resources["wizard-stillness-lattice-prepared"]==0 and controlled.budget.main==0,"real control spends its slot, prepared copy and main even if saved")
+     var saves: Array=controlled.events.filter(func(event: Dictionary):return event.type=="save_resolved")
+     check(saves.size()==1 and saves[0].roll==1,"actual deterministic low save, with original numeric authority")
+     if saves.size()==1 and saves[0].success:
+      resisted_cases+=1
+      check(RulesJson.digest(controlled.target)==RulesJson.digest(blocked.units.a.record),"high-Will veteran genuinely resists without changing its record "+str(spec)+JSON.stringify(saves))
+      show(ui,blocked,id);ui.sent={};ui.choose_tile(p)
+      check(not ui.action_buttons[id].disabled and ui.tiles[str(p)].target_tile and ui.sent.get("kind")==id and ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":id,"target_id":"a"}).ok,"successfully resisted control cannot hide or disable a legal action")
+      continue
+     suppressed_cases+=1
      check(kernel.derive_character(controlled.target).snapshot.tags.has("main_action_suppressed"),"actual normal-attribute failed save applies finite control")
      blocked.units.a.record=controlled.target
     "wrong-weapon":
-     var weapon: String="shortblade"if spec[0]=="bow20"else"bow"
+     var weapon: String="shortblade"if id=="fighter-bow-6"else"bow"
      blocked.units.a.record.equipment=[weapon,"leathers"];blocked.units.a.weapon=weapon
    blocked=ui.engine.seal(blocked)
    var invalid: String=ui.engine.validate(blocked);check(invalid.is_empty(),"negative UI fixture remains a legal battle "+reason+JSON.stringify(invalid))
@@ -103,8 +114,9 @@ func run() -> void:
    check(ui.action_buttons[id].disabled and not ui.tiles[str(p)].target_tile and ui.sent.is_empty(),"unavailable action has no misleading target/intent "+id+reason)
    check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":id,"target_id":"a"}).ok,"authority rejects unavailable power "+reason)
    check(RulesJson.digest(blocked)==before and RulesJson.digest(ui.state.first_adventure.battle)==before,"denial preserves exact battle/log/RNG")
+ check(suppressed_cases==3 and resisted_cases==2,"both susceptible mid-level and genuinely resisting veteran control cases were exercised")
  ui.queue_free();check(helper.failures==0,"all UI fixture histories are legal");helper.free()
- FileAccess.open(folder.path_join("input-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"development_fixtures":true,"earned_xp":false,"scope":"Actual original creator/advancement/attribute/gear/feat and combat controls; campaign writer exercised separately."}))
+ FileAccess.open(folder.path_join("input-proof.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"suppressed_cases":suppressed_cases,"resisted_cases":resisted_cases,"development_fixtures":true,"earned_xp":false,"scope":"Actual original creator/advancement/attribute/gear/feat and combat controls; campaign writer exercised separately."}))
  print("MARTIAL_INPUT ",checks," failures ",failures)
  if no_quit:completed.emit()
  else:get_tree().quit(1 if failures else 0)
