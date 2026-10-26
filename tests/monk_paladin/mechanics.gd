@@ -151,6 +151,7 @@ func test_grace_healing() -> void:
  contracts.grace_healing=true
 func test_shelter() -> void:
  var r := make("paladin",7);var engine := TacticalAuras.new(r);var b := encounter(r)
+ records["paladin-mercy7"]=r
  b.units.b.position=[1,2];b.units.c.position=[7,5];b=engine.seal(b)
  var inside := engine.stats(b.units.b);var outside := engine.stats(b.units.c)
  var used := execute(engine,b,"oath-shelter");check(used.ok,"real party shelter main action")
@@ -256,11 +257,11 @@ func test_high() -> void:
   battles["palm-save-"+str(die)]=used.battle
  contracts.higher_tactical=true
 func test_resources() -> void:
- for pair in [["monk-wind6","monk-wind-6","ki"],["paladin-justice6","paladin-justice-6","lay-hands"],["paladin-mercy6","oath-shelter","smite-uses"]]:
+ for pair in [["monk-wind6","monk-wind-6","ki"],["paladin-justice6","paladin-justice-6","lay-hands"],["paladin-mercy7","oath-shelter","smite-uses"]]:
   var r: Dictionary=records[pair[0]].duplicate(true);var capacity: Dictionary=kernel.derive_character(r).snapshot.resource_capacities
   var before: int=r.runtime.resources[pair[2]]
   for n in before:
-   var used := use(r,r,pair[1]);check(used.ok,"finite resource use "+str(pair[1])+str(n))
+   var used := use(r,r,pair[1]);check(used.ok,"finite resource use "+str(pair[1])+str(n)+JSON.stringify(used.get("errors",[])))
    if used.ok:r=used.actor
   check(r.runtime.resources[pair[2]]==0 and not use(r,r,pair[1]).ok,"exhaustion authoritatively rejects further use")
   var no_rest := RulesEffects.new(source).refresh_resources(r.runtime,capacity,"encounter")
