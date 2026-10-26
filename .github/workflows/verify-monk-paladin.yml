@@ -29,13 +29,19 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Exclude Node examples
         run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Immutable packs and exact source scope
+        run: |
+          python tools/character-content/validate.py
+          python tests/monk_paladin/check-source.py
+          python tests/martial_careers/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked engine import
         shell: pwsh
         run: |
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/monk-paladin-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'monk-paladin-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Released30 exact defect reproduction
+      - name: Pinned30 reproduction and current31 mechanics/cold
         env:
           MONK_PALADIN_ROOT: ${{ runner.temp }}/monk-paladin-focused
         run: python tests/monk_paladin/run-focused.py

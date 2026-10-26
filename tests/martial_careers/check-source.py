@@ -5,7 +5,13 @@ ROOT=Path(__file__).resolve().parents[2];BASE='a583939cb111778d350df137d0691839d
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
- assert len(old['packs'])==29 and len(manifest['packs'])==30 and manifest['packs'][:29]==old['packs']
+ newer=len(manifest['packs'])>30
+ assert len(old['packs'])==29 and len(manifest['packs']) in [30,31] and manifest['packs'][:29]==old['packs']
+ released30='5a8de72b07b0e8acaf0488afdece972f296616a4'
+ def current_bytes(path):return subprocess.check_output(['git','show',released30+':'+path],cwd=ROOT) if newer else (ROOT/path).read_bytes()
+ if newer:
+  archived=json.loads(subprocess.check_output(['git','show',released30+':data/rules/packs.json'],cwd=ROOT));assert manifest['packs'][:30]==archived['packs']
+  spec=importlib.util.spec_from_file_location('current_monk_paladin_source',ROOT/'tests/monk_paladin/check-source.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);module.verify()
  for row in old['packs']:
   path=row['path'].removeprefix('res://');assert (ROOT/path).read_bytes()==original(path),path
  a=json.loads(original('data/rules/trhgd-character-v29.json'));b=json.loads((ROOT/'data/rules/trhgd-character-v30.json').read_text(encoding='utf-8'))
@@ -20,15 +26,15 @@ def verify():
  assert set(approved)=={'scripts/rules/rules_character.gd','scripts/rules/rules_martial.gd','scripts/combat/tactical_auras.gd','scripts/ui/first_adventure.gd','scripts/ui/components/build_editor.gd'}
  for file in (ROOT/'scripts').rglob('*.gd'):
   path=file.relative_to(ROOT).as_posix()
-  if path in approved:assert hashlib.sha256(file.read_bytes()).hexdigest()==approved[path],path
-  else:assert file.read_text(encoding='utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
+  if path in approved:assert hashlib.sha256(current_bytes(path)).hexdigest()==approved[path],path
+  else:assert current_bytes(path).decode('utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
  exporter='tools/release/export-game.mjs'
  expected_exporter=original(exporter).decode('utf-8').replace("'res://tests/dual_prestige_acceptance/review.tscn'].includes(qaScene)","'res://tests/dual_prestige_acceptance/review.tscn','res://tests/martial_careers/review.tscn'].includes(qaScene)")
- assert (ROOT/exporter).read_text(encoding='utf-8')==expected_exporter,'Only the one explicit martial QA entry may be added to the original exporter'
+ assert current_bytes(exporter).decode('utf-8')==expected_exporter,'Only the one explicit martial QA entry may be added to the original exporter'
  assert "'res://tests/martial_careers/review.tscn'"in expected_exporter
  frozen=['scripts/combat/tactical_combat.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']
  for path in frozen:assert (ROOT/path).read_bytes()==original(path)
- pin=manifest['packs'][-1]['rules_ref'];assert pin['pack_id']==b['pack_id']=='trhgd-character-v30'
+ pin=next(row['rules_ref']for row in manifest['packs']if row['rules_ref']['pack_id']=='trhgd-character-v30');assert pin['pack_id']==b['pack_id']=='trhgd-character-v30'
  assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
  return dict(baseline=BASE,historical_pack_bytes_and_pins=29,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Version enablement plus reviewed transient effective-weapon modifier context, matching UI requirements and empty-search creator list repair; original attack/RNG/save authority inherited.')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
