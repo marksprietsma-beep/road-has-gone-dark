@@ -97,7 +97,7 @@ func run() -> void:
      var weapon: String="shortblade"if spec[0]=="bow20"else"bow"
      blocked.units.a.record.equipment=[weapon,"leathers"];blocked.units.a.weapon=weapon
    blocked=ui.engine.seal(blocked)
-   var invalid := ui.engine.validate(blocked);check(invalid.is_empty(),"negative UI fixture remains a legal battle "+reason+JSON.stringify(invalid))
+   var invalid: String=ui.engine.validate(blocked);check(invalid.is_empty(),"negative UI fixture remains a legal battle "+reason+JSON.stringify(invalid))
    if not invalid.is_empty():continue
    var before := RulesJson.digest(blocked);show(ui,blocked,id);ui.sent={};ui.choose_tile(p)
    check(ui.action_buttons[id].disabled and not ui.tiles[str(p)].target_tile and ui.sent.is_empty(),"unavailable action has no misleading target/intent "+id+reason)
