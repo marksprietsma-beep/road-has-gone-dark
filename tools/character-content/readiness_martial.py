@@ -43,6 +43,7 @@ def generate(root, pack, pin, native_root):
     assert len(audit['classes']) == 32 and all(row['complete_track'] for row in audit['classes'].values())
     captures = native['captures']
     assert captures['checks'] > 0 and captures['failures'] == 0 and len(captures['screenshots']) >= 18
+    assert all(any(image['file'].startswith('fixture-' + power + '-combat-') for image in captures['screenshots']) for power in ['whirlwind', 'titan'])
     for image in captures['screenshots']:
         assert hashlib.sha256((native_root / 'captures' / image['file']).read_bytes()).hexdigest() == image['sha256']
     assert {image['width'] for image in captures['screenshots']} == {640, 1280, 2560}

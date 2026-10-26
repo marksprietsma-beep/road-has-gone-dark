@@ -19,6 +19,7 @@ j=proofs['journey/proof.json'];assert j['earned_xp']==490 and not j['xp_injected
 assert {v['role']for v in j['builds'].values()}=={'blade','bow','rage'}and all(len(r['history'])==8 for r in j['journeys'])
 assert set(proofs['connected/proof.json']['casts'].values())=={'fighter-blade-6','fighter-bow-6','barbarian-resilient-6'}
 assert len(proofs['capture/screenshots.json']['screenshots'])>=18
+assert all(any(image['file'].startswith('fixture-'+power+'-combat-')for image in proofs['capture/screenshots.json']['screenshots'])for power in ['whirlwind','titan'])
 receipt=dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),scope='Ordinary490XP/8 with deliberately distinct saved martial builds, connected campaign commands, exact cold battle continuation and eligible home recovery. Source engine, not exported native evidence.',proofs=proofs,timings=timings)
 (base/'earned-proof.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
 print('MARTIAL_EARNED_SOURCE_PASS',flush=True)

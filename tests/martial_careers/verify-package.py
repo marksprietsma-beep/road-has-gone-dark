@@ -35,6 +35,7 @@ assert all(len(r['history'])==8 for r in j['journeys'])
 assert set(proofs['connected/proof.json']['casts'].values())=={'fighter-blade-6','fighter-bow-6','barbarian-resilient-6'}
 audit=json.loads((base/'all-base/witnesses.json').read_text(encoding='utf-8'));assert len(audit['classes'])==32 and all(x['complete_track']for x in audit['classes'].values())
 captures=json.loads((base/'captures/screenshots.json').read_text(encoding='utf-8'));assert captures['checks']>0 and captures['failures']==0 and len(captures['screenshots'])>=18
+assert all(any(image['file'].startswith('fixture-'+power+'-combat-')for image in captures['screenshots'])for power in ['whirlwind','titan'])
 for image in captures['screenshots']:
  file=base/'captures'/image['file'];raw=file.read_bytes();assert hashlib.sha256(raw).hexdigest()==image['sha256'];assert raw[:8]==b'\x89PNG\r\n\x1a\n';image['width'],image['height']=struct.unpack('>II',raw[16:24])
 assert {r['width']for r in captures['screenshots']}=={640,1280,2560}
