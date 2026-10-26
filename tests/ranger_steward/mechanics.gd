@@ -22,6 +22,15 @@ func run() -> void:
 func encounter(record: Dictionary) -> Dictionary:
  var b := super.encounter(record);var engine := TacticalAuras.new(record)
  b.units.b.position=[0,4];b.units.c.position=[0,5];b.units["bandit-bow"].position=[6,4]
+ # The old general-purpose helper rebuilds the renamed owner's pet. Preserve
+ # the actual supplied HP/effort/statuses; only alias fixture actor identity.
+ if not record.runtime.companions.is_empty():
+  var original: Dictionary=record.runtime.companions.values()[0];var pid: String=RulesEntities.identity("a")
+  var pet_record: Dictionary=original.record.duplicate(true);pet_record.character_id=pid
+  b.units.a.record.runtime.companions={pid:{"definition_id":original.definition_id,"record":pet_record.duplicate(true)}}
+  if int(pet_record.runtime.hp)==0:b.units.erase(pid);b.order.erase(pid)
+  else:b.units[pid].record=pet_record
+ b.cursor=b.order.find("a")
  for pet in b.units.values():
   if pet.has("entity"):pet.position=[1,0]
  b=engine.seal(b);check(engine.validate(b).is_empty(),"valid nonoverlapping development battlefield: "+engine.validate(b))
@@ -173,6 +182,10 @@ func test_growth() -> void:
   check(grown.runtime.resources["creature-effort"]==0,"growth never refunds spent pet effort")
   var rested: Dictionary=out.candidate.duplicate(true);RulesEntities.recover_companions(rested,source)
   check(rested.runtime.companions[id].record.runtime.hp==new_max and rested.runtime.companions[id].record.runtime.resources["creature-effort"]>0,"only eligible recovery restores pet health/effort")
+  var entry := encounter(out.candidate);var pid: String=RulesEntities.identity("a")
+  check(entry.units.a.record.runtime.companions[pid].record.runtime.hp==grown.runtime.hp,"next actual encounter retains supplied pet health")
+  check(entry.units.has(pid)==(hp>0),"downed pet is not silently respawned by encounter creation")
+  if hp>0:check(entry.units[pid].record.runtime.resources["creature-effort"]==0,"next encounter never restores spent pet effort")
   records["grown-"+str(hp)]=out.candidate
  contracts.persistent_growth=true
 func steward(level := 5,training := "swift",pet := "leopard") -> Dictionary:

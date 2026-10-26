@@ -20,3 +20,8 @@ New Windows mechanics, actual creator/combat controls, earned entry/decline and 
 ## First focused compile diagnostic
 
 Windows40333254306 atfa5f5a4 preserved strict source/history guards and actual Windows import, then failed the new worker compilation: six result-field Dictionary copies used inferred declarations that Godot cannot type. Explicit declarations correct the harness; no gameplay/data or invariant changes. No native32 full release has been attempted. Inspect the next focused compile/mechanics/cold/controls result before earned/native dispatch. The full-release workflow avoids a redundant source-EXE pass, while retaining the same mechanics/cold/input contracts inside the exported executable and every import/source/history gate.
+
+
+## Preserve supplied companion state in the new fixture adapter
+
+Review found the inherited generic test helper clears/recreates companions when aliasing its owner to actor a. The new cohort adapter now preserves the actual supplied nested HP/effort/statuses and only aliases identity, omitting defeated pets exactly as production encounter creation does. Added next-encounter downed/effort assertions. This fixes test preparation, not gameplay or the frozen original helper, and does not remove any assertions. Candidate32 hash and production remain unchanged. Current focused Windows must use this corrected harness before earned/native acceptance.
