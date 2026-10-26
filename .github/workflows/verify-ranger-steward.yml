@@ -1,0 +1,51 @@
+name: Ranger and Beast Steward Acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feature/game-161-ranger-beast-steward]
+    paths: ['scripts/**', 'data/rules/**', 'tests/ranger_steward/**', '.github/workflows/verify-ranger-steward.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/ranger_steward/**', '.github/workflows/verify-ranger-steward.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Immutable historical packs and unchanged production source
+        run: |
+          python tools/character-content/validate.py
+          python tests/monk_paladin/check-source.py
+      - name: Checked engine import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/ranger-steward-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'ranger-steward-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Small pinned31 tactical and defeated-companion reproduction
+        env:
+          RANGER_STEWARD_ROOT: ${{ runner.temp }}/ranger-steward-focused
+        run: python tests/ranger_steward/run-focused.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ranger-steward-windows-evidence
+          path: ${{ runner.temp }}/ranger-steward-focused
+          retention-days: 90

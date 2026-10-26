@@ -59,3 +59,8 @@ Owner-merged Fighter/Barbarian157 at61d4a79d passed all24 actual post-main Windo
 Explicit Unarmed loadout and existing strict Monk armour rejection, including multiclass armour, remain required. The legacy empty-loadout fallback is unchanged. Shared long-label/small-screen clipping,1280×719 actual viewport and humanoid art fallbacks remain. Higher Paladin buffers apply to their authored target; Monk late buffers explicitly target the caster. No alignment, pantheon, piety, world or NPC expansion is claimed.
 
 GitHub156 closes only after this cohort's normal merge and actual post-main Windows success. Parent101/GAME123 stays OPEN. No callable Linear connector exists; no direct Linear write is claimed. [Review steps](TESTING.md) · [original screenshots](screenshots/README.md) · [remaining finite work](NEXT-WAVE.md).
+
+
+## Confirmed integration close-out
+
+PR160 was already merged at f9880ed0865f163a8f90a19b2a650365b664dd96. All25 actual main-push Windows workflows now passed, including the long inherited native opportunity/creature/psychic pipelines. See ../game123-ranger-steward/evidence/monk-paladin-post-main.json for run IDs and actual conclusions.156 is resolved after this verification;101/GAME123 stays open at41/9. The successful31 release40287149055/source d0460ff and its original archive/checksum are preserved without another manual full release. Subsequent Ranger/Beast Steward161 work uses a separate branch from verified main.

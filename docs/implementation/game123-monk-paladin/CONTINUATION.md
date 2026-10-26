@@ -51,3 +51,8 @@ If native passes, download both artifacts, inspect source commit/proof_sources/r
 40287149055 PASSED at d0460ff5942327b8cb6d238905c598704158aef4. Both artifacts downloaded, original native PNGs inspected, independent ZIP/PE/source/manifest/core/Node/credits/CRC audit passed. Inner ZIP SHA383ec9386c630706993b454db3d04ca88538eec15889c533bf3bee4d166481e4. Build artifact12636259638; evidence12637790046. The strict matching-source generator promoted only Monk/Paladin to41/9; raw native receipts, source labels and original23 images are preserved. Final native ordinary warm632 differs from source634, documented accurately. No successful native rerun is needed.
 
 Next create exactly one PR for156 against freshly checked main (none yet), verify all current-head Windows and actual reviews/diff, normal merge when green, verify all actual post-main Windows, close156 and keep/reopen101. Do not stop at unmerged delivery. No direct Linear API. Tested code/rules/tools/export/workflow inputs remain d046-identical; later commits are delivery/evidence only. See DELIVERY/PR-DESCRIPTION for exact link and full results.
+
+
+## Confirmed integration close-out
+
+PR160 was already merged at f9880ed0865f163a8f90a19b2a650365b664dd96. All25 actual main-push Windows workflows now passed, including the long inherited native opportunity/creature/psychic pipelines. See ../game123-ranger-steward/evidence/monk-paladin-post-main.json for run IDs and actual conclusions.156 is resolved after this verification;101/GAME123 stays open at41/9. The successful31 release40287149055/source d0460ff and its original archive/checksum are preserved without another manual full release. Subsequent Ranger/Beast Steward161 work uses a separate branch from verified main.
