@@ -1,0 +1,51 @@
+[
+  {
+    "phase": "compile",
+    "seconds": 1.813,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "probe",
+    "seconds": 3.812,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics",
+    "seconds": 85.063,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics-cold",
+    "seconds": 4.015,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "input",
+    "seconds": 70.797,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "extended",
+    "seconds": 43.125,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "extended-cold",
+    "seconds": 4.609,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+]
