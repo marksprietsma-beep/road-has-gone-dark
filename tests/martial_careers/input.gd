@@ -40,6 +40,7 @@ func run() -> void:
   var payload := editor.definition()
   var created := CharacterBuilderRecords.create(r.character_id,payload,r)
   check(created.ok,"real creator controls produce a legal persistent character "+str(spec)+JSON.stringify(created.get("errors",[])))
+  check(created.ok and "Ready to save"in editor.explanation.text and not "Prerequisite is not met"in editor.explanation.text,"legal selected build is readable without unrelated locked-option errors")
   if created.ok:
    check(created.candidate.advancement_history[0].specialisations[group]==spec[1],"selected mechanical identity survives creator payload")
    if spec[0]=="fighter":check(created.candidate.equipment.has("bow") and created.candidate.base_attributes.DEX==15 and created.candidate.advancement_history[0].feat_id=="point-blank-shot","actual gear/score-picker/feat handlers preserve deliberate ranged build")

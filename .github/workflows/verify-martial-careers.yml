@@ -2,6 +2,14 @@ name: Fighter and Barbarian Acceptance
 on:
   workflow_dispatch:
     inputs:
+      presentation:
+        description: Fresh guarded captures from verified earned source evidence
+        type: boolean
+        default: false
+      earned_run:
+        description: Successful martial earned run for presentation only
+        type: string
+        default: ''
       journey:
         description: Ordinary earned490XP and connected campaign/cold continuation
         type: boolean
@@ -17,6 +25,7 @@ on:
     paths: ['scripts/**', 'data/rules/**', 'tests/martial_careers/**', '.github/workflows/verify-martial-careers.yml']
 permissions:
   contents: read
+  actions: read
 jobs:
   focused-windows:
     runs-on: windows-latest
@@ -58,6 +67,33 @@ jobs:
           MARTIAL_ROOT: ${{ runner.temp }}/martial-focused
           MARTIAL_JOURNEY_ROOT: ${{ runner.temp }}/martial-earned
         run: python tests/martial_careers/run-journey.py
+      - name: Verify successful earned evidence source
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        uses: actions/github-script@v7
+        env:
+          REQUESTED_EARNED_RUN: ${{ inputs.earned_run }}
+        with:
+          script: |
+            const id = Number(process.env.REQUESTED_EARNED_RUN);
+            if (!Number.isSafeInteger(id) || id <= 0) throw Error('Successful earned run required');
+            const {data} = await github.rest.actions.getWorkflowRun({...context.repo, run_id:id});
+            if (data.status !== 'completed' || data.conclusion !== 'success') throw Error('Earned run must have succeeded');
+            core.exportVariable('MARTIAL_EARNED_RUN',String(id));
+            core.exportVariable('MARTIAL_EARNED_SOURCE',data.head_sha);
+      - uses: actions/download-artifact@v4
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        with:
+          name: martial-careers-windows-evidence
+          run-id: ${{ inputs.earned_run }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/martial-presentation-input
+      - name: Actual guarded Windows Godot presentation recheck
+        if: github.event_name == 'workflow_dispatch' && inputs.presentation
+        env:
+          MARTIAL_ROOT: ${{ runner.temp }}/martial-focused
+          MARTIAL_PRESENTATION_ROOT: ${{ runner.temp }}/martial-presentation
+          MARTIAL_PRESENTATION_INPUT: ${{ runner.temp }}/martial-presentation-input
+        run: python tests/martial_careers/recheck-presentation.py
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release
         run: python tools/release/prepare-templates.py
@@ -84,4 +120,7 @@ jobs:
             ${{ runner.temp }}/martial-native/**/*.json
             ${{ runner.temp }}/martial-native/**/*.log
             ${{ runner.temp }}/martial-native/captures/*.png
+            ${{ runner.temp }}/martial-presentation/**/*.json
+            ${{ runner.temp }}/martial-presentation/**/*.log
+            ${{ runner.temp }}/martial-presentation/captures/*.png
           retention-days: 90
