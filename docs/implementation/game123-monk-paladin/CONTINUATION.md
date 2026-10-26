@@ -13,3 +13,7 @@ Next inspect current focused Windows; fix genuine fixture/source failures, then 
 ## Focused47531f0 blocker isolated
 
 Windows40279272388 preserved the pinned30 probe but failed current31 at build.attack_context: one negative version gate still permitted only30. Extended the exact version-enablement recipe to its inequality as well; no frozen attack behavior was changed. Also corrected the new harness to call the existing paths API and the valid encounter recovery scope. Added actual creator/combat controls and ordinary earned/connected workers. A generated Python cache accidentally included in the prior checkpoint is removed from tracking and this test folder now ignores its caches. Next inspect the new focused Windows run before native release.
+
+##6f4df7a focused correction
+
+40279922857 compiled all workers and retained the pinned30 probe, then failed a normal Flurry: requires_weapon is an existing manifested-only predicate in RulesEffects, not a generic held/effective weapon requirement. Removed that misuse from candidate31 data. Flurry retains the effective-unarmed tag requirement; the existing adapter now mirrors the same generic RulesExpressions requirement check for31 target eligibility. All other production changes are exact version enablement. Frozen authorities and old1–30 remain untouched. Native/source cold, controls, earned journey, captures and release remain pending; do not claim41/9.

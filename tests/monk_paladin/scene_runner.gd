@@ -3,7 +3,7 @@ func _initialize() -> void:call_deferred("launch")
 func launch() -> void:
  var args := OS.get_cmdline_user_args()
  var phase: String=args[0] if not args.is_empty() else "probe"
- var paths := {"probe":"res://tests/monk_paladin/probe.gd","mechanics":"res://tests/monk_paladin/mechanics.gd","input":"res://tests/monk_paladin/input.gd","journey":"res://tests/monk_paladin/journey.gd","connected":"res://tests/monk_paladin/connected.gd"}
+ var paths := {"probe":"res://tests/monk_paladin/probe.gd","mechanics":"res://tests/monk_paladin/mechanics.gd","input":"res://tests/monk_paladin/input.gd","journey":"res://tests/monk_paladin/journey.gd","connected":"res://tests/monk_paladin/connected.gd","capture":"res://tests/monk_paladin/capture.gd"}
  if phase=="compile":
   for path in paths.values():
    var worker: GDScript=load(path)

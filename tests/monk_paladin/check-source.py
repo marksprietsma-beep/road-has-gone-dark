@@ -24,5 +24,5 @@ def verify():
  for path in frozen:assert (ROOT/path).read_bytes()==original(path)
  pin=manifest['packs'][-1]['rules_ref'];assert pin['pack_id']==b['pack_id']=='trhgd-character-v31'
  assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
- return dict(baseline=BASE,historical_pack_bytes_and_pins=30,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Only version enablement of existing generic requirements, weapon checks, modifier types and effects. No new combat/resource/XP/save resolver.')
+ return dict(baseline=BASE,historical_pack_bytes_and_pins=30,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Exact version enablement plus a reviewed31-only target check through the same existing RulesExpressions authority; data uses existing weapon contexts and insight modifiers. No new combat/resource/XP/save resolver.')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))

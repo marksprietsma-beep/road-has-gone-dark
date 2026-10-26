@@ -8,7 +8,7 @@ def content():
  prov=dict(origin='Original TRHGD Monk and Paladin mechanical corrections; no sourcebook prose copied',license='Original project-authored content',revision='game123-monk-paladin-acceptance')
  p['provenance']=dict(p['provenance'],revision=prov['revision'])
  abilities={r['id']:r for r in p['abilities']};features={r['id']:r for r in p['features']};statuses={r['id']:r for r in p['statuses']}
- flurry=abilities['flurry'];flurry['requires_weapon']='unarmed';flurry['requirements']=dict(op='tag',id='active_unarmed_weapon')
+ flurry=abilities['flurry'];flurry['requirements']=dict(op='tag',id='active_unarmed_weapon')
  flurry['description']='Two strikes with the current unarmed weapon, each at -2 attack, for one main action and no ki. Held weapons, natural forms and manifestations do not qualify. Existing Monk armour restrictions remain.';flurry['provenance']=prov
  smite=abilities['smite'];smite['requires_melee']=True
  smite['requirements']=dict(op='any',args=[dict(op='tag',id='active_'+kind+'_weapon')for kind in ['melee','unarmed','natural']])
@@ -34,6 +34,8 @@ def enable_versions(text):
  text=text.replace('pack_id!="trhgd-character-v30"','pack_id not in ["trhgd-character-v30","trhgd-character-v31"]')
  text=text.replace('pack_id=="trhgd-character-v30"','pack_id in ["trhgd-character-v30","trhgd-character-v31"]')
  text=text.replace('get("pack_id")=="trhgd-character-v30"','get("pack_id") in ["trhgd-character-v30","trhgd-character-v31"]')
+ if 'class_name TacticalAuras' in text and 'if registry.rules_ref().pack_id=="trhgd-character-v31" and ability!="attack":'not in text:
+  text=text.replace('func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:\n','func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:\n if registry.rules_ref().pack_id=="trhgd-character-v31" and ability!="attack":\n  var eligible_actor := characters.derive_character(u.record)\n  if not eligible_actor.ok or not RulesExpressions.evaluate_requirements(registry.definition("abilities",ability).get("requirements",{"op":"all","args":[]}),eligible_actor.context).ok:return false\n')
  return text.replace('const NEW_PACK := "trhgd-character-v30"','const NEW_PACK := "trhgd-character-v31"')
 if __name__=='__main__':
  p=content();out=ROOT/'data/rules/trhgd-character-v31.json';out.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')

@@ -19,6 +19,9 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
+ if registry.rules_ref().pack_id=="trhgd-character-v31" and ability!="attack":
+  var eligible_actor := characters.derive_character(u.record)
+  if not eligible_actor.ok or not RulesExpressions.evaluate_requirements(registry.definition("abilities",ability).get("requirements",{"op":"all","args":[]}),eligible_actor.context).ok:return false
  if RulesWaveFour.enabled(registry):
   var row := registry.definition("abilities",ability)
   if row.has("psychic_power"):
