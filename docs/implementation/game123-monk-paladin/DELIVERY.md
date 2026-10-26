@@ -11,3 +11,9 @@ See TESTING.md for exact player/review steps. No callable Linear connector exist
 ## Verified focused evidence
 
 Windows40283474286 passed at6ddd7c466909eaa01b9b0f8f4407ff05cc871d22: released30 probe85; current31 mechanics1343, cold145, production input72, zero failures. Actual source-only attack receipts include3 criticals,7 hits and2 misses, real two-strike Flurry/counter defeat, effective-weapon denials, paid movement, protective hit→miss, independent prepared/spontaneous casts and late save success/failure. Ordinary earned/connected/capture40284555076 is currently running on the exact same source. No native31 release is claimed from these results.
+
+## Earned source campaign and first native dispatch
+
+Windows40284555076 succeeded at6ddd7c4:490 earned XP/class8 for three distinct Wind/Mercy/Justice builds (634/cold8 checks), connected real paid actions and normal resolution/home recovery (34/cold85),23 actual Godot screenshots (39 checks), zero failures. Actual source renders inspected; shared long labels still clip. These are source-engine results, not exported-native claims.
+
+First native31 release40287149055 is running at d0460ff5942327b8cb6d238905c598704158aef4. That source has no game/rules/tests/tool/export/workflow difference from passed6ddd; only delivery evidence differs. No Windows31 artifact/checksum or41/9 promotion is claimed until it completes.
