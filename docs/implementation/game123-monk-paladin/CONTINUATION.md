@@ -17,3 +17,7 @@ Windows40279272388 preserved the pinned30 probe but failed current31 at build.at
 ##6f4df7a focused correction
 
 40279922857 compiled all workers and retained the pinned30 probe, then failed a normal Flurry: requires_weapon is an existing manifested-only predicate in RulesEffects, not a generic held/effective weapon requirement. Removed that misuse from candidate31 data. Flurry retains the effective-unarmed tag requirement; the existing adapter now mirrors the same generic RulesExpressions requirement check for31 target eligibility. All other production changes are exact version enablement. Frozen authorities and old1–30 remain untouched. Native/source cold, controls, earned journey, captures and release remain pending; do not claim41/9.
+
+## Focusedbacf8c5 harness expectation
+
+40280862381 compiled, reproduced30, and ran current31 through Flurry/weapon overrides/stances/Smite/grace/healing/shelter/divine casting before a high-power fixture assertion failed. The new harness expected every late temporary-HP effect on its caster; authored Paladin effects target the chosen ally while Monk effects explicitly target actor. Corrected the assertion to the real recipient; did not alter production to satisfy the mistaken test. Additional independent arcane/divine casts, slot/copy exhaustion, real turns, late save counterplay and actual mastery controls are in a51f8cf. Native release remains unattempted.

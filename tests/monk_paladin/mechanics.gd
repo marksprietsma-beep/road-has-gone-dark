@@ -205,7 +205,7 @@ func test_high() -> void:
    check(used.battle.units.a.record.runtime.resources[pool]==r.runtime.resources[pool]-cost and used.battle.budget.main==0,"higher power paid exact finite cost")
    if cls=="monk":check(used.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp,"late palm actual saved force damage")
    else:check(used.battle.units.b.record.runtime.hp>b.units.b.record.runtime.hp,"late Paladin actual party recovery")
-   if at>=16:check(used.battle.units.a.record.runtime.temporary_hp==at,"late distinct buffer remains executable")
+   if at>=16:check(used.battle.units["a"if cls=="monk"else target].record.runtime.temporary_hp==at,"late buffer applies to its actual authored recipient "+id)
    battles[cls+str(at)]=used.battle
  var monk: Dictionary=records["monk-wind20"];var engine := TacticalAuras.new(monk)
  for die in [1,20]:
