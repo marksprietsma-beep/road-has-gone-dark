@@ -1,0 +1,77 @@
+{
+  "scope": "Read-only inspection of original successful native Windows v29 evidence; not a new game run. Fighter level5 grants Veteran, but attack increases only by the BAB increment.",
+  "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+  "run": 40176120502,
+  "rules_ref": {
+    "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v29",
+    "rules_version": "29.0.0",
+    "schema_version": 1
+  },
+  "fighter4": {
+    "attribute_increase": "STR",
+    "bonus_feats": [],
+    "career_choices": {},
+    "development_fixture": true,
+    "earned_xp": false,
+    "feat": "steady-study",
+    "new_features": [],
+    "new_owned_abilities": [],
+    "ok": true,
+    "quiet_class_level": true,
+    "resource_capacity_changes": {},
+    "snapshot_hash": "c663e1bb8c4625c849cc3ec1da948c4de6d2dfd3dbed62764e0348d0b078b553",
+    "stats": {
+      "BAB": 4,
+      "HP": 30,
+      "damage": 2,
+      "defence": 12,
+      "fortitude": 5,
+      "initiative": 2,
+      "melee_attack": 8,
+      "ranged_attack": 7,
+      "reach": 1,
+      "reflex": 3,
+      "save_dc": 0,
+      "stride": 4,
+      "will": 5
+    }
+  },
+  "fighter5": {
+    "attribute_increase": "",
+    "bonus_feats": [],
+    "career_choices": {},
+    "development_fixture": true,
+    "earned_xp": false,
+    "feat": "steady-study",
+    "new_features": [
+      "fighter-veteran"
+    ],
+    "new_owned_abilities": [],
+    "ok": true,
+    "quiet_class_level": false,
+    "resource_capacity_changes": {},
+    "snapshot_hash": "efe7b2720f32e299184ca880f8ed6c8c89b5e131b23a50ef7c9b026ad924f700",
+    "stats": {
+      "BAB": 5,
+      "HP": 36,
+      "damage": 2,
+      "defence": 12,
+      "fortitude": 5,
+      "initiative": 2,
+      "melee_attack": 9,
+      "ranged_attack": 8,
+      "reach": 1,
+      "reflex": 3,
+      "save_dc": 0,
+      "stride": 4,
+      "will": 6
+    }
+  },
+  "delta": {
+    "BAB": 1,
+    "melee_attack": 1,
+    "ranged_attack": 1
+  }
+}

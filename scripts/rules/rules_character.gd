@@ -61,7 +61,7 @@ func validate_build(record: Dictionary) -> Dictionary:
  var errors := _runtime_errors(record,replay.context)
  return RulesJson.result(errors)
 
-func _replay(record: Dictionary) -> Dictionary:
+func _replay(record: Dictionary,attack_weapon: String="") -> Dictionary:
  var errors := _shape(record)
  if not errors.is_empty(): return RulesJson.result(errors)
  if record.advancement_history.size()>int(registry.rule("max_level")): return RulesJson.result([RulesJson.issue("build.level_cap","history","Total level limit exceeded")])
@@ -127,7 +127,7 @@ func _replay(record: Dictionary) -> Dictionary:
   context=_context(attributes,classes,ranks,feats,record,false)
   if not context.errors.is_empty(): return RulesJson.result(context.errors)
  var permanent_spell_context := context
- context=_context(attributes,classes,ranks,feats,record,true)
+ context=_context(attributes,classes,ranks,feats,record,true,attack_weapon)
  if not context.errors.is_empty(): return RulesJson.result(context.errors)
  var slots := {}
  for id in record.equipment:
@@ -150,7 +150,7 @@ func _replay(record: Dictionary) -> Dictionary:
  for id in record.choices.prepared_abilities:
   if not id is String or not (context.abilities.has(id) or RulesEntities.enabled(registry) and not RulesEntities.form(record,registry).is_empty() and _context(attributes,classes,ranks,feats,record,false).abilities.has(id)): return RulesJson.result([RulesJson.issue("build.prepared","choices","Prepared ability is not granted")])
  if registry.rules_ref().engine_schema==3:
-  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] else context,registry)
+  var spell_errors := RulesCoreContent.selection_errors(record,permanent_spell_context if registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"] else context,registry)
   if not spell_errors.is_empty():return RulesJson.result(spell_errors)
  return {"ok":true,"context":context}
 
@@ -164,7 +164,7 @@ func _feature(context: Dictionary,id: String,source: String) -> void:
    if not context[key].has(value): context[key].append(value)
  for child in definition.grants: _feature(context,child,source+">"+child)
 
-func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats: Array,record: Dictionary,include_runtime: bool) -> Dictionary:
+func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats: Array,record: Dictionary,include_runtime: bool,attack_weapon: String="") -> Dictionary:
  var context := {"attributes":attributes.duplicate(true),"classes":classes.duplicate(true),"skills":ranks.duplicate(true),"feats":feats.duplicate(),"features":[],"feature_sources":[],"tags":[],"ancestry_tags":[],"senses":["sight","hearing"],"abilities":registry.rule("base_abilities").duplicate(),"resources":[],"casting":{},"capacities":{},"level":0,"stats":{},"errors":[]}
  for id in classes: context.level+=int(classes[id])
  if RulesCareer.enabled(registry):context.casting_levels=RulesCareer.casting_levels(record,classes,registry)
@@ -203,7 +203,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  if not active_form.is_empty():
   for id in active_form.attributes:context.attributes[id]+=int(active_form.attributes[id])
   _feature(context,active_form.feature_id,"form:"+active_form.id)
- if registry.rules_ref().pack_id in ["trhgd-character-v28","trhgd-character-v29"]:context.casting_modifiers=RulesCareer.casting_modifiers(record,classes,context.attributes,registry)
+ if registry.rules_ref().pack_id in ["trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"]:context.casting_modifiers=RulesCareer.casting_modifiers(record,classes,context.attributes,registry)
  var physical: Dictionary=context.attributes
  var con := int(floor(float(int(attributes.CON)-10)/2.0))
  var dex := int(floor(float(int(physical.DEX)-10)/2.0))
@@ -245,6 +245,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
   for m in record.runtime.modifiers:
    if m is Dictionary and modifiers.has(m.get("stat")): modifiers[m.stat].append(m)
  if RulesMartial.mobile_enabled(registry) and RulesMartial.fencing_equipment(record,registry,include_runtime):context.tags.append("fencing_ready")
+ if registry.rules_ref().pack_id=="trhgd-character-v30":context.tags.append_array(RulesMartial.weapon_context_tags(record,registry,include_runtime,attack_weapon))
  var applied := {}
  for stat in RulesRegistry.STATS:
   var combined := RulesModifiers.combine(int(base.get(stat,0)),modifiers[stat],context)
@@ -254,7 +255,7 @@ func _context(attributes: Dictionary,classes: Dictionary,ranks: Dictionary,feats
  if not active_form.is_empty():
   context.abilities=context.abilities.filter(func(id: String):return not registry.definition("abilities",id).tags.has("spell") and (not RulesPsychic.enabled(registry) or not registry.definition("abilities",id).tags.has("psychic")) and (not RulesWaveFive.enabled(registry) or not registry.definition("abilities",id).tags.has("supernatural")))
   context.body_form=active_form.duplicate(true)
-  if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] and not context.abilities.has("revert-form"):context.abilities.append("revert-form")
+  if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"] and not context.abilities.has("revert-form"):context.abilities.append("revert-form")
  if RulesPsychic.enabled(registry):RulesPsychic.project(context,registry,record)
  context.applied_modifiers=applied
  for key in ["features","tags","ancestry_tags","abilities","resources","senses"]: context[key].sort()
@@ -312,9 +313,12 @@ func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
  if RulesWaveFour.enabled(registry):errors.append_array(RulesWaveFour.validate_runtime(record,context,registry))
  return errors
 
-func derive_character(record: Dictionary) -> Dictionary:
+func derive_character(record: Dictionary,attack_weapon: String="") -> Dictionary:
+ # Optional transient attack context never enters saved records, permanent
+ # advancement requirements, normal sheets or the default snapshot hash.
+ if not attack_weapon.is_empty() and (registry.rules_ref().pack_id!="trhgd-character-v30" or registry.definition("equipment",attack_weapon).get("kind")!="weapon"):return RulesJson.result([RulesJson.issue("build.attack_context","attack_weapon","A supported actual weapon is required")])
  if int(registry.rules_ref().get("engine_schema",1))>=2:record=RulesJson.string_keys(record)
- var replay := _replay(record)
+ var replay := _replay(record,attack_weapon)
  if not replay.ok: return replay
  var errors := _runtime_errors(record,replay.context)
  if not errors.is_empty(): return RulesJson.result(errors)

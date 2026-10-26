@@ -2,7 +2,7 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
@@ -61,7 +61,7 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
  return false
 
 static func mobile_enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"]
 
 static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
  if include_runtime and not RulesEntities.form(record,source).is_empty():return false
@@ -81,9 +81,31 @@ static func precision_damage(record: Dictionary,source: RulesRegistry) -> int:
  var levels: Dictionary=RulesCharacter.new(source).derive_character(record).snapshot.class_levels
  return 2*int(ceil(float(int(levels.get("rogue",0))+int(levels.get("arcane-trickster",0)))/2.0))
 
+static func effective_weapon(record: Dictionary,held: String,source: RulesRegistry,include_runtime := true) -> String:
+ # Same form/manifestation/held precedence as the original tactical adapter.
+ if include_runtime:
+  var body := RulesEntities.form(record,source)
+  if not body.is_empty():return str(body.weapon_id)
+  for status in record.runtime.statuses:
+   var row := source.definition("statuses",str(status.id))
+   if row.has("weapon_override"):return str(row.weapon_override)
+ return held
+
+static func weapon_context_tags(record: Dictionary,source: RulesRegistry,include_runtime: bool,attack_weapon: String="") -> Array:
+ var held := "unarmed"
+ for id in record.equipment:
+  if source.definition("equipment",str(id)).get("kind")=="weapon":held=str(id);break
+ var active := effective_weapon(record,held,source,include_runtime)
+ var result := []
+ for pair in [["active",active],["attack",attack_weapon if not attack_weapon.is_empty() else active]]:
+  var row := source.definition("equipment",str(pair[1]))
+  var kind := "natural" if row.get("tags",[]).has("natural") else "unarmed" if row.get("tags",[]).has("unarmed") else "ranged" if row.get("tags",[]).has("ranged") else "melee"
+  result.append(str(pair[0])+"_"+kind+"_weapon")
+ return result
+
 static func start_activation(combat: TacticalCombat,battle: Dictionary) -> void:
  # v23 descriptors execute at the existing turn boundary. Cold loading never ticks.
- if combat.registry.rules_ref().pack_id not in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29"] or battle.status!="active":return
+ if combat.registry.rules_ref().pack_id not in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30"] or battle.status!="active":return
  var unit: Dictionary=combat.current(battle)
  if not combat.alive(unit):return
  var derived := combat.characters.derive_character(unit.record)

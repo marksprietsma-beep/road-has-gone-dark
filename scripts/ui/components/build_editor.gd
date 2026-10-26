@@ -74,7 +74,7 @@ func setup(record_value: Dictionary,is_advance := false) -> void:
   for id in class_options():
    var row := source.definition("classes",id)
    if row.get("class_kind")=="companion":continue
-   if id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)
+   if class_filter.text.is_empty() or id==class_id or class_filter.text.to_lower() in str(row.name).to_lower():class_picker.add_item(row.name);class_picker.set_item_metadata(class_picker.item_count-1,id)
   select_id(class_picker,class_id);refresh_preview())
  class_picker.item_selected.connect(func(_index: int):
   if updating:return
@@ -261,7 +261,7 @@ func refresh_preview() -> void:
   for i in class_picker.item_count:
    var id: String=str(class_picker.get_item_metadata(i));var why := CharacterBuilderRecords.reason(available.classes[id])
    class_picker.set_item_disabled(i,not why.is_empty());class_picker.get_popup().set_item_tooltip(i,why)
-   if not why.is_empty():messages.append(source.definition("classes",id).name+": "+why)
+   if id==class_id and not why.is_empty():messages.append(source.definition("classes",id).name+": "+why)
  var cls := source.definition("classes",class_id)
  class_detail.text="%s · HP +%d/level · %d skill points + INT · cap %d
 BAB %s · Saves %s
@@ -291,11 +291,11 @@ Features: %s"%[cls.get("name",class_id),int(cls.get("hp_per_level",0)),int(cls.g
   else:
    feat_picker.disabled=false
    for id in options.feat_choices:
-    if id!=feat_id and not feat_filter.text.to_lower() in str(source.definition("feats",id).name).to_lower():continue
+    if not feat_filter.text.is_empty() and id!=feat_id and not feat_filter.text.to_lower() in str(source.definition("feats",id).name).to_lower():continue
     var why := CharacterBuilderRecords.reason(options.feat_choices[id]);var index: int=feat_picker.item_count
     feat_picker.add_item(str(source.definition("feats",id).name)+( " · locked" if not why.is_empty() else ""));feat_picker.set_item_metadata(index,id)
     feat_picker.set_item_disabled(index,not why.is_empty());feat_picker.get_popup().set_item_tooltip(index,why+"\n"+", ".join(source.definition("feats",id).features.map(func(feature_id: String):return feature_text(feature_id))))
-    if not why.is_empty():messages.append(source.definition("feats",id).name+": "+why)
+    if id==feat_id and not why.is_empty():messages.append(source.definition("feats",id).name+": "+why)
    select_id(feat_picker,feat_id)
    if feat_id.is_empty():feat_picker.select(-1)
  else:budget.text=CharacterBuilderRecords.reason(options)

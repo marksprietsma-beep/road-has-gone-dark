@@ -1,0 +1,218 @@
+{
+  "source": "27a7e2a9c8c3f392b86cf1b1f2073b67c8b10149",
+  "run": 40207514769,
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40207514769",
+  "proof": {
+    "checks": 104,
+    "development_fixtures": true,
+    "earned_xp": false,
+    "failures": 0,
+    "observations": {
+      "bow": {
+        "after": {
+          "BAB": 3,
+          "HP": 24,
+          "damage": 2,
+          "defence": 13,
+          "fortitude": 4,
+          "initiative": 2,
+          "melee_attack": 6,
+          "ranged_attack": 7,
+          "reach": 1,
+          "reflex": 3,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 4
+        },
+        "before": {
+          "BAB": 3,
+          "HP": 24,
+          "damage": 2,
+          "defence": 13,
+          "fortitude": 4,
+          "initiative": 2,
+          "melee_attack": 6,
+          "ranged_attack": 6,
+          "reach": 1,
+          "reflex": 3,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 4
+        },
+        "cost": {
+          "main": 1,
+          "move": 0,
+          "reaction": 0,
+          "resources": {
+            "fighter-resolve": 1
+          }
+        }
+      },
+      "paid_rage": {
+        "resources_after": 0,
+        "resources_before": 3,
+        "scope": "Direct effects with three separate action budgets; real turn-boundary counterplay is tested by candidate combat acceptance.",
+        "stats": {
+          "BAB": 6,
+          "HP": 52,
+          "damage": 5,
+          "defence": 13,
+          "fortitude": 12,
+          "initiative": 2,
+          "melee_attack": 14,
+          "ranged_attack": 8,
+          "reach": 1,
+          "reflex": 4,
+          "save_dc": 0,
+          "stride": 5,
+          "will": 5
+        },
+        "statuses": [
+          {
+            "expiry": "global_round_start",
+            "id": "raging",
+            "remaining": 3,
+            "source": "martial-probe"
+          },
+          {
+            "expiry": "global_round_start",
+            "id": "barbarian-reckless-1-status",
+            "remaining": 3,
+            "source": "martial-probe"
+          },
+          {
+            "expiry": "global_round_start",
+            "id": "barbarian-resilient-6-status",
+            "remaining": 3,
+            "source": "martial-probe"
+          }
+        ],
+        "supplied_development_actions": 3
+      },
+      "pointblank": {
+        "control": {
+          "BAB": 1,
+          "HP": 12,
+          "damage": 0,
+          "defence": 13,
+          "fortitude": 3,
+          "initiative": 2,
+          "melee_attack": 4,
+          "ranged_attack": 4,
+          "reach": 1,
+          "reflex": 2,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 1
+        },
+        "selected": {
+          "BAB": 1,
+          "HP": 12,
+          "damage": 0,
+          "defence": 13,
+          "fortitude": 3,
+          "initiative": 2,
+          "melee_attack": 4,
+          "ranged_attack": 4,
+          "reach": 1,
+          "reflex": 2,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 0
+        }
+      },
+      "resilience": {
+        "feature": {
+          "abilities": [],
+          "description": "Persistent save_dc +2; original specialisation required.",
+          "grants": [],
+          "hooks": [],
+          "id": "barbarian-master-choice-resilient",
+          "modifiers": [
+            {
+              "stat": "save_dc",
+              "type": "training",
+              "value": {
+                "op": "const",
+                "value": 2
+              }
+            }
+          ],
+          "name": "Resilient rage mastery",
+          "provenance": {
+            "license": "Original project-authored content",
+            "origin": "Original TRHGD rules and prose; GAME-88 concepts are provenance, not copied sourcebook mechanics",
+            "revision": "game112-wave-one"
+          },
+          "resources": [],
+          "senses": [],
+          "tags": []
+        },
+        "save_actions": [],
+        "stats": {
+          "BAB": 15,
+          "HP": 119,
+          "damage": 0,
+          "defence": 13,
+          "fortitude": 12,
+          "initiative": 2,
+          "melee_attack": 19,
+          "ranged_attack": 17,
+          "reach": 1,
+          "reflex": 7,
+          "save_dc": 2,
+          "stride": 5,
+          "will": 13
+        }
+      },
+      "veteran": {
+        "extra_attack": 0,
+        "level4": {
+          "BAB": 4,
+          "HP": 30,
+          "damage": 2,
+          "defence": 13,
+          "fortitude": 5,
+          "initiative": 2,
+          "melee_attack": 8,
+          "ranged_attack": 7,
+          "reach": 1,
+          "reflex": 3,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 5
+        },
+        "level5": {
+          "BAB": 5,
+          "HP": 36,
+          "damage": 2,
+          "defence": 13,
+          "fortitude": 5,
+          "initiative": 2,
+          "melee_attack": 9,
+          "ranged_attack": 8,
+          "reach": 1,
+          "reflex": 3,
+          "save_dc": 0,
+          "stride": 4,
+          "will": 6
+        }
+      },
+      "wrong_equipment": {
+        "accepted": true,
+        "equipment": [
+          "shortblade",
+          "leathers"
+        ]
+      }
+    },
+    "production_changed": false,
+    "rules_ref": {
+      "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+      "engine_schema": 3,
+      "pack_id": "trhgd-character-v29",
+      "rules_version": "29.0.0",
+      "schema_version": 1
+    }
+  }
+}
