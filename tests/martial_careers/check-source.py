@@ -22,6 +22,10 @@ def verify():
   path=file.relative_to(ROOT).as_posix()
   if path in approved:assert hashlib.sha256(file.read_bytes()).hexdigest()==approved[path],path
   else:assert file.read_text(encoding='utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
+ exporter='tools/release/export-game.mjs'
+ expected_exporter=original(exporter).decode('utf-8').replace("'res://tests/dual_prestige_acceptance/review.tscn'].includes(qaScene)","'res://tests/dual_prestige_acceptance/review.tscn','res://tests/martial_careers/review.tscn'].includes(qaScene)")
+ assert (ROOT/exporter).read_text(encoding='utf-8')==expected_exporter,'Only the one explicit martial QA entry may be added to the original exporter'
+ assert "'res://tests/martial_careers/review.tscn'"in expected_exporter
  frozen=['scripts/combat/tactical_combat.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']
  for path in frozen:assert (ROOT/path).read_bytes()==original(path)
  pin=manifest['packs'][-1]['rules_ref'];assert pin['pack_id']==b['pack_id']=='trhgd-character-v30'
