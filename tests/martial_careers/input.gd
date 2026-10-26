@@ -70,6 +70,10 @@ func run() -> void:
   var step := kernel.preview_advancement(resilient,editor.choice());check(step.ok,"late UI choice is actually executable")
   if step.ok:check(step.snapshot.stats.fortitude==kernel.derive_character(resilient).snapshot.stats.fortitude+2,"late UI choice yields exact real numerical benefit")
  editor.queue_free()
+ var control_helper: Node=load("res://tests/upper_prepared/mechanics.gd").new();control_helper.source=source;control_helper.kernel=kernel
+ var controller: Dictionary=control_helper.prepare_upper(control_helper.build("wizard",20),"wizard-stillness-lattice")
+ check(control_helper.failures==0,"lawful development caster for real temporary control")
+ control_helper.free()
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  for spec in [["bow20","fighter-bow-6"],["blade20","fighter-blade-6"],["barbarian-resilient20","barbarian-resilient-6"]]:
   var r: Dictionary=saved.records[spec[0]];var b: Dictionary=helper.encounter(r);var id: String=spec[1]
@@ -83,11 +87,19 @@ func run() -> void:
    match reason:
     "spent-main":blocked.budget.main=0
     "empty-resource":blocked.units.a.record.runtime.resources["rage-uses"if id.begins_with("barbarian")else"fighter-resolve"]=0
-    "suppressed":blocked.units.a.record.runtime.statuses.append({"id":"stillness-lattice","source":"fixture","remaining":1,"expiry":"global_round_start"})
+    "suppressed":
+     var controlled := RulesEffects.new(source).use_ability(controller,blocked.units.a.record,"wizard-stillness-lattice",{"main":1,"move":1,"reaction":1},helper.attack_seed(1))
+     check(controlled.ok,"real paid Stillness cast for negative martial input "+JSON.stringify(controlled.get("errors",[])))
+     if not controlled.ok:continue
+     check(kernel.derive_character(controlled.target).snapshot.tags.has("main_action_suppressed"),"actual normal-attribute failed save applies finite control")
+     blocked.units.a.record=controlled.target
     "wrong-weapon":
      var weapon: String="shortblade"if spec[0]=="bow20"else"bow"
      blocked.units.a.record.equipment=[weapon,"leathers"];blocked.units.a.weapon=weapon
-   blocked=ui.engine.seal(blocked);var before := RulesJson.digest(blocked);show(ui,blocked,id);ui.sent={};ui.choose_tile(p)
+   blocked=ui.engine.seal(blocked)
+   var invalid := ui.engine.validate(blocked);check(invalid.is_empty(),"negative UI fixture remains a legal battle "+reason+JSON.stringify(invalid))
+   if not invalid.is_empty():continue
+   var before := RulesJson.digest(blocked);show(ui,blocked,id);ui.sent={};ui.choose_tile(p)
    check(ui.action_buttons[id].disabled and not ui.tiles[str(p)].target_tile and ui.sent.is_empty(),"unavailable action has no misleading target/intent "+id+reason)
    check(not ui.engine.command(blocked,{"actor_id":"a","revision":blocked.revision,"kind":id,"target_id":"a"}).ok,"authority rejects unavailable power "+reason)
    check(RulesJson.digest(blocked)==before and RulesJson.digest(ui.state.first_adventure.battle)==before,"denial preserves exact battle/log/RNG")
