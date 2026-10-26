@@ -56,6 +56,7 @@ func run() -> void:
  editor.queue_free()
  var resilient: Dictionary=helper.variant("barbarian",14,helper.step_options("barbarian","resilient"))
  editor=BuildEditor.new();add_child(editor);editor.setup(resilient,true)
+ await get_tree().process_frame
  check(editor.career_pickers.has("barbarian-choice-15"),"late Rage power mastery choice remains visible")
  if editor.career_pickers.has("barbarian-choice-15"):
   var picker: OptionButton=editor.career_pickers["barbarian-choice-15"];var index := find(picker,"resilient")
@@ -63,8 +64,9 @@ func run() -> void:
   if index>=0:picker.select(index);picker.item_selected.emit(index)
   for n in editor.sections.get_tab_count():
    if editor.sections.get_tab_title(n)=="Specialisation":editor.sections.current_tab=n
+  await get_tree().process_frame
   var row: Node=picker.get_parent();var detail: Label=row.get_parent().get_child(row.get_index()+1)as Label
-  check(detail!=null and detail.is_visible_in_tree() and "+2 Fortitude"in detail.text,"selected late mastery visibly explains its actual save benefit")
+  check(detail!=null and detail.is_visible_in_tree() and "+2 Fortitude"in detail.text,"selected late mastery visibly explains its actual save benefit "+JSON.stringify({"detail":detail.text if detail!=null else "missing","visible":detail.is_visible_in_tree()if detail!=null else false,"tab":editor.sections.current_tab,"tabs":range(editor.sections.get_tab_count()).map(func(n: int):return editor.sections.get_tab_title(n)),"selection":picker.get_item_metadata(picker.selected)}))
   var step := kernel.preview_advancement(resilient,editor.choice());check(step.ok,"late UI choice is actually executable")
   if step.ok:check(step.snapshot.stats.fortitude==kernel.derive_character(resilient).snapshot.stats.fortitude+2,"late UI choice yields exact real numerical benefit")
  editor.queue_free()
