@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "status": "proposed-player-facing-copy",
+  "source_ref": "trhgd-character-v30",
+  "notes": [
+    "Presentation copy only; not a rules source. Preserve previously pinned campaigns and class definitions.",
+    "Starting screen shows base classes only; prestige classes appear in advancement after eligibility checks.",
+    "Verify descriptions when mechanics change; do not imply unimplemented world systems or deities."
+  ],
+  "classes": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "kind": "base",
+      "summary": "Rage-fuelled frontline fighter",
+      "description": "A relentless warrior who burns limited rage to hit harder and survive brutal exchanges. Reckless and resilient paths offer different offensive and defensive trade-offs.",
+      "tags": [
+        "Martial",
+        "Melee",
+        "Rage"
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "kind": "base",
+      "summary": "Songs, spells and party support",
+      "description": "A charismatic performer who bolsters allies with sustained songs and disrupts enemies with hostile verses. Spontaneous magic and limited performance resources reward good timing.",
+      "tags": [
+        "Magic",
+        "Support",
+        "Performance"
+      ]
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "kind": "base",
+      "summary": "Divine healer and protector",
+      "description": "A prepared divine spellcaster who heals wounds, protects allies and channels sacred energy. Excels at answering danger with the right prayers and controlled battlefield support.",
+      "tags": [
+        "Divine",
+        "Magic",
+        "Support"
+      ]
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "kind": "base",
+      "summary": "Wild magic and changing forms",
+      "description": "A guardian of nature who prepares restorative and controlling spells, follows a chosen bond and can assume a bear's form. Blends spellcasting with practical battlefield adaptability.",
+      "tags": [
+        "Nature",
+        "Magic",
+        "Forms"
+      ]
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "kind": "base",
+      "summary": "Versatile master of weapons",
+      "description": "A disciplined combatant who specialises in blades, bows or protective techniques. Weapon choices, feats and finite resolve shape distinctly offensive or defensive fighting styles.",
+      "tags": [
+        "Martial",
+        "Equipment",
+        "Feats"
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "kind": "base",
+      "summary": "Ki-powered unarmoured martial artist",
+      "description": "An unarmoured martial artist who strings together unarmed strikes and spends limited ki on specialised techniques. Careful positioning and resource management matter as much as speed.",
+      "tags": [
+        "Martial",
+        "Unarmed",
+        "Ki"
+      ]
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "kind": "base",
+      "summary": "Oath-bound divine defender",
+      "description": "A steadfast warrior who smites selected foes, heals by touch and protects the party through divine grace. Combines armed combat with limited healing and protective power.",
+      "tags": [
+        "Martial",
+        "Divine",
+        "Protection"
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "kind": "base",
+      "summary": "Hunter, tracker and skirmisher",
+      "description": "A wilderness specialist who chooses a quarry and fighting style before developing nature magic. Excels at focused weapon pressure and practical tracking rather than raw spell power.",
+      "tags": [
+        "Martial",
+        "Nature",
+        "Quarry"
+      ]
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "kind": "base",
+      "summary": "Precision striker and skill expert",
+      "description": "A versatile expert who exploits openings created by allies to land precise weapon attacks. Special talents can hinder an exposed opponent or help escape trouble.",
+      "tags": [
+        "Martial",
+        "Precision",
+        "Skills"
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "kind": "base",
+      "summary": "Innate spontaneous spellcaster",
+      "description": "An instinctive arcane caster whose bloodline and permanently learned spells define each build. Casts familiar magic without preparing individual copies, but choices carry lasting weight.",
+      "tags": [
+        "Arcane",
+        "Spontaneous",
+        "Bloodline"
+      ]
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "kind": "base",
+      "summary": "Prepared scholar of the arcane",
+      "description": "An intelligent spellcaster who plans a prepared repertoire and specialises in an arcane school. Rewards foresight, spell selection and well-timed control or protection.",
+      "tags": [
+        "Arcane",
+        "Prepared",
+        "Control"
+      ]
+    },
+    {
+      "id": "duelist",
+      "name": "Duelist",
+      "kind": "prestige",
+      "summary": "Finesse and calculated counters",
+      "description": "A prestige fencing specialist focused on precise weapon technique and personal defence. Suits an experienced combatant who prefers timing and elegant exchanges over brute strength.",
+      "tags": [
+        "Prestige",
+        "Martial",
+        "Finesse"
+      ]
+    },
+    {
+      "id": "eldritch-knight",
+      "name": "Eldritch Knight",
+      "kind": "prestige",
+      "summary": "Weapon mastery meets arcane study",
+      "description": "A prestige warrior-mage who continues a chosen arcane casting tradition while improving martial capability. Its strength is combining weapons and spells within one build.",
+      "tags": [
+        "Prestige",
+        "Martial",
+        "Arcane"
+      ]
+    },
+    {
+      "id": "arcane-trickster",
+      "name": "Arcane Trickster",
+      "kind": "prestige",
+      "summary": "Spellcasting with rogue precision",
+      "description": "A prestige infiltrator who mixes arcane magic with opportunistic, precision-focused combat. Rewards careful positioning, well-chosen spells and exploiting openings rather than direct confrontation.",
+      "tags": [
+        "Prestige",
+        "Arcane",
+        "Precision"
+      ]
+    },
+    {
+      "id": "mystic-theurge",
+      "name": "Mystic Theurge",
+      "kind": "prestige",
+      "summary": "Arcane and divine magic united",
+      "description": "A prestige caster who advances one existing arcane and one divine tradition independently. Gains broad spell access and specialised restoration or protection, without sharing the two spell pools.",
+      "tags": [
+        "Prestige",
+        "Arcane",
+        "Divine"
+      ]
+    },
+    {
+      "id": "psion",
+      "name": "Psion",
+      "kind": "base",
+      "summary": "Disciplined mental power",
+      "description": "A psychic specialist whose chosen focus shapes the powers learned. Spend a shared pool of power points and augment individual effects when greater impact justifies the cost.",
+      "tags": [
+        "Psychic",
+        "Powers",
+        "Augmentation"
+      ]
+    },
+    {
+      "id": "psychic-warrior",
+      "name": "Psychic Warrior",
+      "kind": "base",
+      "summary": "Armed combat enhanced by thought",
+      "description": "A martial psychic who spends a smaller power-point reserve to enhance the body and empower attacks. Trades a full psionic repertoire for practical battlefield presence.",
+      "tags": [
+        "Psychic",
+        "Martial",
+        "Augmentation"
+      ]
+    },
+    {
+      "id": "soulknife",
+      "name": "Soulknife",
+      "kind": "base",
+      "summary": "Summoned weapon of the mind",
+      "description": "A psychic fighter who shapes a mental blade, charges it with focus and can throw it at nearby threats. Focus is finite and requires deliberate recovery.",
+      "tags": [
+        "Psychic",
+        "Weapon",
+        "Focus"
+      ]
+    },
+    {
+      "id": "warlock",
+      "name": "Warlock",
+      "kind": "base",
+      "summary": "Repeatable eldritch invocations",
+      "description": "An occult invoker who unleashes repeatable eldritch attacks and chooses control or concealment techniques. Powers need no spell slots, but still spend actions and face counters.",
+      "tags": [
+        "Occult",
+        "Blast",
+        "Invocations"
+      ]
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "kind": "base",
+      "summary": "Movement becomes striking power",
+      "description": "A mobile combatant whose repositioning opens opportunities for skirmish damage. Rewards crossing the battlefield and choosing attack angles rather than remaining stationary.",
+      "tags": [
+        "Martial",
+        "Mobility",
+        "Precision"
+      ]
+    },
+    {
+      "id": "swashbuckler",
+      "name": "Swashbuckler",
+      "kind": "base",
+      "summary": "Agile fencing and daring flourishes",
+      "description": "A lightly equipped finesse fighter who spends resolve on skilful strikes that weaken foes or create protection. Favors quick, well-timed exchanges over heavy armour.",
+      "tags": [
+        "Martial",
+        "Finesse",
+        "Resolve"
+      ]
+    },
+    {
+      "id": "knight",
+      "name": "Knight",
+      "kind": "base",
+      "summary": "Hold the line for your allies",
+      "description": "A protective warrior who challenges threats and uses a shared reaction to defend companions. Particularly effective when positioning matters and allies need a reliable front line.",
+      "tags": [
+        "Martial",
+        "Defence",
+        "Challenges"
+      ]
+    },
+    {
+      "id": "warblade",
+      "name": "Warblade",
+      "kind": "base",
+      "summary": "Stances, strikes and ripostes",
+      "description": "A tactical swordmaster who shifts between offensive and defensive stances, breaches enemy guard and prepares responses to nearby misses. Special manoeuvres use recoverable readiness.",
+      "tags": [
+        "Martial",
+        "Stances",
+        "Counterattack"
+      ]
+    },
+    {
+      "id": "shadowdancer",
+      "name": "Shadowdancer",
+      "kind": "prestige",
+      "summary": "Concealment in living shadow",
+      "description": "A prestige combatant who uses shadowy shrouds and movement-based disruption to make physical attacks less reliable. Focuses on concealment and control, not unrestricted teleportation.",
+      "tags": [
+        "Prestige",
+        "Concealment",
+        "Mobility"
+      ]
+    },
+    {
+      "id": "dragon-disciple",
+      "name": "Dragon Disciple",
+      "kind": "prestige",
+      "summary": "Awaken inherited draconic power",
+      "description": "A prestige path that develops draconic traits, natural protection and fiery breath. New bodily capabilities do not erase the character's original ancestry or history.",
+      "tags": [
+        "Prestige",
+        "Draconic",
+        "Transformation"
+      ]
+    },
+    {
+      "id": "dwarven-defender",
+      "name": "Dwarven Defender",
+      "kind": "prestige",
+      "summary": "An immovable defensive bulwark",
+      "description": "A prestige protector who anchors a defensive stance to gain resistance and stronger protection. The price of holding firm is severely limited movement.",
+      "tags": [
+        "Prestige",
+        "Defence",
+        "Stance"
+      ]
+    },
+    {
+      "id": "pyrokineticist",
+      "name": "Pyrokineticist",
+      "kind": "prestige",
+      "summary": "Psychic fire and focused ignition",
+      "description": "A prestige psychic specialist who turns existing power points into flame-based attacks and pressure. Trades broad flexibility for a distinctive command of fire.",
+      "tags": [
+        "Prestige",
+        "Psychic",
+        "Fire"
+      ]
+    },
+    {
+      "id": "crusader",
+      "name": "Crusader",
+      "kind": "base",
+      "summary": "Restorative strikes and martial resolve",
+      "description": "A battle-tested guardian whose successful strikes can support allies and whose techniques reinforce nearby companions. Readiness returns during battle or through deliberate recovery.",
+      "tags": [
+        "Martial",
+        "Protection",
+        "Readiness"
+      ]
+    },
+    {
+      "id": "swordsage",
+      "name": "Swordsage",
+      "kind": "base",
+      "summary": "Disciplined stances and deceptive strikes",
+      "description": "A precise martial adept who alternates flowing and fiery stances, disrupts enemies and prepares afterimage defences. Meditation restores technique readiness at a tactical cost.",
+      "tags": [
+        "Martial",
+        "Stances",
+        "Evasion"
+      ]
+    },
+    {
+      "id": "wilder",
+      "name": "Wilder",
+      "kind": "base",
+      "summary": "Dangerous psychic surges",
+      "description": "An intuitive psychic who pushes powers past safer limits for greater effect. Surges invite self-weakening consequences, creating a constant choice between impact and restraint.",
+      "tags": [
+        "Psychic",
+        "Surge",
+        "Risk"
+      ]
+    },
+    {
+      "id": "binder",
+      "name": "Binder",
+      "kind": "base",
+      "summary": "Spirit covenants with real costs",
+      "description": "An occult warrior who commits to an enduring spirit covenant, favouring ember-driven offence or sentinel protection. Covenant actions draw from a rest-limited pool.",
+      "tags": [
+        "Occult",
+        "Pact",
+        "Protection"
+      ]
+    },
+    {
+      "id": "warshaper",
+      "name": "Warshaper",
+      "kind": "prestige",
+      "summary": "Body and weapon become one",
+      "description": "A prestige specialist who draws strength from an altered physical form and its natural attacks. Success depends on the active body, its reach and compatible equipment.",
+      "tags": [
+        "Prestige",
+        "Forms",
+        "Melee"
+      ]
+    },
+    {
+      "id": "bonded-summoner",
+      "name": "Bonded Summoner",
+      "kind": "prestige",
+      "summary": "Fight beside a bound summon",
+      "description": "A prestige specialist built around an existing summoned companion. Its usefulness comes from coordinating a separate ally and managing the limits of that bond.",
+      "tags": [
+        "Prestige",
+        "Summoning",
+        "Companion"
+      ]
+    },
+    {
+      "id": "ardent",
+      "name": "Ardent",
+      "kind": "base",
+      "summary": "Psychic ideals made practical",
+      "description": "A philosophical manifester whose chosen mantles shape accessible powers. Wisdom-guided abilities favour distinctive combinations of perception, protection and restorative support.",
+      "tags": [
+        "Psychic",
+        "Mantles",
+        "Support"
+      ]
+    },
+    {
+      "id": "lurk",
+      "name": "Lurk",
+      "kind": "base",
+      "summary": "Concealed psychic ambusher",
+      "description": "A psychic infiltrator who combines limited power points, concealment and precise melee opportunities. Prefers a carefully prepared opening over sustained head-on combat.",
+      "tags": [
+        "Psychic",
+        "Precision",
+        "Concealment"
+      ]
+    },
+    {
+      "id": "cerebremancer",
+      "name": "Cerebremancer",
+      "kind": "prestige",
+      "summary": "Spellcraft and psionics together",
+      "description": "A prestige hybrid who advances an existing arcane casting tradition alongside psychic manifesting. Offers two separate magical toolkits to a carefully qualified character.",
+      "tags": [
+        "Prestige",
+        "Arcane",
+        "Psychic"
+      ]
+    },
+    {
+      "id": "beast-steward",
+      "name": "Beast Steward",
+      "kind": "prestige",
+      "summary": "Deepen an existing animal bond",
+      "description": "A prestige companion specialist who develops one established animal partnership through training and deliberate commands. The bonded creature has its own identity and battlefield role.",
+      "tags": [
+        "Prestige",
+        "Companion",
+        "Nature"
+      ]
+    },
+    {
+      "id": "erudite",
+      "name": "Erudite",
+      "kind": "base",
+      "summary": "Broad knowledge, limited daily choices",
+      "description": "A learned psychic with access to many powers but only a limited number of distinct identities per rest. Rewards adapting a deep repertoire to each expedition.",
+      "tags": [
+        "Psychic",
+        "Knowledge",
+        "Preparation"
+      ]
+    },
+    {
+      "id": "divine-mind",
+      "name": "Divine Mind",
+      "kind": "base",
+      "summary": "Armoured psychic aura guardian",
+      "description": "A protective psychic whose chosen mantle shapes nearby aura effects and learned powers. Switching support modes costs time and resources; position determines who benefits.",
+      "tags": [
+        "Psychic",
+        "Aura",
+        "Protection"
+      ]
+    },
+    {
+      "id": "marshal",
+      "name": "Marshal",
+      "kind": "base",
+      "summary": "Lead through commands, not spells",
+      "description": "A battlefield leader who strengthens companions through local auras, rallies and limited tactical orders. Suits a party that benefits from coordinated positioning.",
+      "tags": [
+        "Martial",
+        "Leadership",
+        "Support"
+      ]
+    },
+    {
+      "id": "cognition-adept",
+      "name": "Cognition Adept",
+      "kind": "prestige",
+      "summary": "Psychic hunter and mental defender",
+      "description": "A prestige fighter trained to combine precise weapon strikes with psychic wards and learned powers. Focuses on identifying and overcoming dangerous adversaries.",
+      "tags": [
+        "Prestige",
+        "Psychic",
+        "Martial"
+      ]
+    },
+    {
+      "id": "beguiler",
+      "name": "Beguiler",
+      "kind": "base",
+      "summary": "Illusions, subtlety and control",
+      "description": "A spontaneous intelligence-based caster who deceives perception and alters enemy options. Prefers clever disabling effects and protective misdirection over straightforward damage.",
+      "tags": [
+        "Arcane",
+        "Illusion",
+        "Control"
+      ]
+    },
+    {
+      "id": "dragonfire-adept",
+      "name": "Dragonfire Adept",
+      "kind": "base",
+      "summary": "Breath weapon and draconic invocations",
+      "description": "An elemental invoker who repeatedly unleashes chosen breath attacks, favouring focused reach or wider bursts. Later invocations add protection and battlefield control.",
+      "tags": [
+        "Occult",
+        "Draconic",
+        "Breath"
+      ]
+    },
+    {
+      "id": "war-chanter",
+      "name": "War Chanter",
+      "kind": "prestige",
+      "summary": "Turn battle into a rallying chorus",
+      "description": "A prestige battlefield performer whose wider war chorus and finite rally power support the company. Brings sustained morale and protection into martial encounters.",
+      "tags": [
+        "Prestige",
+        "Performance",
+        "Leadership"
+      ]
+    },
+    {
+      "id": "archmage",
+      "name": "Archmage",
+      "kind": "prestige",
+      "summary": "High arcana earned through mastery",
+      "description": "A prestige arcane expert who advances an established spellcasting tradition and chooses powerful force or warding techniques. Access requires genuine advanced spellcasting.",
+      "tags": [
+        "Prestige",
+        "Arcane",
+        "Mastery"
+      ]
+    },
+    {
+      "id": "metamind",
+      "name": "Metamind",
+      "kind": "prestige",
+      "summary": "Stretch psychic endurance",
+      "description": "A prestige psychic master who deliberately converts a finite reserve into recovered power points. Excels at sustaining a long series of decisions, not infinite casting.",
+      "tags": [
+        "Prestige",
+        "Psychic",
+        "Recovery"
+      ]
+    },
+    {
+      "id": "duskblade",
+      "name": "Duskblade",
+      "kind": "base",
+      "summary": "Channel magic through a blade",
+      "description": "An intelligence-based warrior-mage who delivers a chosen known spell through an equipped melee weapon. Even a missed attack consumes the action and spell slot.",
+      "tags": [
+        "Martial",
+        "Arcane",
+        "Channeling"
+      ]
+    },
+    {
+      "id": "spirit-shaman",
+      "name": "Spirit Shaman",
+      "kind": "base",
+      "summary": "Nature spells guided by spirits",
+      "description": "A spirit-focused nature caster who retrieves a limited spell selection after genuine home rest. Combines Wisdom-based magic with chosen guides and finite spiritual favour.",
+      "tags": [
+        "Nature",
+        "Spirit",
+        "Retrieval"
+      ]
+    },
+    {
+      "id": "abjurant-champion",
+      "name": "Abjurant Champion",
+      "kind": "prestige",
+      "summary": "Armed combat behind arcane wards",
+      "description": "A prestige martial caster who advances an existing arcane tradition while choosing a protective aegis or retaliatory technique. Powerful defences remain action- and resource-bound.",
+      "tags": [
+        "Prestige",
+        "Arcane",
+        "Protection"
+      ]
+    },
+    {
+      "id": "grove-warden",
+      "name": "Grove Warden",
+      "kind": "prestige",
+      "summary": "Sanctuary and restorative nature magic",
+      "description": "A prestige nature protector who advances an existing nature caster, maintains a nearby sanctuary and spends finite favour renewing allies. Focuses on local protection rather than wilderness travel simulation.",
+      "tags": [
+        "Prestige",
+        "Nature",
+        "Protection"
+      ]
+    }
+  ]
+}
