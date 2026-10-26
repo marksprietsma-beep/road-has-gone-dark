@@ -25,3 +25,8 @@ Windows40333254306 atfa5f5a4 preserved strict source/history guards and actual W
 ## Preserve supplied companion state in the new fixture adapter
 
 Review found the inherited generic test helper clears/recreates companions when aliasing its owner to actor a. The new cohort adapter now preserves the actual supplied nested HP/effort/statuses and only aliases identity, omitting defeated pets exactly as production encounter creation does. Added next-encounter downed/effort assertions. This fixes test preparation, not gameplay or the frozen original helper, and does not remove any assertions. Candidate32 hash and production remain unchanged. Current focused Windows must use this corrected harness before earned/native acceptance.
+
+
+## Workflow syntax correction
+
+52fddbd retained the same compile failure asfa5. While adding the explicit six Dictionary declarations,3e7 accidentally duplicated the source-step `if` key; GitHub rejected3e7/745 workflows before any job ran (40334582365/40335082542). Removed the duplicate, validated unique YAML keys locally and retained every source/import/history/mechanics/cold/control gate. Also count actual hit/miss/critical logs and damage rather than naming counters from the requested test die. No production/rules changes, no assertions removed and no full native32 attempt. All current code is in the repository; older scratch preparation must not overwrite it.

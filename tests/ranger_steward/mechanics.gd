@@ -51,7 +51,12 @@ func test_aimed() -> void:
    if not used.ok:continue
    check(used.battle.budget=={"main":0,"move":0} and used.battle.units.a.record.runtime.resources==b.units.a.record.runtime.resources,"Aimed Shot pays main+move without invented resolve cost")
    check(not execute(engine,used.battle,"aimed-shot","bandit-blade").ok,"no second shot after spent actions")
-   outcomes["misses"if die==1 else"criticals"if die==20 else"hits"]+=1
+   var lines: Array=used.battle.log.slice(b.log.size());var lost: int=int(b.units["bandit-blade"].record.runtime.hp)-int(used.battle.units["bandit-blade"].record.runtime.hp)
+   if die==1:check(lost==0 and lines.any(func(line: String):return line.contains(" misses ")),"actual natural-one miss deals no damage")
+   else:check(lost>0 and lines.any(func(line: String):return line.contains(" hits ")),"actual successful shot damages the target")
+   if lines.any(func(line: String):return line.contains("(critical)")):outcomes.criticals+=1
+   elif lost>0:outcomes.hits+=1
+   else:outcomes.misses+=1
    battles["aimed"+str(at)+str(die)]=used.battle
   for reason in ["melee","unarmed","natural","manifested","friendly","range","blocked","spent-move","spent-main"]:
    var b := encounter(r);var target := "bandit-blade"
