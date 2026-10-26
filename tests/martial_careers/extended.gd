@@ -136,8 +136,8 @@ func test_higher_tactical() -> void:
  var engine := TacticalAuras.new(fighter)
  for die in [1,19]:
   var b := encounter(fighter)
-  var second: Dictionary=fixtures.fighter.duplicate(true);second.character_id="bandit-archer";second.equipment=["bow","leathers"]
-  b.units["bandit-archer"].record=second;b.units["bandit-archer"].position=[2,2]
+  var second: Dictionary=fixtures.fighter.duplicate(true);second.character_id="bandit-bow";second.equipment=["bow","leathers"]
+  b.units["bandit-bow"].record=second;b.units["bandit-bow"].position=[2,2]
   b.rng=attack_seed(die);b=engine.seal(b)
   check(engine.validate(b).is_empty(),"lawful two-enemy late Whirlwind board")
   var used := execute(engine,b,"fighter-master-20","bandit-blade")
@@ -145,7 +145,7 @@ func test_higher_tactical() -> void:
   if not used.ok:continue
   var dealt: int=b.units["bandit-blade"].record.runtime.hp-used.battle.units["bandit-blade"].record.runtime.hp
   check(dealt==(26 if die==1 else 13),"actual failed/successful Reflex changes late physical damage")
-  check(used.battle.units["bandit-archer"].record.runtime.hp<b.units["bandit-archer"].record.runtime.hp,"actual hostile radius reaches second enemy")
+  check(used.battle.units["bandit-bow"].record.runtime.hp<b.units["bandit-bow"].record.runtime.hp,"actual hostile radius reaches second enemy")
   check(used.battle.units.b.record.runtime==b.units.b.record.runtime and used.battle.units.c.record.runtime==b.units.c.record.runtime,"hostile radius excludes real allies")
   check(used.battle.budget.main==0 and used.battle.units.a.record.runtime.resources["fighter-resolve"]==b.units.a.record.runtime.resources["fighter-resolve"]-3 and used.battle.units.a.record.runtime.temporary_hp==20,"area pays once and creates one nonstacking actor buffer")
   var expected := RulesRng.roll("1d20",RulesRng.roll("1d20",b.rng).rng)
