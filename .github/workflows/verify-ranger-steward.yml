@@ -51,7 +51,10 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/ranger-steward-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'ranger-steward-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      # The exported native release below reruns these exact contracts and controls.
+      # Avoid an identical source-EXE pass before the complete native pass.
       - name: Pinned31 reproduction and current32 mechanics/cold
+        if: github.event_name != 'workflow_dispatch' || inputs.release != true
         env:
           RANGER_STEWARD_ROOT: ${{ runner.temp }}/ranger-steward-focused
         run: python tests/ranger_steward/run-focused.py

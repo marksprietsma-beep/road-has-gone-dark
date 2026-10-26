@@ -1,0 +1,11 @@
+# GAME-161 candidate — native delivery pending
+
+Monk/Paladin160 was already merged at f9880ed0865f163a8f90a19b2a650365b664dd96. All25 actual main-push Windows workflows passed; the original run metadata is in evidence/monk-paladin-post-main.json.156 is closed,101 remainsOPEN at41 COMPLETE/9 PARTIAL/0 BLOCKED, and successful31 native40287149055 is preserved without a manual full rebuild.
+
+The separate feature/game-161-ranger-beast-steward branch starts at that verified main. Windows40332195985 at352d11c passed76 checks and reproduced three actual31 defects: shortblade Aimed Shot accepted despite its bow description; paid Archery added2 melee damage under equal-RNG attacks; companion growth raised a valid defeated pet from0→5HP without eligible recovery.
+
+Candidate32, pushed at fa5f5a4, fixes these through existing active-ranged requirements, actual-attack-ranged conditional modifiers and a32-only downed-growth correction. All other production changes are exact version enablement. Original1–31 pack bytes/pins and the frozen attack, RNG and campaign writer remain intact. No class, prestige, ancestry, feat, spell, creature, skill, resource or other content record is added. Pack hash: f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed.
+
+Current focused Windows40333254306 is pending. Earned/connected/cold/UI/native checks are not yet reported as passing. No32 native release, Windows download/checksum, readiness43/7 promotion or cohort PR is claimed. The prepared verifier runs one complete native release only after focused and source-earned/capture success. See TESTING.md, ASSESSMENT.md and CONTINUATION.md for exact scope and recovery.
+
+Known limits remain the existing bounded quarry profiles, humanoid creature art fallback, global-round owner-defeat withdrawal, ally-wide Steward support, and long-label/small-screen presentation. This wave does not implement new creature AI, a pet framework, the50-career browser, pantheon, monsters, NPCs or living-world systems. There is no callable Linear connector; GitHub156/161/101 carry the verified status and reconciliation notes.
