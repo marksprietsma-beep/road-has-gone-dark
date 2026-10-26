@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "rules_ref": {
-    "pack_id": "trhgd-character-v29",
+    "pack_id": "trhgd-character-v30",
     "schema_version": 1,
-    "rules_version": "29.0.0",
+    "rules_version": "30.0.0",
     "engine_schema": 3,
-    "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
+    "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57"
   },
-  "source_pack_sha256": "95150151d726f594f5be6f6c8d98447fedc422a51fe792d32cee1490ebd2abe8",
+  "source_pack_sha256": "7fd95c83c9051ebe84a70c3aa01920ad391d552953fa301774f1ab7c3af60cc6",
   "policy": {
     "COMPLETE": "Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.",
     "PARTIAL": "Playable but material mechanics or practical acceptance missing.",
@@ -19,8 +19,8 @@
       "name": "Barbarian",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original martial identity: actual weapon/feat/gear choices, paid discipline/rage trade-offs, attack and protective reaction outcomes, finite resources/expiry/recovery, production controls and exact cold continuation. Human balance remains separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -34,7 +34,28 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
@@ -45,14 +66,8 @@
           "barbarian-master-13-feature",
           "barbarian-master-16-feature",
           "barbarian-master-20-feature",
-          "barbarian-master-choice-reckless",
-          "barbarian-master-choice-resilient",
           "barbarian-rage",
           "barbarian-reckless",
-          "barbarian-reckless-1-feature",
-          "barbarian-reckless-6-feature",
-          "barbarian-resilient-1-feature",
-          "barbarian-resilient-6-feature",
           "barbarian-speed",
           "barbarian-toughness",
           "barbarian-veteran"
@@ -78,8 +93,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Lawful1/6/15/20 development histories and actual early/mid/late weapon/rage outcomes, higher paid actions, crits/misses, armour/guard and effective-weapon overrides. Separately three ordinary490XP/8 campaign builds with connected combat, cold resolution and home recovery; no earned20 claim."
       },
       "resources": [
         {
@@ -163,7 +178,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -183,17 +198,22 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/barbarian",
-        "data/rules/trhgd-character-v26.json#classes/barbarian"
+        "data/rules/trhgd-character-v26.json#classes/barbarian",
+        "tests/martial_careers/mechanics.gd",
+        "tests/martial_careers/extended.gd",
+        "tests/martial_careers/input.gd",
+        "tests/martial_careers/journey.gd",
+        "tests/martial_careers/connected.gd",
+        "docs/implementation/game123-martial-acceptance/evidence/native-proof.json",
+        "docs/implementation/game123-martial-acceptance/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify rage-power choices in early/mid/late native combat, including defence trade-offs and expiry; earned journey alone is not every rage variant."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v29",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "29.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
       },
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/barbarian",
       "acceptance_carry_forward": {
@@ -206,7 +226,14 @@
         },
         "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
         "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
-      }
+      },
+      "verified_source": "e24d7a2ba920f167485ead1804327b7a59163a6d",
+      "limitations": [
+        "Original bounded tactical adaptation, not exhaustive tabletop parity or final human balance.",
+        "Historical1\u201329 pins retain their exact original behavior and are never upgraded automatically.",
+        "Disciplines require actual matching active equipment; natural/manifested attacks use their actual profiles. Existing paid Rage combinations, global-round expiry and independent temporary HP remain deliberate limits.",
+        "Long labels/small-screen usability and humanoid LPC fallbacks remain separate."
+      ]
     },
     {
       "id": "bard",
@@ -814,14 +841,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/bard",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -1896,14 +1923,14 @@
       },
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -3015,14 +3042,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -3030,8 +3057,8 @@
       "name": "Fighter",
       "kind": "base",
       "level_cap": 20,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded original martial identity: actual weapon/feat/gear choices, paid discipline/rage trade-offs, attack and protective reaction outcomes, finite resources/expiry/recovery, production controls and exact cold continuation. Human balance remains separate.",
       "creation": {
         "legal_at_level_one": true,
         "historical_native": {
@@ -3045,24 +3072,39 @@
       "advancement": {
         "cap": 20,
         "historical_kernel_levels": 20,
-        "current_native_levels": [],
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
         "ordered_history": true
       },
       "defining_features": {
-        "description": "A trained weapons specialist: guard, power strikes, second wind and weapon specialization.",
+        "description": "A trained martial specialist. Choose melee or ranged discipline, equip its weapon, and share finite resolve between discipline, recovery and advanced techniques. Guard competes for the main action and shared reaction.",
         "source_features": [
           "fighter-battle-awareness",
-          "fighter-blade-1-feature",
-          "fighter-blade-6-feature",
-          "fighter-bow-1-feature",
-          "fighter-bow-6-feature",
           "fighter-career-11-feature",
           "fighter-career-9-feature",
           "fighter-master-13-feature",
           "fighter-master-16-feature",
           "fighter-master-20-feature",
-          "fighter-master-choice-blade",
-          "fighter-master-choice-bow",
           "fighter-specialization",
           "fighter-training",
           "fighter-veteran"
@@ -3089,8 +3131,8 @@
           8,
           20
         ],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "Lawful1/6/15/20 development histories and actual early/mid/late weapon/rage outcomes, higher paid actions, crits/misses, armour/guard and effective-weapon overrides. Separately three ordinary490XP/8 campaign builds with connected combat, cold resolution and home recovery; no earned20 claim."
       },
       "resources": [
         {
@@ -3173,7 +3215,7 @@
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": {
           "evidence": [
             "tests/character_completeness/audit_driver.gd",
@@ -3193,17 +3235,22 @@
       "prestige": null,
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#classes/fighter",
-        "data/rules/trhgd-character-v26.json#classes/fighter"
+        "data/rules/trhgd-character-v26.json#classes/fighter",
+        "tests/martial_careers/mechanics.gd",
+        "tests/martial_careers/extended.gd",
+        "tests/martial_careers/input.gd",
+        "tests/martial_careers/journey.gd",
+        "tests/martial_careers/connected.gd",
+        "docs/implementation/game123-martial-acceptance/evidence/native-proof.json",
+        "docs/implementation/game123-martial-acceptance/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify equipment-specialisation/feat alternatives in actual mid/late native attacks and protection; legal feat counts alone are insufficient."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v29",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "29.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
       },
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/fighter",
       "acceptance_carry_forward": {
@@ -3216,7 +3263,14 @@
         },
         "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
         "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
-      }
+      },
+      "verified_source": "e24d7a2ba920f167485ead1804327b7a59163a6d",
+      "limitations": [
+        "Original bounded tactical adaptation, not exhaustive tabletop parity or final human balance.",
+        "Historical1\u201329 pins retain their exact original behavior and are never upgraded automatically.",
+        "Disciplines require actual matching active equipment; natural/manifested attacks use their actual profiles. Existing paid Rage combinations, global-round expiry and independent temporary HP remain deliberate limits.",
+        "Long labels/small-screen usability and humanoid LPC fallbacks remain separate."
+      ]
     },
     {
       "id": "monk",
@@ -3413,14 +3467,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/monk",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -4104,14 +4158,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/paladin",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -4773,14 +4827,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/ranger",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -4987,14 +5041,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/rogue",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -5784,14 +5838,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -6891,14 +6945,14 @@
       },
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -7059,14 +7113,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -7219,14 +7273,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -7393,14 +7447,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -7578,14 +7632,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v27",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "27.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "e048332e868a12711d685e79652dec063f0045bf",
-        "scope": "Retained prior source-labelled acceptance. Fresh v28 all-base20/current upper, pinned27/18/16 and frozen regression supplement it; not all other career choices freshly reaccepted."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       },
       "verified_source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
       "limitations": [
@@ -8092,14 +8146,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -8601,14 +8655,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -8757,14 +8811,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/soulknife",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -8900,14 +8954,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warlock",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9066,14 +9120,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/scout",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9232,14 +9286,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swashbuckler",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9399,14 +9453,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/knight",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9556,14 +9610,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/warblade",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9703,14 +9757,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -9854,14 +9908,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -10000,14 +10054,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -10147,14 +10201,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -10302,14 +10356,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/crusader",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -10462,14 +10516,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/swordsage",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -10971,14 +11025,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -11141,14 +11195,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/binder",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -11288,14 +11342,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -11449,14 +11503,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -11960,14 +12014,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -12490,14 +12544,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -13005,14 +13059,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -13165,14 +13219,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -13664,14 +13718,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -14218,14 +14272,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -14405,14 +14459,14 @@
       },
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -14924,14 +14978,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -15554,14 +15608,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/beguiler",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -15751,14 +15805,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/dragonfire-adept",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -15940,14 +15994,14 @@
       },
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -16118,14 +16172,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       },
       "verified_source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
       "limitations": [
@@ -16671,14 +16725,14 @@
       ],
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -17101,14 +17155,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/duskblade",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       },
       "verified_source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
       "limitations": [
@@ -17796,14 +17850,14 @@
       "current_kernel_evidence": "docs/implementation/game127-support/evidence/current-native-witnesses.json#classes/spirit-shaman",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     },
     {
@@ -17994,14 +18048,14 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v27",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "27.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "1a129bb25bb4b3fea10e79de37436682eb594d4f59ae174620969a5e8a060a84"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "e048332e868a12711d685e79652dec063f0045bf",
-        "scope": "Retained prior source-labelled acceptance. Fresh v28 all-base20/current upper, pinned27/18/16 and frozen regression supplement it; not all other career choices freshly reaccepted."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       },
       "verified_source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
       "limitations": [
@@ -18150,22 +18204,20 @@
       "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
       "acceptance_carry_forward": {
         "pin": {
-          "pack_id": "trhgd-character-v28",
+          "pack_id": "trhgd-character-v29",
           "schema_version": 1,
-          "rules_version": "28.0.0",
+          "rules_version": "29.0.0",
           "engine_schema": 3,
-          "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+          "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
         },
-        "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-        "scope": "Prior35 source-labelled accepted careers retained. Current all-base20 and historical/frozen regression supplement, rather than freshly reaccepting every career choice."
+        "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+        "scope": "Prior37 source-labelled accepted careers retained; current all-base20 and historical/frozen regression supplement rather than freshly reaccepting every career choice."
       }
     }
   ],
   "repair_queue": [
     {
       "cohort": [
-        "barbarian",
-        "fighter",
         "monk",
         "paladin",
         "ranger",
@@ -18193,21 +18245,21 @@
   "milestone_complete": false,
   "programme_source_occurrences": 760,
   "world_transition": "GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.",
-  "verified_source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+  "verified_source": "e24d7a2ba920f167485ead1804327b7a59163a6d",
   "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.",
   "current_acceptance_cohort": [
-    "mystic-theurge",
-    "abjurant-champion"
+    "fighter",
+    "barbarian"
   ],
   "historical_acceptance_carry_forward": {
     "pin": {
-      "pack_id": "trhgd-character-v28",
+      "pack_id": "trhgd-character-v29",
       "schema_version": 1,
-      "rules_version": "28.0.0",
+      "rules_version": "29.0.0",
       "engine_schema": 3,
-      "content_hash": "fc35bee60a75732fe57954efb676eb5ac03fb1a386059518110831b62d33e86f"
+      "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e"
     },
-    "source": "ee7d29a5a6fca0742d7d10e28b958ca1ce077f1b",
-    "scope": "Prior35 source-labelled acceptance retained; current cohort only is promoted."
+    "source": "fa0c2ac318780c4d1a56497e32c448937e197b4a",
+    "scope": "Prior37 source-labelled acceptance retained; only the current pair is promoted."
   }
 }

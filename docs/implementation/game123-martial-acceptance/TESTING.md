@@ -23,3 +23,7 @@ Start a fresh New Game, generate/select world, choose origin and hometown, and c
 - Review high-level screenshots as labelled development fixtures. The automated ordinary campaign earns490XP/8, not level20. Human balance and long-label/small-screen presentation remain separate acceptance work.
 
 Latest actual results and the Windows checksum belong in [DELIVERY.md](DELIVERY.md), not inferred from this procedure.
+
+## Completed native run
+
+Release40256408205 passed all steps at e24d7a2ba920f167485ead1804327b7a59163a6d. Actual counts, source and archive audit, exact download/checksum and original screenshots are recorded in [DELIVERY.md](DELIVERY.md). Readiness39/11 is based on this native proof, not the earlier source-only journey/captures.

@@ -1,0 +1,25 @@
+{
+  "source_commit": "e24d7a2ba920f167485ead1804327b7a59163a6d",
+  "archive": "fighter-barbarian-windows-x64.zip",
+  "sha256": "2449b5160b23b0ff46af36df4430eb2fbe216c21a4a468f41f1853912e8bdbd0",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "fighter-barbarian-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "ee1afa7313dbe6e9c3fc0e610a33345c63b01bc823803a0081f721ef0dd0e07c",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v30",
+    "schema_version": 1,
+    "rules_version": "30.0.0",
+    "engine_schema": 3,
+    "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

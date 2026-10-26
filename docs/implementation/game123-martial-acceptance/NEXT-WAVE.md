@@ -1,6 +1,6 @@
 # Finite character continuation
 
-After matching-source native acceptance of Fighter and Barbarian,11 of the existing50 careers remain partial: Monk, Paladin, Ranger, Eldritch Knight, Shadowdancer, Dwarven Defender, Dragon Disciple, Warshaper, Bonded Summoner, Beast Steward and Grove Warden. Until that evidence passes, the published readiness remains37/13.
+Matching-source native acceptance of Fighter and Barbarian passed in40256408205. Readiness is39 COMPLETE/11 PARTIAL/0 BLOCKED;11 of the existing50 careers remain partial: Monk, Paladin, Ranger, Eldritch Knight, Shadowdancer, Dwarven Defender, Dragon Disciple, Warshaper, Bonded Summoner, Beast Steward and Grove Warden.
 
 Recommended next bounded pair: **Monk and Paladin**. First reproduce2–4 concrete deficiencies in ki/unarmed/equipment or divine/ward/smite/action/resource interactions. Preserve functioning attacks, reactions, actual casting and old pins. Test deliberate feat/gear choices, legal early/mid/late histories, genuine earned advancement separately from high development fixtures, positive/negative combat, exhaustion/rest, production controls and exact native cold continuation. Do not append another rules pack without a real correction.
 

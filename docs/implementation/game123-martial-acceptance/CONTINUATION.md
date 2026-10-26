@@ -49,3 +49,7 @@ Pushedb5eb01a adds exactly that one QA path to the existing exporter. Static mar
 ## Active native retry — inspect first
 
 Run40256408205 is the current full native retry at exact source `e24d7a2ba920f167485ead1804327b7a59163a6d`: https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40256408205 . It includes the exact QA-scene registration correction and preflight. All gameplay/UI/data inputs remain the passing7b74fee candidate, plus the explicit exporter allowlist entry; old1–29 pins remain intact. Do not retry or relaunch a completed successful full run. The previous40255296343 failed before QA/native gameplay at the missing-entry registration gate; no result checkpoint or native artifact was lost or published. Final export acceptance, ZIP/SHA, readiness39/11, PR/merge/post-main and Monk/Paladin156 remain outstanding. Latest remote may contain documentation-only checkpoint commits after the native source; verify runtime/tool equivalence before publication.
+
+## Native release recovered and accepted
+
+40256408205 succeeded at e24d7a2ba920f167485ead1804327b7a59163a6d. Download/artifact/SHA/native counts are in DELIVERY.md and evidence/native-release.json. Independent static archive audit passed. Source-bound matrix now39/11. Finalise exactly one PR for153, current-head Windows, normal merge, actual post-main Windows; only then close153 and start fresh Monk/Paladin156. Parent101 OPEN. Do not rerun this successful native release for delivery-only commits.
