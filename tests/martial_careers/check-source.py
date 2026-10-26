@@ -17,7 +17,7 @@ def verify():
   changed={k for k in x if x[k]!=y[k]};assert changed==allowed.get(category,set()),(category,changed);deltas[category]=sorted(changed)
  spec=importlib.util.spec_from_file_location('martial_content',ROOT/'tools/character-content/build-martial-acceptance-pack.py');gen=importlib.util.module_from_spec(spec);spec.loader.exec_module(gen);assert b==gen.content(),'Candidate must match its reviewed reproducible authoring recipe'
  approved=json.loads((ROOT/'tests/martial_careers/approved-source-sha256.json').read_text())
- assert set(approved)=={'scripts/rules/rules_character.gd','scripts/rules/rules_martial.gd','scripts/combat/tactical_auras.gd','scripts/ui/first_adventure.gd'}
+ assert set(approved)=={'scripts/rules/rules_character.gd','scripts/rules/rules_martial.gd','scripts/combat/tactical_auras.gd','scripts/ui/first_adventure.gd','scripts/ui/components/build_editor.gd'}
  for file in (ROOT/'scripts').rglob('*.gd'):
   path=file.relative_to(ROOT).as_posix()
   if path in approved:assert hashlib.sha256(file.read_bytes()).hexdigest()==approved[path],path
@@ -26,5 +26,5 @@ def verify():
  for path in frozen:assert (ROOT/path).read_bytes()==original(path)
  pin=manifest['packs'][-1]['rules_ref'];assert pin['pack_id']==b['pack_id']=='trhgd-character-v30'
  assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
- return dict(baseline=BASE,historical_pack_bytes_and_pins=29,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Version enablement plus reviewed transient effective-weapon modifier context and matching UI requirements; original attack/RNG/save authority inherited.')
+ return dict(baseline=BASE,historical_pack_bytes_and_pins=29,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Version enablement plus reviewed transient effective-weapon modifier context, matching UI requirements and empty-search creator list repair; original attack/RNG/save authority inherited.')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))

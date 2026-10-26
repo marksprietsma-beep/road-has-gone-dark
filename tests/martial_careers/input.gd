@@ -13,6 +13,10 @@ func run() -> void:
   check(editor.class_options().has("fighter") and editor.class_options().has("barbarian") and not editor.class_options().has("mystic-theurge"),"actual first-open creator exposes base careers only")
   var class_index := find(editor.class_picker,spec[0]);check(class_index>=0,"actual class control "+spec[0])
   if class_index>=0:editor.class_picker.select(class_index);editor.class_picker.item_selected.emit(class_index)
+  editor.class_filter.text="barbarian";editor.class_filter.text_changed.emit("barbarian")
+  check(find(editor.class_picker,"barbarian")>=0,"real class search retains matching base career")
+  editor.class_filter.text="";editor.class_filter.text_changed.emit("")
+  check(editor.class_picker.item_count==kernel.starting_classes().size(),"clearing class search restores all base options")
   var group: String=spec[0]+"-choice-1"
   check(editor.career_pickers.has(group),"real early specialisation control "+group)
   if editor.career_pickers.has(group):
@@ -26,6 +30,10 @@ func run() -> void:
    var dex: OptionButton=editor.attribute_pickers.DEX;var high := find(dex,"15")
    check(high>=0,"real standard-array score option")
    if high>=0:dex.select(high);dex.item_selected.emit(high)
+   editor.feat_filter.text="Archery";editor.feat_filter.text_changed.emit("Archery")
+   check(find(editor.feat_picker,"point-blank-shot")>=0,"real feat search finds a different legal feat")
+   editor.feat_filter.text="";editor.feat_filter.text_changed.emit("")
+   check(editor.feat_picker.item_count==source.ids("feats").size(),"empty search restores all legal and prerequisite-locked feats")
    var feat := find(editor.feat_picker,"point-blank-shot")
    check(feat>=0 and not editor.feat_picker.is_item_disabled(feat),"real ranged feat choice "+JSON.stringify({"index":feat,"budget":editor.budget.text,"preview":editor.preview,"attributes":editor.attributes,"allocation":editor.allocation,"items":range(editor.feat_picker.item_count).map(func(n: int):return [editor.feat_picker.get_item_metadata(n),editor.feat_picker.is_item_disabled(n),editor.feat_picker.get_popup().get_item_tooltip(n)])}))
    if feat>=0:editor.feat_picker.select(feat);editor.feat_picker.item_selected.emit(feat)
