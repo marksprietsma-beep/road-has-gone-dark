@@ -28,7 +28,7 @@ def generate(root, pack, pin, native_root):
     assert proofs['frozen']['checks'] == 22181
     assert proofs['input']['suppressed_cases'] == 3 and proofs['input']['resisted_cases'] == 2
     assert all(proofs['mechanics/proof.json']['contracts'][key] is True for key in ['training', 'equipment_disciplines', 'actual_attacks', 'resilient_mastery', 'rage_tradeoffs', 'resources_and_expiry', 'feat_choices', 'weapon_overrides'])
-    assert all(proofs['extended/proof.json']['contracts'][key] is True for key in ['guard_reactions', 'power_strike', 'higher_features', 'exhaustion', 'exact_rage_duration', 'reaction_weapon', 'rage_combat'])
+    assert all(proofs['extended/proof.json']['contracts'][key] is True for key in ['guard_reactions', 'power_strike', 'higher_features', 'exhaustion', 'exact_rage_duration', 'reaction_weapon', 'rage_combat', 'higher_tactical'])
     outcomes = proofs['mechanics/proof.json']['attack_outcomes']
     assert all(outcomes[key] > 0 for key in ['hits', 'misses', 'criticals', 'changed_hits'])
     journey = proofs['journey/proof.json']

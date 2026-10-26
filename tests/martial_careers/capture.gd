@@ -47,8 +47,9 @@ func run() -> void:
   sheet.state=state.duplicate(true);sheet.state.mechanics.records[id]=render_identity(saved.records[key],id);sheet.selected=1;sheet.refresh();sheet.detail_tabs.current_tab=2
   sheet.title.text="DEVELOPMENT FIXTURE · class20 · "+key+" · not earned XP"
   await photograph_scene("fixture-"+key+"-sheet",true,Vector2i(2560,1440))
- for key in ["blade","bow","rage"]:
-  var combat := await open_combat();var battle: Dictionary=saved.battles[key].duplicate(true)
+ var high: Dictionary=RulesJson.normalize(WorldOriginLore.read_json(OS.get_environment("MARTIAL_ROOT").path_join("extended/saved.json")))
+ for key in ["blade","bow","rage","whirlwind","titan"]:
+  var combat := await open_combat();var battle: Dictionary=(saved.battles[key]if saved.battles.has(key)else high.battles[key]).duplicate(true)
   combat.state={"first_adventure":{"battle":battle},"party_ids":["a","b","c"],"party":{"members":[]}}
   for i in 3:
    var member: Dictionary=state.party.members[i].duplicate(true);member.character_id=["a","b","c"][i];combat.state.party.members.append(member)

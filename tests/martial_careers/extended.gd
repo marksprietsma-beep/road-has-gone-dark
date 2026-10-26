@@ -6,7 +6,7 @@ func run() -> void:
  if OS.get_environment("MARTIAL_RESTART")=="1":cold();return
  fixtures.fighter=variant("fighter",20)
  fixtures.fighter.character_id="external-target"
- test_guard();test_power_strike();test_higher_features();test_exact_rage_expiry();test_reaction_weapon();test_rage_combat()
+ test_guard();test_power_strike();test_higher_features();test_exact_rage_expiry();test_reaction_weapon();test_rage_combat();test_higher_tactical()
  persist();finish_martial()
 func enemy_activation(engine: TacticalAuras,b: Dictionary,id: String) -> Dictionary:
  # A controlled authored starting activation, as in the existing encounter
@@ -131,3 +131,31 @@ func test_rage_combat() -> void:
   check(raw.ok and hit.ok,"ordinary enemy attack tests actual defensive counterplay")
   if raw.ok and hit.ok:check(raw.battle.units.a.record.runtime.hp==plain.units.a.record.runtime.hp and hit.battle.units.a.record.runtime.hp<enhanced.units.a.record.runtime.hp,"paid Rage makes a real previously missed attack hit the Barbarian")
  contracts.rage_combat=true
+func test_higher_tactical() -> void:
+ var fighter := variant("fighter",20,step_options("fighter","bow"));fighter.equipment=["bow","leathers"]
+ var engine := TacticalAuras.new(fighter)
+ for die in [1,19]:
+  var b := encounter(fighter)
+  var second: Dictionary=fixtures.fighter.duplicate(true);second.character_id="bandit-archer";second.equipment=["bow","leathers"]
+  b.units["bandit-archer"].record=second;b.units["bandit-archer"].position=[2,2]
+  b.rng=attack_seed(die);b=engine.seal(b)
+  check(engine.validate(b).is_empty(),"lawful two-enemy late Whirlwind board")
+  var used := execute(engine,b,"fighter-master-20","bandit-blade")
+  check(used.ok,"real highest Fighter action through tactical command "+str(die))
+  if not used.ok:continue
+  var dealt: int=b.units["bandit-blade"].record.runtime.hp-used.battle.units["bandit-blade"].record.runtime.hp
+  check(dealt==(26 if die==1 else 13),"actual failed/successful Reflex changes late physical damage")
+  check(used.battle.units["bandit-archer"].record.runtime.hp<b.units["bandit-archer"].record.runtime.hp,"actual hostile radius reaches second enemy")
+  check(used.battle.units.b.record.runtime==b.units.b.record.runtime and used.battle.units.c.record.runtime==b.units.c.record.runtime,"hostile radius excludes real allies")
+  check(used.battle.budget.main==0 and used.battle.units.a.record.runtime.resources["fighter-resolve"]==b.units.a.record.runtime.resources["fighter-resolve"]-3 and used.battle.units.a.record.runtime.temporary_hp==20,"area pays once and creates one nonstacking actor buffer")
+  var expected := RulesRng.roll("1d20",RulesRng.roll("1d20",b.rng).rng)
+  check(used.battle.rng==expected.rng,"exact two-target saving-throw RNG")
+  if die==1:battles.whirlwind=used.battle
+ var barbarian := variant("barbarian",20,step_options("barbarian","resilient"));engine=TacticalAuras.new(barbarian)
+ var b := encounter(barbarian);var titan := execute(engine,b,"barbarian-master-20")
+ check(titan.ok,"real highest Barbarian action through tactical command")
+ if titan.ok:
+  check(titan.battle.budget.main==0 and titan.battle.units.a.record.runtime.resources["rage-uses"]==b.units.a.record.runtime.resources["rage-uses"]-3 and titan.battle.rng==b.rng,"Titan spends exactly one main and three uses without attack RNG")
+  check(titan.battle.units.a.record.runtime.temporary_hp==40 and kernel.derive_character(titan.battle.units.a.record).snapshot.capabilities.resistances.physical==5,"highest fury creates real finite buffer and physical resistance")
+  battles.titan=titan.battle
+ contracts.higher_tactical=true
