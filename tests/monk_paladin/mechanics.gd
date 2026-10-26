@@ -160,9 +160,37 @@ func test_casting() -> void:
   for pool in source.definition("abilities",id).cost.resources:
    if source.definition("resources",pool).has("prepared_ability"):absent.runtime.resources[pool]=0
   check(not execute(engine,encounter(absent),id,"bandit-blade").ok,"unprepared divine spell denied")
+   for empty_pool in source.definition("abilities",id).cost.resources:
+    var exhausted := r.duplicate(true);exhausted.runtime.resources[empty_pool]=0
+    check(not execute(engine,encounter(exhausted),id,"bandit-blade").ok,"slot and copy are independent cast ceilings "+empty_pool)
   records["prepared"+str(at)]=used.battle.units.a.record;battles["spell"+str(at)]=used.battle
  var hybrid := prepare(more(make("paladin",6),"sorcerer",4))
  check(kernel.derive_character(hybrid).ok,"prepared divine/spontaneous arcane multiclass remains legal")
+ var snapshot: Dictionary=kernel.derive_character(hybrid).snapshot
+ var known: Array=snapshot.abilities.filter(func(id: String):
+  var a := source.definition("abilities",id)
+  return a.get("casting_class")=="sorcerer" and a.targeting.kind=="creature" and RulesExpressions.evaluate_requirements(a.requirements,kernel.derive_character(hybrid).context).ok)
+ check(not known.is_empty(),"hybrid has an actual legal spontaneous offensive choice")
+ if not known.is_empty():
+  var spell: String=known[0];hybrid.choices.prepared_abilities.append(spell)
+  hybrid.runtime.resources=kernel.derive_character(hybrid).snapshot.resource_capacities.duplicate(true)
+  var engine := TacticalAuras.new(hybrid);var b := encounter(hybrid)
+  var arcane := execute(engine,b,spell,"bandit-blade");check(arcane.ok,"chosen spontaneous arcane spell executes alongside divine preparation")
+  if arcane.ok:
+   for pool in hybrid.runtime.resources:
+    if str(pool).begins_with("paladin-"):check(arcane.battle.units.a.record.runtime.resources[pool]==hybrid.runtime.resources[pool],"arcane cast cannot borrow divine pool "+pool)
+   check(not execute(engine,arcane.battle,"paladin-radiance","bandit-blade").ok,"two traditions still share one main action")
+   var continued: Dictionary=arcane.battle
+   for n in continued.order.size():
+    var ended := execute(engine,continued,"end");check(ended.ok,"normal activation ends between casting traditions")
+    if not ended.ok:break
+    continued=ended.battle
+    if engine.current(continued).id=="a":break
+   var divine := execute(engine,continued,"paladin-radiance","bandit-blade");check(divine.ok,"prepared divine spell executes on the next real activation")
+   if divine.ok:
+    for pool in hybrid.runtime.resources:
+     if str(pool).begins_with("sorcerer-"):check(divine.battle.units.a.record.runtime.resources[pool]==arcane.battle.units.a.record.runtime.resources[pool],"divine casting cannot borrow arcane pool "+pool)
+    battles.dual_caster=divine.battle
  records.dual_caster=hybrid;contracts.divine_casting=true
 func test_high() -> void:
  for cls in ["monk","paladin"]:
@@ -179,6 +207,15 @@ func test_high() -> void:
    else:check(used.battle.units.b.record.runtime.hp>b.units.b.record.runtime.hp,"late Paladin actual party recovery")
    if at>=16:check(used.battle.units.a.record.runtime.temporary_hp==at,"late distinct buffer remains executable")
    battles[cls+str(at)]=used.battle
+ var monk: Dictionary=records["monk-wind20"];var engine := TacticalAuras.new(monk)
+ for die in [1,20]:
+  var b := encounter(monk);b.rng=attack_seed(die);b=engine.seal(b)
+  var used := execute(engine,b,"monk-master-20","bandit-blade");check(used.ok,"late palm real failed/successful save")
+  if not used.ok:continue
+  var lost: int=b.units["bandit-blade"].record.runtime.hp-used.battle.units["bandit-blade"].record.runtime.hp
+  check(lost==(24 if die==1 else 12),"Reflex counterplay changes actual damage to24/12")
+  check(used.battle.units["bandit-blade"].record.runtime.statuses.any(func(s: Dictionary):return s.id=="off-balance")== (die==1),"successful save prevents off-balance rider")
+  battles["palm-save-"+str(die)]=used.battle
  contracts.higher_tactical=true
 func test_resources() -> void:
  for pair in [["monk-wind6","monk-wind-6","ki"],["paladin-justice6","paladin-justice-6","lay-hands"],["paladin-mercy6","oath-shelter","smite-uses"]]:

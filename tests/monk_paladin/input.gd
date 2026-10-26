@@ -25,6 +25,16 @@ func run() -> void:
   if created.ok:check(created.candidate.advancement_history[0].specialisations[key]==spec[1] and created.candidate.advancement_history[0].feat_id==spec[2],"actual selected class/oath/feat persists")
   check(RulesJson.digest(r)==before,"creator exploration preserves original saved identity and state")
   editor.queue_free()
+ var late: Dictionary=helper.make("monk",14,helper.options("monk","wind"))
+ var advance := BuildEditor.new();add_child(advance);advance.setup(late,true)
+ check(advance.career_pickers.has("monk-choice-15"),"actual late discipline choice visible")
+ if advance.career_pickers.has("monk-choice-15"):
+  var picker: OptionButton=advance.career_pickers["monk-choice-15"];var wind := find(picker,"wind");var iron := find(picker,"iron")
+  check(wind>=0 and not picker.is_item_disabled(wind) and iron>=0 and picker.is_item_disabled(iron),"permanent original discipline gates late alternative with explanation")
+  if wind>=0:picker.select(wind);picker.item_selected.emit(wind)
+  var chosen := kernel.preview_advancement(late,advance.choice());check(chosen.ok,"real late UI selection is lawful")
+  if chosen.ok:check(chosen.snapshot.stats.save_dc==kernel.derive_character(late).snapshot.stats.save_dc+2,"late UI choice yields real palm save DC")
+ advance.queue_free()
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  for spec in [["monk-wind6","flurry","bandit-blade"],["monk-wind6","monk-wind-6","a"],["paladin-justice6","smite","bandit-blade"],["paladin-mercy6","paladin-mercy-6","b"]]:
   var r: Dictionary=saved.records[spec[0]];var b: Dictionary=helper.encounter(r);var id: String=spec[1];var target: String=spec[2]
