@@ -93,6 +93,19 @@ func test_stances() -> void:
    check(expired.runtime.resources.ki==r.runtime.resources.ki-1,"expiry never refunds ki")
    records[style+"-active"+str(at)]=used.actor
  contracts.stances=true
+ var runner: Dictionary=records["monk-wind6"];var engine := TacticalAuras.new(runner);var b := encounter(runner)
+ b.units["bandit-blade"].position=[7,4];b.units["bandit-bow"].position=[7,5];b=engine.seal(b)
+ var before_paths := engine.paths(b,b.units.a);var paid := execute(engine,b,"monk-wind-6")
+ check(paid.ok,"movement fixture uses real paid Wind activation")
+ if paid.ok:
+  var extended_paths := engine.paths(paid.battle,paid.battle.units.a);var destination := []
+  for key in extended_paths:
+   if not before_paths.has(key):destination=extended_paths[key].back();break
+  check(not destination.is_empty(),"Wind exposes a genuinely farther legal destination")
+  if not destination.is_empty():
+   var moved := engine.command(paid.battle,{"actor_id":"a","revision":paid.battle.revision,"kind":"move","destination":destination})
+   check(moved.ok and moved.battle.units.a.position==destination and moved.battle.budget.move==0 and moved.battle.budget.main==0,"original movement authority uses the larger stride and charges one movement")
+   if moved.ok:battles.wind_movement=moved.battle
 func test_smite() -> void:
  for at in [1,6,20]:
   var r: Dictionary=records["paladin-justice"+str(at)];var engine := TacticalAuras.new(r)
@@ -160,10 +173,15 @@ func test_casting() -> void:
   for pool in source.definition("abilities",id).cost.resources:
    if source.definition("resources",pool).has("prepared_ability"):absent.runtime.resources[pool]=0
   check(not execute(engine,encounter(absent),id,"bandit-blade").ok,"unprepared divine spell denied")
-   for empty_pool in source.definition("abilities",id).cost.resources:
-    var exhausted := r.duplicate(true);exhausted.runtime.resources[empty_pool]=0
-    check(not execute(engine,encounter(exhausted),id,"bandit-blade").ok,"slot and copy are independent cast ceilings "+empty_pool)
+  for empty_pool in source.definition("abilities",id).cost.resources:
+   var exhausted := r.duplicate(true);exhausted.runtime.resources[empty_pool]=0
+   check(not execute(engine,encounter(exhausted),id,"bandit-blade").ok,"slot and copy are independent cast ceilings "+empty_pool)
   records["prepared"+str(at)]=used.battle.units.a.record;battles["spell"+str(at)]=used.battle
+  var spent: Dictionary=used.battle.units.a.record;var capacity: Dictionary=kernel.derive_character(spent).snapshot.resource_capacities
+  var encounter_refresh := RulesEffects.new(source).refresh_resources(spent.runtime,capacity,"encounter")
+  check(encounter_refresh.ok and encounter_refresh.runtime.resources==spent.runtime.resources,"new encounter never refills divine slots or prepared copies")
+  var recovery := RulesEffects.new(source).refresh_resources(spent.runtime,capacity,"eligible_rest")
+  check(recovery.ok and recovery.runtime.resources==capacity,"eligible rest recovers own slots and exact prepared-copy capacities")
  var hybrid := prepare(more(make("paladin",6),"sorcerer",4))
  check(kernel.derive_character(hybrid).ok,"prepared divine/spontaneous arcane multiclass remains legal")
  var snapshot: Dictionary=kernel.derive_character(hybrid).snapshot
