@@ -17,7 +17,7 @@ def verify():
         # Keep every original29 data/source assertion against its exact released
         # source. Current30 source is independently and strictly scope-guarded;
         # real pinned29 runtime tests still execute on the current engine.
-        assert len(manifest['packs']) in [30,31]
+        assert len(manifest['packs']) in [30,31,32]
         spec=importlib.util.spec_from_file_location('current_martial_source',ROOT/'tests/martial_careers/check-source.py')
         current=importlib.util.module_from_spec(spec);spec.loader.exec_module(current);current.verify()
     for row in released['packs']:

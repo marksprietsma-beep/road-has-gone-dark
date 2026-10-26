@@ -8,13 +8,13 @@ Ranger already has Archery/Blade choices, raider/archer quarry, costed styles an
 
 RulesCharacter/RulesCareer/RulesExpressions/RulesModifiers/RulesEffects/RulesEntities and the inherited TacticalAuras/CombatEntities path own these mechanics. Existing creator, advancement, spellbook and combat controls already expose their choices and actual owned-actor turns. GamePlaythroughStore remains the sole campaign writer; ordinary OpportunityCycles fund advancement. Reuse them.
 
-## Three reproduced-defect candidates (Windows confirmation pending)
+## Three confirmed released31 Windows defects
 
 1. Aimed Shot is described as a bow attack but has no active-ranged requirement. Reproduce an actual shortblade Aimed Shot before changing it.
 2. Paid Archery Style gives unconditional damage, including actual melee strikes/reactions. Reproduce paired equal-RNG melee attacks and inspect the real modifier context. Existing attack_ranged_weapon predicates can constrain the damage without a new resolver.
 3. Companion scaling preserves a numeric HP deficit. A zeroHP pet can therefore gain positiveHP during advancement without eligible recovery. Reproduce a valid defeated owner/pet record advancing through the actual kernel; preserve downed state under the next immutable pin while retaining ordinary living damage deficits and spent effort.
 
-Do not change production for an unconfirmed hypothesis. If these reproduce, append32 with only the data predicates/conditional modifiers and a version-bound shared companion correction. Preserve all released1–31 bytes/pins, frozen attack/RNG/writer, existing quarry profiles, support target policy, resource/XP rules and the same50 careers.
+Windows40332195985 at352d11c passed76 checks and reproduced all three: shortblade Aimed Shot accepted, melee Archery damage0→2 and defeated companion0→5HP. Original receipts/timings are preserved. Append32 with only the data predicates/conditional modifiers and a version-bound shared companion correction. Preserve all released1–31 bytes/pins, frozen attack/RNG/writer, existing quarry profiles, support target policy, resource/XP rules and the same50 careers.
 
 ## Execution order and acceptance
 

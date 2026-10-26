@@ -4,7 +4,7 @@ extends TacticalCombat
 var _channel_error := ""
 var _attack_weapon_context := {}
 func stats(u: Dictionary) -> Dictionary:
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31"] and _attack_weapon_context.has(u.id):
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"] and _attack_weapon_context.has(u.id):
   var derived := characters.derive_character(u.record,str(_attack_weapon_context[u.id]))
   if not derived.ok:push_error("Validated weapon context failed: "+RulesJson.canonical(derived.errors));return {}
   return derived.snapshot.stats
@@ -19,7 +19,7 @@ func command(source: Dictionary,input: Dictionary) -> Dictionary:
   next_turn(result.battle);result.battle=seal(result.battle)
  return result
 func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool:
- if registry.rules_ref().pack_id=="trhgd-character-v31" and ability!="attack":
+ if registry.rules_ref().pack_id in ["trhgd-character-v31","trhgd-character-v32"] and ability!="attack":
   var eligible_actor := characters.derive_character(u.record)
   if not eligible_actor.ok or not RulesExpressions.evaluate_requirements(registry.definition("abilities",ability).get("requirements",{"op":"all","args":[]}),eligible_actor.context).ok:return false
  if RulesWaveFour.enabled(registry):
@@ -31,9 +31,9 @@ func eligible(b: Dictionary,u: Dictionary,t: Dictionary,ability: String) -> bool
  if RulesPsychic.parity_enabled(registry) and registry.definition("abilities",ability).has("psychic_power"):
   var derived := characters.derive_character(u.record)
   if not derived.ok or not RulesPsychic.casting_access(registry.definition("abilities",ability),derived.context,registry).ok:return false
- if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
- if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"]:
+ if registry.rules_ref().pack_id in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"] and characters.derive_character(u.record).snapshot.tags.has("main_action_suppressed") and (ability=="attack" or int(registry.definition("abilities",ability).get("cost",{}).get("main",0))>0):return false
+ if registry.rules_ref().pack_id in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"] and registry.definition("abilities",ability).get("tags",[]).has("maintained_performance") and not RulesEntities.form(u.record,registry).is_empty():return false
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]:
   var definition := registry.definition("abilities",ability)
   if definition.get("tags",[]).has("spell") and characters.derive_character(u.record).snapshot.tags.has("spell_suppressed"):return false
   # Recovery can reach a downed campaign character, never an expired summon or
@@ -68,7 +68,7 @@ func _historical_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool
   else:b.log.append(a.name+" loses the channelled spell: action and slot spent; no spell effect on a missed or concealed strike.")
  else:super.weapon_attack(b,a,t,reaction,technique)
 func _delegated_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,technique: String) -> void:
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31"]:
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]:
   # Supply only the actual immutable technique weapon to existing derivation.
   # The inherited attack still owns the roll, damage, armour and RNG. Scope by
   # actor and restore it for nested reactions; no context is persisted.
@@ -86,7 +86,7 @@ func _delegated_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,
  super.weapon_attack(b,a,t,reaction,technique)
 
 func active_weapon(u: Dictionary) -> String:
- if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31"]:return RulesMartial.effective_weapon(u.record,str(u.weapon),registry)
+ if registry.rules_ref().get("pack_id") in ["trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]:return RulesMartial.effective_weapon(u.record,str(u.weapon),registry)
  if RulesMartial.enabled(registry) and RulesEntities.form(u.record,registry).is_empty():
   for status in u.record.runtime.statuses:
    var row := registry.definition("statuses",status.id)
@@ -97,7 +97,7 @@ func weapon_attack(b: Dictionary,a: Dictionary,t: Dictionary,reaction: bool,tech
  if not RulesMartial.enabled(registry):
   _historical_attack(b,a,t,reaction,technique);return
  if not alive(a):return # A previous flurry strike may have provoked a lethal counter.
- if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"] and _intercept_weapon(b,a,t):return
+ if registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"] and _intercept_weapon(b,a,t):return
  RulesWaveFour.project_auras(self,b)
  var ability := registry.definition("abilities",technique)
  var weapon := registry.definition("equipment",ability.get("attack_weapon",active_weapon(a)))

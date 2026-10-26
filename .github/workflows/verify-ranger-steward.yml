@@ -1,6 +1,15 @@
 name: Ranger and Beast Steward Acceptance
 on:
   workflow_dispatch:
+    inputs:
+      journey:
+        type: boolean
+        default: false
+        description: Ordinary earned campaign and connected cold continuation
+      release:
+        type: boolean
+        default: false
+        description: Complete self-contained native Windows acceptance after focused success
   push:
     branches: [main, feature/game-161-ranger-beast-steward]
     paths: ['scripts/**', 'data/rules/**', 'tests/ranger_steward/**', '.github/workflows/verify-ranger-steward.yml']
@@ -12,7 +21,7 @@ permissions:
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,23 +38,52 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Exclude Node examples
         run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
-      - name: Immutable historical packs and unchanged production source
+      - name: Immutable packs and exact source scope
         run: |
           python tools/character-content/validate.py
+          python tests/ranger_steward/check-source.py
           python tests/monk_paladin/check-source.py
+          python tests/martial_careers/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked engine import
         shell: pwsh
         run: |
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/ranger-steward-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'ranger-steward-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Small pinned31 tactical and defeated-companion reproduction
+      - name: Pinned31 reproduction and current32 mechanics/cold
         env:
           RANGER_STEWARD_ROOT: ${{ runner.temp }}/ranger-steward-focused
         run: python tests/ranger_steward/run-focused.py
+      - name: Ordinary earned campaign and connected cold continuation
+        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        env:
+          RANGER_STEWARD_ROOT: ${{ runner.temp }}/ranger-steward-focused
+          RANGER_STEWARD_JOURNEY_ROOT: ${{ runner.temp }}/ranger-steward-earned
+        run: python tests/ranger_steward/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete self-contained native Ranger Steward acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          RANGER_STEWARD_RELEASE_ROOT: ${{ runner.temp }}/ranger-steward-native
+        run: python tests/ranger_steward/verify-package.py
+      - name: Complete playable Windows x64 package
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: ranger-steward-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/ranger-steward-native/distribution/*.zip
+            ${{ runner.temp }}/ranger-steward-native/distribution/*.sha256
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ranger-steward-windows-evidence
-          path: ${{ runner.temp }}/ranger-steward-focused
+          path: |
+            ${{ runner.temp }}/ranger-steward-focused
+            ${{ runner.temp }}/ranger-steward-earned
+            ${{ runner.temp }}/ranger-steward-native
           retention-days: 90
