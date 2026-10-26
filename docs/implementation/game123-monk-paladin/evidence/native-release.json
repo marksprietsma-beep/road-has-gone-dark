@@ -1,0 +1,308 @@
+{
+  "run": 40287149055,
+  "source": "d0460ff5942327b8cb6d238905c598704158aef4",
+  "links": {
+    "evidence": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40287149055/artifacts/12637790046",
+    "build": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40287149055/artifacts/12636259638"
+  },
+  "archive": "/workspace/scratch/monk-paladin/native-40287149055/build/monk-paladin-windows-x64.zip",
+  "sha256": "383ec9386c630706993b454db3d04ca88538eec15889c533bf3bee4d166481e4",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v31",
+    "schema_version": 1,
+    "rules_version": "31.0.0",
+    "engine_schema": 3,
+    "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1"
+  },
+  "checks": {
+    "mechanics/proof.json": {
+      "checks": 1343,
+      "failures": 0
+    },
+    "mechanics/restart-proof.json": {
+      "checks": 145,
+      "failures": 0
+    },
+    "journey/proof.json": {
+      "checks": 632.0,
+      "failures": 0.0
+    },
+    "journey/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "checks": 34,
+      "failures": 0
+    },
+    "connected/restart-proof.json": {
+      "checks": 85,
+      "failures": 0
+    },
+    "audit/proof.json": {
+      "checks": 2598,
+      "failures": 0
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "failures": 0
+    },
+    "current-upper/proof.json": {
+      "checks": 1634,
+      "failures": 0
+    },
+    "current-upper/restart-proof.json": {
+      "checks": 97,
+      "failures": 0
+    },
+    "historical30/proof.json": {
+      "checks": 1143,
+      "failures": 0
+    },
+    "historical30/restart-proof.json": {
+      "checks": 49,
+      "failures": 0
+    },
+    "historical30-extended/proof.json": {
+      "checks": 642,
+      "failures": 0
+    },
+    "historical30-extended/restart-proof.json": {
+      "checks": 37,
+      "failures": 0
+    },
+    "historical29/proof.json": {
+      "checks": 1290,
+      "failures": 0
+    },
+    "historical29/restart-proof.json": {
+      "checks": 125,
+      "failures": 0
+    },
+    "historical18/proof.json": {
+      "checks": 599,
+      "failures": 0
+    },
+    "historical18/restart-proof.json": {
+      "checks": 31,
+      "failures": 0
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "failures": 0
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "failures": 0
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "failures": 0
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "failures": 0
+    },
+    "pinned30-probe": {
+      "checks": 85,
+      "failures": 0
+    },
+    "input": {
+      "checks": 72,
+      "failures": 0
+    },
+    "historical30-input": {
+      "checks": 141,
+      "failures": 0
+    },
+    "frozen": {
+      "checks": 22181,
+      "failures": 0
+    }
+  },
+  "captures": 23,
+  "timings": [
+    {
+      "phase": "probe",
+      "seconds": 8.735,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "seconds": 122.265,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 14.063,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 30.094,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 458.468,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 41.531,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 79.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 53.641,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "seconds": 998.484,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 8.235,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "seconds": 190.593,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper-cold",
+      "seconds": 8.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30",
+      "seconds": 97.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-cold",
+      "seconds": 4.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended",
+      "seconds": 49.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended-cold",
+      "seconds": 4.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-input",
+      "seconds": 79.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29",
+      "seconds": 113.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29-cold",
+      "seconds": 9.032,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18",
+      "seconds": 99.5,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18-cold",
+      "seconds": 5.421,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 2.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 99.109,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 56.578,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

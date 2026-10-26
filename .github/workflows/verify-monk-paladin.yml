@@ -1,0 +1,88 @@
+name: Monk and Paladin Acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      journey:
+        type: boolean
+        default: false
+        description: Ordinary earned campaign and connected cold continuation
+      release:
+        type: boolean
+        default: false
+        description: Complete self-contained native Windows acceptance after focused success
+  push:
+    branches: [main, feature/game-123-monk-paladin-acceptance]
+    paths: ['scripts/**', 'data/rules/**', 'tests/monk_paladin/**', '.github/workflows/verify-monk-paladin.yml']
+  pull_request:
+    paths: ['scripts/**', 'data/rules/**', 'tests/monk_paladin/**', '.github/workflows/verify-monk-paladin.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Immutable packs and exact source scope
+        run: |
+          python tools/character-content/validate.py
+          python tests/monk_paladin/check-source.py
+          python tests/martial_careers/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
+      - name: Checked engine import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/monk-paladin-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'monk-paladin-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Pinned30 reproduction and current31 mechanics/cold
+        env:
+          MONK_PALADIN_ROOT: ${{ runner.temp }}/monk-paladin-focused
+        run: python tests/monk_paladin/run-focused.py
+      - name: Ordinary earned campaign and connected cold continuation
+        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        env:
+          MONK_PALADIN_ROOT: ${{ runner.temp }}/monk-paladin-focused
+          MONK_PALADIN_JOURNEY_ROOT: ${{ runner.temp }}/monk-paladin-earned
+        run: python tests/monk_paladin/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Complete self-contained native Monk Paladin acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          MONK_PALADIN_RELEASE_ROOT: ${{ runner.temp }}/monk-paladin-native
+        run: python tests/monk_paladin/verify-package.py
+      - name: Complete playable Windows x64 package
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: monk-paladin-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/monk-paladin-native/distribution/*.zip
+            ${{ runner.temp }}/monk-paladin-native/distribution/*.sha256
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: monk-paladin-windows-evidence
+          path: |
+            ${{ runner.temp }}/monk-paladin-focused
+            ${{ runner.temp }}/monk-paladin-earned
+            ${{ runner.temp }}/monk-paladin-native
+          retention-days: 90

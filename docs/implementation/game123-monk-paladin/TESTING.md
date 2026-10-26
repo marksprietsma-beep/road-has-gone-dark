@@ -1,0 +1,25 @@
+# Monk / Paladin Windows review
+
+Windows Godot only. Host Python checks source bytes, JSON, syntax and archive headers; these are not native gameplay proof. Native31 acceptance40287149055 PASSED at d0460ff5942327b8cb6d238905c598704158aef4; exact results, download/checksum and original images are in DELIVERY.md.
+
+## Automated gates
+
+1. Strict candidate31 recipe/source guard preserves every1–30 byte/pin, original frozen combat/RNG/save writer, unchanged50-career roster and existing generic systems. Released30 Windows40278360934 passed85 real reproduction/control checks.
+2. Windows focused workflow compiles every worker, reruns pinned30 witnesses, then legal1/6/13/15/16/20 alternative histories, actual Flurry/Smite commands and deterministic hit/miss/critical/counter defeat; paid movement, stances, healing, party shelter, late save counterplay and independent prepared/spontaneous resource pools. Separate process reload compares full records, snapshot hashes and next command/log/RNG. Production creator and combat controls exercise real handlers and denials.
+3. Dispatch journey=true only after focused success: original opportunities award490XP and three class8 histories, with deliberate Wind/Mercy/Justice choices, attributes, feats, preparation and saved advancement. No XP injection. A verification fork enters real connected combat, pays for all three abilities, waits for real enemy damage before Mercy healing, then cold-resolves and returns home. The primary saved campaign remains exact. Genuine Godot screenshots include fresh creator, choices, earned sheets/spells/advancement, explicitly labelled high20 fixtures and actual tactical outcomes.
+4. Once stable, dispatch release=true, journey=false: one full native export with original toolchain, bundled helper and original art. Execute QA with empty PATH and no installed Godot/helper override; include all32 base tracks through20, current upper casting, pinned30 mechanics/extended/production controls,29/18/16 and cold continuations. Run frozen22181 on Windows, separately launch normal EXE, remove QA, ZIP/CRC/SHA. No native success is claimed until complete.
+5. Independently audit downloaded ZIP/AMD64/Node/source/manifest/core/credits. Only matching-source native evidence may promote exactly this pair to41 COMPLETE/9 PARTIAL. Earlier39 retain source-labelled evidence. Then one PR for156, current-head Windows, normal merge and actual post-main verification before closure;101 remains OPEN.
+
+## Human path
+
+Extract the GitHub artifact ZIP, then the playable ZIP inside. Keep the full directory; run road-has-gone-dark.exe without installing Godot/Node. Escape skips intro. Start fresh New Game -> world -> origin -> hometown -> create party. Existing campaigns keep their historical rules and are not upgraded.
+
+Create a Monk with Unarmed explicitly selected and no armour, a Mercy Paladin and a Justice Paladin. Choose real attributes/feats/discipline/oath in Build and review Sheet. Monk Wisdom affects defence/ki; Flurry has two -2 strikes for one main, no ki; held/manifested/natural weapons do not qualify. Wind spends one main/ki, lasts three global round boundaries and now adds actual insight stride/Reflex beyond own training. Other paid techniques and recovery compete for finite ki. The existing strict Monk armour prohibition, including multiclass armour, remains; this cohort does not redesign that policy or the legacy empty-loadout fallback.
+
+Paladin uses positive Charisma for Divine Grace, Smite accuracy and divine casting. Smite requires actual melee and a hostile target, spends one main/use even on a miss, and competes with Shelter for the same pool. Lay on Hands and selected Mercy/Justice use their separate healing pool. Prepare spells when unlocked; own tier slots and prepared copies both limit casting. Higher Paladin buffers apply to their authored target; Monk late buffers explicitly target their caster. No alignment, pantheon or piety gameplay is implied.
+
+Play opportunities, earn XP, return home and deliberately commit levels/feats. The selector grants no XP. Save, fully close, relaunch and Resume. Compare identities, ordered histories, choices, gear, HP, slots/copies and finite pools. Ordinary automated evidence reaches490XP/class8; high20 builds are development fixtures. Shared long-label/small-screen clipping and existing humanoid art fallbacks remain limitations.
+
+## Final native outcome
+
+All listed native gates passed. Evidence-gated readiness is41/9, retaining prior39 source labels. Final native ordinary checks632/cold8 differ from the earlier source-only634/cold8; no historical count is passed off as fresh. See DELIVERY.md and evidence/native-release.json for actual counts and timings.

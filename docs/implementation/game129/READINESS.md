@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Matching-source native Windows accepts Fighter and Barbarian. Technical acceptance remains separate from human balance and research breadth.
+Matching-source native Windows accepts Monk and Paladin. Technical acceptance remains separate from human balance and research breadth.
 
-{'COMPLETE': 39, 'PARTIAL': 11, 'BLOCKED': 0}
+{'COMPLETE': 41, 'PARTIAL': 9, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -11,8 +11,8 @@ Matching-source native Windows accepts Fighter and Barbarian. Technical acceptan
 | Cleric | base | COMPLETE |  |
 | Druid | base | COMPLETE |  |
 | Fighter | base | COMPLETE |  |
-| Monk | base | PARTIAL | Verify late flurry/ki with unarmed/armour restrictions and reaction competition in actual native combat. |
-| Paladin | base | PARTIAL | Audit smite/divine-grace and touch-healing combinations against actual resources, targets and high-level spell options. |
+| Monk | base | COMPLETE |  |
+| Paladin | base | COMPLETE |  |
 | Ranger | base | PARTIAL | Quarry selection uses a bounded raider target profile; verify alternate styles/companion and low-tier nature repertoire before claiming broader enemy typing. |
 | Rogue | base | COMPLETE |  |
 | Sorcerer | base | COMPLETE |  |
@@ -59,7 +59,7 @@ Matching-source native Windows accepts Fighter and Barbarian. Technical acceptan
 
 ## Finite exit plan
 
-1. monk, paladin, ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
+1. ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
 2. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 
 Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.
