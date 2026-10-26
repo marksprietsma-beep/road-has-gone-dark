@@ -6,4 +6,4 @@ Recommended next bounded pair: **Monk and Paladin**. First reproduce2–4 concre
 
 Then close remaining martial paths and Ranger/creature/body careers in bounded cohorts. Verify real owned actors, commands, limits, transformations and restoration; do not claim unsupported flight or exploration mechanics. The760-occurrence research ledger remains a separate destination, not an excuse to expand the roster before accepting the existing50 careers.
 
-Keep GAME123/GitHub101 open. Once all50 have defensible scoped technical evidence, require a human Windows character creation/advancement/usability/balance checkpoint before GAME142/GAME141 living-world integration. No next-cohort implementation is authorised within the current Fighter/Barbarian repair.
+Keep GAME123/GitHub101 open. Once all50 have defensible scoped technical evidence, require a human Windows character creation/advancement/usability/balance checkpoint before GAME142/GAME141 living-world integration. The latest owner handoff authorises Monk/Paladin under GitHub156 only after Fighter/Barbarian is normally merged and all integration gates pass; use a fresh branch from verified main.
