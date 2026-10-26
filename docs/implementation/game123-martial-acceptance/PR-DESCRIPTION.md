@@ -16,4 +16,4 @@ See [delivery](docs/implementation/game123-martial-acceptance/DELIVERY.md), [exa
 
 The final delivery must include real paid hit/miss/critical/protection/rage counterplay, deliberate feats/gear, finite resources/expiry/recovery, actual production controls, three ordinary490XP/8 builds, connected command/resolution/home-rest and exact process restart. High20 examples are labelled development fixtures. Native archive/startup/source/credits/SHA, historical/frozen regression and genuine Godot captures gate promotion of this pair to39/11.
 
-Fixes #153. Parent #101 / GAME123 remains open. Monk/Paladin156 begins only after this PR is green, normally merged and actual post-main Windows passes. No world/NPC/pantheon work.
+Tracks #153; close it only after the merged main passes its actual Windows integration checks. Parent #101 / GAME123 remains open. Monk/Paladin156 begins only after this PR is green, normally merged and actual post-main Windows passes. No world/NPC/pantheon work.
