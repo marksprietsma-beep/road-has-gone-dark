@@ -1,0 +1,2611 @@
+{
+  "acceptance_cohort": "monk-paladin",
+  "source_commit": "d0460ff5942327b8cb6d238905c598704158aef4",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v31",
+    "schema_version": 1,
+    "rules_version": "31.0.0",
+    "engine_schema": 3,
+    "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1"
+  },
+  "archive": "monk-paladin-windows-x64.zip",
+  "sha256": "383ec9386c630706993b454db3d04ca88538eec15889c533bf3bee4d166481e4",
+  "proofs": {
+    "mechanics/proof.json": {
+      "checks": 1343,
+      "contracts": {
+        "divine_casting": true,
+        "flurry": true,
+        "grace_healing": true,
+        "higher_tactical": true,
+        "party_shelter": true,
+        "reaction_competition": true,
+        "resources": true,
+        "smite": true,
+        "stances": true,
+        "weapon_overrides": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "outcomes": {
+        "criticals": 3,
+        "hits": 7,
+        "misses": 2
+      },
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "checks": 145,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "outcomes": {
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "journey/proof.json": {
+      "builds": {
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1": {
+          "equipment": [
+            "unarmed"
+          ],
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "dodge",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "monk-choice-1": "wind"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "lightning-reflexes",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "toughness",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "monk-choice-6": "wind"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "wind",
+          "xp": 490
+        },
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2": {
+          "equipment": [
+            "shortblade",
+            "mail",
+            "shield"
+          ],
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "toughness",
+              "level": 1.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-1": "mercy"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "great-fortitude",
+              "level": 3.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "iron-will",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-6": "mercy"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "mercy",
+          "xp": 490
+        },
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3": {
+          "equipment": [
+            "shortblade",
+            "mail",
+            "shield"
+          ],
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "weapon-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-1": "justice"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "toughness",
+              "level": 3.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "iron-will",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-6": "justice"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "justice",
+          "xp": 490
+        }
+      },
+      "checks": 632.0,
+      "combat_actions": {},
+      "earned_xp": 490.0,
+      "failed_check": {
+        "choice": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:athletics",
+        "hash": "338a63ad932d1208dc7b42c89c94a7d450b75af60c5e07857accfbc307fb7665",
+        "xp": 0.0
+      },
+      "failures": 0.0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "earned_xp": 490.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "dodge",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "monk-choice-1": "wind"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "lightning-reflexes",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "toughness",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "monk-choice-6": "wind"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "monk",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "athletics": 1.0,
+                "insight": 1.0,
+                "perception": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v31",
+            "rules_version": "31.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2",
+          "earned_xp": 490.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "toughness",
+              "level": 1.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-1": "mercy"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "great-fortitude",
+              "level": 3.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "iron-will",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-6": "mercy"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v31",
+            "rules_version": "31.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3",
+          "earned_xp": 490.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "weapon-focus",
+              "level": 1.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-1": "justice"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "toughness",
+              "level": 3.0,
+              "skill_allocations": {
+                "insight": 1.0,
+                "persuasion": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "iron-will",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "paladin-choice-6": "justice"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "CHA",
+              "bonus_feats": [],
+              "class_id": "paladin",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v31",
+            "rules_version": "31.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1.0
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 15 + 7 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +7 vs DC 19 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:athletics",
+          "information": "Athletics check: 10 + 12 vs DC 19 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Arin0: Athletics +12 vs DC 19 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:insight",
+          "information": "Insight check: 19 + 10 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Insight +10 vs DC 17",
+          "outcome": "peaceful_access",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:perception",
+          "information": "Perception check: 18 + 13 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Perception +13 vs DC 17",
+          "outcome": "investigated",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2:persuasion",
+          "information": "Persuasion check: 6 + 10 vs DC 16 \u00b7 objective completed.",
+          "label": "Lysa0: Persuasion +10 vs DC 16",
+          "outcome": "peaceful_access",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2",
+          "profession": "skill:persuasion",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:religion",
+          "information": "Religion check: 15 + 3 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Religion +3 vs DC 16",
+          "outcome": "investigated",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:stealth": {
+          "approach_description": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1:stealth",
+          "information": "Stealth check: 18 + 8 vs DC 16 \u00b7 objective completed. Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "label": "Arin0: Stealth +8 vs DC 16 \u00b7 Seek quiet access",
+          "outcome": "peaceful_access",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1",
+          "profession": "skill:stealth",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3:survival",
+          "information": "Survival check: 20 + -1 vs DC 15 \u00b7 objective completed.",
+          "label": "Doran0: Survival +-1 vs DC 15",
+          "outcome": "recovered",
+          "participant": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3",
+          "profession": "skill:survival",
+          "provisions": 0.0,
+          "reveal": false
+        }
+      },
+      "slot": "d957e30ca5103f298bdebb5cbdb81cb4",
+      "state_hash": "9ed5460c30b99b8515ed3c30359cd736943562d2118ad505a641a69fa3cfd1bd",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 8,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "1e6e30450201aff0b26351e9e5bb312dc3b92799b17c7c619603e0dda30180a1",
+      "battle_log_length": 6,
+      "casts": {
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1": "monk-wind-6",
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2": "paladin-mercy-6",
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3": "paladin-justice-6"
+      },
+      "checks": 34,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 490,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3",
+        "destination": [
+          4,
+          5
+        ],
+        "kind": "move",
+        "revision": 8
+      },
+      "next_hash": "4f9bc11116e92c42eb776cf04a52019a6747912aa6fd5a91b9d12417a44af19e",
+      "resources": {
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:1": {
+          "ki": 6
+        },
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:2": {
+          "lay-hands": 10
+        },
+        "d957e30ca5103f298bdebb5cbdb81cb4:adventurer:3": {
+          "lay-hands": 10
+        }
+      },
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "d957e30ca5103f298bdebb5cbdb81cb4",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "263b530955a5510c3c70d44ca2b77153852193c6d28a01b9fbc285da2a85f3f1",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 85,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/proof.json": {
+      "checks": 2598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/proof.json": {
+      "checks": 1634,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-ancestor-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-briar-beast",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-company-veil",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-dissonant-seal",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-gravitic-snare",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-greater-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-ice-lance",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-prismatic-volley",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-stillness-lattice",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unravel-enchantment",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unweaving-tide",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-battle-litany",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-concord-release",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-elemental-covenant",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-faith-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-freedom-path",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-purifying-renewal",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-renewing-benediction",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restoring-light",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-return-to-breath",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-tempest",
+          "class_id": "cleric",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/restart-proof.json": {
+      "checks": 97,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical30/proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 5,
+        "criticals": 12,
+        "hits": 33,
+        "misses": 11
+      },
+      "checks": 1143,
+      "contracts": {
+        "actual_attacks": true,
+        "equipment_disciplines": true,
+        "feat_choices": true,
+        "rage_tradeoffs": true,
+        "resilient_mastery": true,
+        "resources_and_expiry": true,
+        "training": true,
+        "weapon_overrides": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30/restart-proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 49,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30-extended/proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 642,
+      "contracts": {
+        "exact_rage_duration": true,
+        "exhaustion": true,
+        "guard_reactions": true,
+        "higher_features": true,
+        "higher_tactical": true,
+        "power_strike": true,
+        "rage_combat": true,
+        "reaction_weapon": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30-extended/restart-proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 37,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical29/proof.json": {
+      "checks": 1290,
+      "contracts": {
+        "body_suppression": true,
+        "casting_attributes": true,
+        "champion_progression": true,
+        "distinct_support": true,
+        "dual_casting": true,
+        "historical_pins": true,
+        "independent_resources": true,
+        "martial_outcomes": true,
+        "permanent_entry": true,
+        "recovery": true,
+        "total20": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v29",
+        "rules_version": "29.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical29/restart-proof.json": {
+      "checks": 125,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v29",
+        "rules_version": "29.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical18/proof.json": {
+      "checks": 599,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical18/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "pinned30-probe": {
+      "checks": 85,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "observations": {
+        "flurry": {
+          "accepted": true,
+          "active": "mind-blade",
+          "held": "unarmed",
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Monk fixture attacks Road raider: 6 + 0 vs 14, miss.",
+            "Monk fixture attacks Road raider: 10 + 0 vs 14, miss."
+          ]
+        },
+        "smite": {
+          "accepted": true,
+          "description": "Melee strike against a hostile raider: Charisma adds to attack, Paladin level adds to damage. Rest-limited uses.",
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Paladin fixture attacks Road raider: 6 + 2 vs 14, miss."
+          ],
+          "weapon": "bow"
+        },
+        "wind": {
+          "after": {
+            "BAB": 1,
+            "HP": 16,
+            "damage": 0,
+            "defence": 13,
+            "fortitude": 4,
+            "initiative": 1,
+            "melee_attack": 3,
+            "ranged_attack": 2,
+            "reach": 1,
+            "reflex": 6,
+            "save_dc": 0,
+            "stride": 6,
+            "will": 7
+          },
+          "before": {
+            "BAB": 1,
+            "HP": 16,
+            "damage": 0,
+            "defence": 13,
+            "fortitude": 4,
+            "initiative": 1,
+            "melee_attack": 3,
+            "ranged_attack": 2,
+            "reach": 1,
+            "reflex": 6,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 7
+          },
+          "ki_after": 2,
+          "ki_before": 3
+        }
+      },
+      "production_changed": false,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 72,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      },
+      "scope": "Actual production creator choice/search/feat and combat control/target handlers. Sole campaign writer and earned advancement verified separately."
+    },
+    "historical30-input": {
+      "checks": 141,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "resisted_cases": 2,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "scope": "Actual original creator/advancement/attribute/gear/feat and combat controls; campaign writer exercised separately.",
+      "suppressed_cases": 3
+    },
+    "frozen": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1860433,
+        "effects_1000_us": 8819235,
+        "progression_2000_us": 12955844,
+        "reference_progression_us": 4822510,
+        "registry_load_us": 14365,
+        "requirements_5000_us": 444943,
+        "serialization_1000_us": 22578301,
+        "validation_1000_us": 1234915
+      }
+    }
+  },
+  "proof_sources": {
+    "mechanics/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "mechanics/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "journey/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "journey/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "connected/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "connected/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "audit/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "audit/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "current-upper/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "current-upper/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical30/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical30/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical30-extended/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical30-extended/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical29/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical29/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical18/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical18/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "legacy/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "legacy/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "compatibility/proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "compatibility/restart-proof.json": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "pinned30-probe": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "input": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "historical30-input": "d0460ff5942327b8cb6d238905c598704158aef4",
+    "frozen": "d0460ff5942327b8cb6d238905c598704158aef4"
+  },
+  "timings": [
+    {
+      "phase": "probe",
+      "seconds": 8.735,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "seconds": 122.265,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 14.063,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 30.094,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 458.468,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 41.531,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 79.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 53.641,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "seconds": 998.484,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 8.235,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "seconds": 190.593,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper-cold",
+      "seconds": 8.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30",
+      "seconds": 97.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-cold",
+      "seconds": 4.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended",
+      "seconds": 49.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended-cold",
+      "seconds": 4.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-input",
+      "seconds": 79.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29",
+      "seconds": 113.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29-cold",
+      "seconds": 9.032,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18",
+      "seconds": 99.5,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18-cold",
+      "seconds": 5.421,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 2.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 99.109,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 56.578,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "captures": {
+    "checks": 39,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-first-open-creator-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "128aee0c34ddbd2eaa08ae3f8ea36f4360fd66ee5b986e1dadefc6e1ab8258ca",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-monk-wind-choice-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1d6986d607188af0672e43f8c7c9cc85d6b1ff7b30e72ca16fba5ccb04c9a517",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-monk-equipment-restrictions-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a38bf8493297c0a5b8e1c21fa915d83ac67272b93a0def504ed67fbf64e0aaa4",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-paladin-mercy-choice-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "fbbefa7795af99a45ba72a68ceff8bb83614797e4653fd23ff812ebf97d93fe3",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-paladin-justice-choice-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "17abef9ca559f54d79de61ada393e75dc8c06830e3315102deed0fc07380fb09",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-paladin-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "1139126a995205b921ed1668d7ff63f09bb3c6266e13e10809f2f9c6ef761b7a",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-monk-wind-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "266dec5d1fe59636e5a067037276addfbdbf21a40e58fc44450c1e7bcf49979b",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-paladin-mercy-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "cd01bfa1f2209e7041119431586a5fb017f199cf1f6df7988f8ff43c4eaab832",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-paladin-spellbook-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "2621b41f4f4698c981876cb37b52181f1044ff60946ee3ed0a74e9e302f89cb0",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-advancement-no-free-xp-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0532a215f0d9a0e1dcb5982660ae7f53e8a5315fedab4ee479a245c3c594acd6",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-paladin-justice-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "a180d8c2870422ed1a73e5bbe7a847052fc42e6c7702f71f6a08c8dcb4ef6918",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-monk-wind20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "4bb3494a258e08fb104def9701623624867e1e82ed1e1473e5878cd603023b1e",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-monk-iron20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "ae3dd704a51898a432350884a4667915ca5e5e6628af0a3c74f044975aaa9a33",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-paladin-mercy20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "499555abbd96333458d2e9893ddd832cec6945333b7972543799df9aeeb5529c",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-paladin-justice20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "6535bf03019147bf6fd144e45bc86fc289575eabfa888a91654088683d574dbf",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-wind6-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0b8046afd2c37db58b40869ac4a36b54e73d74b529a8230c8237edf5415d4944",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-monk-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "3c2cdce490d7aa32212d8991cf284e37efcf5170bec919839cf8f86618a96e2e",
+        "width": 640
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-smite619-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "f92f55bb6cf534851faba032007d70ad428aa889597f0f478e2749440d6ff3e7",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-shelter-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "e583187bad2a5907631c95c5a36fc4ba069b740d58334eb54235e19f8eb9d988",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-monk20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "cf13d2cff2010b7d5c1240040422383bf0511356e37f9a9c673210ef53c1bf95",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-paladin20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "974fbf525f25ea8867c3c8975b40759bc8776521be6ffa2de91b9035544e7cb7",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-spell20-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0ca094d86654cbc1f25b6af233b0ac200db2e7f3bb92c8971d756fe2e5af8a3a",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 490,
+        "file": "earned-connected-monk-paladin-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "327c53b94dfb42b8331090f44c3c8b8a94a4d61dfd3127f3cdca3375d78aeb2a",
+        "width": 2560
+      }
+    ]
+  },
+  "source_guard": {
+    "baseline": "5a8de72b07b0e8acaf0488afdece972f296616a4",
+    "historical_pack_bytes_and_pins": 30,
+    "rules_ref": {
+      "pack_id": "trhgd-character-v31",
+      "schema_version": 1,
+      "rules_version": "31.0.0",
+      "engine_schema": 3,
+      "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1"
+    },
+    "roster_unchanged": true,
+    "new_content_records": 0,
+    "deltas": {
+      "classes": [
+        "monk"
+      ],
+      "features": [
+        "monk-wind-1-feature",
+        "monk-wind-6-feature"
+      ],
+      "feats": [],
+      "skills": [],
+      "resources": [],
+      "statuses": [
+        "monk-wind-1-status",
+        "monk-wind-6-status"
+      ],
+      "abilities": [
+        "flurry",
+        "monk-wind-1",
+        "monk-wind-6",
+        "smite"
+      ],
+      "equipment": [],
+      "ancestries": [],
+      "backgrounds": [],
+      "creatures": [],
+      "psychic_powers": []
+    },
+    "frozen_authorities": [
+      "scripts/combat/tactical_combat.gd",
+      "scripts/rules/rules_rng.gd",
+      "scripts/game_world/game_playthrough_store.gd"
+    ],
+    "source_scope": "Exact version enablement plus a reviewed31-only target check through the same existing RulesExpressions authority; data uses existing weapon contexts and insight modifiers. No new combat/resource/XP/save resolver."
+  },
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "earned_characters": 3,
+  "earned_xp": 490,
+  "earned_level": 8,
+  "high_level_fixtures_not_earned": true
+}

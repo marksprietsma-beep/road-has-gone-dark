@@ -1,0 +1,25 @@
+{
+  "source_commit": "d0460ff5942327b8cb6d238905c598704158aef4",
+  "archive": "monk-paladin-windows-x64.zip",
+  "sha256": "383ec9386c630706993b454db3d04ca88538eec15889c533bf3bee4d166481e4",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "monk-paladin-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "1ec6cf280e11b965df97ac89423b4ac364b24184814576c9628dd427bfaf80f0",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v31",
+    "schema_version": 1,
+    "rules_version": "31.0.0",
+    "engine_schema": 3,
+    "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

@@ -1,6 +1,6 @@
 # Monk / Paladin Windows review
 
-Windows Godot only. Host Python checks source bytes, JSON, syntax and archive headers; these are not native gameplay proof. Native31 acceptance and artifact are still pending.
+Windows Godot only. Host Python checks source bytes, JSON, syntax and archive headers; these are not native gameplay proof. Native31 acceptance40287149055 PASSED at d0460ff5942327b8cb6d238905c598704158aef4; exact results, download/checksum and original images are in DELIVERY.md.
 
 ## Automated gates
 
@@ -19,3 +19,7 @@ Create a Monk with Unarmed explicitly selected and no armour, a Mercy Paladin an
 Paladin uses positive Charisma for Divine Grace, Smite accuracy and divine casting. Smite requires actual melee and a hostile target, spends one main/use even on a miss, and competes with Shelter for the same pool. Lay on Hands and selected Mercy/Justice use their separate healing pool. Prepare spells when unlocked; own tier slots and prepared copies both limit casting. Higher Paladin buffers apply to their authored target; Monk late buffers explicitly target their caster. No alignment, pantheon or piety gameplay is implied.
 
 Play opportunities, earn XP, return home and deliberately commit levels/feats. The selector grants no XP. Save, fully close, relaunch and Resume. Compare identities, ordered histories, choices, gear, HP, slots/copies and finite pools. Ordinary automated evidence reaches490XP/class8; high20 builds are development fixtures. Shared long-label/small-screen clipping and existing humanoid art fallbacks remain limitations.
+
+## Final native outcome
+
+All listed native gates passed. Evidence-gated readiness is41/9, retaining prior39 source labels. Final native ordinary checks632/cold8 differ from the earlier source-only634/cold8; no historical count is passed off as fresh. See DELIVERY.md and evidence/native-release.json for actual counts and timings.
