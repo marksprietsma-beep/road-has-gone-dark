@@ -29,3 +29,11 @@ The a51/36 focused attempts additionally exposed an indentation mistake in the n
 ##206638c focused exhaustion fixture
 
 Windows40282657904 compiled, retained pinned30 and reached the current31 exhaustion tests. The new harness used oath-shelter on Paladin6, but the existing feature is correctly granted at7. Changed that witness to a legal Paladin7 and kept finite use/denial/encounter/rest assertions intact. Current31 gameplay/data hash is unchanged2b1d5c8c. Added an actual incoming hit→miss shelter witness at9681517 and made the connected Mercy actor end rather than attack while waiting for real injury. Next inspect latest focused Windows; once mechanics/cold/input pass, dispatch journey=true. No native31 release has been attempted and no PR/readiness promotion exists yet.
+
+## Passing focused source and earned dispatch
+
+Windows40283474286 PASSED at6ddd7c466909eaa01b9b0f8f4407ff05cc871d22: pinned30 reproduction85, current31 mechanics1343 with all10 contracts (3 crits/7 hits/2 misses), separate-process cold145, production input72, zero failures. Raw receipts/timings are committed. Source-only: this is not yet a native export.
+
+Ordinary earned/connected/capture workflow40284555076 was dispatched at the SAME6ddd7c4 with journey=true, release=false. First inspect its actual result; if failing, retrieve the exact phase/log and correct the genuine problem. If success, preserve proof and original PNGs and inspect actual renders; then dispatch release=true, journey=false once stable. No full native31 attempt yet, no artifact/checksum or41/9 promotion, no PR yet. Gameplay/rules/test/export inputs remain unchanged after6ddd; only these evidence documents are added. All actual code is pushed.
+
+After native success, download and independently audit Windows ZIP using audit-windows-delivery.py, run build-readiness.py --pack trhgd-character-v31 --native PATH, promote only Monk/Paladin to41/9, finish delivery/screenshots, create one PR for156, run all current-head Windows, review/normal merge and actual post-main; close156 only then,101 OPEN. No callable Linear connector. Do not restart phase1 or repeat successful30 release.
