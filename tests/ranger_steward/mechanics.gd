@@ -73,7 +73,7 @@ func test_styles() -> void:
    var engine := TacticalAuras.new(r)
    for weapon in ["bow","shortblade"]:
     var plain := r.duplicate(true);plain.equipment=[weapon,"leathers"]
-    var active := cast.actor.duplicate(true);active.equipment=plain.equipment.duplicate()
+    var active: Dictionary=cast.actor.duplicate(true);active.equipment=plain.equipment.duplicate()
     var before := stats_of(plain);var after := stats_of(active)
     if style=="archery":
      check(after.damage==before.damage+(2 if weapon=="bow"else 0),"Archery damage matches actual weapon context "+weapon)
@@ -91,7 +91,7 @@ func test_styles() -> void:
     if plain_reaction.ok and style_reaction.ok:
      check(style_reaction.battle.units.a.reaction==0 and style_reaction.battle.units["bandit-blade"].record.runtime==plain_reaction.battle.units["bandit-blade"].record.runtime and style_reaction.battle.rng==plain_reaction.battle.rng,"Archery damage cannot leak into actual bow departure-reaction fallback")
      battles["archery-reaction"+str(at)]=style_reaction.battle
-   var expired := cast.actor.duplicate(true)
+   var expired: Dictionary=cast.actor.duplicate(true)
    for n in 3:expired.runtime=RulesEffects.new(source).expire_statuses(expired.runtime,"global_round_start").runtime
    check(not expired.runtime.statuses.any(func(s: Dictionary):return s.id==aid+"-status"),"style expires at three global boundaries")
    check(expired.runtime.resources["tracker-resolve"]==r.runtime.resources["tracker-resolve"]-1,"expiry never refunds resolve")
@@ -171,7 +171,7 @@ func test_growth() -> void:
   check(grown.character_id==pet.character_id and out.candidate.runtime.companions[id].definition_id=="leopard","growth retains same permanent identity/definition")
   check(grown.runtime.hp==(0 if hp==0 else maxi(0,new_max-old_max+hp)),"growth preserves downed state or living damage deficit")
   check(grown.runtime.resources["creature-effort"]==0,"growth never refunds spent pet effort")
-  var rested := out.candidate.duplicate(true);RulesEntities.recover_companions(rested,source)
+  var rested: Dictionary=out.candidate.duplicate(true);RulesEntities.recover_companions(rested,source)
   check(rested.runtime.companions[id].record.runtime.hp==new_max and rested.runtime.companions[id].record.runtime.resources["creature-effort"]>0,"only eligible recovery restores pet health/effort")
   records["grown-"+str(hp)]=out.candidate
  contracts.persistent_growth=true
@@ -290,12 +290,12 @@ func test_summons() -> void:
  check(summons.size()==1 and out.battle.units.a.record.runtime.companions.size()==1,"temporary actor never overwrites permanent ownership")
  var sid: String=summons[0].id;var pid: String=RulesEntities.identity("a")
  check(sid!=pid and out.battle.units[sid].entity.remaining==3,"distinct summon identity and bounded duration")
- var again := out.battle.duplicate(true);again.budget.main=1;again.units.a.record.runtime.resources=r.runtime.resources.duplicate(true);again=engine.seal(again)
+ var again: Dictionary=out.battle.duplicate(true);again.budget.main=1;again.units.a.record.runtime.resources=r.runtime.resources.duplicate(true);again=engine.seal(again)
  var before := RulesJson.digest(again);check(not execute(engine,again,"druid-summon-sentinel").ok and RulesJson.digest(again)==before,"duplicate summon denied without lost state/RNG")
- var active := out.battle.duplicate(true)
+ var active: Dictionary=out.battle.duplicate(true)
  for n in 3:CombatEntities.round_start(engine,active)
  active=engine.seal(active);check(not engine.alive(active.units[sid]) and engine.alive(active.units[pid]),"summon expiry leaves permanent pet active")
- var dismissed := out.battle.duplicate(true);dismissed.budget.main=1;dismissed=engine.seal(dismissed)
+ var dismissed: Dictionary=out.battle.duplicate(true);dismissed.budget.main=1;dismissed=engine.seal(dismissed)
  var gone := execute(engine,dismissed,"dismiss",sid);check(gone.ok and not engine.alive(gone.battle.units[sid]) and engine.alive(gone.battle.units[pid]),"costed summon dismissal preserves the owned companion")
  battles.summon_and_companion=out.battle;contracts.summons=true
 func test_owner_defeat() -> void:

@@ -53,7 +53,9 @@ jobs:
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'ranger-steward-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       # The exported native release below reruns these exact contracts and controls.
       # Avoid an identical source-EXE pass before the complete native pass.
+      # The native release executes these same contracts, cold checks and controls.
       - name: Pinned31 reproduction and current32 mechanics/cold
+        if: github.event_name != 'workflow_dispatch' || inputs.release != true
         if: github.event_name != 'workflow_dispatch' || inputs.release != true
         env:
           RANGER_STEWARD_ROOT: ${{ runner.temp }}/ranger-steward-focused
