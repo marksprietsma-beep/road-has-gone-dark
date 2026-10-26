@@ -159,6 +159,26 @@ func test_shelter() -> void:
  check(engine.stats(used.battle.units.c)==outside,"distant ally receives no aura")
  check(not used.battle.units["bandit-blade"].record.runtime.statuses.any(func(s: Dictionary):return s.id=="oath-shelter"),"enemy excluded from shelter")
  check(used.battle.units.a.record.runtime.resources["smite-uses"]==r.runtime.resources["smite-uses"]-1,"shelter competes with Smite pool")
+ # Reuse the real enemy turn and frozen attack at the exact defence boundary.
+ # A lawful level1 opponent keeps both outcomes attainable without stat hacks.
+ var protected: Dictionary=used.battle.duplicate(true)
+ var defender := build("fighter",1);defender.character_id="bandit-blade";defender.equipment=["shortblade"]
+ protected.units["bandit-blade"].record=defender;protected.units["bandit-blade"].position=[2,2];protected=engine.seal(protected)
+ for n in protected.order.size():
+  if engine.current(protected).id=="bandit-blade":break
+  var ended := execute(engine,protected,"end");check(ended.ok,"ordinary turn transition to protective counterexample")
+  if not ended.ok:return
+  protected=ended.battle
+ var control: Dictionary=protected.duplicate(true)
+ control.units.b.record.runtime.statuses=control.units.b.record.runtime.statuses.filter(func(s: Dictionary):return s.id!="oath-shelter")
+ var die: int=int(engine.stats(control.units.b).defence)-int(engine.stats(control.units["bandit-blade"]).melee_attack)
+ check(die>=1 and die<=20,"real numeric shelter hit/miss boundary exists")
+ control.rng=attack_seed(die);protected.rng=control.rng.duplicate(true);control=engine.seal(control);protected=engine.seal(protected)
+ var normal := execute(engine,control,"attack","b");var warded := execute(engine,protected,"attack","b")
+ check(normal.ok and warded.ok,"actual enemy attacks against the party member")
+ if normal.ok and warded.ok:
+  check(normal.battle.units.b.record.runtime.hp<control.units.b.record.runtime.hp and warded.battle.units.b.record.runtime.hp==protected.units.b.record.runtime.hp,"shelter turns a genuine incoming hit into a miss")
+  battles.protected_ally=warded.battle
  battles.shelter=used.battle;contracts.party_shelter=true
 func test_casting() -> void:
  for at in [6,20]:
