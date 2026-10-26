@@ -31,6 +31,7 @@ def content():
 def enable_versions(text):
  text=re.sub(r'"trhgd-character-v30"(\s*)\]',r'"trhgd-character-v30","trhgd-character-v31"\1]',text)
  text=text.replace('["trhgd-character-v30","30.0.0",3]]','["trhgd-character-v30","30.0.0",3],["trhgd-character-v31","31.0.0",3]]')
+ text=text.replace('pack_id!="trhgd-character-v30"','pack_id not in ["trhgd-character-v30","trhgd-character-v31"]')
  text=text.replace('pack_id=="trhgd-character-v30"','pack_id in ["trhgd-character-v30","trhgd-character-v31"]')
  text=text.replace('get("pack_id")=="trhgd-character-v30"','get("pack_id") in ["trhgd-character-v30","trhgd-character-v31"]')
  return text.replace('const NEW_PACK := "trhgd-character-v30"','const NEW_PACK := "trhgd-character-v31"')

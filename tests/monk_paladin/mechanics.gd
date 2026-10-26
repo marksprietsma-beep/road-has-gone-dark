@@ -85,7 +85,7 @@ func test_stances() -> void:
    var engine := TacticalAuras.new(r);var b := encounter(r);var paid := execute(engine,b,id)
    check(paid.ok,"real stance tactical command")
    if paid.ok:
-    check(engine.reachable(paid.battle,paid.battle.units.a).size()>=engine.reachable(b,b.units.a).size(),"paid stance preserves real movement options")
+    check(engine.paths(paid.battle,paid.battle.units.a).size()>=engine.paths(b,b.units.a).size(),"paid stance preserves real movement options")
     battles[style+str(at)]=paid.battle
    var expired: Dictionary=used.actor.duplicate(true)
    for n in 3:expired.runtime=RulesEffects.new(source).expire_statuses(expired.runtime,"global_round_start").runtime
@@ -188,7 +188,7 @@ func test_resources() -> void:
    var used := use(r,r,pair[1]);check(used.ok,"finite resource use "+str(pair[1])+str(n))
    if used.ok:r=used.actor
   check(r.runtime.resources[pair[2]]==0 and not use(r,r,pair[1]).ok,"exhaustion authoritatively rejects further use")
-  var no_rest := RulesEffects.new(source).refresh_resources(r.runtime,capacity,"encounter_start")
+  var no_rest := RulesEffects.new(source).refresh_resources(r.runtime,capacity,"encounter")
   check(no_rest.runtime.resources[pair[2]]==0,"encounter transition does not refund daily resource")
   var rested := RulesEffects.new(source).refresh_resources(r.runtime,capacity,"eligible_rest")
   check(rested.ok and rested.runtime.resources[pair[2]]==before,"eligible home rest restores original capacity")

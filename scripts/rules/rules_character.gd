@@ -316,7 +316,7 @@ func _runtime_errors(record: Dictionary,context: Dictionary) -> Array:
 func derive_character(record: Dictionary,attack_weapon: String="") -> Dictionary:
  # Optional transient attack context never enters saved records, permanent
  # advancement requirements, normal sheets or the default snapshot hash.
- if not attack_weapon.is_empty() and (registry.rules_ref().pack_id!="trhgd-character-v30" or registry.definition("equipment",attack_weapon).get("kind")!="weapon"):return RulesJson.result([RulesJson.issue("build.attack_context","attack_weapon","A supported actual weapon is required")])
+ if not attack_weapon.is_empty() and (registry.rules_ref().pack_id not in ["trhgd-character-v30","trhgd-character-v31"] or registry.definition("equipment",attack_weapon).get("kind")!="weapon"):return RulesJson.result([RulesJson.issue("build.attack_context","attack_weapon","A supported actual weapon is required")])
  if int(registry.rules_ref().get("engine_schema",1))>=2:record=RulesJson.string_keys(record)
  var replay := _replay(record,attack_weapon)
  if not replay.ok: return replay
