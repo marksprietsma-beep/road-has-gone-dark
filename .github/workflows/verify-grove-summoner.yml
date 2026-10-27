@@ -11,7 +11,7 @@ permissions:
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,13 +28,21 @@ jobs:
         run: python tests/world_library/prepare-ci.py
       - name: Exclude Node examples
         run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact immutable content and source guards
+        run: |
+          python tools/character-content/validate.py
+          python tests/grove_summoner/check-source.py
+          python tests/ranger_steward/check-source.py
+          python tests/monk_paladin/check-source.py
+          python tests/martial_careers/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked engine import
         shell: pwsh
         run: |
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/grove-summoner-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'grove-summoner-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Released32 small reproduction
+      - name: Released32 witnesses and current33 focused mechanics/cold
         env:
           GROVE_SUMMONER_ROOT: ${{ runner.temp }}/grove-summoner-focused
         run: python tests/grove_summoner/run-focused.py
