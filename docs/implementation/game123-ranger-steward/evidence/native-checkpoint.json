@@ -1,0 +1,27 @@
+{
+  "native_run": 40431423311,
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40431423311",
+  "source_commit": "2a3262fb73097fa8ce43939b18c7836a50f5cc8a",
+  "state_at_checkpoint": "in_progress",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v32",
+    "schema_version": 1,
+    "rules_version": "32.0.0",
+    "engine_schema": 3,
+    "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed"
+  },
+  "inputs": {
+    "release": true,
+    "journey": false
+  },
+  "successful_focused_run": 40427262413,
+  "successful_source_journey_run": 40428241753,
+  "scoped_source_diff_from_1aa_to_release": "empty",
+  "full_native_attempts": 1,
+  "readiness_before_native": {
+    "COMPLETE": 41,
+    "PARTIAL": 9,
+    "BLOCKED": 0
+  },
+  "next": "Inspect this run, do not duplicate. On success download ranger-steward-complete-windows-x64 and ranger-steward-windows-evidence; audit original archive, source/pin, startup, original captures and cold proof; only then generate43/7 and publish one cohort PR."
+}
