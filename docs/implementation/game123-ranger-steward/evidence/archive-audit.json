@@ -1,0 +1,25 @@
+{
+  "source_commit": "2a3262fb73097fa8ce43939b18c7836a50f5cc8a",
+  "archive": "ranger-steward-windows-x64.zip",
+  "sha256": "6b2178eeee454f9624d084fdb271e98c58eba7b6e97f879f7112bd6f1e300df6",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "ranger-steward-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "90cd177744d2f23b3f1296b402846a31ffd363c62a02e5fd73d910eac5a93ff9",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v32",
+    "schema_version": 1,
+    "rules_version": "32.0.0",
+    "engine_schema": 3,
+    "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

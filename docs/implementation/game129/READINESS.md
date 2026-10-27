@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Matching-source native Windows accepts Monk and Paladin. Technical acceptance remains separate from human balance and research breadth.
+Matching-source native Windows accepts Ranger and Beast Steward. Technical acceptance remains separate from human balance and research breadth.
 
-{'COMPLETE': 41, 'PARTIAL': 9, 'BLOCKED': 0}
+{'COMPLETE': 43, 'PARTIAL': 7, 'BLOCKED': 0}
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -13,7 +13,7 @@ Matching-source native Windows accepts Monk and Paladin. Technical acceptance re
 | Fighter | base | COMPLETE |  |
 | Monk | base | COMPLETE |  |
 | Paladin | base | COMPLETE |  |
-| Ranger | base | PARTIAL | Quarry selection uses a bounded raider target profile; verify alternate styles/companion and low-tier nature repertoire before claiming broader enemy typing. |
+| Ranger | base | COMPLETE |  |
 | Rogue | base | COMPLETE |  |
 | Sorcerer | base | COMPLETE |  |
 | Wizard | base | COMPLETE |  |
@@ -42,7 +42,7 @@ Matching-source native Windows accepts Monk and Paladin. Technical acceptance re
 | Ardent | base | COMPLETE |  |
 | Lurk | base | COMPLETE |  |
 | Cerebremancer | prestige | COMPLETE |  |
-| Beast Steward | prestige | PARTIAL | Verify owned companion growth/special actions, owner defeat and permanent identity across an earned path. |
+| Beast Steward | prestige | COMPLETE |  |
 | Erudite | base | COMPLETE |  |
 | Divine Mind | base | COMPLETE |  |
 | Marshal | base | COMPLETE |  |
@@ -59,7 +59,7 @@ Matching-source native Windows accepts Monk and Paladin. Technical acceptance re
 
 ## Finite exit plan
 
-1. ranger, eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
-2. dragon-disciple, warshaper, bonded-summoner, beast-steward, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
+1. eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
+2. dragon-disciple, warshaper, bonded-summoner, grove-warden: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 
 Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.
