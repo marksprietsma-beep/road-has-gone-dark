@@ -142,11 +142,17 @@ func test_casting() -> void:
  for key in ["grove-shaman3","grove-druid3","bonded-wizard5","bonded-sorcerer5"]:
   var r: Dictionary=saved_records[key];var d: Dictionary=kernel.derive_character(r)
   var cls: String="spirit-shaman"if key.begins_with("grove-shaman")else"druid"if key.begins_with("grove")else"wizard"if key.begins_with("bonded-wizard")else"sorcerer"
-  var legal: Array=d.snapshot.abilities.filter(func(id: String):var row: Dictionary=source.definition("abilities",id);return row.get("casting_class")==cls and row.tags.has("spell") and not row.has("channel_spell") and RulesCoreContent.spell_eligible(d.snapshot,row) and not row.effects.any(func(f: Dictionary):return f.op=="summon"))
+  var permanent_known: bool=source.definition("classes",cls).get("spell_mode")=="spontaneous" and not RulesWaveFive.retrieval_class(cls,source)
+  var legal: Array=d.snapshot.abilities.filter(func(id: String):var row: Dictionary=source.definition("abilities",id);return row.get("casting_class")==cls and row.tags.has("spell") and not row.has("channel_spell") and RulesCoreContent.spell_eligible(d.snapshot,row) and (not permanent_known or r.choices.prepared_abilities.has(id)) and not row.effects.any(func(f: Dictionary):return f.op=="summon"))
   legal.sort_custom(func(a: String,b: String):return source.definition("abilities",a).spell_tier>source.definition("abilities",b).spell_tier if source.definition("abilities",a).spell_tier!=source.definition("abilities",b).spell_tier else a<b)
   check(not legal.is_empty(),"real advanced parent spell choices "+cls)
   if legal.is_empty():continue
-  var aid: String=legal[0];r=prep(r,aid);var target: Dictionary=fixtures.fighter.duplicate(true);target.runtime.hp=1
+  var aid: String=legal[0]
+  if not permanent_known:r=prep(r,aid)
+  var target: Dictionary=fixtures.fighter.duplicate(true);target.runtime.hp=1
+  if permanent_known:
+   var unknown: Array=d.snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).get("casting_class")==cls and source.definition("abilities",id).tags.has("spell") and not r.choices.prepared_abilities.has(id))
+   check(not unknown.is_empty() and not use(r,target,unknown[0]).ok,"unlearned spontaneous spell remains unavailable rather than rewriting known history")
   var out: Dictionary=use(r,target,aid);check(out.ok,"advanced selected parent spell actually executes "+aid+JSON.stringify(out.get("errors",[])))
   if out.ok:
    for pool in source.definition("abilities",aid).cost.resources:check(out.actor.runtime.resources[pool]==r.runtime.resources[pool]-source.definition("abilities",aid).cost.resources[pool],"exact selected spell pool/copy cost "+pool)

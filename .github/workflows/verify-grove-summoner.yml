@@ -31,10 +31,8 @@ jobs:
       - name: Exact immutable content and source guards
         run: |
           python tools/character-content/validate.py
-          python tests/grove_summoner/check-source.py
-          python tests/ranger_steward/check-source.py
-          python tests/monk_paladin/check-source.py
-          python tests/martial_careers/check-source.py
+          # This existing guard chain runs every original29/30/31/32 assertion
+          # and the strict current33 guard once. Avoid five repeated chains.
           python tests/dual_prestige_acceptance/check-source.py
       - name: Checked engine import
         shell: pwsh
