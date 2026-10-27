@@ -1,0 +1,4153 @@
+{
+  "acceptance_cohort": "grove-summoner",
+  "source_commit": "358672ffce893014b162a4c4e49fc163688c00f6",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v33",
+    "schema_version": 1,
+    "rules_version": "33.0.0",
+    "engine_schema": 3,
+    "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
+  },
+  "archive": "grove-summoner-windows-x64.zip",
+  "sha256": "61c6c741d98b5d0efb9bab5e8071cb74f8dfee1a70bc34c9d79a539027fc8fef",
+  "proofs": {
+    "mechanics/proof.json": {
+      "attacks": {
+        "hits": 3,
+        "misses": 3
+      },
+      "checks": 1086,
+      "contracts": {
+        "aura": true,
+        "calls": true,
+        "casting": true,
+        "creatures": true,
+        "entry": true,
+        "forms": true,
+        "late": true,
+        "limits": true,
+        "renewal": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "observations": {
+        "aura_attack": {
+          "attacker": {
+            "BAB": 1,
+            "HP": 12,
+            "damage": 0,
+            "defence": 13,
+            "fortitude": 3,
+            "initiative": 2,
+            "melee_attack": 4,
+            "ranged_attack": 4,
+            "reach": 1,
+            "reflex": 2,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 1
+          },
+          "bare_defence": 12,
+          "bare_log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Spirit Shaman / Druid / Grove Warden uses Grove protection 1 on Spirit Shaman / Druid / Grove Warden. Ancestral Sanctuary applied.",
+            "Road raider hits Ally: 8 + 4 vs 12, 8 damage."
+          ],
+          "die": 8,
+          "protected_defence": 15,
+          "protected_log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Spirit Shaman / Druid / Grove Warden uses Grove protection 1 on Spirit Shaman / Druid / Grove Warden. Ancestral Sanctuary applied.",
+            "Road raider attacks Ally: 8 + 4 vs 15, miss."
+          ]
+        }
+      },
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "mechanics/restart-proof.json": {
+      "attacks": {
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 84,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "observations": {},
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "journey/proof.json": {
+      "builds": {
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1": {
+          "choices": {
+            "prepared_abilities": [
+              "spirit-shaman-spirit-rebuke-2",
+              "spirit-shaman-call-ancestor-sentinel",
+              "spirit-shaman-spirit-rebuke-4",
+              "spirit-shaman-spirit-rebuke-5",
+              "spirit-shaman-call-briar-beast"
+            ],
+            "spell_preparations": {}
+          },
+          "companions": {},
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "spirit-reserve",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-5": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 5.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "grove-casting": "spirit-shaman"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 2.0,
+                "arcana": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 2.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "perception": 1.0,
+                "spellcraft": 4.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "grove-shaman",
+          "xp": 810
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2": {
+          "choices": {
+            "prepared_abilities": [
+              "wizard-mage-armour",
+              "wizard-cleansing-ward",
+              "wizard-anchoring-ward",
+              "wizard-call-ancestor-sentinel",
+              "wizard-tier5-control",
+              "wizard-arcane-bolt",
+              "wizard-fracture-concentration",
+              "wizard-haste-spell",
+              "wizard-scorching-ray",
+              "wizard-summon-boar",
+              "wizard-summon-leopard",
+              "wizard-lightning"
+            ],
+            "spell_preparations": {
+              "wizard-anchoring-ward": 5.0,
+              "wizard-arcane-bolt": 7.0,
+              "wizard-call-ancestor-sentinel": 5.0,
+              "wizard-cleansing-ward": 2.0,
+              "wizard-fracture-concentration": 1.0,
+              "wizard-haste-spell": 1.0,
+              "wizard-lightning": 1.0,
+              "wizard-mage-armour": 1.0,
+              "wizard-scorching-ray": 1.0,
+              "wizard-summon-boar": 1.0,
+              "wizard-summon-leopard": 1.0,
+              "wizard-tier5-control": 4.0
+            }
+          },
+          "companions": {},
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "bonded-casting": "wizard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "bonded-wizard",
+          "xp": 810
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3": {
+          "choices": {
+            "prepared_abilities": [
+              "druid-nature-cure",
+              "druid-barkskin-spell",
+              "druid-anchoring-ward",
+              "druid-bramble-tether",
+              "druid-sap-renewal",
+              "druid-summon-sentinel",
+              "druid-thorn-dart",
+              "druid-vine-snare",
+              "druid-storm-bolt",
+              "druid-summon-boar",
+              "druid-summon-leopard",
+              "spirit-shaman-listening-ward"
+            ],
+            "spell_preparations": {
+              "druid-anchoring-ward": 6.0,
+              "druid-barkskin-spell": 4.0,
+              "druid-bramble-tether": 5.0,
+              "druid-nature-cure": 5.0,
+              "druid-sap-renewal": 4.0,
+              "druid-storm-bolt": 1.0,
+              "druid-summon-boar": 1.0,
+              "druid-summon-leopard": 1.0,
+              "druid-summon-sentinel": 1.0,
+              "druid-thorn-dart": 1.0,
+              "druid-vine-snare": 1.0
+            }
+          },
+          "companions": {
+            "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:companion": {
+              "definition_id": "leopard",
+              "record": {
+                "advancement_history": [
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 1.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "",
+                    "level": 2.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 3.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "DEX",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "",
+                    "level": 4.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 5.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "",
+                    "level": 6.0,
+                    "skill_allocations": {
+                      "athletics": 1.0
+                    },
+                    "specialisations": {}
+                  }
+                ],
+                "ancestry_ref": "heritage-human",
+                "background_ref": "hometown-background",
+                "base_attributes": {
+                  "CHA": 10.0,
+                  "CON": 14.0,
+                  "DEX": 15.0,
+                  "INT": 8.0,
+                  "STR": 13.0,
+                  "WIS": 12.0
+                },
+                "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:companion",
+                "choices": {
+                  "prepared_abilities": [],
+                  "spell_preparations": {}
+                },
+                "equipment": [],
+                "revision": 6.0,
+                "rules_ref": {
+                  "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+                  "engine_schema": 3.0,
+                  "pack_id": "trhgd-character-v33",
+                  "rules_version": "33.0.0",
+                  "schema_version": 1.0
+                },
+                "runtime": {
+                  "apparent_effects": [],
+                  "companions": {},
+                  "granted_features": [
+                    "leopard-creature-body"
+                  ],
+                  "hp": 42.0,
+                  "manifested_powers": [],
+                  "modifiers": [],
+                  "resources": {
+                    "creature-effort": 3.0
+                  },
+                  "senses": [],
+                  "statuses": [],
+                  "temporary_hp": 0.0
+                },
+                "schema_version": 1.0
+              }
+            }
+          },
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {
+                "druid-choice-1": "growth",
+                "druid-companion": "leopard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 2.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "spirit-reserve",
+              "level": 3.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 6.0
+              },
+              "specialisations": {
+                "grove-casting": "druid"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "animal-handling": 2.0,
+                "arcana": 2.0,
+                "perception": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "perception": 1.0,
+                "survival": 4.0
+              },
+              "specialisations": {
+                "druid-choice-6": "growth"
+              }
+            }
+          ],
+          "role": "grove-druid",
+          "xp": 810
+        }
+      },
+      "checks": 1129.0,
+      "combat_actions": {},
+      "earned_entries": {
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1": {
+          "alternatives": {
+            "grove-warden": true,
+            "spirit-shaman": true
+          },
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "decline_committed": true,
+          "decline_hash": "85db916c1a33fe60490c69459db665d916b71215aba1f232c3edd643ae7c3e01",
+          "earned_xp": 360,
+          "member_index": 0,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "spirit-reserve",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-5": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "spirit-shaman",
+          "path": "grove-warden",
+          "required_xp": 360,
+          "state_hash": "b4624e9b4f1502b0ea9624efe248c6cb4cd28a620c7f1c01d46d1ebac14d0e2c"
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2": {
+          "alternatives": {
+            "bonded-summoner": true,
+            "wizard": true
+          },
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2",
+          "decline_committed": true,
+          "decline_hash": "12764d0ff623a5ae00067f3defb37af4e16cbb1f734a2df8b68bd355b913871e",
+          "earned_xp": 250,
+          "member_index": 1,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "wizard",
+          "path": "bonded-summoner",
+          "required_xp": 250,
+          "state_hash": "968fbe1840090ab80703c27d14942a3c87a675dd6da4dcf7f4112023ef67a9b7"
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3": {
+          "alternatives": {
+            "druid": true,
+            "grove-warden": true
+          },
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3",
+          "decline_committed": true,
+          "decline_hash": "6e76e7aac3a0c799727f40f05fa89061c08d34306e83261f2b5f26ed80fbc792",
+          "earned_xp": 360,
+          "member_index": 2,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {
+                "druid-choice-1": "growth",
+                "druid-companion": "leopard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 2.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "spirit-reserve",
+              "level": 3.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "druid",
+          "path": "grove-warden",
+          "required_xp": 360,
+          "state_hash": "c8fec4051acb07a1c1d93575a62ebbad71b955c5f464dad8c248b9ae402eeb09"
+        }
+      },
+      "earned_xp": 810.0,
+      "failed_check": {
+        "choice": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:acrobatics",
+        "hash": "bab148d39776a91bca8eae1365388a5dd2ad44c778fa159e5565d402396aa6b9",
+        "xp": 10.0
+      },
+      "failures": 0.0,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "spirit-reserve",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "spirit-guide-5": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 5.0,
+                "perception": 1.0
+              },
+              "specialisations": {
+                "grove-casting": "spirit-shaman"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 2.0,
+                "arcana": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 2.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "perception": 1.0,
+                "spellcraft": 4.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v33",
+            "rules_version": "33.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "bonded-casting": "wizard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v33",
+            "rules_version": "33.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {
+                "druid-choice-1": "growth",
+                "druid-companion": "leopard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "spellcraft": 2.0
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "spirit-reserve",
+              "level": 3.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "animal-handling": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "survival": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 6.0
+              },
+              "specialisations": {
+                "grove-casting": "druid"
+              }
+            },
+            {
+              "attribute_increase": "WIS",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "animal-handling": 2.0,
+                "arcana": 2.0,
+                "perception": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "grove-warden",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "perception": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "druid",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "animal-handling": 1.0,
+                "perception": 1.0,
+                "survival": 4.0
+              },
+              "specialisations": {
+                "druid-choice-6": "growth"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v33",
+            "rules_version": "33.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "retrieval": {
+        "after": [
+          "spirit-shaman-spirit-rebuke-2",
+          "spirit-shaman-call-ancestor-sentinel",
+          "spirit-shaman-spirit-rebuke-4",
+          "spirit-shaman-spirit-rebuke-5",
+          "spirit-shaman-call-briar-beast"
+        ],
+        "before": [
+          "spirit-shaman-listening-ward",
+          "spirit-shaman-spirit-rebuke-2",
+          "spirit-shaman-call-ancestor-sentinel",
+          "spirit-shaman-spirit-rebuke-4",
+          "spirit-shaman-spirit-rebuke-5"
+        ],
+        "character_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+        "recovered": 1.0,
+        "second_change_rejected": true,
+        "spent": 0.0
+      },
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1.0
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 15 + 10 vs DC 21 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +10 vs DC 21 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:animal-handling",
+          "information": "Animal Handling check: 14 + 11 vs DC 19 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Arin0: Animal Handling +11 vs DC 19 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:animal-handling",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:arcana",
+          "information": "Arcana check: 8 + 14 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +14 vs DC 19",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2:craft",
+          "information": "Craft check: 7 + 16 vs DC 19 \u00b7 objective completed.",
+          "label": "Lysa0: Craft +16 vs DC 19",
+          "outcome": "recovered",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2",
+          "profession": "skill:craft",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:insight",
+          "information": "Insight check: 10 + 10 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Insight +10 vs DC 16",
+          "outcome": "peaceful_access",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:perception",
+          "information": "Perception check: 15 + 15 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Perception +15 vs DC 19",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:persuasion",
+          "information": "Persuasion check: 17 + 0 vs DC 11 \u00b7 objective completed.",
+          "label": "Doran0: Persuasion +0 vs DC 11",
+          "outcome": "peaceful_access",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3",
+          "profession": "skill:persuasion",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:religion",
+          "information": "Religion check: 13 + 3 vs DC 15 \u00b7 objective completed.",
+          "label": "Arin0: Religion +3 vs DC 15",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 20 + 11 vs DC 19 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +11 vs DC 19 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:survival",
+          "information": "Survival check: 12 + 12 vs DC 19 \u00b7 objective completed.",
+          "label": "Doran0: Survival +12 vs DC 19",
+          "outcome": "recovered",
+          "participant": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3",
+          "profession": "skill:survival",
+          "provisions": 0.0,
+          "reveal": false
+        }
+      },
+      "slot": "d60c6eb1736f1f53909d93ac4a83fd44",
+      "state_hash": "78328e4121f1b4f16099ccb927e7b93a38a5663581d0706d00bde2035aa0780c",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 11,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "e2aedf474f1ff04a8d35b73db1fd96303bd70ffa66e13330ad526d94ba5279fd",
+      "battle_log_length": 15.0,
+      "casts": {
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1": "grove-protection-1",
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2": "bonded-summoner-technique-5",
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3": "grove-protection-2"
+      },
+      "checks": 91,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 810.0,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3",
+        "kind": "end",
+        "revision": 25.0
+      },
+      "next_hash": "f70a6f1471a0650092a50b752b3af2423b7d25e8d3f05f825b5fe5435e68b711",
+      "owned_actions": {
+        "companion": {
+          "actor_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:companion",
+          "after_hash": "d2ccd375deb534d335e197ea67356e6f5fd6f8d7342739228c28d09721ede03a",
+          "after_hp": 13,
+          "before_hash": "072c576c161650cfbf2f8a8400a55061bf901344a2930b9e7764489241fbf9a2",
+          "before_hp": 15,
+          "command": {
+            "actor_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3:companion",
+            "kind": "attack",
+            "revision": 4,
+            "target_id": "bandit-bow"
+          },
+          "definition_id": "leopard",
+          "kind": "attack",
+          "owner_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3"
+        },
+        "summon": {
+          "actor_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2:summon:8",
+          "after_hash": "f9de3cf6844770cd20cd685421f8336efeff75e275882f3863c2404d68c2272c",
+          "after_hp": 3,
+          "before_hash": "826bf77e0dcf389384e3c0166fb2a6cbd7235c02eb6936950608840f56f75bc2",
+          "before_hp": 13,
+          "command": {
+            "actor_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2:summon:8",
+            "kind": "attack",
+            "revision": 22,
+            "target_id": "bandit-bow"
+          },
+          "definition_id": "sentinel-spirit",
+          "kind": "attack",
+          "owner_id": "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2"
+        }
+      },
+      "resources": {
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:1": {
+          "grove-favour": 3.0
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:2": {
+          "bonded-summoner-uses": 2.0
+        },
+        "d60c6eb1736f1f53909d93ac4a83fd44:adventurer:3": {
+          "grove-favour": 3.0
+        }
+      },
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1.0
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "d60c6eb1736f1f53909d93ac4a83fd44",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "ec5fd524dba9c517e9cc89614400e6f80e53f4f42a0721a6f1113fe7cd1bf767",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 149,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/proof.json": {
+      "checks": 2598,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "audit/restart-proof.json": {
+      "checks": 65,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/proof.json": {
+      "checks": 1634,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 1
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 6
+        },
+        {
+          "ability": "wizard-anchoring-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-arcane-bolt",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-ancestor-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-call-briar-beast",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-cleansing-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-company-veil",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-dissonant-seal",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-enfeeble",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-fracture-concentration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-gravitic-snare",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-greater-ward",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-haste-spell",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-ice-lance",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-lightning",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-mage-armour",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-prismatic-volley",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-scorching-ray",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-stillness-lattice",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-boar",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-bulwark-construct",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-frost-hound",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-leopard",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-renewal-spirit",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-sentinel",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-summon-stone-guardian",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier5-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-control",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier6-restoration",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier7-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier8-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-sanctuary",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-tier9-tempest",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unravel-enchantment",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "wizard-unweaving-tide",
+          "class_id": "wizard",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 1
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 6
+        },
+        {
+          "ability": "cleric-anchoring-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-battle-litany",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-bless",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cleansing-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-concord-release",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-cure-wounds",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-elemental-covenant",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-faith-ward",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-fracture-concentration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-freedom-path",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-greater-cure",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-prayer",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-purifying-renewal",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-radiance",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-renewing-benediction",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restorative-circle",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-restoring-light",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-return-to-breath",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-boar",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-bulwark-construct",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-frost-hound",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-leopard",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-renewal-spirit",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-sentinel",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-summon-stone-guardian",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-sunburst",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier5-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-control",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier6-restoration",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier7-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier8-tempest",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-sanctuary",
+          "class_id": "cleric",
+          "level": 20
+        },
+        {
+          "ability": "cleric-tier9-tempest",
+          "class_id": "cleric",
+          "level": 20
+        }
+      ],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "current-upper/restart-proof.json": {
+      "checks": 97,
+      "classes": [
+        "wizard",
+        "cleric"
+      ],
+      "development_fixtures": true,
+      "earned_level20": false,
+      "executable_spells": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical32/proof.json": {
+      "checks": 1789,
+      "contracts": {
+        "commands": true,
+        "creature_actions": true,
+        "late_progression": true,
+        "nature_casting": true,
+        "owner_survival": true,
+        "persistent_growth": true,
+        "prestige": true,
+        "quarry": true,
+        "ranged_actions": true,
+        "style_limits": true,
+        "summons": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "outcomes": {
+        "criticals": 3,
+        "hits": 4,
+        "misses": 2
+      },
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical32/restart-proof.json": {
+      "checks": 237,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "outcomes": {
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical31/proof.json": {
+      "checks": 1343,
+      "contracts": {
+        "divine_casting": true,
+        "flurry": true,
+        "grace_healing": true,
+        "higher_tactical": true,
+        "party_shelter": true,
+        "reaction_competition": true,
+        "resources": true,
+        "smite": true,
+        "stances": true,
+        "weapon_overrides": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "outcomes": {
+        "criticals": 3,
+        "hits": 7,
+        "misses": 2
+      },
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical31/restart-proof.json": {
+      "checks": 145,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "outcomes": {
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical30/proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 5,
+        "criticals": 12,
+        "hits": 33,
+        "misses": 11
+      },
+      "checks": 1143,
+      "contracts": {
+        "actual_attacks": true,
+        "equipment_disciplines": true,
+        "feat_choices": true,
+        "rage_tradeoffs": true,
+        "resilient_mastery": true,
+        "resources_and_expiry": true,
+        "training": true,
+        "weapon_overrides": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30/restart-proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 49,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30-extended/proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 642,
+      "contracts": {
+        "exact_rage_duration": true,
+        "exhaustion": true,
+        "guard_reactions": true,
+        "higher_features": true,
+        "higher_tactical": true,
+        "power_strike": true,
+        "rage_combat": true,
+        "reaction_weapon": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical30-extended/restart-proof.json": {
+      "attack_outcomes": {
+        "changed_hits": 0,
+        "criticals": 0,
+        "hits": 0,
+        "misses": 0
+      },
+      "checks": 37,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "supported_level": 20
+    },
+    "historical29/proof.json": {
+      "checks": 1290,
+      "contracts": {
+        "body_suppression": true,
+        "casting_attributes": true,
+        "champion_progression": true,
+        "distinct_support": true,
+        "dual_casting": true,
+        "historical_pins": true,
+        "independent_resources": true,
+        "martial_outcomes": true,
+        "permanent_entry": true,
+        "recovery": true,
+        "total20": true
+      },
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v29",
+        "rules_version": "29.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical29/restart-proof.json": {
+      "checks": 125,
+      "contracts": {},
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "d82008bf41f2bb698e149556ab529f9fd2e774df1baa97902d72e091bcfccd3e",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v29",
+        "rules_version": "29.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical18/proof.json": {
+      "checks": 599,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "historical18/restart-proof.json": {
+      "checks": 31,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "new_spells": 10,
+      "rules_ref": {
+        "content_hash": "4b2e469a929fc4baa8136b55cdb595af61d428d90ed28bee8fba3f49e2568cfc",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v18",
+        "rules_version": "18.0.0",
+        "schema_version": 1
+      },
+      "source": "RulesCharacter/RulesEffects/TacticalAuras"
+    },
+    "legacy/proof.json": {
+      "checks": 818,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy/restart-proof.json": {
+      "checks": 4,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/proof.json": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "compatibility/restart-proof.json": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "pinned32-probe": {
+      "checks": 186,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "observations": {
+        "bonded_entry": {
+          "casting": {
+            "arcane": 3
+          },
+          "offered": true,
+          "tiers": {
+            "arcane": 1,
+            "divine": 0
+          }
+        },
+        "bonded_form_bypass": {
+          "accepted": true,
+          "error": "",
+          "form": {
+            "art_status": "neutral_humanoid_fallback",
+            "attributes": {
+              "DEX": -2,
+              "STR": 4
+            },
+            "body_plan": "quadruped",
+            "feature_id": "bear-form-body",
+            "id": "bear-form",
+            "size": "large",
+            "suppressed_equipment": [
+              "weapon",
+              "armor",
+              "shield"
+            ],
+            "weapon_id": "bear-claws"
+          },
+          "tags": []
+        },
+        "bonded_progression": {
+          "casting_levels": {
+            "bonded-summoner": 3,
+            "wizard": 5
+          },
+          "choices": [],
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1,
+              "skill_allocations": {
+                "arcana": 1,
+                "craft": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2,
+              "skill_allocations": {
+                "arcana": 1,
+                "craft": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 3,
+              "skill_allocations": {
+                "arcana": 1,
+                "craft": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "arcana": 1,
+                "craft": 1,
+                "insight": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5,
+              "skill_allocations": {
+                "acrobatics": 3,
+                "craft": 1,
+                "insight": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 6,
+              "skill_allocations": {
+                "acrobatics": 2,
+                "animal-handling": 1,
+                "craft": 1,
+                "insight": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "steady-study",
+              "level": 7,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 2,
+                "craft": 1,
+                "insight": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "bonded-summoner",
+              "feat_id": "",
+              "level": 8,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 2,
+                "craft": 1,
+                "insight": 1
+              },
+              "specialisations": {}
+            }
+          ],
+          "wizard_tier4_slots": 0
+        },
+        "existing_summon": {
+          "actors": [
+            {
+              "entity": {
+                "active": true,
+                "definition_id": "sentinel-spirit",
+                "kind": "summon",
+                "owner_id": "a",
+                "remaining": 6
+              },
+              "id": "a:summon:0",
+              "name": "Wizard / Bonded Summoner's Sentinel spirit",
+              "position": [
+                1,
+                0
+              ],
+              "precision_used": false,
+              "reaction": 1,
+              "record": {
+                "advancement_history": [
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 1,
+                    "skill_allocations": {
+                      "athletics": 1
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "",
+                    "level": 2,
+                    "skill_allocations": {
+                      "athletics": 1
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "steady-study",
+                    "level": 3,
+                    "skill_allocations": {
+                      "athletics": 1
+                    },
+                    "specialisations": {}
+                  },
+                  {
+                    "attribute_increase": "CON",
+                    "bonus_feats": [],
+                    "class_id": "bond-creature",
+                    "feat_id": "",
+                    "level": 4,
+                    "skill_allocations": {
+                      "athletics": 1
+                    },
+                    "specialisations": {}
+                  }
+                ],
+                "ancestry_ref": "heritage-human",
+                "background_ref": "hometown-background",
+                "base_attributes": {
+                  "CHA": 10,
+                  "CON": 15,
+                  "DEX": 12,
+                  "INT": 8,
+                  "STR": 14,
+                  "WIS": 13
+                },
+                "character_id": "a:summon:0",
+                "choices": {
+                  "prepared_abilities": [],
+                  "spell_preparations": {}
+                },
+                "equipment": [],
+                "revision": 4,
+                "rules_ref": {
+                  "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+                  "engine_schema": 3,
+                  "pack_id": "trhgd-character-v32",
+                  "rules_version": "32.0.0",
+                  "schema_version": 1
+                },
+                "runtime": {
+                  "apparent_effects": [],
+                  "companions": {},
+                  "granted_features": [
+                    "sentinel-spirit-creature-body"
+                  ],
+                  "hp": 34,
+                  "manifested_powers": [],
+                  "modifiers": [],
+                  "resources": {},
+                  "senses": [],
+                  "statuses": [],
+                  "temporary_hp": 0
+                },
+                "schema_version": 1
+              },
+              "team": "party",
+              "weapon": "spirit-slam"
+            }
+          ],
+          "log": [
+            "The party meets armed raiders on the approach to this local site.",
+            "Wizard / Bonded Summoner summons Sentinel spirit for 6 global rounds.",
+            "Wizard / Bonded Summoner uses Bonded Summoner technique 3 on Wizard / Bonded Summoner. "
+          ],
+          "uses_after": 1,
+          "uses_before": 2
+        },
+        "grove_dead_end": {
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "spirit-shaman",
+              "feat_id": "spirit-reserve",
+              "level": 1,
+              "skill_allocations": {
+                "acrobatics": 1,
+                "animal-handling": 1,
+                "insight": 1,
+                "nature": 1,
+                "perception": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "spirit-guide-1": "hearth"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cleric",
+              "feat_id": "",
+              "level": 2,
+              "skill_allocations": {
+                "arcana": 1,
+                "insight": 1,
+                "nature": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {
+                "cleric-choice-1": "healing"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cleric",
+              "feat_id": "steady-study",
+              "level": 3,
+              "skill_allocations": {
+                "arcana": 1,
+                "insight": 1,
+                "nature": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "cleric",
+              "feat_id": "",
+              "level": 4,
+              "skill_allocations": {
+                "arcana": 2,
+                "insight": 1,
+                "nature": 1,
+                "spellcraft": 1
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cleric",
+              "feat_id": "steady-study",
+              "level": 5,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 1,
+                "persuasion": 3
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "cleric",
+              "feat_id": "",
+              "level": 6,
+              "skill_allocations": {
+                "arcana": 1,
+                "nature": 1,
+                "persuasion": 3
+              },
+              "specialisations": {}
+            }
+          ],
+          "offered": true,
+          "parents": []
+        },
+        "grove_weak_magic": {
+          "casting": {
+            "divine": 6
+          },
+          "offered": true,
+          "tiers": {
+            "arcane": 0,
+            "divine": 2
+          }
+        },
+        "transformed_sanctuary": {
+          "favour": 2,
+          "form": {
+            "art_status": "neutral_humanoid_fallback",
+            "attributes": {
+              "DEX": -2,
+              "STR": 4
+            },
+            "body_plan": "quadruped",
+            "feature_id": "bear-form-body",
+            "id": "bear-form",
+            "size": "large",
+            "suppressed_equipment": [
+              "weapon",
+              "armor",
+              "shield"
+            ],
+            "weapon_id": "bear-claws"
+          },
+          "form_defence": 12,
+          "form_error": "Action unavailable: [{\"code\":\"ability.unowned\",\"detail\":\"Actor does not own the ability\",\"path\":\"grove-protection-1\"}]",
+          "form_ok": false,
+          "normal_defence": 3,
+          "normal_ok": true
+        }
+      },
+      "production_changed": false,
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1
+      }
+    },
+    "input": {
+      "checks": 51,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failed_checks": [],
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "historical30-input": {
+      "checks": 141,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "resisted_cases": 2,
+      "rules_ref": {
+        "content_hash": "20aade16e0ee153c46d836245dfb0693b930ef7b66b18fe9590e1e50ab4dbb57",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v30",
+        "rules_version": "30.0.0",
+        "schema_version": 1
+      },
+      "scope": "Actual original creator/advancement/attribute/gear/feat and combat controls; campaign writer exercised separately.",
+      "suppressed_cases": 3
+    },
+    "historical31-input": {
+      "checks": 72,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "2b1d5c8cb7f4c43a38a5705e65e694055fb2beca6d160a4f1f1e1c3fc69e19c1",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v31",
+        "rules_version": "31.0.0",
+        "schema_version": 1
+      },
+      "scope": "Actual production creator choice/search/feat and combat control/target handlers. Sole campaign writer and earned advancement verified separately."
+    },
+    "historical32-input": {
+      "checks": 53,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1
+      },
+      "scope": "Actual original creator search/style/quarry, optional prestige training, owner/owned-actor combat controls and target handlers; genuine XP/writer tested separately."
+    },
+    "frozen": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1891130,
+        "effects_1000_us": 8919780,
+        "progression_2000_us": 13005803,
+        "reference_progression_us": 4891263,
+        "registry_load_us": 14013,
+        "requirements_5000_us": 450904,
+        "serialization_1000_us": 22779223,
+        "validation_1000_us": 1229894
+      }
+    }
+  },
+  "proof_sources": {
+    "mechanics/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "mechanics/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "journey/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "journey/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "connected/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "connected/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "audit/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "audit/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "current-upper/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "current-upper/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical32/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical32/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical31/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical31/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical30/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical30/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical30-extended/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical30-extended/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical29/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical29/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical18/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical18/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "legacy/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "legacy/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "compatibility/proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "compatibility/restart-proof.json": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "pinned32-probe": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "input": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical30-input": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical31-input": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "historical32-input": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "frozen": "358672ffce893014b162a4c4e49fc163688c00f6"
+  },
+  "timings": [
+    {
+      "phase": "probe",
+      "seconds": 24.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics",
+      "seconds": 99.297,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "mechanics-cold",
+      "seconds": 10.641,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "input",
+      "seconds": 84.671,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey",
+      "seconds": 1050.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 9.438,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 158.656,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 231.281,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 95.188,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit",
+      "seconds": 1004.812,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "audit-cold",
+      "seconds": 7.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper",
+      "seconds": 190.766,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "current-upper-cold",
+      "seconds": 8.64,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical32",
+      "seconds": 245.938,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical32-cold",
+      "seconds": 18.718,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical32-input",
+      "seconds": 49.579,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical31",
+      "seconds": 113.14,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical31-cold",
+      "seconds": 13.641,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical31-input",
+      "seconds": 28.89,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30",
+      "seconds": 97.891,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-cold",
+      "seconds": 4.015,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended",
+      "seconds": 50.141,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-extended-cold",
+      "seconds": 4.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical30-input",
+      "seconds": 80.437,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29",
+      "seconds": 115.547,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical29-cold",
+      "seconds": 9.438,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18",
+      "seconds": 100.906,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "historical18-cold",
+      "seconds": 5.219,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 12.234,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 1.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility",
+      "seconds": 99.703,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "compatibility-cold",
+      "seconds": 57.172,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "frozen",
+      "seconds": 87.109,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "production-launch",
+      "seconds": 0.625,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "captures": {
+    "checks": 65,
+    "failures": 0,
+    "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+    "screenshots": [
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-first-open-creator-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "49cf43ebc90eb90cae223e4206c499a7fb061c88a455e82931fde2306394fdcf",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-wizard-spells-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "fa71a1ec5e2d519d8191e357a720345d868d839e34b3f6642b4914d5125de7df",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-spirit-retrieval-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "01bb4618bf67f124d9f333403cbf234d243edc5a217fdd9117559b534af8eb7f",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-druid-companion-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "06d76f29dc4034b2595318e7ec1e6c54be03b9faaeeb7b30927437d5e633af61",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 0,
+        "file": "ordinary-druid-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "c22730e71b2f6bd5724f21410726e3da9e2eb72c3a726de250fc69bf44e3dd4a",
+        "width": 640
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-grove-shaman-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8e1fd52ece29345649cdbf8175def057f67f838c266c8715e46e678560d00d15",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-shaman-retrieval-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "78ebe49da110ef389fc338d2aaf27cd91177f1ee96d75dfe50a2396f9bedd985",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-bonded-wizard-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "3452108bbbd96508536350fee5089fa8b722ae6d75e28a279c74f31858236eaf",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-bonded-parent-preparation-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "52678d4ad3598179865e642719ea4cbf30743717cb4736f560a6a4cb82f6252f",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-no-free-advancement-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a008e152b0f92fc81f132a1fd44c7b3b719ac6949abb5a1e46b8bbf93451628d",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-grove-druid-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1ab790e4eafe64b57784f014b390f636ccad08e54b40c0d1ed380b2881c4ce02",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-druid-nature-preparation-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "0e9bd6f6fda6a67dc33b8da7deb1aaa924c7250bad420dc0d266dcaf2625477a",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-0-parent-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "454f6e4f8314ccaa16f0db96e9229b215e4f61996fcea929fbc4d4f4f5652a7e",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-0-decline-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "c09143cded560895a67be2416509830e8effdbe5674b2a0eed36d603ee518ccd",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-0-decline-committed-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "1263ca4da5104e5f1e2f3a414302cadfb918dd7a5a4a0550bf805d171427012c",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 250.0,
+        "file": "earned-entry-1-parent-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "2c8436c28fd8acce3750468018a823ebbb7195213c0c0170b105ce183b440bb9",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 250.0,
+        "file": "earned-entry-1-decline-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "adeb553312d5373b725ebc2f5aa76673c07c8c97cd51f54225ccfd1b28a6c845",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 250.0,
+        "file": "earned-entry-1-decline-committed-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "bc9ba3dff0c28929362896d56d35cb515800ad99a3fbab1b947887fb462b568c",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-2-parent-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "84349c05a8587a7ec8081b50a68d46d008cd5ee5ed17d4fd66e79853c17d0013",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-2-decline-preview-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "8fb221cd13d2a82e1f0a347782a0d5fcd9d02610a2235472e0d77f1f332d5bcf",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 360.0,
+        "file": "earned-entry-2-decline-committed-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "184ef4e0ef7f3f2e6705abb53e3de3c23dcd22c5a17186b7a2607b3877ab3f0b",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-grove-shaman3-total20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "d3b72c465a16ae2cc2b469bc8ffdb2ba3fc1ab17819a158003aac00055e6c320",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-grove-druid3-total20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "edaa88e42a654b5aa064db7267755cf4be637a5653a802e1208e3e8ce799f1b9",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bonded-wizard5-total20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "8970a1f654e63d4fdfe45cf99c3e8ab511091583cb89dd2c99e90cb5c4fc43e5",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bonded-sorcerer5-total20-sheet-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "ec48765ec64071d404a10a1a4d9cc745a2a9c57f8200cdeef6db4ca2f5c7b556",
+        "width": 2560
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-sanctuary_saved_hit-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "0468a03dc87ed1d0121f5b6906a5afc75c1bea6f81975e47945b7559b6cc9951",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-grove-protection-3-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "ecf0e81ed413ce01b25e11ade5addf2f9250485e551ed7c553a4eb7a688864fd",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-active-call5-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "4ed2b9ec015e918e167356beba46203d983ec533b169987cdf732941bef14f48",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-owned-small-640x360.png",
+        "height": 360,
+        "requested_height": 360,
+        "requested_width": 640,
+        "sha256": "07a41c1b93a43049153c785ec8c37033a953eeb60429d6830c481a4942372752",
+        "width": 640
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-bonded-summoner-call-renewal-spirit-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "c0f97b2cd8d96a95d5683e0a20637a6e2cf519dd356c43e2882926c9d7079ae6",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-call-frost-hound-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "053a35b84dd13d27da20b0537182224ff9e36d9ba584083ed9fa81839f5e9979",
+        "width": 1280
+      },
+      {
+        "development_fixture": true,
+        "earned_xp": false,
+        "file": "fixture-owner_down-combat-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "abb0515a2ae53a286bdb8e56b59cdd68c864545d27cc20fe3649320095c40e59",
+        "width": 1280
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-connected-grove-bonded-2560x1440.png",
+        "height": 1440,
+        "requested_height": 1440,
+        "requested_width": 2560,
+        "sha256": "6aed55b83e3b3150b26dfd3acd22e0ceff04acfa794d697331f6fad8c597ef30",
+        "width": 2560
+      },
+      {
+        "development_fixture": false,
+        "earned_xp": 810,
+        "file": "earned-connected-grove-bonded-1280x719.png",
+        "height": 719,
+        "requested_height": 720,
+        "requested_width": 1280,
+        "sha256": "a94cc270cbc3c4c9ab97874744f250021b1f9dc01797c0ad30420cea181a3081",
+        "width": 1280
+      }
+    ]
+  },
+  "source_guard": {
+    "baseline": "09c48ba785bbca020168cc9b7e37c09f5f9370f2",
+    "historical_pack_bytes_and_pins": 32,
+    "rules_ref": {
+      "pack_id": "trhgd-character-v33",
+      "schema_version": 1,
+      "rules_version": "33.0.0",
+      "engine_schema": 3,
+      "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
+    },
+    "roster_unchanged": true,
+    "new_content_records": 0,
+    "deltas": {
+      "classes": [
+        "bonded-summoner",
+        "grove-warden"
+      ],
+      "features": [],
+      "feats": [],
+      "skills": [],
+      "resources": [],
+      "statuses": [],
+      "abilities": [
+        "bonded-summoner-call-leopard",
+        "bonded-summoner-call-renewal-spirit",
+        "bonded-summoner-call-stone-guardian",
+        "bonded-summoner-technique-1",
+        "bonded-summoner-technique-3",
+        "bonded-summoner-technique-5",
+        "call-bulwark-construct",
+        "call-ember-spirit",
+        "call-frost-hound",
+        "call-thorn-guardian"
+      ],
+      "equipment": [],
+      "ancestries": [],
+      "backgrounds": [],
+      "creatures": [],
+      "psychic_powers": []
+    },
+    "frozen_authorities": [
+      "scripts/combat/tactical_combat.gd",
+      "scripts/rules/rules_rng.gd",
+      "scripts/game_world/game_playthrough_store.gd",
+      "scripts/combat/combat_entities.gd"
+    ],
+    "source_scope": "Exact version enablement only, preserving the32 defeated-companion fix in33. Existing permanent spell-tier/parent gates, generic selected-caster advancement and supernatural form suppression correct four witnessed data gaps. No aura/form-policy, creature, combat, RNG, XP or save engine change."
+  },
+  "empty_path": true,
+  "source_helper_override": false,
+  "production_launch": true,
+  "separate_process_restart": true,
+  "earned_characters": 3,
+  "earned_xp": 810,
+  "earned_level": 10,
+  "earned_prestige_caps": {
+    "grove-warden": 3,
+    "bonded-summoner": 5
+  },
+  "high_level_fixtures_not_earned": true
+}

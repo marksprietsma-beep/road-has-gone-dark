@@ -5,7 +5,13 @@ ROOT=Path(__file__).resolve().parents[2];BASE='f9880ed0865f163a8f90a19b2a650365b
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
- assert len(old['packs'])==31 and len(manifest['packs'])==32 and manifest['packs'][:31]==old['packs']
+ newer=len(manifest['packs'])>32
+ assert len(old['packs'])==31 and len(manifest['packs'])in [32,33] and manifest['packs'][:31]==old['packs']
+ released32='09c48ba785bbca020168cc9b7e37c09f5f9370f2'
+ def current_bytes(path):return subprocess.check_output(['git','show',released32+':'+path],cwd=ROOT) if newer else (ROOT/path).read_bytes()
+ if newer:
+  archived=json.loads(subprocess.check_output(['git','show',released32+':data/rules/packs.json'],cwd=ROOT));assert manifest['packs'][:32]==archived['packs']
+  spec=importlib.util.spec_from_file_location('current_grove_summoner_source',ROOT/'tests/grove_summoner/check-source.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);module.verify()
  for row in old['packs']:
   path=row['path'].removeprefix('res://');assert (ROOT/path).read_bytes()==original(path),path
  a=json.loads(original('data/rules/trhgd-character-v31.json'));b=json.loads((ROOT/'data/rules/trhgd-character-v32.json').read_text(encoding='utf-8'))
@@ -16,15 +22,15 @@ def verify():
   x={r['id']:r for r in a[category]};y={r['id']:r for r in b[category]};assert set(x)==set(y),category
   changed={k for k in x if x[k]!=y[k]};assert changed==expected.get(category,set()),(category,changed);deltas[category]=sorted(changed)
  for file in (ROOT/'scripts').rglob('*.gd'):
-  path=file.relative_to(ROOT).as_posix();assert file.read_text(encoding='utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
+  path=file.relative_to(ROOT).as_posix();assert current_bytes(path).decode('utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
  exporter='tools/release/export-game.mjs'
  expected_exporter=original(exporter).decode('utf-8').replace("'res://tests/monk_paladin/review.tscn'].includes(qaScene)","'res://tests/monk_paladin/review.tscn','res://tests/ranger_steward/review.tscn'].includes(qaScene)")
- assert (ROOT/exporter).read_text(encoding='utf-8')==expected_exporter,'Original exporter plus exactly one approved QA scene'
+ assert current_bytes(exporter).decode('utf-8')==expected_exporter,'Original exporter plus exactly one approved QA scene'
  frozen=['scripts/combat/tactical_combat.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']
  for path in frozen:assert (ROOT/path).read_bytes()==original(path)
  for path in subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'data'],cwd=ROOT,text=True).splitlines():
   if path!='data/rules/packs.json':assert (ROOT/path).read_bytes()==original(path),path
- pin=manifest['packs'][-1]['rules_ref'];assert pin['pack_id']==b['pack_id']=='trhgd-character-v32'
+ pin=next(row['rules_ref']for row in manifest['packs']if row['rules_ref']['pack_id']=='trhgd-character-v32');assert pin['pack_id']==b['pack_id']=='trhgd-character-v32'
  assert hashlib.sha256(json.dumps(b,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
  return dict(baseline=BASE,historical_pack_bytes_and_pins=31,rules_ref=pin,roster_unchanged=True,new_content_records=0,deltas=deltas,frozen_authorities=frozen,source_scope='Exact version enablement plus32-only preservation of zeroHP on companion growth. Existing effective-weapon requirements/conditional modifiers repair ranged attacks without replacing attack, RNG, XP or persistence authority.')
 if __name__=='__main__':print(json.dumps(verify(),indent=2))

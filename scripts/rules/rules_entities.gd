@@ -2,7 +2,7 @@ class_name RulesEntities
 extends RefCounted
 ## v12+ body/owned-creature records. GAME-32 still derives every actor and action.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v12","trhgd-character-v13","trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33"]
 static func form(record: Dictionary,source: RulesRegistry) -> Dictionary:
  if not enabled(source):return {}
  for status in record.runtime.statuses:
@@ -87,7 +87,7 @@ static func synchronize(record: Dictionary,source: RulesRegistry) -> Dictionary:
   var old := RulesCharacter.new(source).derive_character(previous.record)
   if not old.ok:return old
   var deficit: int=int(old.snapshot.stats.HP)-int(previous.record.runtime.hp)
-  pet.runtime.hp=0 if source.rules_ref().pack_id=="trhgd-character-v32" and int(previous.record.runtime.hp)==0 else maxi(0,int(pet.runtime.hp)-deficit)
+  pet.runtime.hp=0 if source.rules_ref().pack_id in ["trhgd-character-v32","trhgd-character-v33"] and int(previous.record.runtime.hp)==0 else maxi(0,int(pet.runtime.hp)-deficit)
   pet.runtime.statuses=previous.record.runtime.statuses.duplicate(true)
   if RulesPsychic.enabled(source):
    for resource in pet.runtime.resources:
