@@ -2,6 +2,10 @@ name: Grove Warden and Bonded Summoner Acceptance
 on:
   workflow_dispatch:
     inputs:
+      release:
+        type: boolean
+        default: false
+        description: One complete self-contained native Windows release after focused/earned success
       journey:
         type: boolean
         default: false
@@ -13,10 +17,11 @@ on:
     paths: ['scripts/**', 'data/rules/**', 'tests/grove_summoner/**', '.github/workflows/verify-grove-summoner.yml']
 permissions:
   contents: read
+  actions: read
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 50
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +50,9 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/grove-summoner-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'grove-summoner-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      # Full native release repeats these exact contracts inside its exported EXE.
       - name: Released32 witnesses and current33 focused mechanics/cold
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.release != true }}
         env:
           GROVE_SUMMONER_ROOT: ${{ runner.temp }}/grove-summoner-focused
         run: python tests/grove_summoner/run-focused.py
@@ -55,6 +62,23 @@ jobs:
           GROVE_SUMMONER_ROOT: ${{ runner.temp }}/grove-summoner-focused
           GROVE_SUMMONER_JOURNEY_ROOT: ${{ runner.temp }}/grove-summoner-earned
         run: python tests/grove_summoner/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: One complete self-contained native Grove Bonded acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          GROVE_SUMMONER_RELEASE_ROOT: ${{ runner.temp }}/grove-summoner-native
+        run: python tests/grove_summoner/verify-package.py
+      - name: Complete playable Windows x64 package
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: grove-summoner-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/grove-summoner-native/distribution/*.zip
+            ${{ runner.temp }}/grove-summoner-native/distribution/*.sha256
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -62,4 +86,5 @@ jobs:
           path: |
             ${{ runner.temp }}/grove-summoner-focused
             ${{ runner.temp }}/grove-summoner-earned
+            ${{ runner.temp }}/grove-summoner-native
           retention-days: 90

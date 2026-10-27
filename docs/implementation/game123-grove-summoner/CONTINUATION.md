@@ -25,3 +25,9 @@ Prepared next source phase adds genuine creator/parent/creature combat controls,
 
 
 f2e638a focused40480004676 passed actual Windows compilation of all new UI/earned/capture workers and the expanded pinned32 probe. All new mechanics except one additional aura-outcome fixture passed (1094 checks/one failure). That fixture used a level12 attacker against a level1 ally: even the minimum numeric attack beats both bare and boosted Defence, so no die can demonstrate the intended3-point protection window. Changed only that controlled attacker to a lawful level1 record and record actual paired stats/logs for diagnostics. The same genuine hit→miss assertion and all prior conditions remain; no production or pack changes. Next run must complete mechanics/cold and actual UI controls before source earned/native dispatch.
+
+## Current focused Windows acceptance — verified
+
+Run [40480812438](https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40480812438), source `5b44bc8648dd8ebf90b46c06e5afaa19f2724b33`, succeeded. Original receipts retained under `evidence/focused-current-*`: 186 released32 witness checks, 1,086 current33 mechanics checks, 84 separate-process cold checks and 51 actual production control checks, all zero failures. The controlled identical-RNG attack really hits bare Defence12 and misses protected Defence15. No aura policy or combat engine change. Candidate native acceptance and45/5 promotion remain pending.
+
+Prepared the native33 verifier, source-labelled baseline and strict readiness generator. Next run actual810XP source journey/committed declines/connected owned creatures/cold and Godot captures; resolve genuine failures there before dispatching the ONE complete native Windows release. No native33 package or45/5 claim yet.
