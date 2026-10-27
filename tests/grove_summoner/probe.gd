@@ -2,6 +2,8 @@ extends "res://tests/dual_prestige_acceptance/base.gd"
 ## Small released32 witnesses, not native acceptance or earned progression.
 var observations := {}
 var failed_checks := []
+func execute(engine: TacticalAuras,battle: Dictionary,ability: String,target := "a") -> Dictionary:
+ return engine.command(battle,{"actor_id":engine.current(battle).id,"revision":battle.revision,"kind":ability,"target_id":target})
 func check(value: bool,label: String) -> void:
  checks+=1
  if not value:failures+=1;failed_checks.append(label);print("ASSERTION_FAILED ",label)
