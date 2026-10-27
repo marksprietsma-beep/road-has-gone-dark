@@ -40,3 +40,10 @@ Review found the inherited generic test helper clears/recreates companions when 
 ##6698 focused diagnosis and batched assertion reporting
 
 Windows40426595627 compiled and preserved31, then the new outer attack observer saw no events: TacticalAuras already owns an inner, deliberately isolated RulesAttackTrace scope. Replaced that incorrect observation with exactly one actual attack/miss log, matching target HP, real critical counts, exact costs and deterministic command replay. No production/trace/RNG changes. The new mechanics driver now prints and records every deliberate failed assertion before exiting nonzero, rather than letting checked_process kill after its first push_error. All conditions and zero-failure gates remain; genuine Godot script/parse errors still terminate immediately. This reduces repeated diagnostic runs without hiding failures. No full native32 release or43/7 claim.
+
+
+## Focused Windows source acceptance passed
+
+40427262413 PASSED at1aa11e72e529bfdc4bfc9fa364a2b64e6119d231:31 reproduction76, current32 mechanics1789 (all11 contracts, actual2 misses/4 hits/3 criticals), independent cold237, actual production controls53, zero failures. Warm mechanics211.235s, cold16.25s, controls41.328s; this is inexpensive source verification, not a native export. Original receipts/timings are preserved.
+
+Source journey=true/release=false is dispatched at the same1aa11e7. Check its actual outcome and retrieve failures before changing anything. It must prove genuine490XP/total8, funded250XP Ranger5 entry/decline, actual pet attack and owner commands, cold resolution/home and original Godot renders. No complete native32 release yet, no43/7 promotion or cohort PR. If source journey/captures pass, inspect original images and then dispatch release=true/journey=false once against unchanged inputs.
