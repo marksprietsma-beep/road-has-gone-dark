@@ -47,16 +47,23 @@ func test_aimed() -> void:
   var r: Dictionary=records["archery"+str(at)];var engine := TacticalAuras.new(r)
   for die in [1,19,20]:
    var b := encounter(r);b.rng=attack_seed(die);b=engine.seal(b)
-   var used := execute(engine,b,"aimed-shot","bandit-blade");check(used.ok,"actual ranged Aimed Shot "+str(at)+str(die))
+   var captured := {}
+   var trace := RulesAttackTrace.capture(func():captured.result=execute(engine,b,"aimed-shot","bandit-blade"))
+   var used: Dictionary=captured.result;check(used.ok,"actual ranged Aimed Shot "+str(at)+str(die))
    if not used.ok:continue
    check(used.battle.budget=={"main":0,"move":0} and used.battle.units.a.record.runtime.resources==b.units.a.record.runtime.resources,"Aimed Shot pays main+move without invented resolve cost")
    check(not execute(engine,used.battle,"aimed-shot","bandit-blade").ok,"no second shot after spent actions")
    var lines: Array=used.battle.log.slice(b.log.size());var lost: int=int(b.units["bandit-blade"].record.runtime.hp)-int(used.battle.units["bandit-blade"].record.runtime.hp)
-   if die==1:check(lost==0 and lines.any(func(line: String):return line.contains(" misses ")),"actual natural-one miss deals no damage")
-   else:check(lost>0 and lines.any(func(line: String):return line.contains(" hits ")),"actual successful shot damages the target")
-   if lines.any(func(line: String):return line.contains("(critical)")):outcomes.criticals+=1
-   elif lost>0:outcomes.hits+=1
-   else:outcomes.misses+=1
+   check(trace.size()==1,"exactly one authoritative attack result per Aimed Shot")
+   if trace.size()==1:
+    if trace[0].hit:check(lost>0 and lines.any(func(line: String):return line.contains(" hits ")),"authoritative hit actually damages target")
+    else:check(lost==0 and lines.any(func(line: String):return line.ends_with("miss.")),"authoritative miss deals no damage and is logged")
+    check(trace[0].critical==lines.any(func(line: String):return line.contains("(critical)")),"actual critical agrees with authoritative outcome")
+    if trace[0].critical:outcomes.criticals+=1
+    elif trace[0].hit:outcomes.hits+=1
+    else:outcomes.misses+=1
+   var replay := execute(engine,JSON.parse_string(JSON.stringify(b)),"aimed-shot","bandit-blade")
+   check(replay.ok and replay.battle.state_hash==used.battle.state_hash,"exact attack/HP/cost/log/RNG replay with observer removed")
    battles["aimed"+str(at)+str(die)]=used.battle
   for reason in ["melee","unarmed","natural","manifested","friendly","range","blocked","spent-move","spent-main"]:
    var b := encounter(r);var target := "bandit-blade"

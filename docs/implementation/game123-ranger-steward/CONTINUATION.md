@@ -30,3 +30,8 @@ Review found the inherited generic test helper clears/recreates companions when 
 ## Workflow syntax correction
 
 52fddbd retained the same compile failure asfa5. While adding the explicit six Dictionary declarations,3e7 accidentally duplicated the source-step `if` key; GitHub rejected3e7/745 workflows before any job ran (40334582365/40335082542). Removed the duplicate, validated unique YAML keys locally and retained every source/import/history/mechanics/cold/control gate. Also count actual hit/miss/critical logs and damage rather than naming counters from the requested test die. No production/rules changes, no assertions removed and no full native32 attempt. All current code is in the repository; older scratch preparation must not overwrite it.
+
+
+## Latest focused blocker isolated — preserve GAME-32 numeric attacks
+
+40336069431 at3cde77e passed actual Windows compilation and the76-check31 reproduction, then failed the new Aimed Shot outcome assertion. The test assumed an automatic natural1 miss and searched for `misses`, while the frozen authority is a numeric contest and logs `..., miss.`. Corrected the harness to capture the original RulesAttackTrace result, require exactly one attack, assert actual hit/miss damage and log/critical agreement, and replay the same command/RNG without the observer. Positive/miss/critical contracts remain required; no production, RNG or pack changes. Candidate32 remains f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed. No native32 full release or readiness promotion yet.
