@@ -123,7 +123,9 @@ func test_aura() -> void:
  check(not expired.units.a.record.runtime.statuses.any(func(s: Dictionary):return s.id=="ancestral-sanctuary") and engine.stats(expired.units.b).defence==before.b.defence,"three actual global boundaries expire sanctuary and projected modifiers")
  deny(engine,active,"grove-protection-1","a","main already spent")
  var empty: Dictionary=b.duplicate(true);empty.units.a.record.runtime.resources["grove-favour"]=0;empty=engine.seal(empty);deny(engine,empty,"grove-protection-1","a","no favour")
- var attack_state: Dictionary=active.duplicate(true);attack_state.units["bandit-blade"].position=[2,3];attack_state.cursor=attack_state.order.find("bandit-blade");attack_state.budget={"main":1,"move":1};attack_state=engine.seal(attack_state)
+ var attack_state: Dictionary=active.duplicate(true)
+ var attacker: Dictionary=build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade","leathers"];attack_state.units["bandit-blade"].record=attacker
+ attack_state.units["bandit-blade"].position=[2,3];attack_state.cursor=attack_state.order.find("bandit-blade");attack_state.budget={"main":1,"move":1};attack_state=engine.seal(attack_state)
  var bare: Dictionary=attack_state.duplicate(true);bare.units.a.record.runtime.statuses=[];bare=engine.seal(bare)
  var witnessed := false
  for die in range(1,21):
@@ -131,6 +133,7 @@ func test_aura() -> void:
   var protected: Dictionary=engine.command(attack_state,{"actor_id":"bandit-blade","revision":attack_state.revision,"kind":"attack","target_id":"b"})
   var exposed: Dictionary=engine.command(bare,{"actor_id":"bandit-blade","revision":bare.revision,"kind":"attack","target_id":"b"})
   check(protected.ok and exposed.ok,"real paired defensive attack commands")
+  observations.aura_attack={"die":die,"attacker":engine.stats(attack_state.units["bandit-blade"]),"bare_defence":engine.stats(bare.units.b).defence,"protected_defence":engine.stats(attack_state.units.b).defence,"bare_log":exposed.get("battle",{}).get("log",[]),"protected_log":protected.get("battle",{}).get("log",[])}
   if protected.ok and exposed.ok and exposed.battle.units.b.record.runtime.hp<bare.units.b.record.runtime.hp and protected.battle.units.b.record.runtime.hp==attack_state.units.b.record.runtime.hp:
    witnessed=true;battles.sanctuary_saved_hit=protected.battle;break
  check(witnessed,"sanctuary changes a real same-RNG enemy hit into a miss")
@@ -339,7 +342,7 @@ func cold_cohort() -> void:
   var engine := TacticalAuras.new(p.battles[key].units.a.record);check(engine.validate(p.battles[key]).is_empty(),"cold owned/aura battle valid "+key)
   var out: Dictionary=engine.command(p.battles[key],p.next[key]);check(out.ok and out.battle.state_hash==p.after[key],"exact cold next command/expiry/log/RNG "+key)
 func finish_cohort(restart := false) -> void:
- var proof := {"checks":checks,"failures":failures,"failed_checks":failed_checks,"rules_ref":source.rules_ref(),"contracts":contracts,"attacks":attacks,"development_fixtures":true,"earned_xp":false}
+ var proof := {"checks":checks,"failures":failures,"failed_checks":failed_checks,"rules_ref":source.rules_ref(),"contracts":contracts,"attacks":attacks,"observations":observations,"development_fixtures":true,"earned_xp":false}
  FileAccess.open(base.path_join("restart-proof.json"if restart else"proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("GROVE_SUMMONER ",JSON.stringify(proof))
  if no_quit:completed.emit()
