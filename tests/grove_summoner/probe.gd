@@ -19,6 +19,11 @@ func run() -> void:
    if RulesCareer.option_eligibility(source,"grove-warden",1,option,context).ok:parents.append(option.id)
   observations.grove_dead_end={"offered":kernel.available_advancement(dead_end).classes["grove-warden"].ok,"parents":parents,"history":dead_end.advancement_history}
   check(observations.grove_dead_end.offered and parents.is_empty(),"released32 offers Grove entry with no legal nature-caster parent")
+ var shallow: Dictionary=route(repeated("spirit-shaman",3)+repeated("cleric",3),WIZARD_ARRAY,"grove-warden")
+ if not shallow.is_empty():
+  var context: Dictionary=kernel._replay(shallow).context
+  observations.grove_weak_magic={"casting":context.casting,"tiers":RulesCompleteness.spell_tiers(shallow,context,source),"offered":kernel.available_advancement(shallow).classes["grove-warden"].ok}
+  check(observations.grove_weak_magic.offered and observations.grove_weak_magic.tiers.divine==2,"released32 aggregate divine score qualifies Grove with only actual tier2 magic")
  var grove: Dictionary=route(["spirit-shaman"]+repeated("druid",5)+["grove-warden"],WIZARD_ARRAY,"grove-warden",{"grove-casting":"druid"})
  if not grove.is_empty():
   var shaped: Dictionary=use(grove,grove,"wild-shape")

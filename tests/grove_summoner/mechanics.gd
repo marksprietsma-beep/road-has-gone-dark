@@ -1,5 +1,6 @@
 extends "res://tests/grove_summoner/probe.gd"
 ## Lawful development histories only. Earned campaigns are verified separately.
+const GS_NATURE_ARRAY := {"STR":8,"DEX":12,"CON":13,"INT":14,"WIS":15,"CHA":10}
 var attacks := {"hits":0,"misses":0}
 func run() -> void:
  base=OS.get_environment("GROVE_SUMMONER_ROOT");DirAccess.make_dir_recursive_absolute(base)
@@ -9,7 +10,7 @@ func run() -> void:
  kernel=RulesCharacter.new(source)
  if OS.get_environment("GROVE_SUMMONER_RESTART")=="1":cold_cohort();finish_cohort(true);return
  fixtures.fighter=build("fighter",12)
- var roots := {"grove-shaman":route(repeated("spirit-shaman",6),WIZARD_ARRAY,"grove-warden"),"grove-druid":route(["spirit-shaman"]+repeated("druid",5),WIZARD_ARRAY,"grove-warden"),"bonded-wizard":route(repeated("wizard",5),WIZARD_ARRAY,"bonded-summoner"),"bonded-sorcerer":route(repeated("sorcerer",6),DUAL_ARRAY,"bonded-summoner")}
+ var roots := {"grove-shaman":route(repeated("spirit-shaman",6),GS_NATURE_ARRAY,"grove-warden"),"grove-druid":route(["spirit-shaman"]+repeated("druid",5),GS_NATURE_ARRAY,"grove-warden",{"druid-companion":"leopard"}),"bonded-wizard":route(repeated("wizard",5),WIZARD_ARRAY,"bonded-summoner"),"bonded-sorcerer":route(repeated("sorcerer",6),{"STR":8,"DEX":12,"CON":10,"INT":14,"WIS":13,"CHA":15},"bonded-summoner")}
  for key in roots:
   var r: Dictionary=roots[key];check(not r.is_empty(),"legal parent "+key)
   if r.is_empty():continue
@@ -82,6 +83,8 @@ func test_entry() -> void:
   check(RulesJson.digest(r)==before and not kernel.derive_character(r).snapshot.class_levels.has(path),"eligibility/preview never automatically enters prestige")
  var missing: Dictionary=route(["spirit-shaman"]+repeated("cleric",5),WIZARD_ARRAY,"grove-warden")
  check(not missing.is_empty() and not kernel.available_advancement(missing).classes["grove-warden"].ok,"Grove no longer offers an impossible nature parent")
+ var shallow: Dictionary=route(repeated("spirit-shaman",3)+repeated("cleric",3),WIZARD_ARRAY,"grove-warden")
+ check(not shallow.is_empty() and not kernel.available_advancement(shallow).classes["grove-warden"].ok,"a legal nature parent and aggregate divine score still require actual tier3 spells")
  var weak: Dictionary=route(["wizard"]+repeated("sorcerer",2)+repeated("fighter",2),DUAL_ARRAY,"bonded-summoner")
  check(not weak.is_empty() and not kernel.available_advancement(weak).classes["bonded-summoner"].ok,"aggregate caster score does not replace actual tier3 spells")
  if not weak.is_empty():
@@ -120,6 +123,17 @@ func test_aura() -> void:
  check(not expired.units.a.record.runtime.statuses.any(func(s: Dictionary):return s.id=="ancestral-sanctuary") and engine.stats(expired.units.b).defence==before.b.defence,"three actual global boundaries expire sanctuary and projected modifiers")
  deny(engine,active,"grove-protection-1","a","main already spent")
  var empty: Dictionary=b.duplicate(true);empty.units.a.record.runtime.resources["grove-favour"]=0;empty=engine.seal(empty);deny(engine,empty,"grove-protection-1","a","no favour")
+ var attack_state: Dictionary=active.duplicate(true);attack_state.units["bandit-blade"].position=[2,3];attack_state.cursor=attack_state.order.find("bandit-blade");attack_state.budget={"main":1,"move":1};attack_state=engine.seal(attack_state)
+ var bare: Dictionary=attack_state.duplicate(true);bare.units.a.record.runtime.statuses=[];bare=engine.seal(bare)
+ var witnessed := false
+ for die in range(1,21):
+  var rng: Dictionary=attack_seed(die);attack_state.rng=rng;bare.rng=rng;attack_state=engine.seal(attack_state);bare=engine.seal(bare)
+  var protected: Dictionary=engine.command(attack_state,{"actor_id":"bandit-blade","revision":attack_state.revision,"kind":"attack","target_id":"b"})
+  var exposed: Dictionary=engine.command(bare,{"actor_id":"bandit-blade","revision":bare.revision,"kind":"attack","target_id":"b"})
+  check(protected.ok and exposed.ok,"real paired defensive attack commands")
+  if protected.ok and exposed.ok and exposed.battle.units.b.record.runtime.hp<bare.units.b.record.runtime.hp and protected.battle.units.b.record.runtime.hp==attack_state.units.b.record.runtime.hp:
+   witnessed=true;battles.sanctuary_saved_hit=protected.battle;break
+ check(witnessed,"sanctuary changes a real same-RNG enemy hit into a miss")
  battles.sanctuary=active;contracts.aura=true
 func test_renewal() -> void:
  for level in [2,3]:
@@ -243,7 +257,15 @@ func test_limits() -> void:
   var after: Dictionary=rounds(engine,fallen,1)
   check(not engine.alive(after.units[id]) and after.units[id].record.runtime.hp==fallen.units[id].record.runtime.hp,"owner defeat withdraws summon at existing global boundary without rewriting HP")
   battles.owner_down=after
- var nature: Dictionary=saved_records["grove-druid3"];var natural: Dictionary=prep(nature,"druid-summon-sentinel");engine=TacticalAuras.new(natural);b=encounter(natural)
+ var nature: Dictionary=saved_records["grove-druid3"]
+ var downed: Dictionary=nature.duplicate(true);var pet_id: String=RulesEntities.identity(downed.character_id);downed.runtime.companions[pet_id].record.runtime.hp=0
+ for pool in downed.runtime.companions[pet_id].record.runtime.resources:downed.runtime.companions[pet_id].record.runtime.resources[pool]=0
+ var advancing: Dictionary=kernel.suggested_choice(downed,"druid");var grown: Dictionary=kernel.preview_advancement(downed,advancing.choice)
+ check(grown.ok and grown.candidate.runtime.companions[pet_id].record.runtime.hp==0,"current33 carries forward32's no-revival companion growth fix")
+ if grown.ok:
+  for pool in downed.runtime.companions[pet_id].record.runtime.resources:check(grown.candidate.runtime.companions[pet_id].record.runtime.resources[pool]==0,"companion growth preserves spent effort")
+  saved_records.downed_grown= grown.candidate
+ var natural: Dictionary=prep(nature,"druid-summon-sentinel");engine=TacticalAuras.new(natural);b=encounter(natural)
  var spell: Dictionary=execute(engine,b,"druid-summon-sentinel","a")
  check(spell.ok and spell.battle.units.has("a:companion") and spell.battle.units.size()==b.units.size()+1,"temporary spell summon coexists with exactly one permanent nature companion")
  var wizard: Dictionary=prep(r,"wizard-summon-sentinel");engine=TacticalAuras.new(wizard);b=encounter(wizard)
@@ -281,12 +303,22 @@ func test_late() -> void:
   var r: Dictionary=saved_records[spec[0]]
   while r.advancement_history.size()<20:
    var proposed: Dictionary=kernel.suggested_choice(r,spec[1]);check(proposed.ok,"lawful continuation toward total20")
+   if (r.advancement_history.size()+1)%4==0:proposed.choice.attribute_increase=source.definition("classes",spec[1]).casting_attribute
    if not proposed.ok:break
    var out: Dictionary=kernel.preview_advancement(r,proposed.choice);check(out.ok,"ordinary parent continuation preserves earned prestige history")
    if not out.ok:break
    r=learn(out.candidate,out.snapshot)
   check(r.advancement_history.size()==20 and not kernel.available_advancement(r).classes[spec[1]].ok,"total20 cap and selected prestige history remain real")
   saved_records[spec[0]+"-total20"]=r
+  var d: Dictionary=kernel.derive_character(r)
+  check(d.snapshot.attributes[source.definition("classes",spec[1]).casting_attribute]>=19,"late caster deliberately advances its actual casting attribute")
+  if spec[0].begins_with("bonded"):
+   var engine := TacticalAuras.new(r);var b: Dictionary=encounter(r);var called: Dictionary=execute(engine,b,"bonded-summoner-technique-5","a")
+   check(called.ok,"late total20 actual Bonded calling")
+   if called.ok:
+    var actor: Dictionary=called.battle.units[called.battle.order[int(called.battle.cursor)+1]]
+    check(actor.record.advancement_history.size()==10,"late temporary creature reaches authored level10 cap")
+    battles[spec[0]+"-late-call"]=called.battle
  contracts.late=true
 func persist_cohort() -> void:
  var payload := {"records":{},"hashes":{},"record_hashes":{},"battles":battles,"next":{},"after":{}}

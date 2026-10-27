@@ -1,6 +1,11 @@
 name: Grove Warden and Bonded Summoner Acceptance
 on:
   workflow_dispatch:
+    inputs:
+      journey:
+        type: boolean
+        default: false
+        description: Actual810XP, optional prestige/decline, connected owned actors, cold and Godot captures
   push:
     branches: [main, feature/game-163-grove-bonded-summoner]
     paths: ['scripts/**', 'data/rules/**', 'tests/grove_summoner/**', '.github/workflows/verify-grove-summoner.yml']
@@ -44,9 +49,17 @@ jobs:
         env:
           GROVE_SUMMONER_ROOT: ${{ runner.temp }}/grove-summoner-focused
         run: python tests/grove_summoner/run-focused.py
+      - name: Ordinary earned progression and connected owned-actor cold continuation
+        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        env:
+          GROVE_SUMMONER_ROOT: ${{ runner.temp }}/grove-summoner-focused
+          GROVE_SUMMONER_JOURNEY_ROOT: ${{ runner.temp }}/grove-summoner-earned
+        run: python tests/grove_summoner/run-journey.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: grove-summoner-windows-evidence
-          path: ${{ runner.temp }}/grove-summoner-focused
+          path: |
+            ${{ runner.temp }}/grove-summoner-focused
+            ${{ runner.temp }}/grove-summoner-earned
           retention-days: 90
