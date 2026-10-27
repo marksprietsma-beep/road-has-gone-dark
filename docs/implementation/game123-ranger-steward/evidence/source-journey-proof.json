@@ -1,0 +1,1440 @@
+{
+  "builds": {
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:1": {
+      "companions": {
+        "3915b64532ba8affa41eca5fb0ef0751:adventurer:1:companion": {
+          "definition_id": "wolf",
+          "record": {
+            "advancement_history": [
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 1.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 2.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 3.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "DEX",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 4.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 5.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              }
+            ],
+            "ancestry_ref": "heritage-human",
+            "background_ref": "hometown-background",
+            "base_attributes": {
+              "CHA": 10.0,
+              "CON": 13.0,
+              "DEX": 15.0,
+              "INT": 8.0,
+              "STR": 14.0,
+              "WIS": 12.0
+            },
+            "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1:companion",
+            "choices": {
+              "prepared_abilities": [],
+              "spell_preparations": {}
+            },
+            "equipment": [],
+            "revision": 5.0,
+            "rules_ref": {
+              "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+              "engine_schema": 3.0,
+              "pack_id": "trhgd-character-v32",
+              "rules_version": "32.0.0",
+              "schema_version": 1.0
+            },
+            "runtime": {
+              "apparent_effects": [],
+              "companions": {},
+              "granted_features": [
+                "wolf-creature-body"
+              ],
+              "hp": 31.0,
+              "manifested_powers": [],
+              "modifiers": [],
+              "resources": {},
+              "senses": [],
+              "statuses": [],
+              "temporary_hp": 0.0
+            },
+            "schema_version": 1.0
+          }
+        }
+      },
+      "equipment": [
+        "bow",
+        "leathers"
+      ],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "weapon-focus",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "archery",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "toughness",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "wolf"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "great-fortitude",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-6": "archery"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "role": "archery",
+      "xp": 490
+    },
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:2": {
+      "companions": {
+        "3915b64532ba8affa41eca5fb0ef0751:adventurer:2:companion": {
+          "definition_id": "leopard",
+          "record": {
+            "advancement_history": [
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 1.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 2.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 3.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "DEX",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 4.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 5.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              }
+            ],
+            "ancestry_ref": "heritage-human",
+            "background_ref": "hometown-background",
+            "base_attributes": {
+              "CHA": 10.0,
+              "CON": 14.0,
+              "DEX": 15.0,
+              "INT": 8.0,
+              "STR": 13.0,
+              "WIS": 12.0
+            },
+            "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:2:companion",
+            "choices": {
+              "prepared_abilities": [],
+              "spell_preparations": {}
+            },
+            "equipment": [],
+            "revision": 5.0,
+            "rules_ref": {
+              "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+              "engine_schema": 3.0,
+              "pack_id": "trhgd-character-v32",
+              "rules_version": "32.0.0",
+              "schema_version": 1.0
+            },
+            "runtime": {
+              "apparent_effects": [],
+              "companions": {},
+              "granted_features": [
+                "leopard-creature-body"
+              ],
+              "hp": 36.0,
+              "manifested_powers": [],
+              "modifiers": [],
+              "resources": {
+                "creature-effort": 3.0
+              },
+              "senses": [],
+              "statuses": [],
+              "temporary_hp": 0.0
+            },
+            "schema_version": 1.0
+          }
+        }
+      },
+      "equipment": [
+        "shortblade",
+        "leathers"
+      ],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "weapon-focus",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "blade",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "toughness",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "leopard"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "great-fortitude",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-6": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "role": "blade",
+      "xp": 490
+    },
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:3": {
+      "companions": {
+        "3915b64532ba8affa41eca5fb0ef0751:adventurer:3:companion": {
+          "definition_id": "stag",
+          "record": {
+            "advancement_history": [
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 1.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 2.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 3.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "WIS",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 4.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "steady-study",
+                "level": 5.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              },
+              {
+                "attribute_increase": "",
+                "bonus_feats": [],
+                "class_id": "bond-creature",
+                "feat_id": "",
+                "level": 6.0,
+                "skill_allocations": {
+                  "athletics": 1.0
+                },
+                "specialisations": {}
+              }
+            ],
+            "ancestry_ref": "heritage-human",
+            "background_ref": "hometown-background",
+            "base_attributes": {
+              "CHA": 10.0,
+              "CON": 12.0,
+              "DEX": 14.0,
+              "INT": 8.0,
+              "STR": 13.0,
+              "WIS": 15.0
+            },
+            "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3:companion",
+            "choices": {
+              "prepared_abilities": [],
+              "spell_preparations": {}
+            },
+            "equipment": [],
+            "revision": 6.0,
+            "rules_ref": {
+              "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+              "engine_schema": 3.0,
+              "pack_id": "trhgd-character-v32",
+              "rules_version": "32.0.0",
+              "schema_version": 1.0
+            },
+            "runtime": {
+              "apparent_effects": [],
+              "companions": {},
+              "granted_features": [
+                "stag-creature-body"
+              ],
+              "hp": 36.0,
+              "manifested_powers": [],
+              "modifiers": [],
+              "resources": {
+                "creature-effort": 3.0
+              },
+              "senses": [],
+              "statuses": [],
+              "temporary_hp": 0.0
+            },
+            "schema_version": 1.0
+          }
+        }
+      },
+      "equipment": [
+        "bow",
+        "leathers"
+      ],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "archery",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "stag"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "beast-stewardship",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "athletics": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "arcana": 4.0
+          },
+          "specialisations": {
+            "beast-steward-training": "swift"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "arcana": 3.0,
+            "perception": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "arcana": 1.0,
+            "perception": 2.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "role": "steward",
+      "xp": 490
+    }
+  },
+  "checks": 664.0,
+  "combat_actions": {},
+  "earned_entry": {
+    "alternatives": {
+      "beast-steward": true,
+      "ranger": true
+    },
+    "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3",
+    "earned_xp": 250,
+    "original_history": [
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "ranger",
+        "feat_id": "steady-study",
+        "level": 1.0,
+        "skill_allocations": {
+          "animal-handling": 1.0,
+          "athletics": 1.0,
+          "nature": 1.0,
+          "perception": 1.0,
+          "stealth": 1.0,
+          "survival": 1.0
+        },
+        "specialisations": {
+          "ranger-choice-1": "archery",
+          "ranger-quarry-choice": "raiders"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "ranger",
+        "feat_id": "",
+        "level": 2.0,
+        "skill_allocations": {
+          "animal-handling": 1.0,
+          "athletics": 1.0,
+          "nature": 1.0,
+          "perception": 1.0,
+          "stealth": 1.0,
+          "survival": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "ranger",
+        "feat_id": "steady-study",
+        "level": 3.0,
+        "skill_allocations": {
+          "animal-handling": 1.0,
+          "athletics": 1.0,
+          "nature": 1.0,
+          "perception": 1.0,
+          "stealth": 1.0,
+          "survival": 1.0
+        },
+        "specialisations": {}
+      },
+      {
+        "attribute_increase": "WIS",
+        "bonus_feats": [],
+        "class_id": "ranger",
+        "feat_id": "",
+        "level": 4.0,
+        "skill_allocations": {
+          "acrobatics": 1.0,
+          "animal-handling": 1.0,
+          "athletics": 1.0,
+          "perception": 1.0,
+          "stealth": 1.0,
+          "survival": 1.0
+        },
+        "specialisations": {
+          "ranger-companion": "stag"
+        }
+      },
+      {
+        "attribute_increase": "",
+        "bonus_feats": [],
+        "class_id": "ranger",
+        "feat_id": "beast-stewardship",
+        "level": 5.0,
+        "skill_allocations": {
+          "acrobatics": 2.0,
+          "athletics": 1.0,
+          "perception": 1.0,
+          "stealth": 1.0,
+          "survival": 1.0
+        },
+        "specialisations": {}
+      }
+    ],
+    "required_xp": 250,
+    "state_hash": "ed5cc090d3324d448c6b60e287a8116927e21ced749ded855bf26ec809227ce2"
+  },
+  "earned_xp": 490.0,
+  "failed_check": {
+    "choice": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:3:athletics",
+    "hash": "d0d33596ced00325b1efbac6b2db998655416e4ecc7a3ca98d36c97cd8a3beb9",
+    "xp": 0.0
+  },
+  "failures": 0.0,
+  "journeys": [
+    {
+      "ancestry": "heritage-human",
+      "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "earned_xp": 490.0,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "weapon-focus",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "archery",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "toughness",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "wolf"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "great-fortitude",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-6": "archery"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1.0
+      }
+    },
+    {
+      "ancestry": "heritage-human",
+      "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:2",
+      "earned_xp": 490.0,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "weapon-focus",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "blade",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "toughness",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "leopard"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "great-fortitude",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-6": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1.0
+      }
+    },
+    {
+      "ancestry": "heritage-human",
+      "character_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3",
+      "earned_xp": 490.0,
+      "fixture": false,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 1.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-choice-1": "archery",
+            "ranger-quarry-choice": "raiders"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 2.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "steady-study",
+          "level": 3.0,
+          "skill_allocations": {
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "nature": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "",
+          "level": 4.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "animal-handling": 1.0,
+            "athletics": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {
+            "ranger-companion": "stag"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "ranger",
+          "feat_id": "beast-stewardship",
+          "level": 5.0,
+          "skill_allocations": {
+            "acrobatics": 2.0,
+            "athletics": 1.0,
+            "perception": 1.0,
+            "stealth": 1.0,
+            "survival": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "",
+          "level": 6.0,
+          "skill_allocations": {
+            "arcana": 4.0
+          },
+          "specialisations": {
+            "beast-steward-training": "swift"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "steady-study",
+          "level": 7.0,
+          "skill_allocations": {
+            "arcana": 3.0,
+            "perception": 1.0
+          },
+          "specialisations": {}
+        },
+        {
+          "attribute_increase": "WIS",
+          "bonus_feats": [],
+          "class_id": "beast-steward",
+          "feat_id": "",
+          "level": 8.0,
+          "skill_allocations": {
+            "acrobatics": 1.0,
+            "arcana": 1.0,
+            "perception": 2.0
+          },
+          "specialisations": {}
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v32",
+        "rules_version": "32.0.0",
+        "schema_version": 1.0
+      }
+    }
+  ],
+  "rules_ref": {
+    "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+    "engine_schema": 3.0,
+    "pack_id": "trhgd-character-v32",
+    "rules_version": "32.0.0",
+    "schema_version": 1.0
+  },
+  "skills": {
+    "skill:acrobatics": {
+      "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+      "complete": true,
+      "event": "quick",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:acrobatics",
+      "information": "Acrobatics check: 15 + 6 vs DC 19 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+      "label": "Arin0: Acrobatics +6 vs DC 19 \u00b7 Make a quick survey",
+      "outcome": "investigated",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:acrobatics",
+      "provisions": 0.0,
+      "reveal": true
+    },
+    "skill:animal-handling": {
+      "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+      "complete": true,
+      "event": "inspect",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:animal-handling",
+      "information": "Animal Handling check: 15 + 9 vs DC 17 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+      "label": "Arin0: Animal Handling +9 vs DC 17 \u00b7 Assess animal behaviour",
+      "outcome": "investigated",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:animal-handling",
+      "provisions": 0.0,
+      "reveal": true
+    },
+    "skill:arcana": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:3:arcana",
+      "information": "Arcana check: 14 + 7 vs DC 16 \u00b7 objective completed.",
+      "label": "Doran0: Arcana +7 vs DC 16",
+      "outcome": "investigated",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3",
+      "profession": "skill:arcana",
+      "provisions": 0.0,
+      "reveal": true
+    },
+    "skill:athletics": {
+      "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+      "complete": true,
+      "event": "quick",
+      "gain": 4.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:athletics",
+      "information": "Athletics check: 9 + 11 vs DC 19 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+      "label": "Arin0: Athletics +11 vs DC 19 \u00b7 Haul the recoverable stores",
+      "outcome": "recovered",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:athletics",
+      "provisions": 1.0,
+      "reveal": false
+    },
+    "skill:insight": {
+      "complete": true,
+      "event": "negotiate",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:insight",
+      "information": "Insight check: 17 + 2 vs DC 13 \u00b7 objective completed.",
+      "label": "Arin0: Insight +2 vs DC 13",
+      "outcome": "peaceful_access",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:insight",
+      "provisions": 1.0,
+      "reveal": false
+    },
+    "skill:perception": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:2:perception",
+      "information": "Perception check: 13 + 8 vs DC 16 \u00b7 objective completed.",
+      "label": "Lysa0: Perception +8 vs DC 16",
+      "outcome": "investigated",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:2",
+      "profession": "skill:perception",
+      "provisions": 0.0,
+      "reveal": true
+    },
+    "skill:persuasion": {
+      "complete": true,
+      "event": "negotiate",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:persuasion",
+      "information": "Persuasion check: 15 + 0 vs DC 14 \u00b7 objective completed.",
+      "label": "Arin0: Persuasion +0 vs DC 14",
+      "outcome": "peaceful_access",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:persuasion",
+      "provisions": 1.0,
+      "reveal": false
+    },
+    "skill:religion": {
+      "complete": true,
+      "event": "inspect",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:religion",
+      "information": "Religion check: 19 + 2 vs DC 15 \u00b7 objective completed.",
+      "label": "Arin0: Religion +2 vs DC 15",
+      "outcome": "investigated",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:religion",
+      "provisions": 0.0,
+      "reveal": true
+    },
+    "skill:stealth": {
+      "approach_description": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+      "complete": true,
+      "event": "negotiate",
+      "gain": 0.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:stealth",
+      "information": "Stealth check: 12 + 12 vs DC 19 \u00b7 objective completed. Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+      "label": "Arin0: Stealth +12 vs DC 19 \u00b7 Seek quiet access",
+      "outcome": "peaceful_access",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:stealth",
+      "provisions": 0.0,
+      "reveal": false
+    },
+    "skill:survival": {
+      "complete": true,
+      "event": "recover",
+      "gain": 3.0,
+      "id": "skill:3915b64532ba8affa41eca5fb0ef0751:adventurer:1:survival",
+      "information": "Survival check: 17 + 12 vs DC 17 \u00b7 objective completed.",
+      "label": "Arin0: Survival +12 vs DC 17",
+      "outcome": "recovered",
+      "participant": "3915b64532ba8affa41eca5fb0ef0751:adventurer:1",
+      "profession": "skill:survival",
+      "provisions": 0.0,
+      "reveal": false
+    }
+  },
+  "slot": "3915b64532ba8affa41eca5fb0ef0751",
+  "state_hash": "014bfa71383973b5ab1fb8fd041a833dfa75b341bcb19d0d32b5ebc88903c8cb",
+  "xp_injected": false
+}

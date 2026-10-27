@@ -1,0 +1,63 @@
+{
+  "battle_hash": "576e4f9c8982fd03a056ac549090d05980ff4cd62e6bf9ce4d7079f8f8433a98",
+  "battle_log_length": 17.0,
+  "casts": {
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:1": "ranger-archery-6",
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:2": "ranger-blade-6",
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:3": "steward-drive-3"
+  },
+  "checks": 132,
+  "command_operation": "battle_command",
+  "earned_xp_before_combat": 490.0,
+  "failures": 0,
+  "next_command": {
+    "actor_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3",
+    "destination": [
+      5.0,
+      5.0
+    ],
+    "kind": "move",
+    "revision": 39.0
+  },
+  "next_hash": "200ac542afc4b3e951a4fbf08feacab356b9590066813721925c0c7d0bca87a1",
+  "owned_action": {
+    "actor_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3:companion",
+    "after_hash": "0f442264efeed5a071a95f16882f6126f20fddcc8e672f0244f6eea47770adbf",
+    "after_hp": 9,
+    "before_hash": "238a390064a69ec858c54bf5758654e05def055d2e8a13844b6e816ce70888a3",
+    "before_hp": 15,
+    "command": {
+      "actor_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3:companion",
+      "kind": "attack",
+      "revision": 34,
+      "target_id": "bandit-bow"
+    },
+    "definition_id": "stag",
+    "kind": "attack",
+    "owner_id": "3915b64532ba8affa41eca5fb0ef0751:adventurer:3",
+    "target_id": "bandit-bow"
+  },
+  "resources": {
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:1": {
+      "tracker-resolve": 2.0
+    },
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:2": {
+      "tracker-resolve": 2.0
+    },
+    "3915b64532ba8affa41eca5fb0ef0751:adventurer:3": {
+      "beast-steward-commands": 2.0
+    }
+  },
+  "rules_ref": {
+    "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed",
+    "engine_schema": 3.0,
+    "pack_id": "trhgd-character-v32",
+    "rules_version": "32.0.0",
+    "schema_version": 1.0
+  },
+  "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+  "slot": "3915b64532ba8affa41eca5fb0ef0751",
+  "source": "AdventureService/battle_command/GamePlaythroughStore",
+  "state_hash": "5af14cb941f3b9cb734712f5514cf5613910c629540412b32add42e3285225a4",
+  "xp_injected": false
+}

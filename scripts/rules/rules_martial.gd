@@ -2,7 +2,7 @@ class_name RulesMartial
 extends RefCounted
 ## v19 descriptors consumed at authoritative combat events, never a second resolver.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]
 
 static func validate_definition(category: String,row: Dictionary,tables: Dictionary,errors: Array) -> void:
  if category=="abilities":
@@ -61,7 +61,7 @@ static func moved_this_activation(battle: Dictionary,id: String) -> bool:
  return false
 
 static func mobile_enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"]
 
 static func fencing_equipment(record: Dictionary,source: RulesRegistry,include_runtime := true) -> bool:
  if include_runtime and not RulesEntities.form(record,source).is_empty():return false
@@ -105,7 +105,7 @@ static func weapon_context_tags(record: Dictionary,source: RulesRegistry,include
 
 static func start_activation(combat: TacticalCombat,battle: Dictionary) -> void:
  # v23 descriptors execute at the existing turn boundary. Cold loading never ticks.
- if combat.registry.rules_ref().pack_id not in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31"] or battle.status!="active":return
+ if combat.registry.rules_ref().pack_id not in ["trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32"] or battle.status!="active":return
  var unit: Dictionary=combat.current(battle)
  if not combat.alive(unit):return
  var derived := combat.characters.derive_character(unit.record)
