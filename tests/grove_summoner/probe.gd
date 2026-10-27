@@ -31,10 +31,11 @@ func run() -> void:
    var natural_before: int=int(engine.stats(natural.units.b).defence)
    var first: Dictionary=execute(engine,normal,"grove-protection-1","a")
    var second: Dictionary=execute(engine,natural,"grove-protection-1","a")
-   check(first.ok and second.ok,"both sanctuary activations pay their actual command")
-   if first.ok and second.ok:
-    observations.transformed_sanctuary={"normal_defence":int(engine.stats(first.battle.units.b).defence)-normal_before,"form_defence":int(engine.stats(second.battle.units.b).defence)-natural_before,"favour_before":natural.units.a.record.runtime.resources["grove-favour"],"favour_after":second.battle.units.a.record.runtime.resources["grove-favour"],"form":RulesEntities.form(second.battle.units.a.record,source),"log":second.battle.log}
-    check(observations.transformed_sanctuary.normal_defence==3 and observations.transformed_sanctuary.form_defence==0,"released32 spends supernatural sanctuary favour but suppresses its protection in a natural body")
+   observations.transformed_sanctuary={"normal_ok":first.ok,"form_ok":second.ok,"form_error":second.get("error",""),"favour":natural.units.a.record.runtime.resources["grove-favour"],"form":RulesEntities.form(natural.units.a.record,source),"form_defence":natural_before}
+   check(first.ok and not second.ok,"preserve correct released32 rejection of supernatural Grove action in a transformed body")
+   if first.ok:
+    observations.transformed_sanctuary.normal_defence=int(engine.stats(first.battle.units.b).defence)-normal_before
+    check(observations.transformed_sanctuary.normal_defence==3,"already-functional sanctuary protects normal nearby allies")
  var aggregate: Dictionary=route(["wizard"]+repeated("sorcerer",2)+repeated("fighter",2),DUAL_ARRAY,"bonded-summoner")
  if not aggregate.is_empty():
   var permanent: Dictionary=kernel._replay(aggregate).context
@@ -53,6 +54,15 @@ func run() -> void:
    var actors: Array=called.battle.units.values().filter(func(u: Dictionary):return u.get("entity",{}).get("kind")=="summon")
    check(actors.size()==1 and actors[0].entity.remaining==6 and called.battle.budget.main==0,"existing duration, ownership and action budget really work")
    observations.existing_summon={"actors":actors,"log":called.battle.log,"uses_before":battle.units.a.record.runtime.resources["bonded-summoner-uses"],"uses_after":called.battle.units.a.record.runtime.resources["bonded-summoner-uses"]}
+  var druid: Dictionary=prep(build("druid",20),"druid-wildheart-mantle")
+  var altered: Dictionary=use(druid,bonded,"druid-wildheart-mantle")
+  check(altered.ok,"real owned ally spell creates a magic-suppressed Bonded body")
+  if altered.ok:
+   var shaped_battle: Dictionary=encounter(altered.target)
+   var bypass: Dictionary=execute(engine,shaped_battle,"bonded-summoner-technique-3","a")
+   observations.bonded_form_bypass={"accepted":bypass.ok,"error":bypass.get("error",""),"tags":source.definition("abilities","bonded-summoner-technique-3").tags,"form":RulesEntities.form(altered.target,source)}
+   check(bypass.ok,"released32 untyped magical Bonded call bypasses existing transformed-body suppression")
+   if bypass.ok:check(bypass.battle.budget.main==0 and bypass.battle.units.a.record.runtime.resources["bonded-summoner-uses"]==shaped_battle.units.a.record.runtime.resources["bonded-summoner-uses"]-1,"bypass is an actual paid summoned-actor command")
  var proof := {"checks":checks,"failures":failures,"failed_checks":failed_checks,"rules_ref":source.rules_ref(),"observations":observations,"development_fixtures":true,"earned_xp":false,"production_changed":false}
  FileAccess.open(base.path_join("probe-proof.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(proof),"  "))
  print("GROVE_SUMMONER_V32 ",checks," failures ",failures)
