@@ -35,3 +35,8 @@ Review found the inherited generic test helper clears/recreates companions when 
 ## Latest focused blocker isolated — preserve GAME-32 numeric attacks
 
 40336069431 at3cde77e passed actual Windows compilation and the76-check31 reproduction, then failed the new Aimed Shot outcome assertion. The test assumed an automatic natural1 miss and searched for `misses`, while the frozen authority is a numeric contest and logs `..., miss.`. Corrected the harness to capture the original RulesAttackTrace result, require exactly one attack, assert actual hit/miss damage and log/critical agreement, and replay the same command/RNG without the observer. Positive/miss/critical contracts remain required; no production, RNG or pack changes. Candidate32 remains f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed. No native32 full release or readiness promotion yet.
+
+
+##6698 focused diagnosis and batched assertion reporting
+
+Windows40426595627 compiled and preserved31, then the new outer attack observer saw no events: TacticalAuras already owns an inner, deliberately isolated RulesAttackTrace scope. Replaced that incorrect observation with exactly one actual attack/miss log, matching target HP, real critical counts, exact costs and deterministic command replay. No production/trace/RNG changes. The new mechanics driver now prints and records every deliberate failed assertion before exiting nonzero, rather than letting checked_process kill after its first push_error. All conditions and zero-failure gates remain; genuine Godot script/parse errors still terminate immediately. This reduces repeated diagnostic runs without hiding failures. No full native32 release or43/7 claim.

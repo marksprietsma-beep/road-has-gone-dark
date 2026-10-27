@@ -1,5 +1,10 @@
 extends "res://tests/ranger_steward/probe.gd"
 ## Legal development histories. Ordinary earned prestige entry is a separate campaign.
+var failed_checks: Array=[]
+func check(value: bool,label: String) -> void:
+ checks+=1
+ if not value:
+  failures+=1;failed_checks.append(label);print("ASSERTION FAILED: ",label)
 var contracts := {}
 var outcomes := {"hits":0,"misses":0,"criticals":0}
 func run() -> void:
@@ -47,23 +52,22 @@ func test_aimed() -> void:
   var r: Dictionary=records["archery"+str(at)];var engine := TacticalAuras.new(r)
   for die in [1,19,20]:
    var b := encounter(r);b.rng=attack_seed(die);b=engine.seal(b)
-   var captured := {}
-   var trace := RulesAttackTrace.capture(func():captured.result=execute(engine,b,"aimed-shot","bandit-blade"))
-   var used: Dictionary=captured.result;check(used.ok,"actual ranged Aimed Shot "+str(at)+str(die))
+   var used := execute(engine,b,"aimed-shot","bandit-blade");check(used.ok,"actual ranged Aimed Shot "+str(at)+str(die))
    if not used.ok:continue
    check(used.battle.budget=={"main":0,"move":0} and used.battle.units.a.record.runtime.resources==b.units.a.record.runtime.resources,"Aimed Shot pays main+move without invented resolve cost")
    check(not execute(engine,used.battle,"aimed-shot","bandit-blade").ok,"no second shot after spent actions")
    var lines: Array=used.battle.log.slice(b.log.size());var lost: int=int(b.units["bandit-blade"].record.runtime.hp)-int(used.battle.units["bandit-blade"].record.runtime.hp)
-   check(trace.size()==1,"exactly one authoritative attack result per Aimed Shot")
-   if trace.size()==1:
-    if trace[0].hit:check(lost>0 and lines.any(func(line: String):return line.contains(" hits ")),"authoritative hit actually damages target")
-    else:check(lost==0 and lines.any(func(line: String):return line.ends_with("miss.")),"authoritative miss deals no damage and is logged")
-    check(trace[0].critical==lines.any(func(line: String):return line.contains("(critical)")),"actual critical agrees with authoritative outcome")
-    if trace[0].critical:outcomes.criticals+=1
-    elif trace[0].hit:outcomes.hits+=1
+   var attack_lines: Array=lines.filter(func(line: String):return line.begins_with(b.units.a.name+" hits ") or line.begins_with(b.units.a.name+" attacks ") and line.ends_with("miss."))
+   check(attack_lines.size()==1,"exactly one actual attack log for one Aimed Shot")
+   if attack_lines.size()==1:
+    var hit: bool=attack_lines[0].contains(" hits ");var critical: bool=attack_lines[0].contains("(critical)")
+    check((lost>0)==hit,"actual shot result agrees with target HP loss")
+    if not hit:check(lost==0 and attack_lines[0].ends_with("miss."),"actual logged miss deals zero damage")
+    if critical:outcomes.criticals+=1
+    elif hit:outcomes.hits+=1
     else:outcomes.misses+=1
    var replay := execute(engine,JSON.parse_string(JSON.stringify(b)),"aimed-shot","bandit-blade")
-   check(replay.ok and replay.battle.state_hash==used.battle.state_hash,"exact attack/HP/cost/log/RNG replay with observer removed")
+   check(replay.ok and replay.battle.state_hash==used.battle.state_hash,"exact attack/HP/cost/log/RNG command replay")
    battles["aimed"+str(at)+str(die)]=used.battle
   for reason in ["melee","unarmed","natural","manifested","friendly","range","blocked","spent-move","spent-main"]:
    var b := encounter(r);var target := "bandit-blade"
@@ -381,7 +385,7 @@ func cold() -> void:
   var out := engine.command(saved.battles[key],saved.next[key])
   check(out.ok and out.battle.state_hash==saved.after[key],"cold next command/log/RNG exact "+key)
 func finish_current(restart := false) -> void:
- var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"contracts":contracts,"outcomes":outcomes,"development_fixtures":true,"earned_xp":false}
+ var proof := {"checks":checks,"failures":failures,"rules_ref":source.rules_ref(),"contracts":contracts,"outcomes":outcomes,"failed_checks":failed_checks,"development_fixtures":true,"earned_xp":false}
  FileAccess.open(base.path_join("restart-proof.json"if restart else"proof.json"),FileAccess.WRITE).store_string(JSON.stringify(proof))
  print("RANGER_STEWARD ",JSON.stringify(proof))
  if no_quit:completed.emit()
