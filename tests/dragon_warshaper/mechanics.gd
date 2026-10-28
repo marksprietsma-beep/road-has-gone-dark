@@ -28,7 +28,7 @@ func run() -> void:
     check(d.snapshot.casting_levels[key]==roots[key].advancement_history.size()+at/2,"selected actual caster advances once per two Dragon levels")
    else:morph_levels[key]=range(1,at+1)
  if failures:finish_current();return
- test_current_entry();test_current_dragon();test_current_morph();test_current_bodies();test_current_limits();test_current_late()
+ test_current_entry();test_current_dragon();test_current_morph();test_current_bodies();test_current_limits();test_paid_exhaustion();test_ward_and_claws();test_incapacitation();test_current_late()
  persist_cohort();finish_current()
 func advance_existing(record: Dictionary,path: String,parent: String) -> Dictionary:
  var suggested: Dictionary=kernel.suggested_choice(record,path,"steady-study")
@@ -206,3 +206,53 @@ func save_pair_seed(first: int,second: int) -> Dictionary:
   var a: Dictionary=RulesRng.roll("1d20",rng);var b: Dictionary=RulesRng.roll("1d20",a.rng)
   if a.total==first and b.total==second:return rng
  check(false,"public original-RNG save-pair seed found");return RulesRng.initial("missing-save-pair")
+
+func test_paid_exhaustion() -> void:
+ for spec in [["wizard10","dragon-disciple-technique-1","bandit-blade","dragon-disciple-uses"],["druid5","warshaper-technique-5","a","warshaper-uses"]]:
+  var record: Dictionary=saved_records[spec[0]];var engine:=TacticalAuras.new(record);var battle: Dictionary=encounter(record)
+  var capacity: int=battle.units.a.record.runtime.resources[spec[3]]
+  for n in capacity:
+   battle=turn(engine,battle,"a");var paid: Dictionary=execute(engine,battle,spec[1],spec[2])
+   check(paid.ok,"legitimate repeated activation spends a real finite use")
+   if not paid.ok:break
+   battle=paid.battle
+   check(battle.units.a.record.runtime.resources[spec[3]]==capacity-n-1,"exact reserve declines to zero through paid actions")
+  battle=turn(engine,battle,"a")
+  check(battle.units.a.record.runtime.resources[spec[3]]==0,"genuinely exhausted class reserve")
+  deny(engine,battle,spec[1],spec[2],"paid exhaustion cannot be bypassed by a new main action")
+  battles[spec[0]+"-exhausted"]=battle
+ contracts.paid_exhaustion=true
+func test_ward_and_claws() -> void:
+ var record: Dictionary=saved_records.wizard4;var protected: Dictionary=use(record,record,"dragon-disciple-technique-4")
+ check(protected.ok,"owned Scale mantle executes through effects authority")
+ if protected.ok:
+  var again: Dictionary=use(protected.actor,protected.actor,"dragon-disciple-technique-4")
+  check(again.ok and again.actor.runtime.temporary_hp==protected.actor.runtime.temporary_hp and again.actor.runtime.hp==record.runtime.hp,"paid ward refresh never stacks buffer or heals original health")
+  var engine:=TacticalAuras.new(record);var bare: Dictionary=encounter(record);var warded: Dictionary=encounter(protected.actor)
+  var attacker: Dictionary=build("fighter",1);attacker.character_id="bandit-blade";attacker.equipment=["shortblade"]
+  for b in [bare,warded]:b.units["bandit-blade"].record=attacker.duplicate(true);b.cursor=b.order.find("bandit-blade")
+  var roll: int=int(engine.stats(bare.units.a).defence)-int(engine.stats(bare.units["bandit-blade"]).melee_attack)
+  check(roll>=1 and roll<20,"lawful attacker permits actual ward hit-to-miss counterplay")
+  var rng: Dictionary=attack_seed(roll);bare.rng=rng;warded.rng=rng;bare=engine.seal(bare);warded=engine.seal(warded)
+  var strike: Dictionary={"actor_id":"bandit-blade","revision":bare.revision,"kind":"attack","target_id":"a"}
+  var first: Dictionary=engine.command(bare,strike);var second: Dictionary=engine.command(warded,strike)
+  check(first.ok and second.ok and " hits "in first.battle.log.back()and second.battle.log.back().ends_with("miss."),"Scale mantle turns an actual original weapon hit into a miss")
+  if second.ok:battles.scale_mantle_miss=second.battle
+ var clawed: Dictionary=saved_records.wizard1.duplicate(true);clawed.equipment=["unarmed"]
+ var engine:=TacticalAuras.new(clawed);var battle: Dictionary=encounter(clawed);battle.rng=attack_seed(19,6);battle=engine.seal(battle)
+ check(engine.active_weapon(battle.units.a)=="unarmed"and kernel.derive_character(clawed).snapshot.capabilities.weapon_damage.unarmed=="1d6","actual equipped unarmed attack uses inherited draconic claws")
+ var struck: Dictionary=execute(engine,battle,"attack","bandit-blade")
+ check(struck.ok and battle.units["bandit-blade"].record.runtime.hp-struck.battle.units["bandit-blade"].record.runtime.hp==5,"original six-on-d6 claw strike and STR-1 produce real5 damage")
+ if struck.ok:battles.draconic_claws=struck.battle
+ contracts.ward_and_claws=true
+func test_incapacitation() -> void:
+ var record: Dictionary=saved_records.form5.duplicate(true);record.runtime.hp=1
+ var engine:=TacticalAuras.new(record);var battle: Dictionary=encounter(record);battle.cursor=battle.order.find("bandit-blade");battle.rng=attack_seed(19);battle=engine.seal(battle)
+ var hit: Dictionary=engine.command(battle,{"actor_id":"bandit-blade","revision":battle.revision,"kind":"attack","target_id":"a"})
+ check(hit.ok and hit.battle.units.a.record.runtime.hp==0,"real incoming attack incapacitates the transformed owner")
+ if hit.ok:
+  var before: String=RulesJson.digest(hit.battle)
+  var denied: Dictionary=engine.command(hit.battle,{"actor_id":"a","revision":hit.battle.revision,"kind":"warshaper-technique-1","target_id":"a"})
+  check(not denied.ok and RulesJson.digest(hit.battle)==before and hit.battle.units.a.record.runtime.hp==0,"incapacitated owner cannot act, change form or heal itself")
+  saved_records.morph_downed=hit.battle.units.a.record;battles.owner_down=hit.battle
+ contracts.incapacitation=true

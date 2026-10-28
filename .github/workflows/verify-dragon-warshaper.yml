@@ -1,6 +1,11 @@
 name: Dragon Disciple and Warshaper Acceptance
 on:
   workflow_dispatch:
+    inputs:
+      journey:
+        type: boolean
+        default: false
+        description: Short earned480XP entry/decline, connected combat and cold
   push:
     branches: [feature/game-167-dragon-warshaper]
     paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
@@ -40,9 +45,17 @@ jobs:
         env:
           DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
         run: python tests/dragon_warshaper/run-focused.py
+      - name: Genuine earned entry, optional decline, connected creatures and cold
+        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        env:
+          DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
+          DRAGON_WARSHAPER_JOURNEY_ROOT: ${{ runner.temp }}/dragon-warshaper-earned
+        run: python tests/dragon_warshaper/run-journey.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: dragon-warshaper-windows-evidence
-          path: ${{ runner.temp }}/dragon-warshaper-focused
+          path: |
+            ${{ runner.temp }}/dragon-warshaper-focused
+            ${{ runner.temp }}/dragon-warshaper-earned
           retention-days: 90

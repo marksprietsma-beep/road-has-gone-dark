@@ -51,8 +51,10 @@ func run() -> void:
  var transformed: Dictionary=saved.records.dragon_form;var blocked: Dictionary=helper.encounter(transformed);ui.engine=TacticalAuras.new(transformed);show(ui,blocked,"dragon-disciple-technique-1");ui.sent={};ui.choose_tile(blocked.units["bandit-blade"].position)
  check((not ui.action_buttons.has("dragon-disciple-technique-1")or ui.action_buttons["dragon-disciple-technique-1"].disabled)and ui.sent.is_empty(),"actual altered-body UI suppresses supernatural breath")
  ui.queue_free();await frames()
- for dimensions in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
-  get_window().mode=Window.MODE_WINDOWED;get_window().size=dimensions;await frames()
+ for dimensions in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440),Vector2i.ZERO]:
+  if dimensions==Vector2i.ZERO:get_window().mode=Window.MODE_FULLSCREEN
+  else:get_window().mode=Window.MODE_WINDOWED;get_window().size=dimensions
+  await frames()
   var control: Control=load("res://tests/sentinel_turn/ui_probe.gd").new();PartyService.handoff={};add_child(control);control.set_process(false)
   var record: Dictionary=saved.records.druid5;var battle: Dictionary=helper.encounter(record)
   control.engine=TacticalAuras.new(record);display_control(control,battle,"move");await frames()
@@ -61,7 +63,10 @@ func run() -> void:
   check(control.last_result.get("ok",false)and control.battle().budget=={"main":0,"move":0}and not RulesEntities.form(control.battle().units.a.record,source).is_empty(),"genuine frame button creates actual exhausted transformed actor")
   check(not control.end_button.disabled and get_viewport().get_visible_rect().encloses(control.end_button.get_global_rect()),"fixed End remains wholly on-screen and enabled after transformation0/0")
   var expected: Dictionary=control.engine.command(control.battle(),{"actor_id":"a","revision":control.battle().revision,"kind":"end"})
-  footer_observations.append({"requested":[dimensions.x,dimensions.y],"end":str(control.end_button.get_global_rect()),"viewport":str(get_viewport().get_visible_rect()),"form":RulesEntities.form(control.battle().units.a.record,source),"before_hash":control.battle().state_hash})
+  footer_observations.append({"fullscreen":get_window().mode in [Window.MODE_FULLSCREEN,Window.MODE_EXCLUSIVE_FULLSCREEN],"requested":[dimensions.x,dimensions.y],"end":str(control.end_button.get_global_rect()),"viewport":str(get_viewport().get_visible_rect()),"form":RulesEntities.form(control.battle().units.a.record,source),"before_hash":control.battle().state_hash})
+  await RenderingServer.frame_post_draw
+  var pixels: Image=get_viewport().get_texture().get_image();var file: String="morphic-footer-%s-%dx%d.png"%["fullscreen"if dimensions==Vector2i.ZERO else str(dimensions.x),pixels.get_width(),pixels.get_height()]
+  pixels.save_png(folder.path_join(file));footer_observations.back().file=file;footer_observations.back().sha256=FileAccess.get_sha256(folder.path_join(file));footer_observations.back().width=pixels.get_width();footer_observations.back().height=pixels.get_height()
   await click(control.end_button,true);check(control.last_result.get("ok",false)and control.battle().state_hash==expected.battle.state_hash,"genuine fixed End click advances the transformed actor through exact original authority")
   control.queue_free();await frames()
  check(helper.failures==0,"all original fixture helpers remain legal");helper.free()
