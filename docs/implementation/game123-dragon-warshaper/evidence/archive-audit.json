@@ -1,0 +1,25 @@
+{
+  "source_commit": "dc05904b69b2cb72c56408e791575d19d8eadf81",
+  "archive": "dragon-warshaper-windows-x64.zip",
+  "sha256": "8297ff208f4b553d0947f1a41b2a9aa4aa1b79cbc34161e29df51723486dbd5d",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "dragon-warshaper-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "5baad2e4e5b4536d1c0ebc143514df4f7cba9fcecbea3b48d92fa34ca5f53e72",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v34",
+    "schema_version": 1,
+    "rules_version": "34.0.0",
+    "engine_schema": 3,
+    "content_hash": "4aa4f90021457421bd08b3cb4210f94844651472f7c54e330f5e0055a395e98e"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

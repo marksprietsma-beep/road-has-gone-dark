@@ -1,8 +1,8 @@
 # Supported character readiness
 
-Matching-source native Windows accepts Grove Warden and Bonded Summoner. Technical acceptance remains separate from human balance and research breadth.
+Matching-source native Windows accepts Dragon Disciple and Warshaper. Technical acceptance is separate from human balance and research breadth.
 
-{'COMPLETE': 45, 'PARTIAL': 5, 'BLOCKED': 0}
+47 COMPLETE / 3 PARTIAL / 0 BLOCKED
 
 | Career | Kind | Status | Remaining acceptance |
 |---|---|---|---|
@@ -30,14 +30,14 @@ Matching-source native Windows accepts Grove Warden and Bonded Summoner. Technic
 | Knight | base | COMPLETE |  |
 | Warblade | base | COMPLETE |  |
 | Shadowdancer | prestige | PARTIAL | Verify maintained concealment, disruption and resource expiry; do not imply unimplemented teleportation/world stealth. |
-| Dragon Disciple | prestige | PARTIAL | Verify inherited/body/natural-weapon progression with armour suppression and existing transformations. |
+| Dragon Disciple | prestige | COMPLETE |  |
 | Dwarven Defender | prestige | PARTIAL | Verify actual defensive stance, movement trade-offs and shared protection in native encounters. |
 | Pyrokineticist | prestige | COMPLETE |  |
 | Crusader | base | COMPLETE |  |
 | Swordsage | base | COMPLETE |  |
 | Wilder | base | COMPLETE |  |
 | Binder | base | COMPLETE |  |
-| Warshaper | prestige | PARTIAL | Verify form-dependent benefits, natural weapon reach and reversion/equipment restoration. |
+| Warshaper | prestige | COMPLETE |  |
 | Bonded Summoner | prestige | COMPLETE |  |
 | Ardent | base | COMPLETE |  |
 | Lurk | base | COMPLETE |  |
@@ -60,6 +60,5 @@ Matching-source native Windows accepts Grove Warden and Bonded Summoner. Technic
 ## Finite exit plan
 
 1. eldritch-knight, shadowdancer, dwarven-defender: Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.
-2. dragon-disciple, warshaper: Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.
 
 Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.

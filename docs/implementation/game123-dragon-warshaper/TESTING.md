@@ -24,3 +24,7 @@ Current source gate40662765504 atdc05904 passes connected113/0, connected cold59
 Extract both ZIP layers and launch `road-has-gone-dark.exe` with its complete folder. Fresh campaigns use v34; existing campaigns retain their exact pins. Create Sorcerer, Druid and Wizard characters. Prestige is absent at birth. Earn adventure XP, return home and inspect optional Dragon/Warshaper advancement and legal base-class alternatives. Dragon needs actual permanent arcane tier3 plus Arcana4 and a prior caster parent; Warshaper needs BAB4 and permanent Druid Shape. Review chosen parent, body/equipment rules and finite resources on the sheet.
 
 In combat, compare Ember, Scale mantle, Weakening and clustered Crownfire against saves/fire resistance/spacing and resource exhaustion. Compare Longclaw reach with Ironhide physical mitigation and observe form expiry/reversion without free healing. Move, summon or transform, then use the always-visible gold End button with zero main/move budget. Confirm Wolf/Sentinel activations. Return home, rest, save, fully exit and resume. Human balance and the user’s local graphics hardware are separate from automated technical evidence.
+
+## Final native acceptance
+
+Run40668915970 at`dc05904b69b2cb72c56408e791575d19d8eadf81` SUCCEEDED. See DELIVERY.md for the actual per-phase counts and evidence links; all failures0. Independently audited playable ZIP SHA-256 `8297ff208f4b553d0947f1a41b2a9aa4aa1b79cbc34161e29df51723486dbd5d`. Strict readiness generator promotes only Dragon/Warshaper to47/3; all other48 rows remain verbatim.

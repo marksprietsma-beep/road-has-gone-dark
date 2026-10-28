@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "rules_ref": {
-    "pack_id": "trhgd-character-v33",
+    "pack_id": "trhgd-character-v34",
     "schema_version": 1,
-    "rules_version": "33.0.0",
+    "rules_version": "34.0.0",
     "engine_schema": 3,
-    "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
+    "content_hash": "4aa4f90021457421bd08b3cb4210f94844651472f7c54e330f5e0055a395e98e"
   },
-  "source_pack_sha256": "8bd400b2c3371a3559523a1321eb2075befe0400ce841b648a623fd02dc9d240",
+  "source_pack_sha256": "f46c6732c6f206c0174000d81a03b7d4f2dba3a083f82855cfea406421404cf5",
   "policy": {
     "COMPLETE": "Actual meaningful class identity with scoped tactical/choice/resource/persistence evidence; not sourcebook completeness or final human balance.",
     "PARTIAL": "Playable but material mechanics or practical acceptance missing.",
@@ -9881,8 +9881,8 @@
       "name": "Dragon Disciple",
       "kind": "prestige",
       "level_cap": 10,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded native Dragon/Warshaper acceptance: permanent prerequisites, explicit earned entry/committed decline, actual independent caster/body choices, paid tactical effects and exact cold. Original adaptation, not exhaustive tabletop parity or final human balance.",
       "creation": {
         "legal_at_level_one": false,
         "historical_native": "Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only"
@@ -9890,11 +9890,23 @@
       "advancement": {
         "cap": 10,
         "historical_kernel_levels": 0,
-        "current_native_levels": [],
-        "ordered_history": true
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "ordered_history": true,
+        "total_character_level_cap": 20
       },
       "defining_features": {
-        "description": "Inherited draconic manifestation, fiery breath, natural protection; ancestry history is never overwritten.",
+        "description": "Ten earned prestige levels: permanent level5, Arcana4 and actual arcane tier3 magic; choose an existing arcane parent. Scales and improved unarmed claws retain original ancestry. A finite draconic reserve competes between single-target breath, self ward, weakening breath and a two-use clustered crownfire burst. Supernatural powers are suppressed while transformed; no flight or ancestry replacement.",
         "source_features": [
           "dragon-disciple-scales",
           "dragon-disciple-technique-1-feature",
@@ -9912,8 +9924,8 @@
       },
       "early_mid_high": {
         "historical_level_witnesses": [],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "All supported Dragon1\u201310/Warshaper1\u20135 with real commands, saves/counterplay, finite exhaustion/recovery, scales/claws/ward/fire, distinct reach/mitigation, transformation/gear/expiry/incapacitation and full cold. Actual2280XP/total16 independently earns both entire Dragon tracks and Warshaper5; total20 alternatives are development fixtures, never earned20."
       },
       "resources": [
         {
@@ -9952,14 +9964,26 @@
         "career_groups": [
           "dragon-disciple-casting"
         ],
-        "spell_refs_by_tier": {}
+        "spell_refs_by_tier": {},
+        "parent_casting": [
+          {
+            "group": "dragon-disciple-casting",
+            "options": [
+              "bard",
+              "sorcerer",
+              "wizard",
+              "beguiler",
+              "duskblade"
+            ]
+          }
+        ]
       },
       "noncombat": {
         "scope": "Only existing fourteen skills/contextual opportunities; no new class-specific world mechanics.",
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": "docs/implementation/game126/evidence/native-prestige-witnesses.json",
         "historical_pin": {
           "pack_id": "trhgd-character-v16",
@@ -9986,6 +10010,41 @@
               "op": "skill",
               "id": "arcana",
               "min": 4
+            },
+            {
+              "op": "spell_tier",
+              "id": "arcane",
+              "min": 3
+            },
+            {
+              "op": "any",
+              "args": [
+                {
+                  "op": "class_level",
+                  "id": "bard",
+                  "min": 1
+                },
+                {
+                  "op": "class_level",
+                  "id": "sorcerer",
+                  "min": 1
+                },
+                {
+                  "op": "class_level",
+                  "id": "wizard",
+                  "min": 1
+                },
+                {
+                  "op": "class_level",
+                  "id": "beguiler",
+                  "min": 1
+                },
+                {
+                  "op": "class_level",
+                  "id": "duskblade",
+                  "min": 1
+                }
+              ]
             }
           ]
         },
@@ -9998,35 +10057,41 @@
           "schema_version": 1
         },
         "automatic_entry": false,
-        "starting_class": false
+        "starting_class": false,
+        "current_native": true,
+        "earned_entry_xp": [
+          250,
+          360
+        ],
+        "earned_prestige_levels": 10,
+        "development_prestige_levels": 10
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/dragon-disciple",
-        "data/rules/trhgd-character-v26.json#classes/dragon-disciple"
+        "data/rules/trhgd-character-v26.json#classes/dragon-disciple",
+        "tests/dragon_warshaper/mechanics.gd",
+        "tests/dragon_warshaper/input.gd",
+        "tests/dragon_warshaper/journey.gd",
+        "tests/dragon_warshaper/connected.gd",
+        "docs/implementation/game123-dragon-warshaper/evidence/native-proof.json",
+        "docs/implementation/game123-dragon-warshaper/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify inherited/body/natural-weapon progression with armour suppression and existing transformations."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v33",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "33.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
-      "acceptance_carry_forward": {
-        "pin": {
-          "pack_id": "trhgd-character-v32",
-          "schema_version": 1,
-          "rules_version": "32.0.0",
-          "engine_schema": 3,
-          "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed"
-        },
-        "source": "2a3262fb73097fa8ce43939b18c7836a50f5cc8a",
-        "accepted": false,
-        "scope": "Previous source-labelled status retained; prior43 accepted careers and five remaining partial careers are not newly promoted by this pair. Current all-base and historical/frozen regressions supplement earlier career-specific evidence."
-      }
+      "current_kernel_evidence": "docs/implementation/game123-dragon-warshaper/evidence/native-proof.json#mechanics/proof.json",
+      "verified_source": "dc05904b69b2cb72c56408e791575d19d8eadf81",
+      "limitations": [
+        "Original bounded adaptation, not full tabletop conversion or final human balance.",
+        "Historical1\u201333 saves retain exact pins/behavior; no silent migration.",
+        "Existing shared body/equipment/creature policies and labelled humanoid LPC anatomy fallback remain. No flight, new transformation engine or custom dragon/animal art.",
+        "Shared long-label/small-window clipping and browser158 remain separate."
+      ]
     },
     {
       "id": "dwarven-defender",
@@ -11326,8 +11391,8 @@
       "name": "Warshaper",
       "kind": "prestige",
       "level_cap": 5,
-      "status": "PARTIAL",
-      "status_scope": "Playable original adaptation; material conditional/repertoire acceptance remains. Historical derivation is not complete parity.",
+      "status": "COMPLETE",
+      "status_scope": "Bounded native Dragon/Warshaper acceptance: permanent prerequisites, explicit earned entry/committed decline, actual independent caster/body choices, paid tactical effects and exact cold. Original adaptation, not exhaustive tabletop parity or final human balance.",
       "creation": {
         "legal_at_level_one": false,
         "historical_native": "Prestige is excluded at birth; permanent requirements and explicit XP-funded advancement only"
@@ -11335,11 +11400,18 @@
       "advancement": {
         "cap": 5,
         "historical_kernel_levels": 0,
-        "current_native_levels": [],
-        "ordered_history": true
+        "current_native_levels": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "ordered_history": true,
+        "total_character_level_cap": 20
       },
       "defining_features": {
-        "description": "Original five-level Warshaper path: real permanent entry requirements and active creature/form techniques.",
+        "description": "Five earned prestige levels requiring permanent level5, BAB4 and Druid Shape. Paid three-round natural bodies share one finite reserve: Predatory frame, Longclaw reach3, or Ironhide physical resistance2. Actual claws, attributes, equipment suppression, original health, reversion and expiry use the existing body authority. Original ancestry and owned creatures are retained.",
         "source_features": [
           "warshaper-technique-1-feature",
           "warshaper-technique-3-feature",
@@ -11355,8 +11427,8 @@
       },
       "early_mid_high": {
         "historical_level_witnesses": [],
-        "current_tactical": false,
-        "scope": "Current native receipts identify actual action/hit/cost; level tables alone never promote status."
+        "current_tactical": true,
+        "scope": "All supported Dragon1\u201310/Warshaper1\u20135 with real commands, saves/counterplay, finite exhaustion/recovery, scales/claws/ward/fire, distinct reach/mitigation, transformation/gear/expiry/incapacitation and full cold. Actual2280XP/total16 independently earns both entire Dragon tracks and Warshaper5; total20 alternatives are development fixtures, never earned20."
       },
       "resources": [
         {
@@ -11395,14 +11467,15 @@
           "animal-handling"
         ],
         "career_groups": [],
-        "spell_refs_by_tier": {}
+        "spell_refs_by_tier": {},
+        "parent_casting": []
       },
       "noncombat": {
         "scope": "Only existing fourteen skills/contextual opportunities; no new class-specific world mechanics.",
         "evidence": "scripts/rules/rules_completeness.gd"
       },
       "persistence": {
-        "current_native": false,
+        "current_native": true,
         "historical_evidence": "docs/implementation/game126/evidence/native-prestige-witnesses.json",
         "historical_pin": {
           "pack_id": "trhgd-character-v16",
@@ -11439,35 +11512,40 @@
           "schema_version": 1
         },
         "automatic_entry": false,
-        "starting_class": false
+        "starting_class": false,
+        "current_native": true,
+        "earned_entry_xp": [
+          360
+        ],
+        "earned_prestige_levels": 5,
+        "development_prestige_levels": 5
       },
       "evidence": [
         "docs/implementation/game126/current/MATRIX.json#prestige_paths/warshaper",
-        "data/rules/trhgd-character-v26.json#classes/warshaper"
+        "data/rules/trhgd-character-v26.json#classes/warshaper",
+        "tests/dragon_warshaper/mechanics.gd",
+        "tests/dragon_warshaper/input.gd",
+        "tests/dragon_warshaper/journey.gd",
+        "tests/dragon_warshaper/connected.gd",
+        "docs/implementation/game123-dragon-warshaper/evidence/native-proof.json",
+        "docs/implementation/game123-dragon-warshaper/screenshots/README.md"
       ],
-      "remaining": [
-        "Verify form-dependent benefits, natural weapon reach and reversion/equipment restoration."
-      ],
+      "remaining": [],
       "previous_acceptance_pin": {
-        "pack_id": "trhgd-character-v25",
+        "pack_id": "trhgd-character-v33",
         "schema_version": 1,
-        "rules_version": "25.0.0",
+        "rules_version": "33.0.0",
         "engine_schema": 3,
-        "content_hash": "c828f3cb74005a4b602bd5986fa96549905a0699dd780e75d7bb40c84b7c98a7"
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
       },
-      "current_kernel_evidence": "Inherited labelled history evidence, with targeted prestige consumers freshly exercised in current native phases.",
-      "acceptance_carry_forward": {
-        "pin": {
-          "pack_id": "trhgd-character-v32",
-          "schema_version": 1,
-          "rules_version": "32.0.0",
-          "engine_schema": 3,
-          "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed"
-        },
-        "source": "2a3262fb73097fa8ce43939b18c7836a50f5cc8a",
-        "accepted": false,
-        "scope": "Previous source-labelled status retained; prior43 accepted careers and five remaining partial careers are not newly promoted by this pair. Current all-base and historical/frozen regressions supplement earlier career-specific evidence."
-      }
+      "current_kernel_evidence": "docs/implementation/game123-dragon-warshaper/evidence/native-proof.json#mechanics/proof.json",
+      "verified_source": "dc05904b69b2cb72c56408e791575d19d8eadf81",
+      "limitations": [
+        "Original bounded adaptation, not full tabletop conversion or final human balance.",
+        "Historical1\u201333 saves retain exact pins/behavior; no silent migration.",
+        "Existing shared body/equipment/creature policies and labelled humanoid LPC anatomy fallback remain. No flight, new transformation engine or custom dragon/animal art.",
+        "Shared long-label/small-window clipping and browser158 remain separate."
+      ]
     },
     {
       "id": "bonded-summoner",
@@ -18486,35 +18564,27 @@
       "goal": "Close concrete equipment/rage/ki/divine/precision/ward/path trigger gaps in real combat, including exhaustion, expiry and negative cases.",
       "priority": 1,
       "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
-    },
-    {
-      "cohort": [
-        "dragon-disciple",
-        "warshaper"
-      ],
-      "goal": "Verify owned-creature actions, growth/limits, transformations, body/equipment restoration and path benefits; no unsupported flight/environment claims.",
-      "priority": 2,
-      "exit": "Current native positive/negative tactical, legitimate choices and costs/recovery, lawful progression, actual controls, exact cold persistence; earned paths separately. No remaining defining advertised defect."
     }
   ],
   "milestone_complete": false,
   "programme_source_occurrences": 760,
   "world_transition": "GAME-142 then GAME-141 only once all supported-class functional gates and GAME-123 acceptance are met; source catalogue is not that gate.",
-  "verified_source": "358672ffce893014b162a4c4e49fc163688c00f6",
+  "verified_source": "dc05904b69b2cb72c56408e791575d19d8eadf81",
   "exit_policy": "Finish these finite supported-career gates, consolidate human Windows visual/balance acceptance and GAME-123 exit review; no added roster/sourcebook breadth is required. Then GAME-142 and GAME-141.",
   "current_acceptance_cohort": [
-    "grove-warden",
-    "bonded-summoner"
+    "dragon-disciple",
+    "warshaper"
   ],
   "historical_acceptance_carry_forward": {
     "pin": {
-      "pack_id": "trhgd-character-v32",
+      "pack_id": "trhgd-character-v33",
       "schema_version": 1,
-      "rules_version": "32.0.0",
+      "rules_version": "33.0.0",
       "engine_schema": 3,
-      "content_hash": "f0a55222931fb5e948c480a5b94dbe0f5a46dd64696c83f28e3418bba266b8ed"
+      "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
     },
-    "source": "2a3262fb73097fa8ce43939b18c7836a50f5cc8a",
-    "scope": "Prior43 source-labelled accepted careers retained; only this pair is promoted."
+    "source": "358672ffce893014b162a4c4e49fc163688c00f6",
+    "integration_source": "0a7b690fe17f665c9ab1c581a0f0ddc91aa5d154",
+    "scope": "All prior45 accepted records and three remaining partial records retained verbatim; only Dragon Disciple and Warshaper promote."
   }
 }
