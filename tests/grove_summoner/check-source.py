@@ -17,9 +17,17 @@ def verify():
   x={r['id']:r for r in a[category]};y={r['id']:r for r in b[category]};assert set(x)==set(y),category
   changed={k for k in x if x[k]!=y[k]};assert changed==expected.get(category,set()),(category,changed);deltas[category]=sorted(changed)
  for file in (ROOT/'scripts').rglob('*.gd'):
-  path=file.relative_to(ROOT).as_posix();assert file.read_text(encoding='utf-8')==gen.enable_versions(original(path).decode('utf-8')),path
+  path=file.relative_to(ROOT).as_posix();expected=gen.enable_versions(original(path).decode('utf-8'))
+  if path=='scripts/ui/first_adventure.gd'and file.read_text(encoding='utf-8')!=expected:
+   spec165=importlib.util.spec_from_file_location('sentinel_scope',ROOT/'tests/sentinel_turn/source_scope.py');scope165=importlib.util.module_from_spec(spec165);spec165.loader.exec_module(scope165);scope165.verify_ui()
+   assert scope165.original(path).decode('utf-8')==expected,'Released33 source remains the original historical expectation'
+  else:assert file.read_text(encoding='utf-8')==expected,path
  exporter='tools/release/export-game.mjs';expected_exporter=original(exporter).decode('utf-8').replace("'res://tests/ranger_steward/review.tscn'].includes(qaScene)","'res://tests/ranger_steward/review.tscn','res://tests/grove_summoner/review.tscn'].includes(qaScene)")
- assert (ROOT/exporter).read_text(encoding='utf-8')==expected_exporter,'Original exporter plus exactly one approved QA scene'
+ if (ROOT/exporter).read_text(encoding='utf-8')!=expected_exporter:
+  spec165=importlib.util.spec_from_file_location('sentinel_export_scope',ROOT/'tests/sentinel_turn/source_scope.py');scope165=importlib.util.module_from_spec(spec165);spec165.loader.exec_module(scope165)
+  assert scope165.original(exporter).decode('utf-8')==expected_exporter
+  assert (ROOT/exporter).read_text(encoding='utf-8')==scope165.expected_exporter(),'Exactly one additional approved Sentinel diagnostic scene'
+ else:assert (ROOT/exporter).read_text(encoding='utf-8')==expected_exporter,'Original exporter plus exactly one approved QA scene'
  frozen=['scripts/combat/tactical_combat.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd','scripts/combat/combat_entities.gd']
  for path in frozen:assert (ROOT/path).read_bytes()==original(path),path
  for path in subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'data'],cwd=ROOT,text=True).splitlines():

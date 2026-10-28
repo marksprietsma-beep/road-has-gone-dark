@@ -25,13 +25,17 @@ jobs:
       - run: npm ci --ignore-scripts --prefix vendor/azgaar
       - run: python tests/world_library/prepare-ci.py
       - run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact UI/data/history scope
+        run: |
+          python tests/sentinel_turn/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
       - name: Checked class cache
         shell: pwsh
         run: |
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/sentinel-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'sentinel-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Released v33 real-control reproduction
+      - name: Repaired footer, real campaign controls and independent cold continuation
         env:
           SENTINEL_ROOT: ${{ runner.temp }}/sentinel-turn
         run: python tests/sentinel_turn/run-probe.py

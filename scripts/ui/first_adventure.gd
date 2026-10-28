@@ -63,11 +63,16 @@ func _ready() -> void:
  actions=VBoxContainer.new();actions.add_theme_constant_override("separation",4);side.add_child(actions)
  log_label=GameUI.label("",GameUI.META);side.add_child(log_label)
  var footer := HBoxContainer.new();column.add_child(footer)
+ # Keep progression at the viewport's leading edge. Long ability descriptions
+ # can widen the body; a spacer before End would push it outside the window.
+ end_button=GameUI.action("End turn",func(): send("end"),true);footer.add_child(end_button)
+ end_button.tooltip_text="Finish this actor's turn, even with no movement or action remaining."
+ return_button=GameUI.action("Return to regional play",return_region,true);footer.add_child(return_button)
  menu_button=GameUI.action("Main menu",func(): if thread==null: get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn"));footer.add_child(menu_button)
  retreat_button=GameUI.action("Withdraw · defeat",func(): send("retreat"));footer.add_child(retreat_button)
+ retreat_button.tooltip_text="Explicitly abandon this encounter as a defeat. This does not end your turn."
+ retreat_button.add_theme_color_override("font_color",Color("d49486"))
  footer.add_child(GameUI.spacer())
- end_button=GameUI.action("End turn",func(): send("end"),true);footer.add_child(end_button)
- return_button=GameUI.action("Return to regional play",return_region,true);footer.add_child(return_button)
  art_note=GameUI.label("",10);side.add_child(art_note)
  layout_board()
  var handoff := PartyService.handoff
@@ -309,6 +314,7 @@ func refresh() -> void:
   if actor.team=="party":
    var focus: int=int(actor.record.runtime.resources.get("focus",0))
    detail.text="%s\nMove: %s · Action: %s"%[actor.name,"ready" if int(b.budget.move)>0 else "spent","ready" if int(b.budget.main)>0 else "spent"]
+   if int(b.budget.move)==0 and int(b.budget.main)==0:detail.text+="\nTurn spent · choose End turn to continue."
    if int(actor.record.runtime.temporary_hp)>0:detail.text+="\nBuffer: %d temporary HP"%int(actor.record.runtime.temporary_hp)
    if engine.registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33"]:
     var shells: int=actor.record.runtime.statuses.filter(func(s: Dictionary):return engine.registry.definition("statuses",s.id).tags.has("weapon_decoy")).size()

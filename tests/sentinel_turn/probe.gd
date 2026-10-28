@@ -67,7 +67,7 @@ func run() -> void:
  if failures:finish();return
  var ui: Control=load("res://tests/sentinel_turn/ui_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  ui.engine=TacticalAuras.new(b.units.druid.record);ui.state=saved.state.duplicate(true);ui.state.first_adventure={"battle":b};ui.message="GAME-165 · released33 diagnostic · Druid summoned Sentinel · 0 action / 0 movement";ui.refresh()
- var any_clipped := false
+ var any_clipped := false;var repaired := OS.get_environment("SENTINEL_EXPECT_REPAIRED")!="0"
  for size in [Vector2i(640,360),Vector2i(1280,720),Vector2i(2560,1440)]:
   get_window().mode=Window.MODE_WINDOWED;get_window().size=size;ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);await frames();ui.refresh();await frames()
   var view := get_viewport().get_visible_rect();var end_rect: Rect2=ui.end_button.get_global_rect();var retreat_rect: Rect2=ui.retreat_button.get_global_rect()
@@ -76,13 +76,15 @@ func run() -> void:
   check(not ui.end_button.disabled and not ui.retreat_button.disabled and not ui.is_presenting(),"same enabled gating after completed presentation")
   ui.end_button.grab_focus();await frames()
   var before: int=ui.intents.size()
+  var image := get_viewport().get_texture().get_image();var name := ("fixed33"if repaired else"released33")+"-post-summon-%dx%d.png"%[size.x,size.y];image.save_png(base.path_join(name))
   await click(end_rect.get_center()if visible else Vector2(view.end.x-2,minf(view.end.y-2,end_rect.get_center().y)))
   var emitted: bool=ui.intents.size()>before and ui.intents.back().kind=="end"
-  var image := get_viewport().get_texture().get_image();var name := "released33-post-summon-%dx%d.png"%[size.x,size.y];image.save_png(base.path_join(name))
+  if repaired:check(visible and emitted and ui.engine.current(ui.battle()).id==b.order[3],"fully visible genuine End click advances to Sentinel")
+  check(view.encloses(retreat_rect),"Withdraw remains visibly distinct and accessible")
   observations.append({"requested":[size.x,size.y],"viewport":str(view),"root":str(ui.get_global_rect()),"end":str(end_rect),"withdraw":str(retreat_rect),"end_on_screen":visible,"withdraw_on_screen":view.encloses(retreat_rect),"end_enabled":not ui.end_button.disabled,"focusable":ui.end_button.has_focus(),"genuine_visible_click_emits_end":emitted,"screenshot":name,"sha256":FileAccess.get_sha256(base.path_join(name))})
   var out: Dictionary=ui.engine.command(b,{"actor_id":"druid","revision":7,"kind":"end"});check(out.ok and ui.engine.current(out.battle).entity.kind=="summon","original authority ends0/0 Druid into Sentinel")
   ui.state.first_adventure.battle=b;ui.intents.clear();ui.refresh()
- check(any_clipped,"released UI reproduces inaccessible off-viewport End Turn")
+ if not repaired:check(any_clipped,"released UI reproduces inaccessible off-viewport End Turn")
  FileAccess.open(base.path_join("fixture.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(saved)))
  finish()
 func finish() -> void:
