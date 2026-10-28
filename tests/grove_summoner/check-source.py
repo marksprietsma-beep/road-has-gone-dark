@@ -5,6 +5,10 @@ ROOT=Path(__file__).resolve().parents[2];BASE='09c48ba785bbca020168cc9b7e37c09f5
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
+ scope34=None
+ if (ROOT/'data/rules/trhgd-character-v34.json').exists():
+  spec34=importlib.util.spec_from_file_location('dragon_warshaper_scope',ROOT/'tests/dragon_warshaper/source_scope.py');scope34=importlib.util.module_from_spec(spec34);spec34.loader.exec_module(scope34);scope34.verify_production()
+  manifest=dict(manifest,packs=manifest['packs'][:33]) # Exact old prefix after independent append-only34 validation.
  assert len(old['packs'])==32 and len(manifest['packs'])==33 and manifest['packs'][:32]==old['packs']
  for row in old['packs']:
   path=row['path'].removeprefix('res://');assert (ROOT/path).read_bytes()==original(path),path
@@ -21,7 +25,7 @@ def verify():
   if path=='scripts/ui/first_adventure.gd'and file.read_text(encoding='utf-8')!=expected:
    spec165=importlib.util.spec_from_file_location('sentinel_scope',ROOT/'tests/sentinel_turn/source_scope.py');scope165=importlib.util.module_from_spec(spec165);spec165.loader.exec_module(scope165);scope165.verify_ui()
    assert scope165.original(path).decode('utf-8')==expected,'Released33 source remains the original historical expectation'
-  else:assert file.read_text(encoding='utf-8')==expected,path
+  else:assert file.read_text(encoding='utf-8')==(scope34.recipe().enable_versions(expected)if scope34 else expected),path
  exporter='tools/release/export-game.mjs';expected_exporter=original(exporter).decode('utf-8').replace("'res://tests/ranger_steward/review.tscn'].includes(qaScene)","'res://tests/ranger_steward/review.tscn','res://tests/grove_summoner/review.tscn'].includes(qaScene)")
  if (ROOT/exporter).read_text(encoding='utf-8')!=expected_exporter:
   spec165=importlib.util.spec_from_file_location('sentinel_export_scope',ROOT/'tests/sentinel_turn/source_scope.py');scope165=importlib.util.module_from_spec(spec165);spec165.loader.exec_module(scope165)

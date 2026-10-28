@@ -2,7 +2,7 @@ class_name RulesWaveFive
 extends RefCounted
 ## v15 selected repertoire/channel adapters. Existing history, costs, effects and save owner remain authority.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id")in ["trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33"]
+ return source.rules_ref().get("pack_id")in ["trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34"]
 
 static func spell_selected(record: Dictionary,ability: Dictionary,source: RulesRegistry) -> bool:
  var id: String=str(ability.get("channel_spell",ability.get("id",""))) if enabled(source) else str(ability.get("id",""))
