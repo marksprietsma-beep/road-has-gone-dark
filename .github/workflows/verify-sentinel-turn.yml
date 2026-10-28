@@ -1,6 +1,11 @@
 name: Sentinel Turn Controls and Windows Playtest
 on:
   workflow_dispatch:
+    inputs:
+      release:
+        type: boolean
+        default: false
+        description: Focused self-contained Windows UI smoke release after source controls pass
   push:
     branches: [main, fix/game-165-sentinel-end-turn]
     paths: ['scripts/ui/first_adventure.gd', 'tests/sentinel_turn/**', '.github/workflows/verify-sentinel-turn.yml']
@@ -11,7 +16,7 @@ permissions:
 jobs:
   windows-controls:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,9 +44,28 @@ jobs:
         env:
           SENTINEL_ROOT: ${{ runner.temp }}/sentinel-turn
         run: python tests/sentinel_turn/run-probe.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Focused native Windows playtest and legacy/frozen smoke
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          SENTINEL_RELEASE_ROOT: ${{ runner.temp }}/sentinel-native
+        run: python tests/sentinel_turn/verify-package.py
+      - name: Self-contained Windows playtest
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentinel-turn-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/sentinel-native/distribution/*.zip
+            ${{ runner.temp }}/sentinel-native/distribution/*.sha256
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: sentinel-turn-windows-evidence
-          path: ${{ runner.temp }}/sentinel-turn
+          path: |
+            ${{ runner.temp }}/sentinel-turn
+            ${{ runner.temp }}/sentinel-native
           retention-days: 90
