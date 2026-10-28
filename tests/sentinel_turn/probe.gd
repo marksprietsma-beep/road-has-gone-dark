@@ -75,12 +75,12 @@ func run() -> void:
   any_clipped=any_clipped or not visible
   check(not ui.end_button.disabled and not ui.retreat_button.disabled and not ui.is_presenting(),"same enabled gating after completed presentation")
   ui.end_button.grab_focus();await frames()
-  var before := ui.intents.size()
+  var before: int=ui.intents.size()
   await click(end_rect.get_center()if visible else Vector2(view.end.x-2,minf(view.end.y-2,end_rect.get_center().y)))
   var emitted: bool=ui.intents.size()>before and ui.intents.back().kind=="end"
   var image := get_viewport().get_texture().get_image();var name := "released33-post-summon-%dx%d.png"%[size.x,size.y];image.save_png(base.path_join(name))
   observations.append({"requested":[size.x,size.y],"viewport":str(view),"root":str(ui.get_global_rect()),"end":str(end_rect),"withdraw":str(retreat_rect),"end_on_screen":visible,"withdraw_on_screen":view.encloses(retreat_rect),"end_enabled":not ui.end_button.disabled,"focusable":ui.end_button.has_focus(),"genuine_visible_click_emits_end":emitted,"screenshot":name,"sha256":FileAccess.get_sha256(base.path_join(name))})
-  var out := ui.engine.command(b,{"actor_id":"druid","revision":7,"kind":"end"});check(out.ok and ui.engine.current(out.battle).entity.kind=="summon","original authority ends0/0 Druid into Sentinel")
+  var out: Dictionary=ui.engine.command(b,{"actor_id":"druid","revision":7,"kind":"end"});check(out.ok and ui.engine.current(out.battle).entity.kind=="summon","original authority ends0/0 Druid into Sentinel")
   ui.state.first_adventure.battle=b;ui.intents.clear();ui.refresh()
  check(any_clipped,"released UI reproduces inaccessible off-viewport End Turn")
  FileAccess.open(base.path_join("fixture.json"),FileAccess.WRITE).store_string(JSON.stringify(RulesJson.string_keys(saved)))
