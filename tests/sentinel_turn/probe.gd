@@ -34,6 +34,13 @@ func command(engine: TacticalAuras,b: Dictionary,kind: String,target := "",desti
  if not destination.is_empty():input.destination=destination
  var out := engine.command(b,input);check(out.ok,"fixture real command "+kind+" "+str(out.get("error","")))
  return out.get("battle",b)
+func public_seed() -> Dictionary:
+ # Authored public diagnostic seed, not the player's private RNG. Select a
+ # first d6 of6 using the ORIGINAL pure RNG so Arcane bolt matches8 damage.
+ for i in 128:
+  var rng := RulesRng.initial("game165-public-fixture-"+str(i))
+  if RulesRng.draw(rng,6).value==6:return rng
+ check(false,"public six-sided fixture seed exists");return RulesRng.initial("unreachable")
 func fixture() -> Dictionary:
  var records := {"sorcerer":record("sorcerer","sorcerer"),"knight":record("knight","knight"),"druid":record("druid","druid","heritage-ogre")}
  if failures:return {}
@@ -42,8 +49,8 @@ func fixture() -> Dictionary:
  var wolf := RulesEntities.identity("druid");check(b.units.has(wolf),"actual permanent Wolf created")
  # Authored diagnostic turn order; not claimed to be the private save's seed,
  # geography or identities. Preserve all subsequent commands and authority.
- b.order=["sorcerer",wolf,"druid","knight","bandit-blade","bandit-bow"];b.cursor=0;b=engine.seal(b)
- b=command(engine,b,"move","",[2,2]);b=command(engine,b,"sorcerer-arcane-bolt","bandit-blade");b=command(engine,b,"end")
+ b.order=["sorcerer",wolf,"druid","knight","bandit-blade","bandit-bow"];b.cursor=0;b.rng=public_seed();b=engine.seal(b)
+ b=command(engine,b,"move","",[2,2]);var hp: int=b.units["bandit-blade"].record.runtime.hp;b=command(engine,b,"sorcerer-arcane-bolt","bandit-blade");check(hp-b.units["bandit-blade"].record.runtime.hp==8,"actual original Arcane bolt deals the reported8 damage");b=command(engine,b,"end")
  b=command(engine,b,"move","",[0,4]);b=command(engine,b,"end")
  b=command(engine,b,"move","",[2,3]);saved.before_summon=b.duplicate(true)
  b=command(engine,b,"druid-summon-sentinel","druid")

@@ -45,7 +45,7 @@ func open_ui() -> Control:
  var ui: Control=load("res://scenes/combat/first_adventure.tscn").instantiate();get_tree().root.add_child(ui);await idle(ui);return ui
 func seed_battle() -> Dictionary:
  var b: Dictionary=TacticalAuras.new(state).create(state,state.expedition.active.site_id,CombatBattlefields.LEGACY)
- var ids: Array=state.party_ids;var wolf := RulesEntities.identity(ids[2]);b.order=[ids[0],wolf,ids[2],ids[1],"bandit-blade","bandit-bow"];b.cursor=0;b=TacticalAuras.new(state).seal(b)
+ var ids: Array=state.party_ids;var wolf := RulesEntities.identity(ids[2]);b.order=[ids[0],wolf,ids[2],ids[1],"bandit-blade","bandit-bow"];b.cursor=0;b.rng=fixture_helper.public_seed();b=TacticalAuras.new(state).seal(b)
  var engine := TacticalAuras.new(state)
  b=fixture_helper.command(engine,b,"move","",[2,2]);b=fixture_helper.command(engine,b,"sorcerer-arcane-bolt","bandit-blade");b=fixture_helper.command(engine,b,"end")
  b=fixture_helper.command(engine,b,"move","",[0,4]);b=fixture_helper.command(engine,b,"end");b=fixture_helper.command(engine,b,"move","",[2,3])
