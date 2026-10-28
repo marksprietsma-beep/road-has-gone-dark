@@ -11,3 +11,6 @@ Released33 Windows run **40644407386** succeeded at `29e7257c5d82cdab4713abe2611
 
 
 Candidate commit `ad554a5` / Windows40650944412 failed before Godot in the exact source guard, where new34 JSON was read with the platform default encoding but its recipe explicitly reads UTF-8. Static source checks had passed on the UTF-8 host. Use explicit UTF-8 for every new JSON/text guard read on Windows, retaining exact recipe/pin comparisons and all legacy assertions. No gameplay/data change or native release is justified by this harness failure. Inspect the next exact-head focused run before further mechanics changes.
+
+
+Windows40651419933 at `f142ada` passed source/history guards, checked Godot import and released33 reproduction142/0. Current34 stopped at246 checks/1 failure because the new test tried Beguiler5→Dragon, but Beguiler5 only has actual tier2. The production tier3 gate correctly rejected it. Change the current fixture and strengthened old stranded-parent witness to Beguiler6, explicitly assert actual tier3, preserve the original142-check receipt as recorded. Do not loosen prestige prerequisites. Wizard/Sorcerer full prestige progression and Druid/Warshaper histories had proceeded; remaining tactical/contracts/cold still need a passing run. No native release has been dispatched.

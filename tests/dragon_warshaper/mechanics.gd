@@ -10,7 +10,7 @@ func run() -> void:
  kernel=RulesCharacter.new(source)
  if OS.get_environment("DRAGON_WARSHAPER_RESTART")=="1":cold_cohort();finish_current(true);return
  fixtures.fighter=build("fighter",12)
- var roots: Dictionary={"wizard":route(repeated("wizard",5),WIZARD_ARRAY,"dragon-disciple"),"sorcerer":route(repeated("sorcerer",6),{"STR":8,"DEX":12,"CON":10,"INT":14,"WIS":13,"CHA":15},"dragon-disciple"),"beguiler":route(repeated("beguiler",5),WIZARD_ARRAY,"dragon-disciple"),"druid":route(repeated("druid",6),GS_NATURE_ARRAY,"warshaper")}
+ var roots: Dictionary={"wizard":route(repeated("wizard",5),WIZARD_ARRAY,"dragon-disciple"),"sorcerer":route(repeated("sorcerer",6),{"STR":8,"DEX":12,"CON":10,"INT":14,"WIS":13,"CHA":15},"dragon-disciple"),"beguiler":route(repeated("beguiler",6),WIZARD_ARRAY,"dragon-disciple"),"druid":route(repeated("druid",6),GS_NATURE_ARRAY,"warshaper")}
  for key in roots:
   var r: Dictionary=roots[key];check(not r.is_empty(),"lawful existing parent "+key)
   if r.is_empty():continue

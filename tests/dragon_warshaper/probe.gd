@@ -12,9 +12,10 @@ func run() -> void:
   var tiers: Dictionary=RulesCompleteness.spell_tiers(shallow,replay.context,source)
   observations.shallow_entry={"offered":kernel.available_advancement(shallow).classes["dragon-disciple"].ok,"casting":replay.context.casting,"tiers":tiers,"history":shallow.advancement_history}
   check(observations.shallow_entry.offered and tiers.arcane==1,"released33 aggregate casting permits Dragon entry with actual tier1 magic")
- var stranded: Dictionary=route(repeated("beguiler",5),WIZARD_ARRAY,"dragon-disciple")
+ var stranded: Dictionary=route(repeated("beguiler",6),WIZARD_ARRAY,"dragon-disciple")
  if not stranded.is_empty():
   var context: Dictionary=kernel._replay(stranded).context
+  check(RulesCompleteness.spell_tiers(stranded,context,source).arcane==3,"stranded existing Beguiler really has permanent tier3 magic")
   var parents: Array=[]
   for option in RulesCareer.groups(source,"dragon-disciple",1)[0].options:
    if RulesCareer.option_eligibility(source,"dragon-disciple",1,option,context).ok:parents.append(option.id)
