@@ -1,0 +1,25 @@
+{
+  "source_commit": "89553b0de704ea2073a0eb5b30a25e024fe654c3",
+  "archive": "sentinel-turn-windows-x64.zip",
+  "sha256": "a84ec95a1e44d4fcc62a25e0bc0d3928ce10121bae39add2f74e97e7ef221ec1",
+  "archive_entries": 7061,
+  "crc_integrity": true,
+  "production_machine": "AMD64",
+  "bundled_nodes": [
+    "sentinel-turn-windows-x64/worldgen-helper/node.exe"
+  ],
+  "node_machine": "AMD64",
+  "production_executable_sha256": "37883507a87692cea1a0008dcf876ca7af7269edc0de30ee0f7ce056a947b692",
+  "qa_executable_absent": true,
+  "manifest_matches_source": true,
+  "core_matches_source": true,
+  "rules_ref": {
+    "pack_id": "trhgd-character-v33",
+    "schema_version": 1,
+    "rules_version": "33.0.0",
+    "engine_schema": 3,
+    "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
+  },
+  "licence_credit_files": 121,
+  "scope": "Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation."
+}

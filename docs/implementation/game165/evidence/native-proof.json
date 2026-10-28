@@ -1,0 +1,651 @@
+{
+  "source_commit": "89553b0de704ea2073a0eb5b30a25e024fe654c3",
+  "rules_ref": {
+    "pack_id": "trhgd-character-v33",
+    "schema_version": 1,
+    "rules_version": "33.0.0",
+    "engine_schema": 3,
+    "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a"
+  },
+  "archive": "sentinel-turn-windows-x64.zip",
+  "sha256": "a84ec95a1e44d4fcc62a25e0bc0d3928ce10121bae39add2f74e97e7ef221ec1",
+  "proofs": {
+    "probe": {
+      "checks": 35,
+      "failures": 0,
+      "observations": [
+        {
+          "end": "[P: (12.0, 320.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "end_on_screen": true,
+          "focusable": true,
+          "genuine_visible_click_emits_end": true,
+          "requested": [
+            640,
+            360
+          ],
+          "root": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+          "screenshot": "fixed33-post-summon-640x360.png",
+          "sha256": "4e1ab56b53448e67102f5d63a7e989207e404afe3a6a2e8f881d96d2861e4eb8",
+          "viewport": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+          "withdraw": "[P: (196.0, 320.0), S: (137.0, 28.0)]",
+          "withdraw_on_screen": true
+        },
+        {
+          "end": "[P: (12.0, 469.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "end_on_screen": true,
+          "focusable": true,
+          "genuine_visible_click_emits_end": true,
+          "requested": [
+            1280,
+            720
+          ],
+          "root": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+          "screenshot": "fixed33-post-summon-1280x720.png",
+          "sha256": "77593dd030578620498670e3d89e1f2cdcaad65c3ce5a83a33a4574556269de4",
+          "viewport": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+          "withdraw": "[P: (196.0, 469.0), S: (137.0, 28.0)]",
+          "withdraw_on_screen": true
+        },
+        {
+          "end": "[P: (12.0, 680.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "end_on_screen": true,
+          "focusable": true,
+          "genuine_visible_click_emits_end": true,
+          "requested": [
+            2560,
+            1440
+          ],
+          "root": "[P: (0.0, 0.0), S: (1280.0, 720.0)]",
+          "screenshot": "fixed33-post-summon-2560x1440.png",
+          "sha256": "93897c73c29ef6327640d8fcf40ac6607783f86e3b3f9cb25a38f7a870db0d83",
+          "viewport": "[P: (0.0, 0.0), S: (1280.0, 720.0)]",
+          "withdraw": "[P: (196.0, 680.0), S: (137.0, 28.0)]",
+          "withdraw_on_screen": true
+        }
+      ],
+      "private_save_used": false,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      },
+      "scope": "Sanitized deterministic production-control reproduction; no claim of private save access or repaired campaign outcome."
+    },
+    "campaign": {
+      "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+      "checks": 121,
+      "expiry": [
+        2,
+        1,
+        0
+      ],
+      "failures": 0,
+      "measurements": [
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+          "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+          "end": "[P: (12.0, 320.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "post-summon-640-640x360.png",
+          "fullscreen": false,
+          "height": 360,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "78812cc6d600f2131170e8a7c480cea2b3ce293616f3f86faf4f4c8ec299c9b6",
+          "viewport": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+          "width": 640,
+          "window_size": [
+            640,
+            360
+          ],
+          "withdraw": "[P: (196.0, 320.0), S: (137.0, 28.0)]"
+        },
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+          "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+          "end": "[P: (12.0, 320.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "sentinel-turn-640-640x360.png",
+          "fullscreen": false,
+          "height": 360,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "a4c6e5161750e2703270dffba0b56befee7bbef4e853f646118aeefb334f7707",
+          "viewport": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+          "width": 640,
+          "window_size": [
+            640,
+            360
+          ],
+          "withdraw": "[P: (196.0, 320.0), S: (137.0, 28.0)]"
+        },
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+          "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+          "end": "[P: (12.0, 469.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "post-summon-1280-1280x719.png",
+          "fullscreen": false,
+          "height": 719,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "0cc9faea09e1394bfb1861a8b02945c70f9cc16bb4b9e625aeb791c417783a00",
+          "viewport": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+          "width": 1280,
+          "window_size": [
+            1280,
+            720
+          ],
+          "withdraw": "[P: (196.0, 469.0), S: (137.0, 28.0)]"
+        },
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+          "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+          "end": "[P: (12.0, 469.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "sentinel-turn-1280-1280x719.png",
+          "fullscreen": false,
+          "height": 719,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "01b237305ae3bfa8aa0a7bd6a7000c1e3b8ef4241fb8092aea1d8515f3ee353c",
+          "viewport": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+          "width": 1280,
+          "window_size": [
+            1280,
+            720
+          ],
+          "withdraw": "[P: (196.0, 469.0), S: (137.0, 28.0)]"
+        },
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+          "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+          "end": "[P: (12.0, 567.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "post-summon-fullscreen-1024x767.png",
+          "fullscreen": true,
+          "height": 767,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "5efb589c3e17849303ab39e8273a7ef3fa542320bc164803d65c08df2286cd27",
+          "viewport": "[P: (0.0, 0.0), S: (810.0, 607.0)]",
+          "width": 1024,
+          "window_size": [
+            1024,
+            768
+          ],
+          "withdraw": "[P: (196.0, 567.0), S: (137.0, 28.0)]"
+        },
+        {
+          "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+          "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+          "end": "[P: (12.0, 567.0), S: (75.0, 28.0)]",
+          "end_enabled": true,
+          "file": "sentinel-turn-fullscreen-1024x767.png",
+          "fullscreen": true,
+          "height": 767,
+          "presenting": false,
+          "screen_size": [
+            1024,
+            768
+          ],
+          "sha256": "2a8f7c4ad3aef655056a9db71d6adbffcdc3b5da48f928f32a70dd1da6f8ce02",
+          "viewport": "[P: (0.0, 0.0), S: (810.0, 607.0)]",
+          "width": 1024,
+          "window_size": [
+            1024,
+            768
+          ],
+          "withdraw": "[P: (196.0, 567.0), S: (137.0, 28.0)]"
+        }
+      ],
+      "next_command": {
+        "actor_id": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+        "kind": "end",
+        "revision": 8
+      },
+      "next_hash": "2a332587f69ec06c7832254c4ce000057931184d6e3cdf30953d04e91c3c46b7",
+      "private_save_used": false,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      },
+      "slot": "09c11d9eba00a2f9d0ec5c07ff742ef5",
+      "state_hash": "79e992e719bb6e91927e51be00c7f9a2ddad96cff0d13e1f56597f4508c6a9a0"
+    },
+    "campaign-cold": {
+      "checks": 10,
+      "exact_cold": true,
+      "failures": 0,
+      "private_save_used": false,
+      "rules_ref": {
+        "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v33",
+        "rules_version": "33.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy": {
+      "checks": 1941,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "legacy-cold": {
+      "checks": 486,
+      "development_fixtures": true,
+      "earned_xp": false,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "6699148448bcc0d81d9b1b0dee12ebfd48e50569066cf8b73cd1c5bb32d557d7",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v16",
+        "rules_version": "16.0.0",
+        "schema_version": 1
+      }
+    },
+    "frozen": {
+      "checks": 22181,
+      "engine": "4.6.3-stable (official)",
+      "failures": 0,
+      "golden": {
+        "arcane": {
+          "capacities": {
+            "focus": 7
+          },
+          "classes": {
+            "lantern-adept": 20
+          },
+          "snapshot_hash": "098d59b9d07594f62eeac2570aaedef2ff59ec2d1c188d85f14a11076d334b8f",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 23
+          }
+        },
+        "arcane_mixed": {
+          "capacities": {
+            "focus": 4
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "c06d4d19a3bc77c7ab5195ffdab3d0358fc3d04b40168448d2c1f58d88b12843",
+          "stats": {
+            "BAB": 12,
+            "HP": 96,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 11,
+            "ranged_attack": 13,
+            "reach": 1,
+            "reflex": 11,
+            "save_dc": 1,
+            "stride": 5,
+            "will": 21
+          }
+        },
+        "martial": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 20
+          },
+          "snapshot_hash": "21fb5edd071add0705a9d4eaa6a176eccf3a7537a3a2ff68083ed6860a2ffb66",
+          "stats": {
+            "BAB": 20,
+            "HP": 166,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 14,
+            "initiative": 1,
+            "melee_attack": 26,
+            "ranged_attack": 21,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 0,
+            "stride": 4,
+            "will": 16
+          }
+        },
+        "mixed": {
+          "capacities": {},
+          "classes": {
+            "roadwarden": 10,
+            "wayfinder": 10
+          },
+          "snapshot_hash": "b93d149e15f6d89fcfa15e31ad70722ea4d4fd6f1e4bdd3a1c7b3628593cb760",
+          "stats": {
+            "BAB": 17,
+            "HP": 126,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 11,
+            "initiative": 6,
+            "melee_attack": 18,
+            "ranged_attack": 22,
+            "reach": 1,
+            "reflex": 15,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        },
+        "negative:cycle": "reference.cycle",
+        "negative:dice": "equipment.weapon",
+        "negative:duplicate": "definition.duplicate",
+        "negative:effect": "effect.operator",
+        "negative:extra_effect": "effect.field",
+        "negative:formula": "formula.zero_divisor",
+        "negative:hook": "hook.unregistered",
+        "negative:modifier_scope": "effect.scope",
+        "negative:operator": "requirement.operator",
+        "negative:progression": "class.progression",
+        "negative:progression_dependency": "class.formula_dependency",
+        "negative:reference": "reference.missing",
+        "negative:resource": "resource.refresh",
+        "negative:status_cycle": "reference.cycle",
+        "negative:trigger": "ability.trigger",
+        "prestige": {
+          "capacities": {
+            "focus": 4,
+            "veil_uses": 5
+          },
+          "classes": {
+            "lantern-adept": 10,
+            "veil-adept": 10
+          },
+          "snapshot_hash": "7404a6cb1c89d4fab8bd3802284dcbdfc6812fe0f7136e6f34ca2487e8214b0d",
+          "stats": {
+            "BAB": 10,
+            "HP": 86,
+            "damage": 0,
+            "defence": 11,
+            "fortitude": 7,
+            "initiative": 1,
+            "melee_attack": 9,
+            "ranged_attack": 11,
+            "reach": 1,
+            "reflex": 7,
+            "save_dc": 1,
+            "stride": 4,
+            "will": 25
+          }
+        },
+        "rng_sha": "1f4b50747ca66aa4c00ff612a5dce307053825dfb03d62119200a25ffad987a9",
+        "skirmisher": {
+          "capacities": {},
+          "classes": {
+            "wayfinder": 20
+          },
+          "snapshot_hash": "e79bed620b19e5ee71e9020c04cbe8aac072a712cde4734fabb9d3087cc35e4f",
+          "stats": {
+            "BAB": 15,
+            "HP": 106,
+            "damage": 0,
+            "defence": 16,
+            "fortitude": 7,
+            "initiative": 6,
+            "melee_attack": 15,
+            "ranged_attack": 20,
+            "reach": 1,
+            "reflex": 17,
+            "save_dc": 0,
+            "stride": 5,
+            "will": 16
+          }
+        }
+      },
+      "rules_ref": {
+        "content_hash": "104a677976f5e6a91210fa5dd6abfcc0ad578315c8a696a734451694a915d098",
+        "engine_schema": 1,
+        "pack_id": "trhgd-rules-v1",
+        "rules_version": "1.0.0",
+        "schema_version": 1
+      },
+      "timings": {
+        "derive_1000_us": 1309755,
+        "effects_1000_us": 6141339,
+        "progression_2000_us": 8866207,
+        "reference_progression_us": 3263137,
+        "registry_load_us": 12578,
+        "requirements_5000_us": 325729,
+        "serialization_1000_us": 15559947,
+        "validation_1000_us": 833230
+      }
+    }
+  },
+  "timings": [
+    {
+      "phase": "probe",
+      "seconds": 7.297,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "campaign",
+      "seconds": 132.063,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "campaign-cold",
+      "seconds": 8.328,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy",
+      "seconds": 70.406,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "legacy-cold",
+      "seconds": 40.922,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "frozen",
+      "seconds": 62.813,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "production-launch",
+      "seconds": 0.609,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ],
+  "images": [
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+      "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+      "end": "[P: (12.0, 320.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "post-summon-640-640x360.png",
+      "fullscreen": false,
+      "height": 360,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "78812cc6d600f2131170e8a7c480cea2b3ce293616f3f86faf4f4c8ec299c9b6",
+      "viewport": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+      "width": 640,
+      "window_size": [
+        640,
+        360
+      ],
+      "withdraw": "[P: (196.0, 320.0), S: (137.0, 28.0)]"
+    },
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+      "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+      "end": "[P: (12.0, 320.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "sentinel-turn-640-640x360.png",
+      "fullscreen": false,
+      "height": 360,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "a4c6e5161750e2703270dffba0b56befee7bbef4e853f646118aeefb334f7707",
+      "viewport": "[P: (0.0, 0.0), S: (640.0, 360.0)]",
+      "width": 640,
+      "window_size": [
+        640,
+        360
+      ],
+      "withdraw": "[P: (196.0, 320.0), S: (137.0, 28.0)]"
+    },
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+      "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+      "end": "[P: (12.0, 469.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "post-summon-1280-1280x719.png",
+      "fullscreen": false,
+      "height": 719,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "0cc9faea09e1394bfb1861a8b02945c70f9cc16bb4b9e625aeb791c417783a00",
+      "viewport": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+      "width": 1280,
+      "window_size": [
+        1280,
+        720
+      ],
+      "withdraw": "[P: (196.0, 469.0), S: (137.0, 28.0)]"
+    },
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+      "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+      "end": "[P: (12.0, 469.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "sentinel-turn-1280-1280x719.png",
+      "fullscreen": false,
+      "height": 719,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "01b237305ae3bfa8aa0a7bd6a7000c1e3b8ef4241fb8092aea1d8515f3ee353c",
+      "viewport": "[P: (0.0, 0.0), S: (905.0, 509.0)]",
+      "width": 1280,
+      "window_size": [
+        1280,
+        720
+      ],
+      "withdraw": "[P: (196.0, 469.0), S: (137.0, 28.0)]"
+    },
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3",
+      "battle_hash": "75320e3d40427a4cef380b8b5af1ebe87949e600d1f14fd07be004f12e6bd7f2",
+      "end": "[P: (12.0, 567.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "post-summon-fullscreen-1024x767.png",
+      "fullscreen": true,
+      "height": 767,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "5efb589c3e17849303ab39e8273a7ef3fa542320bc164803d65c08df2286cd27",
+      "viewport": "[P: (0.0, 0.0), S: (810.0, 607.0)]",
+      "width": 1024,
+      "window_size": [
+        1024,
+        768
+      ],
+      "withdraw": "[P: (196.0, 567.0), S: (137.0, 28.0)]"
+    },
+    {
+      "actor": "09c11d9eba00a2f9d0ec5c07ff742ef5:adventurer:3:summon:6",
+      "battle_hash": "18ddc196a39e0d70db79019a8264182991c3726f0e338d77df7b0c3474be5210",
+      "end": "[P: (12.0, 567.0), S: (75.0, 28.0)]",
+      "end_enabled": true,
+      "file": "sentinel-turn-fullscreen-1024x767.png",
+      "fullscreen": true,
+      "height": 767,
+      "presenting": false,
+      "screen_size": [
+        1024,
+        768
+      ],
+      "sha256": "2a8f7c4ad3aef655056a9db71d6adbffcdc3b5da48f928f32a70dd1da6f8ce02",
+      "viewport": "[P: (0.0, 0.0), S: (810.0, 607.0)]",
+      "width": 1024,
+      "window_size": [
+        1024,
+        768
+      ],
+      "withdraw": "[P: (196.0, 567.0), S: (137.0, 28.0)]"
+    }
+  ],
+  "empty_path": true,
+  "production_launch": true,
+  "independent_cold": true,
+  "private_save_used": false,
+  "full_class_suite_repeated": false
+}

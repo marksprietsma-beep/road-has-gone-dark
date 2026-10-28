@@ -1,0 +1,71 @@
+name: Sentinel Turn Controls and Windows Playtest
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        type: boolean
+        default: false
+        description: Focused self-contained Windows UI smoke release after source controls pass
+  push:
+    branches: [main, fix/game-165-sentinel-end-turn]
+    paths: ['scripts/ui/first_adventure.gd', 'tests/sentinel_turn/**', '.github/workflows/verify-sentinel-turn.yml']
+  pull_request:
+    paths: ['scripts/ui/first_adventure.gd', 'tests/sentinel_turn/**', '.github/workflows/verify-sentinel-turn.yml']
+permissions:
+  contents: read
+jobs:
+  windows-controls:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - run: python tests/world_library/prepare-ci.py
+      - run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact UI/data/history scope
+        run: |
+          python tests/sentinel_turn/check-source.py
+          python tests/dual_prestige_acceptance/check-source.py
+      - name: Checked class cache
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/sentinel-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'sentinel-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Repaired footer, real campaign controls and independent cold continuation
+        env:
+          SENTINEL_ROOT: ${{ runner.temp }}/sentinel-turn
+        run: python tests/sentinel_turn/run-probe.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: Focused native Windows playtest and legacy/frozen smoke
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          SENTINEL_RELEASE_ROOT: ${{ runner.temp }}/sentinel-native
+        run: python tests/sentinel_turn/verify-package.py
+      - name: Self-contained Windows playtest
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentinel-turn-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/sentinel-native/distribution/*.zip
+            ${{ runner.temp }}/sentinel-native/distribution/*.sha256
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sentinel-turn-windows-evidence
+          path: |
+            ${{ runner.temp }}/sentinel-turn
+            ${{ runner.temp }}/sentinel-native
+          retention-days: 90

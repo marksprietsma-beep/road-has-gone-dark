@@ -1,0 +1,38 @@
+{
+  "run": 40610003042,
+  "source": "89553b0de704ea2073a0eb5b30a25e024fe654c3",
+  "links": {
+    "evidence": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40610003042/artifacts/12782892616",
+    "build": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40610003042/artifacts/12782383693"
+  },
+  "archive": "/workspace/scratch/sentinel-turn/native-40610003042/build/sentinel-turn-windows-x64.zip",
+  "sha256": "a84ec95a1e44d4fcc62a25e0bc0d3928ce10121bae39add2f74e97e7ef221ec1",
+  "checks": {
+    "probe": {
+      "checks": 35,
+      "failures": 0
+    },
+    "campaign": {
+      "checks": 121,
+      "failures": 0
+    },
+    "campaign-cold": {
+      "checks": 10,
+      "failures": 0
+    },
+    "legacy": {
+      "checks": 1941,
+      "failures": 0
+    },
+    "legacy-cold": {
+      "checks": 486,
+      "failures": 0
+    },
+    "frozen": {
+      "checks": 22181,
+      "failures": 0
+    }
+  },
+  "images": 6,
+  "native_root": "/workspace/scratch/sentinel-turn/native-40610003042/evidence/sentinel-native"
+}
