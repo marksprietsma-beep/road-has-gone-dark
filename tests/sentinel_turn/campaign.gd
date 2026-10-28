@@ -123,7 +123,10 @@ func run() -> void:
 func cold_campaign() -> void:
  var p: Dictionary=WorldOriginLore.read_json(base.path_join("proof.json"));slot=p.slot;service.store.save_root=base.path_join("cold-saves");service.library.save_root=service.store.save_root
  var ui: Control=await open_ui();check(RulesJson.digest(ui.state)==p.state_hash and ui.battle().state_hash==p.battle_hash,"exact complete v33 campaign and active summon survive independent process")
- check(ui.engine.registry.rules_ref()==p.rules_ref,"original33 rules pin remains exact")
+ # JSON numeric fields return float; compare their canonical schema values,
+ # without dropping any version/hash/schema field or migrating the campaign.
+ var actual_pin: Dictionary=RulesJson.normalize(ui.engine.registry.rules_ref());var saved_pin: Dictionary=RulesJson.normalize(p.rules_ref)
+ check(actual_pin==saved_pin,"original33 rules pin remains exact "+JSON.stringify({"actual":actual_pin,"saved":saved_pin}))
  await press(ui.end_button,true);await idle(ui);check(ui.battle().state_hash==p.next_hash and ui.battle().commands.back().kind=="end","cold real mouse End matches predicted log/resources/RNG and advances normally")
  # Retreat remains possible only as a separate explicit player's request.
  await press(ui.retreat_button,true);await idle(ui)
