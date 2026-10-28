@@ -12,4 +12,4 @@ for phase,cold,file in [('probe',False,'probe-proof.json'),('mechanics',False,'p
  timings.append(dict(phase=label,**out));(base/'timings.json').write_text(json.dumps(timings,indent=2)+'\n');print(timings[-1],flush=True)
  if out['exit_code']or out['errors']or out['timeout']:print((base/(label+'.log')).read_text(encoding='utf-8')[-24000:],flush=True)
  assert not out['exit_code']and not out['errors']and not out['timeout'],label
- p=json.loads((base/file).read_text());assert p['checks']>0 and p['failures']==0
+ p=json.loads((base/file).read_text(encoding='utf-8'));assert p['checks']>0 and p['failures']==0
