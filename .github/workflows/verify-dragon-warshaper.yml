@@ -11,7 +11,10 @@ on:
         default: false
         description: Short earned480XP entry/decline, connected combat and cold
   push:
-    branches: [feature/game-167-dragon-warshaper]
+    branches: [feature/game-167-dragon-warshaper, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
+  pull_request:
+    branches: [main]
     paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
 permissions:
   contents: read
