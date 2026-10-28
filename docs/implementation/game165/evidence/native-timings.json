@@ -1,0 +1,51 @@
+[
+  {
+    "phase": "probe",
+    "seconds": 7.297,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "campaign",
+    "seconds": 132.063,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "campaign-cold",
+    "seconds": 8.328,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "legacy",
+    "seconds": 70.406,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "legacy-cold",
+    "seconds": 40.922,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "frozen",
+    "seconds": 62.813,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "production-launch",
+    "seconds": 0.609,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  }
+]
