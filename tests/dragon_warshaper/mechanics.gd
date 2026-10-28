@@ -43,7 +43,10 @@ func test_current_entry() -> void:
  for path in ["dragon-disciple","warshaper"]:
   check(not kernel.starting_classes().has(path),"prestige never a starting class "+path)
   var blank: Dictionary=kernel.create("forged-prestige",WIZARD_ARRAY,"heritage-human")
-  check(not kernel.suggested_choice(blank,path).ok,"authoritative birth prestige rejection "+path)
+  var forged: Dictionary=kernel.suggested_choice(blank,path)
+  var payload: Dictionary=forged.choice if forged.ok else {"class_id":path,"feat_id":"steady-study","skill_allocations":{},"attribute_increase":"","specialisations":{},"bonus_feats":[]}
+  var rejected: Dictionary=kernel.preview_advancement(blank,payload)
+  check(not rejected.ok and rejected.errors.any(func(e: Dictionary):return e.code=="advancement.prestige_start"),"actual first-history replay independently rejects starting prestige "+path)
   var r: Dictionary=saved_records["druid-prefix"if path=="warshaper"else"wizard-prefix"]
   var before: String=RulesJson.digest(r)
   check(kernel.available_advancement(r).classes[path].ok,"durable complete prestige prerequisites "+path)
@@ -126,11 +129,17 @@ func test_current_morph() -> void:
    check(hit.ok and hit.battle.units["bandit-blade"].record.runtime.hp<b.units["bandit-blade"].record.runtime.hp,"Longclaw causes real natural-weapon damage at reach3")
  for roll in [1,20]:
   var b: Dictionary=encounter(results[1]);b.rng=attack_seed(roll);b=engine.seal(b)
-  var captured: Array=[];var events: Array=RulesAttackTrace.capture(func():captured.append(execute(engine,b,"attack","bandit-blade")))
-  check(captured[0].ok and not events.is_empty(),"actual natural strike resolves without replacing attack authority")
-  if not events.is_empty():
-   if events[0].hit:attacks.hits+=1
-   else:attacks.misses+=1
+  # TacticalAuras owns an inner scoped trace, intentionally separate from an
+  # outer observer. Verify actual battle/log/HP against the original pure roll.
+  var expected: Dictionary=RulesRng.attack_roll(int(engine.stats(b.units.a).melee_attack),int(engine.stats(b.units["bandit-blade"]).defence),source.rule("critical"),b.rng)
+  var before: String=RulesJson.digest(b);var outcome: Dictionary=execute(engine,b,"attack","bandit-blade")
+  check(outcome.ok and before==RulesJson.digest(b),"actual natural strike resolves and preserves input authority")
+  if outcome.ok:
+   var damage: int=b.units["bandit-blade"].record.runtime.hp-outcome.battle.units["bandit-blade"].record.runtime.hp
+   if expected.event.hit:
+    check(damage>0 and " hits "in outcome.battle.log.back(),"actual natural hit agrees with the frozen roll and applies damage");attacks.hits+=1
+   else:
+    check(damage==0 and outcome.battle.log.back().ends_with("miss."),"actual numeric natural miss agrees with the frozen roll, HP and log");attacks.misses+=1
  check(attacks.hits>0 and attacks.misses>0,"genuine hit and numeric miss witnessed")
  var damage: Dictionary={}
  for at in [3,5]:
