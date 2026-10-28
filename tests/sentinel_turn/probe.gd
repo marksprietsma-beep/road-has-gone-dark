@@ -43,7 +43,7 @@ func fixture() -> Dictionary:
  # Authored diagnostic turn order; not claimed to be the private save's seed,
  # geography or identities. Preserve all subsequent commands and authority.
  b.order=["sorcerer",wolf,"druid","knight","bandit-blade","bandit-bow"];b.cursor=0;b=engine.seal(b)
- b=command(engine,b,"move","",[2,1]);b=command(engine,b,"sorcerer-arcane-bolt","bandit-blade");b=command(engine,b,"end")
+ b=command(engine,b,"move","",[2,2]);b=command(engine,b,"sorcerer-arcane-bolt","bandit-blade");b=command(engine,b,"end")
  b=command(engine,b,"move","",[0,4]);b=command(engine,b,"end")
  b=command(engine,b,"move","",[2,3]);saved.before_summon=b.duplicate(true)
  b=command(engine,b,"druid-summon-sentinel","druid")

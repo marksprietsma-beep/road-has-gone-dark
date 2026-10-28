@@ -9,3 +9,5 @@ Next: narrow UI-only correction, preserve all1–33 pack bytes/pins and combat/e
 Historical guards currently enforce exact33 source enablement and will need a narrow independently checked UI/exporter exception for this legitimate layout repair; preserve every original historical assertion and all data pins. No general source allowance or disabled checks.
 
 First Windows40606351332 failed on two test-only inferred dynamic UI variable types before reproduction. Explicitly typed the intent count/int and engine result/Dictionary. No production changes or assertion relaxation. Inspect next exact-head Windows proof; do not claim clipping as confirmed yet.
+
+Windows40606755855 compiled and exercised the real level1/ogre/companion fixture. Its first Arcane Bolt was blocked by an authored legacy obstacle, leaving revision6 instead of7. Changed only the sanitized Sorcerer move destination to2,2, a clear horizontal spell ray; preserve the real seven-command/revision7 invariant and actual engine targeting. No production repair yet. Inspect next probe.
