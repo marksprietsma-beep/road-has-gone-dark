@@ -37,7 +37,7 @@ func command(engine: TacticalAuras,b: Dictionary,kind: String,target := "",desti
 func fixture() -> Dictionary:
  var records := {"sorcerer":record("sorcerer","sorcerer"),"knight":record("knight","knight"),"druid":record("druid","druid","heritage-ogre")}
  if failures:return {}
- var state := {"world_ref":{},"origin":{},"party_ids":["sorcerer","knight","druid"],"party":{"members":[{"name":"Sorcerer"},{"name":"Knight"},{"name":"Ogre Druid"}]},"mechanics":{"rules_ref":source.rules_ref(),"records":records}}
+ var state := {"world_ref":{},"origin":{},"party_ids":["sorcerer","knight","druid"],"party":{"members":[{"character_id":"sorcerer","name":"Sorcerer"},{"character_id":"knight","name":"Knight"},{"character_id":"druid","name":"Ogre Druid"}]},"mechanics":{"rules_ref":source.rules_ref(),"records":records}}
  var engine := TacticalAuras.new(state);var b := engine.create(state,"game165-sanitized-reproduction")
  var wolf := RulesEntities.identity("druid");check(b.units.has(wolf),"actual permanent Wolf created")
  # Authored diagnostic turn order; not claimed to be the private save's seed,
