@@ -10,6 +10,10 @@ on:
         type: boolean
         default: false
         description: Short earned480XP entry/decline, connected combat and cold
+      earned_run:
+        type: string
+        default: ''
+        description: Optional completed run with unchanged, successful480XP journey component; current cold/combat/captures still run
   push:
     branches: [feature/game-167-dragon-warshaper, main]
     paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
@@ -59,6 +63,8 @@ jobs:
         env:
           DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
           DRAGON_WARSHAPER_JOURNEY_ROOT: ${{ runner.temp }}/dragon-warshaper-earned
+          DRAGON_WARSHAPER_REUSE_EARNED_RUN: ${{ inputs.earned_run }}
+          GH_TOKEN: ${{ github.token }}
         run: python tests/dragon_warshaper/run-journey.py
       - name: Verified Windows export templates
         if: github.event_name == 'workflow_dispatch' && inputs.release

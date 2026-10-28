@@ -5,7 +5,7 @@ var setup_actions := {}
 func full_careers() -> bool:return OS.get_environment("DRAGON_WARSHAPER_EARNED_FULL")=="1"
 func earned_source_xp() -> int:return 2280 if full_careers()else 480
 func wanted_actions() -> Dictionary:
- return {state.party_ids[0]:"dragon-disciple-technique-7"if full_careers()else"dragon-disciple-technique-1",state.party_ids[1]:"warshaper-technique-3"if full_careers()else"warshaper-technique-1",state.party_ids[2]:"dragon-disciple-technique-4"if full_careers()else"guard"}
+ return {state.party_ids[0]:"dragon-disciple-technique-7"if full_careers()else"dragon-disciple-technique-1",state.party_ids[1]:"warshaper-technique-3"if full_careers()else"warshaper-technique-1",state.party_ids[2]:"dragon-disciple-technique-4"if full_careers()else"wizard-mage-armour"}
 func requires_manifestation() -> bool:return false
 func signature_setup(battle: Dictionary,actor: Dictionary) -> Dictionary:
  var engine:=TacticalAuras.new(state);var owner: String=state.party_ids[1]
@@ -21,14 +21,42 @@ func signature_setup(battle: Dictionary,actor: Dictionary) -> Dictionary:
   var command: Dictionary={"actor_id":owner,"revision":battle.revision,"kind":wanted_actions()[owner],"target_id":owner};var expected: Dictionary=engine.command(battle,command)
   if expected.ok:return command
  if actor.has("entity")and not owned_actions.has(actor.entity.kind):
-  var proposed: Dictionary=engine.enemy_command(battle)
+  var proposed: Dictionary=owned_command(engine,battle,actor)
   if proposed.kind in ["attack","move"]:
    var expected: Dictionary=engine.command(battle,proposed);check(expected.ok,"real owned actor action "+actor.entity.kind)
    if expected.ok and proposed.kind=="attack"and expected.battle.units[proposed.target_id].record.runtime.hp<battle.units[proposed.target_id].record.runtime.hp:
     owned_actions[actor.entity.kind]={"actor_id":actor.id,"owner_id":actor.entity.owner_id,"kind":"attack","definition_id":actor.entity.definition_id,"command":proposed,"before_hp":battle.units[proposed.target_id].record.runtime.hp,"after_hp":expected.battle.units[proposed.target_id].record.runtime.hp}
    return proposed
  return {}
+func owned_command(engine: TacticalAuras,battle: Dictionary,actor: Dictionary) -> Dictionary:
+ # Explicit player commands, not a change to the frozen simple enemy AI.
+ # That AI can stop at a Chebyshev-distance-one diagonal; melee needs a legal
+ # approach. Prefer a reachable orthogonal square, then let authority attack.
+ var command: Dictionary={"actor_id":actor.id,"revision":battle.revision,"kind":"end"}
+ if int(battle.budget.main)==0:return command
+ var targets: Array=[]
+ for id in battle.order:
+  var target: Dictionary=battle.units[id]
+  if target.team==actor.team or not engine.alive(target):continue
+  targets.append(target)
+  if engine.eligible(battle,actor,target,"attack"):
+   command.kind="attack";command.target_id=id;return command
+ if targets.is_empty()or int(battle.budget.move)==0:return command
+ var paths: Array=engine.paths(battle,actor).values()
+ paths.sort_custom(func(a: Array,b: Array):
+  var x: Array=a.back();var y: Array=b.back();var sx: int=owned_distance(x,targets);var sy: int=owned_distance(y,targets)
+  return sx<sy if sx!=sy else x[0]<y[0]if x[0]!=y[0]else x[1]<y[1])
+ if not paths.is_empty()and owned_distance(paths[0].back(),targets)<owned_distance(actor.position,targets):
+  command.kind="move";command.destination=paths[0].back()
+ return command
+func owned_distance(position: Array,targets: Array) -> int:
+ var best := 1000
+ for target in targets:best=mini(best,absi(int(position[0])-int(target.position[0]))+absi(int(position[1])-int(target.position[1])))
+ return best
 func finish_connected(restart := false) -> void:
+ if not state.is_empty():
+  var diagnostic: Dictionary=AdventureService.active_battle(state)
+  FileAccess.open(connected_folder.path_join("driver-diagnostics"+("-cold"if restart else"")+".json"),FileAccess.WRITE).store_string(JSON.stringify({"performed":performed,"owned_actions":owned_actions,"setup_actions":setup_actions,"status":diagnostic.get("status",""),"battle_hash":diagnostic.get("state_hash",""),"checks":checks,"failures":failures}))
  if restart:
   var proof: Dictionary=WorldOriginLore.read_json(connected_folder.path_join("proof.json"));check(proof.owned_actions.has_all(["summon","companion"]),"real Wolf and temporary Sentinel attacks survive independent continuation")
   var owner: Dictionary=state.mechanics.records[state.party_ids[1]];var pet: String=RulesEntities.identity(owner.character_id)
