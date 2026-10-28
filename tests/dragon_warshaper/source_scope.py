@@ -10,7 +10,13 @@ def expected_exporter():
  return text.replace(old,"'res://tests/sentinel_turn/review.tscn','res://tests/dragon_warshaper/review.tscn'].includes(qaScene)")
 def verify_readiness():
  path='docs/implementation/game129/READINESS.json'
- assert (ROOT/path).read_bytes()==original(path),'Readiness stays45/5 until strict matching-source native promotion is implemented and qualifies'
+ if (ROOT/path).read_bytes()==original(path):return
+ native=ROOT/'docs/implementation/game123-dragon-warshaper/evidence/native-proof.json';assert native.exists(),'No promotion without committed matching-source native receipt'
+ spec=importlib.util.spec_from_file_location('dragon_readiness',ROOT/'tools/character-content/readiness_dragon_warshaper.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+ pack=json.loads((ROOT/'data/rules/trhgd-character-v34.json').read_text(encoding='utf-8'));pin=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))['packs'][-1]['rules_ref']
+ expected=module.expected_report(ROOT,pack,pin,json.loads(native.read_text(encoding='utf-8')))
+ assert json.loads((ROOT/path).read_text(encoding='utf-8'))==expected,'Only exact evidence-gated pair promotion is allowed'
+
 def verify_manifest():
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
  assert len(old['packs'])==33 and len(manifest['packs'])==34 and manifest['packs'][:33]==old['packs']

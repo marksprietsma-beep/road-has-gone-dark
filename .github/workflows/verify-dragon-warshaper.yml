@@ -2,6 +2,10 @@ name: Dragon Disciple and Warshaper Acceptance
 on:
   workflow_dispatch:
     inputs:
+      release:
+        type: boolean
+        default: false
+        description: ONE full native Windows acceptance after stable focused/earned/capture gates
       journey:
         type: boolean
         default: false
@@ -11,10 +15,11 @@ on:
     paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
 permissions:
   contents: read
+  actions: read
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,15 +47,33 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'dragon-warshaper-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       - name: Released33 witnesses and current34 mechanics/cold
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.release != true }}
         env:
           DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
         run: python tests/dragon_warshaper/run-focused.py
       - name: Genuine earned entry, optional decline, connected creatures and cold
-        if: github.event_name == 'workflow_dispatch' && inputs.journey
+        if: github.event_name == 'workflow_dispatch' && inputs.journey && inputs.release != true
         env:
           DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
           DRAGON_WARSHAPER_JOURNEY_ROOT: ${{ runner.temp }}/dragon-warshaper-earned
         run: python tests/dragon_warshaper/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: ONE full self-contained native Dragon Warshaper acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          DRAGON_WARSHAPER_RELEASE_ROOT: ${{ runner.temp }}/dragon-warshaper-native
+        run: python tests/dragon_warshaper/verify-package.py
+      - name: Complete playable Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-warshaper-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/dragon-warshaper-native/distribution/*.zip
+            ${{ runner.temp }}/dragon-warshaper-native/distribution/*.sha256
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -58,4 +81,5 @@ jobs:
           path: |
             ${{ runner.temp }}/dragon-warshaper-focused
             ${{ runner.temp }}/dragon-warshaper-earned
+            ${{ runner.temp }}/dragon-warshaper-native
           retention-days: 90

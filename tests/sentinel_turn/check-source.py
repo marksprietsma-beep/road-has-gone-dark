@@ -14,7 +14,7 @@ for path in subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'da
   assert scope34.original(path)==original(path),path
  else:assert (ROOT/path).read_bytes()==original(path),path
 assert (ROOT/'tools/release/export-game.mjs').read_text()==expected_exporter()
-receipt.update(immutable_packs=33,readiness_unchanged=True,all_other_production_and_data_frozen=scope34 is None,current34_extension_strict=scope34 is not None,fixed_footer_preserved=True)
+receipt.update(immutable_packs=33,readiness_unchanged=(ROOT/'docs/implementation/game129/READINESS.json').read_bytes()==original('docs/implementation/game129/READINESS.json'),all_other_production_and_data_frozen=scope34 is None,current34_extension_strict=scope34 is not None,fixed_footer_preserved=True)
 if scope34:scope34.verify_readiness()
 else:assert (ROOT/'docs/implementation/game129/READINESS.json').read_bytes()==original('docs/implementation/game129/READINESS.json')
 print(json.dumps(receipt,indent=2))

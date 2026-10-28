@@ -77,7 +77,7 @@ func run() -> void:
 func display_control(ui: Control,battle: Dictionary,mode: String) -> void:
  ui.state={"first_adventure":{"battle":battle},"party_ids":["a","b","c"],"party":{"members":[]}}
  for id in ["a","b","c"]:ui.state.party.members.append({"character_id":id,"name":battle.units[id].name})
- ui.mode=mode;ui.refresh()
+ ui.mode=mode;ui.message="DEVELOPMENT control fixture · original mouse/turn authority · no campaign write";ui.refresh()
 func frames(n := 4) -> void:
  for i in n:await get_tree().process_frame
 func click(control: Control,whole := false) -> void:
