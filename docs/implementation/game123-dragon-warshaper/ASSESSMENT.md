@@ -20,3 +20,13 @@ Candidate discrepancies to reproduce:
 Only confirmed consequential issues justify v34. Audit actual late techniques for meaningful decisions as part of this same bounded pair, without adding careers, monsters, a body engine or unrelated abilities. Preserve every v1–v33 byte/pin and the original GAME-32/RNG/XP/save authorities.
 
 After focused corrections: legal positive/negative builds and all supported prestige levels, deliberate optional entry/decline with real earned XP, actual damage/resources/forms/gear/expiry, rest/defeat and exact cold; genuine production controls and original Godot screenshots. Mark high-level development fixtures honestly. Stabilize all export/test inputs before ONE complete native Windows release; reuse it for documentation-only changes. Strict matching-source evidence alone may promote these two to 47/3. One reviewed green PR for #167, normal merge and actual main integration before closure. #101 / GAME-123 stays OPEN; the final three careers and browser/world work are out of scope. No callable Linear connector is available.
+
+## Confirmed bounded corrections
+
+All four hypotheses were reproduced on released33 and corrected in data34. The expanded source Windows mechanics gate now passes878/0, cold73/0 and controls97/0. The additional raw-pack/default-pin gate passes69/0 for all34 packs. No frozen authority or historical bytes changed.
+
+The Dragon cohort now uses a permanent actual arcane spell-tier requirement and a legally existing caster parent, with independent half-rate caster progression. Scales/claws remain real; Ember, self ward, saved Weakening and clustered Crownfire compete for finite uses. Altered-body supernatural suppression is explicit. Warshaper frames now have real stacking defence plus a Longclaw reach3 versus Ironhide physical-resistance2 trade-off, preserving original health, equipment, creature ownership and finite duration/uses.
+
+The actual480XP source journey passes679/0 and current cold11/0. Its current connected fork passes113/0 and independent resolution/home cold59/0, with real Wolf/Sentinel damage and class costs;33 original Godot captures pass60/0. The warm XP component is correctly attributed to4e7a1b9/run40658195768 and reused only after exact journey/production-input comparison. Current cold/combat/captures are dc05904/run40662765504. No repeated XP generation, fixture grant or earned20 claim.
+
+Full native run40668915970 has started at exactdc05904; runtime/test/export inputs are frozen. Readiness remains45/5 until matching-source native acceptance and independent archive audit qualify. No PR or merge is claimed yet.
