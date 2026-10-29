@@ -23,7 +23,7 @@ def content():
  # Existing single-target spells supply all channel effects/costs. These are
  # class-bound delivery references, never additional unique spell identities.
  def channel_effects(effects):return all(e['op']in ['damage','apply_status','remove_status','save']and not e.get('recipient')and(e['op']!='save'or channel_effects(e['on_failure'])and channel_effects(e.get('on_success',[])))for e in effects)
- reserve='eldritch-knight-battle-reserve';feature(reserve,'Battle reserve',unique_selection=True,capabilities=dict(resource_bonuses={'eldritch-knight-uses':1}))
+ reserve='eldritch-knight-battle-reserve';feature(reserve,'Battle reserve',unique_selection=True,capabilities=dict(resource_bonuses={'eldritch-knight-uses':const(1)}))
  prior_channels=[]
  for at,tier in [(3,1),(5,2)]:
   options=copy.deepcopy(prior_channels)if at==5 else[]

@@ -96074,7 +96074,10 @@
       "unique_selection": true,
       "capabilities": {
         "resource_bonuses": {
-          "eldritch-knight-uses": 1
+          "eldritch-knight-uses": {
+            "op": "const",
+            "value": 1
+          }
         }
       }
     },
