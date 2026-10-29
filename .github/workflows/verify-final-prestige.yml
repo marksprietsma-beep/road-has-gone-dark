@@ -1,15 +1,27 @@
 name: Final Three Prestige Acceptance
 on:
   workflow_dispatch:
+    inputs:
+      release:
+        type: boolean
+        default: false
+        description: ONE full native Windows release after stable focused/earned/control gates
+      journey:
+        type: boolean
+        default: false
+        description: Genuine810XP optional entry/decline, connected combat, cold and original renders
   push:
-    branches: [feature/game-169-final-prestige]
+    branches: [feature/game-169-final-prestige, main]
+    paths: ['scripts/**', 'data/rules/**', 'tools/character-content/**', 'tools/release/**', 'tests/final_prestige/**', '.github/workflows/verify-final-prestige.yml']
+  pull_request:
+    branches: [main]
     paths: ['scripts/**', 'data/rules/**', 'tools/character-content/**', 'tools/release/**', 'tests/final_prestige/**', '.github/workflows/verify-final-prestige.yml']
 permissions:
   contents: read
 jobs:
   focused-windows:
     runs-on: windows-latest
-    timeout-minutes: 60
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,12 +49,39 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'final-prestige-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
       - name: Released34 witnesses and current35 actual mechanics/cold
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.release != true }}
         env:
           FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
         run: python tests/final_prestige/run-focused.py
+      - name: Actual earned entry, committed decline, connected combat, cold and original Godot captures
+        if: github.event_name == 'workflow_dispatch' && inputs.journey && inputs.release != true
+        env:
+          FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
+          FINAL_PRESTIGE_JOURNEY_ROOT: ${{ runner.temp }}/final-prestige-earned
+        run: python tests/final_prestige/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: ONE stable self-contained native final-prestige acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          FINAL_PRESTIGE_RELEASE_ROOT: ${{ runner.temp }}/final-prestige-native
+        run: python tests/final_prestige/verify-package.py
+      - name: Complete playable Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-prestige-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/final-prestige-native/distribution/*.zip
+            ${{ runner.temp }}/final-prestige-native/distribution/*.sha256
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: final-prestige-windows-evidence
-          path: ${{ runner.temp }}/final-prestige-focused
+          path: |
+            ${{ runner.temp }}/final-prestige-focused
+            ${{ runner.temp }}/final-prestige-earned
+            ${{ runner.temp }}/final-prestige-native
           retention-days: 90

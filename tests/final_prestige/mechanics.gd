@@ -146,7 +146,9 @@ func test_channels() -> void:
    r=career_next(r,"eldritch-knight","eldritch-knight",choices,parent)
    if r.is_empty():break
   if r.is_empty():continue
-  r=prep(r,spell);r.equipment=["shortblade","mail","shield"];check(kernel.validate_build(r).ok,"actual selected/prepared channel character "+id)
+  r=prep(r,spell)
+  if r.is_empty():continue
+  r.equipment=["shortblade","mail","shield"];check(kernel.validate_build(r).ok,"actual selected/prepared channel character "+id)
   saved_records[id]=r;var e:=TacticalAuras.new(r)
   var costs: Array=[]
   for hit in [false,true]:
@@ -175,7 +177,9 @@ func test_channels() -> void:
   deny(e,real_field(r),id,"b","a hostile weapon/spell cannot target an ally")
   channel_cases.append({"id":id,"spell":spell,"parent":parent,"tier":tier,"cost_cases":costs})
  check(channel_cases.size()==19,"every advertised class-bound delivery reference executes; zero new spell identities")
- var unknown: Dictionary=prep(saved_records["eldritch-channel-sorcerer-enfeeble"],"sorcerer-arcane-bolt");var unknown_engine:=TacticalAuras.new(unknown);var unknown_battle: Dictionary=real_field(unknown)
+ var alternate: Dictionary=saved_records["eldritch-channel-sorcerer-enfeeble"].duplicate(true)
+ alternate.choices.prepared_abilities.erase("sorcerer-enfeeble")
+ var unknown: Dictionary=prep(alternate,"sorcerer-arcane-bolt");var unknown_engine:=TacticalAuras.new(unknown);var unknown_battle: Dictionary=real_field(unknown)
  check(kernel.validate_build(unknown).ok and unknown.choices.prepared_abilities.has("sorcerer-arcane-bolt")and not unknown.choices.prepared_abilities.has("sorcerer-enfeeble"),"legal spontaneous build with genuinely different permanent knowledge")
  deny(unknown_engine,unknown_battle,"eldritch-channel-sorcerer-enfeeble","bandit-blade","unselected original spontaneous spell cannot be borrowed")
  var saved: Dictionary=saved_records["eldritch-channel-wizard-enfeeble"];var save_engine:=TacticalAuras.new(saved)
@@ -350,3 +354,17 @@ func align_skills(record: Dictionary,choice: Dictionary) -> Dictionary:
   if add>0:choice.skill_allocations[id]=int(choice.skill_allocations.get(id,0))+add;missing-=add
  check(missing==0,"exact remaining skill points assigned legally")
  return choice
+
+func prep(record: Dictionary,id: String) -> Dictionary:
+ # Fresh DEVELOPMENT selection, not an operation that forgets campaign knowledge.
+ # Retain actual spontaneous entry repertoire: a tier1-only loadout cannot replay
+ # a prestige history that legitimately required permanent tier3 known magic.
+ var r: Dictionary=record.duplicate(true);var spells: Array=[id]
+ for known in record.choices.prepared_abilities:
+  if source.definition("abilities",known).tags.has("spontaneous")and not spells.has(known):spells.append(known)
+ r.choices.prepared_abilities=spells;r.choices.spell_preparations={}
+ if source.definition("abilities",id).tags.has("prepared"):r.choices.spell_preparations[id]=1
+ var replay: Dictionary=kernel._replay(r);check(replay.ok,"actual channel preparation retains permanent entry repertoire "+id+JSON.stringify(replay.get("errors",[])))
+ if not replay.ok:return {}
+ r.runtime.resources=replay.context.capacities.duplicate()
+ return r

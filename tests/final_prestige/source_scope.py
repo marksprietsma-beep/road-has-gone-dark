@@ -51,6 +51,9 @@ def verify_production():
  for path in subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'data'],cwd=ROOT,text=True).splitlines():
   if path!='data/rules/packs.json':assert (ROOT/path).read_bytes()==original(path),path
  for path in FUNCTION_GUARDS+CLI_GUARDS:assert (ROOT/path).read_text(encoding='utf-8')==expected_bootstrap(path),'Historical assertion body changed: '+path
+ readiness=original('tools/character-content/build-readiness.py').decode('utf-8');needle="if args.pack=='trhgd-character-v34':";assert readiness.count(needle)==1
+ expected=readiness.replace(needle,"if args.pack=='trhgd-character-v35':\n from readiness_final_prestige import generate\n generate(root,p,pin,args.native)\n raise SystemExit(0)\n"+needle)
+ assert (ROOT/'tools/character-content/build-readiness.py').read_text(encoding='utf-8')==expected
  assert (ROOT/'tools/release/export-game.mjs').read_text(encoding='utf-8')==expected_exporter()
  for path in ['scripts/combat/tactical_combat.gd','scripts/combat/combat_entities.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']:assert (ROOT/path).read_bytes()==original(path),path
  verify_readiness()
