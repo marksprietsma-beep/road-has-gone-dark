@@ -13,3 +13,7 @@ After actual reproduction: append35 only for demonstrated corrections; bounded d
 ## Prior diagnostic wording correction
 
 The original TacticalCombat.distance uses Manhattan distance, not Chebyshev. Earlier GAME-167 diagnostic wording about a Chebyshev-only AI was inaccurate. Its actual saved combat failure included the invalid Guard-as-spell test command and blocked staging; the corrected legal commands and successful native/cold evidence remain valid. No frozen engine change or repeated release is needed for this documentation correction.
+
+## First Windows probe
+
+Run40809127694 at99c5aca passed196 of197 assertions and reproduced the Knight tier1 false-positive, Beguiler4-tier stranded parent and Shadow body-suppression bypass. Knight altered-body attack already rejects; preserve that. Defender stance genuinely adds2 defence over armour, physical resistance3, spends its reserve and removes all reachable movement. Its trigger list includes universal departure-attack, so the initial broad assertion of no triggers was an incorrect harness assumption. Refine it to require the universal reaction and separately identify the absence of a Defender-specific response. No production correction has been applied before the corrected probe.

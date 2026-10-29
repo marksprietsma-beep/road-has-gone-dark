@@ -64,7 +64,8 @@ func run() -> void:
    var triggers: Array=snap.abilities.filter(func(id: String):return source.definition("abilities",id).has("trigger"))
    observations.defender_existing={"before_defence":original,"after_defence":snap.stats.defence,"capabilities":snap.capabilities,"paths":engine.paths(cast.battle,cast.battle.units.a),"triggers":triggers,"cost_before":battle.units.a.record.runtime.resources["dwarven-defender-uses"],"cost_after":cast.battle.units.a.record.runtime.resources["dwarven-defender-uses"]}
    check(int(snap.stats.defence)==original+2 and snap.capabilities.immobile and int(snap.capabilities.resistances.physical)==3 and observations.defender_existing.paths.is_empty(),"preserve working armour-stacking defence, real immobility and physical resistance")
-   check(triggers.is_empty(),"released34 Defender stance provides no defensive reaction ability; acceptance gap")
+   check(triggers.has("departure-attack"),"preserve the existing universal departure reaction")
+   check(not triggers.any(func(id: String):return id.begins_with("dwarven-defender")),"released34 Defender stance provides no class-specific defensive reaction ability; acceptance gap")
  finish_released()
 func finish_released() -> void:
  var proof: Dictionary={"checks":checks,"failures":failures,"failed_checks":failed_checks,"observations":observations,"rules_ref":source.rules_ref(),"development_fixtures":true,"earned_xp":false,"production_changed":false}
