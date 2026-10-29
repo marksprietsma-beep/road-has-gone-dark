@@ -158,7 +158,6 @@ func add_action(id: String,text: String) -> void:
   var available := engine.effects.validate_ability_cost(id,actor.record.runtime,{"move":int(battle().budget.move),"main":int(battle().budget.main),"reaction":int(actor.reaction)})
   button.disabled=button.disabled or not available.ok
   var row := engine.registry.definition("abilities",id)
-  if engine.registry.rules_ref().pack_id=="trhgd-character-v35" and int(row.cost.main)==0:button.disabled=thread!=null or actor.team!="party" or not available.ok
   if RulesMartial.enabled(engine.registry) and row.has("requires_status") and not actor.record.runtime.statuses.any(func(s: Dictionary):return s.id==row.requires_status):button.disabled=true
   if engine.registry.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"] and engine.registry.definition("abilities",id).tags.has("spell") and engine.characters.derive_character(actor.record).snapshot.tags.has("spell_suppressed"):button.disabled=true
   if RulesPsychic.enabled(engine.registry):

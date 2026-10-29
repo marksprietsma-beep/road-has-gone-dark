@@ -79,13 +79,10 @@ def enable_versions(text):
  text=text.replace('["trhgd-character-v34","34.0.0",3]]','["trhgd-character-v34","34.0.0",3],["trhgd-character-v35","35.0.0",3]]')
  text=text.replace('pack_id=="trhgd-character-v34"','pack_id in ["trhgd-character-v34","trhgd-character-v35"]')
  text=text.replace('get("pack_id")=="trhgd-character-v34"','get("pack_id") in ["trhgd-character-v34","trhgd-character-v35"]')
- # Only the new pin gets corrected suggestion/control integration. Every old
+ # Only the new pin gets corrected preparation suggestions. Every old
  # rules pin retains its prior preparation and UI gates verbatim.
  old='  var remaining: int=int(snapshot.resource_capacities[pool])\n  var offensive:'
  new='  if source.rules_ref().pack_id=="trhgd-character-v35":candidates=candidates.filter(func(id: String):return not source.definition("abilities",id).has("channel_spell"))\n'+old
- text=text.replace(old,new)
- old='  var row := engine.registry.definition("abilities",id)\n  if RulesMartial.enabled(engine.registry) and row.has("requires_status")'
- new='  var row := engine.registry.definition("abilities",id)\n  if engine.registry.rules_ref().pack_id=="trhgd-character-v35" and int(row.cost.main)==0:button.disabled=thread!=null or actor.team!="party" or not available.ok\n  if RulesMartial.enabled(engine.registry) and row.has("requires_status")'
  text=text.replace(old,new)
  return text.replace('const NEW_PACK := "trhgd-character-v34"','const NEW_PACK := "trhgd-character-v35"')
 if __name__=='__main__':
