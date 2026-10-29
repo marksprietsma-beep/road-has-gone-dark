@@ -1,0 +1,94 @@
+name: Dragon Disciple and Warshaper Acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        type: boolean
+        default: false
+        description: ONE full native Windows acceptance after stable focused/earned/capture gates
+      journey:
+        type: boolean
+        default: false
+        description: Short earned480XP entry/decline, connected combat and cold
+      earned_run:
+        type: string
+        default: ''
+        description: Optional completed run with unchanged, successful480XP journey component; current cold/combat/captures still run
+  push:
+    branches: [feature/game-167-dragon-warshaper, main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
+  pull_request:
+    branches: [main]
+    paths: ['scripts/**', 'data/rules/**', 'tests/dragon_warshaper/**', 'tests/sentinel_turn/**', '.github/workflows/verify-dragon-warshaper.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen helper dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine and offline helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact new34 scope and complete historical guard chain
+        run: |
+          python tools/character-content/validate.py
+          python tests/dual_prestige_acceptance/check-source.py
+      - name: Checked Godot import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/dragon-warshaper-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'dragon-warshaper-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Released33 witnesses and current34 mechanics/cold
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.release != true }}
+        env:
+          DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
+        run: python tests/dragon_warshaper/run-focused.py
+      - name: Genuine earned entry, optional decline, connected creatures and cold
+        if: github.event_name == 'workflow_dispatch' && inputs.journey && inputs.release != true
+        env:
+          DRAGON_WARSHAPER_ROOT: ${{ runner.temp }}/dragon-warshaper-focused
+          DRAGON_WARSHAPER_JOURNEY_ROOT: ${{ runner.temp }}/dragon-warshaper-earned
+          DRAGON_WARSHAPER_REUSE_EARNED_RUN: ${{ inputs.earned_run }}
+          GH_TOKEN: ${{ github.token }}
+        run: python tests/dragon_warshaper/run-journey.py
+      - name: Verified Windows export templates
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        run: python tools/release/prepare-templates.py
+      - name: ONE full self-contained native Dragon Warshaper acceptance
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        env:
+          DRAGON_WARSHAPER_RELEASE_ROOT: ${{ runner.temp }}/dragon-warshaper-native
+        run: python tests/dragon_warshaper/verify-package.py
+      - name: Complete playable Windows x64 game
+        if: github.event_name == 'workflow_dispatch' && inputs.release
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-warshaper-complete-windows-x64
+          path: |
+            ${{ runner.temp }}/dragon-warshaper-native/distribution/*.zip
+            ${{ runner.temp }}/dragon-warshaper-native/distribution/*.sha256
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dragon-warshaper-windows-evidence
+          path: |
+            ${{ runner.temp }}/dragon-warshaper-focused
+            ${{ runner.temp }}/dragon-warshaper-earned
+            ${{ runner.temp }}/dragon-warshaper-native
+          retention-days: 90

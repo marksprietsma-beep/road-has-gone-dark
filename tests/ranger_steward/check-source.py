@@ -6,7 +6,7 @@ def original(path):return subprocess.check_output(['git','show',BASE+':'+path],c
 def verify():
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
  newer=len(manifest['packs'])>32
- assert len(old['packs'])==31 and len(manifest['packs'])in [32,33] and manifest['packs'][:31]==old['packs']
+ assert len(old['packs'])==31 and len(manifest['packs'])in [32,33,34] and manifest['packs'][:31]==old['packs']
  released32='09c48ba785bbca020168cc9b7e37c09f5f9370f2'
  def current_bytes(path):return subprocess.check_output(['git','show',released32+':'+path],cwd=ROOT) if newer else (ROOT/path).read_bytes()
  if newer:

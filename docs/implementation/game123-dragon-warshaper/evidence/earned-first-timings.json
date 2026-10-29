@@ -1,0 +1,23 @@
+[
+  {
+    "phase": "journey",
+    "seconds": 583.625,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "journey-cold",
+    "seconds": 9.235,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "connected",
+    "seconds": 650.765,
+    "exit_code": 1,
+    "errors": true,
+    "timeout": false
+  }
+]

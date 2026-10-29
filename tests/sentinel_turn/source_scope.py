@@ -1,6 +1,6 @@
 """Exact GAME-165 presentation exception, not a general historical guard bypass."""
 from pathlib import Path
-import subprocess,hashlib
+import subprocess,hashlib,importlib.util
 ROOT=Path(__file__).resolve().parents[2]
 BASE='37082d881b765aea70a3eee3794ce1304ab108ec'
 UI='scripts/ui/first_adventure.gd'
@@ -32,9 +32,19 @@ def expected_ui():
  return s
 
 def verify_ui():
- assert (ROOT/UI).read_text(encoding='utf-8')==expected_ui(),'Only the explicit footer ordering/hints may change'
+ expected=expected_ui()
+ if (ROOT/'data/rules/trhgd-character-v34.json').exists():
+  spec=importlib.util.spec_from_file_location('dragon_footer_scope',ROOT/'tests/dragon_warshaper/source_scope.py');scope=importlib.util.module_from_spec(spec);spec.loader.exec_module(scope)
+  assert scope.original(UI).decode('utf-8')==expected,'Released fixed33 footer remains the exact historical expectation'
+  expected=scope.recipe().enable_versions(expected)
+ assert (ROOT/UI).read_text(encoding='utf-8')==expected,'Only exact fixed footer and audited version enablement may change'
  return dict(baseline=BASE,path=UI,sha256=hashlib.sha256((ROOT/UI).read_bytes()).hexdigest(),scope='Fixed leading-edge End/Return before utility controls and trailing spacer; distinct retreat warning and spent-turn hint. No gating, command or timing change.')
 
 def expected_exporter():
  s=original('tools/release/export-game.mjs').decode('utf-8');old="'res://tests/grove_summoner/review.tscn'].includes(qaScene)";assert s.count(old)==1
- return s.replace(old,"'res://tests/grove_summoner/review.tscn','res://tests/sentinel_turn/review.tscn'].includes(qaScene)")
+ expected=s.replace(old,"'res://tests/grove_summoner/review.tscn','res://tests/sentinel_turn/review.tscn'].includes(qaScene)")
+ if (ROOT/'data/rules/trhgd-character-v34.json').exists():
+  spec=importlib.util.spec_from_file_location('dragon_export_scope',ROOT/'tests/dragon_warshaper/source_scope.py');scope=importlib.util.module_from_spec(spec);spec.loader.exec_module(scope)
+  assert scope.original('tools/release/export-game.mjs').decode('utf-8')==expected
+  return scope.expected_exporter()
+ return expected

@@ -1,0 +1,336 @@
+{
+  "checks": 142,
+  "development_fixtures": true,
+  "earned_xp": false,
+  "failed_checks": [],
+  "failures": 0,
+  "observations": {
+    "breath_form": {
+      "accepted": true,
+      "error": "",
+      "form": {
+        "art_status": "neutral_humanoid_fallback",
+        "attributes": {
+          "DEX": -2,
+          "STR": 4
+        },
+        "body_plan": "quadruped",
+        "feature_id": "bear-form-body",
+        "id": "bear-form",
+        "size": "large",
+        "suppressed_equipment": [
+          "weapon",
+          "armor",
+          "shield"
+        ],
+        "weapon_id": "bear-claws"
+      },
+      "tags": []
+    },
+    "morphic_defence": {
+      "defences": [
+        12,
+        12,
+        12
+      ],
+      "outcomes": [
+        {
+          "ability": "warshaper-technique-1",
+          "applied": [
+            {
+              "source": "form:warshaper-technique-1-form:0",
+              "stat": "defence",
+              "type": "training",
+              "value": 2
+            }
+          ],
+          "body": {
+            "art_status": "neutral_humanoid_fallback",
+            "attributes": {
+              "DEX": -2,
+              "STR": 4
+            },
+            "body_plan": "quadruped",
+            "feature_id": "bear-form-body",
+            "id": "warshaper-technique-1-form",
+            "size": "large",
+            "suppressed_equipment": [
+              "weapon",
+              "armor",
+              "shield"
+            ],
+            "weapon_id": "bear-claws"
+          },
+          "defence": 12
+        },
+        {
+          "ability": "warshaper-technique-3",
+          "applied": [
+            {
+              "source": "form:warshaper-technique-3-form:0",
+              "stat": "defence",
+              "type": "training",
+              "value": 2
+            }
+          ],
+          "body": {
+            "art_status": "neutral_humanoid_fallback",
+            "attributes": {
+              "DEX": -2,
+              "STR": 5
+            },
+            "body_plan": "quadruped",
+            "feature_id": "bear-form-body",
+            "id": "warshaper-technique-3-form",
+            "size": "large",
+            "suppressed_equipment": [
+              "weapon",
+              "armor",
+              "shield"
+            ],
+            "weapon_id": "bear-claws"
+          },
+          "defence": 12
+        },
+        {
+          "ability": "warshaper-technique-5",
+          "applied": [
+            {
+              "source": "dual-prestige-fixture:warshaper-technique-5-form:0",
+              "stat": "defence",
+              "type": "training",
+              "value": 2
+            }
+          ],
+          "body": {
+            "art_status": "neutral_humanoid_fallback",
+            "attributes": {
+              "DEX": -2,
+              "STR": 6
+            },
+            "body_plan": "quadruped",
+            "feature_id": "bear-form-body",
+            "id": "warshaper-technique-5-form",
+            "size": "large",
+            "suppressed_equipment": [
+              "weapon",
+              "armor",
+              "shield"
+            ],
+            "weapon_id": "bear-claws"
+          },
+          "defence": 12
+        }
+      ],
+      "strengths": [
+        12,
+        13,
+        14
+      ]
+    },
+    "shallow_entry": {
+      "casting": {
+        "arcane": 3
+      },
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 2,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "sorcerer-choice-1": "draconic"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "steady-study",
+          "level": 3,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "arcana": 1,
+            "athletics": 3,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "fighter-choice-1": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [
+            "steady-study"
+          ],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "athletics": 2,
+            "craft": 3
+          },
+          "specialisations": {
+
+          }
+        }
+      ],
+      "offered": true,
+      "tiers": {
+        "arcane": 1,
+        "divine": 0
+      }
+    },
+    "stranded_entry": {
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+            "beguiler-discipline-1": "subtle"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 3,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "athletics": 1,
+            "craft": 3,
+            "perception": 1,
+            "persuasion": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+            "beguiler-discipline-5": "subtle"
+          }
+        }
+      ],
+      "offered": true,
+      "parents": []
+    }
+  },
+  "production_changed": false,
+  "rules_ref": {
+    "content_hash": "674f981eb6629d988033b6772184a7e45692a47ad345c64a2fb237da2d0bd79a",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v33",
+    "rules_version": "33.0.0",
+    "schema_version": 1
+  }
+}
