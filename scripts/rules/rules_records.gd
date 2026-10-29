@@ -3,7 +3,7 @@ extends RefCounted
 static var _registry: RulesRegistry
 static var _versions := {}
 const PACKS := "res://data/rules/packs.json"
-const NEW_PACK := "trhgd-character-v34"
+const NEW_PACK := "trhgd-character-v35"
 
 static func registry(context: Dictionary = {}) -> RulesRegistry:
  var reference: Variant={}

@@ -2,7 +2,7 @@ class_name RulesWaveFour
 extends RefCounted
 ## v14 adapters only. Ordinary effects, history, action costs and saves remain authoritative.
 static func enabled(source: RulesRegistry) -> bool:
- return source.rules_ref().get("pack_id") in ["trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34"]
+ return source.rules_ref().get("pack_id") in ["trhgd-character-v14","trhgd-character-v15","trhgd-character-v16","trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"]
 static func starting_equipment_allowed(item: Dictionary,source: RulesRegistry) -> bool:
  # Natural attacks come from anatomy, forms or creatures, never a new hero's loadout.
  # Existing saved records are not reclassified by this creation-only predicate.
@@ -42,13 +42,13 @@ static func validate_definition(category: String,row: Dictionary,tables: Diction
   for modifier in aura.modifiers:
    if modifier.get("stat")=="HP" or modifier.has("when") or RulesRegistry._contains_stat(modifier.get("value",{})):errors.append(RulesJson.issue("aura.formula",row.id,"Aura magnitude must use unconditional permanent progression, never projected stats"))
 static func maintained_cleanup(combat: TacticalCombat,battle: Dictionary) -> void:
- if combat.registry.rules_ref().pack_id not in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34"]:return
+ if combat.registry.rules_ref().pack_id not in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"]:return
  for unit in battle.units.values():
   if battle.status!="active" or not combat.alive(unit) or not RulesEntities.form(unit.record,combat.registry).is_empty():
    unit.record.runtime.statuses=unit.record.runtime.statuses.filter(func(s: Dictionary):return not combat.registry.definition("statuses",s.id).has("upkeep"))
 
 static func maintained_activation(combat: TacticalCombat,battle: Dictionary) -> void:
- if combat.registry.rules_ref().pack_id not in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34"] or battle.status!="active":return
+ if combat.registry.rules_ref().pack_id not in ["trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"] or battle.status!="active":return
  var unit: Dictionary=combat.current(battle)
  if not combat.alive(unit):return
  for instance in unit.record.runtime.statuses.duplicate():

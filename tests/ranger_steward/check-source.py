@@ -4,6 +4,11 @@ import hashlib,importlib.util,json,subprocess
 ROOT=Path(__file__).resolve().parents[2];BASE='f9880ed0865f163a8f90a19b2a650365b664dd96'
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
+ if (ROOT/'data/rules/trhgd-character-v35.json').exists():
+  import importlib.util as _extended_import
+  spec=_extended_import.spec_from_file_location('final_prestige_source',ROOT/'tests/final_prestige/source_scope.py')
+  extended=_extended_import.module_from_spec(spec);spec.loader.exec_module(extended)
+  return extended.verify_all()
  manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'));old=json.loads(original('data/rules/packs.json'))
  newer=len(manifest['packs'])>32
  assert len(old['packs'])==31 and len(manifest['packs'])in [32,33,34] and manifest['packs'][:31]==old['packs']

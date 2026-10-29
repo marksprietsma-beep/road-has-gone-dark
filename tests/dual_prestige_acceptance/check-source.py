@@ -6,6 +6,11 @@ BASE='c796043aa2543bcab144e8d0353628c35c2ab610'
 UI_SHA='dbc34bc5956ff1a1e112e33c63a667b73aae21b8daf7f2f85ae2faec621dc357'
 def original(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def verify():
+    if (ROOT/'data/rules/trhgd-character-v35.json').exists():
+     import importlib.util as _extended_import
+     spec=_extended_import.spec_from_file_location('final_prestige_source',ROOT/'tests/final_prestige/source_scope.py')
+     extended=_extended_import.module_from_spec(spec);spec.loader.exec_module(extended)
+     return extended.verify_all()
     manifest=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))
     released=json.loads(original('data/rules/packs.json'))
     assert manifest['packs'][:28]==released['packs'] and len(manifest['packs'])>=29

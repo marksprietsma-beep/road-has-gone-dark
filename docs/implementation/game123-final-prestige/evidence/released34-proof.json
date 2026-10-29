@@ -1,0 +1,547 @@
+{
+  "checks": 198,
+  "development_fixtures": true,
+  "earned_xp": false,
+  "failed_checks": [],
+  "failures": 0,
+  "observations": {
+    "defender_existing": {
+      "after_defence": 18,
+      "before_defence": 16,
+      "capabilities": {
+        "ability_damage": {
+
+        },
+        "blocked_equipment": [],
+        "concealment": 0,
+        "immobile": true,
+        "immunities": [],
+        "moving_damage": 0,
+        "resistances": {
+          "physical": 3
+        },
+        "resource_bonuses": {
+
+        },
+        "weapon_damage": {
+
+        }
+      },
+      "cost_after": 0,
+      "cost_before": 1,
+      "paths": {
+
+      },
+      "triggers": [
+        "departure-attack"
+      ]
+    },
+    "knight_existing": {
+      "casting_levels": {
+        "eldritch-knight": 1,
+        "fighter": 2,
+        "wizard": 6
+      },
+      "channels": [],
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "weapon-focus",
+          "level": 3,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "acrobatics": 2,
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "athletics": 5
+          },
+          "specialisations": {
+            "fighter-choice-1": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [
+            "steady-study"
+          ],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "athletics": 2,
+            "craft": 2
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "eldritch-knight",
+          "feat_id": "",
+          "level": 8,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 3,
+            "insight": 3
+          },
+          "specialisations": {
+            "eldritch-knight-arcane": "wizard"
+          }
+        }
+      ],
+      "surge": {
+        "cost": {
+          "main": 1,
+          "move": 0,
+          "reaction": 0,
+          "resources": {
+            "eldritch-knight-uses": 1,
+            "focus": 1
+          }
+        },
+        "description": "Spellblade surge 1 · main action; eldritch knight uses × 1, focus × 1; apply eldritch knight power 1 stance to self",
+        "effects": [
+          {
+            "id": "eldritch-knight-power-1-stance",
+            "op": "apply_status",
+            "recipient": "actor"
+          }
+        ],
+        "id": "eldritch-knight-power-1",
+        "name": "Spellblade surge 1",
+        "provenance": {
+          "license": "Original project-authored content",
+          "origin": "Original TRHGD career mechanics inspired by generic d20 archetypes; no sourcebook prose or setting text copied",
+          "revision": "game119-career-1"
+        },
+        "requirements": {
+          "id": "melee",
+          "op": "tag"
+        },
+        "tags": [
+          "weapon_strike"
+        ],
+        "targeting": {
+          "kind": "creature",
+          "radius": 0,
+          "range": 1
+        },
+        "timing": {
+          "kind": "instant"
+        }
+      }
+    },
+    "knight_form": {
+      "accepted": false,
+      "error": "Choose a living target in range and line of sight.",
+      "form": {
+        "art_status": "neutral_humanoid_fallback",
+        "attributes": {
+          "DEX": -2,
+          "STR": 4
+        },
+        "body_plan": "quadruped",
+        "feature_id": "bear-form-body",
+        "id": "bear-form",
+        "size": "large",
+        "suppressed_equipment": [
+          "weapon",
+          "armor",
+          "shield"
+        ],
+        "weapon_id": "bear-claws"
+      },
+      "tags": [
+        "weapon_strike"
+      ]
+    },
+    "knight_shallow": {
+      "casting": {
+        "arcane": 3
+      },
+      "eligible": true,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "wizard",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "arcana": 1,
+            "craft": 1,
+            "insight": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "wizard-choice-1": "evocation"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "arcana": 1,
+            "persuasion": 2,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "sorcerer-choice-1": "draconic"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "sorcerer",
+          "feat_id": "weapon-focus",
+          "level": 3,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "arcana": 1,
+            "persuasion": 1,
+            "spellcraft": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "athletics": 4,
+            "spellcraft": 1
+          },
+          "specialisations": {
+            "fighter-choice-1": "blade"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [
+            "steady-study"
+          ],
+          "class_id": "fighter",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "athletics": 1,
+            "craft": 4
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "fighter",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "acrobatics": 3,
+            "athletics": 1,
+            "craft": 1
+          },
+          "specialisations": {
+
+          }
+        }
+      ],
+      "tiers": {
+        "arcane": 1,
+        "divine": 0
+      }
+    },
+    "knight_stranded": {
+      "eligible": true,
+      "history": [
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 1,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+            "beguiler-discipline-1": "subtle"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 2,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "weapon-focus",
+          "level": 3,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 4,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "spellcraft": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 5,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 2,
+            "perception": 1,
+            "persuasion": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+            "beguiler-discipline-5": "subtle"
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 6,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 2,
+            "perception": 1,
+            "persuasion": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "steady-study",
+          "level": 7,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 2,
+            "perception": 1,
+            "persuasion": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        },
+        {
+          "attribute_increase": "INT",
+          "bonus_feats": [],
+          "class_id": "beguiler",
+          "feat_id": "",
+          "level": 8,
+          "skill_allocations": {
+            "acrobatics": 1,
+            "animal-handling": 1,
+            "arcana": 1,
+            "athletics": 1,
+            "craft": 1,
+            "insight": 1,
+            "perception": 1,
+            "persuasion": 1,
+            "stealth": 1
+          },
+          "specialisations": {
+
+          }
+        }
+      ],
+      "parents": [],
+      "tiers": {
+        "arcane": 4,
+        "divine": 0
+      }
+    },
+    "shadow_form": {
+      "accepted": true,
+      "error": "",
+      "form": {
+        "art_status": "neutral_humanoid_fallback",
+        "attributes": {
+          "DEX": -2,
+          "STR": 4
+        },
+        "body_plan": "quadruped",
+        "feature_id": "bear-form-body",
+        "id": "bear-form",
+        "size": "large",
+        "suppressed_equipment": [
+          "weapon",
+          "armor",
+          "shield"
+        ],
+        "weapon_id": "bear-claws"
+      },
+      "tags": []
+    }
+  },
+  "production_changed": false,
+  "rules_ref": {
+    "content_hash": "4aa4f90021457421bd08b3cb4210f94844651472f7c54e330f5e0055a395e98e",
+    "engine_schema": 3,
+    "pack_id": "trhgd-character-v34",
+    "rules_version": "34.0.0",
+    "schema_version": 1
+  }
+}
