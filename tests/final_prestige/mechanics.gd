@@ -291,6 +291,31 @@ func test_defender_choices() -> void:
  for key in ["defender-stance1","defender-stance4","defender-stance7","defender-stance10"]:
   var field: Dictionary=battles[key];var e2:=TacticalAuras.new(field.units.a.record);var ended: Dictionary=rounds(e2,field,4)
   check(not kernel.derive_character(current_record(ended)).snapshot.capabilities.immobile and not e2.paths(ended,ended.units.a).is_empty(),"actual expiry restores normal movement")
+ var damage := {}
+ for at in [1,10]:
+  var field: Dictionary=incoming_field(high_record);var paid: Dictionary=execute(defender_engine,field,"dwarven-defender-technique-"+str(at),"a")
+  check(paid.ok,"actual mitigation stance selected for same character")
+  if not paid.ok:continue
+  field=turn(defender_engine,paid.battle,"bandit-blade");field.rng=hit_rng;field=defender_engine.seal(field)
+  var incoming: Dictionary=execute(defender_engine,field,"attack","a");check(incoming.ok,"real incoming hit against paid stance")
+  if incoming.ok:
+   var before: Dictionary=field.units.a.record.runtime;var after: Dictionary=incoming.battle.units.a.record.runtime
+   damage[str(at)]=int(before.hp)+int(before.temporary_hp)-int(after.hp)-int(after.temporary_hp)
+   check(incoming.battle.units.a.reaction==1,"incoming hit cannot fund a miss-triggered counter")
+ if damage.has_all(["1","10"]):check(damage["1"]>damage["10"],"redoubt actually mitigates more physical damage, accounting for real temporary HP")
+ observations.defender_damage=damage
+ var depart: Dictionary=incoming_field(high_record);var paid: Dictionary=execute(defender_engine,depart,"dwarven-defender-technique-1","a")
+ if paid.ok:
+  depart=turn(defender_engine,paid.battle,"bandit-blade");var paths: Dictionary=defender_engine.paths(depart,depart.units["bandit-blade"]);var destinations: Array=paths.values().filter(func(path: Array):return defender_engine.distance(path.back(),depart.units.a.position)>1)
+  check(not destinations.is_empty(),"real enemy can leave anchored melee threat")
+  if not destinations.is_empty():
+   destinations.sort_custom(func(a: Array,b: Array):return a.size()<b.size());depart.rng=miss_rng;depart=defender_engine.seal(depart)
+   var moved: Dictionary=defender_engine.command(depart,{"actor_id":"bandit-blade","revision":depart.revision,"kind":"move","destination":destinations[0].back()})
+   check(moved.ok and moved.battle.units.a.reaction==0,"actual departure strike consumes the same defensive reaction")
+   if moved.ok:
+    var defender: Dictionary=moved.battle.units.a.record;var ready: Dictionary=incoming_field(defender);ready.units.a.reaction=moved.battle.units.a.reaction;ready=turn(defender_engine,ready,"bandit-blade");ready.rng=miss_rng;ready=defender_engine.seal(ready)
+    var missed: Dictionary=execute(defender_engine,ready,"attack","a")
+    check(missed.ok and missed.battle.units["bandit-blade"].record.runtime.hp==ready.units["bandit-blade"].record.runtime.hp and missed.battle.units.a.reaction==0,"spent departure reaction cannot also counter a melee miss")
  contracts.defender=true
 func test_current_resources() -> void:
  for spec in [["wizard5","eldritch-knight-power-3","eldritch-knight-uses"],["shadow10","shadowdancer-technique-7","shadowdancer-uses"],["defender10","dwarven-defender-technique-1","dwarven-defender-uses"]]:

@@ -114,6 +114,7 @@ static func _legacy_starting_preparations(snapshot: Dictionary,source: RulesRegi
   if source.definition("classes",cls).spell_mode!="prepared":continue
   var candidates: Array=snapshot.abilities.filter(func(id: String):return source.definition("abilities",id).cost.resources.has(pool))
   if source.rules_ref().pack_id in ["trhgd-character-v17","trhgd-character-v18","trhgd-character-v19","trhgd-character-v20","trhgd-character-v21","trhgd-character-v22","trhgd-character-v23","trhgd-character-v24","trhgd-character-v25","trhgd-character-v26","trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"]:candidates=candidates.filter(func(id: String):return spell_eligible(snapshot,source.definition("abilities",id)))
+  if source.rules_ref().pack_id=="trhgd-character-v35":candidates=candidates.filter(func(id: String):return not source.definition("abilities",id).has("channel_spell"))
   var remaining: int=int(snapshot.resource_capacities[pool])
   var offensive: Array=candidates.filter(func(id: String):return source.definition("abilities",id).effects.any(func(effect: Dictionary):return effect.op=="damage"))
   var wards: Array=candidates.filter(func(id: String):return source.definition("abilities",id).targeting.kind=="ally" and source.definition("abilities",id).effects.any(func(effect: Dictionary):return effect.op=="apply_status"))

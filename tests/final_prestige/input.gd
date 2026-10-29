@@ -34,6 +34,18 @@ func run() -> void:
    check(kernel.preview_advancement(record,editor.choice()).ok,"real control permits declining prestige")
   check(before==RulesJson.digest(record),"eligibility/preview cannot generate class or XP")
   editor.queue_free()
+ for spec in [["wizard2","eldritch-channel-3","wizard-enfeeble"],["wizard4","eldritch-channel-5","wizard-arcane-bolt"]]:
+  var record: Dictionary=saved.records[spec[0]];var editor:=BuildEditor.new();add_child(editor);editor.setup(record,true)
+  var index: int=find(editor.class_picker,"eldritch-knight");editor.class_picker.select(index);editor.class_picker.item_selected.emit(index)
+  check(editor.career_pickers.has(spec[1]),"actual scheduled Knight channel choice is visible")
+  if editor.career_pickers.has(spec[1]):
+   var picker: OptionButton=editor.career_pickers[spec[1]];var selected: int=find(picker,spec[2])
+   check(selected>=0 and not picker.is_item_disabled(selected),"actual parent-bound original spell channel is selectable")
+   if selected>=0:picker.select(selected);picker.item_selected.emit(selected)
+   check(kernel.preview_advancement(record,editor.choice()).ok,"actual original UI commits a legal channel specialisation")
+   var wrong: int=find(picker,"sorcerer-arcane-bolt")
+   check(wrong<0 or picker.is_item_disabled(wrong),"unowned parent channel cannot be selected")
+  editor.queue_free()
  var ui: Control=load("res://tests/spell_repertoires/combat_input_probe.gd").new();PartyService.handoff={};add_child(ui);ui.set_process(false)
  for spec in [["wizard5","eldritch-knight-power-1","bandit-blade"],["wizard5","eldritch-knight-power-3","a"],["wizard5","eldritch-knight-power-5","a"],["eldritch-channel-wizard-enfeeble","eldritch-channel-wizard-enfeeble","bandit-blade"],["shadow10","shadowdancer-technique-1","a"],["shadow10","shadowdancer-technique-4","a"],["shadow10","shadowdancer-technique-7","a"],["shadow10","shadowdancer-technique-10","a"],["defender10","dwarven-defender-technique-1","a"],["defender10","dwarven-defender-technique-4","a"],["defender10","dwarven-defender-technique-7","a"],["defender10","dwarven-defender-technique-10","a"]]:
   var record: Dictionary=saved.records[spec[0]].duplicate(true)
@@ -43,6 +55,14 @@ func run() -> void:
   check(ui.action_buttons.has(aid)and not ui.action_buttons[aid].disabled and ui.tiles[str(tile)].target_tile,"real affordable action/target highlight "+aid)
   ui.choose_tile(tile);check(ui.sent.get("kind")==aid and ui.sent.get("target")==target,"production targeting emits precise authority intent")
   check(ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":aid,"target_id":target}).ok,"original tactical engine accepts control intent")
+  if int(source.definition("abilities",aid).cost.main)==0:
+   var spent: Dictionary=ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"guard","target_id":"a"})
+   check(spent.ok and spent.battle.budget.main==0 and spent.battle.budget.move==1,"real guard spends main before testing a zero-main choice")
+   if spent.ok:
+    show(ui,spent.battle,aid);ui.sent={}
+    check(not ui.action_buttons[aid].disabled and ui.tiles[str(tile)].target_tile,"zero-main class action remains enabled after main is spent "+aid)
+    ui.choose_tile(tile);check(ui.sent.get("kind")==aid,"zero-main control emits its legal remaining-token action")
+    check(ui.engine.command(spent.battle,{"actor_id":"a","revision":spent.battle.revision,"kind":aid,"target_id":target}).ok,"original authority accepts remaining move/reaction action")
   for pool in source.definition("abilities",aid).cost.resources:
    var empty: Dictionary=battle.duplicate(true);empty.units.a.record.runtime.resources[pool]=0;empty=ui.engine.seal(empty);show(ui,empty,aid);ui.sent={};ui.choose_tile(tile)
    check(ui.action_buttons[aid].disabled and not ui.tiles[str(tile)].target_tile and ui.sent.is_empty(),"spent matching resource disables button, highlight and command "+aid+pool)

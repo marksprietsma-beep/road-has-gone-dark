@@ -57,7 +57,7 @@ def verify_production():
  assert (ROOT/'tools/release/export-game.mjs').read_text(encoding='utf-8')==expected_exporter()
  for path in ['scripts/combat/tactical_combat.gd','scripts/combat/combat_entities.gd','scripts/rules/rules_rng.gd','scripts/game_world/game_playthrough_store.gd']:assert (ROOT/path).read_bytes()==original(path),path
  verify_readiness()
- return dict(baseline=BASE,historical_pack_bytes_and_pins=34,rules_ref=manifest['packs'][-1]['rules_ref'],roster_unchanged=True,authority_unchanged=True,shared_spell_identities_added=0,channel_delivery_references_added=19,class_counters_added=2,scope='Only exact v35 version enablement and bounded existing Knight/Shadow/Defender data; previous47 accepted records retained.')
+ return dict(baseline=BASE,historical_pack_bytes_and_pins=34,rules_ref=manifest['packs'][-1]['rules_ref'],roster_unchanged=True,authority_unchanged=True,shared_spell_identities_added=0,channel_delivery_references_added=19,class_counters_added=2,scope='Exact v35 version support and bounded career data, plus new35-only original-spell suggestions/remaining-token UI fixes; previous47 accepted records retained.')
 
 def verify_all():
  receipt=verify_production()
