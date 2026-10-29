@@ -11,8 +11,8 @@ Windows-only Godot/native execution. Host Python checks are static source/JSON/g
 | Corrected arrays |749649f /40814769656|Released34=198/0,35schema=2/0; failed when inherited fixture erased spontaneous tier3 entry knowledge|
 | Complete executable pass attempt |cec832c /40815306546|3343 checks/3 failures; two Wizard wrapper preparation rejections and consequential19-count assertion. New35 preparation corrected.|
 | Current35 mechanics / cold |c903535 /40816629099|3525/0 mechanics,208/0 separate cold. UI136/1, unowned Guard setup corrected; release not yet accepted.|
-| Source earned campaign / captures |Not run yet|810XP/total10 planned; no injected XP|
-| Full native35 release |Not run yet|1960XP/total15 planned, all three supported prestige caps; readiness remains47/3|
+| Source earned campaign / captures |5e02b5a /40818027100|SUCCESS: actual810XP/total10,1096/0 campaign,37/0 connected plus cold/rest, portable continuation,37 original Godot images64/0. No injected XP.|
+| Full native35 release |8f337c2 /40840166310|RUNNING.1960XP/total15 and all three prestige caps must qualify before readiness promotion.|
 
 ## Focused gates
 
@@ -25,3 +25,5 @@ Production controls reuse BuildEditor, CharacterScreen and FirstAdventure. Test 
 Source campaign: ordinary10XP objectives to810XP/total10, actual paid Knight3/Shadow5/Defender5, committed optional entry/decline forks, connected battle and cold/return/rest. Full native campaign:1960XP/total15 reaches Knight5/Shadow10/Defender10. No XP grants, replayed completed reward or altered production progression.
 
 The stable native wrapper checks all35 raw packs, current32 base tracks, prior34/33/32/31/30/29/18/16 pins, historical UI/cold, frozen22181 oracle, actual AMD64 export and empty-PATH independent executable startup. Only successful matching-source distribution receipts permit three-career promotion. Do not repeat the successful v34 release40668915970.
+
+Current focused df677e8 run40820205875 SUCCEEDED, including141/0 production input.8f337c2 is documentation only; no runtime/verification input differs. The native release is not yet claimed passed.

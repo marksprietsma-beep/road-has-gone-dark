@@ -1,0 +1,2046 @@
+{
+  "scope": "Real810XP/total10, earned Knight3, Shadow5 and Defender5. Full native campaign separately earns1960XP/total15/all three prestige caps. Total20 figures are development fixtures.",
+  "proofs": {
+    "journey/proof.json": {
+      "builds": {
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:1": {
+          "choices": {
+            "prepared_abilities": [
+              "wizard-cleansing-ward",
+              "wizard-anchoring-ward",
+              "wizard-call-ancestor-sentinel",
+              "wizard-fracture-concentration",
+              "wizard-haste-spell",
+              "wizard-scorching-ray",
+              "wizard-summon-boar",
+              "wizard-summon-leopard",
+              "wizard-enfeeble"
+            ],
+            "spell_preparations": {
+              "wizard-anchoring-ward": 5.0,
+              "wizard-call-ancestor-sentinel": 4.0,
+              "wizard-cleansing-ward": 1.0,
+              "wizard-enfeeble": 1.0,
+              "wizard-fracture-concentration": 1.0,
+              "wizard-haste-spell": 1.0,
+              "wizard-scorching-ray": 1.0,
+              "wizard-summon-boar": 1.0,
+              "wizard-summon-leopard": 1.0
+            }
+          },
+          "companions": {},
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "weapon-focus",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 5.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [
+                "steady-study"
+              ],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 2.0,
+                "craft": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 3.0,
+                "insight": 3.0
+              },
+              "specialisations": {
+                "eldritch-knight-arcane": "wizard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 4.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 4.0,
+                "arcana": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "eldritch-channel-3": "wizard-enfeeble"
+              }
+            }
+          ],
+          "role": "wizard-knight",
+          "xp": 810
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:2": {
+          "choices": {
+            "prepared_abilities": [],
+            "spell_preparations": {}
+          },
+          "companions": {},
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "dodge",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "rogue-choice-1": "debilitating"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "DEX",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "DEX",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "rogue-shadow",
+          "xp": 810
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:3": {
+          "choices": {
+            "prepared_abilities": [],
+            "spell_preparations": {}
+          },
+          "companions": {},
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "toughness",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "stealth": 6.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 5.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "arcana": 3.0,
+                "athletics": 2.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "arcana": 1.0,
+                "athletics": 2.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "role": "dwarf-defender",
+          "xp": 810
+        }
+      },
+      "checks": 1096.0,
+      "combat_actions": {},
+      "earned_entries": {
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:1": {
+          "alternatives": {
+            "eldritch-knight": true,
+            "wizard": true
+          },
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "decline_committed": true,
+          "decline_hash": "b018f3e3fe3f98eab7981544a1614160e02c9770b6841563c7e612ef2453fec9",
+          "earned_xp": 490,
+          "member_index": 0,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "weapon-focus",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 5.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [
+                "steady-study"
+              ],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 2.0,
+                "craft": 2.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "wizard",
+          "path": "eldritch-knight",
+          "required_xp": 490,
+          "state_hash": "920e8acdc0a7d69f944aa4bf158f82c58506e7e84421eafb2ebf0d2621859ee9"
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:2": {
+          "alternatives": {
+            "rogue": true,
+            "shadowdancer": true
+          },
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:2",
+          "decline_committed": true,
+          "decline_hash": "21008ededb073d8e2cc35a32a389718b3f50a9bf79e77155908414535b5ee26d",
+          "earned_xp": 250,
+          "member_index": 1,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "dodge",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "rogue-choice-1": "debilitating"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "DEX",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "rogue",
+          "path": "shadowdancer",
+          "required_xp": 250,
+          "state_hash": "6877760cbe21f256b40c1b0aed7b619063b890ffbd4ad4adbb035599a3e57dd9"
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:3": {
+          "alternatives": {
+            "dwarven-defender": true,
+            "fighter": true
+          },
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:3",
+          "decline_committed": true,
+          "decline_hash": "ea673e140acee52cb77ef635a4d9ee3061ee3a9df3f99e2c80bc49a5d55de27e",
+          "earned_xp": 250,
+          "member_index": 2,
+          "original_history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "toughness",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "parent": "fighter",
+          "path": "dwarven-defender",
+          "required_xp": 250,
+          "state_hash": "3488303810fe785e2a2bf1c3fc2d2bfbc057fa9e71294929c3c8c95c10ec68da"
+        }
+      },
+      "earned_xp": 810.0,
+      "failed_check": {
+        "choice": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:2:animal-handling",
+        "hash": "a5c5b819067b01a668d3dae5972a5975781310c75c3d18c9d473b64205d29381",
+        "xp": 10.0
+      },
+      "failures": 0.0,
+      "full_careers": false,
+      "journeys": [
+        {
+          "ancestry": "heritage-human",
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 1.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {
+                "wizard-choice-1": "evocation"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "weapon-focus",
+              "level": 3.0,
+              "skill_allocations": {
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "spellcraft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "wizard",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "arcana": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "athletics": 5.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [
+                "steady-study"
+              ],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "athletics": 2.0,
+                "craft": 2.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "INT",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "arcana": 3.0,
+                "insight": 3.0
+              },
+              "specialisations": {
+                "eldritch-knight-arcane": "wizard"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 4.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "eldritch-knight",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 4.0,
+                "arcana": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {
+                "eldritch-channel-3": "wizard-enfeeble"
+              }
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v35",
+            "rules_version": "35.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-human",
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:2",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "dodge",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {
+                "rogue-choice-1": "debilitating"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "DEX",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "rogue",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0,
+                "nature": 1.0,
+                "perception": 1.0,
+                "persuasion": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "DEX",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "shadowdancer",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0,
+                "insight": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v35",
+            "rules_version": "35.0.0",
+            "schema_version": 1.0
+          }
+        },
+        {
+          "ancestry": "heritage-dwarf",
+          "character_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:3",
+          "earned_xp": 810.0,
+          "fixture": false,
+          "history": [
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "toughness",
+              "level": 1.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {
+                "fighter-choice-1": "blade"
+              }
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 2.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 3.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 4.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "fighter",
+              "feat_id": "steady-study",
+              "level": 5.0,
+              "skill_allocations": {
+                "acrobatics": 1.0,
+                "animal-handling": 1.0,
+                "athletics": 1.0,
+                "craft": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 6.0,
+              "skill_allocations": {
+                "stealth": 6.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "steady-study",
+              "level": 7.0,
+              "skill_allocations": {
+                "arcana": 5.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "STR",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 8.0,
+              "skill_allocations": {
+                "arcana": 3.0,
+                "athletics": 2.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "steady-study",
+              "level": 9.0,
+              "skill_allocations": {
+                "acrobatics": 2.0,
+                "arcana": 1.0,
+                "athletics": 2.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            },
+            {
+              "attribute_increase": "",
+              "bonus_feats": [],
+              "class_id": "dwarven-defender",
+              "feat_id": "",
+              "level": 10.0,
+              "skill_allocations": {
+                "acrobatics": 3.0,
+                "arcana": 1.0,
+                "athletics": 1.0,
+                "stealth": 1.0
+              },
+              "specialisations": {}
+            }
+          ],
+          "rules_ref": {
+            "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+            "engine_schema": 3.0,
+            "pack_id": "trhgd-character-v35",
+            "rules_version": "35.0.0",
+            "schema_version": 1.0
+          }
+        }
+      ],
+      "rules_ref": {
+        "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+        "engine_schema": 3.0,
+        "pack_id": "trhgd-character-v35",
+        "rules_version": "35.0.0",
+        "schema_version": 1.0
+      },
+      "skills": {
+        "skill:acrobatics": {
+          "approach_description": "Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "complete": true,
+          "event": "quick",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:acrobatics",
+          "information": "Acrobatics check: 15 + 10 vs DC 21 \u00b7 objective completed. Attempt a faster survey of the reported remains; failure produces no discovery or XP. No climbing or flight is simulated.",
+          "label": "Arin0: Acrobatics +10 vs DC 21 \u00b7 Make a quick survey",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:acrobatics",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:animal-handling": {
+          "approach_description": "Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:3:animal-handling",
+          "information": "Animal Handling check: 12 + 3 vs DC 15 \u00b7 objective completed. Assess animal behaviour as one possible explanation for the reported tracks. This does not invent an animal encounter.",
+          "label": "Doran0: Animal Handling +3 vs DC 15 \u00b7 Assess animal behaviour",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:3",
+          "profession": "skill:animal-handling",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:arcana": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:arcana",
+          "information": "Arcana check: 10 + 15 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Arcana +15 vs DC 19",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:arcana",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:athletics": {
+          "approach_description": "Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "complete": true,
+          "event": "quick",
+          "gain": 4.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:athletics",
+          "information": "Athletics check: 13 + 9 vs DC 21 \u00b7 objective completed. Trained hauling recovers the reported stores in one turn, with one provision upfront and a higher DC; failure completes no objective.",
+          "label": "Arin0: Athletics +9 vs DC 21 \u00b7 Haul the recoverable stores",
+          "outcome": "recovered",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:athletics",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:craft": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:craft",
+          "information": "Craft check: 17 + 14 vs DC 19 \u00b7 objective completed.",
+          "label": "Arin0: Craft +14 vs DC 19",
+          "outcome": "recovered",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:craft",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:insight": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:insight",
+          "information": "Insight check: 11 + 13 vs DC 18 \u00b7 objective completed.",
+          "label": "Arin0: Insight +13 vs DC 18",
+          "outcome": "peaceful_access",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:insight",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:perception": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:perception",
+          "information": "Perception check: 20 + 2 vs DC 17 \u00b7 objective completed.",
+          "label": "Arin0: Perception +2 vs DC 17",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:perception",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:persuasion": {
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:persuasion",
+          "information": "Persuasion check: 17 + 1 vs DC 11 \u00b7 objective completed.",
+          "label": "Arin0: Persuasion +1 vs DC 11",
+          "outcome": "peaceful_access",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:persuasion",
+          "provisions": 1.0,
+          "reveal": false
+        },
+        "skill:religion": {
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:religion",
+          "information": "Religion check: 19 + 2 vs DC 13 \u00b7 objective completed.",
+          "label": "Arin0: Religion +2 vs DC 13",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:religion",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:spellcraft": {
+          "approach_description": "Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "complete": true,
+          "event": "inspect",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:spellcraft",
+          "information": "Spellcraft check: 12 + 10 vs DC 19 \u00b7 objective completed. Assess whether an arcane interpretation fits the existing report. This check does not establish that magic is present.",
+          "label": "Arin0: Spellcraft +10 vs DC 19 \u00b7 Assess an arcane interpretation",
+          "outcome": "investigated",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:spellcraft",
+          "provisions": 0.0,
+          "reveal": true
+        },
+        "skill:stealth": {
+          "approach_description": "Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "complete": true,
+          "event": "negotiate",
+          "gain": 0.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:3:stealth",
+          "information": "Stealth check: 16 + 11 vs DC 18 \u00b7 objective completed. Attempt access without bargaining away supplies. This does not defeat the occupants or claim the site is cleared.",
+          "label": "Doran0: Stealth +11 vs DC 18 \u00b7 Seek quiet access",
+          "outcome": "peaceful_access",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:3",
+          "profession": "skill:stealth",
+          "provisions": 0.0,
+          "reveal": false
+        },
+        "skill:survival": {
+          "complete": true,
+          "event": "recover",
+          "gain": 3.0,
+          "id": "skill:3a984b8c1911b5dffd210515bb950e8c:adventurer:1:survival",
+          "information": "Survival check: 20 + 2 vs DC 16 \u00b7 objective completed.",
+          "label": "Arin0: Survival +2 vs DC 16",
+          "outcome": "recovered",
+          "participant": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+          "profession": "skill:survival",
+          "provisions": 0.0,
+          "reveal": false
+        }
+      },
+      "slot": "3a984b8c1911b5dffd210515bb950e8c",
+      "state_hash": "e123fa6d039bd80600dbd5546509ee535afe959d6440c9a501c5356237de28bc",
+      "xp_injected": false
+    },
+    "journey/restart-proof.json": {
+      "checks": 11,
+      "failures": 0
+    },
+    "connected/proof.json": {
+      "battle_hash": "6eba39f928c955718a5a93bcc046d857d5fc8cd2f7a8763755f8b14f4c6fca22",
+      "battle_log_length": 9,
+      "casts": {
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:1": "eldritch-channel-wizard-enfeeble",
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:2": "shadowdancer-technique-4",
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:3": "dwarven-defender-technique-4"
+      },
+      "checks": 37,
+      "command_operation": "battle_command",
+      "earned_xp_before_combat": 810,
+      "failures": 0,
+      "next_command": {
+        "actor_id": "3a984b8c1911b5dffd210515bb950e8c:adventurer:1",
+        "kind": "end",
+        "revision": 9
+      },
+      "next_hash": "a33c6324134240cc0fe385ecc37677d071848d0c258845d3d3638dfbe6e411d1",
+      "resources": {
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:1": {
+          "wizard-prepared-enfeeble": 0,
+          "wizard-slots-1": 6
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:2": {
+          "shadowdancer-uses": 1
+        },
+        "3a984b8c1911b5dffd210515bb950e8c:adventurer:3": {
+          "dwarven-defender-uses": 1
+        }
+      },
+      "rules_ref": {
+        "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v35",
+        "rules_version": "35.0.0",
+        "schema_version": 1
+      },
+      "scope": "Verification fork of actual earned campaign; primary campaign remains unchanged.",
+      "slot": "3a984b8c1911b5dffd210515bb950e8c",
+      "source": "AdventureService/battle_command/GamePlaythroughStore",
+      "state_hash": "e80eb97e9a863758922f1771d7a7f930efe48ecf78024d29871ea320072805db",
+      "xp_injected": false
+    },
+    "connected/restart-proof.json": {
+      "checks": 127,
+      "failures": 0,
+      "resolved_and_returned": true,
+      "rules_ref": {
+        "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v35",
+        "rules_version": "35.0.0",
+        "schema_version": 1
+      }
+    },
+    "portable/proof.json": {
+      "checks": 6,
+      "clean_library_cache": true,
+      "earned_xp": 810.0,
+      "exact_earned_campaign": true,
+      "failures": 0,
+      "rules_ref": {
+        "content_hash": "519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9",
+        "engine_schema": 3,
+        "pack_id": "trhgd-character-v35",
+        "rules_version": "35.0.0",
+        "schema_version": 1
+      },
+      "scope": "Independent native process copies a real original-writer save byte-for-byte; loads with bundled preset world and fresh library/cache. No second writer, XP grant or altered identities.",
+      "slot": "3a984b8c1911b5dffd210515bb950e8c",
+      "source_save_sha256": "a8e50bac0bc67bc22ff8d8bd7a8b2124086312918452350a3d0df1080fd26417",
+      "xp_injected": false
+    },
+    "capture/screenshots.json": {
+      "checks": 64,
+      "failures": 0,
+      "scope": "Real production Godot screens. Render-only high-level development fixtures explicitly labelled, not earned careers.",
+      "screenshots": [
+        {
+          "development_fixture": false,
+          "earned_xp": 0,
+          "file": "ordinary-first-open-creator-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "197b24c723c424fbc6a2996cd450f524db002b61b4292ac6f69ef615c50b63c2",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 0,
+          "file": "ordinary-wizard-preparation-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "011e3ba472f2bfac6a9155394e61dde807593c93ee63f4a08ef422372ccd96cb",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 0,
+          "file": "ordinary-rogue-choices-640x360.png",
+          "height": 360,
+          "requested_height": 360,
+          "requested_width": 640,
+          "sha256": "4564b95762b833558ef8c64c9ed0826393a1acfba052b358923691fa75d8f1d5",
+          "width": 640
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-wizard-knight-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "52dd56792a9f6db7d39c7e5fdc74273e1492922fddc6dedee41144a9d2bfdd33",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-0-spell-choices-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "39c6ae0fad6d36c52b6230b53ff33fed225fda8084697e555b3ea77ac14bb6b2",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-rogue-shadow-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "17563057fb46a7d67e7a28556735a4f173f153bc0d0e333b570d54298b834c64",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-1-spell-choices-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "49fd72492bab062bc9507ff7594a6da5e456328a499b824fe994469054766f66",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-dwarf-defender-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "b01c651160648ba48f299556d601b19ce100d42303f36d68e622d5bb967096be",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-2-spell-choices-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "47383f29c1b6a57b436efe132d0ebef5a0d21eb61b7c2c15b5c0acb9de45cd5d",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 490.0,
+          "file": "earned-entry-0-prestige-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "cb4b9a29b652ce7a5a23c4be03d6fa411c1b840197447540a77d5e75e48c5e9a",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 490.0,
+          "file": "earned-entry-0-decline-preview-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "dbb34b0129582ef2f32f94393d8377c76aa9501b7ccaa742c04d56918287b5d9",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 490.0,
+          "file": "earned-entry-0-decline-committed-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "d87a27cd8dc7b60c965bb400defcafa6ca2e25ed6382035aa4b5746fd4c4217d",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-1-prestige-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "26759225fe373e40769ee56da043a14f3c45ded5b648257e17ac6abb7572d130",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-1-decline-preview-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "c58ea19d089450f50994a9886c439fce8d404f588dd31bed520c25aadd83b1f6",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-1-decline-committed-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "41bada952a803bf7cba29db0ca72e48f352a436db382b9d05a31f35c02df485b",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-2-prestige-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "c60e1e8fe04384e41344fa6d98bb2999085fc6b12070cdd67c6cc2133626aae8",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-2-decline-preview-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "0b9bb57a275056da88fb4ed4720437bab11b33aac61e2898a73312657f73dcd4",
+          "width": 1280
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 250.0,
+          "file": "earned-entry-2-decline-committed-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "026e921085a63a0327f16cbe38c2075353b9e96408ecc70db8f73f81d7d6a0fe",
+          "width": 2560
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-wizard5-total20-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "15a5f75c3e49b14a1f051c34a3f5e38cebe463c8f072d749e98a163b0c6bb8c5",
+          "width": 2560
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-shadow10-total20-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "9e37991a52e6148555e8b524e798404ce0cc590c7df00d5955e520b6a5c79a04",
+          "width": 2560
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender10-total20-sheet-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "869949103922b318a10ec7c06be3158aeef32e7990a1b4f16d999170b8bda65f",
+          "width": 2560
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-knight_counter-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "40f6f00075515484f11623e4682d92199c1798a09bc93a65d65ad6be6ae7e089",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-knight_shield-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "858b137e9be6bfff293ccf18371dcc919873799324214edb25412ec8014bc478",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-shadow-action1-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "1da49ebed330aeb28b2e4098841c53042ad6d96d4fb5952a16856d0f96d87c74",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-shadow-action4-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "dc98c7d4d5b9244bd7759ecc775a77a95f17398656242bf78e62e1d9e9647b4c",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-shadow-action7-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "8d03fbd53347bb7db77525c3ccdad4c8bd8f4864f569a0772018f4a8dbd416ab",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-shadow-action10-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "2844762a523af3df9d5104b3f9f2363b9e1b09a5cef7a681defc70d1510ee35a",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender-stance1-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "0ea4c620778138ac2056c9edd59c77c398fff24597a35da01a65170d03058de0",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender-stance4-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "f21512d6d5f8597cc2629ee0048ae2a95137cd867720675728799e9fc8aacfca",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender-stance7-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "be110c91c56a09ad03c31f484da5e2b017225ddef8e539f05f9462c1708f5cc7",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender-stance10-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "4e943b711f971ed17ca6ec42f52cfbca70d41dcdf2a1e163701b53ed7f61813c",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-redoubt-small-640x360.png",
+          "height": 360,
+          "requested_height": 360,
+          "requested_width": 640,
+          "sha256": "d0206a51b4d0b103ac2756efea1f10fb834366841439aa6e3bd61bbc24bc5acf",
+          "width": 640
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-defender_counter-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "a502df30c8888f77ea17d8bb1b358ea5e37cddb5a88d9c6f2dcdd066974716b2",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-eldritch-channel-wizard-enfeeble-hit-combat-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "28b1755a8855328a8825f81a68c20dea90582c9aa252f9eae1e383b6ad21f5a7",
+          "width": 1280
+        },
+        {
+          "development_fixture": true,
+          "earned_xp": false,
+          "file": "fixture-knight-channel-selection-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "73c3e326dd4e83e7bd2656208f55fea8c6ed96e0c403fdbda3fc260f5d574fc3",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-connected-final-prestige-2560x1440.png",
+          "height": 1440,
+          "requested_height": 1440,
+          "requested_width": 2560,
+          "sha256": "e72c9f05dcc3cf096724fbbc1bca70bbc2108f576e9fc8be54c1571f9795a2a1",
+          "width": 2560
+        },
+        {
+          "development_fixture": false,
+          "earned_xp": 810,
+          "file": "earned-connected-final-prestige-1280x719.png",
+          "height": 719,
+          "requested_height": 720,
+          "requested_width": 1280,
+          "sha256": "2db989f831c9af5b6fa80360914cccd91d5d135f2457bdf794438fe4b540a05f",
+          "width": 1280
+        }
+      ]
+    }
+  },
+  "timings": [
+    {
+      "phase": "journey",
+      "seconds": 911.89,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "journey-cold",
+      "seconds": 9.844,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected",
+      "seconds": 72.609,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "connected-cold",
+      "seconds": 161.672,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "portable",
+      "seconds": 14.25,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    },
+    {
+      "phase": "capture",
+      "seconds": 106.016,
+      "exit_code": 0,
+      "errors": false,
+      "timeout": false
+    }
+  ]
+}

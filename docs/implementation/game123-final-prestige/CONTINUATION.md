@@ -1,8 +1,17 @@
 # GAME-169 current recovery checkpoint
 
+## ACTIVE native release — do not duplicate
+
+Full native Windows v35 acceptance was dispatched once, on 29 October 2026 at16:09 China time: workflow400136183, run40840166310, exact tested source8f337c24c8d259b928f12da3d1ac9e13593211b7, release=true/journey=false. It is RUNNING, not accepted yet. Inspect this exact run and diagnose any actual failure; do not dispatch a second full release merely because it takes time. Successful prior34 release40668915970 remains untouched.
+
+Run40818027100 at5e02b5a SUCCEEDED: source/history/import,3525/0 mechanics,208/0 independent cold,141/0 production input, actual810XP/level10 campaign1096/0, connected class actions37/0 plus cold/resolution/rest, clean-path portable check,37 Godot images64/0. Run40820205875 atdf677e85c96025fb9f2d37e40a418d395444e911 SUCCEEDED with the capture-consistency correction in source and the focused gates. Commit8f337c2 only corrects PLAYTEST launch instructions; all runtime and verification inputs are byte-identical todf677e8. No unnecessary validation was repeated for that documentation-only change.
+
+Native35 remains the only outstanding acceptance gate before harvest, exact-source promotion, one PR, normal merge and actual post-main checks. There is no PR yet. Readiness remains47/3 until strict native evidence qualifies all three. Next action: wait for/review run40840166310; harvest a SUCCESSFUL release with the existing script. No further implementation cohort is authorised.
+
+
 Existing branch feature/game-169-final-prestige from accepted main7c70fb27bfd3572505421c996102bd11e9b6da1a. Preserve this work; no duplicate branch/PR. All29 baseline push workflows/35 jobs passed;167 closed;101 OPEN. No Linear connector. Current accepted readiness47 COMPLETE/3 PARTIAL, same50 roster. Candidate35 hash519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9. All1–34 pack bytes/pins and frozen combat/RNG/XP/sole writer retained.
 
-## Latest actual Windows result
+## Earlier actual Windows result
 
 Run40816629099 atc903535377c19af9598a2d09e52d7063916adf3b: released34=198/0,35schema=2/0, current35 mechanics3525/0, independent cold208/0. All19 channel references have actual hits/misses. All five Knight parents1–5 and Shadow/Defender1–10 pass; actual Defender incoming damage7 versus2 proves mitigation, opportunity/defensive reaction competition passes. Raw source components committed under evidence/source-*. This is NOT full native distribution acceptance.
 
@@ -12,7 +21,7 @@ Earlier failed runs40814102828/40814769656 were genuine fixture skill-budget/per
 
 ## Immediate next gate
 
-The next push tagged [game169-journey] runs focused mechanics/input/cold first, then genuine810XP/total10 entry/decline, connected combat/return/rest/cold, clean-path portable save check and original Godot captures in the SAME Windows job. Inspect actual latest branch runs; fix only real errors. No Linux Godot. If successful, prepare ONE full native release through verify-final-prestige.yml workflow_dispatch release=true on this branch (workflow400136183). It has NOT been run. Never repeat the already successful v34 native40668915970.
+The next push tagged [game169-journey] runs focused mechanics/input/cold first, then genuine810XP/total10 entry/decline, connected combat/return/rest/cold, clean-path portable save check and original Godot captures in the SAME Windows job. Inspect actual latest branch runs; fix only real errors. No Linux Godot. If successful, prepare ONE full native release through verify-final-prestige.yml workflow_dispatch release=true on this branch (workflow400136183). That initial gate was pending at the earlier checkpoint; see the ACTIVE release above. Never repeat the already successful v34 native40668915970.
 
 Source earned route: Wizard5/Fighter2/Knight3, Rogue5/Shadow5, Dwarf Fighter5/Defender5. Full native1960XP/total15: Wizard5/Fighter2/Knight5/Wizard3, Rogue5/Shadow10, Fighter5/Defender10. Original objectives and XP authority, explicit optional funded entry/committed decline forks, no injected XP. Total20 alternatives are labelled DEVELOPMENT fixtures. Portable review save is copied BYTE-FOR-BYTE from this real primary earned campaign, tested in an independent process with clean library/cache and bundled WorldI. No second save writer or XP button.
 
