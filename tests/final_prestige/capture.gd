@@ -58,8 +58,10 @@ func run() -> void:
   combat.engine=TacticalAuras.new(battle.units.a.record);combat.mode="attack";combat.message="DEVELOPMENT FIXTURE · "+key+" · actual paid effects; total20 is not earned; humanoid LPC fallback";combat.refresh()
   await photograph_scene("fixture-"+key+"-combat",true)
   if key=="defender-stance10":await photograph_scene("fixture-redoubt-small",true,Vector2i(640,360))
- var sheet: CharacterScreen=await open_sheet();var subject: Dictionary=saved.records.wizard2
- sheet.advance_editor.setup(subject,true);select_option(sheet.advance_editor.class_picker,"eldritch-knight");sheet.detail_tabs.current_tab=3;show_tab(sheet.advance_editor.sections,"Specialisation")
+ var sheet: CharacterScreen=await open_sheet();var subject_id: String=state.party_ids[0]
+ sheet.state=state.duplicate(true);sheet.state.mechanics.records[subject_id]=render_identity(saved.records.wizard2,subject_id);sheet.selected=1;sheet.refresh()
+ select_option(sheet.advance_editor.class_picker,"eldritch-knight");sheet.detail_tabs.current_tab=3;show_tab(sheet.advance_editor.sections,"Specialisation")
+ check(sheet.advance_editor.career_pickers.has("eldritch-channel-3")and not sheet.advancement_button.disabled,"development channel screenshot uses consistent legal character/history/budget, not a mismatched editor")
  sheet.title.text="DEVELOPMENT FIXTURE · upcoming Knight3 · actual parent-bound spell channel choice · not earned20"
  await photograph_scene("fixture-knight-channel-selection",true,Vector2i(2560,1440))
  var active: Dictionary=WorldOriginLore.read_json(OS.get_environment("GAME129_CONNECTED_ROOT").path_join("active-state.json"))
