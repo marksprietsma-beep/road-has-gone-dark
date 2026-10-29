@@ -48,6 +48,10 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/final-prestige-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'final-prestige-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Post-import exact source and generated UID inventory
+        env:
+          FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
+        run: python tests/final_prestige/check-after-import.py
       - name: Released34 witnesses and current35 actual mechanics/cold
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.release != true }}
         env:

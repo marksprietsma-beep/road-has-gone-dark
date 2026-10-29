@@ -39,6 +39,16 @@ def verify_readiness():
  module=module_at('tools/character-content/readiness_final_prestige.py','final_prestige_readiness');pack=json.loads((ROOT/'data/rules/trhgd-character-v35.json').read_text(encoding='utf-8'));pin=json.loads((ROOT/'data/rules/packs.json').read_text(encoding='utf-8'))['packs'][-1]['rules_ref']
  expected=module.expected_report(ROOT,pack,pin,json.loads(native.read_text(encoding='utf-8')));assert json.loads((ROOT/path).read_text(encoding='utf-8'))==expected,'Only exact three-career promotion is allowed'
 
+def script_inventory(root,expected):
+ present={p.relative_to(root).as_posix()for p in (root/'scripts').rglob('*')if p.is_file()}
+ expected=set(expected);missing=expected-present;extra=present-expected
+ assert not missing,dict(missing_production_files=sorted(missing))
+ for path in sorted(extra):
+  assert path.endswith('.gd.uid')and path[:-4]in expected,dict(unexpected_production_file=path,all_extras=sorted(extra))
+  value=(root/path).read_text(encoding='utf-8').strip()
+  assert re.fullmatch(r'uid://[a-z0-9]+',value),dict(invalid_generated_uid=path)
+ return sorted(extra)
+
 def verify_production():
  manifest=verify_manifest();m=recipe();before=json.loads(original('data/rules/trhgd-character-v34.json'));after=json.loads((ROOT/'data/rules/trhgd-character-v35.json').read_text(encoding='utf-8'))
  old_ids={k:{r['id']:r for r in before[k]}for k in ['classes','features','abilities','statuses','resources','equipment','feats','ancestries','creatures']};new_ids={k:{r['id']:r for r in after[k]}for k in old_ids}
@@ -46,7 +56,8 @@ def verify_production():
  assert {k for k in old_ids['classes']if old_ids['classes'][k]!=new_ids['classes'][k]}=={'eldritch-knight','shadowdancer','dwarven-defender'}
  for category in ['equipment','feats','ancestries','creatures']:assert old_ids[category]==new_ids[category],category
  scripts=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'scripts'],cwd=ROOT,text=True).splitlines()
- assert set(scripts)=={p.relative_to(ROOT).as_posix()for p in (ROOT/'scripts').rglob('*')if p.is_file()}
+ assert set(scripts)==set(subprocess.check_output(['git','ls-files','--','scripts'],cwd=ROOT,text=True).splitlines()),'Tracked production inventory changed'
+ script_inventory(ROOT,scripts)
  for path in scripts:assert (ROOT/path).read_text(encoding='utf-8')==m.enable_versions(original(path).decode('utf-8')),path
  for path in subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'data'],cwd=ROOT,text=True).splitlines():
   if path!='data/rules/packs.json':assert (ROOT/path).read_bytes()==original(path),path

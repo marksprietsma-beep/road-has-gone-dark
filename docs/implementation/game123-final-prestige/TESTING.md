@@ -12,7 +12,7 @@ Windows-only Godot/native execution. Host Python checks are static source/JSON/g
 | Complete executable pass attempt |cec832c /40815306546|3343 checks/3 failures; two Wizard wrapper preparation rejections and consequential19-count assertion. New35 preparation corrected.|
 | Current35 mechanics / cold |c903535 /40816629099|3525/0 mechanics,208/0 separate cold. UI136/1, unowned Guard setup corrected; release not yet accepted.|
 | Source earned campaign / captures |5e02b5a /40818027100|SUCCESS: actual810XP/total10,1096/0 campaign,37/0 connected plus cold/rest, portable continuation,37 original Godot images64/0. No injected XP.|
-| Full native35 release |8f337c2 /40840166310|RUNNING.1960XP/total15 and all three prestige caps must qualify before readiness promotion.|
+| First native35 startup |8f337c2 /40840166310|FAILED before export/simulation: strict source inventory rejected generated .gd.uid metadata. Narrow inventory correction and post-import Windows gate added; no native package or campaign was produced.|
 
 ## Focused gates
 
