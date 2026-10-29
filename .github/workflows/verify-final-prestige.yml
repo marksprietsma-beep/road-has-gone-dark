@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [feature/game-169-final-prestige]
-    paths: ['tests/final_prestige/**', '.github/workflows/verify-final-prestige.yml']
+    paths: ['scripts/**', 'data/rules/**', 'tools/character-content/**', 'tools/release/**', 'tests/final_prestige/**', '.github/workflows/verify-final-prestige.yml']
 permissions:
   contents: read
 jobs:
@@ -36,7 +36,7 @@ jobs:
           & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/final-prestige-import.log"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'final-prestige-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
-      - name: Released34 genuine defect witnesses and already-working mechanics
+      - name: Released34 witnesses and current35 actual mechanics/cold
         env:
           FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
         run: python tests/final_prestige/run-focused.py
