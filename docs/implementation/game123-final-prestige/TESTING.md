@@ -10,7 +10,7 @@ Windows-only Godot/native execution. Host Python checks are static source/JSON/g
 | First35 mechanics |0277b09 /40814102828|Released34=198/0,35schema=2/0;413 mechanics checks/2 fixture skill-budget failures|
 | Corrected arrays |749649f /40814769656|Released34=198/0,35schema=2/0; failed when inherited fixture erased spontaneous tier3 entry knowledge|
 | Complete executable pass attempt |cec832c /40815306546|3343 checks/3 failures; two Wizard wrapper preparation rejections and consequential19-count assertion. New35 preparation corrected.|
-| Current35 mechanics / controls / cold |Latest feature branch|Pending; inspect Actions before describing as passed|
+| Current35 mechanics / cold |c903535 /40816629099|3525/0 mechanics,208/0 separate cold. UI136/1, unowned Guard setup corrected; release not yet accepted.|
 | Source earned campaign / captures |Not run yet|810XP/total10 planned; no injected XP|
 | Full native35 release |Not run yet|1960XP/total15 planned, all three supported prestige caps; readiness remains47/3|
 

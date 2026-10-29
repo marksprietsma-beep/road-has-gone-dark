@@ -18,8 +18,9 @@ def check_receipt(root,pin,n):
   for file in ['proof.json','restart-proof.json']:
    key=phase+'/'+file;p=proofs[key];assert p['checks']>0 and p['failures']==0 and n['proof_sources'][key]==source
    if 'rules_ref'in p:assert p['rules_ref']==pins['trhgd-character-'+historical.get(phase,'v35')]
- for key in ['pins','probe','input','sentinel-probe','capture','historical34-input','historical33-input','historical32-input','historical31-input','historical30-input','frozen']:
+ for key in ['pins','probe','input','portable','sentinel-probe','capture','historical34-input','historical33-input','historical32-input','historical31-input','historical30-input','frozen']:
   assert proofs[key]['checks']>0 and proofs[key]['failures']==0 and n['proof_sources'][key]==source
+ assert proofs['portable']['exact_earned_campaign']and proofs['portable']['clean_library_cache']and not proofs['portable']['xp_injected']
  assert proofs['pins']['pack_count']==35 and proofs['frozen']['checks']==22181
  for row in manifest['packs']:assert proofs['pins']['raw_sha256'][row['rules_ref']['pack_id']]==hashlib.sha256((root/row['path'].removeprefix('res://')).read_bytes()).hexdigest()
  m=proofs['mechanics/proof.json'];assert all(m['contracts'][key]is True for key in ['entry','channels','knight','shadow','defender','resources','suppression','late'])

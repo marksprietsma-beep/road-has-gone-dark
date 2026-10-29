@@ -56,13 +56,19 @@ func run() -> void:
   ui.choose_tile(tile);check(ui.sent.get("kind")==aid and ui.sent.get("target")==target,"production targeting emits precise authority intent")
   check(ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":aid,"target_id":target}).ok,"original tactical engine accepts control intent")
   if int(source.definition("abilities",aid).cost.main)==0:
-   var spent: Dictionary=ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"guard","target_id":"a"})
-   check(spent.ok and spent.battle.budget.main==0 and spent.battle.budget.move==1,"real guard spends main before testing a zero-main choice")
+   var spent: Dictionary=ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":"attack","target_id":"bandit-blade"})
+   check(spent.ok and spent.battle.budget.main==0 and spent.battle.budget.move==1,"real owned basic attack spends main before zero-main choice "+aid+str(spent.get("error","")))
    if spent.ok:
     show(ui,spent.battle,aid);ui.sent={}
     check(not ui.action_buttons[aid].disabled and ui.tiles[str(tile)].target_tile,"zero-main class action remains enabled after main is spent "+aid)
     ui.choose_tile(tile);check(ui.sent.get("kind")==aid,"zero-main control emits its legal remaining-token action")
     check(ui.engine.command(spent.battle,{"actor_id":"a","revision":spent.battle.revision,"kind":aid,"target_id":target}).ok,"original authority accepts remaining move/reaction action")
+  if aid=="shadowdancer-technique-10":
+   var doubled: Dictionary=ui.engine.command(battle,{"actor_id":"a","revision":battle.revision,"kind":aid,"target_id":target})
+   check(doubled.ok,"actual finite double is activated for production status display")
+   if doubled.ok:
+    show(ui,doubled.battle,"attack")
+    check("Umbral double: one weapon attempt"in ui.detail.text and not "Refraction:"in ui.detail.text,"production status describes one real interception, never three false layers")
   for pool in source.definition("abilities",aid).cost.resources:
    var empty: Dictionary=battle.duplicate(true);empty.units.a.record.runtime.resources[pool]=0;empty=ui.engine.seal(empty);show(ui,empty,aid);ui.sent={};ui.choose_tile(tile)
    check(ui.action_buttons[aid].disabled and not ui.tiles[str(tile)].target_tile and ui.sent.is_empty(),"spent matching resource disables button, highlight and command "+aid+pool)

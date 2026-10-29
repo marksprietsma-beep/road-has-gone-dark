@@ -6,7 +6,7 @@ Released34 Windows reproduction40809697500 passed198/0. Knight incorrectly quali
 
 Candidate adds bounded Knight parent/channel/reserve choices and shared-reaction wards/ripostes; real Shadow movement-versus-main shrouds, true-sight counterplay and one finite double; exclusive anchored Defender stances, real reach/mitigation and paid-stance defensive counters. Nineteen delivery references reuse existing spells: zero new spell identities, classes, ancestries, feats, equipment or creatures. Original combat/RNG/XP/save authority is unchanged. All historical1–34 pack bytes/pins remain exact.
 
-Candidate35 canonical hash:519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9. Focused Windows mechanics/input/cold are still under validation. See TESTING.md for actual successful and failed results, CONTINUATION.md for next actions. Do not confuse prepared acceptance tooling with a successful release.
+Candidate35 canonical hash:519935e3e8cd19c0863e5ce6143743b576d044dc993dcf693dcf2fb6962552c9. Source Windows40816629099 passed3525 mechanics and208 independent cold checks; UI136/1 exposed an unowned Guard setup, now corrected to basic attack and awaiting verification. Native release remains pending. See TESTING.md for actual successful and failed results, CONTINUATION.md for next actions. Do not confuse prepared acceptance tooling with a successful release.
 
 Final delivery must replace this candidate notice with exact native run/artifact/source/checksum, actual evidence counts, original screenshot review, readiness outcome, PR normal merge SHA and actual post-main Windows results. PLAYTEST.txt supplies the intended extraction/launch and class routes after release acceptance.
 

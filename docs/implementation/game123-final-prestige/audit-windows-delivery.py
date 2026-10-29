@@ -18,9 +18,15 @@ with zipfile.ZipFile(archive)as z:
  data=json.loads(core);assert data['pack_id']=='trhgd-character-v35'
  pin=next(x['rules_ref']for x in json.loads(manifest)['packs']if x['rules_ref']['pack_id']==data['pack_id']);assert pin==receipt['rules_ref']
  assert hashlib.sha256(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==pin['content_hash']
+ review_files=[x for x in names if '/OPTIONAL-REVIEW-CAMPAIGN/'in x and x.endswith('.json')];assert len(review_files)==1
+ raw_save=z.read(review_files[0]);assert hashlib.sha256(raw_save).hexdigest()==receipt['proofs']['portable']['source_save_sha256']
+ save=json.loads(raw_save);assert save['mechanics']['rules_ref']==pin and len(save['party_ids'])==3
+ for identity in save['party_ids']:
+  record=save['mechanics']['records'][identity];assert record['rules_ref']==pin and len(record['advancement_history'])==15
+ assert receipt['proofs']['portable']['exact_earned_campaign']and receipt['proofs']['portable']['clean_library_cache']
  credit_files=[x for x in names if any(s in x.rsplit('/',1)[-1].lower()for s in ['license','credits'])];assert credit_files
  assert receipt['production_launch'] and receipt['empty_path'] and receipt['separate_process_restart'] and not receipt['source_helper_override']
- result=dict(source_commit=receipt['source_commit'],archive=archive.name,sha256=sha,archive_entries=len(names),crc_integrity=True,production_machine='AMD64',bundled_nodes=nodes,node_machine='AMD64',production_executable_sha256=metadata['executable_sha256'],qa_executable_absent=True,manifest_matches_source=True,core_matches_source=True,rules_ref=pin,licence_credit_files=len(credit_files),scope='Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation.')
+ result=dict(source_commit=receipt['source_commit'],archive=archive.name,sha256=sha,archive_entries=len(names),crc_integrity=True,production_machine='AMD64',bundled_nodes=nodes,node_machine='AMD64',production_executable_sha256=metadata['executable_sha256'],qa_executable_absent=True,original_earned_review_save=True,review_save_sha256=receipt['proofs']['portable']['source_save_sha256'],manifest_matches_source=True,core_matches_source=True,rules_ref=pin,licence_credit_files=len(credit_files),scope='Independent host static archive/PE/hash audit. Native game execution and empty-PATH proof are from the Windows workflow; no Linux game validation.')
 (root/'docs/implementation/game123-final-prestige/evidence').mkdir(parents=True,exist_ok=True)
 (root/'docs/implementation/game123-final-prestige/evidence/archive-audit.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result,indent=2))

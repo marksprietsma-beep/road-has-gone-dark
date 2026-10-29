@@ -318,7 +318,9 @@ func refresh() -> void:
    if int(actor.record.runtime.temporary_hp)>0:detail.text+="\nBuffer: %d temporary HP"%int(actor.record.runtime.temporary_hp)
    if engine.registry.rules_ref().pack_id in ["trhgd-character-v27","trhgd-character-v28","trhgd-character-v29","trhgd-character-v30","trhgd-character-v31","trhgd-character-v32","trhgd-character-v33","trhgd-character-v34","trhgd-character-v35"]:
     var shells: int=actor.record.runtime.statuses.filter(func(s: Dictionary):return engine.registry.definition("statuses",s.id).tags.has("weapon_decoy")).size()
-    if shells>0:detail.text+="\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells
+    if shells>0:
+     if engine.registry.rules_ref().pack_id=="trhgd-character-v35" and actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="shadowdancer-technique-10-shroud"):detail.text+="\nUmbral double: one weapon attempt · true sight/spells bypass"
+     else:detail.text+="\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells
    if engine.registry.rules_ref().engine_schema==3 and not actor.record.runtime.statuses.is_empty():detail.text+="\nStatus: "+", ".join(actor.record.runtime.statuses.map(func(value: Dictionary):return str(value.id).replace("-"," ")) )
    if RulesMartial.enabled(engine.registry):
     detail.text+="\nShared reaction: "+("ready" if int(actor.reaction)>0 else "spent")

@@ -54,7 +54,7 @@ jobs:
           FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
         run: python tests/final_prestige/run-focused.py
       - name: Actual earned entry, committed decline, connected combat, cold and original Godot captures
-        if: github.event_name == 'workflow_dispatch' && inputs.journey && inputs.release != true
+        if: (github.event_name == 'workflow_dispatch' && inputs.journey && inputs.release != true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[game169-journey]'))
         env:
           FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
           FINAL_PRESTIGE_JOURNEY_ROOT: ${{ runner.temp }}/final-prestige-earned

@@ -1,0 +1,21 @@
+{
+  "run": 40816629099,
+  "source": "c903535377c19af9598a2d09e52d7063916adf3b",
+  "url": "https://github.com/marksprietsma-beep/road-has-gone-dark/actions/runs/40816629099",
+  "overall": "failure",
+  "components": {
+    "mechanics": {
+      "checks": 3525,
+      "failures": 0
+    },
+    "cold": {
+      "checks": 208,
+      "failures": 0
+    },
+    "input": {
+      "checks": 136,
+      "failures": 1
+    }
+  },
+  "scope": "Source-engine Windows component evidence. No native distribution or readiness promotion. UI failure is unowned Guard setup on Rogue, corrected by real basic attack in subsequent source."
+}

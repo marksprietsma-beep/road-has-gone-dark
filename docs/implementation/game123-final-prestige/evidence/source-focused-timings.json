@@ -1,0 +1,37 @@
+[
+  {
+    "phase": "probe",
+    "seconds": 17.25,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "schema",
+    "seconds": 2.406,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics",
+    "seconds": 293.015,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "mechanics-cold",
+    "seconds": 15.875,
+    "exit_code": 0,
+    "errors": false,
+    "timeout": false
+  },
+  {
+    "phase": "input",
+    "seconds": 145.86,
+    "exit_code": 1,
+    "errors": false,
+    "timeout": false
+  }
+]

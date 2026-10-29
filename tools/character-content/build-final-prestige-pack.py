@@ -84,6 +84,9 @@ def enable_versions(text):
  old='  var remaining: int=int(snapshot.resource_capacities[pool])\n  var offensive:'
  new='  if source.rules_ref().pack_id=="trhgd-character-v35":candidates=candidates.filter(func(id: String):return not source.definition("abilities",id).has("channel_spell"))\n'+old
  text=text.replace(old,new)
+ old='    if shells>0:detail.text+="\\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells'
+ new='    if shells>0:\n     if engine.registry.rules_ref().pack_id=="trhgd-character-v35" and actor.record.runtime.statuses.any(func(s: Dictionary):return s.id=="shadowdancer-technique-10-shroud"):detail.text+="\\nUmbral double: one weapon attempt · true sight/spells bypass"\n     else:detail.text+="\\nRefraction: %d/3 weapon attempts · true sight/spells bypass"%shells'
+ text=text.replace(old,new)
  return text.replace('const NEW_PACK := "trhgd-character-v34"','const NEW_PACK := "trhgd-character-v35"')
 if __name__=='__main__':
  p=content();(ROOT/'data/rules/trhgd-character-v35.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
