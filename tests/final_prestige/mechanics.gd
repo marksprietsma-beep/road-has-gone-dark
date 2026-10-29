@@ -85,6 +85,7 @@ func career_next(record: Dictionary,cls: String,path: String,options: Dictionary
  if (record.advancement_history.size()+1)%4==0:
   var attribute: String=str(source.definition("classes",parent if not parent.is_empty()and cls=="eldritch-knight"else cls).get("casting_attribute",""))
   choice.attribute_increase=attribute if not attribute.is_empty()else"DEX"if path=="shadowdancer"else"STR"
+ choice=align_skills(record,choice)
  var out: Dictionary=kernel.preview_advancement(record,choice);check(out.ok,"explicit choice/attribute preview "+cls+JSON.stringify(out.get("errors",[])))
  return learn(out.candidate,out.snapshot)if out.ok else{}
 func real_field(record: Dictionary) -> Dictionary:
@@ -330,3 +331,22 @@ func finish_current(restart := false) -> void:
  print("FINAL_PRESTIGE_CURRENT ",checks," failures ",failures)
  if no_quit:completed.emit()
  else:get_tree().quit(1 if failures else 0)
+
+func align_skills(record: Dictionary,choice: Dictionary) -> Dictionary:
+ var summary: Dictionary=kernel.preview_choices(record,choice.class_id,{"attribute_increase":choice.attribute_increase})
+ check(summary.ok,"actual selected-attribute skill budget")
+ if not summary.ok:return choice
+ var spent := 0
+ for amount in choice.skill_allocations.values():spent+=int(amount)
+ var excess: int=spent-int(summary.skill_points);var order: Array=choice.skill_allocations.keys();order.reverse()
+ for id in order:
+  if excess<=0:break
+  var removed: int=mini(excess,int(choice.skill_allocations[id]));choice.skill_allocations[id]-=removed;excess-=removed
+  if choice.skill_allocations[id]==0:choice.skill_allocations.erase(id)
+ var missing: int=int(summary.skill_points)-mini(spent,int(summary.skill_points))
+ for id in summary.skill_rank_room:
+  if missing<=0:break
+  var room: int=int(summary.skill_rank_room[id])-int(choice.skill_allocations.get(id,0));var add: int=mini(missing,room)
+  if add>0:choice.skill_allocations[id]=int(choice.skill_allocations.get(id,0))+add;missing-=add
+ check(missing==0,"exact remaining skill points assigned legally")
+ return choice
