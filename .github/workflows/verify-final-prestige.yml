@@ -1,0 +1,48 @@
+name: Final Three Prestige Acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/game-169-final-prestige]
+    paths: ['tests/final_prestige/**', '.github/workflows/verify-final-prestige.yml']
+permissions:
+  contents: read
+jobs:
+  focused-windows:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Frozen helper dependencies
+        run: npm ci --ignore-scripts --prefix vendor/azgaar
+      - name: Verified Windows engine and bundled helper
+        run: python tests/world_library/prepare-ci.py
+      - name: Exclude Node examples
+        run: python -c "from pathlib import Path; Path('vendor/azgaar/node_modules/.gdignore').touch()"
+      - name: Exact accepted baseline, unchanged production and historical content
+        run: |
+          python tools/character-content/validate.py
+          python tests/final_prestige/check-source.py
+      - name: Checked Godot import
+        shell: pwsh
+        run: |
+          & $env:GODOT_BIN --headless --editor --path . --import 2>&1 | Tee-Object -FilePath "$env:RUNNER_TEMP/final-prestige-import.log"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c "import os;from pathlib import Path;s=Path(os.environ['RUNNER_TEMP'],'final-prestige-import.log').read_text(encoding='utf-8-sig');assert 'SCRIPT ERROR:'not in s and 'Parse Error:'not in s"
+      - name: Released34 genuine defect witnesses and already-working mechanics
+        env:
+          FINAL_PRESTIGE_ROOT: ${{ runner.temp }}/final-prestige-focused
+        run: python tests/final_prestige/run-focused.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-prestige-windows-evidence
+          path: ${{ runner.temp }}/final-prestige-focused
+          retention-days: 90

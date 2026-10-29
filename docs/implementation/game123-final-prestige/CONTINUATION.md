@@ -1,0 +1,7 @@
+# GAME-169 initial reproduction checkpoint
+
+Branch feature/game-169-final-prestige from fully verified main7c70fb27bfd3572505421c996102bd11e9b6da1a. Accepted47/3; all29 main workflows/all35 jobs succeeded. GAME-167 closed,101 open. No callable Linear connector. No duplicate branch/PR or production replacement.
+
+Initial probe increment only: tests/final_prestige and its Windows workflow plus baseline/assessment documentation. All production/data/export/verification tools and READINESS remain exact baseline. Current immutable pack34; no candidate35 yet. Inspect actual current-head Windows run and downloaded proof before correcting rules. Probe histories are DEVELOPMENT FIXTURES, not earned XP. Preserve working Defender immobility/resistance/armour defence and existing shadow miss chance.
+
+Next: reproduce Knight real-tier/parent problems and altered-body suppression; record missing Knight channel/Defender reaction acceptance gaps. If a harness fails, inspect actual logs and correct it without weakening assertions. After confirmed behaviour, implement bounded35 through existing generic systems, focused tests/controls/cold, genuine earned optional entry/decline and connected resolution/rest, original Godot renders, ONE stable native release, strict source-bound three-career promotion, one reviewed green PR/normal merge/actual post-main checks, close169, keep101 open, stop for human playtest. No Linux Godot validation or unrelated expansion.
