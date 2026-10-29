@@ -22,7 +22,20 @@ with tempfile.TemporaryDirectory(prefix='game169-inventory-')as folder:
  try:script_inventory(root,expected)
  except AssertionError:rejected=True
  assert rejected,'Missing original source must be rejected';checks+=1
-scope=verify_production();checks+=1
+with tempfile.TemporaryDirectory(prefix='game169-shader-inventory-')as folder:
+ root=Path(folder);(root/'scripts').mkdir();(root/'scripts/icon.gdshader').write_text('shader_type canvas_item;\n');(root/'scripts/icon.gdshader.uid').write_text('uid://c7pyw8example\n')
+ expected=['scripts/icon.gdshader'];assert script_inventory(root,expected)==['scripts/icon.gdshader.uid'];checks+=1
+ (root/'scripts/notes.txt').write_text('metadata owner negative fixture');expected.append('scripts/notes.txt');(root/'scripts/notes.txt.uid').write_text('uid://alsoinvalidowner\n');rejected=False
+ try:script_inventory(root,expected)
+ except AssertionError:rejected=True
+ assert rejected,'UIDs are accepted only for original Godot script/shader resources';checks+=1
+base=Path(os.environ['FINAL_PRESTIGE_ROOT']);base.mkdir(parents=True,exist_ok=True)
+try:scope=verify_production();checks+=1
+except AssertionError as error:
+ expected=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'scripts'],cwd=ROOT,text=True).splitlines()
+ actual={p.relative_to(ROOT).as_posix()for p in (ROOT/'scripts').rglob('*')if p.is_file()}
+ (base/'source-after-import-failure.json').write_text(json.dumps(dict(error=str(error),missing=sorted(set(expected)-actual),extra=sorted(actual-set(expected))),indent=2)+'\n',encoding='utf-8')
+ raise
 expected=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'scripts'],cwd=ROOT,text=True).splitlines();extra=script_inventory(ROOT,expected)
 base=Path(os.environ['FINAL_PRESTIGE_ROOT']);base.mkdir(parents=True,exist_ok=True)
 receipt=dict(checks=checks,failures=0,source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),source_guard=scope,generated_uid_sidecars=[dict(path=p,sha256=hashlib.sha256((ROOT/p).read_bytes()).hexdigest())for p in extra],scope='All tracked script/UID bytes and tracked inventory remain guarded. Only valid untracked UID metadata for existing scripts is accepted after Godot import. Missing or additional gameplay code, unknown UID owners and invalid UID syntax are rejected.')

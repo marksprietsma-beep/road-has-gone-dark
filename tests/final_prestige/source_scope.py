@@ -44,7 +44,7 @@ def script_inventory(root,expected):
  expected=set(expected);missing=expected-present;extra=present-expected
  assert not missing,dict(missing_production_files=sorted(missing))
  for path in sorted(extra):
-  assert path.endswith('.gd.uid')and path[:-4]in expected,dict(unexpected_production_file=path,all_extras=sorted(extra))
+  assert path.endswith(('.gd.uid','.gdshader.uid'))and path[:-4]in expected,dict(unexpected_production_file=path,all_extras=sorted(extra))
   value=(root/path).read_text(encoding='utf-8').strip()
   assert re.fullmatch(r'uid://[a-z0-9]+',value),dict(invalid_generated_uid=path)
  return sorted(extra)
